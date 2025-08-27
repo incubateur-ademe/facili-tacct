@@ -84,10 +84,10 @@ export type qualite_sites_baignade = $Result.DefaultSelection<Prisma.$qualite_si
  */
 export type ressources_eau = $Result.DefaultSelection<Prisma.$ressources_eauPayload>
 /**
- * Model databases_rga
+ * Model rga
  * 
  */
-export type databases_rga = $Result.DefaultSelection<Prisma.$databases_rgaPayload>
+export type rga = $Result.DefaultSelection<Prisma.$rgaPayload>
 /**
  * Model surfaces_agricoles
  * 
@@ -418,14 +418,14 @@ export class PrismaClient<
   get ressources_eau(): Prisma.ressources_eauDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.databases_rga`: Exposes CRUD operations for the **databases_rga** model.
+   * `prisma.rga`: Exposes CRUD operations for the **rga** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Databases_rgas
-    * const databases_rgas = await prisma.databases_rga.findMany()
+    * // Fetch zero or more Rgas
+    * const rgas = await prisma.rga.findMany()
     * ```
     */
-  get databases_rga(): Prisma.databases_rgaDelegate<ExtArgs, ClientOptions>;
+  get rga(): Prisma.rgaDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.surfaces_agricoles`: Exposes CRUD operations for the **surfaces_agricoles** model.
@@ -1020,7 +1020,7 @@ export namespace Prisma {
     patch4c: 'patch4c',
     qualite_sites_baignade: 'qualite_sites_baignade',
     ressources_eau: 'ressources_eau',
-    databases_rga: 'databases_rga',
+    rga: 'rga',
     surfaces_agricoles: 'surfaces_agricoles',
     surfaces_protegees: 'surfaces_protegees',
     clc_territoires: 'clc_territoires',
@@ -1053,7 +1053,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "databases_rga" | "surfaces_agricoles" | "surfaces_protegees" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "spatial_ref_sys" | "sandbox_users" | "users" | "pg_stat_statements" | "pg_stat_statements_info" | "geography_columns" | "geometry_columns"
+      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "rga" | "surfaces_agricoles" | "surfaces_protegees" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "spatial_ref_sys" | "sandbox_users" | "users" | "pg_stat_statements" | "pg_stat_statements_info" | "geography_columns" | "geometry_columns"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2093,77 +2093,77 @@ export namespace Prisma {
           }
         }
       }
-      databases_rga: {
-        payload: Prisma.$databases_rgaPayload<ExtArgs>
-        fields: Prisma.databases_rgaFieldRefs
+      rga: {
+        payload: Prisma.$rgaPayload<ExtArgs>
+        fields: Prisma.rgaFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.databases_rgaFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$databases_rgaPayload> | null
+            args: Prisma.rgaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.databases_rgaFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$databases_rgaPayload>
+            args: Prisma.rgaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>
           }
           findFirst: {
-            args: Prisma.databases_rgaFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$databases_rgaPayload> | null
+            args: Prisma.rgaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.databases_rgaFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$databases_rgaPayload>
+            args: Prisma.rgaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>
           }
           findMany: {
-            args: Prisma.databases_rgaFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$databases_rgaPayload>[]
+            args: Prisma.rgaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>[]
           }
           create: {
-            args: Prisma.databases_rgaCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$databases_rgaPayload>
+            args: Prisma.rgaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>
           }
           createMany: {
-            args: Prisma.databases_rgaCreateManyArgs<ExtArgs>
+            args: Prisma.rgaCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.databases_rgaCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$databases_rgaPayload>[]
+            args: Prisma.rgaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>[]
           }
           delete: {
-            args: Prisma.databases_rgaDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$databases_rgaPayload>
+            args: Prisma.rgaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>
           }
           update: {
-            args: Prisma.databases_rgaUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$databases_rgaPayload>
+            args: Prisma.rgaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>
           }
           deleteMany: {
-            args: Prisma.databases_rgaDeleteManyArgs<ExtArgs>
+            args: Prisma.rgaDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.databases_rgaUpdateManyArgs<ExtArgs>
+            args: Prisma.rgaUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.databases_rgaUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$databases_rgaPayload>[]
+            args: Prisma.rgaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>[]
           }
           upsert: {
-            args: Prisma.databases_rgaUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$databases_rgaPayload>
+            args: Prisma.rgaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>
           }
           aggregate: {
-            args: Prisma.Databases_rgaAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateDatabases_rga>
+            args: Prisma.RgaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRga>
           }
           groupBy: {
-            args: Prisma.databases_rgaGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Databases_rgaGroupByOutputType>[]
+            args: Prisma.rgaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RgaGroupByOutputType>[]
           }
           count: {
-            args: Prisma.databases_rgaCountArgs<ExtArgs>
-            result: $Utils.Optional<Databases_rgaCountAggregateOutputType> | number
+            args: Prisma.rgaCountArgs<ExtArgs>
+            result: $Utils.Optional<RgaCountAggregateOutputType> | number
           }
         }
       }
@@ -3069,7 +3069,7 @@ export namespace Prisma {
     patch4c?: patch4cOmit
     qualite_sites_baignade?: qualite_sites_baignadeOmit
     ressources_eau?: ressources_eauOmit
-    databases_rga?: databases_rgaOmit
+    rga?: rgaOmit
     surfaces_agricoles?: surfaces_agricolesOmit
     surfaces_protegees?: surfaces_protegeesOmit
     clc_territoires?: clc_territoiresOmit
@@ -22021,18 +22021,18 @@ export namespace Prisma {
 
 
   /**
-   * Model databases_rga
+   * Model rga
    */
 
-  export type AggregateDatabases_rga = {
-    _count: Databases_rgaCountAggregateOutputType | null
-    _avg: Databases_rgaAvgAggregateOutputType | null
-    _sum: Databases_rgaSumAggregateOutputType | null
-    _min: Databases_rgaMinAggregateOutputType | null
-    _max: Databases_rgaMaxAggregateOutputType | null
+  export type AggregateRga = {
+    _count: RgaCountAggregateOutputType | null
+    _avg: RgaAvgAggregateOutputType | null
+    _sum: RgaSumAggregateOutputType | null
+    _min: RgaMinAggregateOutputType | null
+    _max: RgaMaxAggregateOutputType | null
   }
 
-  export type Databases_rgaAvgAggregateOutputType = {
+  export type RgaAvgAggregateOutputType = {
     index: number | null
     region: number | null
     nb_logement: number | null
@@ -22062,7 +22062,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune: number | null
   }
 
-  export type Databases_rgaSumAggregateOutputType = {
+  export type RgaSumAggregateOutputType = {
     index: bigint | null
     region: number | null
     nb_logement: number | null
@@ -22092,47 +22092,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune: number | null
   }
 
-  export type Databases_rgaMinAggregateOutputType = {
-    index: bigint | null
-    code_geographique: string | null
-    libelle_geographique: string | null
-    epci: string | null
-    libelle_epci: string | null
-    departement: string | null
-    libelle_departement: string | null
-    region: number | null
-    ept: string | null
-    libelle_petr: string | null
-    code_pnr: string | null
-    libelle_pnr: string | null
-    nb_logement: number | null
-    nb_logement_alea_moyen_fort: number | null
-    nb_logement_alea_faible: number | null
-    nb_logement_sans_alea: number | null
-    nb_logement_alea_moyen_fort_avant_1920: number | null
-    part_logement_alea_moyen_fort_avant_1920: number | null
-    nb_logement_alea_moyen_fort_1920_1945: number | null
-    part_logement_alea_moyen_fort_1920_1945: number | null
-    nb_logement_alea_moyen_fort_1945_1975: number | null
-    part_logement_alea_moyen_fort_1945_1975: number | null
-    nb_logement_alea_moyen_fort_apres_1975: number | null
-    part_logement_alea_moyen_fort_apres_1975: number | null
-    nb_logement_alea_faible_avant_1920: number | null
-    part_logement_alea_faible_avant_1920: number | null
-    nb_logement_alea_faible_1920_1945: number | null
-    part_logement_alea_faible_1920_1945: number | null
-    nb_logement_alea_faible_1945_1975: number | null
-    part_logement_alea_faible_1945_1975: number | null
-    nb_logement_alea_faible_apres_1975: number | null
-    part_logement_alea_faible_apres_1975: number | null
-    surface_commune: number | null
-    surface_alea_faible_commune: number | null
-    part_alea_faible_commune: number | null
-    surface_alea_moyen_fort_commune: number | null
-    part_alea_moyen_fort_commune: number | null
-  }
-
-  export type Databases_rgaMaxAggregateOutputType = {
+  export type RgaMinAggregateOutputType = {
     index: bigint | null
     code_geographique: string | null
     libelle_geographique: string | null
@@ -22172,7 +22132,47 @@ export namespace Prisma {
     part_alea_moyen_fort_commune: number | null
   }
 
-  export type Databases_rgaCountAggregateOutputType = {
+  export type RgaMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    nb_logement: number | null
+    nb_logement_alea_moyen_fort: number | null
+    nb_logement_alea_faible: number | null
+    nb_logement_sans_alea: number | null
+    nb_logement_alea_moyen_fort_avant_1920: number | null
+    part_logement_alea_moyen_fort_avant_1920: number | null
+    nb_logement_alea_moyen_fort_1920_1945: number | null
+    part_logement_alea_moyen_fort_1920_1945: number | null
+    nb_logement_alea_moyen_fort_1945_1975: number | null
+    part_logement_alea_moyen_fort_1945_1975: number | null
+    nb_logement_alea_moyen_fort_apres_1975: number | null
+    part_logement_alea_moyen_fort_apres_1975: number | null
+    nb_logement_alea_faible_avant_1920: number | null
+    part_logement_alea_faible_avant_1920: number | null
+    nb_logement_alea_faible_1920_1945: number | null
+    part_logement_alea_faible_1920_1945: number | null
+    nb_logement_alea_faible_1945_1975: number | null
+    part_logement_alea_faible_1945_1975: number | null
+    nb_logement_alea_faible_apres_1975: number | null
+    part_logement_alea_faible_apres_1975: number | null
+    surface_commune: number | null
+    surface_alea_faible_commune: number | null
+    part_alea_faible_commune: number | null
+    surface_alea_moyen_fort_commune: number | null
+    part_alea_moyen_fort_commune: number | null
+  }
+
+  export type RgaCountAggregateOutputType = {
     index: number
     code_geographique: number
     libelle_geographique: number
@@ -22214,7 +22214,7 @@ export namespace Prisma {
   }
 
 
-  export type Databases_rgaAvgAggregateInputType = {
+  export type RgaAvgAggregateInputType = {
     index?: true
     region?: true
     nb_logement?: true
@@ -22244,7 +22244,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune?: true
   }
 
-  export type Databases_rgaSumAggregateInputType = {
+  export type RgaSumAggregateInputType = {
     index?: true
     region?: true
     nb_logement?: true
@@ -22274,47 +22274,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune?: true
   }
 
-  export type Databases_rgaMinAggregateInputType = {
-    index?: true
-    code_geographique?: true
-    libelle_geographique?: true
-    epci?: true
-    libelle_epci?: true
-    departement?: true
-    libelle_departement?: true
-    region?: true
-    ept?: true
-    libelle_petr?: true
-    code_pnr?: true
-    libelle_pnr?: true
-    nb_logement?: true
-    nb_logement_alea_moyen_fort?: true
-    nb_logement_alea_faible?: true
-    nb_logement_sans_alea?: true
-    nb_logement_alea_moyen_fort_avant_1920?: true
-    part_logement_alea_moyen_fort_avant_1920?: true
-    nb_logement_alea_moyen_fort_1920_1945?: true
-    part_logement_alea_moyen_fort_1920_1945?: true
-    nb_logement_alea_moyen_fort_1945_1975?: true
-    part_logement_alea_moyen_fort_1945_1975?: true
-    nb_logement_alea_moyen_fort_apres_1975?: true
-    part_logement_alea_moyen_fort_apres_1975?: true
-    nb_logement_alea_faible_avant_1920?: true
-    part_logement_alea_faible_avant_1920?: true
-    nb_logement_alea_faible_1920_1945?: true
-    part_logement_alea_faible_1920_1945?: true
-    nb_logement_alea_faible_1945_1975?: true
-    part_logement_alea_faible_1945_1975?: true
-    nb_logement_alea_faible_apres_1975?: true
-    part_logement_alea_faible_apres_1975?: true
-    surface_commune?: true
-    surface_alea_faible_commune?: true
-    part_alea_faible_commune?: true
-    surface_alea_moyen_fort_commune?: true
-    part_alea_moyen_fort_commune?: true
-  }
-
-  export type Databases_rgaMaxAggregateInputType = {
+  export type RgaMinAggregateInputType = {
     index?: true
     code_geographique?: true
     libelle_geographique?: true
@@ -22354,7 +22314,47 @@ export namespace Prisma {
     part_alea_moyen_fort_commune?: true
   }
 
-  export type Databases_rgaCountAggregateInputType = {
+  export type RgaMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    nb_logement?: true
+    nb_logement_alea_moyen_fort?: true
+    nb_logement_alea_faible?: true
+    nb_logement_sans_alea?: true
+    nb_logement_alea_moyen_fort_avant_1920?: true
+    part_logement_alea_moyen_fort_avant_1920?: true
+    nb_logement_alea_moyen_fort_1920_1945?: true
+    part_logement_alea_moyen_fort_1920_1945?: true
+    nb_logement_alea_moyen_fort_1945_1975?: true
+    part_logement_alea_moyen_fort_1945_1975?: true
+    nb_logement_alea_moyen_fort_apres_1975?: true
+    part_logement_alea_moyen_fort_apres_1975?: true
+    nb_logement_alea_faible_avant_1920?: true
+    part_logement_alea_faible_avant_1920?: true
+    nb_logement_alea_faible_1920_1945?: true
+    part_logement_alea_faible_1920_1945?: true
+    nb_logement_alea_faible_1945_1975?: true
+    part_logement_alea_faible_1945_1975?: true
+    nb_logement_alea_faible_apres_1975?: true
+    part_logement_alea_faible_apres_1975?: true
+    surface_commune?: true
+    surface_alea_faible_commune?: true
+    part_alea_faible_commune?: true
+    surface_alea_moyen_fort_commune?: true
+    part_alea_moyen_fort_commune?: true
+  }
+
+  export type RgaCountAggregateInputType = {
     index?: true
     code_geographique?: true
     libelle_geographique?: true
@@ -22395,93 +22395,93 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type Databases_rgaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RgaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which databases_rga to aggregate.
+     * Filter which rga to aggregate.
      */
-    where?: databases_rgaWhereInput
+    where?: rgaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of databases_rgas to fetch.
+     * Determine the order of rgas to fetch.
      */
-    orderBy?: databases_rgaOrderByWithRelationInput | databases_rgaOrderByWithRelationInput[]
+    orderBy?: rgaOrderByWithRelationInput | rgaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: databases_rgaWhereUniqueInput
+    cursor?: rgaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` databases_rgas from the position of the cursor.
+     * Take `±n` rgas from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` databases_rgas.
+     * Skip the first `n` rgas.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned databases_rgas
+     * Count returned rgas
     **/
-    _count?: true | Databases_rgaCountAggregateInputType
+    _count?: true | RgaCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: Databases_rgaAvgAggregateInputType
+    _avg?: RgaAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: Databases_rgaSumAggregateInputType
+    _sum?: RgaSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: Databases_rgaMinAggregateInputType
+    _min?: RgaMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: Databases_rgaMaxAggregateInputType
+    _max?: RgaMaxAggregateInputType
   }
 
-  export type GetDatabases_rgaAggregateType<T extends Databases_rgaAggregateArgs> = {
-        [P in keyof T & keyof AggregateDatabases_rga]: P extends '_count' | 'count'
+  export type GetRgaAggregateType<T extends RgaAggregateArgs> = {
+        [P in keyof T & keyof AggregateRga]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateDatabases_rga[P]>
-      : GetScalarType<T[P], AggregateDatabases_rga[P]>
+        : GetScalarType<T[P], AggregateRga[P]>
+      : GetScalarType<T[P], AggregateRga[P]>
   }
 
 
 
 
-  export type databases_rgaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: databases_rgaWhereInput
-    orderBy?: databases_rgaOrderByWithAggregationInput | databases_rgaOrderByWithAggregationInput[]
-    by: Databases_rgaScalarFieldEnum[] | Databases_rgaScalarFieldEnum
-    having?: databases_rgaScalarWhereWithAggregatesInput
+  export type rgaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: rgaWhereInput
+    orderBy?: rgaOrderByWithAggregationInput | rgaOrderByWithAggregationInput[]
+    by: RgaScalarFieldEnum[] | RgaScalarFieldEnum
+    having?: rgaScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: Databases_rgaCountAggregateInputType | true
-    _avg?: Databases_rgaAvgAggregateInputType
-    _sum?: Databases_rgaSumAggregateInputType
-    _min?: Databases_rgaMinAggregateInputType
-    _max?: Databases_rgaMaxAggregateInputType
+    _count?: RgaCountAggregateInputType | true
+    _avg?: RgaAvgAggregateInputType
+    _sum?: RgaSumAggregateInputType
+    _min?: RgaMinAggregateInputType
+    _max?: RgaMaxAggregateInputType
   }
 
-  export type Databases_rgaGroupByOutputType = {
+  export type RgaGroupByOutputType = {
     index: bigint
     code_geographique: string
     libelle_geographique: string
@@ -22519,28 +22519,28 @@ export namespace Prisma {
     part_alea_faible_commune: number
     surface_alea_moyen_fort_commune: number
     part_alea_moyen_fort_commune: number
-    _count: Databases_rgaCountAggregateOutputType | null
-    _avg: Databases_rgaAvgAggregateOutputType | null
-    _sum: Databases_rgaSumAggregateOutputType | null
-    _min: Databases_rgaMinAggregateOutputType | null
-    _max: Databases_rgaMaxAggregateOutputType | null
+    _count: RgaCountAggregateOutputType | null
+    _avg: RgaAvgAggregateOutputType | null
+    _sum: RgaSumAggregateOutputType | null
+    _min: RgaMinAggregateOutputType | null
+    _max: RgaMaxAggregateOutputType | null
   }
 
-  type GetDatabases_rgaGroupByPayload<T extends databases_rgaGroupByArgs> = Prisma.PrismaPromise<
+  type GetRgaGroupByPayload<T extends rgaGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<Databases_rgaGroupByOutputType, T['by']> &
+      PickEnumerable<RgaGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof Databases_rgaGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof RgaGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], Databases_rgaGroupByOutputType[P]>
-            : GetScalarType<T[P], Databases_rgaGroupByOutputType[P]>
+              : GetScalarType<T[P], RgaGroupByOutputType[P]>
+            : GetScalarType<T[P], RgaGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type databases_rgaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type rgaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
     code_geographique?: boolean
     libelle_geographique?: boolean
@@ -22578,9 +22578,9 @@ export namespace Prisma {
     part_alea_faible_commune?: boolean
     surface_alea_moyen_fort_commune?: boolean
     part_alea_moyen_fort_commune?: boolean
-  }, ExtArgs["result"]["databases_rga"]>
+  }, ExtArgs["result"]["rga"]>
 
-  export type databases_rgaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type rgaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
     code_geographique?: boolean
     libelle_geographique?: boolean
@@ -22618,9 +22618,9 @@ export namespace Prisma {
     part_alea_faible_commune?: boolean
     surface_alea_moyen_fort_commune?: boolean
     part_alea_moyen_fort_commune?: boolean
-  }, ExtArgs["result"]["databases_rga"]>
+  }, ExtArgs["result"]["rga"]>
 
-  export type databases_rgaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type rgaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
     code_geographique?: boolean
     libelle_geographique?: boolean
@@ -22658,9 +22658,9 @@ export namespace Prisma {
     part_alea_faible_commune?: boolean
     surface_alea_moyen_fort_commune?: boolean
     part_alea_moyen_fort_commune?: boolean
-  }, ExtArgs["result"]["databases_rga"]>
+  }, ExtArgs["result"]["rga"]>
 
-  export type databases_rgaSelectScalar = {
+  export type rgaSelectScalar = {
     index?: boolean
     code_geographique?: boolean
     libelle_geographique?: boolean
@@ -22700,10 +22700,10 @@ export namespace Prisma {
     part_alea_moyen_fort_commune?: boolean
   }
 
-  export type databases_rgaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nb_logement" | "nb_logement_alea_moyen_fort" | "nb_logement_alea_faible" | "nb_logement_sans_alea" | "nb_logement_alea_moyen_fort_avant_1920" | "part_logement_alea_moyen_fort_avant_1920" | "nb_logement_alea_moyen_fort_1920_1945" | "part_logement_alea_moyen_fort_1920_1945" | "nb_logement_alea_moyen_fort_1945_1975" | "part_logement_alea_moyen_fort_1945_1975" | "nb_logement_alea_moyen_fort_apres_1975" | "part_logement_alea_moyen_fort_apres_1975" | "nb_logement_alea_faible_avant_1920" | "part_logement_alea_faible_avant_1920" | "nb_logement_alea_faible_1920_1945" | "part_logement_alea_faible_1920_1945" | "nb_logement_alea_faible_1945_1975" | "part_logement_alea_faible_1945_1975" | "nb_logement_alea_faible_apres_1975" | "part_logement_alea_faible_apres_1975" | "surface_commune" | "surface_alea_faible_commune" | "part_alea_faible_commune" | "surface_alea_moyen_fort_commune" | "part_alea_moyen_fort_commune", ExtArgs["result"]["databases_rga"]>
+  export type rgaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nb_logement" | "nb_logement_alea_moyen_fort" | "nb_logement_alea_faible" | "nb_logement_sans_alea" | "nb_logement_alea_moyen_fort_avant_1920" | "part_logement_alea_moyen_fort_avant_1920" | "nb_logement_alea_moyen_fort_1920_1945" | "part_logement_alea_moyen_fort_1920_1945" | "nb_logement_alea_moyen_fort_1945_1975" | "part_logement_alea_moyen_fort_1945_1975" | "nb_logement_alea_moyen_fort_apres_1975" | "part_logement_alea_moyen_fort_apres_1975" | "nb_logement_alea_faible_avant_1920" | "part_logement_alea_faible_avant_1920" | "nb_logement_alea_faible_1920_1945" | "part_logement_alea_faible_1920_1945" | "nb_logement_alea_faible_1945_1975" | "part_logement_alea_faible_1945_1975" | "nb_logement_alea_faible_apres_1975" | "part_logement_alea_faible_apres_1975" | "surface_commune" | "surface_alea_faible_commune" | "part_alea_faible_commune" | "surface_alea_moyen_fort_commune" | "part_alea_moyen_fort_commune", ExtArgs["result"]["rga"]>
 
-  export type $databases_rgaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "databases_rga"
+  export type $rgaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "rga"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       index: bigint
@@ -22743,136 +22743,136 @@ export namespace Prisma {
       part_alea_faible_commune: number
       surface_alea_moyen_fort_commune: number
       part_alea_moyen_fort_commune: number
-    }, ExtArgs["result"]["databases_rga"]>
+    }, ExtArgs["result"]["rga"]>
     composites: {}
   }
 
-  type databases_rgaGetPayload<S extends boolean | null | undefined | databases_rgaDefaultArgs> = $Result.GetResult<Prisma.$databases_rgaPayload, S>
+  type rgaGetPayload<S extends boolean | null | undefined | rgaDefaultArgs> = $Result.GetResult<Prisma.$rgaPayload, S>
 
-  type databases_rgaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<databases_rgaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Databases_rgaCountAggregateInputType | true
+  type rgaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<rgaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RgaCountAggregateInputType | true
     }
 
-  export interface databases_rgaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['databases_rga'], meta: { name: 'databases_rga' } }
+  export interface rgaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['rga'], meta: { name: 'rga' } }
     /**
-     * Find zero or one Databases_rga that matches the filter.
-     * @param {databases_rgaFindUniqueArgs} args - Arguments to find a Databases_rga
+     * Find zero or one Rga that matches the filter.
+     * @param {rgaFindUniqueArgs} args - Arguments to find a Rga
      * @example
-     * // Get one Databases_rga
-     * const databases_rga = await prisma.databases_rga.findUnique({
+     * // Get one Rga
+     * const rga = await prisma.rga.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends databases_rgaFindUniqueArgs>(args: SelectSubset<T, databases_rgaFindUniqueArgs<ExtArgs>>): Prisma__databases_rgaClient<$Result.GetResult<Prisma.$databases_rgaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends rgaFindUniqueArgs>(args: SelectSubset<T, rgaFindUniqueArgs<ExtArgs>>): Prisma__rgaClient<$Result.GetResult<Prisma.$rgaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Databases_rga that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Rga that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {databases_rgaFindUniqueOrThrowArgs} args - Arguments to find a Databases_rga
+     * @param {rgaFindUniqueOrThrowArgs} args - Arguments to find a Rga
      * @example
-     * // Get one Databases_rga
-     * const databases_rga = await prisma.databases_rga.findUniqueOrThrow({
+     * // Get one Rga
+     * const rga = await prisma.rga.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends databases_rgaFindUniqueOrThrowArgs>(args: SelectSubset<T, databases_rgaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__databases_rgaClient<$Result.GetResult<Prisma.$databases_rgaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends rgaFindUniqueOrThrowArgs>(args: SelectSubset<T, rgaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__rgaClient<$Result.GetResult<Prisma.$rgaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Databases_rga that matches the filter.
+     * Find the first Rga that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {databases_rgaFindFirstArgs} args - Arguments to find a Databases_rga
+     * @param {rgaFindFirstArgs} args - Arguments to find a Rga
      * @example
-     * // Get one Databases_rga
-     * const databases_rga = await prisma.databases_rga.findFirst({
+     * // Get one Rga
+     * const rga = await prisma.rga.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends databases_rgaFindFirstArgs>(args?: SelectSubset<T, databases_rgaFindFirstArgs<ExtArgs>>): Prisma__databases_rgaClient<$Result.GetResult<Prisma.$databases_rgaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends rgaFindFirstArgs>(args?: SelectSubset<T, rgaFindFirstArgs<ExtArgs>>): Prisma__rgaClient<$Result.GetResult<Prisma.$rgaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Databases_rga that matches the filter or
+     * Find the first Rga that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {databases_rgaFindFirstOrThrowArgs} args - Arguments to find a Databases_rga
+     * @param {rgaFindFirstOrThrowArgs} args - Arguments to find a Rga
      * @example
-     * // Get one Databases_rga
-     * const databases_rga = await prisma.databases_rga.findFirstOrThrow({
+     * // Get one Rga
+     * const rga = await prisma.rga.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends databases_rgaFindFirstOrThrowArgs>(args?: SelectSubset<T, databases_rgaFindFirstOrThrowArgs<ExtArgs>>): Prisma__databases_rgaClient<$Result.GetResult<Prisma.$databases_rgaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends rgaFindFirstOrThrowArgs>(args?: SelectSubset<T, rgaFindFirstOrThrowArgs<ExtArgs>>): Prisma__rgaClient<$Result.GetResult<Prisma.$rgaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Databases_rgas that matches the filter.
+     * Find zero or more Rgas that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {databases_rgaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {rgaFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Databases_rgas
-     * const databases_rgas = await prisma.databases_rga.findMany()
+     * // Get all Rgas
+     * const rgas = await prisma.rga.findMany()
      * 
-     * // Get first 10 Databases_rgas
-     * const databases_rgas = await prisma.databases_rga.findMany({ take: 10 })
+     * // Get first 10 Rgas
+     * const rgas = await prisma.rga.findMany({ take: 10 })
      * 
      * // Only select the `index`
-     * const databases_rgaWithIndexOnly = await prisma.databases_rga.findMany({ select: { index: true } })
+     * const rgaWithIndexOnly = await prisma.rga.findMany({ select: { index: true } })
      * 
      */
-    findMany<T extends databases_rgaFindManyArgs>(args?: SelectSubset<T, databases_rgaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$databases_rgaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends rgaFindManyArgs>(args?: SelectSubset<T, rgaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rgaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Databases_rga.
-     * @param {databases_rgaCreateArgs} args - Arguments to create a Databases_rga.
+     * Create a Rga.
+     * @param {rgaCreateArgs} args - Arguments to create a Rga.
      * @example
-     * // Create one Databases_rga
-     * const Databases_rga = await prisma.databases_rga.create({
+     * // Create one Rga
+     * const Rga = await prisma.rga.create({
      *   data: {
-     *     // ... data to create a Databases_rga
+     *     // ... data to create a Rga
      *   }
      * })
      * 
      */
-    create<T extends databases_rgaCreateArgs>(args: SelectSubset<T, databases_rgaCreateArgs<ExtArgs>>): Prisma__databases_rgaClient<$Result.GetResult<Prisma.$databases_rgaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends rgaCreateArgs>(args: SelectSubset<T, rgaCreateArgs<ExtArgs>>): Prisma__rgaClient<$Result.GetResult<Prisma.$rgaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Databases_rgas.
-     * @param {databases_rgaCreateManyArgs} args - Arguments to create many Databases_rgas.
+     * Create many Rgas.
+     * @param {rgaCreateManyArgs} args - Arguments to create many Rgas.
      * @example
-     * // Create many Databases_rgas
-     * const databases_rga = await prisma.databases_rga.createMany({
+     * // Create many Rgas
+     * const rga = await prisma.rga.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends databases_rgaCreateManyArgs>(args?: SelectSubset<T, databases_rgaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends rgaCreateManyArgs>(args?: SelectSubset<T, rgaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Databases_rgas and returns the data saved in the database.
-     * @param {databases_rgaCreateManyAndReturnArgs} args - Arguments to create many Databases_rgas.
+     * Create many Rgas and returns the data saved in the database.
+     * @param {rgaCreateManyAndReturnArgs} args - Arguments to create many Rgas.
      * @example
-     * // Create many Databases_rgas
-     * const databases_rga = await prisma.databases_rga.createManyAndReturn({
+     * // Create many Rgas
+     * const rga = await prisma.rga.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Databases_rgas and only return the `index`
-     * const databases_rgaWithIndexOnly = await prisma.databases_rga.createManyAndReturn({
+     * // Create many Rgas and only return the `index`
+     * const rgaWithIndexOnly = await prisma.rga.createManyAndReturn({
      *   select: { index: true },
      *   data: [
      *     // ... provide data here
@@ -22882,28 +22882,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends databases_rgaCreateManyAndReturnArgs>(args?: SelectSubset<T, databases_rgaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$databases_rgaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends rgaCreateManyAndReturnArgs>(args?: SelectSubset<T, rgaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rgaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Databases_rga.
-     * @param {databases_rgaDeleteArgs} args - Arguments to delete one Databases_rga.
+     * Delete a Rga.
+     * @param {rgaDeleteArgs} args - Arguments to delete one Rga.
      * @example
-     * // Delete one Databases_rga
-     * const Databases_rga = await prisma.databases_rga.delete({
+     * // Delete one Rga
+     * const Rga = await prisma.rga.delete({
      *   where: {
-     *     // ... filter to delete one Databases_rga
+     *     // ... filter to delete one Rga
      *   }
      * })
      * 
      */
-    delete<T extends databases_rgaDeleteArgs>(args: SelectSubset<T, databases_rgaDeleteArgs<ExtArgs>>): Prisma__databases_rgaClient<$Result.GetResult<Prisma.$databases_rgaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends rgaDeleteArgs>(args: SelectSubset<T, rgaDeleteArgs<ExtArgs>>): Prisma__rgaClient<$Result.GetResult<Prisma.$rgaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Databases_rga.
-     * @param {databases_rgaUpdateArgs} args - Arguments to update one Databases_rga.
+     * Update one Rga.
+     * @param {rgaUpdateArgs} args - Arguments to update one Rga.
      * @example
-     * // Update one Databases_rga
-     * const databases_rga = await prisma.databases_rga.update({
+     * // Update one Rga
+     * const rga = await prisma.rga.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -22913,30 +22913,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends databases_rgaUpdateArgs>(args: SelectSubset<T, databases_rgaUpdateArgs<ExtArgs>>): Prisma__databases_rgaClient<$Result.GetResult<Prisma.$databases_rgaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends rgaUpdateArgs>(args: SelectSubset<T, rgaUpdateArgs<ExtArgs>>): Prisma__rgaClient<$Result.GetResult<Prisma.$rgaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Databases_rgas.
-     * @param {databases_rgaDeleteManyArgs} args - Arguments to filter Databases_rgas to delete.
+     * Delete zero or more Rgas.
+     * @param {rgaDeleteManyArgs} args - Arguments to filter Rgas to delete.
      * @example
-     * // Delete a few Databases_rgas
-     * const { count } = await prisma.databases_rga.deleteMany({
+     * // Delete a few Rgas
+     * const { count } = await prisma.rga.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends databases_rgaDeleteManyArgs>(args?: SelectSubset<T, databases_rgaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends rgaDeleteManyArgs>(args?: SelectSubset<T, rgaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Databases_rgas.
+     * Update zero or more Rgas.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {databases_rgaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {rgaUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Databases_rgas
-     * const databases_rga = await prisma.databases_rga.updateMany({
+     * // Update many Rgas
+     * const rga = await prisma.rga.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -22946,14 +22946,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends databases_rgaUpdateManyArgs>(args: SelectSubset<T, databases_rgaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends rgaUpdateManyArgs>(args: SelectSubset<T, rgaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Databases_rgas and returns the data updated in the database.
-     * @param {databases_rgaUpdateManyAndReturnArgs} args - Arguments to update many Databases_rgas.
+     * Update zero or more Rgas and returns the data updated in the database.
+     * @param {rgaUpdateManyAndReturnArgs} args - Arguments to update many Rgas.
      * @example
-     * // Update many Databases_rgas
-     * const databases_rga = await prisma.databases_rga.updateManyAndReturn({
+     * // Update many Rgas
+     * const rga = await prisma.rga.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -22962,8 +22962,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Databases_rgas and only return the `index`
-     * const databases_rgaWithIndexOnly = await prisma.databases_rga.updateManyAndReturn({
+     * // Update zero or more Rgas and only return the `index`
+     * const rgaWithIndexOnly = await prisma.rga.updateManyAndReturn({
      *   select: { index: true },
      *   where: {
      *     // ... provide filter here
@@ -22976,56 +22976,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends databases_rgaUpdateManyAndReturnArgs>(args: SelectSubset<T, databases_rgaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$databases_rgaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends rgaUpdateManyAndReturnArgs>(args: SelectSubset<T, rgaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rgaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Databases_rga.
-     * @param {databases_rgaUpsertArgs} args - Arguments to update or create a Databases_rga.
+     * Create or update one Rga.
+     * @param {rgaUpsertArgs} args - Arguments to update or create a Rga.
      * @example
-     * // Update or create a Databases_rga
-     * const databases_rga = await prisma.databases_rga.upsert({
+     * // Update or create a Rga
+     * const rga = await prisma.rga.upsert({
      *   create: {
-     *     // ... data to create a Databases_rga
+     *     // ... data to create a Rga
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Databases_rga we want to update
+     *     // ... the filter for the Rga we want to update
      *   }
      * })
      */
-    upsert<T extends databases_rgaUpsertArgs>(args: SelectSubset<T, databases_rgaUpsertArgs<ExtArgs>>): Prisma__databases_rgaClient<$Result.GetResult<Prisma.$databases_rgaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends rgaUpsertArgs>(args: SelectSubset<T, rgaUpsertArgs<ExtArgs>>): Prisma__rgaClient<$Result.GetResult<Prisma.$rgaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Databases_rgas.
+     * Count the number of Rgas.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {databases_rgaCountArgs} args - Arguments to filter Databases_rgas to count.
+     * @param {rgaCountArgs} args - Arguments to filter Rgas to count.
      * @example
-     * // Count the number of Databases_rgas
-     * const count = await prisma.databases_rga.count({
+     * // Count the number of Rgas
+     * const count = await prisma.rga.count({
      *   where: {
-     *     // ... the filter for the Databases_rgas we want to count
+     *     // ... the filter for the Rgas we want to count
      *   }
      * })
     **/
-    count<T extends databases_rgaCountArgs>(
-      args?: Subset<T, databases_rgaCountArgs>,
+    count<T extends rgaCountArgs>(
+      args?: Subset<T, rgaCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], Databases_rgaCountAggregateOutputType>
+          : GetScalarType<T['select'], RgaCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Databases_rga.
+     * Allows you to perform aggregations operations on a Rga.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Databases_rgaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {RgaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -23045,13 +23045,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends Databases_rgaAggregateArgs>(args: Subset<T, Databases_rgaAggregateArgs>): Prisma.PrismaPromise<GetDatabases_rgaAggregateType<T>>
+    aggregate<T extends RgaAggregateArgs>(args: Subset<T, RgaAggregateArgs>): Prisma.PrismaPromise<GetRgaAggregateType<T>>
 
     /**
-     * Group by Databases_rga.
+     * Group by Rga.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {databases_rgaGroupByArgs} args - Group by arguments.
+     * @param {rgaGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -23066,14 +23066,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends databases_rgaGroupByArgs,
+      T extends rgaGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: databases_rgaGroupByArgs['orderBy'] }
-        : { orderBy?: databases_rgaGroupByArgs['orderBy'] },
+        ? { orderBy: rgaGroupByArgs['orderBy'] }
+        : { orderBy?: rgaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -23122,20 +23122,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, databases_rgaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDatabases_rgaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, rgaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRgaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the databases_rga model
+   * Fields of the rga model
    */
-  readonly fields: databases_rgaFieldRefs;
+  readonly fields: rgaFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for databases_rga.
+   * The delegate class that acts as a "Promise-like" for rga.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__databases_rgaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__rgaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -23163,409 +23163,409 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the databases_rga model
+   * Fields of the rga model
    */
-  interface databases_rgaFieldRefs {
-    readonly index: FieldRef<"databases_rga", 'BigInt'>
-    readonly code_geographique: FieldRef<"databases_rga", 'String'>
-    readonly libelle_geographique: FieldRef<"databases_rga", 'String'>
-    readonly epci: FieldRef<"databases_rga", 'String'>
-    readonly libelle_epci: FieldRef<"databases_rga", 'String'>
-    readonly departement: FieldRef<"databases_rga", 'String'>
-    readonly libelle_departement: FieldRef<"databases_rga", 'String'>
-    readonly region: FieldRef<"databases_rga", 'Float'>
-    readonly ept: FieldRef<"databases_rga", 'String'>
-    readonly libelle_petr: FieldRef<"databases_rga", 'String'>
-    readonly code_pnr: FieldRef<"databases_rga", 'String'>
-    readonly libelle_pnr: FieldRef<"databases_rga", 'String'>
-    readonly nb_logement: FieldRef<"databases_rga", 'Int'>
-    readonly nb_logement_alea_moyen_fort: FieldRef<"databases_rga", 'Int'>
-    readonly nb_logement_alea_faible: FieldRef<"databases_rga", 'Int'>
-    readonly nb_logement_sans_alea: FieldRef<"databases_rga", 'Int'>
-    readonly nb_logement_alea_moyen_fort_avant_1920: FieldRef<"databases_rga", 'Int'>
-    readonly part_logement_alea_moyen_fort_avant_1920: FieldRef<"databases_rga", 'Int'>
-    readonly nb_logement_alea_moyen_fort_1920_1945: FieldRef<"databases_rga", 'Int'>
-    readonly part_logement_alea_moyen_fort_1920_1945: FieldRef<"databases_rga", 'Int'>
-    readonly nb_logement_alea_moyen_fort_1945_1975: FieldRef<"databases_rga", 'Int'>
-    readonly part_logement_alea_moyen_fort_1945_1975: FieldRef<"databases_rga", 'Int'>
-    readonly nb_logement_alea_moyen_fort_apres_1975: FieldRef<"databases_rga", 'Int'>
-    readonly part_logement_alea_moyen_fort_apres_1975: FieldRef<"databases_rga", 'Int'>
-    readonly nb_logement_alea_faible_avant_1920: FieldRef<"databases_rga", 'Int'>
-    readonly part_logement_alea_faible_avant_1920: FieldRef<"databases_rga", 'Int'>
-    readonly nb_logement_alea_faible_1920_1945: FieldRef<"databases_rga", 'Int'>
-    readonly part_logement_alea_faible_1920_1945: FieldRef<"databases_rga", 'Int'>
-    readonly nb_logement_alea_faible_1945_1975: FieldRef<"databases_rga", 'Int'>
-    readonly part_logement_alea_faible_1945_1975: FieldRef<"databases_rga", 'Int'>
-    readonly nb_logement_alea_faible_apres_1975: FieldRef<"databases_rga", 'Int'>
-    readonly part_logement_alea_faible_apres_1975: FieldRef<"databases_rga", 'Int'>
-    readonly surface_commune: FieldRef<"databases_rga", 'Int'>
-    readonly surface_alea_faible_commune: FieldRef<"databases_rga", 'Int'>
-    readonly part_alea_faible_commune: FieldRef<"databases_rga", 'Int'>
-    readonly surface_alea_moyen_fort_commune: FieldRef<"databases_rga", 'Int'>
-    readonly part_alea_moyen_fort_commune: FieldRef<"databases_rga", 'Int'>
+  interface rgaFieldRefs {
+    readonly index: FieldRef<"rga", 'BigInt'>
+    readonly code_geographique: FieldRef<"rga", 'String'>
+    readonly libelle_geographique: FieldRef<"rga", 'String'>
+    readonly epci: FieldRef<"rga", 'String'>
+    readonly libelle_epci: FieldRef<"rga", 'String'>
+    readonly departement: FieldRef<"rga", 'String'>
+    readonly libelle_departement: FieldRef<"rga", 'String'>
+    readonly region: FieldRef<"rga", 'Float'>
+    readonly ept: FieldRef<"rga", 'String'>
+    readonly libelle_petr: FieldRef<"rga", 'String'>
+    readonly code_pnr: FieldRef<"rga", 'String'>
+    readonly libelle_pnr: FieldRef<"rga", 'String'>
+    readonly nb_logement: FieldRef<"rga", 'Int'>
+    readonly nb_logement_alea_moyen_fort: FieldRef<"rga", 'Int'>
+    readonly nb_logement_alea_faible: FieldRef<"rga", 'Int'>
+    readonly nb_logement_sans_alea: FieldRef<"rga", 'Int'>
+    readonly nb_logement_alea_moyen_fort_avant_1920: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_moyen_fort_avant_1920: FieldRef<"rga", 'Int'>
+    readonly nb_logement_alea_moyen_fort_1920_1945: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_moyen_fort_1920_1945: FieldRef<"rga", 'Int'>
+    readonly nb_logement_alea_moyen_fort_1945_1975: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_moyen_fort_1945_1975: FieldRef<"rga", 'Int'>
+    readonly nb_logement_alea_moyen_fort_apres_1975: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_moyen_fort_apres_1975: FieldRef<"rga", 'Int'>
+    readonly nb_logement_alea_faible_avant_1920: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_faible_avant_1920: FieldRef<"rga", 'Int'>
+    readonly nb_logement_alea_faible_1920_1945: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_faible_1920_1945: FieldRef<"rga", 'Int'>
+    readonly nb_logement_alea_faible_1945_1975: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_faible_1945_1975: FieldRef<"rga", 'Int'>
+    readonly nb_logement_alea_faible_apres_1975: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_faible_apres_1975: FieldRef<"rga", 'Int'>
+    readonly surface_commune: FieldRef<"rga", 'Int'>
+    readonly surface_alea_faible_commune: FieldRef<"rga", 'Int'>
+    readonly part_alea_faible_commune: FieldRef<"rga", 'Int'>
+    readonly surface_alea_moyen_fort_commune: FieldRef<"rga", 'Int'>
+    readonly part_alea_moyen_fort_commune: FieldRef<"rga", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * databases_rga findUnique
+   * rga findUnique
    */
-  export type databases_rgaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the databases_rga
+     * Select specific fields to fetch from the rga
      */
-    select?: databases_rgaSelect<ExtArgs> | null
+    select?: rgaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the databases_rga
+     * Omit specific fields from the rga
      */
-    omit?: databases_rgaOmit<ExtArgs> | null
+    omit?: rgaOmit<ExtArgs> | null
     /**
-     * Filter, which databases_rga to fetch.
+     * Filter, which rga to fetch.
      */
-    where: databases_rgaWhereUniqueInput
+    where: rgaWhereUniqueInput
   }
 
   /**
-   * databases_rga findUniqueOrThrow
+   * rga findUniqueOrThrow
    */
-  export type databases_rgaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the databases_rga
+     * Select specific fields to fetch from the rga
      */
-    select?: databases_rgaSelect<ExtArgs> | null
+    select?: rgaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the databases_rga
+     * Omit specific fields from the rga
      */
-    omit?: databases_rgaOmit<ExtArgs> | null
+    omit?: rgaOmit<ExtArgs> | null
     /**
-     * Filter, which databases_rga to fetch.
+     * Filter, which rga to fetch.
      */
-    where: databases_rgaWhereUniqueInput
+    where: rgaWhereUniqueInput
   }
 
   /**
-   * databases_rga findFirst
+   * rga findFirst
    */
-  export type databases_rgaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the databases_rga
+     * Select specific fields to fetch from the rga
      */
-    select?: databases_rgaSelect<ExtArgs> | null
+    select?: rgaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the databases_rga
+     * Omit specific fields from the rga
      */
-    omit?: databases_rgaOmit<ExtArgs> | null
+    omit?: rgaOmit<ExtArgs> | null
     /**
-     * Filter, which databases_rga to fetch.
+     * Filter, which rga to fetch.
      */
-    where?: databases_rgaWhereInput
+    where?: rgaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of databases_rgas to fetch.
+     * Determine the order of rgas to fetch.
      */
-    orderBy?: databases_rgaOrderByWithRelationInput | databases_rgaOrderByWithRelationInput[]
+    orderBy?: rgaOrderByWithRelationInput | rgaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for databases_rgas.
+     * Sets the position for searching for rgas.
      */
-    cursor?: databases_rgaWhereUniqueInput
+    cursor?: rgaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` databases_rgas from the position of the cursor.
+     * Take `±n` rgas from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` databases_rgas.
+     * Skip the first `n` rgas.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of databases_rgas.
+     * Filter by unique combinations of rgas.
      */
-    distinct?: Databases_rgaScalarFieldEnum | Databases_rgaScalarFieldEnum[]
+    distinct?: RgaScalarFieldEnum | RgaScalarFieldEnum[]
   }
 
   /**
-   * databases_rga findFirstOrThrow
+   * rga findFirstOrThrow
    */
-  export type databases_rgaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the databases_rga
+     * Select specific fields to fetch from the rga
      */
-    select?: databases_rgaSelect<ExtArgs> | null
+    select?: rgaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the databases_rga
+     * Omit specific fields from the rga
      */
-    omit?: databases_rgaOmit<ExtArgs> | null
+    omit?: rgaOmit<ExtArgs> | null
     /**
-     * Filter, which databases_rga to fetch.
+     * Filter, which rga to fetch.
      */
-    where?: databases_rgaWhereInput
+    where?: rgaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of databases_rgas to fetch.
+     * Determine the order of rgas to fetch.
      */
-    orderBy?: databases_rgaOrderByWithRelationInput | databases_rgaOrderByWithRelationInput[]
+    orderBy?: rgaOrderByWithRelationInput | rgaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for databases_rgas.
+     * Sets the position for searching for rgas.
      */
-    cursor?: databases_rgaWhereUniqueInput
+    cursor?: rgaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` databases_rgas from the position of the cursor.
+     * Take `±n` rgas from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` databases_rgas.
+     * Skip the first `n` rgas.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of databases_rgas.
+     * Filter by unique combinations of rgas.
      */
-    distinct?: Databases_rgaScalarFieldEnum | Databases_rgaScalarFieldEnum[]
+    distinct?: RgaScalarFieldEnum | RgaScalarFieldEnum[]
   }
 
   /**
-   * databases_rga findMany
+   * rga findMany
    */
-  export type databases_rgaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the databases_rga
+     * Select specific fields to fetch from the rga
      */
-    select?: databases_rgaSelect<ExtArgs> | null
+    select?: rgaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the databases_rga
+     * Omit specific fields from the rga
      */
-    omit?: databases_rgaOmit<ExtArgs> | null
+    omit?: rgaOmit<ExtArgs> | null
     /**
-     * Filter, which databases_rgas to fetch.
+     * Filter, which rgas to fetch.
      */
-    where?: databases_rgaWhereInput
+    where?: rgaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of databases_rgas to fetch.
+     * Determine the order of rgas to fetch.
      */
-    orderBy?: databases_rgaOrderByWithRelationInput | databases_rgaOrderByWithRelationInput[]
+    orderBy?: rgaOrderByWithRelationInput | rgaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing databases_rgas.
+     * Sets the position for listing rgas.
      */
-    cursor?: databases_rgaWhereUniqueInput
+    cursor?: rgaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` databases_rgas from the position of the cursor.
+     * Take `±n` rgas from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` databases_rgas.
+     * Skip the first `n` rgas.
      */
     skip?: number
-    distinct?: Databases_rgaScalarFieldEnum | Databases_rgaScalarFieldEnum[]
+    distinct?: RgaScalarFieldEnum | RgaScalarFieldEnum[]
   }
 
   /**
-   * databases_rga create
+   * rga create
    */
-  export type databases_rgaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the databases_rga
+     * Select specific fields to fetch from the rga
      */
-    select?: databases_rgaSelect<ExtArgs> | null
+    select?: rgaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the databases_rga
+     * Omit specific fields from the rga
      */
-    omit?: databases_rgaOmit<ExtArgs> | null
+    omit?: rgaOmit<ExtArgs> | null
     /**
-     * The data needed to create a databases_rga.
+     * The data needed to create a rga.
      */
-    data: XOR<databases_rgaCreateInput, databases_rgaUncheckedCreateInput>
+    data: XOR<rgaCreateInput, rgaUncheckedCreateInput>
   }
 
   /**
-   * databases_rga createMany
+   * rga createMany
    */
-  export type databases_rgaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many databases_rgas.
+     * The data used to create many rgas.
      */
-    data: databases_rgaCreateManyInput | databases_rgaCreateManyInput[]
+    data: rgaCreateManyInput | rgaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * databases_rga createManyAndReturn
+   * rga createManyAndReturn
    */
-  export type databases_rgaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the databases_rga
+     * Select specific fields to fetch from the rga
      */
-    select?: databases_rgaSelectCreateManyAndReturn<ExtArgs> | null
+    select?: rgaSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the databases_rga
+     * Omit specific fields from the rga
      */
-    omit?: databases_rgaOmit<ExtArgs> | null
+    omit?: rgaOmit<ExtArgs> | null
     /**
-     * The data used to create many databases_rgas.
+     * The data used to create many rgas.
      */
-    data: databases_rgaCreateManyInput | databases_rgaCreateManyInput[]
+    data: rgaCreateManyInput | rgaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * databases_rga update
+   * rga update
    */
-  export type databases_rgaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the databases_rga
+     * Select specific fields to fetch from the rga
      */
-    select?: databases_rgaSelect<ExtArgs> | null
+    select?: rgaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the databases_rga
+     * Omit specific fields from the rga
      */
-    omit?: databases_rgaOmit<ExtArgs> | null
+    omit?: rgaOmit<ExtArgs> | null
     /**
-     * The data needed to update a databases_rga.
+     * The data needed to update a rga.
      */
-    data: XOR<databases_rgaUpdateInput, databases_rgaUncheckedUpdateInput>
+    data: XOR<rgaUpdateInput, rgaUncheckedUpdateInput>
     /**
-     * Choose, which databases_rga to update.
+     * Choose, which rga to update.
      */
-    where: databases_rgaWhereUniqueInput
+    where: rgaWhereUniqueInput
   }
 
   /**
-   * databases_rga updateMany
+   * rga updateMany
    */
-  export type databases_rgaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update databases_rgas.
+     * The data used to update rgas.
      */
-    data: XOR<databases_rgaUpdateManyMutationInput, databases_rgaUncheckedUpdateManyInput>
+    data: XOR<rgaUpdateManyMutationInput, rgaUncheckedUpdateManyInput>
     /**
-     * Filter which databases_rgas to update
+     * Filter which rgas to update
      */
-    where?: databases_rgaWhereInput
+    where?: rgaWhereInput
     /**
-     * Limit how many databases_rgas to update.
+     * Limit how many rgas to update.
      */
     limit?: number
   }
 
   /**
-   * databases_rga updateManyAndReturn
+   * rga updateManyAndReturn
    */
-  export type databases_rgaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the databases_rga
+     * Select specific fields to fetch from the rga
      */
-    select?: databases_rgaSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: rgaSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the databases_rga
+     * Omit specific fields from the rga
      */
-    omit?: databases_rgaOmit<ExtArgs> | null
+    omit?: rgaOmit<ExtArgs> | null
     /**
-     * The data used to update databases_rgas.
+     * The data used to update rgas.
      */
-    data: XOR<databases_rgaUpdateManyMutationInput, databases_rgaUncheckedUpdateManyInput>
+    data: XOR<rgaUpdateManyMutationInput, rgaUncheckedUpdateManyInput>
     /**
-     * Filter which databases_rgas to update
+     * Filter which rgas to update
      */
-    where?: databases_rgaWhereInput
+    where?: rgaWhereInput
     /**
-     * Limit how many databases_rgas to update.
+     * Limit how many rgas to update.
      */
     limit?: number
   }
 
   /**
-   * databases_rga upsert
+   * rga upsert
    */
-  export type databases_rgaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the databases_rga
+     * Select specific fields to fetch from the rga
      */
-    select?: databases_rgaSelect<ExtArgs> | null
+    select?: rgaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the databases_rga
+     * Omit specific fields from the rga
      */
-    omit?: databases_rgaOmit<ExtArgs> | null
+    omit?: rgaOmit<ExtArgs> | null
     /**
-     * The filter to search for the databases_rga to update in case it exists.
+     * The filter to search for the rga to update in case it exists.
      */
-    where: databases_rgaWhereUniqueInput
+    where: rgaWhereUniqueInput
     /**
-     * In case the databases_rga found by the `where` argument doesn't exist, create a new databases_rga with this data.
+     * In case the rga found by the `where` argument doesn't exist, create a new rga with this data.
      */
-    create: XOR<databases_rgaCreateInput, databases_rgaUncheckedCreateInput>
+    create: XOR<rgaCreateInput, rgaUncheckedCreateInput>
     /**
-     * In case the databases_rga was found with the provided `where` argument, update it with this data.
+     * In case the rga was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<databases_rgaUpdateInput, databases_rgaUncheckedUpdateInput>
+    update: XOR<rgaUpdateInput, rgaUncheckedUpdateInput>
   }
 
   /**
-   * databases_rga delete
+   * rga delete
    */
-  export type databases_rgaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the databases_rga
+     * Select specific fields to fetch from the rga
      */
-    select?: databases_rgaSelect<ExtArgs> | null
+    select?: rgaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the databases_rga
+     * Omit specific fields from the rga
      */
-    omit?: databases_rgaOmit<ExtArgs> | null
+    omit?: rgaOmit<ExtArgs> | null
     /**
-     * Filter which databases_rga to delete.
+     * Filter which rga to delete.
      */
-    where: databases_rgaWhereUniqueInput
+    where: rgaWhereUniqueInput
   }
 
   /**
-   * databases_rga deleteMany
+   * rga deleteMany
    */
-  export type databases_rgaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which databases_rgas to delete
+     * Filter which rgas to delete
      */
-    where?: databases_rgaWhereInput
+    where?: rgaWhereInput
     /**
-     * Limit how many databases_rgas to delete.
+     * Limit how many rgas to delete.
      */
     limit?: number
   }
 
   /**
-   * databases_rga without action
+   * rga without action
    */
-  export type databases_rgaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rgaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the databases_rga
+     * Select specific fields to fetch from the rga
      */
-    select?: databases_rgaSelect<ExtArgs> | null
+    select?: rgaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the databases_rga
+     * Omit specific fields from the rga
      */
-    omit?: databases_rgaOmit<ExtArgs> | null
+    omit?: rgaOmit<ExtArgs> | null
   }
 
 
@@ -37773,7 +37773,7 @@ export namespace Prisma {
   export type Ressources_eauScalarFieldEnum = (typeof Ressources_eauScalarFieldEnum)[keyof typeof Ressources_eauScalarFieldEnum]
 
 
-  export const Databases_rgaScalarFieldEnum: {
+  export const RgaScalarFieldEnum: {
     index: 'index',
     code_geographique: 'code_geographique',
     libelle_geographique: 'libelle_geographique',
@@ -37813,7 +37813,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune: 'part_alea_moyen_fort_commune'
   };
 
-  export type Databases_rgaScalarFieldEnum = (typeof Databases_rgaScalarFieldEnum)[keyof typeof Databases_rgaScalarFieldEnum]
+  export type RgaScalarFieldEnum = (typeof RgaScalarFieldEnum)[keyof typeof RgaScalarFieldEnum]
 
 
   export const Surfaces_agricolesScalarFieldEnum: {
@@ -40344,50 +40344,50 @@ export namespace Prisma {
     libelle_pnr?: StringNullableWithAggregatesFilter<"ressources_eau"> | string | null
   }
 
-  export type databases_rgaWhereInput = {
-    AND?: databases_rgaWhereInput | databases_rgaWhereInput[]
-    OR?: databases_rgaWhereInput[]
-    NOT?: databases_rgaWhereInput | databases_rgaWhereInput[]
-    index?: BigIntFilter<"databases_rga"> | bigint | number
-    code_geographique?: StringFilter<"databases_rga"> | string
-    libelle_geographique?: StringFilter<"databases_rga"> | string
-    epci?: StringFilter<"databases_rga"> | string
-    libelle_epci?: StringFilter<"databases_rga"> | string
-    departement?: StringFilter<"databases_rga"> | string
-    libelle_departement?: StringFilter<"databases_rga"> | string
-    region?: FloatFilter<"databases_rga"> | number
-    ept?: StringNullableFilter<"databases_rga"> | string | null
-    libelle_petr?: StringNullableFilter<"databases_rga"> | string | null
-    code_pnr?: StringNullableFilter<"databases_rga"> | string | null
-    libelle_pnr?: StringNullableFilter<"databases_rga"> | string | null
-    nb_logement?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_faible?: IntFilter<"databases_rga"> | number
-    nb_logement_sans_alea?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort_avant_1920?: IntFilter<"databases_rga"> | number
-    part_logement_alea_moyen_fort_avant_1920?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort_1920_1945?: IntFilter<"databases_rga"> | number
-    part_logement_alea_moyen_fort_1920_1945?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort_1945_1975?: IntFilter<"databases_rga"> | number
-    part_logement_alea_moyen_fort_1945_1975?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort_apres_1975?: IntFilter<"databases_rga"> | number
-    part_logement_alea_moyen_fort_apres_1975?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_faible_avant_1920?: IntFilter<"databases_rga"> | number
-    part_logement_alea_faible_avant_1920?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_faible_1920_1945?: IntFilter<"databases_rga"> | number
-    part_logement_alea_faible_1920_1945?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_faible_1945_1975?: IntFilter<"databases_rga"> | number
-    part_logement_alea_faible_1945_1975?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_faible_apres_1975?: IntFilter<"databases_rga"> | number
-    part_logement_alea_faible_apres_1975?: IntFilter<"databases_rga"> | number
-    surface_commune?: IntFilter<"databases_rga"> | number
-    surface_alea_faible_commune?: IntFilter<"databases_rga"> | number
-    part_alea_faible_commune?: IntFilter<"databases_rga"> | number
-    surface_alea_moyen_fort_commune?: IntFilter<"databases_rga"> | number
-    part_alea_moyen_fort_commune?: IntFilter<"databases_rga"> | number
+  export type rgaWhereInput = {
+    AND?: rgaWhereInput | rgaWhereInput[]
+    OR?: rgaWhereInput[]
+    NOT?: rgaWhereInput | rgaWhereInput[]
+    index?: BigIntFilter<"rga"> | bigint | number
+    code_geographique?: StringFilter<"rga"> | string
+    libelle_geographique?: StringFilter<"rga"> | string
+    epci?: StringFilter<"rga"> | string
+    libelle_epci?: StringFilter<"rga"> | string
+    departement?: StringFilter<"rga"> | string
+    libelle_departement?: StringFilter<"rga"> | string
+    region?: FloatFilter<"rga"> | number
+    ept?: StringNullableFilter<"rga"> | string | null
+    libelle_petr?: StringNullableFilter<"rga"> | string | null
+    code_pnr?: StringNullableFilter<"rga"> | string | null
+    libelle_pnr?: StringNullableFilter<"rga"> | string | null
+    nb_logement?: IntFilter<"rga"> | number
+    nb_logement_alea_moyen_fort?: IntFilter<"rga"> | number
+    nb_logement_alea_faible?: IntFilter<"rga"> | number
+    nb_logement_sans_alea?: IntFilter<"rga"> | number
+    nb_logement_alea_moyen_fort_avant_1920?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_avant_1920?: IntFilter<"rga"> | number
+    nb_logement_alea_moyen_fort_1920_1945?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1920_1945?: IntFilter<"rga"> | number
+    nb_logement_alea_moyen_fort_1945_1975?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1945_1975?: IntFilter<"rga"> | number
+    nb_logement_alea_moyen_fort_apres_1975?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_apres_1975?: IntFilter<"rga"> | number
+    nb_logement_alea_faible_avant_1920?: IntFilter<"rga"> | number
+    part_logement_alea_faible_avant_1920?: IntFilter<"rga"> | number
+    nb_logement_alea_faible_1920_1945?: IntFilter<"rga"> | number
+    part_logement_alea_faible_1920_1945?: IntFilter<"rga"> | number
+    nb_logement_alea_faible_1945_1975?: IntFilter<"rga"> | number
+    part_logement_alea_faible_1945_1975?: IntFilter<"rga"> | number
+    nb_logement_alea_faible_apres_1975?: IntFilter<"rga"> | number
+    part_logement_alea_faible_apres_1975?: IntFilter<"rga"> | number
+    surface_commune?: IntFilter<"rga"> | number
+    surface_alea_faible_commune?: IntFilter<"rga"> | number
+    part_alea_faible_commune?: IntFilter<"rga"> | number
+    surface_alea_moyen_fort_commune?: IntFilter<"rga"> | number
+    part_alea_moyen_fort_commune?: IntFilter<"rga"> | number
   }
 
-  export type databases_rgaOrderByWithRelationInput = {
+  export type rgaOrderByWithRelationInput = {
     index?: SortOrder
     code_geographique?: SortOrder
     libelle_geographique?: SortOrder
@@ -40427,50 +40427,50 @@ export namespace Prisma {
     part_alea_moyen_fort_commune?: SortOrder
   }
 
-  export type databases_rgaWhereUniqueInput = Prisma.AtLeast<{
+  export type rgaWhereUniqueInput = Prisma.AtLeast<{
     index?: bigint | number
-    AND?: databases_rgaWhereInput | databases_rgaWhereInput[]
-    OR?: databases_rgaWhereInput[]
-    NOT?: databases_rgaWhereInput | databases_rgaWhereInput[]
-    code_geographique?: StringFilter<"databases_rga"> | string
-    libelle_geographique?: StringFilter<"databases_rga"> | string
-    epci?: StringFilter<"databases_rga"> | string
-    libelle_epci?: StringFilter<"databases_rga"> | string
-    departement?: StringFilter<"databases_rga"> | string
-    libelle_departement?: StringFilter<"databases_rga"> | string
-    region?: FloatFilter<"databases_rga"> | number
-    ept?: StringNullableFilter<"databases_rga"> | string | null
-    libelle_petr?: StringNullableFilter<"databases_rga"> | string | null
-    code_pnr?: StringNullableFilter<"databases_rga"> | string | null
-    libelle_pnr?: StringNullableFilter<"databases_rga"> | string | null
-    nb_logement?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_faible?: IntFilter<"databases_rga"> | number
-    nb_logement_sans_alea?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort_avant_1920?: IntFilter<"databases_rga"> | number
-    part_logement_alea_moyen_fort_avant_1920?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort_1920_1945?: IntFilter<"databases_rga"> | number
-    part_logement_alea_moyen_fort_1920_1945?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort_1945_1975?: IntFilter<"databases_rga"> | number
-    part_logement_alea_moyen_fort_1945_1975?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort_apres_1975?: IntFilter<"databases_rga"> | number
-    part_logement_alea_moyen_fort_apres_1975?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_faible_avant_1920?: IntFilter<"databases_rga"> | number
-    part_logement_alea_faible_avant_1920?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_faible_1920_1945?: IntFilter<"databases_rga"> | number
-    part_logement_alea_faible_1920_1945?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_faible_1945_1975?: IntFilter<"databases_rga"> | number
-    part_logement_alea_faible_1945_1975?: IntFilter<"databases_rga"> | number
-    nb_logement_alea_faible_apres_1975?: IntFilter<"databases_rga"> | number
-    part_logement_alea_faible_apres_1975?: IntFilter<"databases_rga"> | number
-    surface_commune?: IntFilter<"databases_rga"> | number
-    surface_alea_faible_commune?: IntFilter<"databases_rga"> | number
-    part_alea_faible_commune?: IntFilter<"databases_rga"> | number
-    surface_alea_moyen_fort_commune?: IntFilter<"databases_rga"> | number
-    part_alea_moyen_fort_commune?: IntFilter<"databases_rga"> | number
+    AND?: rgaWhereInput | rgaWhereInput[]
+    OR?: rgaWhereInput[]
+    NOT?: rgaWhereInput | rgaWhereInput[]
+    code_geographique?: StringFilter<"rga"> | string
+    libelle_geographique?: StringFilter<"rga"> | string
+    epci?: StringFilter<"rga"> | string
+    libelle_epci?: StringFilter<"rga"> | string
+    departement?: StringFilter<"rga"> | string
+    libelle_departement?: StringFilter<"rga"> | string
+    region?: FloatFilter<"rga"> | number
+    ept?: StringNullableFilter<"rga"> | string | null
+    libelle_petr?: StringNullableFilter<"rga"> | string | null
+    code_pnr?: StringNullableFilter<"rga"> | string | null
+    libelle_pnr?: StringNullableFilter<"rga"> | string | null
+    nb_logement?: IntFilter<"rga"> | number
+    nb_logement_alea_moyen_fort?: IntFilter<"rga"> | number
+    nb_logement_alea_faible?: IntFilter<"rga"> | number
+    nb_logement_sans_alea?: IntFilter<"rga"> | number
+    nb_logement_alea_moyen_fort_avant_1920?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_avant_1920?: IntFilter<"rga"> | number
+    nb_logement_alea_moyen_fort_1920_1945?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1920_1945?: IntFilter<"rga"> | number
+    nb_logement_alea_moyen_fort_1945_1975?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1945_1975?: IntFilter<"rga"> | number
+    nb_logement_alea_moyen_fort_apres_1975?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_apres_1975?: IntFilter<"rga"> | number
+    nb_logement_alea_faible_avant_1920?: IntFilter<"rga"> | number
+    part_logement_alea_faible_avant_1920?: IntFilter<"rga"> | number
+    nb_logement_alea_faible_1920_1945?: IntFilter<"rga"> | number
+    part_logement_alea_faible_1920_1945?: IntFilter<"rga"> | number
+    nb_logement_alea_faible_1945_1975?: IntFilter<"rga"> | number
+    part_logement_alea_faible_1945_1975?: IntFilter<"rga"> | number
+    nb_logement_alea_faible_apres_1975?: IntFilter<"rga"> | number
+    part_logement_alea_faible_apres_1975?: IntFilter<"rga"> | number
+    surface_commune?: IntFilter<"rga"> | number
+    surface_alea_faible_commune?: IntFilter<"rga"> | number
+    part_alea_faible_commune?: IntFilter<"rga"> | number
+    surface_alea_moyen_fort_commune?: IntFilter<"rga"> | number
+    part_alea_moyen_fort_commune?: IntFilter<"rga"> | number
   }, "index">
 
-  export type databases_rgaOrderByWithAggregationInput = {
+  export type rgaOrderByWithAggregationInput = {
     index?: SortOrder
     code_geographique?: SortOrder
     libelle_geographique?: SortOrder
@@ -40508,54 +40508,54 @@ export namespace Prisma {
     part_alea_faible_commune?: SortOrder
     surface_alea_moyen_fort_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
-    _count?: databases_rgaCountOrderByAggregateInput
-    _avg?: databases_rgaAvgOrderByAggregateInput
-    _max?: databases_rgaMaxOrderByAggregateInput
-    _min?: databases_rgaMinOrderByAggregateInput
-    _sum?: databases_rgaSumOrderByAggregateInput
+    _count?: rgaCountOrderByAggregateInput
+    _avg?: rgaAvgOrderByAggregateInput
+    _max?: rgaMaxOrderByAggregateInput
+    _min?: rgaMinOrderByAggregateInput
+    _sum?: rgaSumOrderByAggregateInput
   }
 
-  export type databases_rgaScalarWhereWithAggregatesInput = {
-    AND?: databases_rgaScalarWhereWithAggregatesInput | databases_rgaScalarWhereWithAggregatesInput[]
-    OR?: databases_rgaScalarWhereWithAggregatesInput[]
-    NOT?: databases_rgaScalarWhereWithAggregatesInput | databases_rgaScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"databases_rga"> | bigint | number
-    code_geographique?: StringWithAggregatesFilter<"databases_rga"> | string
-    libelle_geographique?: StringWithAggregatesFilter<"databases_rga"> | string
-    epci?: StringWithAggregatesFilter<"databases_rga"> | string
-    libelle_epci?: StringWithAggregatesFilter<"databases_rga"> | string
-    departement?: StringWithAggregatesFilter<"databases_rga"> | string
-    libelle_departement?: StringWithAggregatesFilter<"databases_rga"> | string
-    region?: FloatWithAggregatesFilter<"databases_rga"> | number
-    ept?: StringNullableWithAggregatesFilter<"databases_rga"> | string | null
-    libelle_petr?: StringNullableWithAggregatesFilter<"databases_rga"> | string | null
-    code_pnr?: StringNullableWithAggregatesFilter<"databases_rga"> | string | null
-    libelle_pnr?: StringNullableWithAggregatesFilter<"databases_rga"> | string | null
-    nb_logement?: IntWithAggregatesFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort?: IntWithAggregatesFilter<"databases_rga"> | number
-    nb_logement_alea_faible?: IntWithAggregatesFilter<"databases_rga"> | number
-    nb_logement_sans_alea?: IntWithAggregatesFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort_avant_1920?: IntWithAggregatesFilter<"databases_rga"> | number
-    part_logement_alea_moyen_fort_avant_1920?: IntWithAggregatesFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort_1920_1945?: IntWithAggregatesFilter<"databases_rga"> | number
-    part_logement_alea_moyen_fort_1920_1945?: IntWithAggregatesFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort_1945_1975?: IntWithAggregatesFilter<"databases_rga"> | number
-    part_logement_alea_moyen_fort_1945_1975?: IntWithAggregatesFilter<"databases_rga"> | number
-    nb_logement_alea_moyen_fort_apres_1975?: IntWithAggregatesFilter<"databases_rga"> | number
-    part_logement_alea_moyen_fort_apres_1975?: IntWithAggregatesFilter<"databases_rga"> | number
-    nb_logement_alea_faible_avant_1920?: IntWithAggregatesFilter<"databases_rga"> | number
-    part_logement_alea_faible_avant_1920?: IntWithAggregatesFilter<"databases_rga"> | number
-    nb_logement_alea_faible_1920_1945?: IntWithAggregatesFilter<"databases_rga"> | number
-    part_logement_alea_faible_1920_1945?: IntWithAggregatesFilter<"databases_rga"> | number
-    nb_logement_alea_faible_1945_1975?: IntWithAggregatesFilter<"databases_rga"> | number
-    part_logement_alea_faible_1945_1975?: IntWithAggregatesFilter<"databases_rga"> | number
-    nb_logement_alea_faible_apres_1975?: IntWithAggregatesFilter<"databases_rga"> | number
-    part_logement_alea_faible_apres_1975?: IntWithAggregatesFilter<"databases_rga"> | number
-    surface_commune?: IntWithAggregatesFilter<"databases_rga"> | number
-    surface_alea_faible_commune?: IntWithAggregatesFilter<"databases_rga"> | number
-    part_alea_faible_commune?: IntWithAggregatesFilter<"databases_rga"> | number
-    surface_alea_moyen_fort_commune?: IntWithAggregatesFilter<"databases_rga"> | number
-    part_alea_moyen_fort_commune?: IntWithAggregatesFilter<"databases_rga"> | number
+  export type rgaScalarWhereWithAggregatesInput = {
+    AND?: rgaScalarWhereWithAggregatesInput | rgaScalarWhereWithAggregatesInput[]
+    OR?: rgaScalarWhereWithAggregatesInput[]
+    NOT?: rgaScalarWhereWithAggregatesInput | rgaScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"rga"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"rga"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"rga"> | string
+    epci?: StringWithAggregatesFilter<"rga"> | string
+    libelle_epci?: StringWithAggregatesFilter<"rga"> | string
+    departement?: StringWithAggregatesFilter<"rga"> | string
+    libelle_departement?: StringWithAggregatesFilter<"rga"> | string
+    region?: FloatWithAggregatesFilter<"rga"> | number
+    ept?: StringNullableWithAggregatesFilter<"rga"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"rga"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"rga"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"rga"> | string | null
+    nb_logement?: IntWithAggregatesFilter<"rga"> | number
+    nb_logement_alea_moyen_fort?: IntWithAggregatesFilter<"rga"> | number
+    nb_logement_alea_faible?: IntWithAggregatesFilter<"rga"> | number
+    nb_logement_sans_alea?: IntWithAggregatesFilter<"rga"> | number
+    nb_logement_alea_moyen_fort_avant_1920?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_moyen_fort_avant_1920?: IntWithAggregatesFilter<"rga"> | number
+    nb_logement_alea_moyen_fort_1920_1945?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1920_1945?: IntWithAggregatesFilter<"rga"> | number
+    nb_logement_alea_moyen_fort_1945_1975?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1945_1975?: IntWithAggregatesFilter<"rga"> | number
+    nb_logement_alea_moyen_fort_apres_1975?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_moyen_fort_apres_1975?: IntWithAggregatesFilter<"rga"> | number
+    nb_logement_alea_faible_avant_1920?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_faible_avant_1920?: IntWithAggregatesFilter<"rga"> | number
+    nb_logement_alea_faible_1920_1945?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_faible_1920_1945?: IntWithAggregatesFilter<"rga"> | number
+    nb_logement_alea_faible_1945_1975?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_faible_1945_1975?: IntWithAggregatesFilter<"rga"> | number
+    nb_logement_alea_faible_apres_1975?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_faible_apres_1975?: IntWithAggregatesFilter<"rga"> | number
+    surface_commune?: IntWithAggregatesFilter<"rga"> | number
+    surface_alea_faible_commune?: IntWithAggregatesFilter<"rga"> | number
+    part_alea_faible_commune?: IntWithAggregatesFilter<"rga"> | number
+    surface_alea_moyen_fort_commune?: IntWithAggregatesFilter<"rga"> | number
+    part_alea_moyen_fort_commune?: IntWithAggregatesFilter<"rga"> | number
   }
 
   export type surfaces_agricolesWhereInput = {
@@ -44493,7 +44493,7 @@ export namespace Prisma {
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type databases_rgaCreateInput = {
+  export type rgaCreateInput = {
     index: bigint | number
     code_geographique: string
     libelle_geographique: string
@@ -44533,7 +44533,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune: number
   }
 
-  export type databases_rgaUncheckedCreateInput = {
+  export type rgaUncheckedCreateInput = {
     index: bigint | number
     code_geographique: string
     libelle_geographique: string
@@ -44573,7 +44573,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune: number
   }
 
-  export type databases_rgaUpdateInput = {
+  export type rgaUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
@@ -44613,7 +44613,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
   }
 
-  export type databases_rgaUncheckedUpdateInput = {
+  export type rgaUncheckedUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
@@ -44653,7 +44653,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
   }
 
-  export type databases_rgaCreateManyInput = {
+  export type rgaCreateManyInput = {
     index: bigint | number
     code_geographique: string
     libelle_geographique: string
@@ -44693,7 +44693,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune: number
   }
 
-  export type databases_rgaUpdateManyMutationInput = {
+  export type rgaUpdateManyMutationInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
@@ -44733,7 +44733,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
   }
 
-  export type databases_rgaUncheckedUpdateManyInput = {
+  export type rgaUncheckedUpdateManyInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
@@ -47620,7 +47620,7 @@ export namespace Prisma {
     region?: SortOrder
   }
 
-  export type databases_rgaCountOrderByAggregateInput = {
+  export type rgaCountOrderByAggregateInput = {
     index?: SortOrder
     code_geographique?: SortOrder
     libelle_geographique?: SortOrder
@@ -47660,7 +47660,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune?: SortOrder
   }
 
-  export type databases_rgaAvgOrderByAggregateInput = {
+  export type rgaAvgOrderByAggregateInput = {
     index?: SortOrder
     region?: SortOrder
     nb_logement?: SortOrder
@@ -47690,47 +47690,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune?: SortOrder
   }
 
-  export type databases_rgaMaxOrderByAggregateInput = {
-    index?: SortOrder
-    code_geographique?: SortOrder
-    libelle_geographique?: SortOrder
-    epci?: SortOrder
-    libelle_epci?: SortOrder
-    departement?: SortOrder
-    libelle_departement?: SortOrder
-    region?: SortOrder
-    ept?: SortOrder
-    libelle_petr?: SortOrder
-    code_pnr?: SortOrder
-    libelle_pnr?: SortOrder
-    nb_logement?: SortOrder
-    nb_logement_alea_moyen_fort?: SortOrder
-    nb_logement_alea_faible?: SortOrder
-    nb_logement_sans_alea?: SortOrder
-    nb_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
-    nb_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
-    nb_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
-    nb_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
-    nb_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
-    nb_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
-    nb_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
-    nb_logement_alea_faible_apres_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
-    surface_commune?: SortOrder
-    surface_alea_faible_commune?: SortOrder
-    part_alea_faible_commune?: SortOrder
-    surface_alea_moyen_fort_commune?: SortOrder
-    part_alea_moyen_fort_commune?: SortOrder
-  }
-
-  export type databases_rgaMinOrderByAggregateInput = {
+  export type rgaMaxOrderByAggregateInput = {
     index?: SortOrder
     code_geographique?: SortOrder
     libelle_geographique?: SortOrder
@@ -47770,7 +47730,47 @@ export namespace Prisma {
     part_alea_moyen_fort_commune?: SortOrder
   }
 
-  export type databases_rgaSumOrderByAggregateInput = {
+  export type rgaMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    nb_logement?: SortOrder
+    nb_logement_alea_moyen_fort?: SortOrder
+    nb_logement_alea_faible?: SortOrder
+    nb_logement_sans_alea?: SortOrder
+    nb_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
+    nb_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
+    nb_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
+    nb_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
+    nb_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
+    nb_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
+    nb_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
+    nb_logement_alea_faible_apres_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
+    surface_commune?: SortOrder
+    surface_alea_faible_commune?: SortOrder
+    part_alea_faible_commune?: SortOrder
+    surface_alea_moyen_fort_commune?: SortOrder
+    part_alea_moyen_fort_commune?: SortOrder
+  }
+
+  export type rgaSumOrderByAggregateInput = {
     index?: SortOrder
     region?: SortOrder
     nb_logement?: SortOrder
