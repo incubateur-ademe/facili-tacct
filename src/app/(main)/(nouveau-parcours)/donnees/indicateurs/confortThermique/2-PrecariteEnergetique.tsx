@@ -90,16 +90,18 @@ export const PrecariteEnergetique = ({
                   <LegendCompColor legends={fragiliteEcoLegend} />
                 </div>
               </>
-            ) : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
+            ) : (
+              <div className='p-10 flex flex-row justify-center'>
+                <DataNotFoundForGraph image={DataNotFound} />
+              </div>
+            )
           }
         </div>
       </div>
       <div className={styles.sourcesExportWrapper} style={{ marginLeft: '-2rem', borderTop: '1px solid var(--gris-medium)' }}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
           Source : <a href="https://geodip.onpe.org/" target='_blank' rel='noopener noreferrer'>Observatoire de la précarité énergétique (ONPE), GEODIP</a>
-        </Body>
-        <Body size='sm' style={{ color: "var(--gris-dark)", maxWidth: "50%" }}>
-          Export indisponible : cette donnée est diffusée sur demande aux territoires par Geodip.
+          <br></br>Export indisponible : cette donnée est diffusée sur demande aux territoires par Geodip
         </Body>
       </div>
     </>

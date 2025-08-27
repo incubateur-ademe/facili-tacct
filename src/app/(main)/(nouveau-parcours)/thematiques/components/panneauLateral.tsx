@@ -35,7 +35,7 @@ const PanneauLateral = ({
               opacity: selectedItem ? 1 : 0,
               border: selectedItem ? '1px solid var(--gris-medium)' : 'none',
               height: selectedItem ? "fit-content" : '0',
-              boxShadow: selectedItem ? '0 2px 15px rgba(0, 0, 0, 0.08)' : 'none',
+              // boxShadow: selectedItem ? '0 2px 15px rgba(0, 0, 0, 0.08)' : 'none',
             }}
           >
             {selectedItem && (

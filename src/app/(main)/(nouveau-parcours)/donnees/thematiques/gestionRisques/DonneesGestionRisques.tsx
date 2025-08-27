@@ -1,7 +1,6 @@
 "use client";
 import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
 import { LoaderText } from '@/components/loader';
-import { RetourHautDePage } from '@/components/RetourHautDePage';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
@@ -72,7 +71,6 @@ export const DonneesGestionRisques = ({
 
   return (
     <>
-      <RetourHautDePage />
       <div className={styles.explorerMesDonneesContainer}>
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
           Ce que les données suggèrent sur votre territoire

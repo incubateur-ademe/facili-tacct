@@ -14,23 +14,7 @@ export { redis };
 export const prisma = new PrismaClient();
 
 const cacheMiddleware = createPrismaRedisCache({
-  models: [
-    { model: 'inconfort_thermique', cacheTime: 300 },
-    { model: 'agriculture', cacheTime: 300 },
-    { model: 'arretes_catnat', cacheTime: 300 },
-    { model: 'ressources_eau', cacheTime: 300 },
-    { model: 'consommation_espaces_naf', cacheTime: 300 },
-    { model: 'aot40', cacheTime: 300 },
-    { model: 'collectivites_searchbar', cacheTime: 300 },
-    { model: 'qualite_sites_baignade', cacheTime: 300 },
-    { model: 'agriculture_bio', cacheTime: 300 },
-    { model: 'feux_foret', cacheTime: 300 },
-    { model: 'communes_drom', cacheTime: 300 },
-    { model: 'clc_territoires', cacheTime: 300 },
-    { model: 'erosion_cotiere', cacheTime: 300 },
-    { model: 'etat_cours_d_eau', cacheTime: 300 },
-    { model: 'rga', cacheTime: 300 }
-  ],
+  models: [],
   storage: {
     type: 'redis',
     options: {
