@@ -69,15 +69,15 @@ export const GetAgriculture = async (
         } else if (type === 'commune') {
           // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
           const value = await prisma.$queryRaw`
-        SELECT a.*
-        FROM agriculture a
-        WHERE a.epci = (
-          SELECT c.epci
-          FROM collectivites_searchbar c
-          WHERE c.code_geographique = ${code}
-          LIMIT 1
-        )
-      `;
+            SELECT a.*
+            FROM databases.agriculture a
+            WHERE a.epci = (
+              SELECT c.epci
+              FROM databases.collectivites_searchbar c
+              WHERE c.code_geographique = ${code}
+              LIMIT 1
+            )
+          `;
           return value as Agriculture[];
         } else {
           const value = await prisma.agriculture.findMany({
