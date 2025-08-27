@@ -15,6 +15,7 @@ $height-notice: 461px;
     .titles {
         display: flex;
         flex-direction: column;
+        align-self: center;
         color: #ffffff;
     }
     .topImage {
@@ -251,9 +252,8 @@ $height-notice: 461px;
     gap: 2rem;
     .ressourcesText {
         max-width: 60%;
-            background-color: #ffffff;
-            padding: 1.25rem;
-
+        background-color: #ffffff;
+        padding: 1.25rem;
     }
     .ressourcesImage {
         width: 40%;
@@ -294,7 +294,7 @@ $height-notice: 461px;
             justify-content: space-between;
             gap: 1rem;
             width: 384px;
-            .quote{
+            .quote {
                 color: #ffffff;
             }
             .guillemetIcon {
