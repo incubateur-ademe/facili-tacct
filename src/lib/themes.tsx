@@ -42,13 +42,13 @@ export const themes = {
       risque: 'Moyen',
       donnee: 'LOREM IPSUM DE LA VEGETALISATION'
     },
-    // {
-    //   id: 6,
-    //   titre: 'LCZ',
-    //   facteurSensibilite: 'Urbanisme',
-    //   risque: 'Moyen',
-    //   donnee: 'LOREM IPSUM'
-    // }
+    {
+      id: 6,
+      titre: 'LCZ',
+      facteurSensibilite: 'Urbanisme',
+      risque: 'Moyen',
+      donnee: 'LOREM IPSUM'
+    }
   ],
   biodiversite: [
     {
@@ -155,13 +155,13 @@ export const themes = {
       risque: '',
       donnee: ''
     },
-    // {
-    //   id: 1,
-    //   titre: 'LCZ',
-    //   facteurSensibilite: 'LCZ',
-    //   risque: 'Moyen',
-    //   donnee: 'LOREM IPSUM'
-    // }
+    {
+      id: 1,
+      titre: 'LCZ',
+      facteurSensibilite: 'LCZ',
+      risque: 'Moyen',
+      donnee: 'LOREM IPSUM'
+    }
   ],
   agriculture: [
     // {

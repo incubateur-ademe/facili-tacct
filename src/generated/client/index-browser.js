@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.13.0
- * Query Engine version: 361e86d0ea4987e9f53a565309b3eed797a6bcbd
+ * Prisma Client JS version: 6.14.0
+ * Query Engine version: 717184b7b35ea05dfa71a3236b7af656013e1e49
  */
 Prisma.prismaVersion = {
-  client: "6.13.0",
-  engine: "361e86d0ea4987e9f53a565309b3eed797a6bcbd"
+  client: "6.14.0",
+  engine: "717184b7b35ea05dfa71a3236b7af656013e1e49"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -631,6 +631,22 @@ exports.Prisma.Surfaces_agricolesScalarFieldEnum = {
   superficie_sau_jardins: 'superficie_sau_jardins'
 };
 
+exports.Prisma.Lcz_couvertureScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  couverture_lcz: 'couverture_lcz'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -668,7 +684,8 @@ exports.Prisma.ModelName = {
   postgis_rga: 'postgis_rga',
   spatial_ref_sys: 'spatial_ref_sys',
   agriculture: 'agriculture',
-  surfaces_agricoles: 'surfaces_agricoles'
+  surfaces_agricoles: 'surfaces_agricoles',
+  lcz_couverture: 'lcz_couverture'
 };
 
 /**

@@ -118,6 +118,11 @@ export type agriculture = $Result.DefaultSelection<Prisma.$agriculturePayload>
  * 
  */
 export type surfaces_agricoles = $Result.DefaultSelection<Prisma.$surfaces_agricolesPayload>
+/**
+ * Model lcz_couverture
+ * 
+ */
+export type lcz_couverture = $Result.DefaultSelection<Prisma.$lcz_couverturePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -167,13 +172,6 @@ export class PrismaClient<
    * Disconnect from the database
    */
   $disconnect(): $Utils.JsPromise<void>;
-
-  /**
-   * Add a middleware
-   * @deprecated since 4.16.0. For new code, prefer client extensions instead.
-   * @see https://pris.ly/d/extensions
-   */
-  $use(cb: Prisma.Middleware): void
 
 /**
    * Executes a prepared raw query and returns the number of affected rows.
@@ -453,6 +451,16 @@ export class PrismaClient<
     * ```
     */
   get surfaces_agricoles(): Prisma.surfaces_agricolesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.lcz_couverture`: Exposes CRUD operations for the **lcz_couverture** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Lcz_couvertures
+    * const lcz_couvertures = await prisma.lcz_couverture.findMany()
+    * ```
+    */
+  get lcz_couverture(): Prisma.lcz_couvertureDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -511,8 +519,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.13.0
-   * Query Engine version: 361e86d0ea4987e9f53a565309b3eed797a6bcbd
+   * Prisma Client JS version: 6.14.0
+   * Query Engine version: 717184b7b35ea05dfa71a3236b7af656013e1e49
    */
   export type PrismaVersion = {
     client: string
@@ -913,7 +921,8 @@ export namespace Prisma {
     postgis_rga: 'postgis_rga',
     spatial_ref_sys: 'spatial_ref_sys',
     agriculture: 'agriculture',
-    surfaces_agricoles: 'surfaces_agricoles'
+    surfaces_agricoles: 'surfaces_agricoles',
+    lcz_couverture: 'lcz_couverture'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -932,7 +941,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "north_star_metric" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "patch4c" | "ressources_eau" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "qualite_sites_baignade" | "users" | "rga" | "postgis_rga" | "spatial_ref_sys" | "agriculture" | "surfaces_agricoles"
+      modelProps: "north_star_metric" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "patch4c" | "ressources_eau" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "qualite_sites_baignade" | "users" | "rga" | "postgis_rga" | "spatial_ref_sys" | "agriculture" | "surfaces_agricoles" | "lcz_couverture"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2490,6 +2499,80 @@ export namespace Prisma {
           }
         }
       }
+      lcz_couverture: {
+        payload: Prisma.$lcz_couverturePayload<ExtArgs>
+        fields: Prisma.lcz_couvertureFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.lcz_couvertureFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.lcz_couvertureFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>
+          }
+          findFirst: {
+            args: Prisma.lcz_couvertureFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.lcz_couvertureFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>
+          }
+          findMany: {
+            args: Prisma.lcz_couvertureFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>[]
+          }
+          create: {
+            args: Prisma.lcz_couvertureCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>
+          }
+          createMany: {
+            args: Prisma.lcz_couvertureCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.lcz_couvertureCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>[]
+          }
+          delete: {
+            args: Prisma.lcz_couvertureDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>
+          }
+          update: {
+            args: Prisma.lcz_couvertureUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>
+          }
+          deleteMany: {
+            args: Prisma.lcz_couvertureDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.lcz_couvertureUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.lcz_couvertureUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>[]
+          }
+          upsert: {
+            args: Prisma.lcz_couvertureUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>
+          }
+          aggregate: {
+            args: Prisma.Lcz_couvertureAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLcz_couverture>
+          }
+          groupBy: {
+            args: Prisma.lcz_couvertureGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Lcz_couvertureGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.lcz_couvertureCountArgs<ExtArgs>
+            result: $Utils.Optional<Lcz_couvertureCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2603,6 +2686,7 @@ export namespace Prisma {
     spatial_ref_sys?: spatial_ref_sysOmit
     agriculture?: agricultureOmit
     surfaces_agricoles?: surfaces_agricolesOmit
+    lcz_couverture?: lcz_couvertureOmit
   }
 
   /* Types for Logging */
@@ -2660,25 +2744,6 @@ export namespace Prisma {
     | 'runCommandRaw'
     | 'findRaw'
     | 'groupBy'
-
-  /**
-   * These options are being passed into the middleware as "params"
-   */
-  export type MiddlewareParams = {
-    model?: ModelName
-    action: PrismaAction
-    args: any
-    dataPath: string[]
-    runInTransaction: boolean
-  }
-
-  /**
-   * The `T` type makes sure, that the `return proceed` is not forgotten in the middleware implementation
-   */
-  export type Middleware<T = any> = (
-    params: MiddlewareParams,
-    next: (params: MiddlewareParams) => $Utils.JsPromise<T>,
-  ) => $Utils.JsPromise<T>
 
   // tested in getLogLevel.test.ts
   export function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLevel | undefined;
@@ -29895,6 +29960,1147 @@ export namespace Prisma {
 
 
   /**
+   * Model lcz_couverture
+   */
+
+  export type AggregateLcz_couverture = {
+    _count: Lcz_couvertureCountAggregateOutputType | null
+    _avg: Lcz_couvertureAvgAggregateOutputType | null
+    _sum: Lcz_couvertureSumAggregateOutputType | null
+    _min: Lcz_couvertureMinAggregateOutputType | null
+    _max: Lcz_couvertureMaxAggregateOutputType | null
+  }
+
+  export type Lcz_couvertureAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+    couverture_lcz: number | null
+  }
+
+  export type Lcz_couvertureSumAggregateOutputType = {
+    index: bigint | null
+    region: number | null
+    couverture_lcz: number | null
+  }
+
+  export type Lcz_couvertureMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    couverture_lcz: number | null
+  }
+
+  export type Lcz_couvertureMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    couverture_lcz: number | null
+  }
+
+  export type Lcz_couvertureCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    couverture_lcz: number
+    _all: number
+  }
+
+
+  export type Lcz_couvertureAvgAggregateInputType = {
+    index?: true
+    region?: true
+    couverture_lcz?: true
+  }
+
+  export type Lcz_couvertureSumAggregateInputType = {
+    index?: true
+    region?: true
+    couverture_lcz?: true
+  }
+
+  export type Lcz_couvertureMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    couverture_lcz?: true
+  }
+
+  export type Lcz_couvertureMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    couverture_lcz?: true
+  }
+
+  export type Lcz_couvertureCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    couverture_lcz?: true
+    _all?: true
+  }
+
+  export type Lcz_couvertureAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which lcz_couverture to aggregate.
+     */
+    where?: lcz_couvertureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lcz_couvertures to fetch.
+     */
+    orderBy?: lcz_couvertureOrderByWithRelationInput | lcz_couvertureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: lcz_couvertureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lcz_couvertures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lcz_couvertures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned lcz_couvertures
+    **/
+    _count?: true | Lcz_couvertureCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Lcz_couvertureAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Lcz_couvertureSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Lcz_couvertureMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Lcz_couvertureMaxAggregateInputType
+  }
+
+  export type GetLcz_couvertureAggregateType<T extends Lcz_couvertureAggregateArgs> = {
+        [P in keyof T & keyof AggregateLcz_couverture]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLcz_couverture[P]>
+      : GetScalarType<T[P], AggregateLcz_couverture[P]>
+  }
+
+
+
+
+  export type lcz_couvertureGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: lcz_couvertureWhereInput
+    orderBy?: lcz_couvertureOrderByWithAggregationInput | lcz_couvertureOrderByWithAggregationInput[]
+    by: Lcz_couvertureScalarFieldEnum[] | Lcz_couvertureScalarFieldEnum
+    having?: lcz_couvertureScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Lcz_couvertureCountAggregateInputType | true
+    _avg?: Lcz_couvertureAvgAggregateInputType
+    _sum?: Lcz_couvertureSumAggregateInputType
+    _min?: Lcz_couvertureMinAggregateInputType
+    _max?: Lcz_couvertureMaxAggregateInputType
+  }
+
+  export type Lcz_couvertureGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    couverture_lcz: number
+    _count: Lcz_couvertureCountAggregateOutputType | null
+    _avg: Lcz_couvertureAvgAggregateOutputType | null
+    _sum: Lcz_couvertureSumAggregateOutputType | null
+    _min: Lcz_couvertureMinAggregateOutputType | null
+    _max: Lcz_couvertureMaxAggregateOutputType | null
+  }
+
+  type GetLcz_couvertureGroupByPayload<T extends lcz_couvertureGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Lcz_couvertureGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Lcz_couvertureGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Lcz_couvertureGroupByOutputType[P]>
+            : GetScalarType<T[P], Lcz_couvertureGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type lcz_couvertureSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    couverture_lcz?: boolean
+  }, ExtArgs["result"]["lcz_couverture"]>
+
+  export type lcz_couvertureSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    couverture_lcz?: boolean
+  }, ExtArgs["result"]["lcz_couverture"]>
+
+  export type lcz_couvertureSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    couverture_lcz?: boolean
+  }, ExtArgs["result"]["lcz_couverture"]>
+
+  export type lcz_couvertureSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    couverture_lcz?: boolean
+  }
+
+  export type lcz_couvertureOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "couverture_lcz", ExtArgs["result"]["lcz_couverture"]>
+
+  export type $lcz_couverturePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "lcz_couverture"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: number
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      couverture_lcz: number
+    }, ExtArgs["result"]["lcz_couverture"]>
+    composites: {}
+  }
+
+  type lcz_couvertureGetPayload<S extends boolean | null | undefined | lcz_couvertureDefaultArgs> = $Result.GetResult<Prisma.$lcz_couverturePayload, S>
+
+  type lcz_couvertureCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<lcz_couvertureFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Lcz_couvertureCountAggregateInputType | true
+    }
+
+  export interface lcz_couvertureDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['lcz_couverture'], meta: { name: 'lcz_couverture' } }
+    /**
+     * Find zero or one Lcz_couverture that matches the filter.
+     * @param {lcz_couvertureFindUniqueArgs} args - Arguments to find a Lcz_couverture
+     * @example
+     * // Get one Lcz_couverture
+     * const lcz_couverture = await prisma.lcz_couverture.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends lcz_couvertureFindUniqueArgs>(args: SelectSubset<T, lcz_couvertureFindUniqueArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Lcz_couverture that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {lcz_couvertureFindUniqueOrThrowArgs} args - Arguments to find a Lcz_couverture
+     * @example
+     * // Get one Lcz_couverture
+     * const lcz_couverture = await prisma.lcz_couverture.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends lcz_couvertureFindUniqueOrThrowArgs>(args: SelectSubset<T, lcz_couvertureFindUniqueOrThrowArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Lcz_couverture that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_couvertureFindFirstArgs} args - Arguments to find a Lcz_couverture
+     * @example
+     * // Get one Lcz_couverture
+     * const lcz_couverture = await prisma.lcz_couverture.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends lcz_couvertureFindFirstArgs>(args?: SelectSubset<T, lcz_couvertureFindFirstArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Lcz_couverture that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_couvertureFindFirstOrThrowArgs} args - Arguments to find a Lcz_couverture
+     * @example
+     * // Get one Lcz_couverture
+     * const lcz_couverture = await prisma.lcz_couverture.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends lcz_couvertureFindFirstOrThrowArgs>(args?: SelectSubset<T, lcz_couvertureFindFirstOrThrowArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Lcz_couvertures that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_couvertureFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Lcz_couvertures
+     * const lcz_couvertures = await prisma.lcz_couverture.findMany()
+     * 
+     * // Get first 10 Lcz_couvertures
+     * const lcz_couvertures = await prisma.lcz_couverture.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const lcz_couvertureWithIndexOnly = await prisma.lcz_couverture.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends lcz_couvertureFindManyArgs>(args?: SelectSubset<T, lcz_couvertureFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Lcz_couverture.
+     * @param {lcz_couvertureCreateArgs} args - Arguments to create a Lcz_couverture.
+     * @example
+     * // Create one Lcz_couverture
+     * const Lcz_couverture = await prisma.lcz_couverture.create({
+     *   data: {
+     *     // ... data to create a Lcz_couverture
+     *   }
+     * })
+     * 
+     */
+    create<T extends lcz_couvertureCreateArgs>(args: SelectSubset<T, lcz_couvertureCreateArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Lcz_couvertures.
+     * @param {lcz_couvertureCreateManyArgs} args - Arguments to create many Lcz_couvertures.
+     * @example
+     * // Create many Lcz_couvertures
+     * const lcz_couverture = await prisma.lcz_couverture.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends lcz_couvertureCreateManyArgs>(args?: SelectSubset<T, lcz_couvertureCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Lcz_couvertures and returns the data saved in the database.
+     * @param {lcz_couvertureCreateManyAndReturnArgs} args - Arguments to create many Lcz_couvertures.
+     * @example
+     * // Create many Lcz_couvertures
+     * const lcz_couverture = await prisma.lcz_couverture.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Lcz_couvertures and only return the `index`
+     * const lcz_couvertureWithIndexOnly = await prisma.lcz_couverture.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends lcz_couvertureCreateManyAndReturnArgs>(args?: SelectSubset<T, lcz_couvertureCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Lcz_couverture.
+     * @param {lcz_couvertureDeleteArgs} args - Arguments to delete one Lcz_couverture.
+     * @example
+     * // Delete one Lcz_couverture
+     * const Lcz_couverture = await prisma.lcz_couverture.delete({
+     *   where: {
+     *     // ... filter to delete one Lcz_couverture
+     *   }
+     * })
+     * 
+     */
+    delete<T extends lcz_couvertureDeleteArgs>(args: SelectSubset<T, lcz_couvertureDeleteArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Lcz_couverture.
+     * @param {lcz_couvertureUpdateArgs} args - Arguments to update one Lcz_couverture.
+     * @example
+     * // Update one Lcz_couverture
+     * const lcz_couverture = await prisma.lcz_couverture.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends lcz_couvertureUpdateArgs>(args: SelectSubset<T, lcz_couvertureUpdateArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Lcz_couvertures.
+     * @param {lcz_couvertureDeleteManyArgs} args - Arguments to filter Lcz_couvertures to delete.
+     * @example
+     * // Delete a few Lcz_couvertures
+     * const { count } = await prisma.lcz_couverture.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends lcz_couvertureDeleteManyArgs>(args?: SelectSubset<T, lcz_couvertureDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Lcz_couvertures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_couvertureUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Lcz_couvertures
+     * const lcz_couverture = await prisma.lcz_couverture.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends lcz_couvertureUpdateManyArgs>(args: SelectSubset<T, lcz_couvertureUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Lcz_couvertures and returns the data updated in the database.
+     * @param {lcz_couvertureUpdateManyAndReturnArgs} args - Arguments to update many Lcz_couvertures.
+     * @example
+     * // Update many Lcz_couvertures
+     * const lcz_couverture = await prisma.lcz_couverture.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Lcz_couvertures and only return the `index`
+     * const lcz_couvertureWithIndexOnly = await prisma.lcz_couverture.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends lcz_couvertureUpdateManyAndReturnArgs>(args: SelectSubset<T, lcz_couvertureUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Lcz_couverture.
+     * @param {lcz_couvertureUpsertArgs} args - Arguments to update or create a Lcz_couverture.
+     * @example
+     * // Update or create a Lcz_couverture
+     * const lcz_couverture = await prisma.lcz_couverture.upsert({
+     *   create: {
+     *     // ... data to create a Lcz_couverture
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Lcz_couverture we want to update
+     *   }
+     * })
+     */
+    upsert<T extends lcz_couvertureUpsertArgs>(args: SelectSubset<T, lcz_couvertureUpsertArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Lcz_couvertures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_couvertureCountArgs} args - Arguments to filter Lcz_couvertures to count.
+     * @example
+     * // Count the number of Lcz_couvertures
+     * const count = await prisma.lcz_couverture.count({
+     *   where: {
+     *     // ... the filter for the Lcz_couvertures we want to count
+     *   }
+     * })
+    **/
+    count<T extends lcz_couvertureCountArgs>(
+      args?: Subset<T, lcz_couvertureCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Lcz_couvertureCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Lcz_couverture.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Lcz_couvertureAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Lcz_couvertureAggregateArgs>(args: Subset<T, Lcz_couvertureAggregateArgs>): Prisma.PrismaPromise<GetLcz_couvertureAggregateType<T>>
+
+    /**
+     * Group by Lcz_couverture.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_couvertureGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends lcz_couvertureGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: lcz_couvertureGroupByArgs['orderBy'] }
+        : { orderBy?: lcz_couvertureGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, lcz_couvertureGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLcz_couvertureGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the lcz_couverture model
+   */
+  readonly fields: lcz_couvertureFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for lcz_couverture.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__lcz_couvertureClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the lcz_couverture model
+   */
+  interface lcz_couvertureFieldRefs {
+    readonly index: FieldRef<"lcz_couverture", 'BigInt'>
+    readonly code_geographique: FieldRef<"lcz_couverture", 'String'>
+    readonly libelle_geographique: FieldRef<"lcz_couverture", 'String'>
+    readonly epci: FieldRef<"lcz_couverture", 'String'>
+    readonly libelle_epci: FieldRef<"lcz_couverture", 'String'>
+    readonly departement: FieldRef<"lcz_couverture", 'String'>
+    readonly libelle_departement: FieldRef<"lcz_couverture", 'String'>
+    readonly region: FieldRef<"lcz_couverture", 'Int'>
+    readonly ept: FieldRef<"lcz_couverture", 'String'>
+    readonly libelle_petr: FieldRef<"lcz_couverture", 'String'>
+    readonly code_pnr: FieldRef<"lcz_couverture", 'String'>
+    readonly libelle_pnr: FieldRef<"lcz_couverture", 'String'>
+    readonly couverture_lcz: FieldRef<"lcz_couverture", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * lcz_couverture findUnique
+   */
+  export type lcz_couvertureFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * Filter, which lcz_couverture to fetch.
+     */
+    where: lcz_couvertureWhereUniqueInput
+  }
+
+  /**
+   * lcz_couverture findUniqueOrThrow
+   */
+  export type lcz_couvertureFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * Filter, which lcz_couverture to fetch.
+     */
+    where: lcz_couvertureWhereUniqueInput
+  }
+
+  /**
+   * lcz_couverture findFirst
+   */
+  export type lcz_couvertureFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * Filter, which lcz_couverture to fetch.
+     */
+    where?: lcz_couvertureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lcz_couvertures to fetch.
+     */
+    orderBy?: lcz_couvertureOrderByWithRelationInput | lcz_couvertureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for lcz_couvertures.
+     */
+    cursor?: lcz_couvertureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lcz_couvertures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lcz_couvertures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of lcz_couvertures.
+     */
+    distinct?: Lcz_couvertureScalarFieldEnum | Lcz_couvertureScalarFieldEnum[]
+  }
+
+  /**
+   * lcz_couverture findFirstOrThrow
+   */
+  export type lcz_couvertureFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * Filter, which lcz_couverture to fetch.
+     */
+    where?: lcz_couvertureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lcz_couvertures to fetch.
+     */
+    orderBy?: lcz_couvertureOrderByWithRelationInput | lcz_couvertureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for lcz_couvertures.
+     */
+    cursor?: lcz_couvertureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lcz_couvertures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lcz_couvertures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of lcz_couvertures.
+     */
+    distinct?: Lcz_couvertureScalarFieldEnum | Lcz_couvertureScalarFieldEnum[]
+  }
+
+  /**
+   * lcz_couverture findMany
+   */
+  export type lcz_couvertureFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * Filter, which lcz_couvertures to fetch.
+     */
+    where?: lcz_couvertureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lcz_couvertures to fetch.
+     */
+    orderBy?: lcz_couvertureOrderByWithRelationInput | lcz_couvertureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing lcz_couvertures.
+     */
+    cursor?: lcz_couvertureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lcz_couvertures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lcz_couvertures.
+     */
+    skip?: number
+    distinct?: Lcz_couvertureScalarFieldEnum | Lcz_couvertureScalarFieldEnum[]
+  }
+
+  /**
+   * lcz_couverture create
+   */
+  export type lcz_couvertureCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * The data needed to create a lcz_couverture.
+     */
+    data: XOR<lcz_couvertureCreateInput, lcz_couvertureUncheckedCreateInput>
+  }
+
+  /**
+   * lcz_couverture createMany
+   */
+  export type lcz_couvertureCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many lcz_couvertures.
+     */
+    data: lcz_couvertureCreateManyInput | lcz_couvertureCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * lcz_couverture createManyAndReturn
+   */
+  export type lcz_couvertureCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * The data used to create many lcz_couvertures.
+     */
+    data: lcz_couvertureCreateManyInput | lcz_couvertureCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * lcz_couverture update
+   */
+  export type lcz_couvertureUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * The data needed to update a lcz_couverture.
+     */
+    data: XOR<lcz_couvertureUpdateInput, lcz_couvertureUncheckedUpdateInput>
+    /**
+     * Choose, which lcz_couverture to update.
+     */
+    where: lcz_couvertureWhereUniqueInput
+  }
+
+  /**
+   * lcz_couverture updateMany
+   */
+  export type lcz_couvertureUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update lcz_couvertures.
+     */
+    data: XOR<lcz_couvertureUpdateManyMutationInput, lcz_couvertureUncheckedUpdateManyInput>
+    /**
+     * Filter which lcz_couvertures to update
+     */
+    where?: lcz_couvertureWhereInput
+    /**
+     * Limit how many lcz_couvertures to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * lcz_couverture updateManyAndReturn
+   */
+  export type lcz_couvertureUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * The data used to update lcz_couvertures.
+     */
+    data: XOR<lcz_couvertureUpdateManyMutationInput, lcz_couvertureUncheckedUpdateManyInput>
+    /**
+     * Filter which lcz_couvertures to update
+     */
+    where?: lcz_couvertureWhereInput
+    /**
+     * Limit how many lcz_couvertures to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * lcz_couverture upsert
+   */
+  export type lcz_couvertureUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * The filter to search for the lcz_couverture to update in case it exists.
+     */
+    where: lcz_couvertureWhereUniqueInput
+    /**
+     * In case the lcz_couverture found by the `where` argument doesn't exist, create a new lcz_couverture with this data.
+     */
+    create: XOR<lcz_couvertureCreateInput, lcz_couvertureUncheckedCreateInput>
+    /**
+     * In case the lcz_couverture was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<lcz_couvertureUpdateInput, lcz_couvertureUncheckedUpdateInput>
+  }
+
+  /**
+   * lcz_couverture delete
+   */
+  export type lcz_couvertureDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * Filter which lcz_couverture to delete.
+     */
+    where: lcz_couvertureWhereUniqueInput
+  }
+
+  /**
+   * lcz_couverture deleteMany
+   */
+  export type lcz_couvertureDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which lcz_couvertures to delete
+     */
+    where?: lcz_couvertureWhereInput
+    /**
+     * Limit how many lcz_couvertures to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * lcz_couverture without action
+   */
+  export type lcz_couvertureDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -30480,6 +31686,25 @@ export namespace Prisma {
   };
 
   export type Surfaces_agricolesScalarFieldEnum = (typeof Surfaces_agricolesScalarFieldEnum)[keyof typeof Surfaces_agricolesScalarFieldEnum]
+
+
+  export const Lcz_couvertureScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    libelle_departement: 'libelle_departement',
+    region: 'region',
+    ept: 'ept',
+    libelle_petr: 'libelle_petr',
+    code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr',
+    couverture_lcz: 'couverture_lcz'
+  };
+
+  export type Lcz_couvertureScalarFieldEnum = (typeof Lcz_couvertureScalarFieldEnum)[keyof typeof Lcz_couvertureScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -33431,6 +34656,100 @@ export namespace Prisma {
     superficie_sau_herbe_subventions?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
     superficie_sau_herbe_bois_patures?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
     superficie_sau_jardins?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+  }
+
+  export type lcz_couvertureWhereInput = {
+    AND?: lcz_couvertureWhereInput | lcz_couvertureWhereInput[]
+    OR?: lcz_couvertureWhereInput[]
+    NOT?: lcz_couvertureWhereInput | lcz_couvertureWhereInput[]
+    index?: BigIntFilter<"lcz_couverture"> | bigint | number
+    code_geographique?: StringFilter<"lcz_couverture"> | string
+    libelle_geographique?: StringFilter<"lcz_couverture"> | string
+    epci?: StringFilter<"lcz_couverture"> | string
+    libelle_epci?: StringFilter<"lcz_couverture"> | string
+    departement?: StringFilter<"lcz_couverture"> | string
+    libelle_departement?: StringFilter<"lcz_couverture"> | string
+    region?: IntFilter<"lcz_couverture"> | number
+    ept?: StringNullableFilter<"lcz_couverture"> | string | null
+    libelle_petr?: StringNullableFilter<"lcz_couverture"> | string | null
+    code_pnr?: StringNullableFilter<"lcz_couverture"> | string | null
+    libelle_pnr?: StringNullableFilter<"lcz_couverture"> | string | null
+    couverture_lcz?: FloatFilter<"lcz_couverture"> | number
+  }
+
+  export type lcz_couvertureOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    couverture_lcz?: SortOrder
+  }
+
+  export type lcz_couvertureWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: lcz_couvertureWhereInput | lcz_couvertureWhereInput[]
+    OR?: lcz_couvertureWhereInput[]
+    NOT?: lcz_couvertureWhereInput | lcz_couvertureWhereInput[]
+    code_geographique?: StringFilter<"lcz_couverture"> | string
+    libelle_geographique?: StringFilter<"lcz_couverture"> | string
+    epci?: StringFilter<"lcz_couverture"> | string
+    libelle_epci?: StringFilter<"lcz_couverture"> | string
+    departement?: StringFilter<"lcz_couverture"> | string
+    libelle_departement?: StringFilter<"lcz_couverture"> | string
+    region?: IntFilter<"lcz_couverture"> | number
+    ept?: StringNullableFilter<"lcz_couverture"> | string | null
+    libelle_petr?: StringNullableFilter<"lcz_couverture"> | string | null
+    code_pnr?: StringNullableFilter<"lcz_couverture"> | string | null
+    libelle_pnr?: StringNullableFilter<"lcz_couverture"> | string | null
+    couverture_lcz?: FloatFilter<"lcz_couverture"> | number
+  }, "index">
+
+  export type lcz_couvertureOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    couverture_lcz?: SortOrder
+    _count?: lcz_couvertureCountOrderByAggregateInput
+    _avg?: lcz_couvertureAvgOrderByAggregateInput
+    _max?: lcz_couvertureMaxOrderByAggregateInput
+    _min?: lcz_couvertureMinOrderByAggregateInput
+    _sum?: lcz_couvertureSumOrderByAggregateInput
+  }
+
+  export type lcz_couvertureScalarWhereWithAggregatesInput = {
+    AND?: lcz_couvertureScalarWhereWithAggregatesInput | lcz_couvertureScalarWhereWithAggregatesInput[]
+    OR?: lcz_couvertureScalarWhereWithAggregatesInput[]
+    NOT?: lcz_couvertureScalarWhereWithAggregatesInput | lcz_couvertureScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"lcz_couverture"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"lcz_couverture"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"lcz_couverture"> | string
+    epci?: StringWithAggregatesFilter<"lcz_couverture"> | string
+    libelle_epci?: StringWithAggregatesFilter<"lcz_couverture"> | string
+    departement?: StringWithAggregatesFilter<"lcz_couverture"> | string
+    libelle_departement?: StringWithAggregatesFilter<"lcz_couverture"> | string
+    region?: IntWithAggregatesFilter<"lcz_couverture"> | number
+    ept?: StringNullableWithAggregatesFilter<"lcz_couverture"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"lcz_couverture"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"lcz_couverture"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"lcz_couverture"> | string | null
+    couverture_lcz?: FloatWithAggregatesFilter<"lcz_couverture"> | number
   }
 
   export type north_star_metricCreateInput = {
@@ -36992,6 +38311,118 @@ export namespace Prisma {
     superficie_sau_jardins?: FloatFieldUpdateOperationsInput | number
   }
 
+  export type lcz_couvertureCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    couverture_lcz: number
+  }
+
+  export type lcz_couvertureUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    couverture_lcz: number
+  }
+
+  export type lcz_couvertureUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    couverture_lcz?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type lcz_couvertureUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    couverture_lcz?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type lcz_couvertureCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    couverture_lcz: number
+  }
+
+  export type lcz_couvertureUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    couverture_lcz?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type lcz_couvertureUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    couverture_lcz?: FloatFieldUpdateOperationsInput | number
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -39536,6 +40967,66 @@ export namespace Prisma {
     superficie_sau_herbe_subventions?: SortOrder
     superficie_sau_herbe_bois_patures?: SortOrder
     superficie_sau_jardins?: SortOrder
+  }
+
+  export type lcz_couvertureCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    couverture_lcz?: SortOrder
+  }
+
+  export type lcz_couvertureAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    couverture_lcz?: SortOrder
+  }
+
+  export type lcz_couvertureMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    couverture_lcz?: SortOrder
+  }
+
+  export type lcz_couvertureMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    couverture_lcz?: SortOrder
+  }
+
+  export type lcz_couvertureSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    couverture_lcz?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {
