@@ -1,6 +1,7 @@
 'use client';
 
 import { ConsommationEspacesNAF } from '@/components/themes/amenagement/consommationEspacesNAF';
+import { LCZ } from '@/components/themes/inconfortThermique/lcz';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
@@ -31,12 +32,12 @@ const allComps = [
       />
     )
   },
-  // {
-  //   titre: "LCZ",
-  //   Component: ({ carteCommunes }: Props & { activeDataTab: string }) => (
-  //     <LCZ carteCommunes={carteCommunes} />
-  //   )
-  // }
+  {
+    titre: "LCZ",
+    Component: ({ carteCommunes }: Props & { activeDataTab: string }) => (
+      <LCZ carteCommunes={carteCommunes} />
+    )
+  }
 ];
 
 const AmenagementComp = ({ data, consommationNAF, carteCommunes }: Props) => {
@@ -76,10 +77,10 @@ const AmenagementComp = ({ data, consommationNAF, carteCommunes }: Props) => {
               />
             )
           },
-          // {
-          //   tabId: "LCZ",
-          //   label: "LCZ"
-          // }
+          {
+            tabId: "LCZ",
+            label: "LCZ"
+          }
         ]}
         onTabChange={setSelectedTabId}
         className={css({

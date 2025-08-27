@@ -126,6 +126,19 @@
     animation: spin 1s linear infinite;
 }
 
+.ceremaLogoBottomRight {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 90px;
+    height: auto;
+    z-index: 1001;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 4px 8px;
+}
+
 // RGA map
 
 .legendRGA {

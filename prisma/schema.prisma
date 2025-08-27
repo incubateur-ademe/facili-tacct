@@ -679,6 +679,31 @@ model densite_bati_temp {
   @@schema("postgis")
 }
 
+model lcz_couverture {
+  index                BigInt  @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Int
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  couverture_lcz       Float
+
+  @@index([index], map: "ix_lcz_couverture_index")
+  @@index([code_geographique], map: "lcz_couverture_communes_index")
+  @@index([departement], map: "lcz_couverture_departement_index")
+  @@index([epci], map: "lcz_couverture_epci_index")
+  @@index([ept], map: "lcz_couverture_ept_index")
+  @@index([libelle_petr], map: "lcz_couverture_petr_index")
+  @@index([code_pnr], map: "lcz_couverture_pnr_index")
+  @@schema("databases")
+}
+
 /// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 view geography_columns {
   f_table_catalog    Unsupported("name")?
