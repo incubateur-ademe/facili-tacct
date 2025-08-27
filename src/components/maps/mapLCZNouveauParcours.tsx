@@ -33,7 +33,6 @@ export const MapLCZNouveauParcours = ({
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
-  const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
   const [zoomMap, setZoomMap] = useState(0);
   const [isTilesLoading, setIsTilesLoading] = useState(false);
@@ -355,11 +354,12 @@ export const MapLCZNouveauParcours = ({
       />
       {isLoading ? <Loader /> : (
         <>
-          <div ref={mapContainer} style={{ width: '100%', height: '500px', position: 'relative' }}>
+          <div ref={mapContainer} style={{ width: '100%', height: '500px' }}>
             {isLczCovered && (
               <Image
+                id="cerema-logo"
                 src={CeremaLogo}
-                alt="Cerema logo"
+                alt="Logo du Cerema"
                 className={styles.ceremaLogoBottomRight}
               />
             )}

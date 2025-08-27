@@ -16,11 +16,6 @@ const AgricultureEtPecheServerPage = async (props: { searchParams: SearchParams 
   // console.log("dbSurfacesAgricoles", dbSurfacesAgricoles)
   // const dbAgricultureBio = mockDb.databases.agriculture_bio;
 
-  // Si les données ne sont pas disponibles, on peut soit retourner notFound() soit un message d'erreur
-  // if (!dbAgriculture || !dbSurfacesAgricoles || !dbAgricultureBio) {
-  //   notFound();
-  // }
-
   return (
     <DonneesAgricultureEtPeche
       carteCommunes={carteCommunes}
