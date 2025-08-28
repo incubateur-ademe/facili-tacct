@@ -1,12 +1,33 @@
 'use client';
 
 import { NewContainer } from '@/design-system/layout';
+import { useSearchParams } from 'next/navigation';
 import { Suspense, useState } from 'react';
 import PanneauLateral from './components/panneauLateral';
 import RoueSystemique from './components/roue';
 
 const RouePage = () => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code');
+  const libelle = searchParams.get('libelle');
+  const type = searchParams.get('type');
+
+  // useEffect(() => {
+  //   if (!selectedItem) return;
+  //   // Trigger server-side prefetch when a thematique is selected in the wheel.
+  //   try {
+  //     const thematiqueObj = thematiquesInfo[selectedItem || ''];
+  //     const thematiqueParam = thematiqueObj?.link || selectedItem || '';
+  //     const params = new URLSearchParams({ code: code || '', libelle: libelle || '', type: type || '', thematique: thematiqueParam });
+  //     // fire-and-forget; log response in browser console for visibility
+  //     fetch(`/api/prefetch-thematique?${params.toString()}`)
+  //       .then((res) => res.json().then((j) => console.info('[client prefetch] ok', j)).catch(() => {}))
+  //       .catch((e) => console.info('[client prefetch] error', e));
+  //   } catch (e) {
+  //     console.info('[client prefetch] unexpected error', e);
+  //   }
+  // }, [selectedItem, code, libelle, type]);
 
   return (
     <NewContainer style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
