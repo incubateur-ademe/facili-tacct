@@ -1,17 +1,17 @@
 'use client';
 import DiagnoticImage from '@/assets/images/diagnostiquer_impacts.png';
 import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
+import { LoaderText } from '@/components/loader';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import { handleRedirectionThematique } from '@/hooks/Redirections';
 import { CarteCommunes, CLCTerritoires, InconfortThermique } from '@/lib/postgres/models';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
 import { GrandAge } from '../../indicateurs/confortThermique/1-GrandAge';
-import { PrecariteEnergetique } from '../../indicateurs/confortThermique/2-PrecariteEnergetique';
 import { EmploisEnExterieur } from '../../indicateurs/confortThermique/3-EmploisExterieurs';
 import { DateConstructionResidences } from '../../indicateurs/confortThermique/4-DateConstructionResidences';
 import { TypesDeSols } from '../../indicateurs/confortThermique/5-TypesDeSols';
@@ -20,11 +20,11 @@ import { LCZ } from '../../indicateurs/confortThermique/6-LCZ';
 const DonneesConfortThermique = ({
   carteCommunes,
   inconfortThermique,
-  clc
+  // clc
 }: {
   carteCommunes: CarteCommunes[];
   inconfortThermique: InconfortThermique[];
-  clc: CLCTerritoires[] | undefined;
+  // clc: CLCTerritoires[] | undefined;
 }) => {
   const searchParams = useSearchParams();
   const params = usePathname();
@@ -33,6 +33,8 @@ const DonneesConfortThermique = ({
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
   const ongletsMenu = sommaireThematiques[thematique];
+  const [clcState, setClcState] = useState<CLCTerritoires[] | undefined>(undefined);
+  const [loadingClc, setLoadingClc] = useState(true);
 
   useEffect(() => {
     const style = document.createElement('style');
@@ -46,6 +48,26 @@ const DonneesConfortThermique = ({
       document.head.removeChild(style);
     };
   }, []);
+
+  useEffect(() => {
+    // If no clc provided from server, fetch it client-side asynchronously
+    if (!clcState) {
+      const fetchClc = async () => {
+        try {
+          setLoadingClc(true);
+          const params = new URLSearchParams({ libelle: (new URLSearchParams(window.location.search)).get('libelle') || '', type: (new URLSearchParams(window.location.search)).get('type') || '', code: (new URLSearchParams(window.location.search)).get('code') || '' });
+          const res = await fetch(`/api/clc?${params.toString()}`);
+          const json = await res.json();
+          if (json.ok) setClcState(json.data);
+        } catch (e) {
+          console.error('Failed to fetch CLC', e);
+        } finally {
+          setLoadingClc(false);
+        }
+      };
+      fetchClc();
+    }
+  }, [clcState]);
 
   return (
     <>
@@ -94,7 +116,7 @@ const DonneesConfortThermique = ({
               </H3>
               <CopyLinkClipboard anchor="Précarité énergétique" />
             </div>
-            <PrecariteEnergetique carteCommunes={carteCommunes} />
+            {/* <PrecariteEnergetique carteCommunes={carteCommunes} /> */}
           </div>
 
           {/* Emplois en extérieur */}
@@ -118,7 +140,8 @@ const DonneesConfortThermique = ({
             margin: "0 0 -1rem 0",
             padding: "2rem 2rem 0",
             fontWeight: 400
-          }}>            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
+          }}>
+            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
           {/* Âge du bâtiment */}
           <div id="Âge du bâtiment" className={styles.indicateurWrapper}>
@@ -141,7 +164,8 @@ const DonneesConfortThermique = ({
             margin: "0 0 -1rem 0",
             padding: "2rem 2rem 0",
             fontWeight: 400
-          }}>            {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
+          }}>
+            {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
           </H2>
           {/* Types de sols */}
           <div id="Types de sols" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
@@ -151,7 +175,11 @@ const DonneesConfortThermique = ({
               </H3>
               <CopyLinkClipboard anchor="Types de sols" />
             </div>
-            <TypesDeSols inconfortThermique={inconfortThermique} carteCommunes={carteCommunes} clc={clc} />
+            {
+              loadingClc ? <LoaderText text='Chargement de la cartographie' /> : (
+                <TypesDeSols inconfortThermique={inconfortThermique} carteCommunes={carteCommunes} clc={clcState} />
+              )
+            }
           </div>
           {/* LCZ */}
           <div id="LCZ" className={styles.indicateurWrapper}>

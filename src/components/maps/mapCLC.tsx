@@ -40,6 +40,8 @@ export const MapCLC = (
     return expression;
   }, [clcParsed]);
 
+  console.log("colorExpression", colorExpression);
+
   const geoJsonData = useMemo(() => {
     return {
       type: "FeatureCollection" as const,
@@ -124,7 +126,7 @@ export const MapCLC = (
         'fill-color',
         colorExpression
       );
-    }, 50);
+    }, 200);
   }, [colorExpression]);
 
   return (

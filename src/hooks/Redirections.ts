@@ -6,16 +6,16 @@ export const handleRedirection = ({
   typeTerritoire,
   page
 }: {
-  searchCode: string;
+  searchCode: string | undefined;
   searchLibelle: string;
   typeTerritoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
   page: string;
 }) => {
   if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
     return `/${page}?code=200054781&libelle=${searchLibelle}&type=ept`;
-  } else if (searchCode.length !== 0) {
+  } else if (searchCode && searchCode.length !== 0) {
     return `/${page}?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`;
-  } else if (searchLibelle.length !== 0) {
+  } else if (!searchCode && searchLibelle.length !== 0) {
     return `/${page}?libelle=${searchLibelle}&type=${typeTerritoire}`;
   } else return `/${page}`;
 };
@@ -28,7 +28,7 @@ export const handleRedirectionThematique = ({
   thematique,
   anchor
 }: {
-  code: string;
+  code: string | undefined;
   libelle: string;
   type: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
   page: string;
@@ -37,9 +37,9 @@ export const handleRedirectionThematique = ({
 }) => {
   if (type === 'epci' && eptRegex.test(libelle)) {
     return `/${page}?code=200054781&libelle=${libelle}&type=ept&thematique=${thematique}#${anchor}`;
-  } else if (code.length !== 0) {
+  } else if (code && code.length !== 0) {
     return `/${page}?code=${code}&libelle=${libelle}&type=${type}&thematique=${thematique}#${anchor}`;
-  } else if (libelle.length !== 0) {
+  } else if (!code && libelle.length !== 0) {
     return `/${page}?libelle=${libelle}&type=${type}&thematique=${thematique}#${anchor}`;
   } else return `/${page}`;
 };

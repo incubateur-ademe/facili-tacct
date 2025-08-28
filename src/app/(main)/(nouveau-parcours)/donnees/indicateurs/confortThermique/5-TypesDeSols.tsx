@@ -23,7 +23,7 @@ import { sumProperty } from '../fonctions';
 export const TypesDeSols = ({
   inconfortThermique,
   carteCommunes,
-  clc
+  clc,
 }: {
   inconfortThermique: InconfortThermique[];
   carteCommunes: CarteCommunes[];

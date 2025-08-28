@@ -94,7 +94,7 @@ export const nomThematiques = [
   },
     {
     label: 'Filière bois',
-    labelRadius: 280,
+    labelRadius: 275,
     icon: '🌲',
     disabled: true,
     liens: []

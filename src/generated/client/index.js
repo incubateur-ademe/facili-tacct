@@ -798,7 +798,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Antoine\\BetaGouv\\facili-tacct\\dev\\facili-tacct\\src\\generated\\client",
+      "value": "C:\\Antoine\\BetaGouv\\Code\\facili-tacct\\facili-tacct\\src\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -819,7 +819,7 @@ const config = {
       "multiSchema",
       "views"
     ],
-    "sourceFilePath": "C:\\Antoine\\BetaGouv\\facili-tacct\\dev\\facili-tacct\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Antoine\\BetaGouv\\Code\\facili-tacct\\facili-tacct\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
