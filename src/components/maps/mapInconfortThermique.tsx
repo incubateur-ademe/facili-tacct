@@ -1,4 +1,5 @@
 
+import { Loader } from '@/components/loader';
 import couleurs from '@/design-system/couleurs';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
@@ -6,7 +7,7 @@ import 'carte-facile/carte-facile.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
 import { BoundsFromCollection } from './components/boundsFromCollection';
 import { DensiteBatiTooltip, FragiliteEconomiqueTooltip } from './components/tooltips';
@@ -24,6 +25,7 @@ export const MapInconfortThermique = (props: {
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const hoveredFeatureRef = useRef<string | null>(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
 
   // Filtrer Paris, Marseille, Lyon
   const carteCommunesFiltered = useMemo(() =>
@@ -63,36 +65,29 @@ export const MapInconfortThermique = (props: {
               : couleurs.graphiques.bleu[4];
   };
 
-  // Expression couleur pour MapLibre
-  const colorExpression = useMemo(() => {
-    const expression: Array<string | Array<string | Array<string>>> = ['case'];
-    carteCommunesFiltered.forEach((commune) => {
-      const value = data === 'densite_bati'
-        ? commune.properties.densite_bati
-        : commune.properties.precarite_logement;
-      const color = getColor(value);
-      expression.push(
-        ['==', ['get', 'code_geographique'], commune.properties.code_geographique],
-        color
-      );
-    });
-    expression.push('transparent');
-    return expression;
-  }, [carteCommunesFiltered, data]);
-
-  // GeoJSON
-  const geoJsonData = useMemo(() => {
+  // GeoJSON with per-feature fillColor to avoid building huge MapLibre expressions
+  const geoJsonWithColor = useMemo(() => {
     return {
       type: 'FeatureCollection',
-      features: carteCommunesFiltered.map(commune => ({
-        ...commune,
-        id: commune.properties.code_geographique
-      }))
+      features: carteCommunesFiltered.map(commune => {
+        const value = data === 'densite_bati'
+          ? commune.properties.densite_bati
+          : commune.properties.precarite_logement;
+        const fillColor = getColor(value);
+        return {
+          ...commune,
+          id: commune.properties.code_geographique,
+          properties: {
+            ...commune.properties,
+            fillColor
+          }
+        };
+      })
     };
-  }, [carteCommunesFiltered]);
+  }, [carteCommunesFiltered, data]);
 
   useEffect(() => {
-    if (!mapContainer.current) return;
+    if (!mapContainer.current || mapRef.current) return;
 
     const map = new maplibregl.Map({
       container: mapContainer.current,
@@ -102,7 +97,7 @@ export const MapInconfortThermique = (props: {
     mapRef.current = map;
 
     map.on('load', () => {
-      // Fit bounds
+      // Fit bounds if available
       if (
         enveloppe &&
         Array.isArray(enveloppe) &&
@@ -125,17 +120,17 @@ export const MapInconfortThermique = (props: {
       // Add source
       map.addSource('inconfort-thermique-communes', {
         type: 'geojson',
-        data: geoJsonData as unknown as "FeatureCollection",
+        data: geoJsonWithColor as unknown as "FeatureCollection",
         generateId: false
       });
 
-      // Fill layer
+      // Fill layer reads the per-feature property 'fillColor'
       map.addLayer({
         id: 'inconfort-thermique-fill',
         type: 'fill',
         source: 'inconfort-thermique-communes',
         paint: {
-          'fill-color': colorExpression as unknown as string,
+          'fill-color': ['get', 'fillColor'] as unknown as any,
           'fill-opacity': 1
         }
       });
@@ -161,7 +156,7 @@ export const MapInconfortThermique = (props: {
         }
       });
 
-      // Hover and tooltip
+      // Hover and tooltip handlers
       map.on('mouseenter', 'inconfort-thermique-fill', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
@@ -300,6 +295,8 @@ export const MapInconfortThermique = (props: {
       });
 
       map.addControl(new maplibregl.NavigationControl(), 'top-right');
+      // mark map as loaded so parent UI can hide loader
+      setIsMapLoaded(true);
     });
 
     return () => {
@@ -308,19 +305,21 @@ export const MapInconfortThermique = (props: {
         mapRef.current = null;
       }
     };
-  }, [geoJsonData, colorExpression, enveloppe, data]);
+  }, [enveloppe, geoJsonWithColor]);
 
+  // Update GeoJSON source data when features/colors change. Use setData which is efficient.
   useEffect(() => {
-    let map = mapRef.current;
-    if (!map || !mapContainer.current || !map.style) return;
-    setTimeout(() => {
-      map.setPaintProperty(
-        'inconfort-thermique-fill',
-        'fill-color',
-        colorExpression
-      );
-    }, 50);
-  }, [colorExpression]);
+    const map = mapRef.current;
+    if (!map || !map.getSource) return;
+    const src = map.getSource('inconfort-thermique-communes') as maplibregl.GeoJSONSource | undefined;
+    if (src && geoJsonWithColor) {
+      try {
+        src.setData(geoJsonWithColor as unknown as GeoJSON.FeatureCollection);
+      } catch (e) {
+        // if source isn't ready yet, ignore — it will be set on load above
+      }
+    }
+  }, [geoJsonWithColor]);
 
   return (
     <>
@@ -328,6 +327,11 @@ export const MapInconfortThermique = (props: {
         <GraphDataNotFound code={code} libelle={libelle} />
       ) : (
         <div style={{ position: 'relative' }}>
+          {!isMapLoaded && (
+            <div style={{ position: 'absolute', inset: 0, zIndex: 20 }}>
+              <Loader />
+            </div>
+          )}
           <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />
         </div>
       )}
