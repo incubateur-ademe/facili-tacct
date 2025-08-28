@@ -40,7 +40,6 @@ export const MapCLC = (
     return expression;
   }, [clcParsed]);
 
-  console.log("colorExpression", colorExpression);
 
   const geoJsonData = useMemo(() => {
     return {

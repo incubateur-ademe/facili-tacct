@@ -1,5 +1,4 @@
 "use client";
-import HautDePageIcon from '@/assets/icons/haut_de_page_icon_white.svg';
 import BDImage1 from '@/assets/images/bd_confort_thermique1.png';
 import BDImage2 from '@/assets/images/bd_confort_thermique2.png';
 import BDImage3 from '@/assets/images/bd_confort_thermique3.png';
@@ -14,19 +13,6 @@ import styles from '../../impacts.module.scss';
 export const DiagnostiquerImpactsConfortThermique = () => {
   return (
     <>
-      <div className={styles.retourHautDePageWrapper}>
-        <div className={styles.retourHautDePageBouton} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <Image
-            src={HautDePageIcon}
-            alt="Retour en haut de page"
-            width={24}
-            height={24}
-          />
-        </div>
-        <Body size='sm'>
-          Haut de page
-        </Body>
-      </div>
       {/* Introduction */}
       <section>
         <Body size='lg'>
