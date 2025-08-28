@@ -74,8 +74,8 @@ const PanneauLateral = ({
                   text="J'explore cette thématique"
                   size="lg"
                   onClick={() => {
-                    code ? router.push(`/donnees?code=${code}&libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`)
-                      : router.push(`/donnees?libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`);
+                    if (code) router.push(`/donnees?code=${code}&libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`);
+                    else router.push(`/donnees?libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`);
                   }}
                 />
               </div>
