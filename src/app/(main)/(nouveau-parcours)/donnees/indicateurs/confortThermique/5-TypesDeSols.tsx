@@ -1,6 +1,5 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { MicroRemplissageTerritoire } from "@/components/charts/MicroDataviz";
 import { generateMapPngBlob } from '@/components/exports/ExportPng';
 import { ZipExportButtonNouveauParcours } from '@/components/exports/ZipExportButton';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
@@ -58,12 +57,12 @@ export const TypesDeSols = ({
     <>
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper} style={{ alignItems: 'center' }}>
-          <MicroRemplissageTerritoire
+          {/* <MicroRemplissageTerritoire
             territoireContours={territoireContourMap}
             pourcentage={foretPercent}
             arrondi={1}
             height={155}
-          />
+          /> */}
           <div className={styles.text}>
             {
               isNaN(foretPercent) ? "" : (

@@ -1,4 +1,6 @@
 import { ErrorDisplay } from '@/app/ErrorDisplay';
+import { LoaderText } from '@/components/loader';
+import { Suspense } from 'react';
 import AgricultureEtPecheServerPage from './thematiques/agricultureEtPeche/AgricultureEtPecheServerPage';
 import AmenagementServerPage from './thematiques/amenagement/AmenagementServerPage';
 import BiodiversiteServerPage from './thematiques/biodiversite/BiodiversiteServerPage';
@@ -12,7 +14,7 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
     <>
       {
         ((code || libelle) && type) ?
-          <div>
+          <Suspense fallback={<LoaderText text='Nous chargeons vos données'/>}>
               {thematique === 'Confort thermique' ? (
                 <ConfortThermiqueServerPage searchParams={props.searchParams} />
               ) : thematique === "Biodiversité" ? (
@@ -26,7 +28,7 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
               ) : thematique === "Gestion des risques" ? (
                 <GestionRisquesServerPage searchParams={props.searchParams} />
               ) : ""}
-          </div>
+          </Suspense>
           : <ErrorDisplay code="404" />
       }
     </>
