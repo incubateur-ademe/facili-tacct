@@ -1,4 +1,5 @@
 
+import couleurs from '@/design-system/couleurs';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
 import maplibregl from 'maplibre-gl';
@@ -7,20 +8,6 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef } from 'react';
 import { BoundsFromCollection } from './components/boundsFromCollection';
 import { SurfacesIrrigueesTooltip } from './components/tooltips';
-
-const getColor = (d: number) => {
-  return d === 0
-    ? '#D8EFFA'
-    : d > 0 && d <= 20
-      ? '#3DB6EA'
-      : d > 20 && d <= 40
-        ? '#0072B5'
-        : d > 40 && d <= 60
-          ? '#03508B'
-          : d > 60 && d <= 100
-            ? '#093454'
-            : 'white';
-};
 
 export const MapSurfacesIrriguees = (props: {
   carteCommunes: CommunesIndicateursDto[];
@@ -41,19 +28,6 @@ export const MapSurfacesIrriguees = (props: {
       : carteCommunes
   ), [carteCommunes, type, libelle]);
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
-
-  const colorExpression = useMemo(() => {
-    const expression: Array<string | Array<string | Array<string>>> = ['case'];
-    carteCommunesFiltered.forEach((commune) => {
-      const color = getColor(commune.properties.surfacesIrriguees ?? 0);
-      expression.push(
-        ['==', ['get', 'code_geographique'], commune.properties.code_geographique],
-        color
-      );
-    });
-    expression.push('transparent');
-    return expression;
-  }, [carteCommunesFiltered]);
 
   const geoJsonData = useMemo(() => {
     return {
@@ -108,8 +82,28 @@ export const MapSurfacesIrriguees = (props: {
         type: 'fill',
         source: 'surfaces-irriguees-communes',
         paint: {
-          'fill-color': colorExpression as unknown as string,
-          'fill-opacity': 1
+          'fill-color': [
+            'let',
+            'value',
+            ['coalesce', ['get', 'surfacesIrriguees'], -1], // Remplace les nan par -1
+            ['case',
+              ['==', ['var', 'value'], -1],
+              'white',
+              ['step',
+                ['var', 'value'],
+                couleurs.graphiques.bleu[4],
+                0.01,
+                couleurs.graphiques.bleu[3],
+                20,
+                couleurs.graphiques.bleu[2],
+                40,
+                couleurs.graphiques.bleu[1],
+                60,
+                couleurs.graphiques.bleu[5],
+              ]
+            ]
+          ],
+          'fill-opacity': 1,
         }
       });
 
@@ -264,23 +258,23 @@ export const MapSurfacesIrriguees = (props: {
         mapRef.current = null;
       }
     };
-  }, [geoJsonData, colorExpression, enveloppe]);
-
-  useEffect(() => {
-    let map = mapRef.current;
-    if (!map || !mapContainer.current || !map.style) return;
-    setTimeout(() => {
-      map.setPaintProperty(
-        'surfaces-irriguees-fill',
-        'fill-color',
-        colorExpression
-      );
-    }, 50);
-  }, [colorExpression]);
+  }, [geoJsonData, enveloppe]);
 
   return (
-    <div style={{ position: 'relative' }}>
-      <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />
-    </div>
+    <>
+      <style jsx global>{`
+        .maplibregl-popup .maplibregl-popup-content {
+          box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16) !important;
+          border-radius: 6px !important;
+          padding: 1rem !important;
+        }
+        .map-container {
+            overflow: visible !important;
+          }
+      `}</style>
+      <div style={{ position: 'relative' }}>
+        <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
+      </div>
+    </>
   );
 };

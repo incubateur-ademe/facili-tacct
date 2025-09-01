@@ -1,12 +1,12 @@
 'use client';
 
-import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
-import { Body } from '@/design-system/base/Textes';
+import { ressourcesEauBarChartLegend } from '@/components/maps/legends/datavizLegends';
+import couleurs from '@/design-system/couleurs';
 import { RessourcesEau } from '@/lib/postgres/models';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
-import { BarDatum, BarTooltipProps } from '@nivo/bar';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { simpleBarChartTooltip } from '../ChartTooltips';
 import { NivoBarChartRessourcesEau } from '../NivoBarChart';
 
 type GraphData = {
@@ -118,19 +118,19 @@ const PrelevementEauBarChart = ({
       texte_complet: 'Agriculture',
       texteRaccourci: 'Agriculture',
       valeur: Sum(graphData.map((e) => e.Agriculture)),
-      couleur: '#00C190'
+      couleur: couleurs.graphiques.vert[2]
     },
     {
       texte_complet: 'Alimentation des canaux',
       texteRaccourci: 'Alimentation des canaux',
       valeur: Sum(graphData.map((e) => e['Alimentation des canaux'])),
-      couleur: '#00C2CC'
+      couleur: couleurs.graphiques.turquoise[2]
     },
     {
       texte_complet: 'Eau potable',
       texteRaccourci: 'Eau potable',
       valeur: Sum(graphData.map((e) => e['Eau potable'])),
-      couleur: '#009ADC'
+      couleur: couleurs.graphiques.bleu[2]
     },
     {
       texte_complet: 'Industrie et autres usages économiques',
@@ -138,7 +138,7 @@ const PrelevementEauBarChart = ({
       valeur: Sum(
         graphData.map((e) => e['Industrie et autres usages économiques'])
       ),
-      couleur: '#7A49BE'
+      couleur: couleurs.graphiques.violet[2]
     },
     {
       texte_complet: "Production d'électricité (barrages hydro-électriques)",
@@ -148,7 +148,7 @@ const PrelevementEauBarChart = ({
           (e) => e["Production d'électricité (barrages hydro-électriques)"]
         )
       ),
-      couleur: '#FFCF5E'
+      couleur: couleurs.graphiques.orange[2]
     },
     {
       texte_complet: 'Refroidissement des centrales électriques',
@@ -156,44 +156,11 @@ const PrelevementEauBarChart = ({
       valeur: Sum(
         graphData.map((e) => e['Refroidissement des centrales électriques'])
       ),
-      couleur: '#BB43BD'
+      couleur: couleurs.graphiques.rose[2]
     }
   ];
   const minValueXTicks = Math.min(...graphData.map((e) => Number(e.annee)));
   const maxValueXTicks = Math.max(...graphData.map((e) => Number(e.annee)));
-
-  const CustomTooltip = ({ data }: BarTooltipProps<BarDatum>) => {
-    const dataArray = Object.entries(data).map((el) => {
-      return {
-        titre: el[0],
-        value: el[1],
-        color: legends.find((e) => e.texte_complet === el[0])?.couleur
-      };
-    });
-    return (
-      <div className={styles.tooltipEvolutionWrapper}>
-        <Body weight='bold' size='sm' style={{ marginBottom: '0.5rem' }}>
-          {libelle} ({dataArray.at(-1)?.value})
-        </Body>
-        {dataArray.slice(0, -1).map((el, i) => {
-          return (
-            <div className={styles.itemWrapper} key={i}>
-              <div className={styles.titre}>
-                <div
-                  className={styles.colorSquare}
-                  style={{ background: el.color }}
-                />
-                <p>{el.titre}</p>
-              </div>
-              <div className={styles.value}>
-                <p>{(Number(el.value) / 1000000).toFixed(2)}Mm3</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
 
   return (
     <div
@@ -217,7 +184,12 @@ const PrelevementEauBarChart = ({
               label: legend.texteRaccourci,
               color: legend.couleur
             }))}
-          tooltip={CustomTooltip}
+          tooltip={({ data }) => simpleBarChartTooltip({
+            data,
+            legende: ressourcesEauBarChartLegend,
+            unite: 'Mm³',
+            multiplicateur: 0.000001
+          })}
           axisLeftLegend="Volumétrie en Mm3"
           axisLeftTickFactor={1000000}
         />

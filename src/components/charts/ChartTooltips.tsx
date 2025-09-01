@@ -31,11 +31,13 @@ export const simplePieChartTooltip = ({ datum, unite }: { datum: PieTooltipProps
 export const simpleBarChartTooltip = ({
   data,
   legende,
-  unite
+  unite,
+  multiplicateur
 }: { 
   data: BarDatum,
   legende: Array<{ value: string; color: string }>,
-  unite?: string
+  unite?: string,
+  multiplicateur?: number
 }) => {
   const dataArray = Object.entries(data).map(el => {
     return {
@@ -54,7 +56,10 @@ export const simpleBarChartTooltip = ({
               <div className={styles.titre}>
                 <div className={styles.colorSquare} style={{ background: el.color }} />
                 <Body size="sm">{el.titre} :</Body>
-                <Body size="sm" weight="bold">{Round(Number(el.value), 0)} {unite ?? null}</Body>
+                { 
+                  multiplicateur ? <Body size="sm" weight="bold">{Round(multiplicateur * Number(el.value), 2)} {unite ?? null}</Body> 
+                  : <Body size="sm" weight="bold">{Round(Number(el.value), 2)} {unite ?? null}</Body>
+                }
               </div>
               <div className={styles.value}>
               </div>

@@ -4,6 +4,7 @@ import WarningIcon from "@/assets/icons/exclamation_point_icon_black.png";
 import { PieChartAgriculture } from '@/components/charts/agriculture/pieChartAgriculture';
 import SurfacesAgricolesProgressBar from '@/components/charts/agriculture/surfacesAgricolesProgressBar';
 import SubTabs from '@/components/SubTabs';
+import { Body } from "@/design-system/base/Textes";
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
 import { multipleEpciBydepartementLibelle } from '@/lib/territoireData/multipleEpciBydepartement';
 import { multipleEpciByPnrLibelle } from '@/lib/territoireData/multipleEpciByPnr';
@@ -56,11 +57,11 @@ const TypesDeCulturesCharts = (props: Props) => {
               height={24}
               style={{ marginRight: '0.5em', alignItems: 'center' }}
             />
-            <p style={{ fontSize: 12, margin: 0 }}>
+            <Body size="sm">
               Attention, {territoiresPartiellementCouverts.length} EPCI
               ne {territoiresPartiellementCouverts.length === 1 ? "fait" : "font"} que
               partiellement partie de votre territoire
-            </p>
+            </Body>
           </div>
         </div>
       }

@@ -11,7 +11,6 @@ import MuiAccordionSummary, {
 import { Progress } from 'antd';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
-import { HtmlTooltip } from '../utils/HtmlTooltip';
 import styles from './charts.module.scss';
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
@@ -103,47 +102,31 @@ export const SubAccordionGraph = ({
       <div style={{ padding: '0 0 1rem' }}>
         {sortedData.map((item, index) => (
           <AccordionDetails>
-            <HtmlTooltip
-              title={
-                <div className={styles.tooltip}>
-                  <h3>{item.id}</h3>
-                  <p>
-                    {libelle} :{' '}
-                    <b>
-                      {Round((100 * item.value / superficieSau), 1)} %
-                    </b>
-                  </p>
-                </div>
-              }
-              key={index}
-              placement="top"
-            >
-              <div key={index} className={styles.progressDataWrapperSurfacesAgricoles}>
-                <div className={styles.progressDesign}>
-                  <div className={styles.progressBar}>
-                    <p>{item.id}</p>
-                    <div>
-                      <Progress
-                        percent={Number(100 * item.value / superficieSau)}
-                        showInfo={false}
-                        strokeColor={item.color}
-                        size={['100%', 12]}
-                        style={{ width: '95%' }}
-                        type="line"
-                        trailColor="#F9F9FF"
-                      />
-                    </div>
+            <div key={index} className={styles.progressDataWrapperSurfacesAgricoles}>
+              <div className={styles.progressDesign}>
+                <div className={styles.progressBar}>
+                  <p>{item.id}</p>
+                  <div>
+                    <Progress
+                      percent={Number(100 * item.value / superficieSau)}
+                      showInfo={false}
+                      strokeColor={item.color}
+                      size={['100%', 12]}
+                      style={{ width: '95%' }}
+                      type="line"
+                      trailColor="#F9F9FF"
+                    />
                   </div>
                 </div>
-                <div className={styles.progressNumbers}>
-                  <p>
-                    <b>
-                      {Round(item.value, 1)} ha
-                    </b>
-                  </p>
-                </div>
               </div>
-            </HtmlTooltip>
+              <div className={styles.progressNumbers}>
+                <p>
+                  <b>
+                    {Round(item.value, 1)} ha
+                  </b>
+                </p>
+              </div>
+            </div>
           </AccordionDetails>
         ))}
       </div>
