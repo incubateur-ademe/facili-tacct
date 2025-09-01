@@ -1,10 +1,9 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { MicroRemplissageTerritoire } from "@/components/charts/MicroDataviz";
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { fragiliteEcoLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
-import { MapInconfortThermique } from "@/components/maps/mapInconfortThermique";
+import { MapInconfortThermique } from '@/components/maps/mapInconfortThermique';
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { Body } from "@/design-system/base/Textes";
 import { CommunesContourMapper, CommunesIndicateursMapper } from '@/lib/mapper/communes';
@@ -51,12 +50,12 @@ export const PrecariteEnergetique = ({
     <>
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper}>
-          <MicroRemplissageTerritoire
+          {/* <MicroRemplissageTerritoire
             territoireContours={territoireContourMap}
             pourcentage={100 * precariteLogTerritoire}
             arrondi={1}
             height={155}
-          />
+          /> */}
           <div className={styles.text}>
             {
               precariteLogTerritoire ? (
@@ -79,10 +78,7 @@ export const PrecariteEnergetique = ({
           {
             carteTerritoire.length > 0 ? (
               <>
-                <MapInconfortThermique
-                  carteCommunes={carteTerritoire}
-                  data={'precarite_log'}
-                />
+                <MapInconfortThermique carteCommunes={carteTerritoire} />
                 <div
                   className={styles.legend}
                   style={{ width: 'auto', justifyContent: 'center' }}

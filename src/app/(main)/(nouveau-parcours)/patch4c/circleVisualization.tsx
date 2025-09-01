@@ -38,8 +38,6 @@ const CircleVisualization = ({
         <div className={styles.extCircle}>
           {activeItems.map((item, index) => {
             const position = getItemPosition(index, activeItems.length);
-            console.log("item", item, index);
-            console.log("selectedItem", selectedItem)
             return (
               <div
                 key={item.key}
@@ -55,7 +53,7 @@ const CircleVisualization = ({
                   className={styles.CircleIcon}
                   style={{
                     backgroundColor: getBackgroundColor(item.value),
-                    border: selectedItem === item.key ? '1px solid black' : 'none',
+                    border: selectedItem === item.key ? '1px solid black' : '1px solid var(--gris-medium)',
                   }}
                 >
                   <Image
