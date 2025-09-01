@@ -10,6 +10,8 @@ import GraphNotFound from '@/assets/images/data_not_found_prelevement.png';
 import DataNotFound from '@/components/graphDataNotFound';
 import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
 import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
+import { Body, H4 } from '@/design-system/base/Textes';
+import couleurs from '@/design-system/couleurs';
 import { RessourcesEau } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
@@ -69,7 +71,7 @@ const PrelevementEauProgressBarsPNR = ({
         type,
         'agriculture'
       ),
-      color: '#00C190'
+      color: couleurs.graphiques.vert[2]
     },
     {
       titre: 'Eau potable',
@@ -81,7 +83,7 @@ const PrelevementEauProgressBarsPNR = ({
         type,
         'potable'
       ),
-      color: '#009ADC'
+      color: couleurs.graphiques.bleu[2]
     },
     {
       titre: 'Industrie et autres usages économiques',
@@ -93,7 +95,7 @@ const PrelevementEauProgressBarsPNR = ({
         type,
         'industrie'
       ),
-      color: '#7A49BE'
+      color: couleurs.graphiques.violet[2]
     },
     {
       titre: 'Refroidissement des centrales électriques',
@@ -105,7 +107,7 @@ const PrelevementEauProgressBarsPNR = ({
         type,
         'refroidissement'
       ),
-      color: '#BB43BD'
+      color: couleurs.graphiques.rose[2]
     },
     {
       titre: 'Alimentation des canaux',
@@ -117,7 +119,7 @@ const PrelevementEauProgressBarsPNR = ({
         type,
         'alimentation'
       ),
-      color: '#00C2CC'
+      color: couleurs.graphiques.turquoise[2]
     },
     {
       titre: "Production d'électricité (barrages hydro-électriques)",
@@ -129,7 +131,7 @@ const PrelevementEauProgressBarsPNR = ({
         type,
         'production'
       ),
-      color: '#FFCF5E'
+      color: couleurs.graphiques.orange[2]
     }
   ];
 
@@ -149,14 +151,14 @@ const PrelevementEauProgressBarsPNR = ({
               <HtmlTooltip
                 title={
                   <div className={styles.tooltip}>
-                    <h3>{item.titre}</h3>
-                    <p>
+                    <H4 style={{ fontSize: '1rem', marginBottom: "0.5rem" }}>{item.titre}</H4>
+                    <Body size='sm'>
                       {libelle} :{' '}
                       <b>
                         {Round((100 * item.sumTerritoire) / total, 2)} %
                       </b>{' '}
                       ({Round(item.sumTerritoire / 1000000, 2)} Mm3)
-                    </p>
+                    </Body>
                   </div>
                 }
                 key={index}

@@ -1,6 +1,7 @@
 'use client';
 
 import { espacesNAFBarChartLegend } from '@/components/maps/legends/datavizLegends';
+import { Body } from '@/design-system/base/Textes';
 import { ConsommationNAF } from '@/lib/postgres/models';
 import { espacesNAFBarChartTooltip } from '../ChartTooltips';
 import { NivoBarChart } from '../NivoBarChart';
@@ -113,7 +114,7 @@ export const ConsommationEspacesNAFBarChart = (props: {
             showLegend={false}
             tooltip={espacesNAFBarChartTooltip}
             bottomTickValues={
-              minValueXTicks != maxValueXTicks
+              minValueXTicks !== maxValueXTicks
                 ? [`${minValueXTicks}`, `${maxValueXTicks}`]
                 : [`${minValueXTicks}`]
             }
@@ -125,7 +126,7 @@ export const ConsommationEspacesNAFBarChart = (props: {
               textAlign: 'center'
             }}
           >
-            <p>Aucune donnée disponible avec ces filtres</p>
+            <Body>Aucune donnée disponible avec ces filtres</Body>
           </div>
       }
     </div>

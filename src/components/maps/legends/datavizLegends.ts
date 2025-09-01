@@ -209,6 +209,85 @@ export const catnatPieChartLegend = [
   }
 ];
 
+// export const DateConstructionResidencesBarChartData = (averages: {
+//   [key: string]: number;
+// }) => [
+//   {
+//     periode: 'Avant 1919',
+//     'Votre collectivité': averages.averageAgeBatiPre19.toFixed(1),
+//     'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+//     France: 20.5,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   },
+//   {
+//     periode: '1919-1945',
+//     'Votre collectivité': averages.averageAgeBati1945.toFixed(1),
+//     'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+//     France: 9.2,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   },
+//   {
+//     periode: '1946-1990',
+//     'Votre collectivité': averages.averageAgeBati4690.toFixed(1),
+//     'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+//     France: 43.4,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   },
+//   {
+//     periode: '1991-2005',
+//     'Votre collectivité': averages.averageAgeBati9105.toFixed(1),
+//     'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+//     France: 15.5,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   },
+//   {
+//     periode: 'Après 2006',
+//     'Votre collectivité': averages.averageAgeBatiPost06.toFixed(1),
+//     'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+//     France: 11.4,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   }
+// ];
+
+
+export const ageBatiBarChartLegend = [
+  {
+    value: 'France',
+    color: couleurs.graphiques.bleu[1]
+  },
+  {
+    value: 'Votre collectivité',
+    color: couleurs.graphiques.rouge[3]
+  },
+]
+
+export const ressourcesEauBarChartLegend = [
+  {
+    value: 'Agriculture',
+    color: couleurs.graphiques.vert[2]
+  },
+  {
+    value: 'Alimentation des canaux',
+    color: couleurs.graphiques.turquoise[2]
+  },
+  {
+    value: 'Eau potable',
+    color: couleurs.graphiques.bleu[2]
+  },
+  {
+    value: 'Industrie et autres usages économiques',
+    color: couleurs.graphiques.violet[2]
+  },
+  {
+    value: "Production d'électricité (barrages hydro-électriques)",
+    color: couleurs.graphiques.orange[2]
+  },
+  {
+    value: 'Refroidissement des centrales électriques',
+    color: couleurs.graphiques.rose[2]
+  }
+];
+
 export const espacesNAFDatavizLegend = [
   {
     value: '0-1',
@@ -578,7 +657,7 @@ export const LczLegendOpacity70 = [
 export const feuxForetBarChartLegend = [
   {
     variable: 'Feux de forêt',
-    couleur: '#038278'
+    couleur: couleurs.principales.vert
   }
 ];
 
@@ -586,12 +665,12 @@ export const RgaRepartitionLegend = [
   {
     variable: 'territoire',
     texteRaccourci: 'Territoire',
-    couleur: '#038278'
+    couleur: couleurs.principales.vert
   },
   {
     variable: 'territoireSup',
     texteRaccourci: 'Territoire supérieur',
-    couleur: '#C48EF6'
+    couleur: couleurs.graphiques.violet[2]
   }
 ];
 

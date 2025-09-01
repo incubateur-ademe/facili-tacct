@@ -6,6 +6,7 @@ import styles from '@/components/themes/gestionRisques/gestionRisques.module.scs
 import { Body } from '@/design-system/base/Textes';
 import couleurs from '@/design-system/couleurs';
 import { ResponsiveBar } from '@/lib/nivo/bar';
+import { Any } from '@/lib/utils/types';
 
 type Props = {
   chartData: Array<{
@@ -53,7 +54,25 @@ export const BarChartAgeBatiNouveauParcours = ({ chartData }: Props) => {
           valueScale={{ type: 'linear' }}
           colors={[couleurs.graphiques.rouge[3], couleurs.graphiques.bleu[1]]}
           innerPadding={2}
-
+          axisBottom={{
+            renderTick: (e: Any) => {
+              return (
+                <g transform={`translate(${e.x},${e.y})`}>
+                  <foreignObject x={-50} y={0} width={100} height={45}>
+                    <div style={{
+                      maxWidth: '15ch',
+                      wordBreak: 'keep-all',
+                      textAlign: 'center',
+                      fontSize: 12,
+                      fontWeight: 400,
+                      margin: '0.5rem 0',
+                      lineHeight: "normal"
+                    }}>{e.value}</div>
+                  </foreignObject>
+                </g>
+              );
+            }
+          }}
         />
         : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
       }

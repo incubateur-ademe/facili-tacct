@@ -52,8 +52,6 @@ const chartData = [
     FranceColor: 'hsl(125, 70%, 50%)'
   }
 ];
-const sumAllCount = chartData.reduce((sum, item) => sum + (Number(item["Votre Collectivité"]) || 0), 0);
-
 
 export const BarChartRGA = () => {
   const sumAllCount = chartData.reduce((sum, item) => sum + (Number(item["Votre Collectivité"]) || 0), 0);
