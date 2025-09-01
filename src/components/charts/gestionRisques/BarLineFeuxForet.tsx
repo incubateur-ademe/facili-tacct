@@ -1,6 +1,7 @@
 'use client';
 
 import { feuxForetBarChartLegend } from '@/components/maps/legends/datavizLegends';
+import { Body } from '@/design-system/base/Textes';
 import { IncendiesForet } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { BarDatum } from '@nivo/bar';
@@ -75,16 +76,14 @@ export const BarLineFeuxForet = (props: {
           tooltip={({ point }) => {
             return (
               <div className={styles.barLineTooltipContainer}>
-                <p>
-                  <b>{point.data.xFormatted}</b>
-                </p>
+                <Body weight="bold" style={{ paddingBottom: "0.5rem" }}>{point.data.xFormatted}</Body>
                 <div className={styles.line}>
                   <div className={styles.circle} />
-                  <p>{point.data.yFormatted} départ(s) d'incendies</p>
+                  <Body size='sm'>{point.data.yFormatted} départ(s) d'incendies</Body>
                 </div>
                 <div className={styles.line}>
                   <div className={styles.square} />
-                  <p>
+                  <Body size='sm'>
                     {Round(
                       barGraphData.find(
                         (el) =>
@@ -93,7 +92,7 @@ export const BarLineFeuxForet = (props: {
                       2
                     )}{' '}
                     ha consommé(s)
-                  </p>
+                  </Body>
                 </div>
               </div>
             );

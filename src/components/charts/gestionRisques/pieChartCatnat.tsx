@@ -1,24 +1,17 @@
 // @ts-nocheck
 'use client';
 
+import { catnatPieChartLegend } from '@/components/maps/legends/datavizLegends';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { Any } from '@/lib/utils/types';
 import { DefaultRawDatum, PieCustomLayerProps, ResponsivePie } from '@nivo/pie';
 import { animated } from '@react-spring/web';
-import styles from './gestionRisquesCharts.module.scss';
-
-const colors: { [key: string]: string } = {
-  Inondations: '#009ADC',
-  Sécheresse: '#FFCF5E',
-  'Mouvements de terrain': '#F66E19',
-  'Retrait-gonflement des argiles': '#BB43BD',
-  'Cyclones / Tempêtes': '#00C2CC',
-  'Grêle / neige': '#00C190',
-  Avalanche: '#7A49BE'
-};
+import styles from '../charts.module.scss';
+import { simplePieChartTooltip } from '../ChartTooltips';
 
 type ArreteCatNatEnriched = ArreteCatNat & {
   annee_arrete: number;
@@ -49,7 +42,6 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
     dataWithArc.forEach((datum: { value: number }) => {
       total += datum.value;
     });
-    // responsive font sizing based on window width
     const mainFontSize = windowDimensions?.width > 1248 ? 32 : windowDimensions?.width > 1024 ? 26 : 18;
     const subFontSize = Math.max(10, Math.round(mainFontSize / 3));
     const mainYOffset = -Math.round(mainFontSize / 2);
@@ -107,8 +99,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
             {datum.value}{' '}
           </animated.tspan>
           <animated.tspan>
-            ({((100 * datum.value) / Sum(Object.values(countTypes))).toFixed(1)}
-            %)
+            ({Round((100 * datum.value) / Sum(Object.values(countTypes)), 1)} %)
           </animated.tspan>
         </animated.text>
       </animated.g>
@@ -120,7 +111,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
       <ResponsivePie
         data={graphData}
         margin={{ top: windowDimensions.width > 1248 ? 60 : 20, right: 10, bottom: windowDimensions.width > 1248 ? 60 : 20, left: 10 }}
-        colors={(graphData) => colors[graphData.id]}
+        colors={(graphData) => catnatPieChartLegend.find(el => el.value === graphData.id)?.color}
         isInteractive={true}
         innerRadius={0.5}
         padAngle={1}
@@ -148,23 +139,10 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
         arcLinkLabelsOffset={15}
         arcLinkLabelsDiagonalLength={12}
         arcLinkLabelsStraightLength={5}
-      // tooltip={({ datum: { id, value } }: PieTooltipProps<DefaultRawDatum>) => (
-      //   <div
-      //     style={{
-      //       padding: '12px',
-      //       color: 'white',
-      //       background: 'rgba(0, 0, 0, 0.7)',
-      //       borderRadius: '3px'
-      //     }}
-      //   >
-      //     <strong>{id}</strong>
-      //     <br />
-      //     {value} arrêté(s)
-      //   </div>
-      // )}
+        tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: 'arrêté(s)' })}
       />
     </div>
-  );
-};
+  )
+}
 
 export default PieChartCatnat;
