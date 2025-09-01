@@ -178,6 +178,37 @@ export const espacesNAFBarChartLegend = [
   }
 ];
 
+export const catnatPieChartLegend = [
+  {
+    value: 'Inondations',
+    color: couleurs.graphiques.bleu[2]
+  },
+  {
+    value: 'Sécheresse',
+    color: couleurs.graphiques.jaune[2]
+  },
+  {
+    value: 'Mouvements de terrain',
+    color: couleurs.graphiques.orange[2]
+  },
+  {
+    value: 'Retrait-gonflement des argiles',
+    color: couleurs.graphiques.violet[2]
+  },
+  {
+    value: 'Cyclones / Tempêtes',
+    color: couleurs.graphiques.turquoise[2]
+  },
+  {
+    value: 'Grêle / neige',
+    color: couleurs.graphiques.vert[2]
+  },
+  {
+    value: 'Avalanche',
+    color: couleurs.graphiques.rose[2]
+  }
+];
+
 export const espacesNAFDatavizLegend = [
   {
     value: '0-1',

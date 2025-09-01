@@ -5,10 +5,10 @@ import useWindowDimensions from '@/hooks/windowDimensions';
 import { IncendiesForet } from '@/lib/postgres/models';
 import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
-import { Any } from '@/lib/utils/types';
 import { DefaultRawDatum, PieCustomLayerProps, ResponsivePie } from '@nivo/pie';
 import { animated } from '@react-spring/web';
-import styles from './gestionRisquesCharts.module.scss';
+import styles from '../charts.module.scss';
+import { simplePieChartTooltip } from '../ChartTooltips';
 
 const colors: { [key: string]: string } = {
   Malveillance: '#91D1CC',
@@ -67,7 +67,10 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
     );
   };
 
-  const arcLabelsComponent = ({ datum, label, style }: Any) => {
+  const arcLabelsComponent = ({ datum, label, style }: ArcLinkLabelComponent<ComputedDatum<{
+    id: string;
+    value: number;
+  }>>) => {
     return (
       <animated.g style={style}>
         <animated.path
@@ -124,6 +127,7 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
         arcLinkLabelsOffset={10}
         arcLinkLabelsDiagonalLength={12}
         arcLinkLabelsStraightLength={20}
+        tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: 'ha' })}
       />
     </div>
   );

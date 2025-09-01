@@ -6,12 +6,15 @@ export const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 ))(() => ({
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: '#ffffff',
-    color: '#3a3a3a',
+    color: 'black',
     maxWidth: 600,
-    boxShadow: '0px 2px 6px 0px rgba(0, 0, 18, 0.16)',
+    boxShadow: "0px 2px 6px 0px rgba(0, 0, 18, 0.16)",
     padding: '1rem',
     fontFamily: 'Marianne',
-    fontSize: '0.75rem',
+    fontSize: '0.875rem',
+    borderRadius: '6px',
+    lineHeight: '1.25rem',
+    fontWeight: 500
   }
 }));
 
@@ -23,13 +26,14 @@ export const HtmlTooltipDefinition = styled(
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: '#ffffff',
     fontSize: '1rem',
-    color: '#3a3a3a',
+    color: 'black',
     maxWidth: 600,
-    boxShadow: '0px 2px 6px 0px rgba(0, 0, 18, 0.16)',
-    padding: '20px',
+    boxShadow: "0px 2px 6px 0px rgba(0, 0, 18, 0.16)",
+    padding: '1rem',
     fontFamily: 'Marianne',
     fontWeight: 400,
-    border: '1px solid #0063CB'
+    border: '1px solid #0063CB',
+    borderRadius: '6px'
   }
 }));
 

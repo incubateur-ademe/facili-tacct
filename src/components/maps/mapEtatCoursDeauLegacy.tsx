@@ -79,7 +79,6 @@ export const MapEtatCoursDeauLegacy = (props: {
 
   const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
     const layer = e.target as FeatureGroup<EtatCoursDeauDto['properties']>;
-    //close residual opened tooltip
     layer.unbindTooltip();
     layer.closeTooltip();
     const coursDeau =
@@ -100,13 +99,11 @@ export const MapEtatCoursDeauLegacy = (props: {
     layer.bringToFront();
   };
 
-  //make style after hover disappear
   const mouseOutHandler: LeafletMouseEventHandlerFn = (e) => {
     const layer = e.target as FeatureGroup<EtatCoursDeauDto['properties']>;
     layer.closeTooltip();
     layer.setStyle({
       weight: 3,
-      // color: getColor(layer.feature?.properties.etateco),
       fillOpacity: 0.95
     });
   };

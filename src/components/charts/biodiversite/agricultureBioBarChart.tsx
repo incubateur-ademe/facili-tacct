@@ -9,10 +9,6 @@ import { NivoBarChart } from "../NivoBarChart";
 type GraphData = {
   "Surface certifiée agriculture biologique": number;
   "Surface en conversion agriculture biologique": number;
-  // "Surface totale agriculture biologique": number;
-  // "Surface agricole totale": number;
-  // "Surface restante à convertir": number;
-  // "part_agribio": number;
   annee: string;
 }
 const agricultureBioYears = ["surface_2019", "surface_2020", "surface_2021", "surface_2022"];
@@ -32,10 +28,6 @@ const graphDataFunct = (filteredYears: string[], data: AgricultureBio[]) => {
     const obj = {
       "Surface certifiée agriculture biologique": Sum(genericObjects("Surface certifiée", "LIBELLE_SOUS_CHAMP")),
       "Surface en conversion agriculture biologique": Sum(genericObjects("Surface en conversion", "LIBELLE_SOUS_CHAMP")),
-      // "Surface totale agriculture biologique": Sum(genericObjects("Surface totale", "LIBELLE_SOUS_CHAMP")),
-      // "Surface agricole totale": Sum(genericObjects("saue", "VARIABLE")),
-      // "Surface restante à convertir": Sum(genericObjects("saue", "VARIABLE")) - Sum(genericObjects("Surface totale", "LIBELLE_SOUS_CHAMP")),
-      // "part_agribio": Sum(genericObjects("part_agribio_surf")),
       annee: year.split("_")[1],
     }
     const isNull = Sum(Object.values(obj).slice(0, -1) as number[]);

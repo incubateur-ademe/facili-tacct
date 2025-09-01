@@ -1,6 +1,7 @@
 import surfaceCertifeeIcon from '@/assets/icons/agriculture_bio_surface_certifiee_icon.svg';
 import surfaceEnConversionIcon from '@/assets/icons/agriculture_bio_surface_conversion_icon.svg';
 import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
+import { Body, H4 } from '@/design-system/base/Textes';
 import { AgricultureBio } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Progress } from 'antd';
@@ -22,21 +23,6 @@ const ProgressProps: ProgressTypes = {
   strokeWidth: 12,
   showInfo: false
 };
-
-// const filterAgricultureBio = (
-//   agricultureBio: AgricultureBio[],
-//   column: string,
-//   value: string,
-//   subValue: string
-// ) => {
-//   const filtered = agricultureBio.filter((acc, obj) => {
-//     if (obj[column] === value) {
-//       return acc + obj[subValue]!;
-//     }
-//     return acc;
-//   }, 0);
-// }
-  
 
 export const AgricultureBioPieCharts = ({
   agricultureBio
@@ -96,14 +82,6 @@ export const AgricultureBioPieCharts = ({
     ((surfaceEnConversion - surfaceEnConversion2019) /
       surfaceEnConversion2019) *
     100;
-  const evolutionRestante =
-    ((surfaceTotale -
-      surfaceCertifiee -
-      surfaceEnConversion -
-      (surfaceTotale2019 - surfaceCertifiee2019 - surfaceEnConversion2019)) /
-      (surfaceTotale2019 - surfaceCertifiee2019 - surfaceEnConversion2019)) *
-    100;
-
   const partCertifieeRounded =
     100 - partEnConversion < partCertifiee
       ? 100 - partEnConversion
@@ -113,28 +91,28 @@ export const AgricultureBioPieCharts = ({
     <div className="flex flex-row justify-center gap-20 p-12 bg-white">
       <div className={styles.dataWrapper}>
         <Image src={surfaceCertifeeIcon} alt="" />
-        <p>
+        <Body size='sm' style={{ marginBottom: "24px" }}>
           Surface <b>déjà certifiée</b>
-        </p>
+        </Body>
         <HtmlTooltip
           title={
             <div className={styles.tooltip}>
-              <h3>Surface déjà certifiée (2022)</h3>
-              <p>
+              <H4 style={{ fontSize: '1rem', marginBottom: "0.5rem" }}>Surface déjà certifiée (2022)</H4>
+              <Body size='sm'>
                 <b>{Round(surfaceCertifiee, 0)}</b> ha
-              </p>
+              </Body>
               {evolutionCertifiee >= 0 ? (
-                <p>
-                  <b>+{Round(evolutionCertifiee, 1)}</b> % depuis 2019
-                </p>
+                <Body size='sm'>
+                  <b>+{Round(evolutionCertifiee, 1)} %</b> depuis 2019
+                </Body>
               ) : (
-                <p>
-                  <b>{Round(evolutionCertifiee, 1)}</b> % depuis 2019
-                </p>
+                <Body size='sm'>
+                  <b>{Round(evolutionCertifiee, 1)} %</b> depuis 2019
+                </Body>
               )}
-              <p>
+              <Body size='sm'>
                 <b>{nombreExploitations}</b> exploitation(s)
-              </p>
+              </Body>
             </div>
           }
           placement="top"
@@ -157,28 +135,28 @@ export const AgricultureBioPieCharts = ({
       </div>
       <div className={styles.dataWrapper}>
         <Image src={surfaceEnConversionIcon} alt="" />
-        <p>
+        <Body size='sm' style={{ marginBottom: "24px" }}>
           Surface <b>en conversion</b>
-        </p>
+        </Body>
         <HtmlTooltip
           title={
             <div className={styles.tooltip}>
-              <h3>Surface en conversion (2022)</h3>
-              <p>
+              <H4 style={{ fontSize: '1rem', marginBottom: "0.5rem" }}>Surface en conversion (2022)</H4>
+              <Body size='sm'>
                 <b>{Round(surfaceEnConversion, 0)}</b> ha
-              </p>
+              </Body>
               {evolutionConversion >= 0 ? (
-                <p>
-                  <b>+{Round(evolutionConversion, 1)}</b> % depuis 2019
-                </p>
+                <Body size='sm'>
+                  <b>+{Round(evolutionConversion, 1)} %</b> depuis 2019
+                </Body>
               ) : (
-                <p>
-                  <b>{Round(evolutionConversion, 1)}</b> % depuis 2019
-                </p>
+                <Body size='sm'>
+                  <b>{Round(evolutionConversion, 1)} %</b> depuis 2019
+                </Body>
               )}
-              <p>
+              <Body size='sm'>
                 <b>{nombreExploitations}</b> exploitation(s)
-              </p>
+              </Body>
             </div>
           }
           placement="top"

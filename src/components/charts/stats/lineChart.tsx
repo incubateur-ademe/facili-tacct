@@ -53,12 +53,16 @@ export const LineChart = (props: Props) => {
         return (
           <div
             style={{
-              background: 'white',
-              padding: '0.5rem',
-              border: '1px solid #ccc',
-              position: 'relative',
-              right: '4rem',
-              boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px'
+              backgroundColor: '#ffffff',
+              color: 'black',
+              maxWidth: 600,
+              boxShadow: "0px 2px 6px 0px rgba(0, 0, 18, 0.16)",
+              padding: '0.5rem 0.75rem',
+              fontFamily: 'Marianne',
+              fontSize: '0.875rem',
+              borderRadius: '6px',
+              lineHeight: '1.25rem',
+              fontWeight: 400
             }}
           >
             {point.data.xFormatted} : <b>{point.data.yFormatted}</b>
