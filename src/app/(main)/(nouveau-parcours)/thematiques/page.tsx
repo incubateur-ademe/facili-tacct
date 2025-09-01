@@ -1,17 +1,12 @@
 'use client';
 
 import { NewContainer } from '@/design-system/layout';
-import { useSearchParams } from 'next/navigation';
 import { Suspense, useState } from 'react';
 import PanneauLateral from './components/panneauLateral';
 import RoueSystemique from './components/roue';
 
 const RouePage = () => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code');
-  const libelle = searchParams.get('libelle');
-  const type = searchParams.get('type');
 
   // useEffect(() => {
   //   if (!selectedItem) return;
@@ -30,17 +25,17 @@ const RouePage = () => {
   // }, [selectedItem, code, libelle, type]);
 
   return (
-    <NewContainer style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-      <style jsx global>
-        {`html, body {
+    <Suspense>
+      <NewContainer style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
+        <style jsx global>
+          {`html, body {
           scrollbar-width: none; /* Firefox */
           -ms-overflow-style: none; /* Internet Explorer 10+ */
         }
         html::-webkit-scrollbar, body::-webkit-scrollbar {
           display: none; /* WebKit */
         }`}
-      </style>
-      <Suspense>
+        </style>
         <div className="flex flex-row gap-8">
           <div
             className="flex items-center justify-center transition-all duration-1000 ease-in-out"
@@ -58,8 +53,8 @@ const RouePage = () => {
             selectedItem={selectedItem}
           />
         </div>
-      </Suspense>
-    </NewContainer>
+      </NewContainer>
+    </Suspense>
   );
 };
 
