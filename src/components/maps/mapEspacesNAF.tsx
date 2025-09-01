@@ -65,7 +65,6 @@ export const MapEspacesNaf = (props: {
     mapRef.current = map;
 
     map.on('load', () => {
-      // Fit bounds
       if (
         enveloppe &&
         Array.isArray(enveloppe) &&
@@ -85,14 +84,12 @@ export const MapEspacesNaf = (props: {
         );
       }
 
-      // Add source
       map.addSource('naf-communes', {
         type: 'geojson',
         data: geoJsonData,
         generateId: false
       });
 
-      // Fill layer
       map.addLayer({
         id: 'naf-fill',
         type: 'fill',
@@ -103,7 +100,6 @@ export const MapEspacesNaf = (props: {
         }
       });
 
-      // Stroke layer
       map.addLayer({
         id: 'naf-stroke',
         type: 'line',
@@ -124,7 +120,6 @@ export const MapEspacesNaf = (props: {
         }
       });
 
-      // Hover and tooltip
       map.on('mouseenter', 'naf-fill', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
@@ -143,15 +138,12 @@ export const MapEspacesNaf = (props: {
               { hover: true }
             );
           }
-          // Tooltip content
           const communeName = properties?.libelle_geographique;
           const naf = properties?.naf;
           const tooltipContent = EspacesNafTooltip(communeName, naf);
-          // Remove existing popup
           if (popupRef.current) {
             popupRef.current.remove();
           }
-          // Dynamic positioning
           const containerHeight = mapContainer.current?.clientHeight || 500;
           const mouseY = e.point.y;
           const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';
@@ -204,7 +196,6 @@ export const MapEspacesNaf = (props: {
                 { hover: true }
               );
             }
-            // Tooltip content
             const communeName = properties?.libelle_geographique;
             const naf = properties?.naf;
             const tooltipContent = EspacesNafTooltip(communeName, naf);
@@ -242,7 +233,6 @@ export const MapEspacesNaf = (props: {
         }
       });
 
-      // Change cursor on hover
       map.on('mouseenter', 'naf-fill', () => {
         map.getCanvas().style.cursor = 'pointer';
       });
@@ -274,8 +264,20 @@ export const MapEspacesNaf = (props: {
   }, [colorExpression]);
 
   return (
-    <div style={{ position: 'relative' }}>
-      <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />
-    </div>
+    <>
+      <style jsx global>{`
+        .maplibregl-popup .maplibregl-popup-content {
+          box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16) !important;
+          border-radius: 6px !important;
+          padding: 1rem !important;
+        }
+        .map-container {
+            overflow: visible !important;
+          }
+      `}</style>
+      <div style={{ position: 'relative' }}>
+        <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
+      </div>
+    </>
   );
 };

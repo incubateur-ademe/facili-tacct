@@ -306,11 +306,23 @@ export const MapEtatCoursDeau = (props: {
   }, [coursDeauColorExpression]);
 
   return (
-    <div style={{ position: 'relative' }}>
-      <div ref={mapContainer} style={{ height: '500px', width: '100%', cursor: 'pointer' }} />
-      {qualiteEauxBaignade && (
-        <SitesBaignadeMarkers qualiteEauxBaignade={qualiteEauxBaignade} />
-      )}
-    </div>
+    <>
+      <style jsx global>{`
+        .maplibregl-popup .maplibregl-popup-content {
+          box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16) !important;
+          border-radius: 6px !important;
+          padding: 1rem !important;
+        }
+        .map-container {
+            overflow: visible !important;
+          }
+      `}</style>
+      <div style={{ position: 'relative' }}>
+        <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%', cursor: 'pointer' }} />
+        {qualiteEauxBaignade && (
+          <SitesBaignadeMarkers qualiteEauxBaignade={qualiteEauxBaignade} />
+        )}
+      </div>
+    </>
   );
 };

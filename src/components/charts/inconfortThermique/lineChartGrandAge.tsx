@@ -47,14 +47,19 @@ export const LineChart1 = (props: Props) => {
         return (
           <div
             style={{
-              background: 'white',
-              padding: '0.5rem',
-              position: 'relative',
-              right: '4rem',
-              boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px'
+              backgroundColor: '#ffffff',
+              color: 'black',
+              maxWidth: 600,
+              boxShadow: "0px 2px 6px 0px rgba(0, 0, 18, 0.16)",
+              padding: '0.5rem 0.75rem',
+              fontFamily: 'Marianne',
+              fontSize: '0.875rem',
+              borderRadius: '6px',
+              lineHeight: '1.25rem',
+              fontWeight: 400
             }}
           >
-            {point.data.xFormatted} : <b>{point.data.yFormatted}%</b>
+            {point.data.xFormatted} : <b>{point.data.yFormatted} %</b>
           </div>
         );
       }}
@@ -90,108 +95,3 @@ export const LineChart1 = (props: Props) => {
     />
   );
 };
-
-// 'use client';
-
-// import couleurs from '@/design-system/couleurs';
-// import { ResponsiveLine } from '@/lib/nivo/line';
-// import { useEffect, useState } from 'react';
-
-// type Props = {
-//   xData: Array<string | undefined>;
-//   yData: Array<number | null>;
-// };
-
-// type GraphData = {
-//   x: string | undefined;
-//   y: number | null | undefined;
-// };
-
-// export const LineChart1 = (props: Props) => {
-//   const { xData, yData } = props;
-//   const [children, setChildren] = useState<GraphData[]>([]);
-
-//   useEffect(() => {
-//     const tempChildren: GraphData[] = [];
-//     xData.forEach((item, id) => {
-//       const yValue = yData.at(id);
-//       // Only add valid data points
-//       if (item !== undefined && yValue !== null && yValue !== undefined) {
-//         tempChildren.push({
-//           x: item,
-//           y: yValue
-//         });
-//       }
-//     });
-//     setChildren(tempChildren);
-//   }, [xData, yData]);
-
-//   // Don't render if no valid data
-//   if (children.length === 0) {
-//     return <div>Aucune donnée disponible</div>;
-//   }
-
-//   // Calculate max value safely
-//   const validYValues = yData.filter((e): e is number => e !== null && e !== undefined);
-//   const maxY = validYValues.length > 0 ? Math.max(...validYValues) : 10;
-
-//   return (
-//     <ResponsiveLine
-//       curve="linear"
-//       data={[
-//         {
-//           id: "Courbe évolution de l'âge",
-//           color: 'hsl(284, 70%, 50%)',
-//           data: children
-//         }
-//       ]}
-//       colors={couleurs.graphiques.bleu[2]}
-//       isInteractive={true}
-//       useMesh={true}
-//       tooltip={({ point }) => {
-//         return (
-//           <div
-//             style={{
-//               background: 'white',
-//               padding: '0.5rem',
-//               position: 'relative',
-//               right: '4rem',
-//               boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px'
-//             }}
-//           >
-//             {point.data.xFormatted} : <b>{point.data.yFormatted}%</b>
-//           </div>
-//         );
-//       }}
-//       yScale={{
-//         type: 'linear',
-//         min: 0,
-//         max: maxY + 1
-//       }}
-//       margin={{
-//         top: 30,
-//         right: 30,
-//         bottom: 60,
-//         left: 60
-//       }}
-//       axisBottom={{
-//         tickSize: 5,
-//         tickPadding: 5,
-//         tickRotation: 0,
-//         legend: 'Années de recensement',
-//         legendOffset: 36,
-//         legendPosition: 'middle',
-//         truncateTickAt: 0,
-//       }}
-//       axisLeft={{
-//         tickSize: 5,
-//         tickPadding: 5,
-//         tickRotation: 0,
-//         legend: 'Pourcentage (%)',
-//         legendOffset: -40,
-//         legendPosition: 'middle',
-//         truncateTickAt: 0
-//       }}
-//     />
-//   );
-// };

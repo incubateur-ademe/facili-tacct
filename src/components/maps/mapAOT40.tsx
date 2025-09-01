@@ -1,5 +1,6 @@
 'use client';
 
+import { Body } from '@/design-system/base/Textes';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { AOT40 } from '@/lib/postgres/models';
 import {
@@ -249,12 +250,14 @@ export const MapAOT40 = (props: {
             >
               <style>
                 {`
+                .leaflet-popup-content-wrapper {
+                  border-radius: 6px !important;
+                  box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16) !important;
+                }
                 .leaflet-popup-content {
                   margin: 0 !important;
                   width: fit-content !important;
-                }
-                .leaflet-popup-content p {
-                  margin: 0 !important;
+                  padding: 1rem !important;
                 }
                 .leaflet-popup-close-button {
                   display: none !important;
@@ -264,15 +267,13 @@ export const MapAOT40 = (props: {
                 }
                 `}
                 <Popup offset={[6, 8]}>
-                  <div className="p-[0.75rem]">
-                    <div className="flex flex-row justify-between p-0 gap-2 items-center w-max">
-                      <p className="text-[0.75rem] font-marianne font-[400]">
-                        {aot.nom_site} :{' '}
-                      </p>
-                      <p className="text-[0.75rem] font-marianne font-[700]">
-                        {Round(Number(aot.value), 0)} µg/m3
-                      </p>
-                    </div>
+                  <div className="flex flex-row justify-between p-0 gap-2 items-center w-max">
+                    <Body size='sm'>
+                      {aot.nom_site} :{' '}
+                    </Body>
+                    <Body size='sm' weight='bold'>
+                      {Round(Number(aot.value), 0)} µg/m3
+                    </Body>
                   </div>
                 </Popup>
               </style>

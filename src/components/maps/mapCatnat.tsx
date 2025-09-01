@@ -97,7 +97,6 @@ export const MapCatnat = (props: {
         color
       );
     });
-
     expression.push('transparent');
     return expression;
   }, [maxValue, typeRisqueValue]);
@@ -122,7 +121,6 @@ export const MapCatnat = (props: {
     mapRef.current = map;
 
     map.on('load', () => {
-      // Compute bounding box from enveloppe polygon
       if (
         enveloppe &&
         Array.isArray(enveloppe) &&
@@ -142,14 +140,12 @@ export const MapCatnat = (props: {
         );
       }
 
-      // Add source for commune data
       map.addSource('catnat-communes', {
         type: 'geojson',
         data: geoJsonData,
         generateId: false
       });
 
-      // Add fill layer for catnat data
       map.addLayer({
         id: 'catnat-fill',
         type: 'fill',
@@ -159,7 +155,6 @@ export const MapCatnat = (props: {
         }
       });
 
-      // Add stroke layer for commune boundaries
       map.addLayer({
         id: 'catnat-stroke',
         type: 'line',
@@ -180,7 +175,6 @@ export const MapCatnat = (props: {
         }
       });
 
-      // Mouse events for hover effects and tooltips
       map.on('mouseenter', 'catnat-fill', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
@@ -199,17 +193,14 @@ export const MapCatnat = (props: {
               { hover: true }
             );
           }
-          // Create tooltip content
           const communeName = properties?.libelle_geographique;
           const catnat = JSON.parse(properties?.catnat);
           if (catnat && communeName) {
             const { indexName, sumCatnat, ...restCatnat } = catnat;
             const tooltipContent = CatnatTooltip(restCatnat, communeName);
-            // Remove existing popup
             if (popupRef.current) {
               popupRef.current.remove();
             }
-            // Create new popup with dynamic positioning
             const containerHeight = mapContainer.current?.clientHeight || 500;
             const mouseY = e.point.y;
             const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';
@@ -236,13 +227,11 @@ export const MapCatnat = (props: {
           );
         }
         hoveredFeatureRef.current = null;
-        // Remove popup
         if (popupRef.current) {
           popupRef.current.remove();
           popupRef.current = null;
         }
       });
-      // Mouse move event to update popup position
       map.on('mousemove', 'catnat-fill', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
@@ -252,16 +241,13 @@ export const MapCatnat = (props: {
           const mouseY = e.point.y;
           const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';
 
-          // If hovered polygon changed, update feature state and popup content
           if (hoveredFeatureRef.current !== newHoveredFeature) {
-            // Remove previous highlight
             if (hoveredFeatureRef.current) {
               map.setFeatureState(
                 { source: 'catnat-communes', id: hoveredFeatureRef.current },
                 { hover: false }
               );
             }
-            // Set new highlight
             hoveredFeatureRef.current = newHoveredFeature;
             if (newHoveredFeature) {
               map.setFeatureState(
@@ -269,7 +255,6 @@ export const MapCatnat = (props: {
                 { hover: true }
               );
             }
-            // Update popup content
             const communeName = properties?.libelle_geographique;
             const catnat = JSON.parse(properties?.catnat);
             if (catnat && communeName) {
@@ -288,11 +273,9 @@ export const MapCatnat = (props: {
                 .addTo(map);
             }
           } else if (popupRef.current) {
-            // Only update position and anchor if polygon is the same
             popupRef.current.setLngLat(e.lngLat);
             const currentAnchor = popupRef.current.getElement()?.getAttribute('class')?.includes('anchor-top') ? 'top' : 'bottom';
             if (currentAnchor !== placement) {
-              // Recreate popup with new anchor
               const communeName = properties?.libelle_geographique;
               const catnat = JSON.parse(properties?.catnat);
               if (catnat && communeName) {
@@ -315,7 +298,6 @@ export const MapCatnat = (props: {
         }
       });
 
-      // Change cursor on hover
       map.on('mouseenter', 'catnat-fill', () => {
         map.getCanvas().style.cursor = 'pointer';
       });
@@ -324,7 +306,6 @@ export const MapCatnat = (props: {
       });
     });
 
-    // Add navigation control
     map.addControl(new maplibregl.NavigationControl(), 'top-right');
 
     return () => {
@@ -349,11 +330,21 @@ export const MapCatnat = (props: {
 
   return (
     <>
+      <style jsx global>{`
+        .maplibregl-popup .maplibregl-popup-content {
+          box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16) !important;
+          border-radius: 6px !important;
+          padding: 1rem !important;
+        }
+        .map-container {
+            overflow: visible !important;
+          }
+      `}</style>
       {carteCommunes === null ? (
         <GraphDataNotFound code={code} libelle={libelle} />
       ) : (
         <div style={{ position: 'relative' }}>
-          <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />
+          <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
         </div>
       )}
     </>

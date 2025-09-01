@@ -337,7 +337,7 @@ export const MapLCZ = ({
           font-family: 'Marianne' !important;
           background-color: #ffffff !important;
           border-radius: 0.5rem !important;
-          padding: 20px !important;
+          padding: 1rem !important;
           position: relative !important;
           box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16) !important;
           min-width: max-content !important;

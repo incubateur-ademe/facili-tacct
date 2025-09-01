@@ -3,6 +3,7 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import styles from '@/components/themes/gestionRisques/gestionRisques.module.scss';
+import { Body } from '@/design-system/base/Textes';
 import couleurs from '@/design-system/couleurs';
 import { ResponsiveBar } from '@/lib/nivo/bar';
 
@@ -29,7 +30,6 @@ export const BarChartAgeBatiNouveauParcours = ({ chartData }: Props) => {
             modifiers: [['darker', 1.6]]
           }}
           enableLabel={false}
-          // label={(d) => `${d.value} %`}
           tooltip={({ id, value, color }) => (
             <div
               className={styles.tooltipEvolutionWrapper}
@@ -41,10 +41,8 @@ export const BarChartAgeBatiNouveauParcours = ({ chartData }: Props) => {
                     className={styles.colorSquare}
                     style={{ background: color }}
                   />
-                  <p>{id}</p>
-                </div>
-                <div className={styles.value}>
-                  <p>{value} %</p>
+                  <Body size='sm'>{id} :</Body>
+                  <Body size='sm' weight='bold'>{value} %</Body>
                 </div>
               </div>
             </div>
@@ -53,7 +51,7 @@ export const BarChartAgeBatiNouveauParcours = ({ chartData }: Props) => {
           indexBy="periode"
           margin={{ top: 50, right: 30, bottom: 30, left: 40 }}
           valueScale={{ type: 'linear' }}
-          colors={[couleurs.graphiques.rouge[3], couleurs.graphiques.bleu[1]]} // F28502 "#2CAAA6"
+          colors={[couleurs.graphiques.rouge[3], couleurs.graphiques.bleu[1]]}
           innerPadding={2}
 
         />
