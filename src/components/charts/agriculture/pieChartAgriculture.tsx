@@ -3,22 +3,26 @@
 
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import ZeroData from '@/assets/images/zero_data_found.png';
+import styles from '@/components/charts/charts.module.scss';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
-import styles from '@/components/themes/gestionRisques/gestionRisques.module.scss';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { PieChartDataSurfacesAgricoles } from '@/lib/charts/surfacesAgricoles';
 import { ResponsivePie } from '@/lib/nivo/pie';
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
-import { Any } from '@/lib/utils/types';
 import { animated } from '@react-spring/web';
+import { simplePieChartTooltip } from '../ChartTooltips';
 
 export const PieChartAgriculture = ({ surfacesAgricoles }: { surfacesAgricoles: SurfacesAgricolesModel[] }) => {
   const graphData = PieChartDataSurfacesAgricoles(surfacesAgricoles);
   const sumAllCount = graphData.reduce((sum, item) => sum + (item.count || 0), 0);
   const windowDimensions = useWindowDimensions();
 
-  const arcLabelsComponent = ({ datum, label, style }: Any) => {
+  const arcLabelsComponent = ({ datum, label, style }: ArcLinkLabelComponent<ComputedDatum<{
+    id: string;
+    value: number;
+  }>>
+) => {
     return (
       <animated.g style={style}>
         <animated.path
@@ -100,22 +104,7 @@ export const PieChartAgriculture = ({ surfacesAgricoles }: { surfacesAgricoles: 
           arcLinkLabelsSkipAngle={7}
           arcLinkLabelsDiagonalLength={32}
           arcLinkLabelsStraightLength={24}
-          tooltip={({ datum: { id, value, color } }) => (
-            <div className={styles.tooltipEvolutionWrapper}>
-              <div className={styles.itemWrapper}>
-                <div className={styles.titre}>
-                  <div
-                    className={styles.colorSquare}
-                    style={{ background: color }}
-                  />
-                  <p>{id}</p>
-                </div>
-                <div className={styles.value}>
-                  <p>{Round(value, 1)} %</p>
-                </div>
-              </div>
-            </div>
-          )}
+          tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: '%' })}
         />
         : <DataNotFoundForGraph image={surfacesAgricoles.length === 0 ? DataNotFound : ZeroData} />
       }

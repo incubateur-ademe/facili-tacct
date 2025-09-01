@@ -4,7 +4,9 @@ import WarningIcon from "@/assets/icons/exclamation_point_icon_black.png";
 import { RgaEvolutionTooltip, RgaRepartitionTooltip } from "@/components/charts/ChartTooltips";
 import { NivoBarChart } from '@/components/charts/NivoBarChart';
 import { RgaEvolutionLegend, RgaRepartitionLegend } from '@/components/maps/legends/datavizLegends';
+import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import SubTabs from '@/components/SubTabs';
+import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
 import { RGAdb } from '@/lib/postgres/models';
 import { Average } from '@/lib/utils/reusableFunctions/average';
@@ -174,24 +176,28 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
               graphData={repartitionRga as BarDatum[]}
               keys={RgaRepartitionLegend.map(e => e.variable)}
               indexBy="alea"
-              legendData={RgaRepartitionLegend
-                .map((legend, index) => ({
-                  id: index,
-                  label: legend.variable === "territoire" && type === "commune" ?
-                    "Commune" :
-                    legend.variable === "territoire" && type === "epci" ?
-                      "EPCI" :
-                      legend.variable === "territoireSup" && type === "commune" ?
-                        "EPCI" :
-                        legend.variable === "territoireSup" && type === "epci" ?
-                          "Département" : "",
-                  color: legend.couleur,
-                }))}
+              showLegend={false}
               axisLeftLegend="Part du territoire (%)"
               groupMode="grouped"
               tooltip={(data) => RgaRepartitionTooltip({ data, type })}
               bottomTickValues={repartitionRga.map(el => el.alea)}
             />
+            <div style={{ position: "relative", top: "-40px" }}>
+              <LegendCompColor
+                legends={RgaRepartitionLegend
+                  .map((legend, index) => ({
+                    id: index,
+                    value: legend.variable === "territoire" && type === "commune" ?
+                      "Commune" :
+                      legend.variable === "territoire" && type === "epci" ?
+                        "EPCI" :
+                        legend.variable === "territoireSup" && type === "commune" ?
+                          "EPCI" :
+                          legend.variable === "territoireSup" && type === "epci" ?
+                            "Département" : "",
+                    color: legend.couleur,
+                  }))} />
+            </div>
           </div>
           {
             multipleDepartements.length > 1 &&
@@ -204,11 +210,11 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
                   height={24}
                   style={{ marginRight: '0.5em', alignItems: 'center' }}
                 />
-                <p style={{ fontSize: 12, margin: 0 }}>
+                <Body style={{ fontSize: 12 }}>
                   L’EPCI sélectionné s’étend sur
                   plusieurs départements. La comparaison proposée est
                   effectuée avec : {departement}
-                </p>
+                </Body>
               </div>
             </div>
           }
@@ -221,15 +227,19 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
               graphData={evolutionRga}
               keys={RgaEvolutionLegend.map(e => e.variable)}
               indexBy="annee"
-              legendData={RgaEvolutionLegend
-                .map((legend, index) => ({
-                  id: index,
-                  label: legend.texteRaccourci,
-                  color: legend.couleur,
-                }))}
+              showLegend={false}
               axisLeftLegend="Nombre de logements"
               tooltip={RgaEvolutionTooltip}
             />
+            <div style={{ position: "relative", top: "-40px" }}>
+              <LegendCompColor
+                legends={RgaEvolutionLegend
+                  .map((legend, index) => ({
+                    id: index,
+                    value: legend.texteRaccourci,
+                    color: legend.couleur,
+                  }))} />
+            </div>
           </div>
         </>
       ) : datavizTab === 'Cartographie' ? (

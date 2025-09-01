@@ -261,17 +261,16 @@ export const MapLCZ = ({
               bsr: 'Taux de sol nu perméable (%)',
               war: 'Taux de surface en eau (%)',
             };
-            // const identifier = props.identifier || '';
             const lcz = props.lcz || '';
             let content = `
-              <h5 style='font-size:18px; margin:0px;'>
+              <h4 style='font-size:16px; margin:0 0 0.5rem;'>
                 <b>LCZ ${lcz}</b>
-              </h5>
+              </h4>
             `;
             const order = ['are', 'bur', 'hre', 'ror', 'ver', 'vhr', 'bsr', 'war'];
             for (const key of order) {
               if (props[key] !== undefined) {
-                content += `<b>${labels[key]}</b> : ${props[key]}<br/>`;
+                content += `<p>${labels[key]} : ${props[key]}</p><br/>`;
               }
             }
             new maplibregl.Popup({
@@ -341,10 +340,17 @@ export const MapLCZ = ({
           position: relative !important;
           box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16) !important;
           min-width: max-content !important;
-          font-size: 12px !important;
+          p {
+            margin: 0 !important;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+          }
         }
         .custom-popup .maplibregl-popup-tip {
           border-top-color: #ffffff !important;
+        }
+        .map-container {
+          overflow: visible !important;
         }
         @keyframes spin {
           0% { transform: rotate(0deg); }
@@ -358,7 +364,7 @@ export const MapLCZ = ({
       />
       {isLoading ? <Loader /> : (
         <>
-          <div ref={mapContainer} style={{ width: '100%', height: '500px' }} />
+          <div ref={mapContainer} className="map-container" style={{ width: '100%', height: '500px' }} />
           {isTilesLoading && (
             <div className={styles.tileLoadingWrapper}>
               <div style={{

@@ -91,6 +91,7 @@ export const NivoBarChart = ({
         legendOffset: 50,
         legendPosition: 'middle',
         renderTick: (e: Any) => {
+          console.log("Rendering tick for:", e)
           return (
             <g transform={`translate(${e.x},${e.y})`}>
               <foreignObject x={-50} y={0} width={100} height={45}>
@@ -339,7 +340,7 @@ export const NivoBarChartCatnat = ({
             bottom: legendData && legendData.length >= 4 ? 120 : 80,
             left: 80
           }
-          : { top: 40, right: 100, bottom: 80, left: 80 }
+          : { top: 40, right: 100, bottom: 150, left: 80 }
       }
       groupMode={groupMode}
       padding={0.3}

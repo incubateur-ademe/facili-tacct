@@ -1,6 +1,7 @@
 'use client';
 
 import { catnatPieChartLegend } from '@/components/maps/legends/datavizLegends';
+import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { BarDatum } from '@/lib/nivo/bar';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
@@ -40,23 +41,29 @@ export const BarChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }
           Aucun arrêté catnat avec ces filtres
         </div>
       ) : (
-        <NivoBarChartCatnat
-          graphData={graphData as unknown as BarDatum[]}
-          keys={catnatPieChartLegend.map((e) => e.value)}
-          indexBy="indexName"
-          colors={catnatPieChartLegend.map((e) => e.color)}
-          tooltip={({ data }) => simpleBarChartTooltip({ data, legende: catnatPieChartLegend })}
-          axisLeftLegend="Nombre de catastrophes recensées"
-          legendData={catnatPieChartLegend
-            .map((legend, index) => ({
-              id: index,
-              label: legend.value,
-              color: legend.color
-            }))}
-          bottomTickValues={minDate != maxDate
-            ? [minDate, maxDate]
-            : [minDate]}
-        />
+        <>
+          <NivoBarChartCatnat
+            graphData={graphData as unknown as BarDatum[]}
+            keys={catnatPieChartLegend.map((e) => e.value)}
+            indexBy="indexName"
+            colors={catnatPieChartLegend.map((e) => e.color)}
+            tooltip={({ data }) => simpleBarChartTooltip({ data, legende: catnatPieChartLegend })}
+            axisLeftLegend="Nombre de catastrophes recensées"
+            showLegend={false}
+            bottomTickValues={minDate != maxDate
+              ? [minDate, maxDate]
+              : [minDate]}
+          />
+          <div style={{ position: "relative", top: "-110px" }}>
+            <LegendCompColor
+              legends={catnatPieChartLegend.map((legend, index) => ({
+                id: index,
+                value: legend.value,
+                color: legend.color
+              }))}
+            />
+          </div>
+        </>
       )}
     </div>
   );
