@@ -1,31 +1,46 @@
 
+import { LoaderText } from '@/components/loader';
+import couleurs from '@/design-system/couleurs';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
+import 'carte-facile/carte-facile.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { GraphDataNotFound } from '../graph-data-not-found';
 import { BoundsFromCollection } from './components/boundsFromCollection';
-import { SurfacesIrrigueesTooltip } from './components/tooltips';
+import { DensiteBatiTooltip, FragiliteEconomiqueTooltip } from './components/tooltips';
 
-const getColor = (d: number) => {
-  return d === 0
-    ? '#D8EFFA'
-    : d > 0 && d <= 20
-      ? '#3DB6EA'
-      : d > 20 && d <= 40
-        ? '#0072B5'
-        : d > 40 && d <= 60
-          ? '#03508B'
-          : d > 60 && d <= 100
-            ? '#093454'
-            : 'white';
+const getColor = (d: number, data: string) => {
+  if (data === 'densite_bati') {
+    return d > 0.2
+      ? '#FF5E54'
+      : d > 0.1
+        ? '#FFBD00'
+        : d > 0.05
+          ? '#FFFA6A'
+          : d > 0
+            ? '#D5F4A3'
+            : '#5CFF54';
+  } else
+    return d > 0.3
+      ? couleurs.graphiques.bleu[5]
+      : d > 0.2
+        ? couleurs.graphiques.bleu[1]
+        : d > 0.1
+          ? couleurs.graphiques.bleu[2]
+          : d > 0
+            ? couleurs.graphiques.bleu[3]
+            : couleurs.graphiques.bleu[4];
 };
 
-export const MapSurfacesIrriguees = (props: {
+
+export const MapInconfortThermique = (props: {
   carteCommunes: CommunesIndicateursDto[];
+  data: string;
 }) => {
-  const { carteCommunes } = props;
+  const { data, carteCommunes } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -34,41 +49,42 @@ export const MapSurfacesIrriguees = (props: {
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const hoveredFeatureRef = useRef<string | null>(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
 
-  const carteCommunesFiltered = useMemo(() => (
-    type === "ept"
-      ? carteCommunes.filter(el => el.properties.ept === libelle)
-      : carteCommunes
-  ), [carteCommunes, type, libelle]);
+  // Filtrer Paris, Marseille, Lyon
+  const carteCommunesFiltered = useMemo(() =>
+    carteCommunes.filter(
+      (e) =>
+        e.properties.code_geographique !== '75056' &&
+        e.properties.code_geographique !== '13055' &&
+        e.properties.code_geographique !== '69123'
+    ),
+    [carteCommunes]
+  );
+
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
-
-  const colorExpression = useMemo(() => {
-    const expression: Array<string | Array<string | Array<string>>> = ['case'];
-    carteCommunesFiltered.forEach((commune) => {
-      const color = getColor(commune.properties.surfacesIrriguees ?? 0);
-      expression.push(
-        ['==', ['get', 'code_geographique'], commune.properties.code_geographique],
-        color
-      );
-    });
-    expression.push('transparent');
-    return expression;
-  }, [carteCommunesFiltered]);
-
-  const geoJsonData = useMemo(() => {
+  const geoJsonWithColor = useMemo(() => {
     return {
-      type: "FeatureCollection" as "FeatureCollection",
-      features: carteCommunesFiltered.map(commune => ({
-        type: "Feature" as "Feature",
-        geometry: commune.geometry as import('geojson').Geometry,
-        properties: commune.properties,
-        id: commune.properties.code_geographique
-      }))
+      type: 'FeatureCollection',
+      features: carteCommunesFiltered.map(commune => {
+        const value = data === 'densite_bati'
+          ? commune.properties.densite_bati
+          : commune.properties.precarite_logement;
+        const fillColor = getColor(value, data);
+        return {
+          ...commune,
+          id: commune.properties.code_geographique,
+          properties: {
+            ...commune.properties,
+            fillColor
+          }
+        };
+      })
     };
-  }, [carteCommunesFiltered]);
+  }, [carteCommunesFiltered, data]);
 
   useEffect(() => {
-    if (!mapContainer.current) return;
+    if (!mapContainer.current || mapRef.current) return;
 
     const map = new maplibregl.Map({
       container: mapContainer.current,
@@ -97,26 +113,27 @@ export const MapSurfacesIrriguees = (props: {
         );
       }
 
-      map.addSource('surfaces-irriguees-communes', {
+      map.addSource('inconfort-thermique-communes', {
         type: 'geojson',
-        data: geoJsonData,
+        data: geoJsonWithColor as unknown as "FeatureCollection",
         generateId: false
       });
 
       map.addLayer({
-        id: 'surfaces-irriguees-fill',
+        id: 'inconfort-thermique-fill',
         type: 'fill',
-        source: 'surfaces-irriguees-communes',
+        source: 'inconfort-thermique-communes',
         paint: {
-          'fill-color': colorExpression as unknown as string,
+          'fill-color': ['get', 'fillColor'] as unknown as any,
           'fill-opacity': 1
         }
       });
 
+      // Stroke layer
       map.addLayer({
-        id: 'surfaces-irriguees-stroke',
+        id: 'inconfort-thermique-stroke',
         type: 'line',
-        source: 'surfaces-irriguees-communes',
+        source: 'inconfort-thermique-communes',
         paint: {
           'line-color': [
             'case',
@@ -133,13 +150,13 @@ export const MapSurfacesIrriguees = (props: {
         }
       });
 
-      map.on('mouseenter', 'surfaces-irriguees-fill', (e) => {
+      map.on('mouseenter', 'inconfort-thermique-fill', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const properties = feature.properties;
           if (hoveredFeatureRef.current) {
             map.setFeatureState(
-              { source: 'surfaces-irriguees-communes', id: hoveredFeatureRef.current },
+              { source: 'inconfort-thermique-communes', id: hoveredFeatureRef.current },
               { hover: false }
             );
           }
@@ -147,13 +164,17 @@ export const MapSurfacesIrriguees = (props: {
           hoveredFeatureRef.current = newHoveredFeature;
           if (newHoveredFeature) {
             map.setFeatureState(
-              { source: 'surfaces-irriguees-communes', id: newHoveredFeature },
+              { source: 'inconfort-thermique-communes', id: newHoveredFeature },
               { hover: true }
             );
           }
           const communeName = properties?.libelle_geographique;
-          const surfacesIrriguees = properties?.surfacesIrriguees;
-          const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrriguees);
+          let tooltipContent = '';
+          if (data === 'densite_bati') {
+            tooltipContent = DensiteBatiTooltip(communeName, properties.densite_bati);
+          } else {
+            tooltipContent = FragiliteEconomiqueTooltip(communeName, properties.precarite_logement);
+          }
           if (popupRef.current) {
             popupRef.current.remove();
           }
@@ -163,7 +184,7 @@ export const MapSurfacesIrriguees = (props: {
           popupRef.current = new maplibregl.Popup({
             closeButton: false,
             closeOnClick: false,
-            className: 'surfaces-irriguees-tooltip',
+            className: 'inconfort-thermique-tooltip',
             anchor: placement,
             maxWidth: 'none'
           })
@@ -173,10 +194,10 @@ export const MapSurfacesIrriguees = (props: {
         }
       });
 
-      map.on('mouseleave', 'surfaces-irriguees-fill', () => {
+      map.on('mouseleave', 'inconfort-thermique-fill', () => {
         if (hoveredFeatureRef.current) {
           map.setFeatureState(
-            { source: 'surfaces-irriguees-communes', id: hoveredFeatureRef.current },
+            { source: 'inconfort-thermique-communes', id: hoveredFeatureRef.current },
             { hover: false }
           );
         }
@@ -187,7 +208,7 @@ export const MapSurfacesIrriguees = (props: {
         }
       });
 
-      map.on('mousemove', 'surfaces-irriguees-fill', (e) => {
+      map.on('mousemove', 'inconfort-thermique-fill', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const properties = feature.properties;
@@ -198,26 +219,29 @@ export const MapSurfacesIrriguees = (props: {
           if (hoveredFeatureRef.current !== newHoveredFeature) {
             if (hoveredFeatureRef.current) {
               map.setFeatureState(
-                { source: 'surfaces-irriguees-communes', id: hoveredFeatureRef.current },
+                { source: 'inconfort-thermique-communes', id: hoveredFeatureRef.current },
                 { hover: false }
               );
             }
             hoveredFeatureRef.current = newHoveredFeature;
             if (newHoveredFeature) {
               map.setFeatureState(
-                { source: 'surfaces-irriguees-communes', id: newHoveredFeature },
+                { source: 'inconfort-thermique-communes', id: newHoveredFeature },
                 { hover: true }
               );
             }
-            // Tooltip content
             const communeName = properties?.libelle_geographique;
-            const surfacesIrriguees = properties?.surfacesIrriguees;
-            const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrriguees);
+            let tooltipContent = '';
+            if (data === 'densite_bati') {
+              tooltipContent = DensiteBatiTooltip(communeName, properties.densite_bati);
+            } else {
+              tooltipContent = FragiliteEconomiqueTooltip(communeName, properties.precarite_logement);
+            }
             if (popupRef.current) popupRef.current.remove();
             popupRef.current = new maplibregl.Popup({
               closeButton: false,
               closeOnClick: false,
-              className: 'surfaces-irriguees-tooltip',
+              className: 'inconfort-thermique-tooltip',
               anchor: placement,
               maxWidth: 'none'
             })
@@ -229,13 +253,17 @@ export const MapSurfacesIrriguees = (props: {
             const currentAnchor = popupRef.current.getElement()?.getAttribute('class')?.includes('anchor-top') ? 'top' : 'bottom';
             if (currentAnchor !== placement) {
               const communeName = properties?.libelle_geographique;
-              const surfacesIrriguees = properties?.surfacesIrriguees;
-              const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrriguees);
+              let tooltipContent = '';
+              if (data === 'densite_bati') {
+                tooltipContent = DensiteBatiTooltip(communeName, properties.densite_bati);
+              } else {
+                tooltipContent = FragiliteEconomiqueTooltip(communeName, properties.precarite_logement);
+              }
               popupRef.current.remove();
               popupRef.current = new maplibregl.Popup({
                 closeButton: false,
                 closeOnClick: false,
-                className: 'surfaces-irriguees-tooltip',
+                className: 'inconfort-thermique-tooltip',
                 anchor: placement,
                 maxWidth: 'none'
               })
@@ -247,15 +275,15 @@ export const MapSurfacesIrriguees = (props: {
         }
       });
 
-      // Change cursor on hover
-      map.on('mouseenter', 'surfaces-irriguees-fill', () => {
+      map.on('mouseenter', 'inconfort-thermique-fill', () => {
         map.getCanvas().style.cursor = 'pointer';
       });
-      map.on('mouseleave', 'surfaces-irriguees-fill', () => {
+      map.on('mouseleave', 'inconfort-thermique-fill', () => {
         map.getCanvas().style.cursor = '';
       });
 
       map.addControl(new maplibregl.NavigationControl(), 'top-right');
+      setIsMapLoaded(true);
     });
 
     return () => {
@@ -264,23 +292,32 @@ export const MapSurfacesIrriguees = (props: {
         mapRef.current = null;
       }
     };
-  }, [geoJsonData, colorExpression, enveloppe]);
+  }, [enveloppe, geoJsonWithColor]);
 
   useEffect(() => {
-    let map = mapRef.current;
-    if (!map || !mapContainer.current || !map.style) return;
-    setTimeout(() => {
-      map.setPaintProperty(
-        'surfaces-irriguees-fill',
-        'fill-color',
-        colorExpression
-      );
-    }, 50);
-  }, [colorExpression]);
+    const map = mapRef.current;
+    if (!map || !map.getSource) return;
+    const src = map.getSource('inconfort-thermique-communes') as maplibregl.GeoJSONSource | undefined;
+    if (src && geoJsonWithColor) {
+      try {
+        src.setData(geoJsonWithColor as unknown as GeoJSON.FeatureCollection);
+      } catch (e) {
+      }
+    }
+  }, [geoJsonWithColor]);
 
   return (
-    <div style={{ position: 'relative' }}>
-      <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />
-    </div>
+    <>
+      {carteCommunesFiltered === null ? (
+        <GraphDataNotFound code={code} libelle={libelle} />
+      ) : (
+        <div style={{ position: 'relative' }}>
+          {!isMapLoaded && (
+            <LoaderText text='Chargement de la cartographie...' />
+          )}
+          <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />
+        </div>
+      )}
+    </>
   );
 };

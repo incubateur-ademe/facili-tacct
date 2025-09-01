@@ -2,6 +2,7 @@ import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
+import styles from '../../ressources.module.scss';
 import { allArticles } from '../articlesList';
 
 export const generateMetadata = async (
@@ -26,7 +27,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   if (!article) return notFound();
   const Component = article.Component;
   return (
-    <div className="max-w-2xl m-auto pb-24">
+    <div className={styles.articleContainer}>
       <Breadcrumb
         currentPageLabel={article.metadata.title}
         homeLinkProps={{ href: '/' }}

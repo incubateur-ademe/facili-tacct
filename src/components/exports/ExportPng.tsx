@@ -189,7 +189,6 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
   const handleExportPng = async () => {
     setIsLoading(true);
     if (mapRef.current && mapContainer.current) {
-      console.log("mapContainer.current", mapContainer.current)
       // On cache les contrôles de navigation pour éviter qu'ils n'apparaissent sur le screenshot
       const navControls = mapContainer.current.querySelectorAll('.maplibregl-ctrl-top-right');
       navControls.forEach(control => {

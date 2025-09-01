@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { Container } from '../../../design-system/server';
 import RessourcesCards from './cards';
+import styles from './ressources.module.scss';
 
 export const metadata: Metadata = {
   title: 'Ressources',
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 const Ressources = () => {
   return (
-    <Container size="xl" className="my-16">
+    <Container size="xl" className={styles.ressourcesContainer}>
       <Suspense>
         <RessourcesCards />
       </Suspense>

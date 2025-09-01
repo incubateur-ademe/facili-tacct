@@ -183,7 +183,7 @@ export const GetClcTerritoires = async (
   const timeoutPromise = new Promise<CLCTerritoires[] | undefined>((resolve) =>
     setTimeout(() => {
       resolve(undefined);
-    }, 5000)
+    }, 10000)
   );
   const column = ColumnCodeCheck(type);
   const dbQuery = (async () => {

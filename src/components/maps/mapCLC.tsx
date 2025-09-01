@@ -67,7 +67,6 @@ export const MapCLC = (
     mapRef.current = map;
 
     map.on('load', () => {
-      // Fit bounds
       if (
         enveloppe &&
         Array.isArray(enveloppe) &&
@@ -87,14 +86,12 @@ export const MapCLC = (
         );
       }
 
-      // Add source
       map.addSource('clc-communes', {
         type: 'geojson',
         data: geoJsonData,
         generateId: false
       });
 
-      // Fill layer
       map.addLayer({
         id: 'clc-fill',
         type: 'fill',
