@@ -124,7 +124,6 @@ export const FragiliteEconomique = ({
                     <>
                       <MapInconfortThermique
                         carteCommunes={carteTerritoire}
-                        data={'precarite_log'}
                       />
                       <div
                         className={styles.legend}
