@@ -30,12 +30,12 @@ const PanneauLateral = ({
             style={{
               position: selectedItem ? 'absolute' : 'fixed',
               right: selectedItem ? 'max(0rem, calc((100vw - 1200px) / 2))' : '-400px',
-              top: 117 + 56 + (windowDimensions.height * 0.09),
-              width: selectedItem ? '385px' : 'fit-content',  // avec 0 pour un déroulé du panneau latéral
+              top: '515px',
+              transform: 'translateY(-50%)',
+              width: selectedItem ? '385px' : 'fit-content',
               opacity: selectedItem ? 1 : 0,
               border: selectedItem ? '1px solid var(--gris-medium)' : 'none',
               height: selectedItem ? "fit-content" : '0',
-              // boxShadow: selectedItem ? '0 2px 15px rgba(0, 0, 0, 0.08)' : 'none',
             }}
           >
             {selectedItem && (
