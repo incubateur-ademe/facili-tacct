@@ -92,7 +92,7 @@ export const nomThematiques = [
     disabled: true,
     liens: []
   },
-    {
+  {
     label: 'Filière bois',
     labelRadius: 275,
     icon: '🌲',
@@ -104,8 +104,7 @@ export const nomThematiques = [
     labelRadius: 280,
     icon: '🌾',
     disabled: false
-  },
-
+  }
 ];
 
 // liens entre les thématiques
@@ -118,21 +117,45 @@ export const liensEntreThematiques = [
     curveRadius: 0.3
   },
   {
-    source: 'Santé',
-    target: 'Aménagement',
+    source: 'Aménagement',
+    target: 'Santé',
     curve: 1,
     curveRadius: 0.7
   },
+  {
+    source: 'Aménagement',
+    target: 'Gestion des risques',
+    curve: 1,
+    curveRadius: 1
+  },
+  {
+    source: 'Aménagement',
+    target: 'Biodiversité',
+    curve: 1,
+    curveRadius: 0.37
+  },
   // Eau
   {
-    source: 'Santé',
-    target: 'Eau',
+    source: 'Eau',
+    target: 'Santé',
     curve: 1,
     curveRadius: 0.3
   },
   {
     source: 'Eau',
     target: 'Tourisme',
+    curve: 1,
+    curveRadius: 0.4
+  },
+  {
+    source: 'Eau',
+    target: 'Biodiversité',
+    curve: 1,
+    curveRadius: 0.8
+  },
+  {
+    source: 'Eau',
+    target: 'Gestion des risques',
     curve: 1,
     curveRadius: 0.4
   },
@@ -144,10 +167,16 @@ export const liensEntreThematiques = [
     curveRadius: 0.1
   },
   {
-    source: 'Santé',
-    target: 'Agriculture et pêche',
+    source: 'Agriculture et pêche',
+    target: 'Santé',
     curve: 1,
     curveRadius: 0.3
+  },
+  {
+    source: 'Agriculture et pêche',
+    target: 'Biodiversité',
+    curve: 1,
+    curveRadius: 0.2
   },
   // Biodiversité
   {
@@ -213,74 +242,74 @@ export const liensEntreThematiques = [
     curveRadius: 1
   },
   {
-    source: 'Confort thermique',
-    target: 'Gestion des risques',
+    source: 'Gestion des risques',
+    target: 'Confort thermique',
     curve: 1,
     curveRadius: 0.7
   },
   {
-    source: 'Bâtiment',
-    target: 'Gestion des risques',
+    source: 'Gestion des risques',
+    target: 'Bâtiment',
     curve: 1,
     curveRadius: 0.5
   },
   {
-    source: 'Continuité des services',
-    target: 'Gestion des risques',
+    source: 'Gestion des risques',
+    target: 'Continuité des services',
     curve: 1,
     curveRadius: 0.38
   },
   {
-    source: 'Filière bois',
-    target: 'Gestion des risques',
+    source: 'Gestion des risques',
+    target: 'Filière bois',
     curve: 1,
     curveRadius: 0.15
   },
   {
-    source: 'Agriculture et pêche',
-    target: 'Gestion des risques',
+    source: 'Gestion des risques',
+    target: 'Agriculture et pêche',
     curve: 1,
     curveRadius: 0.25
   },
   {
-    source: 'Tourisme',
-    target: 'Gestion des risques',
+    source: 'Gestion des risques',
+    target: 'Tourisme',
     curve: 1,
     curveRadius: 0.05
   },
   {
-    source: 'Entreprises',
-    target: 'Gestion des risques',
+    source: 'Gestion des risques',
+    target: 'Entreprises',
     curve: -1,
     curveRadius: 0.05
   },
   {
-    source: 'Air',
-    target: 'Gestion des risques',
+    source: 'Gestion des risques',
+    target: 'Air',
     curve: 1,
     curveRadius: 0.15
   },
   {
-    source: 'Biodiversité',
-    target: 'Gestion des risques',
+    source: 'Gestion des risques',
+    target: 'Biodiversité',
     curve: 1,
     curveRadius: 0.28
   },
   {
-    source: 'Eau',
-    target: 'Gestion des risques',
+    source: 'Gestion des risques',
+    target: 'Eau',
     curve: 1,
     curveRadius: 0.4
   },
   {
-    source: 'Forêts',
-    target: 'Gestion des risques',
+    source: 'Gestion des risques',
+    target: 'Forêts',
     curve: 1,
     curveRadius: 0.6
   },
   {
-    source: 'Aménagement',
-    target: 'Gestion des risques',
+    source: 'Gestion des risques',
+    target: 'Aménagement',
     curve: 1,
     curveRadius: 1
   }
