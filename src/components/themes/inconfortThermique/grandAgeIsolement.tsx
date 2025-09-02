@@ -2,7 +2,7 @@
 
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { LineChart1 } from '@/components/charts/inconfortThermique/lineChartGrandAge';
+import { LineChartGrandAge } from '@/components/charts/inconfortThermique/lineChartGrandAge';
 import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
@@ -239,7 +239,7 @@ export const GrandAgeIsolement = (props: {
                 >
                   {
                     !Object.values(yData).slice(0, -2).includes('NaN') ?
-                      <LineChart1 xData={xData} yData={yGraphData} />
+                      <LineChartGrandAge xData={xData} yData={yGraphData} />
                       : <DataNotFoundForGraph image={DataNotFound} />
                   }
                 </div>
