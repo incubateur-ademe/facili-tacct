@@ -98,7 +98,9 @@ export const ConsommationEspacesNAF = (props: {
                   <LegendCompColor legends={espacesNAFDatavizLegend} />
                 </div>
               </>
-            ) : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
+            ) : <div className='p-10 flex flex-row justify-center'>
+              <DataNotFoundForGraph image={DataNotFound} />
+            </div>
           }
         </div>
       </div>

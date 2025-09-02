@@ -14,7 +14,7 @@ type GraphData = {
   y: number | null | undefined;
 };
 
-export const LineChart1 = (props: Props) => {
+export const LineChartGrandAge = (props: Props) => {
   const { xData, yData } = props;
   const [children, setChildren] = useState<GraphData[]>([]);
   const tempChildren: GraphData[] = [];

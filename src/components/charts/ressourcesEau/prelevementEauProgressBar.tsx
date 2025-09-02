@@ -7,7 +7,6 @@ import tracteur_icon_black from '@/assets/icons/themes/tracteur_icon_black.svg';
 import usine_icon_black from '@/assets/icons/themes/usine_icon_black.svg';
 import vagues_icon_black from '@/assets/icons/themes/vagues_icon_black.svg';
 import GraphNotFound from '@/assets/images/data_not_found_prelevement.png';
-import legendEpci from '@/assets/images/legend_prelevement_eau_epci.svg';
 import DataNotFound from '@/components/graphDataNotFound';
 import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
 import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
@@ -173,7 +172,10 @@ const PrelevementEauProgressBars = ({
               <HtmlTooltip
                 title={
                   <div className={styles.tooltip}>
-                    <H4 style={{ fontSize: '1rem', marginBottom: "0.5rem" }}>{item.titre}</H4>
+                    <div className='flex flex-row g-4 items-center mb-2'>
+                      <div className={styles.colorSquare} style={{ backgroundColor: item.color }} />
+                      <H4 style={{ fontSize: '1rem', marginBottom: "0" }}>{item.titre}</H4>
+                    </div>
                     <Body size='sm'>
                       {libelle} :{' '}
                       <b>
@@ -233,7 +235,6 @@ const PrelevementEauProgressBars = ({
                 </div>
               </HtmlTooltip>
             ))}
-          <Image src={legendEpci} alt="" style={{ alignSelf: 'end' }} />
         </>
       ) : (
         <div className='p-10 flex flex-row justify-center'><DataNotFound image={GraphNotFound} /></div>

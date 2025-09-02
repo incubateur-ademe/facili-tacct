@@ -143,7 +143,6 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
       rga.filter(item => item.epci === code) :
       rga;
 
-  // data pour les graphes    
   const evolutionRga = barChartRepartition(rgaFilteredByTerritory);
   const repartitionRga = barChartComparaison(rgaTerritoireSup, code, type);
 

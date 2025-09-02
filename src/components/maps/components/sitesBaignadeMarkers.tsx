@@ -7,9 +7,9 @@ import qualiteManquePrelevement from '@/assets/icons/qualite_baignade_manque_pre
 import qualiteNonClasse from '@/assets/icons/qualite_baignade_non_classe.svg';
 import qualiteSuffisant from '@/assets/icons/qualite_baignade_suffisant.svg';
 import { QualiteSitesBaignade } from '@/lib/postgres/models';
-import { Marker, Popup } from '@/lib/react-leaflet';
+import { L, Marker, Popup } from '@/lib/react-leaflet';
 import { Any } from '@/lib/utils/types';
-import L, { LatLngExpression, LeafletMouseEvent } from 'leaflet';
+import type { LatLngExpression, LeafletMouseEvent } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import Image from 'next/image';
 import { useRef } from 'react';
