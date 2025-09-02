@@ -9,7 +9,6 @@ import MuiAccordionSummary, {
   accordionSummaryClasses
 } from '@mui/material/AccordionSummary';
 import { Progress } from 'antd';
-import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import styles from './charts.module.scss';
 
@@ -74,8 +73,6 @@ export const SubAccordionGraph = ({
   superficieSau: number;
   isDefaultExpanded?: boolean;
 }) => {
-  const searchParams = useSearchParams();
-  const libelle = searchParams.get('libelle');
   const [expanded, setExpanded] = useState(isDefaultExpanded);
   const accordionTitle = Object.keys(graphDataItem)[0];
   const sortedData = [...Object.values(graphDataItem)[0]].sort((a, b) => b.value - a.value);

@@ -21,7 +21,7 @@ export const simplePieChartTooltip = ({ datum, unite }: { datum: PieTooltipProps
             className={styles.colorSquare}
             style={{ background: datum.color }}
           />
-          <Body size="sm">{datum.label} : <b>{Round(Number(datum.value), 1)} {unite ?? null}</b></Body>
+          <Body size="sm">{datum.id ? datum.id : datum.label} : <b>{Round(Number(datum.value), 1)} {unite ?? null}</b></Body>
         </div>
       </div>
     </div>

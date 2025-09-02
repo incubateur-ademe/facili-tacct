@@ -91,7 +91,6 @@ export const NivoBarChart = ({
         legendOffset: 50,
         legendPosition: 'middle',
         renderTick: (e: Any) => {
-          console.log("Rendering tick for:", e)
           return (
             <g transform={`translate(${e.x},${e.y})`}>
               <foreignObject x={-50} y={0} width={100} height={45}>
