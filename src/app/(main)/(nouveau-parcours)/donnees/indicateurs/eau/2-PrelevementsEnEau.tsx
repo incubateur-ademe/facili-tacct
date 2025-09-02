@@ -112,7 +112,6 @@ export const PrelevementsEnEau = (props: {
             className={styles.sourcesExportWrapper}
             style={{
               borderTop: "1px solid var(--gris-medium)",
-              borderBottom: "1px solid var(--gris-medium)",
               borderRadius: "0 0 0 1rem"
             }}>
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>

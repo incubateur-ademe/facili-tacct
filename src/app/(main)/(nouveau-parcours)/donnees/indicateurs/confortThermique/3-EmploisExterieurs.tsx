@@ -3,8 +3,6 @@ import { PieChartTravailExt } from '@/components/charts/inconfortThermique/pieCh
 import { MicroPieChart } from "@/components/charts/MicroDataviz";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import { Loader } from "@/components/loader";
-import { emploisEnExterieurLegend } from '@/components/maps/legends/datavizLegends';
-import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { Body } from "@/design-system/base/Textes";
 import { travailExtMapper } from "@/lib/mapper/inconfortThermique";
@@ -84,9 +82,9 @@ export const EmploisEnExterieur = ({
               travailExterieurTerritoire={travailExterieurTerritoire}
             /> : <Loader />
           }
-          <div className={styles.legend}>
+          {/* <div className={styles.legend}>
             <LegendCompColor legends={emploisEnExterieurLegend} />
-          </div>
+          </div> */}
           <div className={styles.sourcesExportWrapper} style={{ borderTop: '1px solid var(--gris-medium)' }}>
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
               Source : INSEE, Emplois au lieu de travail par sexe, secteur

@@ -5,13 +5,10 @@ import { catnatPieChartLegend } from '@/components/maps/legends/datavizLegends';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
-import { Round } from '@/lib/utils/reusableFunctions/round';
-import { Sum } from '@/lib/utils/reusableFunctions/sum';
-import { Any } from '@/lib/utils/types';
-import { DefaultRawDatum, PieCustomLayerProps, ResponsivePie } from '@nivo/pie';
-import { animated } from '@react-spring/web';
+import { DefaultRawDatum, PieCustomLayerProps } from '@nivo/pie';
 import styles from '../charts.module.scss';
 import { simplePieChartTooltip } from '../ChartTooltips';
+import NivoPieChart from '../NivoPieChart';
 
 type ArreteCatNatEnriched = ArreteCatNat & {
   annee_arrete: number;
@@ -77,68 +74,13 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
     );
   };
 
-  const arcLabelsComponent = ({ datum, label, style }: Any) => {
-    return (
-      <animated.g style={style}>
-        <animated.path
-          fill="none"
-          stroke={datum.color}
-          strokeWidth={style.thickness}
-          d={style.path}
-        />
-        <animated.text
-          transform={style.textPosition}
-          dominantBaseline="central"
-          style={{
-            fontSize: 12,
-            fontWeight: 400
-          }}
-        >
-          <animated.tspan>{label} : </animated.tspan>
-          <animated.tspan style={{ fontWeight: 600 }} x="0" dy="1.2em">
-            {datum.value}{' '}
-          </animated.tspan>
-          <animated.tspan>
-            ({Round((100 * datum.value) / Sum(Object.values(countTypes)), 1)} %)
-          </animated.tspan>
-        </animated.text>
-      </animated.g>
-    );
-  };
 
   return (
     <div className={styles.responsivePieContainer}>
-      <ResponsivePie
-        data={graphData}
-        margin={{ top: windowDimensions.width > 1248 ? 60 : 20, right: 10, bottom: windowDimensions.width > 1248 ? 60 : 20, left: 10 }}
-        colors={(graphData) => catnatPieChartLegend.find(el => el.value === graphData.id)?.color}
-        isInteractive={true}
-        innerRadius={0.5}
-        padAngle={1}
-        cornerRadius={3}
-        activeOuterRadiusOffset={8}
-        borderWidth={1}
-        enableArcLinkLabels={windowDimensions.width > 1248 ? true : false}
-        arcLinkLabelComponent={arcLabelsComponent}
-        arcLinkLabel={({ id }) => `${id}`}
-        arcLinkLabelsSkipAngle={10}
-        sortByValue={false}
-        layers={[
-          'arcs',
-          'arcLinkLabels',
-          'legends',
-          CenteredMetric
-        ]}
-        borderColor={{
-          from: 'color',
-          modifiers: [['darker', 0.2]]
-        }}
-        arcLinkLabelsTextColor="#333333"
-        arcLinkLabelsThickness={2}
-        arcLinkLabelsColor={{ from: 'color' }}
-        arcLinkLabelsOffset={15}
-        arcLinkLabelsDiagonalLength={12}
-        arcLinkLabelsStraightLength={5}
+      <NivoPieChart
+        graphData={graphData}
+        colors={(graphData) => catnatPieChartLegend.find(el => el.value === graphData.id)?.color!}
+        CenteredMetric={CenteredMetric}
         tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: 'arrêté(s)' })}
       />
     </div>

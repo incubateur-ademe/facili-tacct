@@ -1,5 +1,7 @@
 "use client";
 
+import { prelevementEauBarChartLegend } from "@/components/maps/legends/datavizLegends";
+import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import RangeSlider from "@/components/Slider";
 import SubTabs from '@/components/SubTabs';
 import { RessourcesEau } from '@/lib/postgres/models';
@@ -19,9 +21,7 @@ type Props = {
 const EauCharts = (props: Props) => {
   const { datavizTab, setDatavizTab, ressourcesEau } = props;
   const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
   const [sliderValue, setSliderValue] = useState<number[]>([2008, 2020]);
 
   return (
@@ -55,6 +55,9 @@ const EauCharts = (props: Props) => {
           ressourcesEau={ressourcesEau}
           sliderValue={sliderValue}
         />
+        <div style={{ paddingBottom: '1rem' }}>
+          <LegendCompColor legends={prelevementEauBarChartLegend} />
+        </div>
       </>
       }
     </div>

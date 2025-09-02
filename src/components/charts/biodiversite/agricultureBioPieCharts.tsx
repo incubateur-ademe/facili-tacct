@@ -2,6 +2,7 @@ import surfaceCertifeeIcon from '@/assets/icons/agriculture_bio_surface_certifie
 import surfaceEnConversionIcon from '@/assets/icons/agriculture_bio_surface_conversion_icon.svg';
 import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
 import { Body, H4 } from '@/design-system/base/Textes';
+import couleurs from '@/design-system/couleurs';
 import { AgricultureBio } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Progress } from 'antd';
@@ -122,13 +123,13 @@ export const AgricultureBioPieCharts = ({
               {...ProgressProps}
               aria-label="Circle progress bar"
               percent={partCertifieeRounded}
-              strokeColor="#00949D"
+              strokeColor={couleurs.graphiques.bleu[3]}
               trailColor="#00949D10"
             />
             <div className={styles.progressText}>
-              <p style={{ color: '#00949D' }}>
+              <Body style={{ color: couleurs.graphiques.bleu[3] }}>
                 <span>{Round(partCertifieeRounded, 1)}</span> %
-              </p>
+              </Body>
             </div>
           </div>
         </HtmlTooltip>
@@ -167,13 +168,13 @@ export const AgricultureBioPieCharts = ({
               style={{ transform: `rotate(${partCertifieeRounded * 3.6}deg)` }}
               aria-label="Circle progress bar"
               percent={partEnConversion}
-              strokeColor="#00C2CC"
+              strokeColor={couleurs.graphiques.bleu[1]}
               trailColor="#00C2CC10"
             />
             <div className={styles.progressText}>
-              <p style={{ color: '#00C2CC' }}>
+              <Body style={{ color: couleurs.graphiques.bleu[1] }}>
                 <span>{Round(partEnConversion, 1)}</span> %
-              </p>
+              </Body>
             </div>
           </div>
         </HtmlTooltip>

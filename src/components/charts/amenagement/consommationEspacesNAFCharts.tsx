@@ -60,7 +60,7 @@ export const ConsommationEspacesNAFCharts = (props: {
               sliderValue={sliderValue}
               filterValue={typeValue}
             />
-            <div className={styles.legend}>
+            <div className={styles.legend} style={{ paddingBottom: '1rem' }}>
               <LegendCompColor legends={espacesNAFBarChartLegend} />
             </div>
           </div>
