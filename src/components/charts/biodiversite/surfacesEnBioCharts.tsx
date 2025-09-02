@@ -5,6 +5,8 @@ import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { AgricultureBioBarChart } from '@/components/charts/biodiversite/agricultureBioBarChart';
 import { AgricultureBioPieCharts } from '@/components/charts/biodiversite/agricultureBioPieCharts';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
+import { agricultureBioBarChartLegend } from "@/components/maps/legends/datavizLegends";
+import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
 import { AgricultureBio } from '@/lib/postgres/models';
@@ -84,6 +86,9 @@ const SurfacesEnBioCharts = ({
                   agricultureBio={agricultureBio}
                   sliderValue={sliderValue}
                 />
+                <div className={styles.legend} style={{ paddingBottom: '1rem' }}>
+                  <LegendCompColor legends={agricultureBioBarChartLegend} />
+                </div>
                 {
                   territoiresPartiellementCouverts && territoiresPartiellementCouverts.length > 0 &&
                   <div style={{ minWidth: "450px", backgroundColor: "white", padding: "1em" }}>

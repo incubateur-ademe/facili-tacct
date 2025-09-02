@@ -1,5 +1,7 @@
 "use client";
 
+import { Body } from "@/design-system/base/Textes";
+import couleurs from "@/design-system/couleurs";
 import { AgricultureBio } from "@/lib/postgres/models";
 import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import { useEffect, useState } from "react";
@@ -58,13 +60,13 @@ export const AgricultureBioBarChart = (
       variable: "Surface certifiée agriculture biologique",
       texteRaccourci: "Surface certifiée",
       valeur: Sum(graphData.map(e => e["Surface certifiée agriculture biologique"])),
-      couleur: "#00C2CC"
+      couleur: couleurs.graphiques.bleu[3]
     },
     {
       variable: "Surface en conversion agriculture biologique",
       texteRaccourci: "Surface en conversion",
       valeur: Sum(graphData.map(e => e["Surface en conversion agriculture biologique"])),
-      couleur: "#00949D"
+      couleur: couleurs.graphiques.bleu[1]
     },
   ]
 
@@ -76,12 +78,7 @@ export const AgricultureBioBarChart = (
           graphData={graphData}
           keys={legends.map(e => e.variable)}
           indexBy="annee"
-          legendData={legends.filter(e => e.valeur != 0)
-            .map((legend, index) => ({
-              id: index,
-              label: legend.texteRaccourci,
-              color: legend.couleur,
-            }))}
+          showLegend={false}
           tooltip={(tooltipProps) => agricultureBioBarChartTooltip({ data: tooltipProps, legends, collectiviteName })}
           axisLeftLegend="Surface en ha"
         />
@@ -92,7 +89,7 @@ export const AgricultureBioBarChart = (
             textAlign: 'center'
           }}
         >
-          <p>Aucune donnée disponible avec ces filtres</p>
+          <Body>Aucune donnée disponible avec ces filtres</Body>
         </div>
       }
     </div>

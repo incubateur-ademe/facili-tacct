@@ -177,13 +177,7 @@ const PrelevementEauBarChart = ({
           graphData={graphData}
           keys={legends.map((e) => e.texte_complet)}
           indexBy="annee"
-          legendData={legends
-            .filter((e) => e.valeur != 0)
-            .map((legend, index) => ({
-              id: index,
-              label: legend.texteRaccourci,
-              color: legend.couleur
-            }))}
+          showLegend={false}
           tooltip={({ data }) => simpleBarChartTooltip({
             data,
             legende: ressourcesEauBarChartLegend,

@@ -52,9 +52,11 @@
         flex-direction: column;
         justify-content: space-between;
         width: 60%;
-        border-radius: 1rem 0 0 0;
+        border-radius: 1rem 0 0 1rem;
         border-left: 1px solid var(--gris-medium);
         border-top: 1px solid var(--gris-medium);
+        border-bottom: 1px solid var(--gris-medium);
+        margin-bottom: 1rem;
         .legend {
             margin: 0.75rem 0.5rem;
         }

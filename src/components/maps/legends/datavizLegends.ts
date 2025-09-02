@@ -151,6 +151,17 @@ export const chefsExploitationLegend = [
   }
 ];
 
+export const agricultureBioBarChartLegend = [
+  {
+    value: 'Surface certifiée',
+    color: couleurs.graphiques.bleu[3]
+  },
+  {
+    value: 'Surface en conversion',
+    color: couleurs.graphiques.bleu[1]
+  },
+];
+
 export const espacesNAFBarChartLegend = [
   {
     value: 'Activité',
@@ -446,6 +457,33 @@ export const DateConstructionResidencesLegend = [
   {
     value: 'Votre collectivité',
     color: couleurs.graphiques.rouge[3]
+  }
+];
+
+export const prelevementEauBarChartLegend = [
+  {
+    value: 'Agriculture',
+    color: couleurs.graphiques.vert[2]
+  },
+  {
+    value: 'Alimentation des canaux',
+    color: couleurs.graphiques.turquoise[2]
+  },
+  {
+    value: 'Eau potable',
+    color: couleurs.graphiques.bleu[2]
+  },
+  {
+    value: 'Industrie et autres usages économiques',
+    color: couleurs.graphiques.violet[2]
+  },
+  {
+    value: "Production d'électricité (barrages hydro-électriques)",
+    color: couleurs.graphiques.orange[2]
+  },
+  {
+    value: 'Refroidissement des centrales électriques',
+    color: couleurs.graphiques.rose[2]
   }
 ];
 

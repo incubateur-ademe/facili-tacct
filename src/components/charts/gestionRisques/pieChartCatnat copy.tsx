@@ -1,68 +1,76 @@
 // @ts-nocheck
 'use client';
 
+import { catnatPieChartLegend } from '@/components/maps/legends/datavizLegends';
 import useWindowDimensions from '@/hooks/windowDimensions';
-import { IncendiesForet } from '@/lib/postgres/models';
+import { ArreteCatNat } from '@/lib/postgres/models';
 import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
-import { DefaultRawDatum, PieCustomLayerProps } from '@nivo/pie';
+import { DefaultRawDatum, PieCustomLayerProps, ResponsivePie } from '@nivo/pie';
 import { animated } from '@react-spring/web';
 import styles from '../charts.module.scss';
 import { simplePieChartTooltip } from '../ChartTooltips';
-import NivoPieChart from '../NivoPieChart';
 
-const colors: { [key: string]: string } = {
-  Malveillance: '#91D1CC',
-  Accidentelle: '#038278',
-  'Involontaire (particulier)': '#095D55',
-  'Involontaire (travaux)': '#05413B',
-  Naturelle: '#D3EDEB',
-  Inconnue: '#d7f8ff'
+type ArreteCatNatEnriched = ArreteCatNat & {
+  annee_arrete: number;
 };
 
-const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
-  const { incendiesForet } = props;
+const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
+  const { gestionRisques } = props;
   const windowDimensions = useWindowDimensions();
-  const countTypes = CountOcc(incendiesForet, 'nature');
-  countTypes['Inconnue'] = countTypes['null'] ?? 0;
-  const causesInconnues = countTypes['null'];
-  delete countTypes['null'];
-
-  const graphData = Object.entries(countTypes).map(([id, value]) => ({
-    id,
-    value
-  }));
+  const countTypes = CountOcc(gestionRisques, 'lib_risque_jo');
+  const mapGraphData = gestionRisques?.map((el) => {
+    return {
+      id: el.lib_risque_jo ?? '',
+      label: el.lib_risque_jo ?? '',
+      value: countTypes[el.lib_risque_jo!]
+    };
+  });
+  const graphData = mapGraphData.filter(
+    (value, index, self) =>
+      index === self.findIndex((t) => t.label === value.label)
+  );
 
   const CenteredMetric = ({
     dataWithArc,
     centerX,
     centerY
   }: PieCustomLayerProps<DefaultRawDatum>) => {
+    let total = 0;
+    dataWithArc.forEach((datum: { value: number }) => {
+      total += datum.value;
+    });
+    const mainFontSize = windowDimensions?.width > 1248 ? 32 : windowDimensions?.width > 1024 ? 26 : 18;
+    const subFontSize = Math.max(10, Math.round(mainFontSize / 3));
+    const mainYOffset = -Math.round(mainFontSize / 2);
+    const subYOffset = Math.round(subFontSize / 1.2);
+
     return (
       <>
         <text
           x={centerX}
-          y={centerY - 10}
+          y={centerY + mainYOffset}
           textAnchor="middle"
           dominantBaseline="central"
           style={{
-            fontSize: '36px',
-            fontWeight: 700
+            fontSize: `${mainFontSize}px`,
+            fontWeight: 700,
           }}
         >
-          {causesInconnues ?? '0'}
+          {total}
         </text>
         <text
           x={centerX}
-          y={centerY + 20}
+          y={centerY + subYOffset}
           textAnchor="middle"
           dominantBaseline="central"
           style={{
-            fontSize: '12px',
+            fontSize: `${subFontSize}px`,
             fontWeight: 400
           }}
         >
-          {causesInconnues ? 'Causes inconnues' : 'Cause inconnue'}
+          arrêté(s) CatNat
         </text>
       </>
     );
@@ -121,8 +129,7 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
             {datum.value}{' '}
           </animated.tspan>
           <animated.tspan>
-            ({((100 * datum.value) / Sum(Object.values(countTypes))).toFixed(1)}
-            %)
+            ({Round((100 * datum.value) / Sum(Object.values(countTypes)), 1)} %)
           </animated.tspan>
         </animated.text>
       </animated.g>
@@ -131,40 +138,41 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
 
   return (
     <div className={styles.responsivePieContainer}>
-      <NivoPieChart
-        graphData={graphData}
-        colors={(graphData) => colors[graphData.id]}
-        tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: 'ha' })}
-      />
-      {/* <ResponsivePie
+      <ResponsivePie
         data={graphData}
-        margin={{ top: windowDimensions.width > 1248 ? 60 : 20, right: 10, bottom: windowDimensions.width > 1248 ? 60 : 20, left: 10 }}
-        colors={(graphData) => colors[graphData.id]}
+        margin={{ top: windowDimensions.width && windowDimensions.width > 1248 ? 60 : 20, right: 10, bottom: windowDimensions.width && windowDimensions.width > 1248 ? 60 : 20, left: 10 }}
+        colors={(graphData) => catnatPieChartLegend.find(el => el.value === graphData.id)?.color!}
         isInteractive={true}
         innerRadius={0.5}
         padAngle={1}
         cornerRadius={3}
         activeOuterRadiusOffset={8}
         borderWidth={1}
+        enableArcLinkLabels={windowDimensions.width && windowDimensions.width > 1248 ? true : false}
         arcLinkLabelComponent={arcLabelsComponent}
-        enableArcLinkLabels={windowDimensions.width > 1248 ? true : false}
+        arcLinkLabel={({ id }) => `${id}`}
+        arcLinkLabelsSkipAngle={10}
         sortByValue={false}
-        layers={['arcs', 'arcLinkLabels', 'legends']} //, CenteredMetric
+        layers={[
+          'arcs',
+          'arcLinkLabels',
+          'legends',
+          CenteredMetric
+        ]}
         borderColor={{
           from: 'color',
           modifiers: [['darker', 0.2]]
         }}
-        arcLinkLabelsSkipAngle={15}
         arcLinkLabelsTextColor="#333333"
         arcLinkLabelsThickness={2}
         arcLinkLabelsColor={{ from: 'color' }}
-        arcLinkLabelsOffset={10}
-        arcLinkLabelsDiagonalLength={12}
-        arcLinkLabelsStraightLength={20}
-        tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: 'ha' })}
-      /> */}
+        arcLinkLabelsOffset={15}
+        arcLinkLabelsDiagonalLength={16}
+        arcLinkLabelsStraightLength={12}
+        tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: 'arrêté(s)' })}
+      />
     </div>
-  );
-};
+  )
+}
 
-export default PieChartFeuxForet;
+export default PieChartCatnat;
