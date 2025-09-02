@@ -3,7 +3,7 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import ZeroData from '@/assets/images/zero_data_found.png';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
-import couleurs from '@/design-system/couleurs';
+import { travailExterieurPieChartLegend } from '@/components/maps/legends/datavizLegends';
 import { travailExtDto } from '@/lib/dto';
 import { simplePieChartTooltip } from '../ChartTooltips';
 import NivoPieChart from '../NivoPieChart';
@@ -12,18 +12,10 @@ type Props = {
   graphData: Array<{
     id: string;
     label: string;
-    value: number | undefined;
+    value: number;
     count: number;
   }>;
   travailExterieurTerritoire: travailExtDto[];
-};
-
-export const colors: { [key: string]: string } = {
-  Agriculture: couleurs.graphiques.jaune[4],
-  Industries: couleurs.graphiques.orange[3],
-  Construction: couleurs.graphiques.violet[2],
-  "Commerces et transports": couleurs.graphiques.vert[1],
-  Administrations: couleurs.graphiques.bleu[5]
 };
 
 export const PieChartTravailExt = ({ graphData, travailExterieurTerritoire }: Props) => {
@@ -33,7 +25,7 @@ export const PieChartTravailExt = ({ graphData, travailExterieurTerritoire }: Pr
       {sumAllCount > 0 ?
         <NivoPieChart
           graphData={graphData}
-          colors={(graphData) => colors[graphData.label]}
+          colors={(graphData) => travailExterieurPieChartLegend.find(legend => legend.value === graphData.label)?.color!}
           tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: '%' })}
         />
         : (

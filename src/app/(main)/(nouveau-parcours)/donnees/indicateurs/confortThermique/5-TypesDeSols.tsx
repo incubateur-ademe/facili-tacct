@@ -1,5 +1,6 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { MicroPieChart } from '@/components/charts/MicroDataviz';
 import { generateMapPngBlob } from '@/components/exports/ExportPng';
 import { ZipExportButtonNouveauParcours } from '@/components/exports/ZipExportButton';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
@@ -7,7 +8,6 @@ import { vegetalisationLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import { MapCLC } from '@/components/maps/mapCLC';
 import { Body } from "@/design-system/base/Textes";
-import { CommunesContourMapper } from '@/lib/mapper/communes';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { CarteCommunes, CLCTerritoires, InconfortThermique } from "@/lib/postgres/models";
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
@@ -34,7 +34,6 @@ export const TypesDeSols = ({
   const type = searchParams.get('type')!;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
-  const territoireContourMap = carteCommunes.map(CommunesContourMapper);
   const vegetalisationMapped = inconfortThermique.map(vegetalisationMapper);
   const vegetalisationTerritoire =
     type === 'commune'
@@ -57,12 +56,10 @@ export const TypesDeSols = ({
     <>
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper} style={{ alignItems: 'center' }}>
-          {/* <MicroRemplissageTerritoire
-            territoireContours={territoireContourMap}
+          <MicroPieChart
             pourcentage={foretPercent}
             arrondi={1}
-            height={155}
-          /> */}
+          />
           <div className={styles.text}>
             {
               isNaN(foretPercent) ? "" : (

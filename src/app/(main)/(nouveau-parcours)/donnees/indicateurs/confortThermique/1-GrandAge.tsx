@@ -1,6 +1,6 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { LineChart1 } from "@/components/charts/inconfortThermique/lineChartGrandAge";
+import { LineChartGrandAge } from "@/components/charts/inconfortThermique/lineChartGrandAge";
 import { MicroPieChart } from "@/components/charts/MicroDataviz";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
@@ -91,7 +91,7 @@ export const GrandAge = ({
             >
               {
                 !Object.values(yData).slice(0, -2).includes('NaN') ?
-                  <LineChart1 xData={xData} yData={yGraphData} />
+                  <LineChartGrandAge xData={xData} yData={yGraphData} />
                   : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
               }
             </div>

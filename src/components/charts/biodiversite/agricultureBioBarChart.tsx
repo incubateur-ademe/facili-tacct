@@ -1,11 +1,11 @@
 "use client";
 
+import { surfaceEnBioBarChartLegend } from "@/components/maps/legends/datavizLegends";
 import { Body } from "@/design-system/base/Textes";
-import couleurs from "@/design-system/couleurs";
 import { AgricultureBio } from "@/lib/postgres/models";
 import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import { useEffect, useState } from "react";
-import { agricultureBioBarChartTooltip } from "../ChartTooltips";
+import { simpleBarChartTooltip } from "../ChartTooltips";
 import { NivoBarChart } from "../NivoBarChart";
 
 type GraphData = {
@@ -13,9 +13,9 @@ type GraphData = {
   "Surface en conversion agriculture biologique": number;
   annee: string;
 }
-const agricultureBioYears = ["surface_2019", "surface_2020", "surface_2021", "surface_2022"];
-
 type Years = "surface_2019" | "surface_2020" | "surface_2021" | "surface_2022";
+
+const agricultureBioYears = ["surface_2019", "surface_2020", "surface_2021", "surface_2022"];
 
 const graphDataFunct = (filteredYears: string[], data: AgricultureBio[]) => {
   const dataArr: GraphData[] = [];
@@ -43,7 +43,6 @@ export const AgricultureBioBarChart = (
   { agricultureBio, sliderValue }: { agricultureBio: AgricultureBio[], sliderValue: number[] }
 ) => {
   const [selectedYears, setSelectedYears] = useState<string[]>(agricultureBioYears.map(year => year.split("_")[1]));
-  const collectiviteName = agricultureBio[0].libelle_epci;
   const graphData = graphDataFunct(selectedYears, agricultureBio)
 
   useEffect(() => {
@@ -55,31 +54,16 @@ export const AgricultureBioBarChart = (
     )
   }, [sliderValue]);
 
-  const legends = [
-    {
-      variable: "Surface certifiée agriculture biologique",
-      texteRaccourci: "Surface certifiée",
-      valeur: Sum(graphData.map(e => e["Surface certifiée agriculture biologique"])),
-      couleur: couleurs.graphiques.bleu[3]
-    },
-    {
-      variable: "Surface en conversion agriculture biologique",
-      texteRaccourci: "Surface en conversion",
-      valeur: Sum(graphData.map(e => e["Surface en conversion agriculture biologique"])),
-      couleur: couleurs.graphiques.bleu[1]
-    },
-  ]
-
   return (
     <div style={{ height: "450px", minWidth: "450px", backgroundColor: "white" }}>
       {graphData && graphData.length ?
         <NivoBarChart
-          colors={legends.map(e => e.couleur)}
+          colors={surfaceEnBioBarChartLegend.map(e => e.color)}
           graphData={graphData}
-          keys={legends.map(e => e.variable)}
+          keys={surfaceEnBioBarChartLegend.map(e => e.value)}
           indexBy="annee"
           showLegend={false}
-          tooltip={(tooltipProps) => agricultureBioBarChartTooltip({ data: tooltipProps, legends, collectiviteName })}
+          tooltip={({ data }) => simpleBarChartTooltip({ data, legende: surfaceEnBioBarChartLegend, unite: "ha", arrondi: 0 })}
           axisLeftLegend="Surface en ha"
         />
         : <div

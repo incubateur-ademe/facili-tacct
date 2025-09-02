@@ -4,6 +4,7 @@ import { prelevementEauBarChartLegend } from "@/components/maps/legends/datavizL
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import RangeSlider from "@/components/Slider";
 import SubTabs from '@/components/SubTabs';
+import { Body } from "@/design-system/base/Textes";
 import { RessourcesEau } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
 import { useState } from "react";
@@ -26,12 +27,37 @@ const EauCharts = (props: Props) => {
 
   return (
     <div className={styles.dataWrapper}>
-      <div className={styles.graphTabsWrapper}>
-        <SubTabs
-          data={['Répartition', 'Évolution']}
-          defaultTab={datavizTab}
-          setValue={setDatavizTab}
-        />
+      <div
+        className={styles.graphTabsLegend}
+        style={{ justifyContent: type !== "departement" && type !== "pnr" ? "space-between" : "flex-end" }}
+      >
+        {
+          type !== "departement" && type !== "pnr" &&
+          <div className={styles.legendWrapper}>
+            <Body
+              style={{
+                fontSize: "10px",
+                textTransform: "uppercase",
+                position: "absolute",
+                marginBottom: "1.3rem",
+                marginLeft: type === "commune" ? "6rem" : "4rem"
+              }}>
+              Département
+            </Body>
+            <Body style={{ fontSize: "10px", textTransform: "uppercase" }}>{type} (%)</Body>
+            <div className={styles.progressBar}>
+              <div className={styles.greyBar}></div>
+              <div className={styles.cursor}></div>
+            </div>
+          </div>
+        }
+        <div className={styles.graphTabsWrapper}>
+          <SubTabs
+            data={['Répartition', 'Évolution']}
+            defaultTab={datavizTab}
+            setValue={setDatavizTab}
+          />
+        </div>
       </div>
       {datavizTab === 'Répartition' ? (
         <>
