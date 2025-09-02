@@ -27,20 +27,6 @@ export const MapCLC = (
   const clcParsed = useMemo(() => clc.map(ClcMapper), [clc]);
   const enveloppe = BoundsFromCollectionCLC(clcParsed);
 
-  const colorExpression = useMemo(() => {
-    const expression: Array<string | Array<string | Array<string>>> = ['case'];
-    clcParsed.forEach((feature) => {
-      const color = getColor(feature.properties.label);
-      expression.push(
-        ['==', ['get', 'label'], feature.properties.label],
-        color as string
-      );
-    });
-    expression.push('transparent');
-    return expression;
-  }, [clcParsed]);
-
-
   const geoJsonData = useMemo(() => {
     return {
       type: "FeatureCollection" as const,
@@ -97,7 +83,56 @@ export const MapCLC = (
         type: 'fill',
         source: 'clc-communes',
         paint: {
-          'fill-color': colorExpression as unknown as string,
+          'fill-color': [
+            'match',
+            ['get', 'label'],
+            'Continuous urban fabric', '#ffff99',
+            'Discontinuous urban fabric', '#ffff99',
+            'Industrial or commercial units', '#ffff99',
+            'Road and rail networks and associated land', '#ffff99', 
+            'Port areas', '#ffff99',
+            "Airports", '#ffff99',
+            'Mineral extraction sites', '#ffff99',
+            'Dump sites', '#ffff99',
+            'Construction sites', '#ffff99',
+            'Green urban areas', '#7fc97f', 
+            'Sport and leisure facilities', '#ffff99',
+            'Non-irrigated arable land', '#fdc086',
+            'Permanently irrigated land', '#fdc086',
+            'Rice fields', '#fdc086',
+            "Vineyards", '#fdc086', 
+            'Fruit trees and berry plantations', '#fdc086',
+            'Olive groves', '#fdc086', 
+            "Pastures", '#fdc086',
+            'Annual crops associated with permanent crops', '#fdc086',
+            'Complex cultivation patterns', '#fdc086',
+            'Land principally occupied by agriculture, with significant areas of natural vegetation',
+            '#fdc086',
+            'Agro-forestry areas', '#fdc086', 
+            'Broad-leaved forest', '#7fc97f', 
+            'Coniferous forest', '#7fc97f', 
+            'Mixed forest', '#7fc97f', 
+            'Natural grasslands', '#7fc97f', 
+            'Moors and heathland', '#7fc97f',
+            'Sclerophyllous vegetation', '#7fc97f',
+            'Transitional woodland-shrub', '#7fc97f',
+            'Beaches, dunes, sands', '#7fc97f',
+            'Bare rocks', '#7fc97f',
+            'Sparsely vegetated areas', '#7fc97f',
+            'Burnt areas', '#7fc97f',
+            'Glaciers and perpetual snow', '#7fc97f',
+            'Inland marshes', '#beaed4',
+            'Peat bogs', '#beaed4',
+            'Salt marshes', '#beaed4',
+            "Salines", '#beaed4',
+            'Intertidal flats', '#beaed4',
+            'Water courses', '#386cb0',
+            'Water bodies', '#386cb0',
+            'Coastal lagoons', '#386cb0',
+            "Estuaries", '#386cb0',
+            'Sea and ocean', '#386cb0',
+            'white'
+          ],
           'fill-opacity': 0.6
         }
       });
@@ -111,19 +146,7 @@ export const MapCLC = (
         mapRef.current = null;
       }
     };
-  }, [geoJsonData, colorExpression, enveloppe]);
-
-  useEffect(() => {
-    let map = mapRef.current;
-    if (!map || !mapContainer.current || !map.style) return;
-    setTimeout(() => {
-      map.setPaintProperty(
-        'clc-fill',
-        'fill-color',
-        colorExpression
-      );
-    }, 200);
-  }, [colorExpression]);
+  }, [geoJsonData, enveloppe]);
 
   return (
     <div style={{ position: 'relative' }}>

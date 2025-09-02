@@ -87,19 +87,28 @@ export const aot40Legends = [
   }
 ];
 
-const getColor = (d: number) => {
-  return d <= 0.0005
-    ? '#ECD8FE'
-    : d > 0.0005 && d <= 0.001
-      ? '#C48EF6'
-      : d > 0.002
-        ? '#8C58BB'
-        : d > 0.005
-          ? '#6E3F99'
-          : d > 0.01
-            ? '#42255C'
-            : 'transparent';
-};
+export const travailExterieurPieChartLegend = [
+  {
+    value: "Agriculture",
+    color: couleurs.graphiques.jaune[4]
+  },
+  {
+    value: "Industries",
+    color: couleurs.graphiques.orange[3]
+  },
+  {
+    value: "Construction",
+    color: couleurs.graphiques.violet[2]
+  },
+  {
+    value: "Commerces et transports",
+    color: couleurs.graphiques.vert[1]
+  },
+  {
+    value: "Administrations",
+    color: couleurs.graphiques.bleu[5]
+  }
+]
 
 export const feuxForetLegend = [
   {
@@ -691,6 +700,17 @@ export const LczLegendOpacity70 = [
     color: '#8888F0'
   }
 ];
+
+export const surfaceEnBioBarChartLegend = [
+    {
+      value: "Surface certifiée agriculture biologique",
+      color: couleurs.graphiques.bleu[3]
+    },
+    {
+      value: "Surface en conversion agriculture biologique",
+      color: couleurs.graphiques.bleu[1]
+    },
+  ]
 
 export const feuxForetBarChartLegend = [
   {

@@ -1,7 +1,6 @@
 'use client';
 
-import { ressourcesEauBarChartLegend } from '@/components/maps/legends/datavizLegends';
-import couleurs from '@/design-system/couleurs';
+import { prelevementEauBarChartLegend, ressourcesEauBarChartLegend } from '@/components/maps/legends/datavizLegends';
 import { RessourcesEau } from '@/lib/postgres/models';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
@@ -113,52 +112,7 @@ const PrelevementEauBarChart = ({
     );
   }, [sliderValue]);
 
-  const legends = [
-    {
-      texte_complet: 'Agriculture',
-      texteRaccourci: 'Agriculture',
-      valeur: Sum(graphData.map((e) => e.Agriculture)),
-      couleur: couleurs.graphiques.vert[2]
-    },
-    {
-      texte_complet: 'Alimentation des canaux',
-      texteRaccourci: 'Alimentation des canaux',
-      valeur: Sum(graphData.map((e) => e['Alimentation des canaux'])),
-      couleur: couleurs.graphiques.turquoise[2]
-    },
-    {
-      texte_complet: 'Eau potable',
-      texteRaccourci: 'Eau potable',
-      valeur: Sum(graphData.map((e) => e['Eau potable'])),
-      couleur: couleurs.graphiques.bleu[2]
-    },
-    {
-      texte_complet: 'Industrie et autres usages économiques',
-      texteRaccourci: 'Industrie',
-      valeur: Sum(
-        graphData.map((e) => e['Industrie et autres usages économiques'])
-      ),
-      couleur: couleurs.graphiques.violet[2]
-    },
-    {
-      texte_complet: "Production d'électricité (barrages hydro-électriques)",
-      texteRaccourci: 'Barrages hydro-électriques',
-      valeur: Sum(
-        graphData.map(
-          (e) => e["Production d'électricité (barrages hydro-électriques)"]
-        )
-      ),
-      couleur: couleurs.graphiques.orange[2]
-    },
-    {
-      texte_complet: 'Refroidissement des centrales électriques',
-      texteRaccourci: 'Refroidissement des centrales',
-      valeur: Sum(
-        graphData.map((e) => e['Refroidissement des centrales électriques'])
-      ),
-      couleur: couleurs.graphiques.rose[2]
-    }
-  ];
+
   const minValueXTicks = Math.min(...graphData.map((e) => Number(e.annee)));
   const maxValueXTicks = Math.max(...graphData.map((e) => Number(e.annee)));
 
@@ -173,9 +127,9 @@ const PrelevementEauBarChart = ({
               ? [`${minValueXTicks}`, `${maxValueXTicks}`]
               : [`${minValueXTicks}`]
           }
-          colors={legends.map((e) => e.couleur)}
+          colors={prelevementEauBarChartLegend.map((e) => e.color)}
           graphData={graphData}
-          keys={legends.map((e) => e.texte_complet)}
+          keys={prelevementEauBarChartLegend.map((e) => e.value)}
           indexBy="annee"
           showLegend={false}
           tooltip={({ data }) => simpleBarChartTooltip({

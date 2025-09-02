@@ -1,12 +1,13 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { MicroPieChart } from '@/components/charts/MicroDataviz';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { fragiliteEcoLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import { MapInconfortThermique } from '@/components/maps/mapInconfortThermique';
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { Body } from "@/design-system/base/Textes";
-import { CommunesContourMapper, CommunesIndicateursMapper } from '@/lib/mapper/communes';
+import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes } from "@/lib/postgres/models";
 import { fragiliteEconomiqueTooltipText } from '@/lib/tooltipTexts';
 import { eptRegex } from "@/lib/utils/regex";
@@ -23,7 +24,6 @@ export const PrecariteEnergetique = ({
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const territoireContourMap = carteCommunes.map(CommunesContourMapper);
   const communesMap = carteCommunes
     .map(CommunesIndicateursMapper)
     .filter((e) => !isNaN(e.properties.precarite_logement));
@@ -50,12 +50,10 @@ export const PrecariteEnergetique = ({
     <>
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper}>
-          {/* <MicroRemplissageTerritoire
-            territoireContours={territoireContourMap}
+          <MicroPieChart
             pourcentage={100 * precariteLogTerritoire}
             arrondi={1}
-            height={155}
-          /> */}
+          />
           <div className={styles.text}>
             {
               precariteLogTerritoire ? (

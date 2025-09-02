@@ -16,11 +16,16 @@ import {
   StyleFunction
 } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
+import { Loader } from '../loader';
 import { BoundsFromCollection } from './components/boundsFromCollection';
-import SitesBaignadeMarkers from './components/sitesBaignadeMarkers';
 import { CoursDeauTooltip } from './components/tooltips';
+
+const SitesBaignadeMarkers = dynamic(() => import('./components/sitesBaignadeMarkers'), {
+  loading: () => <Loader />
+});
 
 export const MapEtatCoursDeauLegacy = (props: {
   etatCoursDeau: EtatCoursDeauDto[];

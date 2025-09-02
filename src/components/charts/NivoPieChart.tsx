@@ -43,7 +43,6 @@ const NivoPieChart = ({
 
   const windowDimensions = useWindowDimensions();
   const arcLabelsComponent = ({ datum, label, style }: Any) => {
-    console.log("datum", datum)
     return (
       <animated.g style={style}>
         <animated.path

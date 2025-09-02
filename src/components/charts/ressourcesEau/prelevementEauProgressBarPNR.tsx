@@ -151,8 +151,10 @@ const PrelevementEauProgressBarsPNR = ({
               <HtmlTooltip
                 title={
                   <div className={styles.tooltip}>
-                    <H4 style={{ fontSize: '1rem', marginBottom: "0.5rem" }}>{item.titre}</H4>
-                    <Body size='sm'>
+                    <div className='flex flex-row g-4 items-center mb-2'>
+                      <div className={styles.colorSquare} style={{ backgroundColor: item.color }} />
+                      <H4 style={{ fontSize: '1rem', marginBottom: "0" }}>{item.titre}</H4>
+                    </div>                    <Body size='sm'>
                       {libelle} :{' '}
                       <b>
                         {Round((100 * item.sumTerritoire) / total, 2)} %
@@ -195,7 +197,9 @@ const PrelevementEauProgressBarsPNR = ({
             ))}
         </>
       ) : (
-        <div className='p-10 flex flex-row justify-center'><DataNotFound image={GraphNotFound} /></div>
+        <div className='p-10 flex flex-row justify-center'>
+          <DataNotFound image={GraphNotFound} />
+        </div>
       )}
     </div>
   );

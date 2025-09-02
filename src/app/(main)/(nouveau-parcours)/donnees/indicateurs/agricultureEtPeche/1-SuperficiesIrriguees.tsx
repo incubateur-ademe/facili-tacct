@@ -41,7 +41,6 @@ export const SuperficiesIrriguees = (props: {
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
   const carteCommunesFiltered = FilterDataTerritory(type, code, libelle, carteCommunesEnriched);
   const exportData = IndicatorExportTransformations.agriculture.surfacesIrriguees(carteCommunesFiltered);
-
   const surfaceTerritoire = type === "commune" ?
     communesMap.find((obj) => obj.properties.code_geographique === code)?.properties.surfacesIrriguees
     : communesMap

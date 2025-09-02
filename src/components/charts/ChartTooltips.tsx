@@ -6,10 +6,8 @@ import { espacesNAFBarChartLegend, RgaEvolutionLegend, RgaRepartitionLegend } fr
 import styles from './charts.module.scss';
 
 type AgricultureBioLegends = {
-  variable: string;
-  texteRaccourci: string;
-  valeur: number;
-  couleur: string;
+  value: string;
+  color: string;
 }[];
 
 export const simplePieChartTooltip = ({ datum, unite }: { datum: PieTooltipProps<DefaultRawDatum>['datum'], unite?: string }) => {
@@ -32,12 +30,14 @@ export const simpleBarChartTooltip = ({
   data,
   legende,
   unite,
-  multiplicateur
+  multiplicateur,
+  arrondi = 2
 }: { 
   data: BarDatum,
   legende: Array<{ value: string; color: string }>,
   unite?: string,
-  multiplicateur?: number
+  multiplicateur?: number,
+  arrondi?: number
 }) => {
   const dataArray = Object.entries(data).map(el => {
     return {
@@ -57,8 +57,8 @@ export const simpleBarChartTooltip = ({
                 <div className={styles.colorSquare} style={{ background: el.color }} />
                 <Body size="sm">{el.titre} :</Body>
                 { 
-                  multiplicateur ? <Body size="sm" weight="bold">{Round(multiplicateur * Number(el.value), 2)} {unite ?? null}</Body> 
-                  : <Body size="sm" weight="bold">{Round(Number(el.value), 2)} {unite ?? null}</Body>
+                  multiplicateur ? <Body size="sm" weight="bold">{Round(multiplicateur * Number(el.value), arrondi)} {unite ?? null}</Body> 
+                  : <Body size="sm" weight="bold">{Round(Number(el.value), arrondi)} {unite ?? null}</Body>
                 }
               </div>
               <div className={styles.value}>
@@ -167,45 +167,6 @@ export const espacesNAFBarChartTooltip = ({ data }: BarTooltipProps<BarDatum>) =
           </div>
         );
       })}
-    </div>
-  );
-}
-
-export const agricultureBioBarChartTooltip = (
-  {
-    data,
-    legends,
-    collectiviteName
-  }: {
-    data: BarTooltipProps<BarDatum>,
-    legends: AgricultureBioLegends,
-    collectiviteName: string
-  }) => {
-  const dataArray = Object.entries(data.data).map(el => {
-    return {
-      titre: el[0],
-      value: el[1],
-      color: legends.find(e => e.variable === el[0])?.couleur
-    }
-  });
-  return (
-    <div className={styles.tooltipEvolutionWrapper}>
-      <H4 style={{ fontSize: '1rem', marginBottom: "0.5rem" }}>{collectiviteName} ({dataArray.at(-1)?.value})</H4>
-      {
-        dataArray.slice(0, -1).map((el, i) => {
-          return (
-            <div className={styles.itemWrapper} key={i}>
-              <div className={styles.titre}>
-                <div className={styles.colorSquare} style={{ background: el.color }} />
-                <Body size="sm">{el.titre}</Body>
-              </div>
-              <div className={styles.value}>
-                <Body size="sm" weight="bold">{Round(Number(el.value), 0)} ha</Body>
-              </div>
-            </div>
-          )
-        })
-      }
     </div>
   );
 }

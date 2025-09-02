@@ -19,7 +19,6 @@ export const ConsommationEspacesNAFCharts = (props: {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
   const [typeValue, setTypeValue] = useState<string>('Tous types');
   const [sliderValue, setSliderValue] = useState<number[]>([2009, 2023]);
   const filteredConsommationNAF = type === 'commune'

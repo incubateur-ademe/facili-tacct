@@ -1,15 +1,20 @@
-
+"use client";
 import { CommunesIndicateursDto, EtatCoursDeauDto } from '@/lib/dto';
 import { QualiteSitesBaignade } from '@/lib/postgres/models';
 import { mapStyles } from 'carte-facile';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef } from 'react';
+import { Loader } from '../loader';
 import { BoundsFromCollection } from './components/boundsFromCollection';
-import SitesBaignadeMarkers from './components/sitesBaignadeMarkers';
 import { CoursDeauTooltip } from './components/tooltips';
+
+const SitesBaignadeMarkers = dynamic(() => import('./components/sitesBaignadeMarkers'), {
+  loading: () => <Loader />
+});
 
 export const MapEtatCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
@@ -70,19 +75,6 @@ export const MapEtatCoursDeau = (props: {
       id: idx
     })) as Feature<Geometry, GeoJsonProperties>[]
   }), [etatCoursDeau]);
-
-  const coursDeauColorExpression = useMemo(() => {
-    const expression: Array<string | Array<string | Array<string>>> = ['case'];
-    etatCoursDeau.forEach((cours, idx) => {
-      const color = getColor(cours.properties.etateco);
-      expression.push(
-        ['==', ['get', 'etateco'], cours.properties.etateco as string],
-        color
-      );
-    });
-    expression.push('#9D9C9C');
-    return expression;
-  }, [etatCoursDeau]);
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -160,7 +152,16 @@ export const MapEtatCoursDeau = (props: {
         type: 'line',
         source: 'coursDeau',
         paint: {
-          'line-color': coursDeauColorExpression as any,
+          'line-color': [
+            'match',
+            ['get', 'etateco'],
+            '1', '#0095C8',
+            '2', '#00C190',
+            '3', '#FFCF5E',
+            '4', '#F66E19',
+            '5', '#B5000E',
+            '#9D9C9C'
+          ],
           'line-width': [
             'case',
             ['boolean', ['feature-state', 'hover'], false],
@@ -291,19 +292,7 @@ export const MapEtatCoursDeau = (props: {
         mapRef.current = null;
       }
     };
-  }, [territoryGeoJson, coursDeauGeoJson, coursDeauColorExpression, enveloppe, code]);
-
-  useEffect(() => {
-    let map = mapRef.current;
-    if (!map || !mapContainer.current || !map.style) return;
-    setTimeout(() => {
-      map.setPaintProperty(
-        'coursDeau-line',
-        'line-color',
-        coursDeauColorExpression
-      );
-    }, 150);
-  }, [coursDeauColorExpression]);
+  }, [territoryGeoJson, coursDeauGeoJson, enveloppe, code]);
 
   return (
     <>
@@ -311,7 +300,7 @@ export const MapEtatCoursDeau = (props: {
         .maplibregl-popup .maplibregl-popup-content {
           box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16) !important;
           border-radius: 6px !important;
-          padding: 1rem !important;
+          padding: 0.5rem !important;
         }
         .map-container {
             overflow: visible !important;

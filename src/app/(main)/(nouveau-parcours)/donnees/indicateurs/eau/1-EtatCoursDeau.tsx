@@ -26,7 +26,6 @@ export const EtatEcoCoursDeau = (props: {
   const type = searchParams.get('type')!;
   const etatCoursDeauMap = etatCoursDeau.map(EtatCoursDeauMapper);
   const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
-
   const exportData = IndicatorExportTransformations.ressourcesEau.EtatCoursEau(etatCoursDeau)
 
   return (
@@ -57,7 +56,9 @@ export const EtatEcoCoursDeau = (props: {
                 <LegendCompColor legends={etatCoursDeauLegends} />
               </div>
             </>
-          ) : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
+          ) : <div className='p-10 flex flex-row justify-center'>
+            <DataNotFoundForGraph image={DataNotFound} />
+            </div>
           }
         </div>
       </div>

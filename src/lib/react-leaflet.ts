@@ -6,18 +6,24 @@
 const isClient = typeof window !== "undefined";
 
 let _rl: any = undefined;
+let _leaflet: any = undefined;
 if (isClient) {
   // requérir dynamiquement à l'exécution pour éviter l'importation ESM statique lors du SSR
 	_rl = require("react-leaflet");
+	_leaflet = require("leaflet");
 }
 
 const noopComponent = (_props: any) => null;
+const noopObject = new Proxy({}, {
+  get: () => () => ({}),
+});
 
 export const MapContainer = isClient ? _rl.MapContainer : noopComponent;
 export const GeoJSON = isClient ? _rl.GeoJSON : noopComponent;
 export const TileLayer = isClient ? _rl.TileLayer : noopComponent;
 export const Marker = isClient ? _rl.Marker : noopComponent;
 export const Popup = isClient ? _rl.Popup : noopComponent;
+export const L = isClient ? _leaflet : noopObject;
 
 export const useMap = isClient ? _rl.useMap : (() => {
 	throw new Error("useMap can only be used in client components");
