@@ -103,8 +103,6 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
     liensEntreThematiques.forEach(link => {
       if (link.source === nodeLabel) {
         linkedNodeIds.push(link.target);
-      } else if (link.target === nodeLabel) {
-        linkedNodeIds.push(link.source);
       }
     });
     return linkedNodeIds;
@@ -165,7 +163,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           const sourceLabel = d.source;
           const targetLabel = d.target;
 
-          if (sourceLabel === selectedThematique || targetLabel === selectedThematique) {
+          if (sourceLabel === selectedThematique) {
             // Créer un gradient pour ce lien
             const sourceNode = NoeudsRoue.find(n => n.label === d.source);
             const targetNode = NoeudsRoue.find(n => n.label === d.target);
@@ -210,7 +208,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         if (selectedThematique) {
           const sourceLabel = d.source;
           const targetLabel = d.target;
-          if (sourceLabel === selectedThematique || targetLabel === selectedThematique) {
+          if (sourceLabel === selectedThematique) {
             return 1.5;
           }
         }
