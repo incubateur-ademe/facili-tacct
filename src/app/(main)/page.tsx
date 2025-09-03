@@ -42,7 +42,10 @@ const Home = () => {
         title={"Découvrez les nouveautés de l'été !"}
         description={
           <>
-            Explorez une page d’accueil entièrement repensée, accédez à notre nouvel indicateur Types de culture (thématique Agriculture) et exportez les données socio-économiques de votre territoire ! Ne manquez pas également nos nouvelles ressources sur les{' '}
+            Explorez une page d’accueil entièrement repensée, accédez à nos nouveaux indicateurs Types de 
+            culture (thématique Agriculture) et LCZ (les zones climatiques locales, thématique Inconfort thermique et 
+            Aménagement), et exportez les données socio-économiques de votre 
+            territoire ! Ne manquez pas également nos nouvelles ressources sur les{' '}
             <a
               href="/ressources/articles/ilot-chaleur-urbain-erreurs-a-eviter/?utm_source=modalehome&utm_campaign=modale-home-icu"
               target="_blank"
@@ -76,7 +79,7 @@ const Home = () => {
         window.width ? <CollectiviteSearch />
           : <div
             className={styles.collectiviteWrapper}
-            style={{ height: "218px", top: "461px" }} // update top paramètre si la notice est modifiée (360px si pas de notice)
+            style={{ height: "218px", top: "485px" }} // update top paramètre si la notice est modifiée (360px si pas de notice)
           >
             <Loader />
           </div>
