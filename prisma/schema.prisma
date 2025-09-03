@@ -92,6 +92,8 @@ model arretes_catnat {
   code_pnr             String?
   libelle_pnr          String?
   lib_risque_jo        String
+  dat_deb              String
+  dat_fin              String
   dat_pub_arrete       String
 
   @@index([code_geographique], map: "arretes_catnat_communes_index")
@@ -681,6 +683,12 @@ model communes_drom {
   geometry             Unsupported("geometry")?
 
   @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
+  @@index([code_geographique], map: "communes_drom_communes_index")
+  @@index([departement], map: "communes_drom_departement_index")
+  @@index([epci], map: "communes_drom_epci_index")
+  @@index([ept], map: "communes_drom_ept_index")
+  @@index([libelle_petr], map: "communes_drom_petr_index")
+  @@index([code_pnr], map: "communes_drom_pnr_index")
   @@schema("postgis")
 }
 

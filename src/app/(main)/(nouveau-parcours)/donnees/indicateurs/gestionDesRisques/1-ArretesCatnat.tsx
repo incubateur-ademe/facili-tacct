@@ -78,7 +78,7 @@ export const ArretesCatnat = (props: {
       ?.map((item) => {
         return {
           ...item,
-          annee_arrete: Number(item.dat_pub_arrete?.split('-')[0])
+          annee_arrete: Number(item.dat_deb?.split('-')[0])
         };
       })
       .filter(
@@ -89,7 +89,7 @@ export const ArretesCatnat = (props: {
       ?.map((item) => {
         return {
           ...item,
-          annee_arrete: Number(item.dat_pub_arrete?.split('-')[0])
+          annee_arrete: Number(item.dat_deb?.split('-')[0])
         };
       })
       .filter(

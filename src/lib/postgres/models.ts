@@ -86,6 +86,8 @@ export type GestionRisques = {
 
 export type ArreteCatNat = {
   lib_risque_jo: string;
+  dat_deb: string;
+  dat_fin: string;
   dat_pub_arrete: string;
   code_geographique: string;
   departement: string;
