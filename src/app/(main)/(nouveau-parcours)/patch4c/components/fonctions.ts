@@ -28,7 +28,8 @@ export const patch4Indices = (patch4: Patch4) => [
     ],
     actions: [
       {
-        title: 'Forte chaleur : à quoi s’attendre et comment s’adapter ?',
+        title:
+          'CRACC : fortes chaleurs, à quoi s’attendre et comment s’adapter ?',
         link: 'https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/canicule#toc-agir',
         image: Canicule
       },
@@ -53,7 +54,7 @@ export const patch4Indices = (patch4: Patch4) => [
     actions: [
       {
         title:
-          'Fortes précipitations : à quoi s’attendre et comment s’adapter ? ',
+          'CRACC : fortes précipitations, à quoi s’attendre et comment s’adapter ? ',
         link: 'https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/inondation#toc-agir',
         image: Inondation
       }
@@ -74,7 +75,7 @@ export const patch4Indices = (patch4: Patch4) => [
     actions: [
       {
         title:
-          'Retrait gonflement des argiles : à quoi s’attendre et comment s’adapter ?',
+          'CRACC : retrait gonflement des argiles, à quoi s’attendre et comment s’adapter ?',
         link: 'https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/retrait-gonflement-des-argiles#toc-agir',
         image: RGA
       }
@@ -95,7 +96,8 @@ export const patch4Indices = (patch4: Patch4) => [
     ],
     actions: [
       {
-        title: 'Feux de forêt : à quoi s’attendre et comment s’adapter ?',
+        title:
+          'CRACC : feux de forêt, à quoi s’attendre et comment s’adapter ?',
         link: 'https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/feux-de-foret#toc-agir',
         image: FeuxForet
       }
@@ -114,7 +116,8 @@ export const patch4Indices = (patch4: Patch4) => [
     linkedThemes: ['Adaptation des bassins d’emploi et activités économiques'],
     actions: [
       {
-        title: 'Érosion du littoral : à quoi s’attendre et comment s’adapter ?',
+        title:
+          'CRACC : érosion du littoral, à quoi s’attendre et comment s’adapter ?',
         link: 'https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/erosion-du-littoral#toc-agir',
         image: ErosionLittoral
       }

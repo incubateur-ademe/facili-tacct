@@ -49,6 +49,7 @@ export const EmploisEnExterieur = ({
     ) +
     Number(((100 * sums.sumAgriculture) / Sum(Object.values(sums))).toFixed(1));
   const exportData = IndicatorExportTransformations.inconfort_thermique.travailExt(travailExterieurTerritoire);
+  const sumAllCount = graphData.reduce((sum, item) => sum + (item.count || 0), 0);
 
   return (
     <>
@@ -90,14 +91,18 @@ export const EmploisEnExterieur = ({
               Source : INSEE, Emplois au lieu de travail par sexe, secteur
               d'activité économique et catégorie socioprofessionnelle, 2021
             </Body>
-            <ExportButtonNouveauParcours
-              data={exportData}
-              baseName="travail_exterieur"
-              type={type}
-              libelle={libelle}
-              code={code}
-              sheetName="Activités économiques"
-            />
+            {
+              sumAllCount > 0 && (
+                <ExportButtonNouveauParcours
+                  data={exportData}
+                  baseName="travail_exterieur"
+                  type={type}
+                  libelle={libelle}
+                  code={code}
+                  sheetName="Activités économiques"
+                />
+              )
+            }
           </div>
         </div>
       </div>
