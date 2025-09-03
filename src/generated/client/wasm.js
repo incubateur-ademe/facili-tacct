@@ -182,6 +182,8 @@ exports.Prisma.Arretes_catnatScalarFieldEnum = {
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
   lib_risque_jo: 'lib_risque_jo',
+  dat_deb: 'dat_deb',
+  dat_fin: 'dat_fin',
   dat_pub_arrete: 'dat_pub_arrete'
 };
 

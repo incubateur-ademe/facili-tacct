@@ -119,7 +119,7 @@ const NivoPieChart = ({
         enableArcLinkLabels={windowDimensions.width && windowDimensions.width > 1248 ? true : false}
         arcLinkLabelComponent={arcLabelsComponent}
         arcLinkLabel={({ id }) => `${id}`}
-        arcLinkLabelsSkipAngle={15}
+        arcLinkLabelsSkipAngle={20}
         sortByValue={false}
         layers={CenteredMetric ? [
           'arcs',

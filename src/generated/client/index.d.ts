@@ -7576,6 +7576,8 @@ export namespace Prisma {
     code_pnr: string | null
     libelle_pnr: string | null
     lib_risque_jo: string | null
+    dat_deb: string | null
+    dat_fin: string | null
     dat_pub_arrete: string | null
   }
 
@@ -7593,6 +7595,8 @@ export namespace Prisma {
     code_pnr: string | null
     libelle_pnr: string | null
     lib_risque_jo: string | null
+    dat_deb: string | null
+    dat_fin: string | null
     dat_pub_arrete: string | null
   }
 
@@ -7610,6 +7614,8 @@ export namespace Prisma {
     code_pnr: number
     libelle_pnr: number
     lib_risque_jo: number
+    dat_deb: number
+    dat_fin: number
     dat_pub_arrete: number
     _all: number
   }
@@ -7639,6 +7645,8 @@ export namespace Prisma {
     code_pnr?: true
     libelle_pnr?: true
     lib_risque_jo?: true
+    dat_deb?: true
+    dat_fin?: true
     dat_pub_arrete?: true
   }
 
@@ -7656,6 +7664,8 @@ export namespace Prisma {
     code_pnr?: true
     libelle_pnr?: true
     lib_risque_jo?: true
+    dat_deb?: true
+    dat_fin?: true
     dat_pub_arrete?: true
   }
 
@@ -7673,6 +7683,8 @@ export namespace Prisma {
     code_pnr?: true
     libelle_pnr?: true
     lib_risque_jo?: true
+    dat_deb?: true
+    dat_fin?: true
     dat_pub_arrete?: true
     _all?: true
   }
@@ -7777,6 +7789,8 @@ export namespace Prisma {
     code_pnr: string | null
     libelle_pnr: string | null
     lib_risque_jo: string
+    dat_deb: string
+    dat_fin: string
     dat_pub_arrete: string
     _count: Arretes_catnatCountAggregateOutputType | null
     _avg: Arretes_catnatAvgAggregateOutputType | null
@@ -7813,6 +7827,8 @@ export namespace Prisma {
     code_pnr?: boolean
     libelle_pnr?: boolean
     lib_risque_jo?: boolean
+    dat_deb?: boolean
+    dat_fin?: boolean
     dat_pub_arrete?: boolean
   }, ExtArgs["result"]["arretes_catnat"]>
 
@@ -7830,6 +7846,8 @@ export namespace Prisma {
     code_pnr?: boolean
     libelle_pnr?: boolean
     lib_risque_jo?: boolean
+    dat_deb?: boolean
+    dat_fin?: boolean
     dat_pub_arrete?: boolean
   }, ExtArgs["result"]["arretes_catnat"]>
 
@@ -7847,6 +7865,8 @@ export namespace Prisma {
     code_pnr?: boolean
     libelle_pnr?: boolean
     lib_risque_jo?: boolean
+    dat_deb?: boolean
+    dat_fin?: boolean
     dat_pub_arrete?: boolean
   }, ExtArgs["result"]["arretes_catnat"]>
 
@@ -7864,10 +7884,12 @@ export namespace Prisma {
     code_pnr?: boolean
     libelle_pnr?: boolean
     lib_risque_jo?: boolean
+    dat_deb?: boolean
+    dat_fin?: boolean
     dat_pub_arrete?: boolean
   }
 
-  export type arretes_catnatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "lib_risque_jo" | "dat_pub_arrete", ExtArgs["result"]["arretes_catnat"]>
+  export type arretes_catnatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "lib_risque_jo" | "dat_deb" | "dat_fin" | "dat_pub_arrete", ExtArgs["result"]["arretes_catnat"]>
 
   export type $arretes_catnatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "arretes_catnat"
@@ -7886,6 +7908,8 @@ export namespace Prisma {
       code_pnr: string | null
       libelle_pnr: string | null
       lib_risque_jo: string
+      dat_deb: string
+      dat_fin: string
       dat_pub_arrete: string
     }, ExtArgs["result"]["arretes_catnat"]>
     composites: {}
@@ -8323,6 +8347,8 @@ export namespace Prisma {
     readonly code_pnr: FieldRef<"arretes_catnat", 'String'>
     readonly libelle_pnr: FieldRef<"arretes_catnat", 'String'>
     readonly lib_risque_jo: FieldRef<"arretes_catnat", 'String'>
+    readonly dat_deb: FieldRef<"arretes_catnat", 'String'>
+    readonly dat_fin: FieldRef<"arretes_catnat", 'String'>
     readonly dat_pub_arrete: FieldRef<"arretes_catnat", 'String'>
   }
     
@@ -37415,6 +37441,8 @@ export namespace Prisma {
     code_pnr: 'code_pnr',
     libelle_pnr: 'libelle_pnr',
     lib_risque_jo: 'lib_risque_jo',
+    dat_deb: 'dat_deb',
+    dat_fin: 'dat_fin',
     dat_pub_arrete: 'dat_pub_arrete'
   };
 
@@ -38511,6 +38539,8 @@ export namespace Prisma {
     code_pnr?: StringNullableFilter<"arretes_catnat"> | string | null
     libelle_pnr?: StringNullableFilter<"arretes_catnat"> | string | null
     lib_risque_jo?: StringFilter<"arretes_catnat"> | string
+    dat_deb?: StringFilter<"arretes_catnat"> | string
+    dat_fin?: StringFilter<"arretes_catnat"> | string
     dat_pub_arrete?: StringFilter<"arretes_catnat"> | string
   }
 
@@ -38528,6 +38558,8 @@ export namespace Prisma {
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
     lib_risque_jo?: SortOrder
+    dat_deb?: SortOrder
+    dat_fin?: SortOrder
     dat_pub_arrete?: SortOrder
   }
 
@@ -38548,6 +38580,8 @@ export namespace Prisma {
     code_pnr?: StringNullableFilter<"arretes_catnat"> | string | null
     libelle_pnr?: StringNullableFilter<"arretes_catnat"> | string | null
     lib_risque_jo?: StringFilter<"arretes_catnat"> | string
+    dat_deb?: StringFilter<"arretes_catnat"> | string
+    dat_fin?: StringFilter<"arretes_catnat"> | string
     dat_pub_arrete?: StringFilter<"arretes_catnat"> | string
   }, "index">
 
@@ -38565,6 +38599,8 @@ export namespace Prisma {
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
     lib_risque_jo?: SortOrder
+    dat_deb?: SortOrder
+    dat_fin?: SortOrder
     dat_pub_arrete?: SortOrder
     _count?: arretes_catnatCountOrderByAggregateInput
     _avg?: arretes_catnatAvgOrderByAggregateInput
@@ -38590,6 +38626,8 @@ export namespace Prisma {
     code_pnr?: StringNullableWithAggregatesFilter<"arretes_catnat"> | string | null
     libelle_pnr?: StringNullableWithAggregatesFilter<"arretes_catnat"> | string | null
     lib_risque_jo?: StringWithAggregatesFilter<"arretes_catnat"> | string
+    dat_deb?: StringWithAggregatesFilter<"arretes_catnat"> | string
+    dat_fin?: StringWithAggregatesFilter<"arretes_catnat"> | string
     dat_pub_arrete?: StringWithAggregatesFilter<"arretes_catnat"> | string
   }
 
@@ -42113,6 +42151,8 @@ export namespace Prisma {
     code_pnr?: string | null
     libelle_pnr?: string | null
     lib_risque_jo: string
+    dat_deb: string
+    dat_fin: string
     dat_pub_arrete: string
   }
 
@@ -42130,6 +42170,8 @@ export namespace Prisma {
     code_pnr?: string | null
     libelle_pnr?: string | null
     lib_risque_jo: string
+    dat_deb: string
+    dat_fin: string
     dat_pub_arrete: string
   }
 
@@ -42147,6 +42189,8 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     lib_risque_jo?: StringFieldUpdateOperationsInput | string
+    dat_deb?: StringFieldUpdateOperationsInput | string
+    dat_fin?: StringFieldUpdateOperationsInput | string
     dat_pub_arrete?: StringFieldUpdateOperationsInput | string
   }
 
@@ -42164,6 +42208,8 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     lib_risque_jo?: StringFieldUpdateOperationsInput | string
+    dat_deb?: StringFieldUpdateOperationsInput | string
+    dat_fin?: StringFieldUpdateOperationsInput | string
     dat_pub_arrete?: StringFieldUpdateOperationsInput | string
   }
 
@@ -42181,6 +42227,8 @@ export namespace Prisma {
     code_pnr?: string | null
     libelle_pnr?: string | null
     lib_risque_jo: string
+    dat_deb: string
+    dat_fin: string
     dat_pub_arrete: string
   }
 
@@ -42198,6 +42246,8 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     lib_risque_jo?: StringFieldUpdateOperationsInput | string
+    dat_deb?: StringFieldUpdateOperationsInput | string
+    dat_fin?: StringFieldUpdateOperationsInput | string
     dat_pub_arrete?: StringFieldUpdateOperationsInput | string
   }
 
@@ -42215,6 +42265,8 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     lib_risque_jo?: StringFieldUpdateOperationsInput | string
+    dat_deb?: StringFieldUpdateOperationsInput | string
+    dat_fin?: StringFieldUpdateOperationsInput | string
     dat_pub_arrete?: StringFieldUpdateOperationsInput | string
   }
 
@@ -46136,6 +46188,8 @@ export namespace Prisma {
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
     lib_risque_jo?: SortOrder
+    dat_deb?: SortOrder
+    dat_fin?: SortOrder
     dat_pub_arrete?: SortOrder
   }
 
@@ -46158,6 +46212,8 @@ export namespace Prisma {
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
     lib_risque_jo?: SortOrder
+    dat_deb?: SortOrder
+    dat_fin?: SortOrder
     dat_pub_arrete?: SortOrder
   }
 
@@ -46175,6 +46231,8 @@ export namespace Prisma {
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
     lib_risque_jo?: SortOrder
+    dat_deb?: SortOrder
+    dat_fin?: SortOrder
     dat_pub_arrete?: SortOrder
   }
 
