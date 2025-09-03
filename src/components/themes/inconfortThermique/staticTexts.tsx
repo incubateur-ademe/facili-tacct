@@ -836,13 +836,8 @@ export const LCZText2 = () => (
   </>
 );
 
-
-
-
-
-
 export const LCZText = () => (
-  <div className="pr-4">
+  <div className="px-4">
     <p style={{ marginTop: '2rem' }}>
       Les LCZ qui reposent sur des mesures de température de surface <b>ne permettent pas de quantifier
         le phénomène d’ilot de chaleur urbain </b>(ICU) qui, lui, repose sur des mesures dynamiques de
