@@ -43,7 +43,6 @@ export const GrandAge = ({
     .map((value) => (isNaN(value) ? null : value));
   const methodeCalcul =
     'Nombre de personnes de plus de 80 ans divisé par la population totale à chaque recensement INSEE.';
-
   const exportData = IndicatorExportTransformations.inconfort_thermique.GrandAgeIsolement(grandAgeIsolementTerritoire);
 
   return (
@@ -83,7 +82,7 @@ export const GrandAge = ({
             <div
               style={{
                 backgroundColor: 'white',
-                height: '500px',
+                height: !Object.values(yData).slice(0, -2).includes('NaN') ? '500px' : 'max-content',
                 width: '100%',
                 borderRadius: '1rem 0 0 0',
                 borderBottom: '1px solid var(--gris-medium)',
@@ -92,7 +91,9 @@ export const GrandAge = ({
               {
                 !Object.values(yData).slice(0, -2).includes('NaN') ?
                   <LineChartGrandAge xData={xData} yData={yGraphData} />
-                  : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
+                  : <div className='p-10 flex flex-row justify-center'>
+                    <DataNotFoundForGraph image={DataNotFound} />
+                  </div>
               }
             </div>
           ) : (
@@ -102,14 +103,18 @@ export const GrandAge = ({
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
               Source : Observatoire des territoires
             </Body>
-            <ExportButtonNouveauParcours
-              data={exportData}
-              baseName="grand_age"
-              type={type}
-              libelle={libelle}
-              code={code}
-              sheetName="Grand âge"
-            />
+            {
+              !Object.values(yData).slice(0, -2).includes('NaN') && (
+                <ExportButtonNouveauParcours
+                  data={exportData}
+                  baseName="grand_age"
+                  type={type}
+                  libelle={libelle}
+                  code={code}
+                  sheetName="Grand âge"
+                />
+              )
+            }
           </div>
         </div>
       </div>
