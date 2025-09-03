@@ -1,3 +1,4 @@
+import { NoticeComp } from '@/dsfr/base/Notice';
 import {
   GetArretesCatnat,
   GetIncendiesForet
@@ -21,7 +22,12 @@ const GestionRisques = async (props: { searchParams: SearchParams }) => {
 
   return (
     <div>
-      {/* <GestionRisquesExport code={code} libelle={libelle} type={type} /> */}
+      <NoticeComp
+        title="Facili-TACCT prenait en compte la date de publication de l’arrêté et non celle de 
+        l’évènement. Cet écart est désormais résolu, notre base de données est identique à celle de la base GASPAR"
+        backgroundColor='#fff4ecff'
+        color='#F66E19'
+      />
       <div className={styles.container}>
         <Suspense>
           <GestionRisquesComp
