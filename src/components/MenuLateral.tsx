@@ -80,7 +80,7 @@ export const MenuLateral = () => {
     measureHeight();
     const timeoutId = setTimeout(measureHeight, 50);
     return () => clearTimeout(timeoutId);
-  }, [openEtape1, openEtape2]);
+  }, [openEtape1, openEtape2, isErosionCotiere]);
 
   // Fonction pour gérer le scroll et mettre en surbrillance l'élément actuel
   useEffect(() => {

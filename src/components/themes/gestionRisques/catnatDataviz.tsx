@@ -125,7 +125,7 @@ const CatnatDataViz = (props: Props) => {
         <p>
           Source : Base nationale de Gestion ASsistée des Procédures
           Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
-          juin 2025.
+          septembre 2025.
         </p>
         <ExportButton
           data={exportData}

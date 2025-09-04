@@ -2,7 +2,6 @@
 import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
 import { LoaderText } from '@/components/loader';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import useWindowDimensions from '@/hooks/windowDimensions';
 import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -36,7 +35,6 @@ export const DonneesGestionRisques = ({
   const [rgaCarteLoading, setRgaCarteLoading] = useState(false);
   const [loadingRga, setLoadingRga] = useState(false);
   const ongletsMenu = sommaireThematiques[thematique];
-  const windowDimensions = useWindowDimensions();
 
   useEffect(() => {
     const style = document.createElement('style');
