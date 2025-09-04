@@ -870,9 +870,7 @@ export const LCZText2 = () => (
     </Body>
     <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
       Pour en savoir plus sur la méthodologie scientifique utilisée pour élaborer la carte, consultez 
-      l’article 
-    </Body>
-    <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
+      l’article {" "}
       <a
         href="https://essd.copernicus.org/articles/14/3835/2022/"
         target="_blank"
@@ -883,11 +881,6 @@ export const LCZText2 = () => (
     </Body>
   </>
 );
-
-
-
- 
-
 
 export const LCZText = () => (
   <div className="pr-4"> 
