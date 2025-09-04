@@ -161,7 +161,7 @@ export const ArretesCatnat = (props: {
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
               Source : Base nationale de Gestion ASsistée des Procédures
               Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
-              juin 2025.
+              septembre 2025.
             </Body>
             <ExportButtonNouveauParcours
               data={exportData}
