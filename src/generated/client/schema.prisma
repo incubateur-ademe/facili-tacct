@@ -35,8 +35,6 @@ model agriculture_bio {
   nombre_2019        Float
 
   @@index([index], map: "ix_agriculture_bio_index")
-  @@index([epci], map: "agriculture_bio_code_epci_index")
-  @@index([libelle_epci], map: "agriculture_bio_epci_index")
   @@schema("databases")
 }
 
@@ -66,6 +64,8 @@ model arretes_catnat {
   code_pnr             String?
   libelle_pnr          String?
   lib_risque_jo        String
+  dat_deb              String
+  dat_fin              String
   dat_pub_arrete       String
 
   @@index([code_geographique], map: "arretes_catnat_communes_index")
@@ -354,7 +354,7 @@ model patch4c {
 }
 
 model ressources_eau {
-  index                BigInt  @id
+  index                BigInt  @id(map: "ressources_eau_new_pkey")
   code_geographique    String
   LIBELLE_SOUS_CHAMP   String
   A2020                Float
@@ -388,25 +388,25 @@ model ressources_eau {
   @@index([ept], map: "ressources_eau_ept_index")
   @@index([libelle_petr], map: "ressources_eau_petr_index")
   @@index([code_pnr], map: "ressources_eau_pnr_index")
-  @@index([index], map: "ix_ressources_eau_index")
+  @@index([index], map: "ix_ressources_eau_new_index")
   @@schema("databases")
 }
 
 model clc_territoires {
-  pk                   Int                      @id @default(autoincrement())
-  code_geographique    String?                  @db.VarChar
-  libelle_geographique String?                  @db.VarChar
-  epci                 String?                  @db.VarChar
-  libelle_epci         String?                  @db.VarChar
-  departement          String?                  @db.VarChar
-  libelle_departement  String?                  @db.VarChar
-  region               Int?
-  ept                  String?                  @db.VarChar
-  libelle_petr         String?                  @db.VarChar
-  code_pnr             String?                  @db.VarChar
-  libelle_pnr          String?                  @db.VarChar
-  legend               String?                  @db.VarChar
-  geometry             Unsupported("geometry")?
+  pk                   Int                     @id @default(autoincrement())
+  code_geographique    String                  @db.VarChar
+  libelle_geographique String                  @db.VarChar
+  epci                 String                  @db.VarChar
+  libelle_epci         String                  @db.VarChar
+  departement          String                  @db.VarChar
+  libelle_departement  String                  @db.VarChar
+  region               Int
+  ept                  String?                 @db.VarChar
+  libelle_petr         String?                 @db.VarChar
+  code_pnr             String?                 @db.VarChar
+  libelle_pnr          String?                 @db.VarChar
+  legend               String                  @db.VarChar
+  geometry             Unsupported("geometry")
 
   @@index([geometry], map: "clc_territoires_geometry_geom_idx", type: Gist)
   @@index([code_geographique], map: "clc_territoires_communes_index")
@@ -442,29 +442,29 @@ model communes_drom {
   @@index([epci], map: "communes_drom_epci_index")
   @@index([libelle_petr], map: "communes_drom_petr_index")
   @@index([code_pnr], map: "communes_drom_pnr_index")
-  @@index([code_geographique], map: "communes_drom_commune_index")
   @@index([ept], map: "communes_drom_ept_index")
+  @@index([code_geographique], map: "communes_drom_communes_index")
   @@schema("postgis")
 }
 
 model erosion_cotiere {
-  pk         Int                      @id @default(autoincrement())
-  taux       Float?
-  duree      Float?
-  tdc_ancien BigInt?
-  tdc_rec    BigInt?
-  geometry   Unsupported("geometry")?
+  pk         Int                     @id @default(autoincrement())
+  taux       Float
+  duree      Float
+  tdc_ancien BigInt
+  tdc_rec    BigInt
+  geometry   Unsupported("geometry")
 
   @@index([geometry], map: "erosion_cotiere_geometry_geom_idx", type: Gist)
   @@schema("postgis")
 }
 
 model etat_cours_d_eau {
-  pk       Int                      @id @default(autoincrement())
-  name     String?                  @db.VarChar
-  longueur Float?
-  etateco  String?                  @db.VarChar
-  geometry Unsupported("geometry")?
+  pk       Int                     @id @default(autoincrement())
+  name     String                  @db.VarChar
+  longueur Float
+  etateco  String?                 @db.VarChar
+  geometry Unsupported("geometry")
 
   @@index([geometry], map: "etat_cours_d_eau_geometry_geom_idx", type: Gist)
   @@schema("postgis")
@@ -489,8 +489,6 @@ model qualite_sites_baignade {
   QEB_2020 String?
 
   @@index([index], map: "ix_qualite_sites_baignade_index")
-  @@index([DEP_NOM], map: "qualite_sites_baignade_dep_nom_index")
-  @@index([DEP_NUM], map: "qualite_sites_baignade_dep_num_index")
   @@schema("databases")
 }
 
@@ -556,12 +554,13 @@ model rga {
 }
 
 model postgis_rga {
-  pk                Int                      @id @default(autoincrement())
-  alea              String?                  @db.VarChar
-  code_geographique String?                  @db.VarChar
-  geometry          Unsupported("geometry")?
+  pk                Int                     @id @default(autoincrement())
+  alea              String                  @db.VarChar
+  code_geographique String                  @db.VarChar
+  geometry          Unsupported("geometry")
 
   @@index([geometry], map: "rga_geometry_geom_idx", type: Gist)
+  @@index([code_geographique], map: "rga_postgis_index")
   @@map("rga")
   @@schema("postgis")
 }
@@ -578,19 +577,8 @@ model temp_update_pnr {
   @@schema("databases")
 }
 
-/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
-model spatial_ref_sys {
-  srid      Int     @id
-  auth_name String? @db.VarChar(256)
-  auth_srid Int?
-  srtext    String? @db.VarChar(2048)
-  proj4text String? @db.VarChar(2048)
-
-  @@schema("public")
-}
-
 model agriculture {
-  index                BigInt  @id
+  index                BigInt  @id(map: "agriculture_cleaned_pkey")
   code_geographique    String
   libelle_geographique String
   epci                 String
@@ -603,16 +591,17 @@ model agriculture {
   code_pnr             String?
   libelle_pnr          String?
   part_irr_SAU_2020    Float?
-  part_over_55         Float?
+  otex_12_postes       String
 
-  @@index([code_geographique], map: "agriculture_commune_index")
   @@index([code_geographique], map: "agriculture_communes_index")
   @@index([departement], map: "agriculture_departement_index")
   @@index([epci], map: "agriculture_epci_index")
   @@index([ept], map: "agriculture_ept_index")
   @@index([libelle_petr], map: "agriculture_petr_index")
   @@index([code_pnr], map: "agriculture_pnr_index")
-  @@index([index], map: "ix_agriculture_index")
+  @@index([code_geographique], map: "agriculture_cleaned_communes_index")
+  @@index([epci], map: "agriculture_cleaned_epci_index")
+  @@index([index], map: "ix_agriculture_cleaned_index")
   @@schema("databases")
 }
 
@@ -704,44 +693,87 @@ model lcz_couverture {
   @@schema("databases")
 }
 
-/// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-view geography_columns {
-  f_table_catalog    Unsupported("name")?
-  f_table_schema     Unsupported("name")?
-  f_table_name       Unsupported("name")?
-  f_geography_column Unsupported("name")?
-  coord_dimension    Int?
-  srid               Int?
-  type               String?
+model atlas_biodiversite {
+  index                      BigInt  @id
+  code_geographique          String
+  libelle_geographique       String
+  epci                       String
+  libelle_epci               String
+  departement                String
+  libelle_departement        String
+  region                     Float
+  ept                        String?
+  libelle_petr               String?
+  code_pnr                   String?
+  libelle_pnr                String?
+  nom                        String
+  structure_porteuse         String?
+  type_de_structure_porteuse String?
+  annee_debut                Float?
+  avancement                 String
 
-  @@ignore
+  @@index([code_geographique], map: "atlas_biodiversite_communes_index")
+  @@index([departement], map: "atlas_biodiversite_departement_index")
+  @@index([epci], map: "atlas_biodiversite_epci_index")
+  @@index([ept], map: "atlas_biodiversite_ept_index")
+  @@index([libelle_petr], map: "atlas_biodiversite_petr_index")
+  @@index([code_pnr], map: "atlas_biodiversite_pnr_index")
+  @@index([index], map: "ix_atlas_biodiversite_index")
+  @@schema("databases")
+}
+
+model surfaces_protegees {
+  index                BigInt  @id
+  code_geographique    String
+  PNC                  String?
+  RAMSAR               String?
+  PNR                  String?
+  PNP                  String?
+  FOR_PRO              String?
+  ZZZ                  String?
+  ZNIEFF2              String?
+  ZNIEFF1              String?
+  RNR                  String?
+  TOU_PRO              String?
+  NATURA               String?
+  ZPS                  String?
+  SIC                  String?
+  CELRL                String?
+  BIO                  String?
+  APB                  String?
+  RN                   String?
+  RBFD                 String?
+  RNCFS                String?
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  region               Float
+
+  @@index([index], map: "ix_surfaces_protegees_index")
+  @@schema("databases")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model spatial_ref_sys {
+  srid      Int     @id
+  auth_name String? @db.VarChar(256)
+  auth_srid Int?
+  srtext    String? @db.VarChar(2048)
+  proj4text String? @db.VarChar(2048)
+
+  @@schema("postgis")
+}
+
+model sandbox_users {
+  username   String   @db.VarChar(128)
+  pk         Int      @id @default(autoincrement())
+  password   String   @db.VarChar(512)
+  created_at DateTime @db.Timestamptz(6)
+
   @@schema("public")
 }
 
-/// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-view geometry_columns {
-  f_table_catalog   String?              @db.VarChar(256)
-  f_table_schema    Unsupported("name")?
-  f_table_name      Unsupported("name")?
-  f_geometry_column Unsupported("name")?
-  coord_dimension   Int?
-  srid              Int?
-  type              String?              @db.VarChar(30)
-
-  @@ignore
-  @@schema("public")
-}
-
-/// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-view pg_stat_statements_info {
-  dealloc     BigInt?
-  stats_reset DateTime? @db.Timestamptz(6)
-
-  @@ignore
-  @@schema("public")
-}
-
-/// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 view pg_stat_statements {
   userid                 Int?     @db.Oid
   dbid                   Int?     @db.Oid
@@ -787,6 +819,36 @@ view pg_stat_statements {
   jit_emission_count     BigInt?
   jit_emission_time      Float?
 
-  @@ignore
-  @@schema("public")
+  @@schema("postgis")
+}
+
+view pg_stat_statements_info {
+  dealloc     BigInt?
+  stats_reset DateTime? @db.Timestamptz(6)
+
+  @@schema("postgis")
+}
+
+view geography_columns {
+  f_table_catalog    Unsupported("name")?
+  f_table_schema     Unsupported("name")?
+  f_table_name       Unsupported("name")?
+  f_geography_column Unsupported("name")?
+  coord_dimension    Int?
+  srid               Int?
+  type               String?
+
+  @@schema("postgis")
+}
+
+view geometry_columns {
+  f_table_catalog   String?              @db.VarChar(256)
+  f_table_schema    Unsupported("name")?
+  f_table_name      Unsupported("name")?
+  f_geometry_column Unsupported("name")?
+  coord_dimension   Int?
+  srid              Int?
+  type              String?              @db.VarChar(30)
+
+  @@schema("postgis")
 }

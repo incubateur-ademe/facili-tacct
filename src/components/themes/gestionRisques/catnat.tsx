@@ -94,7 +94,7 @@ export const Catnat = (props: {
       ?.map((item) => {
         return {
           ...item,
-          annee_arrete: Number(item.dat_pub_arrete?.split('-')[0])
+          annee_arrete: Number(item.dat_deb?.split('-')[0])
         };
       })
       .filter(
@@ -105,7 +105,7 @@ export const Catnat = (props: {
       ?.map((item) => {
         return {
           ...item,
-          annee_arrete: Number(item.dat_pub_arrete?.split('-')[0])
+          annee_arrete: Number(item.dat_deb?.split('-')[0])
         };
       })
       .filter(
@@ -204,7 +204,7 @@ export const Catnat = (props: {
                         <p style={{ padding: '1em', margin: '0' }}>
                           Source : Base nationale de Gestion ASsistée des Procédures
                           Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
-                          août 2025.
+                          septembre 2025.
                         </p>
                       </div>
                     )

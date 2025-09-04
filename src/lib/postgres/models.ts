@@ -75,6 +75,8 @@ export type Biodiversite = {
 export type GestionRisques = {
   lib_risque_jo: string;
   dat_pub_arrete: string;
+  dat_deb: string;
+  dat_fin: string;
   code_geographique: string;
   departement: string;
   epci: string;
@@ -86,6 +88,8 @@ export type GestionRisques = {
 
 export type ArreteCatNat = {
   lib_risque_jo: string;
+  dat_deb: string;
+  dat_fin: string;
   dat_pub_arrete: string;
   code_geographique: string;
   departement: string;
@@ -132,7 +136,7 @@ export type RessourcesEau = {
 };
 
 export type AgricultureBio = {
-  index: bigint;
+  index: bigint | number;
   epci: string;
   libelle_epci: string;
   VARIABLE: string;
@@ -469,7 +473,7 @@ export type QualiteSitesBaignade = {
 };
 
 export type Agriculture = {
-  index: bigint;
+  index: bigint | number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -482,6 +486,7 @@ export type Agriculture = {
   code_pnr: string | null;
   libelle_pnr: string | null;
   part_irr_SAU_2020: number | null;
+  otex_12_postes: string;
 };
 
 export type IncendiesForet = {
@@ -559,7 +564,7 @@ export type RGAdb = {
 };
 
 export type SurfacesAgricolesModel = {
-  index: bigint;
+  index: bigint | number;
   epci: string;
   exploitation_sau: number;
   exploitation_sau_terres_arables: number;
