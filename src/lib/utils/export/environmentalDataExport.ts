@@ -598,6 +598,8 @@ export const IndicatorExportTransformations = {
           code_pnr: item.code_pnr,
           libelle_pnr: item.libelle_pnr,
           libelle_petr: item.libelle_petr,
+          date_debut_catastrophe: item.dat_deb,
+          date_fin_catastrophe: item.dat_fin,
           date_publication_arrete: item.dat_pub_arrete,
           libelle_risque: item.lib_risque_jo
         };

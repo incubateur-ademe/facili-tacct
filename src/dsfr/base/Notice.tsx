@@ -1,13 +1,15 @@
 "use client";
 import { Notice } from "@codegouvfr/react-dsfr/Notice";
+import React from "react";
 import { useStyles } from "tss-react/dsfr";
 
 interface Props {
   title: string;
   backgroundColor?: string;
   color?: string;
+  description?: React.ReactNode;
 }
-export const NoticeComp = ({ title, backgroundColor, color }: Props) => {
+export const NoticeComp = ({ title, backgroundColor, color, description }: Props) => {
   const { css } = useStyles();
   return (
     <div
@@ -22,7 +24,7 @@ export const NoticeComp = ({ title, backgroundColor, color }: Props) => {
         }
       })}
     >
-      <Notice isClosable={true} onClose={() => { }} title={title} />
+      <Notice isClosable={true} onClose={() => { }} title={title} description={description} />
     </div>
   );
 };

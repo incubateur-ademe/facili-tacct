@@ -1,6 +1,6 @@
 'use client';
 
-import CeremaLogo from '@/assets/images/cerema_logo.png';
+import CeremaLogo from '@/assets/images/Logo-cerema.jpg';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes } from '@/lib/postgres/models';
 import { GetLczCouverture } from '@/lib/queries/databases/inconfortThermique';
