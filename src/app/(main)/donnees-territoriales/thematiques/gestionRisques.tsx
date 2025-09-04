@@ -23,8 +23,11 @@ const GestionRisques = async (props: { searchParams: SearchParams }) => {
   return (
     <div>
       <NoticeComp
-        title="Facili-TACCT prenait en compte la date de publication de l’arrêté et non celle de 
-        l’évènement. Cet écart est désormais résolu, notre base de données est identique à celle de la base GASPAR"
+        title="Différence avec le nombre d’arrêtés GASPAR :"
+        description="l’équipe Facili-TACCT a identifié plusieurs doublons dans la base de données GASPAR, 
+          initialement supprimés. Suite à plusieurs retours concernant cet écart, les doublons ont été 
+          réintégrés : notre base de données est désormais identique à celle de GASPAR. Veuillez noter 
+          également que Facili-TACCT affiche à présent la date de début de l’évènement et non celle de publication de l’arrêté."
         backgroundColor='#fff4ecff'
         color='#F66E19'
       />

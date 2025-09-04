@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.14.0
- * Query Engine version: 717184b7b35ea05dfa71a3236b7af656013e1e49
+ * Prisma Client JS version: 6.15.0
+ * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
  */
 Prisma.prismaVersion = {
-  client: "6.14.0",
-  engine: "717184b7b35ea05dfa71a3236b7af656013e1e49"
+  client: "6.15.0",
+  engine: "85179d7826409ee107a6ba334b5e305ae3fba9fb"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -165,6 +165,8 @@ exports.Prisma.Arretes_catnatScalarFieldEnum = {
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
   lib_risque_jo: 'lib_risque_jo',
+  dat_deb: 'dat_deb',
+  dat_fin: 'dat_fin',
   dat_pub_arrete: 'dat_pub_arrete'
 };
 
@@ -563,14 +565,6 @@ exports.Prisma.Postgis_rgaScalarFieldEnum = {
   code_geographique: 'code_geographique'
 };
 
-exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
-  srid: 'srid',
-  auth_name: 'auth_name',
-  auth_srid: 'auth_srid',
-  srtext: 'srtext',
-  proj4text: 'proj4text'
-};
-
 exports.Prisma.AgricultureScalarFieldEnum = {
   index: 'index',
   code_geographique: 'code_geographique',
@@ -585,7 +579,7 @@ exports.Prisma.AgricultureScalarFieldEnum = {
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
   part_irr_SAU_2020: 'part_irr_SAU_2020',
-  part_over_55: 'part_over_55'
+  otex_12_postes: 'otex_12_postes'
 };
 
 exports.Prisma.Surfaces_agricolesScalarFieldEnum = {
@@ -647,6 +641,134 @@ exports.Prisma.Lcz_couvertureScalarFieldEnum = {
   couverture_lcz: 'couverture_lcz'
 };
 
+exports.Prisma.Atlas_biodiversiteScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  nom: 'nom',
+  structure_porteuse: 'structure_porteuse',
+  type_de_structure_porteuse: 'type_de_structure_porteuse',
+  annee_debut: 'annee_debut',
+  avancement: 'avancement'
+};
+
+exports.Prisma.Surfaces_protegeesScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  PNC: 'PNC',
+  RAMSAR: 'RAMSAR',
+  PNR: 'PNR',
+  PNP: 'PNP',
+  FOR_PRO: 'FOR_PRO',
+  ZZZ: 'ZZZ',
+  ZNIEFF2: 'ZNIEFF2',
+  ZNIEFF1: 'ZNIEFF1',
+  RNR: 'RNR',
+  TOU_PRO: 'TOU_PRO',
+  NATURA: 'NATURA',
+  ZPS: 'ZPS',
+  SIC: 'SIC',
+  CELRL: 'CELRL',
+  BIO: 'BIO',
+  APB: 'APB',
+  RN: 'RN',
+  RBFD: 'RBFD',
+  RNCFS: 'RNCFS',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  region: 'region'
+};
+
+exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
+  srid: 'srid',
+  auth_name: 'auth_name',
+  auth_srid: 'auth_srid',
+  srtext: 'srtext',
+  proj4text: 'proj4text'
+};
+
+exports.Prisma.Sandbox_usersScalarFieldEnum = {
+  username: 'username',
+  pk: 'pk',
+  password: 'password',
+  created_at: 'created_at'
+};
+
+exports.Prisma.Pg_stat_statementsScalarFieldEnum = {
+  userid: 'userid',
+  dbid: 'dbid',
+  toplevel: 'toplevel',
+  queryid: 'queryid',
+  query: 'query',
+  plans: 'plans',
+  total_plan_time: 'total_plan_time',
+  min_plan_time: 'min_plan_time',
+  max_plan_time: 'max_plan_time',
+  mean_plan_time: 'mean_plan_time',
+  stddev_plan_time: 'stddev_plan_time',
+  calls: 'calls',
+  total_exec_time: 'total_exec_time',
+  min_exec_time: 'min_exec_time',
+  max_exec_time: 'max_exec_time',
+  mean_exec_time: 'mean_exec_time',
+  stddev_exec_time: 'stddev_exec_time',
+  rows: 'rows',
+  shared_blks_hit: 'shared_blks_hit',
+  shared_blks_read: 'shared_blks_read',
+  shared_blks_dirtied: 'shared_blks_dirtied',
+  shared_blks_written: 'shared_blks_written',
+  local_blks_hit: 'local_blks_hit',
+  local_blks_read: 'local_blks_read',
+  local_blks_dirtied: 'local_blks_dirtied',
+  local_blks_written: 'local_blks_written',
+  temp_blks_read: 'temp_blks_read',
+  temp_blks_written: 'temp_blks_written',
+  blk_read_time: 'blk_read_time',
+  blk_write_time: 'blk_write_time',
+  temp_blk_read_time: 'temp_blk_read_time',
+  temp_blk_write_time: 'temp_blk_write_time',
+  wal_records: 'wal_records',
+  wal_fpi: 'wal_fpi',
+  wal_bytes: 'wal_bytes',
+  jit_functions: 'jit_functions',
+  jit_generation_time: 'jit_generation_time',
+  jit_inlining_count: 'jit_inlining_count',
+  jit_inlining_time: 'jit_inlining_time',
+  jit_optimization_count: 'jit_optimization_count',
+  jit_optimization_time: 'jit_optimization_time',
+  jit_emission_count: 'jit_emission_count',
+  jit_emission_time: 'jit_emission_time'
+};
+
+exports.Prisma.Pg_stat_statements_infoScalarFieldEnum = {
+  dealloc: 'dealloc',
+  stats_reset: 'stats_reset'
+};
+
+exports.Prisma.Geography_columnsScalarFieldEnum = {
+  coord_dimension: 'coord_dimension',
+  srid: 'srid',
+  type: 'type'
+};
+
+exports.Prisma.Geometry_columnsScalarFieldEnum = {
+  f_table_catalog: 'f_table_catalog',
+  coord_dimension: 'coord_dimension',
+  srid: 'srid',
+  type: 'type'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -682,10 +804,17 @@ exports.Prisma.ModelName = {
   users: 'users',
   rga: 'rga',
   postgis_rga: 'postgis_rga',
-  spatial_ref_sys: 'spatial_ref_sys',
   agriculture: 'agriculture',
   surfaces_agricoles: 'surfaces_agricoles',
-  lcz_couverture: 'lcz_couverture'
+  lcz_couverture: 'lcz_couverture',
+  atlas_biodiversite: 'atlas_biodiversite',
+  surfaces_protegees: 'surfaces_protegees',
+  spatial_ref_sys: 'spatial_ref_sys',
+  sandbox_users: 'sandbox_users',
+  pg_stat_statements: 'pg_stat_statements',
+  pg_stat_statements_info: 'pg_stat_statements_info',
+  geography_columns: 'geography_columns',
+  geometry_columns: 'geometry_columns'
 };
 
 /**

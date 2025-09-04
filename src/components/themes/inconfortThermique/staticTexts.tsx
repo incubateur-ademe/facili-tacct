@@ -839,17 +839,20 @@ export const LCZText2 = () => (
 export const LCZText = () => (
   <div className="px-4">
     <p style={{ marginTop: '2rem' }}>
-      Les LCZ qui reposent sur des mesures de température de surface <b>ne permettent pas de quantifier
-        le phénomène d’ilot de chaleur urbain </b>(ICU) qui, lui, repose sur des mesures dynamiques de
-      température de l’air. Les LCZ ne reflètent pas non plus les conditions météorologiques locales,
-      ni le confort thermique ressenti par les usagers. Elles contribuent à repérer des zones où une
-      exposition à la surchauffe pourrait être plus marquée, en vue d’y installer des capteurs ou
-      d’orienter des actions de rafraîchissement. Mais en aucun cas ces éléments de pré-diagnostic
-      ne se substituent à des données climatiques dynamiques, ou à une analyse fine des usages de
-      la ville et de la vulnérabilité face à la chaleur.
+      Les LCZ, basées sur un référentiel scientifique, permettent de
+      classer les quartiers selon leurs formes urbaines et leur propension à
+      surchauffer. Elles <b>ne permettent pas de quantifier l'ilot de chaleur
+      urbain</b>, contrairement aux mesures de température de l'air. Les LCZ
+      aident à identifier les zones potentiellement sujettes à la surchauffe
+      afin d’y installer des capteurs, ou pour identifier des zones
+      prioritaires pour agir en faveur du rafraîchissement. La cartographie
+      est un outil gratuit de pré-diagnostic, qui doit être analysée au
+      regard de la connaissance locale du territoire, et ne peut se
+      substituer à des données climatiques ou à une analyse fine des
+      usages et de la vulnérabilité face à la chaleur.
     </p>
     <p style={{ marginTop: '1rem' }}>
-      Pour structurer votre stratégie d’adaptation à la chaleur, consultez{" "}
+      Pour orienter efficacement une stratégie d’adaptation, consultez{" "}
       <a
         href="https://plusfraichemaville.fr/"
         target="_blank"

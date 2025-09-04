@@ -60,26 +60,25 @@ export const LCZ = ({
                     </p>
                     <p>
                       Les zones climatiques locales (LCZ en anglais) montrent comment un territoire
-                      réagit aux vagues de chaleur estivales. Ces données, fournies par le CEREMA,
-                      couvrent 88 aires urbaines en France métropolitaine. Sur les 12 000 communes
-                      étudiées, plus de 5 millions d’habitants vivent dans des quartiers très
-                      sensibles aux fortes chaleurs.
+                      réagit aux vagues de chaleur estivales. 
                       <br />
-                      Les 17 types de zones aident à identifier les zones qui peuvent potentiellement
-                      devenir très chaudes. Bien que basée sur l’occupation du sol et la forme des
-                      villes, <b>cette cartographie n’est pas une modélisation de l’îlot de chaleur urbain.</b>
+                      Les 17 types de zones aident à identifier les zones qui peuvent potentiellement 
+                      devenir très chaudes. Bien que basée sur l’occupation du sol et la forme des villes, 
+                      <b> cette cartographie n’est pas une modélisation de l’îlot de chaleur urbain.</b> Ces données, 
+                      fournies par le CEREMA, couvrent 88 aires urbaines en France métropolitaine. 
+                      Sur les 12 000 communes étudiées, plus de 5 millions d’habitants vivent dans des quartiers 
+                      très sensibles aux fortes chaleurs.
                     </p>
                     <br />
                     <p>
-                      Rendez-vous sur le site du {" "}
+                      Rendez-vous sur le site du Cerema pour en savoir plus {" "}
                       <a
                         href="https://doc.cerema.fr/Default/doc/SYRACUSE/600739/cartographie-nationale-de-donnees-de-zones-climatiques-locales-guide-utilisateurs"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Cerema
+                        sur leur méthodologie.
                       </a>
-                      {" "}pour en savoir plus sur la méthodologie employée.
                     </p>
                   </>
                 ) : (
