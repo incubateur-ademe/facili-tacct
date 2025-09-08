@@ -8,12 +8,12 @@ import { BoundsFromCollection } from '@/components/maps/components/boundsFromCol
 import { espacesNAFDatavizLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
-import { ConsommationEspacesNAFBiodiversiteText } from '@/components/themes/inconfortThermique/staticTexts';
 import { CustomTooltipNouveauParcours } from '@/components/utils/CalculTooltip';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body } from '@/design-system/base/Textes';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
+import { ConsommationEspacesNAFBiodiversiteText } from '@/lib/staticTexts';
 import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
 import { consommationEspacesNafDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';

@@ -2,11 +2,11 @@
 import GraphNotFound from '@/assets/images/zero_data_found.png';
 import FeuxForetCharts from "@/components/charts/gestionRisques/feuxForetCharts";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
-import { FeuxForetText } from "@/components/themes/inconfortThermique/staticTexts";
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body } from "@/design-system/base/Textes";
 import { IncendiesForet } from "@/lib/postgres/models";
+import { FeuxForetText } from "@/lib/staticTexts";
 import { feuxForetTooltipText } from "@/lib/tooltipTexts";
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
 import { Round } from "@/lib/utils/reusableFunctions/round";

@@ -2,12 +2,12 @@
 import TypesDeCulturesCharts from "@/components/charts/agriculture/typesDeCulturesCharts";
 import { MicroPieChart } from "@/components/charts/MicroDataviz";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
-import { SurfacesAgricolesText } from "@/components/themes/inconfortThermique/staticTexts";
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { ReadMoreFade } from "@/components/utils/ReadMoreFade";
 import { Body } from "@/design-system/base/Textes";
 import { PieChartDataSurfacesAgricoles } from "@/lib/charts/surfacesAgricoles";
 import { SurfacesAgricolesModel } from "@/lib/postgres/models";
+import { SurfacesAgricolesText } from "@/lib/staticTexts";
 import { multipleEpciBydepartementLibelle } from "@/lib/territoireData/multipleEpciBydepartement";
 import { multipleEpciByPnrLibelle } from "@/lib/territoireData/multipleEpciByPnr";
 import { agricultureBioTooltipText } from "@/lib/tooltipTexts";

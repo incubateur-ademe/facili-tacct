@@ -19,7 +19,7 @@ import { FilterDataTerritory } from '@/lib/utils/reusableFunctions/filterDataTer
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { SurfacesIrrigueesText } from '../inconfortThermique/staticTexts';
+import { SurfacesIrrigueesText } from '../../../lib/staticTexts';
 import styles from './agriculture.module.scss';
 
 export const SurfacesIrriguees = ({

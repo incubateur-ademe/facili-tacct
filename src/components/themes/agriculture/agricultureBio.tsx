@@ -13,7 +13,7 @@ import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { SurfacesEnBioAgricultureText } from '../inconfortThermique/staticTexts';
+import { SurfacesEnBioAgricultureText } from '../../../lib/staticTexts';
 import styles from './agriculture.module.scss';
 import AgricultureBioDataViz from './agricultureBioDataviz';
 

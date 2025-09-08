@@ -30,7 +30,7 @@ import { sitesDeBaignadeDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { EtatsCoursEauBiodiversiteText } from '../inconfortThermique/staticTexts';
+import { EtatsCoursEauBiodiversiteText } from '../../../lib/staticTexts';
 import styles from './biodiversite.module.scss';
 
 const EtatQualiteCoursDeau = (props: {

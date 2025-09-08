@@ -19,7 +19,7 @@ import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { RGAText } from '../inconfortThermique/staticTexts';
+import { RGAText } from '../../../lib/staticTexts';
 import styles from './gestionRisques.module.scss';
 import RgaDataViz from './rgaDataviz';
 

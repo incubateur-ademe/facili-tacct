@@ -20,7 +20,7 @@ import { IndicatorExportTransformations } from '@/lib/utils/export/environmental
 import { eptRegex, numberWithSpacesRegex } from '@/lib/utils/regex';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { GrandAgeText } from './staticTexts';
+import { GrandAgeText } from '../../../lib/staticTexts';
 import styles from './themes.module.scss';
 
 const sumProperty = (

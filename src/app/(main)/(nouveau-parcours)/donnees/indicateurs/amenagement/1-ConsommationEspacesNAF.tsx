@@ -3,12 +3,12 @@
 import { ConsommationEspacesNAFCharts } from '@/components/charts/amenagement/consommationEspacesNAFCharts';
 import { MicroChiffreTerritoire } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
-import { ConsommationEspacesNAFAmenagementText } from '@/components/themes/inconfortThermique/staticTexts';
 import { CustomTooltipNouveauParcours } from '@/components/utils/CalculTooltip';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body } from '@/design-system/base/Textes';
 import { CommunesContourMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
+import { ConsommationEspacesNAFAmenagementText } from '@/lib/staticTexts';
 import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
 import { consommationEspacesNafDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';

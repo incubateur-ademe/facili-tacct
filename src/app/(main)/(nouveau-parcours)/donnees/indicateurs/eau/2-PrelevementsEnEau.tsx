@@ -2,11 +2,11 @@
 import { WaterDropNumber } from "@/components/charts/MicroDataviz";
 import EauCharts from "@/components/charts/ressourcesEau/EauCharts";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
-import { PrelevementEauText } from "@/components/themes/inconfortThermique/staticTexts";
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { ReadMoreFade } from "@/components/utils/ReadMoreFade";
 import { Body } from "@/design-system/base/Textes";
 import { RessourcesEau } from "@/lib/postgres/models";
+import { PrelevementEauText } from "@/lib/staticTexts";
 import { prelevementEauTooltipText } from "@/lib/tooltipTexts";
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
 import { Round } from "@/lib/utils/reusableFunctions/round";

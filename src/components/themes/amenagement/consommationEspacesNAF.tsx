@@ -12,7 +12,7 @@ import { IndicatorExportTransformations } from '@/lib/utils/export/environmental
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { ConsommationEspacesNAFAmenagementText } from '../inconfortThermique/staticTexts';
+import { ConsommationEspacesNAFAmenagementText } from '../../../lib/staticTexts';
 import styles from './amenagement.module.scss';
 import { ConsommationEspacesNAFDataviz } from './consommationEspacesNAFDataviz';
 

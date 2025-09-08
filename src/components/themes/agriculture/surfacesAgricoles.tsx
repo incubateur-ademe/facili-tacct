@@ -19,7 +19,7 @@ import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { SurfacesAgricolesText } from '../inconfortThermique/staticTexts';
+import { SurfacesAgricolesText } from '../../../lib/staticTexts';
 import styles from './agriculture.module.scss';
 import SurfacesAgricolesDataviz from './surfacesAgricolesDataviz';
 

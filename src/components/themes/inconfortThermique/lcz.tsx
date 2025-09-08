@@ -12,7 +12,7 @@ import { GetPatch4 } from "@/lib/queries/patch4";
 import { LCZTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { LCZCeremaText1 } from './staticTexts';
+import { LCZCeremaText1 } from '../../../lib/staticTexts';
 import styles from './themes.module.scss';
 
 export const LCZ = ({
