@@ -77,9 +77,9 @@ export const AgricultureBioPieCharts = ({
   const partEnConversion = (
     (surfaceEnConversion / surfaceTotale) * 100
   );
-  const evolutionCertifiee =
+  const evolutionCertifiee = surfaceCertifiee2019 === 0 ? 0 :
     ((surfaceCertifiee - surfaceCertifiee2019) / surfaceCertifiee2019) * 100;
-  const evolutionConversion =
+  const evolutionConversion = surfaceEnConversion2019 === 0 ? 0 :
     ((surfaceEnConversion - surfaceEnConversion2019) /
       surfaceEnConversion2019) *
     100;

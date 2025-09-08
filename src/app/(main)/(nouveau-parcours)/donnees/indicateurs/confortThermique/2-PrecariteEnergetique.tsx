@@ -57,24 +57,27 @@ export const PrecariteEnergetique = ({
           <div className={styles.text}>
             {
               precariteLogTerritoire ? (
-                <Body size="sm">
-                  La précarité énergétique va au delà du seul critère du revenu, elle inclue
-                  les mauvaises conditions d’habitation ainsi que les évolutions du prix des énergies.
-                  La part des ménages en situation de précarité énergétique
-                  liée au logement sur votre territoire est de{' '}
-                  <b>{Round((100 * precariteLogTerritoire), 1)} %. </b>
-                </Body>
+                <>
+                  <Body size="sm">
+                    La précarité énergétique va au delà du seul critère du revenu, elle inclue
+                    les mauvaises conditions d’habitation ainsi que les évolutions du prix des énergies.
+                    La part des ménages en situation de précarité énergétique
+                    liée au logement sur votre territoire est de{' '}
+                    <b>{Round((100 * precariteLogTerritoire), 1)} %. </b>
+                  </Body>
+                  <CustomTooltipNouveauParcours
+                    title={fragiliteEconomiqueTooltipText}
+                    texte="D'où vient ce chiffre ?"
+                  />
+                </>
               ) : ""
             }
-            <CustomTooltipNouveauParcours
-              title={fragiliteEconomiqueTooltipText}
-              texte="D'où vient ce chiffre ?"
-            />
+
           </div>
         </div>
         <div className={styles.mapWrapper}>
           {
-            carteTerritoire.length > 0 ? (
+            carteTerritoire.length > 0 && precariteLogTerritoire ? (
               <>
                 <MapInconfortThermique carteCommunes={carteTerritoire} />
                 <div

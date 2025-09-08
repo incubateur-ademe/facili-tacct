@@ -24,7 +24,7 @@ export const DonneesAgricultureEtPeche = ({
   agricultureBio
 }: Props) => {
   const searchParams = useSearchParams();
-  const thematique = searchParams.get('thematique') as "Agriculture et pêche";
+  const thematique = searchParams.get('thematique') as "Agriculture";
   const ongletsMenu = sommaireThematiques[thematique];
 
   useEffect(() => {

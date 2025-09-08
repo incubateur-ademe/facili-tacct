@@ -14,6 +14,7 @@ import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import styles from '../../explorerDonnees.module.scss';
+import { SourceExport } from "../SourceExport";
 
 const SumFiltered = (
   data: RessourcesEau[],
@@ -67,11 +68,6 @@ export const PrelevementsEnEau = (props: {
             ? ressourcesEau.filter((obj) => obj.libelle_pnr === libelle)
             : ressourcesEau;
 
-  const sumAllYears = dataParMaille.map((year) =>
-    Array.from({ length: 13 }, (_, i) => Number(year[`A${2008 + i}` as PrelevementsEauYears]) || 0)
-      .reduce((a, b) => a + b, 0)
-  ).reduce((a, b) => a + b, 0);;
-
   //sort ascending by code_geographique
   const exportData = IndicatorExportTransformations.ressourcesEau.PrelevementEau(dataParMaille).sort(
     (a, b) => a.code_geographique.localeCompare(b.code_geographique)
@@ -108,24 +104,20 @@ export const PrelevementsEnEau = (props: {
             setDatavizTab={setDatavizTab}
             ressourcesEau={ressourcesEau}
           />
-          <div
-            className={styles.sourcesExportWrapper}
-            style={{
-              borderTop: "1px solid var(--gris-medium)",
-              borderRadius: "0 0 0 1rem"
-            }}>
-            <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : BNPE, Catalogue DiDo (Indicateurs territoriaux de développement durable - ITDD)
-            </Body>
-            <ExportButtonNouveauParcours
-              data={exportData}
-              baseName="prelevements_eau"
-              type={type}
-              libelle={libelle}
-              code={code}
-              sheetName="Prélèvements en eau"
-            />
-          </div>
+          <SourceExport
+            source="BNPE, Catalogue DiDo (Indicateurs territoriaux de développement durable - ITDD)"
+            condition={Sum(exportData.map(o => Sum(Object.values(o).slice(13, 26) as number[]))) !== 0}
+            exportComponent={
+              <ExportButtonNouveauParcours
+                data={exportData}
+                baseName="prelevements_eau"
+                type={type}
+                libelle={libelle}
+                code={code}
+                sheetName="Prélèvements en eau"
+              />
+            }
+          />
         </div>
       </div>
     </>

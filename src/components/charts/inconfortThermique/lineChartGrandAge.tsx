@@ -2,6 +2,7 @@
 
 import couleurs from '@/design-system/couleurs';
 import { ResponsiveLine } from '@/lib/nivo/line';
+import { Any } from '@/lib/utils/types';
 import { useEffect, useState } from 'react';
 
 type Props = {
@@ -75,13 +76,26 @@ export const LineChartGrandAge = (props: Props) => {
         left: 60
       }}
       axisBottom={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
         legend: 'Années de recensement',
-        legendOffset: 36,
+        legendOffset: 40,
         legendPosition: 'middle',
-        truncateTickAt: 0,
+        renderTick: (e: Any) => {
+          return (
+            <g transform={`translate(${e.x},${e.y})`}>
+              <foreignObject x={-50} y={0} width={100} height={45}>
+                <div style={{
+                  maxWidth: '15ch',
+                  wordBreak: 'keep-all',
+                  textAlign: 'center',
+                  fontSize: 12,
+                  fontWeight: 400,
+                  margin: '0.5rem 0',
+                  lineHeight: "normal"
+                }}>{e.value}</div>
+              </foreignObject>
+            </g>
+          );
+        }
       }}
       axisLeft={{
         tickSize: 5,
@@ -90,7 +104,24 @@ export const LineChartGrandAge = (props: Props) => {
         legend: 'Pourcentage (%)',
         legendOffset: -40,
         legendPosition: 'middle',
-        truncateTickAt: 0
+        truncateTickAt: 0,
+        renderTick: (e: Any) => {
+          return (
+            <g transform={`translate(${e.x},${e.y})`}>
+              <foreignObject x={-25} y={-17} width={20} height={25}>
+                <div style={{
+                  maxWidth: '15ch',
+                  wordBreak: 'keep-all',
+                  textAlign: 'center',
+                  fontSize: 12,
+                  fontWeight: 400,
+                  margin: '0.5rem 0',
+                  lineHeight: "normal"
+                }}>{e.value}</div>
+              </foreignObject>
+            </g>
+          );
+        }
       }}
     />
   );

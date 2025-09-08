@@ -27,7 +27,7 @@ export const nodeCategoryMapping = {
   // Ressources économiques
   Entreprises: 'Ressources économiques',
   Tourisme: 'Ressources économiques',
-  'Agriculture et pêche': 'Ressources économiques',
+  'Agriculture': 'Ressources économiques',
   'Filière bois': 'Ressources économiques'
 };
 
@@ -100,7 +100,7 @@ export const nomThematiques = [
     liens: []
   },
   {
-    label: 'Agriculture et pêche',
+    label: 'Agriculture',
     labelRadius: 280,
     icon: '🌾',
     disabled: false
@@ -159,21 +159,21 @@ export const liensEntreThematiques = [
     curve: 1,
     curveRadius: 0.4
   },
-  // Agriculture et pêche
+  // Agriculture
   {
-    source: 'Agriculture et pêche',
+    source: 'Agriculture',
     target: 'Eau',
     curve: 1,
     curveRadius: 0.1
   },
   {
-    source: 'Agriculture et pêche',
+    source: 'Agriculture',
     target: 'Santé',
     curve: 1,
     curveRadius: 0.3
   },
   {
-    source: 'Agriculture et pêche',
+    source: 'Agriculture',
     target: 'Biodiversité',
     curve: 1,
     curveRadius: 0.2
@@ -181,7 +181,7 @@ export const liensEntreThematiques = [
   // Biodiversité
   {
     source: 'Biodiversité',
-    target: 'Agriculture et pêche',
+    target: 'Agriculture',
     curve: 1,
     curveRadius: 0.2
   },
@@ -267,7 +267,7 @@ export const liensEntreThematiques = [
   },
   {
     source: 'Gestion des risques',
-    target: 'Agriculture et pêche',
+    target: 'Agriculture',
     curve: 1,
     curveRadius: 0.25
   },

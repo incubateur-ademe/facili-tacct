@@ -14,6 +14,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import styles from '../../explorerDonnees.module.scss';
+import { SourceExport } from '../SourceExport';
 
 export const FeuxDeForet = (props: {
   incendiesForet: IncendiesForet[];
@@ -78,25 +79,20 @@ export const FeuxDeForet = (props: {
               />
             </div>
           )}
-          <div
-            className={styles.sourcesExportWrapper}
-            style={{
-              borderTop: "1px solid var(--gris-medium)",
-              borderRadius: "0 0 0 1rem"
-            }}>
-            <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : Base de Données sur les Incendies de Forêts en France,
-              consultée en 2024 (derniers chiffres disponibles : 2023)
-            </Body>
-            <ExportButtonNouveauParcours
-              data={exportData}
-              baseName="feux_foret"
-              type={type}
-              libelle={libelle}
-              code={code}
-              sheetName="Feux de forêt"
-            />
-          </div>
+          <SourceExport
+            source="Base de Données sur les Incendies de Forêts en France, consultée en 2024 (derniers chiffres disponibles : 2023)"
+            condition={incendiesForet.length !== 0}
+            exportComponent={
+              <ExportButtonNouveauParcours
+                data={exportData}
+                baseName="feux_foret"
+                type={type}
+                libelle={libelle}
+                code={code}
+                sheetName="Feux de forêt"
+              />
+            }
+          />
         </div>
       </div>
     </>

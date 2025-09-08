@@ -16,6 +16,7 @@ import { useSearchParams } from "next/navigation";
 import styles from '../../explorerDonnees.module.scss';
 import { sumProperty } from '../fonctions';
 import { EmploisEnExterieurPieChartData } from '../graphData';
+import { SourceExport } from '../SourceExport';
 
 export const EmploisEnExterieur = ({
   inconfortThermique
@@ -83,27 +84,20 @@ export const EmploisEnExterieur = ({
               travailExterieurTerritoire={travailExterieurTerritoire}
             /> : <Loader />
           }
-          {/* <div className={styles.legend}>
-            <LegendCompColor legends={emploisEnExterieurLegend} />
-          </div> */}
-          <div className={styles.sourcesExportWrapper} style={{ borderTop: '1px solid var(--gris-medium)' }}>
-            <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : INSEE, Emplois au lieu de travail par sexe, secteur
-              d'activité économique et catégorie socioprofessionnelle, 2021
-            </Body>
-            {
-              sumAllCount > 0 && (
-                <ExportButtonNouveauParcours
-                  data={exportData}
-                  baseName="travail_exterieur"
-                  type={type}
-                  libelle={libelle}
-                  code={code}
-                  sheetName="Activités économiques"
-                />
-              )
+          <SourceExport
+            source="INSEE, Emplois au lieu de travail par sexe, secteur d'activité économique et catégorie socioprofessionnelle, 2021"
+            exportComponent={
+              <ExportButtonNouveauParcours
+                data={exportData}
+                baseName="travail_exterieur"
+                type={type}
+                libelle={libelle}
+                code={code}
+                sheetName="Activités économiques"
+              />
             }
-          </div>
+            condition={sumAllCount > 0}
+          />
         </div>
       </div>
     </>

@@ -33,7 +33,12 @@ export const TypesDeCulture = (props: {
     (max, item) => (item.count > max.count ? item : max),
     categoriesData[0]
   );
-  const sommeToutesSuperficies = Sum(surfacesAgricoles.map(el => el.superficie_sau))
+  const sommeToutesSuperficies = Sum(surfacesAgricoles.map(
+    el => el.superficie_sau_cultures_permanentes
+      + el.superficie_sau_herbe
+      + el.superficie_sau_terres_arables
+      + el.superficie_sau_jardins
+  ));
   const territoiresPartiellementCouverts = type === 'departement'
     ? multipleEpciBydepartementLibelle.find(dept => dept.departement === code)?.liste_epci_multi_dept
     : type === 'pnr'
@@ -46,7 +51,7 @@ export const TypesDeCulture = (props: {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroPieChart pourcentage={(maxCategory.count / sommeToutesSuperficies) * 100} arrondi={1} ariaLabel="" />
+            {sommeToutesSuperficies !== 0 && <MicroPieChart pourcentage={(maxCategory.count / sommeToutesSuperficies) * 100} arrondi={1} ariaLabel="" />}
             {
               surfacesAgricoles.length ? (
                 <>

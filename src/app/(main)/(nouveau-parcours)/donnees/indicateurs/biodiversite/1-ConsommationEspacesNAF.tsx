@@ -71,15 +71,15 @@ export const ConsommationEspacesNAF = (props: {
                   </Body>
                 ) : ""
               }
-              <CustomTooltipNouveauParcours
-                title={espacesNAFTooltipText}
-                texte="D'où vient ce chiffre ?"
-              />
             </div>
           </div>
           <div className='mt-4 pr-5'>
             <ReadMoreFade maxHeight={100}>
               <ConsommationEspacesNAFBiodiversiteText />
+              <CustomTooltipNouveauParcours
+                title={espacesNAFTooltipText}
+                texte="D'où vient ce chiffre ?"
+              />
             </ReadMoreFade>
           </div>
         </div>
@@ -108,15 +108,18 @@ export const ConsommationEspacesNAF = (props: {
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
           Source : CEREMA, avril 2024
         </Body>
-        <ExportButtonNouveauParcours
-          data={exportData}
-          baseName="consommation_espaces_naf"
-          type={type}
-          libelle={libelle}
-          code={code}
-          sheetName="Espaces NAF"
-          documentation={consommationEspacesNafDoc}
-        />
+        {
+          carteCommunes.length !== 0 && enveloppe && carteCommunesFiltered !== null && (
+            <ExportButtonNouveauParcours
+              data={exportData}
+              baseName="consommation_espaces_naf"
+              type={type}
+              libelle={libelle}
+              code={code}
+              sheetName="Espaces NAF"
+              documentation={consommationEspacesNafDoc}
+            />
+          )}
       </div>
     </>
   );

@@ -15,6 +15,7 @@ import { useSearchParams } from "next/navigation";
 import styles from '../../explorerDonnees.module.scss';
 import { sumProperty } from '../fonctions';
 import { GrandAgeLineChartYData } from '../graphData';
+import { SourceExport } from '../SourceExport';
 
 export const GrandAge = ({
   inconfortThermique
@@ -85,7 +86,6 @@ export const GrandAge = ({
                 height: !Object.values(yData).slice(0, -2).includes('NaN') ? '500px' : 'max-content',
                 width: '100%',
                 borderRadius: '1rem 0 0 0',
-                borderBottom: '1px solid var(--gris-medium)',
               }}
             >
               {
@@ -99,23 +99,20 @@ export const GrandAge = ({
           ) : (
             <Loader />
           )}
-          <div className={styles.sourcesExportWrapper}>
-            <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : Observatoire des territoires
-            </Body>
-            {
-              !Object.values(yData).slice(0, -2).includes('NaN') && (
-                <ExportButtonNouveauParcours
-                  data={exportData}
-                  baseName="grand_age"
-                  type={type}
-                  libelle={libelle}
-                  code={code}
-                  sheetName="Grand âge"
-                />
-              )
+          <SourceExport
+            exportComponent={
+              <ExportButtonNouveauParcours
+                data={exportData}
+                baseName="grand_age"
+                type={type}
+                libelle={libelle}
+                code={code}
+                sheetName="Grand âge"
+              />
             }
-          </div>
+            source='Observatoire des territoires'
+            condition={!Object.values(yData).slice(0, -2).includes('NaN')}
+          />
         </div>
       </div>
     </>

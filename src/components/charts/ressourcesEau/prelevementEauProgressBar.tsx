@@ -237,7 +237,7 @@ const PrelevementEauProgressBars = ({
             ))}
         </>
       ) : (
-        <div className='p-10 flex flex-row justify-center'><DataNotFound image={GraphNotFound} /></div>
+        <div className='p-1 flex flex-row justify-center'><DataNotFound image={GraphNotFound} /></div>
       )}
     </div>
   );

@@ -64,7 +64,7 @@ export const SurfacesEnBio = (props: {
     return acc;
   }, 0);
   const pourcentageTotal = ((surfaceCertifiee + surfaceEnConversion) / surfaceTotale) * 100;
-  const exportData = IndicatorExportTransformations.biodiversite.agricultureBio(agricultureBio)
+  const exportData = IndicatorExportTransformations.biodiversite.agricultureBio(agricultureBio);
 
   return (
     <>
@@ -126,15 +126,18 @@ export const SurfacesEnBio = (props: {
               - Ministère de l’agriculture) dans Catalogue DiDo (Indicateurs
               territoriaux de développement durable - ITDD) - AGRESTE, 2020
             </Body>
-            <ExportButtonNouveauParcours
-              data={exportData}
-              baseName="agriculture_biologique"
-              type={type}
-              libelle={libelle}
-              code={code}
-              sheetName="Agriculture bio"
-              documentation={surfacesEnBioDoc}
-            />
+            {
+              agricultureBio.length !== 0 && (
+                <ExportButtonNouveauParcours
+                  data={exportData}
+                  baseName="agriculture_biologique"
+                  type={type}
+                  libelle={libelle}
+                  code={code}
+                  sheetName="Agriculture bio"
+                  documentation={surfacesEnBioDoc}
+                />
+              )}
           </div>
         </div>
       </div>
