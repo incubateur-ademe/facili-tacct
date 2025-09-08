@@ -14,8 +14,8 @@ import { GetPatch4 } from '@/lib/queries/patch4';
 import { erosionCotiereTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import { ErosionCotiereText } from '../../../lib/staticTexts';
 import { LegendErosionCotiere } from '../../maps/legends/legendErosionCotiere';
-import { ErosionCotiereText } from '../inconfortThermique/staticTexts';
 import styles from './gestionRisques.module.scss';
 
 const ErosionCotes = (props: {

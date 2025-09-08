@@ -20,7 +20,7 @@ import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { VegetalisationText } from './staticTexts';
+import { VegetalisationText } from '../../../lib/staticTexts';
 import styles from './themes.module.scss';
 
 const sumProperty = (

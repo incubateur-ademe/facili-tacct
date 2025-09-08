@@ -17,7 +17,7 @@ import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { CatNatText } from '../inconfortThermique/staticTexts';
+import { CatNatText } from '../../../lib/staticTexts';
 import CatnatDataViz from './catnatDataviz';
 import styles from './gestionRisques.module.scss';
 

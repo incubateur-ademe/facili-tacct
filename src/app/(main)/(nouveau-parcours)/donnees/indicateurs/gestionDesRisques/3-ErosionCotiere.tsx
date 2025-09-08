@@ -4,13 +4,13 @@ import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/Exp
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { LegendErosionCotiere } from '@/components/maps/legends/legendErosionCotiere';
 import { MapErosionCotiere } from '@/components/maps/mapErosionCotiere';
-import { ErosionCotiereText } from '@/components/themes/inconfortThermique/staticTexts';
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { ErosionCotiereMapper } from '@/lib/mapper/erosionCotiere';
 import { CarteCommunes, ErosionCotiere } from "@/lib/postgres/models";
+import { ErosionCotiereText } from '@/lib/staticTexts';
 import { erosionCotiereTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from "next/navigation";
 import { useRef } from 'react';

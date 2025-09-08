@@ -14,7 +14,7 @@ import { IndicatorExportTransformations } from '@/lib/utils/export/environmental
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { ConsommationEspacesNAFBiodiversiteText } from '../inconfortThermique/staticTexts';
+import { ConsommationEspacesNAFBiodiversiteText } from '../../../lib/staticTexts';
 import styles from './biodiversite.module.scss';
 import { ConsommationEspacesNAFDataviz } from './consommationEspacesNAFDataviz';
 

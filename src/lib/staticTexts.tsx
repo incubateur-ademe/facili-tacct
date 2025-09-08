@@ -831,24 +831,27 @@ export const LCZCeremaText1 = () => (
     </Body>
     <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
       Les zones climatiques locales (LCZ en anglais) montrent comment un territoire
-      réagit aux vagues de chaleur estivales. Ces données, fournies par le CEREMA,
-      couvrent 88 aires urbaines en France métropolitaine. Sur les 12 000 communes
-      étudiées, plus de 5 millions d’habitants vivent dans des quartiers très sensibles
+      réagit aux vagues de chaleur estivales. 
+    </Body>
+    <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
+      Les 17 types de zones aident à identifier les zones qui peuvent  potentiellement 
+      devenir très chaudes. Bien que basée sur l’occupation du sol et la forme des villes,
+      <b> cette cartographie n’est pas une modélisation de l’îlot de chaleur urbain.</b> Ces 
+      données, fournies par le CEREMA, couvrent 88 aires urbaines en France métropolitaine. Sur 
+      les 12 000 communes étudiées, plus de 5 millions d’habitants vivent dans des quartiers très sensibles
       aux fortes chaleurs.
     </Body>
+    
     <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
-      Les 17 types de zones aident à identifier les zones qui peuvent  potentiellement
-      devenir très chaudes. Bien que basée sur l’occupation du sol et la forme des villes,
-      <b> cette cartographie n’est pas une modélisation de l’îlot de chaleur urbain.</b>
-    </Body>
-    <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
+      Rendez-vous sur le site du {" "}
       <a
         href="https://doc.cerema.fr/Default/doc/SYRACUSE/600739/cartographie-nationale-de-donnees-de-zones-climatiques-locales-guide-utilisateurs"
         target="_blank"
         rel="noreferrer"
       >
-        Rendez-vous sur le site du Cerema pour en savoir plus sur la méthodologie employée.
+        Cerema
       </a>
+      {" "}pour en savoir plus sur leur méthodologie.
     </Body>
   </>
 );
@@ -862,7 +865,7 @@ export const LCZText2 = () => (
       Cette carte, issue de multiples jeux de données d'observation de la Terre, vous permet 
       d'explorer votre territoire à 100 m de résolution spatiale. Les zones climatiques locales 
       (LCZ en anglais) montrent comment un territoire réagit aux vagues de chaleur estivales. 
-      Les 17 types de zones aident à identifier les zones qui peuvent  potentiellement devenir 
+      Les 17 types de zones aident à identifier les zones qui peuvent potentiellement devenir 
       très chaudes. 
       <br></br>
       Bien que basée sur l’occupation du sol et la forme des villes, <b>cette cartographie n’est 
@@ -885,17 +888,20 @@ export const LCZText2 = () => (
 export const LCZText = () => (
   <div className="pr-4"> 
     <Body size='sm' style={{ marginTop: '2rem' }}>
-      Les LCZ qui reposent sur des mesures de température de surface <b>ne permettent pas de quantifier 
-      le phénomène d’ilot de chaleur urbain </b>(ICU) qui, lui, repose sur des mesures dynamiques de 
-      température de l’air. Les LCZ ne reflètent pas non plus les conditions météorologiques locales, 
-      ni le confort thermique ressenti par les usagers. Elles contribuent à repérer des zones où une 
-      exposition à la surchauffe pourrait être plus marquée, en vue d’y installer des capteurs ou 
-      d’orienter des actions de rafraîchissement. Mais en aucun cas ces éléments de pré-diagnostic 
-      ne se substituent à des données climatiques dynamiques, ou à une analyse fine des usages de 
-      la ville et de la vulnérabilité face à la chaleur.
+      Les LCZ, basées sur un référentiel scientifique, permettent de
+      classer les quartiers selon leurs formes urbaines et leur propension à
+      surchauffer. Elles <b>ne permettent pas de quantifier l'ilot de chaleur
+      urbain</b>, contrairement aux mesures de température de l'air. Les LCZ
+      aident à identifier les zones potentiellement sujettes à la surchauffe
+      afin d’y installer des capteurs, ou pour identifier des zones
+      prioritaires pour agir en faveur du rafraîchissement. La cartographie
+      est un outil gratuit de pré-diagnostic, qui doit être analysée au
+      regard de la connaissance locale du territoire, et ne peut se
+      substituer à des données climatiques ou à une analyse fine des
+      usages et de la vulnérabilité face à la chaleur.
     </Body>
     <Body size='sm' style={{ marginTop: '1rem' }}>
-      Pour structurer votre stratégie d’adaptation à la chaleur, consultez{" "}
+      Pour orienter efficacement une stratégie d’adaptation, consultez{" "}
       <a
         href="https://plusfraichemaville.fr/"
         target="_blank"

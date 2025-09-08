@@ -23,7 +23,7 @@ import { etatCoursDeauTooltipTextEau } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { EtatCoursEauRessourcesEauText } from '../inconfortThermique/staticTexts';
+import { EtatCoursEauRessourcesEauText } from '../../../lib/staticTexts';
 import styles from './ressourcesEau.module.scss';
 
 const EtatQualiteCoursDeau = (props: {
