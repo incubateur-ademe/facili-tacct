@@ -579,7 +579,7 @@ exports.Prisma.AgricultureScalarFieldEnum = {
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
   part_irr_SAU_2020: 'part_irr_SAU_2020',
-  otex_12_postes: 'otex_12_postes'
+  part_over_55: 'part_over_55'
 };
 
 exports.Prisma.Surfaces_agricolesScalarFieldEnum = {
@@ -641,55 +641,6 @@ exports.Prisma.Lcz_couvertureScalarFieldEnum = {
   couverture_lcz: 'couverture_lcz'
 };
 
-exports.Prisma.Atlas_biodiversiteScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  libelle_departement: 'libelle_departement',
-  region: 'region',
-  ept: 'ept',
-  libelle_petr: 'libelle_petr',
-  code_pnr: 'code_pnr',
-  libelle_pnr: 'libelle_pnr',
-  nom: 'nom',
-  structure_porteuse: 'structure_porteuse',
-  type_de_structure_porteuse: 'type_de_structure_porteuse',
-  annee_debut: 'annee_debut',
-  avancement: 'avancement'
-};
-
-exports.Prisma.Surfaces_protegeesScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  PNC: 'PNC',
-  RAMSAR: 'RAMSAR',
-  PNR: 'PNR',
-  PNP: 'PNP',
-  FOR_PRO: 'FOR_PRO',
-  ZZZ: 'ZZZ',
-  ZNIEFF2: 'ZNIEFF2',
-  ZNIEFF1: 'ZNIEFF1',
-  RNR: 'RNR',
-  TOU_PRO: 'TOU_PRO',
-  NATURA: 'NATURA',
-  ZPS: 'ZPS',
-  SIC: 'SIC',
-  CELRL: 'CELRL',
-  BIO: 'BIO',
-  APB: 'APB',
-  RN: 'RN',
-  RBFD: 'RBFD',
-  RNCFS: 'RNCFS',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  region: 'region'
-};
-
 exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
   srid: 'srid',
   auth_name: 'auth_name',
@@ -698,11 +649,22 @@ exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
   proj4text: 'proj4text'
 };
 
-exports.Prisma.Sandbox_usersScalarFieldEnum = {
-  username: 'username',
-  pk: 'pk',
-  password: 'password',
-  created_at: 'created_at'
+exports.Prisma.Geography_columnsScalarFieldEnum = {
+  coord_dimension: 'coord_dimension',
+  srid: 'srid',
+  type: 'type'
+};
+
+exports.Prisma.Geometry_columnsScalarFieldEnum = {
+  f_table_catalog: 'f_table_catalog',
+  coord_dimension: 'coord_dimension',
+  srid: 'srid',
+  type: 'type'
+};
+
+exports.Prisma.Pg_stat_statements_infoScalarFieldEnum = {
+  dealloc: 'dealloc',
+  stats_reset: 'stats_reset'
 };
 
 exports.Prisma.Pg_stat_statementsScalarFieldEnum = {
@@ -751,24 +713,6 @@ exports.Prisma.Pg_stat_statementsScalarFieldEnum = {
   jit_emission_time: 'jit_emission_time'
 };
 
-exports.Prisma.Pg_stat_statements_infoScalarFieldEnum = {
-  dealloc: 'dealloc',
-  stats_reset: 'stats_reset'
-};
-
-exports.Prisma.Geography_columnsScalarFieldEnum = {
-  coord_dimension: 'coord_dimension',
-  srid: 'srid',
-  type: 'type'
-};
-
-exports.Prisma.Geometry_columnsScalarFieldEnum = {
-  f_table_catalog: 'f_table_catalog',
-  coord_dimension: 'coord_dimension',
-  srid: 'srid',
-  type: 'type'
-};
-
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -807,14 +751,11 @@ exports.Prisma.ModelName = {
   agriculture: 'agriculture',
   surfaces_agricoles: 'surfaces_agricoles',
   lcz_couverture: 'lcz_couverture',
-  atlas_biodiversite: 'atlas_biodiversite',
-  surfaces_protegees: 'surfaces_protegees',
   spatial_ref_sys: 'spatial_ref_sys',
-  sandbox_users: 'sandbox_users',
-  pg_stat_statements: 'pg_stat_statements',
-  pg_stat_statements_info: 'pg_stat_statements_info',
   geography_columns: 'geography_columns',
-  geometry_columns: 'geometry_columns'
+  geometry_columns: 'geometry_columns',
+  pg_stat_statements_info: 'pg_stat_statements_info',
+  pg_stat_statements: 'pg_stat_statements'
 };
 
 /**
