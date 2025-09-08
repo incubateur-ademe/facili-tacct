@@ -1,7 +1,5 @@
 "use client";
 
-import { prelevementEauBarChartLegend } from "@/components/maps/legends/datavizLegends";
-import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import RangeSlider from "@/components/Slider";
 import SubTabs from '@/components/SubTabs';
 import { Body } from "@/design-system/base/Textes";
@@ -81,9 +79,6 @@ const EauCharts = (props: Props) => {
           ressourcesEau={ressourcesEau}
           sliderValue={sliderValue}
         />
-        <div style={{ paddingBottom: '1rem' }}>
-          <LegendCompColor legends={prelevementEauBarChartLegend} />
-        </div>
       </>
       }
     </div>

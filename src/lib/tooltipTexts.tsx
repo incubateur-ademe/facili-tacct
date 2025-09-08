@@ -1,3 +1,5 @@
+import { Body } from "@/design-system/base/Textes";
+
 export const fragiliteEconomiqueTooltipText = (
   <>
     <div>La précarité énergétique liée au logement concerne : </div>
@@ -64,17 +66,17 @@ export const surfacesIrrigueesTooltipText = (
 );
 
 export const espacesNAFTooltipText = (
-  <div>
+  <Body weight="bold">
     Le suivi de cet indicateur est réalisé par le CEREMA dans le cadre de
-    l’objectif “zéro artificialisation nette” de la loi « Climat et résilience
-    ». La consommation d’espaces NAF est calculée à partir des fichiers
+    l’objectif « zéro artificialisation nette » de la loi « Climat et résilience ». La
+    consommation d’espaces NAF est calculée à partir des fichiers
     fonciers entre 2009 et 2023, présentée ici toute destination confondue.
     Les données sont traitées pour donner des tendances de façon uniforme sur
     toute la France ; ponctuellement, il est possible que les documents de
     planification de certaines collectivités territoriales fassent référence à
     des données locales de consommation d'espaces différentes de celles
     fournies par le CEREMA.
-  </div>
+  </Body>
 );
 
 export const agricultureBioTooltipText = (
@@ -105,58 +107,61 @@ export const agricultureBioTooltipText = (
 
 export const AOT40TooltipText = (
   <div>
-    <p>
+    <Body weight='bold'>
       L’AOT40 (Accumulated Exposure Over Threshold 40) est un indicateur
       estimant l’impact de la pollution à l’ozone sur la végétation. Il mesure
       l’accumulation des concentrations d’ozone dépassant 40 ppb (80 µg/m³) :
-    </p>
-    <p>
+    </Body>
+    <br></br>
+    <Body weight='bold'>
       Il est calculé par la somme des différences entre les concentrations
       horaires d'ozone supérieures à 80 µg/m3 et le seuil de 80 µg/m3,
       mesurées quotidiennement entre 8 h et 20 h, de mai à juillet pour tenir
       compte de la période de photosynthèse.
-    </p>
-    <p>
+    </Body>
+    <br></br>
+    <Body weight='bold'>
       Une valeur cible(*) de 18 000 µg/m³ par heure, en moyenne calculée sur 5
       ans, est fixée dans la directive 2024/2881 du 23 octobre 2024 concernant
       la qualité de l’air ambiant et un air pur pour l’Europe.
-    </p>
-    <p>
+    </Body>
+    <br></br>
+    <Body weight='bold'>
       <i>
         (*) Valeur cible : niveau à atteindre, dans la mesure du possible,
         afin d'éviter, de prévenir ou de réduire les effets nocifs sur
         l'environnement.
       </i>
-    </p>
+    </Body>
   </div>
 );
 
 export const etatCoursDeauTooltipTextBiodiv = (
   <div>
-    <p>
+    <Body weight='bold'>
       En application de la directive-cadre européenne sur l’eau, l’état
       écologique global de chaque rivière est évalué tous les 6 ans par les
       agences de l’eau, à partir de relevés sur 3 ans (N-1, N-2, N-3) issus
       des stations de mesure de la qualité de l’eau (par modélisation en leur
       absence). Plusieurs critères concourent à cette évaluation :
-    </p>
+    </Body>
     <ul>
-      <li>température et acidité de l’eau,</li>
-      <li>bilan de l’oxygène,</li>
-      <li>hydro-morphologie du cours d’eau,</li>
+      <li><Body weight="bold">température et acidité de l’eau,</Body></li>
+      <li><Body weight="bold">bilan de l’oxygène,</Body></li>
+      <li><Body weight="bold">hydro-morphologie du cours d’eau,</Body></li>
       <li>
-        présence de poissons, de plantes aquatiques, de microalgues, de
-        micropolluants, de nutriments (eutrophisation), etc.
+        <Body weight="bold">présence de poissons, de plantes aquatiques, de microalgues, de
+        micropolluants, de nutriments (eutrophisation), etc.</Body>
       </li>
     </ul>
-    <p>
+    <Body weight='bold'>
       Attention, le bon état écologique d’une rivière ne signifie pas une
       qualité sanitaire suffisante pour s’y baigner. Cette évaluation se
       fait en fonction de données microbiologiques. Le classement des
       eaux de qualité insuffisante, suffisante, bonne ou excellente est
       établi conformément aux critères de l’annexe II de la directive
       2006/7/CE concernant la gestion de la qualité des eaux de baignade.
-    </p>
+    </Body>
     <br></br>
   </div>
 );
@@ -227,23 +232,24 @@ export const erosionCotiereTooltipText = (
 
 export const feuxForetTooltipText = (
   <div>
-    <p>
+    <Body weight='bold'>
       Un incendie de forêt est un incendie qui démarre en forêt ou qui se
       propage en forêt ou au sein de terres boisées au cours de son évolution
       (y compris dans les maquis ou garrigues dans l’aire méditerranéenne).
-    </p>
-    <p>
+    </Body>
+    <br></br>
+    <Body weight='bold'>
       La surface parcourue est la surface totale parcourue par le feu au cours
       de son évolution et quelle que soit la végétation touchée. Ces surfaces
       sont soit :
-    </p>
+    </Body>
     <ul>
       <li>
-        estimées (renseignées dans la BDIFF sans être issues de mesures),
+        <Body weight="bold">estimées (renseignées dans la BDIFF sans être issues de mesures),</Body>
       </li>
       <li>
-        mesurées (issues de mesures sur le terrain ou d’un Système
-        d’Information Géographique).
+        <Body weight="bold">mesurées (issues de mesures sur le terrain ou d’un Système
+        d’Information Géographique).</Body>
       </li>
     </ul>
   </div>
@@ -298,19 +304,19 @@ export const prelevementEauTooltipText = (
 
 export const rgaTooltipText = (
   <>
-    <div>
+    <Body weight='bold'>
       Les informations fournies sont le résultat du croisement géomatique
       réalisé par le CGDD/SDES en 2021 de la carte d’exposition au phénomène
       de RGA (BRGM, 2019) et des logements figurant dans le fichier démographique
       sur les logements et les individus (Base Fidéli -Insee, 2021).
-    </div>
+    </Body>
     <br></br>
-    <div>
+    <Body weight='bold'>
       L’indicateur permet d’identifier le niveau d’exposition des communes au
       phénomène mais il n’est pas adapté pour travailler à une échelle plus fine
       (parcellaire). Ainsi, la visualisation cartographique proposée ne peut en
       aucun cas prétendre refléter en tout point l’exacte nature des sols.
-    </div>
+    </Body>
   </>
 );
 

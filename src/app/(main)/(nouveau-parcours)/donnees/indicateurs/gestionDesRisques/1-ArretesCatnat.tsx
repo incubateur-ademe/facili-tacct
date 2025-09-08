@@ -16,6 +16,7 @@ import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from '../../explorerDonnees.module.scss';
+import { SourceExport } from '../SourceExport';
 
 type ArreteCatNatEnriched = ArreteCatNat & {
   annee_arrete: number;
@@ -152,26 +153,22 @@ export const ArretesCatnat = (props: {
                 </div>
               )
           }
-          <div
-            className={styles.sourcesExportWrapper}
-            style={{
-              borderTop: "1px solid var(--gris-medium)",
-              borderRadius: "0 0 0 1rem"
-            }}>
-            <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : Base nationale de Gestion ASsistée des Procédures
+          <SourceExport
+            source='Base nationale de Gestion ASsistée des Procédures
               Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
-              septembre 2025.
-            </Body>
-            <ExportButtonNouveauParcours
-              data={exportData}
-              baseName="arretes_catnat"
-              type={type}
-              libelle={libelle}
-              code={code}
-              sheetName="Arrêtés CatNat"
-            />
-          </div>
+              septembre 2025'
+            condition={gestionRisques.length !== 0}
+            exportComponent={
+              <ExportButtonNouveauParcours
+                data={exportData}
+                baseName="arretes_catnat"
+                type={type}
+                libelle={libelle}
+                code={code}
+                sheetName="Arrêtés CatNat"
+              />
+            }
+          />
         </div>
       </div>
     </>

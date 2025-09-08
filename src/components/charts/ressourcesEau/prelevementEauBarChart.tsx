@@ -1,6 +1,8 @@
 'use client';
 
 import { prelevementEauBarChartLegend, ressourcesEauBarChartLegend } from '@/components/maps/legends/datavizLegends';
+import { LegendCompColor } from '@/components/maps/legends/legendComp';
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { RessourcesEau } from '@/lib/postgres/models';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
@@ -89,6 +91,7 @@ const PrelevementEauBarChart = ({
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
+  const windowDimensions = useWindowDimensions();
   const dataParMaille = type === "commune"
     ? ressourcesEau.filter((obj) => obj.code_geographique === code)
     : type === "epci"
@@ -121,26 +124,34 @@ const PrelevementEauBarChart = ({
       style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
     >
       {graphData && graphData.length ? (
-        <NivoBarChartRessourcesEau
-          bottomTickValues={
-            minValueXTicks != maxValueXTicks
-              ? [`${minValueXTicks}`, `${maxValueXTicks}`]
-              : [`${minValueXTicks}`]
-          }
-          colors={prelevementEauBarChartLegend.map((e) => e.color)}
-          graphData={graphData}
-          keys={prelevementEauBarChartLegend.map((e) => e.value)}
-          indexBy="annee"
-          showLegend={false}
-          tooltip={({ data }) => simpleBarChartTooltip({
-            data,
-            legende: ressourcesEauBarChartLegend,
-            unite: 'Mm³',
-            multiplicateur: 0.000001
-          })}
-          axisLeftLegend="Volumétrie en Mm3"
-          axisLeftTickFactor={1000000}
-        />
+        <>
+          <NivoBarChartRessourcesEau
+            bottomTickValues={
+              minValueXTicks != maxValueXTicks
+                ? [`${minValueXTicks}`, `${maxValueXTicks}`]
+                : [`${minValueXTicks}`]
+            }
+            colors={prelevementEauBarChartLegend.map((e) => e.color)}
+            graphData={graphData}
+            keys={prelevementEauBarChartLegend.map((e) => e.value)}
+            indexBy="annee"
+            showLegend={false}
+            tooltip={({ data }) => simpleBarChartTooltip({
+              data,
+              legende: ressourcesEauBarChartLegend,
+              unite: 'Mm³',
+              multiplicateur: 0.000001
+            })}
+            axisLeftLegend="Volumétrie en Mm3"
+            axisLeftTickFactor={1000000}
+          />
+          <div style={{
+            paddingBottom: '1rem',
+            marginTop: windowDimensions.width! > 1850 ? '-5rem' : windowDimensions.width! > 1700 ? '-7rem' : '-9rem'
+          }}>
+            <LegendCompColor legends={prelevementEauBarChartLegend} />
+          </div>
+        </>
       ) : (
         <div
           style={{

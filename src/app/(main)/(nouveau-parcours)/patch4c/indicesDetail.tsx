@@ -36,11 +36,11 @@ const IndicesDetail = ({
                     <H3 style={{ fontSize: "1.25rem" }}>{indice.label}</H3>
                     {
                       indice.value === "Pas d'évolution" ? (
-                        <Body size='sm'>
+                        <Body>
                           Considérer qu’il n’y a pas d’évolution.
                         </Body>
                       ) : indice.value === "Aggravation modérée" ? (
-                        <Body size='sm'>
+                        <Body>
                           Il n'est pas nécessaire d'apporter des modifications immédiates à votre plan d'adaptation.
                           Assurez-vous simplement que cet aléa y est bien identifié.
                         </Body>

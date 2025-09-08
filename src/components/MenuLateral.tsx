@@ -36,7 +36,7 @@ export const MenuLateral = () => {
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const thematique = searchParams.get('thematique') as "Confort thermique" | "Gestion des risques" | "Aménagement" | "Eau" | "Biodiversité" | "Agriculture et pêche";
+  const thematique = searchParams.get('thematique') as "Confort thermique" | "Gestion des risques" | "Aménagement" | "Eau" | "Biodiversité" | "Agriculture";
   const [topPosition, setTopPosition] = useState<number>(173);
   const [navigationHeight, setNavigationHeight] = useState<number>(0);
   const [openEtape1, setOpenEtape1] = useState<boolean>(params === "/donnees" ? true : false);

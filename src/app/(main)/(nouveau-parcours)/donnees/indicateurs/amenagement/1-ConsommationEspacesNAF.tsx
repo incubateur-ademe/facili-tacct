@@ -15,6 +15,7 @@ import { IndicatorExportTransformations } from '@/lib/utils/export/environmental
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import styles from '../../explorerDonnees.module.scss';
+import { SourceExport } from '../SourceExport';
 
 export const ConsommationEspacesNAFAmenagement = (props: {
   consommationNAF: ConsommationNAF[];
@@ -69,24 +70,21 @@ export const ConsommationEspacesNAFAmenagement = (props: {
           <ConsommationEspacesNAFCharts
             consommationNAF={consommationNAF}
           />
-          <div
-            className={styles.sourcesExportWrapper}
-            style={{
-              borderTop: "1px solid var(--gris-medium)",
-            }}>
-            <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : CEREMA, avril 2024
-            </Body>
-            <ExportButtonNouveauParcours
-              data={exportData}
-              baseName="consommation_espaces_naf"
-              type={type}
-              libelle={libelle}
-              code={code}
-              sheetName="Espaces NAF"
-              documentation={consommationEspacesNafDoc}
-            />
-          </div>
+          <SourceExport
+            source="CEREMA, avril 2024"
+            condition={sumNaf !== 0}
+            exportComponent={
+              <ExportButtonNouveauParcours
+                data={exportData}
+                baseName="consommation_espaces_naf"
+                type={type}
+                libelle={libelle}
+                code={code}
+                sheetName="Espaces NAF"
+                documentation={consommationEspacesNafDoc}
+              />
+            }
+          />
         </div>
       </div>
     </>

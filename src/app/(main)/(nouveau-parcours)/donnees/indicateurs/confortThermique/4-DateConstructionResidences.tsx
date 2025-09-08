@@ -3,8 +3,6 @@ import { BarChartAgeBatiNouveauParcours } from '@/components/charts/inconfortThe
 import { MicroCircleGrid } from "@/components/charts/MicroDataviz";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import { Loader } from "@/components/loader";
-import { DateConstructionResidencesLegend } from '@/components/maps/legends/datavizLegends';
-import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { Body } from "@/design-system/base/Textes";
 import { ageBatiMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";
@@ -16,6 +14,7 @@ import { useSearchParams } from "next/navigation";
 import styles from '../../explorerDonnees.module.scss';
 import { averageProperty } from '../fonctions';
 import { DateConstructionResidencesBarChartData } from '../graphData';
+import { SourceExport } from '../SourceExport';
 
 export const DateConstructionResidences = ({
   inconfortThermique
@@ -79,23 +78,21 @@ export const DateConstructionResidences = ({
         </div>
         <div className={styles.datavizWrapper}>
           {chartData ? <BarChartAgeBatiNouveauParcours chartData={chartData} /> : <Loader />}
-          <div className={styles.legend}>
-            <LegendCompColor legends={DateConstructionResidencesLegend} />
-          </div>
-          <div className={styles.sourcesExportWrapper} style={{ borderTop: '1px solid var(--gris-medium)' }}>
-            <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : INSEE
-            </Body>
-            <ExportButtonNouveauParcours
-              data={exportData}
-              baseName="age_bati"
-              type={type}
-              libelle={libelle}
-              code={code}
-              sheetName="Age du bâti"
-              style={{ backgroundColor: 'var(--principales-vert)' }}
-            />
-          </div>
+          <SourceExport
+            source="INSEE"
+            condition={Sum(chartData.map(el => Number(el["Votre collectivité"]))) !== 0}
+            exportComponent={
+              <ExportButtonNouveauParcours
+                  data={exportData}
+                  baseName="age_bati"
+                  type={type}
+                  libelle={libelle}
+                  code={code}
+                  sheetName="Age du bâti"
+                  style={{ backgroundColor: 'var(--principales-vert)' }}
+                />
+            }
+          />
         </div>
       </div>
     </>

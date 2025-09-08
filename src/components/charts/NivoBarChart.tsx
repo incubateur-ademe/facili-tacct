@@ -1,3 +1,4 @@
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Any } from '@/lib/utils/types';
 import {
@@ -175,6 +176,7 @@ export const NivoBarChartRessourcesEau = ({
   groupMode = 'stacked',
   showLegend = true
 }: NivoBarChartProps) => {
+    const windowDimensions = useWindowDimensions();
   return (
     <ResponsiveBar
       data={graphData}
@@ -190,7 +192,7 @@ export const NivoBarChartRessourcesEau = ({
             bottom: legendData && legendData.length >= 4 ? 120 : 80,
             left: 80
           }
-          : { top: 40, right: 80, bottom: 80, left: 80 }
+          : { top: 40, right: 80, bottom: windowDimensions.width! > 1850 ? 130 : windowDimensions.width! > 1700 ? 160 : 180, left: 80 }
       }
       groupMode={groupMode}
       padding={0.3}

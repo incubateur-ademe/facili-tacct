@@ -68,11 +68,11 @@ export const sommaireThematiques = {
       },
     ]
   },
-  "Agriculture et pêche": {
+  "Agriculture": {
     thematiquesLiees: [
       {
         id: "section1",
-        thematique: "Agriculture et pêche",
+        thematique: "Agriculture",
         icone: "🌾",
         sousCategories: ["Surfaces en bio", "Types de culture"]
       },
@@ -197,10 +197,10 @@ export const thematiquesInfo: {
     description: (<div></div>),
     link: ''
   },
-  'Agriculture et pêche': {
-    title: 'Agriculture et pêche',
+  'Agriculture': {
+    title: 'Agriculture',
     description: (<div></div>),
-    link: 'Agriculture et pêche'
+    link: 'Agriculture'
   },
   'Filière bois': {
     title: 'Filière bois',

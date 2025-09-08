@@ -5,7 +5,12 @@ import { Sum } from "../utils/reusableFunctions/sum";
 export  const PieChartDataSurfacesAgricoles = (
   surfacesAgricoles: SurfacesAgricolesModel[],
 ) => {
-  const sommeToutesSuperficies = Sum(surfacesAgricoles.map(el => el.superficie_sau))
+  const sommeToutesSuperficies = Sum(surfacesAgricoles.map(
+    el => el.superficie_sau_cultures_permanentes 
+    + el.superficie_sau_herbe 
+    + el.superficie_sau_terres_arables 
+    + el.superficie_sau_jardins
+  ));
   return [
     {
       id: "Cultures permanentes",

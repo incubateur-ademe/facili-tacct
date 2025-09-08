@@ -5,9 +5,11 @@ import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { aot40Legends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapAOT40 } from '@/components/maps/mapAOT40';
+import { CustomTooltipNouveauParcours } from '@/components/utils/CalculTooltip';
 import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { AOT40, CarteCommunes } from "@/lib/postgres/models";
+import { AOT40TooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import * as turf from '@turf/turf';
@@ -165,6 +167,10 @@ export const OzoneEtVegetation = (props: {
             l’objectif fixé pour 2050 est de 6 000 µg/m³ par heure.
           </Body>
         )}
+        <CustomTooltipNouveauParcours
+          title={AOT40TooltipText}
+          texte="D'où vient ce chiffre ?"
+        />
         <div className={styles.mapWrapper}>
           {
             aot40.length && carteCommunes.length ? (
@@ -189,7 +195,7 @@ export const OzoneEtVegetation = (props: {
           Source : Géod’Air (2024)
         </Body>
         {
-          carteCommunes.length > 0 && (
+          aot40.length && carteCommunes.length > 0 && (
             <ExportButtonNouveauParcours
               data={exportData}
               baseName="aot_40"
