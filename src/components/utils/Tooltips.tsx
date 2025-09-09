@@ -46,7 +46,28 @@ export const HtmlTooltip = styled(
 
 export const ArrowHtmlTooltip = styled(
   ({ className, fontWeight = 500, ...props }: HtmlTooltipProps) => (
-    <Tooltip {...props} classes={{ popper: className }} />
+    <Tooltip 
+      {...props} 
+      classes={{ popper: className }} 
+      title={
+        <div>
+          {props.title}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '-6px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: 0,
+              height: 0,
+              borderLeft: '6px solid transparent',
+              borderRight: '6px solid transparent',
+              borderTop: '6px solid #ffffff',
+            }}
+          />
+        </div>
+      }
+    />
   )
 )<HtmlTooltipProps>(({ fontWeight = 500 }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
@@ -62,21 +83,6 @@ export const ArrowHtmlTooltip = styled(
     fontWeight: fontWeight,
     position: 'relative',
     marginBottom: '6px',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: '-6px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      width: 0,
-      height: 0,
-      borderLeft: '6px solid transparent',
-      borderRight: '6px solid transparent',
-      borderTop: '6px solid #ffffff',
-      // Force immediate rendering
-      willChange: 'transform',
-      backfaceVisibility: 'hidden',
-    }
   }
 }));
 
