@@ -48,7 +48,13 @@ export const ArrowHtmlTooltip = styled(
   ({ className, fontWeight = 500, ...props }: HtmlTooltipProps) => (
     <Tooltip 
       {...props} 
-      classes={{ popper: className }} 
+      classes={{ popper: className }}
+      TransitionProps={{ timeout: 0 }}
+      enterDelay={0}
+      enterNextDelay={0}
+      enterTouchDelay={0}
+      leaveDelay={0}
+      disableInteractive={false}
       title={
         <div>
           {props.title}
