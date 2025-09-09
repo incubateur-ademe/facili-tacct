@@ -5,7 +5,7 @@ import { Catnat } from '@/components/themes/gestionRisques/catnat';
 import ErosionCotes from '@/components/themes/gestionRisques/erosionCotiere';
 import { FeuxForet } from '@/components/themes/gestionRisques/feuxForet';
 import { RGA } from '@/components/themes/gestionRisques/rga';
-import { TabTooltip } from '@/components/utils/TabTooltip';
+import { TabTooltip } from '@/components/utils/Tooltips';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import {
   ArreteCatNat,

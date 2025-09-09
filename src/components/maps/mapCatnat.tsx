@@ -11,7 +11,7 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
 import { BoundsFromCollection } from './components/boundsFromCollection';
-import { CatnatTooltip } from './components/tooltips';
+import { CatnatTooltip } from './components/mapTooltips';
 import { colorsCatnat } from './legends/legendCatnat';
 
 const getColor = (d: number, max: number, typeCatnat: string) => {

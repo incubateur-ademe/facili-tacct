@@ -2,8 +2,8 @@
 import GraphNotFound from '@/assets/images/zero_data_found.png';
 import FeuxForetCharts from "@/components/charts/gestionRisques/feuxForetCharts";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
-import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
+import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { IncendiesForet } from "@/lib/postgres/models";
 import { FeuxForetText } from "@/lib/staticTexts";

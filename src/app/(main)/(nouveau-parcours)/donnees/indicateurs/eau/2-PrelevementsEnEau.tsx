@@ -2,8 +2,8 @@
 import { WaterDropNumber } from "@/components/charts/MicroDataviz";
 import EauCharts from "@/components/charts/ressourcesEau/EauCharts";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
-import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { ReadMoreFade } from "@/components/utils/ReadMoreFade";
+import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { RessourcesEau } from "@/lib/postgres/models";
 import { PrelevementEauText } from "@/lib/staticTexts";

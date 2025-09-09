@@ -9,7 +9,7 @@ import vagues_icon_black from '@/assets/icons/themes/vagues_icon_black.svg';
 import GraphNotFound from '@/assets/images/data_not_found_prelevement.png';
 import DataNotFound from '@/components/graphDataNotFound';
 import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
-import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
+import { ArrowHtmlTooltip } from '@/components/utils/Tooltips';
 import { Body, H4 } from '@/design-system/base/Textes';
 import couleurs from '@/design-system/couleurs';
 import { RessourcesEau } from '@/lib/postgres/models';
@@ -169,9 +169,9 @@ const PrelevementEauProgressBars = ({
           {data
             .sort((a, b) => b.sumTerritoire - a.sumTerritoire)
             .map((item, index) => (
-              <HtmlTooltip
+              <ArrowHtmlTooltip
                 title={
-                  <div className={styles.tooltip}>
+                  <>
                     <div className='flex flex-row g-4 items-center mb-2'>
                       <div className={styles.colorSquare} style={{ backgroundColor: item.color }} />
                       <H4 style={{ fontSize: '1rem', marginBottom: "0" }}>{item.titre}</H4>
@@ -192,7 +192,7 @@ const PrelevementEauProgressBars = ({
                         </Body>
                       )
                     }
-                  </div>
+                  </>
                 }
                 key={index}
                 placement="top"
@@ -233,7 +233,7 @@ const PrelevementEauProgressBars = ({
                     <p>{Round(item.sumTerritoire / 1000000, 2)} Mm3</p>
                   </div>
                 </div>
-              </HtmlTooltip>
+              </ArrowHtmlTooltip>
             ))}
         </>
       ) : (

@@ -1,7 +1,7 @@
 "use client";
 import RessourcesNaturellesTexte from "@/assets/images/ressources_naturelles_texte.svg";
 import { Loader } from "@/components/loader";
-import { HtmlTooltip } from "@/components/utils/HtmlTooltip";
+import { HtmlTooltip } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { Any } from "@/lib/utils/types";
 import * as d3 from "d3";

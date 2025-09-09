@@ -1,7 +1,7 @@
 'use client';
 
 import { PrelevementEau } from '@/components/themes/ressourcesEau/prelevementEau';
-import { TabTooltip } from '@/components/utils/TabTooltip';
+import { TabTooltip } from '@/components/utils/Tooltips';
 import {
   CarteCommunes,
   RessourcesEau

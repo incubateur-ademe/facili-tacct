@@ -9,6 +9,7 @@ import { agricultureBioBarChartLegend } from "@/components/maps/legends/datavizL
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
+import { Body } from "@/design-system/base/Textes";
 import { AgricultureBio } from '@/lib/postgres/models';
 import { multipleEpciBydepartementLibelle } from "@/lib/territoireData/multipleEpciBydepartement";
 import { multipleEpciByPnrLibelle } from "@/lib/territoireData/multipleEpciByPnr";
@@ -62,11 +63,11 @@ const SurfacesEnBioCharts = ({
                         height={24}
                         style={{ marginRight: '0.5em', alignItems: 'center' }}
                       />
-                      <p style={{ fontSize: 12, margin: 0 }}>
+                      <Body size="xs">
                         Attention, {territoiresPartiellementCouverts.length} EPCI
                         ne {territoiresPartiellementCouverts.length === 1 ? "fait" : "font"} que
                         partiellement partie de votre territoire
-                      </p>
+                      </Body>
                     </div>
                   </div>
                 }
@@ -100,11 +101,11 @@ const SurfacesEnBioCharts = ({
                         height={24}
                         style={{ marginRight: '0.5em', alignItems: 'center' }}
                       />
-                      <p style={{ fontSize: 12, margin: 0 }}>
+                      <Body size="xs">
                         Attention, {territoiresPartiellementCouverts.length} EPCI
                         ne {territoiresPartiellementCouverts.length === 1 ? "fait" : "font"} que
                         partiellement partie de votre territoire
-                      </p>
+                      </Body>
                     </div>
                   </div>
                 }

@@ -1,6 +1,6 @@
 import surfaceCertifeeIcon from '@/assets/icons/agriculture_bio_surface_certifiee_icon.svg';
 import surfaceEnConversionIcon from '@/assets/icons/agriculture_bio_surface_conversion_icon.svg';
-import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
+import { ArrowHtmlTooltip } from '@/components/utils/Tooltips';
 import { Body, H4 } from '@/design-system/base/Textes';
 import couleurs from '@/design-system/couleurs';
 import { AgricultureBio } from '@/lib/postgres/models';
@@ -95,9 +95,9 @@ export const AgricultureBioPieCharts = ({
         <Body size='sm' style={{ marginBottom: "24px" }}>
           Surface <b>déjà certifiée</b>
         </Body>
-        <HtmlTooltip
+        <ArrowHtmlTooltip
           title={
-            <div className={styles.tooltip}>
+            <>
               <H4 style={{ fontSize: '1rem', marginBottom: "0.5rem" }}>Surface déjà certifiée (2022)</H4>
               <Body size='sm'>
                 <b>{Round(surfaceCertifiee, 0)}</b> ha
@@ -114,7 +114,7 @@ export const AgricultureBioPieCharts = ({
               <Body size='sm'>
                 <b>{nombreExploitations}</b> exploitation(s)
               </Body>
-            </div>
+            </>
           }
           placement="top"
         >
@@ -132,16 +132,16 @@ export const AgricultureBioPieCharts = ({
               </Body>
             </div>
           </div>
-        </HtmlTooltip>
+        </ArrowHtmlTooltip>
       </div>
       <div className={styles.dataWrapper}>
         <Image src={surfaceEnConversionIcon} alt="" />
         <Body size='sm' style={{ marginBottom: "24px" }}>
           Surface <b>en conversion</b>
         </Body>
-        <HtmlTooltip
+        <ArrowHtmlTooltip
           title={
-            <div className={styles.tooltip}>
+            <>
               <H4 style={{ fontSize: '1rem', marginBottom: "0.5rem" }}>Surface en conversion (2022)</H4>
               <Body size='sm'>
                 <b>{Round(surfaceEnConversion, 0)}</b> ha
@@ -158,7 +158,7 @@ export const AgricultureBioPieCharts = ({
               <Body size='sm'>
                 <b>{nombreExploitations}</b> exploitation(s)
               </Body>
-            </div>
+            </>
           }
           placement="top"
         >
@@ -177,7 +177,7 @@ export const AgricultureBioPieCharts = ({
               </Body>
             </div>
           </div>
-        </HtmlTooltip>
+        </ArrowHtmlTooltip>
       </div>
     </div>
   );

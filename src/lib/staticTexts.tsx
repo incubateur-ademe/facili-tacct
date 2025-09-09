@@ -1,4 +1,4 @@
-import { DefinitionTooltip } from "@/components/utils/HtmlTooltip";
+import { DefinitionTooltip } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { eutrophisation, irrigable, PNACC } from "@/lib/definitions";
 

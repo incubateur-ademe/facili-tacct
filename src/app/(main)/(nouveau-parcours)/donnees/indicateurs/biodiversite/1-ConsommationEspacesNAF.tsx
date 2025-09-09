@@ -8,8 +8,8 @@ import { BoundsFromCollection } from '@/components/maps/components/boundsFromCol
 import { espacesNAFDatavizLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
-import { CustomTooltipNouveauParcours } from '@/components/utils/CalculTooltip';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
+import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
@@ -64,11 +64,17 @@ export const ConsommationEspacesNAF = (props: {
             <div className={styles.text}>
               {
                 sumNaf && sumNaf !== 0 ? (
-                  <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                    Entre 2009 et 2023, votre territoire a consommé{' '}
-                    <b>{Round(sumNaf / 10000, 1)} hectare(s)</b> d’espaces naturels
-                    et forestiers.{' '}
-                  </Body>
+                  <>
+                    <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                      Entre 2009 et 2023, votre territoire a consommé{' '}
+                      <b>{Round(sumNaf / 10000, 1)} hectare(s)</b> d’espaces naturels
+                      et forestiers.{' '}
+                    </Body>
+                    <CustomTooltipNouveauParcours
+                      title={espacesNAFTooltipText}
+                      texte="D'où vient ce chiffre ?"
+                    />
+                  </>
                 ) : ""
               }
             </div>
@@ -76,10 +82,6 @@ export const ConsommationEspacesNAF = (props: {
           <div className='mt-4 pr-5'>
             <ReadMoreFade maxHeight={100}>
               <ConsommationEspacesNAFBiodiversiteText />
-              <CustomTooltipNouveauParcours
-                title={espacesNAFTooltipText}
-                texte="D'où vient ce chiffre ?"
-              />
             </ReadMoreFade>
           </div>
         </div>

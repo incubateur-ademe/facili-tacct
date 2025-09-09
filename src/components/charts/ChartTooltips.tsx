@@ -5,11 +5,6 @@ import { DefaultRawDatum, PieTooltipProps } from "@nivo/pie";
 import { espacesNAFBarChartLegend, RgaEvolutionLegend, RgaRepartitionLegend } from "../maps/legends/datavizLegends";
 import styles from './charts.module.scss';
 
-type AgricultureBioLegends = {
-  value: string;
-  color: string;
-}[];
-
 export const simplePieChartTooltip = ({ datum, unite }: { datum: PieTooltipProps<DefaultRawDatum>['datum'], unite?: string }) => {
   return (
     <div className={styles.tooltipEvolutionWrapper}>
