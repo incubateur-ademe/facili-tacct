@@ -162,7 +162,8 @@ export const Body = ({
   size = 'md',
   color = "#23282B",
   style,
-  margin = "0"
+  margin = "0",
+  id
 }: {
   children: React.ReactNode;
   weight?: 'regular' | 'medium' | 'bold';
@@ -170,9 +171,11 @@ export const Body = ({
   color?: string;
   style?: React.CSSProperties;
   margin?: string;
+  id?: string;
 }) => {
   return (
     <div
+      id={id}
       style={{
         color: color,
         fontSize: size === 'xs' ? '12px' : size === 'sm' ? '14px' : size === 'md' ? '1rem' : '18px',
