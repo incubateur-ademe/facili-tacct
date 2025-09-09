@@ -8,7 +8,6 @@ import usine_icon_black from '@/assets/icons/themes/usine_icon_black.svg';
 import vagues_icon_black from '@/assets/icons/themes/vagues_icon_black.svg';
 import GraphNotFound from '@/assets/images/data_not_found_prelevement.png';
 import DataNotFound from '@/components/graphDataNotFound';
-import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
 import { ArrowHtmlTooltip } from '@/components/utils/Tooltips';
 import { Body, H4 } from '@/design-system/base/Textes';
 import couleurs from '@/design-system/couleurs';
@@ -18,6 +17,7 @@ import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { Progress } from 'antd';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
+import styles from './eau.module.scss';
 
 const SumFiltered = (
   data: RessourcesEau[],
@@ -201,7 +201,7 @@ const PrelevementEauProgressBars = ({
                   <div className={styles.progressDesign}>
                     {item.icon}
                     <div className={styles.progressBar}>
-                      <p>{item.titre}</p>
+                      <Body size='xs' style={{ textTransform: 'uppercase', lineHeight: "0.875rem" }}>{item.titre}</Body>
                       <div className={styles.barMarker}>
                         <Progress
                           percent={Number((100 * item.sumTerritoire) / total)}
@@ -225,12 +225,12 @@ const PrelevementEauProgressBars = ({
                     </div>
                   </div>
                   <div className={styles.progressNumbers}>
-                    <p>
-                      <b>
-                        {Round((100 * item.sumTerritoire) / total, 2)} %
-                      </b>
-                    </p>
-                    <p>{Round(item.sumTerritoire / 1000000, 2)} Mm3</p>
+                    <Body size='xs' weight='bold' style={{ lineHeight: "0.875rem"}}>
+                      {Round((100 * item.sumTerritoire) / total, 2)} %
+                    </Body>
+                    <Body size='xs' style={{ lineHeight: "0.875rem"}}>
+                      {Round(item.sumTerritoire / 1000000, 2)} Mm3
+                    </Body>
                   </div>
                 </div>
               </ArrowHtmlTooltip>

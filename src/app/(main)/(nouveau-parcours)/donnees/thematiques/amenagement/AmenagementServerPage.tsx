@@ -1,3 +1,4 @@
+import { SearchParams } from "@/app/(main)/types";
 import { GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { DonneesAmenagement } from "./DonneesAmenagement";

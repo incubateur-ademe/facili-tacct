@@ -106,6 +106,25 @@ export const sommaireThematiques = {
   }
 };
 
+export const sommaireImpacts = {
+  "Confort thermique": [
+      {
+        id: "section1",
+        titre: "Échanger pour diagnostiquer",
+      },
+      {
+        id: "section2",
+        titre: "Prendre RDV avec TACCT",
+      },
+    ],
+  "Biodiversité": [],
+  "Gestion des risques": [],
+  "Agriculture": [],
+  "Aménagement": [],
+  "Eau": []
+};
+
+
 export const thematiquesInfo: {
   [key: string]: { title: string; description: JSX.Element; link: string };
 } = {

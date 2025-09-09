@@ -464,7 +464,7 @@ export const DateConstructionResidencesLegend = [
     color: couleurs.graphiques.bleu[1]
   },
   {
-    value: 'Votre collectivité',
+    value: 'Votre territoire',
     color: couleurs.graphiques.rouge[3]
   }
 ];

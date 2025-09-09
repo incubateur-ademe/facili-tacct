@@ -1,3 +1,4 @@
+import { SearchParams } from "@/app/(main)/types";
 import { GetAgricultureBio, GetAOT40, GetConsommationNAF } from "@/lib/queries/databases-nouveau-parcours/biodiversite";
 import { GetQualiteEauxBaignade } from "@/lib/queries/databases-nouveau-parcours/ressourcesEau";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";

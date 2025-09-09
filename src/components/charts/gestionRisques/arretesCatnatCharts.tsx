@@ -1,3 +1,4 @@
+import { CatnatTypes } from '@/app/(main)/types';
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
 import { BarChartCatnat } from '@/components/charts/gestionRisques/BarChartCatnat';

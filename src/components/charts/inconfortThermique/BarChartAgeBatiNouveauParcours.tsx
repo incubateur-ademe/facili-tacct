@@ -4,31 +4,32 @@ import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { DateConstructionResidencesLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import styles from '@/components/themes/gestionRisques/gestionRisques.module.scss';
 import { Body } from '@/design-system/base/Textes';
 import couleurs from '@/design-system/couleurs';
 import { ResponsiveBar } from '@/lib/nivo/bar';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Any } from '@/lib/utils/types';
+import styles from '../charts.module.scss';
 
 type Props = {
   chartData: Array<{
     France: number;
     FranceColor: string;
-    'Votre collectivité'?: string;
-    'Votre collectiviteColor'?: string;
+    'Votre territoire'?: string;
+    'Votre territoireColor'?: string;
     periode: string;
   }>;
 };
 
 export const BarChartAgeBatiNouveauParcours = ({ chartData }: Props) => {
-  const sumAllCount = chartData.reduce((sum, item) => sum + (Number(item["Votre collectivité"]) || 0), 0);
+  const sumAllCount = chartData.reduce((sum, item) => sum + (Number(item["Votre territoire"]) || 0), 0);
   return (
     <div style={{ height: sumAllCount > 0 ? '500px' : "fit-content", width: '100%', backgroundColor: 'white', borderRadius: '1rem' }}>
       {sumAllCount > 0 ?
         <>
           <ResponsiveBar
             data={chartData}
-            keys={['Votre collectivité', 'France']}
+            keys={['Votre territoire', 'France']}
             borderColor={{
               from: 'color',
               modifiers: [['darker', 1.6]]
@@ -46,7 +47,7 @@ export const BarChartAgeBatiNouveauParcours = ({ chartData }: Props) => {
                       style={{ background: color }}
                     />
                     <Body size='sm'>{id} :</Body>
-                    <Body size='sm' weight='bold'>{value} %</Body>
+                    <Body size='sm' weight='bold'>{Round(value, 1)} %</Body>
                   </div>
                 </div>
               </div>

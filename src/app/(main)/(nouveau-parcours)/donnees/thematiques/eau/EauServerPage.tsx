@@ -1,3 +1,4 @@
+import { SearchParams } from "@/app/(main)/types";
 import { GetRessourceEau } from "@/lib/queries/databases/ressourcesEau";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";

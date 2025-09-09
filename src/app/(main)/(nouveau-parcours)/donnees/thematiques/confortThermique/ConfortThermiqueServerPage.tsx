@@ -1,3 +1,4 @@
+import { SearchParams } from "@/app/(main)/types";
 import { GetInconfortThermique } from "@/lib/queries/databases/inconfortThermique";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import DonneesConfortThermique from "./DonneesConfortThermique";

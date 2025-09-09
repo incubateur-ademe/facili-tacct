@@ -1,7 +1,7 @@
 'use client';
 
 import { Body } from '@/design-system/base/Textes';
-import styles from '../../themes/gestionRisques/gestionRisques.module.scss';
+import styles from './mapsComponents.module.scss';
 
 const LegendItem = (props: { text: string; color: string }) => {
   const { text, color } = props;
@@ -29,7 +29,7 @@ export const LegendErosionCotiere = () => {
             alignSelf: 'center'
           }}
         >
-          <b>Recul</b>
+          Recul
         </Body>
         <div className={styles.legendsWrappers}>
           <div className={styles.legendsLeft}>
@@ -52,7 +52,7 @@ export const LegendErosionCotiere = () => {
             alignSelf: 'center'
           }}
         >
-          <b>Avancée</b>
+          Avancée
         </Body>
         <div className={styles.legendsWrappers}>
           <div className={styles.legendsLeft}>

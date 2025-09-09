@@ -1,5 +1,4 @@
 'use client';
-
 import eclair_icon_black from '@/assets/icons/themes/eclair_icon_black.svg';
 import flocon_icon_black from '@/assets/icons/themes/flocon_icon_black.svg';
 import robinet_icon_black from '@/assets/icons/themes/robinet_icon_black.svg';
@@ -8,7 +7,6 @@ import usine_icon_black from '@/assets/icons/themes/usine_icon_black.svg';
 import vagues_icon_black from '@/assets/icons/themes/vagues_icon_black.svg';
 import GraphNotFound from '@/assets/images/data_not_found_prelevement.png';
 import DataNotFound from '@/components/graphDataNotFound';
-import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
 import { ArrowHtmlTooltip } from '@/components/utils/Tooltips';
 import { Body, H4 } from '@/design-system/base/Textes';
 import couleurs from '@/design-system/couleurs';
@@ -18,6 +16,7 @@ import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { Progress } from 'antd';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
+import styles from './eau.module.scss';
 
 const SumFiltered = (
   data: RessourcesEau[],
@@ -154,7 +153,8 @@ const PrelevementEauProgressBarsPNR = ({
                     <div className='flex flex-row g-4 items-center mb-2'>
                       <div className={styles.colorSquare} style={{ backgroundColor: item.color }} />
                       <H4 style={{ fontSize: '1rem', marginBottom: "0" }}>{item.titre}</H4>
-                    </div>                    <Body size='sm'>
+                    </div>
+                    <Body size='sm'>
                       {libelle} :{' '}
                       <b>
                         {Round((100 * item.sumTerritoire) / total, 2)} %
@@ -170,7 +170,7 @@ const PrelevementEauProgressBarsPNR = ({
                   <div className={styles.progressDesign}>
                     {item.icon}
                     <div className={styles.progressBar}>
-                      <p>{item.titre}</p>
+                      <Body size='xs' style={{ textTransform: 'uppercase', lineHeight: "0.875rem" }}>{item.titre}</Body>
                       <div className={styles.barMarker}>
                         <Progress
                           percent={Number((100 * item.sumTerritoire) / total)}
@@ -185,12 +185,12 @@ const PrelevementEauProgressBarsPNR = ({
                     </div>
                   </div>
                   <div className={styles.progressNumbers}>
-                    <p>
-                      <b>
-                        {Round((100 * item.sumTerritoire) / total, 2)} %
-                      </b>
-                    </p>
-                    <p>{Round(item.sumTerritoire / 1000000, 2)} Mm3</p>
+                    <Body size='xs' weight='bold' style={{ lineHeight: "0.875rem"}}>
+                      {Round((100 * item.sumTerritoire) / total, 2)} %
+                    </Body>
+                    <Body size='xs' style={{ lineHeight: "0.875rem"}}>
+                      {Round(item.sumTerritoire / 1000000, 2)} Mm3
+                    </Body>
                   </div>
                 </div>
               </ArrowHtmlTooltip>
