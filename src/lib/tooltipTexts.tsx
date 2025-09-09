@@ -41,25 +41,6 @@ export const surfacesIrrigueesTooltipText = (
         d’irrigation.
       </p>
     </div>
-    <div>
-      <p>
-        Cet indicateur est calculé en divisant la superficie irriguée par la
-        surface agricole utilisée (SAU). Il est disponible sur le site AGRESTE
-        pour le recensement agricole de 2020. Plus d’un quart des observations
-        sont sous secret statistique.
-      </p>
-      <p>
-        La superficie irriguée est déterminée quel que soit le mode
-        d'irrigation (aspersion, goutte-à-goutte…) et quelle que soit
-        l'origine de l'eau. Les surfaces irriguées uniquement dans le cadre
-        d'une protection contre le gel ou d'une lutte phytosanitaire (contre
-        le phylloxera de la vigne par exemple) sont exclues de ce calcul.
-      </p>
-      <p>
-        Une surface est dite « irrigable » si elle est munie d’un moyen
-        d’irrigation.
-      </p>
-    </div>
   </>
 );
 
