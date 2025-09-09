@@ -25,7 +25,7 @@ import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import { AOT40Tooltip } from './components/mapTooltips';
+import { AOT40Tooltip } from './components/tooltips';
 import './maps.css';
 // documentation : https://akursat.gitbook.io/marker-cluster/api
 

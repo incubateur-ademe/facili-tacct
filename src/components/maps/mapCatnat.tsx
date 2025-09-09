@@ -1,5 +1,6 @@
 'use client';
 
+import { CatnatTypes } from '@/app/(main)/types';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { eptRegex } from '@/lib/utils/regex';
 import { mapStyles } from 'carte-facile';
@@ -11,7 +12,7 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
 import { BoundsFromCollection } from './components/boundsFromCollection';
-import { CatnatTooltip } from './components/mapTooltips';
+import { CatnatTooltip } from './components/tooltips';
 import { colorsCatnat } from './legends/legendCatnat';
 
 const getColor = (d: number, max: number, typeCatnat: string) => {

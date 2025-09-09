@@ -8,27 +8,8 @@ import { GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { sommaireThematiques } from '../app/(main)/(nouveau-parcours)/thematiques/constantes/textesThematiques';
+import { sommaireImpacts, sommaireThematiques } from '../app/(main)/(nouveau-parcours)/thematiques/constantes/textesThematiques';
 import styles from './components.module.scss';
-
-const Etape2Sommaire = [
-  {
-    id: "section1",
-    titre: "Exemple",
-  },
-  {
-    id: "section2",
-    titre: "Données clés nationales",
-  },
-  {
-    id: "section3",
-    titre: "Point d’étape avec TACCT",
-  },
-  {
-    id: "section4",
-    titre: "Poursuivez votre exploration",
-  }
-]
 
 export const MenuLateral = () => {
   const searchParams = useSearchParams();
@@ -42,7 +23,8 @@ export const MenuLateral = () => {
   const [openEtape1, setOpenEtape1] = useState<boolean>(params === "/donnees" ? true : false);
   const [openEtape2, setOpenEtape2] = useState<boolean>(params === "/impacts" ? true : false);
   const navigationRef = useRef<HTMLDivElement>(null);
-  const ongletsMenu = sommaireThematiques[thematique];
+  const ongletsMenuEtape1 = sommaireThematiques[thematique];
+  const ongletsMenuEtape2 = sommaireImpacts[thematique];
   const [activeAnchorEtape1, setActiveAnchorEtape1] = useState<string>('');
   const [activeAnchorEtape2, setActiveAnchorEtape2] = useState<string>('');
   const [urlAnchor, setUrlAnchor] = useState<string | null>(null);
@@ -84,7 +66,7 @@ export const MenuLateral = () => {
 
   // Fonction pour gérer le scroll et mettre en surbrillance l'élément actuel
   useEffect(() => {
-    if (ongletsMenu === undefined) return;
+    if (ongletsMenuEtape1 === undefined) return;
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const headerHeight = 173;
@@ -104,7 +86,7 @@ export const MenuLateral = () => {
       // Gestion du surlignage des éléments selon l'étape active
       const scrollPosition = scrollY + 200; // Offset pour la détection
       if (params === "/donnees") {
-        const allAnchors = ongletsMenu.thematiquesLiees.flatMap(section => section.sousCategories);
+        const allAnchors = ongletsMenuEtape1.thematiquesLiees.flatMap(section => section.sousCategories);
         allAnchors.push("Érosion côtière");
         for (const item of allAnchors) {
           const element = document.getElementById(item);
@@ -118,7 +100,7 @@ export const MenuLateral = () => {
           }
         }
       } else if (params === "/impacts") {
-        const allAnchors = Etape2Sommaire.map(item => item.id);
+        const allAnchors = ongletsMenuEtape2.map(item => item.id);
         for (const itemId of allAnchors) {
           const element = document.getElementById(itemId);
           if (element) {
@@ -189,7 +171,7 @@ export const MenuLateral = () => {
 
   return (
     <>
-      {ongletsMenu ? (
+      {ongletsMenuEtape1 ? (
         <nav
           className={styles.sidebarContainer}
           style={{
@@ -244,7 +226,7 @@ export const MenuLateral = () => {
               </Body>
             </button>
             <div className={thematique === "Confort thermique" ? styles.menuEtapeDonnees : styles.menuEtapeDonneesSansImpact}>
-              {openEtape1 && ongletsMenu?.thematiquesLiees.map((thematique, id) => (
+              {openEtape1 && ongletsMenuEtape1?.thematiquesLiees.map((thematique, id) => (
                 <div key={id} className="mb-4">
                   <SousTitre2
                     style={{
@@ -320,7 +302,7 @@ export const MenuLateral = () => {
                 </button>
                 <div className={styles.menuEtapeImpacts}>
                   {
-                    openEtape2 && Etape2Sommaire.map((item) => (
+                    openEtape2 && ongletsMenuEtape2.map((item) => (
                       <button
                         key={item.id}
                         onClick={() => handleItemClickEtape2(item)}

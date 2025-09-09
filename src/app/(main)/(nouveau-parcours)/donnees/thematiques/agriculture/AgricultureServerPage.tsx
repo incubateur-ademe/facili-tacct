@@ -1,7 +1,8 @@
+import { SearchParams } from "@/app/(main)/types";
 import { GetAgriculture, GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
 import { GetAgricultureBio } from "@/lib/queries/databases/biodiversite";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
-import { DonneesAgricultureEtPeche } from "./DonneesAgricultureEtPeche";
+import { DonneesAgricultureEtPeche } from "./DonneesAgriculture";
 
 const AgricultureEtPecheServerPage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type } = await props.searchParams;

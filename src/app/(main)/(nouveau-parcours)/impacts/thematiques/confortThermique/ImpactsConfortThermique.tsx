@@ -1,7 +1,4 @@
 "use client";
-import BDImage1 from '@/assets/images/bd_confort_thermique1.png';
-import BDImage2 from '@/assets/images/bd_confort_thermique2.png';
-import BDImage3 from '@/assets/images/bd_confort_thermique3.png';
 import RDVImage from '@/assets/images/prendreRDV.png';
 import { MicroPieChart } from '@/components/charts/MicroDataviz';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
@@ -15,16 +12,16 @@ export const DiagnostiquerImpactsConfortThermique = () => {
     <>
       {/* Introduction */}
       <section>
-        <Body size='lg'>
-          Vous avez découvert des premiers signaux à partir des données précédentes.
-          Les données montrent où regarder, mais seul un échange avec les habitants,
-          les agents ou les usagers vous dira s’ils sont réellement vulnérables.
+        <Body>
+          Prendre conscience des facteurs de sensibilité aux fortes chaleurs de
+          son territoire, c’est un bon début. Mais c’est sur le terrain que vous
+          comprendrez comment votre territoire vit — ou subit — ces périodes d’inconfort thermique.
         </Body>
       </section>
-      <section className={styles.sectionType} id="section1">
+      {/* <section className={styles.sectionType} id="section1">
         <div className={styles.diagnosticWrapper}>
           <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-            Ce que le terrain peut révéler et que les données ne disent pas
+            33 000 décès attribués à la chaleur entre 2014 et 2022 : c’est toujours beaucoup trop !
           </H2>
           <Body>
             Les données indiquent des zones de vigilance, mais seul le terrain peut
@@ -95,38 +92,36 @@ export const DiagnostiquerImpactsConfortThermique = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className={styles.sectionType}>
-        <div id="section2" className={styles.diagnosticWrapper}>
+        <div id="section1" className={styles.diagnosticWrapper}>
           <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-            Des données nationales pour lancer la conversation et diagnostiquer les impacts
+            33 000 décès attribués à la chaleur entre 2014 et 2022 : c’est toujours beaucoup trop !
           </H2>
           <Body>
-            Ces chiffres ne racontent pas toute l’histoire, mais ils vous aident
-            à savoir avec qui aller parler, où, et sur quoi poser des questions.
-            Utilisez-les comme déclencheurs de discussion avec les acteurs de
-            terrain et les publics potentiellement concernés.
+            Voici quelques chiffres au niveau national pour vous aider à poser les bonnes questions,
+            mais c’est le terrain qui vous donnera les vraies réponses.
           </Body>
           <div className={styles.donneesNationalesWrapper}>
             <div className={styles.leftData}>
               <MicroPieChart pourcentage={28} ariaLabel="Pourcentage des décès liés à la chaleur" />
               <Body>
-                "En France, seuls 28 % des décès liés à la chaleur se produisent
-                pendant les canicules; ce qui ne représentent que 6 % des jours de
-                l’été. Soyons vigilants aussi en dehors des périodes de canicule."
+                "En France, seuls <b>28 %</b> des décès liés à la chaleur se produisent
+                pendant les canicules; ce qui ne représentent que <b>6 % des jours de
+                  l’été</b>. Soyons vigilants aussi en dehors des périodes de canicule."
               </Body>
               <Body size="sm" style={{ color: "var(--gris-dark)" }}>
                 Source : xxxx
               </Body>
             </div>
             <div className={styles.rightData}>
-              <Body size='lg' weight='bold'>
+              <Body weight='bold'>
                 Ce que cela révèle
               </Body>
               <Body>
                 Les risques existent aussi en dehors des alertes officielles.
               </Body>
-              <Body size='lg' weight='bold'>
+              <Body weight='bold'>
                 Avec qui pourriez-vous échanger
               </Body>
               <ul>
@@ -139,22 +134,22 @@ export const DiagnostiquerImpactsConfortThermique = () => {
             <div className={styles.leftData}>
               <MicroPieChart pourcentage={71} ariaLabel="Pourcentage des consultations SOS médecinspour les plus de 75 ans" />
               <Body>
-                "Tous exposés : les moins de 75 ans représentent 71 % des consultations
-                SOS médecins liées à la chaleur ( juin-septembre 2022 ) et un tiers
-                des décès (2014-2022)"
+                "Tous exposés : <b>71 %</b> des consultations SOS médecins liées à la chaleur
+                concernent des personnes de moins de 75 ans ( juin-septembre 2022 ).
+                <br></br>Seuls <b>12 %</b> des Français se considèrent fragiles ou très fragiles pendant une canicule."
               </Body>
               <Body size="sm" style={{ color: "var(--gris-dark)" }}>
                 Source : xxxx
               </Body>
             </div>
             <div className={styles.rightData}>
-              <Body size='lg' weight='bold'>
+              <Body weight='bold'>
                 Ce que cela révèle
               </Body>
               <Body>
-                Les vulnérabilités ne se limitent pas aux personnes âgées.
+                La sensibilité à la chaleur n'est pas qu'une affaire d'âge.
               </Body>
-              <Body size='lg' weight='bold'>
+              <Body weight='bold'>
                 Avec qui pourriez-vous échanger
               </Body>
               <ul>
@@ -169,8 +164,8 @@ export const DiagnostiquerImpactsConfortThermique = () => {
             <div className={styles.leftData}>
               <MicroPieChart pourcentage={55} ariaLabel="Pourcentage des Français ayant trop chaud" />
               <Body>
-                "55 % des Français déclarent avoir eu trop chaud pendant au moins 24 heures dans leur logement en 2023.
-                La présence d’arbres peut rafraîchir l’air de 2 à 3°C, notamment dans les rues ou lorsqu’ils sont
+                "<b>55 %</b> des Français déclarent avoir eu trop chaud pendant au moins 24 heures dans leur logement en 2023.
+                <br></br>La présence d’arbres peut rafraîchir l’air de <b>2 à 3°C</b>, notamment dans les rues ou lorsqu’ils sont
                 alignés en bordure de route"
               </Body>
               <Body size="sm" style={{ color: "var(--gris-dark)" }}>
@@ -178,13 +173,13 @@ export const DiagnostiquerImpactsConfortThermique = () => {
               </Body>
             </div>
             <div className={styles.rightData}>
-              <Body size='lg' weight='bold'>
+              <Body weight='bold'>
                 Ce que cela révèle
               </Body>
               <Body>
                 Le logement est un facteur clé d’exposition et l’absence de végétation aggrave les ilots de chaleur.
               </Body>
-              <Body size='lg' weight='bold'>
+              <Body weight='bold'>
                 Avec qui pourriez-vous échanger
               </Body>
               <ul>
@@ -198,19 +193,18 @@ export const DiagnostiquerImpactsConfortThermique = () => {
         </div>
       </section>
       <section className={styles.sectionType}>
-        <div id="section3" className={styles.prendreRDVWrapper}>
+        <div id="section2" className={styles.prendreRDVWrapper}>
           <div className={styles.RDVText}>
             <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
               Point d'étape à J+20 : prenez RDV avec l’équipe TACCT
             </H2>
-            <Body size='lg'>
-              Vous avez enquêté pour diagnostiquer les impacts ? Partagez vos
-              découvertes avec nous. Ce temps d’échange vous aidera à structurer
-              vos enjeux avant de passer à l’étape suivante.
+            <Body>
+              Investigation terminée ? Prenons le temps de décrypter ensemble vos
+              observations de terrain pour bien préparer votre prochaine phase d'action.
             </Body>
             <BoutonPrimaireClassic
               size='sm'
-              text='Prendre RDV'
+              text='Prendre rendez-vous'
             />
           </div>
           <Image
@@ -223,11 +217,11 @@ export const DiagnostiquerImpactsConfortThermique = () => {
         </div>
       </section>
       <section className={styles.sectionType}>
-        <div id="section4" className={styles.diagnosticWrapper}>
+        <div id="section3" className={styles.diagnosticWrapper}>
           <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
             Poursuivez votre exploration
           </H2>
-          <Body size='lg'>
+          <Body>
             Vous pouvez retournez à l’ensemble des thématiques ou bien explorez les thématiques liées à celle-ci.
           </Body>
           <ThematiquesLieesNavigation />

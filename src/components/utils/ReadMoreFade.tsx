@@ -1,6 +1,6 @@
 import useWindowDimensions from "@/hooks/windowDimensions";
 import React, { useEffect, useRef, useState } from "react";
-import styles from "./ReadMoreFade.module.scss";
+import styles from "./utils.module.scss";
 
 interface ReadMoreFadeProps {
   children: React.ReactNode;

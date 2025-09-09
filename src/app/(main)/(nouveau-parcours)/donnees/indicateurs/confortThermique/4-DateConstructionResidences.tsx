@@ -6,6 +6,7 @@ import { Loader } from "@/components/loader";
 import { Body } from "@/design-system/base/Textes";
 import { ageBatiMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";
+import { AgeBatiText } from '@/lib/staticTexts';
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
 import { eptRegex } from "@/lib/utils/regex";
 import { Round } from '@/lib/utils/reusableFunctions/round';
@@ -66,21 +67,14 @@ export const DateConstructionResidences = ({
                 </Body>
                 : ""
             }
-            <Body size='sm'>
-              La robustesse des logements face aux températures élevées dépend de leur qualité
-              intrinsèque (inertie thermique, présence de volets extérieurs, qualité des
-              rénovations...). Si vous ne disposez pas d'étude spécifique sur le sujet,
-              la période de construction, fournie par l'INSEE, vous donne une première
-              approximation. Adapter les logements au risque de forte chaleur est
-              la mesure 9 du PNACC 3.
-            </Body>
+            <AgeBatiText />
           </div>
         </div>
         <div className={styles.datavizWrapper}>
           {chartData ? <BarChartAgeBatiNouveauParcours chartData={chartData} /> : <Loader />}
           <SourceExport
             source="INSEE"
-            condition={Sum(chartData.map(el => Number(el["Votre collectivité"]))) !== 0}
+            condition={Sum(chartData.map(el => Number(el["Votre territoire"]))) !== 0}
             exportComponent={
               <ExportButtonNouveauParcours
                   data={exportData}

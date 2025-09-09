@@ -1,3 +1,22 @@
+/* eslint typescript-sort-keys/interface: error */
+import { StaticImageData } from 'next/image';
+import { type ReactNode } from 'react';
+
+type SearchResult = {
+  children: ReactNode;
+  id: string;
+  prefix?: ReactNode;
+  route: string;
+};
+
+type SearchParams = Promise<{
+  code: string;
+  libelle: string;
+  thematique: string;
+  type: string;
+  title?: string;
+}>;
+
 type GenericObject = {
   [key: string]: string | number | bigint | null;
 };

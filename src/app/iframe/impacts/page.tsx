@@ -1,3 +1,4 @@
+import { SearchParams } from '@/app/(main)/types';
 import { ErrorDisplay } from '@/app/ErrorDisplay';
 import { ClientOnly } from '@/components/utils/ClientOnly';
 import { H1 } from '@/design-system/base/Textes';

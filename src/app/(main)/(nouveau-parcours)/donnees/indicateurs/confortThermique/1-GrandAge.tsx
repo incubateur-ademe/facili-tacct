@@ -9,6 +9,7 @@ import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { grandAgeIsolementMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";
+import { GrandAgeText } from '@/lib/staticTexts';
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
 import { eptRegex, numberWithSpacesRegex } from "@/lib/utils/regex";
 import { useSearchParams } from "next/navigation";
@@ -70,12 +71,8 @@ export const GrandAge = ({
                 </>
               )
             }
-            <Body size='sm'>
-              Les personnes âgées représentent les deux tiers de la surmortalité en période de fortes
-              chaleurs. Cette fragilité peut être exacerbée par d’autres facteurs : précarité
-              énergétique, isolement, conditions de logement inadéquate.
-              <CustomTooltipNouveauParcours title={methodeCalcul} />
-            </Body>
+            <CustomTooltipNouveauParcours title={methodeCalcul} />
+            <GrandAgeText />
           </div>
         </div>
         <div className={styles.datavizWrapper}>

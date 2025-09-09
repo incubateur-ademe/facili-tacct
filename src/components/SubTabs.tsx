@@ -1,5 +1,6 @@
 'use client';
 
+import { CatnatTypes, TabIcons } from '@/app/(main)/types';
 import activiteIconGreen from '@/assets/icons/activite_icon_green.svg';
 import activiteIconWhite from '@/assets/icons/activite_icon_white.svg';
 import camembertIconGreen from '@/assets/icons/camembert_icon_green.svg';
@@ -125,7 +126,7 @@ const SubTabs = ({
               setValue(element ? (element as CatnatTypes) : 'Tous types');
             }}
             text={element!}
-            icone={element ? tabsWithIcons(tabIcons, element, selectedSubTab) : null}
+            icone={element ? tabsWithIcons(tabIcons, element, selectedSubTab) : undefined}
             style={{ fontWeight: 400 }}
           />
         );

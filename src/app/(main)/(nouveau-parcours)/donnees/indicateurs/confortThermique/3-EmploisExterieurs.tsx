@@ -7,6 +7,7 @@ import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { travailExtMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";
+import { TravailExterieurText } from '@/lib/staticTexts';
 import { travailExterieurTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
 import { eptRegex } from "@/lib/utils/regex";
@@ -61,20 +62,15 @@ export const EmploisEnExterieur = ({
             {
               sums.sumConstruction || sums.sumAgriculture ?
                 <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                  L’agriculture et la construction représentent une grande part
-                  de postes en extérieur. La part cumulée des emplois de votre
-                  territoire dans ces deux secteurs à risque est de
-                  {" "}{Round(travailExt, 1)} %, soit{' '}
+                  Les métiers physiques en extérieur, comme ceux du BTP et de l’agriculture, sont 
+                  les plus exposés à la chaleur. Sur votre territoire, ces deux secteurs à risque 
+                  concentrent {" "}{Round(travailExt, 1)} %, soit{' '}
                   {Round((sums.sumAgriculture + sums.sumConstruction), 0)} personnes.
                 </Body>
                 : ""
             }
-            <Body size='sm'>
-              La chaleur reste un danger constant pour les travailleurs en extérieur.
-              Plus le travail est physique, plus le risque est élevé. Les impacts
-              de la chaleur sur la santé et l’économie sont actuellement très sous-estimés.
-              <CustomTooltipNouveauParcours title={travailExterieurTooltipText} />
-            </Body>
+            <CustomTooltipNouveauParcours title={travailExterieurTooltipText} />
+            <TravailExterieurText />
           </div>
         </div>
         <div className={styles.datavizWrapper}>

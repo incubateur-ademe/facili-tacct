@@ -1,3 +1,11 @@
+.ressourcesEauWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 3rem 2.25rem;
+    background-color: #ffffff;
+}
+
 // onglets de navigation en dataviz + filtres
 
 .graphTabsLegend{
@@ -53,4 +61,56 @@
     padding: 1.25rem 2.25rem;
     width: 100%;
     border-bottom: 1px solid var(--gris-medium);
+}
+
+// Progress bar 
+
+.progressDataWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.progressDesign {
+    display: flex;
+    flex-direction: row;
+    gap: 1.3rem;
+    width: 100%;
+    align-items: center;
+}
+
+.progressBar {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+    width: 100%;
+    .barMarker {
+        width: 100%;
+        .marker {
+            position: absolute;
+            height: 18px;
+            width: 2px;
+            background-color: #161616;
+            border-radius: 25px;
+        }
+    }
+}
+
+.progressNumbers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1px;
+    text-align: end;
+    width: 90px;
+}
+
+
+//Tooltip
+.colorSquare {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 2px;
+    align-self: center;
+    margin-right: 0.5rem;
 }

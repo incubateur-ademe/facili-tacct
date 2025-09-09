@@ -14,7 +14,7 @@ import {
 import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
-import { EspacesNafTooltip } from './components/mapTooltips';
+import { EspacesNafTooltip } from './components/tooltips';
 
 const getColor = (d: number) => {
   return d > 200000

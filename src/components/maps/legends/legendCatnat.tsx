@@ -2,8 +2,8 @@
 
 import { Body } from '@/design-system/base/Textes';
 import { CommunesIndicateursDto } from '@/lib/dto';
-import styles from '../../themes/gestionRisques/gestionRisques.module.scss';
 import './legend.css';
+import styles from './mapsComponents.module.scss';
 
 interface Props {
   data: string;

@@ -100,36 +100,36 @@ export const DateConstructionResidencesBarChartData = (averages: {
 }) => [
   {
     periode: 'Avant 1919',
-    'Votre collectivité': averages.averageAgeBatiPre19.toFixed(1),
-    'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+    'Votre territoire': averages.averageAgeBatiPre19.toFixed(1),
+    'Votre territoireColor': couleurs.graphiques.bleu[1],
     France: 20.5,
     FranceColor: couleurs.graphiques.rouge[3]
   },
   {
     periode: '1919-1945',
-    'Votre collectivité': averages.averageAgeBati1945.toFixed(1),
-    'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+    'Votre territoire': averages.averageAgeBati1945.toFixed(1),
+    'Votre territoireColor': couleurs.graphiques.bleu[1],
     France: 9.2,
     FranceColor: couleurs.graphiques.rouge[3]
   },
   {
     periode: '1946-1990',
-    'Votre collectivité': averages.averageAgeBati4690.toFixed(1),
-    'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+    'Votre territoire': averages.averageAgeBati4690.toFixed(1),
+    'Votre territoireColor': couleurs.graphiques.bleu[1],
     France: 43.4,
     FranceColor: couleurs.graphiques.rouge[3]
   },
   {
     periode: '1991-2005',
-    'Votre collectivité': averages.averageAgeBati9105.toFixed(1),
-    'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+    'Votre territoire': averages.averageAgeBati9105.toFixed(1),
+    'Votre territoireColor': couleurs.graphiques.bleu[1],
     France: 15.5,
     FranceColor: couleurs.graphiques.rouge[3]
   },
   {
     periode: 'Après 2006',
-    'Votre collectivité': averages.averageAgeBatiPost06.toFixed(1),
-    'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+    'Votre territoire': averages.averageAgeBatiPost06.toFixed(1),
+    'Votre territoireColor': couleurs.graphiques.bleu[1],
     France: 11.4,
     FranceColor: couleurs.graphiques.rouge[3]
   }

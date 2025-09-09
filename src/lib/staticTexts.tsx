@@ -1,127 +1,37 @@
 import { DefinitionTooltip } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
-import { eutrophisation, irrigable, PNACC } from "@/lib/definitions";
+import { eutrophisation, irrigable } from "@/lib/definitions";
 
-export const AgeBatiText = () => (
-  <div className="px-4">
-    <p>
-      55 % des Français déclarent avoir eu trop chaud pendant au moins
-      24 heures dans leur logement en 2023. Si la canicule reste la principale
-      raison évoquée (87 % des cas), près d’un quart des ménages (24 %) identifie
-      aussi la mauvaise isolation de leur logement.
-    </p>
-    <p>
-      La robustesse des logements face aux températures élevées dépend
-      de leur qualité intrinsèque (inertie thermique, présence de volets
-      extérieurs, qualité des rénovations...). Si vous ne disposez pas
-      d'étude spécifique sur le sujet, la période de construction,
-      fournie par l'INSEE, vous donne une première approximation.
-    </p>
-    <p>
-      Adapter les logements au risque de forte chaleur est la mesure 9 du{' '}
-      <DefinitionTooltip title={PNACC}>
-        PNACC
-      </DefinitionTooltip> 3.
-    </p>
-  </div>
+{ /* Confort thermique */ }
+
+export const GrandAgeText = () => (
+  <Body size='sm' style={{ paddingTop: '1rem' }}>
+    Les personnes âgées représentent les deux tiers de la surmortalité en période de fortes
+    chaleurs. Cette fragilité peut être exacerbée par d’autres facteurs : précarité énergétique,
+    isolement social, logements inadaptés.
+  </Body>
 );
 
 export const TravailExterieurText = () => (
-  <div className="px-4">
-    <p>
-      <b>La chaleur tue.</b> En 2022 et 2023, 18 travailleurs sont morts
-      en France à cause des fortes températures. Ces décès touchent
-      tous les âges, de 19 à 70 ans, principalement dans les secteurs
-      de la construction et des travaux publics. La moitié de ces accidents
-      sont survenus hors des périodes de vigilance canicule. La chaleur
-      reste un danger constant pour les travailleurs en extérieur. Plus
-      le travail est physique, plus le risque est élevé.
-    </p>
-    <p>
-      Le changement climatique amplifie ces risques, avec des vagues de
-      chaleur de plus en plus fréquentes et intenses. Les impacts de la
-      chaleur sur la santé et l’économie restent sous-estimés. Pourtant,
-      les projections sont inquiétantes : sans adaptation, le travail en
-      extérieur pourrait perdre 5 à 10% de productivité d’ici 2100 (étude
-      Joint Research Center, scénario TRACC). Cette baisse menacerait
-      directement l’économie des territoires.
-    </p>
-    <p>
-      ⇒ Un tiers des décès liés à la chaleur concerne des personnes de
-      moins de 75 ans. La chaleur touche une grande partie de la
-      population, pas seulement les plus âgés !
-    </p>
-    <p>
-      ⇒ Près de 20 000 passages aux urgences liés à la chaleur entre
-      juin et septembre 2023. Entre 2015 et 2019, le
-      recours aux soins en excès a couté 31 millions d’euros.
-    </p>
-    <p>
-      ⇒ En 2019, 64 conducteurs de bus ont exercé
-      leur droit de retrait en raison de la chaleur excessive dans
-      leurs véhicules.
-    </p>
-    <p>
-      - - - - <br></br>
-      Plan National d’Adaptation au Changement Climatique (PNACC 3) :
-    </p>
-    <ul>
-      <p>
-        <li>
-          Adapter les conditions de travail au changement climatique en renforçant les obligations de prévention des employeurs (mesure 11)
-        </li>
-      </p>
-    </ul>
-  </div>
+  <Body size='sm' style={{ paddingTop: '1rem' }}>
+    Les effets de la chaleur sur l’économie sont également sous-estimés. Selon
+    un rapport du Joint Research Center, la productivité du travail à l’extérieur
+    pourrait diminuer de 5 à 10 % en France, d’ici la fin du siècle.
+  </Body>
 );
 
-export const GrandAgeText = () => (
-  <div className="px-4">
-    <p>
-      Les personnes âgées représentent les deux tiers de la
-      surmortalité en période de fortes chaleurs. Leur corps
-      régule moins bien la température, ce qui les rend plus vulnérables.
-      Elles ressentent également moins la soif. Ces facteurs augmentent les risques de déshydratation.
-      Les problèmes de santé chroniques, comme les maladies cardiovasculaires
-      ou respiratoires, aggravent leur sensibilité aux températures élevées.
-    </p>
-    <p>
-      Le changement climatique intensifie les vagues de chaleur. La précarité
-      énergétique, l’isolement social et les logements inadaptés renforcent
-      l’inconfort thermique. Ces facteurs se cumulent souvent chez les personnes
-      âgées. Plus elles sont exposées à la chaleur, plus elles deviennent vulnérables.
-    </p>
-    <p>
-      Cette vulnérabilité est exacerbée par plusieurs facteurs :
-      précarité énergétique, isolement social, et conditions de
-      logement inadéquates. Plus ces facteurs se cumulent, plus le
-      risque d’une surmortalité en période de chaleur augmente.
-      Ces conditions créent un "cercle vicieux" qui accroît leur
-      fragilité face à l’inconfort thermique.
-    </p>
-    <p>
-      ⇒ C’est toujours beaucoup trop !{' '}
-      <b>33 000 décès ont été attribués à la chaleur</b> entre
-      2014 et 2022, dont <b>23 000</b> chez les personnes âgées de
-      75 ans et plus.
-    </p>
-    <p>
-      ⇒ Seuls <b>28 % des décès</b> liés à la chaleur se
-      produisent pendant les canicules, qui ne représentent que 6 %
-      des jours de l’été. Soyons vigilants aussi en dehors des
-      périodes de canicule.
-    </p>
-    <p>
-      ⇒ Tous exposés : les moins de 75 ans représentent 71 %
-      des consultations SOS Médecins liées à la chaleur (juin-septembre 2022)
-      et un tiers des décès (2014-2022).
-    </p>
-    <p>
-      ⇒ Une prise de conscience insuffisante : seuls 12 % des Français se
-      considèrent fragiles ou très fragiles pendant une canicule.
-    </p>
-  </div>
+export const AgeBatiText = () => (
+  <Body size='sm' style={{ paddingTop: '1rem' }}>
+    La résistance des logements face aux températures élevées dépend de critères 
+    tels que l’inertie thermique, la présence de volets extérieurs ou la qualité des 
+    rénovations effectuées. En l’absence d’étude détaillée sur le sujet, la période 
+    de construction fournit une première approximation.<br></br>En France, deux tiers des 
+    logements construits avant 1948 affichent un DPE médiocre (D, E ou F), alors 
+    que deux tiers construits après 2013 sont classés B ou C.
+  </Body>
 );
+
+
 
 export const FragiliteEconomiqueText = () => (
   <div className="px-4">
@@ -831,17 +741,17 @@ export const LCZCeremaText1 = () => (
     </Body>
     <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
       Les zones climatiques locales (LCZ en anglais) montrent comment un territoire
-      réagit aux vagues de chaleur estivales. 
+      réagit aux vagues de chaleur estivales.
     </Body>
     <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
-      Les 17 types de zones aident à identifier les zones qui peuvent  potentiellement 
+      Les 17 types de zones aident à identifier les zones qui peuvent  potentiellement
       devenir très chaudes. Bien que basée sur l’occupation du sol et la forme des villes,
-      <b> cette cartographie n’est pas une modélisation de l’îlot de chaleur urbain.</b> Ces 
-      données, fournies par le CEREMA, couvrent 88 aires urbaines en France métropolitaine. Sur 
+      <b> cette cartographie n’est pas une modélisation de l’îlot de chaleur urbain.</b> Ces
+      données, fournies par le CEREMA, couvrent 88 aires urbaines en France métropolitaine. Sur
       les 12 000 communes étudiées, plus de 5 millions d’habitants vivent dans des quartiers très sensibles
       aux fortes chaleurs.
     </Body>
-    
+
     <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
       Rendez-vous sur le site du {" "}
       <a
@@ -862,17 +772,17 @@ export const LCZText2 = () => (
       Comment lire cette carte ?
     </Body>
     <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
-      Cette carte, issue de multiples jeux de données d'observation de la Terre, vous permet 
-      d'explorer votre territoire à 100 m de résolution spatiale. Les zones climatiques locales 
-      (LCZ en anglais) montrent comment un territoire réagit aux vagues de chaleur estivales. 
-      Les 17 types de zones aident à identifier les zones qui peuvent potentiellement devenir 
-      très chaudes. 
+      Cette carte, issue de multiples jeux de données d'observation de la Terre, vous permet
+      d'explorer votre territoire à 100 m de résolution spatiale. Les zones climatiques locales
+      (LCZ en anglais) montrent comment un territoire réagit aux vagues de chaleur estivales.
+      Les 17 types de zones aident à identifier les zones qui peuvent potentiellement devenir
+      très chaudes.
       <br></br>
-      Bien que basée sur l’occupation du sol et la forme des villes, <b>cette cartographie n’est 
-      pas une modélisation de l’îlot de chaleur urbain.</b>
+      Bien que basée sur l’occupation du sol et la forme des villes, <b>cette cartographie n’est
+        pas une modélisation de l’îlot de chaleur urbain.</b>
     </Body>
     <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
-      Pour en savoir plus sur la méthodologie scientifique utilisée pour élaborer la carte, consultez 
+      Pour en savoir plus sur la méthodologie scientifique utilisée pour élaborer la carte, consultez
       l’article {" "}
       <a
         href="https://essd.copernicus.org/articles/14/3835/2022/"
@@ -886,12 +796,12 @@ export const LCZText2 = () => (
 );
 
 export const LCZText = () => (
-  <> 
+  <>
     <Body size='sm' style={{ marginTop: '2rem' }}>
       Les LCZ, basées sur un référentiel scientifique, permettent de
       classer les quartiers selon leurs formes urbaines et leur propension à
       surchauffer. Elles <b>ne permettent pas de quantifier l'ilot de chaleur
-      urbain</b>, contrairement aux mesures de température de l'air. Les LCZ
+        urbain</b>, contrairement aux mesures de température de l'air. Les LCZ
       aident à identifier les zones potentiellement sujettes à la surchauffe
       afin d’y installer des capteurs, ou pour identifier des zones
       prioritaires pour agir en faveur du rafraîchissement. La cartographie

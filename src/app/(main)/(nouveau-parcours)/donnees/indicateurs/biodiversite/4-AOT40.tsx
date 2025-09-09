@@ -150,7 +150,7 @@ export const OzoneEtVegetation = (props: {
           </Body>
         ) : maxValueInStations < 6000 ? (
           <Body weight='bold' size='sm'>
-            Bravo, le seuil de 6 000 µg/m³ par heure fixé comme objectif
+            Bravo, le seuil de 6 000 µg/m³ par heure fixé comme objectif
             pour 2050 est déjà atteint. Ne relâchez pas vos efforts.
           </Body>
         ) : maxValueInStations > 18000 ? (
@@ -162,9 +162,9 @@ export const OzoneEtVegetation = (props: {
           </Body>
         ) : (
           <Body weight='bold' size='sm'>
-            Le seuil actuel de protection de la végétation de 18 000 µg/m³
+            Le seuil actuel de protection de la végétation de 18 000 µg/m³
             par heure n’est pas franchi. Poursuivez vos efforts,
-            l’objectif fixé pour 2050 est de 6 000 µg/m³ par heure.
+            l’objectif fixé pour 2050 est de 6 000 µg/m³ par heure.
           </Body>
         )}
         <CustomTooltipNouveauParcours

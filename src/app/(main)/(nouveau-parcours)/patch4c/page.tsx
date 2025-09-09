@@ -4,6 +4,7 @@ import { NewContainer } from "@/design-system/layout";
 import { GetPatch4 } from "@/lib/queries/patch4";
 import { Metadata } from "next";
 import Image from "next/image";
+import { SearchParams } from '../../types';
 import CircleVisualization from "./circleVisualization";
 import CursorVisualization from "./cursorVisualization";
 import IndicesDetail from "./indicesDetail";

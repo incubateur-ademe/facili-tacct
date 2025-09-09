@@ -1,6 +1,4 @@
-type GenericObject = {
-  [key: string]: string | number | bigint | null;
-}
+import { GenericObject } from "@/app/(main)/types";
 
 export const CountOcc = <T extends GenericObject>(arr: T[], item: keyof T) => {
   if (Array.isArray(arr)) {

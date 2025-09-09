@@ -72,7 +72,6 @@ export const PrecariteEnergetique = ({
                 </>
               ) : ""
             }
-
           </div>
         </div>
         <div className={styles.mapWrapper}>

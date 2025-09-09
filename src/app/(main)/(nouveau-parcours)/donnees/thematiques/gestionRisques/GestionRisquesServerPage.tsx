@@ -1,3 +1,4 @@
+import { SearchParams } from "@/app/(main)/types";
 import { GetArretesCatnat, GetIncendiesForet } from "@/lib/queries/databases/gestionRisques";
 import { GetCommunes, GetErosionCotiere } from "@/lib/queries/postgis/cartographie";
 import { DonneesGestionRisques } from "./DonneesGestionRisques";

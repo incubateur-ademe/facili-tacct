@@ -1,4 +1,5 @@
 "use client";
+import { CatnatTypes, DataByCodeGeographique, GenericObject } from '@/app/(main)/types';
 import DataNotFound from '@/assets/images/zero_data_found.png';
 import ArretesCatnatCharts from '@/components/charts/gestionRisques/arretesCatnatCharts';
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";

@@ -3,6 +3,7 @@ import { GetPatch4 } from '@/lib/queries/patch4';
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { type Metadata } from 'next';
 import { Container } from '../../../design-system/server';
+import { SearchParams } from '../types';
 import { Cards } from './cards';
 
 export const metadata: Metadata = {
