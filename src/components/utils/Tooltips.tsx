@@ -61,7 +61,7 @@ export const ArrowHtmlTooltip = styled(
     lineHeight: '1.25rem',
     fontWeight: fontWeight,
     position: 'relative',
-    '&::after': {
+    '&::before, &::after': {
       content: '""',
       position: 'absolute',
       bottom: '-6px',
@@ -71,7 +71,15 @@ export const ArrowHtmlTooltip = styled(
       height: 0,
       borderLeft: '6px solid transparent',
       borderRight: '6px solid transparent',
+    },
+    '&::before': {
+      borderTop: '6px solid rgba(0, 0, 18, 0.16)',
+      bottom: '-7px',
+      zIndex: 1,
+    },
+    '&::after': {
       borderTop: '6px solid #ffffff',
+      zIndex: 2,
     }
   }
 }));

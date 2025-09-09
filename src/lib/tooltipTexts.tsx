@@ -49,7 +49,8 @@ export const espacesNAFTooltipText = (
 );
 
 export const agricultureBioTooltipText = (
-  <Body weight="bold" size="sm">Les superficies totales en agriculture biologique comprennent :
+  <Body weight="bold" size="sm">
+    Les superficies totales en agriculture biologique comprennent :
     <ul>
       <li>
         <Body weight="bold" size="sm">les surfaces « certifiées bio » qui rassemblent les parcelles dont
