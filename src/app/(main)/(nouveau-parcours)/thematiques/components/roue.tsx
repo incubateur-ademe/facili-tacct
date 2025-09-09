@@ -21,6 +21,8 @@ type NoeudRoue = {
   color: string;
   textColor: string;
   labelRadius?: number;
+  xOffset?: number;
+  yOffset?: number;
   category?: string;
   originalIndex?: number;
   disabled?: boolean;
@@ -342,10 +344,12 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       .attr("class", "l2-label")
       .attr("transform", (d: NoeudRoue) => {
         const labelRadius = d.labelRadius ? d.labelRadius : defaultLabelRadius;
+        const xOffset = d.xOffset ? d.xOffset : 0;
+        const yOffset = d.yOffset ? d.yOffset : 0;
         const nodeAngle = Math.atan2(d.y, d.x);
         const x = labelRadius * Math.cos(nodeAngle);
         const y = labelRadius * Math.sin(nodeAngle);
-        return `translate(${x},${y})`;
+        return `translate(${x + xOffset},${y + yOffset})`;
       })
       .style("cursor", (d: NoeudRoue) => {
         const thematique = nomThematiques.find(t => t.label === d.label);
