@@ -53,7 +53,7 @@ export const ArrowHtmlTooltip = styled(
     backgroundColor: '#ffffff',
     color: 'black',
     maxWidth: 600,
-    boxShadow: "none",
+    boxShadow: "0px 2px 6px 0px rgba(0, 0, 18, 0.16)",
     padding: '1rem',
     fontFamily: 'Marianne',
     fontSize: '0.875rem',
@@ -61,7 +61,7 @@ export const ArrowHtmlTooltip = styled(
     lineHeight: '1.25rem',
     fontWeight: fontWeight,
     position: 'relative',
-    filter: 'drop-shadow(0px 2px 6px rgba(0, 0, 18, 0.16))',
+    marginBottom: '6px',
     '&::after': {
       content: '""',
       position: 'absolute',
@@ -73,6 +73,9 @@ export const ArrowHtmlTooltip = styled(
       borderLeft: '6px solid transparent',
       borderRight: '6px solid transparent',
       borderTop: '6px solid #ffffff',
+      // Force immediate rendering
+      willChange: 'transform',
+      backfaceVisibility: 'hidden',
     }
   }
 }));
