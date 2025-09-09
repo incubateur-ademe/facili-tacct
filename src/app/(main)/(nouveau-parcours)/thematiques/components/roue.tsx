@@ -1,5 +1,4 @@
 "use client";
-import RessourcesNaturellesTexte from "@/assets/images/ressources_naturelles_texte.svg";
 import { Loader } from "@/components/loader";
 import { HtmlTooltip } from "@/components/utils/Tooltips";
 import { Body, H1 } from "@/design-system/base/Textes";
@@ -9,7 +8,6 @@ import { useEffect, useRef, useState } from "react";
 // Import CircleType (types seront déclarés en tant que any)
 // @ts-ignore
 import CircleType from 'circletype';
-import Image from "next/image";
 import { categoriesNoeuds, liensEntreThematiques, nodeCategoryMapping, nomThematiques, PositionArcsDonut } from "../constantes/categories";
 import { categoryColors, categorySelectedBorderColors, categorySelectedColors } from "../constantes/colors";
 import { categorieTextParametres, DistanceTextes } from "../constantes/textesSVG";
@@ -556,7 +554,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
                 existingInstance.destroy();
               }
               const circleType = new (CircleType as Any)(el);
-              circleType.radius(260); // Courbure pour Cadre de vie
+              circleType.radius(200); // Courbure pour Cadre de vie
               circleType.dir(-1); // Direction pour Cadre de vie
               (el as Any).circleTypeInstance = circleType;
             }
@@ -564,7 +562,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           style={{
             position: 'absolute',
             left: `${categoriePositions["Cadre de vie"].x}px`,
-            top: `${categoriePositions["Cadre de vie"].y - 75}px`,
+            top: `${categoriePositions["Cadre de vie"].y - 78}px`,
             transform: `rotate(0deg)`, // Rotation pour Cadre de vie
             fontSize: '14px',
             fontWeight: 'bold',
@@ -582,7 +580,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       )}
 
       {/* Ressources naturelles */}
-      {/* {categoriePositions["Ressources naturelles"] && (
+      {categoriePositions["Ressources naturelles"] && (
         <div
           ref={(el) => {
             if (el) {
@@ -591,16 +589,16 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
                 existingInstance.destroy();
               }
               const circleType = new (CircleType as Any)(el);
-              circleType.radius(220); // Courbure pour Ressources naturelles
-              circleType.dir(0.4); // Direction pour Ressources naturelles
+              circleType.radius(200); // Courbure pour Ressources naturelles
+              circleType.dir(0.5); // Direction pour Ressources naturelles
               (el as Any).circleTypeInstance = circleType;
             }
           }}
           style={{
             position: 'absolute',
-            left: `${categoriePositions["Ressources naturelles"].x + 34}px`,
-            top: `${categoriePositions["Ressources naturelles"].y - 36}px`,
-            transform: `rotate(-57deg)`, // Rotation pour Ressources naturelles
+            left: `${categoriePositions["Ressources naturelles"].x + 39}px`,
+            top: `${categoriePositions["Ressources naturelles"].y - 42}px`,
+            transform: `rotate(-54deg)`, // Rotation pour Ressources naturelles
             fontSize: '14px',
             fontWeight: 'bold',
             fontFamily: 'Marianne',
@@ -613,8 +611,8 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         >
           Ressources naturelles
         </div>
-      )} */}
-      {categoriePositions["Ressources naturelles"] && (
+      )}
+      {/* {categoriePositions["Ressources naturelles"] && (
         <Image
           src={RessourcesNaturellesTexte}
           style={{
@@ -630,7 +628,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           }}
           alt="Ressources naturelles"
         />
-      )}
+      )} */}
 
       {/* Ressources économiques */}
       {categoriePositions["Ressources économiques"] && (
@@ -642,22 +640,21 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
                 existingInstance.destroy();
               }
               const circleType = new (CircleType as Any)(el);
-              circleType.radius(220); // Courbure pour Ressources économiques
-              circleType.dir(0.4); // Direction pour Ressources économiques
+              circleType.radius(200); // Courbure pour Ressources économiques
+              circleType.dir(0.50); // Direction pour Ressources économiques
               (el as Any).circleTypeInstance = circleType;
             }
           }}
           style={{
             position: 'absolute',
-            left: `${categoriePositions["Ressources économiques"].x - 30}px`,
-            top: `${categoriePositions["Ressources économiques"].y - 25}px`,
-            transform: `rotate(57deg)`, // Rotation pour Ressources économiques
+            left: `${categoriePositions["Ressources économiques"].x - 38}px`,
+            top: `${categoriePositions["Ressources économiques"].y - 37}px`,
+            transform: `rotate(52deg)`, // Rotation pour Ressources économiques
             fontSize: '14px',
             fontWeight: 'bold',
             fontFamily: 'Marianne',
             color: categorySelectedBorderColors["Ressources économiques"],
             pointerEvents: 'none',
-            // letterSpacing: '-0.1em',
             transformOrigin: 'center center',
             zIndex: 2,
             whiteSpace: 'nowrap'
