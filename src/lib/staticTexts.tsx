@@ -886,7 +886,7 @@ export const LCZText2 = () => (
 );
 
 export const LCZText = () => (
-  <div className="pr-4"> 
+  <> 
     <Body size='sm' style={{ marginTop: '2rem' }}>
       Les LCZ, basées sur un référentiel scientifique, permettent de
       classer les quartiers selon leurs formes urbaines et leur propension à
@@ -910,5 +910,5 @@ export const LCZText = () => (
         Plus fraiche ma ville
       </a>.
     </Body>
-  </div>
+  </>
 );

@@ -73,7 +73,7 @@ export const DonneesEau = ({
           </div>
 
           {/* État écologique des cours d'eau */}
-          <div id="État écologique des cours d'eau" className={styles.indicateurWrapper}>
+          <div id="État écologique des cours d'eau" className={styles.indicateurMapWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 État écologique des cours d’eau

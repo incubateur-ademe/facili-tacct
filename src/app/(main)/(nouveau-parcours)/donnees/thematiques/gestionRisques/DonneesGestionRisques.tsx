@@ -170,7 +170,7 @@ export const DonneesGestionRisques = ({
                 </H2>
 
                 {/* Érosion côtière */}
-                <div id="Érosion côtière" className={styles.indicateurWrapper}>
+                <div id="Érosion côtière" className={styles.indicateurMapWrapper}>
                   <div className={styles.h3Titles}>
                     <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                       Mouvement du trait de côte

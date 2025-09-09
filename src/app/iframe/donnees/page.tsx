@@ -1,4 +1,4 @@
-import AgricultureEtPecheServerPage from '@/app/(main)/(nouveau-parcours)/donnees/thematiques/agricultureEtPeche/AgricultureEtPecheServerPage';
+import AgricultureEtPecheServerPage from '@/app/(main)/(nouveau-parcours)/donnees/thematiques/agriculture/AgricultureEtPecheServerPage';
 import AmenagementServerPage from '@/app/(main)/(nouveau-parcours)/donnees/thematiques/amenagement/AmenagementServerPage';
 import BiodiversiteServerPage from '@/app/(main)/(nouveau-parcours)/donnees/thematiques/biodiversite/BiodiversiteServerPage';
 import ConfortThermiqueServerPage from '@/app/(main)/(nouveau-parcours)/donnees/thematiques/confortThermique/ConfortThermiqueServerPage';

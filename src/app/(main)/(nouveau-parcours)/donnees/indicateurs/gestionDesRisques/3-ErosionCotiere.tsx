@@ -62,7 +62,7 @@ export const ErosionCotiereComp = ({
           }
         </div>
       </div>
-      <div className={styles.sourcesExportWrapper} style={{ marginLeft: '-2rem', borderTop: '1px solid var(--gris-medium)' }}>
+      <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
           Source : CEREMA
         </Body>

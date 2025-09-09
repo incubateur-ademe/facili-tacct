@@ -75,7 +75,7 @@ export const DonneesAmenagement = ({
           </div>
 
           {/* État LCZ */}
-          <div id="LCZ" className={styles.indicateurWrapper}>
+          <div id="LCZ" className={styles.indicateurMapWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Cartographie des zones climatiques locales (LCZ)

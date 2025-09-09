@@ -107,7 +107,7 @@ const DonneesConfortThermique = ({
         </div>
 
         {/* Précarité énergétique */}
-        <div id="Précarité énergétique" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+        <div id="Précarité énergétique" className={styles.indicateurMapWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
           <div className={styles.h3Titles}>
             <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
               Part des ménages en situation de précarité énergétique liée au logement
@@ -166,7 +166,7 @@ const DonneesConfortThermique = ({
           {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
         </H2>
         {/* Types de sols */}
-        <div id="Types de sols" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+        <div id="Types de sols" className={styles.indicateurMapWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
           <div className={styles.h3Titles}>
             <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
               Cartographie des différents types de sols
@@ -180,7 +180,7 @@ const DonneesConfortThermique = ({
           }
         </div>
         {/* LCZ */}
-        <div id="LCZ" className={styles.indicateurWrapper}>
+        <div id="LCZ" className={styles.indicateurMapWrapper}>
           <div className={styles.h3Titles}>
             <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
               Cartographie des zones climatiques locales (LCZ)
