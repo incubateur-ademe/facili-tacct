@@ -12,6 +12,7 @@ import { InconfortThermique } from "@/lib/postgres/models";
 import { GrandAgeText } from '@/lib/staticTexts';
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
 import { eptRegex, numberWithSpacesRegex } from "@/lib/utils/regex";
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from "next/navigation";
 import styles from '../../explorerDonnees.module.scss';
 import { sumProperty } from '../fonctions';
@@ -30,6 +31,11 @@ export const GrandAge = ({
   const grandAgeIsolementMapped = inconfortThermique.map(
     grandAgeIsolementMapper
   );
+    const percentTerritoireSup = Round((
+    (100 * sumProperty(grandAgeIsolementMapped, 'over_80_sum_2020')) /
+    (sumProperty(grandAgeIsolementMapped, 'to_80_sum_2020') +
+      sumProperty(grandAgeIsolementMapped, 'under_4_sum_2020'))
+  ), 2);
   const grandAgeIsolementTerritoire =
     type === 'commune'
       ? grandAgeIsolementMapped.filter((e) => e.code_geographique === code)
@@ -70,6 +76,17 @@ export const GrandAge = ({
                   </Body>
                 </>
               )
+            }
+            {
+              type === "commune" ? (
+                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                  Ce taux est de {percentTerritoireSup} % dans votre EPCI.
+                </Body>
+              ) : type === "epci" ? (
+                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                  Ce taux est de {percentTerritoireSup} % dans votre département.
+                </Body>
+              ) : ''
             }
             <CustomTooltipNouveauParcours title={methodeCalcul} />
             <GrandAgeText />
