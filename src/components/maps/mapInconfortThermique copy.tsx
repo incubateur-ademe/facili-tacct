@@ -10,7 +10,7 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
 import { BoundsFromCollection } from './components/boundsFromCollection';
-import { DensiteBatiTooltip, FragiliteEconomiqueTooltip } from './components/tooltips';
+import { DensiteBatiTooltip, FragiliteEconomiqueTooltip } from './components/mapTooltips';
 
 const getColor = (d: number, data: string) => {
   if (data === 'densite_bati') {

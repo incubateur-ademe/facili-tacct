@@ -16,7 +16,7 @@ import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
 import { BoundsFromCollection } from './components/boundsFromCollection';
-import { SurfacesIrrigueesTooltip } from './components/tooltips';
+import { SurfacesIrrigueesTooltip } from './components/mapTooltips';
 
 const getColor = (d: number) => {
   return d === 0

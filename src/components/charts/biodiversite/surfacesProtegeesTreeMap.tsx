@@ -1,6 +1,6 @@
 'use client';
 
-import { HtmlTooltipMousePosition } from '@/components/utils/HtmlTooltip';
+import { HtmlTooltipMousePosition } from '@/components/utils/Tooltips';
 import { SurfacesProtegeesDto } from '@/lib/dto';
 import { Any } from '@/lib/utils/types';
 import { ResponsiveTreeMap } from '@nivo/treemap';

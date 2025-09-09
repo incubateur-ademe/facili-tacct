@@ -6,7 +6,7 @@ import { Loader } from '@/components/loader';
 import { MapErosionCotiere } from '@/components/maps/mapErosionCotiere';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
-import { CustomTooltip } from '@/components/utils/CalculTooltip';
+import { CustomTooltip } from '@/components/utils/Tooltips';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { ErosionCotiereMapper } from '@/lib/mapper/erosionCotiere';
 import { CarteCommunes, ErosionCotiere, Patch4 } from '@/lib/postgres/models';

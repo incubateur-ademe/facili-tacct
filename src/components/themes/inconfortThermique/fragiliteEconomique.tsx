@@ -7,7 +7,7 @@ import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapInconfortThermique } from '@/components/maps/mapInconfortThermique';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
-import { CustomTooltip } from '@/components/utils/CalculTooltip';
+import { CustomTooltip } from '@/components/utils/Tooltips';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';

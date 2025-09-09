@@ -3,7 +3,7 @@
 import AgricultureBiologique from '@/components/themes/agriculture/agricultureBio';
 import { SurfacesAgricoles } from '@/components/themes/agriculture/surfacesAgricoles';
 import { SurfacesIrriguees } from '@/components/themes/agriculture/surfacesIrriguees';
-import { TabTooltip } from '@/components/utils/TabTooltip';
+import { TabTooltip } from '@/components/utils/Tooltips';
 import {
   Agriculture,
   AgricultureBio,

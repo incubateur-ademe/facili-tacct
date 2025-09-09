@@ -10,7 +10,7 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef } from 'react';
 import { Loader } from '../loader';
 import { BoundsFromCollection } from './components/boundsFromCollection';
-import { CoursDeauTooltip } from './components/tooltips';
+import { CoursDeauTooltip } from './components/mapTooltips';
 
 const SitesBaignadeMarkers = dynamic(() => import('./components/sitesBaignadeMarkers'), {
   loading: () => <Loader />

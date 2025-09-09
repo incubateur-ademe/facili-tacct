@@ -7,7 +7,7 @@ import { FragiliteEconomique } from '@/components/themes/inconfortThermique/frag
 import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grandAgeIsolement';
 import { LCZ } from '@/components/themes/inconfortThermique/lcz';
 import { TravailExterieur } from '@/components/themes/inconfortThermique/travailExterieur';
-import { TabTooltip } from '@/components/utils/TabTooltip';
+import { TabTooltip } from '@/components/utils/Tooltips';
 import { CarteCommunes, CLCTerritoires, InconfortThermique } from '@/lib/postgres/models';
 import { GetClcTerritoires } from '@/lib/queries/postgis/cartographie';
 import { fr } from '@codegouvfr/react-dsfr';

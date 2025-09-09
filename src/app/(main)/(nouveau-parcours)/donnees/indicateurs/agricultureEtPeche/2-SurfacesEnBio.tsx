@@ -2,8 +2,8 @@
 import SurfacesEnBioCharts from "@/components/charts/biodiversite/surfacesEnBioCharts";
 import { MicroPieChart } from "@/components/charts/MicroDataviz";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
-import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { ReadMoreFade } from "@/components/utils/ReadMoreFade";
+import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { AgricultureBio } from "@/lib/postgres/models";
 import { SurfacesEnBioAgricultureText } from "@/lib/staticTexts";

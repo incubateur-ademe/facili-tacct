@@ -78,14 +78,15 @@ export const BarreDeRecherche = ({
                     top: '-150%',
                     transform: 'translateX(-28%)',
                     background: '#FFF',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '0.5rem',
+                    color: "black",
+                    padding: '1rem',
+                    borderRadius: '6px',
                     whiteSpace: 'nowrap',
                     zIndex: 100,
-                    fontSize: '1rem',
+                    fontSize: '0.875rem',
                     fontWeight: '500',
-                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
-                    border: "1px solid var(--gris-medium)"
+                    boxShadow: "0px 2px 6px 0px rgba(0, 0, 18, 0.16)",
+                    // border: "1px solid var(--gris-medium)"
                   },
                   justifyContent: 'center',
                   '.fr-label': {

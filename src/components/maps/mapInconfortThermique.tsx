@@ -10,7 +10,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { BoundsFromCollection } from './components/boundsFromCollection';
-import { FragiliteEconomiqueTooltip } from './components/tooltips';
+import { FragiliteEconomiqueTooltip } from './components/mapTooltips';
 
 export const MapInconfortThermique = (props: {
   carteCommunes: CommunesIndicateursDto[];

@@ -6,7 +6,7 @@ import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
-import { CustomTooltip } from '@/components/utils/CalculTooltip';
+import { CustomTooltip } from '@/components/utils/Tooltips';
 import { PieChartDataSurfacesAgricoles } from '@/lib/charts/surfacesAgricoles';
 import { Patch4, SurfacesAgricolesModel } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';

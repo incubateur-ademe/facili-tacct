@@ -6,7 +6,7 @@ import { ExportButton } from '@/components/exports/ExportButton';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
-import { CustomTooltip } from '@/components/utils/CalculTooltip';
+import { CustomTooltip } from '@/components/utils/Tooltips';
 import { travailExtDto } from '@/lib/dto';
 import { travailExtMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique, Patch4 } from '@/lib/postgres/models';

@@ -15,7 +15,7 @@ import {
 import { MapEtatCoursDeauLegacy } from '@/components/maps/mapEtatCoursDeauLegacy';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
-import { CustomTooltip } from '@/components/utils/CalculTooltip';
+import { CustomTooltip } from '@/components/utils/Tooltips';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
 import {

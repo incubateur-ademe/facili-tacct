@@ -4,8 +4,8 @@ import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/Exp
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { LegendErosionCotiere } from '@/components/maps/legends/legendErosionCotiere';
 import { MapErosionCotiere } from '@/components/maps/mapErosionCotiere';
-import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
+import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { ErosionCotiereMapper } from '@/lib/mapper/erosionCotiere';

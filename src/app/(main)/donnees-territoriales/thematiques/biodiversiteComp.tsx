@@ -4,7 +4,7 @@ import AgricultureBiologique from '@/components/themes/biodiversite/agricultureB
 import AOT40Dataviz from '@/components/themes/biodiversite/AOT40';
 import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
 import EtatQualiteCoursDeau from '@/components/themes/biodiversite/etatCoursDeau';
-import { TabTooltip } from '@/components/utils/TabTooltip';
+import { TabTooltip } from '@/components/utils/Tooltips';
 import {
   AgricultureBio,
   AOT40,

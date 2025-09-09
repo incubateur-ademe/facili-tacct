@@ -8,7 +8,7 @@ import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
-import { CustomTooltip } from '@/components/utils/CalculTooltip';
+import { CustomTooltip } from '@/components/utils/Tooltips';
 import { grandAgeIsolementMapper } from '@/lib/mapper/inconfortThermique';
 import {
   DataGrandAge,

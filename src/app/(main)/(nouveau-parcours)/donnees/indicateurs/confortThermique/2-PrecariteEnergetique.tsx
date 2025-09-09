@@ -5,7 +5,7 @@ import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { fragiliteEcoLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import { MapInconfortThermique } from '@/components/maps/mapInconfortThermique';
-import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
+import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes } from "@/lib/postgres/models";

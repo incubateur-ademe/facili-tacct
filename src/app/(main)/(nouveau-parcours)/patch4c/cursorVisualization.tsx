@@ -1,6 +1,6 @@
 "use client";
 import InfoIcon from '@/assets/icons/info_round_icon_black.svg';
-import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
+import { HtmlTooltip } from '@/components/utils/Tooltips';
 import { Body } from "@/design-system/base/Textes";
 import Image from "next/image";
 import { agravationItems } from './components/constantes';
@@ -19,11 +19,7 @@ const CursorVisualization = () => {
                     {item.label}
                   </Body>
                   <HtmlTooltip
-                    title={
-                      <Body weight='bold'>
-                        {item.hover}
-                      </Body>
-                    }
+                    title={item.hover}
                     placement="top"
                   >
                     <Image

@@ -5,7 +5,7 @@ import { Suspense, useEffect, useState } from 'react';
 
 import { ConsommationEspacesNAF } from '@/components/themes/amenagement/consommationEspacesNAF';
 import { LCZ } from '@/components/themes/inconfortThermique/lcz';
-import { TabTooltip } from '@/components/utils/TabTooltip';
+import { TabTooltip } from '@/components/utils/Tooltips';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';

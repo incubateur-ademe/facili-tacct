@@ -2,15 +2,15 @@
 import TypesDeCulturesCharts from "@/components/charts/agriculture/typesDeCulturesCharts";
 import { MicroPieChart } from "@/components/charts/MicroDataviz";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
-import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { ReadMoreFade } from "@/components/utils/ReadMoreFade";
+import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { PieChartDataSurfacesAgricoles } from "@/lib/charts/surfacesAgricoles";
 import { SurfacesAgricolesModel } from "@/lib/postgres/models";
 import { SurfacesAgricolesText } from "@/lib/staticTexts";
 import { multipleEpciBydepartementLibelle } from "@/lib/territoireData/multipleEpciBydepartement";
 import { multipleEpciByPnrLibelle } from "@/lib/territoireData/multipleEpciByPnr";
-import { agricultureBioTooltipText } from "@/lib/tooltipTexts";
+import { surfacesAgricolesTooltipText } from "@/lib/tooltipTexts";
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
 import { numberWithSpacesRegex } from "@/lib/utils/regex";
 import { Round } from "@/lib/utils/reusableFunctions/round";
@@ -85,7 +85,7 @@ export const TypesDeCulture = (props: {
                 </>
               ) : <Body weight='bold' style={{ color: "var(--gris-dark)" }}>Il n’y a pas de données référencées sur le territoire que vous avez sélectionné</Body>
             }
-            <CustomTooltipNouveauParcours title={agricultureBioTooltipText} texte="D'où vient ce chiffre ?" />
+            <CustomTooltipNouveauParcours title={surfacesAgricolesTooltipText} texte="D'où vient ce chiffre ?" />
           </div>
           <ReadMoreFade maxHeight={territoiresPartiellementCouverts?.length ? 400 / territoiresPartiellementCouverts?.length : 350}>
             <SurfacesAgricolesText />
