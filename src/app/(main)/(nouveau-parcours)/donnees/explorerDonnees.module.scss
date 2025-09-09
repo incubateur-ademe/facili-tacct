@@ -11,6 +11,9 @@
     .indicateurWrapper {
         padding: 2rem 0 0 2rem;
     }
+    .indicateurMapWrapper {
+        padding: 2rem 2rem 0 2rem;
+    }
     .diagnosticWrapper {
         padding: 2rem;
     }
@@ -77,7 +80,7 @@
         }
     }
     .mapWrapper {
-        padding: 1rem 1.25rem 0 0;
+        padding: 1rem 0 0;
         .legend {
             margin: 0.75rem;
         }
@@ -95,6 +98,18 @@
     gap: 1rem;
     align-items: center;
     max-height: fit-content;
+}
+
+.sourcesExportMapWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    margin: 0 -2rem;
+    gap: 1rem;
+    align-items: center;
+    max-height: fit-content;
+    border-top: 1px solid var(--gris-medium);
 }
 
 .h3Titles {

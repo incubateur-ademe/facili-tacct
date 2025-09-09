@@ -72,7 +72,7 @@ export const DonneesBiodiversite = ({
           </H2>
 
           {/* Ozone et végétation */}
-          <div id="Ozone et végétation" className={styles.indicateurWrapper}>
+          <div id="Ozone et végétation" className={styles.indicateurMapWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Concentration d’ozone pendant la période de végétation (moyenne 2020-2024)
@@ -99,7 +99,7 @@ export const DonneesBiodiversite = ({
             {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
           {/* Consommation d'espaces NAF */}
-          <div id="Consommation d'espaces NAF" className={styles.indicateurWrapper}>
+          <div id="Consommation d'espaces NAF" className={styles.indicateurMapWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Sols imperméabilisés entre 2009 et 2023
@@ -152,7 +152,7 @@ export const DonneesBiodiversite = ({
             {ongletsMenu.thematiquesLiees[3].icone}{" "}{ongletsMenu.thematiquesLiees[3].thematique}
           </H2>
           {/* État écologique des cours d'eau */}
-          <div id="État écologique des cours d'eau" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+          <div id="État écologique des cours d'eau" className={styles.indicateurMapWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 État écologique des cours d’eau et des plans d’eau

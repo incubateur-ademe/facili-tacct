@@ -1,7 +1,7 @@
 import { ErrorDisplay } from '@/app/ErrorDisplay';
 import { LoaderText } from '@/components/loader';
 import { Suspense } from 'react';
-import AgricultureEtPecheServerPage from './thematiques/agricultureEtPeche/AgricultureEtPecheServerPage';
+import AgricultureEtPecheServerPage from './thematiques/agriculture/AgricultureEtPecheServerPage';
 import AmenagementServerPage from './thematiques/amenagement/AmenagementServerPage';
 import BiodiversiteServerPage from './thematiques/biodiversite/BiodiversiteServerPage';
 import ConfortThermiqueServerPage from './thematiques/confortThermique/ConfortThermiqueServerPage';

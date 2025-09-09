@@ -101,7 +101,7 @@ export const DonneesAgricultureEtPeche = ({
             {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
           {/* Superficies irriguées */}
-          <div id="Superficies irriguées" className={styles.indicateurWrapper}>
+          <div id="Superficies irriguées" className={styles.indicateurMapWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Part de la surface agricole irriguée dans la SAU en 2020

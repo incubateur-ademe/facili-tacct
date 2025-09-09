@@ -102,7 +102,7 @@ export const SuperficiesIrriguees = (props: {
       </div>
       {
         surfaceTerritoire !== undefined && !isNaN(surfaceTerritoire) && surfaceTerritoire !== 0 ? (
-          <div className={styles.sourcesExportWrapper} style={{ marginLeft: '-2rem', borderTop: '1px solid var(--gris-medium)' }}>
+          <div className={styles.sourcesExportMapWrapper}>
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
               Source : AGRESTE, 2020.
             </Body>
