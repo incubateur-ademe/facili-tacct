@@ -1,3 +1,4 @@
+import useWindowDimensions from "@/hooks/windowDimensions";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./ReadMoreFade.module.scss";
 
@@ -13,21 +14,26 @@ export const ReadMoreFade: React.FC<ReadMoreFadeProps> = ({ children, maxHeight 
   const [overflow, setOverflow] = useState<'hidden' | 'visible'>('hidden');
   const [showFade, setShowFade] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
+  const [hasBeenExpanded, setHasBeenExpanded] = useState(false);
+  const windowDimensions = useWindowDimensions();
   const contentRef = useRef<HTMLDivElement>(null);
   const transitionDuration = 1000; 
 
   useEffect(() => {
-    if (contentRef.current) {
+    if (contentRef.current && !hasBeenExpanded) {
       setShowButton(contentRef.current.scrollHeight > maxHeight);
-      setCurrentHeight(maxHeight);
+      if (!expanded) {
+        setCurrentHeight(maxHeight);
+      }
     }
-  }, [children, maxHeight]);
+  }, [children, maxHeight, hasBeenExpanded, expanded]);
 
   // Animation ouverture/fermeture + gestion du fade
   useEffect(() => {
     let timer: NodeJS.Timeout | undefined;
     if (expanded && contentRef.current) {
       // OUVERTURE
+      setHasBeenExpanded(true);
       setOverflow('hidden');
       setCurrentHeight(maxHeight); 
       setShowFade(true);
@@ -39,12 +45,12 @@ export const ReadMoreFade: React.FC<ReadMoreFadeProps> = ({ children, maxHeight 
       }, 100);
       timer = setTimeout(() => {
         setOverflow('visible');
-        setCurrentHeight(undefined); 
         setShowFade(false); 
         setFadeOut(false);
       }, transitionDuration + 20);
-    } else if (!expanded && contentRef.current) {
+    } else if (!expanded && contentRef.current && hasBeenExpanded) {
       // FERMETURE
+      setHasBeenExpanded(false);
       setOverflow('hidden');
       setCurrentHeight(contentRef.current.scrollHeight); 
       setShowFade(true);
@@ -54,7 +60,7 @@ export const ReadMoreFade: React.FC<ReadMoreFadeProps> = ({ children, maxHeight 
       }, 100);
     }
     return () => { if (timer) clearTimeout(timer); };
-  }, [expanded, maxHeight]);
+  }, [expanded, maxHeight, hasBeenExpanded, windowDimensions]);
 
   return (
     <>
