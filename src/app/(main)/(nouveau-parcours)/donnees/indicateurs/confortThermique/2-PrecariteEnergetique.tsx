@@ -45,6 +45,11 @@ export const PrecariteEnergetique = ({
           return a + b.properties['precarite_logement'];
         }, 0) / carteTerritoire.length
       );
+  const precariteLogTerritoireSup = Number(
+    carteTerritoire.reduce(function (a, b) {
+      return a + b.properties['precarite_logement'];
+    }, 0) / carteTerritoire.length
+  );
 
   return (
     <>
@@ -58,13 +63,20 @@ export const PrecariteEnergetique = ({
             {
               precariteLogTerritoire ? (
                 <>
-                  <Body size="sm">
+                  <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
                     La précarité énergétique va au delà du seul critère du revenu, elle inclue
                     les mauvaises conditions d’habitation ainsi que les évolutions du prix des énergies.
                     La part des ménages en situation de précarité énergétique
                     liée au logement sur votre territoire est de{' '}
                     <b>{Round((100 * precariteLogTerritoire), 1)} %. </b>
                   </Body>
+                  {
+                    type === "commune" && (
+                      <Body weight='bold' style={{ color: "var(--gris-dark)", padding: '0.5rem 0' }}>
+                        Ce taux est de {Round((100 * precariteLogTerritoireSup), 1)} % dans votre EPCI.
+                      </Body>
+                    )
+                  }
                   <CustomTooltipNouveauParcours
                     title={fragiliteEconomiqueTooltipText}
                     texte="D'où vient ce chiffre ?"
