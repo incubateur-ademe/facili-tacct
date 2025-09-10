@@ -10,13 +10,31 @@ import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
-import { CarteCommunes, EtatCoursDeau, QualiteSitesBaignade } from "@/lib/postgres/models";
+import { CarteCommunes, EtatCoursDeau, ExportCoursDeau, QualiteSitesBaignade } from "@/lib/postgres/models";
 import { EtatsCoursEauBiodiversiteTextNouveauParcours } from '@/lib/staticTexts';
 import { etatCoursDeauTooltipTextBiodiv } from '@/lib/tooltipTexts';
 import { sitesDeBaignadeDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
+
+type DataToExport = {
+  code_geographique: string;
+  libelle_geographique: string;
+  code_epci: string;
+  libelle_epci: string;
+  ept: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  libelle_petr: string | null;
+  code_departement: string;
+  libelle_departement: string;
+  region: number;
+  nom_cours_d_eau: string;
+  etat_cours_d_eau: string;
+  longueur_m: number;
+};
 
 export const EtatEcoCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeau[];
@@ -31,11 +49,30 @@ export const EtatEcoCoursDeau = (props: {
   const type = searchParams.get('type')!;
   const etatCoursDeauMap = etatCoursDeau.map(EtatCoursDeauMapper);
   const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
+  const [exportDataCoursDeau, setExportDataCoursDeau] = useState<DataToExport[]>([]);
+
+  useEffect(() => {
+    const fetchExportData = async () => {
+      try {
+        const response = await fetch(`/api/export/cours_d_eau?code=${code}&libelle=${libelle}&type=${type}`);
+        if (response.ok) {
+          const { coursDeau }: { coursDeau: ExportCoursDeau[] } = await response.json();
+          if (coursDeau && coursDeau.length > 0) {
+            const transformedData = IndicatorExportTransformations.ressourcesEau.EtatCoursEau(coursDeau)
+            setExportDataCoursDeau(transformedData);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching export data:', error);
+      }
+    };
+    fetchExportData();
+  }, [code, libelle, type]);
 
   const exportData = [
     {
       sheetName: 'État des cours d\'eau',
-      data: IndicatorExportTransformations.ressourcesEau.EtatCoursEau(etatCoursDeau)
+      data: exportDataCoursDeau
     },
     {
       sheetName: 'Qualité sites de baignade',

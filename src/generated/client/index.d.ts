@@ -139,6 +139,11 @@ export type sandbox_users = $Result.DefaultSelection<Prisma.$sandbox_usersPayloa
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
 /**
+ * Model export_cours_d_eau
+ * 
+ */
+export type export_cours_d_eau = $Result.DefaultSelection<Prisma.$export_cours_d_eauPayload>
+/**
  * Model pg_stat_statements
  * 
  */
@@ -528,6 +533,16 @@ export class PrismaClient<
   get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.export_cours_d_eau`: Exposes CRUD operations for the **export_cours_d_eau** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Export_cours_d_eaus
+    * const export_cours_d_eaus = await prisma.export_cours_d_eau.findMany()
+    * ```
+    */
+  get export_cours_d_eau(): Prisma.export_cours_d_eauDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.pg_stat_statements`: Exposes CRUD operations for the **pg_stat_statements** model.
     * Example usage:
     * ```ts
@@ -624,8 +639,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.15.0
-   * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
+   * Prisma Client JS version: 6.16.0
+   * Query Engine version: 1c57fdcd7e44b29b9313256c76699e91c3ac3c43
    */
   export type PrismaVersion = {
     client: string
@@ -1031,6 +1046,7 @@ export namespace Prisma {
     spatial_ref_sys: 'spatial_ref_sys',
     sandbox_users: 'sandbox_users',
     users: 'users',
+    export_cours_d_eau: 'export_cours_d_eau',
     pg_stat_statements: 'pg_stat_statements',
     pg_stat_statements_info: 'pg_stat_statements_info',
     geography_columns: 'geography_columns',
@@ -1053,7 +1069,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "rga" | "surfaces_agricoles" | "surfaces_protegees" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "spatial_ref_sys" | "sandbox_users" | "users" | "pg_stat_statements" | "pg_stat_statements_info" | "geography_columns" | "geometry_columns"
+      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "rga" | "surfaces_agricoles" | "surfaces_protegees" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "spatial_ref_sys" | "sandbox_users" | "users" | "export_cours_d_eau" | "pg_stat_statements" | "pg_stat_statements_info" | "geography_columns" | "geometry_columns"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2843,6 +2859,80 @@ export namespace Prisma {
           }
         }
       }
+      export_cours_d_eau: {
+        payload: Prisma.$export_cours_d_eauPayload<ExtArgs>
+        fields: Prisma.export_cours_d_eauFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.export_cours_d_eauFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.export_cours_d_eauFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>
+          }
+          findFirst: {
+            args: Prisma.export_cours_d_eauFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.export_cours_d_eauFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>
+          }
+          findMany: {
+            args: Prisma.export_cours_d_eauFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>[]
+          }
+          create: {
+            args: Prisma.export_cours_d_eauCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>
+          }
+          createMany: {
+            args: Prisma.export_cours_d_eauCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.export_cours_d_eauCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>[]
+          }
+          delete: {
+            args: Prisma.export_cours_d_eauDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>
+          }
+          update: {
+            args: Prisma.export_cours_d_eauUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>
+          }
+          deleteMany: {
+            args: Prisma.export_cours_d_eauDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.export_cours_d_eauUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.export_cours_d_eauUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>[]
+          }
+          upsert: {
+            args: Prisma.export_cours_d_eauUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>
+          }
+          aggregate: {
+            args: Prisma.Export_cours_d_eauAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateExport_cours_d_eau>
+          }
+          groupBy: {
+            args: Prisma.export_cours_d_eauGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Export_cours_d_eauGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.export_cours_d_eauCountArgs<ExtArgs>
+            result: $Utils.Optional<Export_cours_d_eauCountAggregateOutputType> | number
+          }
+        }
+      }
       pg_stat_statements: {
         payload: Prisma.$pg_stat_statementsPayload<ExtArgs>
         fields: Prisma.pg_stat_statementsFieldRefs
@@ -3039,6 +3129,10 @@ export namespace Prisma {
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
     /**
+     * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
+     */
+    adapter?: runtime.SqlDriverAdapterFactory | null
+    /**
      * Global configuration for omitting model fields by default.
      * 
      * @example
@@ -3080,6 +3174,7 @@ export namespace Prisma {
     spatial_ref_sys?: spatial_ref_sysOmit
     sandbox_users?: sandbox_usersOmit
     users?: usersOmit
+    export_cours_d_eau?: export_cours_d_eauOmit
     pg_stat_statements?: pg_stat_statementsOmit
     pg_stat_statements_info?: pg_stat_statements_infoOmit
     geography_columns?: geography_columnsOmit
@@ -34422,6 +34517,1173 @@ export namespace Prisma {
 
 
   /**
+   * Model export_cours_d_eau
+   */
+
+  export type AggregateExport_cours_d_eau = {
+    _count: Export_cours_d_eauCountAggregateOutputType | null
+    _avg: Export_cours_d_eauAvgAggregateOutputType | null
+    _sum: Export_cours_d_eauSumAggregateOutputType | null
+    _min: Export_cours_d_eauMinAggregateOutputType | null
+    _max: Export_cours_d_eauMaxAggregateOutputType | null
+  }
+
+  export type Export_cours_d_eauAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+    longueur: number | null
+  }
+
+  export type Export_cours_d_eauSumAggregateOutputType = {
+    index: bigint | null
+    region: number | null
+    longueur: number | null
+  }
+
+  export type Export_cours_d_eauMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    cours_d_eau: string | null
+    etat_ecologique: string | null
+    longueur: number | null
+  }
+
+  export type Export_cours_d_eauMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    cours_d_eau: string | null
+    etat_ecologique: string | null
+    longueur: number | null
+  }
+
+  export type Export_cours_d_eauCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    cours_d_eau: number
+    etat_ecologique: number
+    longueur: number
+    _all: number
+  }
+
+
+  export type Export_cours_d_eauAvgAggregateInputType = {
+    index?: true
+    region?: true
+    longueur?: true
+  }
+
+  export type Export_cours_d_eauSumAggregateInputType = {
+    index?: true
+    region?: true
+    longueur?: true
+  }
+
+  export type Export_cours_d_eauMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    cours_d_eau?: true
+    etat_ecologique?: true
+    longueur?: true
+  }
+
+  export type Export_cours_d_eauMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    cours_d_eau?: true
+    etat_ecologique?: true
+    longueur?: true
+  }
+
+  export type Export_cours_d_eauCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    cours_d_eau?: true
+    etat_ecologique?: true
+    longueur?: true
+    _all?: true
+  }
+
+  export type Export_cours_d_eauAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which export_cours_d_eau to aggregate.
+     */
+    where?: export_cours_d_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of export_cours_d_eaus to fetch.
+     */
+    orderBy?: export_cours_d_eauOrderByWithRelationInput | export_cours_d_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: export_cours_d_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` export_cours_d_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` export_cours_d_eaus.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned export_cours_d_eaus
+    **/
+    _count?: true | Export_cours_d_eauCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Export_cours_d_eauAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Export_cours_d_eauSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Export_cours_d_eauMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Export_cours_d_eauMaxAggregateInputType
+  }
+
+  export type GetExport_cours_d_eauAggregateType<T extends Export_cours_d_eauAggregateArgs> = {
+        [P in keyof T & keyof AggregateExport_cours_d_eau]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateExport_cours_d_eau[P]>
+      : GetScalarType<T[P], AggregateExport_cours_d_eau[P]>
+  }
+
+
+
+
+  export type export_cours_d_eauGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: export_cours_d_eauWhereInput
+    orderBy?: export_cours_d_eauOrderByWithAggregationInput | export_cours_d_eauOrderByWithAggregationInput[]
+    by: Export_cours_d_eauScalarFieldEnum[] | Export_cours_d_eauScalarFieldEnum
+    having?: export_cours_d_eauScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Export_cours_d_eauCountAggregateInputType | true
+    _avg?: Export_cours_d_eauAvgAggregateInputType
+    _sum?: Export_cours_d_eauSumAggregateInputType
+    _min?: Export_cours_d_eauMinAggregateInputType
+    _max?: Export_cours_d_eauMaxAggregateInputType
+  }
+
+  export type Export_cours_d_eauGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    cours_d_eau: string
+    etat_ecologique: string | null
+    longueur: number
+    _count: Export_cours_d_eauCountAggregateOutputType | null
+    _avg: Export_cours_d_eauAvgAggregateOutputType | null
+    _sum: Export_cours_d_eauSumAggregateOutputType | null
+    _min: Export_cours_d_eauMinAggregateOutputType | null
+    _max: Export_cours_d_eauMaxAggregateOutputType | null
+  }
+
+  type GetExport_cours_d_eauGroupByPayload<T extends export_cours_d_eauGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Export_cours_d_eauGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Export_cours_d_eauGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Export_cours_d_eauGroupByOutputType[P]>
+            : GetScalarType<T[P], Export_cours_d_eauGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type export_cours_d_eauSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    cours_d_eau?: boolean
+    etat_ecologique?: boolean
+    longueur?: boolean
+  }, ExtArgs["result"]["export_cours_d_eau"]>
+
+  export type export_cours_d_eauSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    cours_d_eau?: boolean
+    etat_ecologique?: boolean
+    longueur?: boolean
+  }, ExtArgs["result"]["export_cours_d_eau"]>
+
+  export type export_cours_d_eauSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    cours_d_eau?: boolean
+    etat_ecologique?: boolean
+    longueur?: boolean
+  }, ExtArgs["result"]["export_cours_d_eau"]>
+
+  export type export_cours_d_eauSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    cours_d_eau?: boolean
+    etat_ecologique?: boolean
+    longueur?: boolean
+  }
+
+  export type export_cours_d_eauOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "cours_d_eau" | "etat_ecologique" | "longueur", ExtArgs["result"]["export_cours_d_eau"]>
+
+  export type $export_cours_d_eauPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "export_cours_d_eau"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: number
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      cours_d_eau: string
+      etat_ecologique: string | null
+      longueur: number
+    }, ExtArgs["result"]["export_cours_d_eau"]>
+    composites: {}
+  }
+
+  type export_cours_d_eauGetPayload<S extends boolean | null | undefined | export_cours_d_eauDefaultArgs> = $Result.GetResult<Prisma.$export_cours_d_eauPayload, S>
+
+  type export_cours_d_eauCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<export_cours_d_eauFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Export_cours_d_eauCountAggregateInputType | true
+    }
+
+  export interface export_cours_d_eauDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['export_cours_d_eau'], meta: { name: 'export_cours_d_eau' } }
+    /**
+     * Find zero or one Export_cours_d_eau that matches the filter.
+     * @param {export_cours_d_eauFindUniqueArgs} args - Arguments to find a Export_cours_d_eau
+     * @example
+     * // Get one Export_cours_d_eau
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends export_cours_d_eauFindUniqueArgs>(args: SelectSubset<T, export_cours_d_eauFindUniqueArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Export_cours_d_eau that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {export_cours_d_eauFindUniqueOrThrowArgs} args - Arguments to find a Export_cours_d_eau
+     * @example
+     * // Get one Export_cours_d_eau
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends export_cours_d_eauFindUniqueOrThrowArgs>(args: SelectSubset<T, export_cours_d_eauFindUniqueOrThrowArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Export_cours_d_eau that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {export_cours_d_eauFindFirstArgs} args - Arguments to find a Export_cours_d_eau
+     * @example
+     * // Get one Export_cours_d_eau
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends export_cours_d_eauFindFirstArgs>(args?: SelectSubset<T, export_cours_d_eauFindFirstArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Export_cours_d_eau that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {export_cours_d_eauFindFirstOrThrowArgs} args - Arguments to find a Export_cours_d_eau
+     * @example
+     * // Get one Export_cours_d_eau
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends export_cours_d_eauFindFirstOrThrowArgs>(args?: SelectSubset<T, export_cours_d_eauFindFirstOrThrowArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Export_cours_d_eaus that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {export_cours_d_eauFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Export_cours_d_eaus
+     * const export_cours_d_eaus = await prisma.export_cours_d_eau.findMany()
+     * 
+     * // Get first 10 Export_cours_d_eaus
+     * const export_cours_d_eaus = await prisma.export_cours_d_eau.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const export_cours_d_eauWithIndexOnly = await prisma.export_cours_d_eau.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends export_cours_d_eauFindManyArgs>(args?: SelectSubset<T, export_cours_d_eauFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Export_cours_d_eau.
+     * @param {export_cours_d_eauCreateArgs} args - Arguments to create a Export_cours_d_eau.
+     * @example
+     * // Create one Export_cours_d_eau
+     * const Export_cours_d_eau = await prisma.export_cours_d_eau.create({
+     *   data: {
+     *     // ... data to create a Export_cours_d_eau
+     *   }
+     * })
+     * 
+     */
+    create<T extends export_cours_d_eauCreateArgs>(args: SelectSubset<T, export_cours_d_eauCreateArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Export_cours_d_eaus.
+     * @param {export_cours_d_eauCreateManyArgs} args - Arguments to create many Export_cours_d_eaus.
+     * @example
+     * // Create many Export_cours_d_eaus
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends export_cours_d_eauCreateManyArgs>(args?: SelectSubset<T, export_cours_d_eauCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Export_cours_d_eaus and returns the data saved in the database.
+     * @param {export_cours_d_eauCreateManyAndReturnArgs} args - Arguments to create many Export_cours_d_eaus.
+     * @example
+     * // Create many Export_cours_d_eaus
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Export_cours_d_eaus and only return the `index`
+     * const export_cours_d_eauWithIndexOnly = await prisma.export_cours_d_eau.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends export_cours_d_eauCreateManyAndReturnArgs>(args?: SelectSubset<T, export_cours_d_eauCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Export_cours_d_eau.
+     * @param {export_cours_d_eauDeleteArgs} args - Arguments to delete one Export_cours_d_eau.
+     * @example
+     * // Delete one Export_cours_d_eau
+     * const Export_cours_d_eau = await prisma.export_cours_d_eau.delete({
+     *   where: {
+     *     // ... filter to delete one Export_cours_d_eau
+     *   }
+     * })
+     * 
+     */
+    delete<T extends export_cours_d_eauDeleteArgs>(args: SelectSubset<T, export_cours_d_eauDeleteArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Export_cours_d_eau.
+     * @param {export_cours_d_eauUpdateArgs} args - Arguments to update one Export_cours_d_eau.
+     * @example
+     * // Update one Export_cours_d_eau
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends export_cours_d_eauUpdateArgs>(args: SelectSubset<T, export_cours_d_eauUpdateArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Export_cours_d_eaus.
+     * @param {export_cours_d_eauDeleteManyArgs} args - Arguments to filter Export_cours_d_eaus to delete.
+     * @example
+     * // Delete a few Export_cours_d_eaus
+     * const { count } = await prisma.export_cours_d_eau.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends export_cours_d_eauDeleteManyArgs>(args?: SelectSubset<T, export_cours_d_eauDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Export_cours_d_eaus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {export_cours_d_eauUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Export_cours_d_eaus
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends export_cours_d_eauUpdateManyArgs>(args: SelectSubset<T, export_cours_d_eauUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Export_cours_d_eaus and returns the data updated in the database.
+     * @param {export_cours_d_eauUpdateManyAndReturnArgs} args - Arguments to update many Export_cours_d_eaus.
+     * @example
+     * // Update many Export_cours_d_eaus
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Export_cours_d_eaus and only return the `index`
+     * const export_cours_d_eauWithIndexOnly = await prisma.export_cours_d_eau.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends export_cours_d_eauUpdateManyAndReturnArgs>(args: SelectSubset<T, export_cours_d_eauUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Export_cours_d_eau.
+     * @param {export_cours_d_eauUpsertArgs} args - Arguments to update or create a Export_cours_d_eau.
+     * @example
+     * // Update or create a Export_cours_d_eau
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.upsert({
+     *   create: {
+     *     // ... data to create a Export_cours_d_eau
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Export_cours_d_eau we want to update
+     *   }
+     * })
+     */
+    upsert<T extends export_cours_d_eauUpsertArgs>(args: SelectSubset<T, export_cours_d_eauUpsertArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Export_cours_d_eaus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {export_cours_d_eauCountArgs} args - Arguments to filter Export_cours_d_eaus to count.
+     * @example
+     * // Count the number of Export_cours_d_eaus
+     * const count = await prisma.export_cours_d_eau.count({
+     *   where: {
+     *     // ... the filter for the Export_cours_d_eaus we want to count
+     *   }
+     * })
+    **/
+    count<T extends export_cours_d_eauCountArgs>(
+      args?: Subset<T, export_cours_d_eauCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Export_cours_d_eauCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Export_cours_d_eau.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Export_cours_d_eauAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Export_cours_d_eauAggregateArgs>(args: Subset<T, Export_cours_d_eauAggregateArgs>): Prisma.PrismaPromise<GetExport_cours_d_eauAggregateType<T>>
+
+    /**
+     * Group by Export_cours_d_eau.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {export_cours_d_eauGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends export_cours_d_eauGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: export_cours_d_eauGroupByArgs['orderBy'] }
+        : { orderBy?: export_cours_d_eauGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, export_cours_d_eauGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetExport_cours_d_eauGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the export_cours_d_eau model
+   */
+  readonly fields: export_cours_d_eauFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for export_cours_d_eau.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__export_cours_d_eauClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the export_cours_d_eau model
+   */
+  interface export_cours_d_eauFieldRefs {
+    readonly index: FieldRef<"export_cours_d_eau", 'BigInt'>
+    readonly code_geographique: FieldRef<"export_cours_d_eau", 'String'>
+    readonly libelle_geographique: FieldRef<"export_cours_d_eau", 'String'>
+    readonly epci: FieldRef<"export_cours_d_eau", 'String'>
+    readonly libelle_epci: FieldRef<"export_cours_d_eau", 'String'>
+    readonly departement: FieldRef<"export_cours_d_eau", 'String'>
+    readonly libelle_departement: FieldRef<"export_cours_d_eau", 'String'>
+    readonly region: FieldRef<"export_cours_d_eau", 'Float'>
+    readonly ept: FieldRef<"export_cours_d_eau", 'String'>
+    readonly libelle_petr: FieldRef<"export_cours_d_eau", 'String'>
+    readonly code_pnr: FieldRef<"export_cours_d_eau", 'String'>
+    readonly libelle_pnr: FieldRef<"export_cours_d_eau", 'String'>
+    readonly cours_d_eau: FieldRef<"export_cours_d_eau", 'String'>
+    readonly etat_ecologique: FieldRef<"export_cours_d_eau", 'String'>
+    readonly longueur: FieldRef<"export_cours_d_eau", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * export_cours_d_eau findUnique
+   */
+  export type export_cours_d_eauFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which export_cours_d_eau to fetch.
+     */
+    where: export_cours_d_eauWhereUniqueInput
+  }
+
+  /**
+   * export_cours_d_eau findUniqueOrThrow
+   */
+  export type export_cours_d_eauFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which export_cours_d_eau to fetch.
+     */
+    where: export_cours_d_eauWhereUniqueInput
+  }
+
+  /**
+   * export_cours_d_eau findFirst
+   */
+  export type export_cours_d_eauFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which export_cours_d_eau to fetch.
+     */
+    where?: export_cours_d_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of export_cours_d_eaus to fetch.
+     */
+    orderBy?: export_cours_d_eauOrderByWithRelationInput | export_cours_d_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for export_cours_d_eaus.
+     */
+    cursor?: export_cours_d_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` export_cours_d_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` export_cours_d_eaus.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of export_cours_d_eaus.
+     */
+    distinct?: Export_cours_d_eauScalarFieldEnum | Export_cours_d_eauScalarFieldEnum[]
+  }
+
+  /**
+   * export_cours_d_eau findFirstOrThrow
+   */
+  export type export_cours_d_eauFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which export_cours_d_eau to fetch.
+     */
+    where?: export_cours_d_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of export_cours_d_eaus to fetch.
+     */
+    orderBy?: export_cours_d_eauOrderByWithRelationInput | export_cours_d_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for export_cours_d_eaus.
+     */
+    cursor?: export_cours_d_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` export_cours_d_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` export_cours_d_eaus.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of export_cours_d_eaus.
+     */
+    distinct?: Export_cours_d_eauScalarFieldEnum | Export_cours_d_eauScalarFieldEnum[]
+  }
+
+  /**
+   * export_cours_d_eau findMany
+   */
+  export type export_cours_d_eauFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which export_cours_d_eaus to fetch.
+     */
+    where?: export_cours_d_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of export_cours_d_eaus to fetch.
+     */
+    orderBy?: export_cours_d_eauOrderByWithRelationInput | export_cours_d_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing export_cours_d_eaus.
+     */
+    cursor?: export_cours_d_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` export_cours_d_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` export_cours_d_eaus.
+     */
+    skip?: number
+    distinct?: Export_cours_d_eauScalarFieldEnum | Export_cours_d_eauScalarFieldEnum[]
+  }
+
+  /**
+   * export_cours_d_eau create
+   */
+  export type export_cours_d_eauCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * The data needed to create a export_cours_d_eau.
+     */
+    data: XOR<export_cours_d_eauCreateInput, export_cours_d_eauUncheckedCreateInput>
+  }
+
+  /**
+   * export_cours_d_eau createMany
+   */
+  export type export_cours_d_eauCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many export_cours_d_eaus.
+     */
+    data: export_cours_d_eauCreateManyInput | export_cours_d_eauCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * export_cours_d_eau createManyAndReturn
+   */
+  export type export_cours_d_eauCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * The data used to create many export_cours_d_eaus.
+     */
+    data: export_cours_d_eauCreateManyInput | export_cours_d_eauCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * export_cours_d_eau update
+   */
+  export type export_cours_d_eauUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * The data needed to update a export_cours_d_eau.
+     */
+    data: XOR<export_cours_d_eauUpdateInput, export_cours_d_eauUncheckedUpdateInput>
+    /**
+     * Choose, which export_cours_d_eau to update.
+     */
+    where: export_cours_d_eauWhereUniqueInput
+  }
+
+  /**
+   * export_cours_d_eau updateMany
+   */
+  export type export_cours_d_eauUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update export_cours_d_eaus.
+     */
+    data: XOR<export_cours_d_eauUpdateManyMutationInput, export_cours_d_eauUncheckedUpdateManyInput>
+    /**
+     * Filter which export_cours_d_eaus to update
+     */
+    where?: export_cours_d_eauWhereInput
+    /**
+     * Limit how many export_cours_d_eaus to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * export_cours_d_eau updateManyAndReturn
+   */
+  export type export_cours_d_eauUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * The data used to update export_cours_d_eaus.
+     */
+    data: XOR<export_cours_d_eauUpdateManyMutationInput, export_cours_d_eauUncheckedUpdateManyInput>
+    /**
+     * Filter which export_cours_d_eaus to update
+     */
+    where?: export_cours_d_eauWhereInput
+    /**
+     * Limit how many export_cours_d_eaus to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * export_cours_d_eau upsert
+   */
+  export type export_cours_d_eauUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * The filter to search for the export_cours_d_eau to update in case it exists.
+     */
+    where: export_cours_d_eauWhereUniqueInput
+    /**
+     * In case the export_cours_d_eau found by the `where` argument doesn't exist, create a new export_cours_d_eau with this data.
+     */
+    create: XOR<export_cours_d_eauCreateInput, export_cours_d_eauUncheckedCreateInput>
+    /**
+     * In case the export_cours_d_eau was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<export_cours_d_eauUpdateInput, export_cours_d_eauUncheckedUpdateInput>
+  }
+
+  /**
+   * export_cours_d_eau delete
+   */
+  export type export_cours_d_eauDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter which export_cours_d_eau to delete.
+     */
+    where: export_cours_d_eauWhereUniqueInput
+  }
+
+  /**
+   * export_cours_d_eau deleteMany
+   */
+  export type export_cours_d_eauDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which export_cours_d_eaus to delete
+     */
+    where?: export_cours_d_eauWhereInput
+    /**
+     * Limit how many export_cours_d_eaus to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * export_cours_d_eau without action
+   */
+  export type export_cours_d_eauDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model pg_stat_statements
    */
 
@@ -38027,6 +39289,27 @@ export namespace Prisma {
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
 
 
+  export const Export_cours_d_eauScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    libelle_departement: 'libelle_departement',
+    region: 'region',
+    ept: 'ept',
+    libelle_petr: 'libelle_petr',
+    code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr',
+    cours_d_eau: 'cours_d_eau',
+    etat_ecologique: 'etat_ecologique',
+    longueur: 'longueur'
+  };
+
+  export type Export_cours_d_eauScalarFieldEnum = (typeof Export_cours_d_eauScalarFieldEnum)[keyof typeof Export_cours_d_eauScalarFieldEnum]
+
+
   export const Pg_stat_statementsScalarFieldEnum: {
     userid: 'userid',
     dbid: 'dbid',
@@ -41499,6 +42782,110 @@ export namespace Prisma {
     created_at?: DateTimeWithAggregatesFilter<"users"> | Date | string
     last_connection?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
     role?: StringWithAggregatesFilter<"users"> | string
+  }
+
+  export type export_cours_d_eauWhereInput = {
+    AND?: export_cours_d_eauWhereInput | export_cours_d_eauWhereInput[]
+    OR?: export_cours_d_eauWhereInput[]
+    NOT?: export_cours_d_eauWhereInput | export_cours_d_eauWhereInput[]
+    index?: BigIntFilter<"export_cours_d_eau"> | bigint | number
+    code_geographique?: StringFilter<"export_cours_d_eau"> | string
+    libelle_geographique?: StringFilter<"export_cours_d_eau"> | string
+    epci?: StringFilter<"export_cours_d_eau"> | string
+    libelle_epci?: StringFilter<"export_cours_d_eau"> | string
+    departement?: StringFilter<"export_cours_d_eau"> | string
+    libelle_departement?: StringFilter<"export_cours_d_eau"> | string
+    region?: FloatFilter<"export_cours_d_eau"> | number
+    ept?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    libelle_petr?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    code_pnr?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    libelle_pnr?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    cours_d_eau?: StringFilter<"export_cours_d_eau"> | string
+    etat_ecologique?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    longueur?: FloatFilter<"export_cours_d_eau"> | number
+  }
+
+  export type export_cours_d_eauOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    cours_d_eau?: SortOrder
+    etat_ecologique?: SortOrderInput | SortOrder
+    longueur?: SortOrder
+  }
+
+  export type export_cours_d_eauWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: export_cours_d_eauWhereInput | export_cours_d_eauWhereInput[]
+    OR?: export_cours_d_eauWhereInput[]
+    NOT?: export_cours_d_eauWhereInput | export_cours_d_eauWhereInput[]
+    code_geographique?: StringFilter<"export_cours_d_eau"> | string
+    libelle_geographique?: StringFilter<"export_cours_d_eau"> | string
+    epci?: StringFilter<"export_cours_d_eau"> | string
+    libelle_epci?: StringFilter<"export_cours_d_eau"> | string
+    departement?: StringFilter<"export_cours_d_eau"> | string
+    libelle_departement?: StringFilter<"export_cours_d_eau"> | string
+    region?: FloatFilter<"export_cours_d_eau"> | number
+    ept?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    libelle_petr?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    code_pnr?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    libelle_pnr?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    cours_d_eau?: StringFilter<"export_cours_d_eau"> | string
+    etat_ecologique?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    longueur?: FloatFilter<"export_cours_d_eau"> | number
+  }, "index">
+
+  export type export_cours_d_eauOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    cours_d_eau?: SortOrder
+    etat_ecologique?: SortOrderInput | SortOrder
+    longueur?: SortOrder
+    _count?: export_cours_d_eauCountOrderByAggregateInput
+    _avg?: export_cours_d_eauAvgOrderByAggregateInput
+    _max?: export_cours_d_eauMaxOrderByAggregateInput
+    _min?: export_cours_d_eauMinOrderByAggregateInput
+    _sum?: export_cours_d_eauSumOrderByAggregateInput
+  }
+
+  export type export_cours_d_eauScalarWhereWithAggregatesInput = {
+    AND?: export_cours_d_eauScalarWhereWithAggregatesInput | export_cours_d_eauScalarWhereWithAggregatesInput[]
+    OR?: export_cours_d_eauScalarWhereWithAggregatesInput[]
+    NOT?: export_cours_d_eauScalarWhereWithAggregatesInput | export_cours_d_eauScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"export_cours_d_eau"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
+    epci?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
+    libelle_epci?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
+    departement?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
+    libelle_departement?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
+    region?: FloatWithAggregatesFilter<"export_cours_d_eau"> | number
+    ept?: StringNullableWithAggregatesFilter<"export_cours_d_eau"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"export_cours_d_eau"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"export_cours_d_eau"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"export_cours_d_eau"> | string | null
+    cours_d_eau?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
+    etat_ecologique?: StringNullableWithAggregatesFilter<"export_cours_d_eau"> | string | null
+    longueur?: FloatWithAggregatesFilter<"export_cours_d_eau"> | number
   }
 
   export type pg_stat_statementsWhereInput = {
@@ -45768,6 +47155,132 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
   }
 
+  export type export_cours_d_eauCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    cours_d_eau: string
+    etat_ecologique?: string | null
+    longueur: number
+  }
+
+  export type export_cours_d_eauUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    cours_d_eau: string
+    etat_ecologique?: string | null
+    longueur: number
+  }
+
+  export type export_cours_d_eauUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    cours_d_eau?: StringFieldUpdateOperationsInput | string
+    etat_ecologique?: NullableStringFieldUpdateOperationsInput | string | null
+    longueur?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type export_cours_d_eauUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    cours_d_eau?: StringFieldUpdateOperationsInput | string
+    etat_ecologique?: NullableStringFieldUpdateOperationsInput | string | null
+    longueur?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type export_cours_d_eauCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    cours_d_eau: string
+    etat_ecologique?: string | null
+    longueur: number
+  }
+
+  export type export_cours_d_eauUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    cours_d_eau?: StringFieldUpdateOperationsInput | string
+    etat_ecologique?: NullableStringFieldUpdateOperationsInput | string | null
+    longueur?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type export_cours_d_eauUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    cours_d_eau?: StringFieldUpdateOperationsInput | string
+    etat_ecologique?: NullableStringFieldUpdateOperationsInput | string | null
+    longueur?: FloatFieldUpdateOperationsInput | number
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -48574,6 +50087,72 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type export_cours_d_eauCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    cours_d_eau?: SortOrder
+    etat_ecologique?: SortOrder
+    longueur?: SortOrder
+  }
+
+  export type export_cours_d_eauAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    longueur?: SortOrder
+  }
+
+  export type export_cours_d_eauMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    cours_d_eau?: SortOrder
+    etat_ecologique?: SortOrder
+    longueur?: SortOrder
+  }
+
+  export type export_cours_d_eauMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    cours_d_eau?: SortOrder
+    etat_ecologique?: SortOrder
+    longueur?: SortOrder
+  }
+
+  export type export_cours_d_eauSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    longueur?: SortOrder
   }
 
   export type BoolNullableFilter<$PrismaModel = never> = {

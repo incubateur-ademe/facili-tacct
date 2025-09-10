@@ -487,6 +487,24 @@ export type Agriculture = {
   otex_12_postes: string;
 };
 
+export type ExportCoursDeau = {
+  index: bigint | number;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  cours_d_eau: string;
+  etat_ecologique: string | null;
+  longueur: number;
+};
+
 export type IncendiesForet = {
   index: bigint;
   code_geographique: string;

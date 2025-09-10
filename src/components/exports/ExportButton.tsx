@@ -19,6 +19,7 @@ interface ExportButtonProps {
   children?: React.ReactNode;
   documentation?: { [key: string]: string; }[];
   style?: React.CSSProperties;
+  disabled?: boolean;
 }
 
 export const ExportButton = ({
@@ -101,7 +102,8 @@ export const ExportButtonNouveauParcours = ({
   sheetName,
   documentation,
   children = "Exporter",
-  style
+  style,
+  disabled
 }: ExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
@@ -148,7 +150,7 @@ export const ExportButtonNouveauParcours = ({
         data.length === 0 ? null :
           <BoutonPrimaireClassic
             onClick={handleExport}
-            disabled={isExporting}
+            disabled={disabled || isExporting}
             icone={ExporterIcon}
             size='sm'
             text={isExporting ? 'Export en cours...' : children as string}
