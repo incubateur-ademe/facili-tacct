@@ -775,6 +775,28 @@ model users {
   @@schema("ressources")
 }
 
+model export_cours_d_eau {
+  index                BigInt  @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  cours_d_eau          String
+  etat_ecologique      String?
+  longueur             Float
+
+  @@index([code_geographique], map: "export_cours_d_eau_communes_index")
+  @@index([index], map: "ix_export_cours_d_eau_index")
+  @@schema("databases")
+}
+
 view pg_stat_statements {
   userid                 Int?     @db.Oid
   dbid                   Int?     @db.Oid
