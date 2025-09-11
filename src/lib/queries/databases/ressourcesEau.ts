@@ -32,10 +32,10 @@ export const GetRessourceEau = async (
           console.time('Query Execution Time PRELEVEMENT EAUX');
           const value = await prisma.$queryRaw`
           SELECT *
-          FROM ressources_eau
+          FROM databases.ressources_eau
           WHERE departement = (
             SELECT departement
-            FROM ressources_eau
+            FROM databases.ressources_eau
             WHERE code_geographique = ${code}
             LIMIT 1
           )
@@ -46,10 +46,10 @@ export const GetRessourceEau = async (
           console.time('Query Execution Time PRELEVEMENT EAUX');
           const value = await prisma.$queryRaw`
           SELECT *
-          FROM ressources_eau
+          FROM databases.ressources_eau
           WHERE departement = (
             SELECT departement
-            FROM ressources_eau
+            FROM databases.ressources_eau
             WHERE epci = ${code}
             LIMIT 1
           )
@@ -61,10 +61,10 @@ export const GetRessourceEau = async (
           // await prisma.$executeRaw`SET statement_timeout = 1000;`;
           const value = await prisma.$queryRaw`
           SELECT *
-          FROM ressources_eau
+          FROM databases.ressources_eau
           WHERE departement = (
             SELECT departement
-            FROM ressources_eau
+            FROM databases.ressources_eau
             WHERE libelle_petr = ${libelle}
             LIMIT 1
           )
@@ -75,10 +75,10 @@ export const GetRessourceEau = async (
           console.time('Query Execution Time PRELEVEMENT EAUX');
           const value = await prisma.$queryRaw`
           SELECT *
-          FROM ressources_eau
+          FROM databases.ressources_eau
           WHERE departement = (
             SELECT departement
-            FROM ressources_eau
+            FROM databases.ressources_eau
             WHERE ept = ${libelle}
             LIMIT 1
           )
