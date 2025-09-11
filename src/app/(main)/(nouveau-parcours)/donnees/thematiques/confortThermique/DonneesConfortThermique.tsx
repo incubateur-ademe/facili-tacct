@@ -71,15 +71,13 @@ const DonneesConfortThermique = ({
   return (
     <div className={styles.explorerMesDonneesContainer}>
       <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
-        Ce que les données suggèrent sur votre territoire
+        Découvrez les facteurs qui font grimper l’inconfort thermique
       </H1>
       {/* Introduction */}
       <section>
         <Body size='lg'>
-          Les indicateurs qui vont suivre vous orientent sur les typologies
-          de personnes potentiellement impactées par l'inconfort thermique
-          et les facteurs qui accentuent ce phénomène sur votre territoire.
-          En revanche, seule votre enquête terrain vous révélera les impacts réels.
+          Ces quelques indicateurs vous aideront à poser les bonnes 
+          questions, le terrain (étape 2) vous donnera les vraies réponses.
         </Body>
       </section>
 

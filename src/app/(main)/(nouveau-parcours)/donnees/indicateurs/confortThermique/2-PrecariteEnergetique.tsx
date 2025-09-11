@@ -64,7 +64,7 @@ export const PrecariteEnergetique = ({
               precariteLogTerritoire ? (
                 <>
                   <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                    La précarité énergétique va au delà du seul critère du revenu, elle inclue
+                    La précarité énergétique va au-delà du seul critère du revenu, elle inclut
                     les mauvaises conditions d’habitation ainsi que les évolutions du prix des énergies.
                     La part des ménages en situation de précarité énergétique
                     liée au logement sur votre territoire est de{' '}
