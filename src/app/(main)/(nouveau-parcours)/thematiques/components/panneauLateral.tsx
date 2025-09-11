@@ -28,14 +28,30 @@ const PanneauLateral = ({
           <div
             className={styles.panneauLateralWrapper}
             style={{
-              position: selectedItem ? 'absolute' : 'fixed',
-              right: selectedItem ? 'max(0rem, calc((100vw - 1200px) / 2))' : '-400px',
-              top: '515px',
-              transform: 'translateY(-50%)',
-              width: selectedItem ? '385px' : 'fit-content',
-              opacity: selectedItem ? 1 : 0,
-              border: selectedItem ? '1px solid var(--gris-medium)' : 'none',
-              height: selectedItem ? "fit-content" : '0',
+              // Mobile styles (< 1050px): static positioning, no sliding animation
+              ...(windowDimensions.width < 1050 ? {
+                position: 'static',
+                right: 'auto',
+                top: 'auto',
+                transform: 'none',
+                width: '100%',
+                maxWidth: '100%',
+                margin: "0 2rem",
+                opacity: selectedItem ? 1 : 0,
+                border: selectedItem ? '1px solid var(--gris-medium)' : 'none',
+                height: selectedItem ? "fit-content" : '0',
+                display: selectedItem ? 'block' : 'none',
+              } : {
+                // Desktop styles (>= 1050px): original sliding behavior
+                position: selectedItem ? 'absolute' : 'fixed',
+                right: selectedItem ? 'max(0rem, calc((100vw - 1200px) / 2))' : '-400px',
+                top: '515px',
+                transform: 'translateY(-50%)',
+                width: selectedItem ? '385px' : 'fit-content',
+                opacity: selectedItem ? 1 : 0,
+                border: selectedItem ? '1px solid var(--gris-medium)' : 'none',
+                height: selectedItem ? "fit-content" : '0',
+              })
             }}
           >
             {selectedItem && (

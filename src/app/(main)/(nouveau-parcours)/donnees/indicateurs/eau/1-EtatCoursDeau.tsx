@@ -9,11 +9,29 @@ import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
-import { CarteCommunes, EtatCoursDeau } from "@/lib/postgres/models";
+import { CarteCommunes, EtatCoursDeau, ExportCoursDeau } from "@/lib/postgres/models";
 import { EtatCoursEauRessourcesEauText } from '@/lib/staticTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import styles from '../../explorerDonnees.module.scss';
+
+type DataToExport = {
+  code_geographique: string;
+  libelle_geographique: string;
+  code_epci: string;
+  libelle_epci: string;
+  ept: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  libelle_petr: string | null;
+  code_departement: string;
+  libelle_departement: string;
+  region: number;
+  nom_cours_d_eau: string;
+  etat_cours_d_eau: string;
+  longueur_m: number;
+};
 
 export const EtatEcoCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeau[];
@@ -26,7 +44,25 @@ export const EtatEcoCoursDeau = (props: {
   const type = searchParams.get('type')!;
   const etatCoursDeauMap = etatCoursDeau.map(EtatCoursDeauMapper);
   const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
-  const exportData = IndicatorExportTransformations.ressourcesEau.EtatCoursEau(etatCoursDeau)
+  const [exportData, setExportData] = useState<DataToExport[]>([]);
+
+  useEffect(() => {
+    const fetchExportData = async () => {
+      try {
+        const response = await fetch(`/api/export/cours_d_eau?code=${code}&libelle=${libelle}&type=${type}`);
+        if (response.ok) {
+          const { coursDeau }: { coursDeau: ExportCoursDeau[] } = await response.json();
+          if (coursDeau && coursDeau.length > 0) {
+            const transformedData = IndicatorExportTransformations.ressourcesEau.EtatCoursEau(coursDeau)
+            setExportData(transformedData);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching export data:', error);
+      }
+    };
+    fetchExportData();
+  }, [code, libelle, type]);
 
   return (
     <>
@@ -58,7 +94,7 @@ export const EtatEcoCoursDeau = (props: {
             </>
           ) : <div className='p-10 flex flex-row justify-center'>
             <DataNotFoundForGraph image={DataNotFound} />
-            </div>
+          </div>
           }
         </div>
       </div>
@@ -73,6 +109,7 @@ export const EtatEcoCoursDeau = (props: {
           libelle={libelle}
           code={code}
           sheetName="État des cours d'eau"
+          disabled={exportData.length === 0}
         >
           Exporter
         </ExportButtonNouveauParcours>

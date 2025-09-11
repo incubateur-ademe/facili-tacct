@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.15.0
- * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
+ * Prisma Client JS version: 6.16.0
+ * Query Engine version: 1c57fdcd7e44b29b9313256c76699e91c3ac3c43
  */
 Prisma.prismaVersion = {
-  client: "6.15.0",
-  engine: "85179d7826409ee107a6ba334b5e305ae3fba9fb"
+  client: "6.16.0",
+  engine: "1c57fdcd7e44b29b9313256c76699e91c3ac3c43"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -705,6 +705,24 @@ exports.Prisma.UsersScalarFieldEnum = {
   role: 'role'
 };
 
+exports.Prisma.Export_cours_d_eauScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  cours_d_eau: 'cours_d_eau',
+  etat_ecologique: 'etat_ecologique',
+  longueur: 'longueur'
+};
+
 exports.Prisma.Pg_stat_statementsScalarFieldEnum = {
   userid: 'userid',
   dbid: 'dbid',
@@ -811,6 +829,7 @@ exports.Prisma.ModelName = {
   spatial_ref_sys: 'spatial_ref_sys',
   sandbox_users: 'sandbox_users',
   users: 'users',
+  export_cours_d_eau: 'export_cours_d_eau',
   pg_stat_statements: 'pg_stat_statements',
   pg_stat_statements_info: 'pg_stat_statements_info',
   geography_columns: 'geography_columns',
