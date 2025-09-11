@@ -8,7 +8,6 @@ import OptimalParagraph from '@/components/utils/OptimalParagraph';
 import MiddlePageTrigger from '@/hooks/MiddlePageTrigger';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { homeCards } from '@/lib/homeCards';
-import Notice from '@codegouvfr/react-dsfr/Notice';
 import Image from 'next/image';
 import { lazy, useEffect, useState } from 'react';
 import { Container } from './../../dsfr/layout';
@@ -35,7 +34,7 @@ const Home = () => {
 
   return (
     <div>
-      <Notice
+      {/* <Notice
         className='notice'
         isClosable={true}
         onClose={() => setNoticeClosed(true)}
@@ -64,7 +63,7 @@ const Home = () => {
             .
           </>
         }
-      />
+      /> */}
       <div className={styles.homePageTopWrapper}>
         <Container size="xl">
           <div className={styles.titles}>
@@ -79,7 +78,7 @@ const Home = () => {
         window.width ? <CollectiviteSearch />
           : <div
             className={styles.collectiviteWrapper}
-            style={{ height: "218px", top: "485px" }} // update top paramètre si la notice est modifiée (360px si pas de notice)
+            style={{ height: "218px", top: "357px" }} // update top paramètre si la notice est modifiée (360px si pas de notice, 485 environ sinon)
           >
             <Loader />
           </div>
