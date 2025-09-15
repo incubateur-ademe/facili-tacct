@@ -28,7 +28,7 @@ const PanneauLateral = ({
           <div
             className={styles.panneauLateralWrapper}
             style={{
-              // Mobile styles (< 1050px): static positioning, no sliding animation
+              // Mobile styles (< 1050px): position statique, pas d'animation
               ...(windowDimensions.width < 1050 ? {
                 position: 'static',
                 right: 'auto',
@@ -42,7 +42,7 @@ const PanneauLateral = ({
                 height: selectedItem ? "fit-content" : '0',
                 display: selectedItem ? 'block' : 'none',
               } : {
-                // Desktop styles (>= 1050px): original sliding behavior
+                // Desktop styles (>= 1050px): animation avec sliding
                 position: selectedItem ? 'absolute' : 'fixed',
                 right: selectedItem ? 'max(0rem, calc((100vw - 1200px) / 2))' : '-400px',
                 top: '515px',

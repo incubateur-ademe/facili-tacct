@@ -1,0 +1,61 @@
+select timestamp, properties, distinct_id, `$session_id`, properties.$current_url, person_id
+from events
+where event = '$pageview'
+-- and(
+    -- event = '$pageview',
+    -- notIn(
+    --     properties.$host, tuple(
+    --         'facili-tacct-preprod.osc-fr1.scalingo.io',
+    --         'facili-tacct.osc-secnum-fr1.scalingo.io',
+    --         'facili-tacct-nginx.osc-secnum-fr1.scalingo.io',
+    --         'facili-tacct.incubateur.ademe.dev',
+    --         'null'
+    --     )
+    -- ),
+    -- notIn(
+    --     person.properties.user, tuple(
+    --         'Thomas Doguet Mac',
+    --         'Laurent Barbat Mac',
+    --         'Laurent Barbat Phone',
+    --         'Audrey Coudrin',
+    --         'Audrey ',
+    --         'Aude Bodiguel Home',
+    --         'Myriam Blal',
+    --         'Antoine Conegero PC Portable',
+    --         'Céline Vanhautère PC',
+    --         'Céline Vanhautère',
+    --         'Céline Vanhautère ADEME',
+    --         'Antoine Conegero Maison',
+    --         'Antoine Conegero port',
+    --         'Aude 04/2025',
+    --         'Alexandre Joubert',
+    --         'Antoine Conegero Home',
+    --         'Antoine Conegero work',
+    --         'Céline Vanhautère desktop Cardinal'
+    --         )
+    -- ),
+    -- notEquals(person.properties.User, 'Céline Vanhautère Phone'),
+    -- notEquals(person.properties.User, 'Céline Vanhautère Phone'),
+    -- notIn(
+    --     person.properties.user, tuple(
+    --         '2025-05 Antoine PC portable',
+    --         '2025-05 Céline',
+    --         '2025-05 Aude maison',
+    --         '2025-05 Céline mobile',
+    --         '2025-05 Laurent pc',
+    --         '2025-05 Thomas ',
+    --         '2025-05 Audrey pc',
+    --         '2025-05 Aude Ademe',
+    --         '2025-05 Myriam maison'
+    --     )
+    -- ),
+    -- notEquals(
+    --     properties.$current_url, 'https://facili-tacct.beta.gouv.fr/'
+    -- )
+-- )
+AND timestamp < now()
+-- AND properties.$current_url NOT LIKE '%localhost%'
+-- AND properties.$current_url NOT LIKE '%scalingo%'
+-- AND properties.$current_url NOT LIKE '%secnum%'
+order by timestamp desc
+limit 100000
