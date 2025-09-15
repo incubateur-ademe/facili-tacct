@@ -487,9 +487,11 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         const thematique = nomThematiques.find(t => t.label === node.label);
         if (!thematique?.disabled) return null;
         const labelRadius = node.labelRadius ? node.labelRadius : defaultLabelRadius;
+        const xOffset = node.xOffset ? node.xOffset : 0;
+        const yOffset = node.yOffset ? node.yOffset : 0;
         const nodeAngle = Math.atan2(node.y, node.x);
-        const x = (labelRadius * Math.cos(nodeAngle) + svgWidth / 2) - 53;
-        const y = (labelRadius * Math.sin(nodeAngle) + svgHeight / 2) - 25;
+        const x = (labelRadius * Math.cos(nodeAngle) + xOffset + svgWidth / 2);
+        const y = (labelRadius * Math.sin(nodeAngle) + yOffset + svgHeight / 2);
 
         return (
           <HtmlTooltip
@@ -500,10 +502,10 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
             <div
               style={{
                 position: 'absolute',
-                left: node.label.length > 10 ? x : x + 10,
-                top: y,
+                left: node.label.length > 10 ? x - 55 : x - 40,
+                top: node.label.length > 10 ? y - 25 : y - 15,
                 width: node.label.length > 10 ? 110 : 80,
-                height: 50,
+                height: node.label.length > 10 ? 50 : 30,
                 cursor: 'help',
                 zIndex: 2,
                 pointerEvents: thematique?.disabled ? 'auto' : 'none'

@@ -51,7 +51,7 @@ export const cards = {
         'Que lire en priorité dans votre diagnostic de vulnérabilité aux effets du changement climatique ?',
       tag: 'Article',
       description:
-        'Relisez votre diagnostic de vulnérabilité en 10 minutes : identifiez les données utiles et les enjeux prioritaires pour enclencher une stratégie d’adaptation concertée.',
+        'Relisez votre diagnostic de vulnérabilité en 10 minutes : identifiez les données utiles et les enjeux prioritaires pour enclencher une stratégie d’adaptation concertée.',
       link: '/ressources/articles/analyser-diagnostic-vulnerabilite'
     },
     {
@@ -66,7 +66,7 @@ export const cards = {
     {
       id: 5,
       tab: 'Vous découvrez le diagnostic pour la 1ère fois',
-      titre: 'La facilitation d’ateliers : une démarche éprouvée d’engagement',
+      titre: 'La facilitation d’ateliers : une démarche éprouvée d’engagement',
       tag: 'Article',
       description:
         'Pour réellement engager vos parties prenantes dans votre démarche d’adaptation appuyez-vous sur une démarche éprouvée : la facilitation d’ateliers.',
@@ -228,7 +228,7 @@ export const cards = {
         "Vous n'avez pas de diagnostic"
       ],
       titre:
-        'Sensibiliser à l’adaptation : les AdACC (Ateliers de l’Adaptation au Changement Climatique)',
+        'Sensibiliser à l’adaptation : les AdACC (Ateliers de l’Adaptation au Changement Climatique)',
       tag: 'Article',
       description:
         'La sensibilisation, un préalable à la mobilisation ? Retour d’expérience de Sarah Clamens avec la mise en œuvre des Ateliers de l’Adaptation au Changement Climatique à la CA de Saintes.',
@@ -297,7 +297,7 @@ export const cards = {
         'Vous découvrez le diagnostic pour la 1ère fois'
       ],
       titre:
-        "Diagnostic de vulnérabilité au réchauffement climatique d'un territoire rural du Nord Est de la France : Cœur du Pays Haut",
+        "Diagnostic de vulnérabilité au réchauffement climatique d'un territoire rural du Nord Est de la France : Cœur du Pays Haut",
       tag: "Retour d'expérience",
       description:
         'La démarche TACCT est une approche systémique de l’adaptation. Découvrez le contexte et les étapes clés pour la réalisation du diagnostic de vulnérabilité par la CC du Coeur du Pays Haut.',
@@ -376,7 +376,7 @@ export const cards = {
         "Vous n'avez pas de diagnostic"
       ],
       titre:
-        'Îlot de chaleur urbain : 4 idées reçues à déjouer pour mieux agir sur le terrain',
+        'Îlot de chaleur urbain : 4 idées reçues à déjouer pour mieux agir sur le terrain',
       tag: 'Article',
       description:
         'Vous vous interrogez sur la présence d’un îlot de chaleur urbain sur votre territoire ? Voici 4 idées reçues à déjouer avant de lancer un diagnostic.',
@@ -401,7 +401,7 @@ export const cards = {
         'Vous voulez réviser un diagnostic connu',
         "Vous n'avez pas de diagnostic"
       ],
-      titre: 'Brisez les silos : introduction à l’approche systémique',
+      titre: 'Brisez les silos : introduction à l’approche systémique',
       tag: 'Article',
       description:
         'Comprendre les interactions au sein de votre système est essentiel pour éviter les maladaptations. L’approche systémique vous accompagne de l’identification jusqu’à la mobilisation.',

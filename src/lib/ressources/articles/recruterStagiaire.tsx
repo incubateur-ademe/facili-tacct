@@ -1,5 +1,7 @@
 "use client";
+import RecruterStagiaireImage from "@/assets/images/article_stagiaire.png";
 import { RetourHautDePage } from "@/components/RetourHautDePage";
+import ZoomOnClick from "@/components/utils/ZoomOnClick";
 import EndPageTrigger from "../../../hooks/EndPageTrigger";
 import styles from "./article.module.scss";
 
@@ -151,12 +153,18 @@ const RecruterStagiaire = () => {
         <p>
           Autant de tâches utiles et adaptées à un stage, à condition de définir une mission
           claire et de garder la main sur les décisions stratégiques.
-
         </p>
         <p>
           <b>Les conseils partagés ici s’appliquent également à une personne recrutée en alternance sur le diagnostic de vulnérabilité.</b>
         </p>
-        <div className={styles.grayWrapper} style={{ padding: '0 2.5rem' }}>
+        <div style={{ cursor: 'zoom-in', width: '100%', padding: "2rem 0" }} >
+          <ZoomOnClick
+            src={RecruterStagiaireImage}
+            alt=""
+            sizes="100%"
+          />
+        </div>
+        {/* <div className={styles.grayWrapper} style={{ padding: '0 2.5rem' }}>
           <h3>Un stagiaire sur le diagnostic de vulnérabilité</h3>
           <h4>Ce qu’il ou elle peut faire :</h4>
           <ul>
@@ -215,7 +223,7 @@ const RecruterStagiaire = () => {
               Prévoir des livrables transmissibles, pour que le travail reste utile après son départ
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className={styles.blueWrapper} style={{ margin: '2rem 0 0 0', border: '1px solid #d0d9ff' }}>
           <h3 style={{ margin: "0 0 1rem  " }}>Racontez-nous votre expérience !</h3>
           <p style={{ margin: 0 }}>

@@ -108,15 +108,15 @@ export const sommaireThematiques = {
 
 export const sommaireImpacts = {
   "Confort thermique": [
-      {
-        id: "section1",
-        titre: "Échanger pour diagnostiquer",
-      },
-      {
-        id: "section2",
-        titre: "Prendre RDV avec TACCT",
-      },
-    ],
+    {
+      id: "section1",
+      titre: "Échanger pour diagnostiquer",
+    },
+    {
+      id: "section2",
+      titre: "Prendre RDV avec TACCT",
+    },
+  ],
   "Biodiversité": [],
   "Gestion des risques": [],
   "Agriculture": [],
@@ -221,8 +221,8 @@ export const thematiquesInfo: {
     description: (<div></div>),
     link: 'Agriculture'
   },
-  'Filière bois': {
-    title: 'Filière bois',
+  'Sylviculture': {
+    title: 'Sylviculture',
     description: (<div></div>),
     link: ''
   }

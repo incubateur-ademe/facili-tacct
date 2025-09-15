@@ -202,8 +202,8 @@ export const thematiquesInfo: {
     description: (<div></div>),
     link: 'Agriculture'
   },
-  'Filière bois': {
-    title: 'Filière bois',
+  'Sylviculture': {
+    title: 'Sylviculture',
     description: (<div></div>),
     link: ''
   }

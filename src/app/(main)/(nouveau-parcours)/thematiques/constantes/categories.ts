@@ -28,7 +28,7 @@ export const nodeCategoryMapping = {
   Entreprises: 'Ressources économiques',
   Tourisme: 'Ressources économiques',
   Agriculture: 'Ressources économiques',
-  'Filière bois': 'Ressources économiques'
+  Sylviculture: 'Ressources économiques'
 };
 
 export const nomThematiques = [
@@ -140,7 +140,7 @@ export const nomThematiques = [
     liens: []
   },
   {
-    label: 'Filière bois',
+    label: 'Sylviculture',
     labelRadius: 275,
     xOffset: 12,
     yOffset: 32,
@@ -312,7 +312,7 @@ export const liensEntreThematiques = [
   },
   {
     source: 'Gestion des risques',
-    target: 'Filière bois',
+    target: 'Sylviculture',
     curve: 1,
     curveRadius: 0.05 //0.15
   },

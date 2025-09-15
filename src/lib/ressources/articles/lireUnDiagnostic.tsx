@@ -130,7 +130,7 @@ const LireUnDiagnostic = () => {
           </p>
           <ul>
             <li>
-              une filière bois plus ou moins fragilisée,
+              une Sylviculture plus ou moins fragilisée,
             </li>
             <li>
               une atteinte à la fonction sociale de la forêt (paysage, attractivité, ressource touristique…),
@@ -258,7 +258,7 @@ const LireUnDiagnostic = () => {
           <Image src={ForwardArrow} alt="" />
           <h2>Et après la relecture ?</h2>
         </div>
-        <ul className="mx-12">
+        <ul>
           <li>
             Compléter les données “manquantes” si vous en avez identifié,
             et mobilisez vos services et partenaires si les enjeux n’ont pas encore été clairement priorisés.

@@ -15,7 +15,7 @@ const dimensions = {
 };
 
 const RoueSystemique = () => {
-  const svgRef = useRef(null);  
+  const svgRef = useRef(null);
 
   const { width, height, margin } = dimensions;
   const svgWidth = Number(width) + margin.left + margin.right;
@@ -26,7 +26,7 @@ const RoueSystemique = () => {
     id: "CA du Pays Basque",
     x: 0,
     y: 0,
-    size: 70, 
+    size: 70,
     color: "#222",
     textColor: "#fff"
   };
@@ -63,14 +63,14 @@ const RoueSystemique = () => {
     { label: "Entreprises" },
     { label: "Tourisme" },
     { label: "Agriculture / maraîchage / élevage / pêche / ostréiculture", labelRadius: 450 },
-    { label: "Filière bois", labelRadius: 430 },
+    { label: "Sylviculture", labelRadius: 430 },
   ];
   const layer2Count = layer2Names.length;
   const layer2Radius = 340;
   const defaultLabelRadius = layer2Radius + 70;
   const layer2Nodes: { id: string; label: string; x: number; y: number; size: number; color: string; textColor: string; labelRadius?: number }[] = [];
   // Add a parameter to rotate layer 2 radially (in degrees)
-  const layer2Rotation = 15; 
+  const layer2Rotation = 15;
   for (let i = 0; i < layer2Count; i++) {
     // Apply rotation to layer 2 nodes
     const angle = (2 * Math.PI * i) / layer2Count + (layer2Rotation * Math.PI / 180);
@@ -295,7 +295,7 @@ const RoueSystemique = () => {
         const paddingX = 4;
         const paddingY = 4;
         const boxWidth = textWidth + paddingX * 2;
-        const boxHeight = 16 + paddingY * 2; 
+        const boxHeight = 16 + paddingY * 2;
         d3.select(this)
           .append("rect")
           .attr("x", -boxWidth / 2)

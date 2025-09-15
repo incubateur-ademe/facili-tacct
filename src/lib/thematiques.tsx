@@ -65,7 +65,7 @@ export const thematiques = {
       category: ''
     },
     {
-      thematique: 'Filière bois',
+      thematique: 'Sylviculture',
       id: 12,
       category: ''
     },
