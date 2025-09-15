@@ -1,15 +1,13 @@
 "use client";
-import RessourcesNaturellesTexte from "@/assets/images/ressources_naturelles_texte.svg";
 import { Loader } from "@/components/loader";
 import { HtmlTooltip } from "@/components/utils/Tooltips";
-import { Body } from "@/design-system/base/Textes";
+import { Body, H1 } from "@/design-system/base/Textes";
 import { Any } from "@/lib/utils/types";
 import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
 // Import CircleType (types seront déclarés en tant que any)
 // @ts-ignore
 import CircleType from 'circletype';
-import Image from "next/image";
 import { categoriesNoeuds, liensEntreThematiques, nodeCategoryMapping, nomThematiques, PositionArcsDonut } from "../constantes/categories";
 import { categoryColors, categorySelectedBorderColors, categorySelectedColors } from "../constantes/colors";
 import { categorieTextParametres, DistanceTextes } from "../constantes/textesSVG";
@@ -23,6 +21,8 @@ type NoeudRoue = {
   color: string;
   textColor: string;
   labelRadius?: number;
+  xOffset?: number;
+  yOffset?: number;
   category?: string;
   originalIndex?: number;
   disabled?: boolean;
@@ -51,7 +51,7 @@ const getDisabledTooltipContent = (label: string) => {
 const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => {
   const svgRef = useRef(null);
   const { width, height, margin } = dimensions;
-  const svgWidth = Number(width) + margin.left + margin.right;
+  const svgWidth = Number(width) + margin.left + margin.right + 15;
   const svgHeight = Number(height) + margin.top + margin.bottom;
   const [selectedThematique, setSelectedThematique] = useState<string | null>(selectedItem || null);
   const radiusRoueSytemique = 180;
@@ -103,8 +103,6 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
     liensEntreThematiques.forEach(link => {
       if (link.source === nodeLabel) {
         linkedNodeIds.push(link.target);
-      } else if (link.target === nodeLabel) {
-        linkedNodeIds.push(link.source);
       }
     });
     return linkedNodeIds;
@@ -165,7 +163,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           const sourceLabel = d.source;
           const targetLabel = d.target;
 
-          if (sourceLabel === selectedThematique || targetLabel === selectedThematique) {
+          if (sourceLabel === selectedThematique) {
             // Créer un gradient pour ce lien
             const sourceNode = NoeudsRoue.find(n => n.label === d.source);
             const targetNode = NoeudsRoue.find(n => n.label === d.target);
@@ -210,7 +208,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         if (selectedThematique) {
           const sourceLabel = d.source;
           const targetLabel = d.target;
-          if (sourceLabel === selectedThematique || targetLabel === selectedThematique) {
+          if (sourceLabel === selectedThematique) {
             return 1.5;
           }
         }
@@ -346,10 +344,12 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       .attr("class", "l2-label")
       .attr("transform", (d: NoeudRoue) => {
         const labelRadius = d.labelRadius ? d.labelRadius : defaultLabelRadius;
+        const xOffset = d.xOffset ? d.xOffset : 0;
+        const yOffset = d.yOffset ? d.yOffset : 0;
         const nodeAngle = Math.atan2(d.y, d.x);
         const x = labelRadius * Math.cos(nodeAngle);
         const y = labelRadius * Math.sin(nodeAngle);
-        return `translate(${x},${y})`;
+        return `translate(${x + xOffset},${y + yOffset})`;
       })
       .style("cursor", (d: NoeudRoue) => {
         const thematique = nomThematiques.find(t => t.label === d.label);
@@ -382,7 +382,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
             .transition()
             .duration(200)
             .attr("fill", "#fff")
-            .attr("stroke-dasharray", "2 2");
+            .attr("stroke-dasharray", "5 0");
         }
       })
       .each(function (d: NoeudRoue) {
@@ -419,15 +419,15 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         let rectFill = "#fff";
         let rectStroke = d.color;
         let textFill = d.textColor;
-        let strokeDasharray = "2 2";
+        let strokeDasharray = "5 0";
         let paddingX = 16;
         let paddingY = 8;
         const fontSize = 14;
 
         if (thematique?.disabled) {
           rectStroke = "var(--gris-medium)";
-          textFill = "var(--gris-medium-dark)";
-          strokeDasharray = "2 2";
+          textFill = "var(--gris-medium)";
+          strokeDasharray = "5 0";
         } else if (selectedThematique === d.label) {
           // L'item sélectionné utilise la couleur de contour la plus foncée
           const category = nodeCategoryMapping[d.label as keyof typeof nodeCategoryMapping];
@@ -453,10 +453,10 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           .attr("height", boxHeight)
           .attr("fill", rectFill)
           .attr("stroke", rectStroke)
-          .attr("stroke-width", 0.8)
+          .attr("stroke-width", 1)
           .attr("stroke-dasharray", strokeDasharray)
-          .attr("rx", 15)
-          .attr("ry", 100);
+          .attr("rx", lines.length > 1 ? 22 : 15)
+          .attr("ry", lines.length > 1 ? 22 : 50);
         const textElem = d3.select(this)
           .append("text")
           .attr("text-anchor", "middle")
@@ -486,11 +486,12 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       {NoeudsRoue.map((node, index) => {
         const thematique = nomThematiques.find(t => t.label === node.label);
         if (!thematique?.disabled) return null;
-
         const labelRadius = node.labelRadius ? node.labelRadius : defaultLabelRadius;
+        const xOffset = node.xOffset ? node.xOffset : 0;
+        const yOffset = node.yOffset ? node.yOffset : 0;
         const nodeAngle = Math.atan2(node.y, node.x);
-        const x = labelRadius * Math.cos(nodeAngle) + svgWidth / 2;
-        const y = labelRadius * Math.sin(nodeAngle) + svgHeight / 2;
+        const x = (labelRadius * Math.cos(nodeAngle) + xOffset + svgWidth / 2);
+        const y = (labelRadius * Math.sin(nodeAngle) + yOffset + svgHeight / 2);
 
         return (
           <HtmlTooltip
@@ -501,10 +502,10 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
             <div
               style={{
                 position: 'absolute',
-                left: x - 80,
-                top: y - 15,
-                width: 160,
-                height: 50,
+                left: node.label.length > 10 ? x - 55 : x - 40,
+                top: node.label.length > 10 ? y - 25 : y - 15,
+                width: node.label.length > 10 ? 110 : 80,
+                height: node.label.length > 10 ? 50 : 30,
                 cursor: 'help',
                 zIndex: 2,
                 pointerEvents: thematique?.disabled ? 'auto' : 'none'
@@ -528,12 +529,18 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
               opacity: selectedThematique ? 0 : 1,
               transition: selectedThematique ? 'none' : 'opacity 0.5s ease-in-out',
               zIndex: 3,
-              pointerEvents: 'none'
             }}
           >
-            <Body weight="bold">
+            <H1 style={{
+              fontSize: '16px',
+              color: '#23282B',
+              fontWeight: 700,
+              lineHeight: "normal",
+              letterSpacing: "0.4px",
+              margin: 0
+            }}>
               Votre territoire est un système où tout est lié.
-            </Body>
+            </H1>
             <br />
             <Body>
               Explorez les thématiques et découvrez comment elles peuvent être impactées par les aléas climatiques
@@ -553,7 +560,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
                 existingInstance.destroy();
               }
               const circleType = new (CircleType as Any)(el);
-              circleType.radius(260); // Courbure pour Cadre de vie
+              circleType.radius(200); // Courbure pour Cadre de vie
               circleType.dir(-1); // Direction pour Cadre de vie
               (el as Any).circleTypeInstance = circleType;
             }
@@ -561,7 +568,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           style={{
             position: 'absolute',
             left: `${categoriePositions["Cadre de vie"].x}px`,
-            top: `${categoriePositions["Cadre de vie"].y - 75}px`,
+            top: `${categoriePositions["Cadre de vie"].y - 78}px`,
             transform: `rotate(0deg)`, // Rotation pour Cadre de vie
             fontSize: '14px',
             fontWeight: 'bold',
@@ -579,7 +586,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       )}
 
       {/* Ressources naturelles */}
-      {/* {categoriePositions["Ressources naturelles"] && (
+      {categoriePositions["Ressources naturelles"] && (
         <div
           ref={(el) => {
             if (el) {
@@ -588,16 +595,16 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
                 existingInstance.destroy();
               }
               const circleType = new (CircleType as Any)(el);
-              circleType.radius(220); // Courbure pour Ressources naturelles
-              circleType.dir(0.4); // Direction pour Ressources naturelles
+              circleType.radius(200); // Courbure pour Ressources naturelles
+              circleType.dir(0.5); // Direction pour Ressources naturelles
               (el as Any).circleTypeInstance = circleType;
             }
           }}
           style={{
             position: 'absolute',
-            left: `${categoriePositions["Ressources naturelles"].x + 34}px`,
-            top: `${categoriePositions["Ressources naturelles"].y - 36}px`,
-            transform: `rotate(-57deg)`, // Rotation pour Ressources naturelles
+            left: `${categoriePositions["Ressources naturelles"].x + 39}px`,
+            top: `${categoriePositions["Ressources naturelles"].y - 42}px`,
+            transform: `rotate(-54deg)`, // Rotation pour Ressources naturelles
             fontSize: '14px',
             fontWeight: 'bold',
             fontFamily: 'Marianne',
@@ -610,8 +617,8 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         >
           Ressources naturelles
         </div>
-      )} */}
-      {categoriePositions["Ressources naturelles"] && (
+      )}
+      {/* {categoriePositions["Ressources naturelles"] && (
         <Image
           src={RessourcesNaturellesTexte}
           style={{
@@ -627,7 +634,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           }}
           alt="Ressources naturelles"
         />
-      )}
+      )} */}
 
       {/* Ressources économiques */}
       {categoriePositions["Ressources économiques"] && (
@@ -639,22 +646,21 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
                 existingInstance.destroy();
               }
               const circleType = new (CircleType as Any)(el);
-              circleType.radius(220); // Courbure pour Ressources économiques
-              circleType.dir(0.4); // Direction pour Ressources économiques
+              circleType.radius(200); // Courbure pour Ressources économiques
+              circleType.dir(0.50); // Direction pour Ressources économiques
               (el as Any).circleTypeInstance = circleType;
             }
           }}
           style={{
             position: 'absolute',
-            left: `${categoriePositions["Ressources économiques"].x - 30}px`,
-            top: `${categoriePositions["Ressources économiques"].y - 25}px`,
-            transform: `rotate(57deg)`, // Rotation pour Ressources économiques
+            left: `${categoriePositions["Ressources économiques"].x - 38}px`,
+            top: `${categoriePositions["Ressources économiques"].y - 37}px`,
+            transform: `rotate(52deg)`, // Rotation pour Ressources économiques
             fontSize: '14px',
             fontWeight: 'bold',
             fontFamily: 'Marianne',
             color: categorySelectedBorderColors["Ressources économiques"],
             pointerEvents: 'none',
-            // letterSpacing: '-0.1em',
             transformOrigin: 'center center',
             zIndex: 2,
             whiteSpace: 'nowrap'

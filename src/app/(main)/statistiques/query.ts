@@ -36,7 +36,6 @@ const GetInsights = async (shortId?: string) => {
 
     // Log the response size before parsing
     const responseText = await request.text();
-    console.log('PostHog API response size (bytes):', responseText.length);
     const response: Response = JSON.parse(responseText);
     const filteredResponse = response.results.filter(
       (e) => e.short_id === shortId

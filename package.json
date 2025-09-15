@@ -13,6 +13,8 @@
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev --turbopack",
     "build": "cross-env NODE_OPTIONS=--inspect next build && node copy-assets.js",
     "start": "node .next/standalone/server.js",
+    "etl:test": "node etl/run.mjs",
+    "etl:daily": "node etl/run.mjs",
     "eslint": "eslint --fix ./src",
     "test": "jest"
   },
@@ -47,6 +49,7 @@
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
     "d3": "^7.9.0",
+    "dotenv": "^17.2.2",
     "file-saver": "^2.0.5",
     "html-to-image": "^1.11.13",
     "html2canvas": "^1.4.1",

@@ -28,14 +28,30 @@ const PanneauLateral = ({
           <div
             className={styles.panneauLateralWrapper}
             style={{
-              position: 'absolute',
-              right: selectedItem ? 'max(0rem, calc((100vw - 1200px) / 2))' : '-400px',
-              top: (windowDimensions.height * 0.10),
-              width: selectedItem ? '385px' : 'fit-content',  // avec 0 pour un déroulé du panneau latéral
-              opacity: selectedItem ? 1 : 0,
-              border: selectedItem ? '1px solid var(--gris-medium)' : 'none',
-              height: selectedItem ? "fit-content" : '0',
-              boxShadow: selectedItem ? '0 2px 15px rgba(0, 0, 0, 0.08)' : 'none',
+              // Mobile styles (< 1050px): static positioning, no sliding animation
+              ...(windowDimensions.width < 1050 ? {
+                position: 'static',
+                right: 'auto',
+                top: 'auto',
+                transform: 'none',
+                width: '100%',
+                maxWidth: '100%',
+                margin: "0 2rem",
+                opacity: selectedItem ? 1 : 0,
+                border: selectedItem ? '1px solid var(--gris-medium)' : 'none',
+                height: selectedItem ? "fit-content" : '0',
+                display: selectedItem ? 'block' : 'none',
+              } : {
+                // Desktop styles (>= 1050px): original sliding behavior
+                position: selectedItem ? 'absolute' : 'fixed',
+                right: selectedItem ? 'max(0rem, calc((100vw - 1200px) / 2))' : '-400px',
+                top: '515px',
+                transform: 'translateY(-50%)',
+                width: selectedItem ? '385px' : 'fit-content',
+                opacity: selectedItem ? 1 : 0,
+                border: selectedItem ? '1px solid var(--gris-medium)' : 'none',
+                height: selectedItem ? "fit-content" : '0',
+              })
             }}
           >
             {selectedItem && (
@@ -74,8 +90,8 @@ const PanneauLateral = ({
                   text="J'explore cette thématique"
                   size="lg"
                   onClick={() => {
-                    code ? router.push(`/iframe/donnees?code=${code}&libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`)
-                      : router.push(`/iframe/donnees?libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`);
+                    if (code) router.push(`/donnees?code=${code}&libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`);
+                    else router.push(`/donnees?libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`);
                   }}
                 />
               </div>
