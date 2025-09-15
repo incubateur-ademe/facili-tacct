@@ -24,7 +24,7 @@ const ClimaStory = () => {
         style={{ width: '100%', height: 'auto' }}
       />
       <p className="flex justify-center">
-        Qu’est-ce que c’est ? à quoi cela sert ?
+        Qu’est-ce que c’est ? à quoi cela sert ?
       </p>
       <p>
         Cet article a été rédigé avec le témoignage d’Ombrie Gueidan, chargée de
@@ -39,7 +39,7 @@ const ClimaStory = () => {
         <div>
           <ul>
             <li>
-              Objectif : prendre conscience des effets en cascade du changement
+              Objectif : prendre conscience des effets en cascade du changement
               climatique en se projetant sur une cartographie du territoire.
             </li>
             <li>
@@ -51,11 +51,11 @@ const ClimaStory = () => {
         </div>
       </div>
       <div className={styles.textBloc}>
-        <h3>Concrètement, une session ClimaSTORYⓇ, ça se passe comment ?</h3>
+        <h3>Concrètement, une session ClimaSTORYⓇ, ça se passe comment ?</h3>
         <div>
           <p>
             <b>
-              <u>Il faut :</u>
+              <u>Il faut :</u>
             </b>
           </p>
           <ul>
@@ -83,7 +83,7 @@ const ClimaStory = () => {
         <div>
           <p>
             <b>
-              <u>L'atelier se déroule en plusieurs temps :</u>
+              <u>L'atelier se déroule en plusieurs temps :</u>
             </b>
           </p>
           <ul>
@@ -94,7 +94,7 @@ const ClimaStory = () => {
               </b>
             </li>
             <li>
-              <b>Séquence 1 : REPERAGE DES EFFETS</b>
+              <b>Séquence 1 : REPERAGE DES EFFETS</b>
               <p>
                 Cette phase permet aux participants de comprendre les effets du
                 changement climatique sur le territoire, les impacts et
@@ -102,7 +102,7 @@ const ClimaStory = () => {
               </p>
             </li>
             <li>
-              <b>Séquence 2 : DETERMINATION DES ENJEUX</b>
+              <b>Séquence 2 : DETERMINATION DES ENJEUX</b>
               <p>
                 Dans cette phase les participants déterminent les actions
                 possibles et comprennent les liens entre les activités et
@@ -110,7 +110,7 @@ const ClimaStory = () => {
               </p>
             </li>
             <li>
-              <b>Séquence 3 : CHOIX DES SOLUTIONS</b>
+              <b>Séquence 3 : CHOIX DES SOLUTIONS</b>
               <p>
                 Durant ce temps, les participants se mettent d’accord sur les
                 solutions envisageables et se mettent d’accord sur leur portage.
@@ -135,7 +135,7 @@ const ClimaStory = () => {
         />
         <h2>
           Pourquoi la communauté de communes des Baronnies en Drôme Provençale a
-          utilisé cet outil ?
+          utilisé cet outil ?
         </h2>
         <p>
           À l’occasion d’une démarche TACCT accompagnée par l’ADEME, Laurence
@@ -146,7 +146,7 @@ const ClimaStory = () => {
           d’une culture commune s’est fait sentir, en préalable à l’élaboration
           d’une politique d’adaptation ambitieuse.
         </p>
-        <h2>Comment s’est passé l’organisation de ClimaSTORYⓇ ?</h2>
+        <h2>Comment s’est passé l’organisation de ClimaSTORYⓇ ?</h2>
         <p>
           Initialement, la directrice du pôle transition écologique de la CCBDP
           a été formée à l’atelier, mais se charger elle-même de la
@@ -163,7 +163,7 @@ const ClimaStory = () => {
           l’atelier grâce aux résultats du diagnostic de vulnérabilité de son
           territoire, réalisé avec TACCT. Ce projet de personnalisation a été
           financé grâce au projet AdaptNow du programme Interreg Espace Alpin
-          (fonds FEDER) dont AURA-EE est partenaire. Avantage escompté :
+          (fonds FEDER) dont AURA-EE est partenaire. Avantage escompté :
           disposer d’une carte reflétant les aléas et les enjeux réels du
           territoire, potentiellement plus mobilisateurs.
         </p>
@@ -178,11 +178,11 @@ const ClimaStory = () => {
         <p>
           Le partenariat avec le Carrefour des habitants inclut la réalisation
           de 4 ateliers par an, sur inscription, mais sans publics cibles
-          prédéfinis : ils sont réalisés sur demande. Ce mode de fonctionnement
-          a permis de toucher différents publics : le pôle aménagement de la CC,
+          prédéfinis : ils sont réalisés sur demande. Ce mode de fonctionnement
+          a permis de toucher différents publics : le pôle aménagement de la CC,
           un collectif de citoyens engagés, France Travail, etc.
         </p>
-        <h2>Les apprentissages de nos échanges :</h2>
+        <h2>Les apprentissages de nos échanges :</h2>
         <div>
           <ul>
             <li>
@@ -215,7 +215,7 @@ const ClimaStory = () => {
           </ul>
         </div>
         <h2>
-          En conclusion : la sensibilisation, un préalable qui peut vous aider
+          En conclusion : la sensibilisation, un préalable qui peut vous aider
           sur le temps long.
         </h2>
         <p>
@@ -226,7 +226,7 @@ const ClimaStory = () => {
           ce sujet qui touche tout le monde.
         </p>
         <div>
-          <p>Avec ClimaSTORYⓇ, les participants repartent en ayant :</p>
+          <p>Avec ClimaSTORYⓇ, les participants repartent en ayant :</p>
           <ul>
             <li>Compris les impacts en chaîne du changement climatique,</li>
             <li>

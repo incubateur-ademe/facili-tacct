@@ -63,7 +63,7 @@ const RoueSystemique = () => {
     { label: "Entreprises" },
     { label: "Tourisme" },
     { label: "Agriculture / maraîchage / élevage / pêche / ostréiculture", labelRadius: 450 },
-    { label: "Filière bois", labelRadius: 430 },
+    { label: "Sylviculture", labelRadius: 430 },
   ];
   const layer2Count = layer2Names.length;
   const layer2Radius = 340;

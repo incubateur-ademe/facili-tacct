@@ -17,25 +17,21 @@ const EviterPrecherDesert = () => {
         bien mobiliser
       </h1>
       <div className={styles.textBloc}>
-        <div className="flex justify-center mb-12 gap-4">
-          <div>
-            <p>
-              Cet article a été rédigé avec Jolet Van Kipshagen, Tifaine Briand,
-              Severine Bonnet et Aymeric Noel.
-            </p>
-            <p>
-              Notre objectif était d’identifier les freins à la mobilisation et
-              vous proposer un ensemble de solutions concrètes à réaliser pour
-              plus efficacement aborder la mobilisation de vos parties
-              prenantes.
-            </p>
-            <p>
-              <i>
-                Ce travail n’a pas de vocation à être exhaustif, il reflète les
-                expériences vécues par les participants.
-              </i>
-            </p>
-          </div>
+        <div className={styles.textImage}>
+          <p>
+            Cet article a été rédigé avec Jolet Van Kipshagen, Tifaine Briand,
+            Severine Bonnet et Aymeric Noel.
+            <br></br><br></br>
+            Notre objectif était d’identifier les freins à la mobilisation et
+            vous proposer un ensemble de solutions concrètes à réaliser pour
+            plus efficacement aborder la mobilisation de vos parties
+            prenantes.
+            <br></br><br></br>
+            <i>
+              Ce travail n’a pas de vocation à être exhaustif, il reflète les
+              expériences vécues par les participants.
+            </i>
+          </p>
           <Image
             src={ArticleImage}
             alt="Photo d'une visio entre les acteurs cités dans l'article"

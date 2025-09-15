@@ -35,6 +35,12 @@ $height-notice: 461px;
     }
 }
 
+@media screen and (max-width: 520px) {
+    .homePageTopWrapper {
+        padding: 1.5rem;
+    }
+}
+
 // Patch 4 bloc
 
 .patch4Container {
@@ -271,6 +277,12 @@ $height-notice: 461px;
         .ressourcesText {
             max-width: 80%;
         }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .ressourcesContainer {
+        padding: 1.5rem;
     }
 }
 

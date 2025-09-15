@@ -20,7 +20,8 @@ const CDC = () => {
           La “concertation” est devenue un élément incontournable des processus d’élaboration des documents de planification.
           Que ce soit réglementairement obligatoire, un souhait de vos élus ou une proposition de votre part, il s’agit
           d’<u><i>être au clair sur les résultats que vous escomptez obtenir à l’issue de ces ateliers.</i></u> Comme le montre le
-          graphique ci-dessous, il existe différents niveaux de participation et chaque type d’ateliers peut être mené en intelligence collective avec des formats différents.
+          graphique ci-dessous, il existe différents niveaux de participation et chaque type d’ateliers
+          peut être mené en intelligence collective avec des formats différents.
         </p>
         <div className="flex justify-center my-12">
           <Image
@@ -37,7 +38,7 @@ const CDC = () => {
           Votre hiérarchie est-elle un relais sur lequel vous pouvez compter afin de lancer une démarche collaborative ? Si ce n’est pas le cas,
           construisez votre argumentaire en vous inspirant des éléments ci-dessous.
         </p>
-        <b><u>Les avantages de l’intelligence collective :</u></b>
+        <b><u>Les avantages de l’intelligence collective :</u></b>
         <ul>
           <li>
             permet de mobiliser, fédérer, embarquer les acteurs du territoire
@@ -52,10 +53,10 @@ const CDC = () => {
             Créer des espaces d’écoutes et de partage,
           </li>
           <li>
-            Créer des ponts : via la transversalité et les différentes expertises mobilisées
+            Créer des ponts : via la transversalité et les différentes expertises mobilisées
           </li>
         </ul>
-        <h2>Eléments à intégrer dans votre cahier des charges :</h2>
+        <h2>Eléments à intégrer dans votre cahier des charges :</h2>
         <p>
           1️⃣ En préalable, identifier clairement en interne le “pourquoi” vous souhaitez être accompagné
           sur l’intelligence collective. Quels sont les avantages à en retirer pour votre projet?

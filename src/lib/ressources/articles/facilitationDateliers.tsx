@@ -11,13 +11,13 @@ const FacilitationDateliers = () => {
   return (
     <div>
       <RetourHautDePage />
-      <h1>La facilitation d’ateliers : une démarche éprouvée d’engagement</h1>
+      <h1>La facilitation d’ateliers : une démarche éprouvée d’engagement</h1>
       <div className={styles.textBloc}>
         <p>
           Le 23.04.24, nous organisions un atelier autour du{' '}
           <b>rôle de la facilitation d’ateliers dans la mobilisation.</b>
         </p>
-        <b>Nos intervenant-es :</b> Louis & Mathilde de Caluire-et-Cuire.
+        <b>Nos intervenant-es :</b> Louis & Mathilde de Caluire-et-Cuire.
         <ul>
           <li>
             Mathilde est responsable du service Nature et Résilience (en charge
@@ -25,8 +25,8 @@ const FacilitationDateliers = () => {
             écologique).
           </li>
           <li>
-            Louis est conseiller interne en organisation et s’occupe à 50% de
-            missions d'organisation pour les services et à 50%, il accompagne
+            Louis est conseiller interne en organisation et s’occupe à 50 % de
+            missions d'organisation pour les services et à 50 %, il accompagne
             des projets transversaux (accompagnement projet et méthodologique)
             pour les services de la ville.
           </li>
@@ -41,7 +41,7 @@ const FacilitationDateliers = () => {
               {' '}
               DITP{' '}
             </Link>
-            (Direction Interministérielle de la Transformation Publique) :
+            (Direction Interministérielle de la Transformation Publique) :
             <br></br>
             <br></br>
             <b>
@@ -57,34 +57,34 @@ const FacilitationDateliers = () => {
         <ul>
           <li>
             Bien définir l’objectif de la facilitation / participation pour vos
-            participant-es :{' '}
+            participant-es :{' '}
             <b>Qu’est-ce que vous souhaitez atteindre collectivement ?</b>
             <ul style={{ listStyle: 'circle' }}>
               <li>
-                <b>Information</b> : présenter pour compréhension collective ;
+                <b>Information</b> : présenter pour compréhension collective ;
               </li>
               <li>
-                <b>Consultation</b> : recueillir l’expression d’acteurs sur un
-                sujet déjà instruit ;
+                <b>Consultation</b> : recueillir l’expression d’acteurs sur un
+                sujet déjà instruit ;
               </li>
               <li>
-                <b>Concertation</b> : faire contribuer des acteurs à
-                l’élaboration d’un projet ;
+                <b>Concertation</b> : faire contribuer des acteurs à
+                l’élaboration d’un projet ;
               </li>
               <li>
-                <b>Co-construction / décision</b> : partager les décisions et
+                <b>Co-construction / décision</b> : partager les décisions et
                 l’élaboration / mise en œuvre du projet.
               </li>
             </ul>
           </li>
           <li>
             Se questionner sur l’expérience des participant-es pour ne pas
-            reproduire un déroulé ennuyeux ou frustrant. Par exemple : une
+            reproduire un déroulé ennuyeux ou frustrant. Par exemple : une
             conférence descendante de 1h a une plus forte probabilité de faire
             décrocher votre auditoire.
           </li>
           <li>
-            Adapter le déroulé de votre atelier en fonction de votre contexte :
+            Adapter le déroulé de votre atelier en fonction de votre contexte :
             nombre de participant-es, objectif, présentiel ou virtuel, etc.
           </li>
         </ul>
@@ -108,12 +108,12 @@ const FacilitationDateliers = () => {
             tenu au mois d’avril avec 120 participant-es
           </li>
           <li>
-            Les objectifs de l'atelier :
+            Les objectifs de l'atelier :
             <ul style={{ listStyle: 'circle' }}>
-              <li>Partager et compléter le diagnostic ;</li>
+              <li>Partager et compléter le diagnostic ;</li>
               <li>
                 Avoir un travail enthousiasmant et non « plombant » sur les
-                récits de futur souhaitable ;
+                récits de futur souhaitable ;
               </li>
               <li>Embarquer les cadres autour du travail effectué.</li>
             </ul>
@@ -124,15 +124,15 @@ const FacilitationDateliers = () => {
         <ul>
           <li>
             La session de travail enthousiasmante via des modalités d’animation
-            dynamiques ;
+            dynamiques ;
           </li>
           <li>
             La complétion du diagnostic de vulnérabilité avec les participant-es
             et la construction de récits souhaitables qui se croisent avec les
-            vulnérabilités identifiées ;
+            vulnérabilités identifiées ;
           </li>
           <li>
-            La forme qui a été importante : Donner la parole aux représentant-es
+            La forme qui a été importante : Donner la parole aux représentant-es
             des tables rondes pour partager de manière ludique leurs récits.
           </li>
         </ul>
@@ -140,14 +140,14 @@ const FacilitationDateliers = () => {
         <ul>
           <li>
             L’information préalable des participant-es avec une synthèse pour
-            avoir un 1er vernis de connaissance en amont de l’atelier ;
+            avoir un 1er vernis de connaissance en amont de l’atelier ;
           </li>
           👉 Caroline du SICOVAL nous rappelait lors de la session du 23.04
           qu’il y a toujours un risque que les documents ne soient pas consulté
           en amont de l’atelier.
           <li>
             Avoir un créneau de temps de travail plus important que les 1h15
-            consacrées ;
+            consacrées ;
           </li>
           <li>
             Avoir un cadre de travail moins traditionnel – pourquoi pas
@@ -155,7 +155,7 @@ const FacilitationDateliers = () => {
             grand témoin, etc.
           </li>
         </ul>
-        <h2>En conclusion : la facilitation est un métier à part entière.</h2>
+        <h2>En conclusion : la facilitation est un métier à part entière.</h2>
         <p>
           Vous l’aurez compris, il ne suffit pas simplement d’utiliser des
           post-it pour que l’intelligence collective puisse prendre. Tout ceci
@@ -166,7 +166,7 @@ const FacilitationDateliers = () => {
       </div>
       <div className={styles.grayWrapper}>
         <div className={styles.h2title}>
-          <Image src={BookIcon as StaticImageData} alt="" />
+          <Image src={BookIcon} alt="" />
           <h2>Ressources liées</h2>
         </div>
         <div className={styles.links}>
@@ -204,7 +204,7 @@ const FacilitationDateliers = () => {
           <Image src={ForwardArrow as StaticImageData} alt="" />
           <h2>Pour aller plus loin</h2>
         </div>
-        <ul className="mx-12">
+        <ul>
           <li>
             Le lien vers la formation à l’intelligence collective pour les
             territoires proposée par l’ADEME.{' '}
