@@ -1,6 +1,5 @@
-// run.mjs
 import fs from 'fs';
-import pg from 'pg'; // sera bundlé
+import pg from 'pg';
 
 function safeParseJSON(s) {
     if (s == null) return null;
@@ -33,7 +32,7 @@ if (!POSTHOG_PROJECT_ID || !POSTHOG_API_KEY) {
 async function withPg(fn) {
     const client = new pg.Client({
         connectionString: DATABASE_URL,
-        ssl: { require: true, rejectUnauthorized: false } // active TLS même sans CA
+        ssl: { require: true, rejectUnauthorized: false }
     });
     await client.connect();
     try {
