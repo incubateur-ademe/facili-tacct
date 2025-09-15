@@ -14,10 +14,10 @@ function safeParseJSON(s) {
 
 // === ENV ===
 const {
-    DATABASE_URL = '***REMOVED***',
+    DATABASE_URL,
     POSTHOG_HOST = 'https://eu.posthog.com',
-    POSTHOG_PROJECT_ID = 39308,
-    POSTHOG_API_KEY = '***REMOVED***'
+    POSTHOG_PROJECT_ID,
+    POSTHOG_API_KEY
 } = process.env;
 
 if (!DATABASE_URL) {
