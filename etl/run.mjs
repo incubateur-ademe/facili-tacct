@@ -1,94 +1,142 @@
-import 'dotenv/config';
+// run.mjs
 import fs from 'fs';
-import { PrismaClient } from '../src/generated/client/index.js';
+import pg from 'pg'; // sera bundlé
 
 function safeParseJSON(s) {
-  if (s == null) return null;
-  if (typeof s === 'object') return s;
-  try { return JSON.parse(s); } catch { return null; }
+    if (s == null) return null;
+    if (typeof s === 'object') return s;
+    try {
+        return JSON.parse(s);
+    } catch {
+        return null;
+    }
 }
 
+// === ENV ===
+const {
+    DATABASE_URL = '***REMOVED***',
+    POSTHOG_HOST = 'https://eu.posthog.com',
+    POSTHOG_PROJECT_ID = 39308,
+    POSTHOG_API_KEY = '***REMOVED***'
+} = process.env;
 
-// 1) Chargement des variables d'env
-const prisma = new PrismaClient();
-const POSTHOG_HOST = 'https://eu.posthog.com'
-const POSTHOG_PROJECT_ID = process.env.POSTHOG_PROJECT_ID
-const POSTHOG_API_KEY = process.env.POSTHOG_API_KEY
-
+if (!DATABASE_URL) {
+    console.error('DATABASE_URL manquante');
+    process.exit(1);
+}
 if (!POSTHOG_PROJECT_ID || !POSTHOG_API_KEY) {
-  console.error('Env manquantes: POSTHOG_PROJECT_ID et POSTHOG_API_KEY (ou POSTHOG_PERSONAL_API_KEY)');
-  process.exit(1);
+    console.error('POSTHOG_PROJECT_ID / POSTHOG_API_KEY manquantes');
+    process.exit(1);
 }
 
-// 2) Récupérer le dernier event en base - 5min
-const [{ max_ts }] = await prisma.$queryRaw`
-  SELECT COALESCE(MAX(event_timestamp), '1970-01-01'::timestamptz) AS max_ts
-  FROM "analytics"."all_pageview_raw"
-`;
-const startIso = new Date(new Date(max_ts).getTime() - 5 * 60 * 1000).toISOString();
+// === SQL helpers (pg) ===
+async function withPg(fn) {
+    const client = new pg.Client({
+        connectionString: DATABASE_URL,
+        ssl: { require: true, rejectUnauthorized: false } // active TLS même sans CA
+    });
+    await client.connect();
+    try {
+        return await fn(client);
+    } finally {
+        await client.end();
+    }
+}
 
-// 3) Charger ta requête et injecter la borne basse
-let hogql = fs.readFileSync('./etl/queries/query.hogql.sql', 'utf8');
-hogql = hogql.replace(
-  /AND\s+timestamp\s*<\s*now\(\)/i,
-  `AND timestamp >= toDateTime('${startIso}') AND timestamp < now()`
-);
+async function getMaxTs(client) {
+    const { rows } = await client.query(`
+    SELECT COALESCE(MAX(event_timestamp), '1970-01-01'::timestamptz) AS max_ts
+    FROM analytics.all_pageview_raw
+  `);
+    return rows[0].max_ts;
+}
 
-// 4) Lancer la requête et insérer les données
+async function insertAllPageviewRaw(client, rows) {
+    const sql = `
+    INSERT INTO analytics.all_pageview_raw
+      (event_timestamp, properties, distinct_id, session_id, current_url, person_id)
+    VALUES ($1::timestamptz, $2::jsonb, $3::text, $4::text, $5::text, $6::text)
+    ON CONFLICT ON CONSTRAINT uq_all_pageview_raw_natural DO NOTHING
+  `;
+    let inserted = 0;
+    for (const row of rows) {
+        if (!Array.isArray(row)) continue;
+        const [
+            ts,
+            propertiesStr,
+            distinct_id,
+            session_id,
+            current_url,
+            person_id
+        ] = row;
+        const props =
+            typeof propertiesStr === 'string'
+                ? safeParseJSON(propertiesStr)
+                : propertiesStr;
+        await client.query(sql, [
+            ts,
+            JSON.stringify(props ?? {}),
+            distinct_id ?? '',
+            session_id ?? '',
+            current_url ?? '',
+            person_id ?? ''
+        ]);
+        inserted++;
+    }
+    return inserted;
+}
+
+// === HogQL fetch ===
+async function fetchPosthog(query) {
+    const url = `${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query/`;
+    const resp = await fetch(url, {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${POSTHOG_API_KEY}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ query: { kind: 'HogQLQuery', query } })
+    });
+    if (!resp.ok)
+        throw new Error(`PostHog ${resp.status}: ${await resp.text()}`);
+    const { results = [] } = await resp.json();
+    return results;
+}
+
+function injectWindow(hogql, startIso) {
+    // remplace "AND timestamp < now()" par borne basse + haute
+    return hogql.replace(
+        /AND\s+timestamp\s*<\s*now\(\)/i,
+        `AND timestamp >= toDateTime('${startIso}') AND timestamp < now()`
+    );
+}
+
+// === Main ===
 (async () => {
-  const url = `${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query/`;
-  const resp = await fetch(url, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${POSTHOG_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: { kind: 'HogQLQuery', query: hogql },
-    }),
-  });
+    // 1) borne basse depuis la base (-5 min)
+    const startIso = await withPg(async (client) => {
+        const maxTs = await getMaxTs(client);
+        return new Date(
+            new Date(maxTs).getTime() - 5 * 60 * 1000
+        ).toISOString();
+    });
 
-  if (!resp.ok) {
-    const text = await resp.text();
-    throw new Error(`PostHog ${resp.status}: ${text}`);
-  }
+    // 2) charger la requête et injecter la fenêtre
+    let hogql = fs.readFileSync('./etl/queries/query.hogql.sql', 'utf8');
+    hogql = injectWindow(hogql, startIso);
 
-  const data = await resp.json();
-  console.log("longueur des données requêtées :", data.results.length);
+    // 3) requêter PostHog
+    const results = await fetchPosthog(hogql);
+    console.log('longueur des données requêtées :', results.length);
 
-  try {
-    const rows = data.results || [];
-    const inserted = await insertAllPageviewRaw(rows);
-    console.log(`Insertion OK : ${inserted} ligne(s) insérée(s).`);
-  } catch (e) {
+    // 4) insérer
+    const inserted = await withPg(async (client) =>
+        insertAllPageviewRaw(client, results)
+    );
+    console.log(
+        `[ETL] Terminé : ${inserted}/${results.length} ligne(s) insérée(s).`
+    );
+})().catch((e) => {
     console.error(e);
     process.exit(1);
-  } finally {
-    await prisma.$disconnect();
-  }
-})().catch((err) => {
-  console.error(err);
-  process.exit(1);
 });
-
-
-async function insertAllPageviewRaw(rows) {
-  let inserted = 0;
-
-  for (const row of rows) {
-    const [ts, propertiesStr, distinct_id, session_id, current_url, person_id] = row;
-    const props = safeParseJSON(propertiesStr);
-
-    await prisma.$executeRaw`
-        INSERT INTO "analytics"."all_pageview_raw"
-            (event_timestamp, properties, distinct_id, session_id, current_url, person_id)
-        VALUES
-            (${ts}::timestamptz, ${JSON.stringify(props)}::jsonb, ${distinct_id}, ${session_id}, ${current_url}, ${person_id})
-        ON CONFLICT ON CONSTRAINT uq_all_pageview_raw_natural DO NOTHING
-    `;
-
-    inserted++;
-  }
-
-  return inserted;
-}

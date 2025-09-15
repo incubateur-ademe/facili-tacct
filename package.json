@@ -15,6 +15,7 @@
     "start": "node .next/standalone/server.js",
     "etl:test": "node etl/run.mjs",
     "etl:daily": "node etl/run.mjs",
+    "build:etl": "esbuild etl/run.mjs --bundle --platform=node --format=cjs --outfile=dist/etl.js",
     "eslint": "eslint --fix ./src",
     "test": "jest"
   },
@@ -50,6 +51,7 @@
     "cross-env": "^7.0.3",
     "d3": "^7.9.0",
     "dotenv": "^17.2.2",
+    "esbuild": "^0.25.9",
     "file-saver": "^2.0.5",
     "html-to-image": "^1.11.13",
     "html2canvas": "^1.4.1",
