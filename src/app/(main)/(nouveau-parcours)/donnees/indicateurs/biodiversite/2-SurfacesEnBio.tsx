@@ -1,6 +1,6 @@
 "use client";
 import SurfacesEnBioCharts from "@/components/charts/biodiversite/surfacesEnBioCharts";
-import { MicroPieChart } from "@/components/charts/MicroDataviz";
+import { MicroCircleGrid } from "@/components/charts/MicroDataviz";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import { ReadMoreFade } from "@/components/utils/ReadMoreFade";
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
@@ -71,7 +71,7 @@ export const SurfacesEnBio = (props: {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroPieChart pourcentage={pourcentageTotal} arrondi={1} ariaLabel="Surface certifiée bio ou en conversion" />
+            <MicroCircleGrid pourcentage={pourcentageTotal} arrondi={1} ariaLabel="Surface certifiée bio ou en conversion" />
             {agricultureBio.length ?
               <>
                 <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
@@ -136,6 +136,7 @@ export const SurfacesEnBio = (props: {
                   code={code}
                   sheetName="Agriculture bio"
                   documentation={surfacesEnBioDoc}
+                  anchor="Surfaces en bio"
                 />
               )}
           </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { ConsommationEspacesNAFCharts } from '@/components/charts/amenagement/consommationEspacesNAFCharts';
-import { MicroChiffreTerritoire } from '@/components/charts/MicroDataviz';
+import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
@@ -38,12 +38,7 @@ export const ConsommationEspacesNAFAmenagement = (props: {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroChiffreTerritoire
-              value={sumNaf / 10000}
-              unit="ha"
-              arrondi={1}
-              territoireContours={territoireContourMap}
-            />
+            <MicroNumberCircle valeur={sumNaf / 10000} arrondi={1} unite='ha' />
             <div className={styles.text}>
               {
                 sumNaf && sumNaf !== 0 ? (
@@ -82,6 +77,7 @@ export const ConsommationEspacesNAFAmenagement = (props: {
                 code={code}
                 sheetName="Espaces NAF"
                 documentation={consommationEspacesNafDoc}
+                anchor="Consommation d'espaces NAF"
               />
             }
           />

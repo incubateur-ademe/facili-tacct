@@ -1,4 +1,4 @@
-import AgricultureEtPecheServerPage from '@/app/(main)/(nouveau-parcours)/donnees/thematiques/agriculture/AgricultureServerPage';
+import AgricultureServerPage from '@/app/(main)/(nouveau-parcours)/donnees/thematiques/agriculture/AgricultureServerPage';
 import AmenagementServerPage from '@/app/(main)/(nouveau-parcours)/donnees/thematiques/amenagement/AmenagementServerPage';
 import BiodiversiteServerPage from '@/app/(main)/(nouveau-parcours)/donnees/thematiques/biodiversite/BiodiversiteServerPage';
 import ConfortThermiqueServerPage from '@/app/(main)/(nouveau-parcours)/donnees/thematiques/confortThermique/ConfortThermiqueServerPage';
@@ -19,7 +19,7 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
             ) : thematique === "Biodiversité" ? (
               <BiodiversiteServerPage searchParams={props.searchParams} />
             ) : thematique === "Agriculture" ? (
-              <AgricultureEtPecheServerPage searchParams={props.searchParams} />
+              <AgricultureServerPage searchParams={props.searchParams} />
             ) : thematique === "Aménagement" ? (
               <AmenagementServerPage searchParams={props.searchParams} />
             ) : thematique === "Eau" ? (

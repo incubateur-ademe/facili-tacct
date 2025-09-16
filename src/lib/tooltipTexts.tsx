@@ -11,8 +11,8 @@ export const fragiliteEconomiqueTooltipText = (
         chaude, et ventilation).</li>
     </ul>
     <i>(*)Les déciles divisent les revenus de la population en dix parties
-      égales. Dans la modélisation effectuée pour l’ONPE, le 3è décile
-      correspond à des revenus inférieurs à 19 600€ par an.</i>
+      égales. Dans la modélisation effectuée pour l’ONPE, le 3ème décile
+      correspond à des revenus inférieurs à 19 600 € par an.</i>
   </Body>
 );
 

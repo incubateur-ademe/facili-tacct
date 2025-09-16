@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
 import { useState } from 'react';
 import styles from "../components.module.scss";
+import { CopyLinkClipboard } from '../CopyLinkClipboard';
 
 type ExportDataRow = Record<string, string | number | boolean | null | bigint | undefined>;
 
@@ -20,6 +21,7 @@ interface ExportButtonProps {
   documentation?: { [key: string]: string; }[];
   style?: React.CSSProperties;
   disabled?: boolean;
+  anchor?: string;
 }
 
 export const ExportButton = ({
@@ -103,7 +105,8 @@ export const ExportButtonNouveauParcours = ({
   documentation,
   children = "Exporter",
   style,
-  disabled
+  disabled,
+  anchor
 }: ExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
@@ -143,22 +146,25 @@ export const ExportButtonNouveauParcours = ({
       setIsExporting(false);
     }
   };
-
   return (
     <>
       {
-        data.length === 0 ? null :
-          <BoutonPrimaireClassic
-            onClick={handleExport}
-            disabled={disabled || isExporting}
-            icone={ExporterIcon}
-            size='sm'
-            text={isExporting ? 'Export en cours...' : children as string}
-            style={{
-              cursor: isExporting ? 'wait' : 'pointer',
-              ...style,
-            }}
-          />
+        data.length === 0 ? null : (
+          <div className={styles.exportShareWrapper}>
+            {anchor && <CopyLinkClipboard anchor={anchor} />}
+            <BoutonPrimaireClassic
+              onClick={handleExport}
+              disabled={disabled || isExporting}
+              icone={ExporterIcon}
+              size='sm'
+              text={isExporting ? 'Export en cours...' : children as string}
+              style={{
+                cursor: isExporting ? 'wait' : 'pointer',
+                ...style,
+              }}
+            />
+          </div>
+        )
       }
     </>
   );

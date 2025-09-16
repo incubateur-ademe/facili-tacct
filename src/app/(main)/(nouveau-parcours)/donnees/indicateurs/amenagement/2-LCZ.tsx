@@ -80,6 +80,7 @@ export const LCZ = ({
           documentDiv=".lczLegendWrapper"
           fileName={`LCZ_${type}_${libelle}`}
           style={{ backgroundColor: 'var(--principales-vert)' }}
+          anchor='LCZ'
         />
       </div>
     </>

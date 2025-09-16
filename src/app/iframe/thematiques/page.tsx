@@ -1,9 +1,9 @@
 'use client';
 
+import PanneauLateral from '@/app/(main)/(nouveau-parcours)/thematiques/components/panneauLateral';
+import RoueSystemique from '@/app/(main)/(nouveau-parcours)/thematiques/components/roue';
 import { NewContainer } from '@/design-system/layout';
 import { Suspense, useState } from 'react';
-import PanneauLateral from './components/panneauLateral';
-import RoueSystemique from './components/roue';
 
 const RouePage = () => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);

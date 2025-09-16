@@ -49,22 +49,23 @@ export const DateConstructionResidences = ({
     averages.averageAgeBati4690 +
     averages.averageAgeBati9105;
   const chartData = DateConstructionResidencesBarChartData(averages);
-
   return (
     <>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroCircleGrid pourcentage={constructionBefore2006} arrondi={1} ariaLabel="Pourcentage de constructions avant 2006" />
             {
               constructionBefore2006 &&
                 !Object.values(averages).includes(NaN) &&
                 Sum(Object.values(averages)) != 0 ?
-                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                  Sur votre territoire,{' '}
-                  <b>{Round(constructionBefore2006, 1)} %</b> des résidences
-                  principales sont construites avant 2006.
-                </Body>
+                <>
+                  <MicroCircleGrid pourcentage={constructionBefore2006} arrondi={1} ariaLabel="Pourcentage de constructions avant 2006" />
+                  <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                    Sur votre territoire,{' '}
+                    <b>{Round(constructionBefore2006, 1)} %</b> des résidences
+                    principales sont construites avant 2006.
+                  </Body>
+                </>
                 : ""
             }
             <AgeBatiText />
@@ -74,17 +75,18 @@ export const DateConstructionResidences = ({
           {chartData ? <BarChartAgeBatiNouveauParcours chartData={chartData} /> : <Loader />}
           <SourceExport
             source="INSEE"
-            condition={Sum(chartData.map(el => Number(el["Votre territoire"]))) !== 0}
+            condition={Sum(chartData.map(el => Number(el["Votre territoire"]))) !== 0 && !isNaN(Sum(chartData.map(el => Number(el["Votre territoire"]))))}
+            anchor='Âge du bâtiment'
             exportComponent={
               <ExportButtonNouveauParcours
-                  data={exportData}
-                  baseName="age_bati"
-                  type={type}
-                  libelle={libelle}
-                  code={code}
-                  sheetName="Age du bâti"
-                  style={{ backgroundColor: 'var(--principales-vert)' }}
-                />
+                data={exportData}
+                baseName="age_bati"
+                type={type}
+                libelle={libelle}
+                code={code}
+                sheetName="Age du bâti"
+                style={{ backgroundColor: 'var(--principales-vert)' }}
+              />
             }
           />
         </div>

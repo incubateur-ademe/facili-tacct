@@ -71,6 +71,7 @@ export const ErosionCotiereComp = ({
           mapContainer={mapContainer}
           documentDiv=".erosionCotiereLegendWrapper"
           fileName={`Erosion_cotiere_${type}_${libelle}`}
+          anchor='Érosion côtière'
         />
       </div>
     </>

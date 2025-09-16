@@ -79,7 +79,7 @@ export const nomThematiques = [
     labelRadius: 270,
     xOffset: -10,
     yOffset: -15,
-    icon: '⚠️',
+    icon: '🚧',
     disabled: false
   },
   {

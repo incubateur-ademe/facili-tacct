@@ -5,17 +5,19 @@ import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 import styles from "../components.module.scss";
+import { CopyLinkClipboard } from '../CopyLinkClipboard';
 
 interface ZipExportButtonProps {
   handleExport: () => Promise<void>;
   children?: React.ReactNode;
   style?: React.CSSProperties;
+  anchor?: string;
 }
 
 export const ZipExportButton = ({
   handleExport,
   children = 'Exporter',
-  style
+  style,
 }: ZipExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
@@ -93,7 +95,8 @@ export const ZipExportButton = ({
 export const ZipExportButtonNouveauParcours = ({
   handleExport,
   children = 'Exporter',
-  style
+  style,
+  anchor
 }: ZipExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
@@ -151,16 +154,19 @@ export const ZipExportButtonNouveauParcours = ({
   };
 
   return (
-    <BoutonPrimaireClassic
-      onClick={handleClick}
-      disabled={isExporting}
-      icone={ExporterIcon}
-      size='sm'
-      text={isExporting ? 'Export en cours...' : children as string}
-      style={{
-        cursor: isExporting ? 'wait' : 'pointer',
-        ...style,
-      }}
-    />
+    <div className={styles.exportShareWrapper}>
+      {anchor && <CopyLinkClipboard anchor={anchor} />}
+      <BoutonPrimaireClassic
+        onClick={handleClick}
+        disabled={isExporting}
+        icone={ExporterIcon}
+        size='sm'
+        text={isExporting ? 'Export en cours...' : children as string}
+        style={{
+          cursor: isExporting ? 'wait' : 'pointer',
+          ...style,
+        }}
+      />
+    </div>
   );
 };

@@ -178,7 +178,7 @@ export const ThematiquesLieesNavigation = ({
               <BoutonPrimaireClassic
                 text={lieeLabel}
                 size="md"
-                onClick={() => window.location.href = handleRedirectionThematique({
+                onClick={lieeLabel !== "Aménagement" ? undefined : () => window.location.href = handleRedirectionThematique({
                   code: code,
                   libelle: libelle,
                   type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
@@ -186,7 +186,9 @@ export const ThematiquesLieesNavigation = ({
                   thematique: lieeLabel,
                   anchor: ""
                 })}
-                // disabled={lieeLabel === "Santé" ? true : false}
+                style={{
+                  cursor: lieeLabel !== "Aménagement" ? 'default' : 'pointer',
+                }}
               />
             </div>
           ))

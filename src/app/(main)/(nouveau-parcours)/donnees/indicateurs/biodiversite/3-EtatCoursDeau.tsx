@@ -130,6 +130,7 @@ export const EtatEcoCoursDeau = (props: {
               libelle={libelle}
               code={code}
               documentationSheet={sitesDeBaignadeDoc}
+              anchor="État écologique des cours d'eau"
             >
               Exporter
             </MultiSheetExportButtonNouveauParcours>

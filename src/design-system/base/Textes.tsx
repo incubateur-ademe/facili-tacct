@@ -163,7 +163,7 @@ export const Body = ({
   color = "#23282B",
   style,
   margin = "0",
-  id
+  id,
 }: {
   children: React.ReactNode;
   weight?: 'regular' | 'medium' | 'bold';

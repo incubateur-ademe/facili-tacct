@@ -15,7 +15,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
         <Body>
           Prendre conscience des facteurs de sensibilité aux fortes chaleurs de
           son territoire, c’est un bon début. Mais c’est sur le terrain que vous
-          comprendrez comment votre territoire vit — ou subit — ces périodes d’inconfort thermique.
+          comprendrez comment votre territoire vit &ndash; ou subit &ndash; ces périodes d’inconfort thermique.
         </Body>
       </section>
       {/* <section className={styles.sectionType} id="section1">
@@ -106,12 +106,16 @@ export const DiagnostiquerImpactsConfortThermique = () => {
             <div className={styles.leftData}>
               <MicroPieChart pourcentage={28} ariaLabel="Pourcentage des décès liés à la chaleur" />
               <Body>
-                "En France, seuls <b>28 %</b> des décès liés à la chaleur se produisent
-                pendant les canicules; ce qui ne représentent que <b>6 % des jours de
-                  l’été</b>. Soyons vigilants aussi en dehors des périodes de canicule."
-              </Body>
-              <Body size="sm" style={{ color: "var(--gris-dark)" }}>
-                Source : xxxx
+                En France, {" "}
+                <a
+                  href="https://www.santepubliquefrance.fr/presse/2023/fortes-chaleurs-et-canicule-un-impact-sur-la-mortalite-important-necessitant-le-renforcement-de-la-prevention-et-de-l-adaptation-au-changement-cl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  seuls <b>28 %</b> des décès liés à la chaleur
+                </a>
+                {" "}se produisent pendant les canicules ; ce qui ne représentent que <b>6 % des
+                  jours d’été</b>. Soyons vigilants aussi en dehors des périodes de canicule.
               </Body>
             </div>
             <div className={styles.rightData}>
@@ -121,7 +125,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
               <Body>
                 Les risques existent aussi en dehors des alertes officielles.
               </Body>
-              <Body weight='bold'>
+              <Body weight='bold' style={{ marginTop: '0.5rem', marginBottom: '-0.5rem' }}>
                 Avec qui pourriez-vous échanger
               </Body>
               <ul>
@@ -134,12 +138,24 @@ export const DiagnostiquerImpactsConfortThermique = () => {
             <div className={styles.leftData}>
               <MicroPieChart pourcentage={71} ariaLabel="Pourcentage des consultations SOS médecinspour les plus de 75 ans" />
               <Body>
-                "Tous exposés : <b>71 %</b> des consultations SOS médecins liées à la chaleur
-                concernent des personnes de moins de 75 ans ( juin-septembre 2022 ).
-                <br></br>Seuls <b>12 %</b> des Français se considèrent fragiles ou très fragiles pendant une canicule."
-              </Body>
-              <Body size="sm" style={{ color: "var(--gris-dark)" }}>
-                Source : xxxx
+                Tous exposés : {" "}
+                <a
+                  href="https://www.santepubliquefrance.fr/presse/2022/bilan-canicule-et-sante-un-ete-marque-par-des-phenomenes-climatiques-multiples-et-un-impact-sanitaire-important"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <b>71 %</b> des consultations SOS médecins
+                </a>
+                {" "}liées à la chaleur concernent des personnes de moins de 75 ans (juin-septembre 2022).
+                <br></br>Seuls {" "}
+                <a
+                  href="https://www.santepubliquefrance.fr/content/download/543105/3948412?version=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <b>12 %</b> des Français
+                </a>
+                {" "}se considèrent fragiles ou très fragiles pendant une canicule.
               </Body>
             </div>
             <div className={styles.rightData}>
@@ -149,27 +165,39 @@ export const DiagnostiquerImpactsConfortThermique = () => {
               <Body>
                 La sensibilité à la chaleur n'est pas qu'une affaire d'âge.
               </Body>
-              <Body weight='bold'>
+              <Body weight='bold' style={{ marginTop: '0.5rem', marginBottom: '-0.5rem' }}>
                 Avec qui pourriez-vous échanger
               </Body>
               <ul>
                 <li><Body>des pratiques sportives</Body></li>
                 <li><Body>de la présence et des comportements touristiques</Body></li>
-                <li><Body>de l’isolement géographiques ou social de personnes fragiles</Body></li>
+                <li><Body>de l’isolement géographique ou social de personnes fragiles</Body></li>
                 <li><Body>des travailleurs exposés</Body></li>
               </ul>
             </div>
           </div>
-          <div className={styles.donneesNationalesWrapper} style={{ borderBottom: 'none' }}>
+          <div className={styles.donneesNationalesWrapper} style={{ borderBottom: 'none', paddingBottom: 0 }}>
             <div className={styles.leftData}>
               <MicroPieChart pourcentage={55} ariaLabel="Pourcentage des Français ayant trop chaud" />
               <Body>
-                "<b>55 %</b> des Français déclarent avoir eu trop chaud pendant au moins 24 heures dans leur logement en 2023.
-                <br></br>La présence d’arbres peut rafraîchir l’air de <b>2 à 3°C</b>, notamment dans les rues ou lorsqu’ils sont
-                alignés en bordure de route"
-              </Body>
-              <Body size="sm" style={{ color: "var(--gris-dark)" }}>
-                Source : xxxx
+                <a
+                  href="https://www.fondationpourlelogement.fr/wp-content/uploads/import/sites/default/files/2024-08/BROCHURE-Precarite-energetique-ete_2024.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <b>55 %</b> des Français
+                </a>
+                {" "}déclarent avoir eu trop chaud pendant au moins 24 heures dans leur logement en 2023.
+                <br></br>
+                <a
+                  href="https://plusfraichemaville.fr/fiche-solution/planter-un-arbre"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  La présence d’arbres peut rafraîchir l’air de <b>2 à 3 °C</b>
+                </a>
+                , notamment dans les rues ou lorsqu’ils sont
+                alignés en bordure de route.
               </Body>
             </div>
             <div className={styles.rightData}>
@@ -179,11 +207,11 @@ export const DiagnostiquerImpactsConfortThermique = () => {
               <Body>
                 Le logement est un facteur clé d’exposition et l’absence de végétation aggrave les ilots de chaleur.
               </Body>
-              <Body weight='bold'>
+              <Body weight='bold' style={{ marginTop: '0.5rem', marginBottom: '-0.5rem' }}>
                 Avec qui pourriez-vous échanger
               </Body>
               <ul>
-                <li><Body>du niveau d’intégration des enjeux climatiques dans les documents d’urbanisme (PLU(i), SCoT,...)</Body></li>
+                <li><Body>du niveau d’intégration des enjeux climatiques dans les documents d’urbanisme (PLU(i), SCoT, etc.)</Body></li>
                 <li><Body>de l’opportunité d’effectuer un diagnostic de surchauffe urbaine</Body></li>
                 <li><Body>de l’adéquation des mesures déjà prises avec les pratiques et usages de la ville</Body></li>
                 <li><Body>de l’état du parc urbain et de rénovation énergétique</Body></li>
@@ -196,7 +224,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
         <div id="section2" className={styles.prendreRDVWrapper}>
           <div className={styles.RDVText}>
             <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
-              Point d'étape à J+20 : prenez RDV avec l’équipe TACCT
+              Point d'étape à J+20 : prenez rendez-vous avec l’équipe TACCT
             </H2>
             <Body>
               Investigation terminée ? Prenons le temps de décrypter ensemble vos
@@ -222,7 +250,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
             Poursuivez votre exploration
           </H2>
           <Body>
-            Vous pouvez retournez à l’ensemble des thématiques ou bien explorez les thématiques liées à celle-ci.
+            Vous pouvez retourner à l’ensemble des thématiques ou bien explorer les thématiques liées à celle-ci.
           </Body>
           <ThematiquesLieesNavigation />
         </div>

@@ -1,5 +1,4 @@
 "use client";
-import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { CarteCommunes, EtatCoursDeau, RessourcesEau } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
@@ -67,7 +66,6 @@ export const DonneesEau = ({
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Répartition des prélèvements d’eau par usage
               </H3>
-              <CopyLinkClipboard anchor="Ressources en eau" />
             </div>
             <PrelevementsEnEau ressourcesEau={ressourcesEau} />
           </div>
@@ -78,7 +76,6 @@ export const DonneesEau = ({
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 État écologique des cours d’eau
               </H3>
-              <CopyLinkClipboard anchor="État écologique des cours d'eau" />
             </div>
             <EtatEcoCoursDeau
               etatCoursDeau={etatCoursDeau}

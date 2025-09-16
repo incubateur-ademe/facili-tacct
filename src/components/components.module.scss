@@ -218,6 +218,12 @@
     }
 }
 
+.exportShareWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
 // Barre de recherche
 .searchCompWrapper {
     display: flex;

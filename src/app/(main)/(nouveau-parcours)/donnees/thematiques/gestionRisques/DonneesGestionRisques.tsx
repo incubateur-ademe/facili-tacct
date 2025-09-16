@@ -1,5 +1,4 @@
 "use client";
-import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
 import { LoaderText } from '@/components/loader';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
@@ -90,7 +89,8 @@ export const DonneesGestionRisques = ({
             margin: "0 0 -1rem 0",
             padding: "2rem 2rem 0",
             fontWeight: 400
-          }}>            {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
+          }}>
+            {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
 
           {/* Arrêtés CatNat */}
@@ -99,7 +99,6 @@ export const DonneesGestionRisques = ({
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Arrêtés de catastrophes naturelles
               </H3>
-              <CopyLinkClipboard anchor="Arrêtés CatNat" />
             </div>
             <ArretesCatnat
               gestionRisques={gestionRisques}
@@ -113,7 +112,6 @@ export const DonneesGestionRisques = ({
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Départs de feux et surfaces brûlées depuis 2006
               </H3>
-              <CopyLinkClipboard anchor="Feux de forêt" />
             </div>
             <FeuxDeForet incendiesForet={incendiesForet} />
           </div>
@@ -128,7 +126,8 @@ export const DonneesGestionRisques = ({
             margin: "0 0 -1rem 0",
             padding: "2rem 2rem 0",
             fontWeight: 400
-          }}>            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
+          }}>
+            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
 
           {/* Retrait-gonflement des argiles */}
@@ -143,7 +142,6 @@ export const DonneesGestionRisques = ({
                   <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                     Retrait-gonflement des argiles
                   </H3>
-                  <CopyLinkClipboard anchor="Retrait-gonflement des argiles" />
                 </div>
                 <RetraitGonflementDesArgiles
                   rgaCarte={rgaCarte}
@@ -175,7 +173,6 @@ export const DonneesGestionRisques = ({
                     <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                       Mouvement du trait de côte
                     </H3>
-                    <CopyLinkClipboard anchor="Érosion côtière" />
                   </div>
                   <ErosionCotiereComp
                     erosionCotiere={erosionCotiere}

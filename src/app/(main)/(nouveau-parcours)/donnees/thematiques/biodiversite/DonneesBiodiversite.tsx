@@ -1,15 +1,16 @@
 "use client";
-import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
+import { LoaderText } from "@/components/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { AgricultureBio, AOT40, CarteCommunes, ConsommationNAF, EtatCoursDeau, QualiteSitesBaignade } from "@/lib/postgres/models";
+import { AgricultureBio, AOT40, CarteCommunes, CLCTerritoires, ConsommationNAF, EtatCoursDeau, InconfortThermique, QualiteSitesBaignade } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { ConsommationEspacesNAF } from '../../indicateurs/biodiversite/1-ConsommationEspacesNAF';
 import { SurfacesEnBio } from '../../indicateurs/biodiversite/2-SurfacesEnBio';
 import { EtatEcoCoursDeau } from '../../indicateurs/biodiversite/3-EtatCoursDeau';
 import { OzoneEtVegetation } from '../../indicateurs/biodiversite/4-AOT40';
+import { TypesDeSols } from "../../indicateurs/confortThermique/5-TypesDeSols";
 
 interface Props {
   carteCommunes: CarteCommunes[];
@@ -18,6 +19,7 @@ interface Props {
   aot40: AOT40[];
   etatCoursDeau: EtatCoursDeau[];
   qualiteEauxBaignade: QualiteSitesBaignade[];
+  inconfortThermique: InconfortThermique[];
 }
 
 export const DonneesBiodiversite = ({
@@ -27,10 +29,13 @@ export const DonneesBiodiversite = ({
   aot40,
   etatCoursDeau,
   qualiteEauxBaignade,
+  inconfortThermique
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Biodiversité";
   const ongletsMenu = sommaireThematiques[thematique];
+  const [clcState, setClcState] = useState<CLCTerritoires[] | undefined>(undefined);
+  const [loadingClc, setLoadingClc] = useState(true);
 
   useEffect(() => {
     const style = document.createElement('style');
@@ -44,6 +49,27 @@ export const DonneesBiodiversite = ({
       document.head.removeChild(style);
     };
   }, []);
+
+  useEffect(() => {
+    // If no clc provided from server, fetch it client-side asynchronously
+    if (!clcState) {
+      const fetchClc = async () => {
+        try {
+          setLoadingClc(true);
+          const params = new URLSearchParams({ libelle: (new URLSearchParams(window.location.search)).get('libelle') || '', type: (new URLSearchParams(window.location.search)).get('type') || '', code: (new URLSearchParams(window.location.search)).get('code') || '' });
+          const res = await fetch(`/api/clc?${params.toString()}`);
+          const json = await res.json();
+          if (json.ok) setClcState(json.data);
+        } catch (e) {
+          console.error('Failed to fetch CLC', e);
+        } finally {
+          setLoadingClc(false);
+        }
+      };
+      fetchClc();
+    }
+  }, [clcState]);
+
   return (
     <>
       <div className={styles.explorerMesDonneesContainer}>
@@ -77,7 +103,6 @@ export const DonneesBiodiversite = ({
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Concentration d’ozone pendant la période de végétation (moyenne 2020-2024)
               </H3>
-              <CopyLinkClipboard anchor="Ozone et végétation" />
             </div>
             <OzoneEtVegetation
               aot40={aot40}
@@ -99,17 +124,29 @@ export const DonneesBiodiversite = ({
             {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
           {/* Consommation d'espaces NAF */}
-          <div id="Consommation d'espaces NAF" className={styles.indicateurMapWrapper}>
+          <div id="Consommation d'espaces NAF" className={styles.indicateurMapWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Sols imperméabilisés entre 2009 et 2023
               </H3>
-              <CopyLinkClipboard anchor="Consommation d'espaces NAF" />
             </div>
             <ConsommationEspacesNAF
               consommationNAF={consommationNAF}
               carteCommunes={carteCommunes}
             />
+          </div>
+          {/* Types de sols */}
+          <div id="Types de sols" className={styles.indicateurMapWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Cartographie des différents types de sols
+              </H3>
+            </div>
+            {
+              loadingClc ? <LoaderText text='Chargement de la cartographie' /> : (
+                <TypesDeSols inconfortThermique={inconfortThermique} carteCommunes={carteCommunes} clc={clcState} />
+              )
+            }
           </div>
         </section>
 
@@ -131,7 +168,6 @@ export const DonneesBiodiversite = ({
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Part de l’agriculture biologique
               </H3>
-              <CopyLinkClipboard anchor="Surfaces en bio" />
             </div>
             <SurfacesEnBio
               agricultureBio={agricultureBio}
@@ -157,7 +193,6 @@ export const DonneesBiodiversite = ({
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 État écologique des cours d’eau et des plans d’eau
               </H3>
-              <CopyLinkClipboard anchor="État écologique des cours d'eau" />
             </div>
             <EtatEcoCoursDeau
               etatCoursDeau={etatCoursDeau}

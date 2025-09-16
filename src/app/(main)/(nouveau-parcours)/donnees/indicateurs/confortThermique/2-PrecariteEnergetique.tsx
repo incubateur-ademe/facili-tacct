@@ -1,6 +1,7 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { MicroPieChart } from '@/components/charts/MicroDataviz';
+import { MicroRemplissageTerritoire } from '@/components/charts/MicroDataviz';
+import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { fragiliteEcoLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
@@ -55,10 +56,14 @@ export const PrecariteEnergetique = ({
     <>
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper}>
-          <MicroPieChart
-            pourcentage={100 * precariteLogTerritoire}
-            arrondi={1}
-          />
+          {
+            !precariteLogTerritoire ? "" :
+              <MicroRemplissageTerritoire
+                pourcentage={100 * precariteLogTerritoire}
+                territoireContours={carteTerritoire}
+                arrondi={1}
+              />
+          }
           <div className={styles.text}>
             {
               precariteLogTerritoire ? (
@@ -111,6 +116,7 @@ export const PrecariteEnergetique = ({
           Source : <a href="https://geodip.onpe.org/" target='_blank' rel='noopener noreferrer'>Observatoire de la précarité énergétique (ONPE), GEODIP</a>
           <br></br>Export indisponible : cette donnée est diffusée sur demande aux territoires par Geodip
         </Body>
+        {carteTerritoire.length > 0 && precariteLogTerritoire && <CopyLinkClipboard anchor={"Précarité énergétique"} />}
       </div>
     </>
   );
