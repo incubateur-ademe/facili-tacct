@@ -20,7 +20,7 @@ export const sommaireThematiques = {
         id: "section3",
         thematique: "Aménagement",
         icone: "🏗️",
-        sousCategories: ["Types de sols", "LCZ"]
+        sousCategories: ["LCZ"]
       },
     ]
   },
@@ -36,7 +36,7 @@ export const sommaireThematiques = {
         id: "section2",
         thematique: "Aménagement",
         icone: "🏗️",
-        sousCategories: ["Consommation d'espaces NAF"]
+        sousCategories: ["Consommation d'espaces NAF", "Types de sols"]
       },
       {
         id: "section3",
@@ -57,7 +57,7 @@ export const sommaireThematiques = {
       {
         id: "section1",
         thematique: "Gestion des risques",
-        icone: "⚠️",
+        icone: "🚧",
         sousCategories: ["Arrêtés CatNat", "Feux de forêt"]
       },
       {
@@ -152,8 +152,8 @@ export const thematiquesInfo: {
           tous les territoires de la même manière.
         </Body>
         <Body size="sm" margin="1rem 0">
-          Certaines spécificités locales rendent votre territoire plus ou moins sensible
-          à la chaleur. Ces impacts relèvent de thématiques différentes, notamment :
+          Certaines spécificités locales rendent votre territoire plus ou moins sensible à la 
+          chaleur. Elles relèvent de thématiques différentes, notamment :
         </Body>
         <div className="flex flex-col">
           <Body size="sm">
@@ -170,7 +170,7 @@ export const thematiquesInfo: {
           </Body>
         </div>
         <Body size="sm" margin="1rem 0">
-          👉 Ensemble, ces facteurs définissent la sensibilité de votre territoire.
+          👉 Ces facteurs combinés déterminent la sensibilité globale de votre territoire face à la chaleur.
         </Body>
       </div>
     ),

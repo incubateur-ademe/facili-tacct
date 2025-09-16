@@ -1,4 +1,5 @@
 "use client";
+import CubeIcon from '@/assets/icons/cube.svg';
 import WaterDropIcon from "@/assets/icons/water_drop_blue.svg";
 import { Body } from "@/design-system/base/Textes";
 import couleurs from "@/design-system/couleurs";
@@ -37,8 +38,16 @@ type MicroPieChartTypes = {
 const ProgressProps: MicroPieChartTypes = {
   strokeLinecap: 'butt',
   type: 'circle',
-  size: 90,
+  size: 110,
   strokeWidth: 18,
+  showInfo: false
+};
+
+const NumberCircleProps: MicroPieChartTypes = {
+  strokeLinecap: 'butt',
+  type: 'circle',
+  size: 110,
+  strokeWidth: 10,
   showInfo: false
 };
 
@@ -63,9 +72,44 @@ export const MicroPieChart = ({
               strokeColor={couleurs.gris.dark}
               trailColor={couleurs.gris.medium}
             />
-            <div className={styles.microPieChartText}>
-              <Body style={{ color: couleurs.gris.dark }}>
+            <div className={styles.microChartText}>
+              <Body style={{ color: couleurs.gris.dark }} weight="bold">
                 {Round(Number(pourcentage), arrondi)} %
+              </Body>
+            </div>
+          </div>
+        )
+      }
+    </>
+  );
+}
+
+export const MicroNumberCircle = ({
+  valeur,
+  arrondi = 0,
+  ariaLabel = "",
+  unite = ''
+}: {
+  valeur: number | string;
+  arrondi?: number;
+  ariaLabel?: string;
+  unite?: string;
+}) => {
+  return (
+    <>
+      {
+        isNaN(Number(valeur)) ? null : (
+          <div className={styles.microNumberCircleWrapper}>
+            <Progress
+              {...NumberCircleProps}
+              aria-label={ariaLabel}
+              percent={100}
+              strokeColor={couleurs.gris.dark}
+              trailColor={couleurs.gris.medium}
+            />
+            <div className={styles.microChartText}>
+              <Body style={{ color: couleurs.gris.dark }} weight="bold">
+                {Round(Number(valeur), arrondi)} {unite}
               </Body>
             </div>
           </div>
@@ -132,6 +176,37 @@ export const MicroCircleGrid = ({
   );
 }
 
+export const MicroCube = ({
+  valeur,
+  arrondi = 0,
+  ariaLabel = ""
+}: {
+  valeur: number;
+  arrondi?: number;
+  ariaLabel?: string;
+}) => {
+
+  return (
+    <>
+      {
+        isNaN(Number(valeur)) ? null : (
+          <div
+            className={styles.microCubeWrapper}
+            aria-label={ariaLabel}
+          >
+            <Body weight="bold">{Round(valeur, arrondi)} %</Body>
+            <Image
+              src={CubeIcon}
+              alt="Cube représentant une valeur"
+              width={80}
+              height={80}
+            />
+          </div>
+        )}
+    </>
+  );
+}
+
 export const MicroRemplissageTerritoire = (props: {
   territoireContours: CommunesContoursDto[];
   pourcentage: number;
@@ -147,7 +222,6 @@ export const MicroRemplissageTerritoire = (props: {
   const east = bounds[2];
   const hauteurTerritoire = north - south;
   const largeurTerritoire = east - west;
-
   // Amélioration du calcul des dimensions
   const aspectRatio = largeurTerritoire / hauteurTerritoire;
 
@@ -203,7 +277,7 @@ export const MicroRemplissageTerritoire = (props: {
         )
       )
       : territoireContours[0];
-      
+
   const intersect = union
     ? turf.intersect(
       turf.featureCollection([
@@ -248,16 +322,12 @@ export const MicroRemplissageTerritoire = (props: {
                 alignSelf: 'center',
                 zIndex: '501',
                 margin: 'auto',
-                backgroundColor: 'white',
-                padding: '0.1rem 0.3rem',
-                borderRadius: '0.5rem',
                 position: 'relative',
-                marginTop: `${containerHeight / 2.4}px`,
-                boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px',
+                // marginTop: `${containerHeight / 2.4}px`,
                 width: 'fit-content',
               }}
             >
-              <Body>
+              <Body weight="bold" style={{ color: couleurs.gris.dark }}>
                 {Round(pourcentage, arrondi)} %
               </Body>
             </div>

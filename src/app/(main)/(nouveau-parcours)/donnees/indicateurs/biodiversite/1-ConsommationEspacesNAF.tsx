@@ -1,7 +1,7 @@
 'use client';
 
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { MicroChiffreTerritoire } from '@/components/charts/MicroDataviz';
+import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { BoundsFromCollection } from '@/components/maps/components/boundsFromCollection';
@@ -55,12 +55,7 @@ export const ConsommationEspacesNAF = (props: {
       <div className={styles.datavizMapContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroChiffreTerritoire
-              value={sumNaf / 10000}
-              unit="ha"
-              arrondi={1}
-              territoireContours={carteCommunesFiltered}
-            />
+            <MicroNumberCircle valeur={sumNaf / 10000} arrondi={1} unite='ha' />
             <div className={styles.text}>
               {
                 sumNaf && sumNaf !== 0 ? (
@@ -120,6 +115,7 @@ export const ConsommationEspacesNAF = (props: {
               code={code}
               sheetName="Espaces NAF"
               documentation={consommationEspacesNafDoc}
+              anchor="Consommation d'espaces NAF"
             />
           )}
       </div>

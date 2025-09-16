@@ -2,6 +2,7 @@
 import { CatnatTypes, DataByCodeGeographique, GenericObject } from '@/app/(main)/types';
 import DataNotFound from '@/assets/images/zero_data_found.png';
 import ArretesCatnatCharts from '@/components/charts/gestionRisques/arretesCatnatCharts';
+import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
@@ -109,7 +110,7 @@ export const ArretesCatnat = (props: {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            {/* <MicroChiffreTerritoire value={gestionRisques.length} unit='' territoireContours={communesMap} /> */}
+            <MicroNumberCircle valeur={gestionRisques.length} arrondi={0} />
             {gestionRisques.length !== 0 ? (
               <>
                 {dataByCodeGeographique[0]?.sumCatnat === 0 ? (
@@ -155,6 +156,7 @@ export const ArretesCatnat = (props: {
               )
           }
           <SourceExport
+            anchor='Arrêtés CatNat'
             source='Base nationale de Gestion ASsistée des Procédures
               Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
               septembre 2025'

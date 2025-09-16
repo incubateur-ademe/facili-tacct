@@ -1,6 +1,6 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { MicroPieChart } from '@/components/charts/MicroDataviz';
+import { MicroRemplissageTerritoire } from '@/components/charts/MicroDataviz';
 import { generateMapPngBlob } from '@/components/exports/ExportPng';
 import { ZipExportButtonNouveauParcours } from '@/components/exports/ZipExportButton';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
@@ -8,6 +8,7 @@ import { vegetalisationLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import { MapCLC } from '@/components/maps/mapCLC';
 import { Body } from "@/design-system/base/Textes";
+import { CommunesContourMapper } from '@/lib/mapper/communes';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { CarteCommunes, CLCTerritoires, InconfortThermique } from "@/lib/postgres/models";
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
@@ -32,6 +33,7 @@ export const TypesDeSols = ({
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
+  const carteContours = carteCommunes.map(CommunesContourMapper);
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const vegetalisationMapped = inconfortThermique.map(vegetalisationMapper);
@@ -56,15 +58,19 @@ export const TypesDeSols = ({
     <>
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper} style={{ alignItems: 'center' }}>
-          <MicroPieChart
-            pourcentage={foretPercent}
-            arrondi={1}
-          />
+          {
+            isNaN(foretPercent) ? "" :
+              <MicroRemplissageTerritoire
+                pourcentage={foretPercent}
+                territoireContours={carteContours}
+                arrondi={1}
+              />
+          }
           <div className={styles.text}>
             {
               isNaN(foretPercent) ? "" : (
                 <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                  Sur votre territoire, {foretPercent == Infinity ? 0 : Round(foretPercent, 1)} % est
+                  {foretPercent == Infinity ? 0 : Round(foretPercent, 1)} % de votre territoire est
                   recouvert par de la forêt ou des espaces semi-naturels.
                 </Body>
               )
@@ -93,41 +99,45 @@ export const TypesDeSols = ({
           }
         </div>
       </div>
-      <div className={styles.sourcesExportMapWrapper}>
-        <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : CORINE Land Cover
-        </Body>
-        <ZipExportButtonNouveauParcours
-          handleExport={async () => {
-            const pngBlob = await generateMapPngBlob({
-              mapRef,
-              mapContainer,
-              documentDiv: ".explorerDonnees_legendTypesDeSols__otdtp",
-            });
-            if (!pngBlob) {
-              alert("Erreur lors de la génération de l'image PNG.");
-              return;
-            }
-            await exportAsZip({
-              excelFiles: [{
-                data: exportData,
-                baseName: "vegetalisation",
-                sheetName: "Végétalisation",
-                type,
-                libelle
-              }],
-              blobFiles: [{
-                blob: pngBlob,
-                filename: `Carte_Vegetalisation_${type}_${libelle}.png`
-              }],
-              zipFilename: `vegetalisation_export_${new Date().toISOString().split('T')[0]}.zip`
-            })
-          }}
-          style={{ backgroundColor: 'var(--principales-vert)' }}
-        >
-          Exporter
-        </ZipExportButtonNouveauParcours>
-      </div>
+      {
+        clc && clc.length &&
+        <div className={styles.sourcesExportMapWrapper}>
+          <Body size='sm' style={{ color: "var(--gris-dark)" }}>
+            Source : CORINE Land Cover
+          </Body>
+          <ZipExportButtonNouveauParcours
+            anchor='Types de sols'
+            handleExport={async () => {
+              const pngBlob = await generateMapPngBlob({
+                mapRef,
+                mapContainer,
+                documentDiv: ".explorerDonnees_legendTypesDeSols__otdtp",
+              });
+              if (!pngBlob) {
+                alert("Erreur lors de la génération de l'image PNG.");
+                return;
+              }
+              await exportAsZip({
+                excelFiles: [{
+                  data: exportData,
+                  baseName: "vegetalisation",
+                  sheetName: "Végétalisation",
+                  type,
+                  libelle
+                }],
+                blobFiles: [{
+                  blob: pngBlob,
+                  filename: `Carte_Vegetalisation_${type}_${libelle}.png`
+                }],
+                zipFilename: `vegetalisation_export_${new Date().toISOString().split('T')[0]}.zip`
+              })
+            }}
+            style={{ backgroundColor: 'var(--principales-vert)' }}
+          >
+            Exporter
+          </ZipExportButtonNouveauParcours>
+        </div>
+      }
     </>
   );
 };

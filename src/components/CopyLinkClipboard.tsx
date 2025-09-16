@@ -1,5 +1,5 @@
-import ShareIcon from '@/assets/icons/partage_icon_black.svg';
-import Image from "next/image";
+import ShareIcon from '@/assets/icons/share_icon_white.svg';
+import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -34,16 +34,11 @@ export const CopyLinkClipboard = ({
 
   return (
     <>
-      <Image
-        src={ShareIcon}
-        alt="Partage de l'url"
-        width={24}
-        height={24}
-        style={{
-          cursor: 'pointer',
-          marginTop: '0.2rem'
-        }}
+      <BoutonPrimaireClassic
         onClick={handleCopy}
+        icone={ShareIcon}
+        size='sm'
+        text='Partager'
       />
       {copied && typeof window !== 'undefined' && createPortal(
         <div

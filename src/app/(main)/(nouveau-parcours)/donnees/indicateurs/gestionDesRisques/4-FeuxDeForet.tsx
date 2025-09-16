@@ -1,6 +1,7 @@
 "use client";
 import GraphNotFound from '@/assets/images/zero_data_found.png';
 import FeuxForetCharts from "@/components/charts/gestionRisques/feuxForetCharts";
+import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
@@ -37,7 +38,7 @@ export const FeuxDeForet = (props: {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            {/* <MicroPieChart pourcentage={(maxCategory.count / sommeToutesSuperficies) * 100} arrondi={1} ariaLabel="" /> */}
+            <MicroNumberCircle valeur={incendiesForet.length} arrondi={0} />
             {incendiesForet.length !== 0 ? (
               <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
                 Depuis 2006, votre territoire a connu{' '}
@@ -80,6 +81,7 @@ export const FeuxDeForet = (props: {
             </div>
           )}
           <SourceExport
+            anchor='Feux de forêt'
             source="Base de Données sur les Incendies de Forêts en France, consultée en 2024 (derniers chiffres disponibles : 2023)"
             condition={incendiesForet.length !== 0}
             exportComponent={

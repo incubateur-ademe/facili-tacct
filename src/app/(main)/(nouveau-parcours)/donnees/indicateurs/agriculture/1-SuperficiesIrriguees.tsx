@@ -1,7 +1,7 @@
 'use client';
 
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { MicroPieChart } from '@/components/charts/MicroDataviz';
+import { MicroRemplissageTerritoire } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { surfacesIrrigueesLegend } from '@/components/maps/legends/datavizLegends';
@@ -52,11 +52,15 @@ export const SuperficiesIrriguees = (props: {
     <>
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper}>
-          <MicroPieChart
-            pourcentage={!surfaceTerritoire ? 0 : type === "commune" ? surfaceTerritoire : surfaceTerritoire / communesMap.length}
-            arrondi={1}
-            ariaLabel='Part de la superficie irriguée dans la SAU'
-          />
+          {
+            !surfaceTerritoire ? null : (
+              <MicroRemplissageTerritoire
+                pourcentage={type === "commune" ? surfaceTerritoire : surfaceTerritoire / communesMap.length}
+                territoireContours={communesMap}
+                arrondi={1}
+              />
+            )
+          }
           <div className={styles.text}>
             {
               surfaceTerritoire !== undefined && !isNaN(surfaceTerritoire) && communesMap.length > 0 ? (
@@ -113,6 +117,7 @@ export const SuperficiesIrriguees = (props: {
               libelle={libelle}
               code={code}
               sheetName="Surfaces irriguées"
+              anchor='Superficies irriguées'
             />
           </div>
         ) : (

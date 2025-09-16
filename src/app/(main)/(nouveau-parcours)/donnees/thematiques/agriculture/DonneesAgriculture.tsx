@@ -1,14 +1,13 @@
 "use client";
-import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { Agriculture, AgricultureBio, CarteCommunes, SurfacesAgricolesModel } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
-import { SuperficiesIrriguees } from '../../indicateurs/agricultureEtPeche/1-SuperficiesIrriguees';
-import { SurfacesEnBio } from '../../indicateurs/agricultureEtPeche/2-SurfacesEnBio';
-import { TypesDeCulture } from '../../indicateurs/agricultureEtPeche/3-TypesDeCultures';
+import { SuperficiesIrriguees } from '../../indicateurs/agriculture/1-SuperficiesIrriguees';
+import { SurfacesEnBio } from '../../indicateurs/agriculture/2-SurfacesEnBio';
+import { TypesDeCulture } from '../../indicateurs/agriculture/3-TypesDeCultures';
 
 interface Props {
   carteCommunes: CarteCommunes[];
@@ -17,7 +16,7 @@ interface Props {
   agricultureBio: AgricultureBio[];
 }
 
-export const DonneesAgricultureEtPeche = ({
+export const DonneesAgriculture = ({
   carteCommunes,
   agriculture,
   surfacesAgricoles,
@@ -71,7 +70,6 @@ export const DonneesAgricultureEtPeche = ({
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Part de l’agriculture biologique
               </H3>
-              <CopyLinkClipboard anchor="Surfaces en bio" />
             </div>
             <SurfacesEnBio agricultureBio={agricultureBio} />
           </div>
@@ -82,7 +80,6 @@ export const DonneesAgricultureEtPeche = ({
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Surface agricole par type de culture
               </H3>
-              <CopyLinkClipboard anchor="Types de culture" />
             </div>
             <TypesDeCulture surfacesAgricoles={surfacesAgricoles} />
           </div>
@@ -106,7 +103,6 @@ export const DonneesAgricultureEtPeche = ({
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Part de la surface agricole irriguée dans la SAU en 2020
               </H3>
-              <CopyLinkClipboard anchor="Superficies irriguées" />
             </div>
             <SuperficiesIrriguees
               agriculture={agriculture}

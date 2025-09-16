@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 import styles from "../components.module.scss";
+import { CopyLinkClipboard } from '../CopyLinkClipboard';
 
 type ExportDataRow = Record<string, string | number | boolean | null | bigint | undefined>;
 
@@ -22,6 +23,7 @@ interface MultiSheetExportButtonProps {
   code: string;
   children?: React.ReactNode;
   documentationSheet?: ExportDataRow[];
+  anchor?: string;
 }
 
 export const MultiSheetExportButton = ({
@@ -132,7 +134,8 @@ export const MultiSheetExportButtonNouveauParcours = ({
   libelle,
   code,
   children = 'Exporter',
-  documentationSheet
+  documentationSheet,
+  anchor
 }: MultiSheetExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
@@ -212,16 +215,19 @@ export const MultiSheetExportButtonNouveauParcours = ({
     <>
       {
         sheetsData.map(sheet => sheet.data).flat(1).length === 0 ? null : (
-          <BoutonPrimaireClassic
-            onClick={handleExport}
-            disabled={isExporting}
-            icone={ExporterIcon}
-            size='sm'
-            text={isExporting ? 'Export en cours...' : children as string}
-            style={{
-              cursor: isExporting ? 'wait' : 'pointer',
-            }}
-          />
+          <div className={styles.exportShareWrapper}>
+            {anchor && <CopyLinkClipboard anchor={anchor} />}
+            <BoutonPrimaireClassic
+              onClick={handleExport}
+              disabled={isExporting}
+              icone={ExporterIcon}
+              size='sm'
+              text={isExporting ? 'Export en cours...' : children as string}
+              style={{
+                cursor: isExporting ? 'wait' : 'pointer',
+              }}
+            />
+          </div>
         )
       }
     </>

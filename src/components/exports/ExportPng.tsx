@@ -6,6 +6,7 @@ import html2canvas from "html2canvas";
 import Image from "next/image";
 import { RefObject, useEffect, useState } from "react";
 import styles from "../components.module.scss";
+import { CopyLinkClipboard } from '../CopyLinkClipboard';
 
 export const ExportPngMaplibreButton = ({
   mapRef,
@@ -139,13 +140,15 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
   mapContainer,
   documentDiv = ".exportPNGWrapper",
   fileName = "indicateur-carte.png",
-  style
+  style,
+  anchor
 }: {
   mapRef: RefObject<maplibregl.Map | null>,
   mapContainer: RefObject<HTMLDivElement | null>,
   documentDiv?: string,
   fileName?: string,
-  style?: React.CSSProperties
+  style?: React.CSSProperties,
+  anchor?: string
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -249,17 +252,20 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
     }
   }
   return (
-    <BoutonPrimaireClassic
-      onClick={handleExportPng}
-      disabled={isLoading}
-      icone={ExporterIcon}
-      size='sm'
-      text={isLoading ? 'Export en cours...' : 'Exporter'}
-      style={{
-        cursor: isLoading ? 'wait' : 'pointer',
-        ...style,
-      }}
-    />
+    <div className={styles.exportShareWrapper}>
+      {anchor && <CopyLinkClipboard anchor={anchor} />}
+      <BoutonPrimaireClassic
+        onClick={handleExportPng}
+        disabled={isLoading}
+        icone={ExporterIcon}
+        size='sm'
+        text={isLoading ? 'Export en cours...' : 'Exporter'}
+        style={{
+          cursor: isLoading ? 'wait' : 'pointer',
+          ...style,
+        }}
+      />
+    </div>
   );
 };
 

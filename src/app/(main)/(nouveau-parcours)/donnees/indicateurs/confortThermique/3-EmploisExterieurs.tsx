@@ -64,7 +64,7 @@ export const EmploisEnExterieur = ({
                 <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
                   Les métiers physiques en extérieur, comme ceux du BTP et de l’agriculture, sont 
                   les plus exposés à la chaleur. Sur votre territoire, ces deux secteurs à risque 
-                  concentrent {" "}{Round(travailExt, 1)} %, soit{' '}
+                  concentrent {" "}{Round(travailExt, 1)} % des emplois, soit{' '}
                   {Round((sums.sumAgriculture + sums.sumConstruction), 0)} personnes.
                 </Body>
                 : ""
@@ -82,6 +82,7 @@ export const EmploisEnExterieur = ({
           }
           <SourceExport
             source="INSEE, Emplois au lieu de travail par sexe, secteur d'activité économique et catégorie socioprofessionnelle, 2021"
+            anchor='Emplois en extérieur'
             exportComponent={
               <ExportButtonNouveauParcours
                 data={exportData}

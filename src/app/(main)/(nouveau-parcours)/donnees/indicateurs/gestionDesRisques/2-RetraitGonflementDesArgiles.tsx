@@ -1,7 +1,7 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import RetraitGonflementDesArgilesCharts from '@/components/charts/gestionRisques/RetraitGonflementDesArgilesCharts';
-import { MicroPieChart } from '@/components/charts/MicroDataviz';
+import { MicroCircleGrid } from '@/components/charts/MicroDataviz';
 import { generateMapPngBlob } from '@/components/exports/ExportPng';
 import { ZipExportButtonNouveauParcours } from '@/components/exports/ZipExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
@@ -59,7 +59,7 @@ export const RetraitGonflementDesArgiles = ({
     features: rgaMap
   };
   const partMoyenFort = rgaFilteredByTerritory.length > 0
-    ? Round(Average(rgaFilteredByTerritory.map((el) => el.part_alea_moyen_fort_commune)), 1)
+    ? Average(rgaFilteredByTerritory.map((el) => el.part_alea_moyen_fort_commune))
     : 0;
   const nbLogementsMoyenFort = rgaFilteredByTerritory.length > 0
     ? Sum(rgaFilteredByTerritory.map((el) => el.nb_logement_alea_moyen_fort))
@@ -84,11 +84,15 @@ export const RetraitGonflementDesArgiles = ({
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroPieChart pourcentage={partMoyenFort!} arrondi={1} ariaLabel="Part des logements avec une exposition moyenne ou forte" />
+            {
+              rgaFilteredByTerritory.length > 0 && (
+                <MicroCircleGrid pourcentage={partMoyenFort} arrondi={1} ariaLabel="Part des logements avec une exposition moyenne ou forte" />
+              )
+            }
             {
               communesMap.length > 0 && rga.length && rgaCarte.length ? (
                 <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                  {partMoyenFort} % de votre territoire est situé dans une zone où le niveau
+                  {Round(partMoyenFort, 1)} % de votre territoire est situé dans une zone où le niveau
                   d’exposition au retrait gonflement des argiles est moyen ou fort. Cela
                   concerne potentiellement {numberWithSpacesRegex(nbLogementsMoyenFort)} logement(s), parmi
                   lesquels <b>{nbLogementsMoyenFort === 0 ? 0 : partMoyenFortApres1975} %</b> sont considérés comme plus à
@@ -129,6 +133,7 @@ export const RetraitGonflementDesArgiles = ({
               Source : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021
             </Body>
             <ZipExportButtonNouveauParcours
+              anchor='Retrait-gonflement des argiles'
               handleExport={async () => {
                 const pngBlob = await generateMapPngBlob({
                   mapRef,

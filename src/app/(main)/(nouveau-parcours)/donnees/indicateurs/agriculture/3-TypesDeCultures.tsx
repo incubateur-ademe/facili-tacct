@@ -113,6 +113,7 @@ export const TypesDeCulture = (props: {
               libelle={libelle}
               code={code}
               sheetName="Surfaces agricoles"
+              anchor="Types de culture"
             />
           </div>
         </div>

@@ -1,7 +1,7 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { LineChartGrandAge } from "@/components/charts/inconfortThermique/lineChartGrandAge";
-import { MicroPieChart } from "@/components/charts/MicroDataviz";
+import { MicroCircleGrid } from "@/components/charts/MicroDataviz";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { Loader } from "@/components/loader";
@@ -31,7 +31,7 @@ export const GrandAge = ({
   const grandAgeIsolementMapped = inconfortThermique.map(
     grandAgeIsolementMapper
   );
-    const percentTerritoireSup = Round((
+  const percentTerritoireSup = Round((
     (100 * sumProperty(grandAgeIsolementMapped, 'over_80_sum_2020')) /
     (sumProperty(grandAgeIsolementMapped, 'to_80_sum_2020') +
       sumProperty(grandAgeIsolementMapped, 'under_4_sum_2020'))
@@ -58,7 +58,7 @@ export const GrandAge = ({
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroPieChart pourcentage={yData.over_80_2020_percent} arrondi={2} ariaLabel="Pourcentage de confort thermique" />
+            <MicroCircleGrid pourcentage={Number(yData.over_80_2020_percent)} arrondi={2} ariaLabel="Pourcentage des personnes âgées de plus de 80 ans" />
             {
               !Object.values(yData).slice(0, -2).includes('NaN') && (
                 <>
@@ -78,11 +78,11 @@ export const GrandAge = ({
               )
             }
             {
-              type === "commune" ? (
+              type === "commune" && percentTerritoireSup && percentTerritoireSup !== "NaN" ? (
                 <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
                   Ce taux est de {percentTerritoireSup} % dans votre EPCI.
                 </Body>
-              ) : type === "epci" ? (
+              ) : type === "epci" && percentTerritoireSup && percentTerritoireSup !== "NaN" ? (
                 <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
                   Ce taux est de {percentTerritoireSup} % dans votre département.
                 </Body>
@@ -114,6 +114,7 @@ export const GrandAge = ({
             <Loader />
           )}
           <SourceExport
+            anchor="Grand âge"
             exportComponent={
               <ExportButtonNouveauParcours
                 data={exportData}

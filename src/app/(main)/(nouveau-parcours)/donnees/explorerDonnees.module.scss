@@ -112,6 +112,12 @@
     border-top: 1px solid var(--gris-medium);
 }
 
+.exportShareWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
 .h3Titles {
     display: flex;
     flex-direction: row;

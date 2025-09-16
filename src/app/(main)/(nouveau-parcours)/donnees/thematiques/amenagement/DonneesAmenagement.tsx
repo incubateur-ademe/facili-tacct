@@ -1,5 +1,4 @@
 "use client";
-import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { CarteCommunes, ConsommationNAF } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
@@ -66,7 +65,6 @@ export const DonneesAmenagement = ({
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Destination des surfaces imperméabilisées
               </H3>
-              <CopyLinkClipboard anchor="Consommation d'espaces NAF" />
             </div>
             <ConsommationEspacesNAFAmenagement
               consommationNAF={consommationNAF}
@@ -80,7 +78,6 @@ export const DonneesAmenagement = ({
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Cartographie des zones climatiques locales (LCZ)
               </H3>
-              <CopyLinkClipboard anchor="LCZ" />
             </div>
             <LCZ carteCommunes={carteCommunes} />
           </div>

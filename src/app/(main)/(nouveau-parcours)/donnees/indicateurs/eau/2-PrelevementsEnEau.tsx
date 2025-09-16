@@ -1,5 +1,5 @@
 "use client";
-import { WaterDropNumber } from "@/components/charts/MicroDataviz";
+import { MicroCube } from "@/components/charts/MicroDataviz";
 import EauCharts from "@/components/charts/ressourcesEau/EauCharts";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import { ReadMoreFade } from "@/components/utils/ReadMoreFade";
@@ -78,10 +78,13 @@ export const PrelevementsEnEau = (props: {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <WaterDropNumber
-              value={volumePreleveTerritoire}
-              arrondi={2}
-            />
+            {
+              !volumePreleveTerritoire || volumePreleveTerritoire === 0 ? null :
+                <MicroCube
+                  valeur={volumePreleveTerritoire}
+                  arrondi={2}
+                />
+            }
             {
               dataParMaille.length !== 0 ? (
                 <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
@@ -105,6 +108,7 @@ export const PrelevementsEnEau = (props: {
             ressourcesEau={ressourcesEau}
           />
           <SourceExport
+            anchor="Ressources en eau"
             source="BNPE, Catalogue DiDo (Indicateurs territoriaux de développement durable - ITDD)"
             condition={Sum(exportData.map(o => Sum(Object.values(o).slice(13, 26) as number[]))) !== 0}
             exportComponent={

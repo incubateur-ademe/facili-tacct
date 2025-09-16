@@ -16,17 +16,17 @@ export const TravailExterieurText = () => (
   <Body size='sm' style={{ paddingTop: '1rem' }}>
     Les effets de la chaleur sur l’économie sont également sous-estimés. Selon
     un rapport du Joint Research Center, la productivité du travail à l’extérieur
-    pourrait diminuer de 5 à 10 % en France, d’ici la fin du siècle.
+    pourrait diminuer de 5 à 10 % en France d’ici la fin du siècle.
   </Body>
 );
 
 export const AgeBatiText = () => (
   <Body size='sm' style={{ paddingTop: '1rem' }}>
-    La résistance des logements face aux températures élevées dépend de critères 
-    tels que l’inertie thermique, la présence de volets extérieurs ou la qualité des 
-    rénovations effectuées. En l’absence d’étude détaillée sur le sujet, la période 
-    de construction fournit une première approximation.<br></br>En France, deux tiers des 
-    logements construits avant 1948 affichent un DPE médiocre (D, E ou F), alors 
+    La résistance des logements face aux températures élevées dépend de critères
+    tels que l’inertie thermique, la présence de volets extérieurs ou la qualité des
+    rénovations effectuées. En l’absence d’étude détaillée sur le sujet, la période
+    de construction fournit une première approximation.<br></br>En France, deux tiers des
+    logements construits avant 1948 affichent un DPE médiocre (D, E ou F), alors
     que deux tiers construits après 2013 sont classés B ou C.
   </Body>
 );
@@ -84,12 +84,12 @@ export const VegetalisationText = () => (
   <div className="px-4">
     <p>
       La présence d’arbres permet d’apporter de l’ombre et
-      rafraichit l’air par évapotranspiration (lorsque plusieurs
+      rafraîchit l’air par évapotranspiration (lorsque plusieurs
       arbres sont à proximité). Leur efficacité dans le
       rafraîchissement en milieu urbain dépend de leur nombre, de
       la densité de leur feuillage, des essences, de la qualité du
       sol et de la disponibilité en eau.<br></br> <br></br>
-      La présence d’arbres peut rafraîchir l’air de 2 à 3° C au maximum,
+      La présence d’arbres peut rafraîchir l’air de 2 à 3 °C au maximum,
       notamment dans les rues ou lorsqu’ils sont alignés en bordure de route (source :{' '}
       <a href="https://plusfraichemaville.fr/" target="_blank">
         Plus fraiche ma ville
@@ -160,7 +160,7 @@ export const ConsommationEspacesNAFAmenagementText = () => (
       péri-urbaines peu denses
     </Body>
     <Body size='sm'>
-      ⇒ 66 % des ENAF consommés sont destinées à l’habitat dont plus
+      ⇒ 66 % des ENAF consommés sont destinés à l’habitat dont plus
       de la moitié (51 %) est constitué de constructions de moins de 8
       logements par hectare
     </Body>
@@ -192,7 +192,7 @@ export const ConsommationEspacesNAFBiodiversiteText = () => (
           <Body size='sm'>
             Les sols perdent leur rôle de puits de carbone et leur
             capacité d’infiltration ce qui perturbe le cycle naturel de
-            l'eau, avec pour corollaire une réduction de la recharges
+            l'eau, avec pour corollaire une réduction de la recharge
             des nappes, une réduction du stockage de l’eau dans les sols
             et une aggravation des risques d’inondations.
           </Body>
@@ -312,7 +312,7 @@ export const EtatsCoursEauBiodiversiteText = () => (
       la chute des débits, voire assecs, la prolifération d'espèces
       exotiques envahissantes, la concentration des polluants
       (massivement relâchés lors des crues) ; la hausse des
-      température de l’eau et l’ensoleillement sont des conditions
+      températures de l’eau et l’ensoleillement sont des conditions
       favorables à{' '}
       <DefinitionTooltip title={eutrophisation}>
         l’eutrophisation
@@ -403,7 +403,7 @@ export const EtatCoursEauRessourcesEauText = () => (
     </Body>
     <Body size="sm">
       Concernant spécifiquement l’eau potable, si deux tiers des prélèvements
-      sont fait sur des ressources souterraines, les prélèvements en
+      sont faits sur des ressources souterraines, les prélèvements en
       eaux de surface sont majoritaires en région parisienne, en
       Bretagne, dans les Pays de la Loire, sur la Côte d’Azur et dans
       l’ancienne région Midi-Pyrénées.
@@ -559,49 +559,53 @@ export const CatNatText = () => (
 export const ErosionCotiereText = () => (
   <div className="pt-10">
     <Body size="sm">
-      L'érosion grignote nos côtes : près de 20 % du littoral français
+      L'érosion grignote nos côtes : près de 20 % du littoral français
       recule face à la mer. Ce phénomène naturel s'accélère avec le
       changement climatique, la hausse du niveau des mers et la
       multiplication des tempêtes notamment. Les chiffres sont
       préoccupants. 37 % des côtes sableuses s'érodent, soit 700
       kilomètres - la distance Paris-Marseille - qui disparaissent peu
       à peu. En 50 ans, la mer a englouti l'équivalent de la ville de
-      La Rochelle : 30 km² de terres perdues.
+      La Rochelle : 30 km² de terres perdues.
     </Body>
     <Body size="sm">
-      Impacts locaux sur les milieux :
-      <li>
-        Augmentation des intrusions salines des aquifères côtiers,
-      </li>
-      <li>Modification des paysages (nouvelles lagunes…),</li>
-      <li>Appauvrissement des sols dû à la salinisation.</li>
+      Impacts locaux sur les milieux :
+      <ul style={{ marginLeft: '1rem' }}>
+        <li>
+          Augmentation des intrusions salines des aquifères côtiers,
+        </li>
+        <li>Modification des paysages (nouvelles lagunes…),</li>
+        <li>Appauvrissement des sols dû à la salinisation.</li>
+      </ul>
     </Body>
     <Body size="sm">
-      Impacts locaux sur les activités humaines :
-      <li>
-        Diminution de la disponibilité des eaux douces souterraines
-        pour les différents usages,
-      </li>
-      <li>
-        Modification des marais salins avec conséquences sur les
-        activités,
-      </li>
-      <li>
-        Salinisation et réduction des terres par submersion temporaire
-        ou permanente.
-      </li>
+      Impacts locaux sur les activités humaines :
+      <ul style={{ marginLeft: '1rem' }}>
+        <li>
+          Diminution de la disponibilité des eaux douces souterraines
+          pour les différents usages,
+        </li>
+        <li>
+          Modification des marais salins avec conséquences sur les
+          activités,
+        </li>
+        <li>
+          Salinisation et réduction des terres par submersion temporaire
+          ou permanente.
+        </li>
+      </ul>
     </Body>
     <Body size="sm">
       ⇒ 523 communes touchées par le recul du littoral, dont 59
       perdent plus d'1,5 mètre de littoral chaque année.
     </Body>
     <Body size="sm">
-      ⇒ D'ici 2050 : 5200 logements et 1400 locaux d'activité seront
+      ⇒ D'ici 2050 : 5200 logements et 1400 locaux d'activité seront
       menacés, pour un coût estimé à 1,2 milliard d'euros.
     </Body>
     <Body size="sm">
       - - - - <br></br>
-      Plan National d'Adaptation au Changement Climatique (PNACC 3) :
+      Plan National d'Adaptation au Changement Climatique (PNACC 3) :
       La mesure 35 prévoit d’accompagner l’adaptation du tourisme
       culturel, de montagne, littoral et nautique.
     </Body>
@@ -789,8 +793,9 @@ export const LCZText2 = () => (
         target="_blank"
         rel="noreferrer"
       >
-        A global map of local climate zones to support earth system modelling and urban-scale environmental science.
+        A global map of local climate zones to support earth system modelling and urban-scale environmental science
       </a>
+      .
     </Body>
   </>
 );
@@ -800,7 +805,7 @@ export const LCZText = () => (
     <Body size='sm' style={{ marginTop: '2rem' }}>
       Les LCZ, basées sur un référentiel scientifique, permettent de
       classer les quartiers selon leurs formes urbaines et leur propension à
-      surchauffer. Elles <b>ne permettent pas de quantifier l'ilot de chaleur
+      surchauffer. <b>Elles ne permettent pas de quantifier l'îlot de chaleur
         urbain</b>, contrairement aux mesures de température de l'air. Les LCZ
       aident à identifier les zones potentiellement sujettes à la surchauffe
       afin d’y installer des capteurs, ou pour identifier des zones
