@@ -101,7 +101,7 @@ Pour que le run soit moins gourmand, on vérifie le dernier timestamp dans la ba
 
 ```json
 {
-    "jobs": [{ "command": "0 2 * * * npm run build:etl && npm run etl:daily" }]
+    "jobs": [{ "command": "0 2 * * * pnpm run etl:daily" }]
 }
 ```
 

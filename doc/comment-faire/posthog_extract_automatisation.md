@@ -105,7 +105,7 @@ scalingo --app <APP> run --build "pnpx esbuild run.mjs --bundle --platform=node 
 {
     "jobs": [
         {
-            "command": "0 2 * * * pnpx esbuild run.mjs --bundle --platform=node --format=cjs --outfile=dist/etl.js && node dist/etl.js"
+            "command": "0 2 * * * pnpm run etl:daily" 
         }
     ]
 }
