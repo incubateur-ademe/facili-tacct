@@ -81,6 +81,10 @@ export const LCZ = ({
           fileName={`LCZ_${type}_${libelle}`}
           style={{ backgroundColor: 'var(--principales-vert)' }}
           anchor='LCZ'
+          type={type}
+          libelle={libelle}
+          code={code}
+          thematique="Confort thermique"
         />
       </div>
     </>

@@ -159,6 +159,10 @@ export const RetraitGonflementDesArgiles = ({
                   zipFilename: `rga_export_${new Date().toISOString().split('T')[0]}.zip`
                 })
               }}
+              code={code}
+              libelle={libelle}
+              type={type}
+              thematique="Gestion des risques"
             >
               Exporter
             </ZipExportButtonNouveauParcours>

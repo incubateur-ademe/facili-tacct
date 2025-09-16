@@ -121,7 +121,7 @@ function injectWindow(hogql, startIso) {
     });
 
     // 2) charger la requête et injecter la fenêtre
-    let hogql = fs.readFileSync('./etl/queries/query.hogql.sql', 'utf8');
+    let hogql = fs.readFileSync('./etl/queries/pageviews.hogql.sql', 'utf8');
     hogql = injectWindow(hogql, startIso);
 
     // 3) requêter PostHog

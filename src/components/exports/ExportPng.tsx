@@ -4,6 +4,7 @@ import ExporterIcon from '@/assets/icons/export_icon_white.svg';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import html2canvas from "html2canvas";
 import Image from "next/image";
+import { usePostHog } from 'posthog-js/react';
 import { RefObject, useEffect, useState } from "react";
 import styles from "../components.module.scss";
 import { CopyLinkClipboard } from '../CopyLinkClipboard';
@@ -13,7 +14,7 @@ export const ExportPngMaplibreButton = ({
   mapContainer,
   documentDiv = ".exportPNGWrapper",
   fileName = "indicateur-carte.png",
-  style
+  style,
 }: {
   mapRef: RefObject<maplibregl.Map | null>,
   mapContainer: RefObject<HTMLDivElement | null>,
@@ -141,16 +142,34 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
   documentDiv = ".exportPNGWrapper",
   fileName = "indicateur-carte.png",
   style,
-  anchor
+  anchor,
+  type,
+  libelle,
+  code,
+  thematique
 }: {
   mapRef: RefObject<maplibregl.Map | null>,
   mapContainer: RefObject<HTMLDivElement | null>,
+  type: string,
+  libelle: string,
+  code: string,
+  thematique: string,
   documentDiv?: string,
   fileName?: string,
   style?: React.CSSProperties,
   anchor?: string
 }) => {
+  const posthog = usePostHog();
   const [isLoading, setIsLoading] = useState(false);
+  posthog.capture(
+    'export_png_bouton', {
+    thematique: thematique,
+    code: code,
+    libelle: libelle,
+    type: type,
+    date: new Date()
+  });
+
   useEffect(() => {
     // ajout d'un overlay pour éviter les interactions pendant le chargement
     // et pour afficher un curseur de chargement

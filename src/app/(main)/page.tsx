@@ -14,13 +14,12 @@ import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import MiddlePageTrigger from '@/hooks/MiddlePageTrigger';
 import { homeCards, verbatimCards } from '@/lib/homeCards';
 import Image from 'next/image';
-import { useState } from 'react';
 import { NewContainer } from './../../design-system/layout';
 import { HomeCard } from './homeCard';
 import styles from './main.module.scss';
 
 const Home = () => {
-  const [noticeClosed, setNoticeClosed] = useState(false);
+  // const [noticeClosed, setNoticeClosed] = useState(false);
 
   return (
     <div>
@@ -207,6 +206,7 @@ const Home = () => {
                 link="https://tally.so/r/n0LrEZ"
                 text="Rejoindre la communauté"
                 rel="noopener noreferrer"
+                posthogEventName='bouton_rejoindre_communaute_home'
               />
             </div>
 
@@ -229,6 +229,7 @@ const Home = () => {
                 text="J'évalue mon diagnostic"
                 rel="noopener noreferrer"
                 style={{ marginTop: '2rem' }}
+                posthogEventName='bouton_evaluer_diagnostic_home'
               />
             </div>
           </div>
@@ -249,6 +250,7 @@ const Home = () => {
                 link="/ressources"
                 text="Découvrir les ressources"
                 style={{ marginTop: '2rem' }}
+                posthogEventName='bouton_decouvrir_ressources_home'
               />
             </div>
             <Image
