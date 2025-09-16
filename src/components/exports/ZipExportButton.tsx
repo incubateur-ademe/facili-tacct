@@ -12,6 +12,10 @@ interface ZipExportButtonProps {
   children?: React.ReactNode;
   style?: React.CSSProperties;
   anchor?: string;
+  code?: string;
+  libelle?: string;
+  type?: string;
+  thematique?: string;
 }
 
 export const ZipExportButton = ({
@@ -96,17 +100,21 @@ export const ZipExportButtonNouveauParcours = ({
   handleExport,
   children = 'Exporter',
   style,
-  anchor
+  anchor,
+  code,
+  libelle,
+  type,
+  thematique
 }: ZipExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
-  // posthog.capture('export_xlsx_bouton', {
-  //   thematique: baseName,
-  //   code: code,
-  //   libelle: libelle,
-  //   type: type,
-  //   date: new Date()
-  // });
+  posthog.capture('export_zip_bouton', {
+    thematique: thematique,
+    code: code,
+    libelle: libelle,
+    type: type,
+    date: new Date()
+  });
 
   useEffect(() => {
     if (isExporting) {

@@ -1,6 +1,7 @@
 import ConnexionIcon from '@/assets/icons/connexion_compte_icon_black.svg';
 import { Button } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
+import { usePostHog } from 'posthog-js/react';
 import { couleursBoutons, nuancesGris } from "../couleurs";
 import { Body } from "./Textes";
 
@@ -86,7 +87,8 @@ export const BoutonPrimaireClassic = ({
   disabled = false,
   onClick,
   icone,
-  style
+  style,
+  posthogEventName
 }: {
   link?: string;
   text: string;
@@ -96,7 +98,9 @@ export const BoutonPrimaireClassic = ({
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   icone?: StaticImageData;
   style?: React.CSSProperties;
+  posthogEventName?: string;
 }) => {
+  const posthog = usePostHog();
   const buttonStyle: React.CSSProperties = {
     textTransform: 'none',
     color: disabled ? nuancesGris.dark : "white",
@@ -117,6 +121,14 @@ export const BoutonPrimaireClassic = ({
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (disabled) return;
+    if (posthogEventName) {
+      posthog.capture(
+        posthogEventName,
+        {
+          date: new Date()
+        }
+      );
+    }
     if (link && !onClick) {
       window.open(link, rel?.includes('noopener') ? '_blank' : '_self');
     }
@@ -190,7 +202,8 @@ export const BoutonSecondaireClassic = ({
   disabled = false,
   onClick,
   icone,
-  style
+  style,
+  posthogEventName
 }: {
   link?: string;
   text: string;
@@ -200,7 +213,9 @@ export const BoutonSecondaireClassic = ({
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   icone?: StaticImageData;
   style?: React.CSSProperties;
+  posthogEventName?: string;
 }) => {
+  const posthog = usePostHog();
   const buttonStyle: React.CSSProperties = {
     textTransform: 'none',
     color: disabled ? `${nuancesGris.dark} !important` : couleursBoutons.primaire[3],
@@ -222,6 +237,14 @@ export const BoutonSecondaireClassic = ({
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (disabled) return;
+    if (posthogEventName) {
+      posthog.capture(
+        posthogEventName,
+        {
+          date: new Date()
+        }
+      );
+    }
     if (link && !onClick) {
       window.open(link, rel?.includes('noopener') ? '_blank' : '_self');
     }

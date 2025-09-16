@@ -25,6 +25,7 @@ export const ErosionCotiereComp = ({
 }) => {
   const searchParams = useSearchParams();
   const libelle = searchParams.get('libelle')!;
+  const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const mapRef = useRef<maplibregl.Map | null>(null);
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -72,6 +73,10 @@ export const ErosionCotiereComp = ({
           documentDiv=".erosionCotiereLegendWrapper"
           fileName={`Erosion_cotiere_${type}_${libelle}`}
           anchor='Érosion côtière'
+          type={type}
+          libelle={libelle}
+          code={code}
+          thematique="Gestion des risques"
         />
       </div>
     </>

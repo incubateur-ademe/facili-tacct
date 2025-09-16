@@ -133,6 +133,10 @@ export const TypesDeSols = ({
               })
             }}
             style={{ backgroundColor: 'var(--principales-vert)' }}
+            code={code}
+            libelle={libelle}
+            type={type}
+            thematique="Biodiversité"
           >
             Exporter
           </ZipExportButtonNouveauParcours>
