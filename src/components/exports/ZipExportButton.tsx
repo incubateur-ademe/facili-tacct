@@ -108,13 +108,6 @@ export const ZipExportButtonNouveauParcours = ({
 }: ZipExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
-  posthog.capture('export_zip_bouton', {
-    thematique: thematique,
-    code: code,
-    libelle: libelle,
-    type: type,
-    date: new Date()
-  });
 
   useEffect(() => {
     if (isExporting) {
@@ -153,6 +146,13 @@ export const ZipExportButtonNouveauParcours = ({
   }, [isExporting]);
 
   const handleClick = async () => {
+    posthog.capture('export_zip_bouton', {
+      thematique: thematique,
+      code: code,
+      libelle: libelle,
+      type: type,
+      date: new Date()
+    });
     setIsExporting(true);
     try {
       await handleExport();

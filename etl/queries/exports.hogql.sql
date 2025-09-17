@@ -1,4 +1,4 @@
-select timestamp, properties, distinct_id, `$session_id`, properties.$current_url, person_id
+select timestamp, distinct_id, `$session_id`, person_id, properties
 from events
 where
 and(

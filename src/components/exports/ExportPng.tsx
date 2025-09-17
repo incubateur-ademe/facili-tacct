@@ -161,14 +161,6 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
 }) => {
   const posthog = usePostHog();
   const [isLoading, setIsLoading] = useState(false);
-  posthog.capture(
-    'export_png_bouton', {
-    thematique: thematique,
-    code: code,
-    libelle: libelle,
-    type: type,
-    date: new Date()
-  });
 
   useEffect(() => {
     // ajout d'un overlay pour éviter les interactions pendant le chargement
@@ -209,6 +201,14 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
   }, [isLoading]);
 
   const handleExportPng = async () => {
+    posthog.capture(
+      'export_png_bouton', {
+      thematique: thematique,
+      code: code,
+      libelle: libelle,
+      type: type,
+      date: new Date()
+    });
     setIsLoading(true);
     if (mapRef.current && mapContainer.current) {
       // On cache les contrôles de navigation pour éviter qu'ils n'apparaissent sur le screenshot
