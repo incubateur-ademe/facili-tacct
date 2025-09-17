@@ -13,10 +13,10 @@ function safeParseJSON(s) {
 
 // === ENV ===
 const {
-    DATABASE_URL,
+    DATABASE_URL = '***REMOVED***',
     POSTHOG_HOST = 'https://eu.posthog.com',
-    POSTHOG_PROJECT_ID,
-    POSTHOG_API_KEY
+    POSTHOG_PROJECT_ID = '39308',
+    POSTHOG_API_KEY = '***REMOVED***'
 } = process.env;
 
 if (!DATABASE_URL) {
@@ -42,10 +42,10 @@ async function withPg(fn) {
     }
 }
 
-async function getMaxTs(client) {
+async function getMaxTs(client, table) {
     const { rows } = await client.query(`
     SELECT COALESCE(MAX(event_timestamp), '1970-01-01'::timestamptz) AS max_ts
-    FROM analytics.all_pageview_raw
+    FROM analytics.${table}
   `);
     return rows[0].max_ts;
 }
@@ -85,6 +85,74 @@ async function insertAllPageviewRaw(client, rows) {
     return inserted;
 }
 
+async function insertAllAutocaptureRaw(client, rows) {
+    const sql = `
+    INSERT INTO analytics.all_autocapture_raw
+      (event_timestamp, properties, distinct_id, session_id, current_url, person_id)
+    VALUES ($1::timestamptz, $2::jsonb, $3::text, $4::text, $5::text, $6::text)
+    ON CONFLICT ON CONSTRAINT uq_all_autocapture_raw_natural DO NOTHING
+  `;
+    let inserted = 0;
+    for (const row of rows) {
+        if (!Array.isArray(row)) continue;
+        const [
+            ts,
+            propertiesStr,
+            distinct_id,
+            session_id,
+            current_url,
+            person_id
+        ] = row;
+        const props =
+            typeof propertiesStr === 'string'
+                ? safeParseJSON(propertiesStr)
+                : propertiesStr;
+        await client.query(sql, [
+            ts,
+            JSON.stringify(props ?? {}),
+            distinct_id ?? '',
+            session_id ?? '',
+            current_url ?? '',
+            person_id ?? ''
+        ]);
+        inserted++;
+    }
+    return inserted;
+}
+
+async function insertBoutonsExportRaw(client, rows) {
+    const sql = `
+    INSERT INTO analytics.boutons_export_raw
+      (event, event_timestamp, session_id, person_id, code_geographique, libelle_geographique, thematique)
+    VALUES ($1::text, $2::timestamptz, $3::text, $4::text, $5::text, $6::text, $7::text)
+    ON CONFLICT ON CONSTRAINT uq_boutons_export_raw_natural DO NOTHING
+  `;
+    let inserted = 0;
+    for (const row of rows) {
+        if (!Array.isArray(row)) continue;
+        const [
+            event,
+            ts,
+            session_id,
+            person_id,
+            code_geographique,
+            libelle_geographique,
+            thematique
+        ] = row;
+        await client.query(sql, [
+            event ?? '',
+            ts,
+            session_id ?? '',
+            person_id ?? '',
+            code_geographique ?? '',
+            libelle_geographique ?? '',
+            thematique ?? ''
+        ]);
+        inserted++;
+    }
+    return inserted;
+}
+
 // === HogQL fetch ===
 async function fetchPosthog(query) {
     const url = `${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query/`;
@@ -112,30 +180,73 @@ function injectWindow(hogql, startIso) {
 
 // === Main ===
 (async () => {
-    // 1) borne basse depuis la base (-5 min)
-    const startIso = await withPg(async (client) => {
-        const maxTs = await getMaxTs(client);
-        return new Date(
-            new Date(maxTs).getTime() - 5 * 60 * 1000
-        ).toISOString();
-    });
+    // Configuration des requêtes ETL avec leurs paramètres
+    const etlQueries = [
+        {
+            name: 'pageviews',
+            sqlFile: './etl/queries/pageviews.hogql.sql',
+            table: 'all_pageview_raw',
+            insertFunction: insertAllPageviewRaw,
+            description: 'Événements de pages vues'
+        },
+        {
+            name: 'autocapture',
+            sqlFile: './etl/queries/autocapture.hogql.sql',
+            table: 'all_autocapture_raw',
+            insertFunction: insertAllAutocaptureRaw,
+            description: "Événements d'auto-capture"
+        },
+        {
+            name: 'exports',
+            sqlFile: './etl/queries/exports.hogql.sql',
+            table: 'boutons_export_raw',
+            insertFunction: insertBoutonsExportRaw,
+            description: "Événements d'export de boutons"
+        }
+    ];
 
-    // 2) charger la requête et injecter la fenêtre
-    let hogql = fs.readFileSync('./etl/queries/pageviews.hogql.sql', 'utf8');
-    hogql = injectWindow(hogql, startIso);
+    console.log(`[ETL] Début du processus avec ${etlQueries.length} requêtes`);
 
-    // 3) requêter PostHog
-    const results = await fetchPosthog(hogql);
-    console.log('longueur des données requêtées :', results.length);
+    for (const queryConfig of etlQueries) {
+        console.log(
+            `\n[ETL] Traitement de ${queryConfig.name} (${queryConfig.description})...`
+        );
 
-    // 4) insérer
-    const inserted = await withPg(async (client) =>
-        insertAllPageviewRaw(client, results)
-    );
-    console.log(
-        `[ETL] Terminé : ${inserted}/${results.length} ligne(s) insérée(s).`
-    );
+        try {
+            // 1) Calculer la borne basse depuis la base (-5 min)
+            const startIso = await withPg(async (client) => {
+                const maxTs = await getMaxTs(client, queryConfig.table);
+                return new Date(
+                    new Date(maxTs).getTime() - 5 * 60 * 1000
+                ).toISOString();
+            });
+
+            // 2) Charger la requête et injecter la fenêtre
+            let hogql = fs.readFileSync(queryConfig.sqlFile, 'utf8');
+            hogql = injectWindow(hogql, startIso);
+
+            // 3) Requêter PostHog
+            const results = await fetchPosthog(hogql);
+            console.log(
+                `[${queryConfig.name}] Données récupérées : ${results.length} lignes`
+            );
+
+            // 4) Insérer en base
+            const inserted = await withPg(async (client) =>
+                queryConfig.insertFunction(client, results)
+            );
+
+            console.log(
+                `[${queryConfig.name}] Terminé : ${inserted}/${results.length} ligne(s) insérée(s).`
+            );
+        } catch (error) {
+            console.error(`[${queryConfig.name}] Erreur :`, error);
+            // On continue avec les autres requêtes même si une échoue
+        }
+    }
+
+    console.log('\n[ETL] Processus terminé pour toutes les requêtes.');
 })().catch((e) => {
-    console.error(e);
+    console.error('[ETL] Erreur fatale :', e);
     process.exit(1);
 });

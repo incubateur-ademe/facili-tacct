@@ -290,14 +290,19 @@ export const MicroRemplissageTerritoire = (props: {
     : null;
 
   return (
-    <>
+    <div className='flex flex-column items-center' style={{ flexDirection: 'column' }}>
+      <Body weight="bold" style={{ color: couleurs.gris.dark, position: "absolute" }}>
+        {Round(pourcentage, arrondi)} %
+      </Body>
       {territoireContours.length > 0 && bounds[0] !== 0 ? (
         <div style={{
           width: `${containerWidth}px`,
           height: `${containerHeight}px`,
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
+          flexDirection: 'column',
+          paddingTop: '1.5rem'
         }}>
           <MapContainer
             ref={mapRef}
@@ -325,14 +330,9 @@ export const MicroRemplissageTerritoire = (props: {
                 zIndex: '501',
                 margin: 'auto',
                 position: 'relative',
-                // marginTop: `${containerHeight / 2.4}px`,
                 width: 'fit-content',
               }}
-            >
-              <Body weight="bold" style={{ color: couleurs.gris.dark }}>
-                {Round(pourcentage, arrondi)} %
-              </Body>
-            </div>
+            />
             <GeoJSON
               data={union as unknown as GeoJsonObject}
               style={{
@@ -340,7 +340,7 @@ export const MicroRemplissageTerritoire = (props: {
                 weight: 1,
                 fillColor: couleurs.gris.light,
                 fillOpacity: 1,
-                opacity: 1
+                opacity: 1,
               }}
             />
             <GeoJSON
@@ -357,7 +357,7 @@ export const MicroRemplissageTerritoire = (props: {
       ) : (
         ""
       )}
-    </>
+    </div>
   );
 };
 
