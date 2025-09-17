@@ -33,7 +33,6 @@ export const TypesDeSols = ({
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const carteContours = carteCommunes.map(CommunesContourMapper);
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const vegetalisationMapped = inconfortThermique.map(vegetalisationMapper);
@@ -45,6 +44,16 @@ export const TypesDeSols = ({
         : type === 'epci' && !eptRegex.test(libelle)
           ? vegetalisationMapped.filter((e) => e.epci === code)
           : vegetalisationMapped;
+  const carteTerritoire =
+    type === 'commune'
+      ? carteCommunes.filter((e) => e.code_geographique === code)
+      : type === 'ept' && eptRegex.test(libelle)
+        ? carteCommunes.filter((e) => e.ept === libelle)
+        : type === 'epci' && !eptRegex.test(libelle)
+          ? carteCommunes.filter((e) => e.epci === code)
+          : carteCommunes;
+  const carteContours = carteTerritoire.map(CommunesContourMapper);
+
 
   const foretSum = sumProperty(
     vegetalisationTerritoire,

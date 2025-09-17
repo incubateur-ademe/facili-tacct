@@ -34,6 +34,12 @@ export const PrecariteEnergetique = ({
       ? communesMap.filter((e) => e.properties.ept === libelle)
       : communesMap;
 
+  const territoireSeul = type === "commune"
+    ? carteTerritoire.filter((e) => e.properties.code_geographique === code)
+    : type === "epci"
+      ? carteTerritoire.filter((e) => e.properties.epci === code)
+      : carteTerritoire;
+
   const precariteLogTerritoire =
     type === 'commune'
       ? Number(
@@ -60,7 +66,7 @@ export const PrecariteEnergetique = ({
             !precariteLogTerritoire ? "" :
               <MicroRemplissageTerritoire
                 pourcentage={100 * precariteLogTerritoire}
-                territoireContours={carteTerritoire}
+                territoireContours={territoireSeul}
                 arrondi={1}
               />
           }
