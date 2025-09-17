@@ -295,7 +295,7 @@
 .menuEtapeDonnees {
     display: flex;
     flex-direction: column;
-    padding: 0 3rem 0 2rem;
+    padding: 0 0rem 0 2rem;
     ::before {
         content: '';
         position: absolute;
@@ -310,7 +310,7 @@
 .menuEtapeDonneesSansImpact {
     display: flex;
     flex-direction: column;
-    padding: 0 3rem 0 2rem;
+    padding: 0 0 0 2rem;
     ::before {
         content: '';
         position: absolute;
@@ -325,7 +325,7 @@
 .menuEtapeImpacts {
     display: flex;
     flex-direction: column;
-    padding: 0 3rem 0 2rem;
+    padding: 0 0 0 2rem;
     ::before {
         content: '';
         position: absolute;
@@ -367,7 +367,7 @@
     }
 }
 
-// Bouton retour haut de page 
+// Bouton retour haut de page
 .retourHautDePageWrapper {
     position: fixed;
     right: 2rem;

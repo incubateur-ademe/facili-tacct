@@ -114,7 +114,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
                 >
                   seuls <b>28 %</b> des décès liés à la chaleur
                 </a>
-                {" "}se produisent pendant les canicules ; ce qui ne représentent que <b>6 % des
+                {" "}se produisent pendant les canicules ; ce qui ne représente que <b>6 % des
                   jours d’été</b>. Soyons vigilants aussi en dehors des périodes de canicule.
               </Body>
             </div>

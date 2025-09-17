@@ -42,13 +42,12 @@ export const DonneesAgriculture = ({
     <>
       <div className={styles.explorerMesDonneesContainer}>
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
-          Ce que les données suggèrent sur votre territoire
+          Entre force et fragilité, découvrez les facteurs qui font basculer l'agriculture face au changement climatique.
         </H1>
         {/* Introduction */}
         <section>
           <Body size='lg'>
-            Les indicateurs qui vont suivre vous orientent ..............
-            En revanche, seule votre enquête terrain vous révélera les impacts réels.
+            Ces quelques indicateurs vous aideront à poser les bonnes questions, le terrain (étape 2) vous donnera les vraies réponses.
           </Body>
         </section>
 
