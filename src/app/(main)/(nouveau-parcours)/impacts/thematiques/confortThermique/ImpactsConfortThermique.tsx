@@ -3,6 +3,7 @@ import RDVImage from '@/assets/images/prendreRDV.png';
 import { MicroPieChart } from '@/components/charts/MicroDataviz';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H2 } from "@/design-system/base/Textes";
+import { sourcesEtudes } from '@/lib/sources';
 import Image from "next/image";
 import { ThematiquesLieesNavigation } from '../../components/ThematiquesLieesNavigation';
 import styles from '../../impacts.module.scss';
@@ -247,12 +248,32 @@ export const DiagnostiquerImpactsConfortThermique = () => {
       <section className={styles.sectionType}>
         <div id="section3" className={styles.diagnosticWrapper}>
           <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
+            Sources des données
+          </H2>
+          {sourcesEtudes.confortThermique.map(source => (
+            <Body key={source.numero} size="sm" style={{ marginBottom: '0.5rem' }}>
+              [{source.numero}]{" "}
+              <a
+                href={source.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "var(--graphiques-bleu-1" }}
+              >
+                {source.texte}
+              </a>
+            </Body>
+          ))}
+        </div>
+      </section>
+      <section className={styles.sectionType}>
+        <div id="section4" className={styles.diagnosticWrapper}>
+          <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
             Poursuivez votre exploration
           </H2>
           <Body>
             Vous pouvez retourner à l’ensemble des thématiques ou bien explorer les thématiques liées à celle-ci.
           </Body>
-          <ThematiquesLieesNavigation />
+          <ThematiquesLieesNavigation thematiqueSelectionnee='Confort thermique' />
         </div>
       </section>
     </>

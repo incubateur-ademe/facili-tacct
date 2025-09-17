@@ -125,7 +125,16 @@ export const sommaireImpacts = {
   ],
   "Biodiversité": [],
   "Gestion des risques": [],
-  "Agriculture": [],
+  "Agriculture": [
+    {
+      id: "section1",
+      titre: "Échanger pour diagnostiquer",
+    },
+    {
+      id: "section2",
+      titre: "??????????",
+    }
+  ],
   "Aménagement": [],
   "Eau": []
 };

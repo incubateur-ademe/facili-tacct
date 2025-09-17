@@ -319,6 +319,45 @@ export const MenuLateral = () => {
               </>
             ) : ""
             }
+            {thematique === "Agriculture" && (
+              <>
+                <button
+                  onClick={handleEtape2Toggle}
+                  className={styles.BoutonEtapes}
+                >
+                  {openEtape2 ? (
+                    <div
+                      className={styles['chevron-right-green']}
+                      style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
+                    />
+                  ) : (
+                    <div
+                      className={styles['chevron-right-black']}
+                      style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
+                    />
+                  )}
+                  <Body size='lg' weight='bold' style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
+                    Étape 2. <br />Diagnostiquez les impacts
+                  </Body>
+                </button>
+                <div className={styles.menuEtapeImpacts}>
+                  {
+                    openEtape2 && ongletsMenuEtape2.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => handleItemClickEtape2(item)}
+                        className={`block w-full text-left ${activeAnchorEtape2 === item.id
+                          ? styles.itemSurligne
+                          : styles.itemNonSurligne
+                          }`}
+                      >
+                        <Body size='sm'>{item.titre}</Body>
+                      </button>
+                    ))
+                  }
+                </div>
+              </>
+            )}
           </div>
         </nav>
       ) : <ErrorDisplay code="404" />

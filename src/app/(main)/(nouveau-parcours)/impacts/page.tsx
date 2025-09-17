@@ -4,6 +4,7 @@ import { H1 } from '@/design-system/base/Textes';
 import { SearchParams } from '../../types';
 import styles from '../donnees/explorerDonnees.module.scss';
 import { DiagnostiquerImpactsConfortThermique } from './thematiques/confortThermique/ImpactsConfortThermique';
+import { DiagnostiquerImpactsAgriculture } from './thematiques/ImpactsAgriculture';
 
 const ImpactsTerritoirePage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type, thematique } = await props.searchParams;
@@ -19,6 +20,8 @@ const ImpactsTerritoirePage = async (props: { searchParams: SearchParams }) => {
               {
                 thematique === 'Confort thermique' ? (
                   <DiagnostiquerImpactsConfortThermique />
+                ) : thematique === 'Agriculture' ? (
+                  <DiagnostiquerImpactsAgriculture />
                 ) : ""
               }
             </ClientOnly>
