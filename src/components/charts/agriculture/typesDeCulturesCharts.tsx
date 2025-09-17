@@ -34,7 +34,7 @@ const TypesDeCulturesCharts = (props: Props) => {
     <div className={styles.dataWrapper}>
       <div className={styles.graphTabsWrapper}>
         <SubTabs
-          data={['Répartition', 'Détail par culture']}
+          data={['Détail par culture', 'Répartition']}
           defaultTab={datavizTab}
           setValue={setDatavizTab}
         />
@@ -58,9 +58,8 @@ const TypesDeCulturesCharts = (props: Props) => {
               style={{ marginRight: '0.5em', alignItems: 'center' }}
             />
             <Body size="sm">
-              Attention, {territoiresPartiellementCouverts.length} EPCI
-              ne {territoiresPartiellementCouverts.length === 1 ? "fait" : "font"} que
-              partiellement partie de votre territoire
+              {territoiresPartiellementCouverts.length} EPCI{" "}
+              {territoiresPartiellementCouverts.length === 1 ? "déborde" : "débordent"} de votre territoire
             </Body>
           </div>
         </div>

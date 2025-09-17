@@ -74,7 +74,7 @@ export const sommaireThematiques = {
         id: "section1",
         thematique: "Agriculture",
         icone: "🌾",
-        sousCategories: ["Surfaces en bio", "Types de culture"]
+        sousCategories: ["Types de culture"]
       },
       {
         id: "section2",
@@ -82,6 +82,12 @@ export const sommaireThematiques = {
         icone: "💧",
         sousCategories: ["Superficies irriguées"]
       },
+      {
+        id: "section3",
+        thematique: "Biodiversité",
+        icone: "🌼",
+        sousCategories: ["Surfaces en bio"]
+      }
     ]
   },
   "Aménagement": {

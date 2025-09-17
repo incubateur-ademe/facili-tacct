@@ -92,7 +92,7 @@ const NivoPieChart = ({
             {Round(datum.data.count ? datum.data.count : datum.data.value, arrondi)} {unit}{' '}
           </animated.tspan>
           <animated.tspan>
-            ({Round(100 * datum.arc.angleDeg / 360, 1)}{' '} %)
+            ({Round(datum.value, 1)} %) {/* 100 * datum.arc.angleDeg / 360 */}
           </animated.tspan>
         </animated.text>
       </animated.g>

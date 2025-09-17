@@ -32,9 +32,16 @@ export const surchauffeUrbaine = (
 
 export const albedo = (
   <span>
-    Pouvoir réfléchissant d’une surface, c’est-à-dire le rapport de l’énergie solaire réfléchie 
-    à l’énergie solaire incidente. L’albédo dépend de la couleur et de la rugosité de la surface 
-    en question. Un revêtement noir ou foncé aura un albédo proche de 0 alors qu’une surface 
+    Pouvoir réfléchissant d’une surface, c’est-à-dire le rapport de l’énergie solaire réfléchie
+    à l’énergie solaire incidente. L’albédo dépend de la couleur et de la rugosité de la surface
+    en question. Un revêtement noir ou foncé aura un albédo proche de 0 alors qu’une surface
     blanche aura un albédo se rapprochant de 1.
+  </span>
+);
+
+export const otex = (
+  <span>
+    <b>L'orientation technico-économique </b>(OTEX) d’un territoire représente la production agricole
+    dominante observée, c’est-à-dire générant au moins les deux tiers de la production brute standard.
   </span>
 );

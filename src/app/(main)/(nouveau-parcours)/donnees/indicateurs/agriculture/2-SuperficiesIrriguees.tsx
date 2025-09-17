@@ -15,6 +15,7 @@ import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
 import { SurfacesIrrigueesText } from '@/lib/staticTexts';
 import { surfacesIrrigueesTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
+import { eptRegex } from '@/lib/utils/regex';
 import { FilterDataTerritory } from '@/lib/utils/reusableFunctions/filterDataTerritories';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
@@ -29,7 +30,6 @@ export const SuperficiesIrriguees = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-
   const carteCommunesEnriched = carteCommunes.map((el) => {
     return {
       ...el,
@@ -39,6 +39,17 @@ export const SuperficiesIrriguees = (props: {
     };
   });
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
+  const carteTerritoire =
+    type === 'ept' && eptRegex.test(libelle)
+      ? communesMap.filter((e) => e.properties.ept === libelle)
+      : communesMap;
+
+  const territoireSeul = type === "commune"
+    ? carteTerritoire.filter((e) => e.properties.code_geographique === code)
+    : type === "epci"
+      ? carteTerritoire.filter((e) => e.properties.epci === code)
+      : carteTerritoire;
+
   const carteCommunesFiltered = FilterDataTerritory(type, code, libelle, carteCommunesEnriched);
   const exportData = IndicatorExportTransformations.agriculture.surfacesIrriguees(carteCommunesFiltered);
   const surfaceTerritoire = type === "commune" ?
@@ -53,10 +64,10 @@ export const SuperficiesIrriguees = (props: {
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper}>
           {
-            !surfaceTerritoire ? null : (
+            surfaceTerritoire === undefined || isNaN(surfaceTerritoire) ? null : (
               <MicroRemplissageTerritoire
                 pourcentage={type === "commune" ? surfaceTerritoire : surfaceTerritoire / communesMap.length}
-                territoireContours={communesMap}
+                territoireContours={territoireSeul}
                 arrondi={1}
               />
             )
@@ -65,9 +76,9 @@ export const SuperficiesIrriguees = (props: {
             {
               surfaceTerritoire !== undefined && !isNaN(surfaceTerritoire) && communesMap.length > 0 ? (
                 <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                  En 2020, la part de la superficie irriguée dans la SAU sur
-                  votre territoire était de{' '}
-                  {type === "commune" ? surfaceTerritoire : Round(surfaceTerritoire! / communesMap.length, 1)} %.
+                  Une réalité locale :{' '}
+                  {type === "commune" ? surfaceTerritoire : Round(surfaceTerritoire! / communesMap.length, 1)} % de
+                  votre agriculture dépend de l'irrigation.
                 </Body>
               ) : <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
                 Il n’y a pas de données référencées sur le territoire que vous avez sélectionné

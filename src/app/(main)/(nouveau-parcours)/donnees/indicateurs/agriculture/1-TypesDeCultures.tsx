@@ -3,10 +3,11 @@ import TypesDeCulturesCharts from "@/components/charts/agriculture/typesDeCultur
 import { MicroPieChart } from "@/components/charts/MicroDataviz";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import { ReadMoreFade } from "@/components/utils/ReadMoreFade";
-import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
+import { CustomTooltipNouveauParcours, DefinitionTooltip } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { PieChartDataSurfacesAgricoles } from "@/lib/charts/surfacesAgricoles";
-import { SurfacesAgricolesModel } from "@/lib/postgres/models";
+import { otex } from "@/lib/definitions";
+import { Agriculture, SurfacesAgricolesModel } from "@/lib/postgres/models";
 import { SurfacesAgricolesText } from "@/lib/staticTexts";
 import { multipleEpciBydepartementLibelle } from "@/lib/territoireData/multipleEpciBydepartement";
 import { multipleEpciByPnrLibelle } from "@/lib/territoireData/multipleEpciByPnr";
@@ -21,13 +22,15 @@ import styles from '../../explorerDonnees.module.scss';
 
 export const TypesDeCulture = (props: {
   surfacesAgricoles: SurfacesAgricolesModel[];
+  agriculture: Agriculture[];
 }) => {
-  const { surfacesAgricoles } = props;
+  const { surfacesAgricoles, agriculture } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const [datavizTab, setDatavizTab] = useState<string>('Répartition');
+  const [datavizTab, setDatavizTab] = useState<string>('Détail par culture');
+  const otexCommune = type === "commune" && agriculture.find(el => el.code_geographique === code)?.otex_12_postes;
   const categoriesData = PieChartDataSurfacesAgricoles(surfacesAgricoles);
   const maxCategory = categoriesData.reduce(
     (max, item) => (item.count > max.count ? item : max),
@@ -55,32 +58,50 @@ export const TypesDeCulture = (props: {
             {
               surfacesAgricoles.length ? (
                 <>
-                  <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                    Pour le recensement de 2020, les informations détaillées sur les types
-                    de cultures ne sont disponibles qu'au niveau des EPCI.
-                  </Body>
-                  <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                    Sur votre {type === "commune" ? "EPCI" : "territoire"}, le type de surface
-                    prédominant est constitué de <b>{maxCategory.id.toLowerCase()}</b>,
-                    couvrant <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b>, ce qui
-                    représente <b>{Round((maxCategory.count / sommeToutesSuperficies) * 100, 1)} %</b> de
-                    la surface agricole utile.
-                  </Body>
                   {
-                    (type === "departement" || type === "pnr") && territoiresPartiellementCouverts && (
+                    (type === "departement" || type === "pnr") ? (
                       <>
-                        <Body style={{ color: "var(--gris-dark)" }}>
-                          <br></br>Attention, {territoiresPartiellementCouverts?.length} EPCI{" "}
-                          {territoiresPartiellementCouverts?.length === 1 ? "ne fait" : "ne font"} que
-                          partiellement partie de votre territoire :
+                        <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
+                          Les terres cultivées couvrent <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b> sur votre
+                          territoire, soit <b>{Round((maxCategory.count / sommeToutesSuperficies) * 100, 1)} %</b> de la surface agricole utile.
                         </Body>
-                        <ul style={{ margin: "0.5rem 0 0 1.5rem" }}>
-                          {territoiresPartiellementCouverts?.map((epci, index) => (
-                            <li key={index}><Body style={{ color: "var(--gris-dark)" }}>{epci}</Body></li>
-                          ))}
-                        </ul>
+                        {
+                          territoiresPartiellementCouverts && (
+                            <>
+                              <Body style={{ color: "var(--gris-dark)" }}>
+                                <br></br><b>À noter</b> : Ces données ne sont disponibles qu’à l’échelle
+                                intercommunale. Ces {territoiresPartiellementCouverts?.length} EPCI débordent de
+                                votre périmètre :
+                                <ul style={{ margin: "0.5rem 0 0 1.5rem" }}>
+                                  {territoiresPartiellementCouverts?.map((epci, index) => (
+                                    <li key={index}><Body style={{ color: "var(--gris-dark)" }}>{epci}</Body></li>
+                                  ))}
+                                </ul>
+                              </Body>
+
+                            </>
+                          )
+                        }
                       </>
+                    ) : (type === "commune" && otexCommune) ? (
+                      <>
+                        <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
+                          Sur votre commune, "{otexCommune}" domine le paysage agricole avec plus des deux tiers de la production
+                          totale <DefinitionTooltip title={otex}>(OTEX)</DefinitionTooltip>.
+                        </Body>
+                        <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
+                          Les terres cultivées s’étendent sur <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b>,
+                          soit <b>{Round((maxCategory.count / sommeToutesSuperficies) * 100, 1)} %</b> de la surface agricole
+                          utile. (Attention, ces détails sur les types de cultures sont ceux de votre EPCI).
+                        </Body>
+                      </>
+                    ) : (type === "epci" || type === "petr") ? (
+                      <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
+                        Les terres cultivées couvrent <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b> sur votre
+                        territoire, soit <b>{Round((maxCategory.count / sommeToutesSuperficies) * 100, 1)} %</b> de la surface agricole utile.
+                      </Body>
                     )
+                      : null
                   }
                 </>
               ) : <Body weight='bold' style={{ color: "var(--gris-dark)" }}>Il n’y a pas de données référencées sur le territoire que vous avez sélectionné</Body>

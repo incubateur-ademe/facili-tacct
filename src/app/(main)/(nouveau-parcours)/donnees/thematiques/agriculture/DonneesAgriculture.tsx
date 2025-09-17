@@ -5,9 +5,9 @@ import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
-import { SuperficiesIrriguees } from '../../indicateurs/agriculture/1-SuperficiesIrriguees';
-import { SurfacesEnBio } from '../../indicateurs/agriculture/2-SurfacesEnBio';
-import { TypesDeCulture } from '../../indicateurs/agriculture/3-TypesDeCultures';
+import { TypesDeCulture } from '../../indicateurs/agriculture/1-TypesDeCultures';
+import { SuperficiesIrriguees } from '../../indicateurs/agriculture/2-SuperficiesIrriguees';
+import { SurfacesEnBio } from '../../indicateurs/agriculture/3-SurfacesEnBio';
 
 interface Props {
   carteCommunes: CarteCommunes[];
@@ -63,16 +63,6 @@ export const DonneesAgriculture = ({
           }}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
-          {/* Surfaces en bio */}
-          <div id="Surfaces en bio" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
-            <div className={styles.h3Titles}>
-              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-                Part de l’agriculture biologique
-              </H3>
-            </div>
-            <SurfacesEnBio agricultureBio={agricultureBio} />
-          </div>
-
           {/* Types de cultures */}
           <div id="Types de culture" className={styles.indicateurWrapper}>
             <div className={styles.h3Titles}>
@@ -80,7 +70,10 @@ export const DonneesAgriculture = ({
                 Surface agricole par type de culture
               </H3>
             </div>
-            <TypesDeCulture surfacesAgricoles={surfacesAgricoles} />
+            <TypesDeCulture
+              surfacesAgricoles={surfacesAgricoles}
+              agriculture={agriculture}
+            />
           </div>
         </section>
 
@@ -107,6 +100,28 @@ export const DonneesAgriculture = ({
               agriculture={agriculture}
               carteCommunes={carteCommunes}
             />
+          </div>
+        </section>
+        {/* Section Biodiversité */}
+        <section className={styles.sectionType}>
+          <H2 style={{
+            color: "var(--principales-rouge)",
+            textTransform: 'uppercase',
+            fontSize: '1.75rem',
+            margin: "0 0 -1rem 0",
+            padding: "2rem 2rem 0",
+            fontWeight: 400
+          }}>
+            {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
+          </H2>
+          {/* Surfaces en bio */}
+          <div id="Surfaces en bio" className={styles.indicateurWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Part de l’agriculture biologique
+              </H3>
+            </div>
+            <SurfacesEnBio agricultureBio={agricultureBio} />
           </div>
         </section>
       </div>

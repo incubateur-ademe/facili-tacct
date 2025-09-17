@@ -64,9 +64,9 @@ const SurfacesEnBioCharts = ({
                         style={{ marginRight: '0.5em', alignItems: 'center' }}
                       />
                       <Body size="xs">
-                        Attention, {territoiresPartiellementCouverts.length} EPCI
-                        ne {territoiresPartiellementCouverts.length === 1 ? "fait" : "font"} que
-                        partiellement partie de votre territoire
+                        {territoiresPartiellementCouverts.length} EPCI{" "}
+                        {territoiresPartiellementCouverts.length === 1 ? "déborde" : "débordent"}{" "}
+                        de votre périmètre
                       </Body>
                     </div>
                   </div>
