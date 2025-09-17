@@ -74,31 +74,39 @@ export const SurfacesEnBio = (props: {
             <MicroCircleGrid pourcentage={pourcentageTotal} arrondi={1} ariaLabel="Surface certifiée bio ou en conversion" />
             {agricultureBio.length ?
               <>
-                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                  {
-                    type === "commune" || type === "departement" || type === "pnr" || type === "petr"
-                      ? <>Cette donnée n’est disponible qu’à l’échelle de votre EPCI.<br /></>
-                      : ""
-                  }
-                  {type === "commune" || type === "epci" ? "Dans votre EPCI" : "Sur votre territoire"}, {numberWithSpacesRegex(nombreExploitations)} exploitations
-                  sont en agriculture biologique ou en conversion, représentant {Round(pourcentageTotal, 1)} %
-                  de la surface agricole totale, soit {Round(surfaceAgriBio, 0)} hectares.
-                </Body>
                 {
-                  territoiresPartiellementCouverts && (
+                  (type === "departement" || type === "pnr" || type === "epci" || type === "petr") ? (
                     <>
-                      <Body style={{ color: "var(--gris-dark)" }}>
-                        <br></br>Attention, {territoiresPartiellementCouverts?.length} EPCI{" "}
-                        {territoiresPartiellementCouverts?.length === 1 ? "ne fait" : "ne font"} que
-                        partiellement partie de votre territoire :
+                      <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
+                        Sur votre territoire, {numberWithSpacesRegex(nombreExploitations)} exploitations sont en
+                        agriculture biologique ou en conversion ({Round(surfaceAgriBio, 0)} hectares).
                       </Body>
-                      <ul style={{ margin: "0.5rem 0 0 1.5rem" }}>
-                        {territoiresPartiellementCouverts?.map((epci, index) => (
-                          <li key={index}><Body style={{ color: "var(--gris-dark)" }}>{epci}</Body></li>
-                        ))}
-                      </ul>
+                      {
+                        territoiresPartiellementCouverts && (
+                          <>
+                            <Body style={{ color: "var(--gris-dark)" }}>
+                              <br></br><b>À noter</b> : Ces données ne sont disponibles qu’à l’échelle
+                              intercommunale. Ces {territoiresPartiellementCouverts?.length} EPCI débordent de
+                              votre périmètre :
+                              <ul style={{ margin: "0.5rem 0 0 1.5rem" }}>
+                                {territoiresPartiellementCouverts?.map((epci, index) => (
+                                  <li key={index}><Body style={{ color: "var(--gris-dark)" }}>{epci}</Body></li>
+                                ))}
+                              </ul>
+                            </Body>
+                          </>
+                        )
+                      }
                     </>
-                  )
+                  ) : (type === "commune") ? (
+                    <>
+                      <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
+                        Ces données ne sont disponibles qu’à l’échelle des EPCI. Autour de chez
+                        vous, {numberWithSpacesRegex(nombreExploitations)} exploitations sont
+                        en agriculture biologique ou en conversion ({Round(surfaceAgriBio, 0)} hectares).
+                      </Body>
+                    </>
+                  ) : null
                 }
               </>
               : ""

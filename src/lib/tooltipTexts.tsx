@@ -28,9 +28,6 @@ export const surfacesIrrigueesTooltipText = (
     l'origine de l'eau. Les surfaces irriguées uniquement dans le cadre
     d'une protection contre le gel ou d'une lutte phytosanitaire (contre
     le phylloxera de la vigne par exemple) sont exclues de ce calcul.
-    <br></br><br></br>
-    Une surface est dite « irrigable » si elle est munie d’un moyen
-    d’irrigation.
   </Body>
 );
 
@@ -53,9 +50,9 @@ export const agricultureBioTooltipText = (
     Les superficies totales en agriculture biologique comprennent :
     <ul>
       <li>
-        <Body weight="bold" size="sm">les surfaces « certifiées bio » qui rassemblent les parcelles dont
+        <Body weight="bold" size="sm">les surfaces « certifiées bio » qui rassemblent les parcelles dont
           la période de conversion est terminée et dont la production peut
-          être commercialisée avec la mention « agriculture biologique » ;</Body>
+          être commercialisée avec la mention « agriculture biologique » ;</Body>
       </li>
       <li>
         <Body weight="bold" size="sm">les superficies en conversion (la durée de conversion variant de 2

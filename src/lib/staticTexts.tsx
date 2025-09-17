@@ -1,6 +1,6 @@
 import { DefinitionTooltip } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
-import { eutrophisation, irrigable } from "@/lib/definitions";
+import { eutrophisation } from "@/lib/definitions";
 
 { /* Confort thermique */ }
 
@@ -102,38 +102,35 @@ export const VegetalisationText = () => (
 export const SurfacesIrrigueesText = () => (
   <>
     <Body size='sm'>
-      En France métropolitaine, 6,8 % de la surface agricole utile
-      (SAU) était irriguée en 2020, soit 15 % de plus qu’en 2010.
-      Face aux sécheresses de plus en plus marquées, les surfaces{' '}
-      <DefinitionTooltip title={irrigable}>
-        irrigables
-      </DefinitionTooltip>{' '}
-      ont aussi progressé de 23 % en dix ans, atteignant 11 % de
-      la SAU. Mais cette tendance interroge : l’eau prélevée pour
-      l’irrigation représente déjà 10 % des prélèvements totaux et
-      jusqu’à 23 % des eaux souterraines, modifiant localement le
-      cycle de l’eau.
+      <b>Le paradoxe de l'irrigation</b> : encore symbole d’agriculture intensive,
+      elle pourrait devenir un outil d’adaptation au changement climatique.
     </Body>
     <Body size='sm'>
-      L’irrigation permet de sécuriser les rendements, mais peut
-      aussi accentuer les tensions locales sur la ressource, en
-      particulier en été, période où la demande est forte pour
-      l’agriculture, mais aussi pour l’eau potable, le tourisme et
-      les écosystèmes. En prélevant l’eau des cours d’eau et des
-      nappes, l’irrigation peut fragiliser les milieux aquatiques,
-      déjà mis à l’épreuve par le changement climatique. Entre
-      2010 et 2020, certaines régions du nord et de l’est ont
-      fortement accru leurs surfaces irriguées, alors que d’autres
-      restent très peu équipées. Ainsi, certains territoires
-      irriguent plus de 40 % de leur SAU, tandis que d’autres n’en
-      irriguent que 1 %.
+      <b>Deux visions s'opposent</b> : l’irrigation visant à maximiser les
+      rendements (consommation importante en eau et en intrants) versus l’irrigation
+      “de résilience” visant à stabiliser les récoltes. C’est aussi une question
+      d’orientation stratégique :{" "}
+      <a
+        href="https://www.ihemi.fr/articles/eau-et-agriculture-enjeux-et-risques-en-periode-de-changement-climatique#:~:text=Le%20changement%20climatique%20affectera%20%C3%A0,eau%20sont%20les%20plus%20fortes"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        un tiers de nos surfaces irriguées nourrissent l'export
+      </a>
+      , pas la France.
     </Body>
     <Body size='sm'>
-      Avec une ressource en eau qui diminue et des usages
-      multiples, ce modèle peut-il tenir dans le temps ? À
-      l’échelle locale, les territoires devront questionner la
-      pérennité de l’irrigation face aux évolutions climatiques et
-      aux autres besoins en eau.
+      <b>Un défi de sobriété à prioriser</b> : abandonner l'aspersion (
+      <a
+        href="https://www.inrae.fr/dossiers/lagriculture-va-t-elle-manquer-deau/irriguer-differemment"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        80% des irrigants
+      </a>
+      ) pour des techniques économes qui existent déjà (goutte-à-goutte, capteurs intelligents,
+      pilotage précis). L'irrigation peut aider la diversification des cultures et servir
+      l'agroécologie... mais seulement si la ressource reste disponible !
     </Body>
   </>
 );
@@ -272,30 +269,22 @@ export const SurfacesEnBioText = () => (
 export const SurfacesEnBioAgricultureText = () => (
   <div className="pt-10">
     <Body size='sm'>
-      Les défis de l’agriculture sont doubles : réduire ses émissions
-      de gaz à effet de serre et s'adapter aux impacts du changement
-      climatique : l’intensification des sécheresses menaçant la disponibilité
-      en eau, la dégradation des sols, etc. Face à ces enjeux, l'agriculture
-      biologique, même si elle n’est pas la solution parfaite, apporte des
-      réponses concrètes, aux côtés de l'agroforesterie et des cultures à bas intrants.
+      <b>Sécheresses intensifiées, sols dégradés</b> : l'agriculture conventionnelle
+      vacille. Le bio ne prétend pas détenir la solution miracle, mais ses sols
+      résistent mieux avec une disponibilité en eau améliorée de +4 % à +45 % selon les études.
     </Body>
     <Body size='sm'>
-      Le bio renforce la résistance des exploitations agricoles. Comment ? Par
-      la non-utilisation des produits chimiques de synthèse et des OGM.
-      Grâce au recyclage des matières organiques. Par la rotation des cultures.
-      À travers la lutte biologique. Le compostage et la couverture permanente
-      des sols enrichissent la vie microbienne. Les résultats parlent d'eux-mêmes : jusqu'à
-      35 % de carbone supplémentaire dans les sols. Une meilleure disponibilité
-      en eau pour les plantes, avec des gains de 4 % à 45 %. Un territoire comptant
-      plus d'exploitations bio résiste mieux aux aléas climatiques. Enfin, à
-      surface égale, les cultures biologiques végétales émettent 50 % de gaz
-      à effet de serre en moins que les cultures conventionnelles.
+      <b>Les armes du bio</b> : diversifier les cultures, remplacer la fertilisation
+      de synthèse par des apports organiques.
     </Body>
     <Body size='sm'>
-      - - - - <br></br>
-      Le Plan national d’adaptation au changement climatique (PNACC 3)
-      prévoit d’accompagner les agriculteurs pour assurer la résilience de
-      leur exploitation (mesure 37).
+      <b>Le secret ?</b> Plus de matière organique = une structure plus stable, moins d'érosion,
+      plus de carbone séquestré, une meilleure réserve en eau = des sols vivants plus résilients.
+    </Body>
+    <Body size='sm'>
+      <b>Aux côtés de l'agroforesterie et des agricultures limitant le travail des sols et
+        favorisant les couverts</b> (agriculture de conservation, régénératrice...), l'agriculture
+      biologique dessine les contours d'une agriculture qui ne subit plus le climat... mais compose avec lui.
     </Body>
   </div>
 );
@@ -703,37 +692,9 @@ export const RGAText = () => (
 export const SurfacesAgricolesText = () => (
   <div className="pt-10">
     <Body size="sm">
-      En 2020, près de deux tiers des terres agricoles françaises étaient
-      consacrées aux terres arables : grandes cultures, légumes, mais aussi
-      cultures fourragères destinées à l’élevage. Un tiers correspondait
-      aux surfaces toujours en herbe (prairies permanentes), également
-      utilisées pour l’élevage. Les cultures permanentes tels que les vergers,
-      vignes, plantes à parfum, ainsi que certaines cultures légumières,
-      bien que minoritaires en surface, concentrent une part importante
-      des pertes liées aux aléas climatiques : gel printanier sur les
-      abricotiers, mildiou ou sécheresse sur la vigne, excès d’eau sur
-      le maraîchage.
-    </Body>
-    <Body size="sm">
-      Ces pertes illustrent les limites d’un système agricole encore
-      souvent spécialisé, peu préparé à absorber des chocs climatiques
-      répétés. Un seul aléa suffit parfois à compromettre plusieurs années
-      de revenus.
-    </Body>
-    <Body size="sm">
-      La diversification est l’une des voies possibles pour renforcer la
-      résilience des territoires agricoles. Si l’agriculture de votre
-      territoire repose surtout sur une ou deux cultures, quelle marge
-      de résilience reste-t-il face aux aléas climatiques ?
-    </Body>
-    <Body size="sm">
-      ⇒ Près de 49 % de la surface agricole utile est mobilisée pour l’élevage.
-    </Body>
-    <Body size="sm">
-      ⇒ Les jachères agricoles ont reculé de 29 % entre 2010 et 2020.
-    </Body>
-    <Body size="sm">
-      ⇒ En 2024, la production viticole a chuté de 18 % par rapport à la moyenne 2019-2023.
+      Paradoxe agricole : cultures permanentes (vergers, vignes…) et certaines cultures
+      légumières occupent peu d'espace mais concentrent l'essentiel des pertes climatiques.
+      Gel, mildiou, sécheresse, excès d'eau... Un système spécialisé fragile face aux chocs répétés.
     </Body>
   </div>
 )

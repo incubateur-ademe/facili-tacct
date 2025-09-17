@@ -10,7 +10,7 @@ import { ConsommationEspacesNAF } from '../../indicateurs/biodiversite/1-Consomm
 import { SurfacesEnBio } from '../../indicateurs/biodiversite/2-SurfacesEnBio';
 import { EtatEcoCoursDeau } from '../../indicateurs/biodiversite/3-EtatCoursDeau';
 import { OzoneEtVegetation } from '../../indicateurs/biodiversite/4-AOT40';
-import { TypesDeSols } from "../../indicateurs/confortThermique/5-TypesDeSols";
+import { TypesDeSols } from "../../indicateurs/biodiversite/5-TypesDeSols";
 
 interface Props {
   carteCommunes: CarteCommunes[];

@@ -16,7 +16,6 @@ export const PieChartAgriculture = ({ surfacesAgricoles }: { surfacesAgricoles: 
   const graphData = PieChartDataSurfacesAgricoles(surfacesAgricoles);
   const sumAllCount = graphData.reduce((sum, item) => sum + (item.count || 0), 0);
   const windowDimensions = useWindowDimensions();
-
   return (
     <div className={styles.responsivePieContainer}>
       {sumAllCount > 0 ?

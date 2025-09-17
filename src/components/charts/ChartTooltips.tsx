@@ -27,7 +27,7 @@ export const simpleBarChartTooltip = ({
   unite,
   multiplicateur,
   arrondi = 2
-}: { 
+}: {
   data: BarDatum,
   legende: Array<{ value: string; color: string }>,
   unite?: string,
@@ -51,9 +51,9 @@ export const simpleBarChartTooltip = ({
               <div className={styles.titre}>
                 <div className={styles.colorSquare} style={{ background: el.color }} />
                 <Body size="sm">{el.titre} :</Body>
-                { 
-                  multiplicateur ? <Body size="sm" weight="bold">{Round(multiplicateur * Number(el.value), arrondi)} {unite ?? null}</Body> 
-                  : <Body size="sm" weight="bold">{Round(Number(el.value), arrondi)} {unite ?? null}</Body>
+                {
+                  multiplicateur ? <Body size="sm" weight="bold">{Round(multiplicateur * Number(el.value), arrondi)} {unite ?? null}</Body>
+                    : <Body size="sm" weight="bold">{Round(Number(el.value), arrondi)} {unite ?? null}</Body>
                 }
               </div>
               <div className={styles.value}>
