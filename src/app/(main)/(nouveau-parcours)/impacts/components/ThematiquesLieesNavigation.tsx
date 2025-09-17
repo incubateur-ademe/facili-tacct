@@ -16,7 +16,7 @@ interface ThematiquesLieesNavigationProps {
 }
 
 export const ThematiquesLieesNavigation = ({
-  thematiqueSelectionnee = 'Confort thermique',
+  thematiqueSelectionnee,
   onThematiqueClick
 }: ThematiquesLieesNavigationProps) => {
   const searchParams = useSearchParams();
@@ -86,12 +86,6 @@ export const ThematiquesLieesNavigation = ({
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [thematiquesLiees.length]); // Recalculer si le nombre de thématiques change
-
-  const handleThematiqueClick = (thematiqueLabel: string) => {
-    if (onThematiqueClick) {
-      onThematiqueClick(thematiqueLabel);
-    }
-  };
 
   return (
     <div className={styles.thematiquesLieesContainer}>
@@ -178,7 +172,7 @@ export const ThematiquesLieesNavigation = ({
               <BoutonPrimaireClassic
                 text={lieeLabel}
                 size="md"
-                onClick={lieeLabel !== "Aménagement" ? undefined : () => window.location.href = handleRedirectionThematique({
+                onClick={(lieeLabel !== "Aménagement" && lieeLabel !== "Eau" && lieeLabel !== "Biodiversité") ? undefined : () => window.location.href = handleRedirectionThematique({
                   code: code,
                   libelle: libelle,
                   type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
@@ -187,7 +181,7 @@ export const ThematiquesLieesNavigation = ({
                   anchor: ""
                 })}
                 style={{
-                  cursor: lieeLabel !== "Aménagement" ? 'default' : 'pointer',
+                  cursor: (lieeLabel !== "Aménagement" && lieeLabel !== "Eau" && lieeLabel !== "Biodiversité") ? 'default' : 'pointer',
                 }}
               />
             </div>

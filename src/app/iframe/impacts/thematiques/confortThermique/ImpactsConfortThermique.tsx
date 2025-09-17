@@ -252,7 +252,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
           <Body>
             Vous pouvez retourner à l’ensemble des thématiques ou bien explorer les thématiques liées à celle-ci.
           </Body>
-          <ThematiquesLieesNavigation />
+          <ThematiquesLieesNavigation thematiqueSelectionnee='Confort thermique' />
         </div>
       </section>
     </>
