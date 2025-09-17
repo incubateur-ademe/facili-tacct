@@ -83,6 +83,7 @@ export const PrelevementsEnEau = (props: {
                 <MicroCube
                   valeur={volumePreleveTerritoire}
                   arrondi={2}
+                  unite="Mm³"
                 />
             }
             {

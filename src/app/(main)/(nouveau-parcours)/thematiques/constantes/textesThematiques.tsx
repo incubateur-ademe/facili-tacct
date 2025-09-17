@@ -152,7 +152,7 @@ export const thematiquesInfo: {
           tous les territoires de la même manière.
         </Body>
         <Body size="sm" margin="1rem 0">
-          Certaines spécificités locales rendent votre territoire plus ou moins sensible à la 
+          Certaines spécificités locales rendent votre territoire plus ou moins sensible à la
           chaleur. Elles relèvent de thématiques différentes, notamment :
         </Body>
         <div className="flex flex-col">
@@ -218,7 +218,31 @@ export const thematiquesInfo: {
   },
   'Agriculture': {
     title: 'Agriculture',
-    description: (<div></div>),
+    description: (
+      <div>
+        <Body size="sm" style={{ marginBottom: '1rem' }}>
+          Agriculture, eau potable, milieux naturels, tourisme… : les
+          équilibres de votre territoire résisteront-ils au changement climatique ?
+        </Body>
+        <div className="flex flex-col">
+          <Body size="sm">
+            💧 Eau
+          </Body>
+          <Body size="sm">
+            🌼 Biodiversité
+          </Body>
+          <Body size="sm">
+            🏥 Santé
+          </Body>
+          <Body size="sm">
+            🏖️ Tourisme
+          </Body>
+        </div>
+        <Body size="sm" margin="1rem 0">
+          👉 Explorez les facteurs de sensibilité qui feront la différence.
+        </Body>
+      </div>
+    ),
     link: 'Agriculture'
   },
   'Sylviculture': {

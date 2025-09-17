@@ -179,10 +179,12 @@ export const MicroCircleGrid = ({
 export const MicroCube = ({
   valeur,
   arrondi = 0,
+  unite = "",
   ariaLabel = ""
 }: {
   valeur: number;
   arrondi?: number;
+  unite?: string;
   ariaLabel?: string;
 }) => {
 
@@ -194,7 +196,7 @@ export const MicroCube = ({
             className={styles.microCubeWrapper}
             aria-label={ariaLabel}
           >
-            <Body weight="bold">{Round(valeur, arrondi)} %</Body>
+            <Body weight="bold">{Round(valeur, arrondi)} {unite}</Body>
             <Image
               src={CubeIcon}
               alt="Cube représentant une valeur"

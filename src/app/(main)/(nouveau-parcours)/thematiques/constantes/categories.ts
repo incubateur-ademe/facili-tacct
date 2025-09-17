@@ -154,7 +154,8 @@ export const nomThematiques = [
     xOffset: -2,
     yOffset: 0,
     icon: '🌾',
-    disabled: false
+    disabled: false,
+    liens: ['Eau', 'Santé', 'Biodiversité', 'Tourisme']
   }
 ];
 
@@ -228,6 +229,12 @@ export const liensEntreThematiques = [
     target: 'Biodiversité',
     curve: 1,
     curveRadius: 0.28
+  },
+  {
+    source: 'Agriculture',
+    target: 'Tourisme',
+    curve: 1,
+    curveRadius: 0.4
   },
   // Biodiversité
   {
