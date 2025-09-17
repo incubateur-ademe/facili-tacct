@@ -122,7 +122,7 @@ export const PrecariteEnergetique = ({
           Source : <a href="https://geodip.onpe.org/" target='_blank' rel='noopener noreferrer'>Observatoire de la précarité énergétique (ONPE), GEODIP</a>
           <br></br>Export indisponible : cette donnée est diffusée sur demande aux territoires par Geodip
         </Body>
-        {carteTerritoire.length > 0 && precariteLogTerritoire && <CopyLinkClipboard anchor={"Précarité énergétique"} />}
+        {(carteTerritoire.length > 0 && precariteLogTerritoire) ? <CopyLinkClipboard anchor={"Précarité énergétique"} /> : null}
       </div>
     </>
   );
