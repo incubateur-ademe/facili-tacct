@@ -110,17 +110,18 @@ export const ExportButtonNouveauParcours = ({
 }: ExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
-  posthog.capture(
-    baseName === "inconfort_thermique"
-      ? "export_xlsx_thematique_bouton"
-      : 'export_xlsx_bouton', {
-    thematique: baseName,
-    code: code,
-    libelle: libelle,
-    type: type,
-    date: new Date()
-  });
+
   const handleExport = async () => {
+    posthog.capture(
+      baseName === "inconfort_thermique"
+        ? "export_xlsx_thematique_bouton"
+        : 'export_xlsx_bouton', {
+      thematique: baseName,
+      code: code,
+      libelle: libelle,
+      type: type,
+      date: new Date()
+    });
     if (!data || data.length === 0) {
       console.log('Aucune donnée à exporter');
       return;
