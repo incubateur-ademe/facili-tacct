@@ -1,3 +1,3 @@
 {
-  "jobs": [{ "command": "0 2 * * * pnpm run etl:daily" }]
+  "jobs": [{ "command": "*/10 * * * * pnpm run etl:daily" }]
 }
