@@ -290,7 +290,10 @@ export const MicroRemplissageTerritoire = (props: {
     : null;
 
   return (
-    <div className='flex flex-column items-center' style={{ flexDirection: 'column' }}>
+    <div
+    className='flex flex-column items-center'
+      style={{ flexDirection: 'column' }}
+      >
       <Body weight="bold" style={{ color: couleurs.gris.dark, position: "absolute" }}>
         {Round(pourcentage, arrondi)} %
       </Body>
@@ -336,7 +339,7 @@ export const MicroRemplissageTerritoire = (props: {
             <GeoJSON
               data={union as unknown as GeoJsonObject}
               style={{
-                color: 'transparent',
+                color: 'var(--gris-dark)',
                 weight: 1,
                 fillColor: couleurs.gris.light,
                 fillOpacity: 1,
@@ -349,7 +352,7 @@ export const MicroRemplissageTerritoire = (props: {
                 color: 'none',
                 fillColor: couleurs.gris.dark,
                 opacity: 1,
-                fillOpacity: 1
+                fillOpacity: 1,
               }}
             />
           </MapContainer>
