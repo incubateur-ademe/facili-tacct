@@ -1,4 +1,4 @@
-select properties.$sent_at, properties, distinct_id, `$session_id`, person_id
+select event, properties.$sent_at, properties, distinct_id, `$session_id`, person_id
 from events
 where
 and(
