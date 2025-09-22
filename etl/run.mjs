@@ -1,5 +1,10 @@
+import dotenv from 'dotenv';
 import fs from 'fs';
 import pg from 'pg';
+
+if (process.env.NEXT_PUBLIC_ENV === 'dev') {
+    dotenv.config();
+}
 
 function safeParseJSON(s) {
     if (s == null) return null;
