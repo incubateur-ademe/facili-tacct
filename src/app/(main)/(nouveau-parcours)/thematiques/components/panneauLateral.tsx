@@ -3,6 +3,7 @@ import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
 import { H2 } from "@/design-system/base/Textes";
 import useWindowDimensions from "@/hooks/windowDimensions";
 import { useRouter, useSearchParams } from "next/navigation";
+import { usePostHog } from "posthog-js/react";
 import { thematiquesInfo } from "../constantes/textesThematiques";
 import styles from "../roue.module.scss";
 
@@ -13,6 +14,7 @@ const PanneauLateral = ({
   setSelectedItem: (item: string | null) => void;
   selectedItem: string | null;
 }) => {
+  const posthog = usePostHog();
   const router = useRouter();
   const searchParams = useSearchParams();
   const code = searchParams.get('code');
@@ -90,6 +92,9 @@ const PanneauLateral = ({
                   text="J'explore cette thématique"
                   size="lg"
                   onClick={() => {
+                    posthog.capture('clic_explore_thematique', {
+                      thematique: selectedItem
+                    })
                     if (code) router.push(`/donnees?code=${code}&libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`);
                     else router.push(`/donnees?libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`);
                   }}
