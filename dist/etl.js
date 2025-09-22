@@ -5632,8 +5632,8 @@ async function insertBoutonsExportRaw(client, rows) {
 async function insertBoutonsHomepage(client, rows) {
   const sql = `
     INSERT INTO analytics.boutons_homepage
-      (event_timestamp, properties, distinct_id, session_id, person_id)
-    VALUES ($1::timestamptz, $2::jsonb, $3::text, $4::text, $5::text)
+      (event, event_timestamp, properties, distinct_id, session_id, person_id)
+    VALUES ($1::text, $2::timestamptz, $3::jsonb, $4::text, $5::text, $6::text)
     ON CONFLICT ON CONSTRAINT uq_boutons_homepage_natural DO NOTHING
   `;
   let inserted = 0;
@@ -5641,6 +5641,7 @@ async function insertBoutonsHomepage(client, rows) {
     if (!Array.isArray(row)) continue;
     const [
       ts,
+      event,
       propertiesStr,
       distinct_id,
       session_id,
@@ -5649,6 +5650,7 @@ async function insertBoutonsHomepage(client, rows) {
     const props = typeof propertiesStr === "string" ? safeParseJSON(propertiesStr) : propertiesStr;
     await client.query(sql, [
       ts,
+      event ?? "",
       JSON.stringify(props ?? {}),
       distinct_id ?? "",
       session_id ?? "",

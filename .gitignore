@@ -48,3 +48,8 @@ next-env.d.ts
 
 # local db
 /db-dump/facili-tacct-postgis-databases.sql
+
+#certificates
+*.crt
+*.key
+*.pem
