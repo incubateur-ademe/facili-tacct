@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 import pg from 'pg';
 
-if (process.env.NEXT_PUBLIC_ENV === 'dev') {
+if (fs.existsSync('.env')) {
     dotenv.config();
 }
 
@@ -18,14 +18,14 @@ function safeParseJSON(s) {
 
 // === ENV ===
 const {
-    DATABASE_URL,
+    SCALINGO_POSTGRESQL_URL,
     POSTHOG_HOST = 'https://eu.posthog.com',
     POSTHOG_PROJECT_ID,
     POSTHOG_API_KEY
 } = process.env;
 
-if (!DATABASE_URL) {
-    console.error('DATABASE_URL manquante');
+if (!SCALINGO_POSTGRESQL_URL) {
+    console.error('SCALINGO_POSTGRESQL_URL manquante');
     process.exit(1);
 }
 if (!POSTHOG_PROJECT_ID || !POSTHOG_API_KEY) {
@@ -36,8 +36,10 @@ if (!POSTHOG_PROJECT_ID || !POSTHOG_API_KEY) {
 // === SQL helpers (pg) ===
 async function withPg(fn) {
     const client = new pg.Client({
-        connectionString: DATABASE_URL,
-        ssl: { require: true, rejectUnauthorized: false }
+        connectionString: SCALINGO_POSTGRESQL_URL,
+        ssl: process.env.NODE_ENV === 'dev'
+              ? { ca: fs.readFileSync('ca.pem'), rejectUnauthorized: true }
+              : { require: true, rejectUnauthorized: false }
     });
     await client.connect();
     try {
@@ -158,6 +160,39 @@ async function insertBoutonsExportRaw(client, rows) {
     return inserted;
 }
 
+async function insertBoutonsHomepage(client, rows) {
+    const sql = `
+    INSERT INTO analytics.boutons_homepage
+      (event_timestamp, properties, distinct_id, session_id, person_id)
+    VALUES ($1::timestamptz, $2::jsonb, $3::text, $4::text, $5::text)
+    ON CONFLICT ON CONSTRAINT uq_boutons_homepage_natural DO NOTHING
+  `;
+    let inserted = 0;
+    for (const row of rows) {
+        if (!Array.isArray(row)) continue;
+        const [
+            ts,
+            propertiesStr,
+            distinct_id,
+            session_id,
+            person_id
+        ] = row;
+        const props =
+            typeof propertiesStr === 'string'
+                ? safeParseJSON(propertiesStr)
+                : propertiesStr;
+        await client.query(sql, [
+            ts,
+            JSON.stringify(props ?? {}),
+            distinct_id ?? '',
+            session_id ?? '',
+            person_id ?? ''
+        ]);
+        inserted++;
+    }
+    return inserted;
+}
+
 // === HogQL fetch ===
 async function fetchPosthog(query) {
     const url = `${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query/`;
@@ -207,6 +242,13 @@ function injectWindow(hogql, startIso) {
             table: 'boutons_export_raw',
             insertFunction: insertBoutonsExportRaw,
             description: "Événements d'export de boutons"
+        },
+        {
+            name: 'boutons_homepage',
+            sqlFile: './etl/queries/boutons_homepage.hogql.sql',
+            table: 'boutons_homepage',
+            insertFunction: insertBoutonsHomepage,
+            description: "Événements de boutons sur la homepage"
         }
     ];
 
