@@ -193,6 +193,41 @@ async function insertBoutonsHomepage(client, rows) {
     return inserted;
 }
 
+async function insertThematique(client, rows) {
+    const sql = `
+    INSERT INTO analytics.thematique
+      (event_timestamp, properties, distinct_id, session_id, person_id, thematique)
+    VALUES ($1::timestamptz, $2::jsonb, $3::text, $4::text, $5::text, $6::text)
+    ON CONFLICT ON CONSTRAINT uq_thematique_natural DO NOTHING
+  `;
+    let inserted = 0;
+    for (const row of rows) {
+        if (!Array.isArray(row)) continue;
+        const [
+            ts,
+            propertiesStr,
+            distinct_id,
+            session_id,
+            person_id,
+            thematique
+        ] = row;
+        const props =
+            typeof propertiesStr === 'string'
+                ? safeParseJSON(propertiesStr)
+                : propertiesStr;
+        await client.query(sql, [
+            ts,
+            JSON.stringify(props ?? {}),
+            distinct_id ?? '',
+            session_id ?? '',
+            person_id ?? '',
+            thematique ?? ''
+        ]);
+        inserted++;
+    }
+    return inserted;
+}
+
 // === HogQL fetch ===
 async function fetchPosthog(query) {
     const url = `${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query/`;
@@ -249,6 +284,13 @@ function injectWindow(hogql, startIso) {
             table: 'boutons_homepage',
             insertFunction: insertBoutonsHomepage,
             description: "Événements de boutons sur la homepage"
+        },
+        {
+            name: 'thematique',
+            sqlFile: './etl/queries/thematique.hogql.sql',
+            table: 'thematique',
+            insertFunction: insertThematique,
+            description: "Événements de thématique"
         }
     ];
 
