@@ -31,7 +31,7 @@ const csp = {
         'blob:',
         'https://stats.beta.gouv.fr',
         process.env.NEXT_PUBLIC_ENV === 'preprod' && 'https://vercel.live',
-        process.env.NODE_ENV === 'development' &&
+        process.env.NODE_ENV === 'dev' &&
             "'unsafe-eval' http://localhost",
         '*.posthog.com'
     ],
@@ -47,19 +47,36 @@ const csp = {
         'https://les-communs-transition-ecologique-api-staging.osc-fr1.scalingo.io/sandbox/',
         'https://preprod-app.territoiresentransitions.fr',
         'https://staging-app.territoiresentransitions.fr',
+        'https://metabase.facili-tacct.beta.gouv.fr'
     ],
     'base-uri': ["'self'", 'https://*.gouv.fr'],
     'form-action': ["'self'", 'https://*.gouv.fr'],
     'block-all-mixed-content': [],
     'upgrade-insecure-requests': [],
     'frame-src': [
-        "'none'" // Iframe source
+        "https://metabase.facili-tacct.beta.gouv.fr" // Iframe source
     ],
     'worker-src': [
         "'self'",
         'blob:'
     ],
 };
+
+const cspStats = [
+  "default-src 'self'",
+  "frame-src https://metabase.facili-tacct.beta.gouv.fr https://*.beta.gouv.fr",
+  "img-src 'self' data: https:",
+  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ""}`,
+  "style-src 'self' 'unsafe-inline'",
+  `connect-src 'self'${process.env.NODE_ENV === 'development' ? " ws: wss:" : ""}`,
+  "frame-ancestors 'self'",
+].join("; ");
+
+const statsHeaders = [
+  { key: "Content-Security-Policy", value: cspStats },
+  { key: "Cross-Origin-Embedder-Policy", value: "unsafe-none" },
+  { key: "Cross-Origin-Opener-Policy", value: "unsafe-none" },
+];
 
 const ContentSecurityPolicy = Object.entries(csp)
     .map(([key, value]) => `${key} ${value.filter(Boolean).join(' ')};`)
@@ -145,7 +162,8 @@ const config = {
                         value: 'cross-origin'
                     }
                 ]
-            }
+            },
+            { source: "/stats", headers: statsHeaders },
         ];
     },
     async redirects() {
