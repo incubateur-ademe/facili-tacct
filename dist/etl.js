@@ -5639,14 +5639,7 @@ async function insertBoutonsHomepage(client, rows) {
   let inserted = 0;
   for (const row of rows) {
     if (!Array.isArray(row)) continue;
-    const [
-      ts,
-      event,
-      propertiesStr,
-      distinct_id,
-      session_id,
-      person_id
-    ] = row;
+    const [ts, event, propertiesStr, distinct_id, session_id, person_id] = row;
     const props = typeof propertiesStr === "string" ? safeParseJSON(propertiesStr) : propertiesStr;
     await client.query(sql, [
       ts,
