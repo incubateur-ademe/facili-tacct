@@ -96,7 +96,7 @@ var require_package = __commonJS({
 // node_modules/.pnpm/dotenv@17.2.2/node_modules/dotenv/lib/main.js
 var require_main = __commonJS({
   "node_modules/.pnpm/dotenv@17.2.2/node_modules/dotenv/lib/main.js"(exports2, module2) {
-    var fs2 = require("fs");
+    var fs3 = require("fs");
     var path = require("path");
     var os = require("os");
     var crypto = require("crypto");
@@ -235,7 +235,7 @@ var require_main = __commonJS({
       if (options && options.path && options.path.length > 0) {
         if (Array.isArray(options.path)) {
           for (const filepath of options.path) {
-            if (fs2.existsSync(filepath)) {
+            if (fs3.existsSync(filepath)) {
               possibleVaultPath = filepath.endsWith(".vault") ? filepath : `${filepath}.vault`;
             }
           }
@@ -245,7 +245,7 @@ var require_main = __commonJS({
       } else {
         possibleVaultPath = path.resolve(process.cwd(), ".env.vault");
       }
-      if (fs2.existsSync(possibleVaultPath)) {
+      if (fs3.existsSync(possibleVaultPath)) {
         return possibleVaultPath;
       }
       return null;
@@ -298,7 +298,7 @@ var require_main = __commonJS({
       const parsedAll = {};
       for (const path2 of optionPaths) {
         try {
-          const parsed = DotenvModule.parse(fs2.readFileSync(path2, { encoding }));
+          const parsed = DotenvModule.parse(fs3.readFileSync(path2, { encoding }));
           DotenvModule.populate(parsedAll, parsed, options);
         } catch (e) {
           if (debug) {
@@ -2031,15 +2031,15 @@ var require_pg_connection_string = __commonJS({
       if (config.sslcert || config.sslkey || config.sslrootcert || config.sslmode) {
         config.ssl = {};
       }
-      const fs2 = config.sslcert || config.sslkey || config.sslrootcert ? require("fs") : null;
+      const fs3 = config.sslcert || config.sslkey || config.sslrootcert ? require("fs") : null;
       if (config.sslcert) {
-        config.ssl.cert = fs2.readFileSync(config.sslcert).toString();
+        config.ssl.cert = fs3.readFileSync(config.sslcert).toString();
       }
       if (config.sslkey) {
-        config.ssl.key = fs2.readFileSync(config.sslkey).toString();
+        config.ssl.key = fs3.readFileSync(config.sslkey).toString();
       }
       if (config.sslrootcert) {
-        config.ssl.ca = fs2.readFileSync(config.sslrootcert).toString();
+        config.ssl.ca = fs3.readFileSync(config.sslrootcert).toString();
       }
       if (options.useLibpqCompat && config.uselibpqcompat) {
         throw new Error("Both useLibpqCompat and uselibpqcompat are set. Please use only one of them.");
@@ -4087,15 +4087,15 @@ var require_lib = __commonJS({
   "node_modules/.pnpm/pgpass@1.0.5/node_modules/pgpass/lib/index.js"(exports2, module2) {
     "use strict";
     var path = require("path");
-    var fs2 = require("fs");
+    var fs3 = require("fs");
     var helper = require_helper();
     module2.exports = function(connInfo, cb) {
       var file = helper.getFileName();
-      fs2.stat(file, function(err, stat) {
+      fs3.stat(file, function(err, stat) {
         if (err || !helper.usePgPass(stat, file)) {
           return cb(void 0);
         }
-        var st = fs2.createReadStream(file);
+        var st = fs3.createReadStream(file);
         helper.getPassword(connInfo, st, cb);
       });
     };
@@ -5470,7 +5470,7 @@ var require_lib2 = __commonJS({
   }
 });
 
-// etl/run.mjs
+// etl/runBaserow.mjs
 var import_dotenv = __toESM(require_main(), 1);
 var import_fs = __toESM(require("fs"), 1);
 
@@ -5489,7 +5489,7 @@ var TypeOverrides = import_lib.default.TypeOverrides;
 var defaults = import_lib.default.defaults;
 var esm_default = import_lib.default;
 
-// etl/run.mjs
+// etl/runBaserow.mjs
 if (import_fs.default.existsSync(".env")) {
   import_dotenv.default.config();
 }
@@ -5504,11 +5504,214 @@ function safeParseJSON(s) {
 }
 var {
   SCALINGO_POSTGRESQL_URL,
+  BASEROW_HOST,
+  BASEROW_API_KEY,
+  BASEROW_TABLE_ID_EVENEMENTS = "497107",
+  BASEROW_TABLE_ID_TERRITOIRES = "497107"
+} = process.env;
+if (!SCALINGO_POSTGRESQL_URL) {
+  console.error("SCALINGO_POSTGRESQL_URL manquante");
+  process.exit(1);
+}
+if (!BASEROW_HOST || !BASEROW_API_KEY) {
+  console.error("BASEROW_HOST / BASEROW_API_KEY manquants");
+  process.exit(1);
+}
+async function withPg(fn) {
+  const client = new esm_default.Client({
+    connectionString: SCALINGO_POSTGRESQL_URL,
+    ssl: process.env.NODE_ENV === "development" ? { ca: import_fs.default.readFileSync("ca.pem"), rejectUnauthorized: true } : { require: true, rejectUnauthorized: false }
+  });
+  await client.connect();
+  try {
+    return await fn(client);
+  } finally {
+    await client.end();
+  }
+}
+async function insertEvenements(client, rows) {
+  const sql = `
+    INSERT INTO analytics.baserow_evenements
+      (ordre, nom, date, type, qui_anime_evenement, compte_rendu, nom_participants, nom_territoires, propos_nom_evenement, campagne_test_utilisateur, champs_rapporte, fichier)
+    VALUES ($1, $2, $3, $4::jsonb, $5, $6, $7, $8, $9, $10::jsonb, $11, $12)
+  `;
+  let inserted = 0;
+  for (const row of rows) {
+    const ordre = row["order"] || null;
+    const nom = row["Nom"] || null;
+    const date = row["Dates"] || null;
+    const type = safeParseJSON(row["Type"]) || null;
+    const qui_anime_evenement = Array.isArray(row["Qui anime l'\xE9v\xE8nement"]) ? row["Qui anime l'\xE9v\xE8nement"] : row["Qui anime l'\xE9v\xE8nement"] ? [row["Qui anime l'\xE9v\xE8nement"]] : [];
+    const compte_rendu = row["Compte rendu de l'\xE9v\xE8nement"] || null;
+    const nom_participants = Array.isArray(row["Nom participant(s)"]) ? row["Nom participant(s)"] : row["Nom participant(s)"] ? [row["Nom participant(s)"]] : [];
+    const nom_territoires = Array.isArray(row["Nom Territoire"]) ? row["Nom Territoire"] : row["Nom Territoire"] ? [row["Nom Territoire"]] : [];
+    const propos_nom_evenement = Array.isArray(
+      row["Propos - Nom \xE9v\xE8nement"]
+    ) ? row["Propos - Nom \xE9v\xE8nement"] : row["Propos - Nom \xE9v\xE8nement"] ? [row["Propos - Nom \xE9v\xE8nement"]] : [];
+    const campagne_test_utilisateur = safeParseJSON(row["Campagne Tests Utilisateurs"]) || null;
+    const champs_rapporte = Array.isArray(row["Champ rapport\xE9"]) ? row["Champ rapport\xE9"] : row["Champ rapport\xE9"] ? [row["Champ rapport\xE9"]] : [];
+    const fichier = Array.isArray(row["Fichier"]) ? row["Fichier"] : row["Fichier"] ? [row["Fichier"]] : [];
+    await client.query(sql, [
+      ordre,
+      nom,
+      date,
+      JSON.stringify(type),
+      qui_anime_evenement,
+      compte_rendu,
+      nom_participants,
+      nom_territoires,
+      propos_nom_evenement,
+      JSON.stringify(campagne_test_utilisateur),
+      champs_rapporte,
+      fichier
+    ]);
+    inserted++;
+  }
+  return inserted;
+}
+async function insertTerritoires(client, rows) {
+  const sql = `
+    INSERT INTO analytics.baserow_territoires
+      (ordre, nom_territoire, notes_ouvertes, typologie_territoire, thematique_prioritaire, be, soumis_a_pcaet, demarches_et_programmes, documents_de_planification, avancee_sur_le_ddv, avancee_sur_la_strategie, suivi_evaluation, date_validation, date_revision_estimee, propos, attente_session_accueil, role_be, cdm, siren)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19)
+  `;
+  let inserted = 0;
+  for (const row of rows) {
+    const ordre = row["order"] || null;
+    const nom_territoire = row["Nom du territoire"] || null;
+    const notes_ouvertes = row["Notes ouvertes"] || null;
+    const typologie_territoire = Array.isArray(
+      row["Typologie de territoire"]
+    ) ? row["Typologie de territoire"] : row["Typologie de territoire"] ? [row["Typologie de territoire"]] : [];
+    const thematique_prioritaire = Array.isArray(
+      row["Th\xE9matique prioritaire"]
+    ) ? row["Th\xE9matique prioritaire"] : row["Th\xE9matique prioritaire"] ? [row["Th\xE9matique prioritaire"]] : [];
+    const be = row["BE ?"] === "true" || row["BE ?"] === true || null;
+    const soumis_a_pcaet = row["Soumis \xE0 PCAET"] === "true" || row["Soumis \xE0 PCAET"] === true || null;
+    const demarches_et_programmes = Array.isArray(
+      row["D\xE9marches & programmes"]
+    ) ? row["D\xE9marches & programmes"] : row["D\xE9marches & programmes"] ? [row["D\xE9marches & programmes"]] : [];
+    const documents_de_planification = Array.isArray(
+      row["Documents de planifications"]
+    ) ? row["Documents de planifications"] : row["Documents de planifications"] ? [row["Documents de planifications"]] : [];
+    const avancee_sur_le_ddv = Array.isArray(row["Avanc\xE9e sur le DDV"]) ? row["Avanc\xE9e sur le DDV"] : row["Avanc\xE9e sur le DDV"] ? [row["Avanc\xE9e sur le DDV"]] : [];
+    const avancee_sur_la_strategie = Array.isArray(
+      row["Avanc\xE9e sur la strat\xE9gie"]
+    ) ? row["Avanc\xE9e sur la strat\xE9gie"] : row["Avanc\xE9e sur la strat\xE9gie"] ? [row["Avanc\xE9e sur la strat\xE9gie"]] : [];
+    const suivi_evaluation = row["Suivi - \xE9valuation"] === "true" || row["Suivi - \xE9valuation"] === true || null;
+    const date_validation = row["Date de validation"] || null;
+    const date_revision_estimee = row["Date de r\xE9vision estim\xE9e"] || null;
+    const propos = Array.isArray(row["Propos"]) ? row["Propos"] : row["Propos"] ? [row["Propos"]] : [];
+    const attente_session_accueil = Array.isArray(
+      row["Attente communiqu\xE9es lors de la session d'accueil"]
+    ) ? row["Attente communiqu\xE9es lors de la session d'accueil"] : row["Attente communiqu\xE9es lors de la session d'accueil"] ? [row["Attente communiqu\xE9es lors de la session d'accueil"]] : [];
+    const role_be = Array.isArray(row["R\xF4le du BE"]) ? row["R\xF4le du BE"] : row["R\xF4le du BE"] ? [row["R\xF4le du BE"]] : [];
+    const cdm = Array.isArray(row["CdM"]) ? row["CdM"] : row["CdM"] ? [row["CdM"]] : [];
+    const siren = row["# SIREN"] || null;
+    await client.query(sql, [
+      ordre,
+      nom_territoire,
+      notes_ouvertes,
+      typologie_territoire,
+      thematique_prioritaire,
+      be,
+      soumis_a_pcaet,
+      demarches_et_programmes,
+      documents_de_planification,
+      avancee_sur_le_ddv,
+      avancee_sur_la_strategie,
+      suivi_evaluation,
+      date_validation,
+      date_revision_estimee,
+      propos,
+      attente_session_accueil,
+      role_be,
+      cdm,
+      siren
+    ]);
+    inserted++;
+  }
+  return inserted;
+}
+async function fetchBaserow(tableId) {
+  const url = `${BASEROW_HOST}/api/database/rows/table/${tableId}/?user_field_names=true`;
+  const resp = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: `Token ${BASEROW_API_KEY}`
+    }
+  });
+  if (!resp.ok)
+    throw new Error(`Baserow ${resp.status}: ${await resp.text()}`);
+  const { results = [] } = await resp.json();
+  return results;
+}
+(async () => {
+  const etlQueries = [
+    {
+      name: "evenements",
+      tableId: BASEROW_TABLE_ID_EVENEMENTS,
+      table: "baserow_evenements",
+      insertFunction: insertEvenements,
+      description: "\xC9v\xE9nements"
+    },
+    {
+      name: "territoires",
+      tableId: BASEROW_TABLE_ID_TERRITOIRES,
+      table: "baserow_territoires",
+      insertFunction: insertTerritoires,
+      description: "Territoires"
+    }
+  ];
+  console.log(`[ETL] D\xE9but du processus avec ${etlQueries.length} requ\xEAtes`);
+  for (const queryConfig of etlQueries) {
+    console.log(
+      `
+[ETL] Traitement de ${queryConfig.name} (${queryConfig.description})...`
+    );
+    try {
+      const results = await fetchBaserow(queryConfig.tableId);
+      console.log(
+        `[${queryConfig.name}] Donn\xE9es r\xE9cup\xE9r\xE9es : ${results.length} lignes`
+      );
+      const inserted = await withPg(
+        async (client) => queryConfig.insertFunction(client, results)
+      );
+      console.log(
+        `[${queryConfig.name}] Termin\xE9 : ${inserted}/${results.length} ligne(s) ins\xE9r\xE9e(s).`
+      );
+    } catch (error) {
+      console.error(`[${queryConfig.name}] Erreur :`, error);
+    }
+  }
+  console.log("\n[ETL] Processus termin\xE9 pour toutes les requ\xEAtes.");
+})().catch((e) => {
+  console.error("[ETL] Erreur fatale :", e);
+  process.exit(1);
+});
+
+// etl/runPosthog.mjs
+var import_dotenv2 = __toESM(require_main(), 1);
+var import_fs2 = __toESM(require("fs"), 1);
+if (import_fs2.default.existsSync(".env")) {
+  import_dotenv2.default.config();
+}
+function safeParseJSON2(s) {
+  if (s == null) return null;
+  if (typeof s === "object") return s;
+  try {
+    return JSON.parse(s);
+  } catch {
+    return null;
+  }
+}
+var {
+  SCALINGO_POSTGRESQL_URL: SCALINGO_POSTGRESQL_URL2,
   POSTHOG_HOST = "https://eu.posthog.com",
   POSTHOG_PROJECT_ID,
   POSTHOG_API_KEY
 } = process.env;
-if (!SCALINGO_POSTGRESQL_URL) {
+if (!SCALINGO_POSTGRESQL_URL2) {
   console.error("SCALINGO_POSTGRESQL_URL manquante");
   process.exit(1);
 }
@@ -5516,10 +5719,10 @@ if (!POSTHOG_PROJECT_ID || !POSTHOG_API_KEY) {
   console.error("POSTHOG_PROJECT_ID / POSTHOG_API_KEY manquantes");
   process.exit(1);
 }
-async function withPg(fn) {
+async function withPg2(fn) {
   const client = new esm_default.Client({
-    connectionString: SCALINGO_POSTGRESQL_URL,
-    ssl: process.env.NODE_ENV === "dev" ? { ca: import_fs.default.readFileSync("ca.pem"), rejectUnauthorized: true } : { require: true, rejectUnauthorized: false }
+    connectionString: SCALINGO_POSTGRESQL_URL2,
+    ssl: process.env.NODE_ENV === "dev" ? { ca: import_fs2.default.readFileSync("ca.pem"), rejectUnauthorized: true } : { require: true, rejectUnauthorized: false }
   });
   await client.connect();
   try {
@@ -5553,7 +5756,7 @@ async function insertAllPageviewRaw(client, rows) {
       current_url,
       person_id
     ] = row;
-    const props = typeof propertiesStr === "string" ? safeParseJSON(propertiesStr) : propertiesStr;
+    const props = typeof propertiesStr === "string" ? safeParseJSON2(propertiesStr) : propertiesStr;
     await client.query(sql, [
       ts,
       JSON.stringify(props ?? {}),
@@ -5584,7 +5787,7 @@ async function insertAllAutocaptureRaw(client, rows) {
       current_url,
       person_id
     ] = row;
-    const props = typeof propertiesStr === "string" ? safeParseJSON(propertiesStr) : propertiesStr;
+    const props = typeof propertiesStr === "string" ? safeParseJSON2(propertiesStr) : propertiesStr;
     await client.query(sql, [
       ts,
       JSON.stringify(props ?? {}),
@@ -5640,7 +5843,7 @@ async function insertBoutonsHomepage(client, rows) {
   for (const row of rows) {
     if (!Array.isArray(row)) continue;
     const [ts, event, propertiesStr, distinct_id, session_id, person_id] = row;
-    const props = typeof propertiesStr === "string" ? safeParseJSON(propertiesStr) : propertiesStr;
+    const props = typeof propertiesStr === "string" ? safeParseJSON2(propertiesStr) : propertiesStr;
     await client.query(sql, [
       ts,
       event ?? "",
@@ -5671,7 +5874,7 @@ async function insertThematique(client, rows) {
       person_id,
       thematique
     ] = row;
-    const props = typeof propertiesStr === "string" ? safeParseJSON(propertiesStr) : propertiesStr;
+    const props = typeof propertiesStr === "string" ? safeParseJSON2(propertiesStr) : propertiesStr;
     await client.query(sql, [
       ts,
       JSON.stringify(props ?? {}),
@@ -5750,19 +5953,19 @@ function injectWindow(hogql, startIso) {
 [ETL] Traitement de ${queryConfig.name} (${queryConfig.description})...`
     );
     try {
-      const startIso = await withPg(async (client) => {
+      const startIso = await withPg2(async (client) => {
         const maxTs = await getMaxTs(client, queryConfig.table);
         return new Date(
           new Date(maxTs).getTime() - 5 * 60 * 1e3
         ).toISOString();
       });
-      let hogql = import_fs.default.readFileSync(queryConfig.sqlFile, "utf8");
+      let hogql = import_fs2.default.readFileSync(queryConfig.sqlFile, "utf8");
       hogql = injectWindow(hogql, startIso);
       const results = await fetchPosthog(hogql);
       console.log(
         `[${queryConfig.name}] Donn\xE9es r\xE9cup\xE9r\xE9es : ${results.length} lignes`
       );
-      const inserted = await withPg(
+      const inserted = await withPg2(
         async (client) => queryConfig.insertFunction(client, results)
       );
       console.log(
