@@ -37,9 +37,10 @@ if (!POSTHOG_PROJECT_ID || !POSTHOG_API_KEY) {
 async function withPg(fn) {
     const client = new pg.Client({
         connectionString: SCALINGO_POSTGRESQL_URL,
-        ssl: process.env.NODE_ENV === 'dev'
-              ? { ca: fs.readFileSync('ca.pem'), rejectUnauthorized: true }
-              : { require: true, rejectUnauthorized: false }
+        ssl:
+            process.env.NODE_ENV === 'dev'
+                ? { ca: fs.readFileSync('ca.pem'), rejectUnauthorized: true }
+                : { require: true, rejectUnauthorized: false }
     });
     await client.connect();
     try {
@@ -170,14 +171,8 @@ async function insertBoutonsHomepage(client, rows) {
     let inserted = 0;
     for (const row of rows) {
         if (!Array.isArray(row)) continue;
-        const [
-            ts,
-            event,
-            propertiesStr,
-            distinct_id,
-            session_id,
-            person_id
-        ] = row;
+        const [ts, event, propertiesStr, distinct_id, session_id, person_id] =
+            row;
         const props =
             typeof propertiesStr === 'string'
                 ? safeParseJSON(propertiesStr)
@@ -188,7 +183,7 @@ async function insertBoutonsHomepage(client, rows) {
             JSON.stringify(props ?? {}),
             distinct_id ?? '',
             session_id ?? '',
-            person_id ?? '',
+            person_id ?? ''
         ]);
         inserted++;
     }
@@ -229,7 +224,6 @@ async function insertThematique(client, rows) {
     }
     return inserted;
 }
-
 
 // === HogQL fetch ===
 async function fetchPosthog(query) {
@@ -286,14 +280,14 @@ function injectWindow(hogql, startIso) {
             sqlFile: './etl/queries/boutons_homepage.hogql.sql',
             table: 'boutons_homepage',
             insertFunction: insertBoutonsHomepage,
-            description: "Événements de boutons sur la homepage"
+            description: 'Événements de boutons sur la homepage'
         },
         {
             name: 'thematique',
             sqlFile: './etl/queries/thematique.hogql.sql',
             table: 'thematique',
             insertFunction: insertThematique,
-            description: "Événements de thématique"
+            description: 'Événements de thématique'
         }
     ];
 

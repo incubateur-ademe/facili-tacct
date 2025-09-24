@@ -1,13 +1,13 @@
 "use client";
-import { Body, H1 } from '@/design-system/base/Textes';
+import { Body, H2 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import { useEffect, useState } from 'react';
 
-const Page = () => {
+const MetabaseComponent = () => {
   const [src, setSrc] = useState<string>("");
 
   useEffect(() => {
-    const params = { dashboardId: 4 };
+    const params = { dashboardId: 5 };
     fetch(`/api/metabase?params=${JSON.stringify(params)}`)
       .then(r => r.json())
       .then(({ embedUrl }) => setSrc(embedUrl))
@@ -19,7 +19,7 @@ const Page = () => {
   return (
     <>
       <NewContainer size="xl">
-        <H1>Statistiques</H1>
+        <H2>Statistiques</H2>
         <Body>
           <i>
             Cette page présente les statistiques d’utilisation du site Facili-TACCT.
@@ -30,12 +30,12 @@ const Page = () => {
       </NewContainer>
       {
         src &&
-        <div className="w-full">
+        <div className="w-full h-full" style={{ height: "max-content" }}>
           <iframe
             src={src}
             title="Tableau de bord stats"
             className="w-full"
-            style={{ minHeight: 900 }}
+            style={{ minHeight: 900, height: "max-content" }}
             allow="fullscreen"
           />
         </div>
@@ -44,4 +44,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default MetabaseComponent;

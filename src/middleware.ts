@@ -24,6 +24,7 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
   // Only protect /sandbox/* routes
   if (req.nextUrl.pathname.startsWith('/sandbox/')) {
     const token: JWT | null = await getToken({ req } as MiddlewareTokenOptions);
+    console.log('Middleware token:', token);
     if (!token) {
       // Redirect unauthenticated users to the home page
       return NextResponse.redirect(new URL('/', req.url));
@@ -35,8 +36,8 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
 export const config = {
   matcher: [
     '/api/ressources',
-    '/sandbox/:user*',
+    '/sandbox/',
     '/ressources/articles',
-    '/donnees-territoriales',
-  ],
+    '/donnees-territoriales'
+  ]
 };
