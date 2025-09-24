@@ -13,9 +13,10 @@
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev --turbopack",
     "build": "cross-env NODE_OPTIONS=--inspect next build && node copy-assets.js",
     "start": "node .next/standalone/server.js",
-    "etl:test": "node etl/run.mjs",
+    "etl:test-posthog": "node etl/runPosthog.mjs",
+    "etl:test-baserow": "node etl/runBaserow.mjs",
     "etl:daily": "node dist/etl.js",
-    "build:etl": "esbuild etl/run.mjs --bundle --platform=node --format=cjs --outfile=dist/etl.js",
+    "build:etl": "esbuild etl/index.mjs --bundle --platform=node --format=cjs --outfile=dist/etl.js",
     "eslint": "eslint --fix ./src",
     "test": "jest"
   },
