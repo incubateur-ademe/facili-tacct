@@ -101,6 +101,7 @@ export const DiagnostiquerImpactsAgriculture = () => {
             <BoutonPrimaireClassic
               size='sm'
               text='Prendre rendez-vous'
+              onClick={() => window.open('https://rdv.incubateur.ademe.fr/facili-tacct/echange-j-20', '_blank', 'noopener,noreferrer')}
             />
           </div>
           <Image
