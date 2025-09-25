@@ -1,8 +1,8 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { MicroRemplissageTerritoire } from '@/components/charts/MicroDataviz';
-import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
+import { CopyLinkClipboard } from '@/components/interactions/CopyLinkClipboard';
 import { fragiliteEcoLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import { MapInconfortThermique } from '@/components/maps/mapInconfortThermique';

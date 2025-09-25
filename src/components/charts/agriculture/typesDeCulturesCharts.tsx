@@ -3,7 +3,7 @@
 import WarningIcon from "@/assets/icons/exclamation_point_icon_black.png";
 import { PieChartAgriculture } from '@/components/charts/agriculture/pieChartAgriculture';
 import SurfacesAgricolesProgressBar from '@/components/charts/agriculture/surfacesAgricolesProgressBar';
-import SubTabs from '@/components/SubTabs';
+import SubTabs from '@/components/ui/SubTabs';
 import { Body } from "@/design-system/base/Textes";
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
 import { multipleEpciBydepartementLibelle } from '@/lib/territoireData/multipleEpciBydepartement';

@@ -9,8 +9,8 @@ import Header from '@codegouvfr/react-dsfr/Header';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useStyles } from 'tss-react/dsfr';
-import { Brand } from './Brand';
-import styles from './components.module.scss';
+import { Brand } from '../Brand';
+import styles from '../components.module.scss';
 
 const ReplaceDisplayEpci = (libelleEpci: string) => {
   return libelleEpci

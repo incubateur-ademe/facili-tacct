@@ -1,6 +1,6 @@
 'use client';
 
-import { Loader } from '@/components/loader';
+import { Loader } from '@/components/ui/loader';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import Image from 'next/image';
 import { lazy, useEffect, useState } from 'react';

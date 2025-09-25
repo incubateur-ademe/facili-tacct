@@ -1,5 +1,5 @@
 "use client";
-import { Loader } from "@/components/loader";
+import { Loader } from "@/components/ui/loader";
 import { HtmlTooltip } from "@/components/utils/Tooltips";
 import { Body, H1 } from "@/design-system/base/Textes";
 import { Any } from "@/lib/utils/types";

@@ -1,7 +1,7 @@
 "use client";
 
 import RangeSlider from "@/components/Slider";
-import SubTabs from '@/components/SubTabs';
+import SubTabs from '@/components/ui/SubTabs';
 import { Body } from "@/design-system/base/Textes";
 import { RessourcesEau } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';

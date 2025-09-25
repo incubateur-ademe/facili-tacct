@@ -1,3 +1,4 @@
+import { ScrollToSourceTag } from "@/components/interactions/scrollToSource";
 import { DefinitionTooltip } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { eutrophisation } from "@/lib/definitions";
@@ -110,24 +111,16 @@ export const SurfacesIrrigueesText = () => (
       rendements (consommation importante en eau et en intrants) versus l’irrigation
       “de résilience” visant à stabiliser les récoltes. C’est aussi une question
       d’orientation stratégique :{" "}
-      <a
-        href="https://www.ihemi.fr/articles/eau-et-agriculture-enjeux-et-risques-en-periode-de-changement-climatique#:~:text=Le%20changement%20climatique%20affectera%20%C3%A0,eau%20sont%20les%20plus%20fortes"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <ScrollToSourceTag sourceNumero={1}>
         un tiers de nos surfaces irriguées nourrissent l'export
-      </a>
+      </ScrollToSourceTag>
       , pas la France.
     </Body>
     <Body size='sm'>
       <b>Un défi de sobriété à prioriser</b> : abandonner l'aspersion (
-      <a
-        href="https://www.inrae.fr/dossiers/lagriculture-va-t-elle-manquer-deau/irriguer-differemment"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <ScrollToSourceTag sourceNumero={2}>
         80% des irrigants
-      </a>
+      </ScrollToSourceTag>
       ) pour des techniques économes qui existent déjà (goutte-à-goutte, capteurs intelligents,
       pilotage précis). L'irrigation peut aider la diversification des cultures et servir
       l'agroécologie... mais seulement si la ressource reste disponible !

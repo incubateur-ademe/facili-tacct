@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
 import { useState } from 'react';
 import styles from "../components.module.scss";
-import { CopyLinkClipboard } from '../CopyLinkClipboard';
+import { CopyLinkClipboard } from '../interactions/CopyLinkClipboard';
 
 type ExportDataRow = Record<string, string | number | boolean | null | bigint | undefined>;
 

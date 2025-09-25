@@ -1,5 +1,6 @@
 'use client';
 
+import { sommaireImpacts, sommaireThematiques } from '@/app/(main)/(nouveau-parcours)/thematiques/constantes/textesThematiques';
 import { ErrorDisplay } from '@/app/ErrorDisplay';
 import retourIcon from '@/assets/icons/retour_icon_black.svg';
 import { Body, H2, SousTitre2 } from '@/design-system/base/Textes';
@@ -8,8 +9,7 @@ import { GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { sommaireImpacts, sommaireThematiques } from '../app/(main)/(nouveau-parcours)/thematiques/constantes/textesThematiques';
-import styles from './components.module.scss';
+import styles from '../components.module.scss';
 
 export const MenuLateral = () => {
   const searchParams = useSearchParams();
@@ -319,7 +319,7 @@ export const MenuLateral = () => {
               </>
             ) : ""
             }
-            {thematique === "Agriculture" && (
+            {/* {thematique === "Agriculture" && (
               <>
                 <button
                   onClick={handleEtape2Toggle}
@@ -357,7 +357,7 @@ export const MenuLateral = () => {
                   }
                 </div>
               </>
-            )}
+            )} */}
           </div>
         </nav>
       ) : <ErrorDisplay code="404" />

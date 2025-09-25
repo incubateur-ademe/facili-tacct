@@ -18,7 +18,7 @@ export const sourcesEtudes = {
       numero: 1,
       url: 'https://www.santepubliquefrance.fr/presse/2023/fortes-chaleurs-et-canicule-un-impact-sur-la-mortalite-important-necessitant-le-renforcement-de-la-prevention-et-de-l-adaptation-au-changement-cl',
       texte:
-        'Santé publique France, Chaleur et santé : surveillance et prévention des impacts de la chaleur dans un contexte de changement climatique, 2023'
+        'Santé publique France, Chaleur et santé : surveillance et prévention des impacts de la chaleur dans un contexte de changement climatique, 2023'
     },
     {
       numero: 2,
@@ -29,7 +29,7 @@ export const sourcesEtudes = {
       numero: 3,
       url: 'https://www.santepubliquefrance.fr/content/download/543105/3948412?version=1',
       texte:
-        'Santé publique France, Chaleur et santé : surveillance et prévention des impacts de la chaleur dans un contexte de changement climatique. Dossier de presse, juin 2023'
+        'Santé publique France, Chaleur et santé : surveillance et prévention des impacts de la chaleur dans un contexte de changement climatique. Dossier de presse, juin 2023'
     },
     {
       numero: 4,

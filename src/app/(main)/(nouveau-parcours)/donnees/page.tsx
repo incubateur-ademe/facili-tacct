@@ -1,5 +1,5 @@
 import { ErrorDisplay } from '@/app/ErrorDisplay';
-import { LoaderText } from '@/components/loader';
+import { LoaderText } from '@/components/ui/loader';
 import { Suspense } from 'react';
 import { SearchParams } from '../../types';
 import AgricultureServerPage from './thematiques/agriculture/AgricultureServerPage';

@@ -4,7 +4,7 @@ import BulbIcon from '@/assets/icons/lightbulb_icon_black.svg';
 import TRACC from "@/assets/images/tracc.png";
 import TRACCMesures1 from "@/assets/images/tracc_51_mesures1.png";
 import TRACCMesures2 from "@/assets/images/tracc_51_mesures2.png";
-import { RetourHautDePage } from '@/components/RetourHautDePage';
+import { RetourHautDePage } from '@/components/interactions/RetourHautDePage';
 import Image from "next/image";
 import Link from 'next/link';
 import EndPageTrigger from "../../../hooks/EndPageTrigger";

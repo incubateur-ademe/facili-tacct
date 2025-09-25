@@ -1,6 +1,6 @@
 import { BarLineFeuxForet } from '@/components/charts/gestionRisques/BarLineFeuxForet';
 import PieChartFeuxForet from '@/components/charts/gestionRisques/pieChartFeuxForet';
-import SubTabs from '@/components/SubTabs';
+import SubTabs from '@/components/ui/SubTabs';
 import { IncendiesForet } from '@/lib/postgres/models';
 import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
 import styles from './gestionRisquesCharts.module.scss';

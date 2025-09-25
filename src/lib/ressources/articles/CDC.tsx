@@ -1,5 +1,5 @@
 import AtelierImage from "@/assets/images/article2.png";
-import { RetourHautDePage } from "@/components/RetourHautDePage";
+import { RetourHautDePage } from "@/components/interactions/RetourHautDePage";
 import EndPageTrigger from "@/hooks/EndPageTrigger";
 import Image from "next/image";
 import styles from "./article.module.scss";

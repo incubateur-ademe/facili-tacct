@@ -1,5 +1,5 @@
 
-import { LoaderText } from '@/components/loader';
+import { LoaderText } from '@/components/ui/loader';
 import couleurs from '@/design-system/couleurs';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';

@@ -1,4 +1,4 @@
-import HeaderComp from "@/components/Header";
+import HeaderComp from "@/components/ui/Header";
 import { ClientOnly } from "@/components/utils/ClientOnly";
 import AppFooter from "@/design-system/layout/Footer";
 import { type Metadata } from 'next';

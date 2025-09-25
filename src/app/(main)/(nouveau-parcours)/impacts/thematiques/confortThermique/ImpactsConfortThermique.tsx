@@ -1,14 +1,19 @@
 "use client";
 import RDVImage from '@/assets/images/prendreRDV.png';
 import { MicroPieChart } from '@/components/charts/MicroDataviz';
+import { ScrollToSourceTag, SourcesSection } from '@/components/interactions/scrollToSource';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H2 } from "@/design-system/base/Textes";
-import { sourcesEtudes } from '@/lib/sources';
 import Image from "next/image";
 import { ThematiquesLieesNavigation } from '../../components/ThematiquesLieesNavigation';
 import styles from '../../impacts.module.scss';
 
 export const DiagnostiquerImpactsConfortThermique = () => {
+  const handleScrollToSources = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById('sourcesSection');
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <>
       {/* Introduction */}
@@ -108,13 +113,9 @@ export const DiagnostiquerImpactsConfortThermique = () => {
               <MicroPieChart pourcentage={28} ariaLabel="Pourcentage des décès liés à la chaleur" />
               <Body>
                 En France, {" "}
-                <a
-                  href="https://www.santepubliquefrance.fr/presse/2023/fortes-chaleurs-et-canicule-un-impact-sur-la-mortalite-important-necessitant-le-renforcement-de-la-prevention-et-de-l-adaptation-au-changement-cl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <ScrollToSourceTag sourceNumero={1}>
                   seuls <b>28 %</b> des décès liés à la chaleur
-                </a>
+                </ScrollToSourceTag>
                 {" "}se produisent pendant les canicules ; ce qui ne représente que <b>6 % des
                   jours d’été</b>. Soyons vigilants aussi en dehors des périodes de canicule.
               </Body>
@@ -137,25 +138,20 @@ export const DiagnostiquerImpactsConfortThermique = () => {
           </div>
           <div className={styles.donneesNationalesWrapper}>
             <div className={styles.leftData}>
-              <MicroPieChart pourcentage={71} ariaLabel="Pourcentage des consultations SOS médecinspour les plus de 75 ans" />
+              <MicroPieChart
+                pourcentage={71}
+                ariaLabel="Pourcentage des consultations SOS médecinspour les plus de 75 ans"
+              />
               <Body>
                 Tous exposés : {" "}
-                <a
-                  href="https://www.santepubliquefrance.fr/presse/2022/bilan-canicule-et-sante-un-ete-marque-par-des-phenomenes-climatiques-multiples-et-un-impact-sanitaire-important"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <ScrollToSourceTag sourceNumero={2}>
                   <b>71 %</b> des consultations SOS médecins
-                </a>
+                </ScrollToSourceTag>
                 {" "}liées à la chaleur concernent des personnes de moins de 75 ans (juin-septembre 2022).
                 <br></br>Seuls {" "}
-                <a
-                  href="https://www.santepubliquefrance.fr/content/download/543105/3948412?version=1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <ScrollToSourceTag sourceNumero={3}>
                   <b>12 %</b> des Français
-                </a>
+                </ScrollToSourceTag>
                 {" "}se considèrent fragiles ou très fragiles pendant une canicule.
               </Body>
             </div>
@@ -181,22 +177,14 @@ export const DiagnostiquerImpactsConfortThermique = () => {
             <div className={styles.leftData}>
               <MicroPieChart pourcentage={55} ariaLabel="Pourcentage des Français ayant trop chaud" />
               <Body>
-                <a
-                  href="https://www.fondationpourlelogement.fr/wp-content/uploads/import/sites/default/files/2024-08/BROCHURE-Precarite-energetique-ete_2024.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <ScrollToSourceTag sourceNumero={4}>
                   <b>55 %</b> des Français
-                </a>
+                </ScrollToSourceTag>
                 {" "}déclarent avoir eu trop chaud pendant au moins 24 heures dans leur logement en 2023.
                 <br></br>
-                <a
-                  href="https://plusfraichemaville.fr/fiche-solution/planter-un-arbre"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <ScrollToSourceTag sourceNumero={5}>
                   La présence d’arbres peut rafraîchir l’air de <b>2 à 3 °C</b>
-                </a>
+                </ScrollToSourceTag>
                 , notamment dans les rues ou lorsqu’ils sont
                 alignés en bordure de route.
               </Body>
@@ -245,26 +233,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
           />
         </div>
       </section>
-      <section className={styles.sectionType}>
-        <div id="section3" className={styles.diagnosticWrapper}>
-          <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
-            Sources des données
-          </H2>
-          {sourcesEtudes.confortThermique.map(source => (
-            <Body key={source.numero} size="sm" style={{ marginBottom: '0.5rem' }}>
-              [{source.numero}]{" "}
-              <a
-                href={source.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: "var(--graphiques-bleu-1" }}
-              >
-                {source.texte}
-              </a>
-            </Body>
-          ))}
-        </div>
-      </section>
+      <SourcesSection tag="h2" thematique="confortThermique" />
       <section className={styles.sectionType}>
         <div id="section4" className={styles.diagnosticWrapper}>
           <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>

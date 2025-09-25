@@ -8,7 +8,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef } from 'react';
-import { Loader } from '../loader';
+import { Loader } from '../ui/loader';
 import { BoundsFromCollection } from './components/boundsFromCollection';
 import { CoursDeauTooltip } from './components/tooltips';
 

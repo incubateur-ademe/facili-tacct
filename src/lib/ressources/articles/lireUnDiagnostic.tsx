@@ -2,7 +2,7 @@
 import BookIcon from "@/assets/icons/book_icon_black.svg";
 import ForwardArrow from "@/assets/icons/keyboard_arrow_next_icon_black.svg";
 import ChaineImpact from "@/assets/images/article15.png";
-import { RetourHautDePage } from "@/components/RetourHautDePage";
+import { RetourHautDePage } from "@/components/interactions/RetourHautDePage";
 import ZoomOnClick from "@/components/utils/ZoomOnClick";
 import Image from "next/image";
 import Link from "next/link";

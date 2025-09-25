@@ -1,5 +1,5 @@
 'use client';
-import { RetourHautDePage } from '@/components/RetourHautDePage';
+import { RetourHautDePage } from '@/components/interactions/RetourHautDePage';
 import couleurs from '@/design-system/couleurs';
 import { cards, ressourcesTabs } from '@/lib/ressources/cards';
 import { useState } from 'react';

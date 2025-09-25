@@ -8,7 +8,7 @@ import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { agricultureBioBarChartLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import RangeSlider from '@/components/Slider';
-import SubTabs from '@/components/SubTabs';
+import SubTabs from '@/components/ui/SubTabs';
 import { Body } from "@/design-system/base/Textes";
 import { AgricultureBio } from '@/lib/postgres/models';
 import { multipleEpciBydepartementLibelle } from "@/lib/territoireData/multipleEpciBydepartement";
