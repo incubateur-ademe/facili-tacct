@@ -5507,7 +5507,7 @@ var {
   BASEROW_HOST,
   BASEROW_API_KEY,
   BASEROW_TABLE_ID_EVENEMENTS = "497107",
-  BASEROW_TABLE_ID_TERRITOIRES = "497107"
+  BASEROW_TABLE_ID_TERRITOIRES = "497101"
 } = process.env;
 if (!SCALINGO_POSTGRESQL_URL) {
   console.error("SCALINGO_POSTGRESQL_URL manquante");
@@ -5534,8 +5534,21 @@ async function insertEvenements(client, rows) {
     INSERT INTO analytics.baserow_evenements
       (ordre, nom, date, type, qui_anime_evenement, compte_rendu, nom_participants, nom_territoires, propos_nom_evenement, campagne_test_utilisateur, champs_rapporte, fichier)
     VALUES ($1, $2, $3, $4::jsonb, $5, $6, $7, $8, $9, $10::jsonb, $11, $12)
+    ON CONFLICT (ordre) DO UPDATE SET
+      nom = EXCLUDED.nom,
+      date = EXCLUDED.date,
+      type = EXCLUDED.type,
+      qui_anime_evenement = EXCLUDED.qui_anime_evenement,
+      compte_rendu = EXCLUDED.compte_rendu,
+      nom_participants = EXCLUDED.nom_participants,
+      nom_territoires = EXCLUDED.nom_territoires,
+      propos_nom_evenement = EXCLUDED.propos_nom_evenement,
+      campagne_test_utilisateur = EXCLUDED.campagne_test_utilisateur,
+      champs_rapporte = EXCLUDED.champs_rapporte,
+      fichier = EXCLUDED.fichier
   `;
   let inserted = 0;
+  let updated = 0;
   for (const row of rows) {
     const ordre = row["order"] || null;
     const nom = row["Nom"] || null;
@@ -5551,7 +5564,7 @@ async function insertEvenements(client, rows) {
     const campagne_test_utilisateur = safeParseJSON(row["Campagne Tests Utilisateurs"]) || null;
     const champs_rapporte = Array.isArray(row["Champ rapport\xE9"]) ? row["Champ rapport\xE9"] : row["Champ rapport\xE9"] ? [row["Champ rapport\xE9"]] : [];
     const fichier = Array.isArray(row["Fichier"]) ? row["Fichier"] : row["Fichier"] ? [row["Fichier"]] : [];
-    await client.query(sql, [
+    const result = await client.query(sql, [
       ordre,
       nom,
       date,
@@ -5565,17 +5578,43 @@ async function insertEvenements(client, rows) {
       champs_rapporte,
       fichier
     ]);
-    inserted++;
+    if (result.rowCount > 0) {
+      if (result.command === "INSERT") {
+        inserted++;
+      } else if (result.command === "UPDATE") {
+        updated++;
+      }
+    }
   }
-  return inserted;
+  return { inserted, updated };
 }
 async function insertTerritoires(client, rows) {
   const sql = `
     INSERT INTO analytics.baserow_territoires
       (ordre, nom_territoire, notes_ouvertes, typologie_territoire, thematique_prioritaire, be, soumis_a_pcaet, demarches_et_programmes, documents_de_planification, avancee_sur_le_ddv, avancee_sur_la_strategie, suivi_evaluation, date_validation, date_revision_estimee, propos, attente_session_accueil, role_be, cdm, siren)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19)
+    ON CONFLICT (ordre) DO UPDATE SET
+      nom_territoire = EXCLUDED.nom_territoire,
+      notes_ouvertes = EXCLUDED.notes_ouvertes,
+      typologie_territoire = EXCLUDED.typologie_territoire,
+      thematique_prioritaire = EXCLUDED.thematique_prioritaire,
+      be = EXCLUDED.be,
+      soumis_a_pcaet = EXCLUDED.soumis_a_pcaet,
+      demarches_et_programmes = EXCLUDED.demarches_et_programmes,
+      documents_de_planification = EXCLUDED.documents_de_planification,
+      avancee_sur_le_ddv = EXCLUDED.avancee_sur_le_ddv,
+      avancee_sur_la_strategie = EXCLUDED.avancee_sur_la_strategie,
+      suivi_evaluation = EXCLUDED.suivi_evaluation,
+      date_validation = EXCLUDED.date_validation,
+      date_revision_estimee = EXCLUDED.date_revision_estimee,
+      propos = EXCLUDED.propos,
+      attente_session_accueil = EXCLUDED.attente_session_accueil,
+      role_be = EXCLUDED.role_be,
+      cdm = EXCLUDED.cdm,
+      siren = EXCLUDED.siren
   `;
   let inserted = 0;
+  let updated = 0;
   for (const row of rows) {
     const ordre = row["order"] || null;
     const nom_territoire = row["Nom du territoire"] || null;
@@ -5608,7 +5647,7 @@ async function insertTerritoires(client, rows) {
     const role_be = Array.isArray(row["R\xF4le du BE"]) ? row["R\xF4le du BE"] : row["R\xF4le du BE"] ? [row["R\xF4le du BE"]] : [];
     const cdm = Array.isArray(row["CdM"]) ? row["CdM"] : row["CdM"] ? [row["CdM"]] : [];
     const siren = row["# SIREN"] || null;
-    await client.query(sql, [
+    const result = await client.query(sql, [
       ordre,
       nom_territoire,
       notes_ouvertes,
@@ -5629,22 +5668,34 @@ async function insertTerritoires(client, rows) {
       cdm,
       siren
     ]);
-    inserted++;
+    if (result.rowCount > 0) {
+      if (result.command === "INSERT") {
+        inserted++;
+      } else if (result.command === "UPDATE") {
+        updated++;
+      }
+    }
   }
-  return inserted;
+  return { inserted, updated };
 }
 async function fetchBaserow(tableId) {
-  const url = `${BASEROW_HOST}/api/database/rows/table/${tableId}/?user_field_names=true`;
-  const resp = await fetch(url, {
-    method: "GET",
-    headers: {
-      Authorization: `Token ${BASEROW_API_KEY}`
-    }
-  });
-  if (!resp.ok)
-    throw new Error(`Baserow ${resp.status}: ${await resp.text()}`);
-  const { results = [] } = await resp.json();
-  return results;
+  const baseUrl = `${BASEROW_HOST}/api/database/rows/table/${tableId}/?user_field_names=true`;
+  let allResults = [];
+  let nextUrl = baseUrl;
+  while (nextUrl) {
+    const resp = await fetch(nextUrl, {
+      method: "GET",
+      headers: {
+        Authorization: `Token ${BASEROW_API_KEY}`
+      }
+    });
+    if (!resp.ok)
+      throw new Error(`Baserow ${resp.status}: ${await resp.text()}`);
+    const data = await resp.json();
+    allResults = allResults.concat(data.results);
+    nextUrl = data.next ? data.next.replace(/^http:/, "https:") : null;
+  }
+  return allResults;
 }
 (async () => {
   const etlQueries = [
@@ -5674,11 +5725,11 @@ async function fetchBaserow(tableId) {
       console.log(
         `[${queryConfig.name}] Donn\xE9es r\xE9cup\xE9r\xE9es : ${results.length} lignes`
       );
-      const inserted = await withPg(
+      const result = await withPg(
         async (client) => queryConfig.insertFunction(client, results)
       );
       console.log(
-        `[${queryConfig.name}] Termin\xE9 : ${inserted}/${results.length} ligne(s) ins\xE9r\xE9e(s).`
+        `[${queryConfig.name}] Termin\xE9 : ${result.inserted} ins\xE9r\xE9(s), ${result.updated} mis \xE0 jour(s).`
       );
     } catch (error) {
       console.error(`[${queryConfig.name}] Erreur :`, error);
