@@ -2,7 +2,7 @@
 import HautDePageIcon from '@/assets/icons/haut_de_page_icon_white.svg';
 import { Body } from "@/design-system/base/Textes";
 import Image from "next/image";
-import styles from './components.module.scss';
+import styles from '../components.module.scss';
 
 export const RetourHautDePage = () => {
   return (
