@@ -1,10 +1,10 @@
 import { CatnatTypes } from '@/app/(main)/types';
-import RangeSlider from '@/components/Slider';
-import SubTabs from '@/components/SubTabs';
 import { BarChartCatnat } from '@/components/charts/gestionRisques/BarChartCatnat';
 import PieChartCatnat from '@/components/charts/gestionRisques/pieChartCatnat';
 import { LegendCatnat } from '@/components/maps/legends/legendCatnat';
 import { MapCatnat } from '@/components/maps/mapCatnat';
+import RangeSlider from '@/components/Slider';
+import SubTabs from '@/components/ui/SubTabs';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';

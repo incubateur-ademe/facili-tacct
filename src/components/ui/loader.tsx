@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import styles from "./components.module.scss";
+import styles from "../components.module.scss";
 
 export const Loader = () => {
   return (

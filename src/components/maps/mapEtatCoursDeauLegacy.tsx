@@ -1,25 +1,25 @@
 'use client';
 
 import {
-  CommunesIndicateursDto,
-  EtatCoursDeauDto
+    CommunesIndicateursDto,
+    EtatCoursDeauDto
 } from '@/lib/dto';
 import { QualiteSitesBaignade } from '@/lib/postgres/models';
 import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
 import { Any } from '@/lib/utils/types';
 import { Feature } from 'geojson';
 import {
-  FeatureGroup,
-  LatLngBoundsExpression,
-  Layer,
-  LeafletMouseEventHandlerFn,
-  StyleFunction
+    FeatureGroup,
+    LatLngBoundsExpression,
+    Layer,
+    LeafletMouseEventHandlerFn,
+    StyleFunction
 } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
-import { Loader } from '../loader';
+import { Loader } from '../ui/loader';
 import { BoundsFromCollection } from './components/boundsFromCollection';
 import { CoursDeauTooltip } from './components/tooltips';
 

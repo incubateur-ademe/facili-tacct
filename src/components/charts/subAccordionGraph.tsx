@@ -98,8 +98,8 @@ export const SubAccordionGraph = ({
       </AccordionSummary>
       <div style={{ padding: '0 0 1rem' }}>
         {sortedData.map((item, index) => (
-          <AccordionDetails>
-            <div key={index} className={styles.progressDataWrapperSurfacesAgricoles}>
+          <AccordionDetails key={index}>
+            <div className={styles.progressDataWrapperSurfacesAgricoles}>
               <div className={styles.progressDesign}>
                 <div className={styles.progressBar}>
                   <p>{item.id}</p>

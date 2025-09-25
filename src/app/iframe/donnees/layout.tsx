@@ -1,5 +1,5 @@
-import { Loader } from '@/components/loader';
-import { MenuLateral } from '@/components/MenuLateral';
+import { Loader } from '@/components/ui/loader';
+import { MenuLateral } from '@/components/ui/MenuLateral';
 import { type PropsWithChildren, Suspense } from 'react';
 
 const ExplorerTerritoireLayout = ({ children }: PropsWithChildren) => {

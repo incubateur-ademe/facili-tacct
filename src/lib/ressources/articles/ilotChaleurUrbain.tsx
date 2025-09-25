@@ -1,7 +1,7 @@
 "use client";
 import ICUGuideSurchauffe from "@/assets/images/ICU_Guide_Surchauffe.png";
 import ICUVilles from "@/assets/images/villes_exposees_icu.png";
-import { RetourHautDePage } from "@/components/RetourHautDePage";
+import { RetourHautDePage } from "@/components/interactions/RetourHautDePage";
 import { DefinitionTooltip } from "@/components/utils/Tooltips";
 import { albedo, surchauffeUrbaine } from "@/lib/definitions";
 import Image from "next/image";

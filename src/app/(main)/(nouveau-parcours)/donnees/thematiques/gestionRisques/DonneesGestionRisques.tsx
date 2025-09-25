@@ -1,5 +1,5 @@
 "use client";
-import { LoaderText } from '@/components/loader';
+import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";

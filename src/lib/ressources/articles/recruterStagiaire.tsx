@@ -1,6 +1,6 @@
 "use client";
 import RecruterStagiaireImage from "@/assets/images/article_stagiaire.png";
-import { RetourHautDePage } from "@/components/RetourHautDePage";
+import { RetourHautDePage } from "@/components/interactions/RetourHautDePage";
 import ZoomOnClick from "@/components/utils/ZoomOnClick";
 import EndPageTrigger from "../../../hooks/EndPageTrigger";
 import styles from "./article.module.scss";

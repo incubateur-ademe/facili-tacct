@@ -6,7 +6,7 @@ import JardinAnglais from "@/assets/images/jardin_anglais.png";
 import JardinFrancais from "@/assets/images/jardin_francais.png";
 import LogiqueSystemie from "@/assets/images/logique_cartesienne.png";
 import MaterialisationSystemie from "@/assets/images/systemie.png";
-import { RetourHautDePage } from '@/components/RetourHautDePage';
+import { RetourHautDePage } from '@/components/interactions/RetourHautDePage';
 import ZoomOnClick from '@/components/utils/ZoomOnClick';
 import Image from "next/image";
 import Link from 'next/link';

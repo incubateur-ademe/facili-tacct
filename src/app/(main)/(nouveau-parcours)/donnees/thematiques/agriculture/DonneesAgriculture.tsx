@@ -1,4 +1,5 @@
 "use client";
+import { SourcesSection } from "@/components/interactions/scrollToSource";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { Agriculture, AgricultureBio, CarteCommunes, SurfacesAgricolesModel } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
@@ -124,6 +125,8 @@ export const DonneesAgriculture = ({
             <SurfacesEnBio agricultureBio={agricultureBio} />
           </div>
         </section>
+        {/* Sources */}
+        <SourcesSection tag="h2" thematique="agriculture" />
       </div>
     </>
   );

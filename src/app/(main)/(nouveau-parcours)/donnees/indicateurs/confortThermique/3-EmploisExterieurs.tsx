@@ -2,7 +2,7 @@
 import { PieChartTravailExt } from '@/components/charts/inconfortThermique/pieChartTravailExt';
 import { MicroPieChart } from "@/components/charts/MicroDataviz";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
-import { Loader } from "@/components/loader";
+import { Loader } from "@/components/ui/loader";
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { travailExtMapper } from "@/lib/mapper/inconfortThermique";

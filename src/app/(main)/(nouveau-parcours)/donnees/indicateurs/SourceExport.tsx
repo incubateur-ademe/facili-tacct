@@ -1,5 +1,5 @@
 "use client";
-import { CopyLinkClipboard } from "@/components/CopyLinkClipboard";
+import { CopyLinkClipboard } from "@/components/interactions/CopyLinkClipboard";
 import { Body } from "@/design-system/base/Textes";
 import styles from '../explorerDonnees.module.scss';
 

@@ -11,7 +11,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { ExportPngMaplibreButton } from '../exports/ExportPng';
-import { Loader } from '../loader';
+import { Loader } from '../ui/loader';
 import { BoundsFromCollection } from './components/boundsFromCollection';
 import { CeremaFallbackError, handleCeremaFallback } from './components/ceremaLCZFallback';
 import { LczLegend, LczLegendOpacity70 } from './legends/datavizLegends';

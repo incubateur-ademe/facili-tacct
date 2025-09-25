@@ -6,7 +6,7 @@ import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { espacesNAFBarChartLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import RangeSlider from '@/components/Slider';
-import SubTabs from '@/components/SubTabs';
+import SubTabs from '@/components/ui/SubTabs';
 import { ConsommationNAF } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';

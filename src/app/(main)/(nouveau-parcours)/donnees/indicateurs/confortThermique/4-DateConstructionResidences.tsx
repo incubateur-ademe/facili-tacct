@@ -2,7 +2,7 @@
 import { BarChartAgeBatiNouveauParcours } from '@/components/charts/inconfortThermique/BarChartAgeBatiNouveauParcours';
 import { MicroCircleGrid } from "@/components/charts/MicroDataviz";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
-import { Loader } from "@/components/loader";
+import { Loader } from "@/components/ui/loader";
 import { Body } from "@/design-system/base/Textes";
 import { ageBatiMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";

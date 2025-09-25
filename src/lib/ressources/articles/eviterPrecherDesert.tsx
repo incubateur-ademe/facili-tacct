@@ -2,7 +2,7 @@ import ForwardArrow from '@/assets/icons/keyboard_arrow_next_icon_black.svg';
 import ArticleImage3 from '@/assets/images/article14.png';
 import ArticleImage from '@/assets/images/article5.png';
 import ArticleImage2 from '@/assets/images/article6.jpg';
-import { RetourHautDePage } from '@/components/RetourHautDePage';
+import { RetourHautDePage } from '@/components/interactions/RetourHautDePage';
 import EndPageTrigger from '@/hooks/EndPageTrigger';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';

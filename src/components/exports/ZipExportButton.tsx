@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 import styles from "../components.module.scss";
-import { CopyLinkClipboard } from '../CopyLinkClipboard';
+import { CopyLinkClipboard } from '../interactions/CopyLinkClipboard';
 
 interface ZipExportButtonProps {
   handleExport: () => Promise<void>;

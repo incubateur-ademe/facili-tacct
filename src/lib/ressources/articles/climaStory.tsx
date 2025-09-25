@@ -4,7 +4,7 @@ import BulbIcon from '@/assets/icons/lightbulb_icon_black.svg';
 import ArticleImage from '@/assets/images/article10.png';
 import ArticleImage2 from '@/assets/images/article11.jpg';
 import ArticleImage3 from '@/assets/images/article12.png';
-import { RetourHautDePage } from '@/components/RetourHautDePage';
+import { RetourHautDePage } from '@/components/interactions/RetourHautDePage';
 import EndPageTrigger from '@/hooks/EndPageTrigger';
 import Image from 'next/image';
 import Link from 'next/link';

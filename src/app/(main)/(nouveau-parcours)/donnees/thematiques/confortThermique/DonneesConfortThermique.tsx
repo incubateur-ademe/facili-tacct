@@ -1,6 +1,6 @@
 'use client';
 import DiagnoticImage from '@/assets/images/diagnostiquer_impacts.png';
-import { LoaderText } from '@/components/loader';
+import { LoaderText } from '@/components/ui/loader';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import { handleRedirectionThematique } from '@/hooks/Redirections';

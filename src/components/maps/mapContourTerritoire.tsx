@@ -4,17 +4,17 @@ import { CommunesContoursDto } from '@/lib/dto';
 import { MapContainer } from '@/lib/react-leaflet';
 import * as turf from '@turf/turf';
 import {
-  Feature,
-  GeoJsonObject,
-  GeoJsonProperties,
-  MultiPolygon,
-  Polygon
+    Feature,
+    GeoJsonObject,
+    GeoJsonProperties,
+    MultiPolygon,
+    Polygon
 } from 'geojson';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useRef, useState } from 'react';
 import { GeoJSON } from 'react-leaflet';
-import { Loader } from '../loader';
+import { Loader } from '../ui/loader';
 
 export const MapContourTerritoire = (props: {
   territoireContours: CommunesContoursDto[];
