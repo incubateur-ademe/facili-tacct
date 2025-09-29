@@ -8,7 +8,7 @@ const ReplaceDisplayEpci = (libelleEpci: string) => {
     .replace('Communauté de communes', 'CC');
 };
 
-export const RenderOption = ({props, option}: SearchInputOptionsProps) => {
+export const RenderOption = ({ props, option }: SearchInputOptionsProps) => {
   const { ...optionProps } = props;
   return (
     <Box

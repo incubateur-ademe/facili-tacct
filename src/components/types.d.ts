@@ -22,6 +22,13 @@ type SearchInputProps = {
   RechercherRedirection: () => void;
 };
 
+type SearchInputHeaderProps = {
+  className?: string;
+  id: string;
+  placeholder: string;
+  type: string;
+};
+
 type SearchInputOptionsProps = {
   props: HTMLAttributes<HTMLLIElement>;
   option: SearchInputOptions;
