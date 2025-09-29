@@ -103,7 +103,7 @@ export const ConsommationEspacesNAF = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : CEREMA, avril 2024
+          Source : CEREMA, avril 2024.
         </Body>
         {
           carteCommunes.length !== 0 && enveloppe && carteCommunesFiltered !== null && (

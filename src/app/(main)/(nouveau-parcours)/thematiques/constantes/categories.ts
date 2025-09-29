@@ -35,8 +35,8 @@ export const nomThematiques = [
   {
     label: 'Bâtiment',
     labelRadius: 260,
-    xOffset: 10,
-    yOffset: -10,
+    xOffset: 17,
+    yOffset: -20,
     icon: '🏠',
     disabled: true,
     liens: []

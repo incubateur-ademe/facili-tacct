@@ -112,7 +112,7 @@ export const TypesDeSols = ({
         clc && clc.length &&
         <div className={styles.sourcesExportMapWrapper}>
           <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-            Source : CORINE Land Cover
+            Source : CORINE Land Cover 2018.
           </Body>
           <ZipExportButtonNouveauParcours
             anchor='Types de sols'
