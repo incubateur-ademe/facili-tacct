@@ -1,10 +1,13 @@
 "use client";
-import { Body, H2 } from '@/design-system/base/Textes';
+import { LoaderText } from '@/components/ui/loader';
+import { Body } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import { useEffect, useState } from 'react';
 
 const MetabaseComponent = () => {
   const [src, setSrc] = useState<string>("");
+  const [isIFrameLoaded, setIsIFrameLoaded] = useState(false);
+  console.log("isIFrameLoaded", isIFrameLoaded);
 
   useEffect(() => {
     const params = { dashboardId: 5 };
@@ -14,12 +17,11 @@ const MetabaseComponent = () => {
       .catch(console.error);
   }, []);
 
-  if (!src) return null;
+  if (!src) return <NewContainer size="xl"><LoaderText text='Chargement du tableau de bord' /></NewContainer>;
 
   return (
     <>
       <NewContainer size="xl">
-        <H2>Statistiques</H2>
         <Body>
           <i>
             Cette page présente les statistiques d’utilisation du site Facili-TACCT.
@@ -28,18 +30,16 @@ const MetabaseComponent = () => {
           </i>
         </Body>
       </NewContainer>
-      {
-        src &&
-        <div className="w-full h-full" style={{ height: "max-content" }}>
-          <iframe
-            src={src}
-            title="Tableau de bord stats"
-            className="w-full"
-            style={{ minHeight: 900, height: "max-content" }}
-            allow="fullscreen"
-          />
-        </div>
-      }
+      {!isIFrameLoaded && <NewContainer size="xl"><LoaderText text='Chargement du tableau de bord' /></NewContainer>}
+      <iframe
+        src={src}
+        title="Tableau de bord stats"
+        width="100%"
+        height="3100"
+        onLoad={() => setIsIFrameLoaded(true)}
+        className='border-none'
+        style={{ display: isIFrameLoaded ? 'block' : 'none' }}
+      />
     </>
   );
 };
