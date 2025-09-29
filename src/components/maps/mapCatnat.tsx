@@ -86,31 +86,34 @@ export const MapCatnat = (props: {
       );
   }, [carteCommunes, typeRisqueValue]);
 
-  const colorExpression = useMemo(() => {
-    const expression: Array<string | Array<string | Array<string>>> = ['case'];
-    carteTerritoire.forEach((commune) => {
-      const value = typeRisqueValue === 'Tous types'
-        ? commune.properties.catnat?.sumCatnat || 0
-        : (commune.properties.catnat?.[typeRisqueValue] as number) || 0;
-      const color = value > 0 ? getColor(value, maxValue, typeRisqueValue) : 'transparent';
-      expression.push(
-        ['==', ['get', 'code_geographique'], commune.properties.code_geographique],
-        color
-      );
-    });
-    expression.push('transparent');
-    return expression;
-  }, [maxValue, typeRisqueValue]);
-
   const geoJsonData = useMemo(() => {
     return {
       type: 'FeatureCollection' as const,
-      features: carteTerritoire.map(commune => ({
-        ...commune,
-        id: commune.properties.code_geographique
-      })) as Feature<Geometry, GeoJsonProperties>[]
+      features: carteTerritoire.map(commune => {
+        const value = typeRisqueValue === 'Tous types'
+          ? commune.properties.catnat?.sumCatnat || 0
+          : (commune.properties.catnat?.[typeRisqueValue] as number) || 0;
+        const color = value > 0 ? getColor(value, maxValue, typeRisqueValue) : 'transparent';
+        return {
+          ...commune,
+          id: commune.properties.code_geographique,
+          properties: {
+            ...commune.properties,
+            color
+          }
+        };
+      }) as Feature<Geometry, GeoJsonProperties>[]
     };
-  }, [carteTerritoire]);
+  }, [carteTerritoire, maxValue, typeRisqueValue]);
+
+  useEffect(() => {
+    if (mapRef.current && mapRef.current.isStyleLoaded()) {
+      const source = mapRef.current.getSource('catnat-communes');
+      if (source) {
+        (source as maplibregl.GeoJSONSource).setData(geoJsonData);
+      }
+    }
+  }, [geoJsonData]);
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -152,7 +155,7 @@ export const MapCatnat = (props: {
         type: 'fill',
         source: 'catnat-communes',
         paint: {
-          'fill-color': colorExpression as unknown as string
+          'fill-color': ['get', 'color']
         }
       });
 
@@ -316,18 +319,6 @@ export const MapCatnat = (props: {
       }
     };
   }, []);
-
-  useEffect(() => {
-    let map = mapRef.current;
-    if (!map || !mapContainer.current || !map.style) return;
-    setTimeout(() => {
-      map.setPaintProperty(
-        'catnat-fill',
-        'fill-color',
-        colorExpression
-      );
-    }, 50);
-  }, [colorExpression]);
 
   return (
     <>

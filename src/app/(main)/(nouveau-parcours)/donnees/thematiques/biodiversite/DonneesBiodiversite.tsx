@@ -51,6 +51,20 @@ export const DonneesBiodiversite = ({
   }, []);
 
   useEffect(() => {
+    const scrollToHash = () => {
+      if (window.location.hash) {
+        const element = document.getElementById(decodeURIComponent(window.location.hash.substring(1)));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          setTimeout(scrollToHash, 100);
+        }
+      }
+    };
+    scrollToHash();
+  }, []);
+
+  useEffect(() => {
     // If no clc provided from server, fetch it client-side asynchronously
     if (!clcState) {
       const fetchClc = async () => {

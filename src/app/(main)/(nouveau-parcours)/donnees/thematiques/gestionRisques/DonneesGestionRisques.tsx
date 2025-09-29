@@ -66,6 +66,15 @@ export const DonneesGestionRisques = ({
     }
   }, [code, libelle, type]);
 
+  useEffect(() => {
+    if (rga.length > 0 && rgaCarte.length > 0 && window.location.hash) {
+      const element = document.getElementById(decodeURIComponent(window.location.hash.substring(1)));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [rga, rgaCarte]);
+
   return (
     <>
       <div className={styles.explorerMesDonneesContainer}>
