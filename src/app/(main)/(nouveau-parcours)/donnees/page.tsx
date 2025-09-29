@@ -10,12 +10,13 @@ import EauServerPage from './thematiques/eau/EauServerPage';
 import GestionRisquesServerPage from './thematiques/gestionRisques/GestionRisquesServerPage';
 
 const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => {
-  const { code, libelle, type, thematique } = await props.searchParams;
-  return (
-    <>
-      {
-        ((code || libelle) && type) ?
-          <Suspense fallback={<LoaderText text='Nous chargeons vos données'/>}>
+  try {
+    const { code, libelle, type, thematique } = await props.searchParams;
+    return (
+      <>
+        {
+          ((code || libelle) && type) ?
+            <Suspense fallback={<LoaderText text='Nous chargeons vos données' />}>
               {thematique === 'Confort thermique' ? (
                 <ConfortThermiqueServerPage searchParams={props.searchParams} />
               ) : thematique === "Biodiversité" ? (
@@ -29,11 +30,15 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
               ) : thematique === "Gestion des risques" ? (
                 <GestionRisquesServerPage searchParams={props.searchParams} />
               ) : ""}
-          </Suspense>
-          : <ErrorDisplay code="404" />
-      }
-    </>
-  );
+            </Suspense>
+            : <ErrorDisplay code="404" />
+        }
+      </>
+    );
+  } catch (error) {
+    console.error('Error in ExplorerTerritoirePage:', error);
+    return <ErrorDisplay code="500" />;
+  }
 };
 
 export default ExplorerTerritoirePage;

@@ -4,10 +4,10 @@ import { LoaderText } from '@/components/ui/loader';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import { handleRedirectionThematique } from '@/hooks/Redirections';
-import { CarteCommunes, CLCTerritoires, InconfortThermique } from '@/lib/postgres/models';
+import { CarteCommunes, InconfortThermique } from '@/lib/postgres/models';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
 import { GrandAge } from '../../indicateurs/confortThermique/1-GrandAge';
@@ -30,8 +30,6 @@ const DonneesConfortThermique = ({
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
   const ongletsMenu = sommaireThematiques[thematique];
-  const [clcState, setClcState] = useState<CLCTerritoires[] | undefined>(undefined);
-  const [loadingClc, setLoadingClc] = useState(true);
 
   useEffect(() => {
     const style = document.createElement('style');
@@ -46,25 +44,19 @@ const DonneesConfortThermique = ({
     };
   }, []);
 
-  // useEffect(() => {
-  //   // If no clc provided from server, fetch it client-side asynchronously
-  //   if (!clcState) {
-  //     const fetchClc = async () => {
-  //       try {
-  //         setLoadingClc(true);
-  //         const params = new URLSearchParams({ libelle: (new URLSearchParams(window.location.search)).get('libelle') || '', type: (new URLSearchParams(window.location.search)).get('type') || '', code: (new URLSearchParams(window.location.search)).get('code') || '' });
-  //         const res = await fetch(`/api/clc?${params.toString()}`);
-  //         const json = await res.json();
-  //         if (json.ok) setClcState(json.data);
-  //       } catch (e) {
-  //         console.error('Failed to fetch CLC', e);
-  //       } finally {
-  //         setLoadingClc(false);
-  //       }
-  //     };
-  //     fetchClc();
-  //   }
-  // }, [clcState]);
+  useEffect(() => {
+    const scrollToHash = () => {
+      if (window.location.hash) {
+        const element = document.getElementById(decodeURIComponent(window.location.hash.substring(1)));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          setTimeout(scrollToHash, 100);
+        }
+      }
+    };
+    scrollToHash();
+  }, []);
 
   return (
     <div className={styles.explorerMesDonneesContainer}>
@@ -74,7 +66,7 @@ const DonneesConfortThermique = ({
       {/* Introduction */}
       <section>
         <Body size='lg'>
-          Ces quelques indicateurs vous aideront à poser les bonnes 
+          Ces quelques indicateurs vous aideront à poser les bonnes
           questions, le terrain (étape 2) vous donnera les vraies réponses.
         </Body>
       </section>

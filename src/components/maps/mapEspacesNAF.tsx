@@ -30,30 +30,32 @@ export const MapEspacesNaf = (props: {
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const hoveredFeatureRef = useRef<string | null>(null);
 
-  const colorExpression = useMemo(() => {
-    const expression: Array<string | Array<string | Array<string>>> = ['case'];
-    carteCommunesFiltered.forEach((commune) => {
-      const color = getColor(commune.properties.naf ?? 0);
-      expression.push(
-        ['==', ['get', 'code_geographique'], commune.properties.code_geographique],
-        color
-      );
-    });
-    expression.push('transparent');
-    return expression;
-  }, [carteCommunesFiltered]);
-
   const geoJsonData = useMemo(() => {
     return {
       type: "FeatureCollection" as "FeatureCollection",
-      features: carteCommunesFiltered.map(commune => ({
-        type: "Feature" as "Feature",
-        geometry: commune.geometry as import('geojson').Geometry,
-        properties: commune.properties,
-        id: commune.properties.code_geographique
-      }))
+      features: carteCommunesFiltered.map(commune => {
+        const color = getColor(commune.properties.naf ?? 0);
+        return {
+          type: "Feature" as "Feature",
+          geometry: commune.geometry as import('geojson').Geometry,
+          properties: {
+            ...commune.properties,
+            color
+          },
+          id: commune.properties.code_geographique
+        };
+      })
     };
   }, [carteCommunesFiltered]);
+
+  useEffect(() => {
+    if (mapRef.current && mapRef.current.isStyleLoaded()) {
+      const source = mapRef.current.getSource('naf-communes');
+      if (source) {
+        (source as maplibregl.GeoJSONSource).setData(geoJsonData);
+      }
+    }
+  }, [geoJsonData]);
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -95,7 +97,7 @@ export const MapEspacesNaf = (props: {
         type: 'fill',
         source: 'naf-communes',
         paint: {
-          'fill-color': colorExpression as unknown as string,
+          'fill-color': ['get', 'color'],
           'fill-opacity': 1
         }
       });
@@ -249,19 +251,19 @@ export const MapEspacesNaf = (props: {
         mapRef.current = null;
       }
     };
-  }, [geoJsonData, colorExpression, enveloppe]);
+  }, [geoJsonData, enveloppe]);
 
-  useEffect(() => {
-    let map = mapRef.current;
-    if (!map || !mapContainer.current || !map.style) return;
-    setTimeout(() => {
-      map.setPaintProperty(
-        'naf-fill',
-        'fill-color',
-        colorExpression
-      );
-    }, 150);
-  }, [colorExpression]);
+  // useEffect(() => {
+  //   let map = mapRef.current;
+  //   if (!map || !mapContainer.current || !map.style) return;
+  //   setTimeout(() => {
+  //     map.setPaintProperty(
+  //       'naf-fill',
+  //       'fill-color',
+  //       colorExpression
+  //     );
+  //   }, 150);
+  // }, [colorExpression]);
 
   return (
     <>

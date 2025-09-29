@@ -200,16 +200,6 @@ export const MapAOT40 = (props: {
         data={commune ?? (carteCommunesFiltered as Any)}
         style={territoireStyle}
       />
-      {/* <Polygon
-        positions={newPolygonTerritoire.geometry.coordinates as LatLngExpression[][]}
-        pathOptions={{
-          color: 'red',
-          fillColor: 'red',
-        }}
-      />
-      <Rectangle
-        bounds={enveloppe as LatLngBoundsExpression}
-      /> */}
       <MarkerClusterGroup
         chunkedLoading
         removeOutsideVisibleBounds={true}
