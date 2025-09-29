@@ -2,7 +2,6 @@
 
 import { GetCollectivite } from '@/lib/queries/searchBar';
 import Autocomplete from '@mui/material/Autocomplete';
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { RenderInput } from './renderInput';
 import { RenderOption } from './renderOption';
@@ -30,7 +29,6 @@ export const MySearchInput = ((props: SearchInputProps) => {
     searchLibelle,
     RechercherRedirection
   } = props;
-  const router = useRouter();
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState<SearchInputOptions[]>([]);
 
