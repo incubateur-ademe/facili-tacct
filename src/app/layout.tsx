@@ -23,6 +23,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
             'Spectral-ExtraBold'
           ]}
         />
+        <link rel="preconnect" href="https://metabase.facili-tacct.beta.gouv.fr" />
       </head>
       <PHProvider>
         <body>
