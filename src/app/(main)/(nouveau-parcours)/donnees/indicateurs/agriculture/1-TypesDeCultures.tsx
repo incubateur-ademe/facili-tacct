@@ -125,7 +125,7 @@ export const TypesDeCulture = (props: {
               borderRadius: "0 0 0 1rem"
             }}>
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : AGRESTE, 2020
+              Source : AGRESTE, 2020.
             </Body>
             <ExportButtonNouveauParcours
               data={exportData}

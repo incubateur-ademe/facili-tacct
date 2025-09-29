@@ -119,7 +119,7 @@ export const EtatEcoCoursDeau = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : Agences de l'eau
+          Source : Agences de l'eau.
         </Body>
         {
           etatCoursDeau.length > 0 && (

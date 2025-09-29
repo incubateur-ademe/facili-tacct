@@ -132,7 +132,7 @@ export const SurfacesEnBio = (props: {
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
               Source : Agence Bio, Service de la Statistique et de la Prospective (SSP
               - Ministère de l’agriculture) dans Catalogue DiDo (Indicateurs
-              territoriaux de développement durable - ITDD) - AGRESTE, 2020
+              territoriaux de développement durable - ITDD) - AGRESTE, 2020.
             </Body>
             <ExportButtonNouveauParcours
               data={exportData}
