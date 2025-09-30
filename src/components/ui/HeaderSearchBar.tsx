@@ -1,6 +1,7 @@
 import { DarkClass } from "@/lib/utils/DarkClass";
 import { eptRegex } from "@/lib/utils/regex";
-import { useStyles } from "tss-react/dsfr";
+import { MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { useState } from "react";
 import styles from '../components.module.scss';
 
 const ReplaceDisplayEpci = (libelleEpci: string) => {
@@ -27,6 +28,7 @@ const Localisation = (props: { libelle: string; code?: string }) => {
   );
 };
 
+
 const HeaderSearchBar = (props:
   {
     libelle: string;
@@ -34,70 +36,69 @@ const HeaderSearchBar = (props:
     code?: string
   }) => {
   const { libelle, code, type } = props;
-  const { css } = useStyles();
+  const [value, setValue] = useState(
+    (type === "epci" || type === "ept") ? "EPCI/EPT"
+      : type === "commune" ? "Commune"
+        : type === "departement" ? "Département"
+          : type === "petr" ? "PETR"
+            : type === "pnr" ? "PNR"
+              : undefined
+  );
+
+  const collectivites = ["EPCI/EPT", "Commune", "Département", "PETR", "PNR"];
 
   return (
-    code && libelle ? (
+    code && libelle && value ? (
       <div className='flex flex-row gap-3 align-center'>
-        {/* <SearchBar
-          className={type ?
-            css({
-              '.fr-btn': {
-                display: 'none',
-              },
-              border: `1px solid ${couleursPrincipales.vert}`,
-              borderRadius: "60px",
-              height: 'inherit',
-              '.fr-input': {
-                color: couleursPrincipales.vert,
-                backgroundColor: 'white',
-                boxShadow: 'none',
-                '&:focus': {
-                  outline: 'none'
-                },
-                '&::placeholder': {
-                  color: '#7B7B7B'
+        <Select
+          labelId="Sélection du territoire"
+          value={value}
+          onChange={(event: SelectChangeEvent) => {
+            setValue(event.target.value as "EPCI/EPT" | "Commune" | "Département" | "PETR" | "PNR");
+          }}
+          MenuProps={{
+            sx: {
+              '& .MuiPaper-root': {
+                backgroundColor: '#FFFFFF',
+                borderRadius: '1rem',
+                '& .Mui-selected': {
+                  fontWeight: 700,
+                  backgroundColor: '#FFFFFF',
                 }
               },
-              '.css-1uhhrmm-MuiAutocomplete-endAdornment': {
-                right: '2px',
+              '& .MuiList-root': {
+                padding: '0.5rem',
               },
-              '.css-iuka1o': { // pour la preprod
-                right: '2px',
-              }
-            })
-            : css({
-              '.fr-btn': {
-                display: 'none',
+              '& .MuiButtonBase-root:not(:last-child)': {
+                borderBottom: '1px solid var(--gris-medium)',
               },
-              border: '1px solid #EEEEEE',
-              height: 'inherit',
-              '.fr-input': {
-                color: couleursPrincipales.vert,
-                backgroundColor: '#EEEEEE',
-                boxShadow: 'none',
-                '&:focus': {
-                  outline: 'none'
-                },
-                '&::placeholder': {
-                  color: '#7B7B7B'
-                }
+              '& .MuiButtonBase-root': {
+                fontSize: '14px',
               },
-              '.css-1uhhrmm-MuiAutocomplete-endAdornment': {
-                right: '2px',
-              }
-            })
-          }
-          style={{ width: '100%', alignItems: 'center' }}
-          renderInput={({ className, id, placeholder, type }) => (
-            <SearchInputHeader
-              className={className}
-              id={id}
-              placeholder={placeholder}
-              type={type}
-            />
-          )}
-        /> */}
+            },
+          }}
+          sx={{
+            '&': {
+              border: 'none',
+            },
+            '& .MuiSelect-select': {
+              color: '#000000',
+              fontSize: '14px',
+              fontFamily: 'Marianne',
+              fontWeight: 400,
+              border: 'none',
+            },
+            '& .MuiOutlinedInput-notchedOutline': {
+              border: 'none',
+            },
+          }}
+        >
+          {collectivites.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </Select>
         <Localisation libelle={libelle} code={code} />
       </div>
     ) : libelle ? (
