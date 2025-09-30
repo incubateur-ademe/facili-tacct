@@ -1,21 +1,25 @@
 "use client";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
+import { ConsommationNAFEcolabApi } from "@/lib/postgres/EcolabApi";
 import { CarteCommunes, ConsommationNAF } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { ConsommationEspacesNAFAmenagement } from '../../indicateurs/amenagement/1-ConsommationEspacesNAF';
+import { ConsommationEspacesNAFAmenagementEcolab } from "../../indicateurs/amenagement/1-ConsommationEspacesNAFEcolab";
 import { LCZ } from '../../indicateurs/amenagement/2-LCZ';
 
 interface Props {
   carteCommunes: CarteCommunes[];
   consommationNAF: ConsommationNAF[];
+  consommationNAFEcolab: ConsommationNAFEcolabApi[];
 }
 
 export const DonneesAmenagement = ({
   carteCommunes,
-  consommationNAF
+  consommationNAF,
+  consommationNAFEcolab
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Aménagement";
@@ -83,6 +87,19 @@ export const DonneesAmenagement = ({
             </div>
             <ConsommationEspacesNAFAmenagement
               consommationNAF={consommationNAF}
+              carteCommunes={carteCommunes}
+            />
+          </div>
+
+          {/* Consommation d'espaces NAF ECOLAB */}
+          <div id="Consommation d'espaces NAF" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                NAF API ECOLAB
+              </H3>
+            </div>
+            <ConsommationEspacesNAFAmenagementEcolab
+              consommationNAF={consommationNAFEcolab}
               carteCommunes={carteCommunes}
             />
           </div>

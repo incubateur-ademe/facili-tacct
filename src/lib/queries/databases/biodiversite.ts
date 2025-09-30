@@ -93,6 +93,7 @@ export const GetConsommationNAF = async (
   const column = ColumnCodeCheck(type);
   const dbQuery = (async () => {
     try {
+      console.time('Query Execution Time NAF');
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.consommation_espaces_naf.findFirst({
@@ -140,6 +141,8 @@ export const GetConsommationNAF = async (
       // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
+    } finally {
+      console.timeEnd('Query Execution Time NAF');
     }
   })();
   return Promise.race([dbQuery, timeoutPromise]);
