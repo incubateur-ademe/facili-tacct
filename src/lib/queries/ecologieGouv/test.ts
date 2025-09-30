@@ -2,7 +2,15 @@ import { ConsommationNAFEcolabApi } from '@/lib/postgres/EcolabApi';
 import { prisma } from '../redis';
 
 export const GetPartSurfaceBio = async () => {
-  const url = `https://api.indicateurs.ecologie.gouv.fr/cubejs-api/v1/load`;
+  const url = `https://api.ind  const response = await request.json();
+  console.timeEnd('Query Execution Time CUBEJS NAF');
+
+  return response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};eurs.ecologie.gouv.fr/cubejs-api/v1/load`;
   console.time('Query Execution Time CUBEJS');
   const request = await fetch(url, {
     method: 'POST',
@@ -94,7 +102,8 @@ export const GetNAF = async (
   libelle: string,
   type: string
 ): Promise<ConsommationNAFEcolabApi[]> => {
-  const url = `https://api.indicateurs.ecologie.gouv.fr/cubejs-api/v1/load`;
+  try {
+    const url = `https://api.indicateurs.ecologie.gouv.fr/cubejs-api/v1/load`;
   let listeTerritoires = [];
   console.time(`Query Execution Time CUBEJS NAF GetCommunes ${type}`);
 
@@ -183,4 +192,8 @@ export const GetNAF = async (
   console.timeEnd('Query Execution Time CUBEJS NAF');
 
   return response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 };
