@@ -1,3 +1,6 @@
+import { ConsommationNAFEcolabApi } from '@/lib/postgres/EcolabApi';
+import { prisma } from '../redis';
+
 export const GetPartSurfaceBio = async () => {
   const url = `https://api.indicateurs.ecologie.gouv.fr/cubejs-api/v1/load`;
   console.time('Query Execution Time CUBEJS');
@@ -83,14 +86,41 @@ export const GetSurfaceBio = async () => {
   const response: Response = await request.json();
   console.timeEnd('Query Execution Time CUBEJS');
 
-  // console.log("response", response.data);
-
   return response;
 };
 
-export const GetNAF = async () => {
+export const GetNAF = async (
+  code: string,
+  libelle: string,
+  type: string
+): Promise<ConsommationNAFEcolabApi[]> => {
   const url = `https://api.indicateurs.ecologie.gouv.fr/cubejs-api/v1/load`;
-  console.time('Query Execution Time CUBEJS');
+  let listeTerritoires = [];
+  console.time(`Query Execution Time CUBEJS NAF GetCommunes ${type}`);
+
+  if (type !== 'epci' && type !== 'departement') {
+    const listeCommunes = await prisma.collectivites_searchbar.findMany({
+      where: {
+        [type === 'petr'
+          ? 'libelle_petr'
+          : type === 'ept'
+            ? 'ept'
+            : type === 'pnr'
+              ? 'code_pnr'
+              : type === 'commune'
+                ? 'code_geographique'
+                : '']: type === 'petr' || type === 'ept' ? libelle : code
+      }
+    });
+    listeTerritoires = listeCommunes
+      .map((el) => el.code_geographique)
+      .filter((code) => code !== null);
+  } else {
+    listeTerritoires = [code];
+  }
+  console.timeEnd(`Query Execution Time CUBEJS NAF GetCommunes ${type}`);
+  console.time('Query Execution Time CUBEJS NAF');
+
   const request = await fetch(url, {
     method: 'POST',
     headers: {
@@ -99,31 +129,48 @@ export const GetNAF = async () => {
     },
     body: JSON.stringify({
       query: {
-        measures: ['conso_enaf.id_611'],
+        measures: ['conso_enaf_com.id_611'],
         filters: [
           {
-            member: 'conso_enaf.geocode_epci',
+            member:
+              type === 'commune' ||
+              type === 'petr' ||
+              type === 'ept' ||
+              type === 'pnr'
+                ? 'conso_enaf_com.geocode_commune'
+                : type === 'epci'
+                  ? 'conso_enaf_com.geocode_epci'
+                  : 'conso_enaf_com.geocode_departement',
             operator: 'equals',
-            values: ['200010650']
-            // values: [Array]
-          },
-          {
-            member: 'conso_enaf.secteur',
-            operator: 'equals',
-            values: ['Route']
+            values: listeTerritoires
           }
+          // {
+          //   member: 'conso_enaf_com.secteur',
+          //   operator: 'equals',
+          //   values: ['Route']
+          // }
         ],
         timezone: 'UTC',
-        dimensions: ['conso_enaf.geocode_epci', 'conso_enaf.secteur'],
+        dimensions: [
+          'conso_enaf_com.secteur',
+          type === 'commune' ||
+          type === 'petr' ||
+          type === 'ept' ||
+          type === 'pnr'
+            ? 'conso_enaf_com.geocode_commune'
+            : type === 'epci'
+              ? 'conso_enaf_com.geocode_epci'
+              : 'conso_enaf_com.geocode_departement'
+        ],
         timeDimensions: [
           {
-            dimension: 'conso_enaf.date_mesure',
-            granularity: 'year',
+            dimension: 'conso_enaf_com.date_mesure',
+            granularity: 'year'
             // dateRange: ['2023-01-01', '2023-12-01']
           }
         ],
-
-        order: { 'conso_enaf.geocode_epci': 'asc' }
+        limit: 50000
+        // order: { 'conso_enaf_com.geocode_commune': 'asc' }
       }
     })
   });
@@ -132,10 +179,8 @@ export const GetNAF = async () => {
     throw new Error('Failed to fetch data');
   }
 
-  const response: Response = await request.json();
-  console.timeEnd('Query Execution Time CUBEJS');
+  const response = await request.json();
+  console.timeEnd('Query Execution Time CUBEJS NAF');
 
-  // console.log("response", response.data);
-
-  return response;
+  return response.data;
 };

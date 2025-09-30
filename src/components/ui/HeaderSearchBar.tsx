@@ -1,10 +1,7 @@
-import { couleursPrincipales } from "@/design-system/couleurs";
 import { DarkClass } from "@/lib/utils/DarkClass";
 import { eptRegex } from "@/lib/utils/regex";
-import SearchBar from "@codegouvfr/react-dsfr/SearchBar";
 import { useStyles } from "tss-react/dsfr";
 import styles from '../components.module.scss';
-import { SearchInputHeader } from "../searchbar/header/SearchInputHeader";
 
 const ReplaceDisplayEpci = (libelleEpci: string) => {
   return libelleEpci
@@ -42,7 +39,7 @@ const HeaderSearchBar = (props:
   return (
     code && libelle ? (
       <div className='flex flex-row gap-3 align-center'>
-        <SearchBar
+        {/* <SearchBar
           className={type ?
             css({
               '.fr-btn': {
@@ -100,7 +97,7 @@ const HeaderSearchBar = (props:
               type={type}
             />
           )}
-        />
+        /> */}
         <Localisation libelle={libelle} code={code} />
       </div>
     ) : libelle ? (

@@ -10,10 +10,6 @@ import { useStyles } from 'tss-react/dsfr';
 import { Brand } from '../Brand';
 import HeaderSearchBar from './HeaderSearchBar';
 
-
-
-
-
 const HeaderComp = () => {
   const searchParams = useSearchParams();
   const params = usePathname();
