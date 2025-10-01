@@ -17,12 +17,14 @@ export const RenderInputHeader = (props: SearchInputTagHeaderProps) => {
         placeholder={'Sélectionnez votre territoire'}
         disabled={!typeTerritoire}
         style={{
-          borderRadius: '60px', 
-          padding: '0 3.5rem 0rem 0.75rem', 
+          borderRadius: '30px', 
+          padding: '0 3.5rem 0 0.75rem', 
           fontSize: '14px',
+          lineHeight: '19px',
           fontFamily: 'Marianne',
           fontWeight: 400,
           color: '#000000',
+          maxHeight: "none"
         }}
       />
       {params.InputProps.endAdornment && (

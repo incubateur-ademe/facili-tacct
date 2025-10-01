@@ -30,12 +30,22 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
     RechercherRedirection,
     setIsTypeChanging,
     setIsTerritoryChanging,
-    focusAutocomplete
+    focusAutocomplete,
+    setFocusAutocomplete
   } = props;
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState<SearchInputOptions[]>([]);
+  const [value, setValue] = useState<SearchInputOptions | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  console.log("value", value);
 
-  // supprime les doublons pour les objects
+  useEffect(() => {
+    if (searchLibelle) {
+      const val = { searchLibelle, searchCode: searchCode || '', codeCommune: '', codeEpci: '', ept: '', libellePetr: '', libellePnr: '', codePnr: '' };
+      setValue(val);
+      setInputValue('');
+    }
+  }, [searchLibelle, searchCode]);
   const filteredCollectivite = options.filter(
     (value, index, self) =>
       index ===
@@ -72,26 +82,41 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
 
   useEffect(() => {
     if (focusAutocomplete) {
+      setValue(null);
+      setInputValue('');
+      setSearchCode('');
+      setSearchLibelle('');
+      setOptions([]);
       setTimeout(() => {
         const input = document.getElementById(id);
         if (input) (input as HTMLInputElement).focus();
       }, 100);
     }
-  }, [focus, id]);
+  }, [focusAutocomplete, id]);
 
-  
   return (
     <Autocomplete
       id={id}
       autoHighlight
       filterOptions={(x) => x}
       options={collectivites}
+      value={value}
       noOptionsText=""
+      open={isOpen}
       onOpen={() => {
-        setIsTypeChanging(false)
         setIsTerritoryChanging(true);
+        setIsTypeChanging(false);
+        setTimeout(() => setIsOpen(true), 500);
       }}
+      onClose={() => setIsOpen(false)}
       onChange={(event, newValue: SearchInputOptions | null) => {
+        if (newValue === null) {
+          setIsTerritoryChanging(true);
+          // setFocusAutocomplete(true);
+          // setIsOpen(true);
+          // setTimeout(() => setFocusAutocomplete(false), 200);
+        }
+        setValue(newValue);
         setOptions(newValue ? [newValue, ...options] : options);
         setSearchCode(newValue?.searchCode ?? '');
         setSearchLibelle(newValue?.searchLibelle ?? '');
@@ -100,15 +125,13 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
         setInputValue(ReplaceSearchEpci(newInputValue));
       }}
       getOptionLabel={(option) => {
-        if (option && searchLibelle) {
-          return option.searchCode?.length !== 0
-            ? (() => {
-              const text = `${ReplaceDisplayEpci(option.searchLibelle)} (${option.searchCode})`;
-              return text.length > 60 ? text.slice(0, 50) + '\n' + text.slice(50) : text;
-            })()
-            : `${option.searchLibelle}`;
-        }
-        return '';
+        if (!option) return '';
+        return option.searchCode?.length !== 0
+          ? (() => {
+            const text = `${ReplaceDisplayEpci(option.searchLibelle)} - ${option.searchCode}`;
+            return text.length > 60 ? text.slice(0, 50) + '\n' + text.slice(50) : text;
+          })()
+          : `${option.searchLibelle}`;
       }}
       onKeyDown={(e) => {
         if (e.code === 'Enter') {
@@ -132,6 +155,10 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
           typeTerritoire={typeTerritoire}
         />
       }
+      fullWidth
+      clearOnEscape
+      openOnFocus
+      selectOnFocus
       slotProps={{
         popper: {
           sx: {
@@ -139,6 +166,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
               borderRadius: '1rem',
               transform: 'translateY(14px)',
               padding: '0.5rem 0.2rem 0.5rem 0.5rem',
+              width: "448px !important"
             },
             '& .MuiAutocomplete-listbox': {
               backgroundColor: 'white',
@@ -148,7 +176,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
           },
         },
       }}
-      sx={{ width: 'inherit', height: '48px', alignContent: 'center' }}
+      sx={{ width: 'inherit', height: '48px', alignContent: 'center', transition: 'all 0.5s ease-in-out' }}
     />
   );
 });
