@@ -1,5 +1,6 @@
 type SearchInputOptions = {
   codeCommune: string;
+  codeEpci: string;
   searchCode: string;
   searchLibelle: string;
   ept: string;
@@ -35,6 +36,7 @@ type SearchInputHeaderProps = {
   setIsTypeChanging: (a: boolean) => void;
   setIsTerritoryChanging: (a: boolean) => void;
   focusAutocomplete: boolean;
+  setFocusAutocomplete: (a: boolean) => void;
 };
 
 type SearchInputOptionsProps = {

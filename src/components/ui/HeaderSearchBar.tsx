@@ -5,11 +5,11 @@ import { eptRegex } from "@/lib/utils/regex";
 import SearchBar from "@codegouvfr/react-dsfr/SearchBar";
 import { MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import Image from 'next/image';
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useStyles } from "tss-react/dsfr";
 import styles from '../components.module.scss';
-import { handleRechercheRedirection } from "../searchbar/fonctions";
+import { handleChangementTerritoireRedirection, handleRechercheRedirection } from "../searchbar/fonctions";
 import { SearchInputHeader } from "../searchbar/header/SearchInputHeader";
 
 const ReplaceDisplayEpci = (libelleEpci: string) => {
@@ -44,13 +44,15 @@ const HeaderSearchBar = (props:
   }) => {
   const { libelle, code, type } = props;
   const router = useRouter();
+  const pathname = usePathname();
+  const params = useSearchParams();
+  const thematique = params.get('thematique') || undefined;
   const { css } = useStyles();
   const [isTypeChanging, setIsTypeChanging] = useState(false);
   const [isNewTypeChosen, setIsNewTypeChosen] = useState(false);
-  console.log("isTypeChanging", isTypeChanging);
   const [isTerritoryChanging, setIsTerritoryChanging] = useState(false);
-  console.log("isTerritoryChanging", isTerritoryChanging);
   const [focusAutocomplete, setFocusAutocomplete] = useState(false);
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [value, setValue] = useState(
     (type === "epci" || type === "ept") ? "EPCI/EPT"
       : type === "commune" ? "Commune"
@@ -60,44 +62,72 @@ const HeaderSearchBar = (props:
               : undefined
   );
 
-  const [searchCode, setSearchCode] = useState<string>('');
-  const [searchLibelle, setSearchLibelle] = useState<string>('');
+  const [searchCode, setSearchCode] = useState<string>(code ?? '');
+  const [searchLibelle, setSearchLibelle] = useState<string>(libelle ?? '');
   const [typeTerritoire, setTypeTerritoire] = useState<
     'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
   >('epci');
+
+  useEffect(() => {
+    setSearchCode(code ?? '');
+  }, [code]);
+
+  useEffect(() => {
+    setSearchLibelle(libelle ?? '');
+  }, [libelle]);
+
+  useEffect(() => {
+    setValue(
+      (type === "epci" || type === "ept") ? "EPCI/EPT"
+        : type === "commune" ? "Commune"
+          : type === "departement" ? "Département"
+            : type === "petr" ? "PETR"
+              : type === "pnr" ? "PNR"
+                : undefined
+    );
+  }, [type]);
 
   const handleRechercher = () => handleRechercheRedirection({
     searchCode,
     searchLibelle,
     typeTerritoire,
     router,
-    page: "thematiques"
+    page: pathname.split('/')[1] || ''
   });
 
   useEffect(() => {
     if (isNewTypeChosen) {
       setFocusAutocomplete(true);
       setIsNewTypeChosen(false);
+      setTimeout(() => setFocusAutocomplete(false), 200);
     }
   }, [isNewTypeChosen]);
 
   const collectivites = ["EPCI/EPT", "Commune", "Département", "PETR", "PNR"];
+  const x = (value + " " + searchCode + " - " + ReplaceDisplayEpci(searchLibelle)).length;
 
   return (
-    code && libelle && value ? (
-      <div 
-        className={styles.headerSearchBarContainer} 
-        style={{ 
-          width: "640px",
+    libelle && value ? (
+      <div
+        className={styles.headerSearchBarContainer}
+        style={{
+          width: (isTypeChanging || isTerritoryChanging) ? "640px" : 0.0467668* x ** 2 + (3.75262 * x) + 215.036,
+          maxWidth: "640px",
           backgroundColor: (isTerritoryChanging || isTypeChanging) ? 'var(--gris-light)' : 'white',
-         }}
+          transition: 'all 0.5s ease-in-out'
+        }}
       >
         <Select
           labelId="Sélection du territoire"
           value={value}
-          onOpen={() => setIsTypeChanging(true)}
+          open={isSelectOpen}
+          onOpen={() => {
+            setIsTypeChanging(true);
+            setTimeout(() => setIsSelectOpen(true), 500);
+          }}
           onClose={() => {
-            setIsTypeChanging(false)
+            setIsSelectOpen(false);
+            setIsTypeChanging(false);
             setIsTerritoryChanging(true);
           }}
           onChange={(event: SelectChangeEvent) => {
@@ -119,7 +149,6 @@ const HeaderSearchBar = (props:
                   fontWeight: 700,
                   backgroundColor: '#FFFFFF',
                 },
-
               },
               '& .MuiList-root': {
                 padding: '0.5rem',
@@ -129,13 +158,14 @@ const HeaderSearchBar = (props:
               },
               '& .MuiButtonBase-root': {
                 fontSize: '14px',
+                lineHeight: '19px',
                 '&:hover': { fontWeight: '700 !important', backgroundColor: 'transparent !important' }
               },
             },
           }}
           sx={{
             '&': {
-              backgroundColor: (isTypeChanging || !isNewTypeChosen) ? 'white' : 'var(--gris-light)',
+              backgroundColor: isTypeChanging ? 'white' : isTerritoryChanging ? 'var(--gris-light)' : 'white',
               borderRadius: '30px',
               height: "48px", // inherit 50px - bordure en haut et en bas
               fontWeight: 400,
@@ -159,9 +189,14 @@ const HeaderSearchBar = (props:
           ))}
         </Select>
         <div className={styles.separator} />
-        <div className={styles.searchTerritoireContainer} >
+        <div 
+        className={styles.searchTerritoireContainer}
+        style={{
+          margin: isTerritoryChanging || isTypeChanging ? "0 8px 0 0" : "0"
+        }}
+        >
           <SearchBar
-            className={type.length ?
+            className={
               css({
                 '.fr-btn': {
                   display: 'none',
@@ -169,17 +204,18 @@ const HeaderSearchBar = (props:
                 borderRadius: "30px",
                 height: '48px',
                 alignItems: 'center',
-                backgroundColor: isTerritoryChanging ? 'white' : 'var(--gris-light)',
+                backgroundColor: isTypeChanging ? 'var(--gris-light)' : isTerritoryChanging ? 'white' : 'white',
+                // width: Math.max((9.5 * (searchCode + " - " + searchLibelle).length), 300),
                 width: ['-webkit-fill-available', '-moz-available'],
                 '.fr-input': {
-                  backgroundColor: 'white',
+                  backgroundColor: isTypeChanging ? 'var(--gris-light)' : isTerritoryChanging ? 'white' : 'white',
                   boxShadow: 'none',
                   height: "48px",
                   '&:focus': {
                     outline: 'none'
                   },
                   '&::placeholder': {
-                    color: '#7B7B7B'
+                    color: 'var(--gris-medium-dark)',
                   }
                 },
                 '.css-1uhhrmm-MuiAutocomplete-endAdornment': {
@@ -187,27 +223,6 @@ const HeaderSearchBar = (props:
                 },
                 '.css-iuka1o': { // pour la preprod
                   right: '8px',
-                }
-              })
-              : css({
-                '.fr-btn': {
-                  display: 'none',
-                },
-                border: '1px solid #EEEEEE',
-                height: 'inherit',
-                '.fr-input': {
-                  color: couleursPrincipales.vert,
-                  backgroundColor: '#EEEEEE',
-                  boxShadow: 'none',
-                  '&:focus': {
-                    outline: 'none'
-                  },
-                  '&::placeholder': {
-                    color: '#7B7B7B'
-                  }
-                },
-                '.css-1uhhrmm-MuiAutocomplete-endAdornment': {
-                  right: '2px',
                 }
               })
             }
@@ -226,25 +241,39 @@ const HeaderSearchBar = (props:
                 setIsTypeChanging={setIsTypeChanging}
                 setIsTerritoryChanging={setIsTerritoryChanging}
                 focusAutocomplete={focusAutocomplete}
+                setFocusAutocomplete={setFocusAutocomplete}
               />
             )}
           />
           {
             (isTypeChanging || isTerritoryChanging) ?
-            <Image
-              alt=""
-              src={LoupeIcon}
-              height={34}
-              width={34}
-              style={{ backgroundColor: couleursPrincipales.vert, borderRadius: '30px', padding: '4px' }}
-            /> : null
+              <Image
+                alt=""
+                src={LoupeIcon}
+                height={34}
+                width={34}
+                style={{
+                  backgroundColor: couleursPrincipales.vert,
+                  borderRadius: '30px',
+                  padding: '4px',
+                  cursor: 'pointer'
+                }}
+                onClick={() => {
+                  setIsNewTypeChosen(false);
+                  setIsTerritoryChanging(false);
+                  setIsTypeChanging(false);
+                  handleChangementTerritoireRedirection({
+                    searchCode,
+                    searchLibelle,
+                    typeTerritoire,
+                    router,
+                    page: pathname.split('/')[1] || '',
+                    thematique
+                  })
+                }}
+              /> : null
           }
         </div>
-        {/* <Localisation libelle={libelle} code={code} /> */}
-      </div>
-    ) : libelle ? (
-      <div className='flex flex-row gap-3 align-center'>
-        <Localisation libelle={libelle} />
       </div>
     ) : (
       null
