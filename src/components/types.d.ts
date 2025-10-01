@@ -1,6 +1,5 @@
 type SearchInputOptions = {
   codeCommune: string;
-  codeEpci: string;
   searchCode: string;
   searchLibelle: string;
   ept: string;
@@ -24,9 +23,18 @@ type SearchInputProps = {
 
 type SearchInputHeaderProps = {
   className?: string;
+  setSearchCode: (a: string) => void;
+  setSearchLibelle: (a: string) => void;
+  searchCode: string;
+  searchLibelle: string;
   id: string;
   placeholder: string;
   type: string;
+  typeTerritoire: string | undefined;
+  RechercherRedirection: () => void;
+  setIsTypeChanging: (a: boolean) => void;
+  setIsTerritoryChanging: (a: boolean) => void;
+  focusAutocomplete: boolean;
 };
 
 type SearchInputOptionsProps = {
@@ -35,6 +43,15 @@ type SearchInputOptionsProps = {
 };
 
 type SearchInputTagProps = {
+  params: AutocompleteRenderInputParams;
+  className?: string;
+  typeTerritoire: string | undefined;
+  setInputValue: (value: string) => void;
+  setSearchCode: (value: string) => void;
+  setSearchLibelle: (value: string) => void;
+};
+
+type SearchInputTagHeaderProps = {
   params: AutocompleteRenderInputParams;
   className?: string;
   typeTerritoire: string | undefined;

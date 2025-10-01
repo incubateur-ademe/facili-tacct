@@ -1,3 +1,30 @@
+// Header barre de changement de territoires
+
+.headerSearchBarContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 30px;
+    border: 1px solid var(--gris-medium);
+    height: 50px;
+    padding: 11px 0;
+    .separator {
+        height: 2rem;
+        border-left: 1px solid var(--gris-light);
+        margin: 0 10px;
+    }
+    .searchTerritoireContainer {
+        display: flex;
+        flex-direction: row;
+        width: inherit;
+        align-items: center;
+        margin: 0 8px 0 0;
+        justify-content: space-between;
+        height: inherit;
+        gap: 20px;
+    }
+}
+
 .unselected {
     width: fit-content;
     max-width: 150px;
