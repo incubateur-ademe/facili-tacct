@@ -31,10 +31,11 @@ type SearchInputHeaderProps = {
   id: string;
   placeholder: string;
   type: string;
-  typeTerritoire: string | undefined;
+  typeTerritoire: "epci" | "commune" | "petr" | "pnr" | "departement";
   RechercherRedirection: () => void;
   setIsTypeChanging: (a: boolean) => void;
   setIsTerritoryChanging: (a: boolean) => void;
+  setIsNewTypeChosen: (a: boolean) => void;
   focusAutocomplete: boolean;
   setFocusAutocomplete: (a: boolean) => void;
 };

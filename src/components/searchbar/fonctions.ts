@@ -15,13 +15,13 @@ export const handleRechercheRedirection = ({
   page: string;
 }) => {
   if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
-    router.push(`/${page}?code=200054781&libelle=${searchLibelle}&type=ept`);
+    router.replace(`/${page}?code=200054781&libelle=${searchLibelle}&type=ept`);
   } else if (searchCode.length !== 0) {
-    router.push(
+    router.replace(
       `/${page}?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
     );
   } else if (searchLibelle.length !== 0) {
-    router.push(`/${page}?libelle=${searchLibelle}&type=${typeTerritoire}`);
+    router.replace(`/${page}?libelle=${searchLibelle}&type=${typeTerritoire}`);
   }
 };
 
@@ -41,12 +41,22 @@ export const handleChangementTerritoireRedirection = ({
   thematique?: string;
 }) => {
   if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
-    router.push(`/${page}?code=200054781&libelle=${searchLibelle}&type=ept${thematique ? `&thematique=${thematique}` : ''}`);
+    const url = `/${page}?code=200054781&libelle=${searchLibelle}&type=ept${thematique ? `&thematique=${thematique}` : ''}`;
+    window.location.assign(url);
   } else if (searchCode.length !== 0) {
-    router.push(
-      `/${page}?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}${thematique ? `&thematique=${thematique}` : ''}`
-    );
+    const url = `/${page}?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}${thematique ? `&thematique=${thematique}` : ''}`;
+    window.location.assign(url);
   } else if (searchLibelle.length !== 0) {
-    router.push(`/${page}?libelle=${searchLibelle}&type=${typeTerritoire}${thematique ? `&thematique=${thematique}` : ''}`);
+    const url = `/${page}?libelle=${searchLibelle}&type=${typeTerritoire}${thematique ? `&thematique=${thematique}` : ''}`;
+    window.location.assign(url);
   }
+  // if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
+  //   router.replace(`/${page}?code=200054781&libelle=${searchLibelle}&type=ept${thematique ? `&thematique=${thematique}` : ''}`);
+  // } else if (searchCode.length !== 0) {
+  //   router.replace(
+  //     `/${page}?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}${thematique ? `&thematique=${thematique}` : ''}`
+  //   );
+  // } else if (searchLibelle.length !== 0) {
+  //   router.replace(`/${page}?libelle=${searchLibelle}&type=${typeTerritoire}${thematique ? `&thematique=${thematique}` : ''}`);
+  // }
 };

@@ -23,8 +23,7 @@ export const RenderOption = ({ props, option }: SearchInputOptionsProps) => {
     >
       {option.searchCode?.length !== 0 ? (
         <p style={{ margin: '0', fontSize: '14px' }}>
-          {ReplaceDisplayEpci(option.searchLibelle)} (
-          {option.searchCode})
+          {ReplaceDisplayEpci(option.searchLibelle)} - {option.searchCode}
         </p>
       ) : (
         <p style={{ margin: '0', fontSize: '14px' }}>
