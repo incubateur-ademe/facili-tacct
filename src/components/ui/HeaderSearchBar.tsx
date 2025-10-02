@@ -1,5 +1,6 @@
 import LoupeIcon from '@/assets/icons/magnifying_glass_icon_white.svg';
 import { couleursPrincipales } from "@/design-system/couleurs";
+import { getTextWidth } from '@/hooks/TextWidth';
 import { DarkClass } from "@/lib/utils/DarkClass";
 import { eptRegex } from "@/lib/utils/regex";
 import SearchBar from "@codegouvfr/react-dsfr/SearchBar";
@@ -10,7 +11,7 @@ import { useEffect, useState } from "react";
 import { useStyles } from "tss-react/dsfr";
 import styles from '../components.module.scss';
 import { handleChangementTerritoireRedirection, handleRechercheRedirection } from "../searchbar/fonctions";
-import { SearchInputHeader } from "../searchbar/header/SearchInputHeader";
+import { SearchInputHeader } from '../searchbar/header/SearchInputHeader';
 import { HtmlTooltip } from '../utils/Tooltips';
 
 const ReplaceDisplayEpci = (libelleEpci: string) => {
@@ -36,14 +37,6 @@ const Localisation = (props: { libelle: string; code?: string }) => {
     </div>
   );
 };
-
-function getTextWidth(text: string, font: string = '14px Marianne'): number {
-  const canvas = document.createElement('canvas');
-  const context = canvas.getContext('2d');
-  if (!context) return 0;
-  context.font = font;
-  return context.measureText(text).width;
-}
 
 const HeaderSearchBar = (props:
   {
@@ -116,12 +109,14 @@ const HeaderSearchBar = (props:
   const territoireTexte = value + " " + ReplaceDisplayEpci(searchLibelle) + " - " + searchCode;
   const textWidth = getTextWidth(territoireTexte);
 
+  // console.log("search", searchLibelle, searchCode, typeTerritoire, textWidth);
+
   return (
     libelle && value ? (
       <div
         className={styles.headerSearchBarContainer}
         style={{
-          width: (isTypeChanging || isTerritoryChanging) ? "640px" : textWidth + 120,
+          width: (isTypeChanging || isTerritoryChanging) ? "640px" : Math.min(textWidth + 120, 639),
           maxWidth: "640px",
           backgroundColor: (isTerritoryChanging || isTypeChanging) ? 'var(--gris-light)' : 'white',
           transition: 'all 0.5s ease-in-out'
@@ -155,6 +150,7 @@ const HeaderSearchBar = (props:
               '& .MuiPaper-root': {
                 backgroundColor: '#FFFFFF',
                 borderRadius: '1rem',
+                transform: 'translateY(14px) !important',
                 '& .Mui-selected': {
                   fontWeight: 700,
                   backgroundColor: '#FFFFFF',
@@ -177,6 +173,7 @@ const HeaderSearchBar = (props:
           sx={{
             '&': {
               backgroundColor: isTypeChanging ? 'white' : isTerritoryChanging ? 'var(--gris-light)' : 'white',
+              boxShadow: isTypeChanging ? 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px' : isTerritoryChanging ? 'none' : 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px',
               borderRadius: '30px',
               height: "48px", // inherit 50px - bordure en haut et en bas
               fontWeight: 400,
@@ -216,11 +213,13 @@ const HeaderSearchBar = (props:
                 height: '48px',
                 alignItems: 'center',
                 backgroundColor: isTypeChanging ? 'var(--gris-light)' : isTerritoryChanging ? 'white' : 'white',
-                // width: Math.max((9.5 * (searchCode + " - " + searchLibelle).length), 300),
+                boxShadow: isTypeChanging ? 'none' : isTerritoryChanging ? 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px' : 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px',
                 width: ['-webkit-fill-available', '-moz-available'],
+                cursor: "pointer",
                 '.fr-input': {
                   backgroundColor: isTypeChanging ? 'var(--gris-light)' : isTerritoryChanging ? 'white' : 'white',
-                  boxShadow: 'none',
+                  boxShadow: isTypeChanging ? 'none' : isTerritoryChanging ? 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px' : 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px',
+
                   height: "48px",
                   '&:focus': {
                     outline: 'none',
@@ -251,8 +250,10 @@ const HeaderSearchBar = (props:
                 RechercherRedirection={handleRechercher}
                 setIsTypeChanging={setIsTypeChanging}
                 setIsTerritoryChanging={setIsTerritoryChanging}
+                setIsNewTypeChosen={setIsNewTypeChosen}
                 focusAutocomplete={focusAutocomplete}
                 setFocusAutocomplete={setFocusAutocomplete}
+
               />
             )}
           />

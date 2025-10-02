@@ -20,7 +20,7 @@ const ReplaceSearchEpci = (libelleEpci: string) => {
     .replace("CC ", "Communauté de communes ")
 };
 
-export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
+export const SearchInputHeader2 = ((props: SearchInputHeaderProps) => {
   const {
     className,
     id,
@@ -45,14 +45,23 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
   const [value, setValue] = useState<SearchInputOptions | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    if (searchLibelle) {
-      const val = { searchLibelle, searchCode: searchCode || '', codeCommune: '', codeEpci: '', ept: '', libellePetr: '', libellePnr: '', codePnr: '' };
-      setValue(val);
-      setInputValue('');
-    }
-  }, [searchLibelle, searchCode]);
-  const filteredCollectivite = options.filter(
+  const fetchOptions = async (query: string) => {
+    const getCollectivite = await GetCollectivite(typeTerritoire, query);
+    setOptions(
+      getCollectivite.map((el) => ({
+        searchLibelle: el.search_libelle,
+        searchCode: el.search_code ?? '',
+        codeCommune: el.code_geographique ?? '',
+        codeEpci: el.epci ?? '',
+        ept: el.ept ?? '',
+        libellePetr: el.libelle_petr ?? '',
+        libellePnr: el.libelle_pnr ?? '',
+        codePnr: el.code_pnr ?? ''
+      }))
+    );
+  };
+
+    const filteredCollectivite = options.filter(
     (value, index, self) =>
       index ===
       self.findIndex(
@@ -68,23 +77,19 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
   ];
 
   useEffect(() => {
-    void (async () => {
-      const getCollectivite = await GetCollectivite(typeTerritoire, inputValue);
-      setOptions(
-        getCollectivite.map((el) => ({
-          searchLibelle: el.search_libelle,
-          searchCode: el.search_code ?? '',
-          codeCommune: el.code_geographique ?? '',
-          codeEpci: el.epci ?? '',
-          ept: el.ept ?? '',
-          libellePetr: el.libelle_petr ?? '',
-          libellePnr: el.libelle_pnr ?? '',
-          codePnr: el.code_pnr ?? ''
-        }))
-      );
-    })();
-    setSearchCode(searchCode);
-  }, [inputValue, typeTerritoire]);
+    if (searchLibelle) {
+      const val = { searchLibelle, searchCode: searchCode || '', codeCommune: '', codeEpci: '', ept: '', libellePetr: '', libellePnr: '', codePnr: '' };
+      setValue(val);
+      setInputValue('');
+    }
+  }, [searchLibelle, searchCode]);
+
+    useEffect(() => {
+    if (isOpen) {
+      void fetchOptions(inputValue);
+    }
+    // setSearchCode(searchCode);
+  }, [inputValue, typeTerritoire, isOpen]);
 
   useEffect(() => {
     if (focusAutocomplete) {
@@ -99,6 +104,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
       }, 100);
     }
   }, [focusAutocomplete, id]);
+console.log("value", value);
 
   return (
     <Autocomplete
@@ -108,8 +114,6 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
       options={collectivites}
       value={value}
       noOptionsText=""
-      loading={ options.length === 0 }
-      loadingText="Chargement..."
       open={isOpen}
       onOpen={() => {
         setValue(null);
@@ -117,6 +121,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
         setIsTypeChanging(false);
         const input = document.getElementById(id);
         if (input) (input as HTMLInputElement).focus();
+        void fetchOptions(inputValue); 
         setTimeout(() => setIsOpen(true), 500);
       }}
       onClose={() => setIsOpen(false)}
@@ -177,7 +182,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
       }
       fullWidth
       clearOnEscape
-      openOnFocus
+      openOnFocus={false}
       selectOnFocus
       slotProps={{
         popper: {
@@ -186,8 +191,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
               borderRadius: '1rem',
               transform: 'translateY(14px)',
               padding: '0.5rem 0.2rem 0.5rem 0.5rem',
-              width: "448px !important",
-              boxShadow: '0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);'
+              width: "448px !important"
             },
             '& .MuiAutocomplete-listbox': {
               backgroundColor: 'white',

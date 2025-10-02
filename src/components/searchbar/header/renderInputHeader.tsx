@@ -24,7 +24,8 @@ export const RenderInputHeader = (props: SearchInputTagHeaderProps) => {
           fontFamily: 'Marianne',
           fontWeight: 400,
           color: '#000000',
-          maxHeight: "none"
+          maxHeight: "none",
+          cursor: "pointer"
         }}
       />
       {params.InputProps.endAdornment && (

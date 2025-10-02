@@ -216,7 +216,6 @@ export const MicroRemplissageTerritoire = (props: {
   arrondi?: number;
 }) => {
   const { territoireContours, pourcentage, arrondi = 0, height = 150 } = props;
-  console.log("^pourcentage", pourcentage);
   const mapRef = useRef<any | null>(null);
   const [bounds, setBounds] = useState<number[]>([0, 0, 0, 0]);
   const south = bounds[1];
