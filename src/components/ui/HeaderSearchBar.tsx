@@ -173,7 +173,7 @@ const HeaderSearchBar = (props:
           sx={{
             '&': {
               backgroundColor: isTypeChanging ? 'white' : isTerritoryChanging ? 'var(--gris-light)' : 'white',
-              boxShadow: isTypeChanging ? 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px' : isTerritoryChanging ? 'none' : 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px',
+              boxShadow: isTypeChanging ? 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px' : isTerritoryChanging ? 'none' : 'none',
               borderRadius: '30px',
               height: "48px", // inherit 50px - bordure en haut et en bas
               fontWeight: 400,
@@ -213,13 +213,12 @@ const HeaderSearchBar = (props:
                 height: '48px',
                 alignItems: 'center',
                 backgroundColor: isTypeChanging ? 'var(--gris-light)' : isTerritoryChanging ? 'white' : 'white',
-                boxShadow: isTypeChanging ? 'none' : isTerritoryChanging ? 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px' : 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px',
+                boxShadow: isTypeChanging ? 'none' : isTerritoryChanging ? 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px' : 'none',
                 width: ['-webkit-fill-available', '-moz-available'],
                 cursor: "pointer",
                 '.fr-input': {
                   backgroundColor: isTypeChanging ? 'var(--gris-light)' : isTerritoryChanging ? 'white' : 'white',
-                  boxShadow: isTypeChanging ? 'none' : isTerritoryChanging ? 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px' : 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px',
-
+                  boxShadow: isTypeChanging ? 'none' : isTerritoryChanging ? 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px' : 'none',
                   height: "48px",
                   '&:focus': {
                     outline: 'none',
