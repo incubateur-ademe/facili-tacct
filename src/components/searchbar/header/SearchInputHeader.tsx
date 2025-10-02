@@ -34,11 +34,9 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
     setFocusAutocomplete
   } = props;
   const [inputValue, setInputValue] = useState('');
-  console.log("inputvalue", inputValue);
   const [options, setOptions] = useState<SearchInputOptions[]>([]);
   const [value, setValue] = useState<SearchInputOptions | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-  console.log("value", value);
 
   useEffect(() => {
     if (searchLibelle) {
@@ -112,12 +110,8 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
       }}
       onClose={() => setIsOpen(false)}
       onChange={(event, newValue: SearchInputOptions | null) => {
-        console.log("OnChangeTriggered")
         if (newValue === null) {
           setIsTerritoryChanging(true);
-          // setFocusAutocomplete(true);
-          // setIsOpen(true);
-          // setTimeout(() => setFocusAutocomplete(false), 200);
         }
         setValue(newValue);
         setOptions(newValue ? [newValue, ...options] : options);
