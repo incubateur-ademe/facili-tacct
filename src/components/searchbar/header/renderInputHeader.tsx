@@ -17,8 +17,8 @@ export const RenderInputHeader = (props: SearchInputTagHeaderProps) => {
         placeholder={'Sélectionnez votre territoire'}
         disabled={!typeTerritoire}
         style={{
-          borderRadius: '30px', 
-          padding: '0 3.5rem 0 0.75rem', 
+          borderRadius: '30px',
+          padding: '0 2rem 0 0.75rem',
           fontSize: '14px',
           lineHeight: '19px',
           fontFamily: 'Marianne',

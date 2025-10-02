@@ -37,6 +37,14 @@ const Localisation = (props: { libelle: string; code?: string }) => {
   );
 };
 
+function getTextWidth(text: string, font: string = '14px Marianne'): number {
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
+  if (!context) return 0;
+  context.font = font;
+  return context.measureText(text).width;
+}
+
 const HeaderSearchBar = (props:
   {
     libelle: string;
@@ -65,7 +73,6 @@ const HeaderSearchBar = (props:
 
   const [searchCode, setSearchCode] = useState<string>(code ?? '');
   const [searchLibelle, setSearchLibelle] = useState<string>(libelle ?? '');
-  console.log("searchlibelle", searchLibelle);
   const [typeTerritoire, setTypeTerritoire] = useState<
     'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
   >('epci');
@@ -106,14 +113,15 @@ const HeaderSearchBar = (props:
   }, [isNewTypeChosen]);
 
   const collectivites = ["EPCI/EPT", "Commune", "Département", "PETR", "PNR"];
-  const x = (value + " " + searchCode + " - " + ReplaceDisplayEpci(searchLibelle)).length;
+  const territoireTexte = value + " " + ReplaceDisplayEpci(searchLibelle) + " - " + searchCode;
+  const textWidth = getTextWidth(territoireTexte);
 
   return (
     libelle && value ? (
       <div
         className={styles.headerSearchBarContainer}
         style={{
-          width: (isTypeChanging || isTerritoryChanging) ? "640px" : 0.0467668 * x ** 2 + (3.75262 * x) + 215.036,
+          width: (isTypeChanging || isTerritoryChanging) ? "640px" : textWidth + 120,
           maxWidth: "640px",
           backgroundColor: (isTerritoryChanging || isTypeChanging) ? 'var(--gris-light)' : 'white',
           transition: 'all 0.5s ease-in-out'
