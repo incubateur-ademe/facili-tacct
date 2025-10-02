@@ -1,5 +1,6 @@
 'use client';
 import DiagnoticImage from '@/assets/images/diagnostiquer_impacts.png';
+import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { LoaderText } from '@/components/ui/loader';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
@@ -31,38 +32,10 @@ const DonneesConfortThermique = ({
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const ongletsMenu = sommaireThematiques[thematique];
-
   const [data, setData] = useState({ carteCommunes, inconfortThermique });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
-
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.textContent = `
-      html {
-        scroll-behavior: smooth;
-      }
-    `;
-    document.head.appendChild(style);
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
-
-  useEffect(() => {
-    const scrollToHash = () => {
-      if (window.location.hash) {
-        const element = document.getElementById(decodeURIComponent(window.location.hash.substring(1)));
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        } else {
-          setTimeout(scrollToHash, 100);
-        }
-      }
-    };
-    scrollToHash();
-  }, []);
+  const ongletsMenu = sommaireThematiques[thematique];
 
   useEffect(() => {
     if (isFirstRender) {
@@ -71,7 +44,6 @@ const DonneesConfortThermique = ({
     }
     setIsLoading(true);
     void (async () => {
-      console.log("MOULE")
       const [newCarteCommunes, newInconfortThermique] = await Promise.all([
         GetCommunes(code, libelle, type),
         GetInconfortThermique(code, libelle, type)
@@ -81,12 +53,26 @@ const DonneesConfortThermique = ({
     })();
   }, [libelle]);
 
+  // Refetch({
+  //   isFirstRender,
+  //   setIsFirstRender,
+  //   fetchFunctions: [
+  //     () => GetCommunes(code, libelle, type),
+  //     () => GetInconfortThermique(code, libelle, type)
+  //   ],
+  //   setData,
+  //   setIsLoading,
+  //   param: libelle
+  // })
+
   return (
-    isLoading ? <LoaderText text='Mise à jour des données...' /> :
+    isLoading ? <LoaderText text='Mise à jour des données' /> :
       <div className={styles.explorerMesDonneesContainer}>
+        <ScrollToHash />
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
           Découvrez les facteurs qui font grimper l’inconfort thermique
         </H1>
+
         {/* Introduction */}
         <section>
           <Body size='lg'>

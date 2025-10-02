@@ -11,13 +11,15 @@ import { RenderInputHeader } from './renderInputHeader';
 const ReplaceDisplayEpci = (libelleEpci: string) => {
   return libelleEpci
     .replace("Communauté d'agglomération", 'CA')
-    .replace('Communauté de communes', 'CC');
+    .replace('Communauté de communes', 'CC')
+    .replace('Communauté urbaine', 'CU');
 };
 
 const ReplaceSearchEpci = (libelleEpci: string) => {
   return libelleEpci
     .replace("CA ", "Communauté d'agglomération ")
     .replace("CC ", "Communauté de communes ")
+    .replace("CU ", "Communauté urbaine ");
 };
 
 export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
@@ -29,12 +31,10 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
     setSearchLibelle,
     searchCode,
     searchLibelle,
-    RechercherRedirection,
     setIsTypeChanging,
     setIsTerritoryChanging,
     setIsNewTypeChosen,
     focusAutocomplete,
-    setFocusAutocomplete
   } = props;
   const router = useRouter();
   const pathname = usePathname();

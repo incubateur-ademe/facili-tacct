@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useStyles } from 'tss-react/dsfr';
 import { Brand } from '../Brand';
-import HeaderSearchBar from './HeaderSearchBar';
+import HeaderSearchBar from '../searchbar/header/HeaderSearchBar';
 
 const HeaderComp = () => {
   const searchParams = useSearchParams();
