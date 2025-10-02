@@ -34,6 +34,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
     setFocusAutocomplete
   } = props;
   const [inputValue, setInputValue] = useState('');
+  console.log("inputvalue", inputValue);
   const [options, setOptions] = useState<SearchInputOptions[]>([]);
   const [value, setValue] = useState<SearchInputOptions | null>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -104,12 +105,14 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
       noOptionsText=""
       open={isOpen}
       onOpen={() => {
+        setValue(null);
         setIsTerritoryChanging(true);
         setIsTypeChanging(false);
         setTimeout(() => setIsOpen(true), 500);
       }}
       onClose={() => setIsOpen(false)}
       onChange={(event, newValue: SearchInputOptions | null) => {
+        console.log("OnChangeTriggered")
         if (newValue === null) {
           setIsTerritoryChanging(true);
           // setFocusAutocomplete(true);
@@ -173,10 +176,20 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
               scrollbarWidth: 'thin',
               padding: '0'
             },
+
           },
         },
       }}
-      sx={{ width: 'inherit', height: '48px', alignContent: 'center', transition: 'all 0.5s ease-in-out' }}
+      sx={{
+        width: 'inherit',
+        height: '48px',
+        alignContent: 'center',
+        transition: 'all 0.5s ease-in-out',
+        '& .MuiAutocomplete-clearIndicator': {
+          display: 'none',
+          overflow: 'hidden'
+        },
+      }}
     />
   );
 });

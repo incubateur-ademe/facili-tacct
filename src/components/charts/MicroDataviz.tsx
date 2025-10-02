@@ -216,6 +216,7 @@ export const MicroRemplissageTerritoire = (props: {
   arrondi?: number;
 }) => {
   const { territoireContours, pourcentage, arrondi = 0, height = 150 } = props;
+  console.log("^pourcentage", pourcentage);
   const mapRef = useRef<any | null>(null);
   const [bounds, setBounds] = useState<number[]>([0, 0, 0, 0]);
   const south = bounds[1];
@@ -290,77 +291,80 @@ export const MicroRemplissageTerritoire = (props: {
     : null;
 
   return (
-    <div
-    className='flex flex-column items-center'
-      style={{ flexDirection: 'column' }}
+    isNaN(pourcentage) ? null : (
+      <div
+        className='flex flex-column items-center'
+        style={{ flexDirection: 'column' }}
       >
-      <Body weight="bold" style={{ color: couleurs.gris.dark, position: "absolute" }}>
-        {Round(pourcentage, arrondi)} %
-      </Body>
-      {territoireContours.length > 0 && bounds[0] !== 0 ? (
-        <div style={{
-          width: `${containerWidth}px`,
-          height: `${containerHeight}px`,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'column',
-          paddingTop: '1.5rem'
-        }}>
-          <MapContainer
-            ref={mapRef}
-            style={{
-              height: '100%',
-              width: '100%',
-              backgroundColor: 'transparent',
-            }}
-            attributionControl={false}
-            zoomControl={false}
-            scrollWheelZoom={false}
-            dragging={false}
-            bounds={[
-              [bounds[1], bounds[0]],
-              [bounds[3], bounds[2]]
-            ]}
-            boundsOptions={{
-              padding: [0, 0],
-            }}
-          >
-            <div
+        <Body weight="bold" style={{ color: couleurs.gris.dark, position: "absolute" }}>
+          {Round(pourcentage, arrondi)} %
+        </Body>
+        {territoireContours.length > 0 && bounds[0] !== 0 ? (
+          <div style={{
+            width: `${containerWidth}px`,
+            height: `${containerHeight}px`,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+            paddingTop: '1.5rem'
+          }}>
+            <MapContainer
+              ref={mapRef}
               style={{
-                display: 'flex',
-                alignSelf: 'center',
-                zIndex: '501',
-                margin: 'auto',
-                position: 'relative',
-                width: 'fit-content',
+                height: '100%',
+                width: '100%',
+                backgroundColor: 'transparent',
               }}
-            />
-            <GeoJSON
-              data={union as unknown as GeoJsonObject}
-              style={{
-                color: 'var(--gris-dark)',
-                weight: 1,
-                fillColor: couleurs.gris.light,
-                fillOpacity: 1,
-                opacity: 1,
+              attributionControl={false}
+              zoomControl={false}
+              scrollWheelZoom={false}
+              dragging={false}
+              bounds={[
+                [bounds[1], bounds[0]],
+                [bounds[3], bounds[2]]
+              ]}
+              boundsOptions={{
+                padding: [0, 0],
               }}
-            />
-            <GeoJSON
-              data={intersect as unknown as GeoJsonObject}
-              style={{
-                color: 'none',
-                fillColor: couleurs.gris.dark,
-                opacity: 1,
-                fillOpacity: 1,
-              }}
-            />
-          </MapContainer>
-        </div>
-      ) : (
-        ""
-      )}
-    </div>
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  alignSelf: 'center',
+                  zIndex: '501',
+                  margin: 'auto',
+                  position: 'relative',
+                  width: 'fit-content',
+                }}
+              />
+              <GeoJSON
+                data={union as unknown as GeoJsonObject}
+                style={{
+                  color: 'var(--gris-dark)',
+                  weight: 1,
+                  fillColor: couleurs.gris.light,
+                  fillOpacity: 1,
+                  opacity: 1,
+                }}
+              />
+              <GeoJSON
+                data={intersect as unknown as GeoJsonObject}
+                style={{
+                  color: 'none',
+                  fillColor: couleurs.gris.dark,
+                  opacity: 1,
+                  fillOpacity: 1,
+                }}
+              />
+            </MapContainer>
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
+    )
+
   );
 };
 

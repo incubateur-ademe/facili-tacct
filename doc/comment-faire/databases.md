@@ -43,9 +43,11 @@ ogr2ogr -nln <name of layer(table)>
     -lco SCHEMA=<nom schema> Pg:"dbname=<nom de la db> host=<adresse host> user=<user> port=<port>"
     "C:\path\to\file\file.gpkg"
 ```
+
 ## Vérifier si les bases en prod et en preprod sont identiques
 
 Pour les bases de prod et de preprod, faire la commande :
+
 ```
 SELECT md5(string_agg(t::text, '')) AS checksum
 FROM (
@@ -59,8 +61,9 @@ Les 2 hashs doivent être identiques.
 ## Cloner une base PostGIS distante pour l'utiliser en local
 
 1. **Dump de la base distante**
-    Créer un folder à la base du projet db-dump.
-    Faire le dump de la base (peut être long) :
+   Créer un folder à la base du projet db-dump.
+   Faire le dump de la base (peut être long) :
+
     ```bash
     PGPASSWORD='password' pg_dump \
       --no-owner \
@@ -71,60 +74,70 @@ Les 2 hashs doivent être identiques.
       -f ./db-dump/facili-tacct-postgis-databases.sql
     ```
 
-2. **init.sh**
-    Création du fichier init.sh dans le même dossier : 
+2. **Ajouter le ficher au .gitignore**
+   Dans le .gitignore, ajouter la base volumineuse :
+   /db-dump/facili-tacct-postgis-databases.sql
+
+3. **init.sh**
+   Création du fichier init.sh dans le même dossier :
+
     ```bash
     #!/bin/bash
     set -e
     psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -f /docker-entrypoint-initdb.d/facili-tacct-postgis-databases.sql
     ```
 
-3. **pg_hba.conf**
-    Création du fichier pg_hba.conf dans le même dossier :
+4. **pg_hba.conf**
+   Création du fichier pg_hba.conf dans le même dossier :
+
     ```conf
     host    all             all             0.0.0.0/0               trust
     host    all             all             ::/0                    trust
     ```
 
-4. **docker-compose.yml** (exemple)
+5. **docker-compose.yml** (exemple)
+
     ```yaml
     version: '3'
     services:
     db:
         image: postgis/postgis:17-3.5
         environment:
-          - POSTGRES_USER=postgres
-          - POSTGRES_PASSWORD=postgres
-          - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=postgres
         ports:
-          - "5432:5432"
+            - '5432:5432'
         volumes:
-          - db-data:/var/lib/postgresql/data
-          - ./db-dump:/docker-entrypoint-initdb.d
-        
+            - db-data:/var/lib/postgresql/data
+            - ./db-dump:/docker-entrypoint-initdb.d
+
     volumes:
         db-data:
     ```
 
-5. **.env**
+6. **.env**
+
     ```env
     SCALINGO_POSTGRESQL_URL=postgresql://postgres:postgres@127.0.0.1:5432/postgres
     ```
 
-6. **Dans le dump SQL**
-    Ajouter après `CREATE SCHEMA postgis;` :
+7. **Dans le dump SQL**
+   Ajouter après `CREATE SCHEMA postgis;` :
+
     ```sql
     CREATE EXTENSION IF NOT EXISTS postgis SCHEMA postgis;
     ```
 
-7. **Lancer la base**
+8. **Lancer la base**
+
     ```bash
     docker compose down -v
     docker compose up db
     ```
 
-8. **Créer l'extension unaccent**
-    Connexion à la db dans docker : 
+9. **Créer l'extension unaccent**
+   Connexion à la db dans docker :
     ```bash
     docker exec -it facili-tacct-db-1 psql -U postgres -d postgres
     ```
