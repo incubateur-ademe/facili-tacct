@@ -11,6 +11,7 @@ import { useStyles } from "tss-react/dsfr";
 import styles from '../components.module.scss';
 import { handleChangementTerritoireRedirection, handleRechercheRedirection } from "../searchbar/fonctions";
 import { SearchInputHeader } from "../searchbar/header/SearchInputHeader";
+import { HtmlTooltip } from '../utils/Tooltips';
 
 const ReplaceDisplayEpci = (libelleEpci: string) => {
   return libelleEpci
@@ -64,6 +65,7 @@ const HeaderSearchBar = (props:
 
   const [searchCode, setSearchCode] = useState<string>(code ?? '');
   const [searchLibelle, setSearchLibelle] = useState<string>(libelle ?? '');
+  console.log("searchlibelle", searchLibelle);
   const [typeTerritoire, setTypeTerritoire] = useState<
     'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
   >('epci');
@@ -111,7 +113,7 @@ const HeaderSearchBar = (props:
       <div
         className={styles.headerSearchBarContainer}
         style={{
-          width: (isTypeChanging || isTerritoryChanging) ? "640px" : 0.0467668* x ** 2 + (3.75262 * x) + 215.036,
+          width: (isTypeChanging || isTerritoryChanging) ? "640px" : 0.0467668 * x ** 2 + (3.75262 * x) + 215.036,
           maxWidth: "640px",
           backgroundColor: (isTerritoryChanging || isTypeChanging) ? 'var(--gris-light)' : 'white',
           transition: 'all 0.5s ease-in-out'
@@ -159,7 +161,8 @@ const HeaderSearchBar = (props:
               '& .MuiButtonBase-root': {
                 fontSize: '14px',
                 lineHeight: '19px',
-                '&:hover': { fontWeight: '700 !important', backgroundColor: 'transparent !important' }
+                '&:hover': { fontWeight: '700 !important', backgroundColor: 'transparent !important' },
+                '&:focus': { fontWeight: '700 !important', backgroundColor: 'transparent !important', outline: 'none' },
               },
             },
           }}
@@ -189,11 +192,11 @@ const HeaderSearchBar = (props:
           ))}
         </Select>
         <div className={styles.separator} />
-        <div 
-        className={styles.searchTerritoireContainer}
-        style={{
-          margin: isTerritoryChanging || isTypeChanging ? "0 8px 0 0" : "0"
-        }}
+        <div
+          className={styles.searchTerritoireContainer}
+          style={{
+            margin: isTerritoryChanging || isTypeChanging ? "0 8px 0 0" : "0"
+          }}
         >
           <SearchBar
             className={
@@ -212,7 +215,7 @@ const HeaderSearchBar = (props:
                   boxShadow: 'none',
                   height: "48px",
                   '&:focus': {
-                    outline: 'none'
+                    outline: 'none',
                   },
                   '&::placeholder': {
                     color: 'var(--gris-medium-dark)',
@@ -246,32 +249,51 @@ const HeaderSearchBar = (props:
             )}
           />
           {
-            (isTypeChanging || isTerritoryChanging) ?
-              <Image
-                alt=""
-                src={LoupeIcon}
-                height={34}
-                width={34}
-                style={{
-                  backgroundColor: couleursPrincipales.vert,
-                  borderRadius: '30px',
-                  padding: '4px',
-                  cursor: 'pointer'
-                }}
-                onClick={() => {
-                  setIsNewTypeChosen(false);
-                  setIsTerritoryChanging(false);
-                  setIsTypeChanging(false);
-                  handleChangementTerritoireRedirection({
-                    searchCode,
-                    searchLibelle,
-                    typeTerritoire,
-                    router,
-                    page: pathname.split('/')[1] || '',
-                    thematique
-                  })
-                }}
-              /> : null
+            (isTypeChanging || isTerritoryChanging) ? (
+              searchLibelle === '' ? (
+                <HtmlTooltip title="Sélectionnez un territoire">
+                  <Image
+                    alt=""
+                    src={LoupeIcon}
+                    height={34}
+                    width={34}
+                    style={{
+                      backgroundColor: couleursPrincipales.vert,
+                      borderRadius: '30px',
+                      padding: '4px',
+                    }}
+                  />
+                </HtmlTooltip>
+              ) : (
+                <Image
+                  alt=""
+                  src={LoupeIcon}
+                  height={34}
+                  width={34}
+                  style={{
+                    backgroundColor: couleursPrincipales.vert,
+                    borderRadius: '30px',
+                    padding: '4px',
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => {
+                    if (searchLibelle === '') return;
+                    setIsNewTypeChosen(false);
+                    setIsTerritoryChanging(false);
+                    setIsTypeChanging(false);
+                    handleChangementTerritoireRedirection({
+                      searchCode,
+                      searchLibelle,
+                      typeTerritoire,
+                      router,
+                      page: pathname.split('/')[1] || '',
+                      thematique
+                    })
+                  }}
+                />
+              )
+
+            ) : null
           }
         </div>
       </div>
