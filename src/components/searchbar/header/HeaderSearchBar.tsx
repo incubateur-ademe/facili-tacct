@@ -3,16 +3,10 @@ import SearchBar from "@codegouvfr/react-dsfr/SearchBar";
 import { useEffect, useState } from "react";
 import { useStyles } from "tss-react/dsfr";
 import styles from '../../components.module.scss';
+import { ReplaceDisplayEpci } from '../fonctions';
 import { BoutonRechercherHeader } from './BoutonRechercher';
 import { SearchInputHeader } from './SearchInputHeader';
 import { SelectTypeTerritoire } from './SelectTypeTerritoire';
-
-const ReplaceDisplayEpci = (libelleEpci: string) => {
-  return libelleEpci
-    .replace("Communauté d'agglomération", 'CA')
-    .replace('Communauté de communes', 'CC')
-    .replace('Communauté urbaine', 'CU');
-};
 
 const HeaderSearchBar = (props:
   {

@@ -1,6 +1,20 @@
 import { eptRegex } from '@/lib/utils/regex';
 import { useRouter } from 'next/navigation';
 
+export const ReplaceDisplayEpci = (libelleEpci: string) => {
+  return libelleEpci
+    .replace("Communauté d'agglomération", 'CA')
+    .replace('Communauté de communes', 'CC')
+    .replace('Communauté urbaine', 'CU');
+};
+
+export const ReplaceSearchEpci = (libelleEpci: string) => {
+  return libelleEpci
+    .replace("CA ", "Communauté d'agglomération ")
+    .replace("CC ", "Communauté de communes ")
+    .replace("CU ", "Communauté urbaine ");
+};
+
 export const handleRechercheRedirection = ({
   searchCode,
   searchLibelle,

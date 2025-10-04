@@ -2,6 +2,7 @@
 
 import { sommaireImpacts, sommaireThematiques } from '@/app/(main)/(nouveau-parcours)/thematiques/constantes/textesThematiques';
 import { ErrorDisplay } from '@/app/ErrorDisplay';
+import DoubleChevronIcon from '@/assets/icons/double_chevron_icon_black.svg';
 import retourIcon from '@/assets/icons/retour_icon_black.svg';
 import { Body, H2, SousTitre2 } from '@/design-system/base/Textes';
 import { handleRedirection, handleRedirectionThematique } from '@/hooks/Redirections';
@@ -11,7 +12,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import styles from '../components.module.scss';
 
-export const MenuLateral = () => {
+export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: boolean; onToggleCollapse: (collapsed: boolean) => void }) => {
   const searchParams = useSearchParams();
   const params = usePathname();
   const code = searchParams.get('code')!;
@@ -29,6 +30,7 @@ export const MenuLateral = () => {
   const [activeAnchorEtape2, setActiveAnchorEtape2] = useState<string>('');
   const [urlAnchor, setUrlAnchor] = useState<string | null>(null);
   const [isErosionCotiere, setIsErosionCotiere] = useState<boolean>(false);
+  const [isContentVisible, setIsContentVisible] = useState<boolean>(!isCollapsed);
 
   const redirectionRetour = handleRedirection({
     searchCode: code || '',
@@ -119,6 +121,16 @@ export const MenuLateral = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [navigationHeight, openEtape1, openEtape2]);
 
+  // Handle content visibility with delay for smooth animation
+  useEffect(() => {
+    if (!isCollapsed) {
+      const timer = setTimeout(() => setIsContentVisible(true), 500);
+      return () => clearTimeout(timer);
+    } else {
+      setIsContentVisible(false);
+    }
+  }, [isCollapsed]);
+
   const scrollToAnchor = (anchor: string) => {
     const decodedAnchor = decodeURIComponent(anchor);
     const element = document.getElementById(decodedAnchor);
@@ -178,187 +190,210 @@ export const MenuLateral = () => {
             top: `${topPosition}px`,
             height: `calc(100vh - ${topPosition}px)`,
             borderRight: '1px solid var(--gris-medium)',
-            padding: "1.5rem 1.25rem",
-            zIndex: 50
+            padding: isCollapsed ? "0" : "1.5rem 1.25rem",
+            zIndex: 50,
+            width: isCollapsed ? '50px' : '322px',
+            transition: 'width 0.5s ease-in-out, padding 0.5s ease-in-out'
           }}
           aria-label="Navigation dans la page"
           role="navigation"
         >
-          <div>
-            {/* Bouton de retour */}
-            <div
-              style={{ borderBottom: '1px solid var(--gris-medium)' }}
-            >
-              <a
-                href={redirectionRetour}
-                className="flex items-center gap-2"
-                style={{ backgroundImage: 'none' }}
-              >
-                <Image src={retourIcon} alt="" />
-                <Body size='sm' weight='bold'>Retour aux thématiques</Body>
-              </a>
-
-              {/* Titre principal */}
-              <H2 style={{ fontSize: '1.25rem', margin: "18px 0" }}>
-                {thematique}
-              </H2>
-            </div>
-          </div>
-          {/* Navigation */}
-          <div className="flex flex-col" ref={navigationRef}>
-            <button
-              onClick={handleEtape1Toggle}
-              className={styles.BoutonEtapes}
-            >
-              {openEtape1 ? (
+          <button
+            onClick={() => onToggleCollapse(!isCollapsed)}
+            className={styles.toggle_button}
+            title={!isCollapsed ? "Réduire le menu" : "Ouvrir le menu"}
+          >
+            <Image
+              src={DoubleChevronIcon}
+              alt="Toggle menu"
+              className={`${isCollapsed ? styles.toggle_icon_collapsed : styles.toggle_icon_expanded}`}
+              style={{
+                width: '16px',
+                height: '16px',
+                transform: isCollapsed ? 'rotate(0deg)' : 'rotate(180deg)',
+                transition: 'transform 0.2s',
+              }}
+            />
+          </button>
+          {isContentVisible && (
+            <>
+              <div>
+                {/* Bouton de retour */}
                 <div
-                  className={styles['chevron-right-green']}
-                  style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
-                />
-              ) : (
-                <div
-                  className={styles['chevron-right-black']}
-                  style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
-                />
-              )}
-              <Body size='lg' weight='bold' style={{ color: openEtape1 ? "var(--principales-vert)" : "black" }}>
-                {thematique === "Confort thermique" ? <>Étape 1. <br />Données de votre territoire</> : "Données de votre territoire"}
-              </Body>
-            </button>
-            <div className={thematique === "Confort thermique" ? styles.menuEtapeDonnees : styles.menuEtapeDonneesSansImpact}>
-              {openEtape1 && ongletsMenuEtape1?.thematiquesLiees.map((thematique, id) => (
-                <div key={id} className="mb-4">
-                  <SousTitre2
-                    style={{
-                      color: "var(--principales-rouge)",
-                      padding: "0 0 0.5rem"
-                    }}
+                  style={{ borderBottom: '1px solid var(--gris-medium)' }}
+                >
+                  <a
+                    href={redirectionRetour}
+                    className="flex items-center gap-2"
+                    style={{ backgroundImage: 'none' }}
                   >
-                    {thematique.icone}{" "}{thematique.thematique}
-                  </SousTitre2>
-                  <div className="">
-                    {thematique.sousCategories.map((item) => (
-                      <button
-                        key={item}
-                        onClick={() => handleItemClickEtape1(item)}
-                        className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === item
-                          ? styles.itemSurligne
-                          : styles.itemNonSurligne
-                          }`}
-                      >
-                        <Body size='sm'>{item}</Body>
-                      </button>
-                    ))}
-                  </div>
+                    <Image src={retourIcon} alt="" />
+                    <Body size='sm' weight='bold'>Retour aux thématiques</Body>
+                  </a>
+
+                  {/* Titre principal */}
+                  <H2 style={{ fontSize: '1.25rem', margin: "18px 0" }}>
+                    {thematique}
+                  </H2>
                 </div>
-              ))}
-              {
-                isErosionCotiere && thematique === "Gestion des risques" && (
-                  <>
-                    <SousTitre2
-                      style={{
-                        color: "var(--principales-rouge)",
-                        padding: "0.5rem 0 0.5rem"
-                      }}
-                    >
-                      🏗️ Aménagement
-                    </SousTitre2>
-                    <div className="">
-                      <button
-                        key={"Érosion"}
-                        onClick={() => handleItemClickEtape1("Érosion côtière")}
-                        className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === "Érosion côtière"
-                          ? styles.itemSurligne
-                          : styles.itemNonSurligne
-                          }`}
+              </div>
+              {/* Navigation */}
+              <div className="flex flex-col" ref={navigationRef}>
+                <button
+                  onClick={handleEtape1Toggle}
+                  className={styles.BoutonEtapes}
+                >
+                  {openEtape1 ? (
+                    <div
+                      className={styles['chevron-right-green']}
+                      style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
+                    />
+                  ) : (
+                    <div
+                      className={styles['chevron-right-black']}
+                      style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
+                    />
+                  )}
+                  <Body size='lg' weight='bold' style={{ color: openEtape1 ? "var(--principales-vert)" : "black" }}>
+                    {thematique === "Confort thermique" ? <>Étape 1. <br />Données de votre territoire</> : "Données de votre territoire"}
+                  </Body>
+                </button>
+                <div className={thematique === "Confort thermique" ? styles.menuEtapeDonnees : styles.menuEtapeDonneesSansImpact}>
+                  {openEtape1 && ongletsMenuEtape1?.thematiquesLiees.map((thematique, id) => (
+                    <div key={id} className="mb-4">
+                      <SousTitre2
+                        style={{
+                          color: "var(--principales-rouge)",
+                          padding: "0 0 0.5rem"
+                        }}
                       >
-                        <Body size='sm'>Érosion côtière</Body>
-                      </button>
+                        {thematique.icone}{" "}{thematique.thematique}
+                      </SousTitre2>
+                      <div className="">
+                        {thematique.sousCategories.map((item) => (
+                          <button
+                            key={item}
+                            onClick={() => handleItemClickEtape1(item)}
+                            className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === item
+                              ? styles.itemSurligne
+                              : styles.itemNonSurligne
+                              }`}
+                          >
+                            <Body size='sm'>{item}</Body>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                  {
+                    isErosionCotiere && thematique === "Gestion des risques" && (
+                      <>
+                        <SousTitre2
+                          style={{
+                            color: "var(--principales-rouge)",
+                            padding: "0.5rem 0 0.5rem"
+                          }}
+                        >
+                          🏗️ Aménagement
+                        </SousTitre2>
+                        <div className="">
+                          <button
+                            key={"Érosion"}
+                            onClick={() => handleItemClickEtape1("Érosion côtière")}
+                            className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === "Érosion côtière"
+                              ? styles.itemSurligne
+                              : styles.itemNonSurligne
+                              }`}
+                          >
+                            <Body size='sm'>Érosion côtière</Body>
+                          </button>
+                        </div>
+                      </>
+                    )
+                  }
+                </div>
+                {thematique === "Confort thermique" ? (
+                  <>
+                    <button
+                      onClick={handleEtape2Toggle}
+                      className={styles.BoutonEtapes}
+                    >
+                      {openEtape2 ? (
+                        <div
+                          className={styles['chevron-right-green']}
+                          style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
+                        />
+                      ) : (
+                        <div
+                          className={styles['chevron-right-black']}
+                          style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
+                        />
+                      )}
+                      <Body size='lg' weight='bold' style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
+                        Étape 2. <br />Diagnostiquez les impacts
+                      </Body>
+                    </button>
+                    <div className={styles.menuEtapeImpacts}>
+                      {
+                        openEtape2 && ongletsMenuEtape2.map((item) => (
+                          <button
+                            key={item.id}
+                            onClick={() => handleItemClickEtape2(item)}
+                            className={`block w-full text-left ${activeAnchorEtape2 === item.id
+                              ? styles.itemSurligne
+                              : styles.itemNonSurligne
+                              }`}
+                          >
+                            <Body size='sm'>{item.titre}</Body>
+                          </button>
+                        ))
+                      }
                     </div>
                   </>
-                )
-              }
-            </div>
-            {thematique === "Confort thermique" ? (
-              <>
-                <button
-                  onClick={handleEtape2Toggle}
-                  className={styles.BoutonEtapes}
-                >
-                  {openEtape2 ? (
-                    <div
-                      className={styles['chevron-right-green']}
-                      style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
-                    />
-                  ) : (
-                    <div
-                      className={styles['chevron-right-black']}
-                      style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
-                    />
-                  )}
-                  <Body size='lg' weight='bold' style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
-                    Étape 2. <br />Diagnostiquez les impacts
-                  </Body>
-                </button>
-                <div className={styles.menuEtapeImpacts}>
-                  {
-                    openEtape2 && ongletsMenuEtape2.map((item) => (
-                      <button
-                        key={item.id}
-                        onClick={() => handleItemClickEtape2(item)}
-                        className={`block w-full text-left ${activeAnchorEtape2 === item.id
-                          ? styles.itemSurligne
-                          : styles.itemNonSurligne
-                          }`}
-                      >
-                        <Body size='sm'>{item.titre}</Body>
-                      </button>
-                    ))
-                  }
-                </div>
-              </>
-            ) : ""
-            }
-            {/* {thematique === "Agriculture" && (
-              <>
-                <button
-                  onClick={handleEtape2Toggle}
-                  className={styles.BoutonEtapes}
-                >
-                  {openEtape2 ? (
-                    <div
-                      className={styles['chevron-right-green']}
-                      style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
-                    />
-                  ) : (
-                    <div
-                      className={styles['chevron-right-black']}
-                      style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
-                    />
-                  )}
-                  <Body size='lg' weight='bold' style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
-                    Étape 2. <br />Diagnostiquez les impacts
-                  </Body>
-                </button>
-                <div className={styles.menuEtapeImpacts}>
-                  {
-                    openEtape2 && ongletsMenuEtape2.map((item) => (
-                      <button
-                        key={item.id}
-                        onClick={() => handleItemClickEtape2(item)}
-                        className={`block w-full text-left ${activeAnchorEtape2 === item.id
-                          ? styles.itemSurligne
-                          : styles.itemNonSurligne
-                          }`}
-                      >
-                        <Body size='sm'>{item.titre}</Body>
-                      </button>
-                    ))
-                  }
-                </div>
-              </>
-            )} */}
-          </div>
+                ) : ""
+                }
+                {/* {thematique === "Agriculture" && (
+                  <>
+                    <button
+                      onClick={handleEtape2Toggle}
+                      className={styles.BoutonEtapes}
+                    >
+                      {openEtape2 ? (
+                        <div
+                          className={styles['chevron-right-green']}
+                          style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
+                        />
+                      ) : (
+                        <div
+                          className={styles['chevron-right-black']}
+                          style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
+                        />
+                      )}
+                      <Body size='lg' weight='bold' style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
+                        Étape 2. <br />Diagnostiquez les impacts
+                      </Body>
+                    </button>
+                    <div className={styles.menuEtapeImpacts}>
+                      {
+                        openEtape2 && ongletsMenuEtape2.map((item) => (
+                          <button
+                            key={item.id}
+                            onClick={() => handleItemClickEtape2(item)}
+                            className={`block w-full text-left ${activeAnchorEtape2 === item.id
+                              ? styles.itemSurligne
+                              : styles.itemNonSurligne
+                              }`}
+                          >
+                            <Body size='sm'>{item.titre}</Body>
+                          </button>
+                        ))
+                      }
+                    </div>
+                  </>
+                )} */}
+              </div>
+            </>
+          )}
         </nav>
       ) : <ErrorDisplay code="404" />
       }

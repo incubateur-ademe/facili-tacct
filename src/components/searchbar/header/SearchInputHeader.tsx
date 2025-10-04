@@ -4,23 +4,9 @@ import { GetCollectivite } from '@/lib/queries/searchBar';
 import Autocomplete from '@mui/material/Autocomplete';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { handleChangementTerritoireRedirection } from '../fonctions';
+import { handleChangementTerritoireRedirection, ReplaceDisplayEpci, ReplaceSearchEpci } from '../fonctions';
 import { RenderOption } from '../renderOption';
 import { RenderInputHeader } from './renderInputHeader';
-
-const ReplaceDisplayEpci = (libelleEpci: string) => {
-  return libelleEpci
-    .replace("Communauté d'agglomération", 'CA')
-    .replace('Communauté de communes', 'CC')
-    .replace('Communauté urbaine', 'CU');
-};
-
-const ReplaceSearchEpci = (libelleEpci: string) => {
-  return libelleEpci
-    .replace("CA ", "Communauté d'agglomération ")
-    .replace("CC ", "Communauté de communes ")
-    .replace("CU ", "Communauté urbaine ");
-};
 
 export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
   const {
