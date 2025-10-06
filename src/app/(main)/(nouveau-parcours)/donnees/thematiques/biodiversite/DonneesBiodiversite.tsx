@@ -6,10 +6,10 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
+import { OzoneEtVegetation } from '../../indicateurs/biodiversite/1-AOT40';
 import { ConsommationEspacesNAF } from '../../indicateurs/biodiversite/1-ConsommationEspacesNAF';
 import { SurfacesEnBio } from '../../indicateurs/biodiversite/2-SurfacesEnBio';
 import { EtatEcoCoursDeau } from '../../indicateurs/biodiversite/3-EtatCoursDeau';
-import { OzoneEtVegetation } from '../../indicateurs/biodiversite/4-AOT40';
 import { TypesDeSols } from "../../indicateurs/biodiversite/5-TypesDeSols";
 
 interface Props {
@@ -33,6 +33,9 @@ export const DonneesBiodiversite = ({
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Biodiversité";
+  const libelle = searchParams.get('libelle')!;
+  const type = searchParams.get('type')!;
+  const code = searchParams.get('code')!;
   const ongletsMenu = sommaireThematiques[thematique];
   const [clcState, setClcState] = useState<CLCTerritoires[] | undefined>(undefined);
   const [loadingClc, setLoadingClc] = useState(true);
@@ -65,24 +68,21 @@ export const DonneesBiodiversite = ({
   }, []);
 
   useEffect(() => {
-    // If no clc provided from server, fetch it client-side asynchronously
-    if (!clcState) {
-      const fetchClc = async () => {
-        try {
-          setLoadingClc(true);
-          const params = new URLSearchParams({ libelle: (new URLSearchParams(window.location.search)).get('libelle') || '', type: (new URLSearchParams(window.location.search)).get('type') || '', code: (new URLSearchParams(window.location.search)).get('code') || '' });
-          const res = await fetch(`/api/clc?${params.toString()}`);
-          const json = await res.json();
-          if (json.ok) setClcState(json.data);
-        } catch (e) {
-          console.error('Failed to fetch CLC', e);
-        } finally {
-          setLoadingClc(false);
-        }
-      };
-      fetchClc();
-    }
-  }, [clcState]);
+    const fetchClc = async () => {
+      try {
+        setLoadingClc(true);
+        const params = new URLSearchParams({ libelle, type, code });
+        const res = await fetch(`/api/clc?${params.toString()}`);
+        const json = await res.json();
+        if (json.ok) setClcState(json.data);
+      } catch (e) {
+        console.error('Failed to fetch CLC', e);
+      } finally {
+        setLoadingClc(false);
+      }
+    };
+    fetchClc();
+  }, [libelle]);
 
   return (
     <>
@@ -93,8 +93,7 @@ export const DonneesBiodiversite = ({
         {/* Introduction */}
         <section>
           <Body size='lg'>
-            Les indicateurs qui vont suivre vous orientent...........
-            En revanche, seule votre enquête terrain vous révélera les impacts réels.
+            Ces quelques indicateurs vous aideront à poser les bonnes questions, le terrain vous donnera les vraies réponses.
           </Body>
         </section>
 

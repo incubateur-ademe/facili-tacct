@@ -253,18 +253,6 @@ export const MapEspacesNaf = (props: {
     };
   }, [geoJsonData, enveloppe]);
 
-  // useEffect(() => {
-  //   let map = mapRef.current;
-  //   if (!map || !mapContainer.current || !map.style) return;
-  //   setTimeout(() => {
-  //     map.setPaintProperty(
-  //       'naf-fill',
-  //       'fill-color',
-  //       colorExpression
-  //     );
-  //   }, 150);
-  // }, [colorExpression]);
-
   return (
     <>
       <style jsx global>{`
