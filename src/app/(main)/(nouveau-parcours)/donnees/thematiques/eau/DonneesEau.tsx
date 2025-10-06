@@ -59,8 +59,7 @@ export const DonneesEau = ({
         {/* Introduction */}
         <section>
           <Body size='lg'>
-            Les indicateurs qui vont suivre vous orientent ..............
-            En revanche, seule votre enquête terrain vous révélera les impacts réels.
+            Ces quelques indicateurs vous aideront à poser les bonnes questions, le terrain vous donnera les vraies réponses.
           </Body>
         </section>
 

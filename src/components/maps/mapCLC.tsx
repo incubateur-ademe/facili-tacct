@@ -7,14 +7,6 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo } from 'react';
 import { BoundsFromCollectionCLC } from './components/boundsFromCollection';
-import { vegetalisationColors } from './legends/datavizLegends';
-
-const getColor = (d: string) => {
-  const color = Object.entries(vegetalisationColors)
-    .find((el) => el[0] === d)
-    ?.at(1);
-  return color;
-};
 
 export const MapCLC = (
   props: {

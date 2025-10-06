@@ -13,23 +13,8 @@ import { AOT40TooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import * as turf from '@turf/turf';
-import L from 'leaflet';
 import { useSearchParams } from "next/navigation";
 import styles from '../../explorerDonnees.module.scss';
-
-const color = (valeur: number) => {
-  return valeur > 36000
-    ? '#5524A0'
-    : valeur > 27000
-      ? '#E8323B'
-      : valeur > 18000
-        ? '#FFCF5E'
-        : valeur > 12000
-          ? '#3E8F3E'
-          : valeur > 6000
-            ? '#009ADC'
-            : '#5EEDF3';
-};
 
 const getInverseCentroid = (arr: number[][]) => {
   const centroid = arr?.reduce(
@@ -93,16 +78,7 @@ export const OzoneEtVegetation = (props: {
       coordinates: [aot.Latitude, aot.Longitude],
       value: aot.valeur_brute,
       nom_site: aot.nom_site,
-      type_implantation: aot.type_d_implantation,
-      icon: L.divIcon({
-        html: `
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="9" cy="9" r="9" fill=${color(aot.valeur_brute!)} />
-            </svg>`,
-        className: 'svg-marker',
-        iconSize: [24, 24],
-        iconAnchor: [0, 0]
-      })
+      type_implantation: aot.type_d_implantation
     };
   });
 

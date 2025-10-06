@@ -62,7 +62,7 @@ export const DonneesAgriculture = ({
         {/* Introduction */}
         <section>
           <Body size='lg'>
-            Ces quelques indicateurs vous aideront à poser les bonnes questions, le terrain (étape 2) vous donnera les vraies réponses.
+            Ces quelques indicateurs vous aideront à poser les bonnes questions, le terrain vous donnera les vraies réponses.
           </Body>
         </section>
 

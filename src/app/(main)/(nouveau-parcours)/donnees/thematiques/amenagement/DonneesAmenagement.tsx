@@ -56,13 +56,12 @@ export const DonneesAmenagement = ({
     <>
       <div className={styles.explorerMesDonneesContainer}>
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
-          Ce que les données suggèrent sur votre territoire
+          Votre territoire a été aménagé pour un climat révolu. Découvrez cet héritage pour le réinventer, avant qu’il ne devienne un frein.
         </H1>
         {/* Introduction */}
         <section>
           <Body size='lg'>
-            Les indicateurs qui vont suivre vous orientent ..............
-            En revanche, seule votre enquête terrain vous révélera les impacts réels.
+            Ces quelques indicateurs vous aideront à poser les bonnes questions, le terrain vous donnera les vraies réponses.
           </Body>
         </section>
 
