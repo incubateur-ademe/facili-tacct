@@ -180,7 +180,6 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
               scrollbarWidth: 'thin',
               padding: '0'
             },
-
           },
         },
       }}
