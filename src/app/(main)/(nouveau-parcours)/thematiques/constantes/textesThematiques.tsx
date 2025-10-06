@@ -155,7 +155,32 @@ export const thematiquesInfo: {
   },
   Aménagement: {
     title: 'Aménagement',
-    description: (<div></div>),
+    description: (
+      <div>
+        <Body size="sm" margin="1rem 0">
+          Tempêtes, inondations, canicules : face à ces défis croissants, l'aménagement
+          fait la différence. Quatre domaines clés révèlent les atouts et faiblesses
+          de chaque territoire :
+        </Body>
+        <div className="flex flex-col">
+          <Body size="sm">
+            🏥 Santé
+          </Body>
+          <Body size="sm">
+            🌼 Biodiversité
+          </Body>
+          <Body size="sm">
+            🏗️ Aménagement
+          </Body>
+          <Body size="sm">
+            🏖️ Tourisme
+          </Body>
+        </div>
+        <Body size="sm" margin="1rem 0">
+          👉 Ces facteurs combinés déterminent la sensibilité globale de votre territoire face à la chaleur.
+        </Body>
+      </div>
+    ),
     link: 'Aménagement'
   },
   'Confort thermique': {
@@ -178,14 +203,14 @@ export const thematiquesInfo: {
             🏠 Bâtiment
           </Body>
           <Body size="sm">
-            🏗️ Aménagement
+            🛠️ Continuité des services
           </Body>
           <Body size="sm">
-            🏖️ Tourisme
+            🚧 Gestion des risques
           </Body>
         </div>
         <Body size="sm" margin="1rem 0">
-          👉 Ces facteurs combinés déterminent la sensibilité globale de votre territoire face à la chaleur.
+          👉 Combinés, ces facteurs déterminent le niveau de protection de votre territoire.
         </Body>
       </div>
     ),
@@ -193,7 +218,14 @@ export const thematiquesInfo: {
   },
   'Gestion des risques': {
     title: 'Gestion des risques',
-    description: (<div></div>),
+    description: (
+      <div>
+        <Body size="sm" style={{ marginBottom: '1rem' }}>
+          Peu de ressources ou de domaines d'activité échappent aux catastrophes naturelles
+          engendrées par les dérèglement du climat. Etat des lieux sur votre territoire.
+        </Body>
+      </div>
+    ),
     link: 'Gestion des risques'
   },
   Santé: {
@@ -208,12 +240,69 @@ export const thematiquesInfo: {
   },
   Eau: {
     title: 'Eau',
-    description: (<div></div>),
+    description: (
+      <div>
+        <Body size="sm" style={{ marginBottom: '1rem' }}>
+          Concilier les usages, préserver la biodiversité, s'adapter aux nouveaux
+          risques : un défi complexe mais pas insurmontable. Chaque territoire dispose
+          d'atouts uniques pour y parvenir dans un climat qui change. Cette capacité
+          d'adaptation s'évalue à travers plusieurs dimensions clés :
+        </Body>
+        <div className="flex flex-col">
+          <Body size="sm">
+            🌼 Biodiversité
+          </Body>
+          <Body size="sm">
+            🚧 Gestion des risques
+          </Body>
+          <Body size="sm">
+            🏥 Santé
+          </Body>
+          <Body size="sm">
+            🏖️ Tourisme
+          </Body>
+          <Body size="sm">
+            🌾 Agriculture
+          </Body>
+        </div>
+        <Body size="sm" margin="1rem 0">
+          👉 Ensemble, ces facteurs vont définir la sensibilité de votre territoire.
+        </Body>
+      </div>
+    ),
     link: 'Eau'
   },
   Biodiversité: {
     title: 'Biodiversité',
-    description: (<div></div>),
+    description: (
+      <div>
+        <Body size="sm" style={{ marginBottom: '1rem' }}>
+          Face aux pressions multiples sur la biodiversité, chaque territoire
+          développe ses propres mécanismes de protection. Cinq domaines
+          influencent particulièrement cette capacité d'adaptation :
+        </Body>
+        <div className="flex flex-col">
+          <Body size="sm">
+            🏗️ Aménagement
+          </Body>
+          <Body size="sm">
+            🌾 Agriculture
+          </Body>
+          <Body size="sm">
+            💧 Eau
+          </Body>
+          <Body size="sm">
+            💨 Air
+          </Body>
+          <Body size="sm">
+            🏖️ Tourisme
+          </Body>
+        </div>
+        <Body size="sm" margin="1rem 0">
+          👉 Combinés, ces facteurs fragilisent votre biodiversité face au changement climatique.
+        </Body>
+      </div>
+    ),
     link: 'Biodiversité'
   },
   Air: {

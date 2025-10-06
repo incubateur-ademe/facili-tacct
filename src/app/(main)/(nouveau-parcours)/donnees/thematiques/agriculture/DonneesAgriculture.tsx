@@ -1,9 +1,14 @@
 "use client";
 import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { SourcesSection } from "@/components/interactions/scrollToSource";
+import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { Agriculture, AgricultureBio, CarteCommunes, SurfacesAgricolesModel } from "@/lib/postgres/models";
+import { GetAgriculture, GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
+import { GetAgricultureBio } from "@/lib/queries/databases/biodiversite";
+import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { TypesDeCulture } from '../../indicateurs/agriculture/1-TypesDeCultures';
@@ -25,10 +30,39 @@ export const DonneesAgriculture = ({
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Agriculture";
+  const libelle = searchParams.get('libelle')!;
+  const type = searchParams.get('type')!;
+  const code = searchParams.get('code')!;
   const ongletsMenu = sommaireThematiques[thematique];
+  const [data, setData] = useState({
+    carteCommunes,
+    agriculture,
+    surfacesAgricoles,
+    agricultureBio
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isFirstRender, setIsFirstRender] = useState(true);
+
+  useEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+      return;
+    }
+    setIsLoading(true);
+    void (async () => {
+      const [newCarteCommunes, newAgriculture, newSurfacesAgricoles, newAgricultureBio] = await Promise.all([
+        GetCommunes(code, libelle, type),
+        GetAgriculture(code, libelle, type),
+        GetSurfacesAgricoles(code, libelle, type),
+        GetAgricultureBio(libelle, type, code)
+      ]);
+      setData({ carteCommunes: newCarteCommunes, agriculture: newAgriculture, surfacesAgricoles: newSurfacesAgricoles, agricultureBio: newAgricultureBio });
+      setIsLoading(false);
+    })();
+  }, [libelle]);
 
   return (
-    <>
+    isLoading ? <LoaderText text='Mise à jour des données' /> :
       <div className={styles.explorerMesDonneesContainer}>
         <ScrollToHash />
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
@@ -61,8 +95,8 @@ export const DonneesAgriculture = ({
               </H3>
             </div>
             <TypesDeCulture
-              surfacesAgricoles={surfacesAgricoles}
-              agriculture={agriculture}
+              surfacesAgricoles={data.surfacesAgricoles}
+              agriculture={data.agriculture}
             />
           </div>
         </section>
@@ -87,8 +121,8 @@ export const DonneesAgriculture = ({
               </H3>
             </div>
             <SuperficiesIrriguees
-              agriculture={agriculture}
-              carteCommunes={carteCommunes}
+              agriculture={data.agriculture}
+              carteCommunes={data.carteCommunes}
             />
           </div>
         </section>
@@ -111,12 +145,11 @@ export const DonneesAgriculture = ({
                 Part de l’agriculture biologique
               </H3>
             </div>
-            <SurfacesEnBio agricultureBio={agricultureBio} />
+            <SurfacesEnBio agricultureBio={data.agricultureBio} />
           </div>
         </section>
         {/* Sources */}
         <SourcesSection tag="h2" thematique="agriculture" />
       </div>
-    </>
   );
 };

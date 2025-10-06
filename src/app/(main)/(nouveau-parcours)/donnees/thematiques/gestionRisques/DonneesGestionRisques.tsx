@@ -3,6 +3,8 @@ import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
+import { GetArretesCatnat, GetIncendiesForet } from '@/lib/queries/databases/gestionRisques';
+import { GetCommunes, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
@@ -34,7 +36,33 @@ export const DonneesGestionRisques = ({
   const [rga, setRga] = useState<RGAdb[]>([]);
   const [rgaCarteLoading, setRgaCarteLoading] = useState(false);
   const [loadingRga, setLoadingRga] = useState(false);
+  const [data, setData] = useState({
+    carteCommunes,
+    gestionRisques,
+    erosionCotiere,
+    incendiesForet
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isFirstRender, setIsFirstRender] = useState(true);
   const ongletsMenu = sommaireThematiques[thematique];
+
+  useEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+      return;
+    }
+    setIsLoading(true);
+    void (async () => {
+      const [newCarteCommunes, newGestionRisques, newErosionCotiere, newIncendiesForet] = await Promise.all([
+        GetCommunes(code, libelle, type),
+        GetArretesCatnat(code, libelle, type),
+        GetErosionCotiere(code, libelle, type),
+        GetIncendiesForet(code, libelle, type)
+      ]);
+      setData({ carteCommunes: newCarteCommunes, gestionRisques: newGestionRisques, erosionCotiere: newErosionCotiere, incendiesForet: newIncendiesForet });
+      setIsLoading(false);
+    })();
+  }, [libelle]);
 
   useEffect(() => {
     if (rga.length === 0 && rgaCarte.length === 0) {
@@ -49,22 +77,12 @@ export const DonneesGestionRisques = ({
         .finally(() => {
           setLoadingRga(false);
           setRgaCarteLoading(false);
-        }
-        );
+        });
     }
   }, [code, libelle, type]);
 
-  useEffect(() => {
-    if (rga.length > 0 && rgaCarte.length > 0 && window.location.hash) {
-      const element = document.getElementById(decodeURIComponent(window.location.hash.substring(1)));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }, [rga, rgaCarte]);
-
   return (
-    <>
+    isLoading ? <LoaderText text='Mise à jour des données' /> :
       <div className={styles.explorerMesDonneesContainer}>
         <ScrollToHash />
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
@@ -98,8 +116,8 @@ export const DonneesGestionRisques = ({
               </H3>
             </div>
             <ArretesCatnat
-              gestionRisques={gestionRisques}
-              carteCommunes={carteCommunes}
+              gestionRisques={data.gestionRisques}
+              carteCommunes={data.carteCommunes}
             />
           </div>
 
@@ -110,7 +128,7 @@ export const DonneesGestionRisques = ({
                 Départs de feux et surfaces brûlées depuis 2006
               </H3>
             </div>
-            <FeuxDeForet incendiesForet={incendiesForet} />
+            <FeuxDeForet incendiesForet={data.incendiesForet} />
           </div>
         </section>
 
@@ -142,7 +160,7 @@ export const DonneesGestionRisques = ({
                 </div>
                 <RetraitGonflementDesArgiles
                   rgaCarte={rgaCarte}
-                  carteCommunes={carteCommunes}
+                  carteCommunes={data.carteCommunes}
                   rga={rga}
                 />
               </>
@@ -172,8 +190,8 @@ export const DonneesGestionRisques = ({
                     </H3>
                   </div>
                   <ErosionCotiereComp
-                    erosionCotiere={erosionCotiere}
-                    carteCommunes={carteCommunes}
+                    erosionCotiere={data.erosionCotiere}
+                    carteCommunes={data.carteCommunes}
                   />
                 </div>
               </section>
@@ -181,6 +199,5 @@ export const DonneesGestionRisques = ({
           )
         }
       </div>
-    </>
   );
 };

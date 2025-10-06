@@ -3,6 +3,11 @@ import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { AgricultureBio, AOT40, CarteCommunes, CLCTerritoires, ConsommationNAF, EtatCoursDeau, InconfortThermique, QualiteSitesBaignade } from "@/lib/postgres/models";
+import { GetAgricultureBio, GetAOT40, GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
+import { GetInconfortThermique } from "@/lib/queries/databases/inconfortThermique";
+import { GetQualiteEauxBaignade } from "@/lib/queries/databases/ressourcesEau";
+import { GetCommunes } from "@/lib/queries/postgis/cartographie";
+import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
@@ -40,6 +45,54 @@ export const DonneesBiodiversite = ({
   const ongletsMenu = sommaireThematiques[thematique];
   const [clcState, setClcState] = useState<CLCTerritoires[] | undefined>(undefined);
   const [loadingClc, setLoadingClc] = useState(true);
+  const [data, setData] = useState({
+    carteCommunes,
+    agricultureBio,
+    consommationNAF,
+    aot40,
+    etatCoursDeau,
+    qualiteEauxBaignade,
+    inconfortThermique
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isFirstRender, setIsFirstRender] = useState(true);
+
+  useEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+      return;
+    }
+    setIsLoading(true);
+    void (async () => {
+      const [
+        newCarteCommunes,
+        newAgricultureBio,
+        newConsommationNAF,
+        newAOT40,
+        newEtatCoursDeau,
+        newQualiteEauxBaignade,
+        newInconfortThermique
+      ] = await Promise.all([
+        GetCommunes(code, libelle, type),
+        GetAgricultureBio(libelle, type, code),
+        GetConsommationNAF(code, libelle, type),
+        GetAOT40(),
+        GetEtatCoursDeau(code, libelle, type),
+        GetQualiteEauxBaignade(code, libelle, type),
+        GetInconfortThermique(code, libelle, type)
+      ]);
+      setData({
+        carteCommunes: newCarteCommunes,
+        agricultureBio: newAgricultureBio,
+        consommationNAF: newConsommationNAF,
+        aot40: newAOT40,
+        etatCoursDeau: newEtatCoursDeau,
+        qualiteEauxBaignade: newQualiteEauxBaignade,
+        inconfortThermique: newInconfortThermique
+      });
+      setIsLoading(false);
+    })();
+  }, [libelle]);
 
   useEffect(() => {
     const fetchClc = async () => {
@@ -59,11 +112,12 @@ export const DonneesBiodiversite = ({
   }, [libelle]);
 
   return (
-    <>
+    isLoading ? <LoaderText text='Mise à jour des données' /> :
       <div className={styles.explorerMesDonneesContainer}>
         <ScrollToHash />
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
-          Ce que les données suggèrent sur votre territoire
+          Les pressions sur la biodiversité agissent en silence, mais leurs conséquences sont durables.
+          À vous d’en évaluer l’impact pour préserver la résilience de vos écosystèmes
         </H1>
         {/* Introduction */}
         <section>
@@ -93,8 +147,8 @@ export const DonneesBiodiversite = ({
               </H3>
             </div>
             <OzoneEtVegetation
-              aot40={aot40}
-              carteCommunes={carteCommunes}
+              aot40={data.aot40}
+              carteCommunes={data.carteCommunes}
             />
           </div>
         </section>
@@ -119,8 +173,8 @@ export const DonneesBiodiversite = ({
               </H3>
             </div>
             <ConsommationEspacesNAF
-              consommationNAF={consommationNAF}
-              carteCommunes={carteCommunes}
+              consommationNAF={data.consommationNAF}
+              carteCommunes={data.carteCommunes}
             />
           </div>
           {/* Types de sols */}
@@ -132,7 +186,7 @@ export const DonneesBiodiversite = ({
             </div>
             {
               loadingClc ? <LoaderText text='Chargement de la cartographie' /> : (
-                <TypesDeSols inconfortThermique={inconfortThermique} carteCommunes={carteCommunes} clc={clcState} />
+                <TypesDeSols inconfortThermique={data.inconfortThermique} carteCommunes={data.carteCommunes} clc={clcState} />
               )
             }
           </div>
@@ -158,7 +212,7 @@ export const DonneesBiodiversite = ({
               </H3>
             </div>
             <SurfacesEnBio
-              agricultureBio={agricultureBio}
+              agricultureBio={data.agricultureBio}
             />
           </div>
         </section>
@@ -183,13 +237,12 @@ export const DonneesBiodiversite = ({
               </H3>
             </div>
             <EtatEcoCoursDeau
-              etatCoursDeau={etatCoursDeau}
-              carteCommunes={carteCommunes}
-              qualiteEauxBaignade={qualiteEauxBaignade}
+              etatCoursDeau={data.etatCoursDeau}
+              carteCommunes={data.carteCommunes}
+              qualiteEauxBaignade={data.qualiteEauxBaignade}
             />
           </div>
         </section>
       </div>
-    </>
   );
 };
