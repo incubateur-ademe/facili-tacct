@@ -162,6 +162,23 @@ export const ConsommationEspacesNAFAmenagementText = () => (
   </>
 );
 
+export const SolsImpermeabilisesText = () => (
+  <>
+    <Body size='sm'>
+      L’artificialisation des sols constitue l'une des premières causes 
+      d'effondrement de la biodiversité : elle fragmente voire détruit les 
+      habitats, isole les espèces et perturbe les processus naturels 
+      essentiels comme la pollinisation. Vis-à-vis du climat, les conséquences 
+      sont tout aussi critiques : les sols perdent leur rôle de puits de 
+      carbone, leurs capacités d'infiltration et de stockage de l'eau, 
+      avec pour corollaire  une réduction de la recharge des nappes et 
+      une aggravation des risques d'inondation. En détruisant les micro-organismes 
+      des sols, elle réduit également les capacités épuratoires naturelles des 
+      milieux, compromettant ainsi leur résilience globale.
+    </Body>
+  </>
+);
+
 export const ConsommationEspacesNAFBiodiversiteText = () => (
   <>
     <Body size='sm'>
@@ -511,7 +528,7 @@ export const CatNatText = () => (
       et tempêtes y sont les plus dévastateurs. La France et l'Italie
       sont les pays européens les plus touchés, loin devant les autres.
     </Body>
-    <Body size="sm">
+    {/* <Body size="sm">
       ⇒ 257 500, c’est le nombre d'arrêtés liés aux événements
       climatiques depuis la création du régime CatNat en 1982. Les
       inondations représentent plus de 56 % du total.
@@ -534,7 +551,7 @@ export const CatNatText = () => (
       France au cours des 25 prochaines années (estimation de
       l’Inspection générale de l'environnement et du développement
       durable).
-    </Body>
+    </Body> */}
   </div>
 );
 
@@ -597,35 +614,22 @@ export const ErosionCotiereText = () => (
 export const FeuxForetText = () => (
   <div className="pt-10">
     <Body size="sm">
-      Un climat plus chaud et plus sec sont des conditions propices
-      aux départs de feux et les vents potentiellement plus violents
-      sont sources de propagation rapide. La saison des feux
-      s’allonge. Elle débute désormais au printemps et se prolonge
-      jusqu’à l’automne. Les incendies touchent des territoires
-      considérés jusque-là comme épargnés. Ils ont de graves
-      conséquences : destruction de la biodiversité, pollution de
-      l’air et de l’eau, effets collatéraux sur d’autres aléas
-      naturels (érosion, glissements de terrain, inondations…) et
-      émissions massives de gaz à effet de serre, amplifiant le
-      dérèglement climatique.
+      Si la France a réussi à diviser par cinq les surfaces brûlées depuis les 
+      années 1980 grâce à d'importants investissements en prévention, cette 
+      victoire est désormais menacée. Le climat plus chaud et sec multiplie 
+      les départs de feux, les vents violents accélèrent leur propagation, 
+      et la saison s'étire du printemps à l'automne, touchant des territoires 
+      jusque-là épargnés.
     </Body>
     <Body size="sm">
-      Si les dégâts socio-économiques des incendies de forêt sont à ce
-      jour relativement contenus en France, c’est au prix d’
-      importants investissements dans les dispositifs d’alerte et de
-      prévention, qui ont permis de diviser par cinq les surfaces
-      brûlées annuellement, par rapport aux années 1980.
-    </Body>
-    <Body size="sm">
-      ⇒ En 2023, parmi les feux de forêts dont la cause a été
-      identifiée, 9 départs sur 10 sont d’origine humaine.
-    </Body>
-    <Body size="sm">
-      ⇒ 4 feux sur 5 se déclenchent à moins de 50 mètres des
-      habitations.
+       Au-delà des flammes, les incendies déclenchent une cascade de catastrophes : 
+       destruction de biodiversité, pollution atmosphérique et aquatique, aggravation 
+       d'autres aléas (érosion, glissements, inondations) et émissions massives de CO₂ 
+       qui alimentent le cercle vicieux du dérèglement climatique.
     </Body>
   </div>
 );
+
 
 export const RGAText = () => (
   <div className="pt-10">
@@ -687,7 +691,7 @@ export const SurfacesAgricolesText = () => (
     <Body size="sm">
       Paradoxe agricole : cultures permanentes (vergers, vignes…) et certaines cultures
       légumières occupent peu d'espace mais concentrent l'essentiel des pertes climatiques.
-      Gel, mildiou, sécheresse, excès d'eau... Un système spécialisé fragile face aux chocs répétés.
+      Gel, mildiou, sécheresse, excès d'eau... Un système spécialisé est fragile face aux chocs répétés.
     </Body>
   </div>
 )

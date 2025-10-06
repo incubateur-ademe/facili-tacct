@@ -2,7 +2,8 @@
 import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { AgricultureBio, AOT40, CarteCommunes, CLCTerritoires, ConsommationNAF, EtatCoursDeau, InconfortThermique, QualiteSitesBaignade } from "@/lib/postgres/models";
+import { AgricultureBio, AOT40, CarteCommunes, CLCTerritoires, ConsommationNAF, EtatCoursDeau, InconfortThermique, QualiteSitesBaignade, SurfacesAgricolesModel } from "@/lib/postgres/models";
+import { GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
 import { GetAgricultureBio, GetAOT40, GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
 import { GetInconfortThermique } from "@/lib/queries/databases/inconfortThermique";
 import { GetQualiteEauxBaignade } from "@/lib/queries/databases/ressourcesEau";
@@ -12,11 +13,12 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
-import { OzoneEtVegetation } from "../../indicateurs/biodiversite/1-AOT40";
-import { ConsommationEspacesNAF } from "../../indicateurs/biodiversite/1-ConsommationEspacesNAF";
-import { SurfacesEnBio } from "../../indicateurs/biodiversite/2-SurfacesEnBio";
-import { EtatEcoCoursDeau } from "../../indicateurs/biodiversite/3-EtatCoursDeau";
-import { TypesDeSols } from "../../indicateurs/biodiversite/5-TypesDeSols";
+import { TypesDeSols } from "../../indicateurs/biodiversite/1-TypesDeSols";
+import { SolsImpermeabilises } from "../../indicateurs/biodiversite/2-SolsImpermeabilises";
+import { SurfacesToujoursEnHerbe } from "../../indicateurs/biodiversite/3-SurfacesToujoursEnHerbe";
+import { SurfacesEnBio } from "../../indicateurs/biodiversite/4-SurfacesEnBio";
+import { EtatEcoCoursDeau } from "../../indicateurs/biodiversite/5-EtatCoursDeau";
+import { OzoneEtVegetation } from "../../indicateurs/biodiversite/6-AOT40";
 
 interface Props {
   carteCommunes: CarteCommunes[];
@@ -26,7 +28,17 @@ interface Props {
   etatCoursDeau: EtatCoursDeau[];
   qualiteEauxBaignade: QualiteSitesBaignade[];
   inconfortThermique: InconfortThermique[];
+  surfacesAgricoles: SurfacesAgricolesModel[];
 }
+
+const h2SectionStyle = {
+  color: "var(--principales-rouge)",
+  textTransform: 'uppercase' as const,
+  fontSize: '1.75rem',
+  margin: "0 0 -1rem 0",
+  padding: "2rem 2rem 0",
+  fontWeight: 400
+};
 
 export const DonneesBiodiversite = ({
   carteCommunes,
@@ -35,7 +47,8 @@ export const DonneesBiodiversite = ({
   aot40,
   etatCoursDeau,
   qualiteEauxBaignade,
-  inconfortThermique
+  inconfortThermique,
+  surfacesAgricoles
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Biodiversité";
@@ -52,7 +65,8 @@ export const DonneesBiodiversite = ({
     aot40,
     etatCoursDeau,
     qualiteEauxBaignade,
-    inconfortThermique
+    inconfortThermique,
+    surfacesAgricoles
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -71,7 +85,8 @@ export const DonneesBiodiversite = ({
         newAOT40,
         newEtatCoursDeau,
         newQualiteEauxBaignade,
-        newInconfortThermique
+        newInconfortThermique,
+        newSurfacesAgricoles
       ] = await Promise.all([
         GetCommunes(code, libelle, type),
         GetAgricultureBio(libelle, type, code),
@@ -79,7 +94,8 @@ export const DonneesBiodiversite = ({
         GetAOT40(),
         GetEtatCoursDeau(code, libelle, type),
         GetQualiteEauxBaignade(code, libelle, type),
-        GetInconfortThermique(code, libelle, type)
+        GetInconfortThermique(code, libelle, type),
+        GetSurfacesAgricoles(code, libelle, type)
       ]);
       setData({
         carteCommunes: newCarteCommunes,
@@ -88,7 +104,8 @@ export const DonneesBiodiversite = ({
         aot40: newAOT40,
         etatCoursDeau: newEtatCoursDeau,
         qualiteEauxBaignade: newQualiteEauxBaignade,
-        inconfortThermique: newInconfortThermique
+        inconfortThermique: newInconfortThermique,
+        surfacesAgricoles: newSurfacesAgricoles
       });
       setIsLoading(false);
     })();
@@ -128,55 +145,9 @@ export const DonneesBiodiversite = ({
 
         {/* Section Biodiversité */}
         <section className={styles.sectionType}>
-          <H2 style={{
-            color: "var(--principales-rouge)",
-            textTransform: 'uppercase',
-            fontSize: '1.75rem',
-            margin: "0 0 -1rem 0",
-            padding: "2rem 2rem 0",
-            fontWeight: 400
-          }}>
+          <H2 style={h2SectionStyle}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
-
-          {/* Ozone et végétation */}
-          <div id="Ozone et végétation" className={styles.indicateurMapWrapper}>
-            <div className={styles.h3Titles}>
-              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-                Concentration d’ozone pendant la période de végétation (moyenne 2020-2024)
-              </H3>
-            </div>
-            <OzoneEtVegetation
-              aot40={data.aot40}
-              carteCommunes={data.carteCommunes}
-            />
-          </div>
-        </section>
-
-        {/* Section Aménagement */}
-        <section className={styles.sectionType}>
-          <H2 style={{
-            color: "var(--principales-rouge)",
-            textTransform: 'uppercase',
-            fontSize: '1.75rem',
-            margin: "0 0 -1rem 0",
-            padding: "2rem 2rem 0",
-            fontWeight: 400
-          }}>
-            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
-          </H2>
-          {/* Consommation d'espaces NAF */}
-          <div id="Consommation d'espaces NAF" className={styles.indicateurMapWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
-            <div className={styles.h3Titles}>
-              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-                Sols imperméabilisés entre 2009 et 2023
-              </H3>
-            </div>
-            <ConsommationEspacesNAF
-              consommationNAF={data.consommationNAF}
-              carteCommunes={data.carteCommunes}
-            />
-          </div>
           {/* Types de sols */}
           <div id="Types de sols" className={styles.indicateurMapWrapper}>
             <div className={styles.h3Titles}>
@@ -194,39 +165,51 @@ export const DonneesBiodiversite = ({
 
         {/* Section Aménagement */}
         <section className={styles.sectionType}>
-          <H2 style={{
-            color: "var(--principales-rouge)",
-            textTransform: 'uppercase',
-            fontSize: '1.75rem',
-            margin: "0 0 -1rem 0",
-            padding: "2rem 2rem 0",
-            fontWeight: 400
-          }}>
+          <H2 style={h2SectionStyle}>
+            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
+          </H2>
+          {/* Sols imperméabilisés */}
+          <div id="Sols imperméabilisés" className={styles.indicateurMapWrapper} >
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Sols imperméabilisés entre 2009 et 2023
+              </H3>
+            </div>
+            <SolsImpermeabilises
+              consommationNAF={data.consommationNAF}
+              carteCommunes={data.carteCommunes}
+            />
+          </div>
+        </section>
+
+        {/* Section Agriculture */}
+        <section className={styles.sectionType}>
+          <H2 style={h2SectionStyle}>
             {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
           </H2>
+          {/* Surfaces toujours en herbe */}
+          <div id="Surfaces toujours en herbe" className={styles.indicateurMapWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Surfaces toujours en herbe
+              </H3>
+            </div>
+            <SurfacesToujoursEnHerbe surfacesAgricoles={data.surfacesAgricoles} />
+          </div>
           {/* Surfaces en bio */}
-          <div id="Surfaces en bio" className={styles.indicateurWrapper}>
+          <div id="Surfaces en bio" className={styles.indicateurWrapper} >
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Part de l’agriculture biologique
               </H3>
             </div>
-            <SurfacesEnBio
-              agricultureBio={data.agricultureBio}
-            />
+            <SurfacesEnBio agricultureBio={data.agricultureBio} />
           </div>
         </section>
 
         {/* Section Eau */}
         <section className={styles.sectionType}>
-          <H2 style={{
-            color: "var(--principales-rouge)",
-            textTransform: 'uppercase',
-            fontSize: '1.75rem',
-            margin: "0 0 -1rem 0",
-            padding: "2rem 2rem 0",
-            fontWeight: 400
-          }}>
+          <H2 style={h2SectionStyle}>
             {ongletsMenu.thematiquesLiees[3].icone}{" "}{ongletsMenu.thematiquesLiees[3].thematique}
           </H2>
           {/* État écologique des cours d'eau */}
@@ -240,6 +223,25 @@ export const DonneesBiodiversite = ({
               etatCoursDeau={data.etatCoursDeau}
               carteCommunes={data.carteCommunes}
               qualiteEauxBaignade={data.qualiteEauxBaignade}
+            />
+          </div>
+        </section>
+
+        {/* Section Air */}
+        <section className={styles.sectionType}>
+          <H2 style={h2SectionStyle}>
+            {ongletsMenu.thematiquesLiees[4].icone}{" "}{ongletsMenu.thematiquesLiees[4].thematique}
+          </H2>
+          {/* Ozone et végétation */}
+          <div id="Ozone et végétation" className={styles.indicateurMapWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Concentration d’ozone pendant la période de végétation (moyenne 2020-2024)
+              </H3>
+            </div>
+            <OzoneEtVegetation
+              aot40={data.aot40}
+              carteCommunes={data.carteCommunes}
             />
           </div>
         </section>
