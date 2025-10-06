@@ -1,4 +1,5 @@
 "use client";
+import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { AgricultureBio, AOT40, CarteCommunes, CLCTerritoires, ConsommationNAF, EtatCoursDeau, InconfortThermique, QualiteSitesBaignade } from "@/lib/postgres/models";
@@ -6,10 +7,10 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
-import { OzoneEtVegetation } from '../../indicateurs/biodiversite/1-AOT40';
-import { ConsommationEspacesNAF } from '../../indicateurs/biodiversite/1-ConsommationEspacesNAF';
-import { SurfacesEnBio } from '../../indicateurs/biodiversite/2-SurfacesEnBio';
-import { EtatEcoCoursDeau } from '../../indicateurs/biodiversite/3-EtatCoursDeau';
+import { OzoneEtVegetation } from "../../indicateurs/biodiversite/1-AOT40";
+import { ConsommationEspacesNAF } from "../../indicateurs/biodiversite/1-ConsommationEspacesNAF";
+import { SurfacesEnBio } from "../../indicateurs/biodiversite/2-SurfacesEnBio";
+import { EtatEcoCoursDeau } from "../../indicateurs/biodiversite/3-EtatCoursDeau";
 import { TypesDeSols } from "../../indicateurs/biodiversite/5-TypesDeSols";
 
 interface Props {
@@ -41,33 +42,6 @@ export const DonneesBiodiversite = ({
   const [loadingClc, setLoadingClc] = useState(true);
 
   useEffect(() => {
-    const style = document.createElement('style');
-    style.textContent = `
-        html {
-          scroll-behavior: smooth;
-        }
-      `;
-    document.head.appendChild(style);
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
-
-  useEffect(() => {
-    const scrollToHash = () => {
-      if (window.location.hash) {
-        const element = document.getElementById(decodeURIComponent(window.location.hash.substring(1)));
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        } else {
-          setTimeout(scrollToHash, 100);
-        }
-      }
-    };
-    scrollToHash();
-  }, []);
-
-  useEffect(() => {
     const fetchClc = async () => {
       try {
         setLoadingClc(true);
@@ -87,6 +61,7 @@ export const DonneesBiodiversite = ({
   return (
     <>
       <div className={styles.explorerMesDonneesContainer}>
+        <ScrollToHash />
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
           Ce que les données suggèrent sur votre territoire
         </H1>

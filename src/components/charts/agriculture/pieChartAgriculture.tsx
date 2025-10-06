@@ -30,7 +30,11 @@ export const PieChartAgriculture = ({ surfacesAgricoles }: { surfacesAgricoles: 
           tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: '%' })}
           unit='ha'
         />
-        : <DataNotFoundForGraph image={surfacesAgricoles.length === 0 ? DataNotFound : ZeroData} />
+        : (
+          <div className='p-10 flex flex-row justify-center'>
+            <DataNotFoundForGraph image={surfacesAgricoles.length === 0 ? DataNotFound : ZeroData} />
+          </div>
+        )
       }
     </div>
   );

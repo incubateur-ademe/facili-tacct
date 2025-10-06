@@ -33,7 +33,7 @@ const HeaderSearchBar = (props:
   const [searchLibelle, setSearchLibelle] = useState<string>(libelle ?? '');
   const [typeTerritoire, setTypeTerritoire] = useState<
     'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
-  >('epci');
+  >(type === 'ept' ? 'epci' : type);
   const territoireTexte = value + " " + ReplaceDisplayEpci(searchLibelle) + " - " + searchCode;
   const textWidth = getTextWidth(territoireTexte);
   

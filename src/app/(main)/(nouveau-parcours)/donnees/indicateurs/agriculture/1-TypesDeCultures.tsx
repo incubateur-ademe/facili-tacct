@@ -78,7 +78,6 @@ export const TypesDeCulture = (props: {
                                   ))}
                                 </ul>
                               </Body>
-
                             </>
                           )
                         }
