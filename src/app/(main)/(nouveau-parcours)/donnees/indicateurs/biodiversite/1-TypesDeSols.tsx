@@ -54,7 +54,6 @@ export const TypesDeSols = ({
           : carteCommunes;
   const carteContours = carteTerritoire.map(CommunesContourMapper);
 
-
   const foretSum = sumProperty(
     vegetalisationTerritoire,
     'clc_3_foret_semiNaturel'
@@ -87,10 +86,11 @@ export const TypesDeSols = ({
           </div>
         </div>
         <Body size='sm' style={{ marginTop: '1rem' }}>
-          La présence d’arbres permet d’apporter de l’ombre et rafraichit l’air par
-          évapotranspiration. Leur efficacité dans le rafraîchissement en milieu
-          urbain dépend de leur nombre, de la densité de leur feuillage, des essences,
-          de la qualité du sol et de la disponibilité en eau.
+          Les forêts et les espaces semi-naturels constituent des refuges essentiels 
+          pour la biodiversité, abritant 80 % des espèces terrestres. Ces milieux 
+          offrent habitat, nourriture et corridors de circulation pour la faune et 
+          la flore. Plus leur surface est importante et connectée, plus l'écosystème 
+          résiste aux pressions climatiques et humaines.
         </Body>
         <div className={styles.mapWrapper}>
           {

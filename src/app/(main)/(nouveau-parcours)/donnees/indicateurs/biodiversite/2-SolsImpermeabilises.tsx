@@ -13,7 +13,7 @@ import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
-import { ConsommationEspacesNAFBiodiversiteText } from '@/lib/staticTexts';
+import { SolsImpermeabilisesText } from '@/lib/staticTexts';
 import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
 import { consommationEspacesNafDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
@@ -21,7 +21,7 @@ import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import styles from '../../explorerDonnees.module.scss';
 
-export const ConsommationEspacesNAF = (props: {
+export const SolsImpermeabilises = (props: {
   consommationNAF: ConsommationNAF[];
   carteCommunes: CarteCommunes[];
 }) => {
@@ -76,7 +76,7 @@ export const ConsommationEspacesNAF = (props: {
           </div>
           <div className='mt-4 pr-5'>
             <ReadMoreFade maxHeight={100}>
-              <ConsommationEspacesNAFBiodiversiteText />
+              <SolsImpermeabilisesText />
             </ReadMoreFade>
           </div>
         </div>

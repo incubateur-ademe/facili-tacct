@@ -30,25 +30,31 @@ export const sommaireThematiques = {
         id: "section1",
         thematique: "Biodiversité",
         icone: "🌼",
-        sousCategories: ["Ozone et végétation"]
+        sousCategories: ["Types de sols"]
       },
       {
         id: "section2",
         thematique: "Aménagement",
         icone: "🏗️",
-        sousCategories: ["Consommation d'espaces NAF", "Types de sols"]
+        sousCategories: ["Sols imperméabilisés"]
       },
       {
         id: "section3",
         thematique: "Agriculture",
         icone: "🌾",
-        sousCategories: ["Surfaces en bio"]
+        sousCategories: ["Surfaces toujours en herbe", "Surfaces en bio"]
       },
       {
         id: "section4",
         thematique: "Eau",
         icone: "💧",
         sousCategories: ["État écologique des cours d'eau"]
+      },
+      {
+        id: "section5",
+        thematique: "Air",
+        icone: "💨",
+        sousCategories: ["Ozone et végétation"]
       }
     ]
   },
@@ -96,7 +102,7 @@ export const sommaireThematiques = {
         id: "section1",
         thematique: "Aménagement",
         icone: '🏗️',
-        sousCategories: ["Consommation d'espaces NAF", "LCZ"]
+        sousCategories: ["Sols imperméabilisés", "LCZ"]
       },
     ]
   },

@@ -33,6 +33,11 @@ export const surfacesIrrigueesTooltipText = (
 
 export const espacesNAFTooltipText = (
   <Body weight="bold" size="sm">
+    Cet indicateur est calculé à partir de la consommation d’espace naturel, 
+    agricole ou forestier (ENAF), signifiant sa conversion en surface 
+    artificialisée, le rendant indisponible pour des usages tels que 
+    l’agriculture, la foresterie ou les habitats naturels.
+    <br></br><br></br>
     Le suivi de cet indicateur est réalisé par le CEREMA dans le cadre de
     l’objectif « zéro artificialisation nette » de la loi « Climat et résilience ». La
     consommation d’espaces NAF est calculée à partir des fichiers
@@ -273,3 +278,19 @@ export const LCZTooltipText = (
     les espaces non bâtis d’autre part (de A à G).
   </Body>
 );
+
+export const SurfacesToujoursEnHerbeText = (
+  <Body weight="bold" size="sm">
+    La surface toujours en herbe ou STH désigne, à l’échelle de l’Europe, 
+    toute surface en milieux herbacés ouverts semée depuis au moins 5 ans ou 
+    naturelle. Sont également comptabilisés les parcours, alpages, estives et 
+    landes. Elles sont composées de plantes fourragères herbacées vivaces 
+    telles que les graminées (comme le ray-grass et la fétuque) et les légumineuses 
+    (comme le lotier ou le trèfle).
+    <br></br><br></br>
+    Les STH sont des milieux peu perturbés, accueillant une flore et une faune 
+    diversifiées. C’est pourquoi elles jouent un rôle essentiel dans la préservation 
+    de la biodiversité. 
+  </Body>
+);
+

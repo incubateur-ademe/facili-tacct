@@ -62,9 +62,12 @@ export const TypesDeCulture = (props: {
                     (type === "departement" || type === "pnr") ? (
                       <>
                         <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
-                          Les terres cultivées couvrent <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b> sur votre
-                          territoire, soit <b>{Round((maxCategory.count / sommeToutesSuperficies) * 100, 1)} %</b> de la surface agricole utile.
+                          Sur votre territoire, le type de surface prédominant est constitué de {maxCategory.id.toLowerCase()},
+                          couvrant <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b>, ce qui
+                          représente <b>{Round((maxCategory.count / sommeToutesSuperficies) * 100, 1)} %</b> de
+                          la surface agricole utile.
                         </Body>
+
                         {
                           territoiresPartiellementCouverts && (
                             <>
@@ -85,19 +88,22 @@ export const TypesDeCulture = (props: {
                     ) : (type === "commune" && otexCommune) ? (
                       <>
                         <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
-                          Sur votre commune, "{otexCommune}" domine le paysage agricole avec plus des deux tiers de la production
+                          Sur votre commune, c'est le/la "{otexCommune}" qui domine le paysage agricole avec plus des deux tiers de la production
                           totale <DefinitionTooltip title={otex}>(OTEX)</DefinitionTooltip>.
                         </Body>
                         <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
-                          Les terres cultivées s’étendent sur <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b>,
-                          soit <b>{Round((maxCategory.count / sommeToutesSuperficies) * 100, 1)} %</b> de la surface agricole
-                          utile. (Attention, ces détails sur les types de cultures sont ceux de votre EPCI).
+                          Sur votre territoire, le type de surface prédominant est constitué de {maxCategory.id.toLowerCase()},
+                          couvrant <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b>, ce qui
+                          représente <b>{Round((maxCategory.count / sommeToutesSuperficies) * 100, 1)} %</b> de
+                          la surface agricole utile. (Attention, ces détails sur les types de cultures sont ceux de votre EPCI).
                         </Body>
                       </>
                     ) : (type === "epci" || type === "petr") ? (
                       <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
-                        Les terres cultivées couvrent <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b> sur votre
-                        territoire, soit <b>{Round((maxCategory.count / sommeToutesSuperficies) * 100, 1)} %</b> de la surface agricole utile.
+                        Sur votre territoire, le type de surface prédominant est constitué de {maxCategory.id.toLowerCase()},
+                        couvrant <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b>, ce qui
+                        représente <b>{Round((maxCategory.count / sommeToutesSuperficies) * 100, 1)} %</b> de
+                        la surface agricole utile.
                       </Body>
                     )
                       : null

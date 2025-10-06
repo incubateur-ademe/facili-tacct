@@ -10,9 +10,9 @@ import { useEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { ArretesCatnat } from '../../indicateurs/gestionDesRisques/1-ArretesCatnat';
-import { RetraitGonflementDesArgiles } from '../../indicateurs/gestionDesRisques/2-RetraitGonflementDesArgiles';
+import { FeuxDeForet } from '../../indicateurs/gestionDesRisques/2-FeuxDeForet';
 import { ErosionCotiereComp } from '../../indicateurs/gestionDesRisques/3-ErosionCotiere';
-import { FeuxDeForet } from '../../indicateurs/gestionDesRisques/4-FeuxDeForet';
+import { RetraitGonflementDesArgiles } from '../../indicateurs/gestionDesRisques/4-RetraitGonflementDesArgiles';
 
 interface Props {
   gestionRisques: ArreteCatNat[];

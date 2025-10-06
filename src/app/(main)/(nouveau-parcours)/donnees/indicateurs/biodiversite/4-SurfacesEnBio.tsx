@@ -74,18 +74,24 @@ export const SurfacesEnBio = (props: {
             <MicroCircleGrid pourcentage={pourcentageTotal} arrondi={1} ariaLabel="Surface certifiée bio ou en conversion" />
             {agricultureBio.length ?
               <>
-                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                  {
-                    type === "commune" || type === "departement" || type === "pnr" || type === "petr"
-                      ? <>Cette donnée n’est disponible qu’à l’échelle de votre EPCI.<br /></>
-                      : ""
-                  }
-                  {type === "commune" || type === "epci" ? "Dans votre EPCI" : "Sur votre territoire"}, {numberWithSpacesRegex(nombreExploitations)} exploitations
-                  sont en agriculture biologique ou en conversion, représentant {Round(pourcentageTotal, 1)} %
-                  de la surface agricole totale, soit {Round(surfaceAgriBio, 0)} hectares.
-                </Body>
                 {
-                  territoiresPartiellementCouverts && (
+                  type === "commune" ? (
+                    <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                      Cette donnée, disponible uniquement à l’échelle de votre EPCI, indique
+                      que {numberWithSpacesRegex(nombreExploitations)} exploitations y sont en agriculture biologique
+                      ou en conversion, représentant {Round(pourcentageTotal, 1)} % de la surface
+                      agricole totale ({Round(surfaceAgriBio, 0)} hectares).
+                    </Body>
+                  ) : (
+                    <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                      Sur votre territoire, {numberWithSpacesRegex(nombreExploitations)} exploitations sont en agriculture biologique
+                      ou en conversion, représentant {Round(pourcentageTotal, 1)} % de la surface agricole totale,
+                      soit {Round(surfaceAgriBio, 0)} hectares.
+                    </Body>
+                  )
+                }
+                {
+                  territoiresPartiellementCouverts && (type === "departement" || type === "pnr") && (
                     <>
                       <Body style={{ color: "var(--gris-dark)" }}>
                         <br></br>Attention, {territoiresPartiellementCouverts?.length} EPCI{" "}
