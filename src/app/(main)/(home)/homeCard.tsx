@@ -1,6 +1,6 @@
 import { H4 } from '@/design-system/base/Textes';
 import Image, { StaticImageData } from 'next/image';
-import styles from './main.module.scss';
+import styles from '../main.module.scss';
 
 type HomeCardProps = {
   icone: StaticImageData;
