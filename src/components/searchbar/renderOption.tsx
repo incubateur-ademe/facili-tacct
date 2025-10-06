@@ -1,12 +1,7 @@
 "use client";
 
 import { Box } from "@mui/material";
-
-const ReplaceDisplayEpci = (libelleEpci: string) => {
-  return libelleEpci
-    .replace("Communauté d'agglomération", 'CA')
-    .replace('Communauté de communes', 'CC');
-};
+import { ReplaceDisplayEpci } from "./fonctions";
 
 export const RenderOption = ({ props, option }: SearchInputOptionsProps) => {
   //Dans le menu déroulant

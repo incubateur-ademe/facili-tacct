@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from "../components.module.scss";
-import { MySearchInput } from './SearchInput';
+import { RechercheInput } from './rechercheInput';
 
 export const BarreDeRecherche = ({
   RechercherRedirection,
@@ -163,7 +163,7 @@ export const BarreDeRecherche = ({
           }
           style={{ minWidth: width && width > 520 ? 300 : 0, width: '100%', alignItems: 'center' }}
           renderInput={({ className, id, placeholder, type }) => (
-            <MySearchInput
+            <RechercheInput
               className={className}
               id={id}
               placeholder={placeholder}

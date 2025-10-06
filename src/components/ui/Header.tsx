@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useStyles } from 'tss-react/dsfr';
 import { Brand } from '../Brand';
-import HeaderSearchBar from '../searchbar/header/HeaderSearchBar';
+import HeaderRechercheTerrtoire from '../searchbar/header/HeaderRechercheTerrtoire';
 
 const HeaderComp = () => {
   const searchParams = useSearchParams();
@@ -58,7 +58,7 @@ const HeaderComp = () => {
         orientation: 'horizontal'
       }}
       quickAccessItems={windowDimensions.width && windowDimensions.width < 992 && type ? [] : [
-        <HeaderSearchBar libelle={libelle} code={code} type={type} />
+        <HeaderRechercheTerrtoire libelle={libelle} code={code} type={type} />
       ]}
       navigation={params !== "/" ? [
         {

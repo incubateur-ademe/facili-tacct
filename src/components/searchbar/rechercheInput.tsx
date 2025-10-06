@@ -5,22 +5,11 @@ import { eptRegex } from '@/lib/utils/regex';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { ReplaceDisplayEpci, ReplaceSearchEpci } from './fonctions';
 import { RenderInput } from './renderInput';
 import { RenderOption } from './renderOption';
 
-const ReplaceDisplayEpci = (libelleEpci: string) => {
-  return libelleEpci
-    .replace("Communauté d'agglomération", 'CA')
-    .replace('Communauté de communes', 'CC');
-};
-
-const ReplaceSearchEpci = (libelleEpci: string) => {
-  return libelleEpci
-    .replace("CA ", "Communauté d'agglomération ")
-    .replace("CC ", "Communauté de communes ")
-};
-
-export const MySearchInput = ((props: SearchInputProps) => {
+export const RechercheInput = ((props: SearchInputProps) => {
   const {
     className,
     id,
@@ -88,8 +77,11 @@ export const MySearchInput = ((props: SearchInputProps) => {
     <Autocomplete
       id={id}
       autoHighlight
+      fullWidth
       filterOptions={(x) => x}
       options={collectivites}
+      loading={options.length === 0}
+      loadingText="Chargement..."
       noOptionsText="Aucun territoire trouvé"
       onChange={(event, newValue: SearchInputOptions | null) => {
         setOptions(newValue ? [newValue, ...options] : options);
@@ -129,7 +121,28 @@ export const MySearchInput = ((props: SearchInputProps) => {
           typeTerritoire={typeTerritoire}
         />
       }
-      sx={{ width: 'inherit' }}
+      sx={{
+        width: 'inherit',
+        alignContent: 'center',
+      }}
+      slotProps={{
+        popper: {
+          sx: {
+            '& .MuiPaper-root': {
+              borderRadius: '1rem !important',
+              transform: 'translateY(14px)',
+              padding: '0.5rem 0.2rem 0.5rem 0.5rem',
+              boxShadow: '0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);'
+            },
+            '& .MuiAutocomplete-listbox': {
+              backgroundColor: 'white',
+              scrollbarWidth: 'thin',
+              padding: '0'
+            },
+          },
+        },
+      }}
+
     />
   );
 });

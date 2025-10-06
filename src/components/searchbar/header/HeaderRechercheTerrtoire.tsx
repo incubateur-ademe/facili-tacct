@@ -8,7 +8,7 @@ import { BoutonRechercherHeader } from './BoutonRechercher';
 import { SearchInputHeader } from './SearchInputHeader';
 import { SelectTypeTerritoire } from './SelectTypeTerritoire';
 
-const HeaderSearchBar = (props:
+const HeaderRechercheTerrtoire = (props:
   {
     libelle: string;
     type: "epci" | "commune" | "departement" | "ept" | "petr" | "pnr";
@@ -28,7 +28,6 @@ const HeaderSearchBar = (props:
             : type === "pnr" ? "PNR"
               : undefined
   );
-
   const [searchCode, setSearchCode] = useState<string>(code ?? '');
   const [searchLibelle, setSearchLibelle] = useState<string>(libelle ?? '');
   const [typeTerritoire, setTypeTerritoire] = useState<
@@ -36,16 +35,10 @@ const HeaderSearchBar = (props:
   >(type === 'ept' ? 'epci' : type);
   const territoireTexte = value + " " + ReplaceDisplayEpci(searchLibelle) + " - " + searchCode;
   const textWidth = getTextWidth(territoireTexte);
-  
+
   useEffect(() => {
     setSearchCode(code ?? '');
-  }, [code]);
-
-  useEffect(() => {
     setSearchLibelle(libelle ?? '');
-  }, [libelle]);
-
-  useEffect(() => {
     setValue(
       (type === "epci" || type === "ept") ? "EPCI/EPT"
         : type === "commune" ? "Commune"
@@ -54,7 +47,7 @@ const HeaderSearchBar = (props:
               : type === "pnr" ? "PNR"
                 : undefined
     );
-  }, [type]);
+  }, [code, libelle, type]);
 
   useEffect(() => {
     if (isNewTypeChosen) {
@@ -63,8 +56,6 @@ const HeaderSearchBar = (props:
       setTimeout(() => setFocusAutocomplete(false), 200);
     }
   }, [isNewTypeChosen]);
-
-
 
   return (
     libelle && value ? (
@@ -164,4 +155,4 @@ const HeaderSearchBar = (props:
   );
 };
 
-export default HeaderSearchBar;
+export default HeaderRechercheTerrtoire;
