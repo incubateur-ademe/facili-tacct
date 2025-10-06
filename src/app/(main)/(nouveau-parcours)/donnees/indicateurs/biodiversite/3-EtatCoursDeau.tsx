@@ -4,7 +4,7 @@ import { MultiSheetExportButtonNouveauParcours } from '@/components/exports/Mult
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { etatCoursDeauLegends, qualiteEauxBaignadelegends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor, LegendCompIcons } from '@/components/maps/legends/legendComp';
-import { MapEtatCoursDeauLegacy } from '@/components/maps/mapEtatCoursDeauLegacy';
+import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from "@/design-system/base/Textes";
@@ -95,7 +95,7 @@ export const EtatEcoCoursDeau = (props: {
         <div className={styles.mapWrapper}>
           {etatCoursDeau.length ? (
             <>
-              <MapEtatCoursDeauLegacy
+              <MapEtatCoursDeau
                 etatCoursDeau={etatCoursDeauMap}
                 carteCommunes={carteCommunesMap}
                 qualiteEauxBaignade={qualiteEauxBaignade}

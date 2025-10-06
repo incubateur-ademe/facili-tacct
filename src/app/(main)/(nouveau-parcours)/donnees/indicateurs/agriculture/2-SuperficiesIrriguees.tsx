@@ -66,6 +66,7 @@ export const SuperficiesIrriguees = (props: {
           {
             surfaceTerritoire === undefined || isNaN(surfaceTerritoire) ? null : (
               <MicroRemplissageTerritoire
+                key={`${type}-${code}-${libelle}`}
                 pourcentage={type === "commune" ? surfaceTerritoire : surfaceTerritoire / communesMap.length}
                 territoireContours={territoireSeul}
                 arrondi={1}

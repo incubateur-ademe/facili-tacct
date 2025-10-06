@@ -6,6 +6,19 @@ import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
 import { DonneesBiodiversite } from "./DonneesBiodiversite";
 
+// Fonction utilitaire pour convertir les BigInt en Number (sérialisation JSON)
+// Gère aussi les undefined et null pour éviter les erreurs de sérialisation
+const serializeData = <T,>(data: T): T => {
+  if (data === undefined || data === null) {
+    return data;
+  }
+  return JSON.parse(
+    JSON.stringify(data, (_, value) =>
+      typeof value === 'bigint' ? Number(value) : value
+    )
+  );
+};
+
 const BiodiversiteServerPage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type } = await props.searchParams;
   const carteCommunes = await GetCommunes(code, libelle, type);
@@ -16,20 +29,15 @@ const BiodiversiteServerPage = async (props: { searchParams: SearchParams }) => 
   const qualiteEauxBaignadeParDpmt = await GetQualiteEauxBaignade(code, libelle, type);
   const dbInconfortThermique = await GetInconfortThermique(code, libelle, type);
 
-  // Si les données ne sont pas disponibles, on peut soit retourner notFound() soit un message d'erreur
-  // if (!carteCommunes.length || !dbAgricultureBio || !dbConsommationNAF || !dbAOT40 || !dbEtatCoursDeau || !qualiteEauxBaignadeParDpmt) {
-  //   notFound();
-  // }
-
   return (
     <DonneesBiodiversite
-      carteCommunes={carteCommunes}
-      agricultureBio={dbAgricultureBio!}
-      consommationNAF={dbConsommationNAF}
-      aot40={dbAOT40}
-      etatCoursDeau={dbEtatCoursDeau}
-      qualiteEauxBaignade={qualiteEauxBaignadeParDpmt}
-      inconfortThermique={dbInconfortThermique}
+      carteCommunes={serializeData(carteCommunes)}
+      agricultureBio={serializeData(dbAgricultureBio)}
+      consommationNAF={serializeData(dbConsommationNAF)}
+      aot40={serializeData(dbAOT40)}
+      etatCoursDeau={serializeData(dbEtatCoursDeau)}
+      qualiteEauxBaignade={serializeData(qualiteEauxBaignadeParDpmt)}
+      inconfortThermique={serializeData(dbInconfortThermique)}
     />
   );
 };

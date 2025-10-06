@@ -1,4 +1,5 @@
 "use client";
+import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
@@ -36,19 +37,6 @@ export const DonneesGestionRisques = ({
   const ongletsMenu = sommaireThematiques[thematique];
 
   useEffect(() => {
-    const style = document.createElement('style');
-    style.textContent = `
-        html {
-          scroll-behavior: smooth;
-        }
-      `;
-    document.head.appendChild(style);
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
-
-  useEffect(() => {
     if (rga.length === 0 && rgaCarte.length === 0) {
       setLoadingRga(true);
       setRgaCarteLoading(true);
@@ -78,6 +66,7 @@ export const DonneesGestionRisques = ({
   return (
     <>
       <div className={styles.explorerMesDonneesContainer}>
+        <ScrollToHash />
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
           Ce que les données suggèrent sur votre territoire
         </H1>

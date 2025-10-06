@@ -1,8 +1,8 @@
 "use client";
+import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { CarteCommunes, EtatCoursDeau, RessourcesEau } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { EtatEcoCoursDeau } from '../../indicateurs/eau/1-EtatCoursDeau';
@@ -23,36 +23,10 @@ export const DonneesEau = ({
   const thematique = searchParams.get('thematique') as "Eau";
   const ongletsMenu = sommaireThematiques[thematique];
 
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.textContent = `
-        html {
-          scroll-behavior: smooth;
-        }
-      `;
-    document.head.appendChild(style);
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
-
-  useEffect(() => {
-    const scrollToHash = () => {
-      if (window.location.hash) {
-        const element = document.getElementById(decodeURIComponent(window.location.hash.substring(1)));
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        } else {
-          setTimeout(scrollToHash, 100);
-        }
-      }
-    };
-    scrollToHash();
-  }, []);
-
   return (
     <>
       <div className={styles.explorerMesDonneesContainer}>
+        <ScrollToHash />
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
           Ce que les données suggèrent sur votre territoire
         </H1>

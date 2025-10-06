@@ -1,9 +1,9 @@
 "use client";
+import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { SourcesSection } from "@/components/interactions/scrollToSource";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { Agriculture, AgricultureBio, CarteCommunes, SurfacesAgricolesModel } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { TypesDeCulture } from '../../indicateurs/agriculture/1-TypesDeCultures';
@@ -27,35 +27,10 @@ export const DonneesAgriculture = ({
   const thematique = searchParams.get('thematique') as "Agriculture";
   const ongletsMenu = sommaireThematiques[thematique];
 
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.textContent = `
-        html {
-          scroll-behavior: smooth;
-        }
-      `;
-    document.head.appendChild(style);
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
-
-  useEffect(() => {
-    const scrollToHash = () => {
-      if (window.location.hash) {
-        const element = document.getElementById(decodeURIComponent(window.location.hash.substring(1)));
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        } else {
-          setTimeout(scrollToHash, 100);
-        }
-      }
-    };
-    scrollToHash();
-  }, []);
   return (
     <>
       <div className={styles.explorerMesDonneesContainer}>
+        <ScrollToHash />
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
           Entre force et fragilité, découvrez les facteurs qui font basculer l'agriculture face au changement climatique.
         </H1>
