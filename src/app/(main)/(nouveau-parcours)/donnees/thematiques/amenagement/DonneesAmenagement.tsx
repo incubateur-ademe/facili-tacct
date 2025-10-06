@@ -1,9 +1,14 @@
 "use client";
 import ScrollToHash from "@/components/interactions/ScrollToHash";
+import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { ConsommationNAFEcolabApi } from "@/lib/postgres/EcolabApi";
 import { CarteCommunes, ConsommationNAF } from "@/lib/postgres/models";
+import { GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
+import { GetNAF } from "@/lib/queries/ecologieGouv/test";
+import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { ConsommationEspacesNAFAmenagement } from '../../indicateurs/amenagement/1-ConsommationEspacesNAF';
@@ -23,10 +28,37 @@ export const DonneesAmenagement = ({
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Aménagement";
+  const libelle = searchParams.get('libelle')!;
+  const type = searchParams.get('type')!;
+  const code = searchParams.get('code')!;
   const ongletsMenu = sommaireThematiques[thematique];
+  const [data, setData] = useState({
+    carteCommunes,
+    consommationNAF,
+    consommationNAFEcolab
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isFirstRender, setIsFirstRender] = useState(true);
+
+  useEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+      return;
+    }
+    setIsLoading(true);
+    void (async () => {
+      const [newCarteCommunes, newConsommationNAF, newConsommationNAFEcolab] = await Promise.all([
+        GetCommunes(code, libelle, type),
+        GetConsommationNAF(code, libelle, type),
+        GetNAF(code, libelle, type)
+      ]);
+      setData({ carteCommunes: newCarteCommunes, consommationNAF: newConsommationNAF, consommationNAFEcolab: newConsommationNAFEcolab });
+      setIsLoading(false);
+    })();
+  }, [libelle]);
 
   return (
-    <>
+    isLoading ? <LoaderText text='Mise à jour des données' /> :
       <div className={styles.explorerMesDonneesContainer}>
         <ScrollToHash />
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
@@ -59,8 +91,8 @@ export const DonneesAmenagement = ({
               </H3>
             </div>
             <ConsommationEspacesNAFAmenagement
-              consommationNAF={consommationNAF}
-              carteCommunes={carteCommunes}
+              consommationNAF={data.consommationNAF}
+              carteCommunes={data.carteCommunes}
             />
           </div>
 
@@ -72,8 +104,8 @@ export const DonneesAmenagement = ({
               </H3>
             </div>
             <ConsommationEspacesNAFAmenagementEcolab
-              consommationNAF={consommationNAFEcolab}
-              carteCommunes={carteCommunes}
+              consommationNAF={data.consommationNAFEcolab}
+              carteCommunes={data.carteCommunes}
             />
           </div>
 
@@ -84,10 +116,9 @@ export const DonneesAmenagement = ({
                 Cartographie des zones climatiques locales (LCZ)
               </H3>
             </div>
-            <LCZ carteCommunes={carteCommunes} />
+            <LCZ carteCommunes={data.carteCommunes} />
           </div>
         </section>
       </div>
-    </>
   );
 };

@@ -46,7 +46,7 @@ export const nomThematiques = [
     labelRadius: 280,
     xOffset: 22,
     yOffset: -38,
-    icon: '🏥',
+    icon: '🛠️',
     disabled: true,
     liens: []
   },

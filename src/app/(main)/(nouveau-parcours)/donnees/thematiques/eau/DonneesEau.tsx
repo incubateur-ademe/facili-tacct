@@ -1,8 +1,13 @@
 "use client";
 import ScrollToHash from "@/components/interactions/ScrollToHash";
+import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { CarteCommunes, EtatCoursDeau, RessourcesEau } from "@/lib/postgres/models";
+import { GetRessourceEau } from "@/lib/queries/databases/ressourcesEau";
+import { GetCommunes } from "@/lib/queries/postgis/cartographie";
+import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { EtatEcoCoursDeau } from '../../indicateurs/eau/1-EtatCoursDeau';
@@ -21,14 +26,41 @@ export const DonneesEau = ({
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Eau";
+  const libelle = searchParams.get('libelle')!;
+  const type = searchParams.get('type')!;
+  const code = searchParams.get('code')!;
   const ongletsMenu = sommaireThematiques[thematique];
+  const [data, setData] = useState({
+    carteCommunes,
+    ressourcesEau,
+  etatCoursDeau
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isFirstRender, setIsFirstRender] = useState(true);
+
+  useEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+      return;
+    }
+    setIsLoading(true);
+    void (async () => {
+      const [newCarteCommunes, newRessourcesEau, newEtatCoursDeau] = await Promise.all([
+        GetCommunes(code, libelle, type),
+        GetRessourceEau(code, libelle, type),
+        GetEtatCoursDeau(code, libelle, type)
+      ]);
+      setData({ carteCommunes: newCarteCommunes, ressourcesEau: newRessourcesEau, etatCoursDeau: newEtatCoursDeau });
+      setIsLoading(false);
+    })();
+  }, [libelle]);
 
   return (
-    <>
+    isLoading ? <LoaderText text='Mise à jour des données' /> :
       <div className={styles.explorerMesDonneesContainer}>
         <ScrollToHash />
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
-          Ce que les données suggèrent sur votre territoire
+          Trop ou pas assez d’eau ? Explorer des facteurs déterminants pour l’avenir de la ressource en eau à l’ère du changement climatique
         </H1>
         {/* Introduction */}
         <section>
@@ -55,7 +87,7 @@ export const DonneesEau = ({
                 Répartition des prélèvements d’eau par usage
               </H3>
             </div>
-            <PrelevementsEnEau ressourcesEau={ressourcesEau} />
+            <PrelevementsEnEau ressourcesEau={data.ressourcesEau} />
           </div>
 
           {/* État écologique des cours d'eau */}
@@ -66,12 +98,11 @@ export const DonneesEau = ({
               </H3>
             </div>
             <EtatEcoCoursDeau
-              etatCoursDeau={etatCoursDeau}
-              carteCommunes={carteCommunes}
+              etatCoursDeau={data.etatCoursDeau}
+              carteCommunes={data.carteCommunes}
             />
           </div>
         </section>
       </div>
-    </>
   );
 };
