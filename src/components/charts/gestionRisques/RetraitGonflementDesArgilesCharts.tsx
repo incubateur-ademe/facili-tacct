@@ -77,7 +77,16 @@ const barChartRepartition = (rgaFilteredByTerritory: RGAdb[]) => {
   };
   return [avant1975, apres1975];
 }
+
 const barChartComparaison = (rga: RGAdb[], code: string, type: string) => {
+  if (!rga || rga.length === 0) {
+    return [
+      { territoire: 0, territoireSup: 0, alea: "Zone a priori non argileuse" },
+      { territoire: 0, territoireSup: 0, alea: "Exposition faible" },
+      { territoire: 0, territoireSup: 0, alea: "Exposition moyenne / forte" }
+    ];
+  }
+  
   const territoireAlea = type === "commune" ?
     rga.find(item => item.code_geographique === code) :
     type === "epci" ?

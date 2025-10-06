@@ -30,7 +30,10 @@ const color = (valeur: number) => {
 };
 
 const getCentroid = (arr: number[][]) => {
-  const centroid = arr?.reduce(
+  if (!arr || arr.length === 0) {
+    return [0, 0]; // Valeur par défaut si pas de coordonnées
+  }
+  const centroid = arr.reduce(
     (x: number[], y: number[]) => {
       return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
     },
@@ -40,6 +43,9 @@ const getCentroid = (arr: number[][]) => {
 };
 
 const getCoordinates = (coords: number[][][]) => {
+  if (!coords || coords.length === 0) {
+    return [0, 0]; // Valeur par défaut si pas de coordonnées
+  }
   const coords_arr = [];
   for (let i = 0; i < coords.length; i++) {
     const center = getCentroid(coords[i]);
@@ -71,9 +77,9 @@ export const MapAOT40 = (props: {
       (el) => el.properties.ept === libelle
     )
     : carteCommunes;
-  const allCoordinates = carteCommunesFiltered.map(
-    (el) => el.geometry.coordinates?.[0]?.[0]
-  );
+  const allCoordinates = carteCommunesFiltered
+    .map((el) => el.geometry.coordinates?.[0]?.[0])
+    .filter((coords): coords is number[][] => coords !== undefined && coords !== null);
 
   const union = turf.union(
     turf.featureCollection(carteCommunesFiltered as Any),
@@ -95,23 +101,29 @@ export const MapAOT40 = (props: {
     });
   }, [aot40]);
 
-  const polygonTerritoire = type === "commune"
-    ? turf.multiPolygon(commune?.geometry.coordinates as Position[][][])
-    : turf.multiPolygon(union?.geometry.coordinates as Position[][][])
+  const polygonTerritoire = type === "commune" && commune?.geometry.coordinates
+    ? turf.multiPolygon(commune.geometry.coordinates as Position[][][])
+    : union?.geometry.coordinates
+    ? turf.multiPolygon(union.geometry.coordinates as Position[][][])
+    : null;
 
   // Pour certains multipolygones, on a plusieurs arrays de coordonnées si les territoires sont disjoints
-  const flattenedCoordinates = getArrayDepth(polygonTerritoire.geometry.coordinates) === 4
-    ? polygonTerritoire.geometry.coordinates[0]
-    : polygonTerritoire.geometry.coordinates;
+  const flattenedCoordinates = polygonTerritoire && polygonTerritoire.geometry.coordinates
+    ? (getArrayDepth(polygonTerritoire.geometry.coordinates) === 4
+      ? polygonTerritoire.geometry.coordinates[0]
+      : polygonTerritoire.geometry.coordinates)
+    : [];
 
   // On inverse les coordonnées pour les passer à turf.polygon
   // car turf.polygon attend des coordonnées au format [longitude, latitude]
-  const newPolygonTerritoire = turf.polygon(flattenedCoordinates.map(
-    el => el.map(
-      coords => [coords[1], coords[0]]
-    )
-  ) as unknown as Position[][]
-  );
+  const newPolygonTerritoire = flattenedCoordinates.length > 0
+    ? turf.polygon(flattenedCoordinates.map(
+        el => el.map(
+          coords => [coords[1], coords[0]]
+        )
+      ) as unknown as Position[][]
+      )
+    : turf.polygon([[[0, 0], [0, 0.001], [0.001, 0.001], [0.001, 0], [0, 0]]]);
 
   const enveloppe = turf.envelope(newPolygonTerritoire).geometry.coordinates[0];
   const pointCollection = aot40Data.map((aot) => {

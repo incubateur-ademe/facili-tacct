@@ -163,83 +163,81 @@ const PrelevementEauProgressBars = ({
   const departement = ressourcesEau[0]?.libelle_departement;
 
   return (
-    <div className={styles.ressourcesEauWrapper}>
-      {libelle && data.find((e) => e.sumTerritoire !== 0) ? (
-        <>
-          {data
-            .sort((a, b) => b.sumTerritoire - a.sumTerritoire)
-            .map((item, index) => (
-              <ArrowHtmlTooltip
-                title={
-                  <>
-                    <div className='flex flex-row g-4 items-center mb-2'>
-                      <div className={styles.colorSquare} style={{ backgroundColor: item.color }} />
-                      <H4 style={{ fontSize: '1rem', marginBottom: "0" }}>{item.titre}</H4>
-                    </div>
-                    <Body size='sm'>
-                      {libelle} :{' '}
-                      <b>
-                        {Round((100 * item.sumTerritoire) / total, 2)} %
-                      </b>{' '}
-                      ({Round(item.sumTerritoire / 1000000, 2)} Mm3)
-                    </Body>
-                    {
-                      type !== 'departement' && (
-                        <Body size='sm'>
-                          Département ({departement}) :{' '}
-                          <b>{Round((100 * item.sumDptmt) / totalDptmt, 2)} %</b>{' '}
-                          ({Round(item.sumDptmt / 1000000, 2)} Mm3)
-                        </Body>
-                      )
-                    }
-                  </>
-                }
-                key={index}
-                placement="top"
-              >
-                <div key={index} className={styles.progressDataWrapper}>
-                  <div className={styles.progressDesign}>
-                    {item.icon}
-                    <div className={styles.progressBar}>
-                      <Body size='xs' style={{ textTransform: 'uppercase', lineHeight: "0.875rem" }}>{item.titre}</Body>
-                      <div className={styles.barMarker}>
-                        <Progress
-                          percent={Number((100 * item.sumTerritoire) / total)}
-                          showInfo={false}
-                          strokeColor={item.color}
-                          size={['100%', 12]}
-                          style={{ width: '95%' }}
-                          type="line"
-                          trailColor="#F9F9FF"
-                        />
-                        <div
-                          style={{
-                            position: 'relative',
-                            width: '100%',
-                            transform: `translate(${(95 * item.sumDptmt) / totalDptmt}%, -1.25rem)`
-                          }}
-                        >
-                          <div className={styles.marker}></div>
-                        </div>
+    libelle && data.find((e) => e.sumTerritoire !== 0) ? (
+      <div className={styles.ressourcesEauWrapper}>
+        {data
+          .sort((a, b) => b.sumTerritoire - a.sumTerritoire)
+          .map((item, index) => (
+            <ArrowHtmlTooltip
+              title={
+                <>
+                  <div className='flex flex-row g-4 items-center mb-2'>
+                    <div className={styles.colorSquare} style={{ backgroundColor: item.color }} />
+                    <H4 style={{ fontSize: '1rem', marginBottom: "0" }}>{item.titre}</H4>
+                  </div>
+                  <Body size='sm'>
+                    {libelle} :{' '}
+                    <b>
+                      {Round((100 * item.sumTerritoire) / total, 2)} %
+                    </b>{' '}
+                    ({Round(item.sumTerritoire / 1000000, 2)} Mm3)
+                  </Body>
+                  {
+                    type !== 'departement' && (
+                      <Body size='sm'>
+                        Département ({departement}) :{' '}
+                        <b>{Round((100 * item.sumDptmt) / totalDptmt, 2)} %</b>{' '}
+                        ({Round(item.sumDptmt / 1000000, 2)} Mm3)
+                      </Body>
+                    )
+                  }
+                </>
+              }
+              key={index}
+              placement="top"
+            >
+              <div key={index} className={styles.progressDataWrapper}>
+                <div className={styles.progressDesign}>
+                  {item.icon}
+                  <div className={styles.progressBar}>
+                    <Body size='xs' style={{ textTransform: 'uppercase', lineHeight: "0.875rem" }}>{item.titre}</Body>
+                    <div className={styles.barMarker}>
+                      <Progress
+                        percent={Number((100 * item.sumTerritoire) / total)}
+                        showInfo={false}
+                        strokeColor={item.color}
+                        size={['100%', 12]}
+                        style={{ width: '95%' }}
+                        type="line"
+                        trailColor="#F9F9FF"
+                      />
+                      <div
+                        style={{
+                          position: 'relative',
+                          width: '100%',
+                          transform: `translate(${(95 * item.sumDptmt) / totalDptmt}%, -1.25rem)`
+                        }}
+                      >
+                        <div className={styles.marker}></div>
                       </div>
                     </div>
                   </div>
-                  <div className={styles.progressNumbers}>
-                    <Body size='xs' weight='bold' style={{ lineHeight: "0.875rem"}}>
-                      {Round((100 * item.sumTerritoire) / total, 2)} %
-                    </Body>
-                    <Body size='xs' style={{ lineHeight: "0.875rem"}}>
-                      {Round(item.sumTerritoire / 1000000, 2)} Mm3
-                    </Body>
-                  </div>
                 </div>
-              </ArrowHtmlTooltip>
-            ))}
-        </>
-      ) : (
-        <div className='p-1 flex flex-row justify-center'><DataNotFound image={GraphNotFound} /></div>
-      )}
-    </div>
+                <div className={styles.progressNumbers}>
+                  <Body size='xs' weight='bold' style={{ lineHeight: "0.875rem" }}>
+                    {Round((100 * item.sumTerritoire) / total, 2)} %
+                  </Body>
+                  <Body size='xs' style={{ lineHeight: "0.875rem" }}>
+                    {Round(item.sumTerritoire / 1000000, 2)} Mm3
+                  </Body>
+                </div>
+              </div>
+            </ArrowHtmlTooltip>
+          ))}
+      </div>
+    ) : (
+      <div className='p-1 flex flex-row justify-center'><DataNotFound image={GraphNotFound} /></div>
+    )
   );
 };
 

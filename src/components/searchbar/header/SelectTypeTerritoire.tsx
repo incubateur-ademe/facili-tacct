@@ -24,7 +24,6 @@ export const SelectTypeTerritoire = ({
   setIsNewTypeChosen: (a: boolean) => void;
 }) => {
   const pathname = usePathname();
-  console.log("pathname", pathname);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const collectivites = pathname === "/patch4c" ? ["EPCI/EPT", "Commune"] : ["EPCI/EPT", "Commune", "Département", "PETR", "PNR"];
 
