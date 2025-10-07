@@ -5,6 +5,7 @@ import ClimaStory from '@/lib/ressources/articles/climaStory';
 import EviterPrecherDesert from '@/lib/ressources/articles/eviterPrecherDesert';
 import FacilitationDateliers from '@/lib/ressources/articles/facilitationDateliers';
 import IlotChaleurUrbain from '@/lib/ressources/articles/ilotChaleurUrbain';
+import IndicateursDeResilience from '@/lib/ressources/articles/indicateursDeResilience';
 import LireUnDiagnostic from '@/lib/ressources/articles/lireUnDiagnostic';
 import MiseEnRecit from '@/lib/ressources/articles/miseEnRecit';
 import PnaccTracc from '@/lib/ressources/articles/pnaccTracc';
@@ -120,6 +121,16 @@ export const allArticles = [
       title: 'Brisez les silos : introduction à l’approche systémique',
       description:
         'Comprendre les interactions au sein de votre système est essentiel pour éviter les maladaptations. L’approche systémique vous accompagne de l’identification jusqu’à la mobilisation.'
+    }
+  },
+  {
+    slug: 'indicateurs-resilience-agriculture',
+    Component: IndicateursDeResilience,
+    metadata: {
+      title:
+        'Indicateurs de résilience de l’agriculture face au changement climatique',
+      description:
+        '22 indicateurs pour aider les chargés de mission climat à évaluer la résilience agricole et repérer les vulnérabilités au changement climatique.'
     }
   }
 ];

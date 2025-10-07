@@ -406,6 +406,20 @@ export const cards = {
       description:
         'Comprendre les interactions au sein de votre système est essentiel pour éviter les maladaptations. L’approche systémique vous accompagne de l’identification jusqu’à la mobilisation.',
       link: '/ressources/articles/briser-silos-approche-systemique'
+    },
+    {
+      id: 35,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        "Vous n'avez pas de diagnostic",
+        'Vous découvrez le diagnostic pour la 1ère fois'
+      ],
+      titre:
+        'Indicateurs de résilience de l’agriculture face au changement climatique',
+      tag: 'Article',
+      description:
+        '22 indicateurs pour aider les chargés de mission climat à évaluer la résilience agricole et repérer les vulnérabilités au changement climatique.',
+      link: '/ressources/articles/indicateurs-resilience-agriculture'
     }
   ],
   inconfortThermique: [
