@@ -47,6 +47,7 @@ const HeaderRechercheTerrtoire = (props:
               : type === "pnr" ? "PNR"
                 : undefined
     );
+    setTypeTerritoire(type === 'ept' ? 'epci' : type);
   }, [code, libelle, type]);
 
   useEffect(() => {

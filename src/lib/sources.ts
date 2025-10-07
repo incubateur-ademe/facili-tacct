@@ -42,5 +42,18 @@ export const sourcesEtudes = {
       url: 'https://plusfraichemaville.fr/fiche-solution/planter-un-arbre',
       texte: 'Plus Fraîche ma Ville'
     }
+  ],
+  biodiversite: [
+    {
+      numero: 1,
+      url: 'https://www.wwf.fr/rapport-planete-vivante',
+      texte: 'Rapport Planète Vivante, WWF (2024)'
+    },
+    {
+      numero: 2,
+      url: 'https://eur-lex.europa.eu/legal-content/FR/TXT/PDF/?uri=CELEX:52021DC0699',
+      texte:
+        'Communication de la Commission du 17 novembre 2021 : "Stratégie de l\'UE pour les sols à l\'horizon 2030" (COM(2021) 699 final)'
+    }
   ]
 };

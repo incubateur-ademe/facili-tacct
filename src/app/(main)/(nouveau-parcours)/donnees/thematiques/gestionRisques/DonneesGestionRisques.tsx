@@ -65,20 +65,18 @@ export const DonneesGestionRisques = ({
   }, [libelle]);
 
   useEffect(() => {
-    if (rga.length === 0 && rgaCarte.length === 0) {
-      setLoadingRga(true);
-      setRgaCarteLoading(true);
-      fetch(`/api/rga?code=${code}&libelle=${libelle}&type=${type}`)
-        .then(res => res.json())
-        .then(data => {
-          setRga(data.rga);
-          setRgaCarte(data.rgaCarte);
-        })
-        .finally(() => {
-          setLoadingRga(false);
-          setRgaCarteLoading(false);
-        });
-    }
+    setLoadingRga(true);
+    setRgaCarteLoading(true);
+    fetch(`/api/rga?code=${code}&libelle=${libelle}&type=${type}`)
+      .then(res => res.json())
+      .then(data => {
+        setRga(data.rga);
+        setRgaCarte(data.rgaCarte);
+      })
+      .finally(() => {
+        setLoadingRga(false);
+        setRgaCarteLoading(false);
+      });
   }, [code, libelle, type]);
 
   return (
@@ -86,7 +84,9 @@ export const DonneesGestionRisques = ({
       <div className={styles.explorerMesDonneesContainer}>
         <ScrollToHash />
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
-          Ce que les données suggèrent sur votre territoire
+          Comme le montre la multiplication des catastrophes naturelles, chaque territoire
+          fait face à des impacts climatiques spécifiques. Visualisez quelques indicateurs
+          qui dessinent votre profil de risque.
         </H1>
         {/* Introduction */}
         <section>

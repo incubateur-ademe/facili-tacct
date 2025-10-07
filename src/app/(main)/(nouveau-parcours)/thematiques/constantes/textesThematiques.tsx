@@ -227,8 +227,11 @@ export const thematiquesInfo: {
     description: (
       <div>
         <Body size="sm" style={{ marginBottom: '1rem' }}>
-          Peu de ressources ou de domaines d'activité échappent aux catastrophes naturelles
-          engendrées par les dérèglement du climat. Etat des lieux sur votre territoire.
+          Peu de ressources ou de domaines d'activité échappent aux catastrophes
+          naturelles engendrées par les dérèglement du climat.
+        </Body>
+        <Body size="sm" margin="1rem 0">
+          👉 Etat des lieux sur votre territoire.
         </Body>
       </div>
     ),
@@ -305,7 +308,7 @@ export const thematiquesInfo: {
           </Body>
         </div>
         <Body size="sm" margin="1rem 0">
-          👉 Combinés, ces facteurs fragilisent votre biodiversité face au changement climatique.
+          👉 Combinés, ces facteurs fragilisent la biodiversité de votre territoire face au changement climatique.
         </Body>
       </div>
     ),

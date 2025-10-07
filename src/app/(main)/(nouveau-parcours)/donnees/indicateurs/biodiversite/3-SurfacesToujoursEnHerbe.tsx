@@ -27,30 +27,32 @@ export const SurfacesToujoursEnHerbe = ({
       ? multipleEpciByPnrLibelle.find(pnr => pnr.libelle_pnr === libelle)?.liste_epci_multi_pnr
       : undefined;
 
-      return (
+  return (
     <>
       <div className={styles.datavizMapContainer}>
         <div
-          className={styles.chiffreDynamiqueWrapper} 
+          className={styles.chiffreDynamiqueWrapper}
           style={{ alignItems: 'center', paddingBottom: '2rem', gap: '3rem' }}
-          >
+        >
           <MicroCircleGrid pourcentage={pourcentageSurfacesToujoursEnHerbe} arrondi={1} ariaLabel="Surface toujours en herbe" />
           <div className={styles.text}>
             {
               surfacesAgricoles.length ? (
                 <>
-                {
-                  type === "commune" && (
-                    <Body weight="bold" style={{ color: "var(--gris-dark)", paddingBottom: '1rem' }}>
-                      Attention, ces détails sur les types de cultures sont ceux de votre EPCI.
+                  {
+                    type === "commune" ? (
+                      <Body weight="bold" style={{ color: "var(--gris-dark)", paddingBottom: '1rem' }}>
+                        Bien que cette donnée ne soit disponible qu'à l'échelle intercommunale,
+                        elle reste révélatrice : avec {Round(pourcentageSurfacesToujoursEnHerbe, 1)} % de
+                        surfaces toujours en herbe, votre EPCI dispose d'un indicateur clé de l'état
+                        de sa biodiversité : plus cette part est élevée, plus les écosystèmes sont préservés
+                      </Body>
+                    ) : <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
+                      Avec {Round(pourcentageSurfacesToujoursEnHerbe, 1)} % de surfaces toujours en herbe, votre territoire
+                      dispose d'un indicateur clé de l'état de sa biodiversité : plus cette part est élevée, plus
+                      les écosystèmes sont préservés.
                     </Body>
-                  )
-                }
-                  <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
-                    Avec {Round(pourcentageSurfacesToujoursEnHerbe, 1)} % de surfaces toujours en herbe, votre territoire
-                    dispose d'un indicateur clé de l'état de sa biodiversité : plus cette part est élevée, plus
-                    les écosystèmes sont préservés.
-                  </Body>
+                  }
                   {
                     territoiresPartiellementCouverts && (type === "departement" || type === "pnr") && (
                       <>

@@ -165,15 +165,15 @@ export const ConsommationEspacesNAFAmenagementText = () => (
 export const SolsImpermeabilisesText = () => (
   <>
     <Body size='sm'>
-      L’artificialisation des sols constitue l'une des premières causes 
-      d'effondrement de la biodiversité : elle fragmente voire détruit les 
-      habitats, isole les espèces et perturbe les processus naturels 
-      essentiels comme la pollinisation. Vis-à-vis du climat, les conséquences 
-      sont tout aussi critiques : les sols perdent leur rôle de puits de 
-      carbone, leurs capacités d'infiltration et de stockage de l'eau, 
-      avec pour corollaire  une réduction de la recharge des nappes et 
-      une aggravation des risques d'inondation. En détruisant les micro-organismes 
-      des sols, elle réduit également les capacités épuratoires naturelles des 
+      L’artificialisation des sols constitue l'une des premières causes
+      d'effondrement de la biodiversité : elle fragmente voire détruit les
+      habitats, isole les espèces et perturbe les processus naturels
+      essentiels comme la pollinisation. Vis-à-vis du climat, les conséquences
+      sont tout aussi critiques : les sols perdent leur rôle de puits de
+      carbone, leurs capacités d'infiltration et de stockage de l'eau,
+      avec pour corollaire  une réduction de la recharge des nappes et
+      une aggravation des risques d'inondation. En détruisant les micro-organismes
+      des sols, elle réduit également les capacités épuratoires naturelles des
       milieux, compromettant ainsi leur résilience globale.
     </Body>
   </>
@@ -231,47 +231,22 @@ export const ConsommationEspacesNAFBiodiversiteText = () => (
 
 export const SurfacesEnBioText = () => (
   <div className="pr-5 pt-10">
-    <Body size='sm'>
-      L'effondrement de la biodiversité n’est pas une fiction : 69 %
-      des espèces sauvages ont disparu à l'échelle de la planète entre
-      1970 et 2018, du fait notamment de la dégradation ou de la
-      disparition de leurs habitats naturels. L’agriculture dispose de
-      deux leviers complémentaires de protection de la biodiversité :
-      adopter des pratiques moins intensives et favoriser la diversité
-      des paysages. Les cultures à bas niveau d’intrants, la
-      non-utilisation de produits chimiques de synthèse, la
-      non-utilisation d'OGM, le recyclage des matières organiques, la
-      rotation des cultures et la lutte biologique participent à ces
-      deux objectifs.
+    <Body size='sm' style={{ paddingBottom: '1rem' }}>
+      L'effondrement de la biodiversité est une réalité : <ScrollToSourceTag sourceNumero={1}>
+        73 % des espèces sauvages
+      </ScrollToSourceTag> ont disparu en 50 ans, victimes notamment de la destruction de leurs habitats.
+      Face à ce constat, l'agriculture dispose de leviers essentiels : adopter des
+      pratiques moins intensives et favoriser la diversité des paysages.
     </Body>
     <Body size='sm'>
-      Si l’agriculture biologique n’est pas une solution parfaite,
-      elle reste aujourd’hui l’une des meilleures réponses, aux côtés
-      des pratiques à bas-intrants, pour préserver la biodiversité.
-      Alors que 70 % des sols agricoles sont dégradés en Europe, ses
-      effets positifs sur la vie souterraine sont avérés. Des
-      écosystèmes renforcés sont des écosystèmes plus résilients aux
-      impacts du changement climatique.
-    </Body>
-    <Body size='sm'>
-      ⇒ Une biodiversité plus riche dans les parcelles en agriculture
-      biologique : +32 % d'individus et +23 % d'espèces par rapport à
-      l’agriculture conventionnelle.
-    </Body>
-    <Body size='sm'>
-      ⇒ 70 % des indicateurs biologiques des sols s'améliorent après
-      conversion.
-    </Body>
-    <Body size='sm'>
-      ⇒ Une pollinisation 2,4 fois plus efficace qu'en agriculture
-      conventionnelle.
-    </Body>
-    <Body size='sm'>
-      ⇒ Une meilleure résistance à la sécheresse : disponibilité en
-      eau dans les sols améliorée de 4 % à 45 %.
-    </Body>
-    <Body size='sm'>
-      ⇒ Jusqu'à 35 % de carbone supplémentaire stocké dans les sols.
+      L'agriculture biologique ainsi que les pratiques à bas-intrants, la rotation des
+      cultures, la lutte biologique, le recyclage des matières organiques, et l’abandon
+      des produits chimiques de synthèse - représentent aujourd'hui les meilleures
+      réponses. Leurs effets positifs sur la vie des sols sont démontrés, un atout
+      majeur alors que <ScrollToSourceTag sourceNumero={2}>60 à 70 % des sols agricoles
+        européens sont dégradés</ScrollToSourceTag>. Des
+      écosystèmes renforcés sont des écosystèmes plus résilients aux impacts du
+      changement climatique.
     </Body>
   </div>
 );
@@ -614,18 +589,18 @@ export const ErosionCotiereText = () => (
 export const FeuxForetText = () => (
   <div className="pt-10">
     <Body size="sm">
-      Si la France a réussi à diviser par cinq les surfaces brûlées depuis les 
-      années 1980 grâce à d'importants investissements en prévention, cette 
-      victoire est désormais menacée. Le climat plus chaud et sec multiplie 
-      les départs de feux, les vents violents accélèrent leur propagation, 
-      et la saison s'étire du printemps à l'automne, touchant des territoires 
+      Si la France a réussi à diviser par cinq les surfaces brûlées depuis les
+      années 1980 grâce à d'importants investissements en prévention, cette
+      victoire est désormais menacée. Le climat plus chaud et sec multiplie
+      les départs de feux, les vents violents accélèrent leur propagation,
+      et la saison s'étire du printemps à l'automne, touchant des territoires
       jusque-là épargnés.
     </Body>
     <Body size="sm">
-       Au-delà des flammes, les incendies déclenchent une cascade de catastrophes : 
-       destruction de biodiversité, pollution atmosphérique et aquatique, aggravation 
-       d'autres aléas (érosion, glissements, inondations) et émissions massives de CO₂ 
-       qui alimentent le cercle vicieux du dérèglement climatique.
+      Au-delà des flammes, les incendies déclenchent une cascade de catastrophes :
+      destruction de biodiversité, pollution atmosphérique et aquatique, aggravation
+      d'autres aléas (érosion, glissements, inondations) et émissions massives de CO₂
+      qui alimentent le cercle vicieux du dérèglement climatique.
     </Body>
   </div>
 );
