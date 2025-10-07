@@ -1,5 +1,6 @@
 "use client";
 import ScrollToHash from "@/components/interactions/ScrollToHash";
+import { SourcesSection } from "@/components/interactions/scrollToSource";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { AgricultureBio, AOT40, CarteCommunes, CLCTerritoires, ConsommationNAF, EtatCoursDeau, InconfortThermique, QualiteSitesBaignade, SurfacesAgricolesModel } from "@/lib/postgres/models";
@@ -134,7 +135,7 @@ export const DonneesBiodiversite = ({
         <ScrollToHash />
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
           Les pressions sur la biodiversité agissent en silence, mais leurs conséquences sont durables.
-          À vous d’en évaluer l’impact pour préserver la résilience de vos écosystèmes
+          À vous d’en évaluer l’impact pour préserver la résilience de vos écosystèmes.
         </H1>
         {/* Introduction */}
         <section>
@@ -245,6 +246,8 @@ export const DonneesBiodiversite = ({
             />
           </div>
         </section>
+        {/* Sources */}
+        <SourcesSection tag="h2" thematique="biodiversite" />
       </div>
   );
 };

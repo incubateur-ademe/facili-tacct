@@ -2,7 +2,6 @@
 import TypesDeCulturesCharts from "@/components/charts/agriculture/typesDeCulturesCharts";
 import { MicroPieChart } from "@/components/charts/MicroDataviz";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
-import { ReadMoreFade } from "@/components/utils/ReadMoreFade";
 import { CustomTooltipNouveauParcours, DefinitionTooltip } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { PieChartDataSurfacesAgricoles } from "@/lib/charts/surfacesAgricoles";
@@ -113,9 +112,9 @@ export const TypesDeCulture = (props: {
             }
             <CustomTooltipNouveauParcours title={surfacesAgricolesTooltipText} texte="D'où vient ce chiffre ?" />
           </div>
-          <ReadMoreFade maxHeight={territoiresPartiellementCouverts?.length ? 400 / territoiresPartiellementCouverts?.length : 350}>
-            <SurfacesAgricolesText />
-          </ReadMoreFade>
+          {/* <ReadMoreFade maxHeight={territoiresPartiellementCouverts?.length ? 400 / territoiresPartiellementCouverts?.length : 350}> */}
+          <SurfacesAgricolesText />
+          {/* </ReadMoreFade> */}
         </div>
         <div className={styles.datavizWrapper} style={{ borderRadius: "1rem 0 0 1rem", height: "fit-content" }}>
           <TypesDeCulturesCharts
