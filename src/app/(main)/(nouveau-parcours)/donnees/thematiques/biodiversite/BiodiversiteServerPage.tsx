@@ -1,8 +1,8 @@
 import { SearchParams } from "@/app/(main)/types";
-import { GetAgricultureBio, GetAOT40, GetConsommationNAF } from "@/lib/queries/databases-nouveau-parcours/biodiversite";
-import { GetQualiteEauxBaignade } from "@/lib/queries/databases-nouveau-parcours/ressourcesEau";
 import { GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
+import { GetAgricultureBio, GetAOT40, GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
 import { GetInconfortThermique } from "@/lib/queries/databases/inconfortThermique";
+import { GetQualiteEauxBaignade } from "@/lib/queries/databases/ressourcesEau";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
 import { DonneesBiodiversite } from "./DonneesBiodiversite";
