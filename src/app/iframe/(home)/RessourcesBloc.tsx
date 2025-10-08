@@ -1,0 +1,37 @@
+import RessourcesImg from '@/assets/images/ressources_home.png';
+import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
+import { Body, H2 } from "@/design-system/base/Textes";
+import { NewContainer } from "@/design-system/layout";
+import Image from 'next/image';
+import styles from '../main.module.scss';
+
+export const RessourcesBloc = () => {
+  return (
+    <div className={styles.ressourcesContainer}>
+      <NewContainer size="xl">
+        <div className={styles.ressourcesWrapper}>
+          <div className={styles.ressourcesText}>
+            <H2>Découvrez des ressources utiles</H2>
+            <Body>
+              Bénéficiez d'articles et de retours d'expériences pour vous
+              accompagner dans la mise en place de votre démarche d’adaptation
+              au changement climatique.
+            </Body>
+            <BoutonPrimaireClassic
+              size='lg'
+              link="/iframe/ressources"
+              text="Découvrir les ressources"
+              style={{ marginTop: '2rem' }}
+              posthogEventName='bouton_decouvrir_ressources_home'
+            />
+          </div>
+          <Image
+            alt=""
+            src={RessourcesImg}
+            className={styles.ressourcesImage}
+          />
+        </div>
+      </NewContainer>
+    </div>
+  )
+};
