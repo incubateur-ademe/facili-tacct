@@ -80,7 +80,6 @@ export const RechercheInput = ((props: SearchInputProps) => {
       fullWidth
       filterOptions={(x) => x}
       options={collectivites}
-      loading={options.length === 0}
       loadingText="Chargement..."
       noOptionsText="Aucun territoire trouvé"
       onChange={(event, newValue: SearchInputOptions | null) => {
