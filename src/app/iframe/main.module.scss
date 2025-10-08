@@ -1,0 +1,402 @@
+// SCSS Variables
+$heightWrapper: 293px;
+$height-notice: 461px;
+
+// 1er bloc
+.homePageTopContainer {
+    background-color: var(--principales-vert);
+}
+.homePageTopWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: flex-start;
+    .titles {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        color: #ffffff;
+    }
+    .topImage {
+        position: relative;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        max-width: 450px;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .homePageTopWrapper {
+        .topImage {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .homePageTopWrapper {
+        padding: 1.5rem;
+    }
+}
+
+// Patch 4 bloc
+
+.patch4Container {
+    background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 12px,
+        var(--boutons-primaire-2) 12px,
+        var(--boutons-primaire-2) 14px
+    );
+}
+.patch4Wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+    gap: 6rem;
+}
+
+.patch4img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    max-width: 40%;
+    max-height: 400px;
+    position: relative;
+    img {
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        object-fit: contain;
+    }
+}
+.patch4Text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 720px;
+    padding: 1.25em;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    height: fit-content;
+    align-self: center;
+}
+
+@media screen and (max-width: 1280px) {
+    .patch4Wrapper {
+        margin: 0;
+        padding: 0rem;
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .patch4Wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .patch4Text {
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .patch4img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .patch4Text {
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+}
+
+// Tacct bloc
+.tacctContainer {
+    background-color: var(--boutons-primaire-1);
+}
+
+.tacctWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0;
+    span {
+        font-weight: 800;
+    }
+}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+    width: 100%;
+    margin-top: 3.5rem;
+}
+
+.homeCard {
+    background-color: #ffffff;
+    border-radius: 1.25em;
+    box-shadow: 0px 4px 12px 0px #0063cb29;
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 267px;
+    min-width: 267px;
+    .homeCardIcon {
+        padding: 0.25rem;
+        border-radius: 0.5rem;
+        background-color: var(--boutons-primaire-2);
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .tacctWrapper {
+        padding: 0rem 2rem;
+    }
+    .cardWrapper {
+        justify-content: center;
+        column-gap: 3rem;
+        row-gap: 1rem;
+    }
+}
+@media screen and (max-width: 600px) {
+    .homeCard {
+        width: 80%;
+        min-width: unset;
+    }
+}
+
+// Communauté bloc
+.communauteContainer {
+    background-color: #ffffff;
+}
+
+.communauteWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1.5rem 0rem;
+    gap: 3.5rem;
+    .communauteText {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .communauteWrapper {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+    .communauteText {
+        max-width: 80%;
+    }
+}
+
+// Diagnostic bloc
+.diagnosticContainer {
+    background-color: var(--principales-vert);
+    padding: 1.5rem 0rem;
+}
+
+.diagnosticWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--principales-vert);
+    .diagnosticText {
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .diagnosticWrapper {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        margin: 0 2rem;
+    }
+    .diagnosticText {
+        padding: 0;
+    }
+}
+
+// Ressources bloc
+.ressourcesContainer {
+    background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 12px,
+        var(--boutons-primaire-2) 12px,
+        var(--boutons-primaire-2) 14px
+    );
+    padding: 1.5rem 2rem;
+}
+
+.ressourcesWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    .ressourcesText {
+        max-width: 60%;
+        background-color: #ffffff;
+        padding: 1.25rem;
+    }
+    .ressourcesImage {
+        width: 40%;
+        height: auto;
+        max-height: 320px;
+        position: relative;
+        object-fit: contain;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .ressourcesWrapper {
+        flex-direction: column;
+        align-items: center;
+        .ressourcesText {
+            max-width: 80%;
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .ressourcesContainer {
+        padding: 1.5rem;
+    }
+}
+
+.verbatimContainer {
+    background-color: var(--principales-vert);
+    padding: 1.5rem 2rem;
+    .verbatimCardsWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        padding-top: 1rem;
+        .verbatimCard {
+            border: 1px solid #ffffff;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1rem;
+            width: 384px;
+            .quote {
+                color: #ffffff;
+            }
+            .guillemetIcon {
+                float: left;
+                width: 3rem;
+                height: auto;
+                margin: 0.3rem 0.8rem 0 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1264px) {
+    .verbatimContainer {
+        .verbatimCardsWrapper {
+            justify-content: center;
+            column-gap: 3rem;
+            row-gap: 1rem;
+        }
+    }
+}
+
+// Cookies
+
+.cookieModalConsentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 3rem 0 0;
+    border-top: 1px solid #000091;
+    z-index: 1500;
+}
+
+.cookieModalConsentWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0;
+        padding: 0 0 1rem;
+    }
+}
+
+.cookieConsentWrapper {
+    position: fixed;
+    bottom: 2rem;
+    width: 50%;
+    margin: 0 25%;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: '0px 4px 12px 0px #0063CB29';
+    background-color: #fff; //#f9f9ff;
+    border-radius: 0.5em;
+    border: solid 1px var(--principales-vert);
+    z-index: 500;
+    .acceptCookieBtn {
+        color: var(--principales-vert);
+        border-radius: 4px;
+        border: 1px solid var(--principales-vert);
+        padding: 0.5em 1em;
+        font-weight: 500;
+        font-family: 'Marianne';
+        font-size: 1rem;
+        height: 48px;
+        margin: 0 0 0 1em;
+    }
+    .modifyCookieBtn {
+        color: #3e5165;
+        border-radius: 4px;
+        border: 1px solid #3e5165;
+        padding: 0.5em 1em;
+        font-weight: 500;
+        font-family: 'Marianne';
+        font-size: 1rem;
+        height: 48px;
+        margin: 0 0 0 1em;
+    }
+    .declineCookieBtn {
+        color: #3e5165;
+        border-radius: 4px;
+        border: 1px solid #3e5165;
+        padding: 0.5em 1em;
+        font-weight: 500;
+        font-family: 'Marianne';
+        font-size: 1rem;
+        height: 48px;
+        margin: 0 0 0 1em;
+    }
+}
