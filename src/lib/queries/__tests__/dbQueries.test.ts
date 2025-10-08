@@ -2,7 +2,7 @@ import { ConsommationNAF } from '@/lib/postgres/models';
 import * as biodiversite from '../databases/biodiversite';
 import * as inconfortThermique from '../databases/inconfortThermique';
 import * as ressourcesEau from '../databases/ressourcesEau';
-import { prisma, redis } from '../redis';
+import { prisma } from '../redis';
 
 jest.setTimeout(60000); // Increase timeout for heavy queries
 // PETR Figeac - Quercy - Vallée de la Dordogne 169 communes
@@ -137,5 +137,5 @@ describe('Integration: query functions to check if collectivites_searchbar has r
 
 afterAll(async () => {
   await prisma.$disconnect();
-  await redis.quit();
+  // await redis.quit();
 });

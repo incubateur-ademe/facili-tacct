@@ -7,16 +7,17 @@ import tracteur_icon_black from '@/assets/icons/themes/tracteur_icon_black.svg';
 import usine_icon_black from '@/assets/icons/themes/usine_icon_black.svg';
 import vagues_icon_black from '@/assets/icons/themes/vagues_icon_black.svg';
 import GraphNotFound from '@/assets/images/data_not_found_prelevement.png';
-import legendEpci from '@/assets/images/legend_prelevement_eau_epci.svg';
 import DataNotFound from '@/components/graphDataNotFound';
-import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
-import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
+import { ArrowHtmlTooltip } from '@/components/utils/Tooltips';
+import { Body, H4 } from '@/design-system/base/Textes';
+import couleurs from '@/design-system/couleurs';
 import { RessourcesEau } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { Progress } from 'antd';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
+import styles from './eau.module.scss';
 
 const SumFiltered = (
   data: RessourcesEau[],
@@ -83,7 +84,7 @@ const PrelevementEauProgressBars = ({
         type,
         'agriculture'
       ),
-      color: '#00C190'
+      color: couleurs.graphiques.vert[2]
     },
     {
       titre: 'Eau potable',
@@ -96,7 +97,7 @@ const PrelevementEauProgressBars = ({
         type,
         'potable'
       ),
-      color: '#009ADC'
+      color: couleurs.graphiques.bleu[2]
     },
     {
       titre: 'Industrie et autres usages économiques',
@@ -109,7 +110,7 @@ const PrelevementEauProgressBars = ({
         type,
         'industrie'
       ),
-      color: '#7A49BE'
+      color: couleurs.graphiques.violet[2]
     },
     {
       titre: 'Refroidissement des centrales électriques',
@@ -122,7 +123,7 @@ const PrelevementEauProgressBars = ({
         type,
         'refroidissement'
       ),
-      color: '#BB43BD'
+      color: couleurs.graphiques.rose[2]
     },
     {
       titre: 'Alimentation des canaux',
@@ -135,7 +136,7 @@ const PrelevementEauProgressBars = ({
         type,
         'alimentation'
       ),
-      color: '#00C2CC'
+      color: couleurs.graphiques.turquoise[2]
     },
     {
       titre: "Production d'électricité (barrages hydro-électriques)",
@@ -148,7 +149,7 @@ const PrelevementEauProgressBars = ({
         type,
         'production'
       ),
-      color: '#FFCF5E'
+      color: couleurs.graphiques.orange[2]
     }
   ];
   const totalDptmt =
@@ -159,85 +160,84 @@ const PrelevementEauProgressBars = ({
     SumFiltered(ressourcesEau, code, libelle, type, 'total') === 0
       ? 1
       : SumFiltered(ressourcesEau, code, libelle, type, 'total');
-
   const departement = ressourcesEau[0]?.libelle_departement;
 
   return (
-    <div className={styles.ressourcesEauWrapper}>
-      {libelle && data.find((e) => e.sumTerritoire !== 0) ? (
-        <>
-          {data
-            .sort((a, b) => b.sumTerritoire - a.sumTerritoire)
-            .map((item, index) => (
-              <HtmlTooltip
-                title={
-                  <div className={styles.tooltip}>
-                    <h3>{item.titre}</h3>
-                    <p>
-                      {libelle} :{' '}
-                      <b>
-                        {Round((100 * item.sumTerritoire) / total, 2)} %
-                      </b>{' '}
-                      ({Round(item.sumTerritoire / 1000000, 2)} Mm3)
-                    </p>
-                    {
-                      type !== 'departement' && (
-                        <p>
-                          Département ({departement}) :{' '}
-                          <b>{Round((100 * item.sumDptmt) / totalDptmt, 2)} %</b>{' '}
-                          ({Round(item.sumDptmt / 1000000, 2)} Mm3)
-                        </p>
-                      )
-                    }
+    libelle && data.find((e) => e.sumTerritoire !== 0) ? (
+      <div className={styles.ressourcesEauWrapper}>
+        {data
+          .sort((a, b) => b.sumTerritoire - a.sumTerritoire)
+          .map((item, index) => (
+            <ArrowHtmlTooltip
+              title={
+                <>
+                  <div className='flex flex-row g-4 items-center mb-2'>
+                    <div className={styles.colorSquare} style={{ backgroundColor: item.color }} />
+                    <H4 style={{ fontSize: '1rem', marginBottom: "0" }}>{item.titre}</H4>
                   </div>
-                }
-                key={index}
-                placement="top"
-              >
-                <div key={index} className={styles.progressDataWrapper}>
-                  <div className={styles.progressDesign}>
-                    {item.icon}
-                    <div className={styles.progressBar}>
-                      <p>{item.titre}</p>
-                      <div className={styles.barMarker}>
-                        <Progress
-                          percent={Number((100 * item.sumTerritoire) / total)}
-                          showInfo={false}
-                          strokeColor={item.color}
-                          size={['100%', 12]}
-                          style={{ width: '95%' }}
-                          type="line"
-                          trailColor="#F9F9FF"
-                        />
-                        <div
-                          style={{
-                            position: 'relative',
-                            width: '100%',
-                            transform: `translate(${(95 * item.sumDptmt) / totalDptmt}%, -1.25rem)`
-                          }}
-                        >
-                          <div className={styles.marker}></div>
-                        </div>
+                  <Body size='sm'>
+                    {libelle} :{' '}
+                    <b>
+                      {Round((100 * item.sumTerritoire) / total, 2)} %
+                    </b>{' '}
+                    ({Round(item.sumTerritoire / 1000000, 2)} Mm3)
+                  </Body>
+                  {
+                    type !== 'departement' && (
+                      <Body size='sm'>
+                        Département ({departement}) :{' '}
+                        <b>{Round((100 * item.sumDptmt) / totalDptmt, 2)} %</b>{' '}
+                        ({Round(item.sumDptmt / 1000000, 2)} Mm3)
+                      </Body>
+                    )
+                  }
+                </>
+              }
+              key={index}
+              placement="top"
+            >
+              <div key={index} className={styles.progressDataWrapper}>
+                <div className={styles.progressDesign}>
+                  {item.icon}
+                  <div className={styles.progressBar}>
+                    <Body size='xs' style={{ textTransform: 'uppercase', lineHeight: "0.875rem" }}>{item.titre}</Body>
+                    <div className={styles.barMarker}>
+                      <Progress
+                        percent={Number((100 * item.sumTerritoire) / total)}
+                        showInfo={false}
+                        strokeColor={item.color}
+                        size={['100%', 12]}
+                        style={{ width: '95%' }}
+                        type="line"
+                        trailColor="#F9F9FF"
+                      />
+                      <div
+                        style={{
+                          position: 'relative',
+                          width: '100%',
+                          transform: `translate(${(95 * item.sumDptmt) / totalDptmt}%, -1.25rem)`
+                        }}
+                      >
+                        <div className={styles.marker}></div>
                       </div>
                     </div>
                   </div>
-                  <div className={styles.progressNumbers}>
-                    <p>
-                      <b>
-                        {Round((100 * item.sumTerritoire) / total, 2)} %
-                      </b>
-                    </p>
-                    <p>{Round(item.sumTerritoire / 1000000, 2)} Mm3</p>
-                  </div>
                 </div>
-              </HtmlTooltip>
-            ))}
-          <Image src={legendEpci} alt="" style={{ alignSelf: 'end' }} />
-        </>
-      ) : (
-        <DataNotFound image={GraphNotFound} />
-      )}
-    </div>
+                <div className={styles.progressNumbers}>
+                  <Body size='xs' weight='bold' style={{ lineHeight: "0.875rem" }}>
+                    {Round((100 * item.sumTerritoire) / total, 2)} %
+                  </Body>
+                  <Body size='xs' style={{ lineHeight: "0.875rem" }}>
+                    {Round(item.sumTerritoire / 1000000, 2)} Mm3
+                  </Body>
+                </div>
+              </div>
+            </ArrowHtmlTooltip>
+          ))}
+      </div>
+    ) : (
+      <div className='p-1 flex flex-row justify-center'><DataNotFound image={GraphNotFound} /></div>
+    )
   );
 };
 

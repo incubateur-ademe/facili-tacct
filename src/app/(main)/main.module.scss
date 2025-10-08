@@ -3,78 +3,44 @@ $heightWrapper: 293px;
 $height-notice: 461px;
 
 // 1er bloc
+.homePageTopContainer {
+    background-color: var(--principales-vert);
+}
 .homePageTopWrapper {
     display: flex;
-    flex-direction: column;
-    min-height: $heightWrapper;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 2rem;
-    align-items: center;
-    padding: 3.75em 3.75em 7.5em;
-    background-color: #0063cb;
+    align-items: flex-start;
     .titles {
         display: flex;
         flex-direction: column;
-        text-align: center;
+        align-self: center;
         color: #ffffff;
-        align-items: center;
-        h1 {
-            color: #ffffff;
-            font-size: 40px;
-            font-weight: 700;
-            line-height: 55.48px;
+    }
+    .topImage {
+        position: relative;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        max-width: 450px;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .homePageTopWrapper {
+        .topImage {
+            display: none;
         }
-        p {
-            font-size: 18px;
-            font-weight: 700;
-            line-height: 24px;
-            text-align: center;
-        }
     }
 }
 
-// Barre de recherche
-
-.collectiviteWrapper {
-    position: absolute;
-    width: 51dvw;
-    // max-width: 53em;
-    left: calc(50dvw - 26dvw);
-    top: var(--height-notice, $height-notice);
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(255, 255, 255);
-    padding: 2em;
-    margin: 0 auto;
-    max-width: 60%;
-    border-radius: 8px;
-    box-shadow: 1px 1px 5px rgb(138, 138, 138);
-}
-
-@media screen and (max-width: 1135px) {
-    .collectiviteWrapper {
-        width: 90dvw;
-        max-width: none;
-        left: calc(50dvw - 46dvw);
-        top: calc(var(--height-notice, $height-notice));
-    }
-}
-@media screen and (max-width: 650px) {
-    .collectiviteWrapper {
-        top: calc(var(--height-notice, $height-notice));
-    }
-}
 @media screen and (max-width: 520px) {
-    .collectiviteWrapper {
-        height: 410px;
-        top: calc(var(--height-notice, $height-notice));
+    .homePageTopWrapper {
+        padding: 1.5rem;
     }
 }
-@media screen and (max-width: 450px) {
-    .collectiviteWrapper {
-        height: 420px;
-        top: calc(var(--height-notice, $height-notice));
-    }
-}
+
 // Patch 4 bloc
 
 .patch4Container {
@@ -82,15 +48,16 @@ $height-notice: 461px;
         -45deg,
         transparent,
         transparent 12px,
-        #d8effa 12px,
-        #d8effa 14px
+        var(--boutons-primaire-2) 12px,
+        var(--boutons-primaire-2) 14px
     );
 }
 .patch4Wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 7rem 0 0;
+    padding: 1.5rem 0;
+    gap: 6rem;
 }
 
 .patch4img {
@@ -99,6 +66,7 @@ $height-notice: 461px;
     justify-content: center;
     width: 50%;
     max-width: 40%;
+    max-height: 400px;
     position: relative;
     img {
         width: 100%;
@@ -112,28 +80,19 @@ $height-notice: 461px;
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
-    max-width: 50%;
+    max-width: 720px;
     padding: 1.25em;
     background-color: #ffffff;
     border-radius: 0.5rem;
     height: fit-content;
     align-self: center;
-    h2 {
-        margin: 0;
-        font-size: 1.5rem;
-        font-weight: 800;
-        line-height: normal;
-    }
-    p {
-        margin: 0;
-        font-size: 1rem;
-    }
 }
 
 @media screen and (max-width: 1280px) {
     .patch4Wrapper {
         margin: 0;
-        padding: 9rem 1rem 2rem;
+        padding: 0rem;
+        gap: 2rem;
     }
 }
 
@@ -154,9 +113,6 @@ $height-notice: 461px;
 }
 
 @media screen and (max-width: 520px) {
-    .patch4Wrapper {
-        padding: 21rem 2rem 2rem;
-    }
     .patch4Text {
         max-width: 100%;
         padding: 1.5rem;
@@ -165,31 +121,14 @@ $height-notice: 461px;
 
 // Tacct bloc
 .tacctContainer {
-    background-color: #d8effa;
+    background-color: var(--boutons-primaire-1);
 }
 
 .tacctWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5rem 0;
-    h2 {
-        font-size: 1.75rem;
-        font-weight: 800;
-        color: #0063cb;
-        margin: 0 0 1rem;
-        text-align: center;
-    }
-    h3 {
-        font-size: 1.25rem;
-        font-weight: 500;
-        color: #0063cb;
-        margin: 0 0 1.25rem;
-        text-align: center;
-    }
-    p {
-        text-align: center;
-    }
+    padding: 1.5rem 0;
     span {
         font-weight: 800;
     }
@@ -202,6 +141,7 @@ $height-notice: 461px;
     flex-wrap: wrap;
     padding: 0;
     width: 100%;
+    margin-top: 3.5rem;
 }
 
 .homeCard {
@@ -215,25 +155,18 @@ $height-notice: 461px;
     align-items: flex-start;
     width: 267px;
     min-width: 267px;
-    h4 {
-        color: #0063cb;
-        font-size: 1rem;
-        line-height: 17px;
-        font-weight: 700;
-        margin: 0.5rem 0 1rem;
-    }
-    p {
-        font-size: 14px;
-        margin: 0;
-        line-height: 1.25rem;
-        font-weight: 400;
-        text-align: left;
+    .homeCardIcon {
+        padding: 0.25rem;
+        border-radius: 0.5rem;
+        background-color: var(--boutons-primaire-2);
+        width: 32px;
+        height: 32px;
     }
 }
 
 @media screen and (max-width: 1280px) {
     .tacctWrapper {
-        padding: 3rem 2rem;
+        padding: 0rem 2rem;
     }
     .cardWrapper {
         justify-content: center;
@@ -257,12 +190,12 @@ $height-notice: 461px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 3rem 0rem;
-    h2 {
-        font-size: 1.75rem;
-        font-weight: 800;
-        color: #0063cb;
-        margin: 0 0 1rem;
+    padding: 1.5rem 0rem;
+    gap: 3.5rem;
+    .communauteText {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
     }
 }
 
@@ -270,6 +203,7 @@ $height-notice: 461px;
     .communauteWrapper {
         flex-direction: column;
         align-items: center;
+        padding: 0;
     }
     .communauteText {
         max-width: 80%;
@@ -278,24 +212,17 @@ $height-notice: 461px;
 
 // Diagnostic bloc
 .diagnosticContainer {
-    background-color: #0063cb;
+    background-color: var(--principales-vert);
+    padding: 1.5rem 0rem;
 }
 
 .diagnosticWrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 5rem 0rem;
-    h2 {
-        font-size: 1.75rem;
-        font-weight: 800;
-        color: #ffffff;
-        margin: 0 0 1rem;
-    }
-    p {
-        margin: 0;
-        font-size: 1rem;
-        color: #ffffff;
+    background-color: var(--principales-vert);
+    .diagnosticText {
+        padding: 2rem;
     }
 }
 
@@ -303,16 +230,24 @@ $height-notice: 461px;
     .diagnosticWrapper {
         flex-direction: column;
         align-items: center;
-        padding: 3rem 2rem;
+        padding: 0;
+        margin: 0 2rem;
     }
     .diagnosticText {
-        max-width: 80%;
+        padding: 0;
     }
 }
 
 // Ressources bloc
 .ressourcesContainer {
-    background-color: #d8effa;
+    background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 12px,
+        var(--boutons-primaire-2) 12px,
+        var(--boutons-primaire-2) 14px
+    );
+    padding: 1.5rem 2rem;
 }
 
 .ressourcesWrapper {
@@ -320,19 +255,18 @@ $height-notice: 461px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 3rem 0rem;
-    h2 {
-        font-size: 1.75rem;
-        font-weight: 800;
-        color: #0063cb;
-        margin: 0 0 1rem;
-    }
-    p {
-        margin: 0;
-        font-size: 1rem;
-    }
+    gap: 2rem;
     .ressourcesText {
-        max-width: 50%;
+        max-width: 60%;
+        background-color: #ffffff;
+        padding: 1.25rem;
+    }
+    .ressourcesImage {
+        width: 40%;
+        height: auto;
+        max-height: 320px;
+        position: relative;
+        object-fit: contain;
     }
 }
 
@@ -342,6 +276,55 @@ $height-notice: 461px;
         align-items: center;
         .ressourcesText {
             max-width: 80%;
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .ressourcesContainer {
+        padding: 1.5rem;
+    }
+}
+
+.verbatimContainer {
+    background-color: var(--principales-vert);
+    padding: 1.5rem 2rem;
+    .verbatimCardsWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        padding-top: 1rem;
+        .verbatimCard {
+            border: 1px solid #ffffff;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1rem;
+            width: 384px;
+            .quote {
+                color: #ffffff;
+            }
+            .guillemetIcon {
+                float: left;
+                width: 3rem;
+                height: auto;
+                margin: 0.3rem 0.8rem 0 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1264px) {
+    .verbatimContainer {
+        .verbatimCardsWrapper {
+            justify-content: center;
+            column-gap: 3rem;
+            row-gap: 1rem;
         }
     }
 }
@@ -381,12 +364,12 @@ $height-notice: 461px;
     box-shadow: '0px 4px 12px 0px #0063CB29';
     background-color: #fff; //#f9f9ff;
     border-radius: 0.5em;
-    border: solid 1px #0063cb;
+    border: solid 1px var(--principales-vert);
     z-index: 500;
     .acceptCookieBtn {
-        color: #0063cb;
+        color: var(--principales-vert);
         border-radius: 4px;
-        border: 1px solid #0063cb;
+        border: 1px solid var(--principales-vert);
         padding: 0.5em 1em;
         font-weight: 500;
         font-family: 'Marianne';

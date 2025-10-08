@@ -10,7 +10,7 @@ import {
   ArreteCatNat,
   CarteCommunes,
   ConsommationNAF,
-  EtatCoursDeau,
+  ExportCoursDeau,
   IncendiesForet,
   InconfortThermique,
   QualiteSitesBaignade,
@@ -299,22 +299,34 @@ export const IndicatorExportTransformations = {
         };
       });
     },
-    EtatCoursEau: (etatCoursDeau: EtatCoursDeau[]) => {
+    EtatCoursEau: (etatCoursDeau: ExportCoursDeau[]) => {
       return etatCoursDeau.map((el) => {
         return {
-          nom_cours_d_eau: el.name,
+          nom_cours_d_eau: el.cours_d_eau,
           etat_cours_d_eau:
-            el.etateco === '1'
+            el.etat_ecologique === '1'
               ? 'Très bon'
-              : el.etateco === '2'
+              : el.etat_ecologique === '2'
                 ? 'Bon'
-                : el.etateco === '3'
+                : el.etat_ecologique === '3'
                   ? 'Moyen'
-                  : el.etateco === '4'
+                  : el.etat_ecologique === '4'
                     ? 'Médiocre'
-                    : el.etateco === '5'
+                    : el.etat_ecologique === '5'
                       ? 'Mauvais'
-                      : 'Indéterminé'
+                      : 'Indéterminé',
+          longueur_m: el.longueur,
+          code_geographique: el.code_geographique,
+          libelle_geographique: el.libelle_geographique,
+          code_epci: el.epci,
+          libelle_epci: el.libelle_epci,
+          ept: el.ept,
+          code_pnr: el.code_pnr,
+          libelle_pnr: el.libelle_pnr,
+          libelle_petr: el.libelle_petr,
+          code_departement: el.departement,
+          libelle_departement: el.libelle_departement,
+          region: el.region
         };
       });
     },

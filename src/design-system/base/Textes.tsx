@@ -55,14 +55,17 @@ export const H2 = ({
 export const H3 = ({
   children,
   color = "#23282B",
-  style
+  style,
+  id
 }: {
   children: React.ReactNode;
   color?: string;
   style?: React.CSSProperties;
+  id?: string;
 }) => {
   return (
     <h3
+      id={id}
       style={{
         color: color,
         fontSize: "1.75rem",
@@ -159,20 +162,23 @@ export const Body = ({
   size = 'md',
   color = "#23282B",
   style,
-  margin = "0"
+  margin = "0",
+  id,
 }: {
   children: React.ReactNode;
   weight?: 'regular' | 'medium' | 'bold';
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   color?: string;
   style?: React.CSSProperties;
   margin?: string;
+  id?: string;
 }) => {
   return (
     <div
+      id={id}
       style={{
         color: color,
-        fontSize: size === 'sm' ? '14px' : size === 'md' ? '1rem' : '18px',
+        fontSize: size === 'xs' ? '12px' : size === 'sm' ? '14px' : size === 'md' ? '1rem' : '18px',
         fontWeight: weight === 'bold' ? 700 : weight === 'medium' ? 500 : 400,
         letterSpacing: "0.4px",
         fontFamily: "Marianne",

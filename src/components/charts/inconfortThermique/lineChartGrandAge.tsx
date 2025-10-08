@@ -1,6 +1,8 @@
 'use client';
 
+import couleurs from '@/design-system/couleurs';
 import { ResponsiveLine } from '@/lib/nivo/line';
+import { Any } from '@/lib/utils/types';
 import { useEffect, useState } from 'react';
 
 type Props = {
@@ -13,7 +15,7 @@ type GraphData = {
   y: number | null | undefined;
 };
 
-export const LineChart1 = (props: Props) => {
+export const LineChartGrandAge = (props: Props) => {
   const { xData, yData } = props;
   const [children, setChildren] = useState<GraphData[]>([]);
   const tempChildren: GraphData[] = [];
@@ -39,22 +41,26 @@ export const LineChart1 = (props: Props) => {
           data: children
         }
       ]}
-      colors={'rgba(242, 133, 2, 0.9)'}
+      colors={couleurs.graphiques.bleu[2]}
       isInteractive={true}
       useMesh={true}
       tooltip={({ point }) => {
         return (
           <div
             style={{
-              background: 'white',
-              padding: '0.5rem',
-              border: '1px solid #ccc',
-              position: 'relative',
-              right: '4rem',
-              boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px'
+              backgroundColor: '#ffffff',
+              color: 'black',
+              maxWidth: 600,
+              boxShadow: "0px 2px 6px 0px rgba(0, 0, 18, 0.16)",
+              padding: '0.5rem 0.75rem',
+              fontFamily: 'Marianne',
+              fontSize: '0.875rem',
+              borderRadius: '6px',
+              lineHeight: '1.25rem',
+              fontWeight: 400
             }}
           >
-            {point.data.xFormatted} : <b>{point.data.yFormatted}%</b>
+            {point.data.xFormatted} : <b>{point.data.yFormatted} %</b>
           </div>
         );
       }}
@@ -64,19 +70,32 @@ export const LineChart1 = (props: Props) => {
         max: Math.max(...yData.filter((e) => e != null)) + 1
       }}
       margin={{
-        top: 50,
-        right: 20,
-        bottom: 50,
+        top: 30,
+        right: 30,
+        bottom: 60,
         left: 60
       }}
       axisBottom={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
         legend: 'Années de recensement',
-        legendOffset: 36,
+        legendOffset: 40,
         legendPosition: 'middle',
-        truncateTickAt: 0
+        renderTick: (e: Any) => {
+          return (
+            <g transform={`translate(${e.x},${e.y})`}>
+              <foreignObject x={-50} y={0} width={100} height={45}>
+                <div style={{
+                  maxWidth: '15ch',
+                  wordBreak: 'keep-all',
+                  textAlign: 'center',
+                  fontSize: 12,
+                  fontWeight: 400,
+                  margin: '0.5rem 0',
+                  lineHeight: "normal"
+                }}>{e.value}</div>
+              </foreignObject>
+            </g>
+          );
+        }
       }}
       axisLeft={{
         tickSize: 5,
@@ -85,7 +104,24 @@ export const LineChart1 = (props: Props) => {
         legend: 'Pourcentage (%)',
         legendOffset: -40,
         legendPosition: 'middle',
-        truncateTickAt: 0
+        truncateTickAt: 0,
+        renderTick: (e: Any) => {
+          return (
+            <g transform={`translate(${e.x},${e.y})`}>
+              <foreignObject x={-25} y={-17} width={20} height={25}>
+                <div style={{
+                  maxWidth: '15ch',
+                  wordBreak: 'keep-all',
+                  textAlign: 'center',
+                  fontSize: 12,
+                  fontWeight: 400,
+                  margin: '0.5rem 0',
+                  lineHeight: "normal"
+                }}>{e.value}</div>
+              </foreignObject>
+            </g>
+          );
+        }
       }}
     />
   );

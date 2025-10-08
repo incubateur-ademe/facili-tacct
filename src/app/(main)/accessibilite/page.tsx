@@ -2,8 +2,9 @@ import { type Metadata } from 'next';
 
 import { anchorHeadingMDXComponents } from '@/mdx-components';
 
+import { Suspense } from 'react';
 import AccessibiliteContent from '../../../../content/accessibilite.mdx';
-import { Container } from '../../../dsfr/server';
+import { Container } from '../../../design-system/server';
 import { sharedMetadata } from '../shared-metadata';
 
 const title = "Déclaration d'accessibilité";
@@ -23,7 +24,9 @@ export const metadata: Metadata = {
 
 const Accessibilite = () => (
   <Container my="4w">
-    <AccessibiliteContent components={anchorHeadingMDXComponents} />
+    <Suspense>
+      <AccessibiliteContent components={anchorHeadingMDXComponents} />
+    </Suspense>
   </Container>
 );
 

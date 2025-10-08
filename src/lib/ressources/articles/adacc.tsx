@@ -4,6 +4,7 @@ import BulbIcon from '@/assets/icons/lightbulb_icon_black.svg';
 import ArticleImage from '@/assets/images/article7.png';
 import ArticleImage2 from '@/assets/images/article8.png';
 import ArticleImage3 from '@/assets/images/article9.png';
+import { RetourHautDePage } from '@/components/interactions/RetourHautDePage';
 import EndPageTrigger from '@/hooks/EndPageTrigger';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,9 +13,10 @@ import styles from './article.module.scss';
 const Adacc = () => {
   return (
     <div>
+      <RetourHautDePage />
       <h1>Les Ateliers de l’Adaptation au Changement Climatique (AdACC)</h1>
       <p className="flex justify-center">
-        Qu’est-ce que c’est ? à quoi cela sert ?
+        Qu’est-ce que c’est ? à quoi cela sert ?
       </p>
       <p>
         Cet article a été rédigé avec le témoignage de Sarah Clamens,
@@ -28,9 +30,9 @@ const Adacc = () => {
         </div>
         <div>
           <ul>
-            <li>Les AdACC : un format interactif pour un petit groupe ;</li>
+            <li>Les AdACC : un format interactif pour un petit groupe ;</li>
             <li>
-              Objectif : déclencher la prise de conscience sur la nécessité de
+              Objectif : déclencher la prise de conscience sur la nécessité de
               s’adapter ;
             </li>
             <li>
@@ -49,7 +51,7 @@ const Adacc = () => {
         </div>
       </div>
       <div className={styles.textBloc}>
-        <h3>Concrètement, pour organiser un AdACC, il faut :</h3>
+        <h3>Concrètement, pour organiser un AdACC, il faut :</h3>
         <div>
           <ul>
             <li>
@@ -66,13 +68,13 @@ const Adacc = () => {
         </div>
         <Image
           src={ArticleImage}
-          alt="Schéma expliquant les 2 démarches d'un atelier : découverte et expérimentation"
+          alt="Schéma expliquant les 2 démarches d'un atelier : découverte et expérimentation"
           width={0}
           height={0}
           sizes="100%"
           style={{ width: '100%', height: 'auto' }}
         />
-        <h3>Pourquoi Saintes Grandes Rives, l’Agglo a utilisé cet outil ?</h3>
+        <h3>Pourquoi Saintes Grandes Rives, l’Agglo a utilisé cet outil ?</h3>
         <p>
           Le PCAET réglementaire a été validé en février 2024. Le volet
           adaptation au changement climatique, assez succinct sur les
@@ -99,11 +101,11 @@ const Adacc = () => {
           sizes="100%"
           style={{ width: '100%', height: 'auto' }}
         />
-        <h3>Comment s’est passé l’organisation de l’atelier ?</h3>
+        <h3>Comment s’est passé l’organisation de l’atelier ?</h3>
         <div>
           <p>
             Sarah a été accompagnée par un animateur de l’atelier avec 2 visio
-            préparatoires sur le contenu d’environ 1h30 chacune :
+            préparatoires sur le contenu d’environ 1h30 chacune :
           </p>
           <ul>
             <li>
@@ -119,17 +121,17 @@ const Adacc = () => {
           </ul>
         </div>
         <p>
-          Lors de ces 2 ateliers, plusieurs enjeux ont été identifié : qualité
+          Lors de ces 2 ateliers, plusieurs enjeux ont été identifié : qualité
           de vie des habitants en lien avec le bâti, qualité de vie en lien avec
           le cadre de vie, réflexion sur l’impact des crues et l’accès à l’eau
           (quantitativement et qualitativement). Les enjeux ci-dessus ont été
-          utilisé comme cas d’étude la 2nde séquence de l’atelier :
+          utilisé comme cas d’étude la 2nde séquence de l’atelier :
           l’expérimentation de la méthode.
         </p>
         <div>
           <p>
             Les aspects organisationnels sont de la responsabilité de la
-            collectivité : réservation de la salle, invitation des élus et
+            collectivité : réservation de la salle, invitation des élus et
             relances. Pour maximiser leur présence, Sarah a axé sa communication
             sur le fait que cet atelier rentrait dans le cadre du travail sur le
             PLUi.
@@ -145,7 +147,7 @@ const Adacc = () => {
             </li>
           </ul>
         </div>
-        <h2>Les apprentissages de cette rencontre :</h2>
+        <h2>Les apprentissages de cette rencontre :</h2>
         <div>
           <ul>
             <li>
@@ -176,7 +178,7 @@ const Adacc = () => {
               problématiques d’aménagement du territoire. Pour les élus, c’est
               un sujet plus concret que l’adaptation seule. Dans l’idéal,
               quasiment tous les documents de planification devraient prendre en
-              compte le climat qui change : c’est un “réflexe adaptation” qui
+              compte le climat qui change : c’est un “réflexe adaptation” qui
               reste à distiller partout.
             </li>
             <li>
@@ -190,7 +192,7 @@ const Adacc = () => {
           </ul>
         </div>
         <h3>
-          En conclusion : la sensibilisation, un préalable qui peut vous aider
+          En conclusion : la sensibilisation, un préalable qui peut vous aider
           sur le temps long.
         </h3>
         <p>
@@ -226,7 +228,7 @@ const Adacc = () => {
                   >
                     Ateliers de l’Adaptation au Changement Climatique
                   </Link>
-                   ;
+                  ;
                 </li>
                 <li>
                   La synthèse du{' '}
@@ -237,7 +239,7 @@ const Adacc = () => {
                   >
                     rapport de la cour des comptes sur l'ACC
                   </Link>
-                   ;
+                  ;
                 </li>
               </ul>
             </div>
@@ -252,7 +254,7 @@ const Adacc = () => {
         <div>
           <p>
             À la suite de cette session vous avez sollicité l’organisation d’un
-            atelier de l’Adaptation au Changement Climatique :
+            atelier de l’Adaptation au Changement Climatique :
           </p>
           <ul>
             <li>

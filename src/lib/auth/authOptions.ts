@@ -31,9 +31,14 @@ export const AuthOptions: NextAuthOptions = {
       },
       async authorize(credentials, req) {
         let user = null;
-        user = await PrismaPostgres.users.findUnique({
+        user = await PrismaPostgres.sandbox_users.findFirst({
           where: { username: credentials!.username }
         });
+        if (!user) {
+          user = await PrismaPostgres.users.findUnique({
+            where: { username: credentials!.username }
+          });
+        }
         if (user) {
           const bcrypt = require('bcryptjs');
           const comparedPasswords = await bcrypt.compare(

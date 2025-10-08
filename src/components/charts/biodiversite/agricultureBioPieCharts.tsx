@@ -1,6 +1,8 @@
 import surfaceCertifeeIcon from '@/assets/icons/agriculture_bio_surface_certifiee_icon.svg';
 import surfaceEnConversionIcon from '@/assets/icons/agriculture_bio_surface_conversion_icon.svg';
-import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
+import { ArrowHtmlTooltip } from '@/components/utils/Tooltips';
+import { Body, H4 } from '@/design-system/base/Textes';
+import couleurs from '@/design-system/couleurs';
 import { AgricultureBio } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Progress } from 'antd';
@@ -22,21 +24,6 @@ const ProgressProps: ProgressTypes = {
   strokeWidth: 12,
   showInfo: false
 };
-
-// const filterAgricultureBio = (
-//   agricultureBio: AgricultureBio[],
-//   column: string,
-//   value: string,
-//   subValue: string
-// ) => {
-//   const filtered = agricultureBio.filter((acc, obj) => {
-//     if (obj[column] === value) {
-//       return acc + obj[subValue]!;
-//     }
-//     return acc;
-//   }, 0);
-// }
-  
 
 export const AgricultureBioPieCharts = ({
   agricultureBio
@@ -90,20 +77,12 @@ export const AgricultureBioPieCharts = ({
   const partEnConversion = (
     (surfaceEnConversion / surfaceTotale) * 100
   );
-  const evolutionCertifiee =
+  const evolutionCertifiee = surfaceCertifiee2019 === 0 ? 0 :
     ((surfaceCertifiee - surfaceCertifiee2019) / surfaceCertifiee2019) * 100;
-  const evolutionConversion =
+  const evolutionConversion = surfaceEnConversion2019 === 0 ? 0 :
     ((surfaceEnConversion - surfaceEnConversion2019) /
       surfaceEnConversion2019) *
     100;
-  const evolutionRestante =
-    ((surfaceTotale -
-      surfaceCertifiee -
-      surfaceEnConversion -
-      (surfaceTotale2019 - surfaceCertifiee2019 - surfaceEnConversion2019)) /
-      (surfaceTotale2019 - surfaceCertifiee2019 - surfaceEnConversion2019)) *
-    100;
-
   const partCertifieeRounded =
     100 - partEnConversion < partCertifiee
       ? 100 - partEnConversion
@@ -113,29 +92,29 @@ export const AgricultureBioPieCharts = ({
     <div className="flex flex-row justify-center gap-20 p-12 bg-white">
       <div className={styles.dataWrapper}>
         <Image src={surfaceCertifeeIcon} alt="" />
-        <p>
+        <Body size='sm' style={{ marginBottom: "24px" }}>
           Surface <b>déjà certifiée</b>
-        </p>
-        <HtmlTooltip
+        </Body>
+        <ArrowHtmlTooltip
           title={
-            <div className={styles.tooltip}>
-              <h3>Surface déjà certifiée (2022)</h3>
-              <p>
+            <>
+              <H4 style={{ fontSize: '1rem', marginBottom: "0.5rem" }}>Surface déjà certifiée (2022)</H4>
+              <Body size='sm'>
                 <b>{Round(surfaceCertifiee, 0)}</b> ha
-              </p>
+              </Body>
               {evolutionCertifiee >= 0 ? (
-                <p>
-                  <b>+{Round(evolutionCertifiee, 1)}</b> % depuis 2019
-                </p>
+                <Body size='sm'>
+                  <b>+{Round(evolutionCertifiee, 1)} %</b> depuis 2019
+                </Body>
               ) : (
-                <p>
-                  <b>{Round(evolutionCertifiee, 1)}</b> % depuis 2019
-                </p>
+                <Body size='sm'>
+                  <b>{Round(evolutionCertifiee, 1)} %</b> depuis 2019
+                </Body>
               )}
-              <p>
+              <Body size='sm'>
                 <b>{nombreExploitations}</b> exploitation(s)
-              </p>
-            </div>
+              </Body>
+            </>
           }
           placement="top"
         >
@@ -144,42 +123,42 @@ export const AgricultureBioPieCharts = ({
               {...ProgressProps}
               aria-label="Circle progress bar"
               percent={partCertifieeRounded}
-              strokeColor="#00949D"
+              strokeColor={couleurs.graphiques.bleu[3]}
               trailColor="#00949D10"
             />
             <div className={styles.progressText}>
-              <p style={{ color: '#00949D' }}>
+              <Body style={{ color: couleurs.graphiques.bleu[3] }}>
                 <span>{Round(partCertifieeRounded, 1)}</span> %
-              </p>
+              </Body>
             </div>
           </div>
-        </HtmlTooltip>
+        </ArrowHtmlTooltip>
       </div>
       <div className={styles.dataWrapper}>
         <Image src={surfaceEnConversionIcon} alt="" />
-        <p>
+        <Body size='sm' style={{ marginBottom: "24px" }}>
           Surface <b>en conversion</b>
-        </p>
-        <HtmlTooltip
+        </Body>
+        <ArrowHtmlTooltip
           title={
-            <div className={styles.tooltip}>
-              <h3>Surface en conversion (2022)</h3>
-              <p>
+            <>
+              <H4 style={{ fontSize: '1rem', marginBottom: "0.5rem" }}>Surface en conversion (2022)</H4>
+              <Body size='sm'>
                 <b>{Round(surfaceEnConversion, 0)}</b> ha
-              </p>
+              </Body>
               {evolutionConversion >= 0 ? (
-                <p>
-                  <b>+{Round(evolutionConversion, 1)}</b> % depuis 2019
-                </p>
+                <Body size='sm'>
+                  <b>+{Round(evolutionConversion, 1)} %</b> depuis 2019
+                </Body>
               ) : (
-                <p>
-                  <b>{Round(evolutionConversion, 1)}</b> % depuis 2019
-                </p>
+                <Body size='sm'>
+                  <b>{Round(evolutionConversion, 1)} %</b> depuis 2019
+                </Body>
               )}
-              <p>
+              <Body size='sm'>
                 <b>{nombreExploitations}</b> exploitation(s)
-              </p>
-            </div>
+              </Body>
+            </>
           }
           placement="top"
         >
@@ -189,16 +168,16 @@ export const AgricultureBioPieCharts = ({
               style={{ transform: `rotate(${partCertifieeRounded * 3.6}deg)` }}
               aria-label="Circle progress bar"
               percent={partEnConversion}
-              strokeColor="#00C2CC"
+              strokeColor={couleurs.graphiques.bleu[1]}
               trailColor="#00C2CC10"
             />
             <div className={styles.progressText}>
-              <p style={{ color: '#00C2CC' }}>
+              <Body style={{ color: couleurs.graphiques.bleu[1] }}>
                 <span>{Round(partEnConversion, 1)}</span> %
-              </p>
+              </Body>
             </div>
           </div>
-        </HtmlTooltip>
+        </ArrowHtmlTooltip>
       </div>
     </div>
   );

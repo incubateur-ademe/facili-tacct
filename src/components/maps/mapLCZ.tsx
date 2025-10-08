@@ -1,6 +1,5 @@
 'use client';
 
-import CeremaLogo from '@/assets/images/Logo-cerema.jpg';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes } from '@/lib/postgres/models';
 import { GetLczCouverture } from '@/lib/queries/databases/inconfortThermique';
@@ -9,11 +8,10 @@ import 'carte-facile/carte-facile.css';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl, { MapSourceDataEvent } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { ExportPngMaplibreButton } from '../exports/ExportPng';
-import { Loader } from '../loader';
+import { Loader } from '../ui/loader';
 import { BoundsFromCollection } from './components/boundsFromCollection';
 import { CeremaFallbackError, handleCeremaFallback } from './components/ceremaLCZFallback';
 import { LczLegend, LczLegendOpacity70 } from './legends/datavizLegends';
@@ -263,17 +261,16 @@ export const MapLCZ = ({
               bsr: 'Taux de sol nu perméable (%)',
               war: 'Taux de surface en eau (%)',
             };
-            // const identifier = props.identifier || '';
             const lcz = props.lcz || '';
             let content = `
-              <h5 style='font-size:18px; margin:0px;'>
+              <h4 style='font-size:16px; margin:0 0 0.5rem;'>
                 <b>LCZ ${lcz}</b>
-              </h5>
+              </h4>
             `;
             const order = ['are', 'bur', 'hre', 'ror', 'ver', 'vhr', 'bsr', 'war'];
             for (const key of order) {
               if (props[key] !== undefined) {
-                content += `<b>${labels[key]}</b> : ${props[key]}<br/>`;
+                content += `<p>${labels[key]} : ${props[key]}</p><br/>`;
               }
             }
             new maplibregl.Popup({
@@ -339,14 +336,21 @@ export const MapLCZ = ({
           font-family: 'Marianne' !important;
           background-color: #ffffff !important;
           border-radius: 0.5rem !important;
-          padding: 20px !important;
+          padding: 1rem !important;
           position: relative !important;
           box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16) !important;
           min-width: max-content !important;
-          font-size: 12px !important;
+          p {
+            margin: 0 !important;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+          }
         }
         .custom-popup .maplibregl-popup-tip {
           border-top-color: #ffffff !important;
+        }
+        .map-container {
+          overflow: visible !important;
         }
         @keyframes spin {
           0% { transform: rotate(0deg); }
@@ -360,15 +364,7 @@ export const MapLCZ = ({
       />
       {isLoading ? <Loader /> : (
         <>
-          <div ref={mapContainer} style={{ width: '100%', height: '500px' }}>
-            {isLczCovered && (
-              <Image
-                src={CeremaLogo}
-                alt="Cerema logo"
-                className={styles.ceremaLogoBottomRight}
-              />
-            )}
-          </div>
+          <div ref={mapContainer} className="map-container" style={{ width: '100%', height: '500px' }} />
           {isTilesLoading && (
             <div className={styles.tileLoadingWrapper}>
               <div style={{
@@ -389,7 +385,7 @@ export const MapLCZ = ({
               <p>
                 Source : {
                   isLczCovered
-                    ? "CEREMA 2025"
+                    ? "CEREMA"
                     : <a
                       href="https://doi.org/10.5194/essd-14-3835-2022"
                       target="_blank"

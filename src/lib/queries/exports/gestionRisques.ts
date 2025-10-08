@@ -1,5 +1,6 @@
 'use server';
 
+import { ArreteCatNat, IncendiesForet, RGAdb } from '@/lib/postgres/models';
 import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../redis';
 import { ArreteCatNatExport, FeuxForetExport, RGAdbExport } from './types';
@@ -26,7 +27,7 @@ export const fetchGestionRisquesForExport = async (
       prisma.rga.findMany({ where: whereCondition })
     ]);
 
-    const feuxForet = feuxForetRaw.map((item) => ({
+    const feuxForet = feuxForetRaw.map((item: IncendiesForet) => ({
       code_geographique: item.code_geographique,
       libelle_geographique: item.libelle_geographique,
       code_epci: item.epci,
@@ -53,7 +54,7 @@ export const fetchGestionRisquesForExport = async (
       surface_autres_terres_boisees_km2: item.surface_autres_terres_boisees,
       autres_surfaces_km2: item.autres_surfaces
     }));
-    const arretesCatnat = arretesCatnatRaw.map((item) => ({
+    const arretesCatnat = arretesCatnatRaw.map((item: ArreteCatNat) => ({
       code_geographique: item.code_geographique,
       libelle_geographique: item.libelle_geographique,
       code_epci: item.epci,
@@ -70,7 +71,7 @@ export const fetchGestionRisquesForExport = async (
       date_publication_arrete: item.dat_pub_arrete,
       libelle_risque: item.lib_risque_jo
     }));
-    const rga = rgaRaw.map((item) => ({
+    const rga = rgaRaw.map((item: RGAdb) => ({
       code_geographique: item.code_geographique,
       libelle_geographique: item.libelle_geographique,
       code_epci: item.epci,

@@ -2,6 +2,7 @@ import BookIcon from '@/assets/icons/book_icon_black.svg';
 import ForwardArrow from '@/assets/icons/keyboard_arrow_next_icon_black.svg';
 import LinkIcon from '@/assets/icons/link_icon_blue.svg';
 import AtelierImage from '@/assets/images/article3.png';
+import { RetourHautDePage } from '@/components/interactions/RetourHautDePage';
 import EndPageTrigger from '@/hooks/EndPageTrigger';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
@@ -10,6 +11,7 @@ import styles from './article.module.scss';
 const MiseEnRecit = () => {
   return (
     <div>
+      <RetourHautDePage />
       <h1>Mettre en récit mon territoire pour engager</h1>
       <p>
         Cet article a été rédigé avec les précieuses interventions de Violaine
@@ -17,12 +19,12 @@ const MiseEnRecit = () => {
         merci à eux.
       </p>
       <div className={styles.textBloc}>
-        <h2>Pourquoi faire la mise en récit de son territoire ?</h2>
+        <h2>Pourquoi faire la mise en récit de son territoire ?</h2>
         <p>
           <b>
-            « L’humanité est une espèce fabulatrice qui, en se racontant des
+            « L’humanité est une espèce fabulatrice qui, en se racontant des
             histoires de plus en plus complexes, développe des capacités de
-            coopération »
+            coopération »
           </b>{' '}
           - Nancy Huston et Yuval Noah Harrari, auteurs.
         </p>
@@ -52,13 +54,13 @@ const MiseEnRecit = () => {
           personnes qui les vivent, permet d’en tirer une compréhension
           partagée. En suscitant des émotions, elle met les personnes en
           mouvement, les “embarque”. Nous partageons plus volontiers un récit
-          que des « données brutes ».
+          que des « données brutes ».
         </p>
         <p>
-          A retenir : <b>On ne s’approprie pas des données</b> (les résultats
+          A retenir : <b>On ne s’approprie pas des données</b> (les résultats
           d’un diagnostic de vulnérabilité par exemple) en le lisant,
           <b> par simple transfert d’informations</b>. Il faut se poser soi-même
-          des questions pour en faire des connaissances : se projeter dans des
+          des questions pour en faire des connaissances : se projeter dans des
           situations futures, associer des savoirs et donc embarquer ceux qui
           les portent, comprendre avec qui l’on partagera une même expérience
           des impacts.
@@ -66,7 +68,7 @@ const MiseEnRecit = () => {
         <p>
           <u>
             La pyramide DICS (Donnée / Information / Connaissance / Sagesse)
-            propose une image de processus d’appropriation d’une donnée :
+            propose une image de processus d’appropriation d’une donnée :
           </u>
         </p>
         <div className="flex justify-center mb-12">
@@ -80,7 +82,7 @@ const MiseEnRecit = () => {
           />
         </div>
         <h2>
-          Retour d’expérience : Violaine Magne (Clermont Auvergne Metropole) et
+          Retour d’expérience : Violaine Magne (Clermont Auvergne Metropole) et
           d’Adam Gibaud (PNR du Pilat)
         </h2>
         <p>
@@ -89,7 +91,7 @@ const MiseEnRecit = () => {
           leur diagnostic de vulnérabilité avec une mise en récit de leur
           territoire.
         </p>
-        <h3>1️⃣ Pour la CAM :</h3>
+        <h3>1️⃣ Pour la CAM :</h3>
         <p>
           Pour travailler à une stratégie permettant d’identifier des actions à
           court, moyen et long terme pour la ressource en eau et l’inconfort
@@ -119,7 +121,7 @@ const MiseEnRecit = () => {
             <i>sur la librairie Ademe.</i>
           </Link>
         </p>
-        <h3>2️⃣ Pour le PNR Pilat :</h3>
+        <h3>2️⃣ Pour le PNR Pilat :</h3>
         <p>
           A la suite du diagnostic de vulnérabilité et de l’identification d’un
           enjeu prioritaire sur la forêt, le PNR du Pilat a réalisé 2 ateliers
@@ -165,7 +167,7 @@ const MiseEnRecit = () => {
               target="_blank"
               rel="noreferrer"
             >
-              « Une douche de trois minutes tous les trois jours » : la vie
+              « Une douche de trois minutes tous les trois jours » : la vie
               imaginée d’une Nantaise en 2048
             </Link>
             <Image src={LinkIcon as StaticImageData} alt="" />
@@ -192,32 +194,32 @@ const MiseEnRecit = () => {
         </div>
       </div>
       <div className={styles.textBloc}>
-        <h2>Quelques apprentissages clés :</h2>
-        <h3>Faire appel aux émotions : oui, mais comment?</h3>
+        <h2>Quelques apprentissages clés :</h2>
+        <h3>Faire appel aux émotions : oui, mais comment?</h3>
         <p>
           Au delà d’une prise de conscience, les émotions sont des réactions qui
           suscitent une mise en mouvement.
         </p>
         <p>
-          La mise en récit peut prendre plusieurs formes : texte écrit, images,
+          La mise en récit peut prendre plusieurs formes : texte écrit, images,
           BD, autres formes artistiques… Dans tous les cas, le récit transmet de
           véritables informations (issues du travail sur le diagnostic) et les
           émotions qu’il suscite donnent du sens à l’action commune à mettre en
-          œuvre : le processus d’appropriation est en marche.
+          œuvre : le processus d’appropriation est en marche.
         </p>
         <p>
           Allant au-delà d’une simple compilation de données météorologiques, le
           récit illustre des conséquences tangibles du changement climatique sur
-          le territoire. Pas d’auto-censure : Violaine a craint de choquer avec
+          le territoire. Pas d’auto-censure : Violaine a craint de choquer avec
           certains titres alors que des participants ont, au contraire, estimé
           que la réalité pourrait être pire. Vous pouvez montrer différentes
-          hypothèses : si rien ne change ou ce qui pourrait advenir avec une
+          hypothèses : si rien ne change ou ce qui pourrait advenir avec une
           action politique ambitieuse.
         </p>
-        <h3>Mise en récit : quelques questions à se poser</h3>
+        <h3>Mise en récit : quelques questions à se poser</h3>
         <p>
-          En amont de cette présentation : réfléchissez clairement à votre rôle
-          durant l’atelier. Démultiplier vos rôles : facilitateur de la session,
+          En amont de cette présentation : réfléchissez clairement à votre rôle
+          durant l’atelier. Démultiplier vos rôles : facilitateur de la session,
           expert technique, etc., peut créer de la confusion pour les
           participants. Pour y répondre un accompagnement externes simplifie
           souvent les choses.
@@ -225,19 +227,19 @@ const MiseEnRecit = () => {
         <p>
           Enfin, ne sous-estimer pas le temps nécessaire pour produire des
           scénarios de qualité. Choisissez un format d’atelier en fonction de
-          votre capacité à mener ce travail. Par exemple : Violaine, ancienne
+          votre capacité à mener ce travail. Par exemple : Violaine, ancienne
           journaliste maitrisait déjà l’exercice de la rédaction d’une Une. Dans
           tous les cas, une bonne préparation est essentielle pour le succès de
           l'atelier, car il s’agit du point de départ pour de plus vastes
           échanges.
         </p>
-        <h3>Comment exploiter efficacement les résultats ?</h3>
+        <h3>Comment exploiter efficacement les résultats ?</h3>
         <p>
           Avant même de lancer les ateliers, il est fondamental de se poser des
           questions sur leur finalité et l'exploitation des résultats. Cet
           élément est important, par exemple pour Clermont Auvergne Métropole,
           la diffusion de la Une à des non-participants à l’atelier n’est pas
-          prévue : il s’agit d’un support de travail qui ne peut être sortie de
+          prévue : il s’agit d’un support de travail qui ne peut être sortie de
           son contexte et qui est à l’origine de réflexions.
         </p>
         <p>

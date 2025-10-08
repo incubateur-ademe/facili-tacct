@@ -1,4 +1,14 @@
-.wrapper {
+// Resources
+
+.ressourcesContainer {
+    margin-top: 4rem;
+}
+
+@media screen and (max-width: 768px) {
+    .ressourcesContainer {
+        padding: 0rem 1.5rem;
+        margin: 2rem 0;
+    }
 }
 
 .blocWrapper {
@@ -85,6 +95,27 @@
     }
 }
 
+.selectedTabNouveauParcours {
+    background-color: var(--boutons-primaire-1);
+    border-radius: 25px;
+    padding: 0.2em 1em;
+    color: #eeeeee;
+    &:hover {
+        cursor: pointer;
+        background-color: var(--boutons-primaire-3) !important;
+    }
+}
+.tabNouveauParcours {
+    background-color: #f0fcfa;
+    border-radius: 25px;
+    padding: 0.2em 1em;
+    color: black;
+    &:hover {
+        cursor: pointer;
+        background-color: var(--boutons-primaire-2) !important;
+    }
+}
+
 .tabs {
     display: flex;
     flex-direction: row;
@@ -120,4 +151,19 @@
     display: flex;
     flex-direction: row;
     gap: 1em;
+}
+
+// Articles
+
+.articleContainer {
+    max-width: 42rem;
+    margin: auto;
+    padding-bottom: 6rem;
+}
+
+@media screen and (max-width: 768px) {
+    .articleContainer {
+        padding: 0rem 1.5rem;
+        margin-bottom: 4rem;
+    }
 }

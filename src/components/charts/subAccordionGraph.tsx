@@ -9,9 +9,7 @@ import MuiAccordionSummary, {
   accordionSummaryClasses
 } from '@mui/material/AccordionSummary';
 import { Progress } from 'antd';
-import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
-import { HtmlTooltip } from '../utils/HtmlTooltip';
 import styles from './charts.module.scss';
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
@@ -75,8 +73,6 @@ export const SubAccordionGraph = ({
   superficieSau: number;
   isDefaultExpanded?: boolean;
 }) => {
-  const searchParams = useSearchParams();
-  const libelle = searchParams.get('libelle');
   const [expanded, setExpanded] = useState(isDefaultExpanded);
   const accordionTitle = Object.keys(graphDataItem)[0];
   const sortedData = [...Object.values(graphDataItem)[0]].sort((a, b) => b.value - a.value);
@@ -102,48 +98,32 @@ export const SubAccordionGraph = ({
       </AccordionSummary>
       <div style={{ padding: '0 0 1rem' }}>
         {sortedData.map((item, index) => (
-          <AccordionDetails>
-            <HtmlTooltip
-              title={
-                <div className={styles.tooltip}>
-                  <h3>{item.id}</h3>
-                  <p>
-                    {libelle} :{' '}
-                    <b>
-                      {Round((100 * item.value / superficieSau), 1)} %
-                    </b>
-                  </p>
-                </div>
-              }
-              key={index}
-              placement="top"
-            >
-              <div key={index} className={styles.progressDataWrapperSurfacesAgricoles}>
-                <div className={styles.progressDesign}>
-                  <div className={styles.progressBar}>
-                    <p>{item.id}</p>
-                    <div>
-                      <Progress
-                        percent={Number(100 * item.value / superficieSau)}
-                        showInfo={false}
-                        strokeColor={item.color}
-                        size={['100%', 12]}
-                        style={{ width: '95%' }}
-                        type="line"
-                        trailColor="#F9F9FF"
-                      />
-                    </div>
+          <AccordionDetails key={index}>
+            <div className={styles.progressDataWrapperSurfacesAgricoles}>
+              <div className={styles.progressDesign}>
+                <div className={styles.progressBar}>
+                  <p>{item.id}</p>
+                  <div>
+                    <Progress
+                      percent={Number(100 * item.value / superficieSau)}
+                      showInfo={false}
+                      strokeColor={item.color}
+                      size={['100%', 12]}
+                      style={{ width: '95%' }}
+                      type="line"
+                      trailColor="#F9F9FF"
+                    />
                   </div>
                 </div>
-                <div className={styles.progressNumbers}>
-                  <p>
-                    <b>
-                      {Round(item.value, 1)} ha
-                    </b>
-                  </p>
-                </div>
               </div>
-            </HtmlTooltip>
+              <div className={styles.progressNumbers}>
+                <p>
+                  <b>
+                    {Round(item.value, 1)} ha
+                  </b>
+                </p>
+              </div>
+            </div>
           </AccordionDetails>
         ))}
       </div>

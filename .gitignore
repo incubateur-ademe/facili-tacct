@@ -21,7 +21,6 @@
 
 # misc
 .DS_Store
-*.pem
 
 # debug
 npm-debug.log*
@@ -45,3 +44,11 @@ next-env.d.ts
 
 # Sentry Config File
 .env.sentry-build-plugin
+
+# local db
+/db-dump/facili-tacct-postgis-databases.sql
+
+#certificates
+*.crt
+*.key
+*.pem

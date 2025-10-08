@@ -4,24 +4,31 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    border-radius: 1rem;
+}
+
+.dataWrapper {
+    .legend {
+        padding: 0.5rem;
+    }
 }
 
 .barLineTooltipContainer {
-    background: white;
+    background-color: #ffffff;
+    color: black;
+    max-width: 600px;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16);
     padding: 1rem;
-    border: 1px solid #ccc;
+    font-family: 'Marianne';
+    font-size: 0.875rem;
+    border-radius: 6px;
+    line-height: 1.25rem;
+    font-weight: 400;
     position: relative;
     right: 4rem;
-    box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16);
-    color: #3a3a3a;
-    max-width: 600px;
-    font-family: 'Marianne';
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    p {
-        margin: 0;
-    }
     .line {
         display: flex;
         flex-direction: row;
@@ -40,3 +47,55 @@
         }
     }
 }
+
+// onglets de navigation en dataviz + filtres
+
+.graphTabsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 1.25rem;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--gris-medium);
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.sliderWrapper {
+    display: flex;
+    padding: 1.25rem 2.25rem;
+    width: 100%;
+    border-bottom: 1px solid var(--gris-medium);
+}
+
+.responsivePieContainer {
+    width: 100%;
+    height: 0;
+    position: relative;
+    background-color: white;
+    border-radius: 1rem 0 1rem 0;
+    overflow: hidden;
+    padding-bottom: 60%;
+
+    /* le SVG interne produit par nivo sera positionné absolument pour remplir le conteneur */
+    & > :global(svg),
+    & > :global(div) {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+// @media (min-width: 1024px) {
+//     .responsivePieContainer {
+//         padding-bottom: 45%;
+//     }
+// }
+
+// @media (max-width: 640px) {
+//     .responsivePieContainer {
+//         padding-bottom: 80%;
+//     }
+// }

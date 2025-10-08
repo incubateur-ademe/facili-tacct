@@ -1,5 +1,6 @@
 'use client';
 
+import { CatnatTypes } from '@/app/(main)/types';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
 import { eptRegex } from '@/lib/utils/regex';
@@ -82,10 +83,10 @@ export const MapCatnat = (props: {
       return {
         fillColor: typedFeature?.properties.catnat?.sumCatnat
           ? getColor(
-              typedFeature?.properties.catnat?.sumCatnat,
-              maxValue,
-              typeRisqueValue
-            )
+            typedFeature?.properties.catnat?.sumCatnat,
+            maxValue,
+            typeRisqueValue
+          )
           : 'transparent',
         weight: 1,
         opacity: 1,
@@ -103,10 +104,10 @@ export const MapCatnat = (props: {
       return {
         fillColor: typedFeature?.properties.catnat?.[typeRisqueValue]
           ? getColor(
-              typedFeature?.properties.catnat?.[typeRisqueValue] as number,
-              maxValue,
-              typeRisqueValue
-            )
+            typedFeature?.properties.catnat?.[typeRisqueValue] as number,
+            maxValue,
+            typeRisqueValue
+          )
           : 'transparent',
         weight: 1,
         opacity: 1,
