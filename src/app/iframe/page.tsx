@@ -1,112 +1,49 @@
 'use client';
 
-import useWindowDimensions from '@/hooks/windowDimensions';
-import Image from 'next/image';
-import { lazy } from 'react';
+import Notice from '@codegouvfr/react-dsfr/Notice';
 import { useStyles } from 'tss-react/dsfr';
-import Constellation2Img from '../../assets/images/constellation2.png';
-import Constellation3Img from '../../assets/images/constellation3.png';
-import PeopleImg from '../../assets/images/landing-page-group.png';
-import MapImg from '../../assets/images/landing-page-map.png';
-import { Container } from '../../design-system/layout';
-import styles from './root.module.scss';
-
-const CollectiviteSearch = lazy(() => import('../(main)/CollectiviteSearch'));
+import { CommunauteBloc } from '../(main)/(home)/CommunauteBloc';
+import { DiagnosticBloc } from '../(main)/(home)/DiagnosticBloc';
+import { TacctBloc } from '../(main)/(home)/TacctBloc';
+import { VerbatimBloc } from '../(main)/(home)/VerbatimBloc';
+import { Patch4Bloc } from './(home)/Patch4Bloc';
+import { PremierBloc } from './(home)/PremierBloc';
+import { RessourcesBloc } from './(home)/RessourcesBloc';
 
 const Home = () => {
   const { css } = useStyles();
-  const window = useWindowDimensions();
 
   return (
-    <div className={css({
-      margin: '0 0 3em'
-    })}>
-      <div className={styles.wrapper}>
-        <Container size="xl">
-          <div className={styles.titles}>
-            <h1>Vulnérable aux impacts du changement climatique ?</h1>
-            <p>
-              <b>Objectivez votre diagnostic</b> avec les données
-              socio-économiques qui rendent votre territoire unique et{' '}
-              <b>découvrez des arguments et ressources pour mobiliser</b> vos
-              collègues et partenaires externes sur l'adaptation au changement
-              climatique
-            </p>
-          </div>
-        </Container>
-      </div>
-      <CollectiviteSearch />
-      <div className={styles.cardBackground}>
-        <Container size="xl">
-          <div className={styles.cardWrapper}>
-            <div className={styles.card}>
-              <Image
-                src={MapImg}
-                alt="image-cartographie"
-                className={styles.cardImage}
-              />
-              <div className={styles.cardDescription}>
-                <h2>Evaluez la sensibilité de votre territoire</h2>
-                <p>
-                  Déchiffrez les données socio-économiques qui rendent votre
-                  territoire unique
-                </p>
-              </div>
-            </div>
-            <div className={styles.card}>
-              <Image
-                src={PeopleImg}
-                alt="personne-dans-un-atelier"
-                className={styles.cardImage}
-              />
-              <div className={styles.cardDescription}>
-                <h2>Facilitez les conditions du dialogue</h2>
-                <p>
-                  Découvrez des ressources pour faciliter les conditions du
-                  dialogue avec vos élus, services techniques et partenaires
-                </p>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </div>
-      <Container size="xl">
-        <div className={styles.constellationWrapper}>
-          <div className={styles.constellationText}>
-            <h3>L'adaptation n'est possible qu’en intelligence collective</h3>
-            <p>
-              Les initiatives d'adaptation au changement climatique réussissent
-              lorsqu'elles sont abordées de manière{' '}
-              <b>transversale et collaborative</b> en impliquant les élus et
-              différentes expertises thématiques.
-            </p>
-          </div>
-          {window.width && window.width < 1280 ? (
-            <Image
-              alt="constellation-de-problematiques"
-              src={Constellation2Img}
-              width={0}
-              height={0}
-              sizes="40vw"
-              style={{
-                position: 'relative',
-                maxWidth: '40%',
-                height: 'auto',
-                right: '-3.5em'
-              }}
-            />
-          ) : (
-            <Image
-              alt=""
-              src={Constellation3Img}
-              width={0}
-              height={0}
-              sizes="40vw"
-              style={{ maxWidth: '40%', height: 'auto' }}
-            />
-          )}
-        </div>
-      </Container>
+    <div>
+      <Notice
+        className={css({
+          // backgroundColor: 'var(--principales-vert)',
+        })}
+        isClosable={true}
+        title={"Facili-TACCT se refait une beauté, nouvelle charte, nouveau parcours !"}
+        description={
+          <>
+            Découvrez notre toute nouvelle présentation des indicateurs dans un parcours repensé et transverse ainsi que des conseils
+            pour vos enquêtes terrain (uniquement disponible sur la thématique Confort thermique pour le moment).
+            Une remarque, une suggestion ?{' '}
+            <a
+              href="https://tally.so/r/mJGELz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contactez-nous
+            </a>
+            , on a hâte d’avoir vos retours !
+          </>
+        }
+      />
+      <PremierBloc />
+      <Patch4Bloc />
+      <TacctBloc />
+      <CommunauteBloc />
+      <DiagnosticBloc />
+      <RessourcesBloc />
+      <VerbatimBloc />
     </div>
   );
 };
