@@ -93,9 +93,8 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
       filterOptions={(x) => x}
       options={collectivites}
       value={value}
-      noOptionsText=""
-      loading={ options.length === 0 }
       loadingText="Chargement..."
+      noOptionsText="Aucun territoire trouvé"
       open={isOpen}
       onOpen={() => {
         setValue(null);
