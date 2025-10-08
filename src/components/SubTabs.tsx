@@ -1,5 +1,6 @@
 'use client';
 
+import { CatnatTypes, TabIcons } from '@/app/(main)/types';
 import activiteIconBlack from '@/assets/icons/activite_icon_black.svg';
 import activiteIconWhite from '@/assets/icons/activite_icon_white.svg';
 import camembertIconBlack from '@/assets/icons/camembert_icon_black.svg';
