@@ -1,6 +1,7 @@
 'use client';
 
 import { espacesNAFBarChartLegend } from '@/components/maps/legends/datavizLegends';
+import { Body } from '@/design-system/base/Textes';
 import { ConsommationNAF } from '@/lib/postgres/models';
 import { espacesNAFBarChartTooltip } from '../ChartTooltips';
 import { NivoBarChart } from '../NivoBarChart';
@@ -94,15 +95,17 @@ export const ConsommationEspacesNAFBarChart = (props: {
     const { annee, ...numericValues } = obj;
     return total + Object.values(numericValues).reduce((sum, val) => sum + val, 0);
   }, 0);
+  const minValueXTicks = graphData.map(e => e.annee).at(0);
+  const maxValueXTicks = graphData.map(e => e.annee).at(-1);
 
   return (
     <div
-      style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
+      style={{ height: '500px', width: '100%', backgroundColor: 'white' }}
     >
       {
         sumAllValues !== 0 ?
           <NivoBarChart
-            colors={espacesNAFBarChartLegend.map((e) => e.couleur)}
+            colors={espacesNAFBarChartLegend.map((e) => e.color)}
             graphData={graphData}
             keys={Object.keys(graphData[0]).slice(0, -1)}
             indexBy="annee"
@@ -110,6 +113,11 @@ export const ConsommationEspacesNAFBarChart = (props: {
             axisBottomLegend="Années"
             showLegend={false}
             tooltip={espacesNAFBarChartTooltip}
+            bottomTickValues={
+              minValueXTicks !== maxValueXTicks
+                ? [`${minValueXTicks}`, `${maxValueXTicks}`]
+                : [`${minValueXTicks}`]
+            }
           />
           : <div
             style={{
@@ -118,7 +126,7 @@ export const ConsommationEspacesNAFBarChart = (props: {
               textAlign: 'center'
             }}
           >
-            <p>Aucune donnée disponible avec ces filtres</p>
+            <Body>Aucune donnée disponible avec ces filtres</Body>
           </div>
       }
     </div>

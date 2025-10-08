@@ -2,6 +2,7 @@ import ForwardArrow from '@/assets/icons/keyboard_arrow_next_icon_black.svg';
 import ArticleImage3 from '@/assets/images/article14.png';
 import ArticleImage from '@/assets/images/article5.png';
 import ArticleImage2 from '@/assets/images/article6.jpg';
+import { RetourHautDePage } from '@/components/interactions/RetourHautDePage';
 import EndPageTrigger from '@/hooks/EndPageTrigger';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
@@ -10,30 +11,27 @@ import styles from './article.module.scss';
 const EviterPrecherDesert = () => {
   return (
     <div>
+      <RetourHautDePage />
       <h1>
         Comment éviter de prêcher dans le désert ? Les actions à réaliser pour
         bien mobiliser
       </h1>
       <div className={styles.textBloc}>
-        <div className="flex justify-center mb-12 gap-4">
-          <div>
-            <p>
-              Cet article a été rédigé avec Jolet Van Kipshagen, Tifaine Briand,
-              Severine Bonnet et Aymeric Noel.
-            </p>
-            <p>
-              Notre objectif était d’identifier les freins à la mobilisation et
-              vous proposer un ensemble de solutions concrètes à réaliser pour
-              plus efficacement aborder la mobilisation de vos parties
-              prenantes.
-            </p>
-            <p>
-              <i>
-                Ce travail n’a pas de vocation à être exhaustif, il reflète les
-                expériences vécues par les participants.
-              </i>
-            </p>
-          </div>
+        <div className={styles.textImage}>
+          <p>
+            Cet article a été rédigé avec Jolet Van Kipshagen, Tifaine Briand,
+            Severine Bonnet et Aymeric Noel.
+            <br></br><br></br>
+            Notre objectif était d’identifier les freins à la mobilisation et
+            vous proposer un ensemble de solutions concrètes à réaliser pour
+            plus efficacement aborder la mobilisation de vos parties
+            prenantes.
+            <br></br><br></br>
+            <i>
+              Ce travail n’a pas de vocation à être exhaustif, il reflète les
+              expériences vécues par les participants.
+            </i>
+          </p>
           <Image
             src={ArticleImage}
             alt="Photo d'une visio entre les acteurs cités dans l'article"
@@ -43,11 +41,11 @@ const EviterPrecherDesert = () => {
             style={{ width: '50%', height: 'auto' }}
           />
         </div>
-        <h2>La mobilisation : 8 freins majeurs identifiés</h2>
+        <h2>La mobilisation : 8 freins majeurs identifiés</h2>
         <div>
           <ul>
             <li>
-              Ne pas avoir une <b>vision claire des objectifs</b> : qu'est-ce
+              Ne pas avoir une <b>vision claire des objectifs</b> : qu'est-ce
               qu'on va faire et quand est-ce que ça sera finalisé ? ;
             </li>
             <li>
@@ -60,7 +58,7 @@ const EviterPrecherDesert = () => {
               dans la démarche d'adaptation au changement climatique.
             </li>
             <li>
-              <b>Manque de compréhension de l’adaptation</b> :{' '}
+              <b>Manque de compréhension de l’adaptation</b> :{' '}
               <i>
                 On parlait d'atténuation et maintenant il y a aussi l'adaptation
                 ;
@@ -84,7 +82,7 @@ const EviterPrecherDesert = () => {
           </ul>
         </div>
         <p>
-          Ces blocages sont de différentes natures : logistique, compétence ou
+          Ces blocages sont de différentes natures : logistique, compétence ou
           organisationnelle. Vous trouverez ci-dessous un diagramme qui cherche
           à vous apporter autant de réponses concrètes aux freins
           sus-mentionnés.
@@ -152,20 +150,20 @@ const EviterPrecherDesert = () => {
         <div>
           <p>
             Dans la continuité de cette conduite du changement, appuyez-vous sur
-            d’autres outils, tel que :
+            d’autres outils, tel que :
           </p>
           <ul>
             <li>
-              <b>La balance décisionnelle :</b> pour présenter les risques et
+              <b>La balance décisionnelle :</b> pour présenter les risques et
               avantages à agir et à ne pas agir. Agir maintenant est évidemment
               plus pertinent que d’agir dans l’urgence, voire ne pas agir du
               tout.
             </li>
             <li>
-              <b>La spirale dynamique :</b> pour bien comprendre les valeurs de
+              <b>La spirale dynamique :</b> pour bien comprendre les valeurs de
               vos parties prenantes et discuter avec elles et eux, selon ce qui
               résonne le plus en eux, par exemple, sont-ils plus concernés par
-              des chiffres ou bien par des faits?
+              des chiffres ou bien par des faits ?
             </li>
           </ul>
         </div>
@@ -182,7 +180,7 @@ const EviterPrecherDesert = () => {
         </p>
       </div>
       <div className={styles.textBloc}>
-        <h2>En conclusion :</h2>
+        <h2>En conclusion :</h2>
         <p>
           La mobilisation reste une activité compliquée car dépendante de
           dynamiques et de contextes qui vont différer d’un territoire à l’autre
@@ -191,7 +189,7 @@ const EviterPrecherDesert = () => {
         </p>
         <p>
           Soyez stratège en orientant votre énergie sur les leviers que vous
-          maitrisez. Pour les identifier : ayez conscience de votre sphère
+          maitrisez. Pour les identifier : ayez conscience de votre sphère
           d’influence. Vous avez accès à certaines parties prenantes, plus
           accessibles que d’autres, donc priorisez votre mobilisation sur ce qui
           vous est accessible.

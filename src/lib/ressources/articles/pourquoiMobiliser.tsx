@@ -2,6 +2,7 @@ import BookIcon from '@/assets/icons/book_icon_black.svg';
 import ForwardArrow from '@/assets/icons/keyboard_arrow_next_icon_black.svg';
 import ArticleImage2 from '@/assets/images/article13.png';
 import ArticleImage from '@/assets/images/article4.png';
+import { RetourHautDePage } from '@/components/interactions/RetourHautDePage';
 import EndPageTrigger from '@/hooks/EndPageTrigger';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,10 +11,11 @@ import styles from './article.module.scss';
 const PourquoiMobiliser = () => {
   return (
     <div>
-      <h1>Pourquoi mobiliser en interne et externe ?</h1>
+      <RetourHautDePage />
+      <h1>Pourquoi mobiliser en interne et externe ?</h1>
       <div className={styles.textBloc}>
         <h2>
-          Une mobilisation réussie : témoignage de Jolet Van Kipshagen (Vallée
+          Une mobilisation réussie : témoignage de Jolet Van Kipshagen (Vallée
           de Villé).
         </h2>
         <p>
@@ -22,13 +24,13 @@ const PourquoiMobiliser = () => {
           simple et nécessite une expertise spécifique.
         </p>
         <p>
-          <b>Notre vision de la problématique :</b>
+          <b>Notre vision de la problématique :</b>
         </p>
         <p>
-          Adaptation au changement climatique : le concept reste mal compris. En
+          Adaptation au changement climatique : le concept reste mal compris. En
           conséquence, peu de personnes se sentent concernées ou ont conscience
           des interférences entre impacts du changement climatique et leurs
-          activités : le concept ne mobilise pas.
+          activités : le concept ne mobilise pas.
         </p>
         <p>
           Pour les mobiliser, il est important de pouvoir aborder des sujets qui
@@ -44,7 +46,7 @@ const PourquoiMobiliser = () => {
           style={{ width: '100%', height: 'auto' }}
         />
         <div>
-          <p>Notre idée pour aider au dialogue :</p>
+          <p>Notre idée pour aider au dialogue :</p>
           <ul>
             <li>
               Vous aider à développer une expertise de la problématique, (par
@@ -58,7 +60,7 @@ const PourquoiMobiliser = () => {
           </ul>
         </div>
         <h2>
-          Retour d’expérience : Violaine Magne (Clermont Auvergne Metropole) et
+          Retour d’expérience : Violaine Magne (Clermont Auvergne Metropole) et
           d’Adam Gibaud (PNR du Pilat)
         </h2>
         <p>
@@ -81,11 +83,11 @@ const PourquoiMobiliser = () => {
           concertation.
         </p>
         <div>
-          <p>Résultats :</p>
+          <p>Résultats :</p>
           <ul>
             <li>
               <b>8 ateliers de sensibilisation</b> afin de récolter des retours
-              internes et externes : plus de 100 personnes consultées ;
+              internes et externes : plus de 100 personnes consultées ;
             </li>
             <li>
               <b>3 ateliers thématiques</b> avec des contributeurs spécifiques
@@ -108,7 +110,7 @@ const PourquoiMobiliser = () => {
           Le travail en ateliers vise à{' '}
           <b>valoriser le vécu et les ressentis de différents acteurs</b>,
           démocratisant ainsi les sujets liés à la transition écologique et
-          sociale. Un exemple de vécu : l’épicerie solidaire de ce territoire
+          sociale. Un exemple de vécu : l’épicerie solidaire de ce territoire
           rural constate une augmentation des demandes d’aide des habitants
           pendant les périodes de sécheresse, du fait de la baisse de production
           dans les potagers. Cet exemple met en lumière un impact local qui
@@ -126,11 +128,11 @@ const PourquoiMobiliser = () => {
           du plan d’actions qui suivront.
         </p>
         <h2>Les apprentissages clés partagés</h2>
-        <h3>En amont :</h3>
+        <h3>En amont :</h3>
         <div>
           <ul>
             <li>
-              Un prérequis essentiel : la validation d’une vision commune avec
+              Un prérequis essentiel : la validation d’une vision commune avec
               les élus (via le plan de mobilisation). Malgré des objectifs
               globaux communs, des divergences sur les façons de faire ont
               persisté, d’où l’importance d’en discuter sur la base d’un
@@ -158,7 +160,7 @@ const PourquoiMobiliser = () => {
             </li>
           </ul>
         </div>
-        <h3>Lors des temps collectifs :</h3>
+        <h3>Lors des temps collectifs :</h3>
         <div>
           <ul>
             <li>
@@ -180,10 +182,10 @@ const PourquoiMobiliser = () => {
             <li>
               <i>
                 Pour rappel, sur ce que peut apporter la facilitation en
-                intelligence collective :{' '}
+                intelligence collective :{' '}
                 <Link href="/ressources/articles?title=La%20facilitation%20d’ateliers%20:%20une%20démarche%20éprouvée%20d’engagement">
                   <i>
-                    La facilitation d’ateliers : une démarche éprouvée
+                    La facilitation d’ateliers : une démarche éprouvée
                     d’engagement
                   </i>
                 </Link>
@@ -191,15 +193,15 @@ const PourquoiMobiliser = () => {
             </li>
           </ul>
         </div>
-        <h3>À la suite de la mobilisation :</h3>
+        <h3>À la suite de la mobilisation :</h3>
         <p>
-          Communiquer, communiquer, communiquer : c’est-à-dire rendre visible le
+          Communiquer, communiquer, communiquer : c’est-à-dire rendre visible le
           travail effectué lors des ateliers (en comprenant l’intérêt de leurs
           contributions, les participants seront d’autant plus enclins à
           revenir). Il faut permettre un accès simple à ces documents, par
           exemple via une centralisation des comptes-rendus sur le site web de
           l’intercommunalité. Des comptes-rendus illustrés peuvent servir de
-          rappel visuel pour tous : les participants, comme les absents qui
+          rappel visuel pour tous : les participants, comme les absents qui
           peuvent ainsi se rendre compte du travail effectué.
         </p>
       </div>
@@ -224,7 +226,7 @@ const PourquoiMobiliser = () => {
         <p>
           En définitive, la communication continue a permis d’identifier Jolet
           comme point de contact sur les sujets de transition écologique au sein
-          de l’interco : plus de 11 invitations tierces reçues pour continuer à
+          de l’interco : plus de 11 invitations tierces reçues pour continuer à
           porter ce sujet !
         </p>
       </div>
@@ -243,12 +245,12 @@ const PourquoiMobiliser = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    1 h pour animer un réseau, de Jean Michel Cornu
+                    1h pour animer un réseau, de Jean Michel Cornu
                   </Link>
                 </li>
                 <li>
                   Jolet, vous partage également, un nombre de ressources issues
-                  de son travail, accessibles à ce lien :
+                  de son travail, accessibles à ce lien :
                 </li>
               </ul>
             </div>
@@ -257,9 +259,9 @@ const PourquoiMobiliser = () => {
       </div>
       <div className={styles.textBloc}>
         <h2>
-          <u>En conclusion :</u>
+          <u>En conclusion :</u>
         </h2>
-        <div className="flex justify-center mb-12 gap-4">
+        <div className={styles.textImage}>
           <p>
             Bravo à Jolet qui a su inspirer une communauté d’action sur son
             territoire, illustrant le rôle fondamental d’animation du chargé(e)
@@ -270,7 +272,6 @@ const PourquoiMobiliser = () => {
             alt="Dessin comique sur l'incompréhension du vocabulaire technique"
             width={0}
             height={0}
-            sizes="70%"
             style={{ width: '70%', height: 'auto' }}
           />
         </div>

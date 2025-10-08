@@ -2,7 +2,6 @@
 
 import { CarteCommunes, EtatCoursDeau } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
-// import { PrismaPostgres } from '../db';
 import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../redis';
 
@@ -28,12 +27,6 @@ export const GetEtatCoursDeau = async (
       else {
         const distance = 0.1;
         if (type === 'commune') {
-          // const value = await PrismaPostgres.etat_cours_deau_by_commune.findMany({
-          //   where: {
-          //     code_geographique: code
-          //   },
-          // });
-          // return value;
           const commune = await prisma.$queryRaw<CarteCommunes[]>`
             SELECT 
             epci,
@@ -69,12 +62,6 @@ export const GetEtatCoursDeau = async (
           }
           return [];
         } else if (type === 'epci' && !eptRegex.test(libelle)) {
-          // const value = await prisma.etat_cours_deau_by_epci.findMany({
-          //   where: {
-          //     epci: code
-          //   },
-          // });
-          // return value as any;
           const epci = await prisma.$queryRaw<CarteCommunes[]>`
             SELECT 
             epci,

@@ -19,14 +19,40 @@ type SearchInputProps = {
   placeholder: string;
   type: string;
   typeTerritoire: string | undefined;
+  RechercherRedirection: () => void;
+};
+
+type SearchInputHeaderProps = {
+  className?: string;
+  setSearchCode: (a: string) => void;
+  setSearchLibelle: (a: string) => void;
+  searchCode: string;
+  searchLibelle: string;
+  id: string;
+  placeholder: string;
+  type: string;
+  typeTerritoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
+  setIsTypeChanging: (a: boolean) => void;
+  setIsTerritoryChanging: (a: boolean) => void;
+  setIsNewTypeChosen: (a: boolean) => void;
+  focusAutocomplete: boolean;
 };
 
 type SearchInputOptionsProps = {
-  props: HTMLAttributes<HTMLLIElement>
-  option: SearchInputOptions
+  props: HTMLAttributes<HTMLLIElement>;
+  option: SearchInputOptions;
 };
 
 type SearchInputTagProps = {
+  params: AutocompleteRenderInputParams;
+  className?: string;
+  typeTerritoire: string | undefined;
+  setInputValue: (value: string) => void;
+  setSearchCode: (value: string) => void;
+  setSearchLibelle: (value: string) => void;
+};
+
+type SearchInputTagHeaderProps = {
   params: AutocompleteRenderInputParams;
   className?: string;
   typeTerritoire: string | undefined;

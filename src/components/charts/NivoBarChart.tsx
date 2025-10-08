@@ -1,3 +1,4 @@
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Any } from '@/lib/utils/types';
 import {
@@ -44,6 +45,7 @@ type NivoBarChartProps = {
   axisLeftTickFactor?: number;
   groupMode?: 'grouped' | 'stacked' | undefined;
   showLegend?: boolean;
+  isBarLine?: boolean;
 };
 
 export const NivoBarChart = ({
@@ -58,7 +60,8 @@ export const NivoBarChart = ({
   axisBottomLegend,
   axisLeftTickFactor = 1,
   groupMode = 'stacked',
-  showLegend = true
+  showLegend = true,
+  isBarLine = false
 }: NivoBarChartProps) => {
   return (
     <ResponsiveBar
@@ -68,9 +71,9 @@ export const NivoBarChart = ({
       indexBy={indexBy}
       colors={colors}
       margin={
-        showLegend
-          ? { top: 40, right: 80, bottom: 80, left: 80 }
-          : { top: 40, right: 80, bottom: 80, left: 80 }
+        isBarLine
+          ? { top: 40, right: 80, bottom: 60, left: 80 }
+          : { top: 40, right: 80, bottom: 100, left: 80 }
       }
       groupMode={groupMode}
       padding={0.3}
@@ -91,19 +94,17 @@ export const NivoBarChart = ({
         renderTick: (e: Any) => {
           return (
             <g transform={`translate(${e.x},${e.y})`}>
-              <text
-                x={0}
-                y={10}
-                dy={16}
-                textAnchor="middle"
-                style={{
-                  fill: 'black',
+              <foreignObject x={-50} y={0} width={100} height={45}>
+                <div style={{
+                  maxWidth: '15ch',
+                  wordBreak: 'keep-all',
+                  textAlign: 'center',
                   fontSize: 12,
-                  fontWeight: 400
-                }}
-              >
-                {e.value}
-              </text>
+                  fontWeight: 400,
+                  margin: '0.5rem 0',
+                  lineHeight: "normal"
+                }}>{e.value}</div>
+              </foreignObject>
             </g>
           );
         }
@@ -149,7 +150,7 @@ export const NivoBarChart = ({
               direction: "row",
               anchor: "bottom",
               translateX: 0,
-              translateY: 70,
+              translateY: 80,
               itemsSpacing: 50,
             }
           ]
@@ -175,6 +176,7 @@ export const NivoBarChartRessourcesEau = ({
   groupMode = 'stacked',
   showLegend = true
 }: NivoBarChartProps) => {
+  const windowDimensions = useWindowDimensions();
   return (
     <ResponsiveBar
       data={graphData}
@@ -190,7 +192,7 @@ export const NivoBarChartRessourcesEau = ({
             bottom: legendData && legendData.length >= 4 ? 120 : 80,
             left: 80
           }
-          : { top: 40, right: 80, bottom: 80, left: 80 }
+          : { top: 40, right: 80, bottom: windowDimensions.width! > 1850 ? 130 : windowDimensions.width! > 1700 ? 160 : 180, left: 80 }
       }
       groupMode={groupMode}
       padding={0.3}
@@ -211,19 +213,17 @@ export const NivoBarChartRessourcesEau = ({
         renderTick: (e: Any) => {
           return (
             <g transform={`translate(${e.x},${e.y})`}>
-              <text
-                x={0}
-                y={10}
-                dy={16}
-                textAnchor="middle"
-                style={{
-                  fill: 'black',
+              <foreignObject x={-50} y={0} width={100} height={40}>
+                <div {...({ xmlns: 'http://www.w3.org/1999/xhtml' } as any)} style={{
+                  maxWidth: '10ch',
+                  wordBreak: 'keep-all',
+                  textAlign: 'center',
+                  color: 'black',
                   fontSize: 12,
-                  fontWeight: 400
-                }}
-              >
-                {e.value}
-              </text>
+                  fontWeight: 400,
+                  margin: '0 auto'
+                }}>{e.value}</div>
+              </foreignObject>
             </g>
           );
         }
@@ -329,7 +329,7 @@ export const NivoBarChartCatnat = ({
       data={graphData}
       keys={keys}
       isFocusable={true}
-      animate={false}
+      // animate={false}
       motionConfig={"stiff"}
       indexBy={indexBy}
       colors={colors}
@@ -337,11 +337,11 @@ export const NivoBarChartCatnat = ({
         showLegend
           ? {
             top: 40,
-            right: 80,
+            right: 100,
             bottom: legendData && legendData.length >= 4 ? 120 : 80,
             left: 80
           }
-          : { top: 40, right: 80, bottom: 80, left: 80 }
+          : { top: 40, right: 100, bottom: 150, left: 80 }
       }
       groupMode={groupMode}
       padding={0.3}
@@ -360,19 +360,17 @@ export const NivoBarChartCatnat = ({
         renderTick: (e: Any) => {
           return (
             <g transform={`translate(${e.x},${e.y})`}>
-              <text
-                x={0}
-                y={10}
-                dy={16}
-                textAnchor="middle"
-                style={{
-                  fill: 'black',
+              <foreignObject x={-50} y={0} width={100} height={40}>
+                <div {...({ xmlns: 'http://www.w3.org/1999/xhtml' } as any)} style={{
+                  maxWidth: '10ch',
+                  wordBreak: 'keep-all',
+                  textAlign: 'center',
+                  color: 'black',
                   fontSize: 12,
-                  fontWeight: 400
-                }}
-              >
-                {e.value}
-              </text>
+                  fontWeight: 400,
+                  margin: '0 auto'
+                }}>{e.value}</div>
+              </foreignObject>
             </g>
           );
         }

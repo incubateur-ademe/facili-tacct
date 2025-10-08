@@ -87,19 +87,28 @@ export const aot40Legends = [
   }
 ];
 
-const getColor = (d: number) => {
-  return d <= 0.0005
-    ? '#ECD8FE'
-    : d > 0.0005 && d <= 0.001
-      ? '#C48EF6'
-      : d > 0.002
-        ? '#8C58BB'
-        : d > 0.005
-          ? '#6E3F99'
-          : d > 0.01
-            ? '#42255C'
-            : 'transparent';
-};
+export const travailExterieurPieChartLegend = [
+  {
+    value: 'Agriculture',
+    color: couleurs.graphiques.jaune[4]
+  },
+  {
+    value: 'Industries',
+    color: couleurs.graphiques.orange[3]
+  },
+  {
+    value: 'Construction',
+    color: couleurs.graphiques.violet[2]
+  },
+  {
+    value: 'Commerces et transports',
+    color: couleurs.graphiques.vert[1]
+  },
+  {
+    value: 'Administrations',
+    color: couleurs.graphiques.bleu[5]
+  }
+];
 
 export const feuxForetLegend = [
   {
@@ -151,30 +160,150 @@ export const chefsExploitationLegend = [
   }
 ];
 
+export const agricultureBioBarChartLegend = [
+  {
+    value: 'Surface certifiée',
+    color: couleurs.graphiques.bleu[3]
+  },
+  {
+    value: 'Surface en conversion',
+    color: couleurs.graphiques.bleu[1]
+  }
+];
+
 export const espacesNAFBarChartLegend = [
   {
-    variable: 'Activité',
-    couleur: '#F66E19'
+    value: 'Activité',
+    color: '#F66E19'
   },
   {
-    variable: 'Habitat',
-    couleur: '#009ADC'
+    value: 'Habitat',
+    color: '#009ADC'
   },
   {
-    variable: 'Mixte',
-    couleur: '#FFCF5E'
+    value: 'Mixte',
+    color: '#FFCF5E'
   },
   {
-    variable: 'Routes',
-    couleur: '#7A49BE'
+    value: 'Routes',
+    color: '#7A49BE'
   },
   {
-    variable: 'Ferroviaire',
-    couleur: '#BB43BD'
+    value: 'Ferroviaire',
+    color: '#BB43BD'
   },
   {
-    variable: 'Inconnu',
-    couleur: '#00C2CC'
+    value: 'Inconnu',
+    color: '#00C2CC'
+  }
+];
+
+export const catnatPieChartLegend = [
+  {
+    value: 'Inondations',
+    color: couleurs.graphiques.bleu[2]
+  },
+  {
+    value: 'Sécheresse',
+    color: couleurs.graphiques.jaune[2]
+  },
+  {
+    value: 'Mouvements de terrain',
+    color: couleurs.graphiques.orange[2]
+  },
+  {
+    value: 'Retrait-gonflement des argiles',
+    color: couleurs.graphiques.violet[2]
+  },
+  {
+    value: 'Cyclones / Tempêtes',
+    color: couleurs.graphiques.turquoise[2]
+  },
+  {
+    value: 'Grêle / neige',
+    color: couleurs.graphiques.vert[2]
+  },
+  {
+    value: 'Avalanche',
+    color: couleurs.graphiques.rose[2]
+  }
+];
+
+// export const DateConstructionResidencesBarChartData = (averages: {
+//   [key: string]: number;
+// }) => [
+//   {
+//     periode: 'Avant 1919',
+//     'Votre collectivité': averages.averageAgeBatiPre19.toFixed(1),
+//     'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+//     France: 20.5,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   },
+//   {
+//     periode: '1919-1945',
+//     'Votre collectivité': averages.averageAgeBati1945.toFixed(1),
+//     'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+//     France: 9.2,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   },
+//   {
+//     periode: '1946-1990',
+//     'Votre collectivité': averages.averageAgeBati4690.toFixed(1),
+//     'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+//     France: 43.4,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   },
+//   {
+//     periode: '1991-2005',
+//     'Votre collectivité': averages.averageAgeBati9105.toFixed(1),
+//     'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+//     France: 15.5,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   },
+//   {
+//     periode: 'Après 2006',
+//     'Votre collectivité': averages.averageAgeBatiPost06.toFixed(1),
+//     'Votre collectiviteColor': couleurs.graphiques.bleu[1],
+//     France: 11.4,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   }
+// ];
+
+export const ageBatiBarChartLegend = [
+  {
+    value: 'France',
+    color: couleurs.graphiques.bleu[1]
+  },
+  {
+    value: 'Votre collectivité',
+    color: couleurs.graphiques.rouge[3]
+  }
+];
+
+export const ressourcesEauBarChartLegend = [
+  {
+    value: 'Agriculture',
+    color: couleurs.graphiques.vert[2]
+  },
+  {
+    value: 'Alimentation des canaux',
+    color: couleurs.graphiques.turquoise[2]
+  },
+  {
+    value: 'Eau potable',
+    color: couleurs.graphiques.bleu[2]
+  },
+  {
+    value: 'Industrie et autres usages économiques',
+    color: couleurs.graphiques.violet[2]
+  },
+  {
+    value: "Production d'électricité (barrages hydro-électriques)",
+    color: couleurs.graphiques.orange[2]
+  },
+  {
+    value: 'Refroidissement des centrales électriques',
+    color: couleurs.graphiques.rose[2]
   }
 ];
 
@@ -334,8 +463,35 @@ export const DateConstructionResidencesLegend = [
     color: couleurs.graphiques.bleu[1]
   },
   {
-    value: 'Votre collectivité',
+    value: 'Votre territoire',
     color: couleurs.graphiques.rouge[3]
+  }
+];
+
+export const prelevementEauBarChartLegend = [
+  {
+    value: 'Agriculture',
+    color: couleurs.graphiques.vert[2]
+  },
+  {
+    value: 'Alimentation des canaux',
+    color: couleurs.graphiques.turquoise[2]
+  },
+  {
+    value: 'Eau potable',
+    color: couleurs.graphiques.bleu[2]
+  },
+  {
+    value: 'Industrie et autres usages économiques',
+    color: couleurs.graphiques.violet[2]
+  },
+  {
+    value: "Production d'électricité (barrages hydro-électriques)",
+    color: couleurs.graphiques.orange[2]
+  },
+  {
+    value: 'Refroidissement des centrales électriques',
+    color: couleurs.graphiques.rose[2]
   }
 ];
 
@@ -544,10 +700,21 @@ export const LczLegendOpacity70 = [
   }
 ];
 
+export const surfaceEnBioBarChartLegend = [
+  {
+    value: 'Surface certifiée agriculture biologique',
+    color: couleurs.graphiques.bleu[3]
+  },
+  {
+    value: 'Surface en conversion agriculture biologique',
+    color: couleurs.graphiques.bleu[1]
+  }
+];
+
 export const feuxForetBarChartLegend = [
   {
     variable: 'Feux de forêt',
-    couleur: '#038278'
+    couleur: couleurs.principales.vert
   }
 ];
 
@@ -555,12 +722,12 @@ export const RgaRepartitionLegend = [
   {
     variable: 'territoire',
     texteRaccourci: 'Territoire',
-    couleur: '#038278'
+    couleur: couleurs.principales.vert
   },
   {
     variable: 'territoireSup',
     texteRaccourci: 'Territoire supérieur',
-    couleur: '#C48EF6'
+    couleur: couleurs.graphiques.violet[2]
   }
 ];
 

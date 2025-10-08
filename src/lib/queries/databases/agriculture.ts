@@ -1,8 +1,40 @@
 'use server';
 import { Agriculture, SurfacesAgricolesModel } from '@/lib/postgres/models';
 import * as Sentry from '@sentry/nextjs';
+import fs from 'fs/promises';
+import path from 'path';
 import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../redis';
+
+export const GetAgricultureLocal = async (
+  code: string,
+  libelle: string,
+  type: string
+): Promise<Agriculture[]> => {
+  const mockPath = path.resolve(process.cwd(), 'mocks', 'mock-db.json');
+  const raw = await fs.readFile(mockPath, 'utf-8');
+  const db = JSON.parse(raw);
+
+  const column = ColumnCodeCheck(type);
+
+  if (!libelle || !type || (!code && type !== 'petr')) return [];
+
+  if (type === 'ept' || type === 'petr') {
+    return db.databases.agriculture.filter(
+      (row: any) => row[column] === libelle
+    );
+  } else if (type === 'commune') {
+    const collectivite = db.databases.collectivites_searchbar.find(
+      (c: any) => c.code_geographique === code
+    );
+    if (!collectivite) return [];
+    return db.databases.agriculture.filter(
+      (row: any) => row.epci === collectivite.epci
+    );
+  } else {
+    return db.databases.agriculture.filter((row: any) => row[column] === code);
+  }
+};
 
 export const GetAgriculture = async (
   code: string,
@@ -37,15 +69,15 @@ export const GetAgriculture = async (
         } else if (type === 'commune') {
           // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
           const value = await prisma.$queryRaw`
-        SELECT a.*
-        FROM databases.agriculture a
-        WHERE a.epci = (
-          SELECT c.epci
-          FROM databases.collectivites_searchbar c
-          WHERE c.code_geographique = ${code}
-          LIMIT 1
-        )
-      `;
+            SELECT a.*
+            FROM databases.agriculture a
+            WHERE a.epci = (
+              SELECT c.epci
+              FROM databases.collectivites_searchbar c
+              WHERE c.code_geographique = ${code}
+              LIMIT 1
+            )
+          `;
           return value as Agriculture[];
         } else {
           const value = await prisma.agriculture.findMany({

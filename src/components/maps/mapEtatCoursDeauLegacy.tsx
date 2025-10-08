@@ -16,11 +16,16 @@ import {
   StyleFunction
 } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
+import { Loader } from '../ui/loader';
 import { BoundsFromCollection } from './components/boundsFromCollection';
-import SitesBaignadeMarkers from './components/sitesBaignadeMarkers';
 import { CoursDeauTooltip } from './components/tooltips';
+
+const SitesBaignadeMarkers = dynamic(() => import('./components/sitesBaignadeMarkers'), {
+  loading: () => <Loader />
+});
 
 export const MapEtatCoursDeauLegacy = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
@@ -79,7 +84,6 @@ export const MapEtatCoursDeauLegacy = (props: {
 
   const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
     const layer = e.target as FeatureGroup<EtatCoursDeauDto['properties']>;
-    //close residual opened tooltip
     layer.unbindTooltip();
     layer.closeTooltip();
     const coursDeau =
@@ -100,13 +104,11 @@ export const MapEtatCoursDeauLegacy = (props: {
     layer.bringToFront();
   };
 
-  //make style after hover disappear
   const mouseOutHandler: LeafletMouseEventHandlerFn = (e) => {
     const layer = e.target as FeatureGroup<EtatCoursDeauDto['properties']>;
     layer.closeTooltip();
     layer.setStyle({
       weight: 3,
-      // color: getColor(layer.feature?.properties.etateco),
       fillOpacity: 0.95
     });
   };

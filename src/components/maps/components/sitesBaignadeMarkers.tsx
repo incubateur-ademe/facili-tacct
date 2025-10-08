@@ -7,9 +7,9 @@ import qualiteManquePrelevement from '@/assets/icons/qualite_baignade_manque_pre
 import qualiteNonClasse from '@/assets/icons/qualite_baignade_non_classe.svg';
 import qualiteSuffisant from '@/assets/icons/qualite_baignade_suffisant.svg';
 import { QualiteSitesBaignade } from '@/lib/postgres/models';
-import { Marker, Popup } from '@/lib/react-leaflet';
+import { L, Marker, Popup } from '@/lib/react-leaflet';
 import { Any } from '@/lib/utils/types';
-import L, { LatLngExpression, LeafletMouseEvent } from 'leaflet';
+import type { LatLngExpression, LeafletMouseEvent } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import Image from 'next/image';
 import { useRef } from 'react';
@@ -115,10 +115,10 @@ const SitesBaignadeMarkers = (props: {
             position={el.coordinates as LatLngExpression}
             ref={markerRef}
             eventHandlers={{
-              mouseover: (event) => {
+              mouseover: (event: LeafletMouseEvent) => {
                 event.target.openPopup();
               },
-              mouseout: (event) => {
+              mouseout: (event: LeafletMouseEvent) => {
                 event.target.closePopup();
               }
             }}
@@ -140,40 +140,38 @@ const SitesBaignadeMarkers = (props: {
               }
               `}
               <Popup offset={[6, 8]}>
-                <div className="p-[0.75rem]">
-                  <div className={styles.qualiteSitesBaignadePopupWrapper}>
-                    <Image
-                      src={
-                        el.qualite2020 === 'E'
-                          ? qualiteExcellent
-                          : el.qualite2020 === 'B'
-                            ? qualiteBon
-                            : el.qualite2020 === 'S'
-                              ? qualiteSuffisant
-                              : el.qualite2020 === 'I'
-                                ? qualiteInsuffisant
-                                : el.qualite2020 === 'P'
-                                  ? qualiteManquePrelevement
-                                  : qualiteNonClasse
-                      }
-                      alt=""
-                    />
-                    <div className={styles.qualiteSitesBaignadePopupText}>
-                      <p style={{ fontWeight: 400 }}>{el.nomSite}</p>
-                      <p style={{ fontWeight: 700 }}>
-                        {el.qualite2020 === 'E'
-                          ? 'Excellent'
-                          : el.qualite2020 === 'B'
-                            ? 'Bon'
-                            : el.qualite2020 === 'S'
-                              ? 'Suffisant'
-                              : el.qualite2020 === 'I'
-                                ? 'Insuffisant'
-                                : el.qualite2020 === 'P'
-                                  ? 'Insuffisamment de prélèvement'
-                                  : 'Site non classé'}
-                      </p>
-                    </div>
+                <div className={styles.qualiteSitesBaignadePopupWrapper}>
+                  <Image
+                    src={
+                      el.qualite2020 === 'E'
+                        ? qualiteExcellent
+                        : el.qualite2020 === 'B'
+                          ? qualiteBon
+                          : el.qualite2020 === 'S'
+                            ? qualiteSuffisant
+                            : el.qualite2020 === 'I'
+                              ? qualiteInsuffisant
+                              : el.qualite2020 === 'P'
+                                ? qualiteManquePrelevement
+                                : qualiteNonClasse
+                    }
+                    alt=""
+                  />
+                  <div className={styles.qualiteSitesBaignadePopupText}>
+                    <p style={{ fontWeight: 400 }}>{el.nomSite}</p>
+                    <p style={{ fontWeight: 700 }}>
+                      {el.qualite2020 === 'E'
+                        ? 'Excellent'
+                        : el.qualite2020 === 'B'
+                          ? 'Bon'
+                          : el.qualite2020 === 'S'
+                            ? 'Suffisant'
+                            : el.qualite2020 === 'I'
+                              ? 'Insuffisant'
+                              : el.qualite2020 === 'P'
+                                ? 'Insuffisamment de prélèvement'
+                                : 'Site non classé'}
+                    </p>
                   </div>
                 </div>
               </Popup>

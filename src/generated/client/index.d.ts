@@ -19,6 +19,14 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type north_star_metric = $Result.DefaultSelection<Prisma.$north_star_metricPayload>
 /**
+<<<<<<< HEAD
+=======
+ * Model agriculture
+ * 
+ */
+export type agriculture = $Result.DefaultSelection<Prisma.$agriculturePayload>
+/**
+>>>>>>> dev
  * Model agriculture_bio
  * 
  */
@@ -34,6 +42,14 @@ export type aot_40 = $Result.DefaultSelection<Prisma.$aot_40Payload>
  */
 export type arretes_catnat = $Result.DefaultSelection<Prisma.$arretes_catnatPayload>
 /**
+<<<<<<< HEAD
+=======
+ * Model atlas_biodiversite
+ * 
+ */
+export type atlas_biodiversite = $Result.DefaultSelection<Prisma.$atlas_biodiversitePayload>
+/**
+>>>>>>> dev
  * Model collectivites_searchbar
  * 
  */
@@ -54,16 +70,50 @@ export type feux_foret = $Result.DefaultSelection<Prisma.$feux_foretPayload>
  */
 export type inconfort_thermique = $Result.DefaultSelection<Prisma.$inconfort_thermiquePayload>
 /**
+<<<<<<< HEAD
+=======
+ * Model lcz_couverture
+ * 
+ */
+export type lcz_couverture = $Result.DefaultSelection<Prisma.$lcz_couverturePayload>
+/**
+>>>>>>> dev
  * Model patch4c
  * 
  */
 export type patch4c = $Result.DefaultSelection<Prisma.$patch4cPayload>
 /**
+<<<<<<< HEAD
+=======
+ * Model qualite_sites_baignade
+ * 
+ */
+export type qualite_sites_baignade = $Result.DefaultSelection<Prisma.$qualite_sites_baignadePayload>
+/**
+>>>>>>> dev
  * Model ressources_eau
  * 
  */
 export type ressources_eau = $Result.DefaultSelection<Prisma.$ressources_eauPayload>
 /**
+<<<<<<< HEAD
+=======
+ * Model rga
+ * 
+ */
+export type rga = $Result.DefaultSelection<Prisma.$rgaPayload>
+/**
+ * Model surfaces_agricoles
+ * 
+ */
+export type surfaces_agricoles = $Result.DefaultSelection<Prisma.$surfaces_agricolesPayload>
+/**
+ * Model surfaces_protegees
+ * 
+ */
+export type surfaces_protegees = $Result.DefaultSelection<Prisma.$surfaces_protegeesPayload>
+/**
+>>>>>>> dev
  * Model clc_territoires
  * 
  */
@@ -84,16 +134,34 @@ export type erosion_cotiere = $Result.DefaultSelection<Prisma.$erosion_cotierePa
  */
 export type etat_cours_d_eau = $Result.DefaultSelection<Prisma.$etat_cours_d_eauPayload>
 /**
+<<<<<<< HEAD
  * Model qualite_sites_baignade
  * 
  */
 export type qualite_sites_baignade = $Result.DefaultSelection<Prisma.$qualite_sites_baignadePayload>
+=======
+ * Model postgis_rga
+ * 
+ */
+export type postgis_rga = $Result.DefaultSelection<Prisma.$postgis_rgaPayload>
+/**
+ * Model spatial_ref_sys
+ * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+ */
+export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPayload>
+/**
+ * Model sandbox_users
+ * 
+ */
+export type sandbox_users = $Result.DefaultSelection<Prisma.$sandbox_usersPayload>
+>>>>>>> dev
 /**
  * Model users
  * 
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
 /**
+<<<<<<< HEAD
  * Model rga
  * 
  */
@@ -123,6 +191,22 @@ export type lcz_couverture = $Result.DefaultSelection<Prisma.$lcz_couverturePayl
  * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
  */
 export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPayload>
+=======
+ * Model export_cours_d_eau
+ * 
+ */
+export type export_cours_d_eau = $Result.DefaultSelection<Prisma.$export_cours_d_eauPayload>
+/**
+ * Model pg_stat_statements
+ * 
+ */
+export type pg_stat_statements = $Result.DefaultSelection<Prisma.$pg_stat_statementsPayload>
+/**
+ * Model pg_stat_statements_info
+ * 
+ */
+export type pg_stat_statements_info = $Result.DefaultSelection<Prisma.$pg_stat_statements_infoPayload>
+>>>>>>> dev
 /**
  * Model geography_columns
  * 
@@ -133,6 +217,7 @@ export type geography_columns = $Result.DefaultSelection<Prisma.$geography_colum
  * 
  */
 export type geometry_columns = $Result.DefaultSelection<Prisma.$geometry_columnsPayload>
+<<<<<<< HEAD
 /**
  * Model pg_stat_statements_info
  * 
@@ -143,6 +228,8 @@ export type pg_stat_statements_info = $Result.DefaultSelection<Prisma.$pg_stat_s
  * 
  */
 export type pg_stat_statements = $Result.DefaultSelection<Prisma.$pg_stat_statementsPayload>
+=======
+>>>>>>> dev
 
 /**
  * ##  Prisma Client ʲˢ
@@ -273,6 +360,19 @@ export class PrismaClient<
   get north_star_metric(): Prisma.north_star_metricDelegate<ExtArgs, ClientOptions>;
 
   /**
+<<<<<<< HEAD
+=======
+   * `prisma.agriculture`: Exposes CRUD operations for the **agriculture** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Agricultures
+    * const agricultures = await prisma.agriculture.findMany()
+    * ```
+    */
+  get agriculture(): Prisma.agricultureDelegate<ExtArgs, ClientOptions>;
+
+  /**
+>>>>>>> dev
    * `prisma.agriculture_bio`: Exposes CRUD operations for the **agriculture_bio** model.
     * Example usage:
     * ```ts
@@ -303,6 +403,19 @@ export class PrismaClient<
   get arretes_catnat(): Prisma.arretes_catnatDelegate<ExtArgs, ClientOptions>;
 
   /**
+<<<<<<< HEAD
+=======
+   * `prisma.atlas_biodiversite`: Exposes CRUD operations for the **atlas_biodiversite** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Atlas_biodiversites
+    * const atlas_biodiversites = await prisma.atlas_biodiversite.findMany()
+    * ```
+    */
+  get atlas_biodiversite(): Prisma.atlas_biodiversiteDelegate<ExtArgs, ClientOptions>;
+
+  /**
+>>>>>>> dev
    * `prisma.collectivites_searchbar`: Exposes CRUD operations for the **collectivites_searchbar** model.
     * Example usage:
     * ```ts
@@ -343,6 +456,19 @@ export class PrismaClient<
   get inconfort_thermique(): Prisma.inconfort_thermiqueDelegate<ExtArgs, ClientOptions>;
 
   /**
+<<<<<<< HEAD
+=======
+   * `prisma.lcz_couverture`: Exposes CRUD operations for the **lcz_couverture** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Lcz_couvertures
+    * const lcz_couvertures = await prisma.lcz_couverture.findMany()
+    * ```
+    */
+  get lcz_couverture(): Prisma.lcz_couvertureDelegate<ExtArgs, ClientOptions>;
+
+  /**
+>>>>>>> dev
    * `prisma.patch4c`: Exposes CRUD operations for the **patch4c** model.
     * Example usage:
     * ```ts
@@ -353,6 +479,19 @@ export class PrismaClient<
   get patch4c(): Prisma.patch4cDelegate<ExtArgs, ClientOptions>;
 
   /**
+<<<<<<< HEAD
+=======
+   * `prisma.qualite_sites_baignade`: Exposes CRUD operations for the **qualite_sites_baignade** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Qualite_sites_baignades
+    * const qualite_sites_baignades = await prisma.qualite_sites_baignade.findMany()
+    * ```
+    */
+  get qualite_sites_baignade(): Prisma.qualite_sites_baignadeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+>>>>>>> dev
    * `prisma.ressources_eau`: Exposes CRUD operations for the **ressources_eau** model.
     * Example usage:
     * ```ts
@@ -363,6 +502,39 @@ export class PrismaClient<
   get ressources_eau(): Prisma.ressources_eauDelegate<ExtArgs, ClientOptions>;
 
   /**
+<<<<<<< HEAD
+=======
+   * `prisma.rga`: Exposes CRUD operations for the **rga** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Rgas
+    * const rgas = await prisma.rga.findMany()
+    * ```
+    */
+  get rga(): Prisma.rgaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.surfaces_agricoles`: Exposes CRUD operations for the **surfaces_agricoles** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Surfaces_agricoles
+    * const surfaces_agricoles = await prisma.surfaces_agricoles.findMany()
+    * ```
+    */
+  get surfaces_agricoles(): Prisma.surfaces_agricolesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.surfaces_protegees`: Exposes CRUD operations for the **surfaces_protegees** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Surfaces_protegees
+    * const surfaces_protegees = await prisma.surfaces_protegees.findMany()
+    * ```
+    */
+  get surfaces_protegees(): Prisma.surfaces_protegeesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+>>>>>>> dev
    * `prisma.clc_territoires`: Exposes CRUD operations for the **clc_territoires** model.
     * Example usage:
     * ```ts
@@ -403,6 +575,7 @@ export class PrismaClient<
   get etat_cours_d_eau(): Prisma.etat_cours_d_eauDelegate<ExtArgs, ClientOptions>;
 
   /**
+<<<<<<< HEAD
    * `prisma.qualite_sites_baignade`: Exposes CRUD operations for the **qualite_sites_baignade** model.
     * Example usage:
     * ```ts
@@ -411,6 +584,36 @@ export class PrismaClient<
     * ```
     */
   get qualite_sites_baignade(): Prisma.qualite_sites_baignadeDelegate<ExtArgs, ClientOptions>;
+=======
+   * `prisma.postgis_rga`: Exposes CRUD operations for the **postgis_rga** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Postgis_rgas
+    * const postgis_rgas = await prisma.postgis_rga.findMany()
+    * ```
+    */
+  get postgis_rga(): Prisma.postgis_rgaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.spatial_ref_sys`: Exposes CRUD operations for the **spatial_ref_sys** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Spatial_ref_sys
+    * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
+    * ```
+    */
+  get spatial_ref_sys(): Prisma.spatial_ref_sysDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.sandbox_users`: Exposes CRUD operations for the **sandbox_users** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Sandbox_users
+    * const sandbox_users = await prisma.sandbox_users.findMany()
+    * ```
+    */
+  get sandbox_users(): Prisma.sandbox_usersDelegate<ExtArgs, ClientOptions>;
+>>>>>>> dev
 
   /**
    * `prisma.users`: Exposes CRUD operations for the **users** model.
@@ -423,6 +626,7 @@ export class PrismaClient<
   get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
 
   /**
+<<<<<<< HEAD
    * `prisma.rga`: Exposes CRUD operations for the **rga** model.
     * Example usage:
     * ```ts
@@ -481,6 +685,36 @@ export class PrismaClient<
     * ```
     */
   get spatial_ref_sys(): Prisma.spatial_ref_sysDelegate<ExtArgs, ClientOptions>;
+=======
+   * `prisma.export_cours_d_eau`: Exposes CRUD operations for the **export_cours_d_eau** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Export_cours_d_eaus
+    * const export_cours_d_eaus = await prisma.export_cours_d_eau.findMany()
+    * ```
+    */
+  get export_cours_d_eau(): Prisma.export_cours_d_eauDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.pg_stat_statements`: Exposes CRUD operations for the **pg_stat_statements** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Pg_stat_statements
+    * const pg_stat_statements = await prisma.pg_stat_statements.findMany()
+    * ```
+    */
+  get pg_stat_statements(): Prisma.pg_stat_statementsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.pg_stat_statements_info`: Exposes CRUD operations for the **pg_stat_statements_info** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Pg_stat_statements_infos
+    * const pg_stat_statements_infos = await prisma.pg_stat_statements_info.findMany()
+    * ```
+    */
+  get pg_stat_statements_info(): Prisma.pg_stat_statements_infoDelegate<ExtArgs, ClientOptions>;
+>>>>>>> dev
 
   /**
    * `prisma.geography_columns`: Exposes CRUD operations for the **geography_columns** model.
@@ -501,6 +735,7 @@ export class PrismaClient<
     * ```
     */
   get geometry_columns(): Prisma.geometry_columnsDelegate<ExtArgs, ClientOptions>;
+<<<<<<< HEAD
 
   /**
    * `prisma.pg_stat_statements_info`: Exposes CRUD operations for the **pg_stat_statements_info** model.
@@ -521,6 +756,8 @@ export class PrismaClient<
     * ```
     */
   get pg_stat_statements(): Prisma.pg_stat_statementsDelegate<ExtArgs, ClientOptions>;
+=======
+>>>>>>> dev
 }
 
 export namespace Prisma {
@@ -579,8 +816,13 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
+<<<<<<< HEAD
    * Prisma Client JS version: 6.15.0
    * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
+=======
+   * Prisma Client JS version: 6.16.0
+   * Query Engine version: 1c57fdcd7e44b29b9313256c76699e91c3ac3c43
+>>>>>>> dev
    */
   export type PrismaVersion = {
     client: string
@@ -962,19 +1204,38 @@ export namespace Prisma {
 
   export const ModelName: {
     north_star_metric: 'north_star_metric',
+<<<<<<< HEAD
     agriculture_bio: 'agriculture_bio',
     aot_40: 'aot_40',
     arretes_catnat: 'arretes_catnat',
+=======
+    agriculture: 'agriculture',
+    agriculture_bio: 'agriculture_bio',
+    aot_40: 'aot_40',
+    arretes_catnat: 'arretes_catnat',
+    atlas_biodiversite: 'atlas_biodiversite',
+>>>>>>> dev
     collectivites_searchbar: 'collectivites_searchbar',
     consommation_espaces_naf: 'consommation_espaces_naf',
     feux_foret: 'feux_foret',
     inconfort_thermique: 'inconfort_thermique',
+<<<<<<< HEAD
     patch4c: 'patch4c',
     ressources_eau: 'ressources_eau',
+=======
+    lcz_couverture: 'lcz_couverture',
+    patch4c: 'patch4c',
+    qualite_sites_baignade: 'qualite_sites_baignade',
+    ressources_eau: 'ressources_eau',
+    rga: 'rga',
+    surfaces_agricoles: 'surfaces_agricoles',
+    surfaces_protegees: 'surfaces_protegees',
+>>>>>>> dev
     clc_territoires: 'clc_territoires',
     communes_drom: 'communes_drom',
     erosion_cotiere: 'erosion_cotiere',
     etat_cours_d_eau: 'etat_cours_d_eau',
+<<<<<<< HEAD
     qualite_sites_baignade: 'qualite_sites_baignade',
     users: 'users',
     rga: 'rga',
@@ -987,6 +1248,17 @@ export namespace Prisma {
     geometry_columns: 'geometry_columns',
     pg_stat_statements_info: 'pg_stat_statements_info',
     pg_stat_statements: 'pg_stat_statements'
+=======
+    postgis_rga: 'postgis_rga',
+    spatial_ref_sys: 'spatial_ref_sys',
+    sandbox_users: 'sandbox_users',
+    users: 'users',
+    export_cours_d_eau: 'export_cours_d_eau',
+    pg_stat_statements: 'pg_stat_statements',
+    pg_stat_statements_info: 'pg_stat_statements_info',
+    geography_columns: 'geography_columns',
+    geometry_columns: 'geometry_columns'
+>>>>>>> dev
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1005,7 +1277,11 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
+<<<<<<< HEAD
       modelProps: "north_star_metric" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "patch4c" | "ressources_eau" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "qualite_sites_baignade" | "users" | "rga" | "postgis_rga" | "agriculture" | "surfaces_agricoles" | "lcz_couverture" | "spatial_ref_sys" | "geography_columns" | "geometry_columns" | "pg_stat_statements_info" | "pg_stat_statements"
+=======
+      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "rga" | "surfaces_agricoles" | "surfaces_protegees" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "spatial_ref_sys" | "sandbox_users" | "users" | "export_cours_d_eau" | "pg_stat_statements" | "pg_stat_statements_info" | "geography_columns" | "geometry_columns"
+>>>>>>> dev
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1083,6 +1359,83 @@ export namespace Prisma {
           }
         }
       }
+<<<<<<< HEAD
+=======
+      agriculture: {
+        payload: Prisma.$agriculturePayload<ExtArgs>
+        fields: Prisma.agricultureFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.agricultureFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.agricultureFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>
+          }
+          findFirst: {
+            args: Prisma.agricultureFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.agricultureFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>
+          }
+          findMany: {
+            args: Prisma.agricultureFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>[]
+          }
+          create: {
+            args: Prisma.agricultureCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>
+          }
+          createMany: {
+            args: Prisma.agricultureCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.agricultureCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>[]
+          }
+          delete: {
+            args: Prisma.agricultureDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>
+          }
+          update: {
+            args: Prisma.agricultureUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>
+          }
+          deleteMany: {
+            args: Prisma.agricultureDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.agricultureUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.agricultureUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>[]
+          }
+          upsert: {
+            args: Prisma.agricultureUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>
+          }
+          aggregate: {
+            args: Prisma.AgricultureAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAgriculture>
+          }
+          groupBy: {
+            args: Prisma.agricultureGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AgricultureGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.agricultureCountArgs<ExtArgs>
+            result: $Utils.Optional<AgricultureCountAggregateOutputType> | number
+          }
+        }
+      }
+>>>>>>> dev
       agriculture_bio: {
         payload: Prisma.$agriculture_bioPayload<ExtArgs>
         fields: Prisma.agriculture_bioFieldRefs
@@ -1305,6 +1658,83 @@ export namespace Prisma {
           }
         }
       }
+<<<<<<< HEAD
+=======
+      atlas_biodiversite: {
+        payload: Prisma.$atlas_biodiversitePayload<ExtArgs>
+        fields: Prisma.atlas_biodiversiteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.atlas_biodiversiteFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$atlas_biodiversitePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.atlas_biodiversiteFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$atlas_biodiversitePayload>
+          }
+          findFirst: {
+            args: Prisma.atlas_biodiversiteFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$atlas_biodiversitePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.atlas_biodiversiteFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$atlas_biodiversitePayload>
+          }
+          findMany: {
+            args: Prisma.atlas_biodiversiteFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$atlas_biodiversitePayload>[]
+          }
+          create: {
+            args: Prisma.atlas_biodiversiteCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$atlas_biodiversitePayload>
+          }
+          createMany: {
+            args: Prisma.atlas_biodiversiteCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.atlas_biodiversiteCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$atlas_biodiversitePayload>[]
+          }
+          delete: {
+            args: Prisma.atlas_biodiversiteDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$atlas_biodiversitePayload>
+          }
+          update: {
+            args: Prisma.atlas_biodiversiteUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$atlas_biodiversitePayload>
+          }
+          deleteMany: {
+            args: Prisma.atlas_biodiversiteDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.atlas_biodiversiteUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.atlas_biodiversiteUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$atlas_biodiversitePayload>[]
+          }
+          upsert: {
+            args: Prisma.atlas_biodiversiteUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$atlas_biodiversitePayload>
+          }
+          aggregate: {
+            args: Prisma.Atlas_biodiversiteAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAtlas_biodiversite>
+          }
+          groupBy: {
+            args: Prisma.atlas_biodiversiteGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Atlas_biodiversiteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.atlas_biodiversiteCountArgs<ExtArgs>
+            result: $Utils.Optional<Atlas_biodiversiteCountAggregateOutputType> | number
+          }
+        }
+      }
+>>>>>>> dev
       collectivites_searchbar: {
         payload: Prisma.$collectivites_searchbarPayload<ExtArgs>
         fields: Prisma.collectivites_searchbarFieldRefs
@@ -1601,6 +2031,83 @@ export namespace Prisma {
           }
         }
       }
+<<<<<<< HEAD
+=======
+      lcz_couverture: {
+        payload: Prisma.$lcz_couverturePayload<ExtArgs>
+        fields: Prisma.lcz_couvertureFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.lcz_couvertureFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.lcz_couvertureFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>
+          }
+          findFirst: {
+            args: Prisma.lcz_couvertureFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.lcz_couvertureFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>
+          }
+          findMany: {
+            args: Prisma.lcz_couvertureFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>[]
+          }
+          create: {
+            args: Prisma.lcz_couvertureCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>
+          }
+          createMany: {
+            args: Prisma.lcz_couvertureCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.lcz_couvertureCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>[]
+          }
+          delete: {
+            args: Prisma.lcz_couvertureDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>
+          }
+          update: {
+            args: Prisma.lcz_couvertureUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>
+          }
+          deleteMany: {
+            args: Prisma.lcz_couvertureDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.lcz_couvertureUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.lcz_couvertureUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>[]
+          }
+          upsert: {
+            args: Prisma.lcz_couvertureUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lcz_couverturePayload>
+          }
+          aggregate: {
+            args: Prisma.Lcz_couvertureAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLcz_couverture>
+          }
+          groupBy: {
+            args: Prisma.lcz_couvertureGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Lcz_couvertureGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.lcz_couvertureCountArgs<ExtArgs>
+            result: $Utils.Optional<Lcz_couvertureCountAggregateOutputType> | number
+          }
+        }
+      }
+>>>>>>> dev
       patch4c: {
         payload: Prisma.$patch4cPayload<ExtArgs>
         fields: Prisma.patch4cFieldRefs
@@ -1675,6 +2182,83 @@ export namespace Prisma {
           }
         }
       }
+<<<<<<< HEAD
+=======
+      qualite_sites_baignade: {
+        payload: Prisma.$qualite_sites_baignadePayload<ExtArgs>
+        fields: Prisma.qualite_sites_baignadeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.qualite_sites_baignadeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.qualite_sites_baignadeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>
+          }
+          findFirst: {
+            args: Prisma.qualite_sites_baignadeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.qualite_sites_baignadeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>
+          }
+          findMany: {
+            args: Prisma.qualite_sites_baignadeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>[]
+          }
+          create: {
+            args: Prisma.qualite_sites_baignadeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>
+          }
+          createMany: {
+            args: Prisma.qualite_sites_baignadeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.qualite_sites_baignadeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>[]
+          }
+          delete: {
+            args: Prisma.qualite_sites_baignadeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>
+          }
+          update: {
+            args: Prisma.qualite_sites_baignadeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>
+          }
+          deleteMany: {
+            args: Prisma.qualite_sites_baignadeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.qualite_sites_baignadeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.qualite_sites_baignadeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>[]
+          }
+          upsert: {
+            args: Prisma.qualite_sites_baignadeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>
+          }
+          aggregate: {
+            args: Prisma.Qualite_sites_baignadeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateQualite_sites_baignade>
+          }
+          groupBy: {
+            args: Prisma.qualite_sites_baignadeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Qualite_sites_baignadeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.qualite_sites_baignadeCountArgs<ExtArgs>
+            result: $Utils.Optional<Qualite_sites_baignadeCountAggregateOutputType> | number
+          }
+        }
+      }
+>>>>>>> dev
       ressources_eau: {
         payload: Prisma.$ressources_eauPayload<ExtArgs>
         fields: Prisma.ressources_eauFieldRefs
@@ -1749,6 +2333,231 @@ export namespace Prisma {
           }
         }
       }
+<<<<<<< HEAD
+=======
+      rga: {
+        payload: Prisma.$rgaPayload<ExtArgs>
+        fields: Prisma.rgaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.rgaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.rgaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>
+          }
+          findFirst: {
+            args: Prisma.rgaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.rgaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>
+          }
+          findMany: {
+            args: Prisma.rgaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>[]
+          }
+          create: {
+            args: Prisma.rgaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>
+          }
+          createMany: {
+            args: Prisma.rgaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.rgaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>[]
+          }
+          delete: {
+            args: Prisma.rgaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>
+          }
+          update: {
+            args: Prisma.rgaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>
+          }
+          deleteMany: {
+            args: Prisma.rgaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.rgaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.rgaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>[]
+          }
+          upsert: {
+            args: Prisma.rgaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rgaPayload>
+          }
+          aggregate: {
+            args: Prisma.RgaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRga>
+          }
+          groupBy: {
+            args: Prisma.rgaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RgaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.rgaCountArgs<ExtArgs>
+            result: $Utils.Optional<RgaCountAggregateOutputType> | number
+          }
+        }
+      }
+      surfaces_agricoles: {
+        payload: Prisma.$surfaces_agricolesPayload<ExtArgs>
+        fields: Prisma.surfaces_agricolesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.surfaces_agricolesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.surfaces_agricolesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>
+          }
+          findFirst: {
+            args: Prisma.surfaces_agricolesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.surfaces_agricolesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>
+          }
+          findMany: {
+            args: Prisma.surfaces_agricolesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>[]
+          }
+          create: {
+            args: Prisma.surfaces_agricolesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>
+          }
+          createMany: {
+            args: Prisma.surfaces_agricolesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.surfaces_agricolesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>[]
+          }
+          delete: {
+            args: Prisma.surfaces_agricolesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>
+          }
+          update: {
+            args: Prisma.surfaces_agricolesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>
+          }
+          deleteMany: {
+            args: Prisma.surfaces_agricolesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.surfaces_agricolesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.surfaces_agricolesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>[]
+          }
+          upsert: {
+            args: Prisma.surfaces_agricolesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>
+          }
+          aggregate: {
+            args: Prisma.Surfaces_agricolesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSurfaces_agricoles>
+          }
+          groupBy: {
+            args: Prisma.surfaces_agricolesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Surfaces_agricolesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.surfaces_agricolesCountArgs<ExtArgs>
+            result: $Utils.Optional<Surfaces_agricolesCountAggregateOutputType> | number
+          }
+        }
+      }
+      surfaces_protegees: {
+        payload: Prisma.$surfaces_protegeesPayload<ExtArgs>
+        fields: Prisma.surfaces_protegeesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.surfaces_protegeesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.surfaces_protegeesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>
+          }
+          findFirst: {
+            args: Prisma.surfaces_protegeesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.surfaces_protegeesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>
+          }
+          findMany: {
+            args: Prisma.surfaces_protegeesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>[]
+          }
+          create: {
+            args: Prisma.surfaces_protegeesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>
+          }
+          createMany: {
+            args: Prisma.surfaces_protegeesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.surfaces_protegeesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>[]
+          }
+          delete: {
+            args: Prisma.surfaces_protegeesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>
+          }
+          update: {
+            args: Prisma.surfaces_protegeesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>
+          }
+          deleteMany: {
+            args: Prisma.surfaces_protegeesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.surfaces_protegeesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.surfaces_protegeesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>[]
+          }
+          upsert: {
+            args: Prisma.surfaces_protegeesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>
+          }
+          aggregate: {
+            args: Prisma.Surfaces_protegeesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSurfaces_protegees>
+          }
+          groupBy: {
+            args: Prisma.surfaces_protegeesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Surfaces_protegeesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.surfaces_protegeesCountArgs<ExtArgs>
+            result: $Utils.Optional<Surfaces_protegeesCountAggregateOutputType> | number
+          }
+        }
+      }
+>>>>>>> dev
       clc_territoires: {
         payload: Prisma.$clc_territoiresPayload<ExtArgs>
         fields: Prisma.clc_territoiresFieldRefs
@@ -1773,6 +2582,7 @@ export namespace Prisma {
             args: Prisma.clc_territoiresFindManyArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_territoiresPayload>[]
           }
+<<<<<<< HEAD
           create: {
             args: Prisma.clc_territoiresCreateArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_territoiresPayload>
@@ -1785,6 +2595,8 @@ export namespace Prisma {
             args: Prisma.clc_territoiresCreateManyAndReturnArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_territoiresPayload>[]
           }
+=======
+>>>>>>> dev
           delete: {
             args: Prisma.clc_territoiresDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_territoiresPayload>
@@ -1805,10 +2617,13 @@ export namespace Prisma {
             args: Prisma.clc_territoiresUpdateManyAndReturnArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_territoiresPayload>[]
           }
+<<<<<<< HEAD
           upsert: {
             args: Prisma.clc_territoiresUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_territoiresPayload>
           }
+=======
+>>>>>>> dev
           aggregate: {
             args: Prisma.Clc_territoiresAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateClc_territoires>
@@ -1921,6 +2736,7 @@ export namespace Prisma {
             args: Prisma.erosion_cotiereFindManyArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$erosion_cotierePayload>[]
           }
+<<<<<<< HEAD
           create: {
             args: Prisma.erosion_cotiereCreateArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$erosion_cotierePayload>
@@ -1933,6 +2749,8 @@ export namespace Prisma {
             args: Prisma.erosion_cotiereCreateManyAndReturnArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$erosion_cotierePayload>[]
           }
+=======
+>>>>>>> dev
           delete: {
             args: Prisma.erosion_cotiereDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$erosion_cotierePayload>
@@ -1953,10 +2771,13 @@ export namespace Prisma {
             args: Prisma.erosion_cotiereUpdateManyAndReturnArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$erosion_cotierePayload>[]
           }
+<<<<<<< HEAD
           upsert: {
             args: Prisma.erosion_cotiereUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$erosion_cotierePayload>
           }
+=======
+>>>>>>> dev
           aggregate: {
             args: Prisma.Erosion_cotiereAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateErosion_cotiere>
@@ -1995,6 +2816,7 @@ export namespace Prisma {
             args: Prisma.etat_cours_d_eauFindManyArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$etat_cours_d_eauPayload>[]
           }
+<<<<<<< HEAD
           create: {
             args: Prisma.etat_cours_d_eauCreateArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$etat_cours_d_eauPayload>
@@ -2007,6 +2829,8 @@ export namespace Prisma {
             args: Prisma.etat_cours_d_eauCreateManyAndReturnArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$etat_cours_d_eauPayload>[]
           }
+=======
+>>>>>>> dev
           delete: {
             args: Prisma.etat_cours_d_eauDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$etat_cours_d_eauPayload>
@@ -2027,10 +2851,13 @@ export namespace Prisma {
             args: Prisma.etat_cours_d_eauUpdateManyAndReturnArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$etat_cours_d_eauPayload>[]
           }
+<<<<<<< HEAD
           upsert: {
             args: Prisma.etat_cours_d_eauUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$etat_cours_d_eauPayload>
           }
+=======
+>>>>>>> dev
           aggregate: {
             args: Prisma.Etat_cours_d_eauAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateEtat_cours_d_eau>
@@ -2045,6 +2872,7 @@ export namespace Prisma {
           }
         }
       }
+<<<<<<< HEAD
       qualite_sites_baignade: {
         payload: Prisma.$qualite_sites_baignadePayload<ExtArgs>
         fields: Prisma.qualite_sites_baignadeFieldRefs
@@ -2267,6 +3095,8 @@ export namespace Prisma {
           }
         }
       }
+=======
+>>>>>>> dev
       postgis_rga: {
         payload: Prisma.$postgis_rgaPayload<ExtArgs>
         fields: Prisma.postgis_rgaFieldRefs
@@ -2291,6 +3121,7 @@ export namespace Prisma {
             args: Prisma.postgis_rgaFindManyArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$postgis_rgaPayload>[]
           }
+<<<<<<< HEAD
           create: {
             args: Prisma.postgis_rgaCreateArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$postgis_rgaPayload>
@@ -2303,6 +3134,8 @@ export namespace Prisma {
             args: Prisma.postgis_rgaCreateManyAndReturnArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$postgis_rgaPayload>[]
           }
+=======
+>>>>>>> dev
           delete: {
             args: Prisma.postgis_rgaDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$postgis_rgaPayload>
@@ -2323,10 +3156,13 @@ export namespace Prisma {
             args: Prisma.postgis_rgaUpdateManyAndReturnArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$postgis_rgaPayload>[]
           }
+<<<<<<< HEAD
           upsert: {
             args: Prisma.postgis_rgaUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$postgis_rgaPayload>
           }
+=======
+>>>>>>> dev
           aggregate: {
             args: Prisma.Postgis_rgaAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregatePostgis_rga>
@@ -2341,6 +3177,7 @@ export namespace Prisma {
           }
         }
       }
+<<<<<<< HEAD
       agriculture: {
         payload: Prisma.$agriculturePayload<ExtArgs>
         fields: Prisma.agricultureFieldRefs
@@ -2563,6 +3400,8 @@ export namespace Prisma {
           }
         }
       }
+=======
+>>>>>>> dev
       spatial_ref_sys: {
         payload: Prisma.$spatial_ref_sysPayload<ExtArgs>
         fields: Prisma.spatial_ref_sysFieldRefs
@@ -2637,6 +3476,291 @@ export namespace Prisma {
           }
         }
       }
+<<<<<<< HEAD
+=======
+      sandbox_users: {
+        payload: Prisma.$sandbox_usersPayload<ExtArgs>
+        fields: Prisma.sandbox_usersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.sandbox_usersFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.sandbox_usersFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
+          }
+          findFirst: {
+            args: Prisma.sandbox_usersFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.sandbox_usersFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
+          }
+          findMany: {
+            args: Prisma.sandbox_usersFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>[]
+          }
+          create: {
+            args: Prisma.sandbox_usersCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
+          }
+          createMany: {
+            args: Prisma.sandbox_usersCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.sandbox_usersCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>[]
+          }
+          delete: {
+            args: Prisma.sandbox_usersDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
+          }
+          update: {
+            args: Prisma.sandbox_usersUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
+          }
+          deleteMany: {
+            args: Prisma.sandbox_usersDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.sandbox_usersUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.sandbox_usersUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>[]
+          }
+          upsert: {
+            args: Prisma.sandbox_usersUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
+          }
+          aggregate: {
+            args: Prisma.Sandbox_usersAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSandbox_users>
+          }
+          groupBy: {
+            args: Prisma.sandbox_usersGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Sandbox_usersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.sandbox_usersCountArgs<ExtArgs>
+            result: $Utils.Optional<Sandbox_usersCountAggregateOutputType> | number
+          }
+        }
+      }
+      users: {
+        payload: Prisma.$usersPayload<ExtArgs>
+        fields: Prisma.usersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.usersFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.usersFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          findFirst: {
+            args: Prisma.usersFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.usersFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          findMany: {
+            args: Prisma.usersFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
+          }
+          create: {
+            args: Prisma.usersCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          createMany: {
+            args: Prisma.usersCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.usersCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
+          }
+          delete: {
+            args: Prisma.usersDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          update: {
+            args: Prisma.usersUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          deleteMany: {
+            args: Prisma.usersDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.usersUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.usersUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
+          }
+          upsert: {
+            args: Prisma.usersUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          aggregate: {
+            args: Prisma.UsersAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUsers>
+          }
+          groupBy: {
+            args: Prisma.usersGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UsersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.usersCountArgs<ExtArgs>
+            result: $Utils.Optional<UsersCountAggregateOutputType> | number
+          }
+        }
+      }
+      export_cours_d_eau: {
+        payload: Prisma.$export_cours_d_eauPayload<ExtArgs>
+        fields: Prisma.export_cours_d_eauFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.export_cours_d_eauFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.export_cours_d_eauFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>
+          }
+          findFirst: {
+            args: Prisma.export_cours_d_eauFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.export_cours_d_eauFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>
+          }
+          findMany: {
+            args: Prisma.export_cours_d_eauFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>[]
+          }
+          create: {
+            args: Prisma.export_cours_d_eauCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>
+          }
+          createMany: {
+            args: Prisma.export_cours_d_eauCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.export_cours_d_eauCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>[]
+          }
+          delete: {
+            args: Prisma.export_cours_d_eauDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>
+          }
+          update: {
+            args: Prisma.export_cours_d_eauUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>
+          }
+          deleteMany: {
+            args: Prisma.export_cours_d_eauDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.export_cours_d_eauUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.export_cours_d_eauUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>[]
+          }
+          upsert: {
+            args: Prisma.export_cours_d_eauUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$export_cours_d_eauPayload>
+          }
+          aggregate: {
+            args: Prisma.Export_cours_d_eauAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateExport_cours_d_eau>
+          }
+          groupBy: {
+            args: Prisma.export_cours_d_eauGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Export_cours_d_eauGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.export_cours_d_eauCountArgs<ExtArgs>
+            result: $Utils.Optional<Export_cours_d_eauCountAggregateOutputType> | number
+          }
+        }
+      }
+      pg_stat_statements: {
+        payload: Prisma.$pg_stat_statementsPayload<ExtArgs>
+        fields: Prisma.pg_stat_statementsFieldRefs
+        operations: {
+          findFirst: {
+            args: Prisma.pg_stat_statementsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pg_stat_statementsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.pg_stat_statementsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pg_stat_statementsPayload>
+          }
+          findMany: {
+            args: Prisma.pg_stat_statementsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pg_stat_statementsPayload>[]
+          }
+          aggregate: {
+            args: Prisma.Pg_stat_statementsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePg_stat_statements>
+          }
+          groupBy: {
+            args: Prisma.pg_stat_statementsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Pg_stat_statementsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.pg_stat_statementsCountArgs<ExtArgs>
+            result: $Utils.Optional<Pg_stat_statementsCountAggregateOutputType> | number
+          }
+        }
+      }
+      pg_stat_statements_info: {
+        payload: Prisma.$pg_stat_statements_infoPayload<ExtArgs>
+        fields: Prisma.pg_stat_statements_infoFieldRefs
+        operations: {
+          findFirst: {
+            args: Prisma.pg_stat_statements_infoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pg_stat_statements_infoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.pg_stat_statements_infoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pg_stat_statements_infoPayload>
+          }
+          findMany: {
+            args: Prisma.pg_stat_statements_infoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pg_stat_statements_infoPayload>[]
+          }
+          aggregate: {
+            args: Prisma.Pg_stat_statements_infoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePg_stat_statements_info>
+          }
+          groupBy: {
+            args: Prisma.pg_stat_statements_infoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Pg_stat_statements_infoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.pg_stat_statements_infoCountArgs<ExtArgs>
+            result: $Utils.Optional<Pg_stat_statements_infoCountAggregateOutputType> | number
+          }
+        }
+      }
+>>>>>>> dev
       geography_columns: {
         payload: Prisma.$geography_columnsPayload<ExtArgs>
         fields: Prisma.geography_columnsFieldRefs
@@ -2697,6 +3821,7 @@ export namespace Prisma {
           }
         }
       }
+<<<<<<< HEAD
       pg_stat_statements_info: {
         payload: Prisma.$pg_stat_statements_infoPayload<ExtArgs>
         fields: Prisma.pg_stat_statements_infoFieldRefs
@@ -2757,6 +3882,8 @@ export namespace Prisma {
           }
         }
       }
+=======
+>>>>>>> dev
     }
   } & {
     other: {
@@ -2833,6 +3960,13 @@ export namespace Prisma {
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
     /**
+<<<<<<< HEAD
+=======
+     * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
+     */
+    adapter?: runtime.SqlDriverAdapterFactory | null
+    /**
+>>>>>>> dev
      * Global configuration for omitting model fields by default.
      * 
      * @example
@@ -2850,19 +3984,38 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     north_star_metric?: north_star_metricOmit
+<<<<<<< HEAD
     agriculture_bio?: agriculture_bioOmit
     aot_40?: aot_40Omit
     arretes_catnat?: arretes_catnatOmit
+=======
+    agriculture?: agricultureOmit
+    agriculture_bio?: agriculture_bioOmit
+    aot_40?: aot_40Omit
+    arretes_catnat?: arretes_catnatOmit
+    atlas_biodiversite?: atlas_biodiversiteOmit
+>>>>>>> dev
     collectivites_searchbar?: collectivites_searchbarOmit
     consommation_espaces_naf?: consommation_espaces_nafOmit
     feux_foret?: feux_foretOmit
     inconfort_thermique?: inconfort_thermiqueOmit
+<<<<<<< HEAD
     patch4c?: patch4cOmit
     ressources_eau?: ressources_eauOmit
+=======
+    lcz_couverture?: lcz_couvertureOmit
+    patch4c?: patch4cOmit
+    qualite_sites_baignade?: qualite_sites_baignadeOmit
+    ressources_eau?: ressources_eauOmit
+    rga?: rgaOmit
+    surfaces_agricoles?: surfaces_agricolesOmit
+    surfaces_protegees?: surfaces_protegeesOmit
+>>>>>>> dev
     clc_territoires?: clc_territoiresOmit
     communes_drom?: communes_dromOmit
     erosion_cotiere?: erosion_cotiereOmit
     etat_cours_d_eau?: etat_cours_d_eauOmit
+<<<<<<< HEAD
     qualite_sites_baignade?: qualite_sites_baignadeOmit
     users?: usersOmit
     rga?: rgaOmit
@@ -2875,6 +4028,17 @@ export namespace Prisma {
     geometry_columns?: geometry_columnsOmit
     pg_stat_statements_info?: pg_stat_statements_infoOmit
     pg_stat_statements?: pg_stat_statementsOmit
+=======
+    postgis_rga?: postgis_rgaOmit
+    spatial_ref_sys?: spatial_ref_sysOmit
+    sandbox_users?: sandbox_usersOmit
+    users?: usersOmit
+    export_cours_d_eau?: export_cours_d_eauOmit
+    pg_stat_statements?: pg_stat_statementsOmit
+    pg_stat_statements_info?: pg_stat_statements_infoOmit
+    geography_columns?: geography_columnsOmit
+    geometry_columns?: geometry_columnsOmit
+>>>>>>> dev
   }
 
   /* Types for Logging */
@@ -3959,6 +5123,1163 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
+=======
+   * Model agriculture
+   */
+
+  export type AggregateAgriculture = {
+    _count: AgricultureCountAggregateOutputType | null
+    _avg: AgricultureAvgAggregateOutputType | null
+    _sum: AgricultureSumAggregateOutputType | null
+    _min: AgricultureMinAggregateOutputType | null
+    _max: AgricultureMaxAggregateOutputType | null
+  }
+
+  export type AgricultureAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+    part_irr_SAU_2020: number | null
+  }
+
+  export type AgricultureSumAggregateOutputType = {
+    index: bigint | null
+    region: number | null
+    part_irr_SAU_2020: number | null
+  }
+
+  export type AgricultureMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    part_irr_SAU_2020: number | null
+    otex_12_postes: string | null
+  }
+
+  export type AgricultureMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    part_irr_SAU_2020: number | null
+    otex_12_postes: string | null
+  }
+
+  export type AgricultureCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    part_irr_SAU_2020: number
+    otex_12_postes: number
+    _all: number
+  }
+
+
+  export type AgricultureAvgAggregateInputType = {
+    index?: true
+    region?: true
+    part_irr_SAU_2020?: true
+  }
+
+  export type AgricultureSumAggregateInputType = {
+    index?: true
+    region?: true
+    part_irr_SAU_2020?: true
+  }
+
+  export type AgricultureMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    part_irr_SAU_2020?: true
+    otex_12_postes?: true
+  }
+
+  export type AgricultureMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    part_irr_SAU_2020?: true
+    otex_12_postes?: true
+  }
+
+  export type AgricultureCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    part_irr_SAU_2020?: true
+    otex_12_postes?: true
+    _all?: true
+  }
+
+  export type AgricultureAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which agriculture to aggregate.
+     */
+    where?: agricultureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of agricultures to fetch.
+     */
+    orderBy?: agricultureOrderByWithRelationInput | agricultureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: agricultureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` agricultures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` agricultures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned agricultures
+    **/
+    _count?: true | AgricultureCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AgricultureAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AgricultureSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AgricultureMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AgricultureMaxAggregateInputType
+  }
+
+  export type GetAgricultureAggregateType<T extends AgricultureAggregateArgs> = {
+        [P in keyof T & keyof AggregateAgriculture]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAgriculture[P]>
+      : GetScalarType<T[P], AggregateAgriculture[P]>
+  }
+
+
+
+
+  export type agricultureGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: agricultureWhereInput
+    orderBy?: agricultureOrderByWithAggregationInput | agricultureOrderByWithAggregationInput[]
+    by: AgricultureScalarFieldEnum[] | AgricultureScalarFieldEnum
+    having?: agricultureScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AgricultureCountAggregateInputType | true
+    _avg?: AgricultureAvgAggregateInputType
+    _sum?: AgricultureSumAggregateInputType
+    _min?: AgricultureMinAggregateInputType
+    _max?: AgricultureMaxAggregateInputType
+  }
+
+  export type AgricultureGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    part_irr_SAU_2020: number | null
+    otex_12_postes: string
+    _count: AgricultureCountAggregateOutputType | null
+    _avg: AgricultureAvgAggregateOutputType | null
+    _sum: AgricultureSumAggregateOutputType | null
+    _min: AgricultureMinAggregateOutputType | null
+    _max: AgricultureMaxAggregateOutputType | null
+  }
+
+  type GetAgricultureGroupByPayload<T extends agricultureGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AgricultureGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AgricultureGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AgricultureGroupByOutputType[P]>
+            : GetScalarType<T[P], AgricultureGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type agricultureSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    part_irr_SAU_2020?: boolean
+    otex_12_postes?: boolean
+  }, ExtArgs["result"]["agriculture"]>
+
+  export type agricultureSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    part_irr_SAU_2020?: boolean
+    otex_12_postes?: boolean
+  }, ExtArgs["result"]["agriculture"]>
+
+  export type agricultureSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    part_irr_SAU_2020?: boolean
+    otex_12_postes?: boolean
+  }, ExtArgs["result"]["agriculture"]>
+
+  export type agricultureSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    part_irr_SAU_2020?: boolean
+    otex_12_postes?: boolean
+  }
+
+  export type agricultureOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "part_irr_SAU_2020" | "otex_12_postes", ExtArgs["result"]["agriculture"]>
+
+  export type $agriculturePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "agriculture"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: number
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      part_irr_SAU_2020: number | null
+      otex_12_postes: string
+    }, ExtArgs["result"]["agriculture"]>
+    composites: {}
+  }
+
+  type agricultureGetPayload<S extends boolean | null | undefined | agricultureDefaultArgs> = $Result.GetResult<Prisma.$agriculturePayload, S>
+
+  type agricultureCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<agricultureFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AgricultureCountAggregateInputType | true
+    }
+
+  export interface agricultureDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['agriculture'], meta: { name: 'agriculture' } }
+    /**
+     * Find zero or one Agriculture that matches the filter.
+     * @param {agricultureFindUniqueArgs} args - Arguments to find a Agriculture
+     * @example
+     * // Get one Agriculture
+     * const agriculture = await prisma.agriculture.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends agricultureFindUniqueArgs>(args: SelectSubset<T, agricultureFindUniqueArgs<ExtArgs>>): Prisma__agricultureClient<$Result.GetResult<Prisma.$agriculturePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Agriculture that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {agricultureFindUniqueOrThrowArgs} args - Arguments to find a Agriculture
+     * @example
+     * // Get one Agriculture
+     * const agriculture = await prisma.agriculture.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends agricultureFindUniqueOrThrowArgs>(args: SelectSubset<T, agricultureFindUniqueOrThrowArgs<ExtArgs>>): Prisma__agricultureClient<$Result.GetResult<Prisma.$agriculturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Agriculture that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agricultureFindFirstArgs} args - Arguments to find a Agriculture
+     * @example
+     * // Get one Agriculture
+     * const agriculture = await prisma.agriculture.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends agricultureFindFirstArgs>(args?: SelectSubset<T, agricultureFindFirstArgs<ExtArgs>>): Prisma__agricultureClient<$Result.GetResult<Prisma.$agriculturePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Agriculture that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agricultureFindFirstOrThrowArgs} args - Arguments to find a Agriculture
+     * @example
+     * // Get one Agriculture
+     * const agriculture = await prisma.agriculture.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends agricultureFindFirstOrThrowArgs>(args?: SelectSubset<T, agricultureFindFirstOrThrowArgs<ExtArgs>>): Prisma__agricultureClient<$Result.GetResult<Prisma.$agriculturePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Agricultures that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agricultureFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Agricultures
+     * const agricultures = await prisma.agriculture.findMany()
+     * 
+     * // Get first 10 Agricultures
+     * const agricultures = await prisma.agriculture.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const agricultureWithIndexOnly = await prisma.agriculture.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends agricultureFindManyArgs>(args?: SelectSubset<T, agricultureFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$agriculturePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Agriculture.
+     * @param {agricultureCreateArgs} args - Arguments to create a Agriculture.
+     * @example
+     * // Create one Agriculture
+     * const Agriculture = await prisma.agriculture.create({
+     *   data: {
+     *     // ... data to create a Agriculture
+     *   }
+     * })
+     * 
+     */
+    create<T extends agricultureCreateArgs>(args: SelectSubset<T, agricultureCreateArgs<ExtArgs>>): Prisma__agricultureClient<$Result.GetResult<Prisma.$agriculturePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Agricultures.
+     * @param {agricultureCreateManyArgs} args - Arguments to create many Agricultures.
+     * @example
+     * // Create many Agricultures
+     * const agriculture = await prisma.agriculture.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends agricultureCreateManyArgs>(args?: SelectSubset<T, agricultureCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Agricultures and returns the data saved in the database.
+     * @param {agricultureCreateManyAndReturnArgs} args - Arguments to create many Agricultures.
+     * @example
+     * // Create many Agricultures
+     * const agriculture = await prisma.agriculture.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Agricultures and only return the `index`
+     * const agricultureWithIndexOnly = await prisma.agriculture.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends agricultureCreateManyAndReturnArgs>(args?: SelectSubset<T, agricultureCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$agriculturePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Agriculture.
+     * @param {agricultureDeleteArgs} args - Arguments to delete one Agriculture.
+     * @example
+     * // Delete one Agriculture
+     * const Agriculture = await prisma.agriculture.delete({
+     *   where: {
+     *     // ... filter to delete one Agriculture
+     *   }
+     * })
+     * 
+     */
+    delete<T extends agricultureDeleteArgs>(args: SelectSubset<T, agricultureDeleteArgs<ExtArgs>>): Prisma__agricultureClient<$Result.GetResult<Prisma.$agriculturePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Agriculture.
+     * @param {agricultureUpdateArgs} args - Arguments to update one Agriculture.
+     * @example
+     * // Update one Agriculture
+     * const agriculture = await prisma.agriculture.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends agricultureUpdateArgs>(args: SelectSubset<T, agricultureUpdateArgs<ExtArgs>>): Prisma__agricultureClient<$Result.GetResult<Prisma.$agriculturePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Agricultures.
+     * @param {agricultureDeleteManyArgs} args - Arguments to filter Agricultures to delete.
+     * @example
+     * // Delete a few Agricultures
+     * const { count } = await prisma.agriculture.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends agricultureDeleteManyArgs>(args?: SelectSubset<T, agricultureDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Agricultures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agricultureUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Agricultures
+     * const agriculture = await prisma.agriculture.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends agricultureUpdateManyArgs>(args: SelectSubset<T, agricultureUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Agricultures and returns the data updated in the database.
+     * @param {agricultureUpdateManyAndReturnArgs} args - Arguments to update many Agricultures.
+     * @example
+     * // Update many Agricultures
+     * const agriculture = await prisma.agriculture.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Agricultures and only return the `index`
+     * const agricultureWithIndexOnly = await prisma.agriculture.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends agricultureUpdateManyAndReturnArgs>(args: SelectSubset<T, agricultureUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$agriculturePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Agriculture.
+     * @param {agricultureUpsertArgs} args - Arguments to update or create a Agriculture.
+     * @example
+     * // Update or create a Agriculture
+     * const agriculture = await prisma.agriculture.upsert({
+     *   create: {
+     *     // ... data to create a Agriculture
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Agriculture we want to update
+     *   }
+     * })
+     */
+    upsert<T extends agricultureUpsertArgs>(args: SelectSubset<T, agricultureUpsertArgs<ExtArgs>>): Prisma__agricultureClient<$Result.GetResult<Prisma.$agriculturePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Agricultures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agricultureCountArgs} args - Arguments to filter Agricultures to count.
+     * @example
+     * // Count the number of Agricultures
+     * const count = await prisma.agriculture.count({
+     *   where: {
+     *     // ... the filter for the Agricultures we want to count
+     *   }
+     * })
+    **/
+    count<T extends agricultureCountArgs>(
+      args?: Subset<T, agricultureCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AgricultureCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Agriculture.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgricultureAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AgricultureAggregateArgs>(args: Subset<T, AgricultureAggregateArgs>): Prisma.PrismaPromise<GetAgricultureAggregateType<T>>
+
+    /**
+     * Group by Agriculture.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agricultureGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends agricultureGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: agricultureGroupByArgs['orderBy'] }
+        : { orderBy?: agricultureGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, agricultureGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAgricultureGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the agriculture model
+   */
+  readonly fields: agricultureFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for agriculture.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__agricultureClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the agriculture model
+   */
+  interface agricultureFieldRefs {
+    readonly index: FieldRef<"agriculture", 'BigInt'>
+    readonly code_geographique: FieldRef<"agriculture", 'String'>
+    readonly libelle_geographique: FieldRef<"agriculture", 'String'>
+    readonly epci: FieldRef<"agriculture", 'String'>
+    readonly libelle_epci: FieldRef<"agriculture", 'String'>
+    readonly departement: FieldRef<"agriculture", 'String'>
+    readonly libelle_departement: FieldRef<"agriculture", 'String'>
+    readonly region: FieldRef<"agriculture", 'Float'>
+    readonly ept: FieldRef<"agriculture", 'String'>
+    readonly libelle_petr: FieldRef<"agriculture", 'String'>
+    readonly code_pnr: FieldRef<"agriculture", 'String'>
+    readonly libelle_pnr: FieldRef<"agriculture", 'String'>
+    readonly part_irr_SAU_2020: FieldRef<"agriculture", 'Float'>
+    readonly otex_12_postes: FieldRef<"agriculture", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * agriculture findUnique
+   */
+  export type agricultureFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null
+    /**
+     * Filter, which agriculture to fetch.
+     */
+    where: agricultureWhereUniqueInput
+  }
+
+  /**
+   * agriculture findUniqueOrThrow
+   */
+  export type agricultureFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null
+    /**
+     * Filter, which agriculture to fetch.
+     */
+    where: agricultureWhereUniqueInput
+  }
+
+  /**
+   * agriculture findFirst
+   */
+  export type agricultureFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null
+    /**
+     * Filter, which agriculture to fetch.
+     */
+    where?: agricultureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of agricultures to fetch.
+     */
+    orderBy?: agricultureOrderByWithRelationInput | agricultureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for agricultures.
+     */
+    cursor?: agricultureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` agricultures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` agricultures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of agricultures.
+     */
+    distinct?: AgricultureScalarFieldEnum | AgricultureScalarFieldEnum[]
+  }
+
+  /**
+   * agriculture findFirstOrThrow
+   */
+  export type agricultureFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null
+    /**
+     * Filter, which agriculture to fetch.
+     */
+    where?: agricultureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of agricultures to fetch.
+     */
+    orderBy?: agricultureOrderByWithRelationInput | agricultureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for agricultures.
+     */
+    cursor?: agricultureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` agricultures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` agricultures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of agricultures.
+     */
+    distinct?: AgricultureScalarFieldEnum | AgricultureScalarFieldEnum[]
+  }
+
+  /**
+   * agriculture findMany
+   */
+  export type agricultureFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null
+    /**
+     * Filter, which agricultures to fetch.
+     */
+    where?: agricultureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of agricultures to fetch.
+     */
+    orderBy?: agricultureOrderByWithRelationInput | agricultureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing agricultures.
+     */
+    cursor?: agricultureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` agricultures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` agricultures.
+     */
+    skip?: number
+    distinct?: AgricultureScalarFieldEnum | AgricultureScalarFieldEnum[]
+  }
+
+  /**
+   * agriculture create
+   */
+  export type agricultureCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null
+    /**
+     * The data needed to create a agriculture.
+     */
+    data: XOR<agricultureCreateInput, agricultureUncheckedCreateInput>
+  }
+
+  /**
+   * agriculture createMany
+   */
+  export type agricultureCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many agricultures.
+     */
+    data: agricultureCreateManyInput | agricultureCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * agriculture createManyAndReturn
+   */
+  export type agricultureCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null
+    /**
+     * The data used to create many agricultures.
+     */
+    data: agricultureCreateManyInput | agricultureCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * agriculture update
+   */
+  export type agricultureUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null
+    /**
+     * The data needed to update a agriculture.
+     */
+    data: XOR<agricultureUpdateInput, agricultureUncheckedUpdateInput>
+    /**
+     * Choose, which agriculture to update.
+     */
+    where: agricultureWhereUniqueInput
+  }
+
+  /**
+   * agriculture updateMany
+   */
+  export type agricultureUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update agricultures.
+     */
+    data: XOR<agricultureUpdateManyMutationInput, agricultureUncheckedUpdateManyInput>
+    /**
+     * Filter which agricultures to update
+     */
+    where?: agricultureWhereInput
+    /**
+     * Limit how many agricultures to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * agriculture updateManyAndReturn
+   */
+  export type agricultureUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null
+    /**
+     * The data used to update agricultures.
+     */
+    data: XOR<agricultureUpdateManyMutationInput, agricultureUncheckedUpdateManyInput>
+    /**
+     * Filter which agricultures to update
+     */
+    where?: agricultureWhereInput
+    /**
+     * Limit how many agricultures to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * agriculture upsert
+   */
+  export type agricultureUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null
+    /**
+     * The filter to search for the agriculture to update in case it exists.
+     */
+    where: agricultureWhereUniqueInput
+    /**
+     * In case the agriculture found by the `where` argument doesn't exist, create a new agriculture with this data.
+     */
+    create: XOR<agricultureCreateInput, agricultureUncheckedCreateInput>
+    /**
+     * In case the agriculture was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<agricultureUpdateInput, agricultureUncheckedUpdateInput>
+  }
+
+  /**
+   * agriculture delete
+   */
+  export type agricultureDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null
+    /**
+     * Filter which agriculture to delete.
+     */
+    where: agricultureWhereUniqueInput
+  }
+
+  /**
+   * agriculture deleteMany
+   */
+  export type agricultureDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which agricultures to delete
+     */
+    where?: agricultureWhereInput
+    /**
+     * Limit how many agricultures to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * agriculture without action
+   */
+  export type agricultureDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null
+  }
+
+
+  /**
+>>>>>>> dev
    * Model agriculture_bio
    */
 
@@ -7354,6 +9675,1202 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
+=======
+   * Model atlas_biodiversite
+   */
+
+  export type AggregateAtlas_biodiversite = {
+    _count: Atlas_biodiversiteCountAggregateOutputType | null
+    _avg: Atlas_biodiversiteAvgAggregateOutputType | null
+    _sum: Atlas_biodiversiteSumAggregateOutputType | null
+    _min: Atlas_biodiversiteMinAggregateOutputType | null
+    _max: Atlas_biodiversiteMaxAggregateOutputType | null
+  }
+
+  export type Atlas_biodiversiteAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+    annee_debut: number | null
+  }
+
+  export type Atlas_biodiversiteSumAggregateOutputType = {
+    index: bigint | null
+    region: number | null
+    annee_debut: number | null
+  }
+
+  export type Atlas_biodiversiteMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    nom: string | null
+    structure_porteuse: string | null
+    type_de_structure_porteuse: string | null
+    annee_debut: number | null
+    avancement: string | null
+  }
+
+  export type Atlas_biodiversiteMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    nom: string | null
+    structure_porteuse: string | null
+    type_de_structure_porteuse: string | null
+    annee_debut: number | null
+    avancement: string | null
+  }
+
+  export type Atlas_biodiversiteCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    nom: number
+    structure_porteuse: number
+    type_de_structure_porteuse: number
+    annee_debut: number
+    avancement: number
+    _all: number
+  }
+
+
+  export type Atlas_biodiversiteAvgAggregateInputType = {
+    index?: true
+    region?: true
+    annee_debut?: true
+  }
+
+  export type Atlas_biodiversiteSumAggregateInputType = {
+    index?: true
+    region?: true
+    annee_debut?: true
+  }
+
+  export type Atlas_biodiversiteMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    nom?: true
+    structure_porteuse?: true
+    type_de_structure_porteuse?: true
+    annee_debut?: true
+    avancement?: true
+  }
+
+  export type Atlas_biodiversiteMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    nom?: true
+    structure_porteuse?: true
+    type_de_structure_porteuse?: true
+    annee_debut?: true
+    avancement?: true
+  }
+
+  export type Atlas_biodiversiteCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    nom?: true
+    structure_porteuse?: true
+    type_de_structure_porteuse?: true
+    annee_debut?: true
+    avancement?: true
+    _all?: true
+  }
+
+  export type Atlas_biodiversiteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which atlas_biodiversite to aggregate.
+     */
+    where?: atlas_biodiversiteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of atlas_biodiversites to fetch.
+     */
+    orderBy?: atlas_biodiversiteOrderByWithRelationInput | atlas_biodiversiteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: atlas_biodiversiteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` atlas_biodiversites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` atlas_biodiversites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned atlas_biodiversites
+    **/
+    _count?: true | Atlas_biodiversiteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Atlas_biodiversiteAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Atlas_biodiversiteSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Atlas_biodiversiteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Atlas_biodiversiteMaxAggregateInputType
+  }
+
+  export type GetAtlas_biodiversiteAggregateType<T extends Atlas_biodiversiteAggregateArgs> = {
+        [P in keyof T & keyof AggregateAtlas_biodiversite]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAtlas_biodiversite[P]>
+      : GetScalarType<T[P], AggregateAtlas_biodiversite[P]>
+  }
+
+
+
+
+  export type atlas_biodiversiteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: atlas_biodiversiteWhereInput
+    orderBy?: atlas_biodiversiteOrderByWithAggregationInput | atlas_biodiversiteOrderByWithAggregationInput[]
+    by: Atlas_biodiversiteScalarFieldEnum[] | Atlas_biodiversiteScalarFieldEnum
+    having?: atlas_biodiversiteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Atlas_biodiversiteCountAggregateInputType | true
+    _avg?: Atlas_biodiversiteAvgAggregateInputType
+    _sum?: Atlas_biodiversiteSumAggregateInputType
+    _min?: Atlas_biodiversiteMinAggregateInputType
+    _max?: Atlas_biodiversiteMaxAggregateInputType
+  }
+
+  export type Atlas_biodiversiteGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    nom: string
+    structure_porteuse: string | null
+    type_de_structure_porteuse: string | null
+    annee_debut: number | null
+    avancement: string
+    _count: Atlas_biodiversiteCountAggregateOutputType | null
+    _avg: Atlas_biodiversiteAvgAggregateOutputType | null
+    _sum: Atlas_biodiversiteSumAggregateOutputType | null
+    _min: Atlas_biodiversiteMinAggregateOutputType | null
+    _max: Atlas_biodiversiteMaxAggregateOutputType | null
+  }
+
+  type GetAtlas_biodiversiteGroupByPayload<T extends atlas_biodiversiteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Atlas_biodiversiteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Atlas_biodiversiteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Atlas_biodiversiteGroupByOutputType[P]>
+            : GetScalarType<T[P], Atlas_biodiversiteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type atlas_biodiversiteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    nom?: boolean
+    structure_porteuse?: boolean
+    type_de_structure_porteuse?: boolean
+    annee_debut?: boolean
+    avancement?: boolean
+  }, ExtArgs["result"]["atlas_biodiversite"]>
+
+  export type atlas_biodiversiteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    nom?: boolean
+    structure_porteuse?: boolean
+    type_de_structure_porteuse?: boolean
+    annee_debut?: boolean
+    avancement?: boolean
+  }, ExtArgs["result"]["atlas_biodiversite"]>
+
+  export type atlas_biodiversiteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    nom?: boolean
+    structure_porteuse?: boolean
+    type_de_structure_porteuse?: boolean
+    annee_debut?: boolean
+    avancement?: boolean
+  }, ExtArgs["result"]["atlas_biodiversite"]>
+
+  export type atlas_biodiversiteSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    nom?: boolean
+    structure_porteuse?: boolean
+    type_de_structure_porteuse?: boolean
+    annee_debut?: boolean
+    avancement?: boolean
+  }
+
+  export type atlas_biodiversiteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nom" | "structure_porteuse" | "type_de_structure_porteuse" | "annee_debut" | "avancement", ExtArgs["result"]["atlas_biodiversite"]>
+
+  export type $atlas_biodiversitePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "atlas_biodiversite"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: number
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      nom: string
+      structure_porteuse: string | null
+      type_de_structure_porteuse: string | null
+      annee_debut: number | null
+      avancement: string
+    }, ExtArgs["result"]["atlas_biodiversite"]>
+    composites: {}
+  }
+
+  type atlas_biodiversiteGetPayload<S extends boolean | null | undefined | atlas_biodiversiteDefaultArgs> = $Result.GetResult<Prisma.$atlas_biodiversitePayload, S>
+
+  type atlas_biodiversiteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<atlas_biodiversiteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Atlas_biodiversiteCountAggregateInputType | true
+    }
+
+  export interface atlas_biodiversiteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['atlas_biodiversite'], meta: { name: 'atlas_biodiversite' } }
+    /**
+     * Find zero or one Atlas_biodiversite that matches the filter.
+     * @param {atlas_biodiversiteFindUniqueArgs} args - Arguments to find a Atlas_biodiversite
+     * @example
+     * // Get one Atlas_biodiversite
+     * const atlas_biodiversite = await prisma.atlas_biodiversite.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends atlas_biodiversiteFindUniqueArgs>(args: SelectSubset<T, atlas_biodiversiteFindUniqueArgs<ExtArgs>>): Prisma__atlas_biodiversiteClient<$Result.GetResult<Prisma.$atlas_biodiversitePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Atlas_biodiversite that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {atlas_biodiversiteFindUniqueOrThrowArgs} args - Arguments to find a Atlas_biodiversite
+     * @example
+     * // Get one Atlas_biodiversite
+     * const atlas_biodiversite = await prisma.atlas_biodiversite.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends atlas_biodiversiteFindUniqueOrThrowArgs>(args: SelectSubset<T, atlas_biodiversiteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__atlas_biodiversiteClient<$Result.GetResult<Prisma.$atlas_biodiversitePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Atlas_biodiversite that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {atlas_biodiversiteFindFirstArgs} args - Arguments to find a Atlas_biodiversite
+     * @example
+     * // Get one Atlas_biodiversite
+     * const atlas_biodiversite = await prisma.atlas_biodiversite.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends atlas_biodiversiteFindFirstArgs>(args?: SelectSubset<T, atlas_biodiversiteFindFirstArgs<ExtArgs>>): Prisma__atlas_biodiversiteClient<$Result.GetResult<Prisma.$atlas_biodiversitePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Atlas_biodiversite that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {atlas_biodiversiteFindFirstOrThrowArgs} args - Arguments to find a Atlas_biodiversite
+     * @example
+     * // Get one Atlas_biodiversite
+     * const atlas_biodiversite = await prisma.atlas_biodiversite.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends atlas_biodiversiteFindFirstOrThrowArgs>(args?: SelectSubset<T, atlas_biodiversiteFindFirstOrThrowArgs<ExtArgs>>): Prisma__atlas_biodiversiteClient<$Result.GetResult<Prisma.$atlas_biodiversitePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Atlas_biodiversites that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {atlas_biodiversiteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Atlas_biodiversites
+     * const atlas_biodiversites = await prisma.atlas_biodiversite.findMany()
+     * 
+     * // Get first 10 Atlas_biodiversites
+     * const atlas_biodiversites = await prisma.atlas_biodiversite.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const atlas_biodiversiteWithIndexOnly = await prisma.atlas_biodiversite.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends atlas_biodiversiteFindManyArgs>(args?: SelectSubset<T, atlas_biodiversiteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$atlas_biodiversitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Atlas_biodiversite.
+     * @param {atlas_biodiversiteCreateArgs} args - Arguments to create a Atlas_biodiversite.
+     * @example
+     * // Create one Atlas_biodiversite
+     * const Atlas_biodiversite = await prisma.atlas_biodiversite.create({
+     *   data: {
+     *     // ... data to create a Atlas_biodiversite
+     *   }
+     * })
+     * 
+     */
+    create<T extends atlas_biodiversiteCreateArgs>(args: SelectSubset<T, atlas_biodiversiteCreateArgs<ExtArgs>>): Prisma__atlas_biodiversiteClient<$Result.GetResult<Prisma.$atlas_biodiversitePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Atlas_biodiversites.
+     * @param {atlas_biodiversiteCreateManyArgs} args - Arguments to create many Atlas_biodiversites.
+     * @example
+     * // Create many Atlas_biodiversites
+     * const atlas_biodiversite = await prisma.atlas_biodiversite.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends atlas_biodiversiteCreateManyArgs>(args?: SelectSubset<T, atlas_biodiversiteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Atlas_biodiversites and returns the data saved in the database.
+     * @param {atlas_biodiversiteCreateManyAndReturnArgs} args - Arguments to create many Atlas_biodiversites.
+     * @example
+     * // Create many Atlas_biodiversites
+     * const atlas_biodiversite = await prisma.atlas_biodiversite.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Atlas_biodiversites and only return the `index`
+     * const atlas_biodiversiteWithIndexOnly = await prisma.atlas_biodiversite.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends atlas_biodiversiteCreateManyAndReturnArgs>(args?: SelectSubset<T, atlas_biodiversiteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$atlas_biodiversitePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Atlas_biodiversite.
+     * @param {atlas_biodiversiteDeleteArgs} args - Arguments to delete one Atlas_biodiversite.
+     * @example
+     * // Delete one Atlas_biodiversite
+     * const Atlas_biodiversite = await prisma.atlas_biodiversite.delete({
+     *   where: {
+     *     // ... filter to delete one Atlas_biodiversite
+     *   }
+     * })
+     * 
+     */
+    delete<T extends atlas_biodiversiteDeleteArgs>(args: SelectSubset<T, atlas_biodiversiteDeleteArgs<ExtArgs>>): Prisma__atlas_biodiversiteClient<$Result.GetResult<Prisma.$atlas_biodiversitePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Atlas_biodiversite.
+     * @param {atlas_biodiversiteUpdateArgs} args - Arguments to update one Atlas_biodiversite.
+     * @example
+     * // Update one Atlas_biodiversite
+     * const atlas_biodiversite = await prisma.atlas_biodiversite.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends atlas_biodiversiteUpdateArgs>(args: SelectSubset<T, atlas_biodiversiteUpdateArgs<ExtArgs>>): Prisma__atlas_biodiversiteClient<$Result.GetResult<Prisma.$atlas_biodiversitePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Atlas_biodiversites.
+     * @param {atlas_biodiversiteDeleteManyArgs} args - Arguments to filter Atlas_biodiversites to delete.
+     * @example
+     * // Delete a few Atlas_biodiversites
+     * const { count } = await prisma.atlas_biodiversite.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends atlas_biodiversiteDeleteManyArgs>(args?: SelectSubset<T, atlas_biodiversiteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Atlas_biodiversites.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {atlas_biodiversiteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Atlas_biodiversites
+     * const atlas_biodiversite = await prisma.atlas_biodiversite.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends atlas_biodiversiteUpdateManyArgs>(args: SelectSubset<T, atlas_biodiversiteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Atlas_biodiversites and returns the data updated in the database.
+     * @param {atlas_biodiversiteUpdateManyAndReturnArgs} args - Arguments to update many Atlas_biodiversites.
+     * @example
+     * // Update many Atlas_biodiversites
+     * const atlas_biodiversite = await prisma.atlas_biodiversite.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Atlas_biodiversites and only return the `index`
+     * const atlas_biodiversiteWithIndexOnly = await prisma.atlas_biodiversite.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends atlas_biodiversiteUpdateManyAndReturnArgs>(args: SelectSubset<T, atlas_biodiversiteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$atlas_biodiversitePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Atlas_biodiversite.
+     * @param {atlas_biodiversiteUpsertArgs} args - Arguments to update or create a Atlas_biodiversite.
+     * @example
+     * // Update or create a Atlas_biodiversite
+     * const atlas_biodiversite = await prisma.atlas_biodiversite.upsert({
+     *   create: {
+     *     // ... data to create a Atlas_biodiversite
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Atlas_biodiversite we want to update
+     *   }
+     * })
+     */
+    upsert<T extends atlas_biodiversiteUpsertArgs>(args: SelectSubset<T, atlas_biodiversiteUpsertArgs<ExtArgs>>): Prisma__atlas_biodiversiteClient<$Result.GetResult<Prisma.$atlas_biodiversitePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Atlas_biodiversites.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {atlas_biodiversiteCountArgs} args - Arguments to filter Atlas_biodiversites to count.
+     * @example
+     * // Count the number of Atlas_biodiversites
+     * const count = await prisma.atlas_biodiversite.count({
+     *   where: {
+     *     // ... the filter for the Atlas_biodiversites we want to count
+     *   }
+     * })
+    **/
+    count<T extends atlas_biodiversiteCountArgs>(
+      args?: Subset<T, atlas_biodiversiteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Atlas_biodiversiteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Atlas_biodiversite.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Atlas_biodiversiteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Atlas_biodiversiteAggregateArgs>(args: Subset<T, Atlas_biodiversiteAggregateArgs>): Prisma.PrismaPromise<GetAtlas_biodiversiteAggregateType<T>>
+
+    /**
+     * Group by Atlas_biodiversite.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {atlas_biodiversiteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends atlas_biodiversiteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: atlas_biodiversiteGroupByArgs['orderBy'] }
+        : { orderBy?: atlas_biodiversiteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, atlas_biodiversiteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAtlas_biodiversiteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the atlas_biodiversite model
+   */
+  readonly fields: atlas_biodiversiteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for atlas_biodiversite.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__atlas_biodiversiteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the atlas_biodiversite model
+   */
+  interface atlas_biodiversiteFieldRefs {
+    readonly index: FieldRef<"atlas_biodiversite", 'BigInt'>
+    readonly code_geographique: FieldRef<"atlas_biodiversite", 'String'>
+    readonly libelle_geographique: FieldRef<"atlas_biodiversite", 'String'>
+    readonly epci: FieldRef<"atlas_biodiversite", 'String'>
+    readonly libelle_epci: FieldRef<"atlas_biodiversite", 'String'>
+    readonly departement: FieldRef<"atlas_biodiversite", 'String'>
+    readonly libelle_departement: FieldRef<"atlas_biodiversite", 'String'>
+    readonly region: FieldRef<"atlas_biodiversite", 'Float'>
+    readonly ept: FieldRef<"atlas_biodiversite", 'String'>
+    readonly libelle_petr: FieldRef<"atlas_biodiversite", 'String'>
+    readonly code_pnr: FieldRef<"atlas_biodiversite", 'String'>
+    readonly libelle_pnr: FieldRef<"atlas_biodiversite", 'String'>
+    readonly nom: FieldRef<"atlas_biodiversite", 'String'>
+    readonly structure_porteuse: FieldRef<"atlas_biodiversite", 'String'>
+    readonly type_de_structure_porteuse: FieldRef<"atlas_biodiversite", 'String'>
+    readonly annee_debut: FieldRef<"atlas_biodiversite", 'Float'>
+    readonly avancement: FieldRef<"atlas_biodiversite", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * atlas_biodiversite findUnique
+   */
+  export type atlas_biodiversiteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atlas_biodiversite
+     */
+    select?: atlas_biodiversiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the atlas_biodiversite
+     */
+    omit?: atlas_biodiversiteOmit<ExtArgs> | null
+    /**
+     * Filter, which atlas_biodiversite to fetch.
+     */
+    where: atlas_biodiversiteWhereUniqueInput
+  }
+
+  /**
+   * atlas_biodiversite findUniqueOrThrow
+   */
+  export type atlas_biodiversiteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atlas_biodiversite
+     */
+    select?: atlas_biodiversiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the atlas_biodiversite
+     */
+    omit?: atlas_biodiversiteOmit<ExtArgs> | null
+    /**
+     * Filter, which atlas_biodiversite to fetch.
+     */
+    where: atlas_biodiversiteWhereUniqueInput
+  }
+
+  /**
+   * atlas_biodiversite findFirst
+   */
+  export type atlas_biodiversiteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atlas_biodiversite
+     */
+    select?: atlas_biodiversiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the atlas_biodiversite
+     */
+    omit?: atlas_biodiversiteOmit<ExtArgs> | null
+    /**
+     * Filter, which atlas_biodiversite to fetch.
+     */
+    where?: atlas_biodiversiteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of atlas_biodiversites to fetch.
+     */
+    orderBy?: atlas_biodiversiteOrderByWithRelationInput | atlas_biodiversiteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for atlas_biodiversites.
+     */
+    cursor?: atlas_biodiversiteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` atlas_biodiversites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` atlas_biodiversites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of atlas_biodiversites.
+     */
+    distinct?: Atlas_biodiversiteScalarFieldEnum | Atlas_biodiversiteScalarFieldEnum[]
+  }
+
+  /**
+   * atlas_biodiversite findFirstOrThrow
+   */
+  export type atlas_biodiversiteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atlas_biodiversite
+     */
+    select?: atlas_biodiversiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the atlas_biodiversite
+     */
+    omit?: atlas_biodiversiteOmit<ExtArgs> | null
+    /**
+     * Filter, which atlas_biodiversite to fetch.
+     */
+    where?: atlas_biodiversiteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of atlas_biodiversites to fetch.
+     */
+    orderBy?: atlas_biodiversiteOrderByWithRelationInput | atlas_biodiversiteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for atlas_biodiversites.
+     */
+    cursor?: atlas_biodiversiteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` atlas_biodiversites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` atlas_biodiversites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of atlas_biodiversites.
+     */
+    distinct?: Atlas_biodiversiteScalarFieldEnum | Atlas_biodiversiteScalarFieldEnum[]
+  }
+
+  /**
+   * atlas_biodiversite findMany
+   */
+  export type atlas_biodiversiteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atlas_biodiversite
+     */
+    select?: atlas_biodiversiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the atlas_biodiversite
+     */
+    omit?: atlas_biodiversiteOmit<ExtArgs> | null
+    /**
+     * Filter, which atlas_biodiversites to fetch.
+     */
+    where?: atlas_biodiversiteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of atlas_biodiversites to fetch.
+     */
+    orderBy?: atlas_biodiversiteOrderByWithRelationInput | atlas_biodiversiteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing atlas_biodiversites.
+     */
+    cursor?: atlas_biodiversiteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` atlas_biodiversites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` atlas_biodiversites.
+     */
+    skip?: number
+    distinct?: Atlas_biodiversiteScalarFieldEnum | Atlas_biodiversiteScalarFieldEnum[]
+  }
+
+  /**
+   * atlas_biodiversite create
+   */
+  export type atlas_biodiversiteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atlas_biodiversite
+     */
+    select?: atlas_biodiversiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the atlas_biodiversite
+     */
+    omit?: atlas_biodiversiteOmit<ExtArgs> | null
+    /**
+     * The data needed to create a atlas_biodiversite.
+     */
+    data: XOR<atlas_biodiversiteCreateInput, atlas_biodiversiteUncheckedCreateInput>
+  }
+
+  /**
+   * atlas_biodiversite createMany
+   */
+  export type atlas_biodiversiteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many atlas_biodiversites.
+     */
+    data: atlas_biodiversiteCreateManyInput | atlas_biodiversiteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * atlas_biodiversite createManyAndReturn
+   */
+  export type atlas_biodiversiteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atlas_biodiversite
+     */
+    select?: atlas_biodiversiteSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the atlas_biodiversite
+     */
+    omit?: atlas_biodiversiteOmit<ExtArgs> | null
+    /**
+     * The data used to create many atlas_biodiversites.
+     */
+    data: atlas_biodiversiteCreateManyInput | atlas_biodiversiteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * atlas_biodiversite update
+   */
+  export type atlas_biodiversiteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atlas_biodiversite
+     */
+    select?: atlas_biodiversiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the atlas_biodiversite
+     */
+    omit?: atlas_biodiversiteOmit<ExtArgs> | null
+    /**
+     * The data needed to update a atlas_biodiversite.
+     */
+    data: XOR<atlas_biodiversiteUpdateInput, atlas_biodiversiteUncheckedUpdateInput>
+    /**
+     * Choose, which atlas_biodiversite to update.
+     */
+    where: atlas_biodiversiteWhereUniqueInput
+  }
+
+  /**
+   * atlas_biodiversite updateMany
+   */
+  export type atlas_biodiversiteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update atlas_biodiversites.
+     */
+    data: XOR<atlas_biodiversiteUpdateManyMutationInput, atlas_biodiversiteUncheckedUpdateManyInput>
+    /**
+     * Filter which atlas_biodiversites to update
+     */
+    where?: atlas_biodiversiteWhereInput
+    /**
+     * Limit how many atlas_biodiversites to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * atlas_biodiversite updateManyAndReturn
+   */
+  export type atlas_biodiversiteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atlas_biodiversite
+     */
+    select?: atlas_biodiversiteSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the atlas_biodiversite
+     */
+    omit?: atlas_biodiversiteOmit<ExtArgs> | null
+    /**
+     * The data used to update atlas_biodiversites.
+     */
+    data: XOR<atlas_biodiversiteUpdateManyMutationInput, atlas_biodiversiteUncheckedUpdateManyInput>
+    /**
+     * Filter which atlas_biodiversites to update
+     */
+    where?: atlas_biodiversiteWhereInput
+    /**
+     * Limit how many atlas_biodiversites to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * atlas_biodiversite upsert
+   */
+  export type atlas_biodiversiteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atlas_biodiversite
+     */
+    select?: atlas_biodiversiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the atlas_biodiversite
+     */
+    omit?: atlas_biodiversiteOmit<ExtArgs> | null
+    /**
+     * The filter to search for the atlas_biodiversite to update in case it exists.
+     */
+    where: atlas_biodiversiteWhereUniqueInput
+    /**
+     * In case the atlas_biodiversite found by the `where` argument doesn't exist, create a new atlas_biodiversite with this data.
+     */
+    create: XOR<atlas_biodiversiteCreateInput, atlas_biodiversiteUncheckedCreateInput>
+    /**
+     * In case the atlas_biodiversite was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<atlas_biodiversiteUpdateInput, atlas_biodiversiteUncheckedUpdateInput>
+  }
+
+  /**
+   * atlas_biodiversite delete
+   */
+  export type atlas_biodiversiteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atlas_biodiversite
+     */
+    select?: atlas_biodiversiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the atlas_biodiversite
+     */
+    omit?: atlas_biodiversiteOmit<ExtArgs> | null
+    /**
+     * Filter which atlas_biodiversite to delete.
+     */
+    where: atlas_biodiversiteWhereUniqueInput
+  }
+
+  /**
+   * atlas_biodiversite deleteMany
+   */
+  export type atlas_biodiversiteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which atlas_biodiversites to delete
+     */
+    where?: atlas_biodiversiteWhereInput
+    /**
+     * Limit how many atlas_biodiversites to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * atlas_biodiversite without action
+   */
+  export type atlas_biodiversiteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the atlas_biodiversite
+     */
+    select?: atlas_biodiversiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the atlas_biodiversite
+     */
+    omit?: atlas_biodiversiteOmit<ExtArgs> | null
+  }
+
+
+  /**
+>>>>>>> dev
    * Model collectivites_searchbar
    */
 
@@ -14724,6 +18241,1150 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
+=======
+   * Model lcz_couverture
+   */
+
+  export type AggregateLcz_couverture = {
+    _count: Lcz_couvertureCountAggregateOutputType | null
+    _avg: Lcz_couvertureAvgAggregateOutputType | null
+    _sum: Lcz_couvertureSumAggregateOutputType | null
+    _min: Lcz_couvertureMinAggregateOutputType | null
+    _max: Lcz_couvertureMaxAggregateOutputType | null
+  }
+
+  export type Lcz_couvertureAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+    couverture_lcz: number | null
+  }
+
+  export type Lcz_couvertureSumAggregateOutputType = {
+    index: bigint | null
+    region: number | null
+    couverture_lcz: number | null
+  }
+
+  export type Lcz_couvertureMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    couverture_lcz: number | null
+  }
+
+  export type Lcz_couvertureMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    couverture_lcz: number | null
+  }
+
+  export type Lcz_couvertureCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    couverture_lcz: number
+    _all: number
+  }
+
+
+  export type Lcz_couvertureAvgAggregateInputType = {
+    index?: true
+    region?: true
+    couverture_lcz?: true
+  }
+
+  export type Lcz_couvertureSumAggregateInputType = {
+    index?: true
+    region?: true
+    couverture_lcz?: true
+  }
+
+  export type Lcz_couvertureMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    couverture_lcz?: true
+  }
+
+  export type Lcz_couvertureMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    couverture_lcz?: true
+  }
+
+  export type Lcz_couvertureCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    couverture_lcz?: true
+    _all?: true
+  }
+
+  export type Lcz_couvertureAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which lcz_couverture to aggregate.
+     */
+    where?: lcz_couvertureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lcz_couvertures to fetch.
+     */
+    orderBy?: lcz_couvertureOrderByWithRelationInput | lcz_couvertureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: lcz_couvertureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lcz_couvertures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lcz_couvertures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned lcz_couvertures
+    **/
+    _count?: true | Lcz_couvertureCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Lcz_couvertureAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Lcz_couvertureSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Lcz_couvertureMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Lcz_couvertureMaxAggregateInputType
+  }
+
+  export type GetLcz_couvertureAggregateType<T extends Lcz_couvertureAggregateArgs> = {
+        [P in keyof T & keyof AggregateLcz_couverture]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLcz_couverture[P]>
+      : GetScalarType<T[P], AggregateLcz_couverture[P]>
+  }
+
+
+
+
+  export type lcz_couvertureGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: lcz_couvertureWhereInput
+    orderBy?: lcz_couvertureOrderByWithAggregationInput | lcz_couvertureOrderByWithAggregationInput[]
+    by: Lcz_couvertureScalarFieldEnum[] | Lcz_couvertureScalarFieldEnum
+    having?: lcz_couvertureScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Lcz_couvertureCountAggregateInputType | true
+    _avg?: Lcz_couvertureAvgAggregateInputType
+    _sum?: Lcz_couvertureSumAggregateInputType
+    _min?: Lcz_couvertureMinAggregateInputType
+    _max?: Lcz_couvertureMaxAggregateInputType
+  }
+
+  export type Lcz_couvertureGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    couverture_lcz: number
+    _count: Lcz_couvertureCountAggregateOutputType | null
+    _avg: Lcz_couvertureAvgAggregateOutputType | null
+    _sum: Lcz_couvertureSumAggregateOutputType | null
+    _min: Lcz_couvertureMinAggregateOutputType | null
+    _max: Lcz_couvertureMaxAggregateOutputType | null
+  }
+
+  type GetLcz_couvertureGroupByPayload<T extends lcz_couvertureGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Lcz_couvertureGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Lcz_couvertureGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Lcz_couvertureGroupByOutputType[P]>
+            : GetScalarType<T[P], Lcz_couvertureGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type lcz_couvertureSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    couverture_lcz?: boolean
+  }, ExtArgs["result"]["lcz_couverture"]>
+
+  export type lcz_couvertureSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    couverture_lcz?: boolean
+  }, ExtArgs["result"]["lcz_couverture"]>
+
+  export type lcz_couvertureSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    couverture_lcz?: boolean
+  }, ExtArgs["result"]["lcz_couverture"]>
+
+  export type lcz_couvertureSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    couverture_lcz?: boolean
+  }
+
+  export type lcz_couvertureOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "couverture_lcz", ExtArgs["result"]["lcz_couverture"]>
+
+  export type $lcz_couverturePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "lcz_couverture"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: number
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      couverture_lcz: number
+    }, ExtArgs["result"]["lcz_couverture"]>
+    composites: {}
+  }
+
+  type lcz_couvertureGetPayload<S extends boolean | null | undefined | lcz_couvertureDefaultArgs> = $Result.GetResult<Prisma.$lcz_couverturePayload, S>
+
+  type lcz_couvertureCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<lcz_couvertureFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Lcz_couvertureCountAggregateInputType | true
+    }
+
+  export interface lcz_couvertureDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['lcz_couverture'], meta: { name: 'lcz_couverture' } }
+    /**
+     * Find zero or one Lcz_couverture that matches the filter.
+     * @param {lcz_couvertureFindUniqueArgs} args - Arguments to find a Lcz_couverture
+     * @example
+     * // Get one Lcz_couverture
+     * const lcz_couverture = await prisma.lcz_couverture.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends lcz_couvertureFindUniqueArgs>(args: SelectSubset<T, lcz_couvertureFindUniqueArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Lcz_couverture that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {lcz_couvertureFindUniqueOrThrowArgs} args - Arguments to find a Lcz_couverture
+     * @example
+     * // Get one Lcz_couverture
+     * const lcz_couverture = await prisma.lcz_couverture.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends lcz_couvertureFindUniqueOrThrowArgs>(args: SelectSubset<T, lcz_couvertureFindUniqueOrThrowArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Lcz_couverture that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_couvertureFindFirstArgs} args - Arguments to find a Lcz_couverture
+     * @example
+     * // Get one Lcz_couverture
+     * const lcz_couverture = await prisma.lcz_couverture.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends lcz_couvertureFindFirstArgs>(args?: SelectSubset<T, lcz_couvertureFindFirstArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Lcz_couverture that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_couvertureFindFirstOrThrowArgs} args - Arguments to find a Lcz_couverture
+     * @example
+     * // Get one Lcz_couverture
+     * const lcz_couverture = await prisma.lcz_couverture.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends lcz_couvertureFindFirstOrThrowArgs>(args?: SelectSubset<T, lcz_couvertureFindFirstOrThrowArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Lcz_couvertures that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_couvertureFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Lcz_couvertures
+     * const lcz_couvertures = await prisma.lcz_couverture.findMany()
+     * 
+     * // Get first 10 Lcz_couvertures
+     * const lcz_couvertures = await prisma.lcz_couverture.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const lcz_couvertureWithIndexOnly = await prisma.lcz_couverture.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends lcz_couvertureFindManyArgs>(args?: SelectSubset<T, lcz_couvertureFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Lcz_couverture.
+     * @param {lcz_couvertureCreateArgs} args - Arguments to create a Lcz_couverture.
+     * @example
+     * // Create one Lcz_couverture
+     * const Lcz_couverture = await prisma.lcz_couverture.create({
+     *   data: {
+     *     // ... data to create a Lcz_couverture
+     *   }
+     * })
+     * 
+     */
+    create<T extends lcz_couvertureCreateArgs>(args: SelectSubset<T, lcz_couvertureCreateArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Lcz_couvertures.
+     * @param {lcz_couvertureCreateManyArgs} args - Arguments to create many Lcz_couvertures.
+     * @example
+     * // Create many Lcz_couvertures
+     * const lcz_couverture = await prisma.lcz_couverture.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends lcz_couvertureCreateManyArgs>(args?: SelectSubset<T, lcz_couvertureCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Lcz_couvertures and returns the data saved in the database.
+     * @param {lcz_couvertureCreateManyAndReturnArgs} args - Arguments to create many Lcz_couvertures.
+     * @example
+     * // Create many Lcz_couvertures
+     * const lcz_couverture = await prisma.lcz_couverture.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Lcz_couvertures and only return the `index`
+     * const lcz_couvertureWithIndexOnly = await prisma.lcz_couverture.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends lcz_couvertureCreateManyAndReturnArgs>(args?: SelectSubset<T, lcz_couvertureCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Lcz_couverture.
+     * @param {lcz_couvertureDeleteArgs} args - Arguments to delete one Lcz_couverture.
+     * @example
+     * // Delete one Lcz_couverture
+     * const Lcz_couverture = await prisma.lcz_couverture.delete({
+     *   where: {
+     *     // ... filter to delete one Lcz_couverture
+     *   }
+     * })
+     * 
+     */
+    delete<T extends lcz_couvertureDeleteArgs>(args: SelectSubset<T, lcz_couvertureDeleteArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Lcz_couverture.
+     * @param {lcz_couvertureUpdateArgs} args - Arguments to update one Lcz_couverture.
+     * @example
+     * // Update one Lcz_couverture
+     * const lcz_couverture = await prisma.lcz_couverture.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends lcz_couvertureUpdateArgs>(args: SelectSubset<T, lcz_couvertureUpdateArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Lcz_couvertures.
+     * @param {lcz_couvertureDeleteManyArgs} args - Arguments to filter Lcz_couvertures to delete.
+     * @example
+     * // Delete a few Lcz_couvertures
+     * const { count } = await prisma.lcz_couverture.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends lcz_couvertureDeleteManyArgs>(args?: SelectSubset<T, lcz_couvertureDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Lcz_couvertures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_couvertureUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Lcz_couvertures
+     * const lcz_couverture = await prisma.lcz_couverture.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends lcz_couvertureUpdateManyArgs>(args: SelectSubset<T, lcz_couvertureUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Lcz_couvertures and returns the data updated in the database.
+     * @param {lcz_couvertureUpdateManyAndReturnArgs} args - Arguments to update many Lcz_couvertures.
+     * @example
+     * // Update many Lcz_couvertures
+     * const lcz_couverture = await prisma.lcz_couverture.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Lcz_couvertures and only return the `index`
+     * const lcz_couvertureWithIndexOnly = await prisma.lcz_couverture.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends lcz_couvertureUpdateManyAndReturnArgs>(args: SelectSubset<T, lcz_couvertureUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Lcz_couverture.
+     * @param {lcz_couvertureUpsertArgs} args - Arguments to update or create a Lcz_couverture.
+     * @example
+     * // Update or create a Lcz_couverture
+     * const lcz_couverture = await prisma.lcz_couverture.upsert({
+     *   create: {
+     *     // ... data to create a Lcz_couverture
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Lcz_couverture we want to update
+     *   }
+     * })
+     */
+    upsert<T extends lcz_couvertureUpsertArgs>(args: SelectSubset<T, lcz_couvertureUpsertArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Lcz_couvertures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_couvertureCountArgs} args - Arguments to filter Lcz_couvertures to count.
+     * @example
+     * // Count the number of Lcz_couvertures
+     * const count = await prisma.lcz_couverture.count({
+     *   where: {
+     *     // ... the filter for the Lcz_couvertures we want to count
+     *   }
+     * })
+    **/
+    count<T extends lcz_couvertureCountArgs>(
+      args?: Subset<T, lcz_couvertureCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Lcz_couvertureCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Lcz_couverture.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Lcz_couvertureAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Lcz_couvertureAggregateArgs>(args: Subset<T, Lcz_couvertureAggregateArgs>): Prisma.PrismaPromise<GetLcz_couvertureAggregateType<T>>
+
+    /**
+     * Group by Lcz_couverture.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_couvertureGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends lcz_couvertureGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: lcz_couvertureGroupByArgs['orderBy'] }
+        : { orderBy?: lcz_couvertureGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, lcz_couvertureGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLcz_couvertureGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the lcz_couverture model
+   */
+  readonly fields: lcz_couvertureFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for lcz_couverture.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__lcz_couvertureClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the lcz_couverture model
+   */
+  interface lcz_couvertureFieldRefs {
+    readonly index: FieldRef<"lcz_couverture", 'BigInt'>
+    readonly code_geographique: FieldRef<"lcz_couverture", 'String'>
+    readonly libelle_geographique: FieldRef<"lcz_couverture", 'String'>
+    readonly epci: FieldRef<"lcz_couverture", 'String'>
+    readonly libelle_epci: FieldRef<"lcz_couverture", 'String'>
+    readonly departement: FieldRef<"lcz_couverture", 'String'>
+    readonly libelle_departement: FieldRef<"lcz_couverture", 'String'>
+    readonly region: FieldRef<"lcz_couverture", 'Int'>
+    readonly ept: FieldRef<"lcz_couverture", 'String'>
+    readonly libelle_petr: FieldRef<"lcz_couverture", 'String'>
+    readonly code_pnr: FieldRef<"lcz_couverture", 'String'>
+    readonly libelle_pnr: FieldRef<"lcz_couverture", 'String'>
+    readonly couverture_lcz: FieldRef<"lcz_couverture", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * lcz_couverture findUnique
+   */
+  export type lcz_couvertureFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * Filter, which lcz_couverture to fetch.
+     */
+    where: lcz_couvertureWhereUniqueInput
+  }
+
+  /**
+   * lcz_couverture findUniqueOrThrow
+   */
+  export type lcz_couvertureFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * Filter, which lcz_couverture to fetch.
+     */
+    where: lcz_couvertureWhereUniqueInput
+  }
+
+  /**
+   * lcz_couverture findFirst
+   */
+  export type lcz_couvertureFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * Filter, which lcz_couverture to fetch.
+     */
+    where?: lcz_couvertureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lcz_couvertures to fetch.
+     */
+    orderBy?: lcz_couvertureOrderByWithRelationInput | lcz_couvertureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for lcz_couvertures.
+     */
+    cursor?: lcz_couvertureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lcz_couvertures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lcz_couvertures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of lcz_couvertures.
+     */
+    distinct?: Lcz_couvertureScalarFieldEnum | Lcz_couvertureScalarFieldEnum[]
+  }
+
+  /**
+   * lcz_couverture findFirstOrThrow
+   */
+  export type lcz_couvertureFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * Filter, which lcz_couverture to fetch.
+     */
+    where?: lcz_couvertureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lcz_couvertures to fetch.
+     */
+    orderBy?: lcz_couvertureOrderByWithRelationInput | lcz_couvertureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for lcz_couvertures.
+     */
+    cursor?: lcz_couvertureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lcz_couvertures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lcz_couvertures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of lcz_couvertures.
+     */
+    distinct?: Lcz_couvertureScalarFieldEnum | Lcz_couvertureScalarFieldEnum[]
+  }
+
+  /**
+   * lcz_couverture findMany
+   */
+  export type lcz_couvertureFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * Filter, which lcz_couvertures to fetch.
+     */
+    where?: lcz_couvertureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lcz_couvertures to fetch.
+     */
+    orderBy?: lcz_couvertureOrderByWithRelationInput | lcz_couvertureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing lcz_couvertures.
+     */
+    cursor?: lcz_couvertureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lcz_couvertures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lcz_couvertures.
+     */
+    skip?: number
+    distinct?: Lcz_couvertureScalarFieldEnum | Lcz_couvertureScalarFieldEnum[]
+  }
+
+  /**
+   * lcz_couverture create
+   */
+  export type lcz_couvertureCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * The data needed to create a lcz_couverture.
+     */
+    data: XOR<lcz_couvertureCreateInput, lcz_couvertureUncheckedCreateInput>
+  }
+
+  /**
+   * lcz_couverture createMany
+   */
+  export type lcz_couvertureCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many lcz_couvertures.
+     */
+    data: lcz_couvertureCreateManyInput | lcz_couvertureCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * lcz_couverture createManyAndReturn
+   */
+  export type lcz_couvertureCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * The data used to create many lcz_couvertures.
+     */
+    data: lcz_couvertureCreateManyInput | lcz_couvertureCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * lcz_couverture update
+   */
+  export type lcz_couvertureUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * The data needed to update a lcz_couverture.
+     */
+    data: XOR<lcz_couvertureUpdateInput, lcz_couvertureUncheckedUpdateInput>
+    /**
+     * Choose, which lcz_couverture to update.
+     */
+    where: lcz_couvertureWhereUniqueInput
+  }
+
+  /**
+   * lcz_couverture updateMany
+   */
+  export type lcz_couvertureUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update lcz_couvertures.
+     */
+    data: XOR<lcz_couvertureUpdateManyMutationInput, lcz_couvertureUncheckedUpdateManyInput>
+    /**
+     * Filter which lcz_couvertures to update
+     */
+    where?: lcz_couvertureWhereInput
+    /**
+     * Limit how many lcz_couvertures to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * lcz_couverture updateManyAndReturn
+   */
+  export type lcz_couvertureUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * The data used to update lcz_couvertures.
+     */
+    data: XOR<lcz_couvertureUpdateManyMutationInput, lcz_couvertureUncheckedUpdateManyInput>
+    /**
+     * Filter which lcz_couvertures to update
+     */
+    where?: lcz_couvertureWhereInput
+    /**
+     * Limit how many lcz_couvertures to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * lcz_couverture upsert
+   */
+  export type lcz_couvertureUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * The filter to search for the lcz_couverture to update in case it exists.
+     */
+    where: lcz_couvertureWhereUniqueInput
+    /**
+     * In case the lcz_couverture found by the `where` argument doesn't exist, create a new lcz_couverture with this data.
+     */
+    create: XOR<lcz_couvertureCreateInput, lcz_couvertureUncheckedCreateInput>
+    /**
+     * In case the lcz_couverture was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<lcz_couvertureUpdateInput, lcz_couvertureUncheckedUpdateInput>
+  }
+
+  /**
+   * lcz_couverture delete
+   */
+  export type lcz_couvertureDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+    /**
+     * Filter which lcz_couverture to delete.
+     */
+    where: lcz_couvertureWhereUniqueInput
+  }
+
+  /**
+   * lcz_couverture deleteMany
+   */
+  export type lcz_couvertureDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which lcz_couvertures to delete
+     */
+    where?: lcz_couvertureWhereInput
+    /**
+     * Limit how many lcz_couvertures to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * lcz_couverture without action
+   */
+  export type lcz_couvertureDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lcz_couverture
+     */
+    select?: lcz_couvertureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lcz_couverture
+     */
+    omit?: lcz_couvertureOmit<ExtArgs> | null
+  }
+
+
+  /**
+>>>>>>> dev
    * Model patch4c
    */
 
@@ -15799,6 +20460,1189 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
+=======
+   * Model qualite_sites_baignade
+   */
+
+  export type AggregateQualite_sites_baignade = {
+    _count: Qualite_sites_baignadeCountAggregateOutputType | null
+    _avg: Qualite_sites_baignadeAvgAggregateOutputType | null
+    _sum: Qualite_sites_baignadeSumAggregateOutputType | null
+    _min: Qualite_sites_baignadeMinAggregateOutputType | null
+    _max: Qualite_sites_baignadeMaxAggregateOutputType | null
+  }
+
+  export type Qualite_sites_baignadeAvgAggregateOutputType = {
+    index: number | null
+    LONG: number | null
+    LAT: number | null
+  }
+
+  export type Qualite_sites_baignadeSumAggregateOutputType = {
+    index: bigint | null
+    LONG: number | null
+    LAT: number | null
+  }
+
+  export type Qualite_sites_baignadeMinAggregateOutputType = {
+    index: bigint | null
+    DEP_NOM: string | null
+    DEP_NUM: string | null
+    TYPE: string | null
+    COMMUNE: string | null
+    POINT: string | null
+    LONG: number | null
+    LAT: number | null
+    QEB_2013: string | null
+    QEB_2014: string | null
+    QEB_2015: string | null
+    QEB_2016: string | null
+    QEB_2017: string | null
+    QEB_2018: string | null
+    QEB_2019: string | null
+    QEB_2020: string | null
+  }
+
+  export type Qualite_sites_baignadeMaxAggregateOutputType = {
+    index: bigint | null
+    DEP_NOM: string | null
+    DEP_NUM: string | null
+    TYPE: string | null
+    COMMUNE: string | null
+    POINT: string | null
+    LONG: number | null
+    LAT: number | null
+    QEB_2013: string | null
+    QEB_2014: string | null
+    QEB_2015: string | null
+    QEB_2016: string | null
+    QEB_2017: string | null
+    QEB_2018: string | null
+    QEB_2019: string | null
+    QEB_2020: string | null
+  }
+
+  export type Qualite_sites_baignadeCountAggregateOutputType = {
+    index: number
+    DEP_NOM: number
+    DEP_NUM: number
+    TYPE: number
+    COMMUNE: number
+    POINT: number
+    LONG: number
+    LAT: number
+    QEB_2013: number
+    QEB_2014: number
+    QEB_2015: number
+    QEB_2016: number
+    QEB_2017: number
+    QEB_2018: number
+    QEB_2019: number
+    QEB_2020: number
+    _all: number
+  }
+
+
+  export type Qualite_sites_baignadeAvgAggregateInputType = {
+    index?: true
+    LONG?: true
+    LAT?: true
+  }
+
+  export type Qualite_sites_baignadeSumAggregateInputType = {
+    index?: true
+    LONG?: true
+    LAT?: true
+  }
+
+  export type Qualite_sites_baignadeMinAggregateInputType = {
+    index?: true
+    DEP_NOM?: true
+    DEP_NUM?: true
+    TYPE?: true
+    COMMUNE?: true
+    POINT?: true
+    LONG?: true
+    LAT?: true
+    QEB_2013?: true
+    QEB_2014?: true
+    QEB_2015?: true
+    QEB_2016?: true
+    QEB_2017?: true
+    QEB_2018?: true
+    QEB_2019?: true
+    QEB_2020?: true
+  }
+
+  export type Qualite_sites_baignadeMaxAggregateInputType = {
+    index?: true
+    DEP_NOM?: true
+    DEP_NUM?: true
+    TYPE?: true
+    COMMUNE?: true
+    POINT?: true
+    LONG?: true
+    LAT?: true
+    QEB_2013?: true
+    QEB_2014?: true
+    QEB_2015?: true
+    QEB_2016?: true
+    QEB_2017?: true
+    QEB_2018?: true
+    QEB_2019?: true
+    QEB_2020?: true
+  }
+
+  export type Qualite_sites_baignadeCountAggregateInputType = {
+    index?: true
+    DEP_NOM?: true
+    DEP_NUM?: true
+    TYPE?: true
+    COMMUNE?: true
+    POINT?: true
+    LONG?: true
+    LAT?: true
+    QEB_2013?: true
+    QEB_2014?: true
+    QEB_2015?: true
+    QEB_2016?: true
+    QEB_2017?: true
+    QEB_2018?: true
+    QEB_2019?: true
+    QEB_2020?: true
+    _all?: true
+  }
+
+  export type Qualite_sites_baignadeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which qualite_sites_baignade to aggregate.
+     */
+    where?: qualite_sites_baignadeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of qualite_sites_baignades to fetch.
+     */
+    orderBy?: qualite_sites_baignadeOrderByWithRelationInput | qualite_sites_baignadeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: qualite_sites_baignadeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` qualite_sites_baignades from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` qualite_sites_baignades.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned qualite_sites_baignades
+    **/
+    _count?: true | Qualite_sites_baignadeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Qualite_sites_baignadeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Qualite_sites_baignadeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Qualite_sites_baignadeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Qualite_sites_baignadeMaxAggregateInputType
+  }
+
+  export type GetQualite_sites_baignadeAggregateType<T extends Qualite_sites_baignadeAggregateArgs> = {
+        [P in keyof T & keyof AggregateQualite_sites_baignade]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateQualite_sites_baignade[P]>
+      : GetScalarType<T[P], AggregateQualite_sites_baignade[P]>
+  }
+
+
+
+
+  export type qualite_sites_baignadeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: qualite_sites_baignadeWhereInput
+    orderBy?: qualite_sites_baignadeOrderByWithAggregationInput | qualite_sites_baignadeOrderByWithAggregationInput[]
+    by: Qualite_sites_baignadeScalarFieldEnum[] | Qualite_sites_baignadeScalarFieldEnum
+    having?: qualite_sites_baignadeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Qualite_sites_baignadeCountAggregateInputType | true
+    _avg?: Qualite_sites_baignadeAvgAggregateInputType
+    _sum?: Qualite_sites_baignadeSumAggregateInputType
+    _min?: Qualite_sites_baignadeMinAggregateInputType
+    _max?: Qualite_sites_baignadeMaxAggregateInputType
+  }
+
+  export type Qualite_sites_baignadeGroupByOutputType = {
+    index: bigint
+    DEP_NOM: string
+    DEP_NUM: string
+    TYPE: string
+    COMMUNE: string
+    POINT: string
+    LONG: number
+    LAT: number
+    QEB_2013: string | null
+    QEB_2014: string | null
+    QEB_2015: string | null
+    QEB_2016: string | null
+    QEB_2017: string | null
+    QEB_2018: string | null
+    QEB_2019: string | null
+    QEB_2020: string | null
+    _count: Qualite_sites_baignadeCountAggregateOutputType | null
+    _avg: Qualite_sites_baignadeAvgAggregateOutputType | null
+    _sum: Qualite_sites_baignadeSumAggregateOutputType | null
+    _min: Qualite_sites_baignadeMinAggregateOutputType | null
+    _max: Qualite_sites_baignadeMaxAggregateOutputType | null
+  }
+
+  type GetQualite_sites_baignadeGroupByPayload<T extends qualite_sites_baignadeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Qualite_sites_baignadeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Qualite_sites_baignadeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Qualite_sites_baignadeGroupByOutputType[P]>
+            : GetScalarType<T[P], Qualite_sites_baignadeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type qualite_sites_baignadeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    DEP_NOM?: boolean
+    DEP_NUM?: boolean
+    TYPE?: boolean
+    COMMUNE?: boolean
+    POINT?: boolean
+    LONG?: boolean
+    LAT?: boolean
+    QEB_2013?: boolean
+    QEB_2014?: boolean
+    QEB_2015?: boolean
+    QEB_2016?: boolean
+    QEB_2017?: boolean
+    QEB_2018?: boolean
+    QEB_2019?: boolean
+    QEB_2020?: boolean
+  }, ExtArgs["result"]["qualite_sites_baignade"]>
+
+  export type qualite_sites_baignadeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    DEP_NOM?: boolean
+    DEP_NUM?: boolean
+    TYPE?: boolean
+    COMMUNE?: boolean
+    POINT?: boolean
+    LONG?: boolean
+    LAT?: boolean
+    QEB_2013?: boolean
+    QEB_2014?: boolean
+    QEB_2015?: boolean
+    QEB_2016?: boolean
+    QEB_2017?: boolean
+    QEB_2018?: boolean
+    QEB_2019?: boolean
+    QEB_2020?: boolean
+  }, ExtArgs["result"]["qualite_sites_baignade"]>
+
+  export type qualite_sites_baignadeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    DEP_NOM?: boolean
+    DEP_NUM?: boolean
+    TYPE?: boolean
+    COMMUNE?: boolean
+    POINT?: boolean
+    LONG?: boolean
+    LAT?: boolean
+    QEB_2013?: boolean
+    QEB_2014?: boolean
+    QEB_2015?: boolean
+    QEB_2016?: boolean
+    QEB_2017?: boolean
+    QEB_2018?: boolean
+    QEB_2019?: boolean
+    QEB_2020?: boolean
+  }, ExtArgs["result"]["qualite_sites_baignade"]>
+
+  export type qualite_sites_baignadeSelectScalar = {
+    index?: boolean
+    DEP_NOM?: boolean
+    DEP_NUM?: boolean
+    TYPE?: boolean
+    COMMUNE?: boolean
+    POINT?: boolean
+    LONG?: boolean
+    LAT?: boolean
+    QEB_2013?: boolean
+    QEB_2014?: boolean
+    QEB_2015?: boolean
+    QEB_2016?: boolean
+    QEB_2017?: boolean
+    QEB_2018?: boolean
+    QEB_2019?: boolean
+    QEB_2020?: boolean
+  }
+
+  export type qualite_sites_baignadeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "DEP_NOM" | "DEP_NUM" | "TYPE" | "COMMUNE" | "POINT" | "LONG" | "LAT" | "QEB_2013" | "QEB_2014" | "QEB_2015" | "QEB_2016" | "QEB_2017" | "QEB_2018" | "QEB_2019" | "QEB_2020", ExtArgs["result"]["qualite_sites_baignade"]>
+
+  export type $qualite_sites_baignadePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "qualite_sites_baignade"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      DEP_NOM: string
+      DEP_NUM: string
+      TYPE: string
+      COMMUNE: string
+      POINT: string
+      LONG: number
+      LAT: number
+      QEB_2013: string | null
+      QEB_2014: string | null
+      QEB_2015: string | null
+      QEB_2016: string | null
+      QEB_2017: string | null
+      QEB_2018: string | null
+      QEB_2019: string | null
+      QEB_2020: string | null
+    }, ExtArgs["result"]["qualite_sites_baignade"]>
+    composites: {}
+  }
+
+  type qualite_sites_baignadeGetPayload<S extends boolean | null | undefined | qualite_sites_baignadeDefaultArgs> = $Result.GetResult<Prisma.$qualite_sites_baignadePayload, S>
+
+  type qualite_sites_baignadeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<qualite_sites_baignadeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Qualite_sites_baignadeCountAggregateInputType | true
+    }
+
+  export interface qualite_sites_baignadeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['qualite_sites_baignade'], meta: { name: 'qualite_sites_baignade' } }
+    /**
+     * Find zero or one Qualite_sites_baignade that matches the filter.
+     * @param {qualite_sites_baignadeFindUniqueArgs} args - Arguments to find a Qualite_sites_baignade
+     * @example
+     * // Get one Qualite_sites_baignade
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends qualite_sites_baignadeFindUniqueArgs>(args: SelectSubset<T, qualite_sites_baignadeFindUniqueArgs<ExtArgs>>): Prisma__qualite_sites_baignadeClient<$Result.GetResult<Prisma.$qualite_sites_baignadePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Qualite_sites_baignade that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {qualite_sites_baignadeFindUniqueOrThrowArgs} args - Arguments to find a Qualite_sites_baignade
+     * @example
+     * // Get one Qualite_sites_baignade
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends qualite_sites_baignadeFindUniqueOrThrowArgs>(args: SelectSubset<T, qualite_sites_baignadeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__qualite_sites_baignadeClient<$Result.GetResult<Prisma.$qualite_sites_baignadePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Qualite_sites_baignade that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {qualite_sites_baignadeFindFirstArgs} args - Arguments to find a Qualite_sites_baignade
+     * @example
+     * // Get one Qualite_sites_baignade
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends qualite_sites_baignadeFindFirstArgs>(args?: SelectSubset<T, qualite_sites_baignadeFindFirstArgs<ExtArgs>>): Prisma__qualite_sites_baignadeClient<$Result.GetResult<Prisma.$qualite_sites_baignadePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Qualite_sites_baignade that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {qualite_sites_baignadeFindFirstOrThrowArgs} args - Arguments to find a Qualite_sites_baignade
+     * @example
+     * // Get one Qualite_sites_baignade
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends qualite_sites_baignadeFindFirstOrThrowArgs>(args?: SelectSubset<T, qualite_sites_baignadeFindFirstOrThrowArgs<ExtArgs>>): Prisma__qualite_sites_baignadeClient<$Result.GetResult<Prisma.$qualite_sites_baignadePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Qualite_sites_baignades that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {qualite_sites_baignadeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Qualite_sites_baignades
+     * const qualite_sites_baignades = await prisma.qualite_sites_baignade.findMany()
+     * 
+     * // Get first 10 Qualite_sites_baignades
+     * const qualite_sites_baignades = await prisma.qualite_sites_baignade.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const qualite_sites_baignadeWithIndexOnly = await prisma.qualite_sites_baignade.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends qualite_sites_baignadeFindManyArgs>(args?: SelectSubset<T, qualite_sites_baignadeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$qualite_sites_baignadePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Qualite_sites_baignade.
+     * @param {qualite_sites_baignadeCreateArgs} args - Arguments to create a Qualite_sites_baignade.
+     * @example
+     * // Create one Qualite_sites_baignade
+     * const Qualite_sites_baignade = await prisma.qualite_sites_baignade.create({
+     *   data: {
+     *     // ... data to create a Qualite_sites_baignade
+     *   }
+     * })
+     * 
+     */
+    create<T extends qualite_sites_baignadeCreateArgs>(args: SelectSubset<T, qualite_sites_baignadeCreateArgs<ExtArgs>>): Prisma__qualite_sites_baignadeClient<$Result.GetResult<Prisma.$qualite_sites_baignadePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Qualite_sites_baignades.
+     * @param {qualite_sites_baignadeCreateManyArgs} args - Arguments to create many Qualite_sites_baignades.
+     * @example
+     * // Create many Qualite_sites_baignades
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends qualite_sites_baignadeCreateManyArgs>(args?: SelectSubset<T, qualite_sites_baignadeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Qualite_sites_baignades and returns the data saved in the database.
+     * @param {qualite_sites_baignadeCreateManyAndReturnArgs} args - Arguments to create many Qualite_sites_baignades.
+     * @example
+     * // Create many Qualite_sites_baignades
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Qualite_sites_baignades and only return the `index`
+     * const qualite_sites_baignadeWithIndexOnly = await prisma.qualite_sites_baignade.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends qualite_sites_baignadeCreateManyAndReturnArgs>(args?: SelectSubset<T, qualite_sites_baignadeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$qualite_sites_baignadePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Qualite_sites_baignade.
+     * @param {qualite_sites_baignadeDeleteArgs} args - Arguments to delete one Qualite_sites_baignade.
+     * @example
+     * // Delete one Qualite_sites_baignade
+     * const Qualite_sites_baignade = await prisma.qualite_sites_baignade.delete({
+     *   where: {
+     *     // ... filter to delete one Qualite_sites_baignade
+     *   }
+     * })
+     * 
+     */
+    delete<T extends qualite_sites_baignadeDeleteArgs>(args: SelectSubset<T, qualite_sites_baignadeDeleteArgs<ExtArgs>>): Prisma__qualite_sites_baignadeClient<$Result.GetResult<Prisma.$qualite_sites_baignadePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Qualite_sites_baignade.
+     * @param {qualite_sites_baignadeUpdateArgs} args - Arguments to update one Qualite_sites_baignade.
+     * @example
+     * // Update one Qualite_sites_baignade
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends qualite_sites_baignadeUpdateArgs>(args: SelectSubset<T, qualite_sites_baignadeUpdateArgs<ExtArgs>>): Prisma__qualite_sites_baignadeClient<$Result.GetResult<Prisma.$qualite_sites_baignadePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Qualite_sites_baignades.
+     * @param {qualite_sites_baignadeDeleteManyArgs} args - Arguments to filter Qualite_sites_baignades to delete.
+     * @example
+     * // Delete a few Qualite_sites_baignades
+     * const { count } = await prisma.qualite_sites_baignade.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends qualite_sites_baignadeDeleteManyArgs>(args?: SelectSubset<T, qualite_sites_baignadeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Qualite_sites_baignades.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {qualite_sites_baignadeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Qualite_sites_baignades
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends qualite_sites_baignadeUpdateManyArgs>(args: SelectSubset<T, qualite_sites_baignadeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Qualite_sites_baignades and returns the data updated in the database.
+     * @param {qualite_sites_baignadeUpdateManyAndReturnArgs} args - Arguments to update many Qualite_sites_baignades.
+     * @example
+     * // Update many Qualite_sites_baignades
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Qualite_sites_baignades and only return the `index`
+     * const qualite_sites_baignadeWithIndexOnly = await prisma.qualite_sites_baignade.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends qualite_sites_baignadeUpdateManyAndReturnArgs>(args: SelectSubset<T, qualite_sites_baignadeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$qualite_sites_baignadePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Qualite_sites_baignade.
+     * @param {qualite_sites_baignadeUpsertArgs} args - Arguments to update or create a Qualite_sites_baignade.
+     * @example
+     * // Update or create a Qualite_sites_baignade
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.upsert({
+     *   create: {
+     *     // ... data to create a Qualite_sites_baignade
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Qualite_sites_baignade we want to update
+     *   }
+     * })
+     */
+    upsert<T extends qualite_sites_baignadeUpsertArgs>(args: SelectSubset<T, qualite_sites_baignadeUpsertArgs<ExtArgs>>): Prisma__qualite_sites_baignadeClient<$Result.GetResult<Prisma.$qualite_sites_baignadePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Qualite_sites_baignades.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {qualite_sites_baignadeCountArgs} args - Arguments to filter Qualite_sites_baignades to count.
+     * @example
+     * // Count the number of Qualite_sites_baignades
+     * const count = await prisma.qualite_sites_baignade.count({
+     *   where: {
+     *     // ... the filter for the Qualite_sites_baignades we want to count
+     *   }
+     * })
+    **/
+    count<T extends qualite_sites_baignadeCountArgs>(
+      args?: Subset<T, qualite_sites_baignadeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Qualite_sites_baignadeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Qualite_sites_baignade.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Qualite_sites_baignadeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Qualite_sites_baignadeAggregateArgs>(args: Subset<T, Qualite_sites_baignadeAggregateArgs>): Prisma.PrismaPromise<GetQualite_sites_baignadeAggregateType<T>>
+
+    /**
+     * Group by Qualite_sites_baignade.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {qualite_sites_baignadeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends qualite_sites_baignadeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: qualite_sites_baignadeGroupByArgs['orderBy'] }
+        : { orderBy?: qualite_sites_baignadeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, qualite_sites_baignadeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetQualite_sites_baignadeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the qualite_sites_baignade model
+   */
+  readonly fields: qualite_sites_baignadeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for qualite_sites_baignade.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__qualite_sites_baignadeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the qualite_sites_baignade model
+   */
+  interface qualite_sites_baignadeFieldRefs {
+    readonly index: FieldRef<"qualite_sites_baignade", 'BigInt'>
+    readonly DEP_NOM: FieldRef<"qualite_sites_baignade", 'String'>
+    readonly DEP_NUM: FieldRef<"qualite_sites_baignade", 'String'>
+    readonly TYPE: FieldRef<"qualite_sites_baignade", 'String'>
+    readonly COMMUNE: FieldRef<"qualite_sites_baignade", 'String'>
+    readonly POINT: FieldRef<"qualite_sites_baignade", 'String'>
+    readonly LONG: FieldRef<"qualite_sites_baignade", 'Float'>
+    readonly LAT: FieldRef<"qualite_sites_baignade", 'Float'>
+    readonly QEB_2013: FieldRef<"qualite_sites_baignade", 'String'>
+    readonly QEB_2014: FieldRef<"qualite_sites_baignade", 'String'>
+    readonly QEB_2015: FieldRef<"qualite_sites_baignade", 'String'>
+    readonly QEB_2016: FieldRef<"qualite_sites_baignade", 'String'>
+    readonly QEB_2017: FieldRef<"qualite_sites_baignade", 'String'>
+    readonly QEB_2018: FieldRef<"qualite_sites_baignade", 'String'>
+    readonly QEB_2019: FieldRef<"qualite_sites_baignade", 'String'>
+    readonly QEB_2020: FieldRef<"qualite_sites_baignade", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * qualite_sites_baignade findUnique
+   */
+  export type qualite_sites_baignadeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null
+    /**
+     * Filter, which qualite_sites_baignade to fetch.
+     */
+    where: qualite_sites_baignadeWhereUniqueInput
+  }
+
+  /**
+   * qualite_sites_baignade findUniqueOrThrow
+   */
+  export type qualite_sites_baignadeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null
+    /**
+     * Filter, which qualite_sites_baignade to fetch.
+     */
+    where: qualite_sites_baignadeWhereUniqueInput
+  }
+
+  /**
+   * qualite_sites_baignade findFirst
+   */
+  export type qualite_sites_baignadeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null
+    /**
+     * Filter, which qualite_sites_baignade to fetch.
+     */
+    where?: qualite_sites_baignadeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of qualite_sites_baignades to fetch.
+     */
+    orderBy?: qualite_sites_baignadeOrderByWithRelationInput | qualite_sites_baignadeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for qualite_sites_baignades.
+     */
+    cursor?: qualite_sites_baignadeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` qualite_sites_baignades from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` qualite_sites_baignades.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of qualite_sites_baignades.
+     */
+    distinct?: Qualite_sites_baignadeScalarFieldEnum | Qualite_sites_baignadeScalarFieldEnum[]
+  }
+
+  /**
+   * qualite_sites_baignade findFirstOrThrow
+   */
+  export type qualite_sites_baignadeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null
+    /**
+     * Filter, which qualite_sites_baignade to fetch.
+     */
+    where?: qualite_sites_baignadeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of qualite_sites_baignades to fetch.
+     */
+    orderBy?: qualite_sites_baignadeOrderByWithRelationInput | qualite_sites_baignadeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for qualite_sites_baignades.
+     */
+    cursor?: qualite_sites_baignadeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` qualite_sites_baignades from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` qualite_sites_baignades.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of qualite_sites_baignades.
+     */
+    distinct?: Qualite_sites_baignadeScalarFieldEnum | Qualite_sites_baignadeScalarFieldEnum[]
+  }
+
+  /**
+   * qualite_sites_baignade findMany
+   */
+  export type qualite_sites_baignadeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null
+    /**
+     * Filter, which qualite_sites_baignades to fetch.
+     */
+    where?: qualite_sites_baignadeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of qualite_sites_baignades to fetch.
+     */
+    orderBy?: qualite_sites_baignadeOrderByWithRelationInput | qualite_sites_baignadeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing qualite_sites_baignades.
+     */
+    cursor?: qualite_sites_baignadeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` qualite_sites_baignades from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` qualite_sites_baignades.
+     */
+    skip?: number
+    distinct?: Qualite_sites_baignadeScalarFieldEnum | Qualite_sites_baignadeScalarFieldEnum[]
+  }
+
+  /**
+   * qualite_sites_baignade create
+   */
+  export type qualite_sites_baignadeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null
+    /**
+     * The data needed to create a qualite_sites_baignade.
+     */
+    data: XOR<qualite_sites_baignadeCreateInput, qualite_sites_baignadeUncheckedCreateInput>
+  }
+
+  /**
+   * qualite_sites_baignade createMany
+   */
+  export type qualite_sites_baignadeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many qualite_sites_baignades.
+     */
+    data: qualite_sites_baignadeCreateManyInput | qualite_sites_baignadeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * qualite_sites_baignade createManyAndReturn
+   */
+  export type qualite_sites_baignadeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null
+    /**
+     * The data used to create many qualite_sites_baignades.
+     */
+    data: qualite_sites_baignadeCreateManyInput | qualite_sites_baignadeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * qualite_sites_baignade update
+   */
+  export type qualite_sites_baignadeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null
+    /**
+     * The data needed to update a qualite_sites_baignade.
+     */
+    data: XOR<qualite_sites_baignadeUpdateInput, qualite_sites_baignadeUncheckedUpdateInput>
+    /**
+     * Choose, which qualite_sites_baignade to update.
+     */
+    where: qualite_sites_baignadeWhereUniqueInput
+  }
+
+  /**
+   * qualite_sites_baignade updateMany
+   */
+  export type qualite_sites_baignadeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update qualite_sites_baignades.
+     */
+    data: XOR<qualite_sites_baignadeUpdateManyMutationInput, qualite_sites_baignadeUncheckedUpdateManyInput>
+    /**
+     * Filter which qualite_sites_baignades to update
+     */
+    where?: qualite_sites_baignadeWhereInput
+    /**
+     * Limit how many qualite_sites_baignades to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * qualite_sites_baignade updateManyAndReturn
+   */
+  export type qualite_sites_baignadeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null
+    /**
+     * The data used to update qualite_sites_baignades.
+     */
+    data: XOR<qualite_sites_baignadeUpdateManyMutationInput, qualite_sites_baignadeUncheckedUpdateManyInput>
+    /**
+     * Filter which qualite_sites_baignades to update
+     */
+    where?: qualite_sites_baignadeWhereInput
+    /**
+     * Limit how many qualite_sites_baignades to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * qualite_sites_baignade upsert
+   */
+  export type qualite_sites_baignadeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null
+    /**
+     * The filter to search for the qualite_sites_baignade to update in case it exists.
+     */
+    where: qualite_sites_baignadeWhereUniqueInput
+    /**
+     * In case the qualite_sites_baignade found by the `where` argument doesn't exist, create a new qualite_sites_baignade with this data.
+     */
+    create: XOR<qualite_sites_baignadeCreateInput, qualite_sites_baignadeUncheckedCreateInput>
+    /**
+     * In case the qualite_sites_baignade was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<qualite_sites_baignadeUpdateInput, qualite_sites_baignadeUncheckedUpdateInput>
+  }
+
+  /**
+   * qualite_sites_baignade delete
+   */
+  export type qualite_sites_baignadeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null
+    /**
+     * Filter which qualite_sites_baignade to delete.
+     */
+    where: qualite_sites_baignadeWhereUniqueInput
+  }
+
+  /**
+   * qualite_sites_baignade deleteMany
+   */
+  export type qualite_sites_baignadeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which qualite_sites_baignades to delete
+     */
+    where?: qualite_sites_baignadeWhereInput
+    /**
+     * Limit how many qualite_sites_baignades to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * qualite_sites_baignade without action
+   */
+  export type qualite_sites_baignadeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null
+  }
+
+
+  /**
+>>>>>>> dev
    * Model ressources_eau
    */
 
@@ -17170,6 +23014,7 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
    * Model clc_territoires
    */
 
@@ -23795,6 +29640,8 @@ export namespace Prisma {
 
 
   /**
+=======
+>>>>>>> dev
    * Model rga
    */
 
@@ -25344,6 +31191,7 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
    * Model postgis_rga
    */
 
@@ -27505,6 +33353,8 @@ export namespace Prisma {
 
 
   /**
+=======
+>>>>>>> dev
    * Model surfaces_agricoles
    */
 
@@ -29141,6 +34991,7 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
    * Model lcz_couverture
    */
 
@@ -29167,10 +35018,56 @@ export namespace Prisma {
   export type Lcz_couvertureMinAggregateOutputType = {
     index: bigint | null
     code_geographique: string | null
+=======
+   * Model surfaces_protegees
+   */
+
+  export type AggregateSurfaces_protegees = {
+    _count: Surfaces_protegeesCountAggregateOutputType | null
+    _avg: Surfaces_protegeesAvgAggregateOutputType | null
+    _sum: Surfaces_protegeesSumAggregateOutputType | null
+    _min: Surfaces_protegeesMinAggregateOutputType | null
+    _max: Surfaces_protegeesMaxAggregateOutputType | null
+  }
+
+  export type Surfaces_protegeesAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+  }
+
+  export type Surfaces_protegeesSumAggregateOutputType = {
+    index: bigint | null
+    region: number | null
+  }
+
+  export type Surfaces_protegeesMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    PNC: string | null
+    RAMSAR: string | null
+    PNR: string | null
+    PNP: string | null
+    FOR_PRO: string | null
+    ZZZ: string | null
+    ZNIEFF2: string | null
+    ZNIEFF1: string | null
+    RNR: string | null
+    TOU_PRO: string | null
+    NATURA: string | null
+    ZPS: string | null
+    SIC: string | null
+    CELRL: string | null
+    BIO: string | null
+    APB: string | null
+    RN: string | null
+    RBFD: string | null
+    RNCFS: string | null
+>>>>>>> dev
     libelle_geographique: string | null
     epci: string | null
     libelle_epci: string | null
     departement: string | null
+<<<<<<< HEAD
     libelle_departement: string | null
     region: number | null
     ept: string | null
@@ -29183,10 +35080,38 @@ export namespace Prisma {
   export type Lcz_couvertureMaxAggregateOutputType = {
     index: bigint | null
     code_geographique: string | null
+=======
+    region: number | null
+  }
+
+  export type Surfaces_protegeesMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    PNC: string | null
+    RAMSAR: string | null
+    PNR: string | null
+    PNP: string | null
+    FOR_PRO: string | null
+    ZZZ: string | null
+    ZNIEFF2: string | null
+    ZNIEFF1: string | null
+    RNR: string | null
+    TOU_PRO: string | null
+    NATURA: string | null
+    ZPS: string | null
+    SIC: string | null
+    CELRL: string | null
+    BIO: string | null
+    APB: string | null
+    RN: string | null
+    RBFD: string | null
+    RNCFS: string | null
+>>>>>>> dev
     libelle_geographique: string | null
     epci: string | null
     libelle_epci: string | null
     departement: string | null
+<<<<<<< HEAD
     libelle_departement: string | null
     region: number | null
     ept: string | null
@@ -29199,10 +35124,38 @@ export namespace Prisma {
   export type Lcz_couvertureCountAggregateOutputType = {
     index: number
     code_geographique: number
+=======
+    region: number | null
+  }
+
+  export type Surfaces_protegeesCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    PNC: number
+    RAMSAR: number
+    PNR: number
+    PNP: number
+    FOR_PRO: number
+    ZZZ: number
+    ZNIEFF2: number
+    ZNIEFF1: number
+    RNR: number
+    TOU_PRO: number
+    NATURA: number
+    ZPS: number
+    SIC: number
+    CELRL: number
+    BIO: number
+    APB: number
+    RN: number
+    RBFD: number
+    RNCFS: number
+>>>>>>> dev
     libelle_geographique: number
     epci: number
     libelle_epci: number
     departement: number
+<<<<<<< HEAD
     libelle_departement: number
     region: number
     ept: number
@@ -29210,10 +35163,14 @@ export namespace Prisma {
     code_pnr: number
     libelle_pnr: number
     couverture_lcz: number
+=======
+    region: number
+>>>>>>> dev
     _all: number
   }
 
 
+<<<<<<< HEAD
   export type Lcz_couvertureAvgAggregateInputType = {
     index?: true
     region?: true
@@ -29229,10 +35186,45 @@ export namespace Prisma {
   export type Lcz_couvertureMinAggregateInputType = {
     index?: true
     code_geographique?: true
+=======
+  export type Surfaces_protegeesAvgAggregateInputType = {
+    index?: true
+    region?: true
+  }
+
+  export type Surfaces_protegeesSumAggregateInputType = {
+    index?: true
+    region?: true
+  }
+
+  export type Surfaces_protegeesMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    PNC?: true
+    RAMSAR?: true
+    PNR?: true
+    PNP?: true
+    FOR_PRO?: true
+    ZZZ?: true
+    ZNIEFF2?: true
+    ZNIEFF1?: true
+    RNR?: true
+    TOU_PRO?: true
+    NATURA?: true
+    ZPS?: true
+    SIC?: true
+    CELRL?: true
+    BIO?: true
+    APB?: true
+    RN?: true
+    RBFD?: true
+    RNCFS?: true
+>>>>>>> dev
     libelle_geographique?: true
     epci?: true
     libelle_epci?: true
     departement?: true
+<<<<<<< HEAD
     libelle_departement?: true
     region?: true
     ept?: true
@@ -29245,10 +35237,38 @@ export namespace Prisma {
   export type Lcz_couvertureMaxAggregateInputType = {
     index?: true
     code_geographique?: true
+=======
+    region?: true
+  }
+
+  export type Surfaces_protegeesMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    PNC?: true
+    RAMSAR?: true
+    PNR?: true
+    PNP?: true
+    FOR_PRO?: true
+    ZZZ?: true
+    ZNIEFF2?: true
+    ZNIEFF1?: true
+    RNR?: true
+    TOU_PRO?: true
+    NATURA?: true
+    ZPS?: true
+    SIC?: true
+    CELRL?: true
+    BIO?: true
+    APB?: true
+    RN?: true
+    RBFD?: true
+    RNCFS?: true
+>>>>>>> dev
     libelle_geographique?: true
     epci?: true
     libelle_epci?: true
     departement?: true
+<<<<<<< HEAD
     libelle_departement?: true
     region?: true
     ept?: true
@@ -29261,10 +35281,38 @@ export namespace Prisma {
   export type Lcz_couvertureCountAggregateInputType = {
     index?: true
     code_geographique?: true
+=======
+    region?: true
+  }
+
+  export type Surfaces_protegeesCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    PNC?: true
+    RAMSAR?: true
+    PNR?: true
+    PNP?: true
+    FOR_PRO?: true
+    ZZZ?: true
+    ZNIEFF2?: true
+    ZNIEFF1?: true
+    RNR?: true
+    TOU_PRO?: true
+    NATURA?: true
+    ZPS?: true
+    SIC?: true
+    CELRL?: true
+    BIO?: true
+    APB?: true
+    RN?: true
+    RBFD?: true
+    RNCFS?: true
+>>>>>>> dev
     libelle_geographique?: true
     epci?: true
     libelle_epci?: true
     departement?: true
+<<<<<<< HEAD
     libelle_departement?: true
     region?: true
     ept?: true
@@ -29286,53 +35334,101 @@ export namespace Prisma {
      * Determine the order of lcz_couvertures to fetch.
      */
     orderBy?: lcz_couvertureOrderByWithRelationInput | lcz_couvertureOrderByWithRelationInput[]
+=======
+    region?: true
+    _all?: true
+  }
+
+  export type Surfaces_protegeesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which surfaces_protegees to aggregate.
+     */
+    where?: surfaces_protegeesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_protegees to fetch.
+     */
+    orderBy?: surfaces_protegeesOrderByWithRelationInput | surfaces_protegeesOrderByWithRelationInput[]
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
+<<<<<<< HEAD
     cursor?: lcz_couvertureWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` lcz_couvertures from the position of the cursor.
+=======
+    cursor?: surfaces_protegeesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_protegees from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` lcz_couvertures.
+=======
+     * Skip the first `n` surfaces_protegees.
+>>>>>>> dev
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+<<<<<<< HEAD
      * Count returned lcz_couvertures
     **/
     _count?: true | Lcz_couvertureCountAggregateInputType
+=======
+     * Count returned surfaces_protegees
+    **/
+    _count?: true | Surfaces_protegeesCountAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
+<<<<<<< HEAD
     _avg?: Lcz_couvertureAvgAggregateInputType
+=======
+    _avg?: Surfaces_protegeesAvgAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
+<<<<<<< HEAD
     _sum?: Lcz_couvertureSumAggregateInputType
+=======
+    _sum?: Surfaces_protegeesSumAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
+<<<<<<< HEAD
     _min?: Lcz_couvertureMinAggregateInputType
+=======
+    _min?: Surfaces_protegeesMinAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
+<<<<<<< HEAD
     _max?: Lcz_couvertureMaxAggregateInputType
   }
 
@@ -29342,11 +35438,23 @@ export namespace Prisma {
         ? number
         : GetScalarType<T[P], AggregateLcz_couverture[P]>
       : GetScalarType<T[P], AggregateLcz_couverture[P]>
+=======
+    _max?: Surfaces_protegeesMaxAggregateInputType
+  }
+
+  export type GetSurfaces_protegeesAggregateType<T extends Surfaces_protegeesAggregateArgs> = {
+        [P in keyof T & keyof AggregateSurfaces_protegees]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSurfaces_protegees[P]>
+      : GetScalarType<T[P], AggregateSurfaces_protegees[P]>
+>>>>>>> dev
   }
 
 
 
 
+<<<<<<< HEAD
   export type lcz_couvertureGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: lcz_couvertureWhereInput
     orderBy?: lcz_couvertureOrderByWithAggregationInput | lcz_couvertureOrderByWithAggregationInput[]
@@ -29364,10 +35472,49 @@ export namespace Prisma {
   export type Lcz_couvertureGroupByOutputType = {
     index: bigint
     code_geographique: string
+=======
+  export type surfaces_protegeesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: surfaces_protegeesWhereInput
+    orderBy?: surfaces_protegeesOrderByWithAggregationInput | surfaces_protegeesOrderByWithAggregationInput[]
+    by: Surfaces_protegeesScalarFieldEnum[] | Surfaces_protegeesScalarFieldEnum
+    having?: surfaces_protegeesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Surfaces_protegeesCountAggregateInputType | true
+    _avg?: Surfaces_protegeesAvgAggregateInputType
+    _sum?: Surfaces_protegeesSumAggregateInputType
+    _min?: Surfaces_protegeesMinAggregateInputType
+    _max?: Surfaces_protegeesMaxAggregateInputType
+  }
+
+  export type Surfaces_protegeesGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    PNC: string | null
+    RAMSAR: string | null
+    PNR: string | null
+    PNP: string | null
+    FOR_PRO: string | null
+    ZZZ: string | null
+    ZNIEFF2: string | null
+    ZNIEFF1: string | null
+    RNR: string | null
+    TOU_PRO: string | null
+    NATURA: string | null
+    ZPS: string | null
+    SIC: string | null
+    CELRL: string | null
+    BIO: string | null
+    APB: string | null
+    RN: string | null
+    RBFD: string | null
+    RNCFS: string | null
+>>>>>>> dev
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
+<<<<<<< HEAD
     libelle_departement: string
     region: number
     ept: string | null
@@ -29391,18 +35538,63 @@ export namespace Prisma {
               ? number
               : GetScalarType<T[P], Lcz_couvertureGroupByOutputType[P]>
             : GetScalarType<T[P], Lcz_couvertureGroupByOutputType[P]>
+=======
+    region: number
+    _count: Surfaces_protegeesCountAggregateOutputType | null
+    _avg: Surfaces_protegeesAvgAggregateOutputType | null
+    _sum: Surfaces_protegeesSumAggregateOutputType | null
+    _min: Surfaces_protegeesMinAggregateOutputType | null
+    _max: Surfaces_protegeesMaxAggregateOutputType | null
+  }
+
+  type GetSurfaces_protegeesGroupByPayload<T extends surfaces_protegeesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Surfaces_protegeesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Surfaces_protegeesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Surfaces_protegeesGroupByOutputType[P]>
+            : GetScalarType<T[P], Surfaces_protegeesGroupByOutputType[P]>
+>>>>>>> dev
         }
       >
     >
 
 
+<<<<<<< HEAD
   export type lcz_couvertureSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
     code_geographique?: boolean
+=======
+  export type surfaces_protegeesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    PNC?: boolean
+    RAMSAR?: boolean
+    PNR?: boolean
+    PNP?: boolean
+    FOR_PRO?: boolean
+    ZZZ?: boolean
+    ZNIEFF2?: boolean
+    ZNIEFF1?: boolean
+    RNR?: boolean
+    TOU_PRO?: boolean
+    NATURA?: boolean
+    ZPS?: boolean
+    SIC?: boolean
+    CELRL?: boolean
+    BIO?: boolean
+    APB?: boolean
+    RN?: boolean
+    RBFD?: boolean
+    RNCFS?: boolean
+>>>>>>> dev
     libelle_geographique?: boolean
     epci?: boolean
     libelle_epci?: boolean
     departement?: boolean
+<<<<<<< HEAD
     libelle_departement?: boolean
     region?: boolean
     ept?: boolean
@@ -29415,10 +35607,38 @@ export namespace Prisma {
   export type lcz_couvertureSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
     code_geographique?: boolean
+=======
+    region?: boolean
+  }, ExtArgs["result"]["surfaces_protegees"]>
+
+  export type surfaces_protegeesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    PNC?: boolean
+    RAMSAR?: boolean
+    PNR?: boolean
+    PNP?: boolean
+    FOR_PRO?: boolean
+    ZZZ?: boolean
+    ZNIEFF2?: boolean
+    ZNIEFF1?: boolean
+    RNR?: boolean
+    TOU_PRO?: boolean
+    NATURA?: boolean
+    ZPS?: boolean
+    SIC?: boolean
+    CELRL?: boolean
+    BIO?: boolean
+    APB?: boolean
+    RN?: boolean
+    RBFD?: boolean
+    RNCFS?: boolean
+>>>>>>> dev
     libelle_geographique?: boolean
     epci?: boolean
     libelle_epci?: boolean
     departement?: boolean
+<<<<<<< HEAD
     libelle_departement?: boolean
     region?: boolean
     ept?: boolean
@@ -29431,10 +35651,38 @@ export namespace Prisma {
   export type lcz_couvertureSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
     code_geographique?: boolean
+=======
+    region?: boolean
+  }, ExtArgs["result"]["surfaces_protegees"]>
+
+  export type surfaces_protegeesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    PNC?: boolean
+    RAMSAR?: boolean
+    PNR?: boolean
+    PNP?: boolean
+    FOR_PRO?: boolean
+    ZZZ?: boolean
+    ZNIEFF2?: boolean
+    ZNIEFF1?: boolean
+    RNR?: boolean
+    TOU_PRO?: boolean
+    NATURA?: boolean
+    ZPS?: boolean
+    SIC?: boolean
+    CELRL?: boolean
+    BIO?: boolean
+    APB?: boolean
+    RN?: boolean
+    RBFD?: boolean
+    RNCFS?: boolean
+>>>>>>> dev
     libelle_geographique?: boolean
     epci?: boolean
     libelle_epci?: boolean
     departement?: boolean
+<<<<<<< HEAD
     libelle_departement?: boolean
     region?: boolean
     ept?: boolean
@@ -29447,10 +35695,38 @@ export namespace Prisma {
   export type lcz_couvertureSelectScalar = {
     index?: boolean
     code_geographique?: boolean
+=======
+    region?: boolean
+  }, ExtArgs["result"]["surfaces_protegees"]>
+
+  export type surfaces_protegeesSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    PNC?: boolean
+    RAMSAR?: boolean
+    PNR?: boolean
+    PNP?: boolean
+    FOR_PRO?: boolean
+    ZZZ?: boolean
+    ZNIEFF2?: boolean
+    ZNIEFF1?: boolean
+    RNR?: boolean
+    TOU_PRO?: boolean
+    NATURA?: boolean
+    ZPS?: boolean
+    SIC?: boolean
+    CELRL?: boolean
+    BIO?: boolean
+    APB?: boolean
+    RN?: boolean
+    RBFD?: boolean
+    RNCFS?: boolean
+>>>>>>> dev
     libelle_geographique?: boolean
     epci?: boolean
     libelle_epci?: boolean
     departement?: boolean
+<<<<<<< HEAD
     libelle_departement?: boolean
     region?: boolean
     ept?: boolean
@@ -29464,14 +35740,46 @@ export namespace Prisma {
 
   export type $lcz_couverturePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "lcz_couverture"
+=======
+    region?: boolean
+  }
+
+  export type surfaces_protegeesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "PNC" | "RAMSAR" | "PNR" | "PNP" | "FOR_PRO" | "ZZZ" | "ZNIEFF2" | "ZNIEFF1" | "RNR" | "TOU_PRO" | "NATURA" | "ZPS" | "SIC" | "CELRL" | "BIO" | "APB" | "RN" | "RBFD" | "RNCFS" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "region", ExtArgs["result"]["surfaces_protegees"]>
+
+  export type $surfaces_protegeesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "surfaces_protegees"
+>>>>>>> dev
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       index: bigint
       code_geographique: string
+<<<<<<< HEAD
+=======
+      PNC: string | null
+      RAMSAR: string | null
+      PNR: string | null
+      PNP: string | null
+      FOR_PRO: string | null
+      ZZZ: string | null
+      ZNIEFF2: string | null
+      ZNIEFF1: string | null
+      RNR: string | null
+      TOU_PRO: string | null
+      NATURA: string | null
+      ZPS: string | null
+      SIC: string | null
+      CELRL: string | null
+      BIO: string | null
+      APB: string | null
+      RN: string | null
+      RBFD: string | null
+      RNCFS: string | null
+>>>>>>> dev
       libelle_geographique: string
       epci: string
       libelle_epci: string
       departement: string
+<<<<<<< HEAD
       libelle_departement: string
       region: number
       ept: string | null
@@ -29498,11 +35806,34 @@ export namespace Prisma {
      * @example
      * // Get one Lcz_couverture
      * const lcz_couverture = await prisma.lcz_couverture.findUnique({
+=======
+      region: number
+    }, ExtArgs["result"]["surfaces_protegees"]>
+    composites: {}
+  }
+
+  type surfaces_protegeesGetPayload<S extends boolean | null | undefined | surfaces_protegeesDefaultArgs> = $Result.GetResult<Prisma.$surfaces_protegeesPayload, S>
+
+  type surfaces_protegeesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<surfaces_protegeesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Surfaces_protegeesCountAggregateInputType | true
+    }
+
+  export interface surfaces_protegeesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['surfaces_protegees'], meta: { name: 'surfaces_protegees' } }
+    /**
+     * Find zero or one Surfaces_protegees that matches the filter.
+     * @param {surfaces_protegeesFindUniqueArgs} args - Arguments to find a Surfaces_protegees
+     * @example
+     * // Get one Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.findUnique({
+>>>>>>> dev
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
+<<<<<<< HEAD
     findUnique<T extends lcz_couvertureFindUniqueArgs>(args: SelectSubset<T, lcz_couvertureFindUniqueArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
@@ -29512,11 +35843,23 @@ export namespace Prisma {
      * @example
      * // Get one Lcz_couverture
      * const lcz_couverture = await prisma.lcz_couverture.findUniqueOrThrow({
+=======
+    findUnique<T extends surfaces_protegeesFindUniqueArgs>(args: SelectSubset<T, surfaces_protegeesFindUniqueArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Surfaces_protegees that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {surfaces_protegeesFindUniqueOrThrowArgs} args - Arguments to find a Surfaces_protegees
+     * @example
+     * // Get one Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.findUniqueOrThrow({
+>>>>>>> dev
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
+<<<<<<< HEAD
     findUniqueOrThrow<T extends lcz_couvertureFindUniqueOrThrowArgs>(args: SelectSubset<T, lcz_couvertureFindUniqueOrThrowArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
@@ -29527,11 +35870,24 @@ export namespace Prisma {
      * @example
      * // Get one Lcz_couverture
      * const lcz_couverture = await prisma.lcz_couverture.findFirst({
+=======
+    findUniqueOrThrow<T extends surfaces_protegeesFindUniqueOrThrowArgs>(args: SelectSubset<T, surfaces_protegeesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Surfaces_protegees that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegeesFindFirstArgs} args - Arguments to find a Surfaces_protegees
+     * @example
+     * // Get one Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.findFirst({
+>>>>>>> dev
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
+<<<<<<< HEAD
     findFirst<T extends lcz_couvertureFindFirstArgs>(args?: SelectSubset<T, lcz_couvertureFindFirstArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
@@ -29543,11 +35899,25 @@ export namespace Prisma {
      * @example
      * // Get one Lcz_couverture
      * const lcz_couverture = await prisma.lcz_couverture.findFirstOrThrow({
+=======
+    findFirst<T extends surfaces_protegeesFindFirstArgs>(args?: SelectSubset<T, surfaces_protegeesFindFirstArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Surfaces_protegees that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegeesFindFirstOrThrowArgs} args - Arguments to find a Surfaces_protegees
+     * @example
+     * // Get one Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.findFirstOrThrow({
+>>>>>>> dev
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
+<<<<<<< HEAD
     findFirstOrThrow<T extends lcz_couvertureFindFirstOrThrowArgs>(args?: SelectSubset<T, lcz_couvertureFindFirstOrThrowArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
@@ -29576,10 +35946,41 @@ export namespace Prisma {
      * const Lcz_couverture = await prisma.lcz_couverture.create({
      *   data: {
      *     // ... data to create a Lcz_couverture
+=======
+    findFirstOrThrow<T extends surfaces_protegeesFindFirstOrThrowArgs>(args?: SelectSubset<T, surfaces_protegeesFindFirstOrThrowArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Surfaces_protegees that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegeesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.findMany()
+     * 
+     * // Get first 10 Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const surfaces_protegeesWithIndexOnly = await prisma.surfaces_protegees.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends surfaces_protegeesFindManyArgs>(args?: SelectSubset<T, surfaces_protegeesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Surfaces_protegees.
+     * @param {surfaces_protegeesCreateArgs} args - Arguments to create a Surfaces_protegees.
+     * @example
+     * // Create one Surfaces_protegees
+     * const Surfaces_protegees = await prisma.surfaces_protegees.create({
+     *   data: {
+     *     // ... data to create a Surfaces_protegees
+>>>>>>> dev
      *   }
      * })
      * 
      */
+<<<<<<< HEAD
     create<T extends lcz_couvertureCreateArgs>(args: SelectSubset<T, lcz_couvertureCreateArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
@@ -29588,12 +35989,23 @@ export namespace Prisma {
      * @example
      * // Create many Lcz_couvertures
      * const lcz_couverture = await prisma.lcz_couverture.createMany({
+=======
+    create<T extends surfaces_protegeesCreateArgs>(args: SelectSubset<T, surfaces_protegeesCreateArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Surfaces_protegees.
+     * @param {surfaces_protegeesCreateManyArgs} args - Arguments to create many Surfaces_protegees.
+     * @example
+     * // Create many Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.createMany({
+>>>>>>> dev
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
+<<<<<<< HEAD
     createMany<T extends lcz_couvertureCreateManyArgs>(args?: SelectSubset<T, lcz_couvertureCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -29602,13 +36014,28 @@ export namespace Prisma {
      * @example
      * // Create many Lcz_couvertures
      * const lcz_couverture = await prisma.lcz_couverture.createManyAndReturn({
+=======
+    createMany<T extends surfaces_protegeesCreateManyArgs>(args?: SelectSubset<T, surfaces_protegeesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Surfaces_protegees and returns the data saved in the database.
+     * @param {surfaces_protegeesCreateManyAndReturnArgs} args - Arguments to create many Surfaces_protegees.
+     * @example
+     * // Create many Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.createManyAndReturn({
+>>>>>>> dev
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
+<<<<<<< HEAD
      * // Create many Lcz_couvertures and only return the `index`
      * const lcz_couvertureWithIndexOnly = await prisma.lcz_couverture.createManyAndReturn({
+=======
+     * // Create many Surfaces_protegees and only return the `index`
+     * const surfaces_protegeesWithIndexOnly = await prisma.surfaces_protegees.createManyAndReturn({
+>>>>>>> dev
      *   select: { index: true },
      *   data: [
      *     // ... provide data here
@@ -29618,6 +36045,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
+<<<<<<< HEAD
     createManyAndReturn<T extends lcz_couvertureCreateManyAndReturnArgs>(args?: SelectSubset<T, lcz_couvertureCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
@@ -29628,10 +36056,23 @@ export namespace Prisma {
      * const Lcz_couverture = await prisma.lcz_couverture.delete({
      *   where: {
      *     // ... filter to delete one Lcz_couverture
+=======
+    createManyAndReturn<T extends surfaces_protegeesCreateManyAndReturnArgs>(args?: SelectSubset<T, surfaces_protegeesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Surfaces_protegees.
+     * @param {surfaces_protegeesDeleteArgs} args - Arguments to delete one Surfaces_protegees.
+     * @example
+     * // Delete one Surfaces_protegees
+     * const Surfaces_protegees = await prisma.surfaces_protegees.delete({
+     *   where: {
+     *     // ... filter to delete one Surfaces_protegees
+>>>>>>> dev
      *   }
      * })
      * 
      */
+<<<<<<< HEAD
     delete<T extends lcz_couvertureDeleteArgs>(args: SelectSubset<T, lcz_couvertureDeleteArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
@@ -29640,6 +36081,16 @@ export namespace Prisma {
      * @example
      * // Update one Lcz_couverture
      * const lcz_couverture = await prisma.lcz_couverture.update({
+=======
+    delete<T extends surfaces_protegeesDeleteArgs>(args: SelectSubset<T, surfaces_protegeesDeleteArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Surfaces_protegees.
+     * @param {surfaces_protegeesUpdateArgs} args - Arguments to update one Surfaces_protegees.
+     * @example
+     * // Update one Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.update({
+>>>>>>> dev
      *   where: {
      *     // ... provide filter here
      *   },
@@ -29649,6 +36100,7 @@ export namespace Prisma {
      * })
      * 
      */
+<<<<<<< HEAD
     update<T extends lcz_couvertureUpdateArgs>(args: SelectSubset<T, lcz_couvertureUpdateArgs<ExtArgs>>): Prisma__lcz_couvertureClient<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
@@ -29657,12 +36109,23 @@ export namespace Prisma {
      * @example
      * // Delete a few Lcz_couvertures
      * const { count } = await prisma.lcz_couverture.deleteMany({
+=======
+    update<T extends surfaces_protegeesUpdateArgs>(args: SelectSubset<T, surfaces_protegeesUpdateArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Surfaces_protegees.
+     * @param {surfaces_protegeesDeleteManyArgs} args - Arguments to filter Surfaces_protegees to delete.
+     * @example
+     * // Delete a few Surfaces_protegees
+     * const { count } = await prisma.surfaces_protegees.deleteMany({
+>>>>>>> dev
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
+<<<<<<< HEAD
     deleteMany<T extends lcz_couvertureDeleteManyArgs>(args?: SelectSubset<T, lcz_couvertureDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -29673,6 +36136,18 @@ export namespace Prisma {
      * @example
      * // Update many Lcz_couvertures
      * const lcz_couverture = await prisma.lcz_couverture.updateMany({
+=======
+    deleteMany<T extends surfaces_protegeesDeleteManyArgs>(args?: SelectSubset<T, surfaces_protegeesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Surfaces_protegees.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegeesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.updateMany({
+>>>>>>> dev
      *   where: {
      *     // ... provide filter here
      *   },
@@ -29682,6 +36157,7 @@ export namespace Prisma {
      * })
      * 
      */
+<<<<<<< HEAD
     updateMany<T extends lcz_couvertureUpdateManyArgs>(args: SelectSubset<T, lcz_couvertureUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -29690,6 +36166,16 @@ export namespace Prisma {
      * @example
      * // Update many Lcz_couvertures
      * const lcz_couverture = await prisma.lcz_couverture.updateManyAndReturn({
+=======
+    updateMany<T extends surfaces_protegeesUpdateManyArgs>(args: SelectSubset<T, surfaces_protegeesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Surfaces_protegees and returns the data updated in the database.
+     * @param {surfaces_protegeesUpdateManyAndReturnArgs} args - Arguments to update many Surfaces_protegees.
+     * @example
+     * // Update many Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.updateManyAndReturn({
+>>>>>>> dev
      *   where: {
      *     // ... provide filter here
      *   },
@@ -29698,8 +36184,13 @@ export namespace Prisma {
      *   ]
      * })
      * 
+<<<<<<< HEAD
      * // Update zero or more Lcz_couvertures and only return the `index`
      * const lcz_couvertureWithIndexOnly = await prisma.lcz_couverture.updateManyAndReturn({
+=======
+     * // Update zero or more Surfaces_protegees and only return the `index`
+     * const surfaces_protegeesWithIndexOnly = await prisma.surfaces_protegees.updateManyAndReturn({
+>>>>>>> dev
      *   select: { index: true },
      *   where: {
      *     // ... provide filter here
@@ -29712,6 +36203,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
+<<<<<<< HEAD
     updateManyAndReturn<T extends lcz_couvertureUpdateManyAndReturnArgs>(args: SelectSubset<T, lcz_couvertureUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$lcz_couverturePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
@@ -29722,11 +36214,24 @@ export namespace Prisma {
      * const lcz_couverture = await prisma.lcz_couverture.upsert({
      *   create: {
      *     // ... data to create a Lcz_couverture
+=======
+    updateManyAndReturn<T extends surfaces_protegeesUpdateManyAndReturnArgs>(args: SelectSubset<T, surfaces_protegeesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Surfaces_protegees.
+     * @param {surfaces_protegeesUpsertArgs} args - Arguments to update or create a Surfaces_protegees.
+     * @example
+     * // Update or create a Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.upsert({
+     *   create: {
+     *     // ... data to create a Surfaces_protegees
+>>>>>>> dev
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
+<<<<<<< HEAD
      *     // ... the filter for the Lcz_couverture we want to update
      *   }
      * })
@@ -29749,19 +36254,54 @@ export namespace Prisma {
     **/
     count<T extends lcz_couvertureCountArgs>(
       args?: Subset<T, lcz_couvertureCountArgs>,
+=======
+     *     // ... the filter for the Surfaces_protegees we want to update
+     *   }
+     * })
+     */
+    upsert<T extends surfaces_protegeesUpsertArgs>(args: SelectSubset<T, surfaces_protegeesUpsertArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Surfaces_protegees.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegeesCountArgs} args - Arguments to filter Surfaces_protegees to count.
+     * @example
+     * // Count the number of Surfaces_protegees
+     * const count = await prisma.surfaces_protegees.count({
+     *   where: {
+     *     // ... the filter for the Surfaces_protegees we want to count
+     *   }
+     * })
+    **/
+    count<T extends surfaces_protegeesCountArgs>(
+      args?: Subset<T, surfaces_protegeesCountArgs>,
+>>>>>>> dev
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
+<<<<<<< HEAD
           : GetScalarType<T['select'], Lcz_couvertureCountAggregateOutputType>
+=======
+          : GetScalarType<T['select'], Surfaces_protegeesCountAggregateOutputType>
+>>>>>>> dev
         : number
     >
 
     /**
+<<<<<<< HEAD
      * Allows you to perform aggregations operations on a Lcz_couverture.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
      * @param {Lcz_couvertureAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+=======
+     * Allows you to perform aggregations operations on a Surfaces_protegees.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Surfaces_protegeesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+>>>>>>> dev
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -29781,6 +36321,7 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
+<<<<<<< HEAD
     aggregate<T extends Lcz_couvertureAggregateArgs>(args: Subset<T, Lcz_couvertureAggregateArgs>): Prisma.PrismaPromise<GetLcz_couvertureAggregateType<T>>
 
     /**
@@ -29788,6 +36329,15 @@ export namespace Prisma {
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
      * @param {lcz_couvertureGroupByArgs} args - Group by arguments.
+=======
+    aggregate<T extends Surfaces_protegeesAggregateArgs>(args: Subset<T, Surfaces_protegeesAggregateArgs>): Prisma.PrismaPromise<GetSurfaces_protegeesAggregateType<T>>
+
+    /**
+     * Group by Surfaces_protegees.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegeesGroupByArgs} args - Group by arguments.
+>>>>>>> dev
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -29802,14 +36352,23 @@ export namespace Prisma {
      * 
     **/
     groupBy<
+<<<<<<< HEAD
       T extends lcz_couvertureGroupByArgs,
+=======
+      T extends surfaces_protegeesGroupByArgs,
+>>>>>>> dev
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
+<<<<<<< HEAD
         ? { orderBy: lcz_couvertureGroupByArgs['orderBy'] }
         : { orderBy?: lcz_couvertureGroupByArgs['orderBy'] },
+=======
+        ? { orderBy: surfaces_protegeesGroupByArgs['orderBy'] }
+        : { orderBy?: surfaces_protegeesGroupByArgs['orderBy'] },
+>>>>>>> dev
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -29858,6 +36417,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
+<<<<<<< HEAD
     >(args: SubsetIntersection<T, lcz_couvertureGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLcz_couvertureGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
    * Fields of the lcz_couverture model
@@ -29867,11 +36427,26 @@ export namespace Prisma {
 
   /**
    * The delegate class that acts as a "Promise-like" for lcz_couverture.
+=======
+    >(args: SubsetIntersection<T, surfaces_protegeesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSurfaces_protegeesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the surfaces_protegees model
+   */
+  readonly fields: surfaces_protegeesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for surfaces_protegees.
+>>>>>>> dev
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
+<<<<<<< HEAD
   export interface Prisma__lcz_couvertureClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+=======
+  export interface Prisma__surfaces_protegeesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+>>>>>>> dev
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -29899,6 +36474,7 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
    * Fields of the lcz_couverture model
    */
   interface lcz_couvertureFieldRefs {
@@ -29915,11 +36491,43 @@ export namespace Prisma {
     readonly code_pnr: FieldRef<"lcz_couverture", 'String'>
     readonly libelle_pnr: FieldRef<"lcz_couverture", 'String'>
     readonly couverture_lcz: FieldRef<"lcz_couverture", 'Float'>
+=======
+   * Fields of the surfaces_protegees model
+   */
+  interface surfaces_protegeesFieldRefs {
+    readonly index: FieldRef<"surfaces_protegees", 'BigInt'>
+    readonly code_geographique: FieldRef<"surfaces_protegees", 'String'>
+    readonly PNC: FieldRef<"surfaces_protegees", 'String'>
+    readonly RAMSAR: FieldRef<"surfaces_protegees", 'String'>
+    readonly PNR: FieldRef<"surfaces_protegees", 'String'>
+    readonly PNP: FieldRef<"surfaces_protegees", 'String'>
+    readonly FOR_PRO: FieldRef<"surfaces_protegees", 'String'>
+    readonly ZZZ: FieldRef<"surfaces_protegees", 'String'>
+    readonly ZNIEFF2: FieldRef<"surfaces_protegees", 'String'>
+    readonly ZNIEFF1: FieldRef<"surfaces_protegees", 'String'>
+    readonly RNR: FieldRef<"surfaces_protegees", 'String'>
+    readonly TOU_PRO: FieldRef<"surfaces_protegees", 'String'>
+    readonly NATURA: FieldRef<"surfaces_protegees", 'String'>
+    readonly ZPS: FieldRef<"surfaces_protegees", 'String'>
+    readonly SIC: FieldRef<"surfaces_protegees", 'String'>
+    readonly CELRL: FieldRef<"surfaces_protegees", 'String'>
+    readonly BIO: FieldRef<"surfaces_protegees", 'String'>
+    readonly APB: FieldRef<"surfaces_protegees", 'String'>
+    readonly RN: FieldRef<"surfaces_protegees", 'String'>
+    readonly RBFD: FieldRef<"surfaces_protegees", 'String'>
+    readonly RNCFS: FieldRef<"surfaces_protegees", 'String'>
+    readonly libelle_geographique: FieldRef<"surfaces_protegees", 'String'>
+    readonly epci: FieldRef<"surfaces_protegees", 'String'>
+    readonly libelle_epci: FieldRef<"surfaces_protegees", 'String'>
+    readonly departement: FieldRef<"surfaces_protegees", 'String'>
+    readonly region: FieldRef<"surfaces_protegees", 'Float'>
+>>>>>>> dev
   }
     
 
   // Custom InputTypes
   /**
+<<<<<<< HEAD
    * lcz_couverture findUnique
    */
   export type lcz_couvertureFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -29987,17 +36595,91 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` lcz_couvertures from the position of the cursor.
+=======
+   * surfaces_protegees findUnique
+   */
+  export type surfaces_protegeesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees to fetch.
+     */
+    where: surfaces_protegeesWhereUniqueInput
+  }
+
+  /**
+   * surfaces_protegees findUniqueOrThrow
+   */
+  export type surfaces_protegeesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees to fetch.
+     */
+    where: surfaces_protegeesWhereUniqueInput
+  }
+
+  /**
+   * surfaces_protegees findFirst
+   */
+  export type surfaces_protegeesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees to fetch.
+     */
+    where?: surfaces_protegeesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_protegees to fetch.
+     */
+    orderBy?: surfaces_protegeesOrderByWithRelationInput | surfaces_protegeesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for surfaces_protegees.
+     */
+    cursor?: surfaces_protegeesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_protegees from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` lcz_couvertures.
+=======
+     * Skip the first `n` surfaces_protegees.
+>>>>>>> dev
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
+<<<<<<< HEAD
      * Filter by unique combinations of lcz_couvertures.
      */
     distinct?: Lcz_couvertureScalarFieldEnum | Lcz_couvertureScalarFieldEnum[]
@@ -30035,17 +36717,61 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` lcz_couvertures from the position of the cursor.
+=======
+     * Filter by unique combinations of surfaces_protegees.
+     */
+    distinct?: Surfaces_protegeesScalarFieldEnum | Surfaces_protegeesScalarFieldEnum[]
+  }
+
+  /**
+   * surfaces_protegees findFirstOrThrow
+   */
+  export type surfaces_protegeesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees to fetch.
+     */
+    where?: surfaces_protegeesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_protegees to fetch.
+     */
+    orderBy?: surfaces_protegeesOrderByWithRelationInput | surfaces_protegeesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for surfaces_protegees.
+     */
+    cursor?: surfaces_protegeesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_protegees from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` lcz_couvertures.
+=======
+     * Skip the first `n` surfaces_protegees.
+>>>>>>> dev
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
+<<<<<<< HEAD
      * Filter by unique combinations of lcz_couvertures.
      */
     distinct?: Lcz_couvertureScalarFieldEnum | Lcz_couvertureScalarFieldEnum[]
@@ -30083,11 +36809,51 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` lcz_couvertures from the position of the cursor.
+=======
+     * Filter by unique combinations of surfaces_protegees.
+     */
+    distinct?: Surfaces_protegeesScalarFieldEnum | Surfaces_protegeesScalarFieldEnum[]
+  }
+
+  /**
+   * surfaces_protegees findMany
+   */
+  export type surfaces_protegeesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees to fetch.
+     */
+    where?: surfaces_protegeesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_protegees to fetch.
+     */
+    orderBy?: surfaces_protegeesOrderByWithRelationInput | surfaces_protegeesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing surfaces_protegees.
+     */
+    cursor?: surfaces_protegeesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_protegees from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` lcz_couvertures.
      */
     skip?: number
@@ -30120,10 +36886,45 @@ export namespace Prisma {
      * The data used to create many lcz_couvertures.
      */
     data: lcz_couvertureCreateManyInput | lcz_couvertureCreateManyInput[]
+=======
+     * Skip the first `n` surfaces_protegees.
+     */
+    skip?: number
+    distinct?: Surfaces_protegeesScalarFieldEnum | Surfaces_protegeesScalarFieldEnum[]
+  }
+
+  /**
+   * surfaces_protegees create
+   */
+  export type surfaces_protegeesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null
+    /**
+     * The data needed to create a surfaces_protegees.
+     */
+    data: XOR<surfaces_protegeesCreateInput, surfaces_protegeesUncheckedCreateInput>
+  }
+
+  /**
+   * surfaces_protegees createMany
+   */
+  export type surfaces_protegeesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many surfaces_protegees.
+     */
+    data: surfaces_protegeesCreateManyInput | surfaces_protegeesCreateManyInput[]
+>>>>>>> dev
     skipDuplicates?: boolean
   }
 
   /**
+<<<<<<< HEAD
    * lcz_couverture createManyAndReturn
    */
   export type lcz_couvertureCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -30139,10 +36940,28 @@ export namespace Prisma {
      * The data used to create many lcz_couvertures.
      */
     data: lcz_couvertureCreateManyInput | lcz_couvertureCreateManyInput[]
+=======
+   * surfaces_protegees createManyAndReturn
+   */
+  export type surfaces_protegeesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null
+    /**
+     * The data used to create many surfaces_protegees.
+     */
+    data: surfaces_protegeesCreateManyInput | surfaces_protegeesCreateManyInput[]
+>>>>>>> dev
     skipDuplicates?: boolean
   }
 
   /**
+<<<<<<< HEAD
    * lcz_couverture update
    */
   export type lcz_couvertureUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -30178,11 +36997,49 @@ export namespace Prisma {
     where?: lcz_couvertureWhereInput
     /**
      * Limit how many lcz_couvertures to update.
+=======
+   * surfaces_protegees update
+   */
+  export type surfaces_protegeesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null
+    /**
+     * The data needed to update a surfaces_protegees.
+     */
+    data: XOR<surfaces_protegeesUpdateInput, surfaces_protegeesUncheckedUpdateInput>
+    /**
+     * Choose, which surfaces_protegees to update.
+     */
+    where: surfaces_protegeesWhereUniqueInput
+  }
+
+  /**
+   * surfaces_protegees updateMany
+   */
+  export type surfaces_protegeesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update surfaces_protegees.
+     */
+    data: XOR<surfaces_protegeesUpdateManyMutationInput, surfaces_protegeesUncheckedUpdateManyInput>
+    /**
+     * Filter which surfaces_protegees to update
+     */
+    where?: surfaces_protegeesWhereInput
+    /**
+     * Limit how many surfaces_protegees to update.
+>>>>>>> dev
      */
     limit?: number
   }
 
   /**
+<<<<<<< HEAD
    * lcz_couverture updateManyAndReturn
    */
   export type lcz_couvertureUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -30204,11 +37061,35 @@ export namespace Prisma {
     where?: lcz_couvertureWhereInput
     /**
      * Limit how many lcz_couvertures to update.
+=======
+   * surfaces_protegees updateManyAndReturn
+   */
+  export type surfaces_protegeesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null
+    /**
+     * The data used to update surfaces_protegees.
+     */
+    data: XOR<surfaces_protegeesUpdateManyMutationInput, surfaces_protegeesUncheckedUpdateManyInput>
+    /**
+     * Filter which surfaces_protegees to update
+     */
+    where?: surfaces_protegeesWhereInput
+    /**
+     * Limit how many surfaces_protegees to update.
+>>>>>>> dev
      */
     limit?: number
   }
 
   /**
+<<<<<<< HEAD
    * lcz_couverture upsert
    */
   export type lcz_couvertureUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -30262,11 +37143,67 @@ export namespace Prisma {
     where?: lcz_couvertureWhereInput
     /**
      * Limit how many lcz_couvertures to delete.
+=======
+   * surfaces_protegees upsert
+   */
+  export type surfaces_protegeesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null
+    /**
+     * The filter to search for the surfaces_protegees to update in case it exists.
+     */
+    where: surfaces_protegeesWhereUniqueInput
+    /**
+     * In case the surfaces_protegees found by the `where` argument doesn't exist, create a new surfaces_protegees with this data.
+     */
+    create: XOR<surfaces_protegeesCreateInput, surfaces_protegeesUncheckedCreateInput>
+    /**
+     * In case the surfaces_protegees was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<surfaces_protegeesUpdateInput, surfaces_protegeesUncheckedUpdateInput>
+  }
+
+  /**
+   * surfaces_protegees delete
+   */
+  export type surfaces_protegeesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null
+    /**
+     * Filter which surfaces_protegees to delete.
+     */
+    where: surfaces_protegeesWhereUniqueInput
+  }
+
+  /**
+   * surfaces_protegees deleteMany
+   */
+  export type surfaces_protegeesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which surfaces_protegees to delete
+     */
+    where?: surfaces_protegeesWhereInput
+    /**
+     * Limit how many surfaces_protegees to delete.
+>>>>>>> dev
      */
     limit?: number
   }
 
   /**
+<<<<<<< HEAD
    * lcz_couverture without action
    */
   export type lcz_couvertureDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -30278,6 +37215,4799 @@ export namespace Prisma {
      * Omit specific fields from the lcz_couverture
      */
     omit?: lcz_couvertureOmit<ExtArgs> | null
+=======
+   * surfaces_protegees without action
+   */
+  export type surfaces_protegeesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model clc_territoires
+   */
+
+  export type AggregateClc_territoires = {
+    _count: Clc_territoiresCountAggregateOutputType | null
+    _avg: Clc_territoiresAvgAggregateOutputType | null
+    _sum: Clc_territoiresSumAggregateOutputType | null
+    _min: Clc_territoiresMinAggregateOutputType | null
+    _max: Clc_territoiresMaxAggregateOutputType | null
+  }
+
+  export type Clc_territoiresAvgAggregateOutputType = {
+    pk: number | null
+    region: number | null
+  }
+
+  export type Clc_territoiresSumAggregateOutputType = {
+    pk: number | null
+    region: number | null
+  }
+
+  export type Clc_territoiresMinAggregateOutputType = {
+    pk: number | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    legend: string | null
+  }
+
+  export type Clc_territoiresMaxAggregateOutputType = {
+    pk: number | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    legend: string | null
+  }
+
+  export type Clc_territoiresCountAggregateOutputType = {
+    pk: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    legend: number
+    _all: number
+  }
+
+
+  export type Clc_territoiresAvgAggregateInputType = {
+    pk?: true
+    region?: true
+  }
+
+  export type Clc_territoiresSumAggregateInputType = {
+    pk?: true
+    region?: true
+  }
+
+  export type Clc_territoiresMinAggregateInputType = {
+    pk?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    legend?: true
+  }
+
+  export type Clc_territoiresMaxAggregateInputType = {
+    pk?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    legend?: true
+  }
+
+  export type Clc_territoiresCountAggregateInputType = {
+    pk?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    legend?: true
+    _all?: true
+  }
+
+  export type Clc_territoiresAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which clc_territoires to aggregate.
+     */
+    where?: clc_territoiresWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_territoires to fetch.
+     */
+    orderBy?: clc_territoiresOrderByWithRelationInput | clc_territoiresOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: clc_territoiresWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_territoires from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_territoires.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned clc_territoires
+    **/
+    _count?: true | Clc_territoiresCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Clc_territoiresAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Clc_territoiresSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Clc_territoiresMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Clc_territoiresMaxAggregateInputType
+  }
+
+  export type GetClc_territoiresAggregateType<T extends Clc_territoiresAggregateArgs> = {
+        [P in keyof T & keyof AggregateClc_territoires]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateClc_territoires[P]>
+      : GetScalarType<T[P], AggregateClc_territoires[P]>
+  }
+
+
+
+
+  export type clc_territoiresGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: clc_territoiresWhereInput
+    orderBy?: clc_territoiresOrderByWithAggregationInput | clc_territoiresOrderByWithAggregationInput[]
+    by: Clc_territoiresScalarFieldEnum[] | Clc_territoiresScalarFieldEnum
+    having?: clc_territoiresScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Clc_territoiresCountAggregateInputType | true
+    _avg?: Clc_territoiresAvgAggregateInputType
+    _sum?: Clc_territoiresSumAggregateInputType
+    _min?: Clc_territoiresMinAggregateInputType
+    _max?: Clc_territoiresMaxAggregateInputType
+  }
+
+  export type Clc_territoiresGroupByOutputType = {
+    pk: number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    legend: string
+    _count: Clc_territoiresCountAggregateOutputType | null
+    _avg: Clc_territoiresAvgAggregateOutputType | null
+    _sum: Clc_territoiresSumAggregateOutputType | null
+    _min: Clc_territoiresMinAggregateOutputType | null
+    _max: Clc_territoiresMaxAggregateOutputType | null
+  }
+
+  type GetClc_territoiresGroupByPayload<T extends clc_territoiresGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Clc_territoiresGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Clc_territoiresGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Clc_territoiresGroupByOutputType[P]>
+            : GetScalarType<T[P], Clc_territoiresGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type clc_territoiresSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    legend?: boolean
+  }, ExtArgs["result"]["clc_territoires"]>
+
+
+  export type clc_territoiresSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    legend?: boolean
+  }, ExtArgs["result"]["clc_territoires"]>
+
+  export type clc_territoiresSelectScalar = {
+    pk?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    legend?: boolean
+  }
+
+  export type clc_territoiresOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "legend", ExtArgs["result"]["clc_territoires"]>
+
+  export type $clc_territoiresPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "clc_territoires"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: number
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      legend: string
+    }, ExtArgs["result"]["clc_territoires"]>
+    composites: {}
+  }
+
+  type clc_territoiresGetPayload<S extends boolean | null | undefined | clc_territoiresDefaultArgs> = $Result.GetResult<Prisma.$clc_territoiresPayload, S>
+
+  type clc_territoiresCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<clc_territoiresFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Clc_territoiresCountAggregateInputType | true
+    }
+
+  export interface clc_territoiresDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['clc_territoires'], meta: { name: 'clc_territoires' } }
+    /**
+     * Find zero or one Clc_territoires that matches the filter.
+     * @param {clc_territoiresFindUniqueArgs} args - Arguments to find a Clc_territoires
+     * @example
+     * // Get one Clc_territoires
+     * const clc_territoires = await prisma.clc_territoires.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends clc_territoiresFindUniqueArgs>(args: SelectSubset<T, clc_territoiresFindUniqueArgs<ExtArgs>>): Prisma__clc_territoiresClient<$Result.GetResult<Prisma.$clc_territoiresPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Clc_territoires that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {clc_territoiresFindUniqueOrThrowArgs} args - Arguments to find a Clc_territoires
+     * @example
+     * // Get one Clc_territoires
+     * const clc_territoires = await prisma.clc_territoires.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends clc_territoiresFindUniqueOrThrowArgs>(args: SelectSubset<T, clc_territoiresFindUniqueOrThrowArgs<ExtArgs>>): Prisma__clc_territoiresClient<$Result.GetResult<Prisma.$clc_territoiresPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Clc_territoires that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_territoiresFindFirstArgs} args - Arguments to find a Clc_territoires
+     * @example
+     * // Get one Clc_territoires
+     * const clc_territoires = await prisma.clc_territoires.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends clc_territoiresFindFirstArgs>(args?: SelectSubset<T, clc_territoiresFindFirstArgs<ExtArgs>>): Prisma__clc_territoiresClient<$Result.GetResult<Prisma.$clc_territoiresPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Clc_territoires that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_territoiresFindFirstOrThrowArgs} args - Arguments to find a Clc_territoires
+     * @example
+     * // Get one Clc_territoires
+     * const clc_territoires = await prisma.clc_territoires.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends clc_territoiresFindFirstOrThrowArgs>(args?: SelectSubset<T, clc_territoiresFindFirstOrThrowArgs<ExtArgs>>): Prisma__clc_territoiresClient<$Result.GetResult<Prisma.$clc_territoiresPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Clc_territoires that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_territoiresFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Clc_territoires
+     * const clc_territoires = await prisma.clc_territoires.findMany()
+     * 
+     * // Get first 10 Clc_territoires
+     * const clc_territoires = await prisma.clc_territoires.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const clc_territoiresWithPkOnly = await prisma.clc_territoires.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends clc_territoiresFindManyArgs>(args?: SelectSubset<T, clc_territoiresFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_territoiresPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Delete a Clc_territoires.
+     * @param {clc_territoiresDeleteArgs} args - Arguments to delete one Clc_territoires.
+     * @example
+     * // Delete one Clc_territoires
+     * const Clc_territoires = await prisma.clc_territoires.delete({
+     *   where: {
+     *     // ... filter to delete one Clc_territoires
+     *   }
+     * })
+     * 
+     */
+    delete<T extends clc_territoiresDeleteArgs>(args: SelectSubset<T, clc_territoiresDeleteArgs<ExtArgs>>): Prisma__clc_territoiresClient<$Result.GetResult<Prisma.$clc_territoiresPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Clc_territoires.
+     * @param {clc_territoiresUpdateArgs} args - Arguments to update one Clc_territoires.
+     * @example
+     * // Update one Clc_territoires
+     * const clc_territoires = await prisma.clc_territoires.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends clc_territoiresUpdateArgs>(args: SelectSubset<T, clc_territoiresUpdateArgs<ExtArgs>>): Prisma__clc_territoiresClient<$Result.GetResult<Prisma.$clc_territoiresPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Clc_territoires.
+     * @param {clc_territoiresDeleteManyArgs} args - Arguments to filter Clc_territoires to delete.
+     * @example
+     * // Delete a few Clc_territoires
+     * const { count } = await prisma.clc_territoires.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends clc_territoiresDeleteManyArgs>(args?: SelectSubset<T, clc_territoiresDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Clc_territoires.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_territoiresUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Clc_territoires
+     * const clc_territoires = await prisma.clc_territoires.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends clc_territoiresUpdateManyArgs>(args: SelectSubset<T, clc_territoiresUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Clc_territoires and returns the data updated in the database.
+     * @param {clc_territoiresUpdateManyAndReturnArgs} args - Arguments to update many Clc_territoires.
+     * @example
+     * // Update many Clc_territoires
+     * const clc_territoires = await prisma.clc_territoires.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Clc_territoires and only return the `pk`
+     * const clc_territoiresWithPkOnly = await prisma.clc_territoires.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends clc_territoiresUpdateManyAndReturnArgs>(args: SelectSubset<T, clc_territoiresUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_territoiresPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+
+    /**
+     * Count the number of Clc_territoires.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_territoiresCountArgs} args - Arguments to filter Clc_territoires to count.
+     * @example
+     * // Count the number of Clc_territoires
+     * const count = await prisma.clc_territoires.count({
+     *   where: {
+     *     // ... the filter for the Clc_territoires we want to count
+     *   }
+     * })
+    **/
+    count<T extends clc_territoiresCountArgs>(
+      args?: Subset<T, clc_territoiresCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Clc_territoiresCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Clc_territoires.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Clc_territoiresAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Clc_territoiresAggregateArgs>(args: Subset<T, Clc_territoiresAggregateArgs>): Prisma.PrismaPromise<GetClc_territoiresAggregateType<T>>
+
+    /**
+     * Group by Clc_territoires.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_territoiresGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends clc_territoiresGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: clc_territoiresGroupByArgs['orderBy'] }
+        : { orderBy?: clc_territoiresGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, clc_territoiresGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClc_territoiresGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the clc_territoires model
+   */
+  readonly fields: clc_territoiresFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for clc_territoires.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__clc_territoiresClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the clc_territoires model
+   */
+  interface clc_territoiresFieldRefs {
+    readonly pk: FieldRef<"clc_territoires", 'Int'>
+    readonly code_geographique: FieldRef<"clc_territoires", 'String'>
+    readonly libelle_geographique: FieldRef<"clc_territoires", 'String'>
+    readonly epci: FieldRef<"clc_territoires", 'String'>
+    readonly libelle_epci: FieldRef<"clc_territoires", 'String'>
+    readonly departement: FieldRef<"clc_territoires", 'String'>
+    readonly libelle_departement: FieldRef<"clc_territoires", 'String'>
+    readonly region: FieldRef<"clc_territoires", 'Int'>
+    readonly ept: FieldRef<"clc_territoires", 'String'>
+    readonly libelle_petr: FieldRef<"clc_territoires", 'String'>
+    readonly code_pnr: FieldRef<"clc_territoires", 'String'>
+    readonly libelle_pnr: FieldRef<"clc_territoires", 'String'>
+    readonly legend: FieldRef<"clc_territoires", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * clc_territoires findUnique
+   */
+  export type clc_territoiresFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_territoires
+     */
+    select?: clc_territoiresSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_territoires
+     */
+    omit?: clc_territoiresOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_territoires to fetch.
+     */
+    where: clc_territoiresWhereUniqueInput
+  }
+
+  /**
+   * clc_territoires findUniqueOrThrow
+   */
+  export type clc_territoiresFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_territoires
+     */
+    select?: clc_territoiresSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_territoires
+     */
+    omit?: clc_territoiresOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_territoires to fetch.
+     */
+    where: clc_territoiresWhereUniqueInput
+  }
+
+  /**
+   * clc_territoires findFirst
+   */
+  export type clc_territoiresFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_territoires
+     */
+    select?: clc_territoiresSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_territoires
+     */
+    omit?: clc_territoiresOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_territoires to fetch.
+     */
+    where?: clc_territoiresWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_territoires to fetch.
+     */
+    orderBy?: clc_territoiresOrderByWithRelationInput | clc_territoiresOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for clc_territoires.
+     */
+    cursor?: clc_territoiresWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_territoires from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_territoires.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of clc_territoires.
+     */
+    distinct?: Clc_territoiresScalarFieldEnum | Clc_territoiresScalarFieldEnum[]
+  }
+
+  /**
+   * clc_territoires findFirstOrThrow
+   */
+  export type clc_territoiresFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_territoires
+     */
+    select?: clc_territoiresSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_territoires
+     */
+    omit?: clc_territoiresOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_territoires to fetch.
+     */
+    where?: clc_territoiresWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_territoires to fetch.
+     */
+    orderBy?: clc_territoiresOrderByWithRelationInput | clc_territoiresOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for clc_territoires.
+     */
+    cursor?: clc_territoiresWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_territoires from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_territoires.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of clc_territoires.
+     */
+    distinct?: Clc_territoiresScalarFieldEnum | Clc_territoiresScalarFieldEnum[]
+  }
+
+  /**
+   * clc_territoires findMany
+   */
+  export type clc_territoiresFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_territoires
+     */
+    select?: clc_territoiresSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_territoires
+     */
+    omit?: clc_territoiresOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_territoires to fetch.
+     */
+    where?: clc_territoiresWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_territoires to fetch.
+     */
+    orderBy?: clc_territoiresOrderByWithRelationInput | clc_territoiresOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing clc_territoires.
+     */
+    cursor?: clc_territoiresWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_territoires from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_territoires.
+     */
+    skip?: number
+    distinct?: Clc_territoiresScalarFieldEnum | Clc_territoiresScalarFieldEnum[]
+  }
+
+  /**
+   * clc_territoires update
+   */
+  export type clc_territoiresUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_territoires
+     */
+    select?: clc_territoiresSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_territoires
+     */
+    omit?: clc_territoiresOmit<ExtArgs> | null
+    /**
+     * The data needed to update a clc_territoires.
+     */
+    data: XOR<clc_territoiresUpdateInput, clc_territoiresUncheckedUpdateInput>
+    /**
+     * Choose, which clc_territoires to update.
+     */
+    where: clc_territoiresWhereUniqueInput
+  }
+
+  /**
+   * clc_territoires updateMany
+   */
+  export type clc_territoiresUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update clc_territoires.
+     */
+    data: XOR<clc_territoiresUpdateManyMutationInput, clc_territoiresUncheckedUpdateManyInput>
+    /**
+     * Filter which clc_territoires to update
+     */
+    where?: clc_territoiresWhereInput
+    /**
+     * Limit how many clc_territoires to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * clc_territoires updateManyAndReturn
+   */
+  export type clc_territoiresUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_territoires
+     */
+    select?: clc_territoiresSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_territoires
+     */
+    omit?: clc_territoiresOmit<ExtArgs> | null
+    /**
+     * The data used to update clc_territoires.
+     */
+    data: XOR<clc_territoiresUpdateManyMutationInput, clc_territoiresUncheckedUpdateManyInput>
+    /**
+     * Filter which clc_territoires to update
+     */
+    where?: clc_territoiresWhereInput
+    /**
+     * Limit how many clc_territoires to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * clc_territoires delete
+   */
+  export type clc_territoiresDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_territoires
+     */
+    select?: clc_territoiresSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_territoires
+     */
+    omit?: clc_territoiresOmit<ExtArgs> | null
+    /**
+     * Filter which clc_territoires to delete.
+     */
+    where: clc_territoiresWhereUniqueInput
+  }
+
+  /**
+   * clc_territoires deleteMany
+   */
+  export type clc_territoiresDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which clc_territoires to delete
+     */
+    where?: clc_territoiresWhereInput
+    /**
+     * Limit how many clc_territoires to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * clc_territoires without action
+   */
+  export type clc_territoiresDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_territoires
+     */
+    select?: clc_territoiresSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_territoires
+     */
+    omit?: clc_territoiresOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model communes_drom
+   */
+
+  export type AggregateCommunes_drom = {
+    _count: Communes_dromCountAggregateOutputType | null
+    _avg: Communes_dromAvgAggregateOutputType | null
+    _sum: Communes_dromSumAggregateOutputType | null
+    _min: Communes_dromMinAggregateOutputType | null
+    _max: Communes_dromMaxAggregateOutputType | null
+  }
+
+  export type Communes_dromAvgAggregateOutputType = {
+    pk: number | null
+    region: number | null
+    densite_bati: number | null
+    precarite_logement: number | null
+    surface: number | null
+  }
+
+  export type Communes_dromSumAggregateOutputType = {
+    pk: number | null
+    region: bigint | null
+    densite_bati: number | null
+    precarite_logement: number | null
+    surface: number | null
+  }
+
+  export type Communes_dromMinAggregateOutputType = {
+    pk: number | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: bigint | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    coordinates: string | null
+    densite_bati: number | null
+    precarite_logement: number | null
+    surface: number | null
+  }
+
+  export type Communes_dromMaxAggregateOutputType = {
+    pk: number | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: bigint | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    coordinates: string | null
+    densite_bati: number | null
+    precarite_logement: number | null
+    surface: number | null
+  }
+
+  export type Communes_dromCountAggregateOutputType = {
+    pk: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    coordinates: number
+    densite_bati: number
+    precarite_logement: number
+    surface: number
+    _all: number
+  }
+
+
+  export type Communes_dromAvgAggregateInputType = {
+    pk?: true
+    region?: true
+    densite_bati?: true
+    precarite_logement?: true
+    surface?: true
+  }
+
+  export type Communes_dromSumAggregateInputType = {
+    pk?: true
+    region?: true
+    densite_bati?: true
+    precarite_logement?: true
+    surface?: true
+  }
+
+  export type Communes_dromMinAggregateInputType = {
+    pk?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    coordinates?: true
+    densite_bati?: true
+    precarite_logement?: true
+    surface?: true
+  }
+
+  export type Communes_dromMaxAggregateInputType = {
+    pk?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    coordinates?: true
+    densite_bati?: true
+    precarite_logement?: true
+    surface?: true
+  }
+
+  export type Communes_dromCountAggregateInputType = {
+    pk?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    coordinates?: true
+    densite_bati?: true
+    precarite_logement?: true
+    surface?: true
+    _all?: true
+  }
+
+  export type Communes_dromAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which communes_drom to aggregate.
+     */
+    where?: communes_dromWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes_droms to fetch.
+     */
+    orderBy?: communes_dromOrderByWithRelationInput | communes_dromOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: communes_dromWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes_droms from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes_droms.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned communes_droms
+    **/
+    _count?: true | Communes_dromCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Communes_dromAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Communes_dromSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Communes_dromMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Communes_dromMaxAggregateInputType
+  }
+
+  export type GetCommunes_dromAggregateType<T extends Communes_dromAggregateArgs> = {
+        [P in keyof T & keyof AggregateCommunes_drom]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCommunes_drom[P]>
+      : GetScalarType<T[P], AggregateCommunes_drom[P]>
+  }
+
+
+
+
+  export type communes_dromGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: communes_dromWhereInput
+    orderBy?: communes_dromOrderByWithAggregationInput | communes_dromOrderByWithAggregationInput[]
+    by: Communes_dromScalarFieldEnum[] | Communes_dromScalarFieldEnum
+    having?: communes_dromScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Communes_dromCountAggregateInputType | true
+    _avg?: Communes_dromAvgAggregateInputType
+    _sum?: Communes_dromSumAggregateInputType
+    _min?: Communes_dromMinAggregateInputType
+    _max?: Communes_dromMaxAggregateInputType
+  }
+
+  export type Communes_dromGroupByOutputType = {
+    pk: number
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: bigint | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    coordinates: string | null
+    densite_bati: number | null
+    precarite_logement: number | null
+    surface: number | null
+    _count: Communes_dromCountAggregateOutputType | null
+    _avg: Communes_dromAvgAggregateOutputType | null
+    _sum: Communes_dromSumAggregateOutputType | null
+    _min: Communes_dromMinAggregateOutputType | null
+    _max: Communes_dromMaxAggregateOutputType | null
+  }
+
+  type GetCommunes_dromGroupByPayload<T extends communes_dromGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Communes_dromGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Communes_dromGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Communes_dromGroupByOutputType[P]>
+            : GetScalarType<T[P], Communes_dromGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type communes_dromSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    coordinates?: boolean
+    densite_bati?: boolean
+    precarite_logement?: boolean
+    surface?: boolean
+  }, ExtArgs["result"]["communes_drom"]>
+
+  export type communes_dromSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    coordinates?: boolean
+    densite_bati?: boolean
+    precarite_logement?: boolean
+    surface?: boolean
+  }, ExtArgs["result"]["communes_drom"]>
+
+  export type communes_dromSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    coordinates?: boolean
+    densite_bati?: boolean
+    precarite_logement?: boolean
+    surface?: boolean
+  }, ExtArgs["result"]["communes_drom"]>
+
+  export type communes_dromSelectScalar = {
+    pk?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    coordinates?: boolean
+    densite_bati?: boolean
+    precarite_logement?: boolean
+    surface?: boolean
+  }
+
+  export type communes_dromOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "coordinates" | "densite_bati" | "precarite_logement" | "surface", ExtArgs["result"]["communes_drom"]>
+
+  export type $communes_dromPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "communes_drom"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      code_geographique: string | null
+      libelle_geographique: string | null
+      epci: string | null
+      libelle_epci: string | null
+      departement: string | null
+      libelle_departement: string | null
+      region: bigint | null
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      coordinates: string | null
+      densite_bati: number | null
+      precarite_logement: number | null
+      surface: number | null
+    }, ExtArgs["result"]["communes_drom"]>
+    composites: {}
+  }
+
+  type communes_dromGetPayload<S extends boolean | null | undefined | communes_dromDefaultArgs> = $Result.GetResult<Prisma.$communes_dromPayload, S>
+
+  type communes_dromCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<communes_dromFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Communes_dromCountAggregateInputType | true
+    }
+
+  export interface communes_dromDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['communes_drom'], meta: { name: 'communes_drom' } }
+    /**
+     * Find zero or one Communes_drom that matches the filter.
+     * @param {communes_dromFindUniqueArgs} args - Arguments to find a Communes_drom
+     * @example
+     * // Get one Communes_drom
+     * const communes_drom = await prisma.communes_drom.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends communes_dromFindUniqueArgs>(args: SelectSubset<T, communes_dromFindUniqueArgs<ExtArgs>>): Prisma__communes_dromClient<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Communes_drom that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {communes_dromFindUniqueOrThrowArgs} args - Arguments to find a Communes_drom
+     * @example
+     * // Get one Communes_drom
+     * const communes_drom = await prisma.communes_drom.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends communes_dromFindUniqueOrThrowArgs>(args: SelectSubset<T, communes_dromFindUniqueOrThrowArgs<ExtArgs>>): Prisma__communes_dromClient<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Communes_drom that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_dromFindFirstArgs} args - Arguments to find a Communes_drom
+     * @example
+     * // Get one Communes_drom
+     * const communes_drom = await prisma.communes_drom.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends communes_dromFindFirstArgs>(args?: SelectSubset<T, communes_dromFindFirstArgs<ExtArgs>>): Prisma__communes_dromClient<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Communes_drom that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_dromFindFirstOrThrowArgs} args - Arguments to find a Communes_drom
+     * @example
+     * // Get one Communes_drom
+     * const communes_drom = await prisma.communes_drom.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends communes_dromFindFirstOrThrowArgs>(args?: SelectSubset<T, communes_dromFindFirstOrThrowArgs<ExtArgs>>): Prisma__communes_dromClient<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Communes_droms that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_dromFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Communes_droms
+     * const communes_droms = await prisma.communes_drom.findMany()
+     * 
+     * // Get first 10 Communes_droms
+     * const communes_droms = await prisma.communes_drom.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const communes_dromWithPkOnly = await prisma.communes_drom.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends communes_dromFindManyArgs>(args?: SelectSubset<T, communes_dromFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Communes_drom.
+     * @param {communes_dromCreateArgs} args - Arguments to create a Communes_drom.
+     * @example
+     * // Create one Communes_drom
+     * const Communes_drom = await prisma.communes_drom.create({
+     *   data: {
+     *     // ... data to create a Communes_drom
+     *   }
+     * })
+     * 
+     */
+    create<T extends communes_dromCreateArgs>(args: SelectSubset<T, communes_dromCreateArgs<ExtArgs>>): Prisma__communes_dromClient<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Communes_droms.
+     * @param {communes_dromCreateManyArgs} args - Arguments to create many Communes_droms.
+     * @example
+     * // Create many Communes_droms
+     * const communes_drom = await prisma.communes_drom.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends communes_dromCreateManyArgs>(args?: SelectSubset<T, communes_dromCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Communes_droms and returns the data saved in the database.
+     * @param {communes_dromCreateManyAndReturnArgs} args - Arguments to create many Communes_droms.
+     * @example
+     * // Create many Communes_droms
+     * const communes_drom = await prisma.communes_drom.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Communes_droms and only return the `pk`
+     * const communes_dromWithPkOnly = await prisma.communes_drom.createManyAndReturn({
+     *   select: { pk: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends communes_dromCreateManyAndReturnArgs>(args?: SelectSubset<T, communes_dromCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Communes_drom.
+     * @param {communes_dromDeleteArgs} args - Arguments to delete one Communes_drom.
+     * @example
+     * // Delete one Communes_drom
+     * const Communes_drom = await prisma.communes_drom.delete({
+     *   where: {
+     *     // ... filter to delete one Communes_drom
+     *   }
+     * })
+     * 
+     */
+    delete<T extends communes_dromDeleteArgs>(args: SelectSubset<T, communes_dromDeleteArgs<ExtArgs>>): Prisma__communes_dromClient<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Communes_drom.
+     * @param {communes_dromUpdateArgs} args - Arguments to update one Communes_drom.
+     * @example
+     * // Update one Communes_drom
+     * const communes_drom = await prisma.communes_drom.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends communes_dromUpdateArgs>(args: SelectSubset<T, communes_dromUpdateArgs<ExtArgs>>): Prisma__communes_dromClient<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Communes_droms.
+     * @param {communes_dromDeleteManyArgs} args - Arguments to filter Communes_droms to delete.
+     * @example
+     * // Delete a few Communes_droms
+     * const { count } = await prisma.communes_drom.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends communes_dromDeleteManyArgs>(args?: SelectSubset<T, communes_dromDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Communes_droms.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_dromUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Communes_droms
+     * const communes_drom = await prisma.communes_drom.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends communes_dromUpdateManyArgs>(args: SelectSubset<T, communes_dromUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Communes_droms and returns the data updated in the database.
+     * @param {communes_dromUpdateManyAndReturnArgs} args - Arguments to update many Communes_droms.
+     * @example
+     * // Update many Communes_droms
+     * const communes_drom = await prisma.communes_drom.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Communes_droms and only return the `pk`
+     * const communes_dromWithPkOnly = await prisma.communes_drom.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends communes_dromUpdateManyAndReturnArgs>(args: SelectSubset<T, communes_dromUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Communes_drom.
+     * @param {communes_dromUpsertArgs} args - Arguments to update or create a Communes_drom.
+     * @example
+     * // Update or create a Communes_drom
+     * const communes_drom = await prisma.communes_drom.upsert({
+     *   create: {
+     *     // ... data to create a Communes_drom
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Communes_drom we want to update
+     *   }
+     * })
+     */
+    upsert<T extends communes_dromUpsertArgs>(args: SelectSubset<T, communes_dromUpsertArgs<ExtArgs>>): Prisma__communes_dromClient<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Communes_droms.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_dromCountArgs} args - Arguments to filter Communes_droms to count.
+     * @example
+     * // Count the number of Communes_droms
+     * const count = await prisma.communes_drom.count({
+     *   where: {
+     *     // ... the filter for the Communes_droms we want to count
+     *   }
+     * })
+    **/
+    count<T extends communes_dromCountArgs>(
+      args?: Subset<T, communes_dromCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Communes_dromCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Communes_drom.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Communes_dromAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Communes_dromAggregateArgs>(args: Subset<T, Communes_dromAggregateArgs>): Prisma.PrismaPromise<GetCommunes_dromAggregateType<T>>
+
+    /**
+     * Group by Communes_drom.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_dromGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends communes_dromGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: communes_dromGroupByArgs['orderBy'] }
+        : { orderBy?: communes_dromGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, communes_dromGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommunes_dromGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the communes_drom model
+   */
+  readonly fields: communes_dromFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for communes_drom.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__communes_dromClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the communes_drom model
+   */
+  interface communes_dromFieldRefs {
+    readonly pk: FieldRef<"communes_drom", 'Int'>
+    readonly code_geographique: FieldRef<"communes_drom", 'String'>
+    readonly libelle_geographique: FieldRef<"communes_drom", 'String'>
+    readonly epci: FieldRef<"communes_drom", 'String'>
+    readonly libelle_epci: FieldRef<"communes_drom", 'String'>
+    readonly departement: FieldRef<"communes_drom", 'String'>
+    readonly libelle_departement: FieldRef<"communes_drom", 'String'>
+    readonly region: FieldRef<"communes_drom", 'BigInt'>
+    readonly ept: FieldRef<"communes_drom", 'String'>
+    readonly libelle_petr: FieldRef<"communes_drom", 'String'>
+    readonly code_pnr: FieldRef<"communes_drom", 'String'>
+    readonly libelle_pnr: FieldRef<"communes_drom", 'String'>
+    readonly coordinates: FieldRef<"communes_drom", 'String'>
+    readonly densite_bati: FieldRef<"communes_drom", 'Float'>
+    readonly precarite_logement: FieldRef<"communes_drom", 'Float'>
+    readonly surface: FieldRef<"communes_drom", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * communes_drom findUnique
+   */
+  export type communes_dromFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null
+    /**
+     * Filter, which communes_drom to fetch.
+     */
+    where: communes_dromWhereUniqueInput
+  }
+
+  /**
+   * communes_drom findUniqueOrThrow
+   */
+  export type communes_dromFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null
+    /**
+     * Filter, which communes_drom to fetch.
+     */
+    where: communes_dromWhereUniqueInput
+  }
+
+  /**
+   * communes_drom findFirst
+   */
+  export type communes_dromFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null
+    /**
+     * Filter, which communes_drom to fetch.
+     */
+    where?: communes_dromWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes_droms to fetch.
+     */
+    orderBy?: communes_dromOrderByWithRelationInput | communes_dromOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for communes_droms.
+     */
+    cursor?: communes_dromWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes_droms from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes_droms.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of communes_droms.
+     */
+    distinct?: Communes_dromScalarFieldEnum | Communes_dromScalarFieldEnum[]
+  }
+
+  /**
+   * communes_drom findFirstOrThrow
+   */
+  export type communes_dromFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null
+    /**
+     * Filter, which communes_drom to fetch.
+     */
+    where?: communes_dromWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes_droms to fetch.
+     */
+    orderBy?: communes_dromOrderByWithRelationInput | communes_dromOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for communes_droms.
+     */
+    cursor?: communes_dromWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes_droms from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes_droms.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of communes_droms.
+     */
+    distinct?: Communes_dromScalarFieldEnum | Communes_dromScalarFieldEnum[]
+  }
+
+  /**
+   * communes_drom findMany
+   */
+  export type communes_dromFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null
+    /**
+     * Filter, which communes_droms to fetch.
+     */
+    where?: communes_dromWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes_droms to fetch.
+     */
+    orderBy?: communes_dromOrderByWithRelationInput | communes_dromOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing communes_droms.
+     */
+    cursor?: communes_dromWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes_droms from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes_droms.
+     */
+    skip?: number
+    distinct?: Communes_dromScalarFieldEnum | Communes_dromScalarFieldEnum[]
+  }
+
+  /**
+   * communes_drom create
+   */
+  export type communes_dromCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null
+    /**
+     * The data needed to create a communes_drom.
+     */
+    data?: XOR<communes_dromCreateInput, communes_dromUncheckedCreateInput>
+  }
+
+  /**
+   * communes_drom createMany
+   */
+  export type communes_dromCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many communes_droms.
+     */
+    data: communes_dromCreateManyInput | communes_dromCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * communes_drom createManyAndReturn
+   */
+  export type communes_dromCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null
+    /**
+     * The data used to create many communes_droms.
+     */
+    data: communes_dromCreateManyInput | communes_dromCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * communes_drom update
+   */
+  export type communes_dromUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null
+    /**
+     * The data needed to update a communes_drom.
+     */
+    data: XOR<communes_dromUpdateInput, communes_dromUncheckedUpdateInput>
+    /**
+     * Choose, which communes_drom to update.
+     */
+    where: communes_dromWhereUniqueInput
+  }
+
+  /**
+   * communes_drom updateMany
+   */
+  export type communes_dromUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update communes_droms.
+     */
+    data: XOR<communes_dromUpdateManyMutationInput, communes_dromUncheckedUpdateManyInput>
+    /**
+     * Filter which communes_droms to update
+     */
+    where?: communes_dromWhereInput
+    /**
+     * Limit how many communes_droms to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * communes_drom updateManyAndReturn
+   */
+  export type communes_dromUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null
+    /**
+     * The data used to update communes_droms.
+     */
+    data: XOR<communes_dromUpdateManyMutationInput, communes_dromUncheckedUpdateManyInput>
+    /**
+     * Filter which communes_droms to update
+     */
+    where?: communes_dromWhereInput
+    /**
+     * Limit how many communes_droms to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * communes_drom upsert
+   */
+  export type communes_dromUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null
+    /**
+     * The filter to search for the communes_drom to update in case it exists.
+     */
+    where: communes_dromWhereUniqueInput
+    /**
+     * In case the communes_drom found by the `where` argument doesn't exist, create a new communes_drom with this data.
+     */
+    create: XOR<communes_dromCreateInput, communes_dromUncheckedCreateInput>
+    /**
+     * In case the communes_drom was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<communes_dromUpdateInput, communes_dromUncheckedUpdateInput>
+  }
+
+  /**
+   * communes_drom delete
+   */
+  export type communes_dromDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null
+    /**
+     * Filter which communes_drom to delete.
+     */
+    where: communes_dromWhereUniqueInput
+  }
+
+  /**
+   * communes_drom deleteMany
+   */
+  export type communes_dromDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which communes_droms to delete
+     */
+    where?: communes_dromWhereInput
+    /**
+     * Limit how many communes_droms to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * communes_drom without action
+   */
+  export type communes_dromDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model erosion_cotiere
+   */
+
+  export type AggregateErosion_cotiere = {
+    _count: Erosion_cotiereCountAggregateOutputType | null
+    _avg: Erosion_cotiereAvgAggregateOutputType | null
+    _sum: Erosion_cotiereSumAggregateOutputType | null
+    _min: Erosion_cotiereMinAggregateOutputType | null
+    _max: Erosion_cotiereMaxAggregateOutputType | null
+  }
+
+  export type Erosion_cotiereAvgAggregateOutputType = {
+    pk: number | null
+    taux: number | null
+    duree: number | null
+    tdc_ancien: number | null
+    tdc_rec: number | null
+  }
+
+  export type Erosion_cotiereSumAggregateOutputType = {
+    pk: number | null
+    taux: number | null
+    duree: number | null
+    tdc_ancien: bigint | null
+    tdc_rec: bigint | null
+  }
+
+  export type Erosion_cotiereMinAggregateOutputType = {
+    pk: number | null
+    taux: number | null
+    duree: number | null
+    tdc_ancien: bigint | null
+    tdc_rec: bigint | null
+  }
+
+  export type Erosion_cotiereMaxAggregateOutputType = {
+    pk: number | null
+    taux: number | null
+    duree: number | null
+    tdc_ancien: bigint | null
+    tdc_rec: bigint | null
+  }
+
+  export type Erosion_cotiereCountAggregateOutputType = {
+    pk: number
+    taux: number
+    duree: number
+    tdc_ancien: number
+    tdc_rec: number
+    _all: number
+  }
+
+
+  export type Erosion_cotiereAvgAggregateInputType = {
+    pk?: true
+    taux?: true
+    duree?: true
+    tdc_ancien?: true
+    tdc_rec?: true
+  }
+
+  export type Erosion_cotiereSumAggregateInputType = {
+    pk?: true
+    taux?: true
+    duree?: true
+    tdc_ancien?: true
+    tdc_rec?: true
+  }
+
+  export type Erosion_cotiereMinAggregateInputType = {
+    pk?: true
+    taux?: true
+    duree?: true
+    tdc_ancien?: true
+    tdc_rec?: true
+  }
+
+  export type Erosion_cotiereMaxAggregateInputType = {
+    pk?: true
+    taux?: true
+    duree?: true
+    tdc_ancien?: true
+    tdc_rec?: true
+  }
+
+  export type Erosion_cotiereCountAggregateInputType = {
+    pk?: true
+    taux?: true
+    duree?: true
+    tdc_ancien?: true
+    tdc_rec?: true
+    _all?: true
+  }
+
+  export type Erosion_cotiereAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which erosion_cotiere to aggregate.
+     */
+    where?: erosion_cotiereWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of erosion_cotieres to fetch.
+     */
+    orderBy?: erosion_cotiereOrderByWithRelationInput | erosion_cotiereOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: erosion_cotiereWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` erosion_cotieres from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` erosion_cotieres.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned erosion_cotieres
+    **/
+    _count?: true | Erosion_cotiereCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Erosion_cotiereAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Erosion_cotiereSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Erosion_cotiereMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Erosion_cotiereMaxAggregateInputType
+  }
+
+  export type GetErosion_cotiereAggregateType<T extends Erosion_cotiereAggregateArgs> = {
+        [P in keyof T & keyof AggregateErosion_cotiere]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateErosion_cotiere[P]>
+      : GetScalarType<T[P], AggregateErosion_cotiere[P]>
+  }
+
+
+
+
+  export type erosion_cotiereGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: erosion_cotiereWhereInput
+    orderBy?: erosion_cotiereOrderByWithAggregationInput | erosion_cotiereOrderByWithAggregationInput[]
+    by: Erosion_cotiereScalarFieldEnum[] | Erosion_cotiereScalarFieldEnum
+    having?: erosion_cotiereScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Erosion_cotiereCountAggregateInputType | true
+    _avg?: Erosion_cotiereAvgAggregateInputType
+    _sum?: Erosion_cotiereSumAggregateInputType
+    _min?: Erosion_cotiereMinAggregateInputType
+    _max?: Erosion_cotiereMaxAggregateInputType
+  }
+
+  export type Erosion_cotiereGroupByOutputType = {
+    pk: number
+    taux: number
+    duree: number
+    tdc_ancien: bigint
+    tdc_rec: bigint
+    _count: Erosion_cotiereCountAggregateOutputType | null
+    _avg: Erosion_cotiereAvgAggregateOutputType | null
+    _sum: Erosion_cotiereSumAggregateOutputType | null
+    _min: Erosion_cotiereMinAggregateOutputType | null
+    _max: Erosion_cotiereMaxAggregateOutputType | null
+  }
+
+  type GetErosion_cotiereGroupByPayload<T extends erosion_cotiereGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Erosion_cotiereGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Erosion_cotiereGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Erosion_cotiereGroupByOutputType[P]>
+            : GetScalarType<T[P], Erosion_cotiereGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type erosion_cotiereSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    taux?: boolean
+    duree?: boolean
+    tdc_ancien?: boolean
+    tdc_rec?: boolean
+  }, ExtArgs["result"]["erosion_cotiere"]>
+
+
+  export type erosion_cotiereSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    taux?: boolean
+    duree?: boolean
+    tdc_ancien?: boolean
+    tdc_rec?: boolean
+  }, ExtArgs["result"]["erosion_cotiere"]>
+
+  export type erosion_cotiereSelectScalar = {
+    pk?: boolean
+    taux?: boolean
+    duree?: boolean
+    tdc_ancien?: boolean
+    tdc_rec?: boolean
+  }
+
+  export type erosion_cotiereOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "taux" | "duree" | "tdc_ancien" | "tdc_rec", ExtArgs["result"]["erosion_cotiere"]>
+
+  export type $erosion_cotierePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "erosion_cotiere"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      taux: number
+      duree: number
+      tdc_ancien: bigint
+      tdc_rec: bigint
+    }, ExtArgs["result"]["erosion_cotiere"]>
+    composites: {}
+  }
+
+  type erosion_cotiereGetPayload<S extends boolean | null | undefined | erosion_cotiereDefaultArgs> = $Result.GetResult<Prisma.$erosion_cotierePayload, S>
+
+  type erosion_cotiereCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<erosion_cotiereFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Erosion_cotiereCountAggregateInputType | true
+    }
+
+  export interface erosion_cotiereDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['erosion_cotiere'], meta: { name: 'erosion_cotiere' } }
+    /**
+     * Find zero or one Erosion_cotiere that matches the filter.
+     * @param {erosion_cotiereFindUniqueArgs} args - Arguments to find a Erosion_cotiere
+     * @example
+     * // Get one Erosion_cotiere
+     * const erosion_cotiere = await prisma.erosion_cotiere.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends erosion_cotiereFindUniqueArgs>(args: SelectSubset<T, erosion_cotiereFindUniqueArgs<ExtArgs>>): Prisma__erosion_cotiereClient<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Erosion_cotiere that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {erosion_cotiereFindUniqueOrThrowArgs} args - Arguments to find a Erosion_cotiere
+     * @example
+     * // Get one Erosion_cotiere
+     * const erosion_cotiere = await prisma.erosion_cotiere.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends erosion_cotiereFindUniqueOrThrowArgs>(args: SelectSubset<T, erosion_cotiereFindUniqueOrThrowArgs<ExtArgs>>): Prisma__erosion_cotiereClient<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Erosion_cotiere that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {erosion_cotiereFindFirstArgs} args - Arguments to find a Erosion_cotiere
+     * @example
+     * // Get one Erosion_cotiere
+     * const erosion_cotiere = await prisma.erosion_cotiere.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends erosion_cotiereFindFirstArgs>(args?: SelectSubset<T, erosion_cotiereFindFirstArgs<ExtArgs>>): Prisma__erosion_cotiereClient<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Erosion_cotiere that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {erosion_cotiereFindFirstOrThrowArgs} args - Arguments to find a Erosion_cotiere
+     * @example
+     * // Get one Erosion_cotiere
+     * const erosion_cotiere = await prisma.erosion_cotiere.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends erosion_cotiereFindFirstOrThrowArgs>(args?: SelectSubset<T, erosion_cotiereFindFirstOrThrowArgs<ExtArgs>>): Prisma__erosion_cotiereClient<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Erosion_cotieres that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {erosion_cotiereFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Erosion_cotieres
+     * const erosion_cotieres = await prisma.erosion_cotiere.findMany()
+     * 
+     * // Get first 10 Erosion_cotieres
+     * const erosion_cotieres = await prisma.erosion_cotiere.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const erosion_cotiereWithPkOnly = await prisma.erosion_cotiere.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends erosion_cotiereFindManyArgs>(args?: SelectSubset<T, erosion_cotiereFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Delete a Erosion_cotiere.
+     * @param {erosion_cotiereDeleteArgs} args - Arguments to delete one Erosion_cotiere.
+     * @example
+     * // Delete one Erosion_cotiere
+     * const Erosion_cotiere = await prisma.erosion_cotiere.delete({
+     *   where: {
+     *     // ... filter to delete one Erosion_cotiere
+     *   }
+     * })
+     * 
+     */
+    delete<T extends erosion_cotiereDeleteArgs>(args: SelectSubset<T, erosion_cotiereDeleteArgs<ExtArgs>>): Prisma__erosion_cotiereClient<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Erosion_cotiere.
+     * @param {erosion_cotiereUpdateArgs} args - Arguments to update one Erosion_cotiere.
+     * @example
+     * // Update one Erosion_cotiere
+     * const erosion_cotiere = await prisma.erosion_cotiere.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends erosion_cotiereUpdateArgs>(args: SelectSubset<T, erosion_cotiereUpdateArgs<ExtArgs>>): Prisma__erosion_cotiereClient<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Erosion_cotieres.
+     * @param {erosion_cotiereDeleteManyArgs} args - Arguments to filter Erosion_cotieres to delete.
+     * @example
+     * // Delete a few Erosion_cotieres
+     * const { count } = await prisma.erosion_cotiere.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends erosion_cotiereDeleteManyArgs>(args?: SelectSubset<T, erosion_cotiereDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Erosion_cotieres.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {erosion_cotiereUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Erosion_cotieres
+     * const erosion_cotiere = await prisma.erosion_cotiere.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends erosion_cotiereUpdateManyArgs>(args: SelectSubset<T, erosion_cotiereUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Erosion_cotieres and returns the data updated in the database.
+     * @param {erosion_cotiereUpdateManyAndReturnArgs} args - Arguments to update many Erosion_cotieres.
+     * @example
+     * // Update many Erosion_cotieres
+     * const erosion_cotiere = await prisma.erosion_cotiere.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Erosion_cotieres and only return the `pk`
+     * const erosion_cotiereWithPkOnly = await prisma.erosion_cotiere.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends erosion_cotiereUpdateManyAndReturnArgs>(args: SelectSubset<T, erosion_cotiereUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+
+    /**
+     * Count the number of Erosion_cotieres.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {erosion_cotiereCountArgs} args - Arguments to filter Erosion_cotieres to count.
+     * @example
+     * // Count the number of Erosion_cotieres
+     * const count = await prisma.erosion_cotiere.count({
+     *   where: {
+     *     // ... the filter for the Erosion_cotieres we want to count
+     *   }
+     * })
+    **/
+    count<T extends erosion_cotiereCountArgs>(
+      args?: Subset<T, erosion_cotiereCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Erosion_cotiereCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Erosion_cotiere.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Erosion_cotiereAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Erosion_cotiereAggregateArgs>(args: Subset<T, Erosion_cotiereAggregateArgs>): Prisma.PrismaPromise<GetErosion_cotiereAggregateType<T>>
+
+    /**
+     * Group by Erosion_cotiere.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {erosion_cotiereGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends erosion_cotiereGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: erosion_cotiereGroupByArgs['orderBy'] }
+        : { orderBy?: erosion_cotiereGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, erosion_cotiereGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetErosion_cotiereGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the erosion_cotiere model
+   */
+  readonly fields: erosion_cotiereFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for erosion_cotiere.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__erosion_cotiereClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the erosion_cotiere model
+   */
+  interface erosion_cotiereFieldRefs {
+    readonly pk: FieldRef<"erosion_cotiere", 'Int'>
+    readonly taux: FieldRef<"erosion_cotiere", 'Float'>
+    readonly duree: FieldRef<"erosion_cotiere", 'Float'>
+    readonly tdc_ancien: FieldRef<"erosion_cotiere", 'BigInt'>
+    readonly tdc_rec: FieldRef<"erosion_cotiere", 'BigInt'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * erosion_cotiere findUnique
+   */
+  export type erosion_cotiereFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null
+    /**
+     * Filter, which erosion_cotiere to fetch.
+     */
+    where: erosion_cotiereWhereUniqueInput
+  }
+
+  /**
+   * erosion_cotiere findUniqueOrThrow
+   */
+  export type erosion_cotiereFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null
+    /**
+     * Filter, which erosion_cotiere to fetch.
+     */
+    where: erosion_cotiereWhereUniqueInput
+  }
+
+  /**
+   * erosion_cotiere findFirst
+   */
+  export type erosion_cotiereFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null
+    /**
+     * Filter, which erosion_cotiere to fetch.
+     */
+    where?: erosion_cotiereWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of erosion_cotieres to fetch.
+     */
+    orderBy?: erosion_cotiereOrderByWithRelationInput | erosion_cotiereOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for erosion_cotieres.
+     */
+    cursor?: erosion_cotiereWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` erosion_cotieres from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` erosion_cotieres.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of erosion_cotieres.
+     */
+    distinct?: Erosion_cotiereScalarFieldEnum | Erosion_cotiereScalarFieldEnum[]
+  }
+
+  /**
+   * erosion_cotiere findFirstOrThrow
+   */
+  export type erosion_cotiereFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null
+    /**
+     * Filter, which erosion_cotiere to fetch.
+     */
+    where?: erosion_cotiereWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of erosion_cotieres to fetch.
+     */
+    orderBy?: erosion_cotiereOrderByWithRelationInput | erosion_cotiereOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for erosion_cotieres.
+     */
+    cursor?: erosion_cotiereWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` erosion_cotieres from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` erosion_cotieres.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of erosion_cotieres.
+     */
+    distinct?: Erosion_cotiereScalarFieldEnum | Erosion_cotiereScalarFieldEnum[]
+  }
+
+  /**
+   * erosion_cotiere findMany
+   */
+  export type erosion_cotiereFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null
+    /**
+     * Filter, which erosion_cotieres to fetch.
+     */
+    where?: erosion_cotiereWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of erosion_cotieres to fetch.
+     */
+    orderBy?: erosion_cotiereOrderByWithRelationInput | erosion_cotiereOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing erosion_cotieres.
+     */
+    cursor?: erosion_cotiereWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` erosion_cotieres from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` erosion_cotieres.
+     */
+    skip?: number
+    distinct?: Erosion_cotiereScalarFieldEnum | Erosion_cotiereScalarFieldEnum[]
+  }
+
+  /**
+   * erosion_cotiere update
+   */
+  export type erosion_cotiereUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null
+    /**
+     * The data needed to update a erosion_cotiere.
+     */
+    data: XOR<erosion_cotiereUpdateInput, erosion_cotiereUncheckedUpdateInput>
+    /**
+     * Choose, which erosion_cotiere to update.
+     */
+    where: erosion_cotiereWhereUniqueInput
+  }
+
+  /**
+   * erosion_cotiere updateMany
+   */
+  export type erosion_cotiereUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update erosion_cotieres.
+     */
+    data: XOR<erosion_cotiereUpdateManyMutationInput, erosion_cotiereUncheckedUpdateManyInput>
+    /**
+     * Filter which erosion_cotieres to update
+     */
+    where?: erosion_cotiereWhereInput
+    /**
+     * Limit how many erosion_cotieres to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * erosion_cotiere updateManyAndReturn
+   */
+  export type erosion_cotiereUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null
+    /**
+     * The data used to update erosion_cotieres.
+     */
+    data: XOR<erosion_cotiereUpdateManyMutationInput, erosion_cotiereUncheckedUpdateManyInput>
+    /**
+     * Filter which erosion_cotieres to update
+     */
+    where?: erosion_cotiereWhereInput
+    /**
+     * Limit how many erosion_cotieres to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * erosion_cotiere delete
+   */
+  export type erosion_cotiereDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null
+    /**
+     * Filter which erosion_cotiere to delete.
+     */
+    where: erosion_cotiereWhereUniqueInput
+  }
+
+  /**
+   * erosion_cotiere deleteMany
+   */
+  export type erosion_cotiereDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which erosion_cotieres to delete
+     */
+    where?: erosion_cotiereWhereInput
+    /**
+     * Limit how many erosion_cotieres to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * erosion_cotiere without action
+   */
+  export type erosion_cotiereDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model etat_cours_d_eau
+   */
+
+  export type AggregateEtat_cours_d_eau = {
+    _count: Etat_cours_d_eauCountAggregateOutputType | null
+    _avg: Etat_cours_d_eauAvgAggregateOutputType | null
+    _sum: Etat_cours_d_eauSumAggregateOutputType | null
+    _min: Etat_cours_d_eauMinAggregateOutputType | null
+    _max: Etat_cours_d_eauMaxAggregateOutputType | null
+  }
+
+  export type Etat_cours_d_eauAvgAggregateOutputType = {
+    pk: number | null
+    longueur: number | null
+  }
+
+  export type Etat_cours_d_eauSumAggregateOutputType = {
+    pk: number | null
+    longueur: number | null
+  }
+
+  export type Etat_cours_d_eauMinAggregateOutputType = {
+    pk: number | null
+    name: string | null
+    longueur: number | null
+    etateco: string | null
+  }
+
+  export type Etat_cours_d_eauMaxAggregateOutputType = {
+    pk: number | null
+    name: string | null
+    longueur: number | null
+    etateco: string | null
+  }
+
+  export type Etat_cours_d_eauCountAggregateOutputType = {
+    pk: number
+    name: number
+    longueur: number
+    etateco: number
+    _all: number
+  }
+
+
+  export type Etat_cours_d_eauAvgAggregateInputType = {
+    pk?: true
+    longueur?: true
+  }
+
+  export type Etat_cours_d_eauSumAggregateInputType = {
+    pk?: true
+    longueur?: true
+  }
+
+  export type Etat_cours_d_eauMinAggregateInputType = {
+    pk?: true
+    name?: true
+    longueur?: true
+    etateco?: true
+  }
+
+  export type Etat_cours_d_eauMaxAggregateInputType = {
+    pk?: true
+    name?: true
+    longueur?: true
+    etateco?: true
+  }
+
+  export type Etat_cours_d_eauCountAggregateInputType = {
+    pk?: true
+    name?: true
+    longueur?: true
+    etateco?: true
+    _all?: true
+  }
+
+  export type Etat_cours_d_eauAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which etat_cours_d_eau to aggregate.
+     */
+    where?: etat_cours_d_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of etat_cours_d_eaus to fetch.
+     */
+    orderBy?: etat_cours_d_eauOrderByWithRelationInput | etat_cours_d_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: etat_cours_d_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` etat_cours_d_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` etat_cours_d_eaus.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned etat_cours_d_eaus
+    **/
+    _count?: true | Etat_cours_d_eauCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Etat_cours_d_eauAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Etat_cours_d_eauSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Etat_cours_d_eauMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Etat_cours_d_eauMaxAggregateInputType
+  }
+
+  export type GetEtat_cours_d_eauAggregateType<T extends Etat_cours_d_eauAggregateArgs> = {
+        [P in keyof T & keyof AggregateEtat_cours_d_eau]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEtat_cours_d_eau[P]>
+      : GetScalarType<T[P], AggregateEtat_cours_d_eau[P]>
+  }
+
+
+
+
+  export type etat_cours_d_eauGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: etat_cours_d_eauWhereInput
+    orderBy?: etat_cours_d_eauOrderByWithAggregationInput | etat_cours_d_eauOrderByWithAggregationInput[]
+    by: Etat_cours_d_eauScalarFieldEnum[] | Etat_cours_d_eauScalarFieldEnum
+    having?: etat_cours_d_eauScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Etat_cours_d_eauCountAggregateInputType | true
+    _avg?: Etat_cours_d_eauAvgAggregateInputType
+    _sum?: Etat_cours_d_eauSumAggregateInputType
+    _min?: Etat_cours_d_eauMinAggregateInputType
+    _max?: Etat_cours_d_eauMaxAggregateInputType
+  }
+
+  export type Etat_cours_d_eauGroupByOutputType = {
+    pk: number
+    name: string
+    longueur: number
+    etateco: string | null
+    _count: Etat_cours_d_eauCountAggregateOutputType | null
+    _avg: Etat_cours_d_eauAvgAggregateOutputType | null
+    _sum: Etat_cours_d_eauSumAggregateOutputType | null
+    _min: Etat_cours_d_eauMinAggregateOutputType | null
+    _max: Etat_cours_d_eauMaxAggregateOutputType | null
+  }
+
+  type GetEtat_cours_d_eauGroupByPayload<T extends etat_cours_d_eauGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Etat_cours_d_eauGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Etat_cours_d_eauGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Etat_cours_d_eauGroupByOutputType[P]>
+            : GetScalarType<T[P], Etat_cours_d_eauGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type etat_cours_d_eauSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    name?: boolean
+    longueur?: boolean
+    etateco?: boolean
+  }, ExtArgs["result"]["etat_cours_d_eau"]>
+
+
+  export type etat_cours_d_eauSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    name?: boolean
+    longueur?: boolean
+    etateco?: boolean
+  }, ExtArgs["result"]["etat_cours_d_eau"]>
+
+  export type etat_cours_d_eauSelectScalar = {
+    pk?: boolean
+    name?: boolean
+    longueur?: boolean
+    etateco?: boolean
+  }
+
+  export type etat_cours_d_eauOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "name" | "longueur" | "etateco", ExtArgs["result"]["etat_cours_d_eau"]>
+
+  export type $etat_cours_d_eauPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "etat_cours_d_eau"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      name: string
+      longueur: number
+      etateco: string | null
+    }, ExtArgs["result"]["etat_cours_d_eau"]>
+    composites: {}
+  }
+
+  type etat_cours_d_eauGetPayload<S extends boolean | null | undefined | etat_cours_d_eauDefaultArgs> = $Result.GetResult<Prisma.$etat_cours_d_eauPayload, S>
+
+  type etat_cours_d_eauCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<etat_cours_d_eauFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Etat_cours_d_eauCountAggregateInputType | true
+    }
+
+  export interface etat_cours_d_eauDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['etat_cours_d_eau'], meta: { name: 'etat_cours_d_eau' } }
+    /**
+     * Find zero or one Etat_cours_d_eau that matches the filter.
+     * @param {etat_cours_d_eauFindUniqueArgs} args - Arguments to find a Etat_cours_d_eau
+     * @example
+     * // Get one Etat_cours_d_eau
+     * const etat_cours_d_eau = await prisma.etat_cours_d_eau.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends etat_cours_d_eauFindUniqueArgs>(args: SelectSubset<T, etat_cours_d_eauFindUniqueArgs<ExtArgs>>): Prisma__etat_cours_d_eauClient<$Result.GetResult<Prisma.$etat_cours_d_eauPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Etat_cours_d_eau that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {etat_cours_d_eauFindUniqueOrThrowArgs} args - Arguments to find a Etat_cours_d_eau
+     * @example
+     * // Get one Etat_cours_d_eau
+     * const etat_cours_d_eau = await prisma.etat_cours_d_eau.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends etat_cours_d_eauFindUniqueOrThrowArgs>(args: SelectSubset<T, etat_cours_d_eauFindUniqueOrThrowArgs<ExtArgs>>): Prisma__etat_cours_d_eauClient<$Result.GetResult<Prisma.$etat_cours_d_eauPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Etat_cours_d_eau that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {etat_cours_d_eauFindFirstArgs} args - Arguments to find a Etat_cours_d_eau
+     * @example
+     * // Get one Etat_cours_d_eau
+     * const etat_cours_d_eau = await prisma.etat_cours_d_eau.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends etat_cours_d_eauFindFirstArgs>(args?: SelectSubset<T, etat_cours_d_eauFindFirstArgs<ExtArgs>>): Prisma__etat_cours_d_eauClient<$Result.GetResult<Prisma.$etat_cours_d_eauPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Etat_cours_d_eau that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {etat_cours_d_eauFindFirstOrThrowArgs} args - Arguments to find a Etat_cours_d_eau
+     * @example
+     * // Get one Etat_cours_d_eau
+     * const etat_cours_d_eau = await prisma.etat_cours_d_eau.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends etat_cours_d_eauFindFirstOrThrowArgs>(args?: SelectSubset<T, etat_cours_d_eauFindFirstOrThrowArgs<ExtArgs>>): Prisma__etat_cours_d_eauClient<$Result.GetResult<Prisma.$etat_cours_d_eauPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Etat_cours_d_eaus that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {etat_cours_d_eauFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Etat_cours_d_eaus
+     * const etat_cours_d_eaus = await prisma.etat_cours_d_eau.findMany()
+     * 
+     * // Get first 10 Etat_cours_d_eaus
+     * const etat_cours_d_eaus = await prisma.etat_cours_d_eau.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const etat_cours_d_eauWithPkOnly = await prisma.etat_cours_d_eau.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends etat_cours_d_eauFindManyArgs>(args?: SelectSubset<T, etat_cours_d_eauFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$etat_cours_d_eauPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Delete a Etat_cours_d_eau.
+     * @param {etat_cours_d_eauDeleteArgs} args - Arguments to delete one Etat_cours_d_eau.
+     * @example
+     * // Delete one Etat_cours_d_eau
+     * const Etat_cours_d_eau = await prisma.etat_cours_d_eau.delete({
+     *   where: {
+     *     // ... filter to delete one Etat_cours_d_eau
+     *   }
+     * })
+     * 
+     */
+    delete<T extends etat_cours_d_eauDeleteArgs>(args: SelectSubset<T, etat_cours_d_eauDeleteArgs<ExtArgs>>): Prisma__etat_cours_d_eauClient<$Result.GetResult<Prisma.$etat_cours_d_eauPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Etat_cours_d_eau.
+     * @param {etat_cours_d_eauUpdateArgs} args - Arguments to update one Etat_cours_d_eau.
+     * @example
+     * // Update one Etat_cours_d_eau
+     * const etat_cours_d_eau = await prisma.etat_cours_d_eau.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends etat_cours_d_eauUpdateArgs>(args: SelectSubset<T, etat_cours_d_eauUpdateArgs<ExtArgs>>): Prisma__etat_cours_d_eauClient<$Result.GetResult<Prisma.$etat_cours_d_eauPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Etat_cours_d_eaus.
+     * @param {etat_cours_d_eauDeleteManyArgs} args - Arguments to filter Etat_cours_d_eaus to delete.
+     * @example
+     * // Delete a few Etat_cours_d_eaus
+     * const { count } = await prisma.etat_cours_d_eau.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends etat_cours_d_eauDeleteManyArgs>(args?: SelectSubset<T, etat_cours_d_eauDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Etat_cours_d_eaus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {etat_cours_d_eauUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Etat_cours_d_eaus
+     * const etat_cours_d_eau = await prisma.etat_cours_d_eau.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends etat_cours_d_eauUpdateManyArgs>(args: SelectSubset<T, etat_cours_d_eauUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Etat_cours_d_eaus and returns the data updated in the database.
+     * @param {etat_cours_d_eauUpdateManyAndReturnArgs} args - Arguments to update many Etat_cours_d_eaus.
+     * @example
+     * // Update many Etat_cours_d_eaus
+     * const etat_cours_d_eau = await prisma.etat_cours_d_eau.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Etat_cours_d_eaus and only return the `pk`
+     * const etat_cours_d_eauWithPkOnly = await prisma.etat_cours_d_eau.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends etat_cours_d_eauUpdateManyAndReturnArgs>(args: SelectSubset<T, etat_cours_d_eauUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$etat_cours_d_eauPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+
+    /**
+     * Count the number of Etat_cours_d_eaus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {etat_cours_d_eauCountArgs} args - Arguments to filter Etat_cours_d_eaus to count.
+     * @example
+     * // Count the number of Etat_cours_d_eaus
+     * const count = await prisma.etat_cours_d_eau.count({
+     *   where: {
+     *     // ... the filter for the Etat_cours_d_eaus we want to count
+     *   }
+     * })
+    **/
+    count<T extends etat_cours_d_eauCountArgs>(
+      args?: Subset<T, etat_cours_d_eauCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Etat_cours_d_eauCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Etat_cours_d_eau.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Etat_cours_d_eauAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Etat_cours_d_eauAggregateArgs>(args: Subset<T, Etat_cours_d_eauAggregateArgs>): Prisma.PrismaPromise<GetEtat_cours_d_eauAggregateType<T>>
+
+    /**
+     * Group by Etat_cours_d_eau.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {etat_cours_d_eauGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends etat_cours_d_eauGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: etat_cours_d_eauGroupByArgs['orderBy'] }
+        : { orderBy?: etat_cours_d_eauGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, etat_cours_d_eauGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEtat_cours_d_eauGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the etat_cours_d_eau model
+   */
+  readonly fields: etat_cours_d_eauFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for etat_cours_d_eau.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__etat_cours_d_eauClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the etat_cours_d_eau model
+   */
+  interface etat_cours_d_eauFieldRefs {
+    readonly pk: FieldRef<"etat_cours_d_eau", 'Int'>
+    readonly name: FieldRef<"etat_cours_d_eau", 'String'>
+    readonly longueur: FieldRef<"etat_cours_d_eau", 'Float'>
+    readonly etateco: FieldRef<"etat_cours_d_eau", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * etat_cours_d_eau findUnique
+   */
+  export type etat_cours_d_eauFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which etat_cours_d_eau to fetch.
+     */
+    where: etat_cours_d_eauWhereUniqueInput
+  }
+
+  /**
+   * etat_cours_d_eau findUniqueOrThrow
+   */
+  export type etat_cours_d_eauFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which etat_cours_d_eau to fetch.
+     */
+    where: etat_cours_d_eauWhereUniqueInput
+  }
+
+  /**
+   * etat_cours_d_eau findFirst
+   */
+  export type etat_cours_d_eauFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which etat_cours_d_eau to fetch.
+     */
+    where?: etat_cours_d_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of etat_cours_d_eaus to fetch.
+     */
+    orderBy?: etat_cours_d_eauOrderByWithRelationInput | etat_cours_d_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for etat_cours_d_eaus.
+     */
+    cursor?: etat_cours_d_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` etat_cours_d_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` etat_cours_d_eaus.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of etat_cours_d_eaus.
+     */
+    distinct?: Etat_cours_d_eauScalarFieldEnum | Etat_cours_d_eauScalarFieldEnum[]
+  }
+
+  /**
+   * etat_cours_d_eau findFirstOrThrow
+   */
+  export type etat_cours_d_eauFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which etat_cours_d_eau to fetch.
+     */
+    where?: etat_cours_d_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of etat_cours_d_eaus to fetch.
+     */
+    orderBy?: etat_cours_d_eauOrderByWithRelationInput | etat_cours_d_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for etat_cours_d_eaus.
+     */
+    cursor?: etat_cours_d_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` etat_cours_d_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` etat_cours_d_eaus.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of etat_cours_d_eaus.
+     */
+    distinct?: Etat_cours_d_eauScalarFieldEnum | Etat_cours_d_eauScalarFieldEnum[]
+  }
+
+  /**
+   * etat_cours_d_eau findMany
+   */
+  export type etat_cours_d_eauFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which etat_cours_d_eaus to fetch.
+     */
+    where?: etat_cours_d_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of etat_cours_d_eaus to fetch.
+     */
+    orderBy?: etat_cours_d_eauOrderByWithRelationInput | etat_cours_d_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing etat_cours_d_eaus.
+     */
+    cursor?: etat_cours_d_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` etat_cours_d_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` etat_cours_d_eaus.
+     */
+    skip?: number
+    distinct?: Etat_cours_d_eauScalarFieldEnum | Etat_cours_d_eauScalarFieldEnum[]
+  }
+
+  /**
+   * etat_cours_d_eau update
+   */
+  export type etat_cours_d_eauUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * The data needed to update a etat_cours_d_eau.
+     */
+    data: XOR<etat_cours_d_eauUpdateInput, etat_cours_d_eauUncheckedUpdateInput>
+    /**
+     * Choose, which etat_cours_d_eau to update.
+     */
+    where: etat_cours_d_eauWhereUniqueInput
+  }
+
+  /**
+   * etat_cours_d_eau updateMany
+   */
+  export type etat_cours_d_eauUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update etat_cours_d_eaus.
+     */
+    data: XOR<etat_cours_d_eauUpdateManyMutationInput, etat_cours_d_eauUncheckedUpdateManyInput>
+    /**
+     * Filter which etat_cours_d_eaus to update
+     */
+    where?: etat_cours_d_eauWhereInput
+    /**
+     * Limit how many etat_cours_d_eaus to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * etat_cours_d_eau updateManyAndReturn
+   */
+  export type etat_cours_d_eauUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * The data used to update etat_cours_d_eaus.
+     */
+    data: XOR<etat_cours_d_eauUpdateManyMutationInput, etat_cours_d_eauUncheckedUpdateManyInput>
+    /**
+     * Filter which etat_cours_d_eaus to update
+     */
+    where?: etat_cours_d_eauWhereInput
+    /**
+     * Limit how many etat_cours_d_eaus to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * etat_cours_d_eau delete
+   */
+  export type etat_cours_d_eauDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter which etat_cours_d_eau to delete.
+     */
+    where: etat_cours_d_eauWhereUniqueInput
+  }
+
+  /**
+   * etat_cours_d_eau deleteMany
+   */
+  export type etat_cours_d_eauDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which etat_cours_d_eaus to delete
+     */
+    where?: etat_cours_d_eauWhereInput
+    /**
+     * Limit how many etat_cours_d_eaus to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * etat_cours_d_eau without action
+   */
+  export type etat_cours_d_eauDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model postgis_rga
+   */
+
+  export type AggregatePostgis_rga = {
+    _count: Postgis_rgaCountAggregateOutputType | null
+    _avg: Postgis_rgaAvgAggregateOutputType | null
+    _sum: Postgis_rgaSumAggregateOutputType | null
+    _min: Postgis_rgaMinAggregateOutputType | null
+    _max: Postgis_rgaMaxAggregateOutputType | null
+  }
+
+  export type Postgis_rgaAvgAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type Postgis_rgaSumAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type Postgis_rgaMinAggregateOutputType = {
+    pk: number | null
+    alea: string | null
+    code_geographique: string | null
+  }
+
+  export type Postgis_rgaMaxAggregateOutputType = {
+    pk: number | null
+    alea: string | null
+    code_geographique: string | null
+  }
+
+  export type Postgis_rgaCountAggregateOutputType = {
+    pk: number
+    alea: number
+    code_geographique: number
+    _all: number
+  }
+
+
+  export type Postgis_rgaAvgAggregateInputType = {
+    pk?: true
+  }
+
+  export type Postgis_rgaSumAggregateInputType = {
+    pk?: true
+  }
+
+  export type Postgis_rgaMinAggregateInputType = {
+    pk?: true
+    alea?: true
+    code_geographique?: true
+  }
+
+  export type Postgis_rgaMaxAggregateInputType = {
+    pk?: true
+    alea?: true
+    code_geographique?: true
+  }
+
+  export type Postgis_rgaCountAggregateInputType = {
+    pk?: true
+    alea?: true
+    code_geographique?: true
+    _all?: true
+  }
+
+  export type Postgis_rgaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which postgis_rga to aggregate.
+     */
+    where?: postgis_rgaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of postgis_rgas to fetch.
+     */
+    orderBy?: postgis_rgaOrderByWithRelationInput | postgis_rgaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: postgis_rgaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` postgis_rgas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` postgis_rgas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned postgis_rgas
+    **/
+    _count?: true | Postgis_rgaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Postgis_rgaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Postgis_rgaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Postgis_rgaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Postgis_rgaMaxAggregateInputType
+  }
+
+  export type GetPostgis_rgaAggregateType<T extends Postgis_rgaAggregateArgs> = {
+        [P in keyof T & keyof AggregatePostgis_rga]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePostgis_rga[P]>
+      : GetScalarType<T[P], AggregatePostgis_rga[P]>
+  }
+
+
+
+
+  export type postgis_rgaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: postgis_rgaWhereInput
+    orderBy?: postgis_rgaOrderByWithAggregationInput | postgis_rgaOrderByWithAggregationInput[]
+    by: Postgis_rgaScalarFieldEnum[] | Postgis_rgaScalarFieldEnum
+    having?: postgis_rgaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Postgis_rgaCountAggregateInputType | true
+    _avg?: Postgis_rgaAvgAggregateInputType
+    _sum?: Postgis_rgaSumAggregateInputType
+    _min?: Postgis_rgaMinAggregateInputType
+    _max?: Postgis_rgaMaxAggregateInputType
+  }
+
+  export type Postgis_rgaGroupByOutputType = {
+    pk: number
+    alea: string
+    code_geographique: string
+    _count: Postgis_rgaCountAggregateOutputType | null
+    _avg: Postgis_rgaAvgAggregateOutputType | null
+    _sum: Postgis_rgaSumAggregateOutputType | null
+    _min: Postgis_rgaMinAggregateOutputType | null
+    _max: Postgis_rgaMaxAggregateOutputType | null
+  }
+
+  type GetPostgis_rgaGroupByPayload<T extends postgis_rgaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Postgis_rgaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Postgis_rgaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Postgis_rgaGroupByOutputType[P]>
+            : GetScalarType<T[P], Postgis_rgaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type postgis_rgaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    alea?: boolean
+    code_geographique?: boolean
+  }, ExtArgs["result"]["postgis_rga"]>
+
+
+  export type postgis_rgaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    alea?: boolean
+    code_geographique?: boolean
+  }, ExtArgs["result"]["postgis_rga"]>
+
+  export type postgis_rgaSelectScalar = {
+    pk?: boolean
+    alea?: boolean
+    code_geographique?: boolean
+  }
+
+  export type postgis_rgaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "alea" | "code_geographique", ExtArgs["result"]["postgis_rga"]>
+
+  export type $postgis_rgaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "postgis_rga"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      alea: string
+      code_geographique: string
+    }, ExtArgs["result"]["postgis_rga"]>
+    composites: {}
+  }
+
+  type postgis_rgaGetPayload<S extends boolean | null | undefined | postgis_rgaDefaultArgs> = $Result.GetResult<Prisma.$postgis_rgaPayload, S>
+
+  type postgis_rgaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<postgis_rgaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Postgis_rgaCountAggregateInputType | true
+    }
+
+  export interface postgis_rgaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['postgis_rga'], meta: { name: 'postgis_rga' } }
+    /**
+     * Find zero or one Postgis_rga that matches the filter.
+     * @param {postgis_rgaFindUniqueArgs} args - Arguments to find a Postgis_rga
+     * @example
+     * // Get one Postgis_rga
+     * const postgis_rga = await prisma.postgis_rga.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends postgis_rgaFindUniqueArgs>(args: SelectSubset<T, postgis_rgaFindUniqueArgs<ExtArgs>>): Prisma__postgis_rgaClient<$Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Postgis_rga that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {postgis_rgaFindUniqueOrThrowArgs} args - Arguments to find a Postgis_rga
+     * @example
+     * // Get one Postgis_rga
+     * const postgis_rga = await prisma.postgis_rga.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends postgis_rgaFindUniqueOrThrowArgs>(args: SelectSubset<T, postgis_rgaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__postgis_rgaClient<$Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Postgis_rga that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {postgis_rgaFindFirstArgs} args - Arguments to find a Postgis_rga
+     * @example
+     * // Get one Postgis_rga
+     * const postgis_rga = await prisma.postgis_rga.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends postgis_rgaFindFirstArgs>(args?: SelectSubset<T, postgis_rgaFindFirstArgs<ExtArgs>>): Prisma__postgis_rgaClient<$Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Postgis_rga that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {postgis_rgaFindFirstOrThrowArgs} args - Arguments to find a Postgis_rga
+     * @example
+     * // Get one Postgis_rga
+     * const postgis_rga = await prisma.postgis_rga.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends postgis_rgaFindFirstOrThrowArgs>(args?: SelectSubset<T, postgis_rgaFindFirstOrThrowArgs<ExtArgs>>): Prisma__postgis_rgaClient<$Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Postgis_rgas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {postgis_rgaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Postgis_rgas
+     * const postgis_rgas = await prisma.postgis_rga.findMany()
+     * 
+     * // Get first 10 Postgis_rgas
+     * const postgis_rgas = await prisma.postgis_rga.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const postgis_rgaWithPkOnly = await prisma.postgis_rga.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends postgis_rgaFindManyArgs>(args?: SelectSubset<T, postgis_rgaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Delete a Postgis_rga.
+     * @param {postgis_rgaDeleteArgs} args - Arguments to delete one Postgis_rga.
+     * @example
+     * // Delete one Postgis_rga
+     * const Postgis_rga = await prisma.postgis_rga.delete({
+     *   where: {
+     *     // ... filter to delete one Postgis_rga
+     *   }
+     * })
+     * 
+     */
+    delete<T extends postgis_rgaDeleteArgs>(args: SelectSubset<T, postgis_rgaDeleteArgs<ExtArgs>>): Prisma__postgis_rgaClient<$Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Postgis_rga.
+     * @param {postgis_rgaUpdateArgs} args - Arguments to update one Postgis_rga.
+     * @example
+     * // Update one Postgis_rga
+     * const postgis_rga = await prisma.postgis_rga.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends postgis_rgaUpdateArgs>(args: SelectSubset<T, postgis_rgaUpdateArgs<ExtArgs>>): Prisma__postgis_rgaClient<$Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Postgis_rgas.
+     * @param {postgis_rgaDeleteManyArgs} args - Arguments to filter Postgis_rgas to delete.
+     * @example
+     * // Delete a few Postgis_rgas
+     * const { count } = await prisma.postgis_rga.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends postgis_rgaDeleteManyArgs>(args?: SelectSubset<T, postgis_rgaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Postgis_rgas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {postgis_rgaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Postgis_rgas
+     * const postgis_rga = await prisma.postgis_rga.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends postgis_rgaUpdateManyArgs>(args: SelectSubset<T, postgis_rgaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Postgis_rgas and returns the data updated in the database.
+     * @param {postgis_rgaUpdateManyAndReturnArgs} args - Arguments to update many Postgis_rgas.
+     * @example
+     * // Update many Postgis_rgas
+     * const postgis_rga = await prisma.postgis_rga.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Postgis_rgas and only return the `pk`
+     * const postgis_rgaWithPkOnly = await prisma.postgis_rga.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends postgis_rgaUpdateManyAndReturnArgs>(args: SelectSubset<T, postgis_rgaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+
+    /**
+     * Count the number of Postgis_rgas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {postgis_rgaCountArgs} args - Arguments to filter Postgis_rgas to count.
+     * @example
+     * // Count the number of Postgis_rgas
+     * const count = await prisma.postgis_rga.count({
+     *   where: {
+     *     // ... the filter for the Postgis_rgas we want to count
+     *   }
+     * })
+    **/
+    count<T extends postgis_rgaCountArgs>(
+      args?: Subset<T, postgis_rgaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Postgis_rgaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Postgis_rga.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Postgis_rgaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Postgis_rgaAggregateArgs>(args: Subset<T, Postgis_rgaAggregateArgs>): Prisma.PrismaPromise<GetPostgis_rgaAggregateType<T>>
+
+    /**
+     * Group by Postgis_rga.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {postgis_rgaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends postgis_rgaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: postgis_rgaGroupByArgs['orderBy'] }
+        : { orderBy?: postgis_rgaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, postgis_rgaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPostgis_rgaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the postgis_rga model
+   */
+  readonly fields: postgis_rgaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for postgis_rga.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__postgis_rgaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the postgis_rga model
+   */
+  interface postgis_rgaFieldRefs {
+    readonly pk: FieldRef<"postgis_rga", 'Int'>
+    readonly alea: FieldRef<"postgis_rga", 'String'>
+    readonly code_geographique: FieldRef<"postgis_rga", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * postgis_rga findUnique
+   */
+  export type postgis_rgaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the postgis_rga
+     */
+    select?: postgis_rgaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the postgis_rga
+     */
+    omit?: postgis_rgaOmit<ExtArgs> | null
+    /**
+     * Filter, which postgis_rga to fetch.
+     */
+    where: postgis_rgaWhereUniqueInput
+  }
+
+  /**
+   * postgis_rga findUniqueOrThrow
+   */
+  export type postgis_rgaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the postgis_rga
+     */
+    select?: postgis_rgaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the postgis_rga
+     */
+    omit?: postgis_rgaOmit<ExtArgs> | null
+    /**
+     * Filter, which postgis_rga to fetch.
+     */
+    where: postgis_rgaWhereUniqueInput
+  }
+
+  /**
+   * postgis_rga findFirst
+   */
+  export type postgis_rgaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the postgis_rga
+     */
+    select?: postgis_rgaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the postgis_rga
+     */
+    omit?: postgis_rgaOmit<ExtArgs> | null
+    /**
+     * Filter, which postgis_rga to fetch.
+     */
+    where?: postgis_rgaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of postgis_rgas to fetch.
+     */
+    orderBy?: postgis_rgaOrderByWithRelationInput | postgis_rgaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for postgis_rgas.
+     */
+    cursor?: postgis_rgaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` postgis_rgas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` postgis_rgas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of postgis_rgas.
+     */
+    distinct?: Postgis_rgaScalarFieldEnum | Postgis_rgaScalarFieldEnum[]
+  }
+
+  /**
+   * postgis_rga findFirstOrThrow
+   */
+  export type postgis_rgaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the postgis_rga
+     */
+    select?: postgis_rgaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the postgis_rga
+     */
+    omit?: postgis_rgaOmit<ExtArgs> | null
+    /**
+     * Filter, which postgis_rga to fetch.
+     */
+    where?: postgis_rgaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of postgis_rgas to fetch.
+     */
+    orderBy?: postgis_rgaOrderByWithRelationInput | postgis_rgaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for postgis_rgas.
+     */
+    cursor?: postgis_rgaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` postgis_rgas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` postgis_rgas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of postgis_rgas.
+     */
+    distinct?: Postgis_rgaScalarFieldEnum | Postgis_rgaScalarFieldEnum[]
+  }
+
+  /**
+   * postgis_rga findMany
+   */
+  export type postgis_rgaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the postgis_rga
+     */
+    select?: postgis_rgaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the postgis_rga
+     */
+    omit?: postgis_rgaOmit<ExtArgs> | null
+    /**
+     * Filter, which postgis_rgas to fetch.
+     */
+    where?: postgis_rgaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of postgis_rgas to fetch.
+     */
+    orderBy?: postgis_rgaOrderByWithRelationInput | postgis_rgaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing postgis_rgas.
+     */
+    cursor?: postgis_rgaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` postgis_rgas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` postgis_rgas.
+     */
+    skip?: number
+    distinct?: Postgis_rgaScalarFieldEnum | Postgis_rgaScalarFieldEnum[]
+  }
+
+  /**
+   * postgis_rga update
+   */
+  export type postgis_rgaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the postgis_rga
+     */
+    select?: postgis_rgaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the postgis_rga
+     */
+    omit?: postgis_rgaOmit<ExtArgs> | null
+    /**
+     * The data needed to update a postgis_rga.
+     */
+    data: XOR<postgis_rgaUpdateInput, postgis_rgaUncheckedUpdateInput>
+    /**
+     * Choose, which postgis_rga to update.
+     */
+    where: postgis_rgaWhereUniqueInput
+  }
+
+  /**
+   * postgis_rga updateMany
+   */
+  export type postgis_rgaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update postgis_rgas.
+     */
+    data: XOR<postgis_rgaUpdateManyMutationInput, postgis_rgaUncheckedUpdateManyInput>
+    /**
+     * Filter which postgis_rgas to update
+     */
+    where?: postgis_rgaWhereInput
+    /**
+     * Limit how many postgis_rgas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * postgis_rga updateManyAndReturn
+   */
+  export type postgis_rgaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the postgis_rga
+     */
+    select?: postgis_rgaSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the postgis_rga
+     */
+    omit?: postgis_rgaOmit<ExtArgs> | null
+    /**
+     * The data used to update postgis_rgas.
+     */
+    data: XOR<postgis_rgaUpdateManyMutationInput, postgis_rgaUncheckedUpdateManyInput>
+    /**
+     * Filter which postgis_rgas to update
+     */
+    where?: postgis_rgaWhereInput
+    /**
+     * Limit how many postgis_rgas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * postgis_rga delete
+   */
+  export type postgis_rgaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the postgis_rga
+     */
+    select?: postgis_rgaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the postgis_rga
+     */
+    omit?: postgis_rgaOmit<ExtArgs> | null
+    /**
+     * Filter which postgis_rga to delete.
+     */
+    where: postgis_rgaWhereUniqueInput
+  }
+
+  /**
+   * postgis_rga deleteMany
+   */
+  export type postgis_rgaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which postgis_rgas to delete
+     */
+    where?: postgis_rgaWhereInput
+    /**
+     * Limit how many postgis_rgas to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * postgis_rga without action
+   */
+  export type postgis_rgaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the postgis_rga
+     */
+    select?: postgis_rgaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the postgis_rga
+     */
+    omit?: postgis_rgaOmit<ExtArgs> | null
+>>>>>>> dev
   }
 
 
@@ -31315,6 +43045,7 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
    * Model geography_columns
    */
 
@@ -31352,10 +43083,51 @@ export namespace Prisma {
     coord_dimension: number
     srid: number
     type: number
+=======
+   * Model sandbox_users
+   */
+
+  export type AggregateSandbox_users = {
+    _count: Sandbox_usersCountAggregateOutputType | null
+    _avg: Sandbox_usersAvgAggregateOutputType | null
+    _sum: Sandbox_usersSumAggregateOutputType | null
+    _min: Sandbox_usersMinAggregateOutputType | null
+    _max: Sandbox_usersMaxAggregateOutputType | null
+  }
+
+  export type Sandbox_usersAvgAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type Sandbox_usersSumAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type Sandbox_usersMinAggregateOutputType = {
+    username: string | null
+    pk: number | null
+    password: string | null
+    created_at: Date | null
+  }
+
+  export type Sandbox_usersMaxAggregateOutputType = {
+    username: string | null
+    pk: number | null
+    password: string | null
+    created_at: Date | null
+  }
+
+  export type Sandbox_usersCountAggregateOutputType = {
+    username: number
+    pk: number
+    password: number
+    created_at: number
+>>>>>>> dev
     _all: number
   }
 
 
+<<<<<<< HEAD
   export type Geography_columnsAvgAggregateInputType = {
     coord_dimension?: true
     srid?: true
@@ -31400,43 +43172,119 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` geography_columns from the position of the cursor.
+=======
+  export type Sandbox_usersAvgAggregateInputType = {
+    pk?: true
+  }
+
+  export type Sandbox_usersSumAggregateInputType = {
+    pk?: true
+  }
+
+  export type Sandbox_usersMinAggregateInputType = {
+    username?: true
+    pk?: true
+    password?: true
+    created_at?: true
+  }
+
+  export type Sandbox_usersMaxAggregateInputType = {
+    username?: true
+    pk?: true
+    password?: true
+    created_at?: true
+  }
+
+  export type Sandbox_usersCountAggregateInputType = {
+    username?: true
+    pk?: true
+    password?: true
+    created_at?: true
+    _all?: true
+  }
+
+  export type Sandbox_usersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which sandbox_users to aggregate.
+     */
+    where?: sandbox_usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sandbox_users to fetch.
+     */
+    orderBy?: sandbox_usersOrderByWithRelationInput | sandbox_usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: sandbox_usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sandbox_users from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` geography_columns.
+=======
+     * Skip the first `n` sandbox_users.
+>>>>>>> dev
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+<<<<<<< HEAD
      * Count returned geography_columns
     **/
     _count?: true | Geography_columnsCountAggregateInputType
+=======
+     * Count returned sandbox_users
+    **/
+    _count?: true | Sandbox_usersCountAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
+<<<<<<< HEAD
     _avg?: Geography_columnsAvgAggregateInputType
+=======
+    _avg?: Sandbox_usersAvgAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
+<<<<<<< HEAD
     _sum?: Geography_columnsSumAggregateInputType
+=======
+    _sum?: Sandbox_usersSumAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
+<<<<<<< HEAD
     _min?: Geography_columnsMinAggregateInputType
+=======
+    _min?: Sandbox_usersMinAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
+<<<<<<< HEAD
     _max?: Geography_columnsMaxAggregateInputType
   }
 
@@ -31446,11 +43294,23 @@ export namespace Prisma {
         ? number
         : GetScalarType<T[P], AggregateGeography_columns[P]>
       : GetScalarType<T[P], AggregateGeography_columns[P]>
+=======
+    _max?: Sandbox_usersMaxAggregateInputType
+  }
+
+  export type GetSandbox_usersAggregateType<T extends Sandbox_usersAggregateArgs> = {
+        [P in keyof T & keyof AggregateSandbox_users]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSandbox_users[P]>
+      : GetScalarType<T[P], AggregateSandbox_users[P]>
+>>>>>>> dev
   }
 
 
 
 
+<<<<<<< HEAD
   export type geography_columnsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: geography_columnsWhereInput
     orderBy?: geography_columnsOrderByWithAggregationInput | geography_columnsOrderByWithAggregationInput[]
@@ -31485,11 +43345,49 @@ export namespace Prisma {
               ? number
               : GetScalarType<T[P], Geography_columnsGroupByOutputType[P]>
             : GetScalarType<T[P], Geography_columnsGroupByOutputType[P]>
+=======
+  export type sandbox_usersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: sandbox_usersWhereInput
+    orderBy?: sandbox_usersOrderByWithAggregationInput | sandbox_usersOrderByWithAggregationInput[]
+    by: Sandbox_usersScalarFieldEnum[] | Sandbox_usersScalarFieldEnum
+    having?: sandbox_usersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Sandbox_usersCountAggregateInputType | true
+    _avg?: Sandbox_usersAvgAggregateInputType
+    _sum?: Sandbox_usersSumAggregateInputType
+    _min?: Sandbox_usersMinAggregateInputType
+    _max?: Sandbox_usersMaxAggregateInputType
+  }
+
+  export type Sandbox_usersGroupByOutputType = {
+    username: string
+    pk: number
+    password: string
+    created_at: Date
+    _count: Sandbox_usersCountAggregateOutputType | null
+    _avg: Sandbox_usersAvgAggregateOutputType | null
+    _sum: Sandbox_usersSumAggregateOutputType | null
+    _min: Sandbox_usersMinAggregateOutputType | null
+    _max: Sandbox_usersMaxAggregateOutputType | null
+  }
+
+  type GetSandbox_usersGroupByPayload<T extends sandbox_usersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Sandbox_usersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Sandbox_usersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Sandbox_usersGroupByOutputType[P]>
+            : GetScalarType<T[P], Sandbox_usersGroupByOutputType[P]>
+>>>>>>> dev
         }
       >
     >
 
 
+<<<<<<< HEAD
   export type geography_columnsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     coord_dimension?: boolean
     srid?: boolean
@@ -31534,11 +43432,71 @@ export namespace Prisma {
      * @example
      * // Get one Geography_columns
      * const geography_columns = await prisma.geography_columns.findFirst({
+=======
+  export type sandbox_usersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    username?: boolean
+    pk?: boolean
+    password?: boolean
+    created_at?: boolean
+  }, ExtArgs["result"]["sandbox_users"]>
+
+  export type sandbox_usersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    username?: boolean
+    pk?: boolean
+    password?: boolean
+    created_at?: boolean
+  }, ExtArgs["result"]["sandbox_users"]>
+
+  export type sandbox_usersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    username?: boolean
+    pk?: boolean
+    password?: boolean
+    created_at?: boolean
+  }, ExtArgs["result"]["sandbox_users"]>
+
+  export type sandbox_usersSelectScalar = {
+    username?: boolean
+    pk?: boolean
+    password?: boolean
+    created_at?: boolean
+  }
+
+  export type sandbox_usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"username" | "pk" | "password" | "created_at", ExtArgs["result"]["sandbox_users"]>
+
+  export type $sandbox_usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "sandbox_users"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      username: string
+      pk: number
+      password: string
+      created_at: Date
+    }, ExtArgs["result"]["sandbox_users"]>
+    composites: {}
+  }
+
+  type sandbox_usersGetPayload<S extends boolean | null | undefined | sandbox_usersDefaultArgs> = $Result.GetResult<Prisma.$sandbox_usersPayload, S>
+
+  type sandbox_usersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<sandbox_usersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Sandbox_usersCountAggregateInputType | true
+    }
+
+  export interface sandbox_usersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['sandbox_users'], meta: { name: 'sandbox_users' } }
+    /**
+     * Find zero or one Sandbox_users that matches the filter.
+     * @param {sandbox_usersFindUniqueArgs} args - Arguments to find a Sandbox_users
+     * @example
+     * // Get one Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.findUnique({
+>>>>>>> dev
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
+<<<<<<< HEAD
     findFirst<T extends geography_columnsFindFirstArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
       orderBy: {}
     } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
@@ -31554,11 +43512,54 @@ export namespace Prisma {
      * @example
      * // Get one Geography_columns
      * const geography_columns = await prisma.geography_columns.findFirstOrThrow({
+=======
+    findUnique<T extends sandbox_usersFindUniqueArgs>(args: SelectSubset<T, sandbox_usersFindUniqueArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Sandbox_users that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {sandbox_usersFindUniqueOrThrowArgs} args - Arguments to find a Sandbox_users
+     * @example
+     * // Get one Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
+    findUniqueOrThrow<T extends sandbox_usersFindUniqueOrThrowArgs>(args: SelectSubset<T, sandbox_usersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Sandbox_users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sandbox_usersFindFirstArgs} args - Arguments to find a Sandbox_users
+     * @example
+     * // Get one Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends sandbox_usersFindFirstArgs>(args?: SelectSubset<T, sandbox_usersFindFirstArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Sandbox_users that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sandbox_usersFindFirstOrThrowArgs} args - Arguments to find a Sandbox_users
+     * @example
+     * // Get one Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.findFirstOrThrow({
+>>>>>>> dev
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+<<<<<<< HEAD
     findFirstOrThrow<T extends geography_columnsFindFirstOrThrowArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
       orderBy: {}
     } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
@@ -31603,19 +43604,233 @@ export namespace Prisma {
     **/
     count<T extends geography_columnsCountArgs>(
       args?: Subset<T, geography_columnsCountArgs>,
+=======
+    findFirstOrThrow<T extends sandbox_usersFindFirstOrThrowArgs>(args?: SelectSubset<T, sandbox_usersFindFirstOrThrowArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Sandbox_users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sandbox_usersFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.findMany()
+     * 
+     * // Get first 10 Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.findMany({ take: 10 })
+     * 
+     * // Only select the `username`
+     * const sandbox_usersWithUsernameOnly = await prisma.sandbox_users.findMany({ select: { username: true } })
+     * 
+     */
+    findMany<T extends sandbox_usersFindManyArgs>(args?: SelectSubset<T, sandbox_usersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Sandbox_users.
+     * @param {sandbox_usersCreateArgs} args - Arguments to create a Sandbox_users.
+     * @example
+     * // Create one Sandbox_users
+     * const Sandbox_users = await prisma.sandbox_users.create({
+     *   data: {
+     *     // ... data to create a Sandbox_users
+     *   }
+     * })
+     * 
+     */
+    create<T extends sandbox_usersCreateArgs>(args: SelectSubset<T, sandbox_usersCreateArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Sandbox_users.
+     * @param {sandbox_usersCreateManyArgs} args - Arguments to create many Sandbox_users.
+     * @example
+     * // Create many Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends sandbox_usersCreateManyArgs>(args?: SelectSubset<T, sandbox_usersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Sandbox_users and returns the data saved in the database.
+     * @param {sandbox_usersCreateManyAndReturnArgs} args - Arguments to create many Sandbox_users.
+     * @example
+     * // Create many Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Sandbox_users and only return the `username`
+     * const sandbox_usersWithUsernameOnly = await prisma.sandbox_users.createManyAndReturn({
+     *   select: { username: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends sandbox_usersCreateManyAndReturnArgs>(args?: SelectSubset<T, sandbox_usersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Sandbox_users.
+     * @param {sandbox_usersDeleteArgs} args - Arguments to delete one Sandbox_users.
+     * @example
+     * // Delete one Sandbox_users
+     * const Sandbox_users = await prisma.sandbox_users.delete({
+     *   where: {
+     *     // ... filter to delete one Sandbox_users
+     *   }
+     * })
+     * 
+     */
+    delete<T extends sandbox_usersDeleteArgs>(args: SelectSubset<T, sandbox_usersDeleteArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Sandbox_users.
+     * @param {sandbox_usersUpdateArgs} args - Arguments to update one Sandbox_users.
+     * @example
+     * // Update one Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends sandbox_usersUpdateArgs>(args: SelectSubset<T, sandbox_usersUpdateArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Sandbox_users.
+     * @param {sandbox_usersDeleteManyArgs} args - Arguments to filter Sandbox_users to delete.
+     * @example
+     * // Delete a few Sandbox_users
+     * const { count } = await prisma.sandbox_users.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends sandbox_usersDeleteManyArgs>(args?: SelectSubset<T, sandbox_usersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Sandbox_users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sandbox_usersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends sandbox_usersUpdateManyArgs>(args: SelectSubset<T, sandbox_usersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Sandbox_users and returns the data updated in the database.
+     * @param {sandbox_usersUpdateManyAndReturnArgs} args - Arguments to update many Sandbox_users.
+     * @example
+     * // Update many Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Sandbox_users and only return the `username`
+     * const sandbox_usersWithUsernameOnly = await prisma.sandbox_users.updateManyAndReturn({
+     *   select: { username: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends sandbox_usersUpdateManyAndReturnArgs>(args: SelectSubset<T, sandbox_usersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Sandbox_users.
+     * @param {sandbox_usersUpsertArgs} args - Arguments to update or create a Sandbox_users.
+     * @example
+     * // Update or create a Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.upsert({
+     *   create: {
+     *     // ... data to create a Sandbox_users
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Sandbox_users we want to update
+     *   }
+     * })
+     */
+    upsert<T extends sandbox_usersUpsertArgs>(args: SelectSubset<T, sandbox_usersUpsertArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Sandbox_users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sandbox_usersCountArgs} args - Arguments to filter Sandbox_users to count.
+     * @example
+     * // Count the number of Sandbox_users
+     * const count = await prisma.sandbox_users.count({
+     *   where: {
+     *     // ... the filter for the Sandbox_users we want to count
+     *   }
+     * })
+    **/
+    count<T extends sandbox_usersCountArgs>(
+      args?: Subset<T, sandbox_usersCountArgs>,
+>>>>>>> dev
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
+<<<<<<< HEAD
           : GetScalarType<T['select'], Geography_columnsCountAggregateOutputType>
+=======
+          : GetScalarType<T['select'], Sandbox_usersCountAggregateOutputType>
+>>>>>>> dev
         : number
     >
 
     /**
+<<<<<<< HEAD
      * Allows you to perform aggregations operations on a Geography_columns.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
      * @param {Geography_columnsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+=======
+     * Allows you to perform aggregations operations on a Sandbox_users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Sandbox_usersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+>>>>>>> dev
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -31635,6 +43850,7 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
+<<<<<<< HEAD
     aggregate<T extends Geography_columnsAggregateArgs>(args: Subset<T, Geography_columnsAggregateArgs>): Prisma.PrismaPromise<GetGeography_columnsAggregateType<T>>
 
     /**
@@ -31642,6 +43858,15 @@ export namespace Prisma {
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
      * @param {geography_columnsGroupByArgs} args - Group by arguments.
+=======
+    aggregate<T extends Sandbox_usersAggregateArgs>(args: Subset<T, Sandbox_usersAggregateArgs>): Prisma.PrismaPromise<GetSandbox_usersAggregateType<T>>
+
+    /**
+     * Group by Sandbox_users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sandbox_usersGroupByArgs} args - Group by arguments.
+>>>>>>> dev
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -31656,14 +43881,23 @@ export namespace Prisma {
      * 
     **/
     groupBy<
+<<<<<<< HEAD
       T extends geography_columnsGroupByArgs,
+=======
+      T extends sandbox_usersGroupByArgs,
+>>>>>>> dev
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
+<<<<<<< HEAD
         ? { orderBy: geography_columnsGroupByArgs['orderBy'] }
         : { orderBy?: geography_columnsGroupByArgs['orderBy'] },
+=======
+        ? { orderBy: sandbox_usersGroupByArgs['orderBy'] }
+        : { orderBy?: sandbox_usersGroupByArgs['orderBy'] },
+>>>>>>> dev
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -31712,6 +43946,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
+<<<<<<< HEAD
     >(args: SubsetIntersection<T, geography_columnsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGeography_columnsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
    * Fields of the geography_columns model
@@ -31721,11 +43956,26 @@ export namespace Prisma {
 
   /**
    * The delegate class that acts as a "Promise-like" for geography_columns.
+=======
+    >(args: SubsetIntersection<T, sandbox_usersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSandbox_usersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the sandbox_users model
+   */
+  readonly fields: sandbox_usersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for sandbox_users.
+>>>>>>> dev
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
+<<<<<<< HEAD
   export interface Prisma__geography_columnsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+=======
+  export interface Prisma__sandbox_usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+>>>>>>> dev
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -31753,17 +44003,28 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
    * Fields of the geography_columns model
    */
   interface geography_columnsFieldRefs {
     readonly coord_dimension: FieldRef<"geography_columns", 'Int'>
     readonly srid: FieldRef<"geography_columns", 'Int'>
     readonly type: FieldRef<"geography_columns", 'String'>
+=======
+   * Fields of the sandbox_users model
+   */
+  interface sandbox_usersFieldRefs {
+    readonly username: FieldRef<"sandbox_users", 'String'>
+    readonly pk: FieldRef<"sandbox_users", 'Int'>
+    readonly password: FieldRef<"sandbox_users", 'String'>
+    readonly created_at: FieldRef<"sandbox_users", 'DateTime'>
+>>>>>>> dev
   }
     
 
   // Custom InputTypes
   /**
+<<<<<<< HEAD
    * geography_columns findFirst
    */
   export type geography_columnsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -31789,17 +44050,91 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` geography_columns from the position of the cursor.
+=======
+   * sandbox_users findUnique
+   */
+  export type sandbox_usersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * Filter, which sandbox_users to fetch.
+     */
+    where: sandbox_usersWhereUniqueInput
+  }
+
+  /**
+   * sandbox_users findUniqueOrThrow
+   */
+  export type sandbox_usersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * Filter, which sandbox_users to fetch.
+     */
+    where: sandbox_usersWhereUniqueInput
+  }
+
+  /**
+   * sandbox_users findFirst
+   */
+  export type sandbox_usersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * Filter, which sandbox_users to fetch.
+     */
+    where?: sandbox_usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sandbox_users to fetch.
+     */
+    orderBy?: sandbox_usersOrderByWithRelationInput | sandbox_usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for sandbox_users.
+     */
+    cursor?: sandbox_usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sandbox_users from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` geography_columns.
+=======
+     * Skip the first `n` sandbox_users.
+>>>>>>> dev
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
+<<<<<<< HEAD
      * Filter by unique combinations of geography_columns.
      */
     distinct?: Geography_columnsScalarFieldEnum | Geography_columnsScalarFieldEnum[]
@@ -31831,17 +44166,61 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` geography_columns from the position of the cursor.
+=======
+     * Filter by unique combinations of sandbox_users.
+     */
+    distinct?: Sandbox_usersScalarFieldEnum | Sandbox_usersScalarFieldEnum[]
+  }
+
+  /**
+   * sandbox_users findFirstOrThrow
+   */
+  export type sandbox_usersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * Filter, which sandbox_users to fetch.
+     */
+    where?: sandbox_usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sandbox_users to fetch.
+     */
+    orderBy?: sandbox_usersOrderByWithRelationInput | sandbox_usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for sandbox_users.
+     */
+    cursor?: sandbox_usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sandbox_users from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` geography_columns.
+=======
+     * Skip the first `n` sandbox_users.
+>>>>>>> dev
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
+<<<<<<< HEAD
      * Filter by unique combinations of geography_columns.
      */
     distinct?: Geography_columnsScalarFieldEnum | Geography_columnsScalarFieldEnum[]
@@ -31873,11 +44252,51 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` geography_columns from the position of the cursor.
+=======
+     * Filter by unique combinations of sandbox_users.
+     */
+    distinct?: Sandbox_usersScalarFieldEnum | Sandbox_usersScalarFieldEnum[]
+  }
+
+  /**
+   * sandbox_users findMany
+   */
+  export type sandbox_usersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * Filter, which sandbox_users to fetch.
+     */
+    where?: sandbox_usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sandbox_users to fetch.
+     */
+    orderBy?: sandbox_usersOrderByWithRelationInput | sandbox_usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing sandbox_users.
+     */
+    cursor?: sandbox_usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sandbox_users from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` geography_columns.
      */
     skip?: number
@@ -31896,10 +44315,203 @@ export namespace Prisma {
      * Omit specific fields from the geography_columns
      */
     omit?: geography_columnsOmit<ExtArgs> | null
+=======
+     * Skip the first `n` sandbox_users.
+     */
+    skip?: number
+    distinct?: Sandbox_usersScalarFieldEnum | Sandbox_usersScalarFieldEnum[]
+  }
+
+  /**
+   * sandbox_users create
+   */
+  export type sandbox_usersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * The data needed to create a sandbox_users.
+     */
+    data: XOR<sandbox_usersCreateInput, sandbox_usersUncheckedCreateInput>
+  }
+
+  /**
+   * sandbox_users createMany
+   */
+  export type sandbox_usersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many sandbox_users.
+     */
+    data: sandbox_usersCreateManyInput | sandbox_usersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * sandbox_users createManyAndReturn
+   */
+  export type sandbox_usersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * The data used to create many sandbox_users.
+     */
+    data: sandbox_usersCreateManyInput | sandbox_usersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * sandbox_users update
+   */
+  export type sandbox_usersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * The data needed to update a sandbox_users.
+     */
+    data: XOR<sandbox_usersUpdateInput, sandbox_usersUncheckedUpdateInput>
+    /**
+     * Choose, which sandbox_users to update.
+     */
+    where: sandbox_usersWhereUniqueInput
+  }
+
+  /**
+   * sandbox_users updateMany
+   */
+  export type sandbox_usersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update sandbox_users.
+     */
+    data: XOR<sandbox_usersUpdateManyMutationInput, sandbox_usersUncheckedUpdateManyInput>
+    /**
+     * Filter which sandbox_users to update
+     */
+    where?: sandbox_usersWhereInput
+    /**
+     * Limit how many sandbox_users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * sandbox_users updateManyAndReturn
+   */
+  export type sandbox_usersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * The data used to update sandbox_users.
+     */
+    data: XOR<sandbox_usersUpdateManyMutationInput, sandbox_usersUncheckedUpdateManyInput>
+    /**
+     * Filter which sandbox_users to update
+     */
+    where?: sandbox_usersWhereInput
+    /**
+     * Limit how many sandbox_users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * sandbox_users upsert
+   */
+  export type sandbox_usersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * The filter to search for the sandbox_users to update in case it exists.
+     */
+    where: sandbox_usersWhereUniqueInput
+    /**
+     * In case the sandbox_users found by the `where` argument doesn't exist, create a new sandbox_users with this data.
+     */
+    create: XOR<sandbox_usersCreateInput, sandbox_usersUncheckedCreateInput>
+    /**
+     * In case the sandbox_users was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<sandbox_usersUpdateInput, sandbox_usersUncheckedUpdateInput>
+  }
+
+  /**
+   * sandbox_users delete
+   */
+  export type sandbox_usersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * Filter which sandbox_users to delete.
+     */
+    where: sandbox_usersWhereUniqueInput
+  }
+
+  /**
+   * sandbox_users deleteMany
+   */
+  export type sandbox_usersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which sandbox_users to delete
+     */
+    where?: sandbox_usersWhereInput
+    /**
+     * Limit how many sandbox_users to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * sandbox_users without action
+   */
+  export type sandbox_usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+>>>>>>> dev
   }
 
 
   /**
+<<<<<<< HEAD
    * Model geometry_columns
    */
 
@@ -31940,10 +44552,60 @@ export namespace Prisma {
     coord_dimension: number
     srid: number
     type: number
+=======
+   * Model users
+   */
+
+  export type AggregateUsers = {
+    _count: UsersCountAggregateOutputType | null
+    _avg: UsersAvgAggregateOutputType | null
+    _sum: UsersSumAggregateOutputType | null
+    _min: UsersMinAggregateOutputType | null
+    _max: UsersMaxAggregateOutputType | null
+  }
+
+  export type UsersAvgAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type UsersSumAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type UsersMinAggregateOutputType = {
+    pk: number | null
+    email: string | null
+    username: string | null
+    password: string | null
+    created_at: Date | null
+    last_connection: Date | null
+    role: string | null
+  }
+
+  export type UsersMaxAggregateOutputType = {
+    pk: number | null
+    email: string | null
+    username: string | null
+    password: string | null
+    created_at: Date | null
+    last_connection: Date | null
+    role: string | null
+  }
+
+  export type UsersCountAggregateOutputType = {
+    pk: number
+    email: number
+    username: number
+    password: number
+    created_at: number
+    last_connection: number
+    role: number
+>>>>>>> dev
     _all: number
   }
 
 
+<<<<<<< HEAD
   export type Geometry_columnsAvgAggregateInputType = {
     coord_dimension?: true
     srid?: true
@@ -31991,43 +44653,128 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` geometry_columns from the position of the cursor.
+=======
+  export type UsersAvgAggregateInputType = {
+    pk?: true
+  }
+
+  export type UsersSumAggregateInputType = {
+    pk?: true
+  }
+
+  export type UsersMinAggregateInputType = {
+    pk?: true
+    email?: true
+    username?: true
+    password?: true
+    created_at?: true
+    last_connection?: true
+    role?: true
+  }
+
+  export type UsersMaxAggregateInputType = {
+    pk?: true
+    email?: true
+    username?: true
+    password?: true
+    created_at?: true
+    last_connection?: true
+    role?: true
+  }
+
+  export type UsersCountAggregateInputType = {
+    pk?: true
+    email?: true
+    username?: true
+    password?: true
+    created_at?: true
+    last_connection?: true
+    role?: true
+    _all?: true
+  }
+
+  export type UsersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which users to aggregate.
+     */
+    where?: usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users to fetch.
+     */
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` geometry_columns.
+=======
+     * Skip the first `n` users.
+>>>>>>> dev
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+<<<<<<< HEAD
      * Count returned geometry_columns
     **/
     _count?: true | Geometry_columnsCountAggregateInputType
+=======
+     * Count returned users
+    **/
+    _count?: true | UsersCountAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
+<<<<<<< HEAD
     _avg?: Geometry_columnsAvgAggregateInputType
+=======
+    _avg?: UsersAvgAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
+<<<<<<< HEAD
     _sum?: Geometry_columnsSumAggregateInputType
+=======
+    _sum?: UsersSumAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
+<<<<<<< HEAD
     _min?: Geometry_columnsMinAggregateInputType
+=======
+    _min?: UsersMinAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
+<<<<<<< HEAD
     _max?: Geometry_columnsMaxAggregateInputType
   }
 
@@ -32037,11 +44784,23 @@ export namespace Prisma {
         ? number
         : GetScalarType<T[P], AggregateGeometry_columns[P]>
       : GetScalarType<T[P], AggregateGeometry_columns[P]>
+=======
+    _max?: UsersMaxAggregateInputType
+  }
+
+  export type GetUsersAggregateType<T extends UsersAggregateArgs> = {
+        [P in keyof T & keyof AggregateUsers]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUsers[P]>
+      : GetScalarType<T[P], AggregateUsers[P]>
+>>>>>>> dev
   }
 
 
 
 
+<<<<<<< HEAD
   export type geometry_columnsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: geometry_columnsWhereInput
     orderBy?: geometry_columnsOrderByWithAggregationInput | geometry_columnsOrderByWithAggregationInput[]
@@ -32077,11 +44836,52 @@ export namespace Prisma {
               ? number
               : GetScalarType<T[P], Geometry_columnsGroupByOutputType[P]>
             : GetScalarType<T[P], Geometry_columnsGroupByOutputType[P]>
+=======
+  export type usersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: usersWhereInput
+    orderBy?: usersOrderByWithAggregationInput | usersOrderByWithAggregationInput[]
+    by: UsersScalarFieldEnum[] | UsersScalarFieldEnum
+    having?: usersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UsersCountAggregateInputType | true
+    _avg?: UsersAvgAggregateInputType
+    _sum?: UsersSumAggregateInputType
+    _min?: UsersMinAggregateInputType
+    _max?: UsersMaxAggregateInputType
+  }
+
+  export type UsersGroupByOutputType = {
+    pk: number
+    email: string
+    username: string
+    password: string
+    created_at: Date
+    last_connection: Date | null
+    role: string
+    _count: UsersCountAggregateOutputType | null
+    _avg: UsersAvgAggregateOutputType | null
+    _sum: UsersSumAggregateOutputType | null
+    _min: UsersMinAggregateOutputType | null
+    _max: UsersMaxAggregateOutputType | null
+  }
+
+  type GetUsersGroupByPayload<T extends usersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UsersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UsersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UsersGroupByOutputType[P]>
+            : GetScalarType<T[P], UsersGroupByOutputType[P]>
+>>>>>>> dev
         }
       >
     >
 
 
+<<<<<<< HEAD
   export type geometry_columnsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     f_table_catalog?: boolean
     coord_dimension?: boolean
@@ -32129,11 +44929,86 @@ export namespace Prisma {
      * @example
      * // Get one Geometry_columns
      * const geometry_columns = await prisma.geometry_columns.findFirst({
+=======
+  export type usersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    email?: boolean
+    username?: boolean
+    password?: boolean
+    created_at?: boolean
+    last_connection?: boolean
+    role?: boolean
+  }, ExtArgs["result"]["users"]>
+
+  export type usersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    email?: boolean
+    username?: boolean
+    password?: boolean
+    created_at?: boolean
+    last_connection?: boolean
+    role?: boolean
+  }, ExtArgs["result"]["users"]>
+
+  export type usersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    email?: boolean
+    username?: boolean
+    password?: boolean
+    created_at?: boolean
+    last_connection?: boolean
+    role?: boolean
+  }, ExtArgs["result"]["users"]>
+
+  export type usersSelectScalar = {
+    pk?: boolean
+    email?: boolean
+    username?: boolean
+    password?: boolean
+    created_at?: boolean
+    last_connection?: boolean
+    role?: boolean
+  }
+
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "email" | "username" | "password" | "created_at" | "last_connection" | "role", ExtArgs["result"]["users"]>
+
+  export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "users"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      email: string
+      username: string
+      password: string
+      created_at: Date
+      last_connection: Date | null
+      role: string
+    }, ExtArgs["result"]["users"]>
+    composites: {}
+  }
+
+  type usersGetPayload<S extends boolean | null | undefined | usersDefaultArgs> = $Result.GetResult<Prisma.$usersPayload, S>
+
+  type usersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<usersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UsersCountAggregateInputType | true
+    }
+
+  export interface usersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['users'], meta: { name: 'users' } }
+    /**
+     * Find zero or one Users that matches the filter.
+     * @param {usersFindUniqueArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findUnique({
+>>>>>>> dev
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
+<<<<<<< HEAD
     findFirst<T extends geometry_columnsFindFirstArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
       orderBy: {}
     } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
@@ -32149,11 +45024,54 @@ export namespace Prisma {
      * @example
      * // Get one Geometry_columns
      * const geometry_columns = await prisma.geometry_columns.findFirstOrThrow({
+=======
+    findUnique<T extends usersFindUniqueArgs>(args: SelectSubset<T, usersFindUniqueArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Users that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {usersFindUniqueOrThrowArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
+    findUniqueOrThrow<T extends usersFindUniqueOrThrowArgs>(args: SelectSubset<T, usersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersFindFirstArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends usersFindFirstArgs>(args?: SelectSubset<T, usersFindFirstArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Users that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersFindFirstOrThrowArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findFirstOrThrow({
+>>>>>>> dev
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+<<<<<<< HEAD
     findFirstOrThrow<T extends geometry_columnsFindFirstOrThrowArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
       orderBy: {}
     } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
@@ -32198,19 +45116,233 @@ export namespace Prisma {
     **/
     count<T extends geometry_columnsCountArgs>(
       args?: Subset<T, geometry_columnsCountArgs>,
+=======
+    findFirstOrThrow<T extends usersFindFirstOrThrowArgs>(args?: SelectSubset<T, usersFindFirstOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Users
+     * const users = await prisma.users.findMany()
+     * 
+     * // Get first 10 Users
+     * const users = await prisma.users.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const usersWithPkOnly = await prisma.users.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends usersFindManyArgs>(args?: SelectSubset<T, usersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Users.
+     * @param {usersCreateArgs} args - Arguments to create a Users.
+     * @example
+     * // Create one Users
+     * const Users = await prisma.users.create({
+     *   data: {
+     *     // ... data to create a Users
+     *   }
+     * })
+     * 
+     */
+    create<T extends usersCreateArgs>(args: SelectSubset<T, usersCreateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Users.
+     * @param {usersCreateManyArgs} args - Arguments to create many Users.
+     * @example
+     * // Create many Users
+     * const users = await prisma.users.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends usersCreateManyArgs>(args?: SelectSubset<T, usersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Users and returns the data saved in the database.
+     * @param {usersCreateManyAndReturnArgs} args - Arguments to create many Users.
+     * @example
+     * // Create many Users
+     * const users = await prisma.users.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Users and only return the `pk`
+     * const usersWithPkOnly = await prisma.users.createManyAndReturn({
+     *   select: { pk: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends usersCreateManyAndReturnArgs>(args?: SelectSubset<T, usersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Users.
+     * @param {usersDeleteArgs} args - Arguments to delete one Users.
+     * @example
+     * // Delete one Users
+     * const Users = await prisma.users.delete({
+     *   where: {
+     *     // ... filter to delete one Users
+     *   }
+     * })
+     * 
+     */
+    delete<T extends usersDeleteArgs>(args: SelectSubset<T, usersDeleteArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Users.
+     * @param {usersUpdateArgs} args - Arguments to update one Users.
+     * @example
+     * // Update one Users
+     * const users = await prisma.users.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends usersUpdateArgs>(args: SelectSubset<T, usersUpdateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Users.
+     * @param {usersDeleteManyArgs} args - Arguments to filter Users to delete.
+     * @example
+     * // Delete a few Users
+     * const { count } = await prisma.users.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends usersDeleteManyArgs>(args?: SelectSubset<T, usersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Users
+     * const users = await prisma.users.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends usersUpdateManyArgs>(args: SelectSubset<T, usersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users and returns the data updated in the database.
+     * @param {usersUpdateManyAndReturnArgs} args - Arguments to update many Users.
+     * @example
+     * // Update many Users
+     * const users = await prisma.users.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Users and only return the `pk`
+     * const usersWithPkOnly = await prisma.users.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends usersUpdateManyAndReturnArgs>(args: SelectSubset<T, usersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Users.
+     * @param {usersUpsertArgs} args - Arguments to update or create a Users.
+     * @example
+     * // Update or create a Users
+     * const users = await prisma.users.upsert({
+     *   create: {
+     *     // ... data to create a Users
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Users we want to update
+     *   }
+     * })
+     */
+    upsert<T extends usersUpsertArgs>(args: SelectSubset<T, usersUpsertArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersCountArgs} args - Arguments to filter Users to count.
+     * @example
+     * // Count the number of Users
+     * const count = await prisma.users.count({
+     *   where: {
+     *     // ... the filter for the Users we want to count
+     *   }
+     * })
+    **/
+    count<T extends usersCountArgs>(
+      args?: Subset<T, usersCountArgs>,
+>>>>>>> dev
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
+<<<<<<< HEAD
           : GetScalarType<T['select'], Geometry_columnsCountAggregateOutputType>
+=======
+          : GetScalarType<T['select'], UsersCountAggregateOutputType>
+>>>>>>> dev
         : number
     >
 
     /**
+<<<<<<< HEAD
      * Allows you to perform aggregations operations on a Geometry_columns.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
      * @param {Geometry_columnsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+=======
+     * Allows you to perform aggregations operations on a Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+>>>>>>> dev
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -32230,6 +45362,7 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
+<<<<<<< HEAD
     aggregate<T extends Geometry_columnsAggregateArgs>(args: Subset<T, Geometry_columnsAggregateArgs>): Prisma.PrismaPromise<GetGeometry_columnsAggregateType<T>>
 
     /**
@@ -32237,6 +45370,15 @@ export namespace Prisma {
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
      * @param {geometry_columnsGroupByArgs} args - Group by arguments.
+=======
+    aggregate<T extends UsersAggregateArgs>(args: Subset<T, UsersAggregateArgs>): Prisma.PrismaPromise<GetUsersAggregateType<T>>
+
+    /**
+     * Group by Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersGroupByArgs} args - Group by arguments.
+>>>>>>> dev
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -32251,14 +45393,23 @@ export namespace Prisma {
      * 
     **/
     groupBy<
+<<<<<<< HEAD
       T extends geometry_columnsGroupByArgs,
+=======
+      T extends usersGroupByArgs,
+>>>>>>> dev
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
+<<<<<<< HEAD
         ? { orderBy: geometry_columnsGroupByArgs['orderBy'] }
         : { orderBy?: geometry_columnsGroupByArgs['orderBy'] },
+=======
+        ? { orderBy: usersGroupByArgs['orderBy'] }
+        : { orderBy?: usersGroupByArgs['orderBy'] },
+>>>>>>> dev
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -32307,6 +45458,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
+<<<<<<< HEAD
     >(args: SubsetIntersection<T, geometry_columnsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGeometry_columnsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
    * Fields of the geometry_columns model
@@ -32316,11 +45468,26 @@ export namespace Prisma {
 
   /**
    * The delegate class that acts as a "Promise-like" for geometry_columns.
+=======
+    >(args: SubsetIntersection<T, usersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUsersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the users model
+   */
+  readonly fields: usersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for users.
+>>>>>>> dev
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
+<<<<<<< HEAD
   export interface Prisma__geometry_columnsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+=======
+  export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+>>>>>>> dev
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -32348,6 +45515,7 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
    * Fields of the geometry_columns model
    */
   interface geometry_columnsFieldRefs {
@@ -32355,11 +45523,24 @@ export namespace Prisma {
     readonly coord_dimension: FieldRef<"geometry_columns", 'Int'>
     readonly srid: FieldRef<"geometry_columns", 'Int'>
     readonly type: FieldRef<"geometry_columns", 'String'>
+=======
+   * Fields of the users model
+   */
+  interface usersFieldRefs {
+    readonly pk: FieldRef<"users", 'Int'>
+    readonly email: FieldRef<"users", 'String'>
+    readonly username: FieldRef<"users", 'String'>
+    readonly password: FieldRef<"users", 'String'>
+    readonly created_at: FieldRef<"users", 'DateTime'>
+    readonly last_connection: FieldRef<"users", 'DateTime'>
+    readonly role: FieldRef<"users", 'String'>
+>>>>>>> dev
   }
     
 
   // Custom InputTypes
   /**
+<<<<<<< HEAD
    * geometry_columns findFirst
    */
   export type geometry_columnsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -32385,17 +45566,91 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` geometry_columns from the position of the cursor.
+=======
+   * users findUnique
+   */
+  export type usersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where: usersWhereUniqueInput
+  }
+
+  /**
+   * users findUniqueOrThrow
+   */
+  export type usersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where: usersWhereUniqueInput
+  }
+
+  /**
+   * users findFirst
+   */
+  export type usersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where?: usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users to fetch.
+     */
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for users.
+     */
+    cursor?: usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` geometry_columns.
+=======
+     * Skip the first `n` users.
+>>>>>>> dev
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
+<<<<<<< HEAD
      * Filter by unique combinations of geometry_columns.
      */
     distinct?: Geometry_columnsScalarFieldEnum | Geometry_columnsScalarFieldEnum[]
@@ -32427,17 +45682,61 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` geometry_columns from the position of the cursor.
+=======
+     * Filter by unique combinations of users.
+     */
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+  /**
+   * users findFirstOrThrow
+   */
+  export type usersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where?: usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users to fetch.
+     */
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for users.
+     */
+    cursor?: usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` geometry_columns.
+=======
+     * Skip the first `n` users.
+>>>>>>> dev
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
+<<<<<<< HEAD
      * Filter by unique combinations of geometry_columns.
      */
     distinct?: Geometry_columnsScalarFieldEnum | Geometry_columnsScalarFieldEnum[]
@@ -32469,11 +45768,51 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` geometry_columns from the position of the cursor.
+=======
+     * Filter by unique combinations of users.
+     */
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+  /**
+   * users findMany
+   */
+  export type usersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where?: usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users to fetch.
+     */
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing users.
+     */
+    cursor?: usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` geometry_columns.
      */
     skip?: number
@@ -32492,10 +45831,203 @@ export namespace Prisma {
      * Omit specific fields from the geometry_columns
      */
     omit?: geometry_columnsOmit<ExtArgs> | null
+=======
+     * Skip the first `n` users.
+     */
+    skip?: number
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+  /**
+   * users create
+   */
+  export type usersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The data needed to create a users.
+     */
+    data: XOR<usersCreateInput, usersUncheckedCreateInput>
+  }
+
+  /**
+   * users createMany
+   */
+  export type usersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many users.
+     */
+    data: usersCreateManyInput | usersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * users createManyAndReturn
+   */
+  export type usersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The data used to create many users.
+     */
+    data: usersCreateManyInput | usersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * users update
+   */
+  export type usersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The data needed to update a users.
+     */
+    data: XOR<usersUpdateInput, usersUncheckedUpdateInput>
+    /**
+     * Choose, which users to update.
+     */
+    where: usersWhereUniqueInput
+  }
+
+  /**
+   * users updateMany
+   */
+  export type usersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update users.
+     */
+    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyInput>
+    /**
+     * Filter which users to update
+     */
+    where?: usersWhereInput
+    /**
+     * Limit how many users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * users updateManyAndReturn
+   */
+  export type usersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The data used to update users.
+     */
+    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyInput>
+    /**
+     * Filter which users to update
+     */
+    where?: usersWhereInput
+    /**
+     * Limit how many users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * users upsert
+   */
+  export type usersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The filter to search for the users to update in case it exists.
+     */
+    where: usersWhereUniqueInput
+    /**
+     * In case the users found by the `where` argument doesn't exist, create a new users with this data.
+     */
+    create: XOR<usersCreateInput, usersUncheckedCreateInput>
+    /**
+     * In case the users was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<usersUpdateInput, usersUncheckedUpdateInput>
+  }
+
+  /**
+   * users delete
+   */
+  export type usersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter which users to delete.
+     */
+    where: usersWhereUniqueInput
+  }
+
+  /**
+   * users deleteMany
+   */
+  export type usersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which users to delete
+     */
+    where?: usersWhereInput
+    /**
+     * Limit how many users to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * users without action
+   */
+  export type usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+>>>>>>> dev
   }
 
 
   /**
+<<<<<<< HEAD
    * Model pg_stat_statements_info
    */
 
@@ -32528,10 +46060,88 @@ export namespace Prisma {
   export type Pg_stat_statements_infoCountAggregateOutputType = {
     dealloc: number
     stats_reset: number
+=======
+   * Model export_cours_d_eau
+   */
+
+  export type AggregateExport_cours_d_eau = {
+    _count: Export_cours_d_eauCountAggregateOutputType | null
+    _avg: Export_cours_d_eauAvgAggregateOutputType | null
+    _sum: Export_cours_d_eauSumAggregateOutputType | null
+    _min: Export_cours_d_eauMinAggregateOutputType | null
+    _max: Export_cours_d_eauMaxAggregateOutputType | null
+  }
+
+  export type Export_cours_d_eauAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+    longueur: number | null
+  }
+
+  export type Export_cours_d_eauSumAggregateOutputType = {
+    index: bigint | null
+    region: number | null
+    longueur: number | null
+  }
+
+  export type Export_cours_d_eauMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    cours_d_eau: string | null
+    etat_ecologique: string | null
+    longueur: number | null
+  }
+
+  export type Export_cours_d_eauMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    cours_d_eau: string | null
+    etat_ecologique: string | null
+    longueur: number | null
+  }
+
+  export type Export_cours_d_eauCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    cours_d_eau: number
+    etat_ecologique: number
+    longueur: number
+>>>>>>> dev
     _all: number
   }
 
 
+<<<<<<< HEAD
   export type Pg_stat_statements_infoAvgAggregateInputType = {
     dealloc?: true
   }
@@ -32571,43 +46181,156 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` pg_stat_statements_infos from the position of the cursor.
+=======
+  export type Export_cours_d_eauAvgAggregateInputType = {
+    index?: true
+    region?: true
+    longueur?: true
+  }
+
+  export type Export_cours_d_eauSumAggregateInputType = {
+    index?: true
+    region?: true
+    longueur?: true
+  }
+
+  export type Export_cours_d_eauMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    cours_d_eau?: true
+    etat_ecologique?: true
+    longueur?: true
+  }
+
+  export type Export_cours_d_eauMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    cours_d_eau?: true
+    etat_ecologique?: true
+    longueur?: true
+  }
+
+  export type Export_cours_d_eauCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    cours_d_eau?: true
+    etat_ecologique?: true
+    longueur?: true
+    _all?: true
+  }
+
+  export type Export_cours_d_eauAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which export_cours_d_eau to aggregate.
+     */
+    where?: export_cours_d_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of export_cours_d_eaus to fetch.
+     */
+    orderBy?: export_cours_d_eauOrderByWithRelationInput | export_cours_d_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: export_cours_d_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` export_cours_d_eaus from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` pg_stat_statements_infos.
+=======
+     * Skip the first `n` export_cours_d_eaus.
+>>>>>>> dev
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+<<<<<<< HEAD
      * Count returned pg_stat_statements_infos
     **/
     _count?: true | Pg_stat_statements_infoCountAggregateInputType
+=======
+     * Count returned export_cours_d_eaus
+    **/
+    _count?: true | Export_cours_d_eauCountAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
+<<<<<<< HEAD
     _avg?: Pg_stat_statements_infoAvgAggregateInputType
+=======
+    _avg?: Export_cours_d_eauAvgAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
+<<<<<<< HEAD
     _sum?: Pg_stat_statements_infoSumAggregateInputType
+=======
+    _sum?: Export_cours_d_eauSumAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
+<<<<<<< HEAD
     _min?: Pg_stat_statements_infoMinAggregateInputType
+=======
+    _min?: Export_cours_d_eauMinAggregateInputType
+>>>>>>> dev
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
+<<<<<<< HEAD
     _max?: Pg_stat_statements_infoMaxAggregateInputType
   }
 
@@ -32617,11 +46340,23 @@ export namespace Prisma {
         ? number
         : GetScalarType<T[P], AggregatePg_stat_statements_info[P]>
       : GetScalarType<T[P], AggregatePg_stat_statements_info[P]>
+=======
+    _max?: Export_cours_d_eauMaxAggregateInputType
+  }
+
+  export type GetExport_cours_d_eauAggregateType<T extends Export_cours_d_eauAggregateArgs> = {
+        [P in keyof T & keyof AggregateExport_cours_d_eau]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateExport_cours_d_eau[P]>
+      : GetScalarType<T[P], AggregateExport_cours_d_eau[P]>
+>>>>>>> dev
   }
 
 
 
 
+<<<<<<< HEAD
   export type pg_stat_statements_infoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: pg_stat_statements_infoWhereInput
     orderBy?: pg_stat_statements_infoOrderByWithAggregationInput | pg_stat_statements_infoOrderByWithAggregationInput[]
@@ -32655,11 +46390,60 @@ export namespace Prisma {
               ? number
               : GetScalarType<T[P], Pg_stat_statements_infoGroupByOutputType[P]>
             : GetScalarType<T[P], Pg_stat_statements_infoGroupByOutputType[P]>
+=======
+  export type export_cours_d_eauGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: export_cours_d_eauWhereInput
+    orderBy?: export_cours_d_eauOrderByWithAggregationInput | export_cours_d_eauOrderByWithAggregationInput[]
+    by: Export_cours_d_eauScalarFieldEnum[] | Export_cours_d_eauScalarFieldEnum
+    having?: export_cours_d_eauScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Export_cours_d_eauCountAggregateInputType | true
+    _avg?: Export_cours_d_eauAvgAggregateInputType
+    _sum?: Export_cours_d_eauSumAggregateInputType
+    _min?: Export_cours_d_eauMinAggregateInputType
+    _max?: Export_cours_d_eauMaxAggregateInputType
+  }
+
+  export type Export_cours_d_eauGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    cours_d_eau: string
+    etat_ecologique: string | null
+    longueur: number
+    _count: Export_cours_d_eauCountAggregateOutputType | null
+    _avg: Export_cours_d_eauAvgAggregateOutputType | null
+    _sum: Export_cours_d_eauSumAggregateOutputType | null
+    _min: Export_cours_d_eauMinAggregateOutputType | null
+    _max: Export_cours_d_eauMaxAggregateOutputType | null
+  }
+
+  type GetExport_cours_d_eauGroupByPayload<T extends export_cours_d_eauGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Export_cours_d_eauGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Export_cours_d_eauGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Export_cours_d_eauGroupByOutputType[P]>
+            : GetScalarType<T[P], Export_cours_d_eauGroupByOutputType[P]>
+>>>>>>> dev
         }
       >
     >
 
 
+<<<<<<< HEAD
   export type pg_stat_statements_infoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     dealloc?: boolean
     stats_reset?: boolean
@@ -32701,11 +46485,126 @@ export namespace Prisma {
      * @example
      * // Get one Pg_stat_statements_info
      * const pg_stat_statements_info = await prisma.pg_stat_statements_info.findFirst({
+=======
+  export type export_cours_d_eauSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    cours_d_eau?: boolean
+    etat_ecologique?: boolean
+    longueur?: boolean
+  }, ExtArgs["result"]["export_cours_d_eau"]>
+
+  export type export_cours_d_eauSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    cours_d_eau?: boolean
+    etat_ecologique?: boolean
+    longueur?: boolean
+  }, ExtArgs["result"]["export_cours_d_eau"]>
+
+  export type export_cours_d_eauSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    cours_d_eau?: boolean
+    etat_ecologique?: boolean
+    longueur?: boolean
+  }, ExtArgs["result"]["export_cours_d_eau"]>
+
+  export type export_cours_d_eauSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    cours_d_eau?: boolean
+    etat_ecologique?: boolean
+    longueur?: boolean
+  }
+
+  export type export_cours_d_eauOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "cours_d_eau" | "etat_ecologique" | "longueur", ExtArgs["result"]["export_cours_d_eau"]>
+
+  export type $export_cours_d_eauPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "export_cours_d_eau"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: number
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      cours_d_eau: string
+      etat_ecologique: string | null
+      longueur: number
+    }, ExtArgs["result"]["export_cours_d_eau"]>
+    composites: {}
+  }
+
+  type export_cours_d_eauGetPayload<S extends boolean | null | undefined | export_cours_d_eauDefaultArgs> = $Result.GetResult<Prisma.$export_cours_d_eauPayload, S>
+
+  type export_cours_d_eauCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<export_cours_d_eauFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Export_cours_d_eauCountAggregateInputType | true
+    }
+
+  export interface export_cours_d_eauDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['export_cours_d_eau'], meta: { name: 'export_cours_d_eau' } }
+    /**
+     * Find zero or one Export_cours_d_eau that matches the filter.
+     * @param {export_cours_d_eauFindUniqueArgs} args - Arguments to find a Export_cours_d_eau
+     * @example
+     * // Get one Export_cours_d_eau
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.findUnique({
+>>>>>>> dev
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
+<<<<<<< HEAD
     findFirst<T extends pg_stat_statements_infoFindFirstArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
       orderBy: {}
     } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
@@ -32721,11 +46620,54 @@ export namespace Prisma {
      * @example
      * // Get one Pg_stat_statements_info
      * const pg_stat_statements_info = await prisma.pg_stat_statements_info.findFirstOrThrow({
+=======
+    findUnique<T extends export_cours_d_eauFindUniqueArgs>(args: SelectSubset<T, export_cours_d_eauFindUniqueArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Export_cours_d_eau that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {export_cours_d_eauFindUniqueOrThrowArgs} args - Arguments to find a Export_cours_d_eau
+     * @example
+     * // Get one Export_cours_d_eau
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
+    findUniqueOrThrow<T extends export_cours_d_eauFindUniqueOrThrowArgs>(args: SelectSubset<T, export_cours_d_eauFindUniqueOrThrowArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Export_cours_d_eau that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {export_cours_d_eauFindFirstArgs} args - Arguments to find a Export_cours_d_eau
+     * @example
+     * // Get one Export_cours_d_eau
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends export_cours_d_eauFindFirstArgs>(args?: SelectSubset<T, export_cours_d_eauFindFirstArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Export_cours_d_eau that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {export_cours_d_eauFindFirstOrThrowArgs} args - Arguments to find a Export_cours_d_eau
+     * @example
+     * // Get one Export_cours_d_eau
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.findFirstOrThrow({
+>>>>>>> dev
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+<<<<<<< HEAD
     findFirstOrThrow<T extends pg_stat_statements_infoFindFirstOrThrowArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
       orderBy: {}
     } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
@@ -32770,19 +46712,233 @@ export namespace Prisma {
     **/
     count<T extends pg_stat_statements_infoCountArgs>(
       args?: Subset<T, pg_stat_statements_infoCountArgs>,
+=======
+    findFirstOrThrow<T extends export_cours_d_eauFindFirstOrThrowArgs>(args?: SelectSubset<T, export_cours_d_eauFindFirstOrThrowArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Export_cours_d_eaus that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {export_cours_d_eauFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Export_cours_d_eaus
+     * const export_cours_d_eaus = await prisma.export_cours_d_eau.findMany()
+     * 
+     * // Get first 10 Export_cours_d_eaus
+     * const export_cours_d_eaus = await prisma.export_cours_d_eau.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const export_cours_d_eauWithIndexOnly = await prisma.export_cours_d_eau.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends export_cours_d_eauFindManyArgs>(args?: SelectSubset<T, export_cours_d_eauFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Export_cours_d_eau.
+     * @param {export_cours_d_eauCreateArgs} args - Arguments to create a Export_cours_d_eau.
+     * @example
+     * // Create one Export_cours_d_eau
+     * const Export_cours_d_eau = await prisma.export_cours_d_eau.create({
+     *   data: {
+     *     // ... data to create a Export_cours_d_eau
+     *   }
+     * })
+     * 
+     */
+    create<T extends export_cours_d_eauCreateArgs>(args: SelectSubset<T, export_cours_d_eauCreateArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Export_cours_d_eaus.
+     * @param {export_cours_d_eauCreateManyArgs} args - Arguments to create many Export_cours_d_eaus.
+     * @example
+     * // Create many Export_cours_d_eaus
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends export_cours_d_eauCreateManyArgs>(args?: SelectSubset<T, export_cours_d_eauCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Export_cours_d_eaus and returns the data saved in the database.
+     * @param {export_cours_d_eauCreateManyAndReturnArgs} args - Arguments to create many Export_cours_d_eaus.
+     * @example
+     * // Create many Export_cours_d_eaus
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Export_cours_d_eaus and only return the `index`
+     * const export_cours_d_eauWithIndexOnly = await prisma.export_cours_d_eau.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends export_cours_d_eauCreateManyAndReturnArgs>(args?: SelectSubset<T, export_cours_d_eauCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Export_cours_d_eau.
+     * @param {export_cours_d_eauDeleteArgs} args - Arguments to delete one Export_cours_d_eau.
+     * @example
+     * // Delete one Export_cours_d_eau
+     * const Export_cours_d_eau = await prisma.export_cours_d_eau.delete({
+     *   where: {
+     *     // ... filter to delete one Export_cours_d_eau
+     *   }
+     * })
+     * 
+     */
+    delete<T extends export_cours_d_eauDeleteArgs>(args: SelectSubset<T, export_cours_d_eauDeleteArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Export_cours_d_eau.
+     * @param {export_cours_d_eauUpdateArgs} args - Arguments to update one Export_cours_d_eau.
+     * @example
+     * // Update one Export_cours_d_eau
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends export_cours_d_eauUpdateArgs>(args: SelectSubset<T, export_cours_d_eauUpdateArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Export_cours_d_eaus.
+     * @param {export_cours_d_eauDeleteManyArgs} args - Arguments to filter Export_cours_d_eaus to delete.
+     * @example
+     * // Delete a few Export_cours_d_eaus
+     * const { count } = await prisma.export_cours_d_eau.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends export_cours_d_eauDeleteManyArgs>(args?: SelectSubset<T, export_cours_d_eauDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Export_cours_d_eaus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {export_cours_d_eauUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Export_cours_d_eaus
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends export_cours_d_eauUpdateManyArgs>(args: SelectSubset<T, export_cours_d_eauUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Export_cours_d_eaus and returns the data updated in the database.
+     * @param {export_cours_d_eauUpdateManyAndReturnArgs} args - Arguments to update many Export_cours_d_eaus.
+     * @example
+     * // Update many Export_cours_d_eaus
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Export_cours_d_eaus and only return the `index`
+     * const export_cours_d_eauWithIndexOnly = await prisma.export_cours_d_eau.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends export_cours_d_eauUpdateManyAndReturnArgs>(args: SelectSubset<T, export_cours_d_eauUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Export_cours_d_eau.
+     * @param {export_cours_d_eauUpsertArgs} args - Arguments to update or create a Export_cours_d_eau.
+     * @example
+     * // Update or create a Export_cours_d_eau
+     * const export_cours_d_eau = await prisma.export_cours_d_eau.upsert({
+     *   create: {
+     *     // ... data to create a Export_cours_d_eau
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Export_cours_d_eau we want to update
+     *   }
+     * })
+     */
+    upsert<T extends export_cours_d_eauUpsertArgs>(args: SelectSubset<T, export_cours_d_eauUpsertArgs<ExtArgs>>): Prisma__export_cours_d_eauClient<$Result.GetResult<Prisma.$export_cours_d_eauPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Export_cours_d_eaus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {export_cours_d_eauCountArgs} args - Arguments to filter Export_cours_d_eaus to count.
+     * @example
+     * // Count the number of Export_cours_d_eaus
+     * const count = await prisma.export_cours_d_eau.count({
+     *   where: {
+     *     // ... the filter for the Export_cours_d_eaus we want to count
+     *   }
+     * })
+    **/
+    count<T extends export_cours_d_eauCountArgs>(
+      args?: Subset<T, export_cours_d_eauCountArgs>,
+>>>>>>> dev
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
+<<<<<<< HEAD
           : GetScalarType<T['select'], Pg_stat_statements_infoCountAggregateOutputType>
+=======
+          : GetScalarType<T['select'], Export_cours_d_eauCountAggregateOutputType>
+>>>>>>> dev
         : number
     >
 
     /**
+<<<<<<< HEAD
      * Allows you to perform aggregations operations on a Pg_stat_statements_info.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
      * @param {Pg_stat_statements_infoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+=======
+     * Allows you to perform aggregations operations on a Export_cours_d_eau.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Export_cours_d_eauAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+>>>>>>> dev
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -32802,6 +46958,7 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
+<<<<<<< HEAD
     aggregate<T extends Pg_stat_statements_infoAggregateArgs>(args: Subset<T, Pg_stat_statements_infoAggregateArgs>): Prisma.PrismaPromise<GetPg_stat_statements_infoAggregateType<T>>
 
     /**
@@ -32809,6 +46966,15 @@ export namespace Prisma {
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
      * @param {pg_stat_statements_infoGroupByArgs} args - Group by arguments.
+=======
+    aggregate<T extends Export_cours_d_eauAggregateArgs>(args: Subset<T, Export_cours_d_eauAggregateArgs>): Prisma.PrismaPromise<GetExport_cours_d_eauAggregateType<T>>
+
+    /**
+     * Group by Export_cours_d_eau.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {export_cours_d_eauGroupByArgs} args - Group by arguments.
+>>>>>>> dev
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -32823,14 +46989,23 @@ export namespace Prisma {
      * 
     **/
     groupBy<
+<<<<<<< HEAD
       T extends pg_stat_statements_infoGroupByArgs,
+=======
+      T extends export_cours_d_eauGroupByArgs,
+>>>>>>> dev
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
+<<<<<<< HEAD
         ? { orderBy: pg_stat_statements_infoGroupByArgs['orderBy'] }
         : { orderBy?: pg_stat_statements_infoGroupByArgs['orderBy'] },
+=======
+        ? { orderBy: export_cours_d_eauGroupByArgs['orderBy'] }
+        : { orderBy?: export_cours_d_eauGroupByArgs['orderBy'] },
+>>>>>>> dev
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -32879,6 +47054,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
+<<<<<<< HEAD
     >(args: SubsetIntersection<T, pg_stat_statements_infoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPg_stat_statements_infoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
    * Fields of the pg_stat_statements_info model
@@ -32888,11 +47064,26 @@ export namespace Prisma {
 
   /**
    * The delegate class that acts as a "Promise-like" for pg_stat_statements_info.
+=======
+    >(args: SubsetIntersection<T, export_cours_d_eauGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetExport_cours_d_eauGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the export_cours_d_eau model
+   */
+  readonly fields: export_cours_d_eauFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for export_cours_d_eau.
+>>>>>>> dev
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
+<<<<<<< HEAD
   export interface Prisma__pg_stat_statements_infoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+=======
+  export interface Prisma__export_cours_d_eauClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+>>>>>>> dev
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -32920,16 +47111,38 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
    * Fields of the pg_stat_statements_info model
    */
   interface pg_stat_statements_infoFieldRefs {
     readonly dealloc: FieldRef<"pg_stat_statements_info", 'BigInt'>
     readonly stats_reset: FieldRef<"pg_stat_statements_info", 'DateTime'>
+=======
+   * Fields of the export_cours_d_eau model
+   */
+  interface export_cours_d_eauFieldRefs {
+    readonly index: FieldRef<"export_cours_d_eau", 'BigInt'>
+    readonly code_geographique: FieldRef<"export_cours_d_eau", 'String'>
+    readonly libelle_geographique: FieldRef<"export_cours_d_eau", 'String'>
+    readonly epci: FieldRef<"export_cours_d_eau", 'String'>
+    readonly libelle_epci: FieldRef<"export_cours_d_eau", 'String'>
+    readonly departement: FieldRef<"export_cours_d_eau", 'String'>
+    readonly libelle_departement: FieldRef<"export_cours_d_eau", 'String'>
+    readonly region: FieldRef<"export_cours_d_eau", 'Float'>
+    readonly ept: FieldRef<"export_cours_d_eau", 'String'>
+    readonly libelle_petr: FieldRef<"export_cours_d_eau", 'String'>
+    readonly code_pnr: FieldRef<"export_cours_d_eau", 'String'>
+    readonly libelle_pnr: FieldRef<"export_cours_d_eau", 'String'>
+    readonly cours_d_eau: FieldRef<"export_cours_d_eau", 'String'>
+    readonly etat_ecologique: FieldRef<"export_cours_d_eau", 'String'>
+    readonly longueur: FieldRef<"export_cours_d_eau", 'Float'>
+>>>>>>> dev
   }
     
 
   // Custom InputTypes
   /**
+<<<<<<< HEAD
    * pg_stat_statements_info findFirst
    */
   export type pg_stat_statements_infoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -32955,17 +47168,91 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` pg_stat_statements_infos from the position of the cursor.
+=======
+   * export_cours_d_eau findUnique
+   */
+  export type export_cours_d_eauFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which export_cours_d_eau to fetch.
+     */
+    where: export_cours_d_eauWhereUniqueInput
+  }
+
+  /**
+   * export_cours_d_eau findUniqueOrThrow
+   */
+  export type export_cours_d_eauFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which export_cours_d_eau to fetch.
+     */
+    where: export_cours_d_eauWhereUniqueInput
+  }
+
+  /**
+   * export_cours_d_eau findFirst
+   */
+  export type export_cours_d_eauFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which export_cours_d_eau to fetch.
+     */
+    where?: export_cours_d_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of export_cours_d_eaus to fetch.
+     */
+    orderBy?: export_cours_d_eauOrderByWithRelationInput | export_cours_d_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for export_cours_d_eaus.
+     */
+    cursor?: export_cours_d_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` export_cours_d_eaus from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` pg_stat_statements_infos.
+=======
+     * Skip the first `n` export_cours_d_eaus.
+>>>>>>> dev
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
+<<<<<<< HEAD
      * Filter by unique combinations of pg_stat_statements_infos.
      */
     distinct?: Pg_stat_statements_infoScalarFieldEnum | Pg_stat_statements_infoScalarFieldEnum[]
@@ -32997,17 +47284,61 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` pg_stat_statements_infos from the position of the cursor.
+=======
+     * Filter by unique combinations of export_cours_d_eaus.
+     */
+    distinct?: Export_cours_d_eauScalarFieldEnum | Export_cours_d_eauScalarFieldEnum[]
+  }
+
+  /**
+   * export_cours_d_eau findFirstOrThrow
+   */
+  export type export_cours_d_eauFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which export_cours_d_eau to fetch.
+     */
+    where?: export_cours_d_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of export_cours_d_eaus to fetch.
+     */
+    orderBy?: export_cours_d_eauOrderByWithRelationInput | export_cours_d_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for export_cours_d_eaus.
+     */
+    cursor?: export_cours_d_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` export_cours_d_eaus from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` pg_stat_statements_infos.
+=======
+     * Skip the first `n` export_cours_d_eaus.
+>>>>>>> dev
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
+<<<<<<< HEAD
      * Filter by unique combinations of pg_stat_statements_infos.
      */
     distinct?: Pg_stat_statements_infoScalarFieldEnum | Pg_stat_statements_infoScalarFieldEnum[]
@@ -33039,11 +47370,51 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` pg_stat_statements_infos from the position of the cursor.
+=======
+     * Filter by unique combinations of export_cours_d_eaus.
+     */
+    distinct?: Export_cours_d_eauScalarFieldEnum | Export_cours_d_eauScalarFieldEnum[]
+  }
+
+  /**
+   * export_cours_d_eau findMany
+   */
+  export type export_cours_d_eauFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which export_cours_d_eaus to fetch.
+     */
+    where?: export_cours_d_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of export_cours_d_eaus to fetch.
+     */
+    orderBy?: export_cours_d_eauOrderByWithRelationInput | export_cours_d_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing export_cours_d_eaus.
+     */
+    cursor?: export_cours_d_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` export_cours_d_eaus from the position of the cursor.
+>>>>>>> dev
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` pg_stat_statements_infos.
      */
     skip?: number
@@ -33062,6 +47433,198 @@ export namespace Prisma {
      * Omit specific fields from the pg_stat_statements_info
      */
     omit?: pg_stat_statements_infoOmit<ExtArgs> | null
+=======
+     * Skip the first `n` export_cours_d_eaus.
+     */
+    skip?: number
+    distinct?: Export_cours_d_eauScalarFieldEnum | Export_cours_d_eauScalarFieldEnum[]
+  }
+
+  /**
+   * export_cours_d_eau create
+   */
+  export type export_cours_d_eauCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * The data needed to create a export_cours_d_eau.
+     */
+    data: XOR<export_cours_d_eauCreateInput, export_cours_d_eauUncheckedCreateInput>
+  }
+
+  /**
+   * export_cours_d_eau createMany
+   */
+  export type export_cours_d_eauCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many export_cours_d_eaus.
+     */
+    data: export_cours_d_eauCreateManyInput | export_cours_d_eauCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * export_cours_d_eau createManyAndReturn
+   */
+  export type export_cours_d_eauCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * The data used to create many export_cours_d_eaus.
+     */
+    data: export_cours_d_eauCreateManyInput | export_cours_d_eauCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * export_cours_d_eau update
+   */
+  export type export_cours_d_eauUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * The data needed to update a export_cours_d_eau.
+     */
+    data: XOR<export_cours_d_eauUpdateInput, export_cours_d_eauUncheckedUpdateInput>
+    /**
+     * Choose, which export_cours_d_eau to update.
+     */
+    where: export_cours_d_eauWhereUniqueInput
+  }
+
+  /**
+   * export_cours_d_eau updateMany
+   */
+  export type export_cours_d_eauUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update export_cours_d_eaus.
+     */
+    data: XOR<export_cours_d_eauUpdateManyMutationInput, export_cours_d_eauUncheckedUpdateManyInput>
+    /**
+     * Filter which export_cours_d_eaus to update
+     */
+    where?: export_cours_d_eauWhereInput
+    /**
+     * Limit how many export_cours_d_eaus to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * export_cours_d_eau updateManyAndReturn
+   */
+  export type export_cours_d_eauUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * The data used to update export_cours_d_eaus.
+     */
+    data: XOR<export_cours_d_eauUpdateManyMutationInput, export_cours_d_eauUncheckedUpdateManyInput>
+    /**
+     * Filter which export_cours_d_eaus to update
+     */
+    where?: export_cours_d_eauWhereInput
+    /**
+     * Limit how many export_cours_d_eaus to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * export_cours_d_eau upsert
+   */
+  export type export_cours_d_eauUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * The filter to search for the export_cours_d_eau to update in case it exists.
+     */
+    where: export_cours_d_eauWhereUniqueInput
+    /**
+     * In case the export_cours_d_eau found by the `where` argument doesn't exist, create a new export_cours_d_eau with this data.
+     */
+    create: XOR<export_cours_d_eauCreateInput, export_cours_d_eauUncheckedCreateInput>
+    /**
+     * In case the export_cours_d_eau was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<export_cours_d_eauUpdateInput, export_cours_d_eauUncheckedUpdateInput>
+  }
+
+  /**
+   * export_cours_d_eau delete
+   */
+  export type export_cours_d_eauDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+    /**
+     * Filter which export_cours_d_eau to delete.
+     */
+    where: export_cours_d_eauWhereUniqueInput
+  }
+
+  /**
+   * export_cours_d_eau deleteMany
+   */
+  export type export_cours_d_eauDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which export_cours_d_eaus to delete
+     */
+    where?: export_cours_d_eauWhereInput
+    /**
+     * Limit how many export_cours_d_eaus to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * export_cours_d_eau without action
+   */
+  export type export_cours_d_eauDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the export_cours_d_eau
+     */
+    select?: export_cours_d_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the export_cours_d_eau
+     */
+    omit?: export_cours_d_eauOmit<ExtArgs> | null
+>>>>>>> dev
   }
 
 
@@ -34247,6 +48810,1760 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
+=======
+   * Model pg_stat_statements_info
+   */
+
+  export type AggregatePg_stat_statements_info = {
+    _count: Pg_stat_statements_infoCountAggregateOutputType | null
+    _avg: Pg_stat_statements_infoAvgAggregateOutputType | null
+    _sum: Pg_stat_statements_infoSumAggregateOutputType | null
+    _min: Pg_stat_statements_infoMinAggregateOutputType | null
+    _max: Pg_stat_statements_infoMaxAggregateOutputType | null
+  }
+
+  export type Pg_stat_statements_infoAvgAggregateOutputType = {
+    dealloc: number | null
+  }
+
+  export type Pg_stat_statements_infoSumAggregateOutputType = {
+    dealloc: bigint | null
+  }
+
+  export type Pg_stat_statements_infoMinAggregateOutputType = {
+    dealloc: bigint | null
+    stats_reset: Date | null
+  }
+
+  export type Pg_stat_statements_infoMaxAggregateOutputType = {
+    dealloc: bigint | null
+    stats_reset: Date | null
+  }
+
+  export type Pg_stat_statements_infoCountAggregateOutputType = {
+    dealloc: number
+    stats_reset: number
+    _all: number
+  }
+
+
+  export type Pg_stat_statements_infoAvgAggregateInputType = {
+    dealloc?: true
+  }
+
+  export type Pg_stat_statements_infoSumAggregateInputType = {
+    dealloc?: true
+  }
+
+  export type Pg_stat_statements_infoMinAggregateInputType = {
+    dealloc?: true
+    stats_reset?: true
+  }
+
+  export type Pg_stat_statements_infoMaxAggregateInputType = {
+    dealloc?: true
+    stats_reset?: true
+  }
+
+  export type Pg_stat_statements_infoCountAggregateInputType = {
+    dealloc?: true
+    stats_reset?: true
+    _all?: true
+  }
+
+  export type Pg_stat_statements_infoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which pg_stat_statements_info to aggregate.
+     */
+    where?: pg_stat_statements_infoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pg_stat_statements_infos to fetch.
+     */
+    orderBy?: pg_stat_statements_infoOrderByWithRelationInput | pg_stat_statements_infoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pg_stat_statements_infos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pg_stat_statements_infos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned pg_stat_statements_infos
+    **/
+    _count?: true | Pg_stat_statements_infoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Pg_stat_statements_infoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Pg_stat_statements_infoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Pg_stat_statements_infoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Pg_stat_statements_infoMaxAggregateInputType
+  }
+
+  export type GetPg_stat_statements_infoAggregateType<T extends Pg_stat_statements_infoAggregateArgs> = {
+        [P in keyof T & keyof AggregatePg_stat_statements_info]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePg_stat_statements_info[P]>
+      : GetScalarType<T[P], AggregatePg_stat_statements_info[P]>
+  }
+
+
+
+
+  export type pg_stat_statements_infoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: pg_stat_statements_infoWhereInput
+    orderBy?: pg_stat_statements_infoOrderByWithAggregationInput | pg_stat_statements_infoOrderByWithAggregationInput[]
+    by: Pg_stat_statements_infoScalarFieldEnum[] | Pg_stat_statements_infoScalarFieldEnum
+    having?: pg_stat_statements_infoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Pg_stat_statements_infoCountAggregateInputType | true
+    _avg?: Pg_stat_statements_infoAvgAggregateInputType
+    _sum?: Pg_stat_statements_infoSumAggregateInputType
+    _min?: Pg_stat_statements_infoMinAggregateInputType
+    _max?: Pg_stat_statements_infoMaxAggregateInputType
+  }
+
+  export type Pg_stat_statements_infoGroupByOutputType = {
+    dealloc: bigint | null
+    stats_reset: Date | null
+    _count: Pg_stat_statements_infoCountAggregateOutputType | null
+    _avg: Pg_stat_statements_infoAvgAggregateOutputType | null
+    _sum: Pg_stat_statements_infoSumAggregateOutputType | null
+    _min: Pg_stat_statements_infoMinAggregateOutputType | null
+    _max: Pg_stat_statements_infoMaxAggregateOutputType | null
+  }
+
+  type GetPg_stat_statements_infoGroupByPayload<T extends pg_stat_statements_infoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Pg_stat_statements_infoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Pg_stat_statements_infoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Pg_stat_statements_infoGroupByOutputType[P]>
+            : GetScalarType<T[P], Pg_stat_statements_infoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type pg_stat_statements_infoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    dealloc?: boolean
+    stats_reset?: boolean
+  }, ExtArgs["result"]["pg_stat_statements_info"]>
+
+
+
+  export type pg_stat_statements_infoSelectScalar = {
+    dealloc?: boolean
+    stats_reset?: boolean
+  }
+
+  export type pg_stat_statements_infoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"dealloc" | "stats_reset", ExtArgs["result"]["pg_stat_statements_info"]>
+
+  export type $pg_stat_statements_infoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "pg_stat_statements_info"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      dealloc: bigint | null
+      stats_reset: Date | null
+    }, ExtArgs["result"]["pg_stat_statements_info"]>
+    composites: {}
+  }
+
+  type pg_stat_statements_infoGetPayload<S extends boolean | null | undefined | pg_stat_statements_infoDefaultArgs> = $Result.GetResult<Prisma.$pg_stat_statements_infoPayload, S>
+
+  type pg_stat_statements_infoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<pg_stat_statements_infoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Pg_stat_statements_infoCountAggregateInputType | true
+    }
+
+  export interface pg_stat_statements_infoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['pg_stat_statements_info'], meta: { name: 'pg_stat_statements_info' } }
+    /**
+     * Find the first Pg_stat_statements_info that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pg_stat_statements_infoFindFirstArgs} args - Arguments to find a Pg_stat_statements_info
+     * @example
+     * // Get one Pg_stat_statements_info
+     * const pg_stat_statements_info = await prisma.pg_stat_statements_info.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends pg_stat_statements_infoFindFirstArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}>(args?: SelectSubset<T, pg_stat_statements_infoFindFirstArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma__pg_stat_statements_infoClient<$Result.GetResult<Prisma.$pg_stat_statements_infoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Pg_stat_statements_info that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pg_stat_statements_infoFindFirstOrThrowArgs} args - Arguments to find a Pg_stat_statements_info
+     * @example
+     * // Get one Pg_stat_statements_info
+     * const pg_stat_statements_info = await prisma.pg_stat_statements_info.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends pg_stat_statements_infoFindFirstOrThrowArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}>(args?: SelectSubset<T, pg_stat_statements_infoFindFirstOrThrowArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma__pg_stat_statements_infoClient<$Result.GetResult<Prisma.$pg_stat_statements_infoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Pg_stat_statements_infos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pg_stat_statements_infoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Pg_stat_statements_infos
+     * const pg_stat_statements_infos = await prisma.pg_stat_statements_info.findMany()
+     * 
+     * // Get first 10 Pg_stat_statements_infos
+     * const pg_stat_statements_infos = await prisma.pg_stat_statements_info.findMany({ take: 10 })
+     * 
+     * // Only select the `dealloc`
+     * const pg_stat_statements_infoWithDeallocOnly = await prisma.pg_stat_statements_info.findMany({ select: { dealloc: true } })
+     * 
+     */
+    findMany<T extends pg_stat_statements_infoFindManyArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}>(args?: SelectSubset<T, pg_stat_statements_infoFindManyArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pg_stat_statements_infoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+
+    /**
+     * Count the number of Pg_stat_statements_infos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pg_stat_statements_infoCountArgs} args - Arguments to filter Pg_stat_statements_infos to count.
+     * @example
+     * // Count the number of Pg_stat_statements_infos
+     * const count = await prisma.pg_stat_statements_info.count({
+     *   where: {
+     *     // ... the filter for the Pg_stat_statements_infos we want to count
+     *   }
+     * })
+    **/
+    count<T extends pg_stat_statements_infoCountArgs>(
+      args?: Subset<T, pg_stat_statements_infoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Pg_stat_statements_infoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Pg_stat_statements_info.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Pg_stat_statements_infoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Pg_stat_statements_infoAggregateArgs>(args: Subset<T, Pg_stat_statements_infoAggregateArgs>): Prisma.PrismaPromise<GetPg_stat_statements_infoAggregateType<T>>
+
+    /**
+     * Group by Pg_stat_statements_info.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pg_stat_statements_infoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends pg_stat_statements_infoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: pg_stat_statements_infoGroupByArgs['orderBy'] }
+        : { orderBy?: pg_stat_statements_infoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, pg_stat_statements_infoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPg_stat_statements_infoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the pg_stat_statements_info model
+   */
+  readonly fields: pg_stat_statements_infoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for pg_stat_statements_info.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__pg_stat_statements_infoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the pg_stat_statements_info model
+   */
+  interface pg_stat_statements_infoFieldRefs {
+    readonly dealloc: FieldRef<"pg_stat_statements_info", 'BigInt'>
+    readonly stats_reset: FieldRef<"pg_stat_statements_info", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * pg_stat_statements_info findFirst
+   */
+  export type pg_stat_statements_infoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pg_stat_statements_info
+     */
+    select?: pg_stat_statements_infoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pg_stat_statements_info
+     */
+    omit?: pg_stat_statements_infoOmit<ExtArgs> | null
+    /**
+     * Filter, which pg_stat_statements_info to fetch.
+     */
+    where?: pg_stat_statements_infoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pg_stat_statements_infos to fetch.
+     */
+    orderBy?: pg_stat_statements_infoOrderByWithRelationInput | pg_stat_statements_infoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pg_stat_statements_infos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pg_stat_statements_infos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of pg_stat_statements_infos.
+     */
+    distinct?: Pg_stat_statements_infoScalarFieldEnum | Pg_stat_statements_infoScalarFieldEnum[]
+  }
+
+  /**
+   * pg_stat_statements_info findFirstOrThrow
+   */
+  export type pg_stat_statements_infoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pg_stat_statements_info
+     */
+    select?: pg_stat_statements_infoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pg_stat_statements_info
+     */
+    omit?: pg_stat_statements_infoOmit<ExtArgs> | null
+    /**
+     * Filter, which pg_stat_statements_info to fetch.
+     */
+    where?: pg_stat_statements_infoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pg_stat_statements_infos to fetch.
+     */
+    orderBy?: pg_stat_statements_infoOrderByWithRelationInput | pg_stat_statements_infoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pg_stat_statements_infos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pg_stat_statements_infos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of pg_stat_statements_infos.
+     */
+    distinct?: Pg_stat_statements_infoScalarFieldEnum | Pg_stat_statements_infoScalarFieldEnum[]
+  }
+
+  /**
+   * pg_stat_statements_info findMany
+   */
+  export type pg_stat_statements_infoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pg_stat_statements_info
+     */
+    select?: pg_stat_statements_infoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pg_stat_statements_info
+     */
+    omit?: pg_stat_statements_infoOmit<ExtArgs> | null
+    /**
+     * Filter, which pg_stat_statements_infos to fetch.
+     */
+    where?: pg_stat_statements_infoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pg_stat_statements_infos to fetch.
+     */
+    orderBy?: pg_stat_statements_infoOrderByWithRelationInput | pg_stat_statements_infoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pg_stat_statements_infos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pg_stat_statements_infos.
+     */
+    skip?: number
+    distinct?: Pg_stat_statements_infoScalarFieldEnum | Pg_stat_statements_infoScalarFieldEnum[]
+  }
+
+  /**
+   * pg_stat_statements_info without action
+   */
+  export type pg_stat_statements_infoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pg_stat_statements_info
+     */
+    select?: pg_stat_statements_infoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pg_stat_statements_info
+     */
+    omit?: pg_stat_statements_infoOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model geography_columns
+   */
+
+  export type AggregateGeography_columns = {
+    _count: Geography_columnsCountAggregateOutputType | null
+    _avg: Geography_columnsAvgAggregateOutputType | null
+    _sum: Geography_columnsSumAggregateOutputType | null
+    _min: Geography_columnsMinAggregateOutputType | null
+    _max: Geography_columnsMaxAggregateOutputType | null
+  }
+
+  export type Geography_columnsAvgAggregateOutputType = {
+    coord_dimension: number | null
+    srid: number | null
+  }
+
+  export type Geography_columnsSumAggregateOutputType = {
+    coord_dimension: number | null
+    srid: number | null
+  }
+
+  export type Geography_columnsMinAggregateOutputType = {
+    coord_dimension: number | null
+    srid: number | null
+    type: string | null
+  }
+
+  export type Geography_columnsMaxAggregateOutputType = {
+    coord_dimension: number | null
+    srid: number | null
+    type: string | null
+  }
+
+  export type Geography_columnsCountAggregateOutputType = {
+    coord_dimension: number
+    srid: number
+    type: number
+    _all: number
+  }
+
+
+  export type Geography_columnsAvgAggregateInputType = {
+    coord_dimension?: true
+    srid?: true
+  }
+
+  export type Geography_columnsSumAggregateInputType = {
+    coord_dimension?: true
+    srid?: true
+  }
+
+  export type Geography_columnsMinAggregateInputType = {
+    coord_dimension?: true
+    srid?: true
+    type?: true
+  }
+
+  export type Geography_columnsMaxAggregateInputType = {
+    coord_dimension?: true
+    srid?: true
+    type?: true
+  }
+
+  export type Geography_columnsCountAggregateInputType = {
+    coord_dimension?: true
+    srid?: true
+    type?: true
+    _all?: true
+  }
+
+  export type Geography_columnsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which geography_columns to aggregate.
+     */
+    where?: geography_columnsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of geography_columns to fetch.
+     */
+    orderBy?: geography_columnsOrderByWithRelationInput | geography_columnsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` geography_columns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` geography_columns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned geography_columns
+    **/
+    _count?: true | Geography_columnsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Geography_columnsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Geography_columnsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Geography_columnsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Geography_columnsMaxAggregateInputType
+  }
+
+  export type GetGeography_columnsAggregateType<T extends Geography_columnsAggregateArgs> = {
+        [P in keyof T & keyof AggregateGeography_columns]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGeography_columns[P]>
+      : GetScalarType<T[P], AggregateGeography_columns[P]>
+  }
+
+
+
+
+  export type geography_columnsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: geography_columnsWhereInput
+    orderBy?: geography_columnsOrderByWithAggregationInput | geography_columnsOrderByWithAggregationInput[]
+    by: Geography_columnsScalarFieldEnum[] | Geography_columnsScalarFieldEnum
+    having?: geography_columnsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Geography_columnsCountAggregateInputType | true
+    _avg?: Geography_columnsAvgAggregateInputType
+    _sum?: Geography_columnsSumAggregateInputType
+    _min?: Geography_columnsMinAggregateInputType
+    _max?: Geography_columnsMaxAggregateInputType
+  }
+
+  export type Geography_columnsGroupByOutputType = {
+    coord_dimension: number | null
+    srid: number | null
+    type: string | null
+    _count: Geography_columnsCountAggregateOutputType | null
+    _avg: Geography_columnsAvgAggregateOutputType | null
+    _sum: Geography_columnsSumAggregateOutputType | null
+    _min: Geography_columnsMinAggregateOutputType | null
+    _max: Geography_columnsMaxAggregateOutputType | null
+  }
+
+  type GetGeography_columnsGroupByPayload<T extends geography_columnsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Geography_columnsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Geography_columnsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Geography_columnsGroupByOutputType[P]>
+            : GetScalarType<T[P], Geography_columnsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type geography_columnsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    coord_dimension?: boolean
+    srid?: boolean
+    type?: boolean
+  }, ExtArgs["result"]["geography_columns"]>
+
+
+
+  export type geography_columnsSelectScalar = {
+    coord_dimension?: boolean
+    srid?: boolean
+    type?: boolean
+  }
+
+  export type geography_columnsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"coord_dimension" | "srid" | "type", ExtArgs["result"]["geography_columns"]>
+
+  export type $geography_columnsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "geography_columns"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      coord_dimension: number | null
+      srid: number | null
+      type: string | null
+    }, ExtArgs["result"]["geography_columns"]>
+    composites: {}
+  }
+
+  type geography_columnsGetPayload<S extends boolean | null | undefined | geography_columnsDefaultArgs> = $Result.GetResult<Prisma.$geography_columnsPayload, S>
+
+  type geography_columnsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<geography_columnsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Geography_columnsCountAggregateInputType | true
+    }
+
+  export interface geography_columnsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['geography_columns'], meta: { name: 'geography_columns' } }
+    /**
+     * Find the first Geography_columns that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {geography_columnsFindFirstArgs} args - Arguments to find a Geography_columns
+     * @example
+     * // Get one Geography_columns
+     * const geography_columns = await prisma.geography_columns.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends geography_columnsFindFirstArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}>(args?: SelectSubset<T, geography_columnsFindFirstArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma__geography_columnsClient<$Result.GetResult<Prisma.$geography_columnsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Geography_columns that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {geography_columnsFindFirstOrThrowArgs} args - Arguments to find a Geography_columns
+     * @example
+     * // Get one Geography_columns
+     * const geography_columns = await prisma.geography_columns.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends geography_columnsFindFirstOrThrowArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}>(args?: SelectSubset<T, geography_columnsFindFirstOrThrowArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma__geography_columnsClient<$Result.GetResult<Prisma.$geography_columnsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Geography_columns that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {geography_columnsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Geography_columns
+     * const geography_columns = await prisma.geography_columns.findMany()
+     * 
+     * // Get first 10 Geography_columns
+     * const geography_columns = await prisma.geography_columns.findMany({ take: 10 })
+     * 
+     * // Only select the `coord_dimension`
+     * const geography_columnsWithCoord_dimensionOnly = await prisma.geography_columns.findMany({ select: { coord_dimension: true } })
+     * 
+     */
+    findMany<T extends geography_columnsFindManyArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}>(args?: SelectSubset<T, geography_columnsFindManyArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma.PrismaPromise<$Result.GetResult<Prisma.$geography_columnsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+
+    /**
+     * Count the number of Geography_columns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {geography_columnsCountArgs} args - Arguments to filter Geography_columns to count.
+     * @example
+     * // Count the number of Geography_columns
+     * const count = await prisma.geography_columns.count({
+     *   where: {
+     *     // ... the filter for the Geography_columns we want to count
+     *   }
+     * })
+    **/
+    count<T extends geography_columnsCountArgs>(
+      args?: Subset<T, geography_columnsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Geography_columnsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Geography_columns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Geography_columnsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Geography_columnsAggregateArgs>(args: Subset<T, Geography_columnsAggregateArgs>): Prisma.PrismaPromise<GetGeography_columnsAggregateType<T>>
+
+    /**
+     * Group by Geography_columns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {geography_columnsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends geography_columnsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: geography_columnsGroupByArgs['orderBy'] }
+        : { orderBy?: geography_columnsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, geography_columnsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGeography_columnsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the geography_columns model
+   */
+  readonly fields: geography_columnsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for geography_columns.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__geography_columnsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the geography_columns model
+   */
+  interface geography_columnsFieldRefs {
+    readonly coord_dimension: FieldRef<"geography_columns", 'Int'>
+    readonly srid: FieldRef<"geography_columns", 'Int'>
+    readonly type: FieldRef<"geography_columns", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * geography_columns findFirst
+   */
+  export type geography_columnsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the geography_columns
+     */
+    select?: geography_columnsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the geography_columns
+     */
+    omit?: geography_columnsOmit<ExtArgs> | null
+    /**
+     * Filter, which geography_columns to fetch.
+     */
+    where?: geography_columnsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of geography_columns to fetch.
+     */
+    orderBy?: geography_columnsOrderByWithRelationInput | geography_columnsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` geography_columns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` geography_columns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of geography_columns.
+     */
+    distinct?: Geography_columnsScalarFieldEnum | Geography_columnsScalarFieldEnum[]
+  }
+
+  /**
+   * geography_columns findFirstOrThrow
+   */
+  export type geography_columnsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the geography_columns
+     */
+    select?: geography_columnsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the geography_columns
+     */
+    omit?: geography_columnsOmit<ExtArgs> | null
+    /**
+     * Filter, which geography_columns to fetch.
+     */
+    where?: geography_columnsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of geography_columns to fetch.
+     */
+    orderBy?: geography_columnsOrderByWithRelationInput | geography_columnsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` geography_columns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` geography_columns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of geography_columns.
+     */
+    distinct?: Geography_columnsScalarFieldEnum | Geography_columnsScalarFieldEnum[]
+  }
+
+  /**
+   * geography_columns findMany
+   */
+  export type geography_columnsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the geography_columns
+     */
+    select?: geography_columnsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the geography_columns
+     */
+    omit?: geography_columnsOmit<ExtArgs> | null
+    /**
+     * Filter, which geography_columns to fetch.
+     */
+    where?: geography_columnsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of geography_columns to fetch.
+     */
+    orderBy?: geography_columnsOrderByWithRelationInput | geography_columnsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` geography_columns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` geography_columns.
+     */
+    skip?: number
+    distinct?: Geography_columnsScalarFieldEnum | Geography_columnsScalarFieldEnum[]
+  }
+
+  /**
+   * geography_columns without action
+   */
+  export type geography_columnsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the geography_columns
+     */
+    select?: geography_columnsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the geography_columns
+     */
+    omit?: geography_columnsOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model geometry_columns
+   */
+
+  export type AggregateGeometry_columns = {
+    _count: Geometry_columnsCountAggregateOutputType | null
+    _avg: Geometry_columnsAvgAggregateOutputType | null
+    _sum: Geometry_columnsSumAggregateOutputType | null
+    _min: Geometry_columnsMinAggregateOutputType | null
+    _max: Geometry_columnsMaxAggregateOutputType | null
+  }
+
+  export type Geometry_columnsAvgAggregateOutputType = {
+    coord_dimension: number | null
+    srid: number | null
+  }
+
+  export type Geometry_columnsSumAggregateOutputType = {
+    coord_dimension: number | null
+    srid: number | null
+  }
+
+  export type Geometry_columnsMinAggregateOutputType = {
+    f_table_catalog: string | null
+    coord_dimension: number | null
+    srid: number | null
+    type: string | null
+  }
+
+  export type Geometry_columnsMaxAggregateOutputType = {
+    f_table_catalog: string | null
+    coord_dimension: number | null
+    srid: number | null
+    type: string | null
+  }
+
+  export type Geometry_columnsCountAggregateOutputType = {
+    f_table_catalog: number
+    coord_dimension: number
+    srid: number
+    type: number
+    _all: number
+  }
+
+
+  export type Geometry_columnsAvgAggregateInputType = {
+    coord_dimension?: true
+    srid?: true
+  }
+
+  export type Geometry_columnsSumAggregateInputType = {
+    coord_dimension?: true
+    srid?: true
+  }
+
+  export type Geometry_columnsMinAggregateInputType = {
+    f_table_catalog?: true
+    coord_dimension?: true
+    srid?: true
+    type?: true
+  }
+
+  export type Geometry_columnsMaxAggregateInputType = {
+    f_table_catalog?: true
+    coord_dimension?: true
+    srid?: true
+    type?: true
+  }
+
+  export type Geometry_columnsCountAggregateInputType = {
+    f_table_catalog?: true
+    coord_dimension?: true
+    srid?: true
+    type?: true
+    _all?: true
+  }
+
+  export type Geometry_columnsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which geometry_columns to aggregate.
+     */
+    where?: geometry_columnsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of geometry_columns to fetch.
+     */
+    orderBy?: geometry_columnsOrderByWithRelationInput | geometry_columnsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` geometry_columns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` geometry_columns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned geometry_columns
+    **/
+    _count?: true | Geometry_columnsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Geometry_columnsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Geometry_columnsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Geometry_columnsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Geometry_columnsMaxAggregateInputType
+  }
+
+  export type GetGeometry_columnsAggregateType<T extends Geometry_columnsAggregateArgs> = {
+        [P in keyof T & keyof AggregateGeometry_columns]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGeometry_columns[P]>
+      : GetScalarType<T[P], AggregateGeometry_columns[P]>
+  }
+
+
+
+
+  export type geometry_columnsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: geometry_columnsWhereInput
+    orderBy?: geometry_columnsOrderByWithAggregationInput | geometry_columnsOrderByWithAggregationInput[]
+    by: Geometry_columnsScalarFieldEnum[] | Geometry_columnsScalarFieldEnum
+    having?: geometry_columnsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Geometry_columnsCountAggregateInputType | true
+    _avg?: Geometry_columnsAvgAggregateInputType
+    _sum?: Geometry_columnsSumAggregateInputType
+    _min?: Geometry_columnsMinAggregateInputType
+    _max?: Geometry_columnsMaxAggregateInputType
+  }
+
+  export type Geometry_columnsGroupByOutputType = {
+    f_table_catalog: string | null
+    coord_dimension: number | null
+    srid: number | null
+    type: string | null
+    _count: Geometry_columnsCountAggregateOutputType | null
+    _avg: Geometry_columnsAvgAggregateOutputType | null
+    _sum: Geometry_columnsSumAggregateOutputType | null
+    _min: Geometry_columnsMinAggregateOutputType | null
+    _max: Geometry_columnsMaxAggregateOutputType | null
+  }
+
+  type GetGeometry_columnsGroupByPayload<T extends geometry_columnsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Geometry_columnsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Geometry_columnsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Geometry_columnsGroupByOutputType[P]>
+            : GetScalarType<T[P], Geometry_columnsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type geometry_columnsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    f_table_catalog?: boolean
+    coord_dimension?: boolean
+    srid?: boolean
+    type?: boolean
+  }, ExtArgs["result"]["geometry_columns"]>
+
+
+
+  export type geometry_columnsSelectScalar = {
+    f_table_catalog?: boolean
+    coord_dimension?: boolean
+    srid?: boolean
+    type?: boolean
+  }
+
+  export type geometry_columnsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"f_table_catalog" | "coord_dimension" | "srid" | "type", ExtArgs["result"]["geometry_columns"]>
+
+  export type $geometry_columnsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "geometry_columns"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      f_table_catalog: string | null
+      coord_dimension: number | null
+      srid: number | null
+      type: string | null
+    }, ExtArgs["result"]["geometry_columns"]>
+    composites: {}
+  }
+
+  type geometry_columnsGetPayload<S extends boolean | null | undefined | geometry_columnsDefaultArgs> = $Result.GetResult<Prisma.$geometry_columnsPayload, S>
+
+  type geometry_columnsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<geometry_columnsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Geometry_columnsCountAggregateInputType | true
+    }
+
+  export interface geometry_columnsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['geometry_columns'], meta: { name: 'geometry_columns' } }
+    /**
+     * Find the first Geometry_columns that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {geometry_columnsFindFirstArgs} args - Arguments to find a Geometry_columns
+     * @example
+     * // Get one Geometry_columns
+     * const geometry_columns = await prisma.geometry_columns.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends geometry_columnsFindFirstArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}>(args?: SelectSubset<T, geometry_columnsFindFirstArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma__geometry_columnsClient<$Result.GetResult<Prisma.$geometry_columnsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Geometry_columns that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {geometry_columnsFindFirstOrThrowArgs} args - Arguments to find a Geometry_columns
+     * @example
+     * // Get one Geometry_columns
+     * const geometry_columns = await prisma.geometry_columns.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends geometry_columnsFindFirstOrThrowArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}>(args?: SelectSubset<T, geometry_columnsFindFirstOrThrowArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma__geometry_columnsClient<$Result.GetResult<Prisma.$geometry_columnsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Geometry_columns that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {geometry_columnsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Geometry_columns
+     * const geometry_columns = await prisma.geometry_columns.findMany()
+     * 
+     * // Get first 10 Geometry_columns
+     * const geometry_columns = await prisma.geometry_columns.findMany({ take: 10 })
+     * 
+     * // Only select the `f_table_catalog`
+     * const geometry_columnsWithF_table_catalogOnly = await prisma.geometry_columns.findMany({ select: { f_table_catalog: true } })
+     * 
+     */
+    findMany<T extends geometry_columnsFindManyArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
+      orderBy: {}
+    } : {}>(args?: SelectSubset<T, geometry_columnsFindManyArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma.PrismaPromise<$Result.GetResult<Prisma.$geometry_columnsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+
+    /**
+     * Count the number of Geometry_columns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {geometry_columnsCountArgs} args - Arguments to filter Geometry_columns to count.
+     * @example
+     * // Count the number of Geometry_columns
+     * const count = await prisma.geometry_columns.count({
+     *   where: {
+     *     // ... the filter for the Geometry_columns we want to count
+     *   }
+     * })
+    **/
+    count<T extends geometry_columnsCountArgs>(
+      args?: Subset<T, geometry_columnsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Geometry_columnsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Geometry_columns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Geometry_columnsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Geometry_columnsAggregateArgs>(args: Subset<T, Geometry_columnsAggregateArgs>): Prisma.PrismaPromise<GetGeometry_columnsAggregateType<T>>
+
+    /**
+     * Group by Geometry_columns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {geometry_columnsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends geometry_columnsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: geometry_columnsGroupByArgs['orderBy'] }
+        : { orderBy?: geometry_columnsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, geometry_columnsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGeometry_columnsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the geometry_columns model
+   */
+  readonly fields: geometry_columnsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for geometry_columns.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__geometry_columnsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the geometry_columns model
+   */
+  interface geometry_columnsFieldRefs {
+    readonly f_table_catalog: FieldRef<"geometry_columns", 'String'>
+    readonly coord_dimension: FieldRef<"geometry_columns", 'Int'>
+    readonly srid: FieldRef<"geometry_columns", 'Int'>
+    readonly type: FieldRef<"geometry_columns", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * geometry_columns findFirst
+   */
+  export type geometry_columnsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the geometry_columns
+     */
+    select?: geometry_columnsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the geometry_columns
+     */
+    omit?: geometry_columnsOmit<ExtArgs> | null
+    /**
+     * Filter, which geometry_columns to fetch.
+     */
+    where?: geometry_columnsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of geometry_columns to fetch.
+     */
+    orderBy?: geometry_columnsOrderByWithRelationInput | geometry_columnsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` geometry_columns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` geometry_columns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of geometry_columns.
+     */
+    distinct?: Geometry_columnsScalarFieldEnum | Geometry_columnsScalarFieldEnum[]
+  }
+
+  /**
+   * geometry_columns findFirstOrThrow
+   */
+  export type geometry_columnsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the geometry_columns
+     */
+    select?: geometry_columnsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the geometry_columns
+     */
+    omit?: geometry_columnsOmit<ExtArgs> | null
+    /**
+     * Filter, which geometry_columns to fetch.
+     */
+    where?: geometry_columnsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of geometry_columns to fetch.
+     */
+    orderBy?: geometry_columnsOrderByWithRelationInput | geometry_columnsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` geometry_columns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` geometry_columns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of geometry_columns.
+     */
+    distinct?: Geometry_columnsScalarFieldEnum | Geometry_columnsScalarFieldEnum[]
+  }
+
+  /**
+   * geometry_columns findMany
+   */
+  export type geometry_columnsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the geometry_columns
+     */
+    select?: geometry_columnsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the geometry_columns
+     */
+    omit?: geometry_columnsOmit<ExtArgs> | null
+    /**
+     * Filter, which geometry_columns to fetch.
+     */
+    where?: geometry_columnsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of geometry_columns to fetch.
+     */
+    orderBy?: geometry_columnsOrderByWithRelationInput | geometry_columnsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` geometry_columns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` geometry_columns.
+     */
+    skip?: number
+    distinct?: Geometry_columnsScalarFieldEnum | Geometry_columnsScalarFieldEnum[]
+  }
+
+  /**
+   * geometry_columns without action
+   */
+  export type geometry_columnsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the geometry_columns
+     */
+    select?: geometry_columnsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the geometry_columns
+     */
+    omit?: geometry_columnsOmit<ExtArgs> | null
+  }
+
+
+  /**
+>>>>>>> dev
    * Enums
    */
 
@@ -34269,6 +50586,29 @@ export namespace Prisma {
   export type North_star_metricScalarFieldEnum = (typeof North_star_metricScalarFieldEnum)[keyof typeof North_star_metricScalarFieldEnum]
 
 
+<<<<<<< HEAD
+=======
+  export const AgricultureScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    libelle_departement: 'libelle_departement',
+    region: 'region',
+    ept: 'ept',
+    libelle_petr: 'libelle_petr',
+    code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr',
+    part_irr_SAU_2020: 'part_irr_SAU_2020',
+    otex_12_postes: 'otex_12_postes'
+  };
+
+  export type AgricultureScalarFieldEnum = (typeof AgricultureScalarFieldEnum)[keyof typeof AgricultureScalarFieldEnum]
+
+
+>>>>>>> dev
   export const Agriculture_bioScalarFieldEnum: {
     index: 'index',
     epci: 'epci',
@@ -34322,6 +50662,32 @@ export namespace Prisma {
   export type Arretes_catnatScalarFieldEnum = (typeof Arretes_catnatScalarFieldEnum)[keyof typeof Arretes_catnatScalarFieldEnum]
 
 
+<<<<<<< HEAD
+=======
+  export const Atlas_biodiversiteScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    libelle_departement: 'libelle_departement',
+    region: 'region',
+    ept: 'ept',
+    libelle_petr: 'libelle_petr',
+    code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr',
+    nom: 'nom',
+    structure_porteuse: 'structure_porteuse',
+    type_de_structure_porteuse: 'type_de_structure_porteuse',
+    annee_debut: 'annee_debut',
+    avancement: 'avancement'
+  };
+
+  export type Atlas_biodiversiteScalarFieldEnum = (typeof Atlas_biodiversiteScalarFieldEnum)[keyof typeof Atlas_biodiversiteScalarFieldEnum]
+
+
+>>>>>>> dev
   export const Collectivites_searchbarScalarFieldEnum: {
     index: 'index',
     code_geographique: 'code_geographique',
@@ -34564,6 +50930,28 @@ export namespace Prisma {
   export type Inconfort_thermiqueScalarFieldEnum = (typeof Inconfort_thermiqueScalarFieldEnum)[keyof typeof Inconfort_thermiqueScalarFieldEnum]
 
 
+<<<<<<< HEAD
+=======
+  export const Lcz_couvertureScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    libelle_departement: 'libelle_departement',
+    region: 'region',
+    ept: 'ept',
+    libelle_petr: 'libelle_petr',
+    code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr',
+    couverture_lcz: 'couverture_lcz'
+  };
+
+  export type Lcz_couvertureScalarFieldEnum = (typeof Lcz_couvertureScalarFieldEnum)[keyof typeof Lcz_couvertureScalarFieldEnum]
+
+
+>>>>>>> dev
   export const Patch4cScalarFieldEnum: {
     index: 'index',
     code_geographique: 'code_geographique',
@@ -34577,6 +50965,31 @@ export namespace Prisma {
   export type Patch4cScalarFieldEnum = (typeof Patch4cScalarFieldEnum)[keyof typeof Patch4cScalarFieldEnum]
 
 
+<<<<<<< HEAD
+=======
+  export const Qualite_sites_baignadeScalarFieldEnum: {
+    index: 'index',
+    DEP_NOM: 'DEP_NOM',
+    DEP_NUM: 'DEP_NUM',
+    TYPE: 'TYPE',
+    COMMUNE: 'COMMUNE',
+    POINT: 'POINT',
+    LONG: 'LONG',
+    LAT: 'LAT',
+    QEB_2013: 'QEB_2013',
+    QEB_2014: 'QEB_2014',
+    QEB_2015: 'QEB_2015',
+    QEB_2016: 'QEB_2016',
+    QEB_2017: 'QEB_2017',
+    QEB_2018: 'QEB_2018',
+    QEB_2019: 'QEB_2019',
+    QEB_2020: 'QEB_2020'
+  };
+
+  export type Qualite_sites_baignadeScalarFieldEnum = (typeof Qualite_sites_baignadeScalarFieldEnum)[keyof typeof Qualite_sites_baignadeScalarFieldEnum]
+
+
+>>>>>>> dev
   export const Ressources_eauScalarFieldEnum: {
     index: 'index',
     code_geographique: 'code_geographique',
@@ -34610,6 +51023,130 @@ export namespace Prisma {
   export type Ressources_eauScalarFieldEnum = (typeof Ressources_eauScalarFieldEnum)[keyof typeof Ressources_eauScalarFieldEnum]
 
 
+<<<<<<< HEAD
+=======
+  export const RgaScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    libelle_departement: 'libelle_departement',
+    region: 'region',
+    ept: 'ept',
+    libelle_petr: 'libelle_petr',
+    code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr',
+    nb_logement: 'nb_logement',
+    nb_logement_alea_moyen_fort: 'nb_logement_alea_moyen_fort',
+    nb_logement_alea_faible: 'nb_logement_alea_faible',
+    nb_logement_sans_alea: 'nb_logement_sans_alea',
+    nb_logement_alea_moyen_fort_avant_1920: 'nb_logement_alea_moyen_fort_avant_1920',
+    part_logement_alea_moyen_fort_avant_1920: 'part_logement_alea_moyen_fort_avant_1920',
+    nb_logement_alea_moyen_fort_1920_1945: 'nb_logement_alea_moyen_fort_1920_1945',
+    part_logement_alea_moyen_fort_1920_1945: 'part_logement_alea_moyen_fort_1920_1945',
+    nb_logement_alea_moyen_fort_1945_1975: 'nb_logement_alea_moyen_fort_1945_1975',
+    part_logement_alea_moyen_fort_1945_1975: 'part_logement_alea_moyen_fort_1945_1975',
+    nb_logement_alea_moyen_fort_apres_1975: 'nb_logement_alea_moyen_fort_apres_1975',
+    part_logement_alea_moyen_fort_apres_1975: 'part_logement_alea_moyen_fort_apres_1975',
+    nb_logement_alea_faible_avant_1920: 'nb_logement_alea_faible_avant_1920',
+    part_logement_alea_faible_avant_1920: 'part_logement_alea_faible_avant_1920',
+    nb_logement_alea_faible_1920_1945: 'nb_logement_alea_faible_1920_1945',
+    part_logement_alea_faible_1920_1945: 'part_logement_alea_faible_1920_1945',
+    nb_logement_alea_faible_1945_1975: 'nb_logement_alea_faible_1945_1975',
+    part_logement_alea_faible_1945_1975: 'part_logement_alea_faible_1945_1975',
+    nb_logement_alea_faible_apres_1975: 'nb_logement_alea_faible_apres_1975',
+    part_logement_alea_faible_apres_1975: 'part_logement_alea_faible_apres_1975',
+    surface_commune: 'surface_commune',
+    surface_alea_faible_commune: 'surface_alea_faible_commune',
+    part_alea_faible_commune: 'part_alea_faible_commune',
+    surface_alea_moyen_fort_commune: 'surface_alea_moyen_fort_commune',
+    part_alea_moyen_fort_commune: 'part_alea_moyen_fort_commune'
+  };
+
+  export type RgaScalarFieldEnum = (typeof RgaScalarFieldEnum)[keyof typeof RgaScalarFieldEnum]
+
+
+  export const Surfaces_agricolesScalarFieldEnum: {
+    index: 'index',
+    epci: 'epci',
+    exploitation_sau: 'exploitation_sau',
+    exploitation_sau_terres_arables: 'exploitation_sau_terres_arables',
+    exploitation_sau_terres_arables_cereales: 'exploitation_sau_terres_arables_cereales',
+    exploitation_sau_terres_arables_oleagineux: 'exploitation_sau_terres_arables_oleagineux',
+    exploitation_sau_terres_arables_fourrageres: 'exploitation_sau_terres_arables_fourrageres',
+    exploitation_sau_terres_arables_tubercules: 'exploitation_sau_terres_arables_tubercules',
+    exploitation_sau_terres_arables_legumes_melons_fraises: 'exploitation_sau_terres_arables_legumes_melons_fraises',
+    exploitation_sau_terres_arables_fleurs: 'exploitation_sau_terres_arables_fleurs',
+    exploitation_sau_terres_arables_autres: 'exploitation_sau_terres_arables_autres',
+    exploitation_sau_cultures_permanentes: 'exploitation_sau_cultures_permanentes',
+    exploitation_sau_cultures_permanentes_vigne: 'exploitation_sau_cultures_permanentes_vigne',
+    exploitation_sau_cultures_permanentes_fruits: 'exploitation_sau_cultures_permanentes_fruits',
+    exploitation_sau_cultures_permanentes_autres: 'exploitation_sau_cultures_permanentes_autres',
+    exploitation_sau_herbe: 'exploitation_sau_herbe',
+    exploitation_sau_herbe_prairies_productives: 'exploitation_sau_herbe_prairies_productives',
+    exploitation_sau_herbe_prairies_peu_productives: 'exploitation_sau_herbe_prairies_peu_productives',
+    exploitation_sau_herbe_subventions: 'exploitation_sau_herbe_subventions',
+    exploitation_sau_herbe_bois_patures: 'exploitation_sau_herbe_bois_patures',
+    exploitation_sau_jardins: 'exploitation_sau_jardins',
+    superficie_sau: 'superficie_sau',
+    superficie_sau_terres_arables: 'superficie_sau_terres_arables',
+    superficie_sau_terres_arables_cereales: 'superficie_sau_terres_arables_cereales',
+    superficie_sau_terres_arables_oleagineux: 'superficie_sau_terres_arables_oleagineux',
+    superficie_sau_terres_arables_fourrageres: 'superficie_sau_terres_arables_fourrageres',
+    superficie_sau_terres_arables_tubercules: 'superficie_sau_terres_arables_tubercules',
+    superficie_sau_terres_arables_legumes_melons_fraises: 'superficie_sau_terres_arables_legumes_melons_fraises',
+    superficie_sau_terres_arables_fleurs: 'superficie_sau_terres_arables_fleurs',
+    superficie_sau_terres_arables_autres: 'superficie_sau_terres_arables_autres',
+    superficie_sau_cultures_permanentes: 'superficie_sau_cultures_permanentes',
+    superficie_sau_cultures_permanentes_vigne: 'superficie_sau_cultures_permanentes_vigne',
+    superficie_sau_cultures_permanentes_fruits: 'superficie_sau_cultures_permanentes_fruits',
+    superficie_sau_cultures_permanentes_autres: 'superficie_sau_cultures_permanentes_autres',
+    superficie_sau_herbe: 'superficie_sau_herbe',
+    superficie_sau_herbe_prairies_productives: 'superficie_sau_herbe_prairies_productives',
+    superficie_sau_herbe_prairies_peu_productives: 'superficie_sau_herbe_prairies_peu_productives',
+    superficie_sau_herbe_subventions: 'superficie_sau_herbe_subventions',
+    superficie_sau_herbe_bois_patures: 'superficie_sau_herbe_bois_patures',
+    superficie_sau_jardins: 'superficie_sau_jardins'
+  };
+
+  export type Surfaces_agricolesScalarFieldEnum = (typeof Surfaces_agricolesScalarFieldEnum)[keyof typeof Surfaces_agricolesScalarFieldEnum]
+
+
+  export const Surfaces_protegeesScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    PNC: 'PNC',
+    RAMSAR: 'RAMSAR',
+    PNR: 'PNR',
+    PNP: 'PNP',
+    FOR_PRO: 'FOR_PRO',
+    ZZZ: 'ZZZ',
+    ZNIEFF2: 'ZNIEFF2',
+    ZNIEFF1: 'ZNIEFF1',
+    RNR: 'RNR',
+    TOU_PRO: 'TOU_PRO',
+    NATURA: 'NATURA',
+    ZPS: 'ZPS',
+    SIC: 'SIC',
+    CELRL: 'CELRL',
+    BIO: 'BIO',
+    APB: 'APB',
+    RN: 'RN',
+    RBFD: 'RBFD',
+    RNCFS: 'RNCFS',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    region: 'region'
+  };
+
+  export type Surfaces_protegeesScalarFieldEnum = (typeof Surfaces_protegeesScalarFieldEnum)[keyof typeof Surfaces_protegeesScalarFieldEnum]
+
+
+>>>>>>> dev
   export const Clc_territoiresScalarFieldEnum: {
     pk: 'pk',
     code_geographique: 'code_geographique',
@@ -34672,6 +51209,7 @@ export namespace Prisma {
   export type Etat_cours_d_eauScalarFieldEnum = (typeof Etat_cours_d_eauScalarFieldEnum)[keyof typeof Etat_cours_d_eauScalarFieldEnum]
 
 
+<<<<<<< HEAD
   export const Qualite_sites_baignadeScalarFieldEnum: {
     index: 'index',
     DEP_NOM: 'DEP_NOM',
@@ -34692,6 +51230,36 @@ export namespace Prisma {
   };
 
   export type Qualite_sites_baignadeScalarFieldEnum = (typeof Qualite_sites_baignadeScalarFieldEnum)[keyof typeof Qualite_sites_baignadeScalarFieldEnum]
+=======
+  export const Postgis_rgaScalarFieldEnum: {
+    pk: 'pk',
+    alea: 'alea',
+    code_geographique: 'code_geographique'
+  };
+
+  export type Postgis_rgaScalarFieldEnum = (typeof Postgis_rgaScalarFieldEnum)[keyof typeof Postgis_rgaScalarFieldEnum]
+
+
+  export const Spatial_ref_sysScalarFieldEnum: {
+    srid: 'srid',
+    auth_name: 'auth_name',
+    auth_srid: 'auth_srid',
+    srtext: 'srtext',
+    proj4text: 'proj4text'
+  };
+
+  export type Spatial_ref_sysScalarFieldEnum = (typeof Spatial_ref_sysScalarFieldEnum)[keyof typeof Spatial_ref_sysScalarFieldEnum]
+
+
+  export const Sandbox_usersScalarFieldEnum: {
+    username: 'username',
+    pk: 'pk',
+    password: 'password',
+    created_at: 'created_at'
+  };
+
+  export type Sandbox_usersScalarFieldEnum = (typeof Sandbox_usersScalarFieldEnum)[keyof typeof Sandbox_usersScalarFieldEnum]
+>>>>>>> dev
 
 
   export const UsersScalarFieldEnum: {
@@ -34707,7 +51275,11 @@ export namespace Prisma {
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
 
 
+<<<<<<< HEAD
   export const RgaScalarFieldEnum: {
+=======
+  export const Export_cours_d_eauScalarFieldEnum: {
+>>>>>>> dev
     index: 'index',
     code_geographique: 'code_geographique',
     libelle_geographique: 'libelle_geographique',
@@ -34720,6 +51292,7 @@ export namespace Prisma {
     libelle_petr: 'libelle_petr',
     code_pnr: 'code_pnr',
     libelle_pnr: 'libelle_pnr',
+<<<<<<< HEAD
     nb_logement: 'nb_logement',
     nb_logement_alea_moyen_fort: 'nb_logement_alea_moyen_fort',
     nb_logement_alea_faible: 'nb_logement_alea_faible',
@@ -34880,6 +51453,14 @@ export namespace Prisma {
   };
 
   export type Pg_stat_statements_infoScalarFieldEnum = (typeof Pg_stat_statements_infoScalarFieldEnum)[keyof typeof Pg_stat_statements_infoScalarFieldEnum]
+=======
+    cours_d_eau: 'cours_d_eau',
+    etat_ecologique: 'etat_ecologique',
+    longueur: 'longueur'
+  };
+
+  export type Export_cours_d_eauScalarFieldEnum = (typeof Export_cours_d_eauScalarFieldEnum)[keyof typeof Export_cours_d_eauScalarFieldEnum]
+>>>>>>> dev
 
 
   export const Pg_stat_statementsScalarFieldEnum: {
@@ -34931,6 +51512,36 @@ export namespace Prisma {
   export type Pg_stat_statementsScalarFieldEnum = (typeof Pg_stat_statementsScalarFieldEnum)[keyof typeof Pg_stat_statementsScalarFieldEnum]
 
 
+<<<<<<< HEAD
+=======
+  export const Pg_stat_statements_infoScalarFieldEnum: {
+    dealloc: 'dealloc',
+    stats_reset: 'stats_reset'
+  };
+
+  export type Pg_stat_statements_infoScalarFieldEnum = (typeof Pg_stat_statements_infoScalarFieldEnum)[keyof typeof Pg_stat_statements_infoScalarFieldEnum]
+
+
+  export const Geography_columnsScalarFieldEnum: {
+    coord_dimension: 'coord_dimension',
+    srid: 'srid',
+    type: 'type'
+  };
+
+  export type Geography_columnsScalarFieldEnum = (typeof Geography_columnsScalarFieldEnum)[keyof typeof Geography_columnsScalarFieldEnum]
+
+
+  export const Geometry_columnsScalarFieldEnum: {
+    f_table_catalog: 'f_table_catalog',
+    coord_dimension: 'coord_dimension',
+    srid: 'srid',
+    type: 'type'
+  };
+
+  export type Geometry_columnsScalarFieldEnum = (typeof Geometry_columnsScalarFieldEnum)[keyof typeof Geometry_columnsScalarFieldEnum]
+
+
+>>>>>>> dev
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -35098,6 +51709,108 @@ export namespace Prisma {
     pk?: IntWithAggregatesFilter<"north_star_metric"> | number
   }
 
+<<<<<<< HEAD
+=======
+  export type agricultureWhereInput = {
+    AND?: agricultureWhereInput | agricultureWhereInput[]
+    OR?: agricultureWhereInput[]
+    NOT?: agricultureWhereInput | agricultureWhereInput[]
+    index?: BigIntFilter<"agriculture"> | bigint | number
+    code_geographique?: StringFilter<"agriculture"> | string
+    libelle_geographique?: StringFilter<"agriculture"> | string
+    epci?: StringFilter<"agriculture"> | string
+    libelle_epci?: StringFilter<"agriculture"> | string
+    departement?: StringFilter<"agriculture"> | string
+    libelle_departement?: StringFilter<"agriculture"> | string
+    region?: FloatFilter<"agriculture"> | number
+    ept?: StringNullableFilter<"agriculture"> | string | null
+    libelle_petr?: StringNullableFilter<"agriculture"> | string | null
+    code_pnr?: StringNullableFilter<"agriculture"> | string | null
+    libelle_pnr?: StringNullableFilter<"agriculture"> | string | null
+    part_irr_SAU_2020?: FloatNullableFilter<"agriculture"> | number | null
+    otex_12_postes?: StringFilter<"agriculture"> | string
+  }
+
+  export type agricultureOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    part_irr_SAU_2020?: SortOrderInput | SortOrder
+    otex_12_postes?: SortOrder
+  }
+
+  export type agricultureWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: agricultureWhereInput | agricultureWhereInput[]
+    OR?: agricultureWhereInput[]
+    NOT?: agricultureWhereInput | agricultureWhereInput[]
+    code_geographique?: StringFilter<"agriculture"> | string
+    libelle_geographique?: StringFilter<"agriculture"> | string
+    epci?: StringFilter<"agriculture"> | string
+    libelle_epci?: StringFilter<"agriculture"> | string
+    departement?: StringFilter<"agriculture"> | string
+    libelle_departement?: StringFilter<"agriculture"> | string
+    region?: FloatFilter<"agriculture"> | number
+    ept?: StringNullableFilter<"agriculture"> | string | null
+    libelle_petr?: StringNullableFilter<"agriculture"> | string | null
+    code_pnr?: StringNullableFilter<"agriculture"> | string | null
+    libelle_pnr?: StringNullableFilter<"agriculture"> | string | null
+    part_irr_SAU_2020?: FloatNullableFilter<"agriculture"> | number | null
+    otex_12_postes?: StringFilter<"agriculture"> | string
+  }, "index">
+
+  export type agricultureOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    part_irr_SAU_2020?: SortOrderInput | SortOrder
+    otex_12_postes?: SortOrder
+    _count?: agricultureCountOrderByAggregateInput
+    _avg?: agricultureAvgOrderByAggregateInput
+    _max?: agricultureMaxOrderByAggregateInput
+    _min?: agricultureMinOrderByAggregateInput
+    _sum?: agricultureSumOrderByAggregateInput
+  }
+
+  export type agricultureScalarWhereWithAggregatesInput = {
+    AND?: agricultureScalarWhereWithAggregatesInput | agricultureScalarWhereWithAggregatesInput[]
+    OR?: agricultureScalarWhereWithAggregatesInput[]
+    NOT?: agricultureScalarWhereWithAggregatesInput | agricultureScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"agriculture"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"agriculture"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"agriculture"> | string
+    epci?: StringWithAggregatesFilter<"agriculture"> | string
+    libelle_epci?: StringWithAggregatesFilter<"agriculture"> | string
+    departement?: StringWithAggregatesFilter<"agriculture"> | string
+    libelle_departement?: StringWithAggregatesFilter<"agriculture"> | string
+    region?: FloatWithAggregatesFilter<"agriculture"> | number
+    ept?: StringNullableWithAggregatesFilter<"agriculture"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"agriculture"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"agriculture"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"agriculture"> | string | null
+    part_irr_SAU_2020?: FloatNullableWithAggregatesFilter<"agriculture"> | number | null
+    otex_12_postes?: StringWithAggregatesFilter<"agriculture"> | string
+  }
+
+>>>>>>> dev
   export type agriculture_bioWhereInput = {
     AND?: agriculture_bioWhereInput | agriculture_bioWhereInput[]
     OR?: agriculture_bioWhereInput[]
@@ -35360,6 +52073,123 @@ export namespace Prisma {
     dat_pub_arrete?: StringWithAggregatesFilter<"arretes_catnat"> | string
   }
 
+<<<<<<< HEAD
+=======
+  export type atlas_biodiversiteWhereInput = {
+    AND?: atlas_biodiversiteWhereInput | atlas_biodiversiteWhereInput[]
+    OR?: atlas_biodiversiteWhereInput[]
+    NOT?: atlas_biodiversiteWhereInput | atlas_biodiversiteWhereInput[]
+    index?: BigIntFilter<"atlas_biodiversite"> | bigint | number
+    code_geographique?: StringFilter<"atlas_biodiversite"> | string
+    libelle_geographique?: StringFilter<"atlas_biodiversite"> | string
+    epci?: StringFilter<"atlas_biodiversite"> | string
+    libelle_epci?: StringFilter<"atlas_biodiversite"> | string
+    departement?: StringFilter<"atlas_biodiversite"> | string
+    libelle_departement?: StringFilter<"atlas_biodiversite"> | string
+    region?: FloatFilter<"atlas_biodiversite"> | number
+    ept?: StringNullableFilter<"atlas_biodiversite"> | string | null
+    libelle_petr?: StringNullableFilter<"atlas_biodiversite"> | string | null
+    code_pnr?: StringNullableFilter<"atlas_biodiversite"> | string | null
+    libelle_pnr?: StringNullableFilter<"atlas_biodiversite"> | string | null
+    nom?: StringFilter<"atlas_biodiversite"> | string
+    structure_porteuse?: StringNullableFilter<"atlas_biodiversite"> | string | null
+    type_de_structure_porteuse?: StringNullableFilter<"atlas_biodiversite"> | string | null
+    annee_debut?: FloatNullableFilter<"atlas_biodiversite"> | number | null
+    avancement?: StringFilter<"atlas_biodiversite"> | string
+  }
+
+  export type atlas_biodiversiteOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    nom?: SortOrder
+    structure_porteuse?: SortOrderInput | SortOrder
+    type_de_structure_porteuse?: SortOrderInput | SortOrder
+    annee_debut?: SortOrderInput | SortOrder
+    avancement?: SortOrder
+  }
+
+  export type atlas_biodiversiteWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: atlas_biodiversiteWhereInput | atlas_biodiversiteWhereInput[]
+    OR?: atlas_biodiversiteWhereInput[]
+    NOT?: atlas_biodiversiteWhereInput | atlas_biodiversiteWhereInput[]
+    code_geographique?: StringFilter<"atlas_biodiversite"> | string
+    libelle_geographique?: StringFilter<"atlas_biodiversite"> | string
+    epci?: StringFilter<"atlas_biodiversite"> | string
+    libelle_epci?: StringFilter<"atlas_biodiversite"> | string
+    departement?: StringFilter<"atlas_biodiversite"> | string
+    libelle_departement?: StringFilter<"atlas_biodiversite"> | string
+    region?: FloatFilter<"atlas_biodiversite"> | number
+    ept?: StringNullableFilter<"atlas_biodiversite"> | string | null
+    libelle_petr?: StringNullableFilter<"atlas_biodiversite"> | string | null
+    code_pnr?: StringNullableFilter<"atlas_biodiversite"> | string | null
+    libelle_pnr?: StringNullableFilter<"atlas_biodiversite"> | string | null
+    nom?: StringFilter<"atlas_biodiversite"> | string
+    structure_porteuse?: StringNullableFilter<"atlas_biodiversite"> | string | null
+    type_de_structure_porteuse?: StringNullableFilter<"atlas_biodiversite"> | string | null
+    annee_debut?: FloatNullableFilter<"atlas_biodiversite"> | number | null
+    avancement?: StringFilter<"atlas_biodiversite"> | string
+  }, "index">
+
+  export type atlas_biodiversiteOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    nom?: SortOrder
+    structure_porteuse?: SortOrderInput | SortOrder
+    type_de_structure_porteuse?: SortOrderInput | SortOrder
+    annee_debut?: SortOrderInput | SortOrder
+    avancement?: SortOrder
+    _count?: atlas_biodiversiteCountOrderByAggregateInput
+    _avg?: atlas_biodiversiteAvgOrderByAggregateInput
+    _max?: atlas_biodiversiteMaxOrderByAggregateInput
+    _min?: atlas_biodiversiteMinOrderByAggregateInput
+    _sum?: atlas_biodiversiteSumOrderByAggregateInput
+  }
+
+  export type atlas_biodiversiteScalarWhereWithAggregatesInput = {
+    AND?: atlas_biodiversiteScalarWhereWithAggregatesInput | atlas_biodiversiteScalarWhereWithAggregatesInput[]
+    OR?: atlas_biodiversiteScalarWhereWithAggregatesInput[]
+    NOT?: atlas_biodiversiteScalarWhereWithAggregatesInput | atlas_biodiversiteScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"atlas_biodiversite"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"atlas_biodiversite"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"atlas_biodiversite"> | string
+    epci?: StringWithAggregatesFilter<"atlas_biodiversite"> | string
+    libelle_epci?: StringWithAggregatesFilter<"atlas_biodiversite"> | string
+    departement?: StringWithAggregatesFilter<"atlas_biodiversite"> | string
+    libelle_departement?: StringWithAggregatesFilter<"atlas_biodiversite"> | string
+    region?: FloatWithAggregatesFilter<"atlas_biodiversite"> | number
+    ept?: StringNullableWithAggregatesFilter<"atlas_biodiversite"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"atlas_biodiversite"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"atlas_biodiversite"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"atlas_biodiversite"> | string | null
+    nom?: StringWithAggregatesFilter<"atlas_biodiversite"> | string
+    structure_porteuse?: StringNullableWithAggregatesFilter<"atlas_biodiversite"> | string | null
+    type_de_structure_porteuse?: StringNullableWithAggregatesFilter<"atlas_biodiversite"> | string | null
+    annee_debut?: FloatNullableWithAggregatesFilter<"atlas_biodiversite"> | number | null
+    avancement?: StringWithAggregatesFilter<"atlas_biodiversite"> | string
+  }
+
+>>>>>>> dev
   export type collectivites_searchbarWhereInput = {
     AND?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
     OR?: collectivites_searchbarWhereInput[]
@@ -36566,6 +53396,103 @@ export namespace Prisma {
     superf_choro?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
   }
 
+<<<<<<< HEAD
+=======
+  export type lcz_couvertureWhereInput = {
+    AND?: lcz_couvertureWhereInput | lcz_couvertureWhereInput[]
+    OR?: lcz_couvertureWhereInput[]
+    NOT?: lcz_couvertureWhereInput | lcz_couvertureWhereInput[]
+    index?: BigIntFilter<"lcz_couverture"> | bigint | number
+    code_geographique?: StringFilter<"lcz_couverture"> | string
+    libelle_geographique?: StringFilter<"lcz_couverture"> | string
+    epci?: StringFilter<"lcz_couverture"> | string
+    libelle_epci?: StringFilter<"lcz_couverture"> | string
+    departement?: StringFilter<"lcz_couverture"> | string
+    libelle_departement?: StringFilter<"lcz_couverture"> | string
+    region?: IntFilter<"lcz_couverture"> | number
+    ept?: StringNullableFilter<"lcz_couverture"> | string | null
+    libelle_petr?: StringNullableFilter<"lcz_couverture"> | string | null
+    code_pnr?: StringNullableFilter<"lcz_couverture"> | string | null
+    libelle_pnr?: StringNullableFilter<"lcz_couverture"> | string | null
+    couverture_lcz?: FloatFilter<"lcz_couverture"> | number
+  }
+
+  export type lcz_couvertureOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    couverture_lcz?: SortOrder
+  }
+
+  export type lcz_couvertureWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: lcz_couvertureWhereInput | lcz_couvertureWhereInput[]
+    OR?: lcz_couvertureWhereInput[]
+    NOT?: lcz_couvertureWhereInput | lcz_couvertureWhereInput[]
+    code_geographique?: StringFilter<"lcz_couverture"> | string
+    libelle_geographique?: StringFilter<"lcz_couverture"> | string
+    epci?: StringFilter<"lcz_couverture"> | string
+    libelle_epci?: StringFilter<"lcz_couverture"> | string
+    departement?: StringFilter<"lcz_couverture"> | string
+    libelle_departement?: StringFilter<"lcz_couverture"> | string
+    region?: IntFilter<"lcz_couverture"> | number
+    ept?: StringNullableFilter<"lcz_couverture"> | string | null
+    libelle_petr?: StringNullableFilter<"lcz_couverture"> | string | null
+    code_pnr?: StringNullableFilter<"lcz_couverture"> | string | null
+    libelle_pnr?: StringNullableFilter<"lcz_couverture"> | string | null
+    couverture_lcz?: FloatFilter<"lcz_couverture"> | number
+  }, "index">
+
+  export type lcz_couvertureOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    couverture_lcz?: SortOrder
+    _count?: lcz_couvertureCountOrderByAggregateInput
+    _avg?: lcz_couvertureAvgOrderByAggregateInput
+    _max?: lcz_couvertureMaxOrderByAggregateInput
+    _min?: lcz_couvertureMinOrderByAggregateInput
+    _sum?: lcz_couvertureSumOrderByAggregateInput
+  }
+
+  export type lcz_couvertureScalarWhereWithAggregatesInput = {
+    AND?: lcz_couvertureScalarWhereWithAggregatesInput | lcz_couvertureScalarWhereWithAggregatesInput[]
+    OR?: lcz_couvertureScalarWhereWithAggregatesInput[]
+    NOT?: lcz_couvertureScalarWhereWithAggregatesInput | lcz_couvertureScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"lcz_couverture"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"lcz_couverture"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"lcz_couverture"> | string
+    epci?: StringWithAggregatesFilter<"lcz_couverture"> | string
+    libelle_epci?: StringWithAggregatesFilter<"lcz_couverture"> | string
+    departement?: StringWithAggregatesFilter<"lcz_couverture"> | string
+    libelle_departement?: StringWithAggregatesFilter<"lcz_couverture"> | string
+    region?: IntWithAggregatesFilter<"lcz_couverture"> | number
+    ept?: StringNullableWithAggregatesFilter<"lcz_couverture"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"lcz_couverture"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"lcz_couverture"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"lcz_couverture"> | string | null
+    couverture_lcz?: FloatWithAggregatesFilter<"lcz_couverture"> | number
+  }
+
+>>>>>>> dev
   export type patch4cWhereInput = {
     AND?: patch4cWhereInput | patch4cWhereInput[]
     OR?: patch4cWhereInput[]
@@ -36630,6 +53557,118 @@ export namespace Prisma {
     fortes_chaleurs?: FloatWithAggregatesFilter<"patch4c"> | number
   }
 
+<<<<<<< HEAD
+=======
+  export type qualite_sites_baignadeWhereInput = {
+    AND?: qualite_sites_baignadeWhereInput | qualite_sites_baignadeWhereInput[]
+    OR?: qualite_sites_baignadeWhereInput[]
+    NOT?: qualite_sites_baignadeWhereInput | qualite_sites_baignadeWhereInput[]
+    index?: BigIntFilter<"qualite_sites_baignade"> | bigint | number
+    DEP_NOM?: StringFilter<"qualite_sites_baignade"> | string
+    DEP_NUM?: StringFilter<"qualite_sites_baignade"> | string
+    TYPE?: StringFilter<"qualite_sites_baignade"> | string
+    COMMUNE?: StringFilter<"qualite_sites_baignade"> | string
+    POINT?: StringFilter<"qualite_sites_baignade"> | string
+    LONG?: FloatFilter<"qualite_sites_baignade"> | number
+    LAT?: FloatFilter<"qualite_sites_baignade"> | number
+    QEB_2013?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+    QEB_2014?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+    QEB_2015?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+    QEB_2016?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+    QEB_2017?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+    QEB_2018?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+    QEB_2019?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+    QEB_2020?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+  }
+
+  export type qualite_sites_baignadeOrderByWithRelationInput = {
+    index?: SortOrder
+    DEP_NOM?: SortOrder
+    DEP_NUM?: SortOrder
+    TYPE?: SortOrder
+    COMMUNE?: SortOrder
+    POINT?: SortOrder
+    LONG?: SortOrder
+    LAT?: SortOrder
+    QEB_2013?: SortOrderInput | SortOrder
+    QEB_2014?: SortOrderInput | SortOrder
+    QEB_2015?: SortOrderInput | SortOrder
+    QEB_2016?: SortOrderInput | SortOrder
+    QEB_2017?: SortOrderInput | SortOrder
+    QEB_2018?: SortOrderInput | SortOrder
+    QEB_2019?: SortOrderInput | SortOrder
+    QEB_2020?: SortOrderInput | SortOrder
+  }
+
+  export type qualite_sites_baignadeWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: qualite_sites_baignadeWhereInput | qualite_sites_baignadeWhereInput[]
+    OR?: qualite_sites_baignadeWhereInput[]
+    NOT?: qualite_sites_baignadeWhereInput | qualite_sites_baignadeWhereInput[]
+    DEP_NOM?: StringFilter<"qualite_sites_baignade"> | string
+    DEP_NUM?: StringFilter<"qualite_sites_baignade"> | string
+    TYPE?: StringFilter<"qualite_sites_baignade"> | string
+    COMMUNE?: StringFilter<"qualite_sites_baignade"> | string
+    POINT?: StringFilter<"qualite_sites_baignade"> | string
+    LONG?: FloatFilter<"qualite_sites_baignade"> | number
+    LAT?: FloatFilter<"qualite_sites_baignade"> | number
+    QEB_2013?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+    QEB_2014?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+    QEB_2015?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+    QEB_2016?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+    QEB_2017?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+    QEB_2018?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+    QEB_2019?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+    QEB_2020?: StringNullableFilter<"qualite_sites_baignade"> | string | null
+  }, "index">
+
+  export type qualite_sites_baignadeOrderByWithAggregationInput = {
+    index?: SortOrder
+    DEP_NOM?: SortOrder
+    DEP_NUM?: SortOrder
+    TYPE?: SortOrder
+    COMMUNE?: SortOrder
+    POINT?: SortOrder
+    LONG?: SortOrder
+    LAT?: SortOrder
+    QEB_2013?: SortOrderInput | SortOrder
+    QEB_2014?: SortOrderInput | SortOrder
+    QEB_2015?: SortOrderInput | SortOrder
+    QEB_2016?: SortOrderInput | SortOrder
+    QEB_2017?: SortOrderInput | SortOrder
+    QEB_2018?: SortOrderInput | SortOrder
+    QEB_2019?: SortOrderInput | SortOrder
+    QEB_2020?: SortOrderInput | SortOrder
+    _count?: qualite_sites_baignadeCountOrderByAggregateInput
+    _avg?: qualite_sites_baignadeAvgOrderByAggregateInput
+    _max?: qualite_sites_baignadeMaxOrderByAggregateInput
+    _min?: qualite_sites_baignadeMinOrderByAggregateInput
+    _sum?: qualite_sites_baignadeSumOrderByAggregateInput
+  }
+
+  export type qualite_sites_baignadeScalarWhereWithAggregatesInput = {
+    AND?: qualite_sites_baignadeScalarWhereWithAggregatesInput | qualite_sites_baignadeScalarWhereWithAggregatesInput[]
+    OR?: qualite_sites_baignadeScalarWhereWithAggregatesInput[]
+    NOT?: qualite_sites_baignadeScalarWhereWithAggregatesInput | qualite_sites_baignadeScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"qualite_sites_baignade"> | bigint | number
+    DEP_NOM?: StringWithAggregatesFilter<"qualite_sites_baignade"> | string
+    DEP_NUM?: StringWithAggregatesFilter<"qualite_sites_baignade"> | string
+    TYPE?: StringWithAggregatesFilter<"qualite_sites_baignade"> | string
+    COMMUNE?: StringWithAggregatesFilter<"qualite_sites_baignade"> | string
+    POINT?: StringWithAggregatesFilter<"qualite_sites_baignade"> | string
+    LONG?: FloatWithAggregatesFilter<"qualite_sites_baignade"> | number
+    LAT?: FloatWithAggregatesFilter<"qualite_sites_baignade"> | number
+    QEB_2013?: StringNullableWithAggregatesFilter<"qualite_sites_baignade"> | string | null
+    QEB_2014?: StringNullableWithAggregatesFilter<"qualite_sites_baignade"> | string | null
+    QEB_2015?: StringNullableWithAggregatesFilter<"qualite_sites_baignade"> | string | null
+    QEB_2016?: StringNullableWithAggregatesFilter<"qualite_sites_baignade"> | string | null
+    QEB_2017?: StringNullableWithAggregatesFilter<"qualite_sites_baignade"> | string | null
+    QEB_2018?: StringNullableWithAggregatesFilter<"qualite_sites_baignade"> | string | null
+    QEB_2019?: StringNullableWithAggregatesFilter<"qualite_sites_baignade"> | string | null
+    QEB_2020?: StringNullableWithAggregatesFilter<"qualite_sites_baignade"> | string | null
+  }
+
+>>>>>>> dev
   export type ressources_eauWhereInput = {
     AND?: ressources_eauWhereInput | ressources_eauWhereInput[]
     OR?: ressources_eauWhereInput[]
@@ -36794,6 +53833,7 @@ export namespace Prisma {
     libelle_pnr?: StringNullableWithAggregatesFilter<"ressources_eau"> | string | null
   }
 
+<<<<<<< HEAD
   export type clc_territoiresWhereInput = {
     AND?: clc_territoiresWhereInput | clc_territoiresWhereInput[]
     OR?: clc_territoiresWhereInput[]
@@ -37273,6 +54313,8 @@ export namespace Prisma {
     role?: StringWithAggregatesFilter<"users"> | string
   }
 
+=======
+>>>>>>> dev
   export type rgaWhereInput = {
     AND?: rgaWhereInput | rgaWhereInput[]
     OR?: rgaWhereInput[]
@@ -37487,6 +54529,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune?: IntWithAggregatesFilter<"rga"> | number
   }
 
+<<<<<<< HEAD
   export type postgis_rgaWhereInput = {
     AND?: postgis_rgaWhereInput | postgis_rgaWhereInput[]
     OR?: postgis_rgaWhereInput[]
@@ -37630,6 +54673,8 @@ export namespace Prisma {
     part_over_55?: FloatNullableWithAggregatesFilter<"agriculture"> | number | null
   }
 
+=======
+>>>>>>> dev
   export type surfaces_agricolesWhereInput = {
     AND?: surfaces_agricolesWhereInput | surfaces_agricolesWhereInput[]
     OR?: surfaces_agricolesWhereInput[]
@@ -37859,6 +54904,7 @@ export namespace Prisma {
     superficie_sau_jardins?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
   }
 
+<<<<<<< HEAD
   export type lcz_couvertureWhereInput = {
     AND?: lcz_couvertureWhereInput | lcz_couvertureWhereInput[]
     OR?: lcz_couvertureWhereInput[]
@@ -37881,10 +54927,67 @@ export namespace Prisma {
   export type lcz_couvertureOrderByWithRelationInput = {
     index?: SortOrder
     code_geographique?: SortOrder
+=======
+  export type surfaces_protegeesWhereInput = {
+    AND?: surfaces_protegeesWhereInput | surfaces_protegeesWhereInput[]
+    OR?: surfaces_protegeesWhereInput[]
+    NOT?: surfaces_protegeesWhereInput | surfaces_protegeesWhereInput[]
+    index?: BigIntFilter<"surfaces_protegees"> | bigint | number
+    code_geographique?: StringFilter<"surfaces_protegees"> | string
+    PNC?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RAMSAR?: StringNullableFilter<"surfaces_protegees"> | string | null
+    PNR?: StringNullableFilter<"surfaces_protegees"> | string | null
+    PNP?: StringNullableFilter<"surfaces_protegees"> | string | null
+    FOR_PRO?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZZZ?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZNIEFF2?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZNIEFF1?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RNR?: StringNullableFilter<"surfaces_protegees"> | string | null
+    TOU_PRO?: StringNullableFilter<"surfaces_protegees"> | string | null
+    NATURA?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZPS?: StringNullableFilter<"surfaces_protegees"> | string | null
+    SIC?: StringNullableFilter<"surfaces_protegees"> | string | null
+    CELRL?: StringNullableFilter<"surfaces_protegees"> | string | null
+    BIO?: StringNullableFilter<"surfaces_protegees"> | string | null
+    APB?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RN?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RBFD?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RNCFS?: StringNullableFilter<"surfaces_protegees"> | string | null
+    libelle_geographique?: StringFilter<"surfaces_protegees"> | string
+    epci?: StringFilter<"surfaces_protegees"> | string
+    libelle_epci?: StringFilter<"surfaces_protegees"> | string
+    departement?: StringFilter<"surfaces_protegees"> | string
+    region?: FloatFilter<"surfaces_protegees"> | number
+  }
+
+  export type surfaces_protegeesOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    PNC?: SortOrderInput | SortOrder
+    RAMSAR?: SortOrderInput | SortOrder
+    PNR?: SortOrderInput | SortOrder
+    PNP?: SortOrderInput | SortOrder
+    FOR_PRO?: SortOrderInput | SortOrder
+    ZZZ?: SortOrderInput | SortOrder
+    ZNIEFF2?: SortOrderInput | SortOrder
+    ZNIEFF1?: SortOrderInput | SortOrder
+    RNR?: SortOrderInput | SortOrder
+    TOU_PRO?: SortOrderInput | SortOrder
+    NATURA?: SortOrderInput | SortOrder
+    ZPS?: SortOrderInput | SortOrder
+    SIC?: SortOrderInput | SortOrder
+    CELRL?: SortOrderInput | SortOrder
+    BIO?: SortOrderInput | SortOrder
+    APB?: SortOrderInput | SortOrder
+    RN?: SortOrderInput | SortOrder
+    RBFD?: SortOrderInput | SortOrder
+    RNCFS?: SortOrderInput | SortOrder
+>>>>>>> dev
     libelle_geographique?: SortOrder
     epci?: SortOrder
     libelle_epci?: SortOrder
     departement?: SortOrder
+<<<<<<< HEAD
     libelle_departement?: SortOrder
     region?: SortOrder
     ept?: SortOrderInput | SortOrder
@@ -37916,6 +55019,131 @@ export namespace Prisma {
   export type lcz_couvertureOrderByWithAggregationInput = {
     index?: SortOrder
     code_geographique?: SortOrder
+=======
+    region?: SortOrder
+  }
+
+  export type surfaces_protegeesWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: surfaces_protegeesWhereInput | surfaces_protegeesWhereInput[]
+    OR?: surfaces_protegeesWhereInput[]
+    NOT?: surfaces_protegeesWhereInput | surfaces_protegeesWhereInput[]
+    code_geographique?: StringFilter<"surfaces_protegees"> | string
+    PNC?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RAMSAR?: StringNullableFilter<"surfaces_protegees"> | string | null
+    PNR?: StringNullableFilter<"surfaces_protegees"> | string | null
+    PNP?: StringNullableFilter<"surfaces_protegees"> | string | null
+    FOR_PRO?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZZZ?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZNIEFF2?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZNIEFF1?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RNR?: StringNullableFilter<"surfaces_protegees"> | string | null
+    TOU_PRO?: StringNullableFilter<"surfaces_protegees"> | string | null
+    NATURA?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZPS?: StringNullableFilter<"surfaces_protegees"> | string | null
+    SIC?: StringNullableFilter<"surfaces_protegees"> | string | null
+    CELRL?: StringNullableFilter<"surfaces_protegees"> | string | null
+    BIO?: StringNullableFilter<"surfaces_protegees"> | string | null
+    APB?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RN?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RBFD?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RNCFS?: StringNullableFilter<"surfaces_protegees"> | string | null
+    libelle_geographique?: StringFilter<"surfaces_protegees"> | string
+    epci?: StringFilter<"surfaces_protegees"> | string
+    libelle_epci?: StringFilter<"surfaces_protegees"> | string
+    departement?: StringFilter<"surfaces_protegees"> | string
+    region?: FloatFilter<"surfaces_protegees"> | number
+  }, "index">
+
+  export type surfaces_protegeesOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    PNC?: SortOrderInput | SortOrder
+    RAMSAR?: SortOrderInput | SortOrder
+    PNR?: SortOrderInput | SortOrder
+    PNP?: SortOrderInput | SortOrder
+    FOR_PRO?: SortOrderInput | SortOrder
+    ZZZ?: SortOrderInput | SortOrder
+    ZNIEFF2?: SortOrderInput | SortOrder
+    ZNIEFF1?: SortOrderInput | SortOrder
+    RNR?: SortOrderInput | SortOrder
+    TOU_PRO?: SortOrderInput | SortOrder
+    NATURA?: SortOrderInput | SortOrder
+    ZPS?: SortOrderInput | SortOrder
+    SIC?: SortOrderInput | SortOrder
+    CELRL?: SortOrderInput | SortOrder
+    BIO?: SortOrderInput | SortOrder
+    APB?: SortOrderInput | SortOrder
+    RN?: SortOrderInput | SortOrder
+    RBFD?: SortOrderInput | SortOrder
+    RNCFS?: SortOrderInput | SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    _count?: surfaces_protegeesCountOrderByAggregateInput
+    _avg?: surfaces_protegeesAvgOrderByAggregateInput
+    _max?: surfaces_protegeesMaxOrderByAggregateInput
+    _min?: surfaces_protegeesMinOrderByAggregateInput
+    _sum?: surfaces_protegeesSumOrderByAggregateInput
+  }
+
+  export type surfaces_protegeesScalarWhereWithAggregatesInput = {
+    AND?: surfaces_protegeesScalarWhereWithAggregatesInput | surfaces_protegeesScalarWhereWithAggregatesInput[]
+    OR?: surfaces_protegeesScalarWhereWithAggregatesInput[]
+    NOT?: surfaces_protegeesScalarWhereWithAggregatesInput | surfaces_protegeesScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"surfaces_protegees"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"surfaces_protegees"> | string
+    PNC?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    RAMSAR?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    PNR?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    PNP?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    FOR_PRO?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    ZZZ?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    ZNIEFF2?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    ZNIEFF1?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    RNR?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    TOU_PRO?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    NATURA?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    ZPS?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    SIC?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    CELRL?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    BIO?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    APB?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    RN?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    RBFD?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    RNCFS?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    libelle_geographique?: StringWithAggregatesFilter<"surfaces_protegees"> | string
+    epci?: StringWithAggregatesFilter<"surfaces_protegees"> | string
+    libelle_epci?: StringWithAggregatesFilter<"surfaces_protegees"> | string
+    departement?: StringWithAggregatesFilter<"surfaces_protegees"> | string
+    region?: FloatWithAggregatesFilter<"surfaces_protegees"> | number
+  }
+
+  export type clc_territoiresWhereInput = {
+    AND?: clc_territoiresWhereInput | clc_territoiresWhereInput[]
+    OR?: clc_territoiresWhereInput[]
+    NOT?: clc_territoiresWhereInput | clc_territoiresWhereInput[]
+    pk?: IntFilter<"clc_territoires"> | number
+    code_geographique?: StringFilter<"clc_territoires"> | string
+    libelle_geographique?: StringFilter<"clc_territoires"> | string
+    epci?: StringFilter<"clc_territoires"> | string
+    libelle_epci?: StringFilter<"clc_territoires"> | string
+    departement?: StringFilter<"clc_territoires"> | string
+    libelle_departement?: StringFilter<"clc_territoires"> | string
+    region?: IntFilter<"clc_territoires"> | number
+    ept?: StringNullableFilter<"clc_territoires"> | string | null
+    libelle_petr?: StringNullableFilter<"clc_territoires"> | string | null
+    code_pnr?: StringNullableFilter<"clc_territoires"> | string | null
+    libelle_pnr?: StringNullableFilter<"clc_territoires"> | string | null
+    legend?: StringFilter<"clc_territoires"> | string
+  }
+
+  export type clc_territoiresOrderByWithRelationInput = {
+    pk?: SortOrder
+    code_geographique?: SortOrder
+>>>>>>> dev
     libelle_geographique?: SortOrder
     epci?: SortOrder
     libelle_epci?: SortOrder
@@ -37926,6 +55154,7 @@ export namespace Prisma {
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
+<<<<<<< HEAD
     couverture_lcz?: SortOrder
     _count?: lcz_couvertureCountOrderByAggregateInput
     _avg?: lcz_couvertureAvgOrderByAggregateInput
@@ -37951,6 +55180,324 @@ export namespace Prisma {
     code_pnr?: StringNullableWithAggregatesFilter<"lcz_couverture"> | string | null
     libelle_pnr?: StringNullableWithAggregatesFilter<"lcz_couverture"> | string | null
     couverture_lcz?: FloatWithAggregatesFilter<"lcz_couverture"> | number
+=======
+    legend?: SortOrder
+  }
+
+  export type clc_territoiresWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: clc_territoiresWhereInput | clc_territoiresWhereInput[]
+    OR?: clc_territoiresWhereInput[]
+    NOT?: clc_territoiresWhereInput | clc_territoiresWhereInput[]
+    code_geographique?: StringFilter<"clc_territoires"> | string
+    libelle_geographique?: StringFilter<"clc_territoires"> | string
+    epci?: StringFilter<"clc_territoires"> | string
+    libelle_epci?: StringFilter<"clc_territoires"> | string
+    departement?: StringFilter<"clc_territoires"> | string
+    libelle_departement?: StringFilter<"clc_territoires"> | string
+    region?: IntFilter<"clc_territoires"> | number
+    ept?: StringNullableFilter<"clc_territoires"> | string | null
+    libelle_petr?: StringNullableFilter<"clc_territoires"> | string | null
+    code_pnr?: StringNullableFilter<"clc_territoires"> | string | null
+    libelle_pnr?: StringNullableFilter<"clc_territoires"> | string | null
+    legend?: StringFilter<"clc_territoires"> | string
+  }, "pk">
+
+  export type clc_territoiresOrderByWithAggregationInput = {
+    pk?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    legend?: SortOrder
+    _count?: clc_territoiresCountOrderByAggregateInput
+    _avg?: clc_territoiresAvgOrderByAggregateInput
+    _max?: clc_territoiresMaxOrderByAggregateInput
+    _min?: clc_territoiresMinOrderByAggregateInput
+    _sum?: clc_territoiresSumOrderByAggregateInput
+  }
+
+  export type clc_territoiresScalarWhereWithAggregatesInput = {
+    AND?: clc_territoiresScalarWhereWithAggregatesInput | clc_territoiresScalarWhereWithAggregatesInput[]
+    OR?: clc_territoiresScalarWhereWithAggregatesInput[]
+    NOT?: clc_territoiresScalarWhereWithAggregatesInput | clc_territoiresScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"clc_territoires"> | number
+    code_geographique?: StringWithAggregatesFilter<"clc_territoires"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"clc_territoires"> | string
+    epci?: StringWithAggregatesFilter<"clc_territoires"> | string
+    libelle_epci?: StringWithAggregatesFilter<"clc_territoires"> | string
+    departement?: StringWithAggregatesFilter<"clc_territoires"> | string
+    libelle_departement?: StringWithAggregatesFilter<"clc_territoires"> | string
+    region?: IntWithAggregatesFilter<"clc_territoires"> | number
+    ept?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
+    legend?: StringWithAggregatesFilter<"clc_territoires"> | string
+  }
+
+  export type communes_dromWhereInput = {
+    AND?: communes_dromWhereInput | communes_dromWhereInput[]
+    OR?: communes_dromWhereInput[]
+    NOT?: communes_dromWhereInput | communes_dromWhereInput[]
+    pk?: IntFilter<"communes_drom"> | number
+    code_geographique?: StringNullableFilter<"communes_drom"> | string | null
+    libelle_geographique?: StringNullableFilter<"communes_drom"> | string | null
+    epci?: StringNullableFilter<"communes_drom"> | string | null
+    libelle_epci?: StringNullableFilter<"communes_drom"> | string | null
+    departement?: StringNullableFilter<"communes_drom"> | string | null
+    libelle_departement?: StringNullableFilter<"communes_drom"> | string | null
+    region?: BigIntNullableFilter<"communes_drom"> | bigint | number | null
+    ept?: StringNullableFilter<"communes_drom"> | string | null
+    libelle_petr?: StringNullableFilter<"communes_drom"> | string | null
+    code_pnr?: StringNullableFilter<"communes_drom"> | string | null
+    libelle_pnr?: StringNullableFilter<"communes_drom"> | string | null
+    coordinates?: StringNullableFilter<"communes_drom"> | string | null
+    densite_bati?: FloatNullableFilter<"communes_drom"> | number | null
+    precarite_logement?: FloatNullableFilter<"communes_drom"> | number | null
+    surface?: FloatNullableFilter<"communes_drom"> | number | null
+  }
+
+  export type communes_dromOrderByWithRelationInput = {
+    pk?: SortOrder
+    code_geographique?: SortOrderInput | SortOrder
+    libelle_geographique?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    departement?: SortOrderInput | SortOrder
+    libelle_departement?: SortOrderInput | SortOrder
+    region?: SortOrderInput | SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    coordinates?: SortOrderInput | SortOrder
+    densite_bati?: SortOrderInput | SortOrder
+    precarite_logement?: SortOrderInput | SortOrder
+    surface?: SortOrderInput | SortOrder
+  }
+
+  export type communes_dromWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: communes_dromWhereInput | communes_dromWhereInput[]
+    OR?: communes_dromWhereInput[]
+    NOT?: communes_dromWhereInput | communes_dromWhereInput[]
+    code_geographique?: StringNullableFilter<"communes_drom"> | string | null
+    libelle_geographique?: StringNullableFilter<"communes_drom"> | string | null
+    epci?: StringNullableFilter<"communes_drom"> | string | null
+    libelle_epci?: StringNullableFilter<"communes_drom"> | string | null
+    departement?: StringNullableFilter<"communes_drom"> | string | null
+    libelle_departement?: StringNullableFilter<"communes_drom"> | string | null
+    region?: BigIntNullableFilter<"communes_drom"> | bigint | number | null
+    ept?: StringNullableFilter<"communes_drom"> | string | null
+    libelle_petr?: StringNullableFilter<"communes_drom"> | string | null
+    code_pnr?: StringNullableFilter<"communes_drom"> | string | null
+    libelle_pnr?: StringNullableFilter<"communes_drom"> | string | null
+    coordinates?: StringNullableFilter<"communes_drom"> | string | null
+    densite_bati?: FloatNullableFilter<"communes_drom"> | number | null
+    precarite_logement?: FloatNullableFilter<"communes_drom"> | number | null
+    surface?: FloatNullableFilter<"communes_drom"> | number | null
+  }, "pk">
+
+  export type communes_dromOrderByWithAggregationInput = {
+    pk?: SortOrder
+    code_geographique?: SortOrderInput | SortOrder
+    libelle_geographique?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    departement?: SortOrderInput | SortOrder
+    libelle_departement?: SortOrderInput | SortOrder
+    region?: SortOrderInput | SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    coordinates?: SortOrderInput | SortOrder
+    densite_bati?: SortOrderInput | SortOrder
+    precarite_logement?: SortOrderInput | SortOrder
+    surface?: SortOrderInput | SortOrder
+    _count?: communes_dromCountOrderByAggregateInput
+    _avg?: communes_dromAvgOrderByAggregateInput
+    _max?: communes_dromMaxOrderByAggregateInput
+    _min?: communes_dromMinOrderByAggregateInput
+    _sum?: communes_dromSumOrderByAggregateInput
+  }
+
+  export type communes_dromScalarWhereWithAggregatesInput = {
+    AND?: communes_dromScalarWhereWithAggregatesInput | communes_dromScalarWhereWithAggregatesInput[]
+    OR?: communes_dromScalarWhereWithAggregatesInput[]
+    NOT?: communes_dromScalarWhereWithAggregatesInput | communes_dromScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"communes_drom"> | number
+    code_geographique?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
+    libelle_geographique?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
+    epci?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
+    libelle_epci?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
+    departement?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
+    libelle_departement?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
+    region?: BigIntNullableWithAggregatesFilter<"communes_drom"> | bigint | number | null
+    ept?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
+    coordinates?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
+    densite_bati?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
+    precarite_logement?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
+    surface?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
+  }
+
+  export type erosion_cotiereWhereInput = {
+    AND?: erosion_cotiereWhereInput | erosion_cotiereWhereInput[]
+    OR?: erosion_cotiereWhereInput[]
+    NOT?: erosion_cotiereWhereInput | erosion_cotiereWhereInput[]
+    pk?: IntFilter<"erosion_cotiere"> | number
+    taux?: FloatFilter<"erosion_cotiere"> | number
+    duree?: FloatFilter<"erosion_cotiere"> | number
+    tdc_ancien?: BigIntFilter<"erosion_cotiere"> | bigint | number
+    tdc_rec?: BigIntFilter<"erosion_cotiere"> | bigint | number
+  }
+
+  export type erosion_cotiereOrderByWithRelationInput = {
+    pk?: SortOrder
+    taux?: SortOrder
+    duree?: SortOrder
+    tdc_ancien?: SortOrder
+    tdc_rec?: SortOrder
+  }
+
+  export type erosion_cotiereWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: erosion_cotiereWhereInput | erosion_cotiereWhereInput[]
+    OR?: erosion_cotiereWhereInput[]
+    NOT?: erosion_cotiereWhereInput | erosion_cotiereWhereInput[]
+    taux?: FloatFilter<"erosion_cotiere"> | number
+    duree?: FloatFilter<"erosion_cotiere"> | number
+    tdc_ancien?: BigIntFilter<"erosion_cotiere"> | bigint | number
+    tdc_rec?: BigIntFilter<"erosion_cotiere"> | bigint | number
+  }, "pk">
+
+  export type erosion_cotiereOrderByWithAggregationInput = {
+    pk?: SortOrder
+    taux?: SortOrder
+    duree?: SortOrder
+    tdc_ancien?: SortOrder
+    tdc_rec?: SortOrder
+    _count?: erosion_cotiereCountOrderByAggregateInput
+    _avg?: erosion_cotiereAvgOrderByAggregateInput
+    _max?: erosion_cotiereMaxOrderByAggregateInput
+    _min?: erosion_cotiereMinOrderByAggregateInput
+    _sum?: erosion_cotiereSumOrderByAggregateInput
+  }
+
+  export type erosion_cotiereScalarWhereWithAggregatesInput = {
+    AND?: erosion_cotiereScalarWhereWithAggregatesInput | erosion_cotiereScalarWhereWithAggregatesInput[]
+    OR?: erosion_cotiereScalarWhereWithAggregatesInput[]
+    NOT?: erosion_cotiereScalarWhereWithAggregatesInput | erosion_cotiereScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"erosion_cotiere"> | number
+    taux?: FloatWithAggregatesFilter<"erosion_cotiere"> | number
+    duree?: FloatWithAggregatesFilter<"erosion_cotiere"> | number
+    tdc_ancien?: BigIntWithAggregatesFilter<"erosion_cotiere"> | bigint | number
+    tdc_rec?: BigIntWithAggregatesFilter<"erosion_cotiere"> | bigint | number
+  }
+
+  export type etat_cours_d_eauWhereInput = {
+    AND?: etat_cours_d_eauWhereInput | etat_cours_d_eauWhereInput[]
+    OR?: etat_cours_d_eauWhereInput[]
+    NOT?: etat_cours_d_eauWhereInput | etat_cours_d_eauWhereInput[]
+    pk?: IntFilter<"etat_cours_d_eau"> | number
+    name?: StringFilter<"etat_cours_d_eau"> | string
+    longueur?: FloatFilter<"etat_cours_d_eau"> | number
+    etateco?: StringNullableFilter<"etat_cours_d_eau"> | string | null
+  }
+
+  export type etat_cours_d_eauOrderByWithRelationInput = {
+    pk?: SortOrder
+    name?: SortOrder
+    longueur?: SortOrder
+    etateco?: SortOrderInput | SortOrder
+  }
+
+  export type etat_cours_d_eauWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: etat_cours_d_eauWhereInput | etat_cours_d_eauWhereInput[]
+    OR?: etat_cours_d_eauWhereInput[]
+    NOT?: etat_cours_d_eauWhereInput | etat_cours_d_eauWhereInput[]
+    name?: StringFilter<"etat_cours_d_eau"> | string
+    longueur?: FloatFilter<"etat_cours_d_eau"> | number
+    etateco?: StringNullableFilter<"etat_cours_d_eau"> | string | null
+  }, "pk">
+
+  export type etat_cours_d_eauOrderByWithAggregationInput = {
+    pk?: SortOrder
+    name?: SortOrder
+    longueur?: SortOrder
+    etateco?: SortOrderInput | SortOrder
+    _count?: etat_cours_d_eauCountOrderByAggregateInput
+    _avg?: etat_cours_d_eauAvgOrderByAggregateInput
+    _max?: etat_cours_d_eauMaxOrderByAggregateInput
+    _min?: etat_cours_d_eauMinOrderByAggregateInput
+    _sum?: etat_cours_d_eauSumOrderByAggregateInput
+  }
+
+  export type etat_cours_d_eauScalarWhereWithAggregatesInput = {
+    AND?: etat_cours_d_eauScalarWhereWithAggregatesInput | etat_cours_d_eauScalarWhereWithAggregatesInput[]
+    OR?: etat_cours_d_eauScalarWhereWithAggregatesInput[]
+    NOT?: etat_cours_d_eauScalarWhereWithAggregatesInput | etat_cours_d_eauScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"etat_cours_d_eau"> | number
+    name?: StringWithAggregatesFilter<"etat_cours_d_eau"> | string
+    longueur?: FloatWithAggregatesFilter<"etat_cours_d_eau"> | number
+    etateco?: StringNullableWithAggregatesFilter<"etat_cours_d_eau"> | string | null
+  }
+
+  export type postgis_rgaWhereInput = {
+    AND?: postgis_rgaWhereInput | postgis_rgaWhereInput[]
+    OR?: postgis_rgaWhereInput[]
+    NOT?: postgis_rgaWhereInput | postgis_rgaWhereInput[]
+    pk?: IntFilter<"postgis_rga"> | number
+    alea?: StringFilter<"postgis_rga"> | string
+    code_geographique?: StringFilter<"postgis_rga"> | string
+  }
+
+  export type postgis_rgaOrderByWithRelationInput = {
+    pk?: SortOrder
+    alea?: SortOrder
+    code_geographique?: SortOrder
+  }
+
+  export type postgis_rgaWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: postgis_rgaWhereInput | postgis_rgaWhereInput[]
+    OR?: postgis_rgaWhereInput[]
+    NOT?: postgis_rgaWhereInput | postgis_rgaWhereInput[]
+    alea?: StringFilter<"postgis_rga"> | string
+    code_geographique?: StringFilter<"postgis_rga"> | string
+  }, "pk">
+
+  export type postgis_rgaOrderByWithAggregationInput = {
+    pk?: SortOrder
+    alea?: SortOrder
+    code_geographique?: SortOrder
+    _count?: postgis_rgaCountOrderByAggregateInput
+    _avg?: postgis_rgaAvgOrderByAggregateInput
+    _max?: postgis_rgaMaxOrderByAggregateInput
+    _min?: postgis_rgaMinOrderByAggregateInput
+    _sum?: postgis_rgaSumOrderByAggregateInput
+  }
+
+  export type postgis_rgaScalarWhereWithAggregatesInput = {
+    AND?: postgis_rgaScalarWhereWithAggregatesInput | postgis_rgaScalarWhereWithAggregatesInput[]
+    OR?: postgis_rgaScalarWhereWithAggregatesInput[]
+    NOT?: postgis_rgaScalarWhereWithAggregatesInput | postgis_rgaScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"postgis_rga"> | number
+    alea?: StringWithAggregatesFilter<"postgis_rga"> | string
+    code_geographique?: StringWithAggregatesFilter<"postgis_rga"> | string
+>>>>>>> dev
   }
 
   export type spatial_ref_sysWhereInput = {
@@ -38007,6 +55554,7 @@ export namespace Prisma {
     proj4text?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
   }
 
+<<<<<<< HEAD
   export type geography_columnsWhereInput = {
     AND?: geography_columnsWhereInput | geography_columnsWhereInput[]
     OR?: geography_columnsWhereInput[]
@@ -38110,6 +55658,223 @@ export namespace Prisma {
     NOT?: pg_stat_statements_infoScalarWhereWithAggregatesInput | pg_stat_statements_infoScalarWhereWithAggregatesInput[]
     dealloc?: BigIntNullableWithAggregatesFilter<"pg_stat_statements_info"> | bigint | number | null
     stats_reset?: DateTimeNullableWithAggregatesFilter<"pg_stat_statements_info"> | Date | string | null
+=======
+  export type sandbox_usersWhereInput = {
+    AND?: sandbox_usersWhereInput | sandbox_usersWhereInput[]
+    OR?: sandbox_usersWhereInput[]
+    NOT?: sandbox_usersWhereInput | sandbox_usersWhereInput[]
+    username?: StringFilter<"sandbox_users"> | string
+    pk?: IntFilter<"sandbox_users"> | number
+    password?: StringFilter<"sandbox_users"> | string
+    created_at?: DateTimeFilter<"sandbox_users"> | Date | string
+  }
+
+  export type sandbox_usersOrderByWithRelationInput = {
+    username?: SortOrder
+    pk?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type sandbox_usersWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: sandbox_usersWhereInput | sandbox_usersWhereInput[]
+    OR?: sandbox_usersWhereInput[]
+    NOT?: sandbox_usersWhereInput | sandbox_usersWhereInput[]
+    username?: StringFilter<"sandbox_users"> | string
+    password?: StringFilter<"sandbox_users"> | string
+    created_at?: DateTimeFilter<"sandbox_users"> | Date | string
+  }, "pk">
+
+  export type sandbox_usersOrderByWithAggregationInput = {
+    username?: SortOrder
+    pk?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+    _count?: sandbox_usersCountOrderByAggregateInput
+    _avg?: sandbox_usersAvgOrderByAggregateInput
+    _max?: sandbox_usersMaxOrderByAggregateInput
+    _min?: sandbox_usersMinOrderByAggregateInput
+    _sum?: sandbox_usersSumOrderByAggregateInput
+  }
+
+  export type sandbox_usersScalarWhereWithAggregatesInput = {
+    AND?: sandbox_usersScalarWhereWithAggregatesInput | sandbox_usersScalarWhereWithAggregatesInput[]
+    OR?: sandbox_usersScalarWhereWithAggregatesInput[]
+    NOT?: sandbox_usersScalarWhereWithAggregatesInput | sandbox_usersScalarWhereWithAggregatesInput[]
+    username?: StringWithAggregatesFilter<"sandbox_users"> | string
+    pk?: IntWithAggregatesFilter<"sandbox_users"> | number
+    password?: StringWithAggregatesFilter<"sandbox_users"> | string
+    created_at?: DateTimeWithAggregatesFilter<"sandbox_users"> | Date | string
+  }
+
+  export type usersWhereInput = {
+    AND?: usersWhereInput | usersWhereInput[]
+    OR?: usersWhereInput[]
+    NOT?: usersWhereInput | usersWhereInput[]
+    pk?: IntFilter<"users"> | number
+    email?: StringFilter<"users"> | string
+    username?: StringFilter<"users"> | string
+    password?: StringFilter<"users"> | string
+    created_at?: DateTimeFilter<"users"> | Date | string
+    last_connection?: DateTimeNullableFilter<"users"> | Date | string | null
+    role?: StringFilter<"users"> | string
+  }
+
+  export type usersOrderByWithRelationInput = {
+    pk?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+    last_connection?: SortOrderInput | SortOrder
+    role?: SortOrder
+  }
+
+  export type usersWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    email?: string
+    username?: string
+    AND?: usersWhereInput | usersWhereInput[]
+    OR?: usersWhereInput[]
+    NOT?: usersWhereInput | usersWhereInput[]
+    password?: StringFilter<"users"> | string
+    created_at?: DateTimeFilter<"users"> | Date | string
+    last_connection?: DateTimeNullableFilter<"users"> | Date | string | null
+    role?: StringFilter<"users"> | string
+  }, "pk" | "email" | "username">
+
+  export type usersOrderByWithAggregationInput = {
+    pk?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+    last_connection?: SortOrderInput | SortOrder
+    role?: SortOrder
+    _count?: usersCountOrderByAggregateInput
+    _avg?: usersAvgOrderByAggregateInput
+    _max?: usersMaxOrderByAggregateInput
+    _min?: usersMinOrderByAggregateInput
+    _sum?: usersSumOrderByAggregateInput
+  }
+
+  export type usersScalarWhereWithAggregatesInput = {
+    AND?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
+    OR?: usersScalarWhereWithAggregatesInput[]
+    NOT?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"users"> | number
+    email?: StringWithAggregatesFilter<"users"> | string
+    username?: StringWithAggregatesFilter<"users"> | string
+    password?: StringWithAggregatesFilter<"users"> | string
+    created_at?: DateTimeWithAggregatesFilter<"users"> | Date | string
+    last_connection?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
+    role?: StringWithAggregatesFilter<"users"> | string
+  }
+
+  export type export_cours_d_eauWhereInput = {
+    AND?: export_cours_d_eauWhereInput | export_cours_d_eauWhereInput[]
+    OR?: export_cours_d_eauWhereInput[]
+    NOT?: export_cours_d_eauWhereInput | export_cours_d_eauWhereInput[]
+    index?: BigIntFilter<"export_cours_d_eau"> | bigint | number
+    code_geographique?: StringFilter<"export_cours_d_eau"> | string
+    libelle_geographique?: StringFilter<"export_cours_d_eau"> | string
+    epci?: StringFilter<"export_cours_d_eau"> | string
+    libelle_epci?: StringFilter<"export_cours_d_eau"> | string
+    departement?: StringFilter<"export_cours_d_eau"> | string
+    libelle_departement?: StringFilter<"export_cours_d_eau"> | string
+    region?: FloatFilter<"export_cours_d_eau"> | number
+    ept?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    libelle_petr?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    code_pnr?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    libelle_pnr?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    cours_d_eau?: StringFilter<"export_cours_d_eau"> | string
+    etat_ecologique?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    longueur?: FloatFilter<"export_cours_d_eau"> | number
+  }
+
+  export type export_cours_d_eauOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    cours_d_eau?: SortOrder
+    etat_ecologique?: SortOrderInput | SortOrder
+    longueur?: SortOrder
+  }
+
+  export type export_cours_d_eauWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: export_cours_d_eauWhereInput | export_cours_d_eauWhereInput[]
+    OR?: export_cours_d_eauWhereInput[]
+    NOT?: export_cours_d_eauWhereInput | export_cours_d_eauWhereInput[]
+    code_geographique?: StringFilter<"export_cours_d_eau"> | string
+    libelle_geographique?: StringFilter<"export_cours_d_eau"> | string
+    epci?: StringFilter<"export_cours_d_eau"> | string
+    libelle_epci?: StringFilter<"export_cours_d_eau"> | string
+    departement?: StringFilter<"export_cours_d_eau"> | string
+    libelle_departement?: StringFilter<"export_cours_d_eau"> | string
+    region?: FloatFilter<"export_cours_d_eau"> | number
+    ept?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    libelle_petr?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    code_pnr?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    libelle_pnr?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    cours_d_eau?: StringFilter<"export_cours_d_eau"> | string
+    etat_ecologique?: StringNullableFilter<"export_cours_d_eau"> | string | null
+    longueur?: FloatFilter<"export_cours_d_eau"> | number
+  }, "index">
+
+  export type export_cours_d_eauOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    cours_d_eau?: SortOrder
+    etat_ecologique?: SortOrderInput | SortOrder
+    longueur?: SortOrder
+    _count?: export_cours_d_eauCountOrderByAggregateInput
+    _avg?: export_cours_d_eauAvgOrderByAggregateInput
+    _max?: export_cours_d_eauMaxOrderByAggregateInput
+    _min?: export_cours_d_eauMinOrderByAggregateInput
+    _sum?: export_cours_d_eauSumOrderByAggregateInput
+  }
+
+  export type export_cours_d_eauScalarWhereWithAggregatesInput = {
+    AND?: export_cours_d_eauScalarWhereWithAggregatesInput | export_cours_d_eauScalarWhereWithAggregatesInput[]
+    OR?: export_cours_d_eauScalarWhereWithAggregatesInput[]
+    NOT?: export_cours_d_eauScalarWhereWithAggregatesInput | export_cours_d_eauScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"export_cours_d_eau"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
+    epci?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
+    libelle_epci?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
+    departement?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
+    libelle_departement?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
+    region?: FloatWithAggregatesFilter<"export_cours_d_eau"> | number
+    ept?: StringNullableWithAggregatesFilter<"export_cours_d_eau"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"export_cours_d_eau"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"export_cours_d_eau"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"export_cours_d_eau"> | string | null
+    cours_d_eau?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
+    etat_ecologique?: StringNullableWithAggregatesFilter<"export_cours_d_eau"> | string | null
+    longueur?: FloatWithAggregatesFilter<"export_cours_d_eau"> | number
+>>>>>>> dev
   }
 
   export type pg_stat_statementsWhereInput = {
@@ -38307,6 +56072,114 @@ export namespace Prisma {
     jit_emission_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
   }
 
+<<<<<<< HEAD
+=======
+  export type pg_stat_statements_infoWhereInput = {
+    AND?: pg_stat_statements_infoWhereInput | pg_stat_statements_infoWhereInput[]
+    OR?: pg_stat_statements_infoWhereInput[]
+    NOT?: pg_stat_statements_infoWhereInput | pg_stat_statements_infoWhereInput[]
+    dealloc?: BigIntNullableFilter<"pg_stat_statements_info"> | bigint | number | null
+    stats_reset?: DateTimeNullableFilter<"pg_stat_statements_info"> | Date | string | null
+  }
+
+  export type pg_stat_statements_infoOrderByWithRelationInput = {
+    dealloc?: SortOrderInput | SortOrder
+    stats_reset?: SortOrderInput | SortOrder
+  }
+
+  export type pg_stat_statements_infoOrderByWithAggregationInput = {
+    dealloc?: SortOrderInput | SortOrder
+    stats_reset?: SortOrderInput | SortOrder
+    _count?: pg_stat_statements_infoCountOrderByAggregateInput
+    _avg?: pg_stat_statements_infoAvgOrderByAggregateInput
+    _max?: pg_stat_statements_infoMaxOrderByAggregateInput
+    _min?: pg_stat_statements_infoMinOrderByAggregateInput
+    _sum?: pg_stat_statements_infoSumOrderByAggregateInput
+  }
+
+  export type pg_stat_statements_infoScalarWhereWithAggregatesInput = {
+    AND?: pg_stat_statements_infoScalarWhereWithAggregatesInput | pg_stat_statements_infoScalarWhereWithAggregatesInput[]
+    OR?: pg_stat_statements_infoScalarWhereWithAggregatesInput[]
+    NOT?: pg_stat_statements_infoScalarWhereWithAggregatesInput | pg_stat_statements_infoScalarWhereWithAggregatesInput[]
+    dealloc?: BigIntNullableWithAggregatesFilter<"pg_stat_statements_info"> | bigint | number | null
+    stats_reset?: DateTimeNullableWithAggregatesFilter<"pg_stat_statements_info"> | Date | string | null
+  }
+
+  export type geography_columnsWhereInput = {
+    AND?: geography_columnsWhereInput | geography_columnsWhereInput[]
+    OR?: geography_columnsWhereInput[]
+    NOT?: geography_columnsWhereInput | geography_columnsWhereInput[]
+    coord_dimension?: IntNullableFilter<"geography_columns"> | number | null
+    srid?: IntNullableFilter<"geography_columns"> | number | null
+    type?: StringNullableFilter<"geography_columns"> | string | null
+  }
+
+  export type geography_columnsOrderByWithRelationInput = {
+    coord_dimension?: SortOrderInput | SortOrder
+    srid?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
+  }
+
+  export type geography_columnsOrderByWithAggregationInput = {
+    coord_dimension?: SortOrderInput | SortOrder
+    srid?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
+    _count?: geography_columnsCountOrderByAggregateInput
+    _avg?: geography_columnsAvgOrderByAggregateInput
+    _max?: geography_columnsMaxOrderByAggregateInput
+    _min?: geography_columnsMinOrderByAggregateInput
+    _sum?: geography_columnsSumOrderByAggregateInput
+  }
+
+  export type geography_columnsScalarWhereWithAggregatesInput = {
+    AND?: geography_columnsScalarWhereWithAggregatesInput | geography_columnsScalarWhereWithAggregatesInput[]
+    OR?: geography_columnsScalarWhereWithAggregatesInput[]
+    NOT?: geography_columnsScalarWhereWithAggregatesInput | geography_columnsScalarWhereWithAggregatesInput[]
+    coord_dimension?: IntNullableWithAggregatesFilter<"geography_columns"> | number | null
+    srid?: IntNullableWithAggregatesFilter<"geography_columns"> | number | null
+    type?: StringNullableWithAggregatesFilter<"geography_columns"> | string | null
+  }
+
+  export type geometry_columnsWhereInput = {
+    AND?: geometry_columnsWhereInput | geometry_columnsWhereInput[]
+    OR?: geometry_columnsWhereInput[]
+    NOT?: geometry_columnsWhereInput | geometry_columnsWhereInput[]
+    f_table_catalog?: StringNullableFilter<"geometry_columns"> | string | null
+    coord_dimension?: IntNullableFilter<"geometry_columns"> | number | null
+    srid?: IntNullableFilter<"geometry_columns"> | number | null
+    type?: StringNullableFilter<"geometry_columns"> | string | null
+  }
+
+  export type geometry_columnsOrderByWithRelationInput = {
+    f_table_catalog?: SortOrderInput | SortOrder
+    coord_dimension?: SortOrderInput | SortOrder
+    srid?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
+  }
+
+  export type geometry_columnsOrderByWithAggregationInput = {
+    f_table_catalog?: SortOrderInput | SortOrder
+    coord_dimension?: SortOrderInput | SortOrder
+    srid?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
+    _count?: geometry_columnsCountOrderByAggregateInput
+    _avg?: geometry_columnsAvgOrderByAggregateInput
+    _max?: geometry_columnsMaxOrderByAggregateInput
+    _min?: geometry_columnsMinOrderByAggregateInput
+    _sum?: geometry_columnsSumOrderByAggregateInput
+  }
+
+  export type geometry_columnsScalarWhereWithAggregatesInput = {
+    AND?: geometry_columnsScalarWhereWithAggregatesInput | geometry_columnsScalarWhereWithAggregatesInput[]
+    OR?: geometry_columnsScalarWhereWithAggregatesInput[]
+    NOT?: geometry_columnsScalarWhereWithAggregatesInput | geometry_columnsScalarWhereWithAggregatesInput[]
+    f_table_catalog?: StringNullableWithAggregatesFilter<"geometry_columns"> | string | null
+    coord_dimension?: IntNullableWithAggregatesFilter<"geometry_columns"> | number | null
+    srid?: IntNullableWithAggregatesFilter<"geometry_columns"> | number | null
+    type?: StringNullableWithAggregatesFilter<"geometry_columns"> | string | null
+  }
+
+>>>>>>> dev
   export type north_star_metricCreateInput = {
     value: string
     date: Date | string
@@ -38349,6 +56222,128 @@ export namespace Prisma {
     pk?: IntFieldUpdateOperationsInput | number
   }
 
+<<<<<<< HEAD
+=======
+  export type agricultureCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    part_irr_SAU_2020?: number | null
+    otex_12_postes: string
+  }
+
+  export type agricultureUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    part_irr_SAU_2020?: number | null
+    otex_12_postes: string
+  }
+
+  export type agricultureUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    otex_12_postes?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type agricultureUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    otex_12_postes?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type agricultureCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    part_irr_SAU_2020?: number | null
+    otex_12_postes: string
+  }
+
+  export type agricultureUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    otex_12_postes?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type agricultureUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    otex_12_postes?: StringFieldUpdateOperationsInput | string
+  }
+
+>>>>>>> dev
   export type agriculture_bioCreateInput = {
     index: bigint | number
     epci: string
@@ -38657,6 +56652,149 @@ export namespace Prisma {
     dat_pub_arrete?: StringFieldUpdateOperationsInput | string
   }
 
+<<<<<<< HEAD
+=======
+  export type atlas_biodiversiteCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    nom: string
+    structure_porteuse?: string | null
+    type_de_structure_porteuse?: string | null
+    annee_debut?: number | null
+    avancement: string
+  }
+
+  export type atlas_biodiversiteUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    nom: string
+    structure_porteuse?: string | null
+    type_de_structure_porteuse?: string | null
+    annee_debut?: number | null
+    avancement: string
+  }
+
+  export type atlas_biodiversiteUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    nom?: StringFieldUpdateOperationsInput | string
+    structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
+    type_de_structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
+    annee_debut?: NullableFloatFieldUpdateOperationsInput | number | null
+    avancement?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type atlas_biodiversiteUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    nom?: StringFieldUpdateOperationsInput | string
+    structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
+    type_de_structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
+    annee_debut?: NullableFloatFieldUpdateOperationsInput | number | null
+    avancement?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type atlas_biodiversiteCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    nom: string
+    structure_porteuse?: string | null
+    type_de_structure_porteuse?: string | null
+    annee_debut?: number | null
+    avancement: string
+  }
+
+  export type atlas_biodiversiteUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    nom?: StringFieldUpdateOperationsInput | string
+    structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
+    type_de_structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
+    annee_debut?: NullableFloatFieldUpdateOperationsInput | number | null
+    avancement?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type atlas_biodiversiteUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    nom?: StringFieldUpdateOperationsInput | string
+    structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
+    type_de_structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
+    annee_debut?: NullableFloatFieldUpdateOperationsInput | number | null
+    avancement?: StringFieldUpdateOperationsInput | string
+  }
+
+>>>>>>> dev
   export type collectivites_searchbarCreateInput = {
     index: bigint | number
     code_geographique?: string | null
@@ -40267,6 +58405,121 @@ export namespace Prisma {
     superf_choro?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
+<<<<<<< HEAD
+=======
+  export type lcz_couvertureCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    couverture_lcz: number
+  }
+
+  export type lcz_couvertureUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    couverture_lcz: number
+  }
+
+  export type lcz_couvertureUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    couverture_lcz?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type lcz_couvertureUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    couverture_lcz?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type lcz_couvertureCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    couverture_lcz: number
+  }
+
+  export type lcz_couvertureUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    couverture_lcz?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type lcz_couvertureUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    couverture_lcz?: FloatFieldUpdateOperationsInput | number
+  }
+
+>>>>>>> dev
   export type patch4cCreateInput = {
     index: bigint | number
     code_geographique: string
@@ -40337,6 +58590,142 @@ export namespace Prisma {
     fortes_chaleurs?: FloatFieldUpdateOperationsInput | number
   }
 
+<<<<<<< HEAD
+=======
+  export type qualite_sites_baignadeCreateInput = {
+    index: bigint | number
+    DEP_NOM: string
+    DEP_NUM: string
+    TYPE: string
+    COMMUNE: string
+    POINT: string
+    LONG: number
+    LAT: number
+    QEB_2013?: string | null
+    QEB_2014?: string | null
+    QEB_2015?: string | null
+    QEB_2016?: string | null
+    QEB_2017?: string | null
+    QEB_2018?: string | null
+    QEB_2019?: string | null
+    QEB_2020?: string | null
+  }
+
+  export type qualite_sites_baignadeUncheckedCreateInput = {
+    index: bigint | number
+    DEP_NOM: string
+    DEP_NUM: string
+    TYPE: string
+    COMMUNE: string
+    POINT: string
+    LONG: number
+    LAT: number
+    QEB_2013?: string | null
+    QEB_2014?: string | null
+    QEB_2015?: string | null
+    QEB_2016?: string | null
+    QEB_2017?: string | null
+    QEB_2018?: string | null
+    QEB_2019?: string | null
+    QEB_2020?: string | null
+  }
+
+  export type qualite_sites_baignadeUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    DEP_NOM?: StringFieldUpdateOperationsInput | string
+    DEP_NUM?: StringFieldUpdateOperationsInput | string
+    TYPE?: StringFieldUpdateOperationsInput | string
+    COMMUNE?: StringFieldUpdateOperationsInput | string
+    POINT?: StringFieldUpdateOperationsInput | string
+    LONG?: FloatFieldUpdateOperationsInput | number
+    LAT?: FloatFieldUpdateOperationsInput | number
+    QEB_2013?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2014?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2015?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2016?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2017?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2018?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2019?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2020?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type qualite_sites_baignadeUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    DEP_NOM?: StringFieldUpdateOperationsInput | string
+    DEP_NUM?: StringFieldUpdateOperationsInput | string
+    TYPE?: StringFieldUpdateOperationsInput | string
+    COMMUNE?: StringFieldUpdateOperationsInput | string
+    POINT?: StringFieldUpdateOperationsInput | string
+    LONG?: FloatFieldUpdateOperationsInput | number
+    LAT?: FloatFieldUpdateOperationsInput | number
+    QEB_2013?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2014?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2015?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2016?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2017?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2018?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2019?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2020?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type qualite_sites_baignadeCreateManyInput = {
+    index: bigint | number
+    DEP_NOM: string
+    DEP_NUM: string
+    TYPE: string
+    COMMUNE: string
+    POINT: string
+    LONG: number
+    LAT: number
+    QEB_2013?: string | null
+    QEB_2014?: string | null
+    QEB_2015?: string | null
+    QEB_2016?: string | null
+    QEB_2017?: string | null
+    QEB_2018?: string | null
+    QEB_2019?: string | null
+    QEB_2020?: string | null
+  }
+
+  export type qualite_sites_baignadeUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    DEP_NOM?: StringFieldUpdateOperationsInput | string
+    DEP_NUM?: StringFieldUpdateOperationsInput | string
+    TYPE?: StringFieldUpdateOperationsInput | string
+    COMMUNE?: StringFieldUpdateOperationsInput | string
+    POINT?: StringFieldUpdateOperationsInput | string
+    LONG?: FloatFieldUpdateOperationsInput | number
+    LAT?: FloatFieldUpdateOperationsInput | number
+    QEB_2013?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2014?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2015?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2016?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2017?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2018?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2019?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2020?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type qualite_sites_baignadeUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    DEP_NOM?: StringFieldUpdateOperationsInput | string
+    DEP_NUM?: StringFieldUpdateOperationsInput | string
+    TYPE?: StringFieldUpdateOperationsInput | string
+    COMMUNE?: StringFieldUpdateOperationsInput | string
+    POINT?: StringFieldUpdateOperationsInput | string
+    LONG?: FloatFieldUpdateOperationsInput | number
+    LAT?: FloatFieldUpdateOperationsInput | number
+    QEB_2013?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2014?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2015?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2016?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2017?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2018?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2019?: NullableStringFieldUpdateOperationsInput | string | null
+    QEB_2020?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+>>>>>>> dev
   export type ressources_eauCreateInput = {
     index: bigint | number
     code_geographique: string
@@ -40547,6 +58936,7 @@ export namespace Prisma {
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+<<<<<<< HEAD
   export type clc_territoiresCreateInput = {
     code_geographique?: string | null
     libelle_geographique?: string | null
@@ -41085,6 +59475,8 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
   }
 
+=======
+>>>>>>> dev
   export type rgaCreateInput = {
     index: bigint | number
     code_geographique: string
@@ -41365,6 +59757,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
   }
 
+<<<<<<< HEAD
   export type postgis_rgaCreateInput = {
     alea?: string | null
     code_geographique?: string | null
@@ -41523,6 +59916,8 @@ export namespace Prisma {
     part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
+=======
+>>>>>>> dev
   export type surfaces_agricolesCreateInput = {
     index: bigint | number
     epci: string
@@ -41824,13 +60219,39 @@ export namespace Prisma {
     superficie_sau_jardins?: FloatFieldUpdateOperationsInput | number
   }
 
+<<<<<<< HEAD
   export type lcz_couvertureCreateInput = {
     index: bigint | number
     code_geographique: string
+=======
+  export type surfaces_protegeesCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    PNC?: string | null
+    RAMSAR?: string | null
+    PNR?: string | null
+    PNP?: string | null
+    FOR_PRO?: string | null
+    ZZZ?: string | null
+    ZNIEFF2?: string | null
+    ZNIEFF1?: string | null
+    RNR?: string | null
+    TOU_PRO?: string | null
+    NATURA?: string | null
+    ZPS?: string | null
+    SIC?: string | null
+    CELRL?: string | null
+    BIO?: string | null
+    APB?: string | null
+    RN?: string | null
+    RBFD?: string | null
+    RNCFS?: string | null
+>>>>>>> dev
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
+<<<<<<< HEAD
     libelle_departement: string
     region: number
     ept?: string | null
@@ -41843,10 +60264,38 @@ export namespace Prisma {
   export type lcz_couvertureUncheckedCreateInput = {
     index: bigint | number
     code_geographique: string
+=======
+    region: number
+  }
+
+  export type surfaces_protegeesUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    PNC?: string | null
+    RAMSAR?: string | null
+    PNR?: string | null
+    PNP?: string | null
+    FOR_PRO?: string | null
+    ZZZ?: string | null
+    ZNIEFF2?: string | null
+    ZNIEFF1?: string | null
+    RNR?: string | null
+    TOU_PRO?: string | null
+    NATURA?: string | null
+    ZPS?: string | null
+    SIC?: string | null
+    CELRL?: string | null
+    BIO?: string | null
+    APB?: string | null
+    RN?: string | null
+    RBFD?: string | null
+    RNCFS?: string | null
+>>>>>>> dev
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
+<<<<<<< HEAD
     libelle_departement: string
     region: number
     ept?: string | null
@@ -41859,10 +60308,38 @@ export namespace Prisma {
   export type lcz_couvertureUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
+=======
+    region: number
+  }
+
+  export type surfaces_protegeesUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    PNC?: NullableStringFieldUpdateOperationsInput | string | null
+    RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNP?: NullableStringFieldUpdateOperationsInput | string | null
+    FOR_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    ZZZ?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF2?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF1?: NullableStringFieldUpdateOperationsInput | string | null
+    RNR?: NullableStringFieldUpdateOperationsInput | string | null
+    TOU_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    NATURA?: NullableStringFieldUpdateOperationsInput | string | null
+    ZPS?: NullableStringFieldUpdateOperationsInput | string | null
+    SIC?: NullableStringFieldUpdateOperationsInput | string | null
+    CELRL?: NullableStringFieldUpdateOperationsInput | string | null
+    BIO?: NullableStringFieldUpdateOperationsInput | string | null
+    APB?: NullableStringFieldUpdateOperationsInput | string | null
+    RN?: NullableStringFieldUpdateOperationsInput | string | null
+    RBFD?: NullableStringFieldUpdateOperationsInput | string | null
+    RNCFS?: NullableStringFieldUpdateOperationsInput | string | null
+>>>>>>> dev
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     libelle_departement?: StringFieldUpdateOperationsInput | string
     region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41875,10 +60352,38 @@ export namespace Prisma {
   export type lcz_couvertureUncheckedUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
+=======
+    region?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type surfaces_protegeesUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    PNC?: NullableStringFieldUpdateOperationsInput | string | null
+    RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNP?: NullableStringFieldUpdateOperationsInput | string | null
+    FOR_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    ZZZ?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF2?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF1?: NullableStringFieldUpdateOperationsInput | string | null
+    RNR?: NullableStringFieldUpdateOperationsInput | string | null
+    TOU_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    NATURA?: NullableStringFieldUpdateOperationsInput | string | null
+    ZPS?: NullableStringFieldUpdateOperationsInput | string | null
+    SIC?: NullableStringFieldUpdateOperationsInput | string | null
+    CELRL?: NullableStringFieldUpdateOperationsInput | string | null
+    BIO?: NullableStringFieldUpdateOperationsInput | string | null
+    APB?: NullableStringFieldUpdateOperationsInput | string | null
+    RN?: NullableStringFieldUpdateOperationsInput | string | null
+    RBFD?: NullableStringFieldUpdateOperationsInput | string | null
+    RNCFS?: NullableStringFieldUpdateOperationsInput | string | null
+>>>>>>> dev
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     libelle_departement?: StringFieldUpdateOperationsInput | string
     region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41891,16 +60396,178 @@ export namespace Prisma {
   export type lcz_couvertureCreateManyInput = {
     index: bigint | number
     code_geographique: string
+=======
+    region?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type surfaces_protegeesCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    PNC?: string | null
+    RAMSAR?: string | null
+    PNR?: string | null
+    PNP?: string | null
+    FOR_PRO?: string | null
+    ZZZ?: string | null
+    ZNIEFF2?: string | null
+    ZNIEFF1?: string | null
+    RNR?: string | null
+    TOU_PRO?: string | null
+    NATURA?: string | null
+    ZPS?: string | null
+    SIC?: string | null
+    CELRL?: string | null
+    BIO?: string | null
+    APB?: string | null
+    RN?: string | null
+    RBFD?: string | null
+    RNCFS?: string | null
+>>>>>>> dev
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
+<<<<<<< HEAD
     libelle_departement: string
     region: number
+=======
+    region: number
+  }
+
+  export type surfaces_protegeesUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    PNC?: NullableStringFieldUpdateOperationsInput | string | null
+    RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNP?: NullableStringFieldUpdateOperationsInput | string | null
+    FOR_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    ZZZ?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF2?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF1?: NullableStringFieldUpdateOperationsInput | string | null
+    RNR?: NullableStringFieldUpdateOperationsInput | string | null
+    TOU_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    NATURA?: NullableStringFieldUpdateOperationsInput | string | null
+    ZPS?: NullableStringFieldUpdateOperationsInput | string | null
+    SIC?: NullableStringFieldUpdateOperationsInput | string | null
+    CELRL?: NullableStringFieldUpdateOperationsInput | string | null
+    BIO?: NullableStringFieldUpdateOperationsInput | string | null
+    APB?: NullableStringFieldUpdateOperationsInput | string | null
+    RN?: NullableStringFieldUpdateOperationsInput | string | null
+    RBFD?: NullableStringFieldUpdateOperationsInput | string | null
+    RNCFS?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type surfaces_protegeesUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    PNC?: NullableStringFieldUpdateOperationsInput | string | null
+    RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNP?: NullableStringFieldUpdateOperationsInput | string | null
+    FOR_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    ZZZ?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF2?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF1?: NullableStringFieldUpdateOperationsInput | string | null
+    RNR?: NullableStringFieldUpdateOperationsInput | string | null
+    TOU_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    NATURA?: NullableStringFieldUpdateOperationsInput | string | null
+    ZPS?: NullableStringFieldUpdateOperationsInput | string | null
+    SIC?: NullableStringFieldUpdateOperationsInput | string | null
+    CELRL?: NullableStringFieldUpdateOperationsInput | string | null
+    BIO?: NullableStringFieldUpdateOperationsInput | string | null
+    APB?: NullableStringFieldUpdateOperationsInput | string | null
+    RN?: NullableStringFieldUpdateOperationsInput | string | null
+    RBFD?: NullableStringFieldUpdateOperationsInput | string | null
+    RNCFS?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type clc_territoiresUpdateInput = {
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    legend?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type clc_territoiresUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    legend?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type clc_territoiresUpdateManyMutationInput = {
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    legend?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type clc_territoiresUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    legend?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type communes_dromCreateInput = {
+    code_geographique?: string | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    libelle_departement?: string | null
+    region?: bigint | number | null
+>>>>>>> dev
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
+<<<<<<< HEAD
     couverture_lcz: number
   }
 
@@ -41913,10 +60580,46 @@ export namespace Prisma {
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
     region?: IntFieldUpdateOperationsInput | number
+=======
+    coordinates?: string | null
+    densite_bati?: number | null
+    precarite_logement?: number | null
+    surface?: number | null
+  }
+
+  export type communes_dromUncheckedCreateInput = {
+    pk?: number
+    code_geographique?: string | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    libelle_departement?: string | null
+    region?: bigint | number | null
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    coordinates?: string | null
+    densite_bati?: number | null
+    precarite_logement?: number | null
+    surface?: number | null
+  }
+
+  export type communes_dromUpdateInput = {
+    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+>>>>>>> dev
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+<<<<<<< HEAD
     couverture_lcz?: FloatFieldUpdateOperationsInput | number
   }
 
@@ -41929,11 +60632,169 @@ export namespace Prisma {
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
     region?: IntFieldUpdateOperationsInput | number
+=======
+    coordinates?: NullableStringFieldUpdateOperationsInput | string | null
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type communes_dromUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+>>>>>>> dev
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+<<<<<<< HEAD
     couverture_lcz?: FloatFieldUpdateOperationsInput | number
+=======
+    coordinates?: NullableStringFieldUpdateOperationsInput | string | null
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type communes_dromCreateManyInput = {
+    pk?: number
+    code_geographique?: string | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    libelle_departement?: string | null
+    region?: bigint | number | null
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    coordinates?: string | null
+    densite_bati?: number | null
+    precarite_logement?: number | null
+    surface?: number | null
+  }
+
+  export type communes_dromUpdateManyMutationInput = {
+    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    coordinates?: NullableStringFieldUpdateOperationsInput | string | null
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type communes_dromUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    coordinates?: NullableStringFieldUpdateOperationsInput | string | null
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type erosion_cotiereUpdateInput = {
+    taux?: FloatFieldUpdateOperationsInput | number
+    duree?: FloatFieldUpdateOperationsInput | number
+    tdc_ancien?: BigIntFieldUpdateOperationsInput | bigint | number
+    tdc_rec?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type erosion_cotiereUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    taux?: FloatFieldUpdateOperationsInput | number
+    duree?: FloatFieldUpdateOperationsInput | number
+    tdc_ancien?: BigIntFieldUpdateOperationsInput | bigint | number
+    tdc_rec?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type erosion_cotiereUpdateManyMutationInput = {
+    taux?: FloatFieldUpdateOperationsInput | number
+    duree?: FloatFieldUpdateOperationsInput | number
+    tdc_ancien?: BigIntFieldUpdateOperationsInput | bigint | number
+    tdc_rec?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type erosion_cotiereUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    taux?: FloatFieldUpdateOperationsInput | number
+    duree?: FloatFieldUpdateOperationsInput | number
+    tdc_ancien?: BigIntFieldUpdateOperationsInput | bigint | number
+    tdc_rec?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type etat_cours_d_eauUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    longueur?: FloatFieldUpdateOperationsInput | number
+    etateco?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type etat_cours_d_eauUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    longueur?: FloatFieldUpdateOperationsInput | number
+    etateco?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type etat_cours_d_eauUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    longueur?: FloatFieldUpdateOperationsInput | number
+    etateco?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type etat_cours_d_eauUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    longueur?: FloatFieldUpdateOperationsInput | number
+    etateco?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type postgis_rgaUpdateInput = {
+    alea?: StringFieldUpdateOperationsInput | string
+    code_geographique?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type postgis_rgaUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    alea?: StringFieldUpdateOperationsInput | string
+    code_geographique?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type postgis_rgaUpdateManyMutationInput = {
+    alea?: StringFieldUpdateOperationsInput | string
+    code_geographique?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type postgis_rgaUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    alea?: StringFieldUpdateOperationsInput | string
+    code_geographique?: StringFieldUpdateOperationsInput | string
+>>>>>>> dev
   }
 
   export type spatial_ref_sysCreateInput = {
@@ -41992,6 +60853,248 @@ export namespace Prisma {
     proj4text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+<<<<<<< HEAD
+=======
+  export type sandbox_usersCreateInput = {
+    username: string
+    password: string
+    created_at: Date | string
+  }
+
+  export type sandbox_usersUncheckedCreateInput = {
+    username: string
+    pk?: number
+    password: string
+    created_at: Date | string
+  }
+
+  export type sandbox_usersUpdateInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type sandbox_usersUncheckedUpdateInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    pk?: IntFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type sandbox_usersCreateManyInput = {
+    username: string
+    pk?: number
+    password: string
+    created_at: Date | string
+  }
+
+  export type sandbox_usersUpdateManyMutationInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type sandbox_usersUncheckedUpdateManyInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    pk?: IntFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type usersCreateInput = {
+    email: string
+    username: string
+    password: string
+    created_at: Date | string
+    last_connection?: Date | string | null
+    role: string
+  }
+
+  export type usersUncheckedCreateInput = {
+    pk?: number
+    email: string
+    username: string
+    password: string
+    created_at: Date | string
+    last_connection?: Date | string | null
+    role: string
+  }
+
+  export type usersUpdateInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_connection?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type usersUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_connection?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type usersCreateManyInput = {
+    pk?: number
+    email: string
+    username: string
+    password: string
+    created_at: Date | string
+    last_connection?: Date | string | null
+    role: string
+  }
+
+  export type usersUpdateManyMutationInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_connection?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type usersUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_connection?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type export_cours_d_eauCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    cours_d_eau: string
+    etat_ecologique?: string | null
+    longueur: number
+  }
+
+  export type export_cours_d_eauUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    cours_d_eau: string
+    etat_ecologique?: string | null
+    longueur: number
+  }
+
+  export type export_cours_d_eauUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    cours_d_eau?: StringFieldUpdateOperationsInput | string
+    etat_ecologique?: NullableStringFieldUpdateOperationsInput | string | null
+    longueur?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type export_cours_d_eauUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    cours_d_eau?: StringFieldUpdateOperationsInput | string
+    etat_ecologique?: NullableStringFieldUpdateOperationsInput | string | null
+    longueur?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type export_cours_d_eauCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    cours_d_eau: string
+    etat_ecologique?: string | null
+    longueur: number
+  }
+
+  export type export_cours_d_eauUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    cours_d_eau?: StringFieldUpdateOperationsInput | string
+    etat_ecologique?: NullableStringFieldUpdateOperationsInput | string | null
+    longueur?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type export_cours_d_eauUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    cours_d_eau?: StringFieldUpdateOperationsInput | string
+    etat_ecologique?: NullableStringFieldUpdateOperationsInput | string | null
+    longueur?: FloatFieldUpdateOperationsInput | number
+  }
+
+>>>>>>> dev
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -42114,6 +61217,20 @@ export namespace Prisma {
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
+<<<<<<< HEAD
+=======
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+>>>>>>> dev
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -42129,7 +61246,106 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+<<<<<<< HEAD
   export type FloatFilter<$PrismaModel = never> = {
+=======
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type agricultureCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+    otex_12_postes?: SortOrder
+  }
+
+  export type agricultureAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+  }
+
+  export type agricultureMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+    otex_12_postes?: SortOrder
+  }
+
+  export type agricultureMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+    otex_12_postes?: SortOrder
+  }
+
+  export type agricultureSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+  }
+
+  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+>>>>>>> dev
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
     notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -42137,12 +61353,55 @@ export namespace Prisma {
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
+<<<<<<< HEAD
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+=======
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+>>>>>>> dev
   }
 
   export type agriculture_bioCountOrderByAggregateInput = {
@@ -42217,6 +61476,7 @@ export namespace Prisma {
     nombre_2019?: SortOrder
   }
 
+<<<<<<< HEAD
   export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -42267,6 +61527,8 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+=======
+>>>>>>> dev
   export type aot_40CountOrderByAggregateInput = {
     index?: SortOrder
     nom_site?: SortOrder
@@ -42375,6 +61637,81 @@ export namespace Prisma {
     region?: SortOrder
   }
 
+<<<<<<< HEAD
+=======
+  export type atlas_biodiversiteCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    nom?: SortOrder
+    structure_porteuse?: SortOrder
+    type_de_structure_porteuse?: SortOrder
+    annee_debut?: SortOrder
+    avancement?: SortOrder
+  }
+
+  export type atlas_biodiversiteAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    annee_debut?: SortOrder
+  }
+
+  export type atlas_biodiversiteMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    nom?: SortOrder
+    structure_porteuse?: SortOrder
+    type_de_structure_porteuse?: SortOrder
+    annee_debut?: SortOrder
+    avancement?: SortOrder
+  }
+
+  export type atlas_biodiversiteMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    nom?: SortOrder
+    structure_porteuse?: SortOrder
+    type_de_structure_porteuse?: SortOrder
+    annee_debut?: SortOrder
+    avancement?: SortOrder
+  }
+
+  export type atlas_biodiversiteSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    annee_debut?: SortOrder
+  }
+
+>>>>>>> dev
   export type collectivites_searchbarCountOrderByAggregateInput = {
     index?: SortOrder
     code_geographique?: SortOrder
@@ -43019,6 +62356,7 @@ export namespace Prisma {
     artcom0923?: SortOrder
   }
 
+<<<<<<< HEAD
   export type FloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -43030,6 +62368,8 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+=======
+>>>>>>> dev
   export type feux_foretCountOrderByAggregateInput = {
     index?: SortOrder
     code_geographique?: SortOrder
@@ -43143,6 +62483,7 @@ export namespace Prisma {
     autres_surfaces?: SortOrder
   }
 
+<<<<<<< HEAD
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -43159,6 +62500,8 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
+=======
+>>>>>>> dev
   export type inconfort_thermiqueCountOrderByAggregateInput = {
     index?: SortOrder
     code_geographique?: SortOrder
@@ -43464,6 +62807,69 @@ export namespace Prisma {
     superf_choro?: SortOrder
   }
 
+<<<<<<< HEAD
+=======
+  export type lcz_couvertureCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    couverture_lcz?: SortOrder
+  }
+
+  export type lcz_couvertureAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    couverture_lcz?: SortOrder
+  }
+
+  export type lcz_couvertureMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    couverture_lcz?: SortOrder
+  }
+
+  export type lcz_couvertureMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    couverture_lcz?: SortOrder
+  }
+
+  export type lcz_couvertureSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    couverture_lcz?: SortOrder
+  }
+
+>>>>>>> dev
   export type patch4cCountOrderByAggregateInput = {
     index?: SortOrder
     code_geographique?: SortOrder
@@ -43512,6 +62918,78 @@ export namespace Prisma {
     fortes_chaleurs?: SortOrder
   }
 
+<<<<<<< HEAD
+=======
+  export type qualite_sites_baignadeCountOrderByAggregateInput = {
+    index?: SortOrder
+    DEP_NOM?: SortOrder
+    DEP_NUM?: SortOrder
+    TYPE?: SortOrder
+    COMMUNE?: SortOrder
+    POINT?: SortOrder
+    LONG?: SortOrder
+    LAT?: SortOrder
+    QEB_2013?: SortOrder
+    QEB_2014?: SortOrder
+    QEB_2015?: SortOrder
+    QEB_2016?: SortOrder
+    QEB_2017?: SortOrder
+    QEB_2018?: SortOrder
+    QEB_2019?: SortOrder
+    QEB_2020?: SortOrder
+  }
+
+  export type qualite_sites_baignadeAvgOrderByAggregateInput = {
+    index?: SortOrder
+    LONG?: SortOrder
+    LAT?: SortOrder
+  }
+
+  export type qualite_sites_baignadeMaxOrderByAggregateInput = {
+    index?: SortOrder
+    DEP_NOM?: SortOrder
+    DEP_NUM?: SortOrder
+    TYPE?: SortOrder
+    COMMUNE?: SortOrder
+    POINT?: SortOrder
+    LONG?: SortOrder
+    LAT?: SortOrder
+    QEB_2013?: SortOrder
+    QEB_2014?: SortOrder
+    QEB_2015?: SortOrder
+    QEB_2016?: SortOrder
+    QEB_2017?: SortOrder
+    QEB_2018?: SortOrder
+    QEB_2019?: SortOrder
+    QEB_2020?: SortOrder
+  }
+
+  export type qualite_sites_baignadeMinOrderByAggregateInput = {
+    index?: SortOrder
+    DEP_NOM?: SortOrder
+    DEP_NUM?: SortOrder
+    TYPE?: SortOrder
+    COMMUNE?: SortOrder
+    POINT?: SortOrder
+    LONG?: SortOrder
+    LAT?: SortOrder
+    QEB_2013?: SortOrder
+    QEB_2014?: SortOrder
+    QEB_2015?: SortOrder
+    QEB_2016?: SortOrder
+    QEB_2017?: SortOrder
+    QEB_2018?: SortOrder
+    QEB_2019?: SortOrder
+    QEB_2020?: SortOrder
+  }
+
+  export type qualite_sites_baignadeSumOrderByAggregateInput = {
+    index?: SortOrder
+    LONG?: SortOrder
+    LAT?: SortOrder
+  }
+
+>>>>>>> dev
   export type ressources_eauCountOrderByAggregateInput = {
     index?: SortOrder
     code_geographique?: SortOrder
@@ -43638,6 +63116,7 @@ export namespace Prisma {
     region?: SortOrder
   }
 
+<<<<<<< HEAD
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -44026,6 +63505,8 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+=======
+>>>>>>> dev
   export type rgaCountOrderByAggregateInput = {
     index?: SortOrder
     code_geographique?: SortOrder
@@ -44206,6 +63687,7 @@ export namespace Prisma {
     part_alea_moyen_fort_commune?: SortOrder
   }
 
+<<<<<<< HEAD
   export type postgis_rgaCountOrderByAggregateInput = {
     pk?: SortOrder
     alea?: SortOrder
@@ -44297,6 +63779,8 @@ export namespace Prisma {
     part_over_55?: SortOrder
   }
 
+=======
+>>>>>>> dev
   export type surfaces_agricolesCountOrderByAggregateInput = {
     index?: SortOrder
     epci?: SortOrder
@@ -44510,9 +63994,112 @@ export namespace Prisma {
     superficie_sau_jardins?: SortOrder
   }
 
+<<<<<<< HEAD
   export type lcz_couvertureCountOrderByAggregateInput = {
     index?: SortOrder
     code_geographique?: SortOrder
+=======
+  export type surfaces_protegeesCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    PNC?: SortOrder
+    RAMSAR?: SortOrder
+    PNR?: SortOrder
+    PNP?: SortOrder
+    FOR_PRO?: SortOrder
+    ZZZ?: SortOrder
+    ZNIEFF2?: SortOrder
+    ZNIEFF1?: SortOrder
+    RNR?: SortOrder
+    TOU_PRO?: SortOrder
+    NATURA?: SortOrder
+    ZPS?: SortOrder
+    SIC?: SortOrder
+    CELRL?: SortOrder
+    BIO?: SortOrder
+    APB?: SortOrder
+    RN?: SortOrder
+    RBFD?: SortOrder
+    RNCFS?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegeesAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegeesMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    PNC?: SortOrder
+    RAMSAR?: SortOrder
+    PNR?: SortOrder
+    PNP?: SortOrder
+    FOR_PRO?: SortOrder
+    ZZZ?: SortOrder
+    ZNIEFF2?: SortOrder
+    ZNIEFF1?: SortOrder
+    RNR?: SortOrder
+    TOU_PRO?: SortOrder
+    NATURA?: SortOrder
+    ZPS?: SortOrder
+    SIC?: SortOrder
+    CELRL?: SortOrder
+    BIO?: SortOrder
+    APB?: SortOrder
+    RN?: SortOrder
+    RBFD?: SortOrder
+    RNCFS?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegeesMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    PNC?: SortOrder
+    RAMSAR?: SortOrder
+    PNR?: SortOrder
+    PNP?: SortOrder
+    FOR_PRO?: SortOrder
+    ZZZ?: SortOrder
+    ZNIEFF2?: SortOrder
+    ZNIEFF1?: SortOrder
+    RNR?: SortOrder
+    TOU_PRO?: SortOrder
+    NATURA?: SortOrder
+    ZPS?: SortOrder
+    SIC?: SortOrder
+    CELRL?: SortOrder
+    BIO?: SortOrder
+    APB?: SortOrder
+    RN?: SortOrder
+    RBFD?: SortOrder
+    RNCFS?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegeesSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+  }
+
+  export type clc_territoiresCountOrderByAggregateInput = {
+    pk?: SortOrder
+    code_geographique?: SortOrder
+>>>>>>> dev
     libelle_geographique?: SortOrder
     epci?: SortOrder
     libelle_epci?: SortOrder
@@ -44523,6 +64110,7 @@ export namespace Prisma {
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
+<<<<<<< HEAD
     couverture_lcz?: SortOrder
   }
 
@@ -44534,6 +64122,18 @@ export namespace Prisma {
 
   export type lcz_couvertureMaxOrderByAggregateInput = {
     index?: SortOrder
+=======
+    legend?: SortOrder
+  }
+
+  export type clc_territoiresAvgOrderByAggregateInput = {
+    pk?: SortOrder
+    region?: SortOrder
+  }
+
+  export type clc_territoiresMaxOrderByAggregateInput = {
+    pk?: SortOrder
+>>>>>>> dev
     code_geographique?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
@@ -44545,11 +64145,19 @@ export namespace Prisma {
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
+<<<<<<< HEAD
     couverture_lcz?: SortOrder
   }
 
   export type lcz_couvertureMinOrderByAggregateInput = {
     index?: SortOrder
+=======
+    legend?: SortOrder
+  }
+
+  export type clc_territoiresMinOrderByAggregateInput = {
+    pk?: SortOrder
+>>>>>>> dev
     code_geographique?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
@@ -44561,6 +64169,7 @@ export namespace Prisma {
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
+<<<<<<< HEAD
     couverture_lcz?: SortOrder
   }
 
@@ -44568,6 +64177,222 @@ export namespace Prisma {
     index?: SortOrder
     region?: SortOrder
     couverture_lcz?: SortOrder
+=======
+    legend?: SortOrder
+  }
+
+  export type clc_territoiresSumOrderByAggregateInput = {
+    pk?: SortOrder
+    region?: SortOrder
+  }
+
+  export type BigIntNullableFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
+  }
+
+  export type communes_dromCountOrderByAggregateInput = {
+    pk?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    coordinates?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+    surface?: SortOrder
+  }
+
+  export type communes_dromAvgOrderByAggregateInput = {
+    pk?: SortOrder
+    region?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+    surface?: SortOrder
+  }
+
+  export type communes_dromMaxOrderByAggregateInput = {
+    pk?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    coordinates?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+    surface?: SortOrder
+  }
+
+  export type communes_dromMinOrderByAggregateInput = {
+    pk?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    coordinates?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+    surface?: SortOrder
+  }
+
+  export type communes_dromSumOrderByAggregateInput = {
+    pk?: SortOrder
+    region?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+    surface?: SortOrder
+  }
+
+  export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedBigIntNullableFilter<$PrismaModel>
+    _min?: NestedBigIntNullableFilter<$PrismaModel>
+    _max?: NestedBigIntNullableFilter<$PrismaModel>
+  }
+
+  export type erosion_cotiereCountOrderByAggregateInput = {
+    pk?: SortOrder
+    taux?: SortOrder
+    duree?: SortOrder
+    tdc_ancien?: SortOrder
+    tdc_rec?: SortOrder
+  }
+
+  export type erosion_cotiereAvgOrderByAggregateInput = {
+    pk?: SortOrder
+    taux?: SortOrder
+    duree?: SortOrder
+    tdc_ancien?: SortOrder
+    tdc_rec?: SortOrder
+  }
+
+  export type erosion_cotiereMaxOrderByAggregateInput = {
+    pk?: SortOrder
+    taux?: SortOrder
+    duree?: SortOrder
+    tdc_ancien?: SortOrder
+    tdc_rec?: SortOrder
+  }
+
+  export type erosion_cotiereMinOrderByAggregateInput = {
+    pk?: SortOrder
+    taux?: SortOrder
+    duree?: SortOrder
+    tdc_ancien?: SortOrder
+    tdc_rec?: SortOrder
+  }
+
+  export type erosion_cotiereSumOrderByAggregateInput = {
+    pk?: SortOrder
+    taux?: SortOrder
+    duree?: SortOrder
+    tdc_ancien?: SortOrder
+    tdc_rec?: SortOrder
+  }
+
+  export type etat_cours_d_eauCountOrderByAggregateInput = {
+    pk?: SortOrder
+    name?: SortOrder
+    longueur?: SortOrder
+    etateco?: SortOrder
+  }
+
+  export type etat_cours_d_eauAvgOrderByAggregateInput = {
+    pk?: SortOrder
+    longueur?: SortOrder
+  }
+
+  export type etat_cours_d_eauMaxOrderByAggregateInput = {
+    pk?: SortOrder
+    name?: SortOrder
+    longueur?: SortOrder
+    etateco?: SortOrder
+  }
+
+  export type etat_cours_d_eauMinOrderByAggregateInput = {
+    pk?: SortOrder
+    name?: SortOrder
+    longueur?: SortOrder
+    etateco?: SortOrder
+  }
+
+  export type etat_cours_d_eauSumOrderByAggregateInput = {
+    pk?: SortOrder
+    longueur?: SortOrder
+  }
+
+  export type postgis_rgaCountOrderByAggregateInput = {
+    pk?: SortOrder
+    alea?: SortOrder
+    code_geographique?: SortOrder
+  }
+
+  export type postgis_rgaAvgOrderByAggregateInput = {
+    pk?: SortOrder
+  }
+
+  export type postgis_rgaMaxOrderByAggregateInput = {
+    pk?: SortOrder
+    alea?: SortOrder
+    code_geographique?: SortOrder
+  }
+
+  export type postgis_rgaMinOrderByAggregateInput = {
+    pk?: SortOrder
+    alea?: SortOrder
+    code_geographique?: SortOrder
+  }
+
+  export type postgis_rgaSumOrderByAggregateInput = {
+    pk?: SortOrder
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+>>>>>>> dev
   }
 
   export type spatial_ref_sysCountOrderByAggregateInput = {
@@ -44604,6 +64429,7 @@ export namespace Prisma {
     auth_srid?: SortOrder
   }
 
+<<<<<<< HEAD
   export type geography_columnsCountOrderByAggregateInput = {
     coord_dimension?: SortOrder
     srid?: SortOrder
@@ -44684,6 +64510,180 @@ export namespace Prisma {
 
   export type pg_stat_statements_infoSumOrderByAggregateInput = {
     dealloc?: SortOrder
+=======
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type sandbox_usersCountOrderByAggregateInput = {
+    username?: SortOrder
+    pk?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type sandbox_usersAvgOrderByAggregateInput = {
+    pk?: SortOrder
+  }
+
+  export type sandbox_usersMaxOrderByAggregateInput = {
+    username?: SortOrder
+    pk?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type sandbox_usersMinOrderByAggregateInput = {
+    username?: SortOrder
+    pk?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type sandbox_usersSumOrderByAggregateInput = {
+    pk?: SortOrder
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type usersCountOrderByAggregateInput = {
+    pk?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+    last_connection?: SortOrder
+    role?: SortOrder
+  }
+
+  export type usersAvgOrderByAggregateInput = {
+    pk?: SortOrder
+  }
+
+  export type usersMaxOrderByAggregateInput = {
+    pk?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+    last_connection?: SortOrder
+    role?: SortOrder
+  }
+
+  export type usersMinOrderByAggregateInput = {
+    pk?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+    last_connection?: SortOrder
+    role?: SortOrder
+  }
+
+  export type usersSumOrderByAggregateInput = {
+    pk?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type export_cours_d_eauCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    cours_d_eau?: SortOrder
+    etat_ecologique?: SortOrder
+    longueur?: SortOrder
+  }
+
+  export type export_cours_d_eauAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    longueur?: SortOrder
+  }
+
+  export type export_cours_d_eauMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    cours_d_eau?: SortOrder
+    etat_ecologique?: SortOrder
+    longueur?: SortOrder
+  }
+
+  export type export_cours_d_eauMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    cours_d_eau?: SortOrder
+    etat_ecologique?: SortOrder
+    longueur?: SortOrder
+  }
+
+  export type export_cours_d_eauSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    longueur?: SortOrder
+>>>>>>> dev
   }
 
   export type BoolNullableFilter<$PrismaModel = never> = {
@@ -44952,6 +64952,91 @@ export namespace Prisma {
     _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
+<<<<<<< HEAD
+=======
+  export type pg_stat_statements_infoCountOrderByAggregateInput = {
+    dealloc?: SortOrder
+    stats_reset?: SortOrder
+  }
+
+  export type pg_stat_statements_infoAvgOrderByAggregateInput = {
+    dealloc?: SortOrder
+  }
+
+  export type pg_stat_statements_infoMaxOrderByAggregateInput = {
+    dealloc?: SortOrder
+    stats_reset?: SortOrder
+  }
+
+  export type pg_stat_statements_infoMinOrderByAggregateInput = {
+    dealloc?: SortOrder
+    stats_reset?: SortOrder
+  }
+
+  export type pg_stat_statements_infoSumOrderByAggregateInput = {
+    dealloc?: SortOrder
+  }
+
+  export type geography_columnsCountOrderByAggregateInput = {
+    coord_dimension?: SortOrder
+    srid?: SortOrder
+    type?: SortOrder
+  }
+
+  export type geography_columnsAvgOrderByAggregateInput = {
+    coord_dimension?: SortOrder
+    srid?: SortOrder
+  }
+
+  export type geography_columnsMaxOrderByAggregateInput = {
+    coord_dimension?: SortOrder
+    srid?: SortOrder
+    type?: SortOrder
+  }
+
+  export type geography_columnsMinOrderByAggregateInput = {
+    coord_dimension?: SortOrder
+    srid?: SortOrder
+    type?: SortOrder
+  }
+
+  export type geography_columnsSumOrderByAggregateInput = {
+    coord_dimension?: SortOrder
+    srid?: SortOrder
+  }
+
+  export type geometry_columnsCountOrderByAggregateInput = {
+    f_table_catalog?: SortOrder
+    coord_dimension?: SortOrder
+    srid?: SortOrder
+    type?: SortOrder
+  }
+
+  export type geometry_columnsAvgOrderByAggregateInput = {
+    coord_dimension?: SortOrder
+    srid?: SortOrder
+  }
+
+  export type geometry_columnsMaxOrderByAggregateInput = {
+    f_table_catalog?: SortOrder
+    coord_dimension?: SortOrder
+    srid?: SortOrder
+    type?: SortOrder
+  }
+
+  export type geometry_columnsMinOrderByAggregateInput = {
+    f_table_catalog?: SortOrder
+    coord_dimension?: SortOrder
+    srid?: SortOrder
+    type?: SortOrder
+  }
+
+  export type geometry_columnsSumOrderByAggregateInput = {
+    coord_dimension?: SortOrder
+    srid?: SortOrder
+  }
+
+>>>>>>> dev
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -44976,10 +65061,13 @@ export namespace Prisma {
     divide?: bigint | number
   }
 
+<<<<<<< HEAD
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
 
+=======
+>>>>>>> dev
   export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -44988,6 +65076,7 @@ export namespace Prisma {
     divide?: number
   }
 
+<<<<<<< HEAD
   export type NullableFloatFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -44997,6 +65086,13 @@ export namespace Prisma {
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
+=======
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+>>>>>>> dev
     set?: number | null
     increment?: number
     decrement?: number
@@ -45012,6 +65108,17 @@ export namespace Prisma {
     divide?: bigint | number
   }
 
+<<<<<<< HEAD
+=======
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+>>>>>>> dev
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
   }
@@ -45135,6 +65242,20 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+<<<<<<< HEAD
+=======
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+>>>>>>> dev
   export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -45151,6 +65272,25 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
+<<<<<<< HEAD
+=======
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+>>>>>>> dev
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -45179,6 +65319,7 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+<<<<<<< HEAD
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -45206,6 +65347,8 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+=======
+>>>>>>> dev
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -45222,6 +65365,7 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
+<<<<<<< HEAD
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -45238,6 +65382,8 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+=======
+>>>>>>> dev
   export type NestedBigIntNullableFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
@@ -45265,6 +65411,25 @@ export namespace Prisma {
     _max?: NestedBigIntNullableFilter<$PrismaModel>
   }
 
+<<<<<<< HEAD
+=======
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+>>>>>>> dev
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null

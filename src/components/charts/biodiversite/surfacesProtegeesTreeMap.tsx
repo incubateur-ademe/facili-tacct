@@ -1,6 +1,6 @@
 'use client';
 
-import { HtmlTooltipMousePosition } from '@/components/utils/HtmlTooltip';
+import { HtmlTooltipMousePosition } from '@/components/utils/Tooltips';
 import { SurfacesProtegeesDto } from '@/lib/dto';
 import { Any } from '@/lib/utils/types';
 import { ResponsiveTreeMap } from '@nivo/treemap';
@@ -92,7 +92,7 @@ export const SurfacesProtegeesTreeMap = ({
                   >
                     {e.node.formattedValue?.length > e.node.width / 6
                       ? e.node.formattedValue?.slice(0, e.node.width / 6 - 1) +
-                        '...'
+                      '...'
                       : e.node.formattedValue + ' ha'}
                   </text>
                   <text

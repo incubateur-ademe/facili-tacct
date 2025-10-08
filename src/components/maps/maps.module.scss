@@ -1,3 +1,15 @@
+// Cerema logo bottom right
+.ceremaLogoBottomRight {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 150px;
+    height: auto;
+    z-index: 1001;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
 .leaflet-interactive {
     cursor: grab;
 }
@@ -107,7 +119,7 @@
 .tileLoadingWrapper {
     position: absolute;
     top: 250px;
-    left: 25%;
+    left: 33%;
     background: rgba(255, 255, 255, 0.9);
     padding: 0.75rem 1.25rem;
     border-radius: 0.5rem;
@@ -126,18 +138,6 @@
     animation: spin 1s linear infinite;
 }
 
-.ceremaLogoBottomRight {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    width: 150px;
-    height: auto;
-    z-index: 1001;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
 // RGA map
 
 .legendRGA {
@@ -146,8 +146,6 @@
     gap: 3em;
     padding: 1rem;
     width: fit-content;
-    border-bottom: solid 1px #d6d6f0;
-    background-color: #f9f9ff;
 }
 
 // exports de données

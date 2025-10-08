@@ -1,13 +1,12 @@
+import { readFileSync } from 'fs';
 import { NextRequest, NextResponse } from 'next/server';
+import { join } from 'path';
 import { PrismaClient as PostgresClient } from '../../../generated/client';
-
+export const dynamic = 'force-dynamic';
 const PrismaPostgres = new PostgresClient();
 
-// Opt out of caching for this API route
-export const dynamic = 'force-dynamic';
-
 interface Stat {
-  value: string;
+  value: number;
   date: Date;
 }
 
@@ -21,40 +20,99 @@ interface Periodicity {
 }
 
 export const GET = async (request: NextRequest) => {
-  const rawData: Stat[] = await PrismaPostgres.north_star_metric.findMany();
-  const since = request.nextUrl.searchParams.get('since');
-  const periodicityParam = request.nextUrl.searchParams.get('periodicity');
-  const periodicity: Periodicity = periodicityParam
-    ? { periodicity: periodicityParam as 'day' | 'week' | 'month' | 'year' }
-    : { periodicity: 'month' };
-  var d = new Date();
+  try {
+    const sql = readFileSync(
+      join(process.cwd(), 'src/app/api/stats/north_star.sql'),
+      'utf8'
+    );
+    const results = (await PrismaPostgres.$queryRawUnsafe(sql)) as Array<{
+      day: Date;
+      north_star: bigint;
+    }>;
+    const rawData: Stat[] = results.map((row) => ({
+      value: Number(row.north_star),
+      date: new Date(
+        Date.UTC(row.day.getFullYear(), row.day.getMonth(), row.day.getDate())
+      )
+    }));
 
-  if (periodicity.periodicity === 'day') {
-    d.setTime(d.getTime() - Number(since) * 24 * 60 * 60 * 1000);
-  } else if (periodicity.periodicity === 'week') {
-    d.setDate(d.getDate() - Number(since) * 7);
-  } else if (periodicity.periodicity === 'year') {
-    d.setFullYear(d.getFullYear() - Number(since));
-  } else d.setMonth(d.getMonth() - Number(since));
+    const since = request.nextUrl.searchParams.get('since');
+    const sinceNum = since ? Number(since) : null;
+    const periodicityParam = request.nextUrl.searchParams.get('periodicity');
+    const periodicity: Periodicity = periodicityParam
+      ? { periodicity: periodicityParam as 'day' | 'week' | 'month' | 'year' }
+      : { periodicity: 'month' };
 
-  const filteredData = rawData.filter((stat) => {
-    if (since === null) {
-      return stat;
-    } else return stat.date.getTime() > d.getTime();
-  });
+    // Agrégation des données selon la périodicité
+    const aggregatedData: Stat[] = [];
+    const aggregated = new Map<string, { date: Date; value: number }>();
+    for (const stat of rawData) {
+      let key: string;
+      let periodDate: Date;
+      const year = stat.date.getUTCFullYear();
+      const month = stat.date.getUTCMonth();
+      const day = stat.date.getUTCDate();
+      const dayOfWeek = stat.date.getUTCDay();
+      switch (periodicity.periodicity) {
+        case 'day':
+          key = `${year}-${month}-${day}`;
+          periodDate = new Date(Date.UTC(year, month, day));
+          break;
+        case 'week':
+          const monday = new Date(stat.date);
+          monday.setUTCDate(day - (dayOfWeek === 0 ? 6 : dayOfWeek - 1));
+          monday.setUTCHours(0, 0, 0, 0);
+          key = monday.getTime().toString();
+          periodDate = monday;
+          break;
+        case 'month':
+          key = `${year}-${month}`;
+          periodDate = new Date(Date.UTC(year, month, 1));
+          break;
+        case 'year':
+          key = `${year}`;
+          periodDate = new Date(Date.UTC(year, 0, 1));
+          break;
+        default:
+          key = `${year}-${month}-${day}`;
+          periodDate = new Date(Date.UTC(year, month, day));
+      }
+      if (!aggregated.has(key)) {
+        aggregated.set(key, { date: periodDate, value: 0 });
+      }
+      aggregated.get(key)!.value += stat.value;
+    }
+    const allAggregated = Array.from(aggregated.values()).sort(
+      (a, b) => a.date.getTime() - b.date.getTime()
+    );
+    if (sinceNum === null) {
+      aggregatedData.push(...allAggregated);
+    } else {
+      aggregatedData.push(...allAggregated.slice(-sinceNum));
+    }
 
-  const data: StatOutput = {
-    description: `Territoires consultant 3 thématiques au moins 3 fois`,
-    stats: filteredData
-  };
+    const data: StatOutput = {
+      description: `Territoires recherchés 3 fois minimum pour au moins 3 thématiques`,
+      stats: aggregatedData
+    };
 
-  const response = NextResponse.json(data);
-  
-  // Set cache control headers to prevent caching
-  response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
-  response.headers.set('Pragma', 'no-cache');
-  response.headers.set('Expires', '0');
-  response.headers.set('Surrogate-Control', 'no-store');
+    const response = NextResponse.json(data);
 
-  return response;
+    // Cache control headers pour éviter la mise en cache
+    response.headers.set(
+      'Cache-Control',
+      'no-store, no-cache, must-revalidate, proxy-revalidate'
+    );
+    response.headers.set('Pragma', 'no-cache');
+    response.headers.set('Expires', '0');
+    response.headers.set('Surrogate-Control', 'no-store');
+
+    return response;
+  } catch (error) {
+    console.error('API Error:', error);
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : String(error) },
+      { status: 500 }
+    );
+  }
 };

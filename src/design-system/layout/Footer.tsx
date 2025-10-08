@@ -9,38 +9,32 @@ export default function AppFooter() {
       className="fr-footer !mt-0 !pt-0 bg-white relative"
       role="contentinfo"
       id="footer"
-      style={{ zIndex: 999 }}
+      style={{ zIndex: 999, boxShadow: "none" }}
     >
       <hr className="pb-6" />
       <div className="fr-container">
         <div className="fr-footer__body">
-          <div className="fr-footer__brand fr-enlarge-link">
-            {/* Logos/Images */}
-            <a
-              className="fr-footer__brand-link flex flex-row flex-wrap items-center gap-8"
-              href="/"
-              title="Retour à l’accueil du site - Facili-TACCT - République Française"
-            >
-              <div className="fr-logo !text-[1rem]">
-                République
-                <br />
-                Française
-              </div>
-              <Image
-                className="fr-footer__logo"
-                height={200}
-                width={80}
-                src={"/logo-ademe.png"}
-                alt={"ADEME logo"}
-              />
-              <Image
-                className="fr-footer__logo max-w-[8rem]"
-                height={200}
-                width={95}
-                src={"/logo-meteo-france.jpg"}
-                alt={"Logo Météo France"}
-              />
-            </a>
+          {/* Logos/Images */}
+          <div className="fr-footer__brand-logos flex flex-row flex-wrap items-center gap-8">
+            <div className="fr-logo !text-[1rem]">
+              République
+              <br />
+              Française
+            </div>
+            <Image
+              className="fr-footer__logo"
+              height={200}
+              width={80}
+              src={"/logo-ademe.png"}
+              alt={"ADEME logo"}
+            />
+            <Image
+              className="fr-footer__logo max-w-[8rem]"
+              height={200}
+              width={95}
+              src={"/logo-meteo-france.jpg"}
+              alt={"Logo Météo France"}
+            />
           </div>
           <div className="fr-footer__content">
             {/* Description */}
@@ -50,7 +44,7 @@ export default function AppFooter() {
               <br></br>
               Notre mission : Accompagner les territoires pour une meilleure appropriation
               de leur vulnérabilité aux impacts du changement climatique.
-              Facili-TACCT met à disposition les données climatiques du Patch 4°C,
+              Facili-TACCT met à disposition les données climatiques du patch 4°C,
               mesure 23 du plan national d’adaptation au changement climatique (PNACC 3).
             </p>
             {/* Liste de liens */}
@@ -135,10 +129,10 @@ export default function AppFooter() {
               </a>
             </li>
             {/* <li className="fr-footer__bottom-item">
-              <a className="fr-footer__bottom-link" href="/stats" target="_self">
-                Statistiques
-              </a>
-            </li> */}
+          <a className="fr-footer__bottom-link" href="/stats" target="_self">
+          Statistiques
+          </a>
+        </li> */}
             <li className="fr-footer__bottom-item">
               <button {...headerFooterDisplayItem.buttonProps}
                 className="fr-footer__bottom-link"
@@ -152,10 +146,10 @@ export default function AppFooter() {
                   aria-hidden="true"
                 />
                 <style jsx>{`
-                  .${headerFooterDisplayItem.iconId}::before {
-                  width: 1rem;
-                  }
-                `}</style>
+            .${headerFooterDisplayItem.iconId}::before {
+            width: 1rem;
+            }
+          `}</style>
                 {headerFooterDisplayItem.text}
               </button>
             </li>

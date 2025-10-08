@@ -26,10 +26,9 @@ const SurfacesAgricolesProgressBar = ({
   const libelle = searchParams.get('libelle');
   const graphData = PrograssBarDataSurfacesAgricoles(surfacesAgricoles);
   const superficieSau = Sum(surfacesAgricoles.map(el => el.superficie_sau));
-
   return (
     <div className={styles.surfacesAgricolesWrapper}>
-      {libelle ? (
+      {libelle && surfacesAgricoles.length ? (
         <>
           {graphData
             .map((item, index) => (
@@ -42,7 +41,9 @@ const SurfacesAgricolesProgressBar = ({
             ))}
         </>
       ) : (
-        <DataNotFoundForGraph image={DataNotFound} />
+        <div className='p-10 flex flex-row justify-center'>
+          <DataNotFoundForGraph image={DataNotFound} />
+        </div>
       )}
     </div>
   );

@@ -5,6 +5,7 @@ import ClimaStory from '@/lib/ressources/articles/climaStory';
 import EviterPrecherDesert from '@/lib/ressources/articles/eviterPrecherDesert';
 import FacilitationDateliers from '@/lib/ressources/articles/facilitationDateliers';
 import IlotChaleurUrbain from '@/lib/ressources/articles/ilotChaleurUrbain';
+import IndicateursDeResilience from '@/lib/ressources/articles/indicateursDeResilience';
 import LireUnDiagnostic from '@/lib/ressources/articles/lireUnDiagnostic';
 import MiseEnRecit from '@/lib/ressources/articles/miseEnRecit';
 import PnaccTracc from '@/lib/ressources/articles/pnaccTracc';
@@ -18,7 +19,7 @@ export const allArticles = [
     metadata: {
       title: 'Analyser un diagnostic de vulnérabilité',
       description:
-        'Relisez votre diagnostic de vulnérabilité aux effets du changement climatique en 10 minutes : repérez les données utiles et les enjeux clés.'
+        'Relisez votre diagnostic de vulnérabilité aux effets du changement climatique en 10 minutes : repérez les données utiles et les enjeux clés.'
     }
   },
   {
@@ -43,7 +44,7 @@ export const allArticles = [
     slug: 'facilitation-ateliers-mobilisation',
     Component: FacilitationDateliers,
     metadata: {
-      title: 'La facilitation d’ateliers : une démarche éprouvée d’engagement',
+      title: 'La facilitation d’ateliers : une démarche éprouvée d’engagement',
       description:
         'Découvrez comment la facilitation d’ateliers peut renforcer l’engagement des parties prenantes dans l’adaptation.'
     }
@@ -70,7 +71,7 @@ export const allArticles = [
     slug: 'ateliers-adacc-adaptation',
     Component: Adacc,
     metadata: {
-      title: 'Sensibiliser à l’adaptation : les AdACC',
+      title: 'Sensibiliser à l’adaptation : les AdACC',
       description:
         'Présentation des Ateliers de l’Adaptation au Changement Climatique (AdACC) pour sensibiliser les acteurs.'
     }
@@ -99,9 +100,9 @@ export const allArticles = [
     Component: IlotChaleurUrbain,
     metadata: {
       title:
-        'Îlot de chaleur urbain : 4 idées reçues à déjouer pour mieux agir sur le terrain',
+        'Îlot de chaleur urbain : 4 idées reçues à déjouer pour mieux agir sur le terrain',
       description:
-        'Îlot de chaleur urbain : 4 idées reçues à déjouer pour mieux comprendre le phénomène, cibler les bons diagnostics et adapter l’action aux enjeux'
+        'Îlot de chaleur urbain : 4 idées reçues à déjouer pour mieux comprendre le phénomène, cibler les bons diagnostics et adapter l’action aux enjeux'
     }
   },
   {
@@ -117,9 +118,19 @@ export const allArticles = [
     slug: 'briser-silos-approche-systemique',
     Component: BriserSilosApprocheSystemique,
     metadata: {
-      title: 'Brisez les silos : introduction à l’approche systémique',
+      title: 'Brisez les silos : introduction à l’approche systémique',
       description:
         'Comprendre les interactions au sein de votre système est essentiel pour éviter les maladaptations. L’approche systémique vous accompagne de l’identification jusqu’à la mobilisation.'
+    }
+  },
+  {
+    slug: 'indicateurs-resilience-agriculture',
+    Component: IndicateursDeResilience,
+    metadata: {
+      title:
+        'Indicateurs de résilience de l’agriculture face au changement climatique',
+      description:
+        '22 indicateurs pour aider les chargés de mission climat à évaluer la résilience agricole et repérer les vulnérabilités au changement climatique.'
     }
   }
 ];

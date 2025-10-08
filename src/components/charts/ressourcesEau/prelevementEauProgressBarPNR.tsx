@@ -1,5 +1,4 @@
 'use client';
-
 import eclair_icon_black from '@/assets/icons/themes/eclair_icon_black.svg';
 import flocon_icon_black from '@/assets/icons/themes/flocon_icon_black.svg';
 import robinet_icon_black from '@/assets/icons/themes/robinet_icon_black.svg';
@@ -8,14 +7,16 @@ import usine_icon_black from '@/assets/icons/themes/usine_icon_black.svg';
 import vagues_icon_black from '@/assets/icons/themes/vagues_icon_black.svg';
 import GraphNotFound from '@/assets/images/data_not_found_prelevement.png';
 import DataNotFound from '@/components/graphDataNotFound';
-import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
-import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
+import { ArrowHtmlTooltip } from '@/components/utils/Tooltips';
+import { Body, H4 } from '@/design-system/base/Textes';
+import couleurs from '@/design-system/couleurs';
 import { RessourcesEau } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { Progress } from 'antd';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
+import styles from './eau.module.scss';
 
 const SumFiltered = (
   data: RessourcesEau[],
@@ -69,7 +70,7 @@ const PrelevementEauProgressBarsPNR = ({
         type,
         'agriculture'
       ),
-      color: '#00C190'
+      color: couleurs.graphiques.vert[2]
     },
     {
       titre: 'Eau potable',
@@ -81,7 +82,7 @@ const PrelevementEauProgressBarsPNR = ({
         type,
         'potable'
       ),
-      color: '#009ADC'
+      color: couleurs.graphiques.bleu[2]
     },
     {
       titre: 'Industrie et autres usages économiques',
@@ -93,7 +94,7 @@ const PrelevementEauProgressBarsPNR = ({
         type,
         'industrie'
       ),
-      color: '#7A49BE'
+      color: couleurs.graphiques.violet[2]
     },
     {
       titre: 'Refroidissement des centrales électriques',
@@ -105,7 +106,7 @@ const PrelevementEauProgressBarsPNR = ({
         type,
         'refroidissement'
       ),
-      color: '#BB43BD'
+      color: couleurs.graphiques.rose[2]
     },
     {
       titre: 'Alimentation des canaux',
@@ -117,7 +118,7 @@ const PrelevementEauProgressBarsPNR = ({
         type,
         'alimentation'
       ),
-      color: '#00C2CC'
+      color: couleurs.graphiques.turquoise[2]
     },
     {
       titre: "Production d'électricité (barrages hydro-électriques)",
@@ -129,7 +130,7 @@ const PrelevementEauProgressBarsPNR = ({
         type,
         'production'
       ),
-      color: '#FFCF5E'
+      color: couleurs.graphiques.orange[2]
     }
   ];
 
@@ -146,18 +147,21 @@ const PrelevementEauProgressBarsPNR = ({
           {data
             .sort((a, b) => b.sumTerritoire - a.sumTerritoire)
             .map((item, index) => (
-              <HtmlTooltip
+              <ArrowHtmlTooltip
                 title={
-                  <div className={styles.tooltip}>
-                    <h3>{item.titre}</h3>
-                    <p>
+                  <>
+                    <div className='flex flex-row g-4 items-center mb-2'>
+                      <div className={styles.colorSquare} style={{ backgroundColor: item.color }} />
+                      <H4 style={{ fontSize: '1rem', marginBottom: "0" }}>{item.titre}</H4>
+                    </div>
+                    <Body size='sm'>
                       {libelle} :{' '}
                       <b>
                         {Round((100 * item.sumTerritoire) / total, 2)} %
                       </b>{' '}
                       ({Round(item.sumTerritoire / 1000000, 2)} Mm3)
-                    </p>
-                  </div>
+                    </Body>
+                  </>
                 }
                 key={index}
                 placement="top"
@@ -166,7 +170,7 @@ const PrelevementEauProgressBarsPNR = ({
                   <div className={styles.progressDesign}>
                     {item.icon}
                     <div className={styles.progressBar}>
-                      <p>{item.titre}</p>
+                      <Body size='xs' style={{ textTransform: 'uppercase', lineHeight: "0.875rem" }}>{item.titre}</Body>
                       <div className={styles.barMarker}>
                         <Progress
                           percent={Number((100 * item.sumTerritoire) / total)}
@@ -181,19 +185,21 @@ const PrelevementEauProgressBarsPNR = ({
                     </div>
                   </div>
                   <div className={styles.progressNumbers}>
-                    <p>
-                      <b>
-                        {Round((100 * item.sumTerritoire) / total, 2)} %
-                      </b>
-                    </p>
-                    <p>{Round(item.sumTerritoire / 1000000, 2)} Mm3</p>
+                    <Body size='xs' weight='bold' style={{ lineHeight: "0.875rem" }}>
+                      {Round((100 * item.sumTerritoire) / total, 2)} %
+                    </Body>
+                    <Body size='xs' style={{ lineHeight: "0.875rem" }}>
+                      {Round(item.sumTerritoire / 1000000, 2)} Mm3
+                    </Body>
                   </div>
                 </div>
-              </HtmlTooltip>
+              </ArrowHtmlTooltip>
             ))}
         </>
       ) : (
-        <DataNotFound image={GraphNotFound} />
+        <div className='p-1 flex flex-row justify-center'>
+          <DataNotFound image={GraphNotFound} />
+        </div>
       )}
     </div>
   );

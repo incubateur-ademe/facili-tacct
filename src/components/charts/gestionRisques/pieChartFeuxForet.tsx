@@ -1,12 +1,15 @@
 // @ts-nocheck
 'use client';
 
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { IncendiesForet } from '@/lib/postgres/models';
 import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
-import { Any } from '@/lib/utils/types';
-import { DefaultRawDatum, PieCustomLayerProps, ResponsivePie } from '@nivo/pie';
+import { DefaultRawDatum, PieCustomLayerProps } from '@nivo/pie';
 import { animated } from '@react-spring/web';
+import styles from '../charts.module.scss';
+import { simplePieChartTooltip } from '../ChartTooltips';
+import NivoPieChart from '../NivoPieChart';
 
 const colors: { [key: string]: string } = {
   Malveillance: '#91D1CC',
@@ -19,6 +22,7 @@ const colors: { [key: string]: string } = {
 
 const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   const { incendiesForet } = props;
+  const windowDimensions = useWindowDimensions();
   const countTypes = CountOcc(incendiesForet, 'nature');
   countTypes['Inconnue'] = countTypes['null'] ?? 0;
   const causesInconnues = countTypes['null'];
@@ -64,7 +68,10 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
     );
   };
 
-  const arcLabelsComponent = ({ datum, label, style }: Any) => {
+  const arcLabelsComponent = ({ datum, label, style }: ArcLinkLabelComponent<ComputedDatum<{
+    id: string;
+    value: number;
+  }>>) => {
     return (
       <animated.g style={style}>
         <animated.path
@@ -81,7 +88,35 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
             fontWeight: 400
           }}
         >
-          <animated.tspan>{label} </animated.tspan>
+          <animated.tspan>
+            {(() => {
+              if (label.length <= 15) {
+                return label;
+              }
+              // Trouver le dernier espace avant ou à la position 15
+              const breakPoint = label.lastIndexOf(' ', 15);
+              // Si aucun espace n'est trouvé dans les 15 premiers caractères, chercher le premier espace après
+              if (breakPoint === -1) {
+                const nextSpace = label.indexOf(' ', 15);
+                if (nextSpace === -1) {
+                  // Pas d'espace trouvé, retourner le label complet
+                  return label;
+                }
+                return (
+                  <>
+                    {label.slice(0, nextSpace)}
+                    <tspan x="0" dy="1.2em">{label.slice(nextSpace + 1)}</tspan>
+                  </>
+                );
+              }
+              return (
+                <>
+                  {label.slice(0, breakPoint)}
+                  <tspan x="0" dy="1.2em">{label.slice(breakPoint + 1)}</tspan>
+                </>
+              );
+            })()}
+          </animated.tspan>
           <animated.tspan style={{ fontWeight: 600 }} x="0" dy="1.2em">
             {datum.value}{' '}
           </animated.tspan>
@@ -95,12 +130,15 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   };
 
   return (
-    <div
-      style={{ height: '400px', minWidth: '450px', backgroundColor: 'white' }}
-    >
-      <ResponsivePie
+    <div className={styles.responsivePieContainer}>
+      <NivoPieChart
+        graphData={graphData}
+        colors={(graphData) => colors[graphData.id]}
+        tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: 'ha' })}
+      />
+      {/* <ResponsivePie
         data={graphData}
-        margin={{ top: 60, right: 80, bottom: 60, left: 80 }}
+        margin={{ top: windowDimensions.width > 1248 ? 60 : 20, right: 10, bottom: windowDimensions.width > 1248 ? 60 : 20, left: 10 }}
         colors={(graphData) => colors[graphData.id]}
         isInteractive={true}
         innerRadius={0.5}
@@ -109,7 +147,7 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
         activeOuterRadiusOffset={8}
         borderWidth={1}
         arcLinkLabelComponent={arcLabelsComponent}
-        // arcLinkLabel={({ id }) => `${id}`}
+        enableArcLinkLabels={windowDimensions.width > 1248 ? true : false}
         sortByValue={false}
         layers={['arcs', 'arcLinkLabels', 'legends']} //, CenteredMetric
         borderColor={{
@@ -121,9 +159,10 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
         arcLinkLabelsThickness={2}
         arcLinkLabelsColor={{ from: 'color' }}
         arcLinkLabelsOffset={10}
-        arcLinkLabelsDiagonalLength={16}
+        arcLinkLabelsDiagonalLength={12}
         arcLinkLabelsStraightLength={20}
-      />
+        tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: 'ha' })}
+      /> */}
     </div>
   );
 };

@@ -1,8 +1,9 @@
 'use client';
 
+import { Body } from '@/design-system/base/Textes';
 import { CommunesIndicateursDto } from '@/lib/dto';
-import styles from '../../themes/gestionRisques/gestionRisques.module.scss';
 import './legend.css';
+import styles from './mapsComponents.module.scss';
 
 interface Props {
   data: string;
@@ -227,36 +228,36 @@ export const LegendCatnat = (props: Props) => {
               ></div>
               {index === 0 ? (
                 step0.at(-1) === 1 ? (
-                  <p>1</p>
+                  <Body size="sm">1</Body>
                 ) : (
-                  <p>&#8804;{step0.at(-1)}</p>
+                  <Body size="sm">&#8804;{step0.at(-1)}</Body>
                 )
               ) : index === 1 ? (
                 step1.at(0) === step1.at(-1) ? (
-                  <p>{step1.at(0)}</p>
+                  <Body size="sm">{step1.at(0)}</Body>
                 ) : (
-                  <p>
+                  <Body size="sm">
                     {step1.at(0)}-{step1.at(-1)}
-                  </p>
+                  </Body>
                 )
               ) : index === 2 ? (
                 step2.at(0) === step2.at(-1) ? (
-                  <p>{step2.at(0)}</p>
+                  <Body size="sm">{step2.at(0)}</Body>
                 ) : (
-                  <p>
+                  <Body size="sm">
                     {step2.at(0)}-{step2.at(-1)}
-                  </p>
+                  </Body>
                 )
               ) : index === 3 ? (
                 step3.at(0) === step3.at(-1) ? (
-                  <p>{step3.at(0)}</p>
+                  <Body size="sm">{step3.at(0)}</Body>
                 ) : (
-                  <p>
+                  <Body size="sm">
                     {step3.at(0)}-{step3.at(-1)}
-                  </p>
+                  </Body>
                 )
               ) : (
-                <p>&#x2265;{step4.at(0)}</p>
+                <Body size="sm">&#x2265;{step4.at(0)}</Body>
               )}
             </div>
           );

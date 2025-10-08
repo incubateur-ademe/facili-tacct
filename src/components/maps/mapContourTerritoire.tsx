@@ -14,7 +14,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useRef, useState } from 'react';
 import { GeoJSON } from 'react-leaflet';
-import { Loader } from '../loader';
+import { Loader } from '../ui/loader';
 
 export const MapContourTerritoire = (props: {
   territoireContours: CommunesContoursDto[];
@@ -66,7 +66,7 @@ export const MapContourTerritoire = (props: {
 
   return (
     <>
-      {bounds[0] != 0 ? (
+      {bounds[0] !== 0 ? (
         <MapContainer
           ref={mapRef}
           style={{

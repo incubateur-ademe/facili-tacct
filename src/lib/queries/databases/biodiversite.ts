@@ -93,6 +93,7 @@ export const GetConsommationNAF = async (
   const column = ColumnCodeCheck(type);
   const dbQuery = (async () => {
     try {
+      console.time('Query Execution Time NAF');
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.consommation_espaces_naf.findFirst({
@@ -140,6 +141,8 @@ export const GetConsommationNAF = async (
       // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
+    } finally {
+      console.timeEnd('Query Execution Time NAF');
     }
   })();
   return Promise.race([dbQuery, timeoutPromise]);
@@ -164,3 +167,49 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
   })();
   return Promise.race([dbQuery, timeoutPromise]);
 };
+
+// export const GetSurfacesProtegees = async (
+//   code: string,
+//   libelle: string,
+//   type: string
+// ): Promise<any[]> => {
+//   const timeoutPromise = new Promise<[]>((resolve) =>
+//     setTimeout(() => {
+//       resolve([]);
+//     }, 3000)
+//   );
+//   const column = ColumnCodeCheck(type);
+//   const dbQuery = (async () => {
+//     try {
+//       // Fast existence check
+//       if (!libelle || !type || (!code && type !== 'petr')) return [];
+//       const exists = await prisma.surfaces_protegees.findFirst({
+//         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+//       });
+//       if (!exists) return [];
+//       else {
+//         if (type === 'petr' || eptRegex.test(libelle)) {
+//           const value = await prisma.surfaces_protegees.findMany({
+//             where: {
+//               [type === 'petr' ? 'libelle_petr' : 'ept']: libelle
+//             }
+//           });
+//           return value;
+//         } else {
+//           const value = await prisma.surfaces_protegees.findMany({
+//             where: {
+//               [column]: type === 'petr' || type === 'ept' ? libelle : code
+//             }
+//           });
+//           return value;
+//         }
+//       }
+//     } catch (error) {
+//       console.error(error);
+//       // prisma.$disconnect();
+//       Sentry.captureException(error);
+//       return [];
+//     }
+//   })();
+//   return Promise.race([dbQuery, timeoutPromise]);
+// };

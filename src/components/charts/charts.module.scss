@@ -1,24 +1,36 @@
+// Dataviz
+
+.responsivePieContainer {
+    width: 100%;
+    height: 0;
+    position: relative;
+    background-color: white;
+    border-radius: 1rem 0 1rem 0;
+    overflow: visible;
+    padding-bottom: 60%;
+
+    /* le SVG interne produit par nivo sera positionné absolument pour remplir le conteneur */
+    & > :global(svg),
+    & > :global(div) {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+// Tooltip
+
 .tooltipEvolutionWrapper {
+    width: max-content;
     font-family: 'Marianne';
     background-color: #ffffff;
-    border-radius: 0.5rem;
-    padding: 20px;
+    border-radius: 6px;
+    padding: 1rem;
     position: relative;
     right: 8rem;
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16);
-    color: #3a3a3a;
-    p {
-        font-size: 0.75rem;
-        font-weight: 400;
-        line-height: 20px;
-        margin: 0;
-    }
-    h3 {
-        font-size: 0.75rem;
-        font-weight: 700;
-        line-height: 20px;
-        margin: 0 0 1rem;
-    }
     .itemWrapper {
         display: flex;
         flex-direction: row;
@@ -42,6 +54,23 @@
             }
         }
     }
+}
+
+.graphTooltipWrapper {
+    background-color: #ffffff;
+    color: black;
+    max-width: 600px;
+    width: fit-content;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16);
+    padding: 0.5rem 0.75rem;
+    font-family: 'Marianne';
+    font-size: 0.875rem;
+    border-radius: 6px;
+    line-height: 1.25rem;
+    font-weight: 400;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
 }
 
 // Accordion
@@ -167,4 +196,58 @@
         border-style: solid;
         border-color: white transparent transparent transparent;
     }
+}
+
+// Micro Dataviz
+
+.microPieChartWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.875rem;
+}
+
+.microChartText {
+    position: absolute;
+    text-align: center;
+}
+
+.microNumberCircleWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.875rem;
+}
+
+.cercleIndividuel {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 1px;
+}
+
+.microCircleGridWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 90px;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.circleGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    row-gap: 3px;
+    column-gap: 3px;
+    margin-top: 4px;
+    justify-items: center;
+    align-items: center;
+}
+
+.microCubeWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    align-items: center;
 }

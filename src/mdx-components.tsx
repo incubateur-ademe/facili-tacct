@@ -6,7 +6,7 @@ import { getLabelFromChildren } from '@/lib/utils/react';
 import { slugify } from '@/lib/utils/string';
 
 import { CTA } from './CTA';
-import { AnchorLink } from './dsfr/client';
+import { AnchorLink } from './design-system/client';
 
 export const anchorHeadingMDXComponents: MDXComponents = {
   h1: (props) => (
@@ -20,6 +20,7 @@ export const anchorHeadingMDXComponents: MDXComponents = {
     <AnchorLink
       as="h2"
       anchor={slugify(getLabelFromChildren(props.children))}
+      style={{ margin: '3rem 0 1.5rem' }}
       {...props}
     />
   ),
@@ -27,6 +28,7 @@ export const anchorHeadingMDXComponents: MDXComponents = {
     <AnchorLink
       as="h3"
       anchor={slugify(getLabelFromChildren(props.children))}
+      style={{ margin: '1rem 0 0.5rem' }}
       {...props}
     />
   )

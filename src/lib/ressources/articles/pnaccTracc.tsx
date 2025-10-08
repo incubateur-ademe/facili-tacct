@@ -4,6 +4,7 @@ import BulbIcon from '@/assets/icons/lightbulb_icon_black.svg';
 import TRACC from "@/assets/images/tracc.png";
 import TRACCMesures1 from "@/assets/images/tracc_51_mesures1.png";
 import TRACCMesures2 from "@/assets/images/tracc_51_mesures2.png";
+import { RetourHautDePage } from '@/components/interactions/RetourHautDePage';
 import Image from "next/image";
 import Link from 'next/link';
 import EndPageTrigger from "../../../hooks/EndPageTrigger";
@@ -12,6 +13,7 @@ import styles from "./article.module.scss";
 const PnaccTracc = () => {
   return (
     <>
+      <RetourHautDePage />
       <div className={styles.textBloc} style={{ paddingTop: "0rem" }}>
         <h1>PNACC, TRACC, Comment suis-je concerné ?</h1>
         <div className={styles.blueWrapper}>
@@ -208,26 +210,24 @@ const PnaccTracc = () => {
               <div>
                 <ul>
                   <li>
-                    Le {' '}
+                    Le lien d’accès au {' '}
                     <Link
-                      href="https://www.ecologie.gouv.fr/rendez-vous/plan-national-dadaptation-changement-climatique-ouverture-consultation-publique"
+                      href="https://www.ecologie.gouv.fr/politiques-publiques/adaptation-france-changement-climatique"
                       target="_blank"
                       rel="noreferrer"
                     >
-                      lien d’accès
+                      PNACC
                     </Link>
-                    {" "}à la consultation du PNACC
                   </li>
                   <li>
-                    Le {' '}
+                    Le lien pour en savoir plus sur la {' '}
                     <Link
-                      href="https://www.ccomptes.fr/sites/default/files/2024-03/20240312-syntheses-RPA-2024.pdf"
+                      href="https://meteofrance.com/changement-climatique/quel-climat-futur/le-climat-futur-en-france"
                       target="_blank"
                       rel="noreferrer"
                     >
-                      lien
+                      TRACC
                     </Link>
-                    {" "}pour en savoir plus sur la TRACC
                   </li>
                   <li>
                     Le lien vers la {' '}

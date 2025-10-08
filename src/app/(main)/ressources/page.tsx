@@ -1,7 +1,8 @@
-import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { Metadata } from 'next';
-import { Container } from '../../../dsfr/server';
+import { Suspense } from 'react';
+import { Container } from '../../../design-system/server';
 import RessourcesCards from './cards';
+import styles from './ressources.module.scss';
 
 export const metadata: Metadata = {
   title: 'Ressources',
@@ -10,15 +11,10 @@ export const metadata: Metadata = {
 
 const Ressources = () => {
   return (
-    <Container size="xl" className="mb-24">
-      <Breadcrumb
-        currentPageLabel="Ressources"
-        homeLinkProps={{
-          href: '/'
-        }}
-        segments={[]}
-      />
-      <RessourcesCards />
+    <Container size="xl" className={styles.ressourcesContainer}>
+      <Suspense>
+        <RessourcesCards />
+      </Suspense>
     </Container>
   );
 };
