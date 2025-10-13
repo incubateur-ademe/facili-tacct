@@ -6,7 +6,7 @@ import { Loader } from "@/components/ui/loader";
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { travailExtMapper } from "@/lib/mapper/inconfortThermique";
-import { InconfortThermique } from "@/lib/postgres/models";
+import { ConfortThermique } from "@/lib/postgres/models";
 import { TravailExterieurText } from '@/lib/staticTexts';
 import { travailExterieurTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
@@ -22,7 +22,7 @@ import { SourceExport } from '../SourceExport';
 export const EmploisEnExterieur = ({
   inconfortThermique
 }: {
-  inconfortThermique: InconfortThermique[];
+  inconfortThermique: ConfortThermique[];
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
