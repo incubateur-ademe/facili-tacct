@@ -20,21 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
-<<<<<<< HEAD
- * Prisma Client JS version: 6.17.0
- * Query Engine version: c0aafc03b8ef6cdced8654b9a817999e02457d6a
- */
-Prisma.prismaVersion = {
-  client: "6.17.0",
-  engine: "c0aafc03b8ef6cdced8654b9a817999e02457d6a"
-=======
  * Prisma Client JS version: 6.17.1
  * Query Engine version: 272a37d34178c2894197e17273bf937f25acdeac
  */
 Prisma.prismaVersion = {
   client: "6.17.1",
   engine: "272a37d34178c2894197e17273bf937f25acdeac"
->>>>>>> dev
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -660,8 +651,6 @@ exports.Prisma.Postgis_rgaScalarFieldEnum = {
   code_geographique: 'code_geographique'
 };
 
-<<<<<<< HEAD
-=======
 exports.Prisma.Sandbox_usersScalarFieldEnum = {
   username: 'username',
   pk: 'pk',
@@ -669,7 +658,6 @@ exports.Prisma.Sandbox_usersScalarFieldEnum = {
   created_at: 'created_at'
 };
 
->>>>>>> dev
 exports.Prisma.UsersScalarFieldEnum = {
   pk: 'pk',
   email: 'email',
@@ -698,8 +686,6 @@ exports.Prisma.Export_cours_d_eauScalarFieldEnum = {
   longueur: 'longueur'
 };
 
-<<<<<<< HEAD
-=======
 exports.Prisma.Confort_thermiqueScalarFieldEnum = {
   index: 'index',
   code_geographique: 'code_geographique',
@@ -758,7 +744,6 @@ exports.Prisma.Confort_thermiqueScalarFieldEnum = {
   superf_choro: 'superf_choro'
 };
 
->>>>>>> dev
 exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
   srid: 'srid',
   auth_name: 'auth_name',
@@ -767,16 +752,6 @@ exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
   proj4text: 'proj4text'
 };
 
-<<<<<<< HEAD
-exports.Prisma.Sandbox_usersScalarFieldEnum = {
-  username: 'username',
-  pk: 'pk',
-  password: 'password',
-  created_at: 'created_at'
-};
-
-=======
->>>>>>> dev
 exports.Prisma.Geography_columnsScalarFieldEnum = {
   coord_dimension: 'coord_dimension',
   srid: 'srid',
@@ -879,18 +854,11 @@ exports.Prisma.ModelName = {
   erosion_cotiere: 'erosion_cotiere',
   etat_cours_d_eau: 'etat_cours_d_eau',
   postgis_rga: 'postgis_rga',
-<<<<<<< HEAD
-  users: 'users',
-  export_cours_d_eau: 'export_cours_d_eau',
-  spatial_ref_sys: 'spatial_ref_sys',
-  sandbox_users: 'sandbox_users',
-=======
   sandbox_users: 'sandbox_users',
   users: 'users',
   export_cours_d_eau: 'export_cours_d_eau',
   confort_thermique: 'confort_thermique',
   spatial_ref_sys: 'spatial_ref_sys',
->>>>>>> dev
   geography_columns: 'geography_columns',
   geometry_columns: 'geometry_columns',
   pg_stat_statements_info: 'pg_stat_statements_info',
