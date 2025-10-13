@@ -12,20 +12,21 @@ import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
+import { AtlasBiodiversiteModel, CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
 import { SolsImpermeabilisesText } from '@/lib/staticTexts';
+import { SolsImpermeabilisesBiodiversiteDynamicText } from '@/lib/textesIndicateurs/biodiversiteDynamicTexts';
 import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
 import { consommationEspacesNafDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
-import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import styles from '../../explorerDonnees.module.scss';
 
 export const SolsImpermeabilises = (props: {
   consommationNAF: ConsommationNAF[];
   carteCommunes: CarteCommunes[];
+  atlasBiodiversite: AtlasBiodiversiteModel[];
 }) => {
-  const { consommationNAF, carteCommunes } = props;
+  const { consommationNAF, carteCommunes, atlasBiodiversite } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -57,21 +58,15 @@ export const SolsImpermeabilises = (props: {
           <div className={styles.chiffreDynamiqueWrapper}>
             <MicroNumberCircle valeur={sumNaf / 10000} arrondi={1} unite='ha' />
             <div className={styles.text}>
-              {
-                sumNaf && sumNaf !== 0 ? (
-                  <>
-                    <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                      Entre 2009 et 2023, votre territoire a consommé{' '}
-                      <b>{Round(sumNaf / 10000, 1)} hectare(s)</b> d’espaces naturels
-                      et forestiers.{' '}
-                    </Body>
-                    <CustomTooltipNouveauParcours
-                      title={espacesNAFTooltipText}
-                      texte="D'où vient ce chiffre ?"
-                    />
-                  </>
-                ) : ""
-              }
+              <SolsImpermeabilisesBiodiversiteDynamicText 
+                sumNaf={sumNaf} 
+                atlasBiodiversite={atlasBiodiversite}
+                type={type}
+              />
+              <CustomTooltipNouveauParcours
+                title={espacesNAFTooltipText}
+                texte="D'où vient ce chiffre ?"
+              />
             </div>
           </div>
           <div className='mt-4 pr-5'>

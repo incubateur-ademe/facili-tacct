@@ -54,6 +54,11 @@ export const sourcesEtudes = {
       url: 'https://eur-lex.europa.eu/legal-content/FR/TXT/PDF/?uri=CELEX:52021DC0699',
       texte:
         'Communication de la Commission du 17 novembre 2021 : "Stratégie de l\'UE pour les sols à l\'horizon 2030" (COM(2021) 699 final)'
+    },
+    {
+      numero: 3,
+      url: 'https://baignades.sante.gouv.fr/baignades/editorial/fr/actualites/Bilan_national_QEB_2024_vf.pdf',
+      texte: 'Pour en savoir plus sur les eaux de baignade'
     }
   ]
 };
