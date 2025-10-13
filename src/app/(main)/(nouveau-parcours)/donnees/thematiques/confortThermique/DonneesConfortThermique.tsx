@@ -107,8 +107,8 @@ const DonneesConfortThermique = ({
             <GrandAge inconfortThermique={data.inconfortThermique} />
           </div>
 
-          {/* Grand âge 75 */}
-          <div id="Grand âge 75" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+          {/* Grand âge */}
+          <div id="Grand âge" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Évolution de la part des 75 ans et plus dans la population
