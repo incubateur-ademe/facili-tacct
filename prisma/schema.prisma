@@ -709,7 +709,7 @@ model postgis_rga {
 
 model sandbox_users {
   username   String   @db.VarChar(128)
-  pk         Int      @id
+  pk         Int      @id @default(autoincrement())
   password   String   @db.VarChar(512)
   created_at DateTime @db.Timestamptz(6)
 
@@ -718,8 +718,8 @@ model sandbox_users {
 
 model users {
   pk              Int       @id
-  email           String    @db.VarChar(256)
-  username        String    @db.VarChar(256)
+  email           String    @unique(map: "email") @db.VarChar(256)
+  username        String    @unique(map: "username") @db.VarChar(256)
   password        String    @db.VarChar(256)
   created_at      DateTime  @db.Timestamp(6)
   last_connection DateTime? @db.Timestamp(6)
