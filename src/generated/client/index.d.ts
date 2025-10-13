@@ -43787,17 +43787,17 @@ export namespace Prisma {
 
   export type usersWhereUniqueInput = Prisma.AtLeast<{
     pk?: number
+    email?: string
+    username?: string
     password_email?: usersPasswordEmailCompoundUniqueInput
     AND?: usersWhereInput | usersWhereInput[]
     OR?: usersWhereInput[]
     NOT?: usersWhereInput | usersWhereInput[]
-    email?: StringFilter<"users"> | string
-    username?: StringFilter<"users"> | string
     password?: StringFilter<"users"> | string
     created_at?: DateTimeFilter<"users"> | Date | string
     last_connection?: DateTimeNullableFilter<"users"> | Date | string | null
     role?: StringFilter<"users"> | string
-  }, "pk" | "password_email">
+  }, "pk" | "email" | "username" | "password_email">
 
   export type usersOrderByWithAggregationInput = {
     pk?: SortOrder
@@ -48293,21 +48293,19 @@ export namespace Prisma {
 
   export type sandbox_usersCreateInput = {
     username: string
-    pk: number
     password: string
     created_at: Date | string
   }
 
   export type sandbox_usersUncheckedCreateInput = {
     username: string
-    pk: number
+    pk?: number
     password: string
     created_at: Date | string
   }
 
   export type sandbox_usersUpdateInput = {
     username?: StringFieldUpdateOperationsInput | string
-    pk?: IntFieldUpdateOperationsInput | number
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -48321,14 +48319,13 @@ export namespace Prisma {
 
   export type sandbox_usersCreateManyInput = {
     username: string
-    pk: number
+    pk?: number
     password: string
     created_at: Date | string
   }
 
   export type sandbox_usersUpdateManyMutationInput = {
     username?: StringFieldUpdateOperationsInput | string
-    pk?: IntFieldUpdateOperationsInput | number
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
