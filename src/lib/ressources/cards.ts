@@ -419,7 +419,7 @@ export const cards = {
       tag: 'Article',
       description:
         '22 indicateurs pour aider les chargés de mission climat à évaluer la résilience agricole et repérer les vulnérabilités au changement climatique.',
-      link: '/ressources/articles/indicateurs-resilience-agriculture'
+      link: '/ressources/articles/resilience-agricole-indicateurs-territoire'
     }
   ],
   inconfortThermique: [

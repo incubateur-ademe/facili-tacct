@@ -125,7 +125,7 @@ export const GrandAge = ({
                 sheetName="Grand âge"
               />
             }
-            source='Observatoire des territoires'
+            source='INSEE, décembre 2024'
             condition={!Object.values(yData).slice(0, -2).includes('NaN')}
           />
         </div>
