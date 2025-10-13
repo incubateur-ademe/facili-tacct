@@ -45,3 +45,11 @@ export const otex = (
     dominante observée, c’est-à-dire générant au moins les deux tiers de la production brute standard.
   </span>
 );
+
+export const directiveCadreSurLeau = (
+  <span>
+    <a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000330631" target="_blank" rel="noopener noreferrer">Directive</a> 2000/60/CE 
+    du Parlement européen et du Conseil du 23 octobre 2000 établissant un
+    cadre pour une politique communautaire dans le domaine de l'eau.
+  </span>
+);
