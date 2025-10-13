@@ -124,7 +124,7 @@ export const allArticles = [
     }
   },
   {
-    slug: 'indicateurs-resilience-agriculture',
+    slug: 'resilience-agricole-indicateurs-territoire',
     Component: IndicateursDeResilience,
     metadata: {
       title:

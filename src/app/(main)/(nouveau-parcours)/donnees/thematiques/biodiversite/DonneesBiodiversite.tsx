@@ -3,10 +3,10 @@ import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { SourcesSection } from "@/components/interactions/scrollToSource";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { AgricultureBio, AOT40, CarteCommunes, CLCTerritoires, ConsommationNAF, EtatCoursDeau, InconfortThermique, QualiteSitesBaignade, SurfacesAgricolesModel } from "@/lib/postgres/models";
+import { AgricultureBio, AOT40, CarteCommunes, CLCTerritoires, ConfortThermique, ConsommationNAF, EtatCoursDeau, QualiteSitesBaignade, SurfacesAgricolesModel } from "@/lib/postgres/models";
 import { GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
 import { GetAgricultureBio, GetAOT40, GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
-import { GetInconfortThermique } from "@/lib/queries/databases/inconfortThermique";
+import { GetConfortThermique } from "@/lib/queries/databases/inconfortThermique";
 import { GetQualiteEauxBaignade } from "@/lib/queries/databases/ressourcesEau";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
@@ -28,7 +28,7 @@ interface Props {
   aot40: AOT40[];
   etatCoursDeau: EtatCoursDeau[];
   qualiteEauxBaignade: QualiteSitesBaignade[];
-  inconfortThermique: InconfortThermique[];
+  inconfortThermique: ConfortThermique[];
   surfacesAgricoles: SurfacesAgricolesModel[];
 }
 
@@ -95,7 +95,7 @@ export const DonneesBiodiversite = ({
         GetAOT40(),
         GetEtatCoursDeau(code, libelle, type),
         GetQualiteEauxBaignade(code, libelle, type),
-        GetInconfortThermique(code, libelle, type),
+        GetConfortThermique(code, libelle, type),
         GetSurfacesAgricoles(code, libelle, type)
       ]);
       setData({
@@ -214,7 +214,7 @@ export const DonneesBiodiversite = ({
             {ongletsMenu.thematiquesLiees[3].icone}{" "}{ongletsMenu.thematiquesLiees[3].thematique}
           </H2>
           {/* État écologique des cours d'eau */}
-          <div id="État écologique des cours d'eau" className={styles.indicateurMapWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+          <div id="État des cours d'eau" className={styles.indicateurMapWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 État écologique des cours d’eau et des plans d’eau

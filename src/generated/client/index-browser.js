@@ -20,12 +20,21 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
+<<<<<<< HEAD
  * Prisma Client JS version: 6.17.0
  * Query Engine version: c0aafc03b8ef6cdced8654b9a817999e02457d6a
  */
 Prisma.prismaVersion = {
   client: "6.17.0",
   engine: "c0aafc03b8ef6cdced8654b9a817999e02457d6a"
+=======
+ * Prisma Client JS version: 6.17.1
+ * Query Engine version: 272a37d34178c2894197e17273bf937f25acdeac
+ */
+Prisma.prismaVersion = {
+  client: "6.17.1",
+  engine: "272a37d34178c2894197e17273bf937f25acdeac"
+>>>>>>> dev
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -651,6 +660,16 @@ exports.Prisma.Postgis_rgaScalarFieldEnum = {
   code_geographique: 'code_geographique'
 };
 
+<<<<<<< HEAD
+=======
+exports.Prisma.Sandbox_usersScalarFieldEnum = {
+  username: 'username',
+  pk: 'pk',
+  password: 'password',
+  created_at: 'created_at'
+};
+
+>>>>>>> dev
 exports.Prisma.UsersScalarFieldEnum = {
   pk: 'pk',
   email: 'email',
@@ -679,6 +698,67 @@ exports.Prisma.Export_cours_d_eauScalarFieldEnum = {
   longueur: 'longueur'
 };
 
+<<<<<<< HEAD
+=======
+exports.Prisma.Confort_thermiqueScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  age_bati_post06: 'age_bati_post06',
+  age_bati_91_05: 'age_bati_91_05',
+  age_bati_46_90: 'age_bati_46_90',
+  age_bati_19_45: 'age_bati_19_45',
+  age_bati_pre_19: 'age_bati_pre_19',
+  under_4_sum_1968: 'under_4_sum_1968',
+  to_75_sum_1968: 'to_75_sum_1968',
+  over_75_sum_1968: 'over_75_sum_1968',
+  under_4_sum_1975: 'under_4_sum_1975',
+  to_75_sum_1975: 'to_75_sum_1975',
+  over_75_sum_1975: 'over_75_sum_1975',
+  under_4_sum_1982: 'under_4_sum_1982',
+  to_75_sum_1982: 'to_75_sum_1982',
+  over_75_sum_1982: 'over_75_sum_1982',
+  under_4_sum_1990: 'under_4_sum_1990',
+  to_75_sum_1990: 'to_75_sum_1990',
+  over_75_sum_1990: 'over_75_sum_1990',
+  under_4_sum_1999: 'under_4_sum_1999',
+  to_75_sum_1999: 'to_75_sum_1999',
+  over_75_sum_1999: 'over_75_sum_1999',
+  under_4_sum_2009: 'under_4_sum_2009',
+  to_75_sum_2009: 'to_75_sum_2009',
+  over_75_sum_2009: 'over_75_sum_2009',
+  under_4_sum_2014: 'under_4_sum_2014',
+  to_75_sum_2014: 'to_75_sum_2014',
+  over_75_sum_2014: 'over_75_sum_2014',
+  under_4_sum_2020: 'under_4_sum_2020',
+  to_75_sum_2020: 'to_75_sum_2020',
+  over_75_sum_2020: 'over_75_sum_2020',
+  tee_log: 'tee_log',
+  tee_mob: 'tee_mob',
+  precarite_logement: 'precarite_logement',
+  NA5AZ_sum: 'NA5AZ_sum',
+  NA5BE_sum: 'NA5BE_sum',
+  NA5FZ_sum: 'NA5FZ_sum',
+  NA5GU_sum: 'NA5GU_sum',
+  NA5OQ_sum: 'NA5OQ_sum',
+  clc_1_artificialise: 'clc_1_artificialise',
+  clc_2_agricole: 'clc_2_agricole',
+  clc_3_foret_semiNaturel: 'clc_3_foret_semiNaturel',
+  clc_4_humide: 'clc_4_humide',
+  clc_5_eau: 'clc_5_eau',
+  superf_choro: 'superf_choro'
+};
+
+>>>>>>> dev
 exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
   srid: 'srid',
   auth_name: 'auth_name',
@@ -687,6 +767,7 @@ exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
   proj4text: 'proj4text'
 };
 
+<<<<<<< HEAD
 exports.Prisma.Sandbox_usersScalarFieldEnum = {
   username: 'username',
   pk: 'pk',
@@ -694,6 +775,8 @@ exports.Prisma.Sandbox_usersScalarFieldEnum = {
   created_at: 'created_at'
 };
 
+=======
+>>>>>>> dev
 exports.Prisma.Geography_columnsScalarFieldEnum = {
   coord_dimension: 'coord_dimension',
   srid: 'srid',
@@ -796,10 +879,18 @@ exports.Prisma.ModelName = {
   erosion_cotiere: 'erosion_cotiere',
   etat_cours_d_eau: 'etat_cours_d_eau',
   postgis_rga: 'postgis_rga',
+<<<<<<< HEAD
   users: 'users',
   export_cours_d_eau: 'export_cours_d_eau',
   spatial_ref_sys: 'spatial_ref_sys',
   sandbox_users: 'sandbox_users',
+=======
+  sandbox_users: 'sandbox_users',
+  users: 'users',
+  export_cours_d_eau: 'export_cours_d_eau',
+  confort_thermique: 'confort_thermique',
+  spatial_ref_sys: 'spatial_ref_sys',
+>>>>>>> dev
   geography_columns: 'geography_columns',
   geometry_columns: 'geometry_columns',
   pg_stat_statements_info: 'pg_stat_statements_info',

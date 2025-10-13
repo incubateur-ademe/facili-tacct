@@ -175,7 +175,7 @@ export const surfacesEnBioDoc = [
 export const aot40Doc = [
   {
     '': 'Source',
-    '': 'Géod’Air (2024)'
+    '': 'Geod’air (2024)'
   },
   {
     '': 'Documentation complète',

@@ -75,7 +75,7 @@ const IndicateursDeResilience = () => {
             Part de la surface irriguée en maïs (%), céréale la plus consommatrice d’eau en été
           </li>
         </ul>
-        <p><b>À quel moment ?</b></p>
+        <p style={{ marginTop: "1.5rem"}}><b>À quel moment ?</b></p>
         <ul>
           <li>
             Volume d’eau total d’irrigation (milliers m³)

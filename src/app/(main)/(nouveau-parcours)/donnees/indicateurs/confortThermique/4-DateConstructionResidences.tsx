@@ -5,7 +5,7 @@ import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import { Loader } from "@/components/ui/loader";
 import { Body } from "@/design-system/base/Textes";
 import { ageBatiMapper } from "@/lib/mapper/inconfortThermique";
-import { InconfortThermique } from "@/lib/postgres/models";
+import { ConfortThermique } from "@/lib/postgres/models";
 import { AgeBatiText } from '@/lib/staticTexts';
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
 import { eptRegex } from "@/lib/utils/regex";
@@ -20,7 +20,7 @@ import { SourceExport } from '../SourceExport';
 export const DateConstructionResidences = ({
   inconfortThermique
 }: {
-  inconfortThermique: InconfortThermique[];
+  inconfortThermique: ConfortThermique[];
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;

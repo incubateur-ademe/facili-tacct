@@ -5,8 +5,8 @@ import { LoaderText } from '@/components/ui/loader';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import { handleRedirectionThematique } from '@/hooks/Redirections';
-import { CarteCommunes, InconfortThermique } from '@/lib/postgres/models';
-import { GetInconfortThermique } from "@/lib/queries/databases/inconfortThermique";
+import { CarteCommunes, ConfortThermique, InconfortThermique } from '@/lib/postgres/models';
+import { GetConfortThermique, GetInconfortThermique } from "@/lib/queries/databases/inconfortThermique";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
 import { GrandAge } from '../../indicateurs/confortThermique/1-GrandAge';
+import { GrandAge75 } from '../../indicateurs/confortThermique/1-GrandAge75';
 import { PrecariteEnergetique } from '../../indicateurs/confortThermique/2-PrecariteEnergetique';
 import { EmploisEnExterieur } from '../../indicateurs/confortThermique/3-EmploisExterieurs';
 import { DateConstructionResidences } from '../../indicateurs/confortThermique/4-DateConstructionResidences';
@@ -22,9 +23,11 @@ import { LCZ } from '../../indicateurs/confortThermique/6-LCZ';
 const DonneesConfortThermique = ({
   carteCommunes,
   inconfortThermique,
+  confortThermique
 }: {
   carteCommunes: CarteCommunes[];
   inconfortThermique: InconfortThermique[];
+  confortThermique: ConfortThermique[];
 }) => {
   const searchParams = useSearchParams();
   const params = usePathname();
@@ -32,7 +35,7 @@ const DonneesConfortThermique = ({
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const [data, setData] = useState({ carteCommunes, inconfortThermique });
+  const [data, setData] = useState({ carteCommunes, inconfortThermique, confortThermique });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
   const ongletsMenu = sommaireThematiques[thematique];
@@ -44,11 +47,12 @@ const DonneesConfortThermique = ({
     }
     setIsLoading(true);
     void (async () => {
-      const [newCarteCommunes, newInconfortThermique] = await Promise.all([
+      const [newCarteCommunes, newInconfortThermique, newConfortThermique] = await Promise.all([
         GetCommunes(code, libelle, type),
-        GetInconfortThermique(code, libelle, type)
+        GetInconfortThermique(code, libelle, type),
+        GetConfortThermique(code, libelle, type)
       ]);
-      setData({ carteCommunes: newCarteCommunes, inconfortThermique: newInconfortThermique });
+      setData({ carteCommunes: newCarteCommunes, inconfortThermique: newInconfortThermique, confortThermique: newConfortThermique });
       setIsLoading(false);
     })();
   }, [libelle]);
@@ -103,6 +107,16 @@ const DonneesConfortThermique = ({
             <GrandAge inconfortThermique={data.inconfortThermique} />
           </div>
 
+          {/* Grand âge */}
+          <div id="Grand âge" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Évolution de la part des 75 ans et plus dans la population
+              </H3>
+            </div>
+            <GrandAge75 confortThermique={data.confortThermique} />
+          </div>
+
           {/* Précarité énergétique */}
           <div id="Précarité énergétique" className={styles.indicateurMapWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
             <div className={styles.h3Titles}>
@@ -120,7 +134,7 @@ const DonneesConfortThermique = ({
                 Part des emplois par grands secteurs d’activité
               </H3>
             </div>
-            <EmploisEnExterieur inconfortThermique={data.inconfortThermique} />
+            <EmploisEnExterieur inconfortThermique={data.confortThermique} />
           </div>
         </section>
 
@@ -143,7 +157,7 @@ const DonneesConfortThermique = ({
                 Part des résidences principales par période de construction
               </H3>
             </div>
-            <DateConstructionResidences inconfortThermique={data.inconfortThermique} />
+            <DateConstructionResidences inconfortThermique={data.confortThermique} />
           </div>
         </section>
 
