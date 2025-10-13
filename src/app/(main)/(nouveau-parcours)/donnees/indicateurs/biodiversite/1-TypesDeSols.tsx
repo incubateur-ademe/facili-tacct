@@ -10,7 +10,7 @@ import { MapCLC } from '@/components/maps/mapCLC';
 import { Body } from "@/design-system/base/Textes";
 import { CommunesContourMapper } from '@/lib/mapper/communes';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
-import { CarteCommunes, CLCTerritoires, InconfortThermique } from "@/lib/postgres/models";
+import { CarteCommunes, CLCTerritoires, ConfortThermique } from "@/lib/postgres/models";
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { exportAsZip } from '@/lib/utils/export/exportZipGeneric';
 import { eptRegex } from "@/lib/utils/regex";
@@ -25,7 +25,7 @@ export const TypesDeSols = ({
   carteCommunes,
   clc,
 }: {
-  inconfortThermique: InconfortThermique[];
+  inconfortThermique: ConfortThermique[];
   carteCommunes: CarteCommunes[];
   clc: CLCTerritoires[] | undefined;
 }) => {
@@ -112,7 +112,7 @@ export const TypesDeSols = ({
         clc && clc.length &&
         <div className={styles.sourcesExportMapWrapper}>
           <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-            Source : CORINE Land Cover 2018.
+            Source : CORINE Land Cover, 2018.
           </Body>
           <ZipExportButtonNouveauParcours
             anchor='Types de sols'

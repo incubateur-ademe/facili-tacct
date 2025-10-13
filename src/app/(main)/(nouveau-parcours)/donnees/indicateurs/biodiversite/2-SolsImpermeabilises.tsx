@@ -115,7 +115,7 @@ export const SolsImpermeabilises = (props: {
               code={code}
               sheetName="Espaces NAF"
               documentation={consommationEspacesNafDoc}
-              anchor="Consommation d'espaces NAF"
+              anchor="Sols imperméabilisés"
             />
           )}
       </div>

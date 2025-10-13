@@ -2,7 +2,7 @@ import { SearchParams } from "@/app/(main)/types";
 import { GetAgricultureBio, GetAOT40, GetConsommationNAF } from "@/lib/queries/databases-nouveau-parcours/biodiversite";
 import { GetQualiteEauxBaignade } from "@/lib/queries/databases-nouveau-parcours/ressourcesEau";
 import { GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
-import { GetInconfortThermique } from "@/lib/queries/databases/inconfortThermique";
+import { GetConfortThermique } from "@/lib/queries/databases/inconfortThermique";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
 import { DonneesBiodiversite } from "./DonneesBiodiversite";
@@ -28,7 +28,7 @@ const BiodiversiteServerPage = async (props: { searchParams: SearchParams }) => 
   const dbAOT40 = await GetAOT40();
   const dbEtatCoursDeau = await GetEtatCoursDeau(code, libelle, type);
   const qualiteEauxBaignadeParDpmt = await GetQualiteEauxBaignade(code, libelle, type);
-  const dbInconfortThermique = await GetInconfortThermique(code, libelle, type);
+  const dbInconfortThermique = await GetConfortThermique(code, libelle, type);
   const dbSurfacesAgricoles = await GetSurfacesAgricoles(code, libelle, type);
 
   return (

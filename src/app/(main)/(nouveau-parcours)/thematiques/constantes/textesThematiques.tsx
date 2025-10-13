@@ -48,7 +48,7 @@ export const sommaireThematiques = {
         id: "section4",
         thematique: "Eau",
         icone: "💧",
-        sousCategories: ["État écologique des cours d'eau"]
+        sousCategories: ["État des cours d'eau"]
       },
       {
         id: "section5",
@@ -112,7 +112,7 @@ export const sommaireThematiques = {
         id: "section1",
         thematique: "Eau",
         icone: '💧',
-        sousCategories: ["Ressources en eau", "État écologique des cours d'eau"]
+        sousCategories: ["Ressources en eau", "État des cours d'eau"]
       },
     ]
   }
@@ -176,10 +176,10 @@ export const thematiquesInfo: {
             🌼 Biodiversité
           </Body>
           <Body size="sm">
-            🏗️ Aménagement
+            🛠️ Continuité des services
           </Body>
           <Body size="sm">
-            🏖️ Tourisme
+            🚧 Gestion des risques
           </Body>
         </div>
         <Body size="sm" margin="1rem 0">
@@ -216,7 +216,7 @@ export const thematiquesInfo: {
           </Body>
         </div>
         <Body size="sm" margin="1rem 0">
-          👉 Combinés, ces facteurs déterminent le niveau de protection de votre territoire.
+          👉 Ces facteurs combinés déterminent la sensibilité globale de votre territoire face à la chaleur.
         </Body>
       </div>
     ),
@@ -228,7 +228,7 @@ export const thematiquesInfo: {
       <div>
         <Body size="sm" style={{ marginBottom: '1rem' }}>
           Peu de ressources ou de domaines d'activité échappent aux catastrophes
-          naturelles engendrées par les dérèglement du climat.
+          naturelles engendrées par les dérèglements du climat.
         </Body>
         <Body size="sm" margin="1rem 0">
           👉 Etat des lieux sur votre territoire.
