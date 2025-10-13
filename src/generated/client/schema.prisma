@@ -387,12 +387,6 @@ model inconfort_thermique {
   clc_5_eau                Float?
   superf_choro             Float?
 
-  @@index([code_geographique], map: "inconfort_thermique_communes_index")
-  @@index([departement], map: "inconfort_thermique_departement_index")
-  @@index([epci], map: "inconfort_thermique_epci_index")
-  @@index([ept], map: "inconfort_thermique_ept_index")
-  @@index([libelle_petr], map: "inconfort_thermique_petr_index")
-  @@index([code_pnr], map: "inconfort_thermique_pnr_index")
   @@index([index], map: "ix_inconfort_thermique_index")
   @@schema("databases")
 }
@@ -713,6 +707,18 @@ model postgis_rga {
   @@schema("postgis")
 }
 
+<<<<<<< HEAD
+=======
+model sandbox_users {
+  username   String   @db.VarChar(128)
+  pk         Int      @id @default(autoincrement())
+  password   String   @db.VarChar(512)
+  created_at DateTime @db.Timestamptz(6)
+
+  @@schema("public")
+}
+
+>>>>>>> dev
 model users {
   pk              Int       @id
   email           String    @unique(map: "email") @db.VarChar(256)
@@ -748,6 +754,76 @@ model export_cours_d_eau {
   @@schema("databases")
 }
 
+<<<<<<< HEAD
+=======
+model confort_thermique {
+  index                   BigInt  @id
+  code_geographique       String
+  libelle_geographique    String
+  epci                    String
+  libelle_epci            String
+  departement             String
+  libelle_departement     String
+  region                  Int
+  ept                     String?
+  libelle_petr            String?
+  code_pnr                String?
+  libelle_pnr             String?
+  age_bati_post06         Float?
+  age_bati_91_05          Float?
+  age_bati_46_90          Float?
+  age_bati_19_45          Float?
+  age_bati_pre_19         Float?
+  under_4_sum_1968        Float?
+  to_75_sum_1968          Float?  @map("4_to_75_sum_1968")
+  over_75_sum_1968        Float?
+  under_4_sum_1975        Float?
+  to_75_sum_1975          Float?  @map("4_to_75_sum_1975")
+  over_75_sum_1975        Float?
+  under_4_sum_1982        Float?
+  to_75_sum_1982          Float?  @map("4_to_75_sum_1982")
+  over_75_sum_1982        Float?
+  under_4_sum_1990        Float?
+  to_75_sum_1990          Float?  @map("4_to_75_sum_1990")
+  over_75_sum_1990        Float?
+  under_4_sum_1999        Float?
+  to_75_sum_1999          Float?  @map("4_to_75_sum_1999")
+  over_75_sum_1999        Float?
+  under_4_sum_2009        Float?
+  to_75_sum_2009          Float?  @map("4_to_75_sum_2009")
+  over_75_sum_2009        Float?
+  under_4_sum_2014        Float?
+  to_75_sum_2014          Float?  @map("4_to_75_sum_2014")
+  over_75_sum_2014        Float?
+  under_4_sum_2020        Float?
+  to_75_sum_2020          Float?  @map("4_to_75_sum_2020")
+  over_75_sum_2020        Float?
+  tee_log                 Float?
+  tee_mob                 Float?
+  precarite_logement      Float?
+  NA5AZ_sum               Float?
+  NA5BE_sum               Float?
+  NA5FZ_sum               Float?
+  NA5GU_sum               Float?
+  NA5OQ_sum               Float?
+  clc_1_artificialise     Float?
+  clc_2_agricole          Float?
+  clc_3_foret_semiNaturel Float?
+  clc_4_humide            Float?
+  clc_5_eau               Float?
+  superf_choro            Float?
+
+  @@index([code_geographique], map: "confort_thermique_communes_index")
+  @@index([departement], map: "confort_thermique_departement_index")
+  @@index([epci], map: "confort_thermique_epci_index")
+  @@index([ept], map: "confort_thermique_ept_index")
+  @@index([libelle_petr], map: "confort_thermique_petr_index")
+  @@index([code_pnr], map: "confort_thermique_pnr_index")
+  @@index([index], map: "ix_confort_thermique_index")
+  @@schema("databases")
+}
+
+>>>>>>> dev
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model spatial_ref_sys {
   srid      Int     @id
@@ -759,6 +835,7 @@ model spatial_ref_sys {
   @@schema("public")
 }
 
+<<<<<<< HEAD
 model sandbox_users {
   username   String   @db.VarChar(128)
   pk         Int      @id @default(autoincrement())
@@ -768,6 +845,8 @@ model sandbox_users {
   @@schema("public")
 }
 
+=======
+>>>>>>> dev
 view geography_columns {
   f_table_catalog    Unsupported("name")?
   f_table_schema     Unsupported("name")?

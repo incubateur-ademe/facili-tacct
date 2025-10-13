@@ -7,8 +7,8 @@ import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { Loader } from "@/components/ui/loader";
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
-import { grandAgeIsolementMapper } from "@/lib/mapper/inconfortThermique";
-import { InconfortThermique } from "@/lib/postgres/models";
+import { grandAgeMapper } from "@/lib/mapper/inconfortThermique";
+import { ConfortThermique } from "@/lib/postgres/models";
 import { GrandAgeText } from '@/lib/staticTexts';
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
 import { eptRegex, numberWithSpacesRegex } from "@/lib/utils/regex";
@@ -16,60 +16,61 @@ import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from "next/navigation";
 import styles from '../../explorerDonnees.module.scss';
 import { sumProperty } from '../fonctions';
-import { GrandAgeLineChartYData } from '../graphData';
+import { GrandAge75LineChartYData } from '../graphData';
 import { SourceExport } from '../SourceExport';
 
-export const GrandAge = ({
-  inconfortThermique
+export const GrandAge75 = ({
+  confortThermique
 }: {
-  inconfortThermique: InconfortThermique[];
+  confortThermique: ConfortThermique[];
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const grandAgeIsolementMapped = inconfortThermique.map(
-    grandAgeIsolementMapper
+  const grandAgeMapped = confortThermique.map(
+    grandAgeMapper
   );
   const percentTerritoireSup = Round((
-    (100 * sumProperty(grandAgeIsolementMapped, 'over_80_sum_2020')) /
-    (sumProperty(grandAgeIsolementMapped, 'to_80_sum_2020') +
-      sumProperty(grandAgeIsolementMapped, 'under_4_sum_2020'))
+    (100 * sumProperty(grandAgeMapped, 'over_75_sum_2020')) /
+    (sumProperty(grandAgeMapped, 'to_75_sum_2020') +
+      sumProperty(grandAgeMapped, 'under_4_sum_2020'))
   ), 2);
-  const grandAgeIsolementTerritoire =
+  const grandAgeTerritoire =
     type === 'commune'
-      ? grandAgeIsolementMapped.filter((e) => e.code_geographique === code)
+      ? grandAgeMapped.filter((e) => e.code_geographique === code)
       : type === 'ept' && eptRegex.test(libelle)
-        ? grandAgeIsolementMapped.filter((e) => e.ept === libelle)
+        ? grandAgeMapped.filter((e) => e.ept === libelle)
         : type === 'epci' && !eptRegex.test(libelle)
-          ? grandAgeIsolementMapped.filter((e) => e.epci === code)
-          : grandAgeIsolementMapped;
-  const yData = GrandAgeLineChartYData(grandAgeIsolementTerritoire);
+          ? grandAgeMapped.filter((e) => e.epci === code)
+          : grandAgeMapped;
+
+  const yData = GrandAge75LineChartYData(grandAgeTerritoire);
   const xData = ['1968', '1975', '1982', '1990', '1999', '2009', '2014', '2020'];
   const yGraphData = Object.values(yData)
     .map(Number)
     .map((value) => (isNaN(value) ? null : value));
   const methodeCalcul =
-    'Nombre de personnes de plus de 80 ans divisé par la population totale à chaque recensement INSEE.';
-  const exportData = IndicatorExportTransformations.inconfort_thermique.GrandAgeIsolement(grandAgeIsolementTerritoire);
+    'Nombre de personnes de plus de 75 ans divisé par la population totale à chaque recensement INSEE.';
+  const exportData = IndicatorExportTransformations.inconfort_thermique.GrandAgeIsolement(grandAgeTerritoire);
 
   return (
     <>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroCircleGrid pourcentage={Number(yData.over_80_2020_percent)} arrondi={2} ariaLabel="Pourcentage des personnes âgées de plus de 80 ans" />
+            <MicroCircleGrid pourcentage={Number(yData.over_75_2020_percent)} arrondi={2} ariaLabel="Pourcentage des personnes âgées de plus de 80 ans" />
             {
               !Object.values(yData).slice(0, -2).includes('NaN') && (
                 <>
                   <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                    En 2020, <b>{numberWithSpacesRegex(yData.over_80_2020_percent)} %</b> de la
+                    En 2020, <b>{numberWithSpacesRegex(yData.over_75_2020_percent)} %</b> de la
                     population de votre territoire est constitué de personnes
-                    âgées de plus de 80 ans (soit{' '}
+                    âgées de plus de 75 ans (soit{' '}
                     <b>
                       {numberWithSpacesRegex(sumProperty(
-                        grandAgeIsolementTerritoire,
-                        'over_80_sum_2020'
+                        grandAgeTerritoire,
+                        'over_75_sum_2020'
                       ))}
                     </b>{' '}
                     personnes).
@@ -93,7 +94,7 @@ export const GrandAge = ({
           </div>
         </div>
         <div className={styles.datavizWrapper}>
-          {yData.over_80_2020_percent ? (
+          {yData.over_75_2020_percent ? (
             <div
               style={{
                 backgroundColor: 'white',
@@ -125,7 +126,7 @@ export const GrandAge = ({
                 sheetName="Grand âge"
               />
             }
-            source='INSEE, décembre 2024'
+            source='Observatoire des territoires'
             condition={!Object.values(yData).slice(0, -2).includes('NaN')}
           />
         </div>

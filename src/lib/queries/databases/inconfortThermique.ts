@@ -1,6 +1,6 @@
 'use server';
 
-import { InconfortThermique } from '@/lib/postgres/models';
+import { ConfortThermique, InconfortThermique } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck } from '../columns';
@@ -94,6 +94,96 @@ export const GetInconfortThermique = async (
     } catch (error) {
       console.error(error);
       // prisma.$disconnect();
+      Sentry.captureException(error);
+      return [];
+    }
+  })();
+  const result = Promise.race([dbQuery, timeoutPromise]);
+  return result;
+};
+
+export const GetConfortThermique = async (
+  code: string,
+  libelle: string,
+  type: string
+): Promise<ConfortThermique[]> => {
+  //race Promise pour éviter un crash de la requête lorsqu'elle est trop longue
+  const timeoutPromise = new Promise<[]>((resolve) =>
+    setTimeout(() => {
+      resolve([]);
+    }, 3000)
+  );
+  const column = ColumnCodeCheck(type);
+  const dbQuery = (async () => {
+    try {
+      // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
+      const exists = await prisma.confort_thermique.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+      });
+      if (!exists) return [];
+      else {
+        if (type === 'ept' && eptRegex.test(libelle)) {
+          const value = await prisma.$queryRaw`
+            SELECT *
+            FROM databases.confort_thermique
+            WHERE epci = '200054781'
+          `;
+          return value as ConfortThermique[];
+        } else if (type === 'commune') {
+          const value = await prisma.$queryRaw`
+          SELECT *
+          FROM databases.confort_thermique
+          WHERE epci = (
+            SELECT epci
+            FROM databases.confort_thermique
+            WHERE code_geographique = ${code}
+            LIMIT 1
+          )
+        `;
+          return value as ConfortThermique[];
+        } else if (type === 'petr') {
+          const value = await prisma.$queryRaw`
+            SELECT *
+            FROM databases.confort_thermique
+            WHERE libelle_petr = ${libelle}
+          `;
+          return value as ConfortThermique[];
+        } else if (type === 'pnr') {
+          const value = await prisma.$queryRaw`
+            SELECT *
+            FROM databases.confort_thermique
+            WHERE code_pnr = ${code}
+          `;
+          return value as ConfortThermique[];
+        } else if (type === 'departement') {
+          const value = await prisma.$queryRaw`
+            SELECT *
+            FROM databases.confort_thermique
+            WHERE departement = ${code}
+          `;
+          return value as ConfortThermique[];
+        } else if (type === 'epci') {
+          // Get tous les départements associés à l'epci
+          const departements = await prisma.confort_thermique.findMany({
+            select: {
+              departement: true
+            },
+            where: {
+              [column]: code
+            },
+            distinct: ['departement']
+          });
+          const value = await prisma.$queryRaw`
+            SELECT *
+            FROM databases.confort_thermique
+            WHERE departement = ANY(${departements.map((d) => d.departement) as string[]})
+          `;
+          return value as ConfortThermique[];
+        } else return [];
+      }
+    } catch (error) {
+      console.error(error);
       Sentry.captureException(error);
       return [];
     }
