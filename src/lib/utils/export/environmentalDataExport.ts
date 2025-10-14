@@ -1,6 +1,6 @@
 import {
   AgeBatiDto,
-  GrandAgeIsolementDto,
+  GrandAgeDto,
   travailExtDto,
   VegetalisationDto
 } from '@/lib/dto';
@@ -157,8 +157,8 @@ export const IndicatorExportTransformations = {
           part_age_bati_post_2006: el.age_bati_post06
         };
       }),
-    GrandAgeIsolement: (grandAgeIsolement: GrandAgeIsolementDto[]) =>
-      grandAgeIsolement.map((el) => {
+      GrandAge75: (grandAge: GrandAgeDto[]) =>
+      grandAge.map((el) => {
         return {
           code_geographique: el.code_geographique,
           libelle_geographique: el.libelle_geographique,
@@ -171,29 +171,29 @@ export const IndicatorExportTransformations = {
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
           '1968_population_de_moins_de_4_ans': el.under_4_sum_1968,
-          '1968_population_de_4_a_80_ans': el.to_80_sum_1968,
-          '1968_population_de_plus_de_80_ans': el.over_80_sum_1968,
+          '1968_population_de_4_a_75_ans': el.to_75_sum_1968,
+          '1968_population_de_plus_de_75_ans': el.over_75_sum_1968,
           '1975_population_de_moins_de_4_ans': el.under_4_sum_1975,
-          '1975_population_de_4_a_80_ans': el.to_80_sum_1975,
-          '1975_population_de_plus_de_80_ans': el.over_80_sum_1975,
+          '1975_population_de_4_a_75_ans': el.to_75_sum_1975,
+          '1975_population_de_plus_de_75_ans': el.over_75_sum_1975,
           '1982_population_de_moins_de_4_ans': el.under_4_sum_1982,
-          '1982_population_de_4_a_80_ans': el.to_80_sum_1982,
-          '1982_population_de_plus_de_80_ans': el.over_80_sum_1982,
+          '1982_population_de_4_a_75_ans': el.to_75_sum_1982,
+          '1982_population_de_plus_de_75_ans': el.over_75_sum_1982,
           '1990_population_de_moins_de_4_ans': el.under_4_sum_1990,
-          '1990_population_de_4_a_80_ans': el.to_80_sum_1990,
-          '1990_population_de_plus_de_80_ans': el.over_80_sum_1990,
+          '1990_population_de_4_a_75_ans': el.to_75_sum_1990,
+          '1990_population_de_plus_de_75_ans': el.over_75_sum_1990,
           '1999_population_de_moins_de_4_ans': el.under_4_sum_1999,
-          '1999_population_de_4_a_80_ans': el.to_80_sum_1999,
-          '1999_population_de_plus_de_80_ans': el.over_80_sum_1999,
+          '1999_population_de_4_a_75_ans': el.to_75_sum_1999,
+          '1999_population_de_plus_de_75_ans': el.over_75_sum_1999,
           '2009_population_de_moins_de_4_ans': el.under_4_sum_2009,
-          '2009_population_de_4_a_80_ans': el.to_80_sum_2009,
-          '2009_population_de_plus_de_80_ans': el.over_80_sum_2009,
+          '2009_population_de_4_a_75_ans': el.to_75_sum_2009,
+          '2009_population_de_plus_de_75_ans': el.over_75_sum_2009,
           '2014_population_de_moins_de_4_ans': el.under_4_sum_2014,
-          '2014_population_de_4_a_80_ans': el.to_80_sum_2014,
-          '2014_population_de_plus_de_80_ans': el.over_80_sum_2014,
+          '2014_population_de_4_a_75_ans': el.to_75_sum_2014,
+          '2014_population_de_plus_de_75_ans': el.over_75_sum_2014,
           '2020_population_de_moins_de_4_ans': el.under_4_sum_2020,
-          '2020_population_de_4_a_80_ans': el.to_80_sum_2020,
-          '2020_population_de_plus_de_80_ans': el.over_80_sum_2020
+          '2020_population_de_4_a_75_ans': el.to_75_sum_2020,
+          '2020_population_de_plus_de_75_ans': el.over_75_sum_2020
         };
       }),
     travailExt: (travailExt: travailExtDto[]) =>
