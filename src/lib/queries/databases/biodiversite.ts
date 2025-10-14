@@ -1,5 +1,10 @@
 'use server';
-import { AgricultureBio, AOT40, ConsommationNAF } from '@/lib/postgres/models';
+import {
+  AgricultureBio,
+  AOT40,
+  AtlasBiodiversiteModel,
+  ConsommationNAF
+} from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck, ColumnLibelleCheck } from '../columns';
@@ -161,6 +166,49 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
     } catch (error) {
       console.error(error);
       // prisma.$disconnect();
+      Sentry.captureException(error);
+      return [];
+    }
+  })();
+  return Promise.race([dbQuery, timeoutPromise]);
+};
+
+export const GetAtlasBiodiversite = async (
+  code: string,
+  libelle: string,
+  type: string
+): Promise<AtlasBiodiversiteModel[]> => {
+  const timeoutPromise = new Promise<[]>((resolve) =>
+    setTimeout(() => {
+      resolve([]);
+    }, 2000)
+  );
+  const column = ColumnCodeCheck(type);
+  const dbQuery = (async () => {
+    try {
+      // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
+      const exists = await prisma.atlas_biodiversite.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+      });
+      if (!exists) return [];
+      else {
+        const value = await prisma.atlas_biodiversite.findMany({
+          where: {
+            AND: [
+              {
+                annee_debut: { not: null }
+              },
+              {
+                [column]: type === 'petr' || type === 'ept' ? libelle : code
+              }
+            ]
+          }
+        });
+        return value as AtlasBiodiversiteModel[];
+      }
+    } catch (error) {
+      console.error(error);
       Sentry.captureException(error);
       return [];
     }

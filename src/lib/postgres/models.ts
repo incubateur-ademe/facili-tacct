@@ -705,3 +705,24 @@ export type LczCouverture = {
   libelle_pnr: string | null;
   couverture_lcz: number | null;
 };
+
+
+export type AtlasBiodiversiteModel = {
+  index: bigint;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  nom: string | null;
+  structure_porteuse: string | null;
+  type_de_structure_porteuse: string | null;
+  annee_debut: number | null;
+  avancement: string | null;
+};
