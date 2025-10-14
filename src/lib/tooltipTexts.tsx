@@ -1,3 +1,4 @@
+import { ScrollToSourceTag } from "@/components/interactions/scrollToSource";
 import { Body } from "@/design-system/base/Textes";
 
 export const fragiliteEconomiqueTooltipText = (
@@ -74,14 +75,14 @@ export const agricultureBioTooltipText = (
 
 export const AOT40TooltipText = (
   <Body weight='bold' size="sm">
-    L’AOT40 (Accumulated Exposure Over Threshold 40) est un indicateur
-    estimant l’impact de la pollution à l’ozone sur la végétation. Il mesure
-    l’accumulation des concentrations d’ozone dépassant 40 ppb (80 µg/m³) :
-    <br></br><br></br>
-    Il est calculé par la somme des différences entre les concentrations
-    horaires d'ozone supérieures à 80 µg/m3 et le seuil de 80 µg/m3,
-    mesurées quotidiennement entre 8 h et 20 h, de mai à juillet pour tenir
-    compte de la période de photosynthèse.
+    Un seuil critique de toxicité de l’ozone pour la végétation est défini par 
+    l’indicateur AOT40 (Accumulated Exposure Over Threshold 40). Celui-ci 
+    représente l’accumulation d’exposition à l’ozone au-delà du seuil de 40 
+    parties par milliard, soit 80 µg/m³. Son calcul repose sur la somme des 
+    écarts entre les concentrations horaires d’ozone dépassant 80 µg/m³ et 
+    ce seuil de 80 µg/m³. Les mesures sont effectuées chaque jour entre 8 h 
+    et 20 h, sur la période de mai à juillet, afin de coïncider avec la 
+    phase active de photosynthèse.
     <br></br><br></br>
     Une valeur cible(*) de 18 000 µg/m³ par heure, en moyenne calculée sur 5
     ans, est fixée dans la directive 2024/2881 du 23 octobre 2024 concernant
@@ -114,9 +115,11 @@ export const etatCoursDeauTooltipTextBiodiv = (
     Attention, le bon état écologique d’une rivière ne signifie pas une
     qualité sanitaire suffisante pour s’y baigner. Cette évaluation se
     fait en fonction de données microbiologiques. Le classement des
-    eaux de qualité insuffisante, suffisante, bonne ou excellente est
-    établi conformément aux critères de l’annexe II de la directive
-    2006/7/CE concernant la gestion de la qualité des eaux de baignade.
+    eaux de qualité insuffisante, suffisante, bonne ou excellente pour
+    se baigner est établi conformément aux critères de l’annexe II de la directive
+    2006/7/CE concernant la gestion de la <ScrollToSourceTag sourceNumero={3}>
+      qualité des eaux de baignade.
+    </ScrollToSourceTag>
   </Body>
 );
 

@@ -183,7 +183,7 @@ export const thematiquesInfo: {
           </Body>
         </div>
         <Body size="sm" margin="1rem 0">
-          👉 Ces facteurs combinés déterminent la sensibilité globale de votre territoire face à la chaleur.
+          👉 Combinés, ces facteurs déterminent le niveau de protection de votre territoire.
         </Body>
       </div>
     ),
@@ -209,10 +209,10 @@ export const thematiquesInfo: {
             🏠 Bâtiment
           </Body>
           <Body size="sm">
-            🛠️ Continuité des services
+            🏗️ Aménagement
           </Body>
           <Body size="sm">
-            🚧 Gestion des risques
+            🏖️ Tourisme
           </Body>
         </div>
         <Body size="sm" margin="1rem 0">

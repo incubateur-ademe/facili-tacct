@@ -12,6 +12,7 @@ import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
 import { CarteCommunes, EtatCoursDeau, ExportCoursDeau, QualiteSitesBaignade } from "@/lib/postgres/models";
 import { EtatsCoursEauBiodiversiteTextNouveauParcours } from '@/lib/staticTexts';
+import { EtatCoursDeauDynamicText } from '@/lib/textesIndicateurs/biodiversiteDynamicTexts';
 import { etatCoursDeauTooltipTextBiodiv } from '@/lib/tooltipTexts';
 import { sitesDeBaignadeDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
@@ -83,13 +84,19 @@ export const EtatEcoCoursDeau = (props: {
   return (
     <>
       <div className={styles.datavizMapContainer}>
-        <div className='pr-5'>
-          <ReadMoreFade maxHeight={100}>
-            <EtatsCoursEauBiodiversiteTextNouveauParcours />
+        <div className={styles.chiffreDynamiqueWrapper} >
+          <div className={styles.text}>
+            <EtatCoursDeauDynamicText />
             <CustomTooltipNouveauParcours
               title={etatCoursDeauTooltipTextBiodiv}
               texte="Sur quoi repose ce classement ?"
             />
+          </div>
+        </div>
+        <div className='pr-5 pt-8'>
+          <ReadMoreFade maxHeight={100}>
+            <EtatsCoursEauBiodiversiteTextNouveauParcours />
+
           </ReadMoreFade>
         </div>
         <div className={styles.mapWrapper}>
