@@ -52,7 +52,7 @@ export const GrandAge75 = ({
     .map((value) => (isNaN(value) ? null : value));
   const methodeCalcul =
     'Nombre de personnes de plus de 75 ans divisé par la population totale à chaque recensement INSEE.';
-  const exportData = IndicatorExportTransformations.inconfort_thermique.GrandAgeIsolement(grandAgeTerritoire);
+  const exportData = IndicatorExportTransformations.inconfort_thermique.GrandAge75(grandAgeTerritoire);
 
   return (
     <>
