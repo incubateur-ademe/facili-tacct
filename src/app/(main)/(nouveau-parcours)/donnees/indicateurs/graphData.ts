@@ -1,54 +1,7 @@
 import couleurs from '@/design-system/couleurs';
-import { GrandAgeDto, GrandAgeIsolementDto } from '@/lib/dto';
+import { GrandAgeDto } from '@/lib/dto';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { sumProperty } from './fonctions';
-
-export const GrandAgeLineChartYData = (
-  grandAgeIsolementTerritoire: GrandAgeIsolementDto[]
-) => {
-  return {
-    over_80_1968_percent: (
-      (100 * sumProperty(grandAgeIsolementTerritoire, 'over_80_sum_1968')) /
-      (sumProperty(grandAgeIsolementTerritoire, 'to_80_sum_1968') +
-        sumProperty(grandAgeIsolementTerritoire, 'under_4_sum_1968'))
-    ).toFixed(2),
-    over_80_1975_percent: (
-      (100 * sumProperty(grandAgeIsolementTerritoire, 'over_80_sum_1975')) /
-      (sumProperty(grandAgeIsolementTerritoire, 'to_80_sum_1975') +
-        sumProperty(grandAgeIsolementTerritoire, 'under_4_sum_1975'))
-    ).toFixed(2),
-    over_80_1982_percent: (
-      (100 * sumProperty(grandAgeIsolementTerritoire, 'over_80_sum_1982')) /
-      (sumProperty(grandAgeIsolementTerritoire, 'to_80_sum_1982') +
-        sumProperty(grandAgeIsolementTerritoire, 'under_4_sum_1982'))
-    ).toFixed(2),
-    over_80_1990_percent: (
-      (100 * sumProperty(grandAgeIsolementTerritoire, 'over_80_sum_1990')) /
-      (sumProperty(grandAgeIsolementTerritoire, 'to_80_sum_1990') +
-        sumProperty(grandAgeIsolementTerritoire, 'under_4_sum_1990'))
-    ).toFixed(2),
-    over_80_1999_percent: (
-      (100 * sumProperty(grandAgeIsolementTerritoire, 'over_80_sum_1999')) /
-      (sumProperty(grandAgeIsolementTerritoire, 'to_80_sum_1999') +
-        sumProperty(grandAgeIsolementTerritoire, 'under_4_sum_1999'))
-    ).toFixed(2),
-    over_80_2009_percent: (
-      (100 * sumProperty(grandAgeIsolementTerritoire, 'over_80_sum_2009')) /
-      (sumProperty(grandAgeIsolementTerritoire, 'to_80_sum_2009') +
-        sumProperty(grandAgeIsolementTerritoire, 'under_4_sum_2009'))
-    ).toFixed(2),
-    over_80_2014_percent: (
-      (100 * sumProperty(grandAgeIsolementTerritoire, 'over_80_sum_2014')) /
-      (sumProperty(grandAgeIsolementTerritoire, 'to_80_sum_2014') +
-        sumProperty(grandAgeIsolementTerritoire, 'under_4_sum_2014'))
-    ).toFixed(2),
-    over_80_2020_percent: (
-      (100 * sumProperty(grandAgeIsolementTerritoire, 'over_80_sum_2020')) /
-      (sumProperty(grandAgeIsolementTerritoire, 'to_80_sum_2020') +
-        sumProperty(grandAgeIsolementTerritoire, 'under_4_sum_2020'))
-    ).toFixed(2)
-  };
-};
 
 export const GrandAge75LineChartYData = (
   grandAgeTerritoire: GrandAgeDto[]

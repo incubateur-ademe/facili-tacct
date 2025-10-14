@@ -13,7 +13,6 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
-import { GrandAge } from '../../indicateurs/confortThermique/1-GrandAge';
 import { GrandAge75 } from '../../indicateurs/confortThermique/1-GrandAge75';
 import { PrecariteEnergetique } from '../../indicateurs/confortThermique/2-PrecariteEnergetique';
 import { EmploisEnExterieur } from '../../indicateurs/confortThermique/3-EmploisExterieurs';
@@ -97,15 +96,6 @@ const DonneesConfortThermique = ({
           }}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
-          {/* Grand âge */}
-          <div id="Grand âge" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
-            <div className={styles.h3Titles}>
-              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-                Évolution de la part des 80 ans et plus dans la population
-              </H3>
-            </div>
-            <GrandAge inconfortThermique={data.inconfortThermique} />
-          </div>
 
           {/* Grand âge */}
           <div id="Grand âge" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
