@@ -143,7 +143,7 @@ export const AOT40DynamicText = ({
           <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
             Plusieurs stations peuvent apparaître sur la carte. C'est la
             station ayant la valeur la plus élevée dans un rayon de {Round(nearestPoint.properties.distanceToPoint + 20, 1)} km
-            qui est retenue. Dans votre cas, il s’agit de la station {nearestPoint.properties.nom_site},
+            qui est retenue. Dans votre cas, il s’agit de la station {stationWithMaxValue[0].properties.nom_site},
             avec un seuil mesuré de {Round(stationWithMaxValue[0].properties.value, 0)} µg/m³.
           </Body>
           <br></br>
