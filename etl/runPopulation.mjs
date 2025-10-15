@@ -84,6 +84,7 @@ async function fetchBaserow(tableId) {
             nextUrl = nextUrl.replace('http:', 'https:');
         }
     }
+    console.log("[Baserow] Fetched", allResults.length, "table", allResults);
     return allResults;
 }
 
@@ -406,13 +407,13 @@ async function insertPopulationCoverage(popTotaleCouverte) {
         console.log('[territoires] Récupération des données...');
         const baserowData = await fetchBaserow(BASEROW_TABLE_ID_TERRITOIRES);
         let df = baserowData.map((row) => ({
-            libelle: row['Nom du territoire'],
+            libelle: row['⚠️ Nom du territoire'],
             type:
-                Array.isArray(row['Typologie de territoire']) &&
-                row['Typologie de territoire'].length > 0
-                    ? row['Typologie de territoire'][0].value
+                Array.isArray(row['⚠️ Typologie de territoire']) &&
+                row['⚠️ Typologie de territoire'].length > 0
+                    ? row['⚠️ Typologie de territoire'][0].value
                     : null,
-            siren: row['# SIREN']
+            siren: row['⚠️ # SIREN']
         }));
         console.log(`[territoires] Données récupérées : ${df.length} lignes`);
 
