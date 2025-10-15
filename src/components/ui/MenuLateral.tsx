@@ -47,11 +47,11 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
     }
     void (async () => {
       const erosionCotiere = await GetErosionCotiere(code, libelle, type);
-      if (erosionCotiere.length > 0) {
+      if (erosionCotiere.length && erosionCotiere[0].length > 0) {
         setIsErosionCotiere(true);
-      }
+      } else setIsErosionCotiere(false);
     })()
-  }, []);
+  }, [libelle]);
 
   // Mesurer la hauteur de la div de navigation
   useEffect(() => {
