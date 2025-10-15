@@ -51,7 +51,7 @@ export const GrandAge = ({
     .map((value) => (isNaN(value) ? null : value));
   const methodeCalcul =
     'Nombre de personnes de plus de 80 ans divisé par la population totale à chaque recensement INSEE.';
-  const exportData = IndicatorExportTransformations.inconfort_thermique.GrandAgeIsolement(grandAgeIsolementTerritoire);
+  const exportData = IndicatorExportTransformations.inconfort_thermique.GrandAge75(grandAgeIsolementTerritoire);
 
   return (
     <>
