@@ -13,7 +13,7 @@ export type RetardScrollProps = {
  et le ré-désactive lors du retrait de la souris. Utile pour éviter de capturer le scroll de la page.
 */
 
-export const RetardScroll = ({ mapRef, containerRef, delay = 200 }: RetardScrollProps) => {
+export const RetardScroll = ({ mapRef, containerRef, delay }: RetardScrollProps) => {
   useEffect(() => {
     const container = containerRef?.current;
     if (!container) return;
