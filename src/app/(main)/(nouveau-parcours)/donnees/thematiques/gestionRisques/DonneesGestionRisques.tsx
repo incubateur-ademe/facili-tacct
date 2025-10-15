@@ -17,7 +17,7 @@ import { RetraitGonflementDesArgiles } from '../../indicateurs/gestionDesRisques
 interface Props {
   gestionRisques: ArreteCatNat[];
   carteCommunes: CarteCommunes[];
-  erosionCotiere: ErosionCotiere[];
+  erosionCotiere: [ErosionCotiere[], string] | [];
   incendiesForet: IncendiesForet[];
 }
 
@@ -59,7 +59,12 @@ export const DonneesGestionRisques = ({
         GetErosionCotiere(code, libelle, type),
         GetIncendiesForet(code, libelle, type)
       ]);
-      setData({ carteCommunes: newCarteCommunes, gestionRisques: newGestionRisques, erosionCotiere: newErosionCotiere, incendiesForet: newIncendiesForet });
+      setData({ 
+        carteCommunes: newCarteCommunes,
+        gestionRisques: newGestionRisques,
+        erosionCotiere: newErosionCotiere,
+        incendiesForet: newIncendiesForet
+      });
       setIsLoading(false);
     })();
   }, [libelle]);
@@ -78,6 +83,8 @@ export const DonneesGestionRisques = ({
         setRgaCarteLoading(false);
       });
   }, [code, libelle, type]);
+
+  console.log("data.erosionCotiere", data.erosionCotiere[1]);
 
   return (
     isLoading ? <LoaderText text='Mise à jour des données' /> :
@@ -168,7 +175,7 @@ export const DonneesGestionRisques = ({
           </div>
         </section>
         {
-          erosionCotiere.length > 0 && (
+          data.erosionCotiere.length > 0 && (
             <>
               {/* Section Aménagement */}
               <section className={styles.sectionType}>
@@ -191,7 +198,7 @@ export const DonneesGestionRisques = ({
                     </H3>
                   </div>
                   <ErosionCotiereComp
-                    erosionCotiere={data.erosionCotiere}
+                    erosionCotiere={data.erosionCotiere as [ErosionCotiere[], string]}
                     carteCommunes={data.carteCommunes}
                   />
                 </div>

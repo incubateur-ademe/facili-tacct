@@ -1,4 +1,5 @@
 
+import { RetardScroll } from '@/hooks/RetardScroll';
 import { ClcMapper } from '@/lib/mapper/clc';
 import { CLCTerritoires } from '@/lib/postgres/models';
 import { mapStyles } from 'carte-facile';
@@ -43,6 +44,8 @@ export const MapCLC = (
       attributionControl: false,
     });
     mapRef.current = map;
+    // s'assure que le zoom au scroll est désactivé immédiatement pour éviter de capturer les défilements de page
+    try { map.scrollZoom.disable(); } catch (e) { /* noop */ }
 
     map.on('load', () => {
       if (
@@ -140,9 +143,13 @@ export const MapCLC = (
     };
   }, [geoJsonData, enveloppe]);
 
+  // Ref local pour le RetardScroll
+  const localContainerRef = mapContainer as RefObject<HTMLElement>;
+
   return (
     <div style={{ position: 'relative' }}>
       <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />
+      <RetardScroll mapRef={mapRef} containerRef={localContainerRef} delay={200} />
     </div>
   );
 };

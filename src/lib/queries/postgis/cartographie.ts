@@ -254,7 +254,7 @@ export const GetErosionCotiere = async (
   code: string,
   libelle: string,
   type: string
-): Promise<ErosionCotiere[]> => {
+): Promise<[ErosionCotiere[], string] | []> => {
   const distance =
     type === 'commune'
       ? 0.28 // calcul fait pour la plus vaste commune : Arles
@@ -267,15 +267,17 @@ export const GetErosionCotiere = async (
             : type === 'departement'
               ? 1
               : 0.3;
-  const timeoutPromise = new Promise<[]>((resolve) =>
-    setTimeout(() => {
-      console.log(
-        'GetErosionCotiere: Timeout reached (5 seconds), returning empty array.'
-      );
-      resolve([]);
-    }, 5000)
+  const timeoutPromise = new Promise<[ErosionCotiere[], string] | []>(
+    (resolve) =>
+      setTimeout(() => {
+        console.log(
+          'GetErosionCotiere: Timeout reached (5 seconds), returning empty array.'
+        );
+        resolve([]);
+      }, 5000)
   );
-  const dbQuery = (async () => {
+  //(string | ErosionCotiere[])[]
+  const dbQuery: Promise<[ErosionCotiere[], string] | []> = (async () => {
     try {
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       if (type === 'commune') {
@@ -293,12 +295,19 @@ export const GetErosionCotiere = async (
           WHERE ST_Intersects(geometry, ST_GeomFromText(${commune[0].geometry}, 4326)) LIMIT 1;`;
           if (intersect.length) {
             const value = await prisma.$queryRaw<ErosionCotiere[]>`
-            SELECT
-            taux,
-            ST_AsGeoJSON(geometry) geometry
-            FROM postgis."erosion_cotiere" 
-            WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${commune[0].geometry})), 4326), ${distance});`;
-            return value;
+              SELECT
+              taux,
+              ST_AsGeoJSON(geometry) geometry
+              FROM postgis."erosion_cotiere" 
+              WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${commune[0].geometry})), 4326), ${distance});
+            `;
+            const envelope = await prisma.$queryRaw<{ envelope: string }[]>`
+              SELECT ST_AsGeoJSON(ST_Envelope(ST_Collect(geometry))) as envelope
+              FROM postgis."erosion_cotiere"
+              WHERE ST_Intersects(geometry, ST_GeomFromText(${commune[0].geometry}, 4326));
+            `;
+            if (!envelope || !envelope[0].envelope) return [];
+            return [value, envelope[0].envelope];
           } else return [];
         }
         return [];
@@ -319,8 +328,15 @@ export const GetErosionCotiere = async (
             taux,
             ST_AsGeoJSON(geometry) geometry
             FROM postgis."erosion_cotiere" 
-            WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), ${distance});`;
-            return value;
+            WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), ${distance});
+            `;
+            const envelope = await prisma.$queryRaw<{ envelope: string }[]>`
+              SELECT ST_AsGeoJSON(ST_Envelope(ST_Collect(geometry))) as envelope
+              FROM postgis."erosion_cotiere"
+              WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));
+            `;
+            if (!envelope || !envelope[0].envelope) return [];
+            return [value, envelope[0].envelope];
           } else return [];
         }
         return [];
@@ -341,8 +357,15 @@ export const GetErosionCotiere = async (
               taux,
               ST_AsGeoJSON(geometry) geometry
               FROM postgis."erosion_cotiere"
-              WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${pnr[0].geometry})), 4326), ${distance});`;
-            return value;
+              WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${pnr[0].geometry})), 4326), ${distance});
+            `;
+            const envelope = await prisma.$queryRaw<{ envelope: string }[]>`
+              SELECT ST_AsGeoJSON(ST_Envelope(ST_Collect(geometry))) as envelope
+              FROM postgis."erosion_cotiere"
+              WHERE ST_Intersects(geometry, ST_GeomFromText(${pnr[0].geometry}, 4326));
+            `;
+            if (!envelope || !envelope[0].envelope) return [];
+            return [value, envelope[0].envelope];
           } else return [];
         } else return [];
       } else if (type === 'petr') {
@@ -362,8 +385,15 @@ export const GetErosionCotiere = async (
               taux,
               ST_AsGeoJSON(geometry) geometry
               FROM postgis."erosion_cotiere"
-              WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${petr[0].geometry})), 4326), ${distance});`;
-            return value;
+              WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${petr[0].geometry})), 4326), ${distance});
+            `;
+            const envelope = await prisma.$queryRaw<{ envelope: string }[]>`
+              SELECT ST_AsGeoJSON(ST_Envelope(ST_Collect(geometry))) as envelope
+              FROM postgis."erosion_cotiere"
+              WHERE ST_Intersects(geometry, ST_GeomFromText(${petr[0].geometry}, 4326));
+            `;
+            if (!envelope || !envelope[0].envelope) return [];
+            return [value, envelope[0].envelope];
           } else return [];
         } else return [];
       } else if (type === 'departement') {
@@ -379,12 +409,19 @@ export const GetErosionCotiere = async (
             WHERE ST_Intersects(geometry, ST_GeomFromText(${departement[0].geometry}, 4326))`;
           if (intersect.length) {
             const value = await prisma.$queryRaw<ErosionCotiere[]>`
-            SELECT
-            taux,
-            ST_AsGeoJSON(geometry) geometry
-            FROM postgis."erosion_cotiere"
-            WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${departement[0].geometry})), 4326), ${distance});`; //ST_Intersects(geometry, ST_GeomFromText(${departement[0].geometry}, 4326));
-            return value;
+              SELECT
+              taux,
+              ST_AsGeoJSON(geometry) geometry
+              FROM postgis."erosion_cotiere"
+              WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${departement[0].geometry})), 4326), ${distance});
+            `; //ST_Intersects(geometry, ST_GeomFromText(${departement[0].geometry}, 4326));
+            const envelope = await prisma.$queryRaw<{ envelope: string }[]>`
+              SELECT ST_AsGeoJSON(ST_Envelope(ST_Collect(geometry))) as envelope
+              FROM postgis."erosion_cotiere"
+              WHERE ST_Intersects(geometry, ST_GeomFromText(${departement[0].geometry}, 4326));
+            `;
+            if (!envelope || !envelope[0].envelope) return [];
+            return [value, envelope[0].envelope];
           } else return [];
         } else return [];
       } else return [];
