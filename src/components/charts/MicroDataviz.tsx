@@ -88,13 +88,18 @@ export const MicroNumberCircle = ({
   valeur,
   arrondi = 0,
   ariaLabel = "",
-  unite = ''
+  unite = '',
+  size='md'
 }: {
   valeur: number | string;
   arrondi?: number;
   ariaLabel?: string;
   unite?: string;
+  size?: 'xs' | 'sm' | 'md' | 'lg';
 }) => {
+  const displayValue = Round(Number(valeur), arrondi);
+  const displayString = `${displayValue} ${unite}`.trim();
+  const shouldBreak = displayString.length > 8;
   return (
     <>
       {
@@ -108,8 +113,8 @@ export const MicroNumberCircle = ({
               trailColor={couleurs.gris.medium}
             />
             <div className={styles.microChartText}>
-              <Body style={{ color: couleurs.gris.dark }} weight="bold">
-                {Round(Number(valeur), arrondi)} {unite}
+              <Body style={{ color: couleurs.gris.dark }} weight="bold" size={size}>
+                {shouldBreak ? <>{displayValue}<br />{unite}</> : <>{displayValue} {unite}</>}
               </Body>
             </div>
           </div>

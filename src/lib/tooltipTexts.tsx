@@ -78,18 +78,18 @@ export const AOT40TooltipText = (
     Un seuil critique de toxicité de l’ozone pour la végétation est défini par 
     l’indicateur AOT40 (Accumulated Exposure Over Threshold 40). Celui-ci 
     représente l’accumulation d’exposition à l’ozone au-delà du seuil de 40 
-    parties par milliard, soit 80 µg/m³. Son calcul repose sur la somme des 
-    écarts entre les concentrations horaires d’ozone dépassant 80 µg/m³ et 
-    ce seuil de 80 µg/m³. Les mesures sont effectuées chaque jour entre 8 h 
+    parties par milliard, soit 80 µg/m³. Son calcul repose sur la somme des 
+    écarts entre les concentrations horaires d’ozone dépassant 80 µg/m³ et 
+    ce seuil de 80 µg/m³. Les mesures sont effectuées chaque jour entre 8 h 
     et 20 h, sur la période de mai à juillet, afin de coïncider avec la 
     phase active de photosynthèse.
     <br></br><br></br>
-    Une valeur cible(*) de 18 000 µg/m³ par heure, en moyenne calculée sur 5
+    Une valeur cible(*) de 18 000 µg/m³ par heure, en moyenne calculée sur 5
     ans, est fixée dans la directive 2024/2881 du 23 octobre 2024 concernant
     la qualité de l’air ambiant et un air pur pour l’Europe.
     <br></br><br></br>
     <i>
-      (*) Valeur cible : niveau à atteindre, dans la mesure du possible,
+      (*) Valeur cible : niveau à atteindre, dans la mesure du possible,
       afin d'éviter, de prévenir ou de réduire les effets nocifs sur
       l'environnement.
     </i>
