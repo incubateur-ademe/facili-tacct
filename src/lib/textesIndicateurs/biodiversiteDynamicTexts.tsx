@@ -1,6 +1,15 @@
 import { Body } from "@/design-system/base/Textes";
+import { Feature, MultiPoint, Point } from 'geojson';
 import { AtlasBiodiversiteModel, SurfacesAgricolesModel } from "../postgres/models";
 import { Round } from "../utils/reusableFunctions/round";
+
+interface NearestPoint extends Feature<Point> {
+  properties: {
+    featureIndex: number;
+    distanceToPoint: number;
+    [key: string]: any;
+  };
+}
 
 {/* Biodiversité */ }
 export const SolsImpermeabilisesBiodiversiteDynamicText = ({
@@ -110,4 +119,57 @@ export const EtatCoursDeauDynamicText = () => {
       kayak, etc.) affectent les écosystèmes aquatiques.
     </Body>
   );
+}
+
+export const AOT40DynamicText = ({
+  stationWithMaxValue,
+  nearestPoint
+}: {
+  stationWithMaxValue: Feature<Point | MultiPoint, {
+    value: number;
+    nom_site: string;
+  }>[] | null;
+  nearestPoint: NearestPoint;
+}) => {
+  return (
+    <>
+      {stationWithMaxValue == null ? (
+        <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+          Nous ne disposons pas de données pour les stations proches de
+          votre territoire
+        </Body>
+      ) : (
+        <>
+          <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+            Plusieurs stations peuvent apparaître sur la carte. C'est la
+            station ayant la valeur la plus élevée dans un rayon de {Round(nearestPoint.properties.distanceToPoint + 20, 1)} km
+            qui est retenue. Dans votre cas, il s’agit de la station {nearestPoint.properties.nom_site},
+            avec un seuil mesuré de {Round(stationWithMaxValue[0].properties.value, 0)} µg/m³.
+          </Body>
+          <br></br>
+          {stationWithMaxValue[0].properties.value < 6000 ? (
+            <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+              Bonne nouvelle : votre territoire anticipe l'objectif 2050 avec 
+              un seuil de 6 000 µg/m³ par heure déjà respecté. Ce résultat 
+              favorable pour la végétation nécessite toutefois de rester vigilant 
+              face aux évolutions de la pollution à l’ozone.
+            </Body>
+          ) : stationWithMaxValue[0].properties.value > 18000 ? (
+            <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+              Le cumul d’ozone enregistré ces 5 dernières années pendant la
+              période de végétation risque d’engendrer des réactions de la part des végétaux de
+              votre territoire (croissance réduite, perte de rendement, altération des feuilles). Une 
+              vigilance accrue est nécessaire pour limiter l’exposition de la végétation.
+            </Body>
+          ) : (
+            <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+              Le seuil actuel de 18 000 µg/m³ par heure est respecté, mais le cumul 
+              d'ozone dépasse encore l'objectif de 6 000 µg/m³ fixé pour 2050. Poursuivez 
+              vos efforts !
+            </Body>
+          )}
+        </>
+      )}
+    </>
+  )
 }

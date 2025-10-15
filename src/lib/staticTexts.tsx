@@ -360,45 +360,16 @@ export const EtatCoursEauRessourcesEauText = () => (
 );
 
 export const AOT40Text = () => (
-  <div className="px-4">
-    <p>
-      L’ozone de basse altitude est le polluant de l’air le plus
-      destructeur pour la biodiversité. C’est l’un des rares gaz à
-      être à la fois un polluant de l’air et un gaz à effet de serre :
-      les périodes de fortes chaleurs, de plus en plus fréquentes et
-      intenses, favorisent la formation d’ozone de basse altitude,
-      dont les concentrations aggravent le changement climatique.
-    </p>
-    <p>
-      Ce gaz très oxydant s’infiltre dans les plantes, détruit leurs
-      cellules et perturbe leur croissance. Les forêts sont
-      particulièrement touchées. Les arbres affaiblis deviennent plus
-      vulnérables aux maladies et aux sècheresses, et perdent leur
-      capacité à stocker du carbone. L’ozone perturbe la pollinisation
-      des abeilles, essentielles à 75 % des cultures alimentaires.
-    </p>
-    <p>
-      ⇒ 15 % des stations de mesure en milieu rural dépassaient encore
-      le seuil réglementaire d'ozone sur la période 2018-2022.
-    </p>
-    <p>
-      ⇒ Dans certaines régions françaises, des arbres comme le hêtre
-      et l'épicéa enregistrent des pertes de biomasse allant jusqu'à
-      22 %.
-    </p>
-    <p>
-      ⇒ À l’échelle mondiale, environ 90 % des pertes de rendement
-      agricole dues à la pollution atmosphérique sont attribuées à
-      l’ozone.
-    </p>
-    <p>
-      - - - - <br></br>
-      La directive 2024/2881 du 23 octobre 2024 concernant la qualité
-      de l’air ambiant et un air pur pour l’Europe fixe un objectif de
-      protection de la végétation de 6 000 µg/m³ par heure au 1er
-      janvier 2050.
-    </p>
-  </div>
+  <>
+    <Body size="sm">
+      La pollution figure parmi les cinq principales pressions à 
+      l’origine de l’effondrement de la biodiversité. Portée par 
+      le vent, la pollution à l’ozone ne s'arrête pas aux frontières 
+      des agglomérations. La dispersion peut s’étendre sur plusieurs 
+      centaines de kilomètres. Même les territoires éloignés des 
+      sources de pollution en subissent les effets.
+    </Body>
+  </>
 );
 
 export const PrelevementEauText = () => (
@@ -447,6 +418,7 @@ export const PrelevementEauText = () => (
         (au fur et à mesure du renouvellement des autorisations) ;
       </li>
       <li>
+
         la mesure 12 prévoit l’installation obligatoire de compteurs
         connectés pour les prélèvements importants (généralisation
         prévue d'ici 2027) ;

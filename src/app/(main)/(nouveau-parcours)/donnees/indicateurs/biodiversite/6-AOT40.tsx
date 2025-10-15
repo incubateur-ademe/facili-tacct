@@ -1,5 +1,6 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { aot40Legends } from '@/components/maps/legends/datavizLegends';
@@ -9,9 +10,10 @@ import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { AOT40, CarteCommunes } from "@/lib/postgres/models";
+import { AOT40Text } from '@/lib/staticTexts';
+import { AOT40DynamicText } from '@/lib/textesIndicateurs/biodiversiteDynamicTexts';
 import { AOT40TooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
-import { Round } from '@/lib/utils/reusableFunctions/round';
 import * as turf from '@turf/turf';
 import { useSearchParams } from "next/navigation";
 import styles from '../../explorerDonnees.module.scss';
@@ -94,59 +96,44 @@ export const OzoneEtVegetation = (props: {
     featureCollection
   );
 
+  // on trace un "cercle" autour du territoire (rayon = distance à la station la plus proche + 20km)
+  // Le cercle est en fait un polygone avec 10 côtés (steps)
+  // paramètres : centre, rayon, options
   const circle = turf.circle(
     [centerCoord[0], centerCoord[1]],
     nearestPoint.properties.distanceToPoint + 20,
     { steps: 10, units: 'kilometers' }
   );
+  // On sélectionne les stations dans le cercle, soit dans un rayon de distanceToPoint + 20km
   const stationsWithinCircle = turf.pointsWithinPolygon(
     featureCollection,
     circle
   );
-  const maxValueInStations = stationsWithinCircle.features.length
+  // on extrait la station avec la valeur max parmi celles sélectionnées
+  const stationWithMaxValue = stationsWithinCircle.features.length
     ? stationsWithinCircle.features
-      .map((f) => f.properties?.value)
-      .reduce((a, b) => Math.max(Number(a), Number(b)))
+      .filter((f) => f.properties?.value === Math.max(...stationsWithinCircle.features.map((f) => f.properties?.value)))
     : null;
-
   const exportData = IndicatorExportTransformations.biodiversite.aot40(aot40);
   return (
     <>
       <div className={styles.datavizMapContainer}>
-        <Body size='sm'>
-          La pollution à l’ozone ne s'arrête pas aux frontières des
-          agglomérations. Portée par le vent, la dispersion peut s’étendre
-          sur plusieurs centaines de kilomètres. Même les territoires
-          éloignés des sources de pollution en subissent les effets.
-        </Body>
-        {maxValueInStations == null ? (
-          <Body weight='bold' size='sm'>
-            Nous ne disposons pas de données pour les stations proches de
-            votre territoire
-          </Body>
-        ) : maxValueInStations < 6000 ? (
-          <Body weight='bold' size='sm'>
-            Bravo, le seuil de 6 000 µg/m³ par heure fixé comme objectif
-            pour 2050 est déjà atteint. Ne relâchez pas vos efforts.
-          </Body>
-        ) : maxValueInStations > 18000 ? (
-          <Body weight='bold' size='sm'>
-            Le cumul d’ozone enregistré ces 5 dernières années pendant la
-            période de végétation ({Round(maxValueInStations, 0)} µg/m³)
-            risque d’engendrer des réactions de la part des végétaux de
-            votre territoire.
-          </Body>
-        ) : (
-          <Body weight='bold' size='sm'>
-            Le seuil actuel de protection de la végétation de 18 000 µg/m³
-            par heure n’est pas franchi. Poursuivez vos efforts,
-            l’objectif fixé pour 2050 est de 6 000 µg/m³ par heure.
-          </Body>
-        )}
-        <CustomTooltipNouveauParcours
-          title={AOT40TooltipText}
-          texte="D'où vient ce chiffre ?"
-        />
+        <div className={styles.chiffreDynamiqueWrapper} >
+          { stationWithMaxValue && <MicroNumberCircle valeur={stationWithMaxValue[0].properties.value} arrondi={0} unite='µg/m³' /> }
+          <div className={styles.text}>
+            <AOT40DynamicText 
+              stationWithMaxValue={stationWithMaxValue}
+              nearestPoint={nearestPoint}
+            />
+            <CustomTooltipNouveauParcours
+              title={AOT40TooltipText}
+              texte="D'où vient ce chiffre ?"
+            />
+          </div>
+        </div>
+        <div className='pr-5 pt-8'>
+          <AOT40Text />
+        </div>
         <div className={styles.mapWrapper}>
           {
             aot40.length && carteCommunes.length ? (

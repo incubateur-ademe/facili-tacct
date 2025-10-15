@@ -60,8 +60,7 @@ const PourquoiMobiliser = () => {
           </ul>
         </div>
         <h2>
-          Retour d’expérience : Violaine Magne (Clermont Auvergne Metropole) et
-          d’Adam Gibaud (PNR du Pilat)
+          Retour d’expérience de Jolet Van Kipshagen (Vallée de Villé)
         </h2>
         <p>
           Dans le cadre du dispositif "Accélérateur de transitions”, la CC de la

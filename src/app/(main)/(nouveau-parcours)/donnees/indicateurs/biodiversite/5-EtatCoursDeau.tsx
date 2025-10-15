@@ -96,7 +96,6 @@ export const EtatEcoCoursDeau = (props: {
         <div className='pr-5 pt-8'>
           <ReadMoreFade maxHeight={100}>
             <EtatsCoursEauBiodiversiteTextNouveauParcours />
-
           </ReadMoreFade>
         </div>
         <div className={styles.mapWrapper}>
