@@ -39518,6 +39518,7 @@ async function fetchBaserow(tableId) {
       nextUrl = nextUrl.replace("http:", "https:");
     }
   }
+  console.log("[Baserow] Fetched", allResults.length, "table", allResults);
   return allResults;
 }
 async function loadPopulation() {
@@ -39757,9 +39758,9 @@ async function insertPopulationCoverage(popTotaleCouverte) {
     console.log("[territoires] R\xE9cup\xE9ration des donn\xE9es...");
     const baserowData = await fetchBaserow(BASEROW_TABLE_ID_TERRITOIRES);
     let df = baserowData.map((row) => ({
-      libelle: row["Nom du territoire"],
-      type: Array.isArray(row["Typologie de territoire"]) && row["Typologie de territoire"].length > 0 ? row["Typologie de territoire"][0].value : null,
-      siren: row["# SIREN"]
+      libelle: row["\u26A0\uFE0F Nom du territoire"],
+      type: Array.isArray(row["\u26A0\uFE0F Typologie de territoire"]) && row["\u26A0\uFE0F Typologie de territoire"].length > 0 ? row["\u26A0\uFE0F Typologie de territoire"][0].value : null,
+      siren: row["\u26A0\uFE0F # SIREN"]
     }));
     console.log(`[territoires] Donn\xE9es r\xE9cup\xE9r\xE9es : ${df.length} lignes`);
     console.log("[population] Chargement des donn\xE9es population...");
