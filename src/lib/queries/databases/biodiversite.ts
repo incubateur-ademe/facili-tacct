@@ -77,7 +77,6 @@ export const GetAgricultureBio = async (
       }
     } catch (error) {
       console.error(error);
-      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }
