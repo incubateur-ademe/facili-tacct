@@ -273,7 +273,7 @@ export const MapEspacesNaf = (props: {
       `}</style>
       <div style={{ position: 'relative' }}>
         <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
-        <RetardScroll mapRef={mapRef} containerRef={localContainerRef} delay={300} />
+        <RetardScroll mapRef={mapRef} containerRef={localContainerRef} delay={500} />
       </div>
     </>
   );
