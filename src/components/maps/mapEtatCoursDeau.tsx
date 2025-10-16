@@ -1,4 +1,5 @@
 "use client";
+import { RetardScroll } from '@/hooks/RetardScroll';
 import { CommunesIndicateursDto, EtatCoursDeauDto } from '@/lib/dto';
 import { QualiteSitesBaignade } from '@/lib/postgres/models';
 import { mapStyles } from 'carte-facile';
@@ -6,7 +7,7 @@ import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useMemo, useRef } from 'react';
+import { RefObject, useEffect, useMemo, useRef } from 'react';
 import { BoundsFromCollection } from './components/boundsFromCollection';
 import { CoursDeauTooltip } from './components/tooltips';
 import styles from './maps.module.scss';
@@ -129,7 +130,9 @@ export const MapEtatCoursDeau = (props: {
       attributionControl: false,
     });
     mapRef.current = map;
-
+    // s'assure que le zoom au scroll est désactivé immédiatement pour éviter de capturer les défilements de page
+    try { map.scrollZoom.disable(); } catch (e) { /* noop */ }
+    
     map.on('load', () => {
       // Fit bounds
       if (
@@ -463,7 +466,7 @@ export const MapEtatCoursDeau = (props: {
                   if (!features) return;
                   const sitesInCluster = features.map((f: any) => f.properties?.nomSite).filter(Boolean).slice(0, 10);
                   const hasMore = features.length > 10;
-                  
+
                   const tooltipContent = `<div style="padding: 0.25rem;">
                     <div style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; border-bottom: 1px solid #B8B8B8; margin-bottom: 0.5rem;">
                       Dans ce regroupement :
@@ -473,11 +476,11 @@ export const MapEtatCoursDeau = (props: {
                       ${hasMore ? '<div>...</div>' : ''}
                     </div>
                   </div>`;
-                  
+
                   if (popupRef.current) {
                     popupRef.current.remove();
                   }
-                  
+
                   popupRef.current = new maplibregl.Popup({
                     closeButton: false,
                     closeOnClick: false,
@@ -539,7 +542,7 @@ export const MapEtatCoursDeau = (props: {
               const qualite = properties?.qualite2020;
               const label = qualiteLabel(qualite);
               const icon = qualiteIcon(qualite);
-              
+
               const tooltipContent = `
                 <div class="${styles.qualiteSitesBaignadePopupWrapper}" style="display: flex; align-items: center; gap: 0.5rem;">
                   <img src="${icon}" alt="" style="width: 18px; height: 18px;" />
@@ -549,11 +552,11 @@ export const MapEtatCoursDeau = (props: {
                   </div>
                 </div>
               `;
-              
+
               if (popupRef.current) {
                 popupRef.current.remove();
               }
-              
+
               popupRef.current = new maplibregl.Popup({
                 closeButton: false,
                 closeOnClick: false,
@@ -595,6 +598,9 @@ export const MapEtatCoursDeau = (props: {
     };
   }, [territoryGeoJson, coursDeauGeoJson, sitesBaignadeGeoJson, enveloppe, code]);
 
+    // Ref local pour le RetardScroll
+    const localContainerRef = mapContainer as RefObject<HTMLElement>;
+
   return (
     <>
       <style jsx global>{`
@@ -611,6 +617,7 @@ export const MapEtatCoursDeau = (props: {
       `}</style>
       <div style={{ position: 'relative' }}>
         <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%', cursor: 'pointer' }} />
+        <RetardScroll mapRef={mapRef} containerRef={localContainerRef} delay={300} />
       </div>
     </>
   );
