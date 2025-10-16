@@ -1,9 +1,10 @@
 
+import { RetardScroll } from '@/hooks/RetardScroll';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { useEffect, useMemo, useRef } from 'react';
+import { RefObject, useEffect, useMemo, useRef } from 'react';
 import { EspacesNafTooltip } from './components/tooltips';
 
 const getColor = (d: number) => {
@@ -65,6 +66,8 @@ export const MapEspacesNaf = (props: {
       attributionControl: false,
     });
     mapRef.current = map;
+    // s'assure que le zoom au scroll est désactivé immédiatement pour éviter de capturer les défilements de page
+    try { map.scrollZoom.disable(); } catch (e) { /* noop */ }
 
     map.on('load', () => {
       if (
@@ -253,6 +256,9 @@ export const MapEspacesNaf = (props: {
     };
   }, [geoJsonData, enveloppe]);
 
+  // Ref local pour le RetardScroll
+  const localContainerRef = mapContainer as RefObject<HTMLElement>;
+
   return (
     <>
       <style jsx global>{`
@@ -267,6 +273,7 @@ export const MapEspacesNaf = (props: {
       `}</style>
       <div style={{ position: 'relative' }}>
         <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
+        <RetardScroll mapRef={mapRef} containerRef={localContainerRef} delay={300} />
       </div>
     </>
   );

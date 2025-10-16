@@ -1,5 +1,6 @@
 'use client';
 
+import { RetardScroll } from '@/hooks/RetardScroll';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { AOT40 } from '@/lib/postgres/models';
 import { getArrayDepth } from '@/lib/utils/reusableFunctions/arrayDepth';
@@ -11,7 +12,7 @@ import { Position } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useMemo, useRef } from 'react';
+import { RefObject, useEffect, useMemo, useRef } from 'react';
 import { AOT40Tooltip } from './components/tooltips';
 import './maps.css';
 
@@ -104,8 +105,8 @@ export const MapAOT40 = (props: {
   const polygonTerritoire = type === "commune" && commune?.geometry.coordinates
     ? turf.multiPolygon(commune.geometry.coordinates as Position[][][])
     : union?.geometry.coordinates
-    ? turf.multiPolygon(union.geometry.coordinates as Position[][][])
-    : null;
+      ? turf.multiPolygon(union.geometry.coordinates as Position[][][])
+      : null;
 
   // Pour certains multipolygones, on a plusieurs arrays de coordonnées si les territoires sont disjoints
   const flattenedCoordinates = polygonTerritoire && polygonTerritoire.geometry.coordinates
@@ -118,11 +119,11 @@ export const MapAOT40 = (props: {
   // car turf.polygon attend des coordonnées au format [longitude, latitude]
   const newPolygonTerritoire = flattenedCoordinates.length > 0
     ? turf.polygon(flattenedCoordinates.map(
-        el => el.map(
-          coords => [coords[1], coords[0]]
-        )
-      ) as unknown as Position[][]
+      el => el.map(
+        coords => [coords[1], coords[0]]
       )
+    ) as unknown as Position[][]
+    )
     : turf.polygon([[[0, 0], [0, 0.001], [0.001, 0.001], [0.001, 0], [0, 0]]]);
 
   const enveloppe = turf.envelope(newPolygonTerritoire).geometry.coordinates[0];
@@ -209,11 +210,13 @@ export const MapAOT40 = (props: {
       attributionControl: false,
     });
     mapRef.current = map;
+    // s'assure que le zoom au scroll est désactivé immédiatement pour éviter de capturer les défilements de page
+    try { map.scrollZoom.disable(); } catch (e) { /* noop */ }
 
     map.on('load', () => {
       // Déterminer les limites en fonction de si le point le plus proche est dans le polygone
       const shouldUseTerritoireBounds = turf.booleanPointInPolygon(
-        nearestPoint, 
+        nearestPoint,
         turf.polygon([enveloppe])
       );
 
@@ -336,8 +339,8 @@ export const MapAOT40 = (props: {
           'circle-radius': [
             'step',
             ['get', 'point_count'],
-            20, 
-            4, 22.5, 
+            20,
+            4, 22.5,
             10, 32.5
           ]
         }
@@ -395,7 +398,7 @@ export const MapAOT40 = (props: {
 
       // Tooltip au survol du cluster - vérifie aussi les couches clusters-outline et clusters-border
       const clusterLayers = ['clusters', 'clusters-border', 'clusters-outline'];
-    
+
       clusterLayers.forEach(layerId => {
         map.on('mouseenter', layerId, async (e) => {
           map.getCanvas().style.cursor = 'pointer';
@@ -409,11 +412,11 @@ export const MapAOT40 = (props: {
               const containerHeight = mapContainer.current?.clientHeight || 500;
               const mouseY = e.point.y;
               const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';
-              
+
               if (popupRef.current) {
                 popupRef.current.remove();
               }
-              
+
               popupRef.current = new maplibregl.Popup({
                 closeButton: false,
                 closeOnClick: false,
@@ -454,15 +457,15 @@ export const MapAOT40 = (props: {
           const properties = e.features[0].properties;
           const nom_site = properties?.nom_site;
           const value = properties?.value;
-          
+
           const containerHeight = mapContainer.current?.clientHeight || 500;
           const mouseY = e.point.y;
           const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';
-          
+
           if (popupRef.current) {
             popupRef.current.remove();
           }
-          
+
           const tooltipContent = `
             <div class="flex flex-row justify-between p-0 gap-2 items-center w-max">
               <div class="text-sm">
@@ -473,7 +476,7 @@ export const MapAOT40 = (props: {
               </div>
             </div>
           `;
-          
+
           popupRef.current = new maplibregl.Popup({
             closeButton: false,
             closeOnClick: false,
@@ -514,6 +517,9 @@ export const MapAOT40 = (props: {
     };
   }, [geoJsonData, aot40GeoJson, enveloppe, boundsIfNoPoint, nearestPoint]);
 
+  // Ref local pour le RetardScroll
+  const localContainerRef = mapContainer as RefObject<HTMLElement>;
+
   return (
     <>
       <style jsx global>{`
@@ -529,6 +535,7 @@ export const MapAOT40 = (props: {
       `}</style>
       <div style={{ position: 'relative' }}>
         <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
+        <RetardScroll mapRef={mapRef} containerRef={localContainerRef} delay={300} />
       </div>
     </>
   );

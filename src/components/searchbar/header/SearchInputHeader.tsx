@@ -3,7 +3,7 @@
 import { GetCollectivite } from '@/lib/queries/searchBar';
 import Autocomplete from '@mui/material/Autocomplete';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { handleChangementTerritoireRedirection, ReplaceDisplayEpci, ReplaceSearchEpci } from '../fonctions';
 import { RenderOption } from '../renderOption';
 import { RenderInputHeader } from './renderInputHeader';
@@ -30,6 +30,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
   const [options, setOptions] = useState<SearchInputOptions[]>([]);
   const [value, setValue] = useState<SearchInputOptions | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const isEnterPressedRef = useRef(false);
 
   useEffect(() => {
     if (searchLibelle) {
@@ -113,6 +114,24 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
         setOptions(newValue ? [newValue, ...options] : options);
         setSearchCode(newValue?.searchCode ?? '');
         setSearchLibelle(newValue?.searchLibelle ?? '');
+        
+        // Si Enter a été pressé et qu'une valeur a été sélectionnée
+        if (isEnterPressedRef.current && newValue !== null) {
+          isEnterPressedRef.current = false;
+          setIsNewTypeChosen(false);
+          setIsTerritoryChanging(false);
+          setIsTypeChanging(false);
+          handleChangementTerritoireRedirection({
+            searchCode: newValue.searchCode ?? '',
+            searchLibelle: newValue.searchLibelle ?? '',
+            typeTerritoire,
+            router,
+            page: pathname.split('/')[1] || '',
+            thematique
+          })
+          return;
+        }
+        
         if (newValue !== null) {
           const input = document.getElementById(id);
           if (input) (input as HTMLInputElement).blur();
@@ -129,18 +148,8 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
       }}
       onKeyDown={(e) => {
         if (e.code === 'Enter') {
-          if (searchLibelle === '') return;
-          setIsNewTypeChosen(false);
-          setIsTerritoryChanging(false);
-          setIsTypeChanging(false);
-          handleChangementTerritoireRedirection({
-            searchCode,
-            searchLibelle,
-            typeTerritoire,
-            router,
-            page: pathname.split('/')[1] || '',
-            thematique
-          })
+          e.preventDefault();
+          isEnterPressedRef.current = true;
         }
       }}
       renderOption={(props, option) =>
