@@ -1,3 +1,4 @@
+"use client";
 import Image, { ImageProps } from "next/image";
 import React, { CSSProperties, useState } from "react";
 

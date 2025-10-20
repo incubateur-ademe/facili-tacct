@@ -3,6 +3,7 @@
 import CeremaLogo from '@/assets/images/Logo-cerema.jpg';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes } from '@/lib/postgres/models';
+import { LCZselectionTerritoires } from '@/lib/territoireData/LCZselectionTerritoires';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
@@ -44,6 +45,11 @@ export const MapLCZNouveauParcours = ({
   const hasTriedFallback = useRef(false);
   const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
   const enveloppe = BoundsFromCollection(carteCommunesEnriched, type, code);
+  // Vérifier si le territoire est dans la liste de sélection manuelle
+  const isInLCZSelection = LCZselectionTerritoires.some(
+    territoire => territoire.code === code && territoire.type === type
+  );
+  const useLczGenerator = !isLczCovered || isInLCZSelection;
 
   useEffect(() => {
     if (!mapContainer.current || isLczCovered === undefined) return;
@@ -85,7 +91,7 @@ export const MapLCZNouveauParcours = ({
       setIsTilesLoading(false);
     }, 10000);
 
-    if (!isLczCovered) {
+    if (useLczGenerator) {
       map.on('load', () => {
         setIsTilesLoading(true);
         try {
@@ -365,7 +371,7 @@ export const MapLCZNouveauParcours = ({
       {isLoading ? <Loader /> : (
         <>
           <div ref={mapContainer} className='map-container' style={{ width: '100%', height: '500px' }}>
-            {isLczCovered && (
+            {!useLczGenerator && (
               <Image
                 id="cerema-logo"
                 src={CeremaLogo}
@@ -396,7 +402,7 @@ export const MapLCZNouveauParcours = ({
               >
                 <h3>- Espaces bâtis -</h3>
                 <LegendCompColorLCZ
-                  legends={((zoomMap >= 13.5 || !isLczCovered) ? LczLegendOpacity70 : LczLegend).slice(0, 9)}
+                  legends={((zoomMap >= 13.5 || useLczGenerator) ? LczLegendOpacity70 : LczLegend).slice(0, 9)}
                 />
               </div>
               <div
@@ -404,7 +410,7 @@ export const MapLCZNouveauParcours = ({
                 style={{ borderTop: "solid 1px var(--gris-medium)", padding: '1rem 0' }}
               >
                 <h3>- Espaces non bâtis -</h3>
-                <LegendCompColorLCZ legends={((zoomMap >= 13.5 || !isLczCovered) ? LczLegendOpacity70 : LczLegend).slice(9, 16)} />
+                <LegendCompColorLCZ legends={((zoomMap >= 13.5 || useLczGenerator) ? LczLegendOpacity70 : LczLegend).slice(9, 16)} />
               </div>
             </div>
           </div>
