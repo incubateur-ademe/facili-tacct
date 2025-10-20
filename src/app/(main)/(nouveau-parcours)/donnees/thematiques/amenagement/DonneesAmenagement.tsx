@@ -8,7 +8,7 @@ import { GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
 import { GetNAF } from "@/lib/queries/ecologieGouv/test";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { ConsommationEspacesNAFAmenagement } from '../../indicateurs/amenagement/1-ConsommationEspacesNAF';
@@ -40,7 +40,7 @@ export const DonneesAmenagement = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);
       return;
@@ -92,7 +92,6 @@ export const DonneesAmenagement = ({
             </div>
             <ConsommationEspacesNAFAmenagement
               consommationNAF={data.consommationNAF}
-              carteCommunes={data.carteCommunes}
             />
           </div>
 
@@ -105,7 +104,6 @@ export const DonneesAmenagement = ({
             </div>
             <ConsommationEspacesNAFAmenagementEcolab
               consommationNAF={data.consommationNAFEcolab}
-              carteCommunes={data.carteCommunes}
             />
           </div>
 

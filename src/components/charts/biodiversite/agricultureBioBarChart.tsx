@@ -4,7 +4,7 @@ import { surfaceEnBioBarChartLegend } from "@/components/maps/legends/datavizLeg
 import { Body } from "@/design-system/base/Textes";
 import { AgricultureBio } from "@/lib/postgres/models";
 import { Sum } from "@/lib/utils/reusableFunctions/sum";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { simpleBarChartTooltip } from "../ChartTooltips";
 import { NivoBarChart } from "../NivoBarChart";
 
@@ -43,7 +43,10 @@ export const AgricultureBioBarChart = (
   { agricultureBio, sliderValue }: { agricultureBio: AgricultureBio[], sliderValue: number[] }
 ) => {
   const [selectedYears, setSelectedYears] = useState<string[]>(agricultureBioYears.map(year => year.split("_")[1]));
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const graphData = graphDataFunct(selectedYears, agricultureBio)
+  const minValueXTicks = graphData.map(e => e.annee).at(0);
+  const maxValueXTicks = graphData.map(e => e.annee).at(-1);
 
   useEffect(() => {
     setSelectedYears(
@@ -54,8 +57,20 @@ export const AgricultureBioBarChart = (
     )
   }, [sliderValue]);
 
+  useLayoutEffect(() => {
+    setIsTransitioning(true);
+    const timer = setTimeout(() => setIsTransitioning(false), 800);
+    return () => clearTimeout(timer);
+  }, [minValueXTicks, maxValueXTicks]);
+
   return (
     <div style={{ height: "450px", minWidth: "450px", backgroundColor: "white" }}>
+      <style>{`
+        .nivo-bar-chart-container .bottom-tick {
+          opacity: ${isTransitioning ? '0' : '1'};
+          transition: opacity 0.2s ease-in-out;
+        }
+      `}</style>
       {graphData && graphData.length ?
         <NivoBarChart
           colors={surfaceEnBioBarChartLegend.map(e => e.color)}

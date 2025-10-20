@@ -6,7 +6,7 @@ import useWindowDimensions from '@/hooks/windowDimensions';
 import { RessourcesEau } from '@/lib/postgres/models';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { simpleBarChartTooltip } from '../ChartTooltips';
 import { NivoBarChartRessourcesEau } from '../NivoBarChart';
 
@@ -92,6 +92,7 @@ const PrelevementEauBarChart = ({
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
   const windowDimensions = useWindowDimensions();
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const dataParMaille = type === "commune"
     ? ressourcesEau.filter((obj) => obj.code_geographique === code)
     : type === "epci"
@@ -115,14 +116,25 @@ const PrelevementEauBarChart = ({
     );
   }, [sliderValue]);
 
-
   const minValueXTicks = Math.min(...graphData.map((e) => Number(e.annee)));
   const maxValueXTicks = Math.max(...graphData.map((e) => Number(e.annee)));
+
+  useLayoutEffect(() => {
+    setIsTransitioning(true);
+    const timer = setTimeout(() => setIsTransitioning(false), 800);
+    return () => clearTimeout(timer);
+  }, [minValueXTicks, maxValueXTicks]);
 
   return (
     <div
       style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
     >
+      <style>{`
+        .prelevement-eau-bar-chart-container .bottom-tick {
+          opacity: ${isTransitioning ? '0' : '1'};
+          transition: opacity 0.2s ease-in-out;
+        }
+      `}</style>
       {graphData && graphData.length ? (
         <>
           <NivoBarChartRessourcesEau

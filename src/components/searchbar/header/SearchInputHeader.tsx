@@ -121,6 +121,8 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
           setIsNewTypeChosen(false);
           setIsTerritoryChanging(false);
           setIsTypeChanging(false);
+          const input = document.getElementById(id);
+          if (input) (input as HTMLInputElement).blur();
           handleChangementTerritoireRedirection({
             searchCode: newValue.searchCode ?? '',
             searchLibelle: newValue.searchLibelle ?? '',

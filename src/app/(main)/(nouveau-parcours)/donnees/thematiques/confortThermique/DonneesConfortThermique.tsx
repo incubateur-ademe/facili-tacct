@@ -10,7 +10,7 @@ import { GetConfortThermique, GetInconfortThermique } from "@/lib/queries/databa
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
 import { GrandAge } from '../../indicateurs/confortThermique/1-GrandAge';
@@ -40,7 +40,7 @@ const DonneesConfortThermique = ({
   const [isFirstRender, setIsFirstRender] = useState(true);
   const ongletsMenu = sommaireThematiques[thematique];
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);
       return;

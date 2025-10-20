@@ -7,7 +7,7 @@ import { GetRessourceEau } from "@/lib/queries/databases/ressourcesEau";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { EtatEcoCoursDeau } from '../../indicateurs/eau/1-EtatCoursDeau';
@@ -38,7 +38,7 @@ export const DonneesEau = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);
       return;

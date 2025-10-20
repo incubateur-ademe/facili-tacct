@@ -6,8 +6,7 @@ import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
-import { CommunesContourMapper } from '@/lib/mapper/communes';
-import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
+import { ConsommationNAF } from '@/lib/postgres/models';
 import { ConsommationEspacesNAFAmenagementText } from '@/lib/staticTexts';
 import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
 import { consommationEspacesNafDoc } from '@/lib/utils/export/documentations';
@@ -19,9 +18,8 @@ import { SourceExport } from '../SourceExport';
 
 export const ConsommationEspacesNAFAmenagement = (props: {
   consommationNAF: ConsommationNAF[];
-  carteCommunes: CarteCommunes[];
 }) => {
-  const { consommationNAF, carteCommunes } = props;
+  const { consommationNAF } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -31,7 +29,6 @@ export const ConsommationEspacesNAFAmenagement = (props: {
     ? consommationNAF.filter((item) => item.code_geographique === code)[0]
       ?.naf09art23
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
-  const territoireContourMap = carteCommunes.map(CommunesContourMapper);
 
   return (
     <>

@@ -8,7 +8,7 @@ import { GetAgriculture, GetSurfacesAgricoles } from "@/lib/queries/databases/ag
 import { GetAgricultureBio } from "@/lib/queries/databases/biodiversite";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { TypesDeCulture } from '../../indicateurs/agriculture/1-TypesDeCultures';
@@ -43,7 +43,7 @@ export const DonneesAgriculture = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);
       return;
