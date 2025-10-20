@@ -14,7 +14,7 @@ const PourquoiMobiliser = () => {
       <RetourHautDePage />
       <h1>
         Comment mobiliser en interne et en externe pour la réalisation du diagnostic de
-        vulnérabilité aux effets du changements climatique ? Retour d’expérience de la Vallée de Villé.
+        vulnérabilité aux effets du changement climatique ? Retour d’expérience de la Vallée de Villé.
       </h1>
       <div className={styles.textBloc}>
         <p>
@@ -28,7 +28,7 @@ const PourquoiMobiliser = () => {
           proposé pour validation à ses élus, un plan de mobilisation des acteurs.
         </p>
         <p>
-          Ce retour d’expérience montre <b>comment elle s’y est prise</b>, <b>ce que cela a changé</b>, et <b>les
+          Ce retour d’expérience montre <b>comment elle s’y est prise</b>, <b>ce que cela a changé</b> et <b>les
             conditions à réunir pour reproduire la dynamique ailleurs.</b>
         </p>
       </div>
@@ -115,13 +115,13 @@ const PourquoiMobiliser = () => {
         <div className={styles.grayWrapper} style={{ margin: "2rem 0 2rem" }}>
           <p>Un exemple marquant :</p>
           <p>
-            pendant les périodes de sécheresse, <b>l’épicerie solidaire du territoire a constaté une hausse des demandes d’aide</b>,
+            Pendant les périodes de sécheresse, <b>l’épicerie solidaire du territoire a constaté une hausse des demandes d’aide</b>,
             liée à la baisse de production dans les potagers familiaux. Sans interaction avec un acteur local,
             ce type d’impact serait passé inaperçu.
           </p>
         </div>
         <p>
-          Au delà des chiffres, ce <b>dialogue a fait émerger les vrais enjeux du territoire</b>.
+          Au-delà des chiffres, ce <b>dialogue a fait émerger les vrais enjeux du territoire</b>.
         </p>
         <p>
           Résultat : un diagnostic <b>ancré dans le quotidien</b>, qui “<b>parle de nos forêts, de nos arbres</b>”, comme
@@ -190,9 +190,6 @@ const PourquoiMobiliser = () => {
           </li>
           <li>
             <b>Tenir les horaires annoncés</b>, toujours.
-          </li>
-          <li>
-            <b>Faire appel au service communication</b>, si besoin, pour gagner en visibilité.
           </li>
           <li>
             <b>Clore chaque atelier par une évaluation à chaud</b>, pour ajuster la suite en
@@ -294,17 +291,17 @@ const PourquoiMobiliser = () => {
           mettre en place (par exemple, la rédaction d’un guide sur les aides locales).
         </p>
         <div className="flex flex-row gap-8" style={{ margin: "3rem 0 3rem" }}>
-        <p style={{ fontSize: "14px" }}>
-          Bravo à Jolet qui a su inspirer une communauté d'action sur son territoire, illustrant le rôle 
-          fondamental d'animation du chargé(e) de mission.
-        </p>
-        <Image
-          src={ArticleImage2}
-          alt="Dessin comique sur l'incompréhension du vocabulaire technique"
-          width={0}
-          height={0}
-          style={{ width: '70%', height: 'auto' }}
-        />
+          <p style={{ fontSize: "14px" }}>
+            Bravo à Jolet qui a su inspirer une communauté d'action sur son territoire, illustrant le rôle
+            fondamental d'animation du ou de la chargé(e) de mission.
+          </p>
+          <Image
+            src={ArticleImage2}
+            alt="Dessin comique sur l'incompréhension du vocabulaire technique"
+            width={0}
+            height={0}
+            style={{ width: '70%', height: 'auto' }}
+          />
         </div>
         <p>
           Évidemment, ce <b>retour d’expérience n’est pas une recette toute faite</b>,
@@ -320,7 +317,7 @@ const PourquoiMobiliser = () => {
           <ul>
             <li>
               <Link
-                href="https://cornu.viabloga.com/texts/jean-michel-cornu"
+                href="https://docs.google.com/document/d/1A5Ep7s2yAHLi3DxPANKpGTbeZctwRvDPYpK9KDsH_EI/edit?tab=t.0"
                 target="_blank"
                 rel="noreferrer"
               >
