@@ -84,8 +84,6 @@ export const DonneesGestionRisques = ({
       });
   }, [code, libelle, type]);
 
-  console.log("data.erosionCotiere", data.erosionCotiere[1]);
-
   return (
     isLoading ? <LoaderText text='Mise à jour des données' /> :
       <div className={styles.explorerMesDonneesContainer}>
