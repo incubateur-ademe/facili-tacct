@@ -10,8 +10,8 @@ export const RenderOption = ({ props, option }: SearchInputOptionsProps) => {
     <Box
       component="li"
       style={{ borderBottom: '1px solid var(--gris-medium)' }}
-      sx={{
-        '&:hover': { fontWeight: '700 !important', backgroundColor: 'transparent !important' }
+      sx={{ 
+        '&:hover': { fontWeight: '700 !important', backgroundColor: 'transparent !important' } 
       }}
       {...optionProps}
       key={option.searchLibelle + option.searchCode}
