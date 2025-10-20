@@ -6,7 +6,7 @@ import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, 
 import { GetArretesCatnat, GetIncendiesForet } from '@/lib/queries/databases/gestionRisques';
 import { GetCommunes, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { ArretesCatnat } from '../../indicateurs/gestionDesRisques/1-ArretesCatnat';
@@ -46,7 +46,7 @@ export const DonneesGestionRisques = ({
   const [isFirstRender, setIsFirstRender] = useState(true);
   const ongletsMenu = sommaireThematiques[thematique];
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);
       return;

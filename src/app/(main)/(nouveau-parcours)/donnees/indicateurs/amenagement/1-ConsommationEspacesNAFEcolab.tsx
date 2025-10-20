@@ -5,26 +5,17 @@ import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
-import { CommunesContourMapper } from '@/lib/mapper/communes';
 import { ConsommationNAFEcolabApi } from '@/lib/postgres/EcolabApi';
-import { CarteCommunes } from '@/lib/postgres/models';
 import { ConsommationEspacesNAFAmenagementText } from '@/lib/staticTexts';
 import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
-import { useSearchParams } from 'next/navigation';
 import styles from '../../explorerDonnees.module.scss';
 
 export const ConsommationEspacesNAFAmenagementEcolab = (props: {
   consommationNAF: ConsommationNAFEcolabApi[];
-  carteCommunes: CarteCommunes[];
 }) => {
-  const { consommationNAF, carteCommunes } = props;
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
+  const { consommationNAF } = props;
   const sumNaf = consommationNAF.reduce((acc, item) => acc + Number(item['conso_enaf_com.id_611']), 0)
-  const territoireContourMap = carteCommunes.map(CommunesContourMapper);
 
   return (
     <>

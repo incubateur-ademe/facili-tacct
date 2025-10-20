@@ -3,6 +3,7 @@
 import { espacesNAFBarChartLegend } from '@/components/maps/legends/datavizLegends';
 import { Body } from '@/design-system/base/Textes';
 import { ConsommationNAF } from '@/lib/postgres/models';
+import { useLayoutEffect, useState } from 'react';
 import { espacesNAFBarChartTooltip } from '../ChartTooltips';
 import { NivoBarChart } from '../NivoBarChart';
 
@@ -25,6 +26,7 @@ export const ConsommationEspacesNAFBarChart = (props: {
   filterValue: string;
 }) => {
   const { consommationEspacesNAF, sliderValue, filterValue } = props;
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const graphData: GraphData[] = [];
   const allYears: string[] = [];
   const stringYears = sliderValue.map((year) => year.toString().substring(2));
@@ -98,10 +100,23 @@ export const ConsommationEspacesNAFBarChart = (props: {
   const minValueXTicks = graphData.map(e => e.annee).at(0);
   const maxValueXTicks = graphData.map(e => e.annee).at(-1);
 
+  useLayoutEffect(() => {
+    // Fonction pour que les bottom ticks soient "cachés" pendant la transition et qu'ils ne se superposent pas
+    setIsTransitioning(true);
+    const timer = setTimeout(() => setIsTransitioning(false), 800);
+    return () => clearTimeout(timer);
+  }, [minValueXTicks, maxValueXTicks]);
+
   return (
     <div
       style={{ height: '500px', width: '100%', backgroundColor: 'white' }}
     >
+      <style>{`
+        .nivo-bar-chart-container .bottom-tick {
+          opacity: ${isTransitioning ? '0' : '1'};
+          transition: opacity 0.2s ease-in-out;
+        }
+      `}</style>
       {
         sumAllValues !== 0 ?
           <NivoBarChart
