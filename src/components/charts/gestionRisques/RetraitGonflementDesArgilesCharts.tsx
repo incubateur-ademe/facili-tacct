@@ -5,6 +5,7 @@ import { RgaEvolutionTooltip, RgaRepartitionTooltip } from "@/components/charts/
 import { NivoBarChart } from '@/components/charts/NivoBarChart';
 import { RgaEvolutionLegend, RgaRepartitionLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
+import RGAMapExport from "@/components/maps/mapRGAExport";
 import SubTabs from '@/components/ui/SubTabs';
 import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
@@ -165,6 +166,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
   }, [type, code, rga]);
 
   useLayoutEffect(() => {
+    if (datavizTab === 'Cartographie') return;
     setIsTransitioning(true);
     const timer = setTimeout(() => setIsTransitioning(false), 800);
     return () => clearTimeout(timer);
@@ -266,14 +268,12 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
         <RGAMap
           rgaCarte={rgaCarte}
           carteCommunes={carteCommunes}
-          mapRef={mapRef}
-          mapContainer={mapContainer}
         />
       ) : (
         ''
       )}
       {/* Génère une map cachée pour l'export */}
-      <RGAMap
+      <RGAMapExport
         rgaCarte={rgaCarte}
         carteCommunes={carteCommunes}
         mapRef={mapRef}

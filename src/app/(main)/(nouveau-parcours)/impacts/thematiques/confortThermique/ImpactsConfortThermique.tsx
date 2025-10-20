@@ -4,6 +4,7 @@ import { MicroPieChart } from '@/components/charts/MicroDataviz';
 import { ScrollToSourceTag, SourcesSection } from '@/components/interactions/scrollToSource';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H2 } from "@/design-system/base/Textes";
+import MiddlePageTrigger from '@/hooks/MiddlePageTrigger';
 import Image from "next/image";
 import { ThematiquesLieesNavigation } from '../../components/ThematiquesLieesNavigation';
 import styles from '../../impacts.module.scss';
@@ -209,6 +210,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
           </div>
         </div>
       </section>
+      <MiddlePageTrigger />
       <section className={styles.sectionType}>
         <div id="section2" className={styles.prendreRDVWrapper}>
           <div className={styles.RDVText}>
