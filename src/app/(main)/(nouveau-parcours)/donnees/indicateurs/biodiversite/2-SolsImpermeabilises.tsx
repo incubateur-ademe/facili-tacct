@@ -12,7 +12,7 @@ import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { AtlasBiodiversiteModel, CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
+import { CarteCommunes, ConsommationNAF, TableCommuneModel } from '@/lib/postgres/models';
 import { SolsImpermeabilisesText } from '@/lib/staticTexts';
 import { SolsImpermeabilisesBiodiversiteDynamicText } from '@/lib/textesIndicateurs/biodiversiteDynamicTexts';
 import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
@@ -24,14 +24,17 @@ import styles from '../../explorerDonnees.module.scss';
 export const SolsImpermeabilises = (props: {
   consommationNAF: ConsommationNAF[];
   carteCommunes: CarteCommunes[];
-  atlasBiodiversite: AtlasBiodiversiteModel[];
+  tableCommune: TableCommuneModel[];
 }) => {
-  const { consommationNAF, carteCommunes, atlasBiodiversite } = props;
+  const { consommationNAF, carteCommunes, tableCommune } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-
+  const atlasBiodiversite = tableCommune.filter((el) =>
+    el.atlas_biodiversite_avancement !== null &&
+    el.atlas_biodiversite_annee_debut !== null
+  );
   const carteCommunesEnriched = carteCommunes.map((el) => {
     return {
       ...el,
@@ -58,8 +61,8 @@ export const SolsImpermeabilises = (props: {
           <div className={styles.chiffreDynamiqueWrapper}>
             <MicroNumberCircle valeur={sumNaf / 10000} arrondi={1} unite='ha' />
             <div className={styles.text}>
-              <SolsImpermeabilisesBiodiversiteDynamicText 
-                sumNaf={sumNaf} 
+              <SolsImpermeabilisesBiodiversiteDynamicText
+                sumNaf={sumNaf}
                 atlasBiodiversite={atlasBiodiversite}
                 type={type}
               />

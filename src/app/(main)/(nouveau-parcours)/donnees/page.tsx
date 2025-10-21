@@ -1,5 +1,6 @@
 import { ErrorDisplay } from '@/app/ErrorDisplay';
 import { LoaderText } from '@/components/ui/loader';
+import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import { Suspense } from 'react';
 import { SearchParams } from '../../types';
 import AgricultureServerPage from './thematiques/agriculture/AgricultureServerPage';
@@ -11,6 +12,7 @@ import GestionRisquesServerPage from './thematiques/gestionRisques/GestionRisque
 
 const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type, thematique } = await props.searchParams;
+  const dbTableCommune = await GetTablecommune(code, libelle, type);
   return (
     <>
       {
@@ -19,7 +21,7 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
             {thematique === 'Confort thermique' ? (
               <ConfortThermiqueServerPage searchParams={props.searchParams} />
             ) : thematique === "Biodiversité" ? (
-              <BiodiversiteServerPage searchParams={props.searchParams} />
+              <BiodiversiteServerPage searchParams={props.searchParams} tableCommune={dbTableCommune} />
             ) : thematique === "Agriculture" ? (
               <AgricultureServerPage searchParams={props.searchParams} />
             ) : thematique === "Aménagement" ? (

@@ -3,11 +3,12 @@ import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { SourcesSection } from "@/components/interactions/scrollToSource";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { AgricultureBio, AOT40, AtlasBiodiversiteModel, CarteCommunes, CLCTerritoires, ConfortThermique, ConsommationNAF, EtatCoursDeau, QualiteSitesBaignade, SurfacesAgricolesModel } from "@/lib/postgres/models";
+import { AgricultureBio, AOT40, CarteCommunes, CLCTerritoires, ConfortThermique, ConsommationNAF, EtatCoursDeau, QualiteSitesBaignade, SurfacesAgricolesModel, TableCommuneModel } from "@/lib/postgres/models";
 import { GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
-import { GetAgricultureBio, GetAOT40, GetAtlasBiodiversite, GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
+import { GetAgricultureBio, GetAOT40, GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
 import { GetConfortThermique } from "@/lib/queries/databases/inconfortThermique";
 import { GetQualiteEauxBaignade } from "@/lib/queries/databases/ressourcesEau";
+import { GetTablecommune } from "@/lib/queries/databases/tableCommune";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
 import { useSearchParams } from "next/navigation";
@@ -30,7 +31,7 @@ interface Props {
   qualiteEauxBaignade: QualiteSitesBaignade[];
   inconfortThermique: ConfortThermique[];
   surfacesAgricoles: SurfacesAgricolesModel[];
-  atlasBiodiversite: AtlasBiodiversiteModel[];
+  tableCommune: TableCommuneModel[];
 }
 
 const h2SectionStyle = {
@@ -51,7 +52,7 @@ export const DonneesBiodiversite = ({
   qualiteEauxBaignade,
   inconfortThermique,
   surfacesAgricoles,
-  atlasBiodiversite
+  tableCommune
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Biodiversité";
@@ -70,7 +71,7 @@ export const DonneesBiodiversite = ({
     qualiteEauxBaignade,
     inconfortThermique,
     surfacesAgricoles,
-    atlasBiodiversite
+    tableCommune
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -91,7 +92,7 @@ export const DonneesBiodiversite = ({
         newQualiteEauxBaignade,
         newInconfortThermique,
         newSurfacesAgricoles,
-        newAtlasBiodiversite
+        newTableCommune
       ] = await Promise.all([
         GetCommunes(code, libelle, type),
         GetAgricultureBio(libelle, type, code),
@@ -101,7 +102,7 @@ export const DonneesBiodiversite = ({
         GetQualiteEauxBaignade(code, libelle, type),
         GetConfortThermique(code, libelle, type),
         GetSurfacesAgricoles(code, libelle, type),
-        GetAtlasBiodiversite(code, libelle, type)
+        GetTablecommune(code, libelle, type)
       ]);
       setData({
         carteCommunes: newCarteCommunes,
@@ -112,7 +113,7 @@ export const DonneesBiodiversite = ({
         qualiteEauxBaignade: newQualiteEauxBaignade,
         inconfortThermique: newInconfortThermique,
         surfacesAgricoles: newSurfacesAgricoles,
-        atlasBiodiversite: newAtlasBiodiversite
+        tableCommune: newTableCommune
       });
       setIsLoading(false);
     })();
@@ -185,7 +186,7 @@ export const DonneesBiodiversite = ({
             <SolsImpermeabilises
               consommationNAF={data.consommationNAF}
               carteCommunes={data.carteCommunes}
-              atlasBiodiversite={data.atlasBiodiversite}
+              tableCommune={data.tableCommune}
             />
           </div>
         </section>
