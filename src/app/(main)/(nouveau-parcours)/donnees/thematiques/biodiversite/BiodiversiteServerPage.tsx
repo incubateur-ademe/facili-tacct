@@ -1,6 +1,7 @@
 import { SearchParams } from "@/app/(main)/types";
+import { TableCommuneModel } from "@/lib/postgres/models";
 import { GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
-import { GetAgricultureBio, GetAOT40, GetAtlasBiodiversite, GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
+import { GetAgricultureBio, GetAOT40, GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
 import { GetConfortThermique } from "@/lib/queries/databases/inconfortThermique";
 import { GetQualiteEauxBaignade } from "@/lib/queries/databases/ressourcesEau";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
@@ -20,7 +21,10 @@ const serializeData = <T,>(data: T): T => {
   );
 };
 
-const BiodiversiteServerPage = async (props: { searchParams: SearchParams }) => {
+const BiodiversiteServerPage = async (props: {
+  searchParams: SearchParams
+  tableCommune: TableCommuneModel[]
+}) => {
   const { code, libelle, type } = await props.searchParams;
   const carteCommunes = await GetCommunes(code, libelle, type);
   const dbAgricultureBio = await GetAgricultureBio(libelle, type, code);
@@ -30,7 +34,6 @@ const BiodiversiteServerPage = async (props: { searchParams: SearchParams }) => 
   const qualiteEauxBaignadeParDpmt = await GetQualiteEauxBaignade(code, libelle, type);
   const dbInconfortThermique = await GetConfortThermique(code, libelle, type);
   const dbSurfacesAgricoles = await GetSurfacesAgricoles(code, libelle, type);
-  const dbAtlasBiodiversite = await GetAtlasBiodiversite(code, libelle, type);
 
   return (
     <DonneesBiodiversite
@@ -42,7 +45,7 @@ const BiodiversiteServerPage = async (props: { searchParams: SearchParams }) => 
       qualiteEauxBaignade={serializeData(qualiteEauxBaignadeParDpmt)}
       inconfortThermique={serializeData(dbInconfortThermique)}
       surfacesAgricoles={serializeData(dbSurfacesAgricoles)}
-      atlasBiodiversite={serializeData(dbAtlasBiodiversite)}
+      tableCommune={props.tableCommune}
     />
   );
 };

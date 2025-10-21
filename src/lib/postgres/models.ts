@@ -87,14 +87,14 @@ export type ConfortThermique = {
   under_4_sum_2009: number | null;
   under_4_sum_2014: number | null;
   under_4_sum_2020: number | null;
-  "4_to_75_sum_1968": number | null;
-  "4_to_75_sum_1975": number | null;
-  "4_to_75_sum_1982": number | null;
-  "4_to_75_sum_1990": number | null;
-  "4_to_75_sum_1999": number | null;
-  "4_to_75_sum_2009": number | null;
-  "4_to_75_sum_2014": number | null;
-  "4_to_75_sum_2020": number | null;
+  '4_to_75_sum_1968': number | null;
+  '4_to_75_sum_1975': number | null;
+  '4_to_75_sum_1982': number | null;
+  '4_to_75_sum_1990': number | null;
+  '4_to_75_sum_1999': number | null;
+  '4_to_75_sum_2009': number | null;
+  '4_to_75_sum_2014': number | null;
+  '4_to_75_sum_2020': number | null;
   over_75_sum_1968: number | null;
   over_75_sum_1975: number | null;
   over_75_sum_1982: number | null;
@@ -706,7 +706,6 @@ export type LczCouverture = {
   couverture_lcz: number | null;
 };
 
-
 export type AtlasBiodiversiteModel = {
   index: bigint;
   code_geographique: string;
@@ -725,4 +724,23 @@ export type AtlasBiodiversiteModel = {
   type_de_structure_porteuse: string | null;
   annee_debut: number | null;
   avancement: string | null;
+};
+
+export type TableCommuneModel = {
+  index: number;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  type_touristique: string | null;
+  atlas_biodiversite_nom: string | null;
+  atlas_biodiversite_annee_debut: number | null;
+  atlas_biodiversite_avancement: string | null;
 };

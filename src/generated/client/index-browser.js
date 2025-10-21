@@ -744,30 +744,173 @@ exports.Prisma.Confort_thermiqueScalarFieldEnum = {
   superf_choro: 'superf_choro'
 };
 
+exports.Prisma.All_autocapture_rawScalarFieldEnum = {
+  id: 'id',
+  event_timestamp: 'event_timestamp',
+  properties: 'properties',
+  distinct_id: 'distinct_id',
+  session_id: 'session_id',
+  current_url: 'current_url',
+  person_id: 'person_id',
+  ingested_at: 'ingested_at'
+};
+
+exports.Prisma.All_pageview_rawScalarFieldEnum = {
+  id: 'id',
+  event_timestamp: 'event_timestamp',
+  properties: 'properties',
+  distinct_id: 'distinct_id',
+  session_id: 'session_id',
+  current_url: 'current_url',
+  person_id: 'person_id',
+  ingested_at: 'ingested_at'
+};
+
+exports.Prisma.Baserow_evenementsScalarFieldEnum = {
+  id: 'id',
+  ordre: 'ordre',
+  nom: 'nom',
+  date: 'date',
+  type: 'type',
+  qui_anime_evenement: 'qui_anime_evenement',
+  compte_rendu: 'compte_rendu',
+  nom_participants: 'nom_participants',
+  nom_territoires: 'nom_territoires',
+  propos_nom_evenement: 'propos_nom_evenement',
+  campagne_test_utilisateur: 'campagne_test_utilisateur',
+  champs_rapporte: 'champs_rapporte',
+  fichier: 'fichier',
+  ingested_at: 'ingested_at'
+};
+
+exports.Prisma.Baserow_territoiresScalarFieldEnum = {
+  id: 'id',
+  ordre: 'ordre',
+  nom_territoire: 'nom_territoire',
+  notes_ouvertes: 'notes_ouvertes',
+  typologie_territoire: 'typologie_territoire',
+  thematique_prioritaire: 'thematique_prioritaire',
+  be: 'be',
+  soumis_a_pcaet: 'soumis_a_pcaet',
+  demarches_et_programmes: 'demarches_et_programmes',
+  documents_de_planification: 'documents_de_planification',
+  avancee_sur_le_ddv: 'avancee_sur_le_ddv',
+  avancee_sur_la_strategie: 'avancee_sur_la_strategie',
+  suivi_evaluation: 'suivi_evaluation',
+  date_validation: 'date_validation',
+  date_revision_estimee: 'date_revision_estimee',
+  propos: 'propos',
+  attente_session_accueil: 'attente_session_accueil',
+  role_be: 'role_be',
+  cdm: 'cdm',
+  siren: 'siren',
+  ingested_at: 'ingested_at'
+};
+
+exports.Prisma.Boutons_export_rawScalarFieldEnum = {
+  id: 'id',
+  event: 'event',
+  event_timestamp: 'event_timestamp',
+  session_id: 'session_id',
+  person_id: 'person_id',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  thematique: 'thematique',
+  ingested_at: 'ingested_at'
+};
+
+exports.Prisma.Boutons_homepageScalarFieldEnum = {
+  id: 'id',
+  event: 'event',
+  event_timestamp: 'event_timestamp',
+  properties: 'properties',
+  distinct_id: 'distinct_id',
+  session_id: 'session_id',
+  person_id: 'person_id',
+  ingested_at: 'ingested_at'
+};
+
+exports.Prisma.Couverture_populationScalarFieldEnum = {
+  id: 'id',
+  date: 'date',
+  population: 'population'
+};
+
+exports.Prisma.Ressources_consulteesScalarFieldEnum = {
+  id: 'id',
+  event_timestamp: 'event_timestamp',
+  distinct_id: 'distinct_id',
+  session_id: 'session_id',
+  person_id: 'person_id',
+  ressource: 'ressource',
+  ingested_at: 'ingested_at'
+};
+
+exports.Prisma.ThematiqueScalarFieldEnum = {
+  id: 'id',
+  event_timestamp: 'event_timestamp',
+  properties: 'properties',
+  distinct_id: 'distinct_id',
+  session_id: 'session_id',
+  person_id: 'person_id',
+  thematique: 'thematique',
+  ingested_at: 'ingested_at'
+};
+
+exports.Prisma.Surfaces_protegeesScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  PNC: 'PNC',
+  RAMSAR: 'RAMSAR',
+  PNR: 'PNR',
+  PNP: 'PNP',
+  FOR_PRO: 'FOR_PRO',
+  ZZZ: 'ZZZ',
+  ZNIEFF2: 'ZNIEFF2',
+  ZNIEFF1: 'ZNIEFF1',
+  RNR: 'RNR',
+  TOU_PRO: 'TOU_PRO',
+  NATURA: 'NATURA',
+  ZPS: 'ZPS',
+  SIC: 'SIC',
+  CELRL: 'CELRL',
+  BIO: 'BIO',
+  APB: 'APB',
+  RN: 'RN',
+  RBFD: 'RBFD',
+  RNCFS: 'RNCFS',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  region: 'region'
+};
+
+exports.Prisma.Table_communeScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  type_touristique: 'type_touristique',
+  atlas_biodiversite_nom: 'atlas_biodiversite_nom',
+  atlas_biodiversite_annee_debut: 'atlas_biodiversite_annee_debut',
+  atlas_biodiversite_avancement: 'atlas_biodiversite_avancement'
+};
+
 exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
   srid: 'srid',
   auth_name: 'auth_name',
   auth_srid: 'auth_srid',
   srtext: 'srtext',
   proj4text: 'proj4text'
-};
-
-exports.Prisma.Geography_columnsScalarFieldEnum = {
-  coord_dimension: 'coord_dimension',
-  srid: 'srid',
-  type: 'type'
-};
-
-exports.Prisma.Geometry_columnsScalarFieldEnum = {
-  f_table_catalog: 'f_table_catalog',
-  coord_dimension: 'coord_dimension',
-  srid: 'srid',
-  type: 'type'
-};
-
-exports.Prisma.Pg_stat_statements_infoScalarFieldEnum = {
-  dealloc: 'dealloc',
-  stats_reset: 'stats_reset'
 };
 
 exports.Prisma.Pg_stat_statementsScalarFieldEnum = {
@@ -816,9 +959,32 @@ exports.Prisma.Pg_stat_statementsScalarFieldEnum = {
   jit_emission_time: 'jit_emission_time'
 };
 
+exports.Prisma.Pg_stat_statements_infoScalarFieldEnum = {
+  dealloc: 'dealloc',
+  stats_reset: 'stats_reset'
+};
+
+exports.Prisma.Geography_columnsScalarFieldEnum = {
+  coord_dimension: 'coord_dimension',
+  srid: 'srid',
+  type: 'type'
+};
+
+exports.Prisma.Geometry_columnsScalarFieldEnum = {
+  f_table_catalog: 'f_table_catalog',
+  coord_dimension: 'coord_dimension',
+  srid: 'srid',
+  type: 'type'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -829,6 +995,12 @@ exports.Prisma.QueryMode = {
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 
 
@@ -858,11 +1030,22 @@ exports.Prisma.ModelName = {
   users: 'users',
   export_cours_d_eau: 'export_cours_d_eau',
   confort_thermique: 'confort_thermique',
+  all_autocapture_raw: 'all_autocapture_raw',
+  all_pageview_raw: 'all_pageview_raw',
+  baserow_evenements: 'baserow_evenements',
+  baserow_territoires: 'baserow_territoires',
+  boutons_export_raw: 'boutons_export_raw',
+  boutons_homepage: 'boutons_homepage',
+  couverture_population: 'couverture_population',
+  ressources_consultees: 'ressources_consultees',
+  thematique: 'thematique',
+  surfaces_protegees: 'surfaces_protegees',
+  table_commune: 'table_commune',
   spatial_ref_sys: 'spatial_ref_sys',
-  geography_columns: 'geography_columns',
-  geometry_columns: 'geometry_columns',
+  pg_stat_statements: 'pg_stat_statements',
   pg_stat_statements_info: 'pg_stat_statements_info',
-  pg_stat_statements: 'pg_stat_statements'
+  geography_columns: 'geography_columns',
+  geometry_columns: 'geometry_columns'
 };
 
 /**
