@@ -6,9 +6,11 @@ import EauServerPage from '@/app/(main)/(nouveau-parcours)/donnees/thematiques/e
 import GestionRisquesServerPage from '@/app/(main)/(nouveau-parcours)/donnees/thematiques/gestionRisques/GestionRisquesServerPage';
 import { SearchParams } from '@/app/(main)/types';
 import { ErrorDisplay } from '@/app/ErrorDisplay';
+import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 
 const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type, thematique } = await props.searchParams;
+  const dbTableCommune = await GetTablecommune(code, libelle, type);
   return (
     <>
       {
@@ -17,7 +19,7 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
             {thematique === 'Confort thermique' ? (
               <ConfortThermiqueServerPage searchParams={props.searchParams} />
             ) : thematique === "Biodiversité" ? (
-              <BiodiversiteServerPage searchParams={props.searchParams} />
+              <BiodiversiteServerPage searchParams={props.searchParams} tableCommune={dbTableCommune} />
             ) : thematique === "Agriculture" ? (
               <AgricultureServerPage searchParams={props.searchParams} />
             ) : thematique === "Aménagement" ? (
