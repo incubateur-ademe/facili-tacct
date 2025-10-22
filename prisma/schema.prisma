@@ -1029,6 +1029,14 @@ model spatial_ref_sys {
   @@schema("postgis")
 }
 
+model debroussaillement {
+  pk       Int                      @id @default(autoincrement())
+  geometry Unsupported("geometry")?
+
+  @@index([geometry], map: "debroussaillement_geometry_geom_idx", type: Gist)
+  @@schema("postgis")
+}
+
 view pg_stat_statements {
   userid                 Int?     @db.Oid
   dbid                   Int?     @db.Oid

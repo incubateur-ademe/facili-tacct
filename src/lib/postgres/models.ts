@@ -744,3 +744,8 @@ export type TableCommuneModel = {
   atlas_biodiversite_annee_debut: number | null;
   atlas_biodiversite_avancement: string | null;
 };
+
+export type DebroussaillementModel = {
+  pk: number;
+  geometry: string;
+};

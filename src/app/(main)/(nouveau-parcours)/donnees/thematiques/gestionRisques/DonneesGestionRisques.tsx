@@ -2,9 +2,9 @@
 import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
+import { ArreteCatNat, CarteCommunes, DebroussaillementModel, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
 import { GetArretesCatnat, GetIncendiesForet } from '@/lib/queries/databases/gestionRisques';
-import { GetCommunes, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
+import { GetCommunes, GetDebroussaillement, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
@@ -13,19 +13,22 @@ import { ArretesCatnat } from '../../indicateurs/gestionDesRisques/1-ArretesCatn
 import { FeuxDeForet } from '../../indicateurs/gestionDesRisques/2-FeuxDeForet';
 import { ErosionCotiereComp } from '../../indicateurs/gestionDesRisques/3-ErosionCotiere';
 import { RetraitGonflementDesArgiles } from '../../indicateurs/gestionDesRisques/4-RetraitGonflementDesArgiles';
+import { Debroussaillement } from '../../indicateurs/gestionDesRisques/5-Debroussaillement';
 
 interface Props {
   gestionRisques: ArreteCatNat[];
   carteCommunes: CarteCommunes[];
   erosionCotiere: [ErosionCotiere[], string] | [];
   incendiesForet: IncendiesForet[];
+  debroussaillement: DebroussaillementModel[];
 }
 
 export const DonneesGestionRisques = ({
   carteCommunes,
   gestionRisques,
   erosionCotiere,
-  incendiesForet
+  incendiesForet,
+  debroussaillement
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Gestion des risques";
@@ -40,7 +43,8 @@ export const DonneesGestionRisques = ({
     carteCommunes,
     gestionRisques,
     erosionCotiere,
-    incendiesForet
+    incendiesForet,
+    debroussaillement
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -53,17 +57,25 @@ export const DonneesGestionRisques = ({
     }
     setIsLoading(true);
     void (async () => {
-      const [newCarteCommunes, newGestionRisques, newErosionCotiere, newIncendiesForet] = await Promise.all([
+      const [
+        newCarteCommunes,
+        newGestionRisques,
+        newErosionCotiere,
+        newIncendiesForet,
+        newDebroussaillement
+      ] = await Promise.all([
         GetCommunes(code, libelle, type),
         GetArretesCatnat(code, libelle, type),
         GetErosionCotiere(code, libelle, type),
-        GetIncendiesForet(code, libelle, type)
+        GetIncendiesForet(code, libelle, type),
+        GetDebroussaillement(code, libelle, type)
       ]);
-      setData({ 
+      setData({
         carteCommunes: newCarteCommunes,
         gestionRisques: newGestionRisques,
         erosionCotiere: newErosionCotiere,
-        incendiesForet: newIncendiesForet
+        incendiesForet: newIncendiesForet,
+        debroussaillement: newDebroussaillement
       });
       setIsLoading(false);
     })();
@@ -134,6 +146,19 @@ export const DonneesGestionRisques = ({
               </H3>
             </div>
             <FeuxDeForet incendiesForet={data.incendiesForet} />
+          </div>
+
+          {/* Débroussailement */}
+          <div id="Débroussailement" className={styles.indicateurMapWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Débroussailement
+              </H3>
+            </div>
+            <Debroussaillement
+              debroussaillement={data.debroussaillement}
+              carteCommunes={data.carteCommunes}
+            />
           </div>
         </section>
 

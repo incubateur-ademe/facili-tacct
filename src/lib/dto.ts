@@ -255,3 +255,9 @@ export type RGADto = {
     type: string;
   };
 };
+
+export type DebroussaillementDto = {
+  geometry: GeoGeometryObjects;
+  properties: {};
+  type: string;
+};
