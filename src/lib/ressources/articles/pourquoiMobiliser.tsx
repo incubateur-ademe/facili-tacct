@@ -12,6 +12,28 @@ const PourquoiMobiliser = () => {
   return (
     <div>
       <RetourHautDePage />
+      <div className={styles.grayWrapper} style={{ margin: "2rem 0 2rem" }}>
+        <p style={{ fontSize: "1.5rem", fontWeight: 600 }}>À retenir</p>
+        <ul style={{ margin: "0 0 0 2rem" }}>
+          <li>
+            <b>Mobiliser pour réaliser un diagnostic de vulnérabilité ne va pas de soi.</b>
+          </li>
+          <li>
+            <b>Un cadrage partagé avec les élus est essentiel.</b> Il évite les flous sur le
+            sens de la démarche, la manière dont elle sera menée et l’ampleur à donner
+            à la mobilisation des parties prenantes.
+          </li>
+          <li>
+            <b>Des formats courts et conviviaux</b> augmentent la participation et l’adhésion des parties prenantes.
+          </li>
+          <li>
+            <b>Communiquer après les ateliers</b> entretient la dynamique et valorise les contributions.
+          </li>
+          <li>
+            <b>La mobilisation crédibilise le rôle du chargé de mission</b> en le rendant visible et légitime sur son territoire.
+          </li>
+        </ul>
+      </div>
       <h1>
         Comment mobiliser en interne et en externe pour la réalisation du diagnostic de
         vulnérabilité aux effets du changement climatique ? Retour d’expérience de la Vallée de Villé.
@@ -31,8 +53,6 @@ const PourquoiMobiliser = () => {
           Ce retour d’expérience montre <b>comment elle s’y est prise</b>, <b>ce que cela a changé</b> et <b>les
             conditions à réunir pour reproduire la dynamique ailleurs.</b>
         </p>
-      </div>
-      <div className={styles.textBloc}>
         <h2>
           Comprendre les blocages pour mieux mobiliser
         </h2>
@@ -72,7 +92,7 @@ const PourquoiMobiliser = () => {
         </p>
         <div className={styles.grayWrapper} style={{ margin: "2rem 0 2rem" }}>
           <h3 style={{ margin: 0 }}>En chiffres : une mobilisation structurée et progressive</h3>
-          <ul style={{ margin: "0 0 2rem 2rem" }}>
+          <ul style={{ margin: "0 0 0 2rem" }}>
             <li>
               <b>8 ateliers de sensibilisation</b> pour capter des retours croisés
               (élus, services, partenaires) → <b>100 personnes mobilisées</b>.
@@ -287,10 +307,10 @@ const PourquoiMobiliser = () => {
         <p>
           Les acteurs du territoire peuvent désormais <b>travailler collectivement</b>, avec une meilleure
           compréhension des priorités, en attendant la stratégie finalisée d’adaptation au changement
-          climatique. Les plus motivés ont identifié des actions rapides et concrètes qu’ils souhaitaient
-          mettre en place (par exemple, la rédaction d’un guide sur les aides locales).
+          Les plus motivés ont identifié des actions rapides et concrètes qu'ils souhaitaient
+          mettre en place (par exemple, la rédaction d'un guide sur les aides locales).
         </p>
-        <div className="flex flex-row gap-8" style={{ margin: "3rem 0 3rem" }}>
+        <div className="flex flex-col-reverse sm:flex-row gap-8" style={{ margin: "3rem 0 3rem" }}>
           <p style={{ fontSize: "14px" }}>
             Bravo à Jolet qui a su inspirer une communauté d'action sur son territoire, illustrant le rôle
             fondamental d'animation du ou de la chargé(e) de mission.
@@ -300,7 +320,8 @@ const PourquoiMobiliser = () => {
             alt="Dessin comique sur l'incompréhension du vocabulaire technique"
             width={0}
             height={0}
-            style={{ width: '70%', height: 'auto' }}
+            className="w-full sm:w-[70%]"
+            style={{ height: 'auto' }}
           />
         </div>
         <p>
