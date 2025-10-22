@@ -199,6 +199,11 @@ export type table_commune = $Result.DefaultSelection<Prisma.$table_communePayloa
  */
 export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPayload>
 /**
+ * Model debroussaillement
+ * 
+ */
+export type debroussaillement = $Result.DefaultSelection<Prisma.$debroussaillementPayload>
+/**
  * Model pg_stat_statements
  * 
  */
@@ -708,6 +713,16 @@ export class PrismaClient<
   get spatial_ref_sys(): Prisma.spatial_ref_sysDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.debroussaillement`: Exposes CRUD operations for the **debroussaillement** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Debroussaillements
+    * const debroussaillements = await prisma.debroussaillement.findMany()
+    * ```
+    */
+  get debroussaillement(): Prisma.debroussaillementDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.pg_stat_statements`: Exposes CRUD operations for the **pg_stat_statements** model.
     * Example usage:
     * ```ts
@@ -804,8 +819,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.17.1
-   * Query Engine version: 272a37d34178c2894197e17273bf937f25acdeac
+   * Prisma Client JS version: 6.18.0
+   * Query Engine version: 34b5a692b7bd79939a9a2c3ef97d816e749cda2f
    */
   export type PrismaVersion = {
     client: string
@@ -818,6 +833,7 @@ export namespace Prisma {
    */
 
 
+  export import Bytes = runtime.Bytes
   export import JsonObject = runtime.JsonObject
   export import JsonArray = runtime.JsonArray
   export import JsonValue = runtime.JsonValue
@@ -1223,6 +1239,7 @@ export namespace Prisma {
     surfaces_protegees: 'surfaces_protegees',
     table_commune: 'table_commune',
     spatial_ref_sys: 'spatial_ref_sys',
+    debroussaillement: 'debroussaillement',
     pg_stat_statements: 'pg_stat_statements',
     pg_stat_statements_info: 'pg_stat_statements_info',
     geography_columns: 'geography_columns',
@@ -1245,7 +1262,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "rga" | "surfaces_agricoles" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "sandbox_users" | "users" | "export_cours_d_eau" | "confort_thermique" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "ressources_consultees" | "thematique" | "surfaces_protegees" | "table_commune" | "spatial_ref_sys" | "pg_stat_statements" | "pg_stat_statements_info" | "geography_columns" | "geometry_columns"
+      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "rga" | "surfaces_agricoles" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "sandbox_users" | "users" | "export_cours_d_eau" | "confort_thermique" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "ressources_consultees" | "thematique" | "surfaces_protegees" | "table_commune" | "spatial_ref_sys" | "debroussaillement" | "pg_stat_statements" | "pg_stat_statements_info" | "geography_columns" | "geometry_columns"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3923,6 +3940,80 @@ export namespace Prisma {
           }
         }
       }
+      debroussaillement: {
+        payload: Prisma.$debroussaillementPayload<ExtArgs>
+        fields: Prisma.debroussaillementFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.debroussaillementFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.debroussaillementFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>
+          }
+          findFirst: {
+            args: Prisma.debroussaillementFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.debroussaillementFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>
+          }
+          findMany: {
+            args: Prisma.debroussaillementFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>[]
+          }
+          create: {
+            args: Prisma.debroussaillementCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>
+          }
+          createMany: {
+            args: Prisma.debroussaillementCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.debroussaillementCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>[]
+          }
+          delete: {
+            args: Prisma.debroussaillementDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>
+          }
+          update: {
+            args: Prisma.debroussaillementUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>
+          }
+          deleteMany: {
+            args: Prisma.debroussaillementDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.debroussaillementUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.debroussaillementUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>[]
+          }
+          upsert: {
+            args: Prisma.debroussaillementUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>
+          }
+          aggregate: {
+            args: Prisma.DebroussaillementAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDebroussaillement>
+          }
+          groupBy: {
+            args: Prisma.debroussaillementGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DebroussaillementGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.debroussaillementCountArgs<ExtArgs>
+            result: $Utils.Optional<DebroussaillementCountAggregateOutputType> | number
+          }
+        }
+      }
       pg_stat_statements: {
         payload: Prisma.$pg_stat_statementsPayload<ExtArgs>
         fields: Prisma.pg_stat_statementsFieldRefs
@@ -4176,6 +4267,7 @@ export namespace Prisma {
     surfaces_protegees?: surfaces_protegeesOmit
     table_commune?: table_communeOmit
     spatial_ref_sys?: spatial_ref_sysOmit
+    debroussaillement?: debroussaillementOmit
     pg_stat_statements?: pg_stat_statementsOmit
     pg_stat_statements_info?: pg_stat_statements_infoOmit
     geography_columns?: geography_columnsOmit
@@ -49426,6 +49518,983 @@ export namespace Prisma {
 
 
   /**
+   * Model debroussaillement
+   */
+
+  export type AggregateDebroussaillement = {
+    _count: DebroussaillementCountAggregateOutputType | null
+    _avg: DebroussaillementAvgAggregateOutputType | null
+    _sum: DebroussaillementSumAggregateOutputType | null
+    _min: DebroussaillementMinAggregateOutputType | null
+    _max: DebroussaillementMaxAggregateOutputType | null
+  }
+
+  export type DebroussaillementAvgAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type DebroussaillementSumAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type DebroussaillementMinAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type DebroussaillementMaxAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type DebroussaillementCountAggregateOutputType = {
+    pk: number
+    _all: number
+  }
+
+
+  export type DebroussaillementAvgAggregateInputType = {
+    pk?: true
+  }
+
+  export type DebroussaillementSumAggregateInputType = {
+    pk?: true
+  }
+
+  export type DebroussaillementMinAggregateInputType = {
+    pk?: true
+  }
+
+  export type DebroussaillementMaxAggregateInputType = {
+    pk?: true
+  }
+
+  export type DebroussaillementCountAggregateInputType = {
+    pk?: true
+    _all?: true
+  }
+
+  export type DebroussaillementAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which debroussaillement to aggregate.
+     */
+    where?: debroussaillementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of debroussaillements to fetch.
+     */
+    orderBy?: debroussaillementOrderByWithRelationInput | debroussaillementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: debroussaillementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` debroussaillements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` debroussaillements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned debroussaillements
+    **/
+    _count?: true | DebroussaillementCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DebroussaillementAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DebroussaillementSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DebroussaillementMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DebroussaillementMaxAggregateInputType
+  }
+
+  export type GetDebroussaillementAggregateType<T extends DebroussaillementAggregateArgs> = {
+        [P in keyof T & keyof AggregateDebroussaillement]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDebroussaillement[P]>
+      : GetScalarType<T[P], AggregateDebroussaillement[P]>
+  }
+
+
+
+
+  export type debroussaillementGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: debroussaillementWhereInput
+    orderBy?: debroussaillementOrderByWithAggregationInput | debroussaillementOrderByWithAggregationInput[]
+    by: DebroussaillementScalarFieldEnum[] | DebroussaillementScalarFieldEnum
+    having?: debroussaillementScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DebroussaillementCountAggregateInputType | true
+    _avg?: DebroussaillementAvgAggregateInputType
+    _sum?: DebroussaillementSumAggregateInputType
+    _min?: DebroussaillementMinAggregateInputType
+    _max?: DebroussaillementMaxAggregateInputType
+  }
+
+  export type DebroussaillementGroupByOutputType = {
+    pk: number
+    _count: DebroussaillementCountAggregateOutputType | null
+    _avg: DebroussaillementAvgAggregateOutputType | null
+    _sum: DebroussaillementSumAggregateOutputType | null
+    _min: DebroussaillementMinAggregateOutputType | null
+    _max: DebroussaillementMaxAggregateOutputType | null
+  }
+
+  type GetDebroussaillementGroupByPayload<T extends debroussaillementGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DebroussaillementGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DebroussaillementGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DebroussaillementGroupByOutputType[P]>
+            : GetScalarType<T[P], DebroussaillementGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type debroussaillementSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+  }, ExtArgs["result"]["debroussaillement"]>
+
+  export type debroussaillementSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+  }, ExtArgs["result"]["debroussaillement"]>
+
+  export type debroussaillementSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+  }, ExtArgs["result"]["debroussaillement"]>
+
+  export type debroussaillementSelectScalar = {
+    pk?: boolean
+  }
+
+  export type debroussaillementOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk", ExtArgs["result"]["debroussaillement"]>
+
+  export type $debroussaillementPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "debroussaillement"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+    }, ExtArgs["result"]["debroussaillement"]>
+    composites: {}
+  }
+
+  type debroussaillementGetPayload<S extends boolean | null | undefined | debroussaillementDefaultArgs> = $Result.GetResult<Prisma.$debroussaillementPayload, S>
+
+  type debroussaillementCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<debroussaillementFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DebroussaillementCountAggregateInputType | true
+    }
+
+  export interface debroussaillementDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['debroussaillement'], meta: { name: 'debroussaillement' } }
+    /**
+     * Find zero or one Debroussaillement that matches the filter.
+     * @param {debroussaillementFindUniqueArgs} args - Arguments to find a Debroussaillement
+     * @example
+     * // Get one Debroussaillement
+     * const debroussaillement = await prisma.debroussaillement.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends debroussaillementFindUniqueArgs>(args: SelectSubset<T, debroussaillementFindUniqueArgs<ExtArgs>>): Prisma__debroussaillementClient<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Debroussaillement that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {debroussaillementFindUniqueOrThrowArgs} args - Arguments to find a Debroussaillement
+     * @example
+     * // Get one Debroussaillement
+     * const debroussaillement = await prisma.debroussaillement.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends debroussaillementFindUniqueOrThrowArgs>(args: SelectSubset<T, debroussaillementFindUniqueOrThrowArgs<ExtArgs>>): Prisma__debroussaillementClient<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Debroussaillement that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {debroussaillementFindFirstArgs} args - Arguments to find a Debroussaillement
+     * @example
+     * // Get one Debroussaillement
+     * const debroussaillement = await prisma.debroussaillement.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends debroussaillementFindFirstArgs>(args?: SelectSubset<T, debroussaillementFindFirstArgs<ExtArgs>>): Prisma__debroussaillementClient<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Debroussaillement that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {debroussaillementFindFirstOrThrowArgs} args - Arguments to find a Debroussaillement
+     * @example
+     * // Get one Debroussaillement
+     * const debroussaillement = await prisma.debroussaillement.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends debroussaillementFindFirstOrThrowArgs>(args?: SelectSubset<T, debroussaillementFindFirstOrThrowArgs<ExtArgs>>): Prisma__debroussaillementClient<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Debroussaillements that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {debroussaillementFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Debroussaillements
+     * const debroussaillements = await prisma.debroussaillement.findMany()
+     * 
+     * // Get first 10 Debroussaillements
+     * const debroussaillements = await prisma.debroussaillement.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const debroussaillementWithPkOnly = await prisma.debroussaillement.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends debroussaillementFindManyArgs>(args?: SelectSubset<T, debroussaillementFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Debroussaillement.
+     * @param {debroussaillementCreateArgs} args - Arguments to create a Debroussaillement.
+     * @example
+     * // Create one Debroussaillement
+     * const Debroussaillement = await prisma.debroussaillement.create({
+     *   data: {
+     *     // ... data to create a Debroussaillement
+     *   }
+     * })
+     * 
+     */
+    create<T extends debroussaillementCreateArgs>(args: SelectSubset<T, debroussaillementCreateArgs<ExtArgs>>): Prisma__debroussaillementClient<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Debroussaillements.
+     * @param {debroussaillementCreateManyArgs} args - Arguments to create many Debroussaillements.
+     * @example
+     * // Create many Debroussaillements
+     * const debroussaillement = await prisma.debroussaillement.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends debroussaillementCreateManyArgs>(args?: SelectSubset<T, debroussaillementCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Debroussaillements and returns the data saved in the database.
+     * @param {debroussaillementCreateManyAndReturnArgs} args - Arguments to create many Debroussaillements.
+     * @example
+     * // Create many Debroussaillements
+     * const debroussaillement = await prisma.debroussaillement.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Debroussaillements and only return the `pk`
+     * const debroussaillementWithPkOnly = await prisma.debroussaillement.createManyAndReturn({
+     *   select: { pk: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends debroussaillementCreateManyAndReturnArgs>(args?: SelectSubset<T, debroussaillementCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Debroussaillement.
+     * @param {debroussaillementDeleteArgs} args - Arguments to delete one Debroussaillement.
+     * @example
+     * // Delete one Debroussaillement
+     * const Debroussaillement = await prisma.debroussaillement.delete({
+     *   where: {
+     *     // ... filter to delete one Debroussaillement
+     *   }
+     * })
+     * 
+     */
+    delete<T extends debroussaillementDeleteArgs>(args: SelectSubset<T, debroussaillementDeleteArgs<ExtArgs>>): Prisma__debroussaillementClient<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Debroussaillement.
+     * @param {debroussaillementUpdateArgs} args - Arguments to update one Debroussaillement.
+     * @example
+     * // Update one Debroussaillement
+     * const debroussaillement = await prisma.debroussaillement.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends debroussaillementUpdateArgs>(args: SelectSubset<T, debroussaillementUpdateArgs<ExtArgs>>): Prisma__debroussaillementClient<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Debroussaillements.
+     * @param {debroussaillementDeleteManyArgs} args - Arguments to filter Debroussaillements to delete.
+     * @example
+     * // Delete a few Debroussaillements
+     * const { count } = await prisma.debroussaillement.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends debroussaillementDeleteManyArgs>(args?: SelectSubset<T, debroussaillementDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Debroussaillements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {debroussaillementUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Debroussaillements
+     * const debroussaillement = await prisma.debroussaillement.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends debroussaillementUpdateManyArgs>(args: SelectSubset<T, debroussaillementUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Debroussaillements and returns the data updated in the database.
+     * @param {debroussaillementUpdateManyAndReturnArgs} args - Arguments to update many Debroussaillements.
+     * @example
+     * // Update many Debroussaillements
+     * const debroussaillement = await prisma.debroussaillement.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Debroussaillements and only return the `pk`
+     * const debroussaillementWithPkOnly = await prisma.debroussaillement.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends debroussaillementUpdateManyAndReturnArgs>(args: SelectSubset<T, debroussaillementUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Debroussaillement.
+     * @param {debroussaillementUpsertArgs} args - Arguments to update or create a Debroussaillement.
+     * @example
+     * // Update or create a Debroussaillement
+     * const debroussaillement = await prisma.debroussaillement.upsert({
+     *   create: {
+     *     // ... data to create a Debroussaillement
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Debroussaillement we want to update
+     *   }
+     * })
+     */
+    upsert<T extends debroussaillementUpsertArgs>(args: SelectSubset<T, debroussaillementUpsertArgs<ExtArgs>>): Prisma__debroussaillementClient<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Debroussaillements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {debroussaillementCountArgs} args - Arguments to filter Debroussaillements to count.
+     * @example
+     * // Count the number of Debroussaillements
+     * const count = await prisma.debroussaillement.count({
+     *   where: {
+     *     // ... the filter for the Debroussaillements we want to count
+     *   }
+     * })
+    **/
+    count<T extends debroussaillementCountArgs>(
+      args?: Subset<T, debroussaillementCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DebroussaillementCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Debroussaillement.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebroussaillementAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DebroussaillementAggregateArgs>(args: Subset<T, DebroussaillementAggregateArgs>): Prisma.PrismaPromise<GetDebroussaillementAggregateType<T>>
+
+    /**
+     * Group by Debroussaillement.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {debroussaillementGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends debroussaillementGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: debroussaillementGroupByArgs['orderBy'] }
+        : { orderBy?: debroussaillementGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, debroussaillementGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDebroussaillementGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the debroussaillement model
+   */
+  readonly fields: debroussaillementFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for debroussaillement.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__debroussaillementClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the debroussaillement model
+   */
+  interface debroussaillementFieldRefs {
+    readonly pk: FieldRef<"debroussaillement", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * debroussaillement findUnique
+   */
+  export type debroussaillementFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the debroussaillement
+     */
+    select?: debroussaillementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the debroussaillement
+     */
+    omit?: debroussaillementOmit<ExtArgs> | null
+    /**
+     * Filter, which debroussaillement to fetch.
+     */
+    where: debroussaillementWhereUniqueInput
+  }
+
+  /**
+   * debroussaillement findUniqueOrThrow
+   */
+  export type debroussaillementFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the debroussaillement
+     */
+    select?: debroussaillementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the debroussaillement
+     */
+    omit?: debroussaillementOmit<ExtArgs> | null
+    /**
+     * Filter, which debroussaillement to fetch.
+     */
+    where: debroussaillementWhereUniqueInput
+  }
+
+  /**
+   * debroussaillement findFirst
+   */
+  export type debroussaillementFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the debroussaillement
+     */
+    select?: debroussaillementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the debroussaillement
+     */
+    omit?: debroussaillementOmit<ExtArgs> | null
+    /**
+     * Filter, which debroussaillement to fetch.
+     */
+    where?: debroussaillementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of debroussaillements to fetch.
+     */
+    orderBy?: debroussaillementOrderByWithRelationInput | debroussaillementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for debroussaillements.
+     */
+    cursor?: debroussaillementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` debroussaillements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` debroussaillements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of debroussaillements.
+     */
+    distinct?: DebroussaillementScalarFieldEnum | DebroussaillementScalarFieldEnum[]
+  }
+
+  /**
+   * debroussaillement findFirstOrThrow
+   */
+  export type debroussaillementFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the debroussaillement
+     */
+    select?: debroussaillementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the debroussaillement
+     */
+    omit?: debroussaillementOmit<ExtArgs> | null
+    /**
+     * Filter, which debroussaillement to fetch.
+     */
+    where?: debroussaillementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of debroussaillements to fetch.
+     */
+    orderBy?: debroussaillementOrderByWithRelationInput | debroussaillementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for debroussaillements.
+     */
+    cursor?: debroussaillementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` debroussaillements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` debroussaillements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of debroussaillements.
+     */
+    distinct?: DebroussaillementScalarFieldEnum | DebroussaillementScalarFieldEnum[]
+  }
+
+  /**
+   * debroussaillement findMany
+   */
+  export type debroussaillementFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the debroussaillement
+     */
+    select?: debroussaillementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the debroussaillement
+     */
+    omit?: debroussaillementOmit<ExtArgs> | null
+    /**
+     * Filter, which debroussaillements to fetch.
+     */
+    where?: debroussaillementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of debroussaillements to fetch.
+     */
+    orderBy?: debroussaillementOrderByWithRelationInput | debroussaillementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing debroussaillements.
+     */
+    cursor?: debroussaillementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` debroussaillements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` debroussaillements.
+     */
+    skip?: number
+    distinct?: DebroussaillementScalarFieldEnum | DebroussaillementScalarFieldEnum[]
+  }
+
+  /**
+   * debroussaillement create
+   */
+  export type debroussaillementCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the debroussaillement
+     */
+    select?: debroussaillementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the debroussaillement
+     */
+    omit?: debroussaillementOmit<ExtArgs> | null
+    /**
+     * The data needed to create a debroussaillement.
+     */
+    data?: XOR<debroussaillementCreateInput, debroussaillementUncheckedCreateInput>
+  }
+
+  /**
+   * debroussaillement createMany
+   */
+  export type debroussaillementCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many debroussaillements.
+     */
+    data: debroussaillementCreateManyInput | debroussaillementCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * debroussaillement createManyAndReturn
+   */
+  export type debroussaillementCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the debroussaillement
+     */
+    select?: debroussaillementSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the debroussaillement
+     */
+    omit?: debroussaillementOmit<ExtArgs> | null
+    /**
+     * The data used to create many debroussaillements.
+     */
+    data: debroussaillementCreateManyInput | debroussaillementCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * debroussaillement update
+   */
+  export type debroussaillementUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the debroussaillement
+     */
+    select?: debroussaillementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the debroussaillement
+     */
+    omit?: debroussaillementOmit<ExtArgs> | null
+    /**
+     * The data needed to update a debroussaillement.
+     */
+    data: XOR<debroussaillementUpdateInput, debroussaillementUncheckedUpdateInput>
+    /**
+     * Choose, which debroussaillement to update.
+     */
+    where: debroussaillementWhereUniqueInput
+  }
+
+  /**
+   * debroussaillement updateMany
+   */
+  export type debroussaillementUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update debroussaillements.
+     */
+    data: XOR<debroussaillementUpdateManyMutationInput, debroussaillementUncheckedUpdateManyInput>
+    /**
+     * Filter which debroussaillements to update
+     */
+    where?: debroussaillementWhereInput
+    /**
+     * Limit how many debroussaillements to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * debroussaillement updateManyAndReturn
+   */
+  export type debroussaillementUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the debroussaillement
+     */
+    select?: debroussaillementSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the debroussaillement
+     */
+    omit?: debroussaillementOmit<ExtArgs> | null
+    /**
+     * The data used to update debroussaillements.
+     */
+    data: XOR<debroussaillementUpdateManyMutationInput, debroussaillementUncheckedUpdateManyInput>
+    /**
+     * Filter which debroussaillements to update
+     */
+    where?: debroussaillementWhereInput
+    /**
+     * Limit how many debroussaillements to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * debroussaillement upsert
+   */
+  export type debroussaillementUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the debroussaillement
+     */
+    select?: debroussaillementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the debroussaillement
+     */
+    omit?: debroussaillementOmit<ExtArgs> | null
+    /**
+     * The filter to search for the debroussaillement to update in case it exists.
+     */
+    where: debroussaillementWhereUniqueInput
+    /**
+     * In case the debroussaillement found by the `where` argument doesn't exist, create a new debroussaillement with this data.
+     */
+    create: XOR<debroussaillementCreateInput, debroussaillementUncheckedCreateInput>
+    /**
+     * In case the debroussaillement was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<debroussaillementUpdateInput, debroussaillementUncheckedUpdateInput>
+  }
+
+  /**
+   * debroussaillement delete
+   */
+  export type debroussaillementDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the debroussaillement
+     */
+    select?: debroussaillementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the debroussaillement
+     */
+    omit?: debroussaillementOmit<ExtArgs> | null
+    /**
+     * Filter which debroussaillement to delete.
+     */
+    where: debroussaillementWhereUniqueInput
+  }
+
+  /**
+   * debroussaillement deleteMany
+   */
+  export type debroussaillementDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which debroussaillements to delete
+     */
+    where?: debroussaillementWhereInput
+    /**
+     * Limit how many debroussaillements to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * debroussaillement without action
+   */
+  export type debroussaillementDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the debroussaillement
+     */
+    select?: debroussaillementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the debroussaillement
+     */
+    omit?: debroussaillementOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model pg_stat_statements
    */
 
@@ -53273,6 +54342,13 @@ export namespace Prisma {
   };
 
   export type Spatial_ref_sysScalarFieldEnum = (typeof Spatial_ref_sysScalarFieldEnum)[keyof typeof Spatial_ref_sysScalarFieldEnum]
+
+
+  export const DebroussaillementScalarFieldEnum: {
+    pk: 'pk'
+  };
+
+  export type DebroussaillementScalarFieldEnum = (typeof DebroussaillementScalarFieldEnum)[keyof typeof DebroussaillementScalarFieldEnum]
 
 
   export const Pg_stat_statementsScalarFieldEnum: {
@@ -57992,6 +59068,40 @@ export namespace Prisma {
     auth_srid?: IntNullableWithAggregatesFilter<"spatial_ref_sys"> | number | null
     srtext?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
     proj4text?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
+  }
+
+  export type debroussaillementWhereInput = {
+    AND?: debroussaillementWhereInput | debroussaillementWhereInput[]
+    OR?: debroussaillementWhereInput[]
+    NOT?: debroussaillementWhereInput | debroussaillementWhereInput[]
+    pk?: IntFilter<"debroussaillement"> | number
+  }
+
+  export type debroussaillementOrderByWithRelationInput = {
+    pk?: SortOrder
+  }
+
+  export type debroussaillementWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: debroussaillementWhereInput | debroussaillementWhereInput[]
+    OR?: debroussaillementWhereInput[]
+    NOT?: debroussaillementWhereInput | debroussaillementWhereInput[]
+  }, "pk">
+
+  export type debroussaillementOrderByWithAggregationInput = {
+    pk?: SortOrder
+    _count?: debroussaillementCountOrderByAggregateInput
+    _avg?: debroussaillementAvgOrderByAggregateInput
+    _max?: debroussaillementMaxOrderByAggregateInput
+    _min?: debroussaillementMinOrderByAggregateInput
+    _sum?: debroussaillementSumOrderByAggregateInput
+  }
+
+  export type debroussaillementScalarWhereWithAggregatesInput = {
+    AND?: debroussaillementScalarWhereWithAggregatesInput | debroussaillementScalarWhereWithAggregatesInput[]
+    OR?: debroussaillementScalarWhereWithAggregatesInput[]
+    NOT?: debroussaillementScalarWhereWithAggregatesInput | debroussaillementScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"debroussaillement"> | number
   }
 
   export type pg_stat_statementsWhereInput = {
@@ -63717,6 +64827,34 @@ export namespace Prisma {
     proj4text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type debroussaillementCreateInput = {
+
+  }
+
+  export type debroussaillementUncheckedCreateInput = {
+    pk?: number
+  }
+
+  export type debroussaillementUpdateInput = {
+
+  }
+
+  export type debroussaillementUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type debroussaillementCreateManyInput = {
+    pk?: number
+  }
+
+  export type debroussaillementUpdateManyMutationInput = {
+
+  }
+
+  export type debroussaillementUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -67412,6 +68550,26 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type debroussaillementCountOrderByAggregateInput = {
+    pk?: SortOrder
+  }
+
+  export type debroussaillementAvgOrderByAggregateInput = {
+    pk?: SortOrder
+  }
+
+  export type debroussaillementMaxOrderByAggregateInput = {
+    pk?: SortOrder
+  }
+
+  export type debroussaillementMinOrderByAggregateInput = {
+    pk?: SortOrder
+  }
+
+  export type debroussaillementSumOrderByAggregateInput = {
+    pk?: SortOrder
   }
 
   export type DecimalNullableFilter<$PrismaModel = never> = {
