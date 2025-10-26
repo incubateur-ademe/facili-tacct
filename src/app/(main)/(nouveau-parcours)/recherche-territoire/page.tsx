@@ -22,6 +22,7 @@ const RechercherSonTerritoire = () => {
     router,
     page: "thematiques"
   });
+  
   const handleRadioChange = (territoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement') => {
     setTypeTerritoire(territoire);
     setSearchLibelle('');
