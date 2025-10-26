@@ -130,6 +130,7 @@ const HeaderRechercheTerrtoire = (props:
                 searchCode={searchCode}
                 searchLibelle={searchLibelle}
                 setIsTypeChanging={setIsTypeChanging}
+                isTerritoryChanging={isTerritoryChanging}
                 setIsTerritoryChanging={setIsTerritoryChanging}
                 setIsNewTypeChosen={setIsNewTypeChosen}
                 focusAutocomplete={focusAutocomplete}

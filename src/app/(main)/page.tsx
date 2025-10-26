@@ -1,5 +1,6 @@
 'use client';
 
+import { getLastTerritory } from '@/components/searchbar/fonctions';
 import Notice from '@codegouvfr/react-dsfr/Notice';
 import { useStyles } from 'tss-react/dsfr';
 import { CommunauteBloc } from './(home)/CommunauteBloc';
@@ -12,6 +13,8 @@ import { VerbatimBloc } from './(home)/VerbatimBloc';
 
 const Home = () => {
   const { css } = useStyles();
+const lastTerritory = getLastTerritory();
+console.log("Dernier territoire recherché :", lastTerritory);
 
   return (
     <div>
