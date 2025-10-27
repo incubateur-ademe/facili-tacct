@@ -15,6 +15,13 @@ export const irrigable = (
   </span>
 );
 
+export const irriguee = (
+  <span>
+    Une surface est dite « irriguée » si elle a été arrosée, au moins une fois au
+    cours de la campagne agricole, par un apport d'eau volontaire venant en complément des pluies.
+  </span>
+)
+
 export const PNACC = (
   <span>
     Plan National d’Adaptation du Changement Climatique.
@@ -48,8 +55,16 @@ export const otex = (
 
 export const directiveCadreSurLeau = (
   <span>
-    <a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000330631" target="_blank" rel="noopener noreferrer">Directive</a> 2000/60/CE 
+    <a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000330631" target="_blank" rel="noopener noreferrer">Directive</a> 2000/60/CE
     du Parlement européen et du Conseil du 23 octobre 2000 établissant un
     cadre pour une politique communautaire dans le domaine de l'eau.
   </span>
 );
+
+export const AgricultureBiologique = (
+  <span>
+    L’agriculture biologique fait partie d’un ensemble de pratiques agricoles respectueuses
+    des équilibres écologiques qui contribue à la préservation des sols et des ressources
+    naturelles.
+  </span>
+)
