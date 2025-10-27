@@ -13,9 +13,7 @@ import { VerbatimBloc } from './(home)/VerbatimBloc';
 
 const Home = () => {
   const { css } = useStyles();
-const lastTerritory = getLastTerritory();
-console.log("Dernier territoire recherché :", lastTerritory);
-
+  const lastTerritory = getLastTerritory();
   return (
     <div>
       <Notice

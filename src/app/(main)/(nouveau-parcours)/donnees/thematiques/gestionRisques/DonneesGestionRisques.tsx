@@ -5,8 +5,10 @@ import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { ArreteCatNat, CarteCommunes, DebroussaillementModel, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
 import { GetArretesCatnat, GetIncendiesForet } from '@/lib/queries/databases/gestionRisques';
 import { GetCommunes, GetDebroussaillement, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
+import Notice from '@codegouvfr/react-dsfr/Notice';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useState } from "react";
+import { useStyles } from 'tss-react/dsfr';
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { ArretesCatnat } from '../../indicateurs/gestionDesRisques/1-ArretesCatnat';
@@ -30,6 +32,7 @@ export const DonneesGestionRisques = ({
   incendiesForet,
   debroussaillement
 }: Props) => {
+  const { css } = useStyles();
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Gestion des risques";
   const code = searchParams.get('code')!;
@@ -132,13 +135,31 @@ export const DonneesGestionRisques = ({
                 Arrêtés de catastrophes naturelles
               </H3>
             </div>
+            <Notice
+              className={css({
+                backgroundColor: 'var(--gris-medium)',
+                color: "#201F1E",
+                marginRight: 32,
+                marginBottom: "2rem",
+                '& .fr-container': {
+                  maxWidth: 'none'
+                }
+              })}
+              isClosable={true}
+              title={"Différence avec le nombre d’arrêtés GASPAR :"}
+              description={
+                <>
+                  l’équipe Facili-TACCT a identifié plusieurs doublons dans la base de données GASPAR, initialement supprimés. Suite à plusieurs retours concernant cet écart, les doublons ont été réintégrés : notre base de données est désormais identique à celle de GASPAR. Veuillez noter également que Facili-TACCT affiche à présent la date de début de l’évènement et non celle de publication de l’arrêté.
+                </>
+              }
+            />
             <ArretesCatnat
               gestionRisques={data.gestionRisques}
               carteCommunes={data.carteCommunes}
             />
           </div>
 
-          {/* Faux de forêt */}
+          {/* Feux de forêt */}
           <div id="Feux de forêt" className={styles.indicateurWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
