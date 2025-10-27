@@ -173,19 +173,6 @@ const DonneesConfortThermique = ({
           }}>
             {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
           </H2>
-          {/* Types de sols */}
-          {/* <div id="Types de sols" className={styles.indicateurMapWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
-          <div className={styles.h3Titles}>
-            <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-              Cartographie des différents types de sols
-            </H3>
-          </div>
-          {
-            loadingClc ? <LoaderText text='Chargement de la cartographie' /> : (
-              <TypesDeSols inconfortThermique={inconfortThermique} carteCommunes={carteCommunes} clc={clcState} />
-            )
-          }
-        </div> */}
           {/* LCZ */}
           <div id="LCZ" className={styles.indicateurMapWrapper}>
             <div className={styles.h3Titles}>
