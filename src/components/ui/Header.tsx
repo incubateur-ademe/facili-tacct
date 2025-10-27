@@ -37,6 +37,13 @@ const HeaderComp = () => {
     <Header
       className={css({
         zIndex: '500',
+        '.fr-container': windowDimensions.width  && windowDimensions.width > 992 ? {
+          marginRight: "1.5rem",
+          maxWidth: '85dvw',
+        } : {},
+        '.fr-container-sm, .fr-container-md, .fr-container-lg': {
+          maxWidth: '78rem'
+        },
         '.fr-header__navbar': {
           display: 'none',
         },

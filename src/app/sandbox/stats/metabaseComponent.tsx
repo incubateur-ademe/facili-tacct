@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 const MetabaseComponent = () => {
   const [src, setSrc] = useState<string>("");
   const [isIFrameLoaded, setIsIFrameLoaded] = useState(false);
-  console.log("isIFrameLoaded", isIFrameLoaded);
 
   useEffect(() => {
     const params = { dashboardId: 5 };
