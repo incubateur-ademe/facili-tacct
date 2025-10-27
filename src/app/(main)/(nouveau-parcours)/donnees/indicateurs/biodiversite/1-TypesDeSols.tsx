@@ -66,11 +66,13 @@ export const TypesDeSols = ({
     <>
       <div className={styles.datavizMapContainer}>
         {/* Pour exclure la Guyane, si le code commence par "973" (communes et département), on l'exclut
-        Pour les EPCI ça commence par 24973, un PNR en Guyane avec code FR8000040 */}
+        Pour les EPCI qui commencent par 24973, un PNR en Guyane avec code FR8000040, l'EPCI
+        des Savanes qui est le code 200027548 */}
         {
           !(
             code.startsWith("973") || 
-            (type === "epci" && code.startsWith("24973")) || 
+            (type === "epci" && code.startsWith("24973")) ||
+            (type === "epci" && code === "200027548") ||
             (type === "pnr" && code === "FR8000040")
           ) &&
           <div className={styles.chiffreDynamiqueWrapper} style={{ alignItems: 'center' }}>
