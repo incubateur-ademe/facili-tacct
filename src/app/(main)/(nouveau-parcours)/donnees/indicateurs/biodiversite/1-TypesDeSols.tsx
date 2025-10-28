@@ -67,7 +67,6 @@ export const TypesDeSols = ({
   const foretPercent = (100 * foretSum) /
     (100 * sumProperty(vegetalisationTerritoire, 'superf_choro'));
   const exportData = IndicatorExportTransformations.inconfort_thermique.vegetalisation(vegetalisationTerritoire);
-  console.log("foretPercent", foretPercent);
   return (
     <>
       <div className={styles.datavizMapContainer}>
