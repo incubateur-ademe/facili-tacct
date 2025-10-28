@@ -69,7 +69,7 @@ export const TypesDeSols = ({
         Pour les EPCI qui commencent par 24973, un PNR en Guyane avec code FR8000040, l'EPCI
         des Savanes qui est le code 200027548 */}
         {
-          !(
+          code && !(
             code.startsWith("973") || 
             (type === "epci" && code.startsWith("24973")) ||
             (type === "epci" && code === "200027548") ||
