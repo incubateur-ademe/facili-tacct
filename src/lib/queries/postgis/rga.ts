@@ -3,7 +3,11 @@
 import { RGACarte } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import { prisma } from '../redis';
-
+const stringifyWithBigInt = (data: any) => {
+  return JSON.stringify(data, (key, value) =>
+    typeof value === 'bigint' ? value.toString() : value
+  );
+};
 export const GetRGACarte = async (
   code: string,
   libelle: string,
@@ -97,7 +101,7 @@ export const GetRGACarte = async (
           SELECT
             code_geographique,
             alea,
-            ST_AsGeoJSON(ST_Union(geometry)) as geometry
+            ST_AsGeoJSON(ST_Simplify(ST_Union(geometry), 0.0001)) as geometry
           FROM postgis."rga"
           WHERE code_geographique = ANY (
             SELECT code_geographique
@@ -106,6 +110,9 @@ export const GetRGACarte = async (
           )
           GROUP BY code_geographique, alea;
         `;
+        console.log(`RGA ${type}: ${JSON.stringify(departement).length} caractères`);
+const size = Buffer.byteLength(stringifyWithBigInt(departement));
+console.log(`GetRGA ${type}: ${(size / 1024 / 1024).toFixed(2)} MB`);
         return departement;
       } else if (type === 'ept') {
         const ept = await prisma.$queryRaw<RGACarte[]>`
