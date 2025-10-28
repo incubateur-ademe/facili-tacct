@@ -227,7 +227,6 @@ export type CollectivitesSearchbar = {
 export type CarteCommunes = {
   code_geographique: string;
   coordinates: string;
-  densite_bati?: number;
   epci: string;
   geometry: string;
   libelle_geographique: string;

@@ -27411,7 +27411,6 @@ export namespace Prisma {
   export type Communes_dromAvgAggregateOutputType = {
     pk: number | null
     region: number | null
-    densite_bati: number | null
     precarite_logement: number | null
     surface: number | null
   }
@@ -27419,7 +27418,6 @@ export namespace Prisma {
   export type Communes_dromSumAggregateOutputType = {
     pk: number | null
     region: bigint | null
-    densite_bati: number | null
     precarite_logement: number | null
     surface: number | null
   }
@@ -27438,7 +27436,6 @@ export namespace Prisma {
     code_pnr: string | null
     libelle_pnr: string | null
     coordinates: string | null
-    densite_bati: number | null
     precarite_logement: number | null
     surface: number | null
   }
@@ -27457,7 +27454,6 @@ export namespace Prisma {
     code_pnr: string | null
     libelle_pnr: string | null
     coordinates: string | null
-    densite_bati: number | null
     precarite_logement: number | null
     surface: number | null
   }
@@ -27476,7 +27472,6 @@ export namespace Prisma {
     code_pnr: number
     libelle_pnr: number
     coordinates: number
-    densite_bati: number
     precarite_logement: number
     surface: number
     _all: number
@@ -27486,7 +27481,6 @@ export namespace Prisma {
   export type Communes_dromAvgAggregateInputType = {
     pk?: true
     region?: true
-    densite_bati?: true
     precarite_logement?: true
     surface?: true
   }
@@ -27494,7 +27488,6 @@ export namespace Prisma {
   export type Communes_dromSumAggregateInputType = {
     pk?: true
     region?: true
-    densite_bati?: true
     precarite_logement?: true
     surface?: true
   }
@@ -27513,7 +27506,6 @@ export namespace Prisma {
     code_pnr?: true
     libelle_pnr?: true
     coordinates?: true
-    densite_bati?: true
     precarite_logement?: true
     surface?: true
   }
@@ -27532,7 +27524,6 @@ export namespace Prisma {
     code_pnr?: true
     libelle_pnr?: true
     coordinates?: true
-    densite_bati?: true
     precarite_logement?: true
     surface?: true
   }
@@ -27551,7 +27542,6 @@ export namespace Prisma {
     code_pnr?: true
     libelle_pnr?: true
     coordinates?: true
-    densite_bati?: true
     precarite_logement?: true
     surface?: true
     _all?: true
@@ -27657,7 +27647,6 @@ export namespace Prisma {
     code_pnr: string | null
     libelle_pnr: string | null
     coordinates: string | null
-    densite_bati: number | null
     precarite_logement: number | null
     surface: number | null
     _count: Communes_dromCountAggregateOutputType | null
@@ -27695,7 +27684,6 @@ export namespace Prisma {
     code_pnr?: boolean
     libelle_pnr?: boolean
     coordinates?: boolean
-    densite_bati?: boolean
     precarite_logement?: boolean
     surface?: boolean
   }, ExtArgs["result"]["communes_drom"]>
@@ -27714,7 +27702,6 @@ export namespace Prisma {
     code_pnr?: boolean
     libelle_pnr?: boolean
     coordinates?: boolean
-    densite_bati?: boolean
     precarite_logement?: boolean
     surface?: boolean
   }, ExtArgs["result"]["communes_drom"]>
@@ -27733,7 +27720,6 @@ export namespace Prisma {
     code_pnr?: boolean
     libelle_pnr?: boolean
     coordinates?: boolean
-    densite_bati?: boolean
     precarite_logement?: boolean
     surface?: boolean
   }, ExtArgs["result"]["communes_drom"]>
@@ -27752,12 +27738,11 @@ export namespace Prisma {
     code_pnr?: boolean
     libelle_pnr?: boolean
     coordinates?: boolean
-    densite_bati?: boolean
     precarite_logement?: boolean
     surface?: boolean
   }
 
-  export type communes_dromOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "coordinates" | "densite_bati" | "precarite_logement" | "surface", ExtArgs["result"]["communes_drom"]>
+  export type communes_dromOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "coordinates" | "precarite_logement" | "surface", ExtArgs["result"]["communes_drom"]>
 
   export type $communes_dromPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "communes_drom"
@@ -27776,7 +27761,6 @@ export namespace Prisma {
       code_pnr: string | null
       libelle_pnr: string | null
       coordinates: string | null
-      densite_bati: number | null
       precarite_logement: number | null
       surface: number | null
     }, ExtArgs["result"]["communes_drom"]>
@@ -28215,7 +28199,6 @@ export namespace Prisma {
     readonly code_pnr: FieldRef<"communes_drom", 'String'>
     readonly libelle_pnr: FieldRef<"communes_drom", 'String'>
     readonly coordinates: FieldRef<"communes_drom", 'String'>
-    readonly densite_bati: FieldRef<"communes_drom", 'Float'>
     readonly precarite_logement: FieldRef<"communes_drom", 'Float'>
     readonly surface: FieldRef<"communes_drom", 'Float'>
   }
@@ -53996,7 +53979,6 @@ export namespace Prisma {
     code_pnr: 'code_pnr',
     libelle_pnr: 'libelle_pnr',
     coordinates: 'coordinates',
-    densite_bati: 'densite_bati',
     precarite_logement: 'precarite_logement',
     surface: 'surface'
   };
@@ -57291,7 +57273,6 @@ export namespace Prisma {
     code_pnr?: StringNullableFilter<"communes_drom"> | string | null
     libelle_pnr?: StringNullableFilter<"communes_drom"> | string | null
     coordinates?: StringNullableFilter<"communes_drom"> | string | null
-    densite_bati?: FloatNullableFilter<"communes_drom"> | number | null
     precarite_logement?: FloatNullableFilter<"communes_drom"> | number | null
     surface?: FloatNullableFilter<"communes_drom"> | number | null
   }
@@ -57310,7 +57291,6 @@ export namespace Prisma {
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
     coordinates?: SortOrderInput | SortOrder
-    densite_bati?: SortOrderInput | SortOrder
     precarite_logement?: SortOrderInput | SortOrder
     surface?: SortOrderInput | SortOrder
   }
@@ -57332,7 +57312,6 @@ export namespace Prisma {
     code_pnr?: StringNullableFilter<"communes_drom"> | string | null
     libelle_pnr?: StringNullableFilter<"communes_drom"> | string | null
     coordinates?: StringNullableFilter<"communes_drom"> | string | null
-    densite_bati?: FloatNullableFilter<"communes_drom"> | number | null
     precarite_logement?: FloatNullableFilter<"communes_drom"> | number | null
     surface?: FloatNullableFilter<"communes_drom"> | number | null
   }, "pk">
@@ -57351,7 +57330,6 @@ export namespace Prisma {
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
     coordinates?: SortOrderInput | SortOrder
-    densite_bati?: SortOrderInput | SortOrder
     precarite_logement?: SortOrderInput | SortOrder
     surface?: SortOrderInput | SortOrder
     _count?: communes_dromCountOrderByAggregateInput
@@ -57378,7 +57356,6 @@ export namespace Prisma {
     code_pnr?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
     libelle_pnr?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
     coordinates?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
-    densite_bati?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
     precarite_logement?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
     surface?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
   }
@@ -62804,7 +62781,6 @@ export namespace Prisma {
     code_pnr?: string | null
     libelle_pnr?: string | null
     coordinates?: string | null
-    densite_bati?: number | null
     precarite_logement?: number | null
     surface?: number | null
   }
@@ -62823,7 +62799,6 @@ export namespace Prisma {
     code_pnr?: string | null
     libelle_pnr?: string | null
     coordinates?: string | null
-    densite_bati?: number | null
     precarite_logement?: number | null
     surface?: number | null
   }
@@ -62841,7 +62816,6 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     coordinates?: NullableStringFieldUpdateOperationsInput | string | null
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
     surface?: NullableFloatFieldUpdateOperationsInput | number | null
   }
@@ -62860,7 +62834,6 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     coordinates?: NullableStringFieldUpdateOperationsInput | string | null
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
     surface?: NullableFloatFieldUpdateOperationsInput | number | null
   }
@@ -62879,7 +62852,6 @@ export namespace Prisma {
     code_pnr?: string | null
     libelle_pnr?: string | null
     coordinates?: string | null
-    densite_bati?: number | null
     precarite_logement?: number | null
     surface?: number | null
   }
@@ -62897,7 +62869,6 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     coordinates?: NullableStringFieldUpdateOperationsInput | string | null
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
     surface?: NullableFloatFieldUpdateOperationsInput | number | null
   }
@@ -62916,7 +62887,6 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     coordinates?: NullableStringFieldUpdateOperationsInput | string | null
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
     surface?: NullableFloatFieldUpdateOperationsInput | number | null
   }
@@ -67241,7 +67211,6 @@ export namespace Prisma {
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
     coordinates?: SortOrder
-    densite_bati?: SortOrder
     precarite_logement?: SortOrder
     surface?: SortOrder
   }
@@ -67249,7 +67218,6 @@ export namespace Prisma {
   export type communes_dromAvgOrderByAggregateInput = {
     pk?: SortOrder
     region?: SortOrder
-    densite_bati?: SortOrder
     precarite_logement?: SortOrder
     surface?: SortOrder
   }
@@ -67268,7 +67236,6 @@ export namespace Prisma {
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
     coordinates?: SortOrder
-    densite_bati?: SortOrder
     precarite_logement?: SortOrder
     surface?: SortOrder
   }
@@ -67287,7 +67254,6 @@ export namespace Prisma {
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
     coordinates?: SortOrder
-    densite_bati?: SortOrder
     precarite_logement?: SortOrder
     surface?: SortOrder
   }
@@ -67295,7 +67261,6 @@ export namespace Prisma {
   export type communes_dromSumOrderByAggregateInput = {
     pk?: SortOrder
     region?: SortOrder
-    densite_bati?: SortOrder
     precarite_logement?: SortOrder
     surface?: SortOrder
   }

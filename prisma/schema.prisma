@@ -593,18 +593,6 @@ model surfaces_agricoles {
   @@schema("databases")
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-model temp_update_pnr {
-  index             BigInt?
-  code_geographique String?
-  code_pnr          String?
-  libelle_pnr       String?
-
-  @@index([index], map: "ix_temp_update_pnr_index")
-  @@ignore
-  @@schema("databases")
-}
-
 model clc_territoires {
   pk                   Int                     @id @default(autoincrement())
   code_geographique    String                  @db.VarChar
@@ -645,18 +633,11 @@ model communes_drom {
   code_pnr             String?                  @db.VarChar
   libelle_pnr          String?                  @db.VarChar
   coordinates          String?                  @db.VarChar
-  densite_bati         Float?
+  geometry             Unsupported("geometry")?
   precarite_logement   Float?
   surface              Float?
-  geometry             Unsupported("geometry")?
 
   @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
-  @@index([departement], map: "communes_drom_departement_index")
-  @@index([epci], map: "communes_drom_epci_index")
-  @@index([ept], map: "communes_drom_ept_index")
-  @@index([libelle_petr], map: "communes_drom_petr_index")
-  @@index([code_pnr], map: "communes_drom_pnr_index")
-  @@index([code_geographique], map: "communes_drom_communes_index")
   @@schema("postgis")
 }
 

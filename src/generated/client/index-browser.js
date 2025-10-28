@@ -625,7 +625,6 @@ exports.Prisma.Communes_dromScalarFieldEnum = {
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
   coordinates: 'coordinates',
-  densite_bati: 'densite_bati',
   precarite_logement: 'precarite_logement',
   surface: 'surface'
 };
