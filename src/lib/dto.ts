@@ -156,7 +156,6 @@ export type CommunesIndicateursDto = {
     departement: string;
     libelle_departement: string;
     precarite_logement: number;
-    densite_bati: number;
     coordinates: string;
     naf?: number;
     surfacesIrriguees?: number;

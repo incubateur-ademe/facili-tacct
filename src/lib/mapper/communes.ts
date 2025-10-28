@@ -19,7 +19,6 @@ export const CommunesIndicateursMapper = (
       code_pnr: commune.code_pnr,
       libelle_pnr: commune.libelle_pnr,
       precarite_logement: commune.precarite_logement ?? NaN,
-      densite_bati: commune.densite_bati ?? NaN,
       coordinates: commune.coordinates,
       naf: commune.naf,
       surfacesIrriguees: commune.surfacesIrriguees ?? NaN,
