@@ -67,6 +67,7 @@ export const TypesDeSols = ({
   const foretPercent = (100 * foretSum) /
     (100 * sumProperty(vegetalisationTerritoire, 'superf_choro'));
   const exportData = IndicatorExportTransformations.inconfort_thermique.vegetalisation(vegetalisationTerritoire);
+  console.log("foretPercent", foretPercent);
   return (
     <>
       <div className={styles.datavizMapContainer}>
@@ -95,7 +96,7 @@ export const TypesDeSols = ({
             }
           </div>
         }
-        <Body size='sm' style={{ marginTop: guyaneConditions ? '1rem' : '0rem' }}>
+        <Body size='sm' style={{ marginTop: isNaN(foretPercent) || !guyaneConditions ? '0rem' : '1rem' }}>
           Les forêts et les espaces semi-naturels constituent des refuges essentiels
           pour la biodiversité, abritant 80 % des espèces terrestres. Ces milieux
           offrent habitat, nourriture et corridors de circulation pour la faune et
