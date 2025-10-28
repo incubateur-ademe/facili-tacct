@@ -1,6 +1,6 @@
 import { SearchParams } from "@/app/(main)/types";
 import { GetArretesCatnat, GetIncendiesForet } from "@/lib/queries/databases/gestionRisques";
-import { GetCommunes, GetDebroussaillement, GetErosionCotiere } from "@/lib/queries/postgis/cartographie";
+import { GetCommunes, GetErosionCotiere } from "@/lib/queries/postgis/cartographie";
 import { DonneesGestionRisques } from "./DonneesGestionRisques";
 
 const GestionRisquesServerPage = async (props: { searchParams: SearchParams }) => {
@@ -9,7 +9,7 @@ const GestionRisquesServerPage = async (props: { searchParams: SearchParams }) =
   const carteCommunes = await GetCommunes(code, libelle, type);
   const erosionCotiere = await GetErosionCotiere(code, libelle, type);
   const dbIncendiesForet = await GetIncendiesForet(code, libelle, type);
-  const dbDebroussaillement = await GetDebroussaillement(code, libelle, type);
+  const dbDebroussaillement: any = [];
 
   // Si les données ne sont pas disponibles, on peut soit retourner notFound() soit un message d'erreur
   // if (!carteCommunes.length || !dbGestionRisques || !dbIncendiesForet) {

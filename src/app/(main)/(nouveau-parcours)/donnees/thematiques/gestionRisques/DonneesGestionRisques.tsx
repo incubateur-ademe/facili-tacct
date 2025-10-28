@@ -138,6 +138,7 @@ export const DonneesGestionRisques = ({
             <Notice
               className={css({
                 backgroundColor: 'var(--gris-medium)',
+                borderRadius: '1rem',
                 color: "#201F1E",
                 marginRight: 32,
                 marginBottom: "2rem",
