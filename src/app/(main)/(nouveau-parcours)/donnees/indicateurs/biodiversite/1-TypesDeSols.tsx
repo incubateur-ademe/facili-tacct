@@ -33,6 +33,12 @@ export const TypesDeSols = ({
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
+  const guyaneConditions = code && !(
+    code.startsWith("973") ||
+    (type === "epci" && code.startsWith("24973")) ||
+    (type === "epci" && code === "200027548") ||
+    (type === "pnr" && code === "FR8000040")
+  )
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const vegetalisationMapped = inconfortThermique.map(vegetalisationMapper);
@@ -61,7 +67,6 @@ export const TypesDeSols = ({
   const foretPercent = (100 * foretSum) /
     (100 * sumProperty(vegetalisationTerritoire, 'superf_choro'));
   const exportData = IndicatorExportTransformations.inconfort_thermique.vegetalisation(vegetalisationTerritoire);
-
   return (
     <>
       <div className={styles.datavizMapContainer}>
@@ -69,34 +74,28 @@ export const TypesDeSols = ({
         Pour les EPCI qui commencent par 24973, un PNR en Guyane avec code FR8000040, l'EPCI
         des Savanes qui est le code 200027548 */}
         {
-          code && !(
-            code.startsWith("973") || 
-            (type === "epci" && code.startsWith("24973")) ||
-            (type === "epci" && code === "200027548") ||
-            (type === "pnr" && code === "FR8000040")
-          ) &&
+          guyaneConditions &&
           <div className={styles.chiffreDynamiqueWrapper} style={{ alignItems: 'center' }}>
             {
-              isNaN(foretPercent) ? "" :
-                <MicroRemplissageTerritoire
-                  pourcentage={foretPercent}
-                  territoireContours={carteContours}
-                  arrondi={1}
-                />
+              isNaN(foretPercent) ? "" : (
+                <>
+                  <MicroRemplissageTerritoire
+                    pourcentage={foretPercent}
+                    territoireContours={carteContours}
+                    arrondi={1}
+                  />
+                  <div className={styles.text}>
+                    <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                      {foretPercent == Infinity ? 0 : Round(foretPercent, 1)} % de votre territoire est
+                      recouvert par de la forêt ou des espaces semi-naturels.
+                    </Body>
+                  </div>
+                </>
+              )
             }
-            <div className={styles.text}>
-              {
-                isNaN(foretPercent) ? "" : (
-                  <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                    {foretPercent == Infinity ? 0 : Round(foretPercent, 1)} % de votre territoire est
-                    recouvert par de la forêt ou des espaces semi-naturels.
-                  </Body>
-                )
-              }
-            </div>
           </div>
         }
-        <Body size='sm' style={{ marginTop: '1rem' }}>
+        <Body size='sm' style={{ marginTop: guyaneConditions ? '1rem' : '0rem' }}>
           Les forêts et les espaces semi-naturels constituent des refuges essentiels
           pour la biodiversité, abritant 80 % des espèces terrestres. Ces milieux
           offrent habitat, nourriture et corridors de circulation pour la faune et
