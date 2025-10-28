@@ -37,7 +37,7 @@ const HeaderComp = () => {
     <Header
       className={css({
         zIndex: '500',
-        '.fr-container': windowDimensions.width  && windowDimensions.width > 992 ? {
+        '.fr-container': windowDimensions.width  && windowDimensions.width > 992 && (params === "/donnees" || params === "/impacts") ? {
           marginRight: "1.5rem",
           maxWidth: '85dvw',
         } : {},
@@ -48,9 +48,9 @@ const HeaderComp = () => {
           display: 'none',
         },
         '.fr-nav__link[aria-current]': {
-          color: params === "/donnees-territoriales" ? "#0063CB" : 'var(--principales-vert)',
+          color: 'var(--principales-vert)',
           ':before': {
-            backgroundColor: params === "/donnees-territoriales" ? "#0063CB" : 'var(--principales-vert)',
+            backgroundColor: 'var(--principales-vert)',
           }
         }
       })}
