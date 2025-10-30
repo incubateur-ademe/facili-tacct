@@ -13,9 +13,41 @@ type GraphData = {
   "Surface en conversion agriculture biologique": number;
   annee: string;
 }
-type Years = "surface_2019" | "surface_2020" | "surface_2021" | "surface_2022";
+type Years = "surface_2008" |
+  "surface_2009" |
+  "surface_2010" |
+  "surface_2011" |
+  "surface_2012" |
+  "surface_2013" |
+  "surface_2014" |
+  "surface_2015" |
+  "surface_2016" |
+  "surface_2017" |
+  "surface_2018" |
+  "surface_2019" |
+  "surface_2020" | 
+  "surface_2021" | 
+  "surface_2022" | 
+  "surface_2023";
 
-const agricultureBioYears = ["surface_2019", "surface_2020", "surface_2021", "surface_2022"];
+const agricultureBioYears = [
+  "surface_2008",
+  "surface_2009",
+  "surface_2010",
+  "surface_2011",
+  "surface_2012",
+  "surface_2013",
+  "surface_2014",
+  "surface_2015",
+  "surface_2016",
+  "surface_2017",
+  "surface_2018",
+  "surface_2019",
+  "surface_2020",
+  "surface_2021",
+  "surface_2022",
+  "surface_2023"
+];
 
 const graphDataFunct = (filteredYears: string[], data: AgricultureBio[]) => {
   const dataArr: GraphData[] = [];
@@ -64,7 +96,7 @@ export const AgricultureBioBarChart = (
   }, [minValueXTicks, maxValueXTicks]);
 
   return (
-    <div style={{ height: "450px", minWidth: "450px", backgroundColor: "white" }}>
+    <div style={{ height: "450px", minWidth: "450px", width: '100%', backgroundColor: "white" }}>
       <style>{`
         .nivo-bar-chart-container .bottom-tick {
           opacity: ${isTransitioning ? '0' : '1'};
@@ -80,6 +112,11 @@ export const AgricultureBioBarChart = (
           showLegend={false}
           tooltip={({ data }) => simpleBarChartTooltip({ data, legende: surfaceEnBioBarChartLegend, unite: "ha", arrondi: 0 })}
           axisLeftLegend="Surface en ha"
+          bottomTickValues={
+              minValueXTicks !== maxValueXTicks
+                ? [`${minValueXTicks}`, `${maxValueXTicks}`]
+                : [`${minValueXTicks}`]
+            }
         />
         : <div
           style={{

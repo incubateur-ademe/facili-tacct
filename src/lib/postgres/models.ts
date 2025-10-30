@@ -197,14 +197,38 @@ export type AgricultureBio = {
   libelle_epci: string;
   VARIABLE: string;
   LIBELLE_SOUS_CHAMP: string | null;
+  surface_2023: number;
   surface_2022: number;
   surface_2021: number;
   surface_2020: number;
   surface_2019: number;
+  surface_2018: number;
+  surface_2017: number;
+  surface_2016: number;
+  surface_2015: number;
+  surface_2014: number;
+  surface_2013: number;
+  surface_2012: number;
+  surface_2011: number;
+  surface_2010: number;
+  surface_2009: number;
+  surface_2008: number;
+  nombre_2023: number;
   nombre_2022: number;
   nombre_2021: number;
   nombre_2020: number;
   nombre_2019: number;
+  nombre_2018: number;
+  nombre_2017: number;
+  nombre_2016: number;
+  nombre_2015: number;
+  nombre_2014: number;
+  nombre_2013: number;
+  nombre_2012: number;
+  nombre_2011: number;
+  nombre_2010: number;
+  nombre_2009: number;
+  nombre_2008: number;
 };
 
 export type CollectivitesSearchbar = {
