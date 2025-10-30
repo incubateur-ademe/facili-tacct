@@ -53,14 +53,38 @@ model agriculture_bio {
   libelle_epci       String
   VARIABLE           String
   LIBELLE_SOUS_CHAMP String?
-  surface_2022       Float
-  surface_2021       Float
-  surface_2020       Float
-  surface_2019       Float
-  nombre_2022        Float
-  nombre_2021        Float
-  nombre_2020        Float
-  nombre_2019        Float
+  surface_2023       Float?
+  surface_2022       Float?
+  surface_2021       Float?
+  surface_2020       Float?
+  surface_2019       Float?
+  surface_2018       Float?
+  surface_2017       Float?
+  surface_2016       Float?
+  surface_2015       Float?
+  surface_2014       Float?
+  surface_2013       Float?
+  surface_2012       Float?
+  surface_2011       Float?
+  surface_2010       Float?
+  surface_2009       Float?
+  surface_2008       Float?
+  nombre_2023        Float?
+  nombre_2022        Float?
+  nombre_2021        Float?
+  nombre_2020        Float?
+  nombre_2019        Float?
+  nombre_2018        Float?
+  nombre_2017        Float?
+  nombre_2016        Float?
+  nombre_2015        Float?
+  nombre_2014        Float?
+  nombre_2013        Float?
+  nombre_2012        Float?
+  nombre_2011        Float?
+  nombre_2010        Float?
+  nombre_2009        Float?
+  nombre_2008        Float?
 
   @@index([index], map: "ix_agriculture_bio_index")
   @@schema("databases")
@@ -514,25 +538,25 @@ model rga {
   nb_logement_alea_faible                  Int
   nb_logement_sans_alea                    Int
   nb_logement_alea_moyen_fort_avant_1920   Int
-  part_logement_alea_moyen_fort_avant_1920 Int
   nb_logement_alea_moyen_fort_1920_1945    Int
-  part_logement_alea_moyen_fort_1920_1945  Int
   nb_logement_alea_moyen_fort_1945_1975    Int
-  part_logement_alea_moyen_fort_1945_1975  Int
   nb_logement_alea_moyen_fort_apres_1975   Int
-  part_logement_alea_moyen_fort_apres_1975 Int
   nb_logement_alea_faible_avant_1920       Int
-  part_logement_alea_faible_avant_1920     Int
   nb_logement_alea_faible_1920_1945        Int
-  part_logement_alea_faible_1920_1945      Int
   nb_logement_alea_faible_1945_1975        Int
-  part_logement_alea_faible_1945_1975      Int
   nb_logement_alea_faible_apres_1975       Int
-  part_logement_alea_faible_apres_1975     Int
   surface_commune                          Int
   surface_alea_faible_commune              Int
-  part_alea_faible_commune                 Int
   surface_alea_moyen_fort_commune          Int
+  part_logement_alea_moyen_fort_avant_1920 Int
+  part_logement_alea_moyen_fort_1920_1945  Int
+  part_logement_alea_moyen_fort_1945_1975  Int
+  part_logement_alea_moyen_fort_apres_1975 Int
+  part_logement_alea_faible_avant_1920     Int
+  part_logement_alea_faible_1920_1945      Int
+  part_logement_alea_faible_1945_1975      Int
+  part_logement_alea_faible_apres_1975     Int
+  part_alea_faible_commune                 Int
   part_alea_moyen_fort_commune             Int
 
   @@index([index], map: "ix_rga_index")
@@ -638,22 +662,6 @@ model communes_drom {
   surface              Float?
 
   @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
-  @@schema("postgis")
-}
-
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-model densite_bati_temp {
-  index             BigInt?
-  code_geographique String?
-  libgeo            String?
-  superf_choro      Float?
-  s_geom_cstr       BigInt?
-  hauteur           Float?
-  h_x_s             Float?
-  densite_bati      Float?
-
-  @@index([index], map: "ix_densite_bati_temp_index")
-  @@ignore
   @@schema("postgis")
 }
 

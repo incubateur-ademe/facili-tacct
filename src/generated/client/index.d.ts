@@ -6523,26 +6523,74 @@ export namespace Prisma {
 
   export type Agriculture_bioAvgAggregateOutputType = {
     index: number | null
+    surface_2023: number | null
     surface_2022: number | null
     surface_2021: number | null
     surface_2020: number | null
     surface_2019: number | null
+    surface_2018: number | null
+    surface_2017: number | null
+    surface_2016: number | null
+    surface_2015: number | null
+    surface_2014: number | null
+    surface_2013: number | null
+    surface_2012: number | null
+    surface_2011: number | null
+    surface_2010: number | null
+    surface_2009: number | null
+    surface_2008: number | null
+    nombre_2023: number | null
     nombre_2022: number | null
     nombre_2021: number | null
     nombre_2020: number | null
     nombre_2019: number | null
+    nombre_2018: number | null
+    nombre_2017: number | null
+    nombre_2016: number | null
+    nombre_2015: number | null
+    nombre_2014: number | null
+    nombre_2013: number | null
+    nombre_2012: number | null
+    nombre_2011: number | null
+    nombre_2010: number | null
+    nombre_2009: number | null
+    nombre_2008: number | null
   }
 
   export type Agriculture_bioSumAggregateOutputType = {
     index: bigint | null
+    surface_2023: number | null
     surface_2022: number | null
     surface_2021: number | null
     surface_2020: number | null
     surface_2019: number | null
+    surface_2018: number | null
+    surface_2017: number | null
+    surface_2016: number | null
+    surface_2015: number | null
+    surface_2014: number | null
+    surface_2013: number | null
+    surface_2012: number | null
+    surface_2011: number | null
+    surface_2010: number | null
+    surface_2009: number | null
+    surface_2008: number | null
+    nombre_2023: number | null
     nombre_2022: number | null
     nombre_2021: number | null
     nombre_2020: number | null
     nombre_2019: number | null
+    nombre_2018: number | null
+    nombre_2017: number | null
+    nombre_2016: number | null
+    nombre_2015: number | null
+    nombre_2014: number | null
+    nombre_2013: number | null
+    nombre_2012: number | null
+    nombre_2011: number | null
+    nombre_2010: number | null
+    nombre_2009: number | null
+    nombre_2008: number | null
   }
 
   export type Agriculture_bioMinAggregateOutputType = {
@@ -6551,14 +6599,38 @@ export namespace Prisma {
     libelle_epci: string | null
     VARIABLE: string | null
     LIBELLE_SOUS_CHAMP: string | null
+    surface_2023: number | null
     surface_2022: number | null
     surface_2021: number | null
     surface_2020: number | null
     surface_2019: number | null
+    surface_2018: number | null
+    surface_2017: number | null
+    surface_2016: number | null
+    surface_2015: number | null
+    surface_2014: number | null
+    surface_2013: number | null
+    surface_2012: number | null
+    surface_2011: number | null
+    surface_2010: number | null
+    surface_2009: number | null
+    surface_2008: number | null
+    nombre_2023: number | null
     nombre_2022: number | null
     nombre_2021: number | null
     nombre_2020: number | null
     nombre_2019: number | null
+    nombre_2018: number | null
+    nombre_2017: number | null
+    nombre_2016: number | null
+    nombre_2015: number | null
+    nombre_2014: number | null
+    nombre_2013: number | null
+    nombre_2012: number | null
+    nombre_2011: number | null
+    nombre_2010: number | null
+    nombre_2009: number | null
+    nombre_2008: number | null
   }
 
   export type Agriculture_bioMaxAggregateOutputType = {
@@ -6567,14 +6639,38 @@ export namespace Prisma {
     libelle_epci: string | null
     VARIABLE: string | null
     LIBELLE_SOUS_CHAMP: string | null
+    surface_2023: number | null
     surface_2022: number | null
     surface_2021: number | null
     surface_2020: number | null
     surface_2019: number | null
+    surface_2018: number | null
+    surface_2017: number | null
+    surface_2016: number | null
+    surface_2015: number | null
+    surface_2014: number | null
+    surface_2013: number | null
+    surface_2012: number | null
+    surface_2011: number | null
+    surface_2010: number | null
+    surface_2009: number | null
+    surface_2008: number | null
+    nombre_2023: number | null
     nombre_2022: number | null
     nombre_2021: number | null
     nombre_2020: number | null
     nombre_2019: number | null
+    nombre_2018: number | null
+    nombre_2017: number | null
+    nombre_2016: number | null
+    nombre_2015: number | null
+    nombre_2014: number | null
+    nombre_2013: number | null
+    nombre_2012: number | null
+    nombre_2011: number | null
+    nombre_2010: number | null
+    nombre_2009: number | null
+    nombre_2008: number | null
   }
 
   export type Agriculture_bioCountAggregateOutputType = {
@@ -6583,40 +6679,112 @@ export namespace Prisma {
     libelle_epci: number
     VARIABLE: number
     LIBELLE_SOUS_CHAMP: number
+    surface_2023: number
     surface_2022: number
     surface_2021: number
     surface_2020: number
     surface_2019: number
+    surface_2018: number
+    surface_2017: number
+    surface_2016: number
+    surface_2015: number
+    surface_2014: number
+    surface_2013: number
+    surface_2012: number
+    surface_2011: number
+    surface_2010: number
+    surface_2009: number
+    surface_2008: number
+    nombre_2023: number
     nombre_2022: number
     nombre_2021: number
     nombre_2020: number
     nombre_2019: number
+    nombre_2018: number
+    nombre_2017: number
+    nombre_2016: number
+    nombre_2015: number
+    nombre_2014: number
+    nombre_2013: number
+    nombre_2012: number
+    nombre_2011: number
+    nombre_2010: number
+    nombre_2009: number
+    nombre_2008: number
     _all: number
   }
 
 
   export type Agriculture_bioAvgAggregateInputType = {
     index?: true
+    surface_2023?: true
     surface_2022?: true
     surface_2021?: true
     surface_2020?: true
     surface_2019?: true
+    surface_2018?: true
+    surface_2017?: true
+    surface_2016?: true
+    surface_2015?: true
+    surface_2014?: true
+    surface_2013?: true
+    surface_2012?: true
+    surface_2011?: true
+    surface_2010?: true
+    surface_2009?: true
+    surface_2008?: true
+    nombre_2023?: true
     nombre_2022?: true
     nombre_2021?: true
     nombre_2020?: true
     nombre_2019?: true
+    nombre_2018?: true
+    nombre_2017?: true
+    nombre_2016?: true
+    nombre_2015?: true
+    nombre_2014?: true
+    nombre_2013?: true
+    nombre_2012?: true
+    nombre_2011?: true
+    nombre_2010?: true
+    nombre_2009?: true
+    nombre_2008?: true
   }
 
   export type Agriculture_bioSumAggregateInputType = {
     index?: true
+    surface_2023?: true
     surface_2022?: true
     surface_2021?: true
     surface_2020?: true
     surface_2019?: true
+    surface_2018?: true
+    surface_2017?: true
+    surface_2016?: true
+    surface_2015?: true
+    surface_2014?: true
+    surface_2013?: true
+    surface_2012?: true
+    surface_2011?: true
+    surface_2010?: true
+    surface_2009?: true
+    surface_2008?: true
+    nombre_2023?: true
     nombre_2022?: true
     nombre_2021?: true
     nombre_2020?: true
     nombre_2019?: true
+    nombre_2018?: true
+    nombre_2017?: true
+    nombre_2016?: true
+    nombre_2015?: true
+    nombre_2014?: true
+    nombre_2013?: true
+    nombre_2012?: true
+    nombre_2011?: true
+    nombre_2010?: true
+    nombre_2009?: true
+    nombre_2008?: true
   }
 
   export type Agriculture_bioMinAggregateInputType = {
@@ -6625,14 +6793,38 @@ export namespace Prisma {
     libelle_epci?: true
     VARIABLE?: true
     LIBELLE_SOUS_CHAMP?: true
+    surface_2023?: true
     surface_2022?: true
     surface_2021?: true
     surface_2020?: true
     surface_2019?: true
+    surface_2018?: true
+    surface_2017?: true
+    surface_2016?: true
+    surface_2015?: true
+    surface_2014?: true
+    surface_2013?: true
+    surface_2012?: true
+    surface_2011?: true
+    surface_2010?: true
+    surface_2009?: true
+    surface_2008?: true
+    nombre_2023?: true
     nombre_2022?: true
     nombre_2021?: true
     nombre_2020?: true
     nombre_2019?: true
+    nombre_2018?: true
+    nombre_2017?: true
+    nombre_2016?: true
+    nombre_2015?: true
+    nombre_2014?: true
+    nombre_2013?: true
+    nombre_2012?: true
+    nombre_2011?: true
+    nombre_2010?: true
+    nombre_2009?: true
+    nombre_2008?: true
   }
 
   export type Agriculture_bioMaxAggregateInputType = {
@@ -6641,14 +6833,38 @@ export namespace Prisma {
     libelle_epci?: true
     VARIABLE?: true
     LIBELLE_SOUS_CHAMP?: true
+    surface_2023?: true
     surface_2022?: true
     surface_2021?: true
     surface_2020?: true
     surface_2019?: true
+    surface_2018?: true
+    surface_2017?: true
+    surface_2016?: true
+    surface_2015?: true
+    surface_2014?: true
+    surface_2013?: true
+    surface_2012?: true
+    surface_2011?: true
+    surface_2010?: true
+    surface_2009?: true
+    surface_2008?: true
+    nombre_2023?: true
     nombre_2022?: true
     nombre_2021?: true
     nombre_2020?: true
     nombre_2019?: true
+    nombre_2018?: true
+    nombre_2017?: true
+    nombre_2016?: true
+    nombre_2015?: true
+    nombre_2014?: true
+    nombre_2013?: true
+    nombre_2012?: true
+    nombre_2011?: true
+    nombre_2010?: true
+    nombre_2009?: true
+    nombre_2008?: true
   }
 
   export type Agriculture_bioCountAggregateInputType = {
@@ -6657,14 +6873,38 @@ export namespace Prisma {
     libelle_epci?: true
     VARIABLE?: true
     LIBELLE_SOUS_CHAMP?: true
+    surface_2023?: true
     surface_2022?: true
     surface_2021?: true
     surface_2020?: true
     surface_2019?: true
+    surface_2018?: true
+    surface_2017?: true
+    surface_2016?: true
+    surface_2015?: true
+    surface_2014?: true
+    surface_2013?: true
+    surface_2012?: true
+    surface_2011?: true
+    surface_2010?: true
+    surface_2009?: true
+    surface_2008?: true
+    nombre_2023?: true
     nombre_2022?: true
     nombre_2021?: true
     nombre_2020?: true
     nombre_2019?: true
+    nombre_2018?: true
+    nombre_2017?: true
+    nombre_2016?: true
+    nombre_2015?: true
+    nombre_2014?: true
+    nombre_2013?: true
+    nombre_2012?: true
+    nombre_2011?: true
+    nombre_2010?: true
+    nombre_2009?: true
+    nombre_2008?: true
     _all?: true
   }
 
@@ -6760,14 +7000,38 @@ export namespace Prisma {
     libelle_epci: string
     VARIABLE: string
     LIBELLE_SOUS_CHAMP: string | null
-    surface_2022: number
-    surface_2021: number
-    surface_2020: number
-    surface_2019: number
-    nombre_2022: number
-    nombre_2021: number
-    nombre_2020: number
-    nombre_2019: number
+    surface_2023: number | null
+    surface_2022: number | null
+    surface_2021: number | null
+    surface_2020: number | null
+    surface_2019: number | null
+    surface_2018: number | null
+    surface_2017: number | null
+    surface_2016: number | null
+    surface_2015: number | null
+    surface_2014: number | null
+    surface_2013: number | null
+    surface_2012: number | null
+    surface_2011: number | null
+    surface_2010: number | null
+    surface_2009: number | null
+    surface_2008: number | null
+    nombre_2023: number | null
+    nombre_2022: number | null
+    nombre_2021: number | null
+    nombre_2020: number | null
+    nombre_2019: number | null
+    nombre_2018: number | null
+    nombre_2017: number | null
+    nombre_2016: number | null
+    nombre_2015: number | null
+    nombre_2014: number | null
+    nombre_2013: number | null
+    nombre_2012: number | null
+    nombre_2011: number | null
+    nombre_2010: number | null
+    nombre_2009: number | null
+    nombre_2008: number | null
     _count: Agriculture_bioCountAggregateOutputType | null
     _avg: Agriculture_bioAvgAggregateOutputType | null
     _sum: Agriculture_bioSumAggregateOutputType | null
@@ -6795,14 +7059,38 @@ export namespace Prisma {
     libelle_epci?: boolean
     VARIABLE?: boolean
     LIBELLE_SOUS_CHAMP?: boolean
+    surface_2023?: boolean
     surface_2022?: boolean
     surface_2021?: boolean
     surface_2020?: boolean
     surface_2019?: boolean
+    surface_2018?: boolean
+    surface_2017?: boolean
+    surface_2016?: boolean
+    surface_2015?: boolean
+    surface_2014?: boolean
+    surface_2013?: boolean
+    surface_2012?: boolean
+    surface_2011?: boolean
+    surface_2010?: boolean
+    surface_2009?: boolean
+    surface_2008?: boolean
+    nombre_2023?: boolean
     nombre_2022?: boolean
     nombre_2021?: boolean
     nombre_2020?: boolean
     nombre_2019?: boolean
+    nombre_2018?: boolean
+    nombre_2017?: boolean
+    nombre_2016?: boolean
+    nombre_2015?: boolean
+    nombre_2014?: boolean
+    nombre_2013?: boolean
+    nombre_2012?: boolean
+    nombre_2011?: boolean
+    nombre_2010?: boolean
+    nombre_2009?: boolean
+    nombre_2008?: boolean
   }, ExtArgs["result"]["agriculture_bio"]>
 
   export type agriculture_bioSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6811,14 +7099,38 @@ export namespace Prisma {
     libelle_epci?: boolean
     VARIABLE?: boolean
     LIBELLE_SOUS_CHAMP?: boolean
+    surface_2023?: boolean
     surface_2022?: boolean
     surface_2021?: boolean
     surface_2020?: boolean
     surface_2019?: boolean
+    surface_2018?: boolean
+    surface_2017?: boolean
+    surface_2016?: boolean
+    surface_2015?: boolean
+    surface_2014?: boolean
+    surface_2013?: boolean
+    surface_2012?: boolean
+    surface_2011?: boolean
+    surface_2010?: boolean
+    surface_2009?: boolean
+    surface_2008?: boolean
+    nombre_2023?: boolean
     nombre_2022?: boolean
     nombre_2021?: boolean
     nombre_2020?: boolean
     nombre_2019?: boolean
+    nombre_2018?: boolean
+    nombre_2017?: boolean
+    nombre_2016?: boolean
+    nombre_2015?: boolean
+    nombre_2014?: boolean
+    nombre_2013?: boolean
+    nombre_2012?: boolean
+    nombre_2011?: boolean
+    nombre_2010?: boolean
+    nombre_2009?: boolean
+    nombre_2008?: boolean
   }, ExtArgs["result"]["agriculture_bio"]>
 
   export type agriculture_bioSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6827,14 +7139,38 @@ export namespace Prisma {
     libelle_epci?: boolean
     VARIABLE?: boolean
     LIBELLE_SOUS_CHAMP?: boolean
+    surface_2023?: boolean
     surface_2022?: boolean
     surface_2021?: boolean
     surface_2020?: boolean
     surface_2019?: boolean
+    surface_2018?: boolean
+    surface_2017?: boolean
+    surface_2016?: boolean
+    surface_2015?: boolean
+    surface_2014?: boolean
+    surface_2013?: boolean
+    surface_2012?: boolean
+    surface_2011?: boolean
+    surface_2010?: boolean
+    surface_2009?: boolean
+    surface_2008?: boolean
+    nombre_2023?: boolean
     nombre_2022?: boolean
     nombre_2021?: boolean
     nombre_2020?: boolean
     nombre_2019?: boolean
+    nombre_2018?: boolean
+    nombre_2017?: boolean
+    nombre_2016?: boolean
+    nombre_2015?: boolean
+    nombre_2014?: boolean
+    nombre_2013?: boolean
+    nombre_2012?: boolean
+    nombre_2011?: boolean
+    nombre_2010?: boolean
+    nombre_2009?: boolean
+    nombre_2008?: boolean
   }, ExtArgs["result"]["agriculture_bio"]>
 
   export type agriculture_bioSelectScalar = {
@@ -6843,17 +7179,41 @@ export namespace Prisma {
     libelle_epci?: boolean
     VARIABLE?: boolean
     LIBELLE_SOUS_CHAMP?: boolean
+    surface_2023?: boolean
     surface_2022?: boolean
     surface_2021?: boolean
     surface_2020?: boolean
     surface_2019?: boolean
+    surface_2018?: boolean
+    surface_2017?: boolean
+    surface_2016?: boolean
+    surface_2015?: boolean
+    surface_2014?: boolean
+    surface_2013?: boolean
+    surface_2012?: boolean
+    surface_2011?: boolean
+    surface_2010?: boolean
+    surface_2009?: boolean
+    surface_2008?: boolean
+    nombre_2023?: boolean
     nombre_2022?: boolean
     nombre_2021?: boolean
     nombre_2020?: boolean
     nombre_2019?: boolean
+    nombre_2018?: boolean
+    nombre_2017?: boolean
+    nombre_2016?: boolean
+    nombre_2015?: boolean
+    nombre_2014?: boolean
+    nombre_2013?: boolean
+    nombre_2012?: boolean
+    nombre_2011?: boolean
+    nombre_2010?: boolean
+    nombre_2009?: boolean
+    nombre_2008?: boolean
   }
 
-  export type agriculture_bioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "epci" | "libelle_epci" | "VARIABLE" | "LIBELLE_SOUS_CHAMP" | "surface_2022" | "surface_2021" | "surface_2020" | "surface_2019" | "nombre_2022" | "nombre_2021" | "nombre_2020" | "nombre_2019", ExtArgs["result"]["agriculture_bio"]>
+  export type agriculture_bioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "epci" | "libelle_epci" | "VARIABLE" | "LIBELLE_SOUS_CHAMP" | "surface_2023" | "surface_2022" | "surface_2021" | "surface_2020" | "surface_2019" | "surface_2018" | "surface_2017" | "surface_2016" | "surface_2015" | "surface_2014" | "surface_2013" | "surface_2012" | "surface_2011" | "surface_2010" | "surface_2009" | "surface_2008" | "nombre_2023" | "nombre_2022" | "nombre_2021" | "nombre_2020" | "nombre_2019" | "nombre_2018" | "nombre_2017" | "nombre_2016" | "nombre_2015" | "nombre_2014" | "nombre_2013" | "nombre_2012" | "nombre_2011" | "nombre_2010" | "nombre_2009" | "nombre_2008", ExtArgs["result"]["agriculture_bio"]>
 
   export type $agriculture_bioPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "agriculture_bio"
@@ -6864,14 +7224,38 @@ export namespace Prisma {
       libelle_epci: string
       VARIABLE: string
       LIBELLE_SOUS_CHAMP: string | null
-      surface_2022: number
-      surface_2021: number
-      surface_2020: number
-      surface_2019: number
-      nombre_2022: number
-      nombre_2021: number
-      nombre_2020: number
-      nombre_2019: number
+      surface_2023: number | null
+      surface_2022: number | null
+      surface_2021: number | null
+      surface_2020: number | null
+      surface_2019: number | null
+      surface_2018: number | null
+      surface_2017: number | null
+      surface_2016: number | null
+      surface_2015: number | null
+      surface_2014: number | null
+      surface_2013: number | null
+      surface_2012: number | null
+      surface_2011: number | null
+      surface_2010: number | null
+      surface_2009: number | null
+      surface_2008: number | null
+      nombre_2023: number | null
+      nombre_2022: number | null
+      nombre_2021: number | null
+      nombre_2020: number | null
+      nombre_2019: number | null
+      nombre_2018: number | null
+      nombre_2017: number | null
+      nombre_2016: number | null
+      nombre_2015: number | null
+      nombre_2014: number | null
+      nombre_2013: number | null
+      nombre_2012: number | null
+      nombre_2011: number | null
+      nombre_2010: number | null
+      nombre_2009: number | null
+      nombre_2008: number | null
     }, ExtArgs["result"]["agriculture_bio"]>
     composites: {}
   }
@@ -7300,14 +7684,38 @@ export namespace Prisma {
     readonly libelle_epci: FieldRef<"agriculture_bio", 'String'>
     readonly VARIABLE: FieldRef<"agriculture_bio", 'String'>
     readonly LIBELLE_SOUS_CHAMP: FieldRef<"agriculture_bio", 'String'>
+    readonly surface_2023: FieldRef<"agriculture_bio", 'Float'>
     readonly surface_2022: FieldRef<"agriculture_bio", 'Float'>
     readonly surface_2021: FieldRef<"agriculture_bio", 'Float'>
     readonly surface_2020: FieldRef<"agriculture_bio", 'Float'>
     readonly surface_2019: FieldRef<"agriculture_bio", 'Float'>
+    readonly surface_2018: FieldRef<"agriculture_bio", 'Float'>
+    readonly surface_2017: FieldRef<"agriculture_bio", 'Float'>
+    readonly surface_2016: FieldRef<"agriculture_bio", 'Float'>
+    readonly surface_2015: FieldRef<"agriculture_bio", 'Float'>
+    readonly surface_2014: FieldRef<"agriculture_bio", 'Float'>
+    readonly surface_2013: FieldRef<"agriculture_bio", 'Float'>
+    readonly surface_2012: FieldRef<"agriculture_bio", 'Float'>
+    readonly surface_2011: FieldRef<"agriculture_bio", 'Float'>
+    readonly surface_2010: FieldRef<"agriculture_bio", 'Float'>
+    readonly surface_2009: FieldRef<"agriculture_bio", 'Float'>
+    readonly surface_2008: FieldRef<"agriculture_bio", 'Float'>
+    readonly nombre_2023: FieldRef<"agriculture_bio", 'Float'>
     readonly nombre_2022: FieldRef<"agriculture_bio", 'Float'>
     readonly nombre_2021: FieldRef<"agriculture_bio", 'Float'>
     readonly nombre_2020: FieldRef<"agriculture_bio", 'Float'>
     readonly nombre_2019: FieldRef<"agriculture_bio", 'Float'>
+    readonly nombre_2018: FieldRef<"agriculture_bio", 'Float'>
+    readonly nombre_2017: FieldRef<"agriculture_bio", 'Float'>
+    readonly nombre_2016: FieldRef<"agriculture_bio", 'Float'>
+    readonly nombre_2015: FieldRef<"agriculture_bio", 'Float'>
+    readonly nombre_2014: FieldRef<"agriculture_bio", 'Float'>
+    readonly nombre_2013: FieldRef<"agriculture_bio", 'Float'>
+    readonly nombre_2012: FieldRef<"agriculture_bio", 'Float'>
+    readonly nombre_2011: FieldRef<"agriculture_bio", 'Float'>
+    readonly nombre_2010: FieldRef<"agriculture_bio", 'Float'>
+    readonly nombre_2009: FieldRef<"agriculture_bio", 'Float'>
+    readonly nombre_2008: FieldRef<"agriculture_bio", 'Float'>
   }
     
 
@@ -23254,25 +23662,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number | null
     nb_logement_sans_alea: number | null
     nb_logement_alea_moyen_fort_avant_1920: number | null
-    part_logement_alea_moyen_fort_avant_1920: number | null
     nb_logement_alea_moyen_fort_1920_1945: number | null
-    part_logement_alea_moyen_fort_1920_1945: number | null
     nb_logement_alea_moyen_fort_1945_1975: number | null
-    part_logement_alea_moyen_fort_1945_1975: number | null
     nb_logement_alea_moyen_fort_apres_1975: number | null
-    part_logement_alea_moyen_fort_apres_1975: number | null
     nb_logement_alea_faible_avant_1920: number | null
-    part_logement_alea_faible_avant_1920: number | null
     nb_logement_alea_faible_1920_1945: number | null
-    part_logement_alea_faible_1920_1945: number | null
     nb_logement_alea_faible_1945_1975: number | null
-    part_logement_alea_faible_1945_1975: number | null
     nb_logement_alea_faible_apres_1975: number | null
-    part_logement_alea_faible_apres_1975: number | null
     surface_commune: number | null
     surface_alea_faible_commune: number | null
-    part_alea_faible_commune: number | null
     surface_alea_moyen_fort_commune: number | null
+    part_logement_alea_moyen_fort_avant_1920: number | null
+    part_logement_alea_moyen_fort_1920_1945: number | null
+    part_logement_alea_moyen_fort_1945_1975: number | null
+    part_logement_alea_moyen_fort_apres_1975: number | null
+    part_logement_alea_faible_avant_1920: number | null
+    part_logement_alea_faible_1920_1945: number | null
+    part_logement_alea_faible_1945_1975: number | null
+    part_logement_alea_faible_apres_1975: number | null
+    part_alea_faible_commune: number | null
     part_alea_moyen_fort_commune: number | null
   }
 
@@ -23284,25 +23692,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number | null
     nb_logement_sans_alea: number | null
     nb_logement_alea_moyen_fort_avant_1920: number | null
-    part_logement_alea_moyen_fort_avant_1920: number | null
     nb_logement_alea_moyen_fort_1920_1945: number | null
-    part_logement_alea_moyen_fort_1920_1945: number | null
     nb_logement_alea_moyen_fort_1945_1975: number | null
-    part_logement_alea_moyen_fort_1945_1975: number | null
     nb_logement_alea_moyen_fort_apres_1975: number | null
-    part_logement_alea_moyen_fort_apres_1975: number | null
     nb_logement_alea_faible_avant_1920: number | null
-    part_logement_alea_faible_avant_1920: number | null
     nb_logement_alea_faible_1920_1945: number | null
-    part_logement_alea_faible_1920_1945: number | null
     nb_logement_alea_faible_1945_1975: number | null
-    part_logement_alea_faible_1945_1975: number | null
     nb_logement_alea_faible_apres_1975: number | null
-    part_logement_alea_faible_apres_1975: number | null
     surface_commune: number | null
     surface_alea_faible_commune: number | null
-    part_alea_faible_commune: number | null
     surface_alea_moyen_fort_commune: number | null
+    part_logement_alea_moyen_fort_avant_1920: number | null
+    part_logement_alea_moyen_fort_1920_1945: number | null
+    part_logement_alea_moyen_fort_1945_1975: number | null
+    part_logement_alea_moyen_fort_apres_1975: number | null
+    part_logement_alea_faible_avant_1920: number | null
+    part_logement_alea_faible_1920_1945: number | null
+    part_logement_alea_faible_1945_1975: number | null
+    part_logement_alea_faible_apres_1975: number | null
+    part_alea_faible_commune: number | null
     part_alea_moyen_fort_commune: number | null
   }
 
@@ -23324,25 +23732,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number | null
     nb_logement_sans_alea: number | null
     nb_logement_alea_moyen_fort_avant_1920: number | null
-    part_logement_alea_moyen_fort_avant_1920: number | null
     nb_logement_alea_moyen_fort_1920_1945: number | null
-    part_logement_alea_moyen_fort_1920_1945: number | null
     nb_logement_alea_moyen_fort_1945_1975: number | null
-    part_logement_alea_moyen_fort_1945_1975: number | null
     nb_logement_alea_moyen_fort_apres_1975: number | null
-    part_logement_alea_moyen_fort_apres_1975: number | null
     nb_logement_alea_faible_avant_1920: number | null
-    part_logement_alea_faible_avant_1920: number | null
     nb_logement_alea_faible_1920_1945: number | null
-    part_logement_alea_faible_1920_1945: number | null
     nb_logement_alea_faible_1945_1975: number | null
-    part_logement_alea_faible_1945_1975: number | null
     nb_logement_alea_faible_apres_1975: number | null
-    part_logement_alea_faible_apres_1975: number | null
     surface_commune: number | null
     surface_alea_faible_commune: number | null
-    part_alea_faible_commune: number | null
     surface_alea_moyen_fort_commune: number | null
+    part_logement_alea_moyen_fort_avant_1920: number | null
+    part_logement_alea_moyen_fort_1920_1945: number | null
+    part_logement_alea_moyen_fort_1945_1975: number | null
+    part_logement_alea_moyen_fort_apres_1975: number | null
+    part_logement_alea_faible_avant_1920: number | null
+    part_logement_alea_faible_1920_1945: number | null
+    part_logement_alea_faible_1945_1975: number | null
+    part_logement_alea_faible_apres_1975: number | null
+    part_alea_faible_commune: number | null
     part_alea_moyen_fort_commune: number | null
   }
 
@@ -23364,25 +23772,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number | null
     nb_logement_sans_alea: number | null
     nb_logement_alea_moyen_fort_avant_1920: number | null
-    part_logement_alea_moyen_fort_avant_1920: number | null
     nb_logement_alea_moyen_fort_1920_1945: number | null
-    part_logement_alea_moyen_fort_1920_1945: number | null
     nb_logement_alea_moyen_fort_1945_1975: number | null
-    part_logement_alea_moyen_fort_1945_1975: number | null
     nb_logement_alea_moyen_fort_apres_1975: number | null
-    part_logement_alea_moyen_fort_apres_1975: number | null
     nb_logement_alea_faible_avant_1920: number | null
-    part_logement_alea_faible_avant_1920: number | null
     nb_logement_alea_faible_1920_1945: number | null
-    part_logement_alea_faible_1920_1945: number | null
     nb_logement_alea_faible_1945_1975: number | null
-    part_logement_alea_faible_1945_1975: number | null
     nb_logement_alea_faible_apres_1975: number | null
-    part_logement_alea_faible_apres_1975: number | null
     surface_commune: number | null
     surface_alea_faible_commune: number | null
-    part_alea_faible_commune: number | null
     surface_alea_moyen_fort_commune: number | null
+    part_logement_alea_moyen_fort_avant_1920: number | null
+    part_logement_alea_moyen_fort_1920_1945: number | null
+    part_logement_alea_moyen_fort_1945_1975: number | null
+    part_logement_alea_moyen_fort_apres_1975: number | null
+    part_logement_alea_faible_avant_1920: number | null
+    part_logement_alea_faible_1920_1945: number | null
+    part_logement_alea_faible_1945_1975: number | null
+    part_logement_alea_faible_apres_1975: number | null
+    part_alea_faible_commune: number | null
     part_alea_moyen_fort_commune: number | null
   }
 
@@ -23404,25 +23812,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number
     nb_logement_sans_alea: number
     nb_logement_alea_moyen_fort_avant_1920: number
-    part_logement_alea_moyen_fort_avant_1920: number
     nb_logement_alea_moyen_fort_1920_1945: number
-    part_logement_alea_moyen_fort_1920_1945: number
     nb_logement_alea_moyen_fort_1945_1975: number
-    part_logement_alea_moyen_fort_1945_1975: number
     nb_logement_alea_moyen_fort_apres_1975: number
-    part_logement_alea_moyen_fort_apres_1975: number
     nb_logement_alea_faible_avant_1920: number
-    part_logement_alea_faible_avant_1920: number
     nb_logement_alea_faible_1920_1945: number
-    part_logement_alea_faible_1920_1945: number
     nb_logement_alea_faible_1945_1975: number
-    part_logement_alea_faible_1945_1975: number
     nb_logement_alea_faible_apres_1975: number
-    part_logement_alea_faible_apres_1975: number
     surface_commune: number
     surface_alea_faible_commune: number
-    part_alea_faible_commune: number
     surface_alea_moyen_fort_commune: number
+    part_logement_alea_moyen_fort_avant_1920: number
+    part_logement_alea_moyen_fort_1920_1945: number
+    part_logement_alea_moyen_fort_1945_1975: number
+    part_logement_alea_moyen_fort_apres_1975: number
+    part_logement_alea_faible_avant_1920: number
+    part_logement_alea_faible_1920_1945: number
+    part_logement_alea_faible_1945_1975: number
+    part_logement_alea_faible_apres_1975: number
+    part_alea_faible_commune: number
     part_alea_moyen_fort_commune: number
     _all: number
   }
@@ -23436,25 +23844,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: true
     nb_logement_sans_alea?: true
     nb_logement_alea_moyen_fort_avant_1920?: true
-    part_logement_alea_moyen_fort_avant_1920?: true
     nb_logement_alea_moyen_fort_1920_1945?: true
-    part_logement_alea_moyen_fort_1920_1945?: true
     nb_logement_alea_moyen_fort_1945_1975?: true
-    part_logement_alea_moyen_fort_1945_1975?: true
     nb_logement_alea_moyen_fort_apres_1975?: true
-    part_logement_alea_moyen_fort_apres_1975?: true
     nb_logement_alea_faible_avant_1920?: true
-    part_logement_alea_faible_avant_1920?: true
     nb_logement_alea_faible_1920_1945?: true
-    part_logement_alea_faible_1920_1945?: true
     nb_logement_alea_faible_1945_1975?: true
-    part_logement_alea_faible_1945_1975?: true
     nb_logement_alea_faible_apres_1975?: true
-    part_logement_alea_faible_apres_1975?: true
     surface_commune?: true
     surface_alea_faible_commune?: true
-    part_alea_faible_commune?: true
     surface_alea_moyen_fort_commune?: true
+    part_logement_alea_moyen_fort_avant_1920?: true
+    part_logement_alea_moyen_fort_1920_1945?: true
+    part_logement_alea_moyen_fort_1945_1975?: true
+    part_logement_alea_moyen_fort_apres_1975?: true
+    part_logement_alea_faible_avant_1920?: true
+    part_logement_alea_faible_1920_1945?: true
+    part_logement_alea_faible_1945_1975?: true
+    part_logement_alea_faible_apres_1975?: true
+    part_alea_faible_commune?: true
     part_alea_moyen_fort_commune?: true
   }
 
@@ -23466,25 +23874,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: true
     nb_logement_sans_alea?: true
     nb_logement_alea_moyen_fort_avant_1920?: true
-    part_logement_alea_moyen_fort_avant_1920?: true
     nb_logement_alea_moyen_fort_1920_1945?: true
-    part_logement_alea_moyen_fort_1920_1945?: true
     nb_logement_alea_moyen_fort_1945_1975?: true
-    part_logement_alea_moyen_fort_1945_1975?: true
     nb_logement_alea_moyen_fort_apres_1975?: true
-    part_logement_alea_moyen_fort_apres_1975?: true
     nb_logement_alea_faible_avant_1920?: true
-    part_logement_alea_faible_avant_1920?: true
     nb_logement_alea_faible_1920_1945?: true
-    part_logement_alea_faible_1920_1945?: true
     nb_logement_alea_faible_1945_1975?: true
-    part_logement_alea_faible_1945_1975?: true
     nb_logement_alea_faible_apres_1975?: true
-    part_logement_alea_faible_apres_1975?: true
     surface_commune?: true
     surface_alea_faible_commune?: true
-    part_alea_faible_commune?: true
     surface_alea_moyen_fort_commune?: true
+    part_logement_alea_moyen_fort_avant_1920?: true
+    part_logement_alea_moyen_fort_1920_1945?: true
+    part_logement_alea_moyen_fort_1945_1975?: true
+    part_logement_alea_moyen_fort_apres_1975?: true
+    part_logement_alea_faible_avant_1920?: true
+    part_logement_alea_faible_1920_1945?: true
+    part_logement_alea_faible_1945_1975?: true
+    part_logement_alea_faible_apres_1975?: true
+    part_alea_faible_commune?: true
     part_alea_moyen_fort_commune?: true
   }
 
@@ -23506,25 +23914,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: true
     nb_logement_sans_alea?: true
     nb_logement_alea_moyen_fort_avant_1920?: true
-    part_logement_alea_moyen_fort_avant_1920?: true
     nb_logement_alea_moyen_fort_1920_1945?: true
-    part_logement_alea_moyen_fort_1920_1945?: true
     nb_logement_alea_moyen_fort_1945_1975?: true
-    part_logement_alea_moyen_fort_1945_1975?: true
     nb_logement_alea_moyen_fort_apres_1975?: true
-    part_logement_alea_moyen_fort_apres_1975?: true
     nb_logement_alea_faible_avant_1920?: true
-    part_logement_alea_faible_avant_1920?: true
     nb_logement_alea_faible_1920_1945?: true
-    part_logement_alea_faible_1920_1945?: true
     nb_logement_alea_faible_1945_1975?: true
-    part_logement_alea_faible_1945_1975?: true
     nb_logement_alea_faible_apres_1975?: true
-    part_logement_alea_faible_apres_1975?: true
     surface_commune?: true
     surface_alea_faible_commune?: true
-    part_alea_faible_commune?: true
     surface_alea_moyen_fort_commune?: true
+    part_logement_alea_moyen_fort_avant_1920?: true
+    part_logement_alea_moyen_fort_1920_1945?: true
+    part_logement_alea_moyen_fort_1945_1975?: true
+    part_logement_alea_moyen_fort_apres_1975?: true
+    part_logement_alea_faible_avant_1920?: true
+    part_logement_alea_faible_1920_1945?: true
+    part_logement_alea_faible_1945_1975?: true
+    part_logement_alea_faible_apres_1975?: true
+    part_alea_faible_commune?: true
     part_alea_moyen_fort_commune?: true
   }
 
@@ -23546,25 +23954,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: true
     nb_logement_sans_alea?: true
     nb_logement_alea_moyen_fort_avant_1920?: true
-    part_logement_alea_moyen_fort_avant_1920?: true
     nb_logement_alea_moyen_fort_1920_1945?: true
-    part_logement_alea_moyen_fort_1920_1945?: true
     nb_logement_alea_moyen_fort_1945_1975?: true
-    part_logement_alea_moyen_fort_1945_1975?: true
     nb_logement_alea_moyen_fort_apres_1975?: true
-    part_logement_alea_moyen_fort_apres_1975?: true
     nb_logement_alea_faible_avant_1920?: true
-    part_logement_alea_faible_avant_1920?: true
     nb_logement_alea_faible_1920_1945?: true
-    part_logement_alea_faible_1920_1945?: true
     nb_logement_alea_faible_1945_1975?: true
-    part_logement_alea_faible_1945_1975?: true
     nb_logement_alea_faible_apres_1975?: true
-    part_logement_alea_faible_apres_1975?: true
     surface_commune?: true
     surface_alea_faible_commune?: true
-    part_alea_faible_commune?: true
     surface_alea_moyen_fort_commune?: true
+    part_logement_alea_moyen_fort_avant_1920?: true
+    part_logement_alea_moyen_fort_1920_1945?: true
+    part_logement_alea_moyen_fort_1945_1975?: true
+    part_logement_alea_moyen_fort_apres_1975?: true
+    part_logement_alea_faible_avant_1920?: true
+    part_logement_alea_faible_1920_1945?: true
+    part_logement_alea_faible_1945_1975?: true
+    part_logement_alea_faible_apres_1975?: true
+    part_alea_faible_commune?: true
     part_alea_moyen_fort_commune?: true
   }
 
@@ -23586,25 +23994,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: true
     nb_logement_sans_alea?: true
     nb_logement_alea_moyen_fort_avant_1920?: true
-    part_logement_alea_moyen_fort_avant_1920?: true
     nb_logement_alea_moyen_fort_1920_1945?: true
-    part_logement_alea_moyen_fort_1920_1945?: true
     nb_logement_alea_moyen_fort_1945_1975?: true
-    part_logement_alea_moyen_fort_1945_1975?: true
     nb_logement_alea_moyen_fort_apres_1975?: true
-    part_logement_alea_moyen_fort_apres_1975?: true
     nb_logement_alea_faible_avant_1920?: true
-    part_logement_alea_faible_avant_1920?: true
     nb_logement_alea_faible_1920_1945?: true
-    part_logement_alea_faible_1920_1945?: true
     nb_logement_alea_faible_1945_1975?: true
-    part_logement_alea_faible_1945_1975?: true
     nb_logement_alea_faible_apres_1975?: true
-    part_logement_alea_faible_apres_1975?: true
     surface_commune?: true
     surface_alea_faible_commune?: true
-    part_alea_faible_commune?: true
     surface_alea_moyen_fort_commune?: true
+    part_logement_alea_moyen_fort_avant_1920?: true
+    part_logement_alea_moyen_fort_1920_1945?: true
+    part_logement_alea_moyen_fort_1945_1975?: true
+    part_logement_alea_moyen_fort_apres_1975?: true
+    part_logement_alea_faible_avant_1920?: true
+    part_logement_alea_faible_1920_1945?: true
+    part_logement_alea_faible_1945_1975?: true
+    part_logement_alea_faible_apres_1975?: true
+    part_alea_faible_commune?: true
     part_alea_moyen_fort_commune?: true
     _all?: true
   }
@@ -23713,25 +24121,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number
     nb_logement_sans_alea: number
     nb_logement_alea_moyen_fort_avant_1920: number
-    part_logement_alea_moyen_fort_avant_1920: number
     nb_logement_alea_moyen_fort_1920_1945: number
-    part_logement_alea_moyen_fort_1920_1945: number
     nb_logement_alea_moyen_fort_1945_1975: number
-    part_logement_alea_moyen_fort_1945_1975: number
     nb_logement_alea_moyen_fort_apres_1975: number
-    part_logement_alea_moyen_fort_apres_1975: number
     nb_logement_alea_faible_avant_1920: number
-    part_logement_alea_faible_avant_1920: number
     nb_logement_alea_faible_1920_1945: number
-    part_logement_alea_faible_1920_1945: number
     nb_logement_alea_faible_1945_1975: number
-    part_logement_alea_faible_1945_1975: number
     nb_logement_alea_faible_apres_1975: number
-    part_logement_alea_faible_apres_1975: number
     surface_commune: number
     surface_alea_faible_commune: number
-    part_alea_faible_commune: number
     surface_alea_moyen_fort_commune: number
+    part_logement_alea_moyen_fort_avant_1920: number
+    part_logement_alea_moyen_fort_1920_1945: number
+    part_logement_alea_moyen_fort_1945_1975: number
+    part_logement_alea_moyen_fort_apres_1975: number
+    part_logement_alea_faible_avant_1920: number
+    part_logement_alea_faible_1920_1945: number
+    part_logement_alea_faible_1945_1975: number
+    part_logement_alea_faible_apres_1975: number
+    part_alea_faible_commune: number
     part_alea_moyen_fort_commune: number
     _count: RgaCountAggregateOutputType | null
     _avg: RgaAvgAggregateOutputType | null
@@ -23772,25 +24180,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: boolean
     nb_logement_sans_alea?: boolean
     nb_logement_alea_moyen_fort_avant_1920?: boolean
-    part_logement_alea_moyen_fort_avant_1920?: boolean
     nb_logement_alea_moyen_fort_1920_1945?: boolean
-    part_logement_alea_moyen_fort_1920_1945?: boolean
     nb_logement_alea_moyen_fort_1945_1975?: boolean
-    part_logement_alea_moyen_fort_1945_1975?: boolean
     nb_logement_alea_moyen_fort_apres_1975?: boolean
-    part_logement_alea_moyen_fort_apres_1975?: boolean
     nb_logement_alea_faible_avant_1920?: boolean
-    part_logement_alea_faible_avant_1920?: boolean
     nb_logement_alea_faible_1920_1945?: boolean
-    part_logement_alea_faible_1920_1945?: boolean
     nb_logement_alea_faible_1945_1975?: boolean
-    part_logement_alea_faible_1945_1975?: boolean
     nb_logement_alea_faible_apres_1975?: boolean
-    part_logement_alea_faible_apres_1975?: boolean
     surface_commune?: boolean
     surface_alea_faible_commune?: boolean
-    part_alea_faible_commune?: boolean
     surface_alea_moyen_fort_commune?: boolean
+    part_logement_alea_moyen_fort_avant_1920?: boolean
+    part_logement_alea_moyen_fort_1920_1945?: boolean
+    part_logement_alea_moyen_fort_1945_1975?: boolean
+    part_logement_alea_moyen_fort_apres_1975?: boolean
+    part_logement_alea_faible_avant_1920?: boolean
+    part_logement_alea_faible_1920_1945?: boolean
+    part_logement_alea_faible_1945_1975?: boolean
+    part_logement_alea_faible_apres_1975?: boolean
+    part_alea_faible_commune?: boolean
     part_alea_moyen_fort_commune?: boolean
   }, ExtArgs["result"]["rga"]>
 
@@ -23812,25 +24220,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: boolean
     nb_logement_sans_alea?: boolean
     nb_logement_alea_moyen_fort_avant_1920?: boolean
-    part_logement_alea_moyen_fort_avant_1920?: boolean
     nb_logement_alea_moyen_fort_1920_1945?: boolean
-    part_logement_alea_moyen_fort_1920_1945?: boolean
     nb_logement_alea_moyen_fort_1945_1975?: boolean
-    part_logement_alea_moyen_fort_1945_1975?: boolean
     nb_logement_alea_moyen_fort_apres_1975?: boolean
-    part_logement_alea_moyen_fort_apres_1975?: boolean
     nb_logement_alea_faible_avant_1920?: boolean
-    part_logement_alea_faible_avant_1920?: boolean
     nb_logement_alea_faible_1920_1945?: boolean
-    part_logement_alea_faible_1920_1945?: boolean
     nb_logement_alea_faible_1945_1975?: boolean
-    part_logement_alea_faible_1945_1975?: boolean
     nb_logement_alea_faible_apres_1975?: boolean
-    part_logement_alea_faible_apres_1975?: boolean
     surface_commune?: boolean
     surface_alea_faible_commune?: boolean
-    part_alea_faible_commune?: boolean
     surface_alea_moyen_fort_commune?: boolean
+    part_logement_alea_moyen_fort_avant_1920?: boolean
+    part_logement_alea_moyen_fort_1920_1945?: boolean
+    part_logement_alea_moyen_fort_1945_1975?: boolean
+    part_logement_alea_moyen_fort_apres_1975?: boolean
+    part_logement_alea_faible_avant_1920?: boolean
+    part_logement_alea_faible_1920_1945?: boolean
+    part_logement_alea_faible_1945_1975?: boolean
+    part_logement_alea_faible_apres_1975?: boolean
+    part_alea_faible_commune?: boolean
     part_alea_moyen_fort_commune?: boolean
   }, ExtArgs["result"]["rga"]>
 
@@ -23852,25 +24260,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: boolean
     nb_logement_sans_alea?: boolean
     nb_logement_alea_moyen_fort_avant_1920?: boolean
-    part_logement_alea_moyen_fort_avant_1920?: boolean
     nb_logement_alea_moyen_fort_1920_1945?: boolean
-    part_logement_alea_moyen_fort_1920_1945?: boolean
     nb_logement_alea_moyen_fort_1945_1975?: boolean
-    part_logement_alea_moyen_fort_1945_1975?: boolean
     nb_logement_alea_moyen_fort_apres_1975?: boolean
-    part_logement_alea_moyen_fort_apres_1975?: boolean
     nb_logement_alea_faible_avant_1920?: boolean
-    part_logement_alea_faible_avant_1920?: boolean
     nb_logement_alea_faible_1920_1945?: boolean
-    part_logement_alea_faible_1920_1945?: boolean
     nb_logement_alea_faible_1945_1975?: boolean
-    part_logement_alea_faible_1945_1975?: boolean
     nb_logement_alea_faible_apres_1975?: boolean
-    part_logement_alea_faible_apres_1975?: boolean
     surface_commune?: boolean
     surface_alea_faible_commune?: boolean
-    part_alea_faible_commune?: boolean
     surface_alea_moyen_fort_commune?: boolean
+    part_logement_alea_moyen_fort_avant_1920?: boolean
+    part_logement_alea_moyen_fort_1920_1945?: boolean
+    part_logement_alea_moyen_fort_1945_1975?: boolean
+    part_logement_alea_moyen_fort_apres_1975?: boolean
+    part_logement_alea_faible_avant_1920?: boolean
+    part_logement_alea_faible_1920_1945?: boolean
+    part_logement_alea_faible_1945_1975?: boolean
+    part_logement_alea_faible_apres_1975?: boolean
+    part_alea_faible_commune?: boolean
     part_alea_moyen_fort_commune?: boolean
   }, ExtArgs["result"]["rga"]>
 
@@ -23892,29 +24300,29 @@ export namespace Prisma {
     nb_logement_alea_faible?: boolean
     nb_logement_sans_alea?: boolean
     nb_logement_alea_moyen_fort_avant_1920?: boolean
-    part_logement_alea_moyen_fort_avant_1920?: boolean
     nb_logement_alea_moyen_fort_1920_1945?: boolean
-    part_logement_alea_moyen_fort_1920_1945?: boolean
     nb_logement_alea_moyen_fort_1945_1975?: boolean
-    part_logement_alea_moyen_fort_1945_1975?: boolean
     nb_logement_alea_moyen_fort_apres_1975?: boolean
-    part_logement_alea_moyen_fort_apres_1975?: boolean
     nb_logement_alea_faible_avant_1920?: boolean
-    part_logement_alea_faible_avant_1920?: boolean
     nb_logement_alea_faible_1920_1945?: boolean
-    part_logement_alea_faible_1920_1945?: boolean
     nb_logement_alea_faible_1945_1975?: boolean
-    part_logement_alea_faible_1945_1975?: boolean
     nb_logement_alea_faible_apres_1975?: boolean
-    part_logement_alea_faible_apres_1975?: boolean
     surface_commune?: boolean
     surface_alea_faible_commune?: boolean
-    part_alea_faible_commune?: boolean
     surface_alea_moyen_fort_commune?: boolean
+    part_logement_alea_moyen_fort_avant_1920?: boolean
+    part_logement_alea_moyen_fort_1920_1945?: boolean
+    part_logement_alea_moyen_fort_1945_1975?: boolean
+    part_logement_alea_moyen_fort_apres_1975?: boolean
+    part_logement_alea_faible_avant_1920?: boolean
+    part_logement_alea_faible_1920_1945?: boolean
+    part_logement_alea_faible_1945_1975?: boolean
+    part_logement_alea_faible_apres_1975?: boolean
+    part_alea_faible_commune?: boolean
     part_alea_moyen_fort_commune?: boolean
   }
 
-  export type rgaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nb_logement" | "nb_logement_alea_moyen_fort" | "nb_logement_alea_faible" | "nb_logement_sans_alea" | "nb_logement_alea_moyen_fort_avant_1920" | "part_logement_alea_moyen_fort_avant_1920" | "nb_logement_alea_moyen_fort_1920_1945" | "part_logement_alea_moyen_fort_1920_1945" | "nb_logement_alea_moyen_fort_1945_1975" | "part_logement_alea_moyen_fort_1945_1975" | "nb_logement_alea_moyen_fort_apres_1975" | "part_logement_alea_moyen_fort_apres_1975" | "nb_logement_alea_faible_avant_1920" | "part_logement_alea_faible_avant_1920" | "nb_logement_alea_faible_1920_1945" | "part_logement_alea_faible_1920_1945" | "nb_logement_alea_faible_1945_1975" | "part_logement_alea_faible_1945_1975" | "nb_logement_alea_faible_apres_1975" | "part_logement_alea_faible_apres_1975" | "surface_commune" | "surface_alea_faible_commune" | "part_alea_faible_commune" | "surface_alea_moyen_fort_commune" | "part_alea_moyen_fort_commune", ExtArgs["result"]["rga"]>
+  export type rgaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nb_logement" | "nb_logement_alea_moyen_fort" | "nb_logement_alea_faible" | "nb_logement_sans_alea" | "nb_logement_alea_moyen_fort_avant_1920" | "nb_logement_alea_moyen_fort_1920_1945" | "nb_logement_alea_moyen_fort_1945_1975" | "nb_logement_alea_moyen_fort_apres_1975" | "nb_logement_alea_faible_avant_1920" | "nb_logement_alea_faible_1920_1945" | "nb_logement_alea_faible_1945_1975" | "nb_logement_alea_faible_apres_1975" | "surface_commune" | "surface_alea_faible_commune" | "surface_alea_moyen_fort_commune" | "part_logement_alea_moyen_fort_avant_1920" | "part_logement_alea_moyen_fort_1920_1945" | "part_logement_alea_moyen_fort_1945_1975" | "part_logement_alea_moyen_fort_apres_1975" | "part_logement_alea_faible_avant_1920" | "part_logement_alea_faible_1920_1945" | "part_logement_alea_faible_1945_1975" | "part_logement_alea_faible_apres_1975" | "part_alea_faible_commune" | "part_alea_moyen_fort_commune", ExtArgs["result"]["rga"]>
 
   export type $rgaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "rga"
@@ -23937,25 +24345,25 @@ export namespace Prisma {
       nb_logement_alea_faible: number
       nb_logement_sans_alea: number
       nb_logement_alea_moyen_fort_avant_1920: number
-      part_logement_alea_moyen_fort_avant_1920: number
       nb_logement_alea_moyen_fort_1920_1945: number
-      part_logement_alea_moyen_fort_1920_1945: number
       nb_logement_alea_moyen_fort_1945_1975: number
-      part_logement_alea_moyen_fort_1945_1975: number
       nb_logement_alea_moyen_fort_apres_1975: number
-      part_logement_alea_moyen_fort_apres_1975: number
       nb_logement_alea_faible_avant_1920: number
-      part_logement_alea_faible_avant_1920: number
       nb_logement_alea_faible_1920_1945: number
-      part_logement_alea_faible_1920_1945: number
       nb_logement_alea_faible_1945_1975: number
-      part_logement_alea_faible_1945_1975: number
       nb_logement_alea_faible_apres_1975: number
-      part_logement_alea_faible_apres_1975: number
       surface_commune: number
       surface_alea_faible_commune: number
-      part_alea_faible_commune: number
       surface_alea_moyen_fort_commune: number
+      part_logement_alea_moyen_fort_avant_1920: number
+      part_logement_alea_moyen_fort_1920_1945: number
+      part_logement_alea_moyen_fort_1945_1975: number
+      part_logement_alea_moyen_fort_apres_1975: number
+      part_logement_alea_faible_avant_1920: number
+      part_logement_alea_faible_1920_1945: number
+      part_logement_alea_faible_1945_1975: number
+      part_logement_alea_faible_apres_1975: number
+      part_alea_faible_commune: number
       part_alea_moyen_fort_commune: number
     }, ExtArgs["result"]["rga"]>
     composites: {}
@@ -24397,25 +24805,25 @@ export namespace Prisma {
     readonly nb_logement_alea_faible: FieldRef<"rga", 'Int'>
     readonly nb_logement_sans_alea: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_moyen_fort_avant_1920: FieldRef<"rga", 'Int'>
-    readonly part_logement_alea_moyen_fort_avant_1920: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_moyen_fort_1920_1945: FieldRef<"rga", 'Int'>
-    readonly part_logement_alea_moyen_fort_1920_1945: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_moyen_fort_1945_1975: FieldRef<"rga", 'Int'>
-    readonly part_logement_alea_moyen_fort_1945_1975: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_moyen_fort_apres_1975: FieldRef<"rga", 'Int'>
-    readonly part_logement_alea_moyen_fort_apres_1975: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_faible_avant_1920: FieldRef<"rga", 'Int'>
-    readonly part_logement_alea_faible_avant_1920: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_faible_1920_1945: FieldRef<"rga", 'Int'>
-    readonly part_logement_alea_faible_1920_1945: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_faible_1945_1975: FieldRef<"rga", 'Int'>
-    readonly part_logement_alea_faible_1945_1975: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_faible_apres_1975: FieldRef<"rga", 'Int'>
-    readonly part_logement_alea_faible_apres_1975: FieldRef<"rga", 'Int'>
     readonly surface_commune: FieldRef<"rga", 'Int'>
     readonly surface_alea_faible_commune: FieldRef<"rga", 'Int'>
-    readonly part_alea_faible_commune: FieldRef<"rga", 'Int'>
     readonly surface_alea_moyen_fort_commune: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_moyen_fort_avant_1920: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_moyen_fort_1920_1945: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_moyen_fort_1945_1975: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_moyen_fort_apres_1975: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_faible_avant_1920: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_faible_1920_1945: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_faible_1945_1975: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_faible_apres_1975: FieldRef<"rga", 'Int'>
+    readonly part_alea_faible_commune: FieldRef<"rga", 'Int'>
     readonly part_alea_moyen_fort_commune: FieldRef<"rga", 'Int'>
   }
     
@@ -53458,14 +53866,38 @@ export namespace Prisma {
     libelle_epci: 'libelle_epci',
     VARIABLE: 'VARIABLE',
     LIBELLE_SOUS_CHAMP: 'LIBELLE_SOUS_CHAMP',
+    surface_2023: 'surface_2023',
     surface_2022: 'surface_2022',
     surface_2021: 'surface_2021',
     surface_2020: 'surface_2020',
     surface_2019: 'surface_2019',
+    surface_2018: 'surface_2018',
+    surface_2017: 'surface_2017',
+    surface_2016: 'surface_2016',
+    surface_2015: 'surface_2015',
+    surface_2014: 'surface_2014',
+    surface_2013: 'surface_2013',
+    surface_2012: 'surface_2012',
+    surface_2011: 'surface_2011',
+    surface_2010: 'surface_2010',
+    surface_2009: 'surface_2009',
+    surface_2008: 'surface_2008',
+    nombre_2023: 'nombre_2023',
     nombre_2022: 'nombre_2022',
     nombre_2021: 'nombre_2021',
     nombre_2020: 'nombre_2020',
-    nombre_2019: 'nombre_2019'
+    nombre_2019: 'nombre_2019',
+    nombre_2018: 'nombre_2018',
+    nombre_2017: 'nombre_2017',
+    nombre_2016: 'nombre_2016',
+    nombre_2015: 'nombre_2015',
+    nombre_2014: 'nombre_2014',
+    nombre_2013: 'nombre_2013',
+    nombre_2012: 'nombre_2012',
+    nombre_2011: 'nombre_2011',
+    nombre_2010: 'nombre_2010',
+    nombre_2009: 'nombre_2009',
+    nombre_2008: 'nombre_2008'
   };
 
   export type Agriculture_bioScalarFieldEnum = (typeof Agriculture_bioScalarFieldEnum)[keyof typeof Agriculture_bioScalarFieldEnum]
@@ -53875,25 +54307,25 @@ export namespace Prisma {
     nb_logement_alea_faible: 'nb_logement_alea_faible',
     nb_logement_sans_alea: 'nb_logement_sans_alea',
     nb_logement_alea_moyen_fort_avant_1920: 'nb_logement_alea_moyen_fort_avant_1920',
-    part_logement_alea_moyen_fort_avant_1920: 'part_logement_alea_moyen_fort_avant_1920',
     nb_logement_alea_moyen_fort_1920_1945: 'nb_logement_alea_moyen_fort_1920_1945',
-    part_logement_alea_moyen_fort_1920_1945: 'part_logement_alea_moyen_fort_1920_1945',
     nb_logement_alea_moyen_fort_1945_1975: 'nb_logement_alea_moyen_fort_1945_1975',
-    part_logement_alea_moyen_fort_1945_1975: 'part_logement_alea_moyen_fort_1945_1975',
     nb_logement_alea_moyen_fort_apres_1975: 'nb_logement_alea_moyen_fort_apres_1975',
-    part_logement_alea_moyen_fort_apres_1975: 'part_logement_alea_moyen_fort_apres_1975',
     nb_logement_alea_faible_avant_1920: 'nb_logement_alea_faible_avant_1920',
-    part_logement_alea_faible_avant_1920: 'part_logement_alea_faible_avant_1920',
     nb_logement_alea_faible_1920_1945: 'nb_logement_alea_faible_1920_1945',
-    part_logement_alea_faible_1920_1945: 'part_logement_alea_faible_1920_1945',
     nb_logement_alea_faible_1945_1975: 'nb_logement_alea_faible_1945_1975',
-    part_logement_alea_faible_1945_1975: 'part_logement_alea_faible_1945_1975',
     nb_logement_alea_faible_apres_1975: 'nb_logement_alea_faible_apres_1975',
-    part_logement_alea_faible_apres_1975: 'part_logement_alea_faible_apres_1975',
     surface_commune: 'surface_commune',
     surface_alea_faible_commune: 'surface_alea_faible_commune',
-    part_alea_faible_commune: 'part_alea_faible_commune',
     surface_alea_moyen_fort_commune: 'surface_alea_moyen_fort_commune',
+    part_logement_alea_moyen_fort_avant_1920: 'part_logement_alea_moyen_fort_avant_1920',
+    part_logement_alea_moyen_fort_1920_1945: 'part_logement_alea_moyen_fort_1920_1945',
+    part_logement_alea_moyen_fort_1945_1975: 'part_logement_alea_moyen_fort_1945_1975',
+    part_logement_alea_moyen_fort_apres_1975: 'part_logement_alea_moyen_fort_apres_1975',
+    part_logement_alea_faible_avant_1920: 'part_logement_alea_faible_avant_1920',
+    part_logement_alea_faible_1920_1945: 'part_logement_alea_faible_1920_1945',
+    part_logement_alea_faible_1945_1975: 'part_logement_alea_faible_1945_1975',
+    part_logement_alea_faible_apres_1975: 'part_logement_alea_faible_apres_1975',
+    part_alea_faible_commune: 'part_alea_faible_commune',
     part_alea_moyen_fort_commune: 'part_alea_moyen_fort_commune'
   };
 
@@ -54715,14 +55147,38 @@ export namespace Prisma {
     libelle_epci?: StringFilter<"agriculture_bio"> | string
     VARIABLE?: StringFilter<"agriculture_bio"> | string
     LIBELLE_SOUS_CHAMP?: StringNullableFilter<"agriculture_bio"> | string | null
-    surface_2022?: FloatFilter<"agriculture_bio"> | number
-    surface_2021?: FloatFilter<"agriculture_bio"> | number
-    surface_2020?: FloatFilter<"agriculture_bio"> | number
-    surface_2019?: FloatFilter<"agriculture_bio"> | number
-    nombre_2022?: FloatFilter<"agriculture_bio"> | number
-    nombre_2021?: FloatFilter<"agriculture_bio"> | number
-    nombre_2020?: FloatFilter<"agriculture_bio"> | number
-    nombre_2019?: FloatFilter<"agriculture_bio"> | number
+    surface_2023?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2022?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2021?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2020?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2019?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2018?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2017?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2016?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2015?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2014?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2013?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2012?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2011?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2010?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2009?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2008?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2023?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2022?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2021?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2020?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2019?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2018?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2017?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2016?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2015?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2014?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2013?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2012?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2011?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2010?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2009?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2008?: FloatNullableFilter<"agriculture_bio"> | number | null
   }
 
   export type agriculture_bioOrderByWithRelationInput = {
@@ -54731,14 +55187,38 @@ export namespace Prisma {
     libelle_epci?: SortOrder
     VARIABLE?: SortOrder
     LIBELLE_SOUS_CHAMP?: SortOrderInput | SortOrder
-    surface_2022?: SortOrder
-    surface_2021?: SortOrder
-    surface_2020?: SortOrder
-    surface_2019?: SortOrder
-    nombre_2022?: SortOrder
-    nombre_2021?: SortOrder
-    nombre_2020?: SortOrder
-    nombre_2019?: SortOrder
+    surface_2023?: SortOrderInput | SortOrder
+    surface_2022?: SortOrderInput | SortOrder
+    surface_2021?: SortOrderInput | SortOrder
+    surface_2020?: SortOrderInput | SortOrder
+    surface_2019?: SortOrderInput | SortOrder
+    surface_2018?: SortOrderInput | SortOrder
+    surface_2017?: SortOrderInput | SortOrder
+    surface_2016?: SortOrderInput | SortOrder
+    surface_2015?: SortOrderInput | SortOrder
+    surface_2014?: SortOrderInput | SortOrder
+    surface_2013?: SortOrderInput | SortOrder
+    surface_2012?: SortOrderInput | SortOrder
+    surface_2011?: SortOrderInput | SortOrder
+    surface_2010?: SortOrderInput | SortOrder
+    surface_2009?: SortOrderInput | SortOrder
+    surface_2008?: SortOrderInput | SortOrder
+    nombre_2023?: SortOrderInput | SortOrder
+    nombre_2022?: SortOrderInput | SortOrder
+    nombre_2021?: SortOrderInput | SortOrder
+    nombre_2020?: SortOrderInput | SortOrder
+    nombre_2019?: SortOrderInput | SortOrder
+    nombre_2018?: SortOrderInput | SortOrder
+    nombre_2017?: SortOrderInput | SortOrder
+    nombre_2016?: SortOrderInput | SortOrder
+    nombre_2015?: SortOrderInput | SortOrder
+    nombre_2014?: SortOrderInput | SortOrder
+    nombre_2013?: SortOrderInput | SortOrder
+    nombre_2012?: SortOrderInput | SortOrder
+    nombre_2011?: SortOrderInput | SortOrder
+    nombre_2010?: SortOrderInput | SortOrder
+    nombre_2009?: SortOrderInput | SortOrder
+    nombre_2008?: SortOrderInput | SortOrder
   }
 
   export type agriculture_bioWhereUniqueInput = Prisma.AtLeast<{
@@ -54750,14 +55230,38 @@ export namespace Prisma {
     libelle_epci?: StringFilter<"agriculture_bio"> | string
     VARIABLE?: StringFilter<"agriculture_bio"> | string
     LIBELLE_SOUS_CHAMP?: StringNullableFilter<"agriculture_bio"> | string | null
-    surface_2022?: FloatFilter<"agriculture_bio"> | number
-    surface_2021?: FloatFilter<"agriculture_bio"> | number
-    surface_2020?: FloatFilter<"agriculture_bio"> | number
-    surface_2019?: FloatFilter<"agriculture_bio"> | number
-    nombre_2022?: FloatFilter<"agriculture_bio"> | number
-    nombre_2021?: FloatFilter<"agriculture_bio"> | number
-    nombre_2020?: FloatFilter<"agriculture_bio"> | number
-    nombre_2019?: FloatFilter<"agriculture_bio"> | number
+    surface_2023?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2022?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2021?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2020?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2019?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2018?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2017?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2016?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2015?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2014?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2013?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2012?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2011?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2010?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2009?: FloatNullableFilter<"agriculture_bio"> | number | null
+    surface_2008?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2023?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2022?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2021?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2020?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2019?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2018?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2017?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2016?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2015?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2014?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2013?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2012?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2011?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2010?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2009?: FloatNullableFilter<"agriculture_bio"> | number | null
+    nombre_2008?: FloatNullableFilter<"agriculture_bio"> | number | null
   }, "index">
 
   export type agriculture_bioOrderByWithAggregationInput = {
@@ -54766,14 +55270,38 @@ export namespace Prisma {
     libelle_epci?: SortOrder
     VARIABLE?: SortOrder
     LIBELLE_SOUS_CHAMP?: SortOrderInput | SortOrder
-    surface_2022?: SortOrder
-    surface_2021?: SortOrder
-    surface_2020?: SortOrder
-    surface_2019?: SortOrder
-    nombre_2022?: SortOrder
-    nombre_2021?: SortOrder
-    nombre_2020?: SortOrder
-    nombre_2019?: SortOrder
+    surface_2023?: SortOrderInput | SortOrder
+    surface_2022?: SortOrderInput | SortOrder
+    surface_2021?: SortOrderInput | SortOrder
+    surface_2020?: SortOrderInput | SortOrder
+    surface_2019?: SortOrderInput | SortOrder
+    surface_2018?: SortOrderInput | SortOrder
+    surface_2017?: SortOrderInput | SortOrder
+    surface_2016?: SortOrderInput | SortOrder
+    surface_2015?: SortOrderInput | SortOrder
+    surface_2014?: SortOrderInput | SortOrder
+    surface_2013?: SortOrderInput | SortOrder
+    surface_2012?: SortOrderInput | SortOrder
+    surface_2011?: SortOrderInput | SortOrder
+    surface_2010?: SortOrderInput | SortOrder
+    surface_2009?: SortOrderInput | SortOrder
+    surface_2008?: SortOrderInput | SortOrder
+    nombre_2023?: SortOrderInput | SortOrder
+    nombre_2022?: SortOrderInput | SortOrder
+    nombre_2021?: SortOrderInput | SortOrder
+    nombre_2020?: SortOrderInput | SortOrder
+    nombre_2019?: SortOrderInput | SortOrder
+    nombre_2018?: SortOrderInput | SortOrder
+    nombre_2017?: SortOrderInput | SortOrder
+    nombre_2016?: SortOrderInput | SortOrder
+    nombre_2015?: SortOrderInput | SortOrder
+    nombre_2014?: SortOrderInput | SortOrder
+    nombre_2013?: SortOrderInput | SortOrder
+    nombre_2012?: SortOrderInput | SortOrder
+    nombre_2011?: SortOrderInput | SortOrder
+    nombre_2010?: SortOrderInput | SortOrder
+    nombre_2009?: SortOrderInput | SortOrder
+    nombre_2008?: SortOrderInput | SortOrder
     _count?: agriculture_bioCountOrderByAggregateInput
     _avg?: agriculture_bioAvgOrderByAggregateInput
     _max?: agriculture_bioMaxOrderByAggregateInput
@@ -54790,14 +55318,38 @@ export namespace Prisma {
     libelle_epci?: StringWithAggregatesFilter<"agriculture_bio"> | string
     VARIABLE?: StringWithAggregatesFilter<"agriculture_bio"> | string
     LIBELLE_SOUS_CHAMP?: StringNullableWithAggregatesFilter<"agriculture_bio"> | string | null
-    surface_2022?: FloatWithAggregatesFilter<"agriculture_bio"> | number
-    surface_2021?: FloatWithAggregatesFilter<"agriculture_bio"> | number
-    surface_2020?: FloatWithAggregatesFilter<"agriculture_bio"> | number
-    surface_2019?: FloatWithAggregatesFilter<"agriculture_bio"> | number
-    nombre_2022?: FloatWithAggregatesFilter<"agriculture_bio"> | number
-    nombre_2021?: FloatWithAggregatesFilter<"agriculture_bio"> | number
-    nombre_2020?: FloatWithAggregatesFilter<"agriculture_bio"> | number
-    nombre_2019?: FloatWithAggregatesFilter<"agriculture_bio"> | number
+    surface_2023?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2022?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2021?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2020?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2019?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2018?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2017?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2016?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2015?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2014?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2013?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2012?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2011?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2010?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2009?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    surface_2008?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2023?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2022?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2021?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2020?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2019?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2018?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2017?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2016?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2015?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2014?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2013?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2012?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2011?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2010?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2009?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
+    nombre_2008?: FloatNullableWithAggregatesFilter<"agriculture_bio"> | number | null
   }
 
   export type aot_40WhereInput = {
@@ -56740,25 +57292,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: IntFilter<"rga"> | number
     nb_logement_sans_alea?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_avant_1920?: IntFilter<"rga"> | number
-    part_logement_alea_moyen_fort_avant_1920?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_1920_1945?: IntFilter<"rga"> | number
-    part_logement_alea_moyen_fort_1920_1945?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_1945_1975?: IntFilter<"rga"> | number
-    part_logement_alea_moyen_fort_1945_1975?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_apres_1975?: IntFilter<"rga"> | number
-    part_logement_alea_moyen_fort_apres_1975?: IntFilter<"rga"> | number
     nb_logement_alea_faible_avant_1920?: IntFilter<"rga"> | number
-    part_logement_alea_faible_avant_1920?: IntFilter<"rga"> | number
     nb_logement_alea_faible_1920_1945?: IntFilter<"rga"> | number
-    part_logement_alea_faible_1920_1945?: IntFilter<"rga"> | number
     nb_logement_alea_faible_1945_1975?: IntFilter<"rga"> | number
-    part_logement_alea_faible_1945_1975?: IntFilter<"rga"> | number
     nb_logement_alea_faible_apres_1975?: IntFilter<"rga"> | number
-    part_logement_alea_faible_apres_1975?: IntFilter<"rga"> | number
     surface_commune?: IntFilter<"rga"> | number
     surface_alea_faible_commune?: IntFilter<"rga"> | number
-    part_alea_faible_commune?: IntFilter<"rga"> | number
     surface_alea_moyen_fort_commune?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_avant_1920?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1920_1945?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1945_1975?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_apres_1975?: IntFilter<"rga"> | number
+    part_logement_alea_faible_avant_1920?: IntFilter<"rga"> | number
+    part_logement_alea_faible_1920_1945?: IntFilter<"rga"> | number
+    part_logement_alea_faible_1945_1975?: IntFilter<"rga"> | number
+    part_logement_alea_faible_apres_1975?: IntFilter<"rga"> | number
+    part_alea_faible_commune?: IntFilter<"rga"> | number
     part_alea_moyen_fort_commune?: IntFilter<"rga"> | number
   }
 
@@ -56780,25 +57332,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: SortOrder
     nb_logement_sans_alea?: SortOrder
     nb_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
     nb_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
     nb_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
     nb_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
     nb_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
     nb_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
     nb_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
     nb_logement_alea_faible_apres_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
     surface_commune?: SortOrder
     surface_alea_faible_commune?: SortOrder
-    part_alea_faible_commune?: SortOrder
     surface_alea_moyen_fort_commune?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
+    part_alea_faible_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
   }
 
@@ -56823,25 +57375,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: IntFilter<"rga"> | number
     nb_logement_sans_alea?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_avant_1920?: IntFilter<"rga"> | number
-    part_logement_alea_moyen_fort_avant_1920?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_1920_1945?: IntFilter<"rga"> | number
-    part_logement_alea_moyen_fort_1920_1945?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_1945_1975?: IntFilter<"rga"> | number
-    part_logement_alea_moyen_fort_1945_1975?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_apres_1975?: IntFilter<"rga"> | number
-    part_logement_alea_moyen_fort_apres_1975?: IntFilter<"rga"> | number
     nb_logement_alea_faible_avant_1920?: IntFilter<"rga"> | number
-    part_logement_alea_faible_avant_1920?: IntFilter<"rga"> | number
     nb_logement_alea_faible_1920_1945?: IntFilter<"rga"> | number
-    part_logement_alea_faible_1920_1945?: IntFilter<"rga"> | number
     nb_logement_alea_faible_1945_1975?: IntFilter<"rga"> | number
-    part_logement_alea_faible_1945_1975?: IntFilter<"rga"> | number
     nb_logement_alea_faible_apres_1975?: IntFilter<"rga"> | number
-    part_logement_alea_faible_apres_1975?: IntFilter<"rga"> | number
     surface_commune?: IntFilter<"rga"> | number
     surface_alea_faible_commune?: IntFilter<"rga"> | number
-    part_alea_faible_commune?: IntFilter<"rga"> | number
     surface_alea_moyen_fort_commune?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_avant_1920?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1920_1945?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1945_1975?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_apres_1975?: IntFilter<"rga"> | number
+    part_logement_alea_faible_avant_1920?: IntFilter<"rga"> | number
+    part_logement_alea_faible_1920_1945?: IntFilter<"rga"> | number
+    part_logement_alea_faible_1945_1975?: IntFilter<"rga"> | number
+    part_logement_alea_faible_apres_1975?: IntFilter<"rga"> | number
+    part_alea_faible_commune?: IntFilter<"rga"> | number
     part_alea_moyen_fort_commune?: IntFilter<"rga"> | number
   }, "index">
 
@@ -56863,25 +57415,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: SortOrder
     nb_logement_sans_alea?: SortOrder
     nb_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
     nb_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
     nb_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
     nb_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
     nb_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
     nb_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
     nb_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
     nb_logement_alea_faible_apres_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
     surface_commune?: SortOrder
     surface_alea_faible_commune?: SortOrder
-    part_alea_faible_commune?: SortOrder
     surface_alea_moyen_fort_commune?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
+    part_alea_faible_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
     _count?: rgaCountOrderByAggregateInput
     _avg?: rgaAvgOrderByAggregateInput
@@ -56911,25 +57463,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_sans_alea?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_moyen_fort_avant_1920?: IntWithAggregatesFilter<"rga"> | number
-    part_logement_alea_moyen_fort_avant_1920?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_moyen_fort_1920_1945?: IntWithAggregatesFilter<"rga"> | number
-    part_logement_alea_moyen_fort_1920_1945?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_moyen_fort_1945_1975?: IntWithAggregatesFilter<"rga"> | number
-    part_logement_alea_moyen_fort_1945_1975?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_moyen_fort_apres_1975?: IntWithAggregatesFilter<"rga"> | number
-    part_logement_alea_moyen_fort_apres_1975?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_faible_avant_1920?: IntWithAggregatesFilter<"rga"> | number
-    part_logement_alea_faible_avant_1920?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_faible_1920_1945?: IntWithAggregatesFilter<"rga"> | number
-    part_logement_alea_faible_1920_1945?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_faible_1945_1975?: IntWithAggregatesFilter<"rga"> | number
-    part_logement_alea_faible_1945_1975?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_faible_apres_1975?: IntWithAggregatesFilter<"rga"> | number
-    part_logement_alea_faible_apres_1975?: IntWithAggregatesFilter<"rga"> | number
     surface_commune?: IntWithAggregatesFilter<"rga"> | number
     surface_alea_faible_commune?: IntWithAggregatesFilter<"rga"> | number
-    part_alea_faible_commune?: IntWithAggregatesFilter<"rga"> | number
     surface_alea_moyen_fort_commune?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_moyen_fort_avant_1920?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1920_1945?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1945_1975?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_moyen_fort_apres_1975?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_faible_avant_1920?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_faible_1920_1945?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_faible_1945_1975?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_faible_apres_1975?: IntWithAggregatesFilter<"rga"> | number
+    part_alea_faible_commune?: IntWithAggregatesFilter<"rga"> | number
     part_alea_moyen_fort_commune?: IntWithAggregatesFilter<"rga"> | number
   }
 
@@ -59548,14 +60100,38 @@ export namespace Prisma {
     libelle_epci: string
     VARIABLE: string
     LIBELLE_SOUS_CHAMP?: string | null
-    surface_2022: number
-    surface_2021: number
-    surface_2020: number
-    surface_2019: number
-    nombre_2022: number
-    nombre_2021: number
-    nombre_2020: number
-    nombre_2019: number
+    surface_2023?: number | null
+    surface_2022?: number | null
+    surface_2021?: number | null
+    surface_2020?: number | null
+    surface_2019?: number | null
+    surface_2018?: number | null
+    surface_2017?: number | null
+    surface_2016?: number | null
+    surface_2015?: number | null
+    surface_2014?: number | null
+    surface_2013?: number | null
+    surface_2012?: number | null
+    surface_2011?: number | null
+    surface_2010?: number | null
+    surface_2009?: number | null
+    surface_2008?: number | null
+    nombre_2023?: number | null
+    nombre_2022?: number | null
+    nombre_2021?: number | null
+    nombre_2020?: number | null
+    nombre_2019?: number | null
+    nombre_2018?: number | null
+    nombre_2017?: number | null
+    nombre_2016?: number | null
+    nombre_2015?: number | null
+    nombre_2014?: number | null
+    nombre_2013?: number | null
+    nombre_2012?: number | null
+    nombre_2011?: number | null
+    nombre_2010?: number | null
+    nombre_2009?: number | null
+    nombre_2008?: number | null
   }
 
   export type agriculture_bioUncheckedCreateInput = {
@@ -59564,14 +60140,38 @@ export namespace Prisma {
     libelle_epci: string
     VARIABLE: string
     LIBELLE_SOUS_CHAMP?: string | null
-    surface_2022: number
-    surface_2021: number
-    surface_2020: number
-    surface_2019: number
-    nombre_2022: number
-    nombre_2021: number
-    nombre_2020: number
-    nombre_2019: number
+    surface_2023?: number | null
+    surface_2022?: number | null
+    surface_2021?: number | null
+    surface_2020?: number | null
+    surface_2019?: number | null
+    surface_2018?: number | null
+    surface_2017?: number | null
+    surface_2016?: number | null
+    surface_2015?: number | null
+    surface_2014?: number | null
+    surface_2013?: number | null
+    surface_2012?: number | null
+    surface_2011?: number | null
+    surface_2010?: number | null
+    surface_2009?: number | null
+    surface_2008?: number | null
+    nombre_2023?: number | null
+    nombre_2022?: number | null
+    nombre_2021?: number | null
+    nombre_2020?: number | null
+    nombre_2019?: number | null
+    nombre_2018?: number | null
+    nombre_2017?: number | null
+    nombre_2016?: number | null
+    nombre_2015?: number | null
+    nombre_2014?: number | null
+    nombre_2013?: number | null
+    nombre_2012?: number | null
+    nombre_2011?: number | null
+    nombre_2010?: number | null
+    nombre_2009?: number | null
+    nombre_2008?: number | null
   }
 
   export type agriculture_bioUpdateInput = {
@@ -59580,14 +60180,38 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     VARIABLE?: StringFieldUpdateOperationsInput | string
     LIBELLE_SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
-    surface_2022?: FloatFieldUpdateOperationsInput | number
-    surface_2021?: FloatFieldUpdateOperationsInput | number
-    surface_2020?: FloatFieldUpdateOperationsInput | number
-    surface_2019?: FloatFieldUpdateOperationsInput | number
-    nombre_2022?: FloatFieldUpdateOperationsInput | number
-    nombre_2021?: FloatFieldUpdateOperationsInput | number
-    nombre_2020?: FloatFieldUpdateOperationsInput | number
-    nombre_2019?: FloatFieldUpdateOperationsInput | number
+    surface_2023?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2022?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2021?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2019?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2018?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2017?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2016?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2015?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2013?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2012?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2011?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2010?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2008?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2023?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2022?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2021?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2019?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2018?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2017?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2016?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2015?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2013?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2012?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2011?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2010?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2008?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type agriculture_bioUncheckedUpdateInput = {
@@ -59596,14 +60220,38 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     VARIABLE?: StringFieldUpdateOperationsInput | string
     LIBELLE_SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
-    surface_2022?: FloatFieldUpdateOperationsInput | number
-    surface_2021?: FloatFieldUpdateOperationsInput | number
-    surface_2020?: FloatFieldUpdateOperationsInput | number
-    surface_2019?: FloatFieldUpdateOperationsInput | number
-    nombre_2022?: FloatFieldUpdateOperationsInput | number
-    nombre_2021?: FloatFieldUpdateOperationsInput | number
-    nombre_2020?: FloatFieldUpdateOperationsInput | number
-    nombre_2019?: FloatFieldUpdateOperationsInput | number
+    surface_2023?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2022?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2021?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2019?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2018?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2017?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2016?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2015?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2013?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2012?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2011?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2010?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2008?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2023?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2022?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2021?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2019?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2018?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2017?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2016?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2015?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2013?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2012?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2011?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2010?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2008?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type agriculture_bioCreateManyInput = {
@@ -59612,14 +60260,38 @@ export namespace Prisma {
     libelle_epci: string
     VARIABLE: string
     LIBELLE_SOUS_CHAMP?: string | null
-    surface_2022: number
-    surface_2021: number
-    surface_2020: number
-    surface_2019: number
-    nombre_2022: number
-    nombre_2021: number
-    nombre_2020: number
-    nombre_2019: number
+    surface_2023?: number | null
+    surface_2022?: number | null
+    surface_2021?: number | null
+    surface_2020?: number | null
+    surface_2019?: number | null
+    surface_2018?: number | null
+    surface_2017?: number | null
+    surface_2016?: number | null
+    surface_2015?: number | null
+    surface_2014?: number | null
+    surface_2013?: number | null
+    surface_2012?: number | null
+    surface_2011?: number | null
+    surface_2010?: number | null
+    surface_2009?: number | null
+    surface_2008?: number | null
+    nombre_2023?: number | null
+    nombre_2022?: number | null
+    nombre_2021?: number | null
+    nombre_2020?: number | null
+    nombre_2019?: number | null
+    nombre_2018?: number | null
+    nombre_2017?: number | null
+    nombre_2016?: number | null
+    nombre_2015?: number | null
+    nombre_2014?: number | null
+    nombre_2013?: number | null
+    nombre_2012?: number | null
+    nombre_2011?: number | null
+    nombre_2010?: number | null
+    nombre_2009?: number | null
+    nombre_2008?: number | null
   }
 
   export type agriculture_bioUpdateManyMutationInput = {
@@ -59628,14 +60300,38 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     VARIABLE?: StringFieldUpdateOperationsInput | string
     LIBELLE_SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
-    surface_2022?: FloatFieldUpdateOperationsInput | number
-    surface_2021?: FloatFieldUpdateOperationsInput | number
-    surface_2020?: FloatFieldUpdateOperationsInput | number
-    surface_2019?: FloatFieldUpdateOperationsInput | number
-    nombre_2022?: FloatFieldUpdateOperationsInput | number
-    nombre_2021?: FloatFieldUpdateOperationsInput | number
-    nombre_2020?: FloatFieldUpdateOperationsInput | number
-    nombre_2019?: FloatFieldUpdateOperationsInput | number
+    surface_2023?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2022?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2021?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2019?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2018?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2017?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2016?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2015?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2013?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2012?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2011?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2010?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2008?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2023?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2022?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2021?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2019?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2018?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2017?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2016?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2015?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2013?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2012?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2011?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2010?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2008?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type agriculture_bioUncheckedUpdateManyInput = {
@@ -59644,14 +60340,38 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     VARIABLE?: StringFieldUpdateOperationsInput | string
     LIBELLE_SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
-    surface_2022?: FloatFieldUpdateOperationsInput | number
-    surface_2021?: FloatFieldUpdateOperationsInput | number
-    surface_2020?: FloatFieldUpdateOperationsInput | number
-    surface_2019?: FloatFieldUpdateOperationsInput | number
-    nombre_2022?: FloatFieldUpdateOperationsInput | number
-    nombre_2021?: FloatFieldUpdateOperationsInput | number
-    nombre_2020?: FloatFieldUpdateOperationsInput | number
-    nombre_2019?: FloatFieldUpdateOperationsInput | number
+    surface_2023?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2022?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2021?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2019?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2018?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2017?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2016?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2015?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2013?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2012?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2011?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2010?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_2008?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2023?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2022?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2021?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2019?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2018?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2017?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2016?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2015?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2013?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2012?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2011?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2010?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    nombre_2008?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type aot_40CreateInput = {
@@ -62143,25 +62863,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number
     nb_logement_sans_alea: number
     nb_logement_alea_moyen_fort_avant_1920: number
-    part_logement_alea_moyen_fort_avant_1920: number
     nb_logement_alea_moyen_fort_1920_1945: number
-    part_logement_alea_moyen_fort_1920_1945: number
     nb_logement_alea_moyen_fort_1945_1975: number
-    part_logement_alea_moyen_fort_1945_1975: number
     nb_logement_alea_moyen_fort_apres_1975: number
-    part_logement_alea_moyen_fort_apres_1975: number
     nb_logement_alea_faible_avant_1920: number
-    part_logement_alea_faible_avant_1920: number
     nb_logement_alea_faible_1920_1945: number
-    part_logement_alea_faible_1920_1945: number
     nb_logement_alea_faible_1945_1975: number
-    part_logement_alea_faible_1945_1975: number
     nb_logement_alea_faible_apres_1975: number
-    part_logement_alea_faible_apres_1975: number
     surface_commune: number
     surface_alea_faible_commune: number
-    part_alea_faible_commune: number
     surface_alea_moyen_fort_commune: number
+    part_logement_alea_moyen_fort_avant_1920: number
+    part_logement_alea_moyen_fort_1920_1945: number
+    part_logement_alea_moyen_fort_1945_1975: number
+    part_logement_alea_moyen_fort_apres_1975: number
+    part_logement_alea_faible_avant_1920: number
+    part_logement_alea_faible_1920_1945: number
+    part_logement_alea_faible_1945_1975: number
+    part_logement_alea_faible_apres_1975: number
+    part_alea_faible_commune: number
     part_alea_moyen_fort_commune: number
   }
 
@@ -62183,25 +62903,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number
     nb_logement_sans_alea: number
     nb_logement_alea_moyen_fort_avant_1920: number
-    part_logement_alea_moyen_fort_avant_1920: number
     nb_logement_alea_moyen_fort_1920_1945: number
-    part_logement_alea_moyen_fort_1920_1945: number
     nb_logement_alea_moyen_fort_1945_1975: number
-    part_logement_alea_moyen_fort_1945_1975: number
     nb_logement_alea_moyen_fort_apres_1975: number
-    part_logement_alea_moyen_fort_apres_1975: number
     nb_logement_alea_faible_avant_1920: number
-    part_logement_alea_faible_avant_1920: number
     nb_logement_alea_faible_1920_1945: number
-    part_logement_alea_faible_1920_1945: number
     nb_logement_alea_faible_1945_1975: number
-    part_logement_alea_faible_1945_1975: number
     nb_logement_alea_faible_apres_1975: number
-    part_logement_alea_faible_apres_1975: number
     surface_commune: number
     surface_alea_faible_commune: number
-    part_alea_faible_commune: number
     surface_alea_moyen_fort_commune: number
+    part_logement_alea_moyen_fort_avant_1920: number
+    part_logement_alea_moyen_fort_1920_1945: number
+    part_logement_alea_moyen_fort_1945_1975: number
+    part_logement_alea_moyen_fort_apres_1975: number
+    part_logement_alea_faible_avant_1920: number
+    part_logement_alea_faible_1920_1945: number
+    part_logement_alea_faible_1945_1975: number
+    part_logement_alea_faible_apres_1975: number
+    part_alea_faible_commune: number
     part_alea_moyen_fort_commune: number
   }
 
@@ -62223,25 +62943,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: IntFieldUpdateOperationsInput | number
     nb_logement_sans_alea?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
     surface_commune?: IntFieldUpdateOperationsInput | number
     surface_alea_faible_commune?: IntFieldUpdateOperationsInput | number
-    part_alea_faible_commune?: IntFieldUpdateOperationsInput | number
     surface_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
+    part_alea_faible_commune?: IntFieldUpdateOperationsInput | number
     part_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
   }
 
@@ -62263,25 +62983,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: IntFieldUpdateOperationsInput | number
     nb_logement_sans_alea?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
     surface_commune?: IntFieldUpdateOperationsInput | number
     surface_alea_faible_commune?: IntFieldUpdateOperationsInput | number
-    part_alea_faible_commune?: IntFieldUpdateOperationsInput | number
     surface_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
+    part_alea_faible_commune?: IntFieldUpdateOperationsInput | number
     part_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
   }
 
@@ -62303,25 +63023,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number
     nb_logement_sans_alea: number
     nb_logement_alea_moyen_fort_avant_1920: number
-    part_logement_alea_moyen_fort_avant_1920: number
     nb_logement_alea_moyen_fort_1920_1945: number
-    part_logement_alea_moyen_fort_1920_1945: number
     nb_logement_alea_moyen_fort_1945_1975: number
-    part_logement_alea_moyen_fort_1945_1975: number
     nb_logement_alea_moyen_fort_apres_1975: number
-    part_logement_alea_moyen_fort_apres_1975: number
     nb_logement_alea_faible_avant_1920: number
-    part_logement_alea_faible_avant_1920: number
     nb_logement_alea_faible_1920_1945: number
-    part_logement_alea_faible_1920_1945: number
     nb_logement_alea_faible_1945_1975: number
-    part_logement_alea_faible_1945_1975: number
     nb_logement_alea_faible_apres_1975: number
-    part_logement_alea_faible_apres_1975: number
     surface_commune: number
     surface_alea_faible_commune: number
-    part_alea_faible_commune: number
     surface_alea_moyen_fort_commune: number
+    part_logement_alea_moyen_fort_avant_1920: number
+    part_logement_alea_moyen_fort_1920_1945: number
+    part_logement_alea_moyen_fort_1945_1975: number
+    part_logement_alea_moyen_fort_apres_1975: number
+    part_logement_alea_faible_avant_1920: number
+    part_logement_alea_faible_1920_1945: number
+    part_logement_alea_faible_1945_1975: number
+    part_logement_alea_faible_apres_1975: number
+    part_alea_faible_commune: number
     part_alea_moyen_fort_commune: number
   }
 
@@ -62343,25 +63063,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: IntFieldUpdateOperationsInput | number
     nb_logement_sans_alea?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
     surface_commune?: IntFieldUpdateOperationsInput | number
     surface_alea_faible_commune?: IntFieldUpdateOperationsInput | number
-    part_alea_faible_commune?: IntFieldUpdateOperationsInput | number
     surface_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
+    part_alea_faible_commune?: IntFieldUpdateOperationsInput | number
     part_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
   }
 
@@ -62383,25 +63103,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: IntFieldUpdateOperationsInput | number
     nb_logement_sans_alea?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
-    part_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
     surface_commune?: IntFieldUpdateOperationsInput | number
     surface_alea_faible_commune?: IntFieldUpdateOperationsInput | number
-    part_alea_faible_commune?: IntFieldUpdateOperationsInput | number
     surface_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
+    part_alea_faible_commune?: IntFieldUpdateOperationsInput | number
     part_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
   }
 
@@ -65124,26 +65844,74 @@ export namespace Prisma {
     libelle_epci?: SortOrder
     VARIABLE?: SortOrder
     LIBELLE_SOUS_CHAMP?: SortOrder
+    surface_2023?: SortOrder
     surface_2022?: SortOrder
     surface_2021?: SortOrder
     surface_2020?: SortOrder
     surface_2019?: SortOrder
+    surface_2018?: SortOrder
+    surface_2017?: SortOrder
+    surface_2016?: SortOrder
+    surface_2015?: SortOrder
+    surface_2014?: SortOrder
+    surface_2013?: SortOrder
+    surface_2012?: SortOrder
+    surface_2011?: SortOrder
+    surface_2010?: SortOrder
+    surface_2009?: SortOrder
+    surface_2008?: SortOrder
+    nombre_2023?: SortOrder
     nombre_2022?: SortOrder
     nombre_2021?: SortOrder
     nombre_2020?: SortOrder
     nombre_2019?: SortOrder
+    nombre_2018?: SortOrder
+    nombre_2017?: SortOrder
+    nombre_2016?: SortOrder
+    nombre_2015?: SortOrder
+    nombre_2014?: SortOrder
+    nombre_2013?: SortOrder
+    nombre_2012?: SortOrder
+    nombre_2011?: SortOrder
+    nombre_2010?: SortOrder
+    nombre_2009?: SortOrder
+    nombre_2008?: SortOrder
   }
 
   export type agriculture_bioAvgOrderByAggregateInput = {
     index?: SortOrder
+    surface_2023?: SortOrder
     surface_2022?: SortOrder
     surface_2021?: SortOrder
     surface_2020?: SortOrder
     surface_2019?: SortOrder
+    surface_2018?: SortOrder
+    surface_2017?: SortOrder
+    surface_2016?: SortOrder
+    surface_2015?: SortOrder
+    surface_2014?: SortOrder
+    surface_2013?: SortOrder
+    surface_2012?: SortOrder
+    surface_2011?: SortOrder
+    surface_2010?: SortOrder
+    surface_2009?: SortOrder
+    surface_2008?: SortOrder
+    nombre_2023?: SortOrder
     nombre_2022?: SortOrder
     nombre_2021?: SortOrder
     nombre_2020?: SortOrder
     nombre_2019?: SortOrder
+    nombre_2018?: SortOrder
+    nombre_2017?: SortOrder
+    nombre_2016?: SortOrder
+    nombre_2015?: SortOrder
+    nombre_2014?: SortOrder
+    nombre_2013?: SortOrder
+    nombre_2012?: SortOrder
+    nombre_2011?: SortOrder
+    nombre_2010?: SortOrder
+    nombre_2009?: SortOrder
+    nombre_2008?: SortOrder
   }
 
   export type agriculture_bioMaxOrderByAggregateInput = {
@@ -65152,14 +65920,38 @@ export namespace Prisma {
     libelle_epci?: SortOrder
     VARIABLE?: SortOrder
     LIBELLE_SOUS_CHAMP?: SortOrder
+    surface_2023?: SortOrder
     surface_2022?: SortOrder
     surface_2021?: SortOrder
     surface_2020?: SortOrder
     surface_2019?: SortOrder
+    surface_2018?: SortOrder
+    surface_2017?: SortOrder
+    surface_2016?: SortOrder
+    surface_2015?: SortOrder
+    surface_2014?: SortOrder
+    surface_2013?: SortOrder
+    surface_2012?: SortOrder
+    surface_2011?: SortOrder
+    surface_2010?: SortOrder
+    surface_2009?: SortOrder
+    surface_2008?: SortOrder
+    nombre_2023?: SortOrder
     nombre_2022?: SortOrder
     nombre_2021?: SortOrder
     nombre_2020?: SortOrder
     nombre_2019?: SortOrder
+    nombre_2018?: SortOrder
+    nombre_2017?: SortOrder
+    nombre_2016?: SortOrder
+    nombre_2015?: SortOrder
+    nombre_2014?: SortOrder
+    nombre_2013?: SortOrder
+    nombre_2012?: SortOrder
+    nombre_2011?: SortOrder
+    nombre_2010?: SortOrder
+    nombre_2009?: SortOrder
+    nombre_2008?: SortOrder
   }
 
   export type agriculture_bioMinOrderByAggregateInput = {
@@ -65168,26 +65960,74 @@ export namespace Prisma {
     libelle_epci?: SortOrder
     VARIABLE?: SortOrder
     LIBELLE_SOUS_CHAMP?: SortOrder
+    surface_2023?: SortOrder
     surface_2022?: SortOrder
     surface_2021?: SortOrder
     surface_2020?: SortOrder
     surface_2019?: SortOrder
+    surface_2018?: SortOrder
+    surface_2017?: SortOrder
+    surface_2016?: SortOrder
+    surface_2015?: SortOrder
+    surface_2014?: SortOrder
+    surface_2013?: SortOrder
+    surface_2012?: SortOrder
+    surface_2011?: SortOrder
+    surface_2010?: SortOrder
+    surface_2009?: SortOrder
+    surface_2008?: SortOrder
+    nombre_2023?: SortOrder
     nombre_2022?: SortOrder
     nombre_2021?: SortOrder
     nombre_2020?: SortOrder
     nombre_2019?: SortOrder
+    nombre_2018?: SortOrder
+    nombre_2017?: SortOrder
+    nombre_2016?: SortOrder
+    nombre_2015?: SortOrder
+    nombre_2014?: SortOrder
+    nombre_2013?: SortOrder
+    nombre_2012?: SortOrder
+    nombre_2011?: SortOrder
+    nombre_2010?: SortOrder
+    nombre_2009?: SortOrder
+    nombre_2008?: SortOrder
   }
 
   export type agriculture_bioSumOrderByAggregateInput = {
     index?: SortOrder
+    surface_2023?: SortOrder
     surface_2022?: SortOrder
     surface_2021?: SortOrder
     surface_2020?: SortOrder
     surface_2019?: SortOrder
+    surface_2018?: SortOrder
+    surface_2017?: SortOrder
+    surface_2016?: SortOrder
+    surface_2015?: SortOrder
+    surface_2014?: SortOrder
+    surface_2013?: SortOrder
+    surface_2012?: SortOrder
+    surface_2011?: SortOrder
+    surface_2010?: SortOrder
+    surface_2009?: SortOrder
+    surface_2008?: SortOrder
+    nombre_2023?: SortOrder
     nombre_2022?: SortOrder
     nombre_2021?: SortOrder
     nombre_2020?: SortOrder
     nombre_2019?: SortOrder
+    nombre_2018?: SortOrder
+    nombre_2017?: SortOrder
+    nombre_2016?: SortOrder
+    nombre_2015?: SortOrder
+    nombre_2014?: SortOrder
+    nombre_2013?: SortOrder
+    nombre_2012?: SortOrder
+    nombre_2011?: SortOrder
+    nombre_2010?: SortOrder
+    nombre_2009?: SortOrder
+    nombre_2008?: SortOrder
   }
 
   export type aot_40CountOrderByAggregateInput = {
@@ -66753,25 +67593,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: SortOrder
     nb_logement_sans_alea?: SortOrder
     nb_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
     nb_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
     nb_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
     nb_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
     nb_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
     nb_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
     nb_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
     nb_logement_alea_faible_apres_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
     surface_commune?: SortOrder
     surface_alea_faible_commune?: SortOrder
-    part_alea_faible_commune?: SortOrder
     surface_alea_moyen_fort_commune?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
+    part_alea_faible_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
   }
 
@@ -66783,25 +67623,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: SortOrder
     nb_logement_sans_alea?: SortOrder
     nb_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
     nb_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
     nb_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
     nb_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
     nb_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
     nb_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
     nb_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
     nb_logement_alea_faible_apres_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
     surface_commune?: SortOrder
     surface_alea_faible_commune?: SortOrder
-    part_alea_faible_commune?: SortOrder
     surface_alea_moyen_fort_commune?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
+    part_alea_faible_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
   }
 
@@ -66823,25 +67663,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: SortOrder
     nb_logement_sans_alea?: SortOrder
     nb_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
     nb_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
     nb_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
     nb_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
     nb_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
     nb_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
     nb_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
     nb_logement_alea_faible_apres_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
     surface_commune?: SortOrder
     surface_alea_faible_commune?: SortOrder
-    part_alea_faible_commune?: SortOrder
     surface_alea_moyen_fort_commune?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
+    part_alea_faible_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
   }
 
@@ -66863,25 +67703,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: SortOrder
     nb_logement_sans_alea?: SortOrder
     nb_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
     nb_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
     nb_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
     nb_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
     nb_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
     nb_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
     nb_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
     nb_logement_alea_faible_apres_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
     surface_commune?: SortOrder
     surface_alea_faible_commune?: SortOrder
-    part_alea_faible_commune?: SortOrder
     surface_alea_moyen_fort_commune?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
+    part_alea_faible_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
   }
 
@@ -66893,25 +67733,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: SortOrder
     nb_logement_sans_alea?: SortOrder
     nb_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
     nb_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
     nb_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
     nb_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
     nb_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
     nb_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
     nb_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
     nb_logement_alea_faible_apres_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
     surface_commune?: SortOrder
     surface_alea_faible_commune?: SortOrder
-    part_alea_faible_commune?: SortOrder
     surface_alea_moyen_fort_commune?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
+    part_alea_faible_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
   }
 
