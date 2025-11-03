@@ -5,8 +5,9 @@ import { LoaderText } from '@/components/ui/loader';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import { handleRedirectionThematique } from '@/hooks/Redirections';
-import { CarteCommunes, ConfortThermique, InconfortThermique } from '@/lib/postgres/models';
+import { CarteCommunes, ConfortThermique, InconfortThermique, TableCommuneModel } from '@/lib/postgres/models';
 import { GetConfortThermique, GetInconfortThermique } from "@/lib/queries/databases/inconfortThermique";
+import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -23,11 +24,13 @@ import { LCZ } from '../../indicateurs/confortThermique/6-LCZ';
 const DonneesConfortThermique = ({
   carteCommunes,
   inconfortThermique,
-  confortThermique
+  confortThermique,
+  tableCommune
 }: {
   carteCommunes: CarteCommunes[];
   inconfortThermique: InconfortThermique[];
   confortThermique: ConfortThermique[];
+  tableCommune: TableCommuneModel[];
 }) => {
   const searchParams = useSearchParams();
   const params = usePathname();
@@ -35,7 +38,7 @@ const DonneesConfortThermique = ({
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const [data, setData] = useState({ carteCommunes, inconfortThermique, confortThermique });
+  const [data, setData] = useState({ carteCommunes, inconfortThermique, confortThermique, tableCommune });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
   const ongletsMenu = sommaireThematiques[thematique];
@@ -47,12 +50,18 @@ const DonneesConfortThermique = ({
     }
     setIsLoading(true);
     void (async () => {
-      const [newCarteCommunes, newInconfortThermique, newConfortThermique] = await Promise.all([
+      const [newCarteCommunes, newInconfortThermique, newConfortThermique, newTableCommune] = await Promise.all([
         GetCommunes(code, libelle, type),
         GetInconfortThermique(code, libelle, type),
-        GetConfortThermique(code, libelle, type)
+        GetConfortThermique(code, libelle, type),
+        GetTablecommune(code, libelle, type)
       ]);
-      setData({ carteCommunes: newCarteCommunes, inconfortThermique: newInconfortThermique, confortThermique: newConfortThermique });
+      setData({
+        carteCommunes: newCarteCommunes,
+        inconfortThermique: newInconfortThermique,
+        confortThermique: newConfortThermique,
+        tableCommune: newTableCommune
+      });
       setIsLoading(false);
     })();
   }, [libelle]);
@@ -180,7 +189,7 @@ const DonneesConfortThermique = ({
                 Cartographie des zones climatiques locales (LCZ)
               </H3>
             </div>
-            <LCZ carteCommunes={data.carteCommunes} />
+            <LCZ carteCommunes={data.carteCommunes} tableCommune={data.tableCommune} />
           </div>
         </section>
         <div className={styles.redirectionEtape2Wrapper} >

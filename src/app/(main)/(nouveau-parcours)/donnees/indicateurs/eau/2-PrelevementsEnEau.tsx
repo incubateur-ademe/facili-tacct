@@ -5,7 +5,7 @@ import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import { ReadMoreFade } from "@/components/utils/ReadMoreFade";
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
-import { RessourcesEau } from "@/lib/postgres/models";
+import { PrelevementsEau, PrelevementsEauParsed } from "@/lib/postgres/models";
 import { PrelevementEauText } from "@/lib/staticTexts";
 import { prelevementEauTooltipText } from "@/lib/tooltipTexts";
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
@@ -16,8 +16,50 @@ import { useState } from "react";
 import styles from '../../explorerDonnees.module.scss';
 import { SourceExport } from "../SourceExport";
 
+const parsePostgresArray = (str: string | null): string[] => {
+  if (!str) return [];
+  // Retirer les accolades et parser en gérant les guillemets
+  const content = str.replace(/^\{|\}$/g, '');
+  const result: string[] = [];
+  let current = '';
+  let inQuotes = false;
+  
+  for (let i = 0; i < content.length; i++) {
+    const char = content[i];
+    if (char === '"') {
+      inQuotes = !inQuotes;
+    } else if (char === ',' && !inQuotes) {
+      result.push(current);
+      current = '';
+    } else {
+      current += char;
+    }
+  }
+  if (current) result.push(current);
+  
+  return result;
+};
+
+const colonnesATranformer = [
+  'A2020',
+  'A2019',
+  'A2018',
+  'A2017',
+  'A2016',
+  'A2015',
+  'A2014',
+  'A2013',
+  'A2012',
+  'A2011',
+  'A2010',
+  'A2009',
+  'A2008',
+  'libelle_sous_champ',
+  'sous_champ'
+];
+
 const SumFiltered = (
-  data: RessourcesEau[],
+  data: PrelevementsEauParsed[],
   code: string,
   libelle: string,
   type: string,
@@ -40,33 +82,63 @@ const SumFiltered = (
     data
       .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
       )
-      .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(champ))
+      .filter((item) => item.libelle_sous_champ?.includes(champ))
       .map((e) => e.A2020)
       .filter((value): value is number => value !== null)
   );
 };
 
 export const PrelevementsEnEau = (props: {
-  ressourcesEau: RessourcesEau[];
+  prelevementsEau: PrelevementsEau[];
 }) => {
-  const { ressourcesEau } = props;
+  const { prelevementsEau } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
-  const volumePreleveTerritoire = (SumFiltered(ressourcesEau, code, libelle, type, 'total') / 1000000);
+  const prelevementsParsed = prelevementsEau.flatMap((item) => {
+    const sousChampArray = parsePostgresArray(item.sous_champ);
+    const libelleArray = parsePostgresArray(item.libelle_sous_champ);
+    // Récupérer toutes les colonnes d'années
+    const anneeArrays = colonnesATranformer
+      .filter(col => col.startsWith('A'))
+      .reduce((acc, col) => {
+        acc[col] = parsePostgresArray((item as any)[col]);
+        return acc;
+      }, {} as Record<string, string[]>);
+
+    return sousChampArray.map((sousChamp, index) => ({
+      ...item,
+      sous_champ: sousChamp,
+      libelle_sous_champ: libelleArray[index] || null,
+      ...Object.entries(anneeArrays).reduce((acc, [col, values]) => {
+        acc[col] = values[index] ? parseFloat(values[index]) : null;
+        return acc;
+      }, {} as Record<string, number | null>)
+    }));
+  }) as unknown as PrelevementsEauParsed[];
+  const volumePreleveTerritoire = (
+    SumFiltered(
+      prelevementsParsed as unknown as PrelevementsEauParsed[], 
+      code, 
+      libelle, 
+      type, 
+      'total'
+    ) / 1000000
+  );
+
   const dataParMaille = type === 'epci'
-    ? ressourcesEau.filter((obj) => obj.epci === code)
+    ? prelevementsParsed.filter((obj) => obj.epci === code)
     : type === 'commune'
-      ? ressourcesEau.filter((obj) => obj.code_geographique === code)
+      ? prelevementsParsed.filter((obj) => obj.code_geographique === code)
       : type === 'petr'
-        ? ressourcesEau.filter((obj) => obj.libelle_petr === libelle)
+        ? prelevementsParsed.filter((obj) => obj.libelle_petr === libelle)
         : type === 'ept'
-          ? ressourcesEau.filter((obj) => obj.ept === libelle)
+          ? prelevementsParsed.filter((obj) => obj.ept === libelle)
           : type === "pnr"
-            ? ressourcesEau.filter((obj) => obj.libelle_pnr === libelle)
-            : ressourcesEau;
+            ? prelevementsParsed.filter((obj) => obj.libelle_pnr === libelle)
+            : prelevementsParsed;
 
   //sort ascending by code_geographique
   const exportData = IndicatorExportTransformations.ressourcesEau.PrelevementEau(dataParMaille).sort(
@@ -106,7 +178,7 @@ export const PrelevementsEnEau = (props: {
           <EauCharts
             datavizTab={datavizTab}
             setDatavizTab={setDatavizTab}
-            ressourcesEau={ressourcesEau}
+            ressourcesEau={prelevementsParsed}
           />
           <SourceExport
             anchor="Ressources en eau"

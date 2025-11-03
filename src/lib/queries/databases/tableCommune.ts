@@ -24,14 +24,22 @@ export const GetTablecommune = async (
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return [];
-      else {
+      else if (type === 'commune') {
+        const value = await prisma.$queryRaw`
+          SELECT a.*
+          FROM databases.table_commune a
+          WHERE a.epci = (
+            SELECT c.epci
+            FROM databases.collectivites_searchbar c
+            WHERE c.code_geographique = ${code}
+            LIMIT 1
+          )
+        `;
+        return value as TableCommuneModel[];
+      } else {
         const value = await prisma.table_commune.findMany({
           where: {
-            AND: [
-              {
-                [column]: type === 'petr' || type === 'ept' ? libelle : code
-              }
-            ]
+            [column]: type === 'petr' || type === 'ept' ? libelle : code
           }
         });
         return value as TableCommuneModel[];

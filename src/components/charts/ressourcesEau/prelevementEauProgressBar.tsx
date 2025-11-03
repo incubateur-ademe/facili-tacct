@@ -11,7 +11,7 @@ import DataNotFound from '@/components/graphDataNotFound';
 import { ArrowHtmlTooltip } from '@/components/utils/Tooltips';
 import { Body, H4 } from '@/design-system/base/Textes';
 import couleurs from '@/design-system/couleurs';
-import { RessourcesEau } from '@/lib/postgres/models';
+import { PrelevementsEauParsed } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { Progress } from 'antd';
@@ -20,7 +20,7 @@ import { useSearchParams } from 'next/navigation';
 import styles from './eau.module.scss';
 
 const SumFiltered = (
-  data: RessourcesEau[],
+  data: PrelevementsEauParsed[],
   code: string,
   libelle: string,
   type: string,
@@ -44,19 +44,19 @@ const SumFiltered = (
     data
       .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
       )
-      .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(champ))
+      .filter((item) => item.libelle_sous_champ?.includes(champ))
       .map((e) => e.A2020)
       .filter((value): value is number => value !== null)
   );
 };
 
 const TotalSum = (
-  data: RessourcesEau[],
+  data: PrelevementsEauParsed[],
   champ: string
 ) => {
   return Sum(
     data
-      .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(champ))
+      .filter((item) => item.libelle_sous_champ?.includes(champ))
       .map((e) => e.A2020)
       .filter((value): value is number => value !== null)
   );
@@ -65,7 +65,7 @@ const TotalSum = (
 const PrelevementEauProgressBars = ({
   ressourcesEau
 }: {
-  ressourcesEau: RessourcesEau[];
+  ressourcesEau: PrelevementsEauParsed[];
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;

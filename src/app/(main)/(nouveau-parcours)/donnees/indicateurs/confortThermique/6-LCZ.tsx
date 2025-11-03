@@ -6,8 +6,7 @@ import MapLCZNouveauParcours from '@/components/maps/mapLCZNouveauParcours';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from "@/design-system/base/Textes";
-import { CarteCommunes } from "@/lib/postgres/models";
-import { GetLczCouverture } from '@/lib/queries/databases/inconfortThermique';
+import { CarteCommunes, TableCommuneModel } from "@/lib/postgres/models";
 import { LCZCeremaText1, LCZText, LCZText2 } from '@/lib/staticTexts';
 import { LCZTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from "next/navigation";
@@ -16,8 +15,10 @@ import styles from '../../explorerDonnees.module.scss';
 
 export const LCZ = ({
   carteCommunes,
+  tableCommune
 }: {
   carteCommunes: CarteCommunes[];
+  tableCommune: TableCommuneModel[];
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
@@ -28,13 +29,21 @@ export const LCZ = ({
   const exportPNGRef = useRef<HTMLDivElement | null>(null);
   const [isLczCovered, setIsLczCovered] = useState<boolean | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
+  const couvertureLcz = type === "commune" ? tableCommune.filter(el => el.code_geographique === code) : tableCommune
 
   useEffect(() => {
-    void (async () => {
-      const temp = await GetLczCouverture(code, libelle, type);
-      setIsLczCovered(temp);
+    // void (async () => {
+    //   const temp = await GetLczCouverture(code, libelle, type);
+    //   setIsLczCovered(temp);
+    //   setIsLoading(false);
+    // })()
+    if (couvertureLcz.every(el => el.couverture_lcz === null)) {
+      setIsLczCovered(false);
       setIsLoading(false);
-    })()
+    } else { 
+      setIsLczCovered(true);
+      setIsLoading(false);
+    }
   }, [code]);
 
   return (

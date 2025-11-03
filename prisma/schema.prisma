@@ -142,11 +142,11 @@ model atlas_biodiversite {
   libelle_petr               String?
   code_pnr                   String?
   libelle_pnr                String?
-  nom                        String
+  nom                        String?
   structure_porteuse         String?
   type_de_structure_porteuse String?
   annee_debut                Float?
-  avancement                 String
+  avancement                 String?
 
   @@index([code_geographique], map: "atlas_biodiversite_communes_index")
   @@index([departement], map: "atlas_biodiversite_departement_index")
@@ -193,119 +193,115 @@ model consommation_espaces_naf {
   libelle_petr         String?
   code_pnr             String?
   libelle_pnr          String?
-  naf09art10           Float
-  art09act10           Float
-  art09hab10           Float
-  art09mix10           Float
-  art09rou10           Float
-  art09fer10           Float
-  art09inc10           Float
-  naf10art11           Float
-  art10act11           Float
-  art10hab11           Float
-  art10mix11           Float
-  art10rou11           Float
-  art10fer11           Float
-  art10inc11           Float
-  naf11art12           Float
-  art11act12           Float
-  art11hab12           Float
-  art11mix12           Float
-  art11rou12           Float
-  art11fer12           Float
-  art11inc12           Float
-  naf12art13           Float
-  art12act13           Float
-  art12hab13           Float
-  art12mix13           Float
-  art12rou13           Float
-  art12fer13           Float
-  art12inc13           Float
-  naf13art14           Float
-  art13act14           Float
-  art13hab14           Float
-  art13mix14           Float
-  art13rou14           Float
-  art13fer14           Float
-  art13inc14           Float
-  naf14art15           Float
-  art14act15           Float
-  art14hab15           Float
-  art14mix15           Float
-  art14rou15           Float
-  art14fer15           Float
-  art14inc15           Float
-  naf15art16           Float
-  art15act16           Float
-  art15hab16           Float
-  art15mix16           Float
-  art15rou16           Float
-  art15fer16           Float
-  art15inc16           Float
-  naf16art17           Float
-  art16act17           Float
-  art16hab17           Float
-  art16mix17           Float
-  art16rou17           Float
-  art16fer17           Float
-  art16inc17           Float
-  naf17art18           Float
-  art17act18           Float
-  art17hab18           Float
-  art17mix18           Float
-  art17rou18           Float
-  art17fer18           Float
-  art17inc18           Float
-  naf18art19           Float
-  art18act19           Float
-  art18hab19           Float
-  art18mix19           Float
-  art18rou19           Float
-  art18fer19           Float
-  art18inc19           Float
-  naf19art20           Float
-  art19act20           Float
-  art19hab20           Float
-  art19mix20           Float
-  art19rou20           Float
-  art19fer20           Float
-  art19inc20           Float
-  naf20art21           Float
-  art20act21           Float
-  art20hab21           Float
-  art20mix21           Float
-  art20rou21           Float
-  art20fer21           Float
-  art20inc21           Float
-  naf21art22           Float
-  art21act22           Float
-  art21hab22           Float
-  art21mix22           Float
-  art21rou22           Float
-  art21fer22           Float
-  art21inc22           Float
-  naf22art23           Float
-  art22act23           Float
-  art22hab23           Float
-  art22mix23           Float
-  art22rou23           Float
-  art22fer23           Float
-  art22inc23           Float
-  naf09art23           Float
-  art09act23           Float
-  art09hab23           Float
-  art09mix23           Float
-  art09inc23           Float
-  art09rou23           Float
-  art09fer23           Float
-  artcom0923           Float
+  naf09art10           Float?
+  art09act10           Float?
+  art09hab10           Float?
+  art09mix10           Float?
+  art09rou10           Float?
+  art09fer10           Float?
+  art09inc10           Float?
+  naf10art11           Float?
+  art10act11           Float?
+  art10hab11           Float?
+  art10mix11           Float?
+  art10rou11           Float?
+  art10fer11           Float?
+  art10inc11           Float?
+  naf11art12           Float?
+  art11act12           Float?
+  art11hab12           Float?
+  art11mix12           Float?
+  art11rou12           Float?
+  art11fer12           Float?
+  art11inc12           Float?
+  naf12art13           Float?
+  art12act13           Float?
+  art12hab13           Float?
+  art12mix13           Float?
+  art12rou13           Float?
+  art12fer13           Float?
+  art12inc13           Float?
+  naf13art14           Float?
+  art13act14           Float?
+  art13hab14           Float?
+  art13mix14           Float?
+  art13rou14           Float?
+  art13fer14           Float?
+  art13inc14           Float?
+  naf14art15           Float?
+  art14act15           Float?
+  art14hab15           Float?
+  art14mix15           Float?
+  art14rou15           Float?
+  art14fer15           Float?
+  art14inc15           Float?
+  naf15art16           Float?
+  art15act16           Float?
+  art15hab16           Float?
+  art15mix16           Float?
+  art15rou16           Float?
+  art15fer16           Float?
+  art15inc16           Float?
+  naf16art17           Float?
+  art16act17           Float?
+  art16hab17           Float?
+  art16mix17           Float?
+  art16rou17           Float?
+  art16fer17           Float?
+  art16inc17           Float?
+  naf17art18           Float?
+  art17act18           Float?
+  art17hab18           Float?
+  art17mix18           Float?
+  art17rou18           Float?
+  art17fer18           Float?
+  art17inc18           Float?
+  naf18art19           Float?
+  art18act19           Float?
+  art18hab19           Float?
+  art18mix19           Float?
+  art18rou19           Float?
+  art18fer19           Float?
+  art18inc19           Float?
+  naf19art20           Float?
+  art19act20           Float?
+  art19hab20           Float?
+  art19mix20           Float?
+  art19rou20           Float?
+  art19fer20           Float?
+  art19inc20           Float?
+  naf20art21           Float?
+  art20act21           Float?
+  art20hab21           Float?
+  art20mix21           Float?
+  art20rou21           Float?
+  art20fer21           Float?
+  art20inc21           Float?
+  naf21art22           Float?
+  art21act22           Float?
+  art21hab22           Float?
+  art21mix22           Float?
+  art21rou22           Float?
+  art21fer22           Float?
+  art21inc22           Float?
+  naf22art23           Float?
+  art22act23           Float?
+  art22hab23           Float?
+  art22mix23           Float?
+  art22rou23           Float?
+  art22fer23           Float?
+  art22inc23           Float?
+  naf09art23           Float?
+  art09act23           Float?
+  art09hab23           Float?
+  art09mix23           Float?
+  art09inc23           Float?
+  art09rou23           Float?
+  art09fer23           Float?
+  artcom0923           Float?
 
   @@index([code_geographique], map: "consommation_espaces_naf_communes_index")
-  @@index([departement], map: "consommation_espaces_naf_departement_index")
   @@index([epci], map: "consommation_espaces_naf_epci_index")
-  @@index([ept], map: "consommation_espaces_naf_ept_index")
-  @@index([libelle_petr], map: "consommation_espaces_naf_petr_index")
-  @@index([code_pnr], map: "consommation_espaces_naf_pnr_index")
   @@index([index], map: "ix_consommation_espaces_naf_index")
   @@schema("databases")
 }
@@ -323,8 +319,8 @@ model feux_foret {
   libelle_petr                          String?
   code_pnr                              String?
   libelle_pnr                           String?
-  nature                                String?
   annee                                 Float
+  nature                                String?
   surface_parcourue                     Float
   surface_foret                         Float?
   surface_maquis_garrigues              Float?
@@ -618,20 +614,20 @@ model surfaces_agricoles {
 }
 
 model clc_territoires {
-  pk                   Int                     @id @default(autoincrement())
-  code_geographique    String                  @db.VarChar
-  libelle_geographique String                  @db.VarChar
-  epci                 String                  @db.VarChar
-  libelle_epci         String                  @db.VarChar
-  departement          String                  @db.VarChar
-  libelle_departement  String                  @db.VarChar
-  region               Int
-  ept                  String?                 @db.VarChar
-  libelle_petr         String?                 @db.VarChar
-  code_pnr             String?                 @db.VarChar
-  libelle_pnr          String?                 @db.VarChar
-  legend               String                  @db.VarChar
-  geometry             Unsupported("geometry")
+  pk                   Int                      @id @default(autoincrement())
+  code_geographique    String?                  @db.VarChar
+  libelle_geographique String?                  @db.VarChar
+  epci                 String?                  @db.VarChar
+  libelle_epci         String?                  @db.VarChar
+  departement          String?                  @db.VarChar
+  libelle_departement  String?                  @db.VarChar
+  region               BigInt?
+  ept                  String?                  @db.VarChar
+  libelle_petr         String?                  @db.VarChar
+  code_pnr             String?                  @db.VarChar
+  libelle_pnr          String?                  @db.VarChar
+  legend               String?                  @db.VarChar
+  geometry             Unsupported("geometry")?
 
   @@index([code_geographique], map: "clc_territoires_communes_index")
   @@index([departement], map: "clc_territoires_departement_index")
@@ -980,22 +976,26 @@ model surfaces_protegees {
 }
 
 model table_commune {
-  index                          Int     @id
+  index                          BigInt  @id
   code_geographique              String
   libelle_geographique           String
   epci                           String
   libelle_epci                   String
   departement                    String
   libelle_departement            String
-  region                         Int
+  region                         BigInt
   ept                            String?
   libelle_petr                   String?
   code_pnr                       String?
   libelle_pnr                    String?
-  type_touristique               String?
   atlas_biodiversite_nom         String?
   atlas_biodiversite_annee_debut String?
   atlas_biodiversite_avancement  String?
+  type_touristique               String?
+  otex_12_postes                 String?
+  part_irr_sau_2020              String?
+  agriculture_part_over_55       String?
+  couverture_lcz                 String?
 
   @@index([index], map: "ix_table_commune_index")
   @@index([code_geographique], map: "table_commune_communes_index")
@@ -1024,6 +1024,65 @@ model debroussaillement {
 
   @@index([geometry], map: "debroussaillement_geometry_geom_idx", type: Gist)
   @@schema("postgis")
+}
+
+model prelevements_eau {
+  index                BigInt  @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               BigInt
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  libelle_sous_champ   String?
+  A2020                String?
+  A2019                String?
+  A2018                String?
+  A2017                String?
+  A2016                String?
+  A2015                String?
+  A2014                String?
+  A2013                String?
+  A2012                String?
+  A2011                String?
+  A2010                String?
+  A2009                String?
+  A2008                String?
+  sous_champ           String?
+
+  @@index([index], map: "ix_prelevements_eau_index")
+  @@index([code_geographique], map: "prelevements_eau_communes_index")
+  @@index([departement], map: "prelevements_eau_departement_index")
+  @@index([epci], map: "prelevements_eau_epci_index")
+  @@index([ept], map: "prelevements_eau_ept_index")
+  @@index([libelle_petr], map: "prelevements_eau_petr_index")
+  @@index([code_pnr], map: "prelevements_eau_pnr_index")
+  @@schema("databases")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model table_territoires {
+  index                BigInt?
+  code_geographique    String?
+  libelle_geographique String?
+  epci                 String?
+  libelle_epci         String?
+  departement          String?
+  libelle_departement  String?
+  region               BigInt?
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+
+  @@index([index], map: "ix_table_territoires_index")
+  @@ignore
+  @@schema("databases")
 }
 
 view pg_stat_statements {
