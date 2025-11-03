@@ -382,8 +382,8 @@ exports.Prisma.Feux_foretScalarFieldEnum = {
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
-  nature: 'nature',
   annee: 'annee',
+  nature: 'nature',
   surface_parcourue: 'surface_parcourue',
   surface_foret: 'surface_foret',
   surface_maquis_garrigues: 'surface_maquis_garrigues',
@@ -922,10 +922,14 @@ exports.Prisma.Table_communeScalarFieldEnum = {
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
-  type_touristique: 'type_touristique',
   atlas_biodiversite_nom: 'atlas_biodiversite_nom',
   atlas_biodiversite_annee_debut: 'atlas_biodiversite_annee_debut',
-  atlas_biodiversite_avancement: 'atlas_biodiversite_avancement'
+  atlas_biodiversite_avancement: 'atlas_biodiversite_avancement',
+  type_touristique: 'type_touristique',
+  otex_12_postes: 'otex_12_postes',
+  part_irr_sau_2020: 'part_irr_sau_2020',
+  agriculture_part_over_55: 'agriculture_part_over_55',
+  couverture_lcz: 'couverture_lcz'
 };
 
 exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
@@ -938,6 +942,36 @@ exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
 
 exports.Prisma.DebroussaillementScalarFieldEnum = {
   pk: 'pk'
+};
+
+exports.Prisma.Prelevements_eauScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  libelle_sous_champ: 'libelle_sous_champ',
+  A2020: 'A2020',
+  A2019: 'A2019',
+  A2018: 'A2018',
+  A2017: 'A2017',
+  A2016: 'A2016',
+  A2015: 'A2015',
+  A2014: 'A2014',
+  A2013: 'A2013',
+  A2012: 'A2012',
+  A2011: 'A2011',
+  A2010: 'A2010',
+  A2009: 'A2009',
+  A2008: 'A2008',
+  sous_champ: 'sous_champ'
 };
 
 exports.Prisma.Pg_stat_statementsScalarFieldEnum = {
@@ -1070,6 +1104,7 @@ exports.Prisma.ModelName = {
   table_commune: 'table_commune',
   spatial_ref_sys: 'spatial_ref_sys',
   debroussaillement: 'debroussaillement',
+  prelevements_eau: 'prelevements_eau',
   pg_stat_statements: 'pg_stat_statements',
   pg_stat_statements_info: 'pg_stat_statements_info',
   geography_columns: 'geography_columns',

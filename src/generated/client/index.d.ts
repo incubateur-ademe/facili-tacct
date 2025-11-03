@@ -204,6 +204,11 @@ export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPa
  */
 export type debroussaillement = $Result.DefaultSelection<Prisma.$debroussaillementPayload>
 /**
+ * Model prelevements_eau
+ * 
+ */
+export type prelevements_eau = $Result.DefaultSelection<Prisma.$prelevements_eauPayload>
+/**
  * Model pg_stat_statements
  * 
  */
@@ -723,6 +728,16 @@ export class PrismaClient<
   get debroussaillement(): Prisma.debroussaillementDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.prelevements_eau`: Exposes CRUD operations for the **prelevements_eau** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Prelevements_eaus
+    * const prelevements_eaus = await prisma.prelevements_eau.findMany()
+    * ```
+    */
+  get prelevements_eau(): Prisma.prelevements_eauDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.pg_stat_statements`: Exposes CRUD operations for the **pg_stat_statements** model.
     * Example usage:
     * ```ts
@@ -1240,6 +1255,7 @@ export namespace Prisma {
     table_commune: 'table_commune',
     spatial_ref_sys: 'spatial_ref_sys',
     debroussaillement: 'debroussaillement',
+    prelevements_eau: 'prelevements_eau',
     pg_stat_statements: 'pg_stat_statements',
     pg_stat_statements_info: 'pg_stat_statements_info',
     geography_columns: 'geography_columns',
@@ -1262,7 +1278,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "rga" | "surfaces_agricoles" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "sandbox_users" | "users" | "export_cours_d_eau" | "confort_thermique" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "ressources_consultees" | "thematique" | "surfaces_protegees" | "table_commune" | "spatial_ref_sys" | "debroussaillement" | "pg_stat_statements" | "pg_stat_statements_info" | "geography_columns" | "geometry_columns"
+      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "rga" | "surfaces_agricoles" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "sandbox_users" | "users" | "export_cours_d_eau" | "confort_thermique" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "ressources_consultees" | "thematique" | "surfaces_protegees" | "table_commune" | "spatial_ref_sys" | "debroussaillement" | "prelevements_eau" | "pg_stat_statements" | "pg_stat_statements_info" | "geography_columns" | "geometry_columns"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2474,6 +2490,18 @@ export namespace Prisma {
             args: Prisma.clc_territoiresFindManyArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_territoiresPayload>[]
           }
+          create: {
+            args: Prisma.clc_territoiresCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_territoiresPayload>
+          }
+          createMany: {
+            args: Prisma.clc_territoiresCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.clc_territoiresCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_territoiresPayload>[]
+          }
           delete: {
             args: Prisma.clc_territoiresDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_territoiresPayload>
@@ -2493,6 +2521,10 @@ export namespace Prisma {
           updateManyAndReturn: {
             args: Prisma.clc_territoiresUpdateManyAndReturnArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_territoiresPayload>[]
+          }
+          upsert: {
+            args: Prisma.clc_territoiresUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_territoiresPayload>
           }
           aggregate: {
             args: Prisma.Clc_territoiresAggregateArgs<ExtArgs>
@@ -4014,6 +4046,80 @@ export namespace Prisma {
           }
         }
       }
+      prelevements_eau: {
+        payload: Prisma.$prelevements_eauPayload<ExtArgs>
+        fields: Prisma.prelevements_eauFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.prelevements_eauFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$prelevements_eauPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.prelevements_eauFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$prelevements_eauPayload>
+          }
+          findFirst: {
+            args: Prisma.prelevements_eauFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$prelevements_eauPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.prelevements_eauFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$prelevements_eauPayload>
+          }
+          findMany: {
+            args: Prisma.prelevements_eauFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$prelevements_eauPayload>[]
+          }
+          create: {
+            args: Prisma.prelevements_eauCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$prelevements_eauPayload>
+          }
+          createMany: {
+            args: Prisma.prelevements_eauCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.prelevements_eauCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$prelevements_eauPayload>[]
+          }
+          delete: {
+            args: Prisma.prelevements_eauDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$prelevements_eauPayload>
+          }
+          update: {
+            args: Prisma.prelevements_eauUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$prelevements_eauPayload>
+          }
+          deleteMany: {
+            args: Prisma.prelevements_eauDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.prelevements_eauUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.prelevements_eauUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$prelevements_eauPayload>[]
+          }
+          upsert: {
+            args: Prisma.prelevements_eauUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$prelevements_eauPayload>
+          }
+          aggregate: {
+            args: Prisma.Prelevements_eauAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePrelevements_eau>
+          }
+          groupBy: {
+            args: Prisma.prelevements_eauGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Prelevements_eauGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.prelevements_eauCountArgs<ExtArgs>
+            result: $Utils.Optional<Prelevements_eauCountAggregateOutputType> | number
+          }
+        }
+      }
       pg_stat_statements: {
         payload: Prisma.$pg_stat_statementsPayload<ExtArgs>
         fields: Prisma.pg_stat_statementsFieldRefs
@@ -4268,6 +4374,7 @@ export namespace Prisma {
     table_commune?: table_communeOmit
     spatial_ref_sys?: spatial_ref_sysOmit
     debroussaillement?: debroussaillementOmit
+    prelevements_eau?: prelevements_eauOmit
     pg_stat_statements?: pg_stat_statementsOmit
     pg_stat_statements_info?: pg_stat_statements_infoOmit
     geography_columns?: geography_columnsOmit
@@ -10570,11 +10677,11 @@ export namespace Prisma {
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    nom: string
+    nom: string | null
     structure_porteuse: string | null
     type_de_structure_porteuse: string | null
     annee_debut: number | null
-    avancement: string
+    avancement: string | null
     _count: Atlas_biodiversiteCountAggregateOutputType | null
     _avg: Atlas_biodiversiteAvgAggregateOutputType | null
     _sum: Atlas_biodiversiteSumAggregateOutputType | null
@@ -10694,11 +10801,11 @@ export namespace Prisma {
       libelle_petr: string | null
       code_pnr: string | null
       libelle_pnr: string | null
-      nom: string
+      nom: string | null
       structure_porteuse: string | null
       type_de_structure_porteuse: string | null
       annee_debut: number | null
-      avancement: string
+      avancement: string | null
     }, ExtArgs["result"]["atlas_biodiversite"]>
     composites: {}
   }
@@ -13935,112 +14042,112 @@ export namespace Prisma {
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    naf09art10: number
-    art09act10: number
-    art09hab10: number
-    art09mix10: number
-    art09rou10: number
-    art09fer10: number
-    art09inc10: number
-    naf10art11: number
-    art10act11: number
-    art10hab11: number
-    art10mix11: number
-    art10rou11: number
-    art10fer11: number
-    art10inc11: number
-    naf11art12: number
-    art11act12: number
-    art11hab12: number
-    art11mix12: number
-    art11rou12: number
-    art11fer12: number
-    art11inc12: number
-    naf12art13: number
-    art12act13: number
-    art12hab13: number
-    art12mix13: number
-    art12rou13: number
-    art12fer13: number
-    art12inc13: number
-    naf13art14: number
-    art13act14: number
-    art13hab14: number
-    art13mix14: number
-    art13rou14: number
-    art13fer14: number
-    art13inc14: number
-    naf14art15: number
-    art14act15: number
-    art14hab15: number
-    art14mix15: number
-    art14rou15: number
-    art14fer15: number
-    art14inc15: number
-    naf15art16: number
-    art15act16: number
-    art15hab16: number
-    art15mix16: number
-    art15rou16: number
-    art15fer16: number
-    art15inc16: number
-    naf16art17: number
-    art16act17: number
-    art16hab17: number
-    art16mix17: number
-    art16rou17: number
-    art16fer17: number
-    art16inc17: number
-    naf17art18: number
-    art17act18: number
-    art17hab18: number
-    art17mix18: number
-    art17rou18: number
-    art17fer18: number
-    art17inc18: number
-    naf18art19: number
-    art18act19: number
-    art18hab19: number
-    art18mix19: number
-    art18rou19: number
-    art18fer19: number
-    art18inc19: number
-    naf19art20: number
-    art19act20: number
-    art19hab20: number
-    art19mix20: number
-    art19rou20: number
-    art19fer20: number
-    art19inc20: number
-    naf20art21: number
-    art20act21: number
-    art20hab21: number
-    art20mix21: number
-    art20rou21: number
-    art20fer21: number
-    art20inc21: number
-    naf21art22: number
-    art21act22: number
-    art21hab22: number
-    art21mix22: number
-    art21rou22: number
-    art21fer22: number
-    art21inc22: number
-    naf22art23: number
-    art22act23: number
-    art22hab23: number
-    art22mix23: number
-    art22rou23: number
-    art22fer23: number
-    art22inc23: number
-    naf09art23: number
-    art09act23: number
-    art09hab23: number
-    art09mix23: number
-    art09inc23: number
-    art09rou23: number
-    art09fer23: number
-    artcom0923: number
+    naf09art10: number | null
+    art09act10: number | null
+    art09hab10: number | null
+    art09mix10: number | null
+    art09rou10: number | null
+    art09fer10: number | null
+    art09inc10: number | null
+    naf10art11: number | null
+    art10act11: number | null
+    art10hab11: number | null
+    art10mix11: number | null
+    art10rou11: number | null
+    art10fer11: number | null
+    art10inc11: number | null
+    naf11art12: number | null
+    art11act12: number | null
+    art11hab12: number | null
+    art11mix12: number | null
+    art11rou12: number | null
+    art11fer12: number | null
+    art11inc12: number | null
+    naf12art13: number | null
+    art12act13: number | null
+    art12hab13: number | null
+    art12mix13: number | null
+    art12rou13: number | null
+    art12fer13: number | null
+    art12inc13: number | null
+    naf13art14: number | null
+    art13act14: number | null
+    art13hab14: number | null
+    art13mix14: number | null
+    art13rou14: number | null
+    art13fer14: number | null
+    art13inc14: number | null
+    naf14art15: number | null
+    art14act15: number | null
+    art14hab15: number | null
+    art14mix15: number | null
+    art14rou15: number | null
+    art14fer15: number | null
+    art14inc15: number | null
+    naf15art16: number | null
+    art15act16: number | null
+    art15hab16: number | null
+    art15mix16: number | null
+    art15rou16: number | null
+    art15fer16: number | null
+    art15inc16: number | null
+    naf16art17: number | null
+    art16act17: number | null
+    art16hab17: number | null
+    art16mix17: number | null
+    art16rou17: number | null
+    art16fer17: number | null
+    art16inc17: number | null
+    naf17art18: number | null
+    art17act18: number | null
+    art17hab18: number | null
+    art17mix18: number | null
+    art17rou18: number | null
+    art17fer18: number | null
+    art17inc18: number | null
+    naf18art19: number | null
+    art18act19: number | null
+    art18hab19: number | null
+    art18mix19: number | null
+    art18rou19: number | null
+    art18fer19: number | null
+    art18inc19: number | null
+    naf19art20: number | null
+    art19act20: number | null
+    art19hab20: number | null
+    art19mix20: number | null
+    art19rou20: number | null
+    art19fer20: number | null
+    art19inc20: number | null
+    naf20art21: number | null
+    art20act21: number | null
+    art20hab21: number | null
+    art20mix21: number | null
+    art20rou21: number | null
+    art20fer21: number | null
+    art20inc21: number | null
+    naf21art22: number | null
+    art21act22: number | null
+    art21hab22: number | null
+    art21mix22: number | null
+    art21rou22: number | null
+    art21fer22: number | null
+    art21inc22: number | null
+    naf22art23: number | null
+    art22act23: number | null
+    art22hab23: number | null
+    art22mix23: number | null
+    art22rou23: number | null
+    art22fer23: number | null
+    art22inc23: number | null
+    naf09art23: number | null
+    art09act23: number | null
+    art09hab23: number | null
+    art09mix23: number | null
+    art09inc23: number | null
+    art09rou23: number | null
+    art09fer23: number | null
+    artcom0923: number | null
     _count: Consommation_espaces_nafCountAggregateOutputType | null
     _avg: Consommation_espaces_nafAvgAggregateOutputType | null
     _sum: Consommation_espaces_nafSumAggregateOutputType | null
@@ -14564,112 +14671,112 @@ export namespace Prisma {
       libelle_petr: string | null
       code_pnr: string | null
       libelle_pnr: string | null
-      naf09art10: number
-      art09act10: number
-      art09hab10: number
-      art09mix10: number
-      art09rou10: number
-      art09fer10: number
-      art09inc10: number
-      naf10art11: number
-      art10act11: number
-      art10hab11: number
-      art10mix11: number
-      art10rou11: number
-      art10fer11: number
-      art10inc11: number
-      naf11art12: number
-      art11act12: number
-      art11hab12: number
-      art11mix12: number
-      art11rou12: number
-      art11fer12: number
-      art11inc12: number
-      naf12art13: number
-      art12act13: number
-      art12hab13: number
-      art12mix13: number
-      art12rou13: number
-      art12fer13: number
-      art12inc13: number
-      naf13art14: number
-      art13act14: number
-      art13hab14: number
-      art13mix14: number
-      art13rou14: number
-      art13fer14: number
-      art13inc14: number
-      naf14art15: number
-      art14act15: number
-      art14hab15: number
-      art14mix15: number
-      art14rou15: number
-      art14fer15: number
-      art14inc15: number
-      naf15art16: number
-      art15act16: number
-      art15hab16: number
-      art15mix16: number
-      art15rou16: number
-      art15fer16: number
-      art15inc16: number
-      naf16art17: number
-      art16act17: number
-      art16hab17: number
-      art16mix17: number
-      art16rou17: number
-      art16fer17: number
-      art16inc17: number
-      naf17art18: number
-      art17act18: number
-      art17hab18: number
-      art17mix18: number
-      art17rou18: number
-      art17fer18: number
-      art17inc18: number
-      naf18art19: number
-      art18act19: number
-      art18hab19: number
-      art18mix19: number
-      art18rou19: number
-      art18fer19: number
-      art18inc19: number
-      naf19art20: number
-      art19act20: number
-      art19hab20: number
-      art19mix20: number
-      art19rou20: number
-      art19fer20: number
-      art19inc20: number
-      naf20art21: number
-      art20act21: number
-      art20hab21: number
-      art20mix21: number
-      art20rou21: number
-      art20fer21: number
-      art20inc21: number
-      naf21art22: number
-      art21act22: number
-      art21hab22: number
-      art21mix22: number
-      art21rou22: number
-      art21fer22: number
-      art21inc22: number
-      naf22art23: number
-      art22act23: number
-      art22hab23: number
-      art22mix23: number
-      art22rou23: number
-      art22fer23: number
-      art22inc23: number
-      naf09art23: number
-      art09act23: number
-      art09hab23: number
-      art09mix23: number
-      art09inc23: number
-      art09rou23: number
-      art09fer23: number
-      artcom0923: number
+      naf09art10: number | null
+      art09act10: number | null
+      art09hab10: number | null
+      art09mix10: number | null
+      art09rou10: number | null
+      art09fer10: number | null
+      art09inc10: number | null
+      naf10art11: number | null
+      art10act11: number | null
+      art10hab11: number | null
+      art10mix11: number | null
+      art10rou11: number | null
+      art10fer11: number | null
+      art10inc11: number | null
+      naf11art12: number | null
+      art11act12: number | null
+      art11hab12: number | null
+      art11mix12: number | null
+      art11rou12: number | null
+      art11fer12: number | null
+      art11inc12: number | null
+      naf12art13: number | null
+      art12act13: number | null
+      art12hab13: number | null
+      art12mix13: number | null
+      art12rou13: number | null
+      art12fer13: number | null
+      art12inc13: number | null
+      naf13art14: number | null
+      art13act14: number | null
+      art13hab14: number | null
+      art13mix14: number | null
+      art13rou14: number | null
+      art13fer14: number | null
+      art13inc14: number | null
+      naf14art15: number | null
+      art14act15: number | null
+      art14hab15: number | null
+      art14mix15: number | null
+      art14rou15: number | null
+      art14fer15: number | null
+      art14inc15: number | null
+      naf15art16: number | null
+      art15act16: number | null
+      art15hab16: number | null
+      art15mix16: number | null
+      art15rou16: number | null
+      art15fer16: number | null
+      art15inc16: number | null
+      naf16art17: number | null
+      art16act17: number | null
+      art16hab17: number | null
+      art16mix17: number | null
+      art16rou17: number | null
+      art16fer17: number | null
+      art16inc17: number | null
+      naf17art18: number | null
+      art17act18: number | null
+      art17hab18: number | null
+      art17mix18: number | null
+      art17rou18: number | null
+      art17fer18: number | null
+      art17inc18: number | null
+      naf18art19: number | null
+      art18act19: number | null
+      art18hab19: number | null
+      art18mix19: number | null
+      art18rou19: number | null
+      art18fer19: number | null
+      art18inc19: number | null
+      naf19art20: number | null
+      art19act20: number | null
+      art19hab20: number | null
+      art19mix20: number | null
+      art19rou20: number | null
+      art19fer20: number | null
+      art19inc20: number | null
+      naf20art21: number | null
+      art20act21: number | null
+      art20hab21: number | null
+      art20mix21: number | null
+      art20rou21: number | null
+      art20fer21: number | null
+      art20inc21: number | null
+      naf21art22: number | null
+      art21act22: number | null
+      art21hab22: number | null
+      art21mix22: number | null
+      art21rou22: number | null
+      art21fer22: number | null
+      art21inc22: number | null
+      naf22art23: number | null
+      art22act23: number | null
+      art22hab23: number | null
+      art22mix23: number | null
+      art22rou23: number | null
+      art22fer23: number | null
+      art22inc23: number | null
+      naf09art23: number | null
+      art09act23: number | null
+      art09hab23: number | null
+      art09mix23: number | null
+      art09inc23: number | null
+      art09rou23: number | null
+      art09fer23: number | null
+      artcom0923: number | null
     }, ExtArgs["result"]["consommation_espaces_naf"]>
     composites: {}
   }
@@ -15634,8 +15741,8 @@ export namespace Prisma {
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    nature: string | null
     annee: number | null
+    nature: string | null
     surface_parcourue: number | null
     surface_foret: number | null
     surface_maquis_garrigues: number | null
@@ -15661,8 +15768,8 @@ export namespace Prisma {
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    nature: string | null
     annee: number | null
+    nature: string | null
     surface_parcourue: number | null
     surface_foret: number | null
     surface_maquis_garrigues: number | null
@@ -15688,8 +15795,8 @@ export namespace Prisma {
     libelle_petr: number
     code_pnr: number
     libelle_pnr: number
-    nature: number
     annee: number
+    nature: number
     surface_parcourue: number
     surface_foret: number
     surface_maquis_garrigues: number
@@ -15749,8 +15856,8 @@ export namespace Prisma {
     libelle_petr?: true
     code_pnr?: true
     libelle_pnr?: true
-    nature?: true
     annee?: true
+    nature?: true
     surface_parcourue?: true
     surface_foret?: true
     surface_maquis_garrigues?: true
@@ -15776,8 +15883,8 @@ export namespace Prisma {
     libelle_petr?: true
     code_pnr?: true
     libelle_pnr?: true
-    nature?: true
     annee?: true
+    nature?: true
     surface_parcourue?: true
     surface_foret?: true
     surface_maquis_garrigues?: true
@@ -15803,8 +15910,8 @@ export namespace Prisma {
     libelle_petr?: true
     code_pnr?: true
     libelle_pnr?: true
-    nature?: true
     annee?: true
+    nature?: true
     surface_parcourue?: true
     surface_foret?: true
     surface_maquis_garrigues?: true
@@ -15917,8 +16024,8 @@ export namespace Prisma {
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    nature: string | null
     annee: number
+    nature: string | null
     surface_parcourue: number
     surface_foret: number | null
     surface_maquis_garrigues: number | null
@@ -15963,8 +16070,8 @@ export namespace Prisma {
     libelle_petr?: boolean
     code_pnr?: boolean
     libelle_pnr?: boolean
-    nature?: boolean
     annee?: boolean
+    nature?: boolean
     surface_parcourue?: boolean
     surface_foret?: boolean
     surface_maquis_garrigues?: boolean
@@ -15990,8 +16097,8 @@ export namespace Prisma {
     libelle_petr?: boolean
     code_pnr?: boolean
     libelle_pnr?: boolean
-    nature?: boolean
     annee?: boolean
+    nature?: boolean
     surface_parcourue?: boolean
     surface_foret?: boolean
     surface_maquis_garrigues?: boolean
@@ -16017,8 +16124,8 @@ export namespace Prisma {
     libelle_petr?: boolean
     code_pnr?: boolean
     libelle_pnr?: boolean
-    nature?: boolean
     annee?: boolean
+    nature?: boolean
     surface_parcourue?: boolean
     surface_foret?: boolean
     surface_maquis_garrigues?: boolean
@@ -16044,8 +16151,8 @@ export namespace Prisma {
     libelle_petr?: boolean
     code_pnr?: boolean
     libelle_pnr?: boolean
-    nature?: boolean
     annee?: boolean
+    nature?: boolean
     surface_parcourue?: boolean
     surface_foret?: boolean
     surface_maquis_garrigues?: boolean
@@ -16058,7 +16165,7 @@ export namespace Prisma {
     autres_surfaces?: boolean
   }
 
-  export type feux_foretOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nature" | "annee" | "surface_parcourue" | "surface_foret" | "surface_maquis_garrigues" | "autres_surfaces_naturelles_hors_foret" | "surfaces_agricoles" | "surfaces_non_boisees" | "surfaces_non_boisees_artificialisees" | "surfaces_non_boisees_naturelles" | "surface_autres_terres_boisees" | "autres_surfaces", ExtArgs["result"]["feux_foret"]>
+  export type feux_foretOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "annee" | "nature" | "surface_parcourue" | "surface_foret" | "surface_maquis_garrigues" | "autres_surfaces_naturelles_hors_foret" | "surfaces_agricoles" | "surfaces_non_boisees" | "surfaces_non_boisees_artificialisees" | "surfaces_non_boisees_naturelles" | "surface_autres_terres_boisees" | "autres_surfaces", ExtArgs["result"]["feux_foret"]>
 
   export type $feux_foretPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "feux_foret"
@@ -16076,8 +16183,8 @@ export namespace Prisma {
       libelle_petr: string | null
       code_pnr: string | null
       libelle_pnr: string | null
-      nature: string | null
       annee: number
+      nature: string | null
       surface_parcourue: number
       surface_foret: number | null
       surface_maquis_garrigues: number | null
@@ -16523,8 +16630,8 @@ export namespace Prisma {
     readonly libelle_petr: FieldRef<"feux_foret", 'String'>
     readonly code_pnr: FieldRef<"feux_foret", 'String'>
     readonly libelle_pnr: FieldRef<"feux_foret", 'String'>
-    readonly nature: FieldRef<"feux_foret", 'String'>
     readonly annee: FieldRef<"feux_foret", 'Float'>
+    readonly nature: FieldRef<"feux_foret", 'String'>
     readonly surface_parcourue: FieldRef<"feux_foret", 'Float'>
     readonly surface_foret: FieldRef<"feux_foret", 'Float'>
     readonly surface_maquis_garrigues: FieldRef<"feux_foret", 'Float'>
@@ -26846,7 +26953,7 @@ export namespace Prisma {
 
   export type Clc_territoiresSumAggregateOutputType = {
     pk: number | null
-    region: number | null
+    region: bigint | null
   }
 
   export type Clc_territoiresMinAggregateOutputType = {
@@ -26857,7 +26964,7 @@ export namespace Prisma {
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: number | null
+    region: bigint | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -26873,7 +26980,7 @@ export namespace Prisma {
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: number | null
+    region: bigint | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -27046,18 +27153,18 @@ export namespace Prisma {
 
   export type Clc_territoiresGroupByOutputType = {
     pk: number
-    code_geographique: string
-    libelle_geographique: string
-    epci: string
-    libelle_epci: string
-    departement: string
-    libelle_departement: string
-    region: number
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: bigint | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    legend: string
+    legend: string | null
     _count: Clc_territoiresCountAggregateOutputType | null
     _avg: Clc_territoiresAvgAggregateOutputType | null
     _sum: Clc_territoiresSumAggregateOutputType | null
@@ -27095,6 +27202,21 @@ export namespace Prisma {
     legend?: boolean
   }, ExtArgs["result"]["clc_territoires"]>
 
+  export type clc_territoiresSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    legend?: boolean
+  }, ExtArgs["result"]["clc_territoires"]>
 
   export type clc_territoiresSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     pk?: boolean
@@ -27135,18 +27257,18 @@ export namespace Prisma {
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       pk: number
-      code_geographique: string
-      libelle_geographique: string
-      epci: string
-      libelle_epci: string
-      departement: string
-      libelle_departement: string
-      region: number
+      code_geographique: string | null
+      libelle_geographique: string | null
+      epci: string | null
+      libelle_epci: string | null
+      departement: string | null
+      libelle_departement: string | null
+      region: bigint | null
       ept: string | null
       libelle_petr: string | null
       code_pnr: string | null
       libelle_pnr: string | null
-      legend: string
+      legend: string | null
     }, ExtArgs["result"]["clc_territoires"]>
     composites: {}
   }
@@ -27235,6 +27357,58 @@ export namespace Prisma {
      * 
      */
     findMany<T extends clc_territoiresFindManyArgs>(args?: SelectSubset<T, clc_territoiresFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_territoiresPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Clc_territoires.
+     * @param {clc_territoiresCreateArgs} args - Arguments to create a Clc_territoires.
+     * @example
+     * // Create one Clc_territoires
+     * const Clc_territoires = await prisma.clc_territoires.create({
+     *   data: {
+     *     // ... data to create a Clc_territoires
+     *   }
+     * })
+     * 
+     */
+    create<T extends clc_territoiresCreateArgs>(args: SelectSubset<T, clc_territoiresCreateArgs<ExtArgs>>): Prisma__clc_territoiresClient<$Result.GetResult<Prisma.$clc_territoiresPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Clc_territoires.
+     * @param {clc_territoiresCreateManyArgs} args - Arguments to create many Clc_territoires.
+     * @example
+     * // Create many Clc_territoires
+     * const clc_territoires = await prisma.clc_territoires.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends clc_territoiresCreateManyArgs>(args?: SelectSubset<T, clc_territoiresCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Clc_territoires and returns the data saved in the database.
+     * @param {clc_territoiresCreateManyAndReturnArgs} args - Arguments to create many Clc_territoires.
+     * @example
+     * // Create many Clc_territoires
+     * const clc_territoires = await prisma.clc_territoires.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Clc_territoires and only return the `pk`
+     * const clc_territoiresWithPkOnly = await prisma.clc_territoires.createManyAndReturn({
+     *   select: { pk: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends clc_territoiresCreateManyAndReturnArgs>(args?: SelectSubset<T, clc_territoiresCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_territoiresPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Delete a Clc_territoires.
@@ -27329,6 +27503,25 @@ export namespace Prisma {
      * 
      */
     updateManyAndReturn<T extends clc_territoiresUpdateManyAndReturnArgs>(args: SelectSubset<T, clc_territoiresUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_territoiresPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Clc_territoires.
+     * @param {clc_territoiresUpsertArgs} args - Arguments to update or create a Clc_territoires.
+     * @example
+     * // Update or create a Clc_territoires
+     * const clc_territoires = await prisma.clc_territoires.upsert({
+     *   create: {
+     *     // ... data to create a Clc_territoires
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Clc_territoires we want to update
+     *   }
+     * })
+     */
+    upsert<T extends clc_territoiresUpsertArgs>(args: SelectSubset<T, clc_territoiresUpsertArgs<ExtArgs>>): Prisma__clc_territoiresClient<$Result.GetResult<Prisma.$clc_territoiresPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
@@ -27506,7 +27699,7 @@ export namespace Prisma {
     readonly libelle_epci: FieldRef<"clc_territoires", 'String'>
     readonly departement: FieldRef<"clc_territoires", 'String'>
     readonly libelle_departement: FieldRef<"clc_territoires", 'String'>
-    readonly region: FieldRef<"clc_territoires", 'Int'>
+    readonly region: FieldRef<"clc_territoires", 'BigInt'>
     readonly ept: FieldRef<"clc_territoires", 'String'>
     readonly libelle_petr: FieldRef<"clc_territoires", 'String'>
     readonly code_pnr: FieldRef<"clc_territoires", 'String'>
@@ -27692,6 +27885,54 @@ export namespace Prisma {
   }
 
   /**
+   * clc_territoires create
+   */
+  export type clc_territoiresCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_territoires
+     */
+    select?: clc_territoiresSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_territoires
+     */
+    omit?: clc_territoiresOmit<ExtArgs> | null
+    /**
+     * The data needed to create a clc_territoires.
+     */
+    data?: XOR<clc_territoiresCreateInput, clc_territoiresUncheckedCreateInput>
+  }
+
+  /**
+   * clc_territoires createMany
+   */
+  export type clc_territoiresCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many clc_territoires.
+     */
+    data: clc_territoiresCreateManyInput | clc_territoiresCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * clc_territoires createManyAndReturn
+   */
+  export type clc_territoiresCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_territoires
+     */
+    select?: clc_territoiresSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_territoires
+     */
+    omit?: clc_territoiresOmit<ExtArgs> | null
+    /**
+     * The data used to create many clc_territoires.
+     */
+    data: clc_territoiresCreateManyInput | clc_territoiresCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
    * clc_territoires update
    */
   export type clc_territoiresUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -27755,6 +27996,32 @@ export namespace Prisma {
      * Limit how many clc_territoires to update.
      */
     limit?: number
+  }
+
+  /**
+   * clc_territoires upsert
+   */
+  export type clc_territoiresUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_territoires
+     */
+    select?: clc_territoiresSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_territoires
+     */
+    omit?: clc_territoiresOmit<ExtArgs> | null
+    /**
+     * The filter to search for the clc_territoires to update in case it exists.
+     */
+    where: clc_territoiresWhereUniqueInput
+    /**
+     * In case the clc_territoires found by the `where` argument doesn't exist, create a new clc_territoires with this data.
+     */
+    create: XOR<clc_territoiresCreateInput, clc_territoiresUncheckedCreateInput>
+    /**
+     * In case the clc_territoires was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<clc_territoiresUpdateInput, clc_territoiresUncheckedUpdateInput>
   }
 
   /**
@@ -47717,46 +47984,54 @@ export namespace Prisma {
   }
 
   export type Table_communeSumAggregateOutputType = {
-    index: number | null
-    region: number | null
+    index: bigint | null
+    region: bigint | null
   }
 
   export type Table_communeMinAggregateOutputType = {
-    index: number | null
+    index: bigint | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: number | null
+    region: bigint | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    type_touristique: string | null
     atlas_biodiversite_nom: string | null
     atlas_biodiversite_annee_debut: string | null
     atlas_biodiversite_avancement: string | null
+    type_touristique: string | null
+    otex_12_postes: string | null
+    part_irr_sau_2020: string | null
+    agriculture_part_over_55: string | null
+    couverture_lcz: string | null
   }
 
   export type Table_communeMaxAggregateOutputType = {
-    index: number | null
+    index: bigint | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: number | null
+    region: bigint | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    type_touristique: string | null
     atlas_biodiversite_nom: string | null
     atlas_biodiversite_annee_debut: string | null
     atlas_biodiversite_avancement: string | null
+    type_touristique: string | null
+    otex_12_postes: string | null
+    part_irr_sau_2020: string | null
+    agriculture_part_over_55: string | null
+    couverture_lcz: string | null
   }
 
   export type Table_communeCountAggregateOutputType = {
@@ -47772,10 +48047,14 @@ export namespace Prisma {
     libelle_petr: number
     code_pnr: number
     libelle_pnr: number
-    type_touristique: number
     atlas_biodiversite_nom: number
     atlas_biodiversite_annee_debut: number
     atlas_biodiversite_avancement: number
+    type_touristique: number
+    otex_12_postes: number
+    part_irr_sau_2020: number
+    agriculture_part_over_55: number
+    couverture_lcz: number
     _all: number
   }
 
@@ -47803,10 +48082,14 @@ export namespace Prisma {
     libelle_petr?: true
     code_pnr?: true
     libelle_pnr?: true
-    type_touristique?: true
     atlas_biodiversite_nom?: true
     atlas_biodiversite_annee_debut?: true
     atlas_biodiversite_avancement?: true
+    type_touristique?: true
+    otex_12_postes?: true
+    part_irr_sau_2020?: true
+    agriculture_part_over_55?: true
+    couverture_lcz?: true
   }
 
   export type Table_communeMaxAggregateInputType = {
@@ -47822,10 +48105,14 @@ export namespace Prisma {
     libelle_petr?: true
     code_pnr?: true
     libelle_pnr?: true
-    type_touristique?: true
     atlas_biodiversite_nom?: true
     atlas_biodiversite_annee_debut?: true
     atlas_biodiversite_avancement?: true
+    type_touristique?: true
+    otex_12_postes?: true
+    part_irr_sau_2020?: true
+    agriculture_part_over_55?: true
+    couverture_lcz?: true
   }
 
   export type Table_communeCountAggregateInputType = {
@@ -47841,10 +48128,14 @@ export namespace Prisma {
     libelle_petr?: true
     code_pnr?: true
     libelle_pnr?: true
-    type_touristique?: true
     atlas_biodiversite_nom?: true
     atlas_biodiversite_annee_debut?: true
     atlas_biodiversite_avancement?: true
+    type_touristique?: true
+    otex_12_postes?: true
+    part_irr_sau_2020?: true
+    agriculture_part_over_55?: true
+    couverture_lcz?: true
     _all?: true
   }
 
@@ -47935,22 +48226,26 @@ export namespace Prisma {
   }
 
   export type Table_communeGroupByOutputType = {
-    index: number
+    index: bigint
     code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: number
+    region: bigint
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    type_touristique: string | null
     atlas_biodiversite_nom: string | null
     atlas_biodiversite_annee_debut: string | null
     atlas_biodiversite_avancement: string | null
+    type_touristique: string | null
+    otex_12_postes: string | null
+    part_irr_sau_2020: string | null
+    agriculture_part_over_55: string | null
+    couverture_lcz: string | null
     _count: Table_communeCountAggregateOutputType | null
     _avg: Table_communeAvgAggregateOutputType | null
     _sum: Table_communeSumAggregateOutputType | null
@@ -47985,10 +48280,14 @@ export namespace Prisma {
     libelle_petr?: boolean
     code_pnr?: boolean
     libelle_pnr?: boolean
-    type_touristique?: boolean
     atlas_biodiversite_nom?: boolean
     atlas_biodiversite_annee_debut?: boolean
     atlas_biodiversite_avancement?: boolean
+    type_touristique?: boolean
+    otex_12_postes?: boolean
+    part_irr_sau_2020?: boolean
+    agriculture_part_over_55?: boolean
+    couverture_lcz?: boolean
   }, ExtArgs["result"]["table_commune"]>
 
   export type table_communeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -48004,10 +48303,14 @@ export namespace Prisma {
     libelle_petr?: boolean
     code_pnr?: boolean
     libelle_pnr?: boolean
-    type_touristique?: boolean
     atlas_biodiversite_nom?: boolean
     atlas_biodiversite_annee_debut?: boolean
     atlas_biodiversite_avancement?: boolean
+    type_touristique?: boolean
+    otex_12_postes?: boolean
+    part_irr_sau_2020?: boolean
+    agriculture_part_over_55?: boolean
+    couverture_lcz?: boolean
   }, ExtArgs["result"]["table_commune"]>
 
   export type table_communeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -48023,10 +48326,14 @@ export namespace Prisma {
     libelle_petr?: boolean
     code_pnr?: boolean
     libelle_pnr?: boolean
-    type_touristique?: boolean
     atlas_biodiversite_nom?: boolean
     atlas_biodiversite_annee_debut?: boolean
     atlas_biodiversite_avancement?: boolean
+    type_touristique?: boolean
+    otex_12_postes?: boolean
+    part_irr_sau_2020?: boolean
+    agriculture_part_over_55?: boolean
+    couverture_lcz?: boolean
   }, ExtArgs["result"]["table_commune"]>
 
   export type table_communeSelectScalar = {
@@ -48042,34 +48349,42 @@ export namespace Prisma {
     libelle_petr?: boolean
     code_pnr?: boolean
     libelle_pnr?: boolean
-    type_touristique?: boolean
     atlas_biodiversite_nom?: boolean
     atlas_biodiversite_annee_debut?: boolean
     atlas_biodiversite_avancement?: boolean
+    type_touristique?: boolean
+    otex_12_postes?: boolean
+    part_irr_sau_2020?: boolean
+    agriculture_part_over_55?: boolean
+    couverture_lcz?: boolean
   }
 
-  export type table_communeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "type_touristique" | "atlas_biodiversite_nom" | "atlas_biodiversite_annee_debut" | "atlas_biodiversite_avancement", ExtArgs["result"]["table_commune"]>
+  export type table_communeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "atlas_biodiversite_nom" | "atlas_biodiversite_annee_debut" | "atlas_biodiversite_avancement" | "type_touristique" | "otex_12_postes" | "part_irr_sau_2020" | "agriculture_part_over_55" | "couverture_lcz", ExtArgs["result"]["table_commune"]>
 
   export type $table_communePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "table_commune"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: number
+      index: bigint
       code_geographique: string
       libelle_geographique: string
       epci: string
       libelle_epci: string
       departement: string
       libelle_departement: string
-      region: number
+      region: bigint
       ept: string | null
       libelle_petr: string | null
       code_pnr: string | null
       libelle_pnr: string | null
-      type_touristique: string | null
       atlas_biodiversite_nom: string | null
       atlas_biodiversite_annee_debut: string | null
       atlas_biodiversite_avancement: string | null
+      type_touristique: string | null
+      otex_12_postes: string | null
+      part_irr_sau_2020: string | null
+      agriculture_part_over_55: string | null
+      couverture_lcz: string | null
     }, ExtArgs["result"]["table_commune"]>
     composites: {}
   }
@@ -48493,22 +48808,26 @@ export namespace Prisma {
    * Fields of the table_commune model
    */
   interface table_communeFieldRefs {
-    readonly index: FieldRef<"table_commune", 'Int'>
+    readonly index: FieldRef<"table_commune", 'BigInt'>
     readonly code_geographique: FieldRef<"table_commune", 'String'>
     readonly libelle_geographique: FieldRef<"table_commune", 'String'>
     readonly epci: FieldRef<"table_commune", 'String'>
     readonly libelle_epci: FieldRef<"table_commune", 'String'>
     readonly departement: FieldRef<"table_commune", 'String'>
     readonly libelle_departement: FieldRef<"table_commune", 'String'>
-    readonly region: FieldRef<"table_commune", 'Int'>
+    readonly region: FieldRef<"table_commune", 'BigInt'>
     readonly ept: FieldRef<"table_commune", 'String'>
     readonly libelle_petr: FieldRef<"table_commune", 'String'>
     readonly code_pnr: FieldRef<"table_commune", 'String'>
     readonly libelle_pnr: FieldRef<"table_commune", 'String'>
-    readonly type_touristique: FieldRef<"table_commune", 'String'>
     readonly atlas_biodiversite_nom: FieldRef<"table_commune", 'String'>
     readonly atlas_biodiversite_annee_debut: FieldRef<"table_commune", 'String'>
     readonly atlas_biodiversite_avancement: FieldRef<"table_commune", 'String'>
+    readonly type_touristique: FieldRef<"table_commune", 'String'>
+    readonly otex_12_postes: FieldRef<"table_commune", 'String'>
+    readonly part_irr_sau_2020: FieldRef<"table_commune", 'String'>
+    readonly agriculture_part_over_55: FieldRef<"table_commune", 'String'>
+    readonly couverture_lcz: FieldRef<"table_commune", 'String'>
   }
     
 
@@ -50882,6 +51201,1325 @@ export namespace Prisma {
      * Omit specific fields from the debroussaillement
      */
     omit?: debroussaillementOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model prelevements_eau
+   */
+
+  export type AggregatePrelevements_eau = {
+    _count: Prelevements_eauCountAggregateOutputType | null
+    _avg: Prelevements_eauAvgAggregateOutputType | null
+    _sum: Prelevements_eauSumAggregateOutputType | null
+    _min: Prelevements_eauMinAggregateOutputType | null
+    _max: Prelevements_eauMaxAggregateOutputType | null
+  }
+
+  export type Prelevements_eauAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+  }
+
+  export type Prelevements_eauSumAggregateOutputType = {
+    index: bigint | null
+    region: bigint | null
+  }
+
+  export type Prelevements_eauMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: bigint | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    libelle_sous_champ: string | null
+    A2020: string | null
+    A2019: string | null
+    A2018: string | null
+    A2017: string | null
+    A2016: string | null
+    A2015: string | null
+    A2014: string | null
+    A2013: string | null
+    A2012: string | null
+    A2011: string | null
+    A2010: string | null
+    A2009: string | null
+    A2008: string | null
+    sous_champ: string | null
+  }
+
+  export type Prelevements_eauMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: bigint | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    libelle_sous_champ: string | null
+    A2020: string | null
+    A2019: string | null
+    A2018: string | null
+    A2017: string | null
+    A2016: string | null
+    A2015: string | null
+    A2014: string | null
+    A2013: string | null
+    A2012: string | null
+    A2011: string | null
+    A2010: string | null
+    A2009: string | null
+    A2008: string | null
+    sous_champ: string | null
+  }
+
+  export type Prelevements_eauCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    libelle_sous_champ: number
+    A2020: number
+    A2019: number
+    A2018: number
+    A2017: number
+    A2016: number
+    A2015: number
+    A2014: number
+    A2013: number
+    A2012: number
+    A2011: number
+    A2010: number
+    A2009: number
+    A2008: number
+    sous_champ: number
+    _all: number
+  }
+
+
+  export type Prelevements_eauAvgAggregateInputType = {
+    index?: true
+    region?: true
+  }
+
+  export type Prelevements_eauSumAggregateInputType = {
+    index?: true
+    region?: true
+  }
+
+  export type Prelevements_eauMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    libelle_sous_champ?: true
+    A2020?: true
+    A2019?: true
+    A2018?: true
+    A2017?: true
+    A2016?: true
+    A2015?: true
+    A2014?: true
+    A2013?: true
+    A2012?: true
+    A2011?: true
+    A2010?: true
+    A2009?: true
+    A2008?: true
+    sous_champ?: true
+  }
+
+  export type Prelevements_eauMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    libelle_sous_champ?: true
+    A2020?: true
+    A2019?: true
+    A2018?: true
+    A2017?: true
+    A2016?: true
+    A2015?: true
+    A2014?: true
+    A2013?: true
+    A2012?: true
+    A2011?: true
+    A2010?: true
+    A2009?: true
+    A2008?: true
+    sous_champ?: true
+  }
+
+  export type Prelevements_eauCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    libelle_sous_champ?: true
+    A2020?: true
+    A2019?: true
+    A2018?: true
+    A2017?: true
+    A2016?: true
+    A2015?: true
+    A2014?: true
+    A2013?: true
+    A2012?: true
+    A2011?: true
+    A2010?: true
+    A2009?: true
+    A2008?: true
+    sous_champ?: true
+    _all?: true
+  }
+
+  export type Prelevements_eauAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which prelevements_eau to aggregate.
+     */
+    where?: prelevements_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of prelevements_eaus to fetch.
+     */
+    orderBy?: prelevements_eauOrderByWithRelationInput | prelevements_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: prelevements_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` prelevements_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` prelevements_eaus.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned prelevements_eaus
+    **/
+    _count?: true | Prelevements_eauCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Prelevements_eauAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Prelevements_eauSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Prelevements_eauMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Prelevements_eauMaxAggregateInputType
+  }
+
+  export type GetPrelevements_eauAggregateType<T extends Prelevements_eauAggregateArgs> = {
+        [P in keyof T & keyof AggregatePrelevements_eau]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePrelevements_eau[P]>
+      : GetScalarType<T[P], AggregatePrelevements_eau[P]>
+  }
+
+
+
+
+  export type prelevements_eauGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: prelevements_eauWhereInput
+    orderBy?: prelevements_eauOrderByWithAggregationInput | prelevements_eauOrderByWithAggregationInput[]
+    by: Prelevements_eauScalarFieldEnum[] | Prelevements_eauScalarFieldEnum
+    having?: prelevements_eauScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Prelevements_eauCountAggregateInputType | true
+    _avg?: Prelevements_eauAvgAggregateInputType
+    _sum?: Prelevements_eauSumAggregateInputType
+    _min?: Prelevements_eauMinAggregateInputType
+    _max?: Prelevements_eauMaxAggregateInputType
+  }
+
+  export type Prelevements_eauGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: bigint
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    libelle_sous_champ: string | null
+    A2020: string | null
+    A2019: string | null
+    A2018: string | null
+    A2017: string | null
+    A2016: string | null
+    A2015: string | null
+    A2014: string | null
+    A2013: string | null
+    A2012: string | null
+    A2011: string | null
+    A2010: string | null
+    A2009: string | null
+    A2008: string | null
+    sous_champ: string | null
+    _count: Prelevements_eauCountAggregateOutputType | null
+    _avg: Prelevements_eauAvgAggregateOutputType | null
+    _sum: Prelevements_eauSumAggregateOutputType | null
+    _min: Prelevements_eauMinAggregateOutputType | null
+    _max: Prelevements_eauMaxAggregateOutputType | null
+  }
+
+  type GetPrelevements_eauGroupByPayload<T extends prelevements_eauGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Prelevements_eauGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Prelevements_eauGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Prelevements_eauGroupByOutputType[P]>
+            : GetScalarType<T[P], Prelevements_eauGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type prelevements_eauSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    libelle_sous_champ?: boolean
+    A2020?: boolean
+    A2019?: boolean
+    A2018?: boolean
+    A2017?: boolean
+    A2016?: boolean
+    A2015?: boolean
+    A2014?: boolean
+    A2013?: boolean
+    A2012?: boolean
+    A2011?: boolean
+    A2010?: boolean
+    A2009?: boolean
+    A2008?: boolean
+    sous_champ?: boolean
+  }, ExtArgs["result"]["prelevements_eau"]>
+
+  export type prelevements_eauSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    libelle_sous_champ?: boolean
+    A2020?: boolean
+    A2019?: boolean
+    A2018?: boolean
+    A2017?: boolean
+    A2016?: boolean
+    A2015?: boolean
+    A2014?: boolean
+    A2013?: boolean
+    A2012?: boolean
+    A2011?: boolean
+    A2010?: boolean
+    A2009?: boolean
+    A2008?: boolean
+    sous_champ?: boolean
+  }, ExtArgs["result"]["prelevements_eau"]>
+
+  export type prelevements_eauSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    libelle_sous_champ?: boolean
+    A2020?: boolean
+    A2019?: boolean
+    A2018?: boolean
+    A2017?: boolean
+    A2016?: boolean
+    A2015?: boolean
+    A2014?: boolean
+    A2013?: boolean
+    A2012?: boolean
+    A2011?: boolean
+    A2010?: boolean
+    A2009?: boolean
+    A2008?: boolean
+    sous_champ?: boolean
+  }, ExtArgs["result"]["prelevements_eau"]>
+
+  export type prelevements_eauSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    libelle_sous_champ?: boolean
+    A2020?: boolean
+    A2019?: boolean
+    A2018?: boolean
+    A2017?: boolean
+    A2016?: boolean
+    A2015?: boolean
+    A2014?: boolean
+    A2013?: boolean
+    A2012?: boolean
+    A2011?: boolean
+    A2010?: boolean
+    A2009?: boolean
+    A2008?: boolean
+    sous_champ?: boolean
+  }
+
+  export type prelevements_eauOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "libelle_sous_champ" | "A2020" | "A2019" | "A2018" | "A2017" | "A2016" | "A2015" | "A2014" | "A2013" | "A2012" | "A2011" | "A2010" | "A2009" | "A2008" | "sous_champ", ExtArgs["result"]["prelevements_eau"]>
+
+  export type $prelevements_eauPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "prelevements_eau"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: bigint
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      libelle_sous_champ: string | null
+      A2020: string | null
+      A2019: string | null
+      A2018: string | null
+      A2017: string | null
+      A2016: string | null
+      A2015: string | null
+      A2014: string | null
+      A2013: string | null
+      A2012: string | null
+      A2011: string | null
+      A2010: string | null
+      A2009: string | null
+      A2008: string | null
+      sous_champ: string | null
+    }, ExtArgs["result"]["prelevements_eau"]>
+    composites: {}
+  }
+
+  type prelevements_eauGetPayload<S extends boolean | null | undefined | prelevements_eauDefaultArgs> = $Result.GetResult<Prisma.$prelevements_eauPayload, S>
+
+  type prelevements_eauCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<prelevements_eauFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Prelevements_eauCountAggregateInputType | true
+    }
+
+  export interface prelevements_eauDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['prelevements_eau'], meta: { name: 'prelevements_eau' } }
+    /**
+     * Find zero or one Prelevements_eau that matches the filter.
+     * @param {prelevements_eauFindUniqueArgs} args - Arguments to find a Prelevements_eau
+     * @example
+     * // Get one Prelevements_eau
+     * const prelevements_eau = await prisma.prelevements_eau.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends prelevements_eauFindUniqueArgs>(args: SelectSubset<T, prelevements_eauFindUniqueArgs<ExtArgs>>): Prisma__prelevements_eauClient<$Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Prelevements_eau that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {prelevements_eauFindUniqueOrThrowArgs} args - Arguments to find a Prelevements_eau
+     * @example
+     * // Get one Prelevements_eau
+     * const prelevements_eau = await prisma.prelevements_eau.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends prelevements_eauFindUniqueOrThrowArgs>(args: SelectSubset<T, prelevements_eauFindUniqueOrThrowArgs<ExtArgs>>): Prisma__prelevements_eauClient<$Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Prelevements_eau that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prelevements_eauFindFirstArgs} args - Arguments to find a Prelevements_eau
+     * @example
+     * // Get one Prelevements_eau
+     * const prelevements_eau = await prisma.prelevements_eau.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends prelevements_eauFindFirstArgs>(args?: SelectSubset<T, prelevements_eauFindFirstArgs<ExtArgs>>): Prisma__prelevements_eauClient<$Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Prelevements_eau that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prelevements_eauFindFirstOrThrowArgs} args - Arguments to find a Prelevements_eau
+     * @example
+     * // Get one Prelevements_eau
+     * const prelevements_eau = await prisma.prelevements_eau.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends prelevements_eauFindFirstOrThrowArgs>(args?: SelectSubset<T, prelevements_eauFindFirstOrThrowArgs<ExtArgs>>): Prisma__prelevements_eauClient<$Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Prelevements_eaus that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prelevements_eauFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Prelevements_eaus
+     * const prelevements_eaus = await prisma.prelevements_eau.findMany()
+     * 
+     * // Get first 10 Prelevements_eaus
+     * const prelevements_eaus = await prisma.prelevements_eau.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const prelevements_eauWithIndexOnly = await prisma.prelevements_eau.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends prelevements_eauFindManyArgs>(args?: SelectSubset<T, prelevements_eauFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Prelevements_eau.
+     * @param {prelevements_eauCreateArgs} args - Arguments to create a Prelevements_eau.
+     * @example
+     * // Create one Prelevements_eau
+     * const Prelevements_eau = await prisma.prelevements_eau.create({
+     *   data: {
+     *     // ... data to create a Prelevements_eau
+     *   }
+     * })
+     * 
+     */
+    create<T extends prelevements_eauCreateArgs>(args: SelectSubset<T, prelevements_eauCreateArgs<ExtArgs>>): Prisma__prelevements_eauClient<$Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Prelevements_eaus.
+     * @param {prelevements_eauCreateManyArgs} args - Arguments to create many Prelevements_eaus.
+     * @example
+     * // Create many Prelevements_eaus
+     * const prelevements_eau = await prisma.prelevements_eau.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends prelevements_eauCreateManyArgs>(args?: SelectSubset<T, prelevements_eauCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Prelevements_eaus and returns the data saved in the database.
+     * @param {prelevements_eauCreateManyAndReturnArgs} args - Arguments to create many Prelevements_eaus.
+     * @example
+     * // Create many Prelevements_eaus
+     * const prelevements_eau = await prisma.prelevements_eau.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Prelevements_eaus and only return the `index`
+     * const prelevements_eauWithIndexOnly = await prisma.prelevements_eau.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends prelevements_eauCreateManyAndReturnArgs>(args?: SelectSubset<T, prelevements_eauCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Prelevements_eau.
+     * @param {prelevements_eauDeleteArgs} args - Arguments to delete one Prelevements_eau.
+     * @example
+     * // Delete one Prelevements_eau
+     * const Prelevements_eau = await prisma.prelevements_eau.delete({
+     *   where: {
+     *     // ... filter to delete one Prelevements_eau
+     *   }
+     * })
+     * 
+     */
+    delete<T extends prelevements_eauDeleteArgs>(args: SelectSubset<T, prelevements_eauDeleteArgs<ExtArgs>>): Prisma__prelevements_eauClient<$Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Prelevements_eau.
+     * @param {prelevements_eauUpdateArgs} args - Arguments to update one Prelevements_eau.
+     * @example
+     * // Update one Prelevements_eau
+     * const prelevements_eau = await prisma.prelevements_eau.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends prelevements_eauUpdateArgs>(args: SelectSubset<T, prelevements_eauUpdateArgs<ExtArgs>>): Prisma__prelevements_eauClient<$Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Prelevements_eaus.
+     * @param {prelevements_eauDeleteManyArgs} args - Arguments to filter Prelevements_eaus to delete.
+     * @example
+     * // Delete a few Prelevements_eaus
+     * const { count } = await prisma.prelevements_eau.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends prelevements_eauDeleteManyArgs>(args?: SelectSubset<T, prelevements_eauDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Prelevements_eaus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prelevements_eauUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Prelevements_eaus
+     * const prelevements_eau = await prisma.prelevements_eau.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends prelevements_eauUpdateManyArgs>(args: SelectSubset<T, prelevements_eauUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Prelevements_eaus and returns the data updated in the database.
+     * @param {prelevements_eauUpdateManyAndReturnArgs} args - Arguments to update many Prelevements_eaus.
+     * @example
+     * // Update many Prelevements_eaus
+     * const prelevements_eau = await prisma.prelevements_eau.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Prelevements_eaus and only return the `index`
+     * const prelevements_eauWithIndexOnly = await prisma.prelevements_eau.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends prelevements_eauUpdateManyAndReturnArgs>(args: SelectSubset<T, prelevements_eauUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Prelevements_eau.
+     * @param {prelevements_eauUpsertArgs} args - Arguments to update or create a Prelevements_eau.
+     * @example
+     * // Update or create a Prelevements_eau
+     * const prelevements_eau = await prisma.prelevements_eau.upsert({
+     *   create: {
+     *     // ... data to create a Prelevements_eau
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Prelevements_eau we want to update
+     *   }
+     * })
+     */
+    upsert<T extends prelevements_eauUpsertArgs>(args: SelectSubset<T, prelevements_eauUpsertArgs<ExtArgs>>): Prisma__prelevements_eauClient<$Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Prelevements_eaus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prelevements_eauCountArgs} args - Arguments to filter Prelevements_eaus to count.
+     * @example
+     * // Count the number of Prelevements_eaus
+     * const count = await prisma.prelevements_eau.count({
+     *   where: {
+     *     // ... the filter for the Prelevements_eaus we want to count
+     *   }
+     * })
+    **/
+    count<T extends prelevements_eauCountArgs>(
+      args?: Subset<T, prelevements_eauCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Prelevements_eauCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Prelevements_eau.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Prelevements_eauAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Prelevements_eauAggregateArgs>(args: Subset<T, Prelevements_eauAggregateArgs>): Prisma.PrismaPromise<GetPrelevements_eauAggregateType<T>>
+
+    /**
+     * Group by Prelevements_eau.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {prelevements_eauGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends prelevements_eauGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: prelevements_eauGroupByArgs['orderBy'] }
+        : { orderBy?: prelevements_eauGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, prelevements_eauGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPrelevements_eauGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the prelevements_eau model
+   */
+  readonly fields: prelevements_eauFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for prelevements_eau.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__prelevements_eauClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the prelevements_eau model
+   */
+  interface prelevements_eauFieldRefs {
+    readonly index: FieldRef<"prelevements_eau", 'BigInt'>
+    readonly code_geographique: FieldRef<"prelevements_eau", 'String'>
+    readonly libelle_geographique: FieldRef<"prelevements_eau", 'String'>
+    readonly epci: FieldRef<"prelevements_eau", 'String'>
+    readonly libelle_epci: FieldRef<"prelevements_eau", 'String'>
+    readonly departement: FieldRef<"prelevements_eau", 'String'>
+    readonly libelle_departement: FieldRef<"prelevements_eau", 'String'>
+    readonly region: FieldRef<"prelevements_eau", 'BigInt'>
+    readonly ept: FieldRef<"prelevements_eau", 'String'>
+    readonly libelle_petr: FieldRef<"prelevements_eau", 'String'>
+    readonly code_pnr: FieldRef<"prelevements_eau", 'String'>
+    readonly libelle_pnr: FieldRef<"prelevements_eau", 'String'>
+    readonly libelle_sous_champ: FieldRef<"prelevements_eau", 'String'>
+    readonly A2020: FieldRef<"prelevements_eau", 'String'>
+    readonly A2019: FieldRef<"prelevements_eau", 'String'>
+    readonly A2018: FieldRef<"prelevements_eau", 'String'>
+    readonly A2017: FieldRef<"prelevements_eau", 'String'>
+    readonly A2016: FieldRef<"prelevements_eau", 'String'>
+    readonly A2015: FieldRef<"prelevements_eau", 'String'>
+    readonly A2014: FieldRef<"prelevements_eau", 'String'>
+    readonly A2013: FieldRef<"prelevements_eau", 'String'>
+    readonly A2012: FieldRef<"prelevements_eau", 'String'>
+    readonly A2011: FieldRef<"prelevements_eau", 'String'>
+    readonly A2010: FieldRef<"prelevements_eau", 'String'>
+    readonly A2009: FieldRef<"prelevements_eau", 'String'>
+    readonly A2008: FieldRef<"prelevements_eau", 'String'>
+    readonly sous_champ: FieldRef<"prelevements_eau", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * prelevements_eau findUnique
+   */
+  export type prelevements_eauFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the prelevements_eau
+     */
+    select?: prelevements_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the prelevements_eau
+     */
+    omit?: prelevements_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which prelevements_eau to fetch.
+     */
+    where: prelevements_eauWhereUniqueInput
+  }
+
+  /**
+   * prelevements_eau findUniqueOrThrow
+   */
+  export type prelevements_eauFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the prelevements_eau
+     */
+    select?: prelevements_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the prelevements_eau
+     */
+    omit?: prelevements_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which prelevements_eau to fetch.
+     */
+    where: prelevements_eauWhereUniqueInput
+  }
+
+  /**
+   * prelevements_eau findFirst
+   */
+  export type prelevements_eauFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the prelevements_eau
+     */
+    select?: prelevements_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the prelevements_eau
+     */
+    omit?: prelevements_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which prelevements_eau to fetch.
+     */
+    where?: prelevements_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of prelevements_eaus to fetch.
+     */
+    orderBy?: prelevements_eauOrderByWithRelationInput | prelevements_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for prelevements_eaus.
+     */
+    cursor?: prelevements_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` prelevements_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` prelevements_eaus.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of prelevements_eaus.
+     */
+    distinct?: Prelevements_eauScalarFieldEnum | Prelevements_eauScalarFieldEnum[]
+  }
+
+  /**
+   * prelevements_eau findFirstOrThrow
+   */
+  export type prelevements_eauFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the prelevements_eau
+     */
+    select?: prelevements_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the prelevements_eau
+     */
+    omit?: prelevements_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which prelevements_eau to fetch.
+     */
+    where?: prelevements_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of prelevements_eaus to fetch.
+     */
+    orderBy?: prelevements_eauOrderByWithRelationInput | prelevements_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for prelevements_eaus.
+     */
+    cursor?: prelevements_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` prelevements_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` prelevements_eaus.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of prelevements_eaus.
+     */
+    distinct?: Prelevements_eauScalarFieldEnum | Prelevements_eauScalarFieldEnum[]
+  }
+
+  /**
+   * prelevements_eau findMany
+   */
+  export type prelevements_eauFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the prelevements_eau
+     */
+    select?: prelevements_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the prelevements_eau
+     */
+    omit?: prelevements_eauOmit<ExtArgs> | null
+    /**
+     * Filter, which prelevements_eaus to fetch.
+     */
+    where?: prelevements_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of prelevements_eaus to fetch.
+     */
+    orderBy?: prelevements_eauOrderByWithRelationInput | prelevements_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing prelevements_eaus.
+     */
+    cursor?: prelevements_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` prelevements_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` prelevements_eaus.
+     */
+    skip?: number
+    distinct?: Prelevements_eauScalarFieldEnum | Prelevements_eauScalarFieldEnum[]
+  }
+
+  /**
+   * prelevements_eau create
+   */
+  export type prelevements_eauCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the prelevements_eau
+     */
+    select?: prelevements_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the prelevements_eau
+     */
+    omit?: prelevements_eauOmit<ExtArgs> | null
+    /**
+     * The data needed to create a prelevements_eau.
+     */
+    data: XOR<prelevements_eauCreateInput, prelevements_eauUncheckedCreateInput>
+  }
+
+  /**
+   * prelevements_eau createMany
+   */
+  export type prelevements_eauCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many prelevements_eaus.
+     */
+    data: prelevements_eauCreateManyInput | prelevements_eauCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * prelevements_eau createManyAndReturn
+   */
+  export type prelevements_eauCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the prelevements_eau
+     */
+    select?: prelevements_eauSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the prelevements_eau
+     */
+    omit?: prelevements_eauOmit<ExtArgs> | null
+    /**
+     * The data used to create many prelevements_eaus.
+     */
+    data: prelevements_eauCreateManyInput | prelevements_eauCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * prelevements_eau update
+   */
+  export type prelevements_eauUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the prelevements_eau
+     */
+    select?: prelevements_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the prelevements_eau
+     */
+    omit?: prelevements_eauOmit<ExtArgs> | null
+    /**
+     * The data needed to update a prelevements_eau.
+     */
+    data: XOR<prelevements_eauUpdateInput, prelevements_eauUncheckedUpdateInput>
+    /**
+     * Choose, which prelevements_eau to update.
+     */
+    where: prelevements_eauWhereUniqueInput
+  }
+
+  /**
+   * prelevements_eau updateMany
+   */
+  export type prelevements_eauUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update prelevements_eaus.
+     */
+    data: XOR<prelevements_eauUpdateManyMutationInput, prelevements_eauUncheckedUpdateManyInput>
+    /**
+     * Filter which prelevements_eaus to update
+     */
+    where?: prelevements_eauWhereInput
+    /**
+     * Limit how many prelevements_eaus to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * prelevements_eau updateManyAndReturn
+   */
+  export type prelevements_eauUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the prelevements_eau
+     */
+    select?: prelevements_eauSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the prelevements_eau
+     */
+    omit?: prelevements_eauOmit<ExtArgs> | null
+    /**
+     * The data used to update prelevements_eaus.
+     */
+    data: XOR<prelevements_eauUpdateManyMutationInput, prelevements_eauUncheckedUpdateManyInput>
+    /**
+     * Filter which prelevements_eaus to update
+     */
+    where?: prelevements_eauWhereInput
+    /**
+     * Limit how many prelevements_eaus to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * prelevements_eau upsert
+   */
+  export type prelevements_eauUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the prelevements_eau
+     */
+    select?: prelevements_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the prelevements_eau
+     */
+    omit?: prelevements_eauOmit<ExtArgs> | null
+    /**
+     * The filter to search for the prelevements_eau to update in case it exists.
+     */
+    where: prelevements_eauWhereUniqueInput
+    /**
+     * In case the prelevements_eau found by the `where` argument doesn't exist, create a new prelevements_eau with this data.
+     */
+    create: XOR<prelevements_eauCreateInput, prelevements_eauUncheckedCreateInput>
+    /**
+     * In case the prelevements_eau was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<prelevements_eauUpdateInput, prelevements_eauUncheckedUpdateInput>
+  }
+
+  /**
+   * prelevements_eau delete
+   */
+  export type prelevements_eauDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the prelevements_eau
+     */
+    select?: prelevements_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the prelevements_eau
+     */
+    omit?: prelevements_eauOmit<ExtArgs> | null
+    /**
+     * Filter which prelevements_eau to delete.
+     */
+    where: prelevements_eauWhereUniqueInput
+  }
+
+  /**
+   * prelevements_eau deleteMany
+   */
+  export type prelevements_eauDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which prelevements_eaus to delete
+     */
+    where?: prelevements_eauWhereInput
+    /**
+     * Limit how many prelevements_eaus to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * prelevements_eau without action
+   */
+  export type prelevements_eauDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the prelevements_eau
+     */
+    select?: prelevements_eauSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the prelevements_eau
+     */
+    omit?: prelevements_eauOmit<ExtArgs> | null
   }
 
 
@@ -54117,8 +55755,8 @@ export namespace Prisma {
     libelle_petr: 'libelle_petr',
     code_pnr: 'code_pnr',
     libelle_pnr: 'libelle_pnr',
-    nature: 'nature',
     annee: 'annee',
+    nature: 'nature',
     surface_parcourue: 'surface_parcourue',
     surface_foret: 'surface_foret',
     surface_maquis_garrigues: 'surface_maquis_garrigues',
@@ -54738,10 +56376,14 @@ export namespace Prisma {
     libelle_petr: 'libelle_petr',
     code_pnr: 'code_pnr',
     libelle_pnr: 'libelle_pnr',
-    type_touristique: 'type_touristique',
     atlas_biodiversite_nom: 'atlas_biodiversite_nom',
     atlas_biodiversite_annee_debut: 'atlas_biodiversite_annee_debut',
-    atlas_biodiversite_avancement: 'atlas_biodiversite_avancement'
+    atlas_biodiversite_avancement: 'atlas_biodiversite_avancement',
+    type_touristique: 'type_touristique',
+    otex_12_postes: 'otex_12_postes',
+    part_irr_sau_2020: 'part_irr_sau_2020',
+    agriculture_part_over_55: 'agriculture_part_over_55',
+    couverture_lcz: 'couverture_lcz'
   };
 
   export type Table_communeScalarFieldEnum = (typeof Table_communeScalarFieldEnum)[keyof typeof Table_communeScalarFieldEnum]
@@ -54763,6 +56405,39 @@ export namespace Prisma {
   };
 
   export type DebroussaillementScalarFieldEnum = (typeof DebroussaillementScalarFieldEnum)[keyof typeof DebroussaillementScalarFieldEnum]
+
+
+  export const Prelevements_eauScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    libelle_departement: 'libelle_departement',
+    region: 'region',
+    ept: 'ept',
+    libelle_petr: 'libelle_petr',
+    code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr',
+    libelle_sous_champ: 'libelle_sous_champ',
+    A2020: 'A2020',
+    A2019: 'A2019',
+    A2018: 'A2018',
+    A2017: 'A2017',
+    A2016: 'A2016',
+    A2015: 'A2015',
+    A2014: 'A2014',
+    A2013: 'A2013',
+    A2012: 'A2012',
+    A2011: 'A2011',
+    A2010: 'A2010',
+    A2009: 'A2009',
+    A2008: 'A2008',
+    sous_champ: 'sous_champ'
+  };
+
+  export type Prelevements_eauScalarFieldEnum = (typeof Prelevements_eauScalarFieldEnum)[keyof typeof Prelevements_eauScalarFieldEnum]
 
 
   export const Pg_stat_statementsScalarFieldEnum: {
@@ -55536,11 +57211,11 @@ export namespace Prisma {
     libelle_petr?: StringNullableFilter<"atlas_biodiversite"> | string | null
     code_pnr?: StringNullableFilter<"atlas_biodiversite"> | string | null
     libelle_pnr?: StringNullableFilter<"atlas_biodiversite"> | string | null
-    nom?: StringFilter<"atlas_biodiversite"> | string
+    nom?: StringNullableFilter<"atlas_biodiversite"> | string | null
     structure_porteuse?: StringNullableFilter<"atlas_biodiversite"> | string | null
     type_de_structure_porteuse?: StringNullableFilter<"atlas_biodiversite"> | string | null
     annee_debut?: FloatNullableFilter<"atlas_biodiversite"> | number | null
-    avancement?: StringFilter<"atlas_biodiversite"> | string
+    avancement?: StringNullableFilter<"atlas_biodiversite"> | string | null
   }
 
   export type atlas_biodiversiteOrderByWithRelationInput = {
@@ -55556,11 +57231,11 @@ export namespace Prisma {
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
-    nom?: SortOrder
+    nom?: SortOrderInput | SortOrder
     structure_porteuse?: SortOrderInput | SortOrder
     type_de_structure_porteuse?: SortOrderInput | SortOrder
     annee_debut?: SortOrderInput | SortOrder
-    avancement?: SortOrder
+    avancement?: SortOrderInput | SortOrder
   }
 
   export type atlas_biodiversiteWhereUniqueInput = Prisma.AtLeast<{
@@ -55579,11 +57254,11 @@ export namespace Prisma {
     libelle_petr?: StringNullableFilter<"atlas_biodiversite"> | string | null
     code_pnr?: StringNullableFilter<"atlas_biodiversite"> | string | null
     libelle_pnr?: StringNullableFilter<"atlas_biodiversite"> | string | null
-    nom?: StringFilter<"atlas_biodiversite"> | string
+    nom?: StringNullableFilter<"atlas_biodiversite"> | string | null
     structure_porteuse?: StringNullableFilter<"atlas_biodiversite"> | string | null
     type_de_structure_porteuse?: StringNullableFilter<"atlas_biodiversite"> | string | null
     annee_debut?: FloatNullableFilter<"atlas_biodiversite"> | number | null
-    avancement?: StringFilter<"atlas_biodiversite"> | string
+    avancement?: StringNullableFilter<"atlas_biodiversite"> | string | null
   }, "index">
 
   export type atlas_biodiversiteOrderByWithAggregationInput = {
@@ -55599,11 +57274,11 @@ export namespace Prisma {
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
-    nom?: SortOrder
+    nom?: SortOrderInput | SortOrder
     structure_porteuse?: SortOrderInput | SortOrder
     type_de_structure_porteuse?: SortOrderInput | SortOrder
     annee_debut?: SortOrderInput | SortOrder
-    avancement?: SortOrder
+    avancement?: SortOrderInput | SortOrder
     _count?: atlas_biodiversiteCountOrderByAggregateInput
     _avg?: atlas_biodiversiteAvgOrderByAggregateInput
     _max?: atlas_biodiversiteMaxOrderByAggregateInput
@@ -55627,11 +57302,11 @@ export namespace Prisma {
     libelle_petr?: StringNullableWithAggregatesFilter<"atlas_biodiversite"> | string | null
     code_pnr?: StringNullableWithAggregatesFilter<"atlas_biodiversite"> | string | null
     libelle_pnr?: StringNullableWithAggregatesFilter<"atlas_biodiversite"> | string | null
-    nom?: StringWithAggregatesFilter<"atlas_biodiversite"> | string
+    nom?: StringNullableWithAggregatesFilter<"atlas_biodiversite"> | string | null
     structure_porteuse?: StringNullableWithAggregatesFilter<"atlas_biodiversite"> | string | null
     type_de_structure_porteuse?: StringNullableWithAggregatesFilter<"atlas_biodiversite"> | string | null
     annee_debut?: FloatNullableWithAggregatesFilter<"atlas_biodiversite"> | number | null
-    avancement?: StringWithAggregatesFilter<"atlas_biodiversite"> | string
+    avancement?: StringNullableWithAggregatesFilter<"atlas_biodiversite"> | string | null
   }
 
   export type collectivites_searchbarWhereInput = {
@@ -55749,112 +57424,112 @@ export namespace Prisma {
     libelle_petr?: StringNullableFilter<"consommation_espaces_naf"> | string | null
     code_pnr?: StringNullableFilter<"consommation_espaces_naf"> | string | null
     libelle_pnr?: StringNullableFilter<"consommation_espaces_naf"> | string | null
-    naf09art10?: FloatFilter<"consommation_espaces_naf"> | number
-    art09act10?: FloatFilter<"consommation_espaces_naf"> | number
-    art09hab10?: FloatFilter<"consommation_espaces_naf"> | number
-    art09mix10?: FloatFilter<"consommation_espaces_naf"> | number
-    art09rou10?: FloatFilter<"consommation_espaces_naf"> | number
-    art09fer10?: FloatFilter<"consommation_espaces_naf"> | number
-    art09inc10?: FloatFilter<"consommation_espaces_naf"> | number
-    naf10art11?: FloatFilter<"consommation_espaces_naf"> | number
-    art10act11?: FloatFilter<"consommation_espaces_naf"> | number
-    art10hab11?: FloatFilter<"consommation_espaces_naf"> | number
-    art10mix11?: FloatFilter<"consommation_espaces_naf"> | number
-    art10rou11?: FloatFilter<"consommation_espaces_naf"> | number
-    art10fer11?: FloatFilter<"consommation_espaces_naf"> | number
-    art10inc11?: FloatFilter<"consommation_espaces_naf"> | number
-    naf11art12?: FloatFilter<"consommation_espaces_naf"> | number
-    art11act12?: FloatFilter<"consommation_espaces_naf"> | number
-    art11hab12?: FloatFilter<"consommation_espaces_naf"> | number
-    art11mix12?: FloatFilter<"consommation_espaces_naf"> | number
-    art11rou12?: FloatFilter<"consommation_espaces_naf"> | number
-    art11fer12?: FloatFilter<"consommation_espaces_naf"> | number
-    art11inc12?: FloatFilter<"consommation_espaces_naf"> | number
-    naf12art13?: FloatFilter<"consommation_espaces_naf"> | number
-    art12act13?: FloatFilter<"consommation_espaces_naf"> | number
-    art12hab13?: FloatFilter<"consommation_espaces_naf"> | number
-    art12mix13?: FloatFilter<"consommation_espaces_naf"> | number
-    art12rou13?: FloatFilter<"consommation_espaces_naf"> | number
-    art12fer13?: FloatFilter<"consommation_espaces_naf"> | number
-    art12inc13?: FloatFilter<"consommation_espaces_naf"> | number
-    naf13art14?: FloatFilter<"consommation_espaces_naf"> | number
-    art13act14?: FloatFilter<"consommation_espaces_naf"> | number
-    art13hab14?: FloatFilter<"consommation_espaces_naf"> | number
-    art13mix14?: FloatFilter<"consommation_espaces_naf"> | number
-    art13rou14?: FloatFilter<"consommation_espaces_naf"> | number
-    art13fer14?: FloatFilter<"consommation_espaces_naf"> | number
-    art13inc14?: FloatFilter<"consommation_espaces_naf"> | number
-    naf14art15?: FloatFilter<"consommation_espaces_naf"> | number
-    art14act15?: FloatFilter<"consommation_espaces_naf"> | number
-    art14hab15?: FloatFilter<"consommation_espaces_naf"> | number
-    art14mix15?: FloatFilter<"consommation_espaces_naf"> | number
-    art14rou15?: FloatFilter<"consommation_espaces_naf"> | number
-    art14fer15?: FloatFilter<"consommation_espaces_naf"> | number
-    art14inc15?: FloatFilter<"consommation_espaces_naf"> | number
-    naf15art16?: FloatFilter<"consommation_espaces_naf"> | number
-    art15act16?: FloatFilter<"consommation_espaces_naf"> | number
-    art15hab16?: FloatFilter<"consommation_espaces_naf"> | number
-    art15mix16?: FloatFilter<"consommation_espaces_naf"> | number
-    art15rou16?: FloatFilter<"consommation_espaces_naf"> | number
-    art15fer16?: FloatFilter<"consommation_espaces_naf"> | number
-    art15inc16?: FloatFilter<"consommation_espaces_naf"> | number
-    naf16art17?: FloatFilter<"consommation_espaces_naf"> | number
-    art16act17?: FloatFilter<"consommation_espaces_naf"> | number
-    art16hab17?: FloatFilter<"consommation_espaces_naf"> | number
-    art16mix17?: FloatFilter<"consommation_espaces_naf"> | number
-    art16rou17?: FloatFilter<"consommation_espaces_naf"> | number
-    art16fer17?: FloatFilter<"consommation_espaces_naf"> | number
-    art16inc17?: FloatFilter<"consommation_espaces_naf"> | number
-    naf17art18?: FloatFilter<"consommation_espaces_naf"> | number
-    art17act18?: FloatFilter<"consommation_espaces_naf"> | number
-    art17hab18?: FloatFilter<"consommation_espaces_naf"> | number
-    art17mix18?: FloatFilter<"consommation_espaces_naf"> | number
-    art17rou18?: FloatFilter<"consommation_espaces_naf"> | number
-    art17fer18?: FloatFilter<"consommation_espaces_naf"> | number
-    art17inc18?: FloatFilter<"consommation_espaces_naf"> | number
-    naf18art19?: FloatFilter<"consommation_espaces_naf"> | number
-    art18act19?: FloatFilter<"consommation_espaces_naf"> | number
-    art18hab19?: FloatFilter<"consommation_espaces_naf"> | number
-    art18mix19?: FloatFilter<"consommation_espaces_naf"> | number
-    art18rou19?: FloatFilter<"consommation_espaces_naf"> | number
-    art18fer19?: FloatFilter<"consommation_espaces_naf"> | number
-    art18inc19?: FloatFilter<"consommation_espaces_naf"> | number
-    naf19art20?: FloatFilter<"consommation_espaces_naf"> | number
-    art19act20?: FloatFilter<"consommation_espaces_naf"> | number
-    art19hab20?: FloatFilter<"consommation_espaces_naf"> | number
-    art19mix20?: FloatFilter<"consommation_espaces_naf"> | number
-    art19rou20?: FloatFilter<"consommation_espaces_naf"> | number
-    art19fer20?: FloatFilter<"consommation_espaces_naf"> | number
-    art19inc20?: FloatFilter<"consommation_espaces_naf"> | number
-    naf20art21?: FloatFilter<"consommation_espaces_naf"> | number
-    art20act21?: FloatFilter<"consommation_espaces_naf"> | number
-    art20hab21?: FloatFilter<"consommation_espaces_naf"> | number
-    art20mix21?: FloatFilter<"consommation_espaces_naf"> | number
-    art20rou21?: FloatFilter<"consommation_espaces_naf"> | number
-    art20fer21?: FloatFilter<"consommation_espaces_naf"> | number
-    art20inc21?: FloatFilter<"consommation_espaces_naf"> | number
-    naf21art22?: FloatFilter<"consommation_espaces_naf"> | number
-    art21act22?: FloatFilter<"consommation_espaces_naf"> | number
-    art21hab22?: FloatFilter<"consommation_espaces_naf"> | number
-    art21mix22?: FloatFilter<"consommation_espaces_naf"> | number
-    art21rou22?: FloatFilter<"consommation_espaces_naf"> | number
-    art21fer22?: FloatFilter<"consommation_espaces_naf"> | number
-    art21inc22?: FloatFilter<"consommation_espaces_naf"> | number
-    naf22art23?: FloatFilter<"consommation_espaces_naf"> | number
-    art22act23?: FloatFilter<"consommation_espaces_naf"> | number
-    art22hab23?: FloatFilter<"consommation_espaces_naf"> | number
-    art22mix23?: FloatFilter<"consommation_espaces_naf"> | number
-    art22rou23?: FloatFilter<"consommation_espaces_naf"> | number
-    art22fer23?: FloatFilter<"consommation_espaces_naf"> | number
-    art22inc23?: FloatFilter<"consommation_espaces_naf"> | number
-    naf09art23?: FloatFilter<"consommation_espaces_naf"> | number
-    art09act23?: FloatFilter<"consommation_espaces_naf"> | number
-    art09hab23?: FloatFilter<"consommation_espaces_naf"> | number
-    art09mix23?: FloatFilter<"consommation_espaces_naf"> | number
-    art09inc23?: FloatFilter<"consommation_espaces_naf"> | number
-    art09rou23?: FloatFilter<"consommation_espaces_naf"> | number
-    art09fer23?: FloatFilter<"consommation_espaces_naf"> | number
-    artcom0923?: FloatFilter<"consommation_espaces_naf"> | number
+    naf09art10?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09act10?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09hab10?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09mix10?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09rou10?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09fer10?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09inc10?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf10art11?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art10act11?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art10hab11?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art10mix11?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art10rou11?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art10fer11?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art10inc11?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf11art12?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art11act12?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art11hab12?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art11mix12?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art11rou12?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art11fer12?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art11inc12?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf12art13?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art12act13?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art12hab13?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art12mix13?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art12rou13?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art12fer13?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art12inc13?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf13art14?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art13act14?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art13hab14?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art13mix14?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art13rou14?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art13fer14?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art13inc14?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf14art15?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art14act15?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art14hab15?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art14mix15?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art14rou15?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art14fer15?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art14inc15?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf15art16?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art15act16?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art15hab16?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art15mix16?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art15rou16?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art15fer16?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art15inc16?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf16art17?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art16act17?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art16hab17?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art16mix17?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art16rou17?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art16fer17?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art16inc17?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf17art18?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art17act18?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art17hab18?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art17mix18?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art17rou18?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art17fer18?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art17inc18?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf18art19?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art18act19?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art18hab19?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art18mix19?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art18rou19?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art18fer19?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art18inc19?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf19art20?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art19act20?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art19hab20?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art19mix20?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art19rou20?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art19fer20?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art19inc20?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf20art21?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art20act21?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art20hab21?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art20mix21?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art20rou21?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art20fer21?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art20inc21?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf21art22?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art21act22?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art21hab22?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art21mix22?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art21rou22?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art21fer22?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art21inc22?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf22art23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art22act23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art22hab23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art22mix23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art22rou23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art22fer23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art22inc23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf09art23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09act23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09hab23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09mix23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09inc23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09rou23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09fer23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    artcom0923?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
   }
 
   export type consommation_espaces_nafOrderByWithRelationInput = {
@@ -55870,112 +57545,112 @@ export namespace Prisma {
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
-    naf09art10?: SortOrder
-    art09act10?: SortOrder
-    art09hab10?: SortOrder
-    art09mix10?: SortOrder
-    art09rou10?: SortOrder
-    art09fer10?: SortOrder
-    art09inc10?: SortOrder
-    naf10art11?: SortOrder
-    art10act11?: SortOrder
-    art10hab11?: SortOrder
-    art10mix11?: SortOrder
-    art10rou11?: SortOrder
-    art10fer11?: SortOrder
-    art10inc11?: SortOrder
-    naf11art12?: SortOrder
-    art11act12?: SortOrder
-    art11hab12?: SortOrder
-    art11mix12?: SortOrder
-    art11rou12?: SortOrder
-    art11fer12?: SortOrder
-    art11inc12?: SortOrder
-    naf12art13?: SortOrder
-    art12act13?: SortOrder
-    art12hab13?: SortOrder
-    art12mix13?: SortOrder
-    art12rou13?: SortOrder
-    art12fer13?: SortOrder
-    art12inc13?: SortOrder
-    naf13art14?: SortOrder
-    art13act14?: SortOrder
-    art13hab14?: SortOrder
-    art13mix14?: SortOrder
-    art13rou14?: SortOrder
-    art13fer14?: SortOrder
-    art13inc14?: SortOrder
-    naf14art15?: SortOrder
-    art14act15?: SortOrder
-    art14hab15?: SortOrder
-    art14mix15?: SortOrder
-    art14rou15?: SortOrder
-    art14fer15?: SortOrder
-    art14inc15?: SortOrder
-    naf15art16?: SortOrder
-    art15act16?: SortOrder
-    art15hab16?: SortOrder
-    art15mix16?: SortOrder
-    art15rou16?: SortOrder
-    art15fer16?: SortOrder
-    art15inc16?: SortOrder
-    naf16art17?: SortOrder
-    art16act17?: SortOrder
-    art16hab17?: SortOrder
-    art16mix17?: SortOrder
-    art16rou17?: SortOrder
-    art16fer17?: SortOrder
-    art16inc17?: SortOrder
-    naf17art18?: SortOrder
-    art17act18?: SortOrder
-    art17hab18?: SortOrder
-    art17mix18?: SortOrder
-    art17rou18?: SortOrder
-    art17fer18?: SortOrder
-    art17inc18?: SortOrder
-    naf18art19?: SortOrder
-    art18act19?: SortOrder
-    art18hab19?: SortOrder
-    art18mix19?: SortOrder
-    art18rou19?: SortOrder
-    art18fer19?: SortOrder
-    art18inc19?: SortOrder
-    naf19art20?: SortOrder
-    art19act20?: SortOrder
-    art19hab20?: SortOrder
-    art19mix20?: SortOrder
-    art19rou20?: SortOrder
-    art19fer20?: SortOrder
-    art19inc20?: SortOrder
-    naf20art21?: SortOrder
-    art20act21?: SortOrder
-    art20hab21?: SortOrder
-    art20mix21?: SortOrder
-    art20rou21?: SortOrder
-    art20fer21?: SortOrder
-    art20inc21?: SortOrder
-    naf21art22?: SortOrder
-    art21act22?: SortOrder
-    art21hab22?: SortOrder
-    art21mix22?: SortOrder
-    art21rou22?: SortOrder
-    art21fer22?: SortOrder
-    art21inc22?: SortOrder
-    naf22art23?: SortOrder
-    art22act23?: SortOrder
-    art22hab23?: SortOrder
-    art22mix23?: SortOrder
-    art22rou23?: SortOrder
-    art22fer23?: SortOrder
-    art22inc23?: SortOrder
-    naf09art23?: SortOrder
-    art09act23?: SortOrder
-    art09hab23?: SortOrder
-    art09mix23?: SortOrder
-    art09inc23?: SortOrder
-    art09rou23?: SortOrder
-    art09fer23?: SortOrder
-    artcom0923?: SortOrder
+    naf09art10?: SortOrderInput | SortOrder
+    art09act10?: SortOrderInput | SortOrder
+    art09hab10?: SortOrderInput | SortOrder
+    art09mix10?: SortOrderInput | SortOrder
+    art09rou10?: SortOrderInput | SortOrder
+    art09fer10?: SortOrderInput | SortOrder
+    art09inc10?: SortOrderInput | SortOrder
+    naf10art11?: SortOrderInput | SortOrder
+    art10act11?: SortOrderInput | SortOrder
+    art10hab11?: SortOrderInput | SortOrder
+    art10mix11?: SortOrderInput | SortOrder
+    art10rou11?: SortOrderInput | SortOrder
+    art10fer11?: SortOrderInput | SortOrder
+    art10inc11?: SortOrderInput | SortOrder
+    naf11art12?: SortOrderInput | SortOrder
+    art11act12?: SortOrderInput | SortOrder
+    art11hab12?: SortOrderInput | SortOrder
+    art11mix12?: SortOrderInput | SortOrder
+    art11rou12?: SortOrderInput | SortOrder
+    art11fer12?: SortOrderInput | SortOrder
+    art11inc12?: SortOrderInput | SortOrder
+    naf12art13?: SortOrderInput | SortOrder
+    art12act13?: SortOrderInput | SortOrder
+    art12hab13?: SortOrderInput | SortOrder
+    art12mix13?: SortOrderInput | SortOrder
+    art12rou13?: SortOrderInput | SortOrder
+    art12fer13?: SortOrderInput | SortOrder
+    art12inc13?: SortOrderInput | SortOrder
+    naf13art14?: SortOrderInput | SortOrder
+    art13act14?: SortOrderInput | SortOrder
+    art13hab14?: SortOrderInput | SortOrder
+    art13mix14?: SortOrderInput | SortOrder
+    art13rou14?: SortOrderInput | SortOrder
+    art13fer14?: SortOrderInput | SortOrder
+    art13inc14?: SortOrderInput | SortOrder
+    naf14art15?: SortOrderInput | SortOrder
+    art14act15?: SortOrderInput | SortOrder
+    art14hab15?: SortOrderInput | SortOrder
+    art14mix15?: SortOrderInput | SortOrder
+    art14rou15?: SortOrderInput | SortOrder
+    art14fer15?: SortOrderInput | SortOrder
+    art14inc15?: SortOrderInput | SortOrder
+    naf15art16?: SortOrderInput | SortOrder
+    art15act16?: SortOrderInput | SortOrder
+    art15hab16?: SortOrderInput | SortOrder
+    art15mix16?: SortOrderInput | SortOrder
+    art15rou16?: SortOrderInput | SortOrder
+    art15fer16?: SortOrderInput | SortOrder
+    art15inc16?: SortOrderInput | SortOrder
+    naf16art17?: SortOrderInput | SortOrder
+    art16act17?: SortOrderInput | SortOrder
+    art16hab17?: SortOrderInput | SortOrder
+    art16mix17?: SortOrderInput | SortOrder
+    art16rou17?: SortOrderInput | SortOrder
+    art16fer17?: SortOrderInput | SortOrder
+    art16inc17?: SortOrderInput | SortOrder
+    naf17art18?: SortOrderInput | SortOrder
+    art17act18?: SortOrderInput | SortOrder
+    art17hab18?: SortOrderInput | SortOrder
+    art17mix18?: SortOrderInput | SortOrder
+    art17rou18?: SortOrderInput | SortOrder
+    art17fer18?: SortOrderInput | SortOrder
+    art17inc18?: SortOrderInput | SortOrder
+    naf18art19?: SortOrderInput | SortOrder
+    art18act19?: SortOrderInput | SortOrder
+    art18hab19?: SortOrderInput | SortOrder
+    art18mix19?: SortOrderInput | SortOrder
+    art18rou19?: SortOrderInput | SortOrder
+    art18fer19?: SortOrderInput | SortOrder
+    art18inc19?: SortOrderInput | SortOrder
+    naf19art20?: SortOrderInput | SortOrder
+    art19act20?: SortOrderInput | SortOrder
+    art19hab20?: SortOrderInput | SortOrder
+    art19mix20?: SortOrderInput | SortOrder
+    art19rou20?: SortOrderInput | SortOrder
+    art19fer20?: SortOrderInput | SortOrder
+    art19inc20?: SortOrderInput | SortOrder
+    naf20art21?: SortOrderInput | SortOrder
+    art20act21?: SortOrderInput | SortOrder
+    art20hab21?: SortOrderInput | SortOrder
+    art20mix21?: SortOrderInput | SortOrder
+    art20rou21?: SortOrderInput | SortOrder
+    art20fer21?: SortOrderInput | SortOrder
+    art20inc21?: SortOrderInput | SortOrder
+    naf21art22?: SortOrderInput | SortOrder
+    art21act22?: SortOrderInput | SortOrder
+    art21hab22?: SortOrderInput | SortOrder
+    art21mix22?: SortOrderInput | SortOrder
+    art21rou22?: SortOrderInput | SortOrder
+    art21fer22?: SortOrderInput | SortOrder
+    art21inc22?: SortOrderInput | SortOrder
+    naf22art23?: SortOrderInput | SortOrder
+    art22act23?: SortOrderInput | SortOrder
+    art22hab23?: SortOrderInput | SortOrder
+    art22mix23?: SortOrderInput | SortOrder
+    art22rou23?: SortOrderInput | SortOrder
+    art22fer23?: SortOrderInput | SortOrder
+    art22inc23?: SortOrderInput | SortOrder
+    naf09art23?: SortOrderInput | SortOrder
+    art09act23?: SortOrderInput | SortOrder
+    art09hab23?: SortOrderInput | SortOrder
+    art09mix23?: SortOrderInput | SortOrder
+    art09inc23?: SortOrderInput | SortOrder
+    art09rou23?: SortOrderInput | SortOrder
+    art09fer23?: SortOrderInput | SortOrder
+    artcom0923?: SortOrderInput | SortOrder
   }
 
   export type consommation_espaces_nafWhereUniqueInput = Prisma.AtLeast<{
@@ -55994,112 +57669,112 @@ export namespace Prisma {
     libelle_petr?: StringNullableFilter<"consommation_espaces_naf"> | string | null
     code_pnr?: StringNullableFilter<"consommation_espaces_naf"> | string | null
     libelle_pnr?: StringNullableFilter<"consommation_espaces_naf"> | string | null
-    naf09art10?: FloatFilter<"consommation_espaces_naf"> | number
-    art09act10?: FloatFilter<"consommation_espaces_naf"> | number
-    art09hab10?: FloatFilter<"consommation_espaces_naf"> | number
-    art09mix10?: FloatFilter<"consommation_espaces_naf"> | number
-    art09rou10?: FloatFilter<"consommation_espaces_naf"> | number
-    art09fer10?: FloatFilter<"consommation_espaces_naf"> | number
-    art09inc10?: FloatFilter<"consommation_espaces_naf"> | number
-    naf10art11?: FloatFilter<"consommation_espaces_naf"> | number
-    art10act11?: FloatFilter<"consommation_espaces_naf"> | number
-    art10hab11?: FloatFilter<"consommation_espaces_naf"> | number
-    art10mix11?: FloatFilter<"consommation_espaces_naf"> | number
-    art10rou11?: FloatFilter<"consommation_espaces_naf"> | number
-    art10fer11?: FloatFilter<"consommation_espaces_naf"> | number
-    art10inc11?: FloatFilter<"consommation_espaces_naf"> | number
-    naf11art12?: FloatFilter<"consommation_espaces_naf"> | number
-    art11act12?: FloatFilter<"consommation_espaces_naf"> | number
-    art11hab12?: FloatFilter<"consommation_espaces_naf"> | number
-    art11mix12?: FloatFilter<"consommation_espaces_naf"> | number
-    art11rou12?: FloatFilter<"consommation_espaces_naf"> | number
-    art11fer12?: FloatFilter<"consommation_espaces_naf"> | number
-    art11inc12?: FloatFilter<"consommation_espaces_naf"> | number
-    naf12art13?: FloatFilter<"consommation_espaces_naf"> | number
-    art12act13?: FloatFilter<"consommation_espaces_naf"> | number
-    art12hab13?: FloatFilter<"consommation_espaces_naf"> | number
-    art12mix13?: FloatFilter<"consommation_espaces_naf"> | number
-    art12rou13?: FloatFilter<"consommation_espaces_naf"> | number
-    art12fer13?: FloatFilter<"consommation_espaces_naf"> | number
-    art12inc13?: FloatFilter<"consommation_espaces_naf"> | number
-    naf13art14?: FloatFilter<"consommation_espaces_naf"> | number
-    art13act14?: FloatFilter<"consommation_espaces_naf"> | number
-    art13hab14?: FloatFilter<"consommation_espaces_naf"> | number
-    art13mix14?: FloatFilter<"consommation_espaces_naf"> | number
-    art13rou14?: FloatFilter<"consommation_espaces_naf"> | number
-    art13fer14?: FloatFilter<"consommation_espaces_naf"> | number
-    art13inc14?: FloatFilter<"consommation_espaces_naf"> | number
-    naf14art15?: FloatFilter<"consommation_espaces_naf"> | number
-    art14act15?: FloatFilter<"consommation_espaces_naf"> | number
-    art14hab15?: FloatFilter<"consommation_espaces_naf"> | number
-    art14mix15?: FloatFilter<"consommation_espaces_naf"> | number
-    art14rou15?: FloatFilter<"consommation_espaces_naf"> | number
-    art14fer15?: FloatFilter<"consommation_espaces_naf"> | number
-    art14inc15?: FloatFilter<"consommation_espaces_naf"> | number
-    naf15art16?: FloatFilter<"consommation_espaces_naf"> | number
-    art15act16?: FloatFilter<"consommation_espaces_naf"> | number
-    art15hab16?: FloatFilter<"consommation_espaces_naf"> | number
-    art15mix16?: FloatFilter<"consommation_espaces_naf"> | number
-    art15rou16?: FloatFilter<"consommation_espaces_naf"> | number
-    art15fer16?: FloatFilter<"consommation_espaces_naf"> | number
-    art15inc16?: FloatFilter<"consommation_espaces_naf"> | number
-    naf16art17?: FloatFilter<"consommation_espaces_naf"> | number
-    art16act17?: FloatFilter<"consommation_espaces_naf"> | number
-    art16hab17?: FloatFilter<"consommation_espaces_naf"> | number
-    art16mix17?: FloatFilter<"consommation_espaces_naf"> | number
-    art16rou17?: FloatFilter<"consommation_espaces_naf"> | number
-    art16fer17?: FloatFilter<"consommation_espaces_naf"> | number
-    art16inc17?: FloatFilter<"consommation_espaces_naf"> | number
-    naf17art18?: FloatFilter<"consommation_espaces_naf"> | number
-    art17act18?: FloatFilter<"consommation_espaces_naf"> | number
-    art17hab18?: FloatFilter<"consommation_espaces_naf"> | number
-    art17mix18?: FloatFilter<"consommation_espaces_naf"> | number
-    art17rou18?: FloatFilter<"consommation_espaces_naf"> | number
-    art17fer18?: FloatFilter<"consommation_espaces_naf"> | number
-    art17inc18?: FloatFilter<"consommation_espaces_naf"> | number
-    naf18art19?: FloatFilter<"consommation_espaces_naf"> | number
-    art18act19?: FloatFilter<"consommation_espaces_naf"> | number
-    art18hab19?: FloatFilter<"consommation_espaces_naf"> | number
-    art18mix19?: FloatFilter<"consommation_espaces_naf"> | number
-    art18rou19?: FloatFilter<"consommation_espaces_naf"> | number
-    art18fer19?: FloatFilter<"consommation_espaces_naf"> | number
-    art18inc19?: FloatFilter<"consommation_espaces_naf"> | number
-    naf19art20?: FloatFilter<"consommation_espaces_naf"> | number
-    art19act20?: FloatFilter<"consommation_espaces_naf"> | number
-    art19hab20?: FloatFilter<"consommation_espaces_naf"> | number
-    art19mix20?: FloatFilter<"consommation_espaces_naf"> | number
-    art19rou20?: FloatFilter<"consommation_espaces_naf"> | number
-    art19fer20?: FloatFilter<"consommation_espaces_naf"> | number
-    art19inc20?: FloatFilter<"consommation_espaces_naf"> | number
-    naf20art21?: FloatFilter<"consommation_espaces_naf"> | number
-    art20act21?: FloatFilter<"consommation_espaces_naf"> | number
-    art20hab21?: FloatFilter<"consommation_espaces_naf"> | number
-    art20mix21?: FloatFilter<"consommation_espaces_naf"> | number
-    art20rou21?: FloatFilter<"consommation_espaces_naf"> | number
-    art20fer21?: FloatFilter<"consommation_espaces_naf"> | number
-    art20inc21?: FloatFilter<"consommation_espaces_naf"> | number
-    naf21art22?: FloatFilter<"consommation_espaces_naf"> | number
-    art21act22?: FloatFilter<"consommation_espaces_naf"> | number
-    art21hab22?: FloatFilter<"consommation_espaces_naf"> | number
-    art21mix22?: FloatFilter<"consommation_espaces_naf"> | number
-    art21rou22?: FloatFilter<"consommation_espaces_naf"> | number
-    art21fer22?: FloatFilter<"consommation_espaces_naf"> | number
-    art21inc22?: FloatFilter<"consommation_espaces_naf"> | number
-    naf22art23?: FloatFilter<"consommation_espaces_naf"> | number
-    art22act23?: FloatFilter<"consommation_espaces_naf"> | number
-    art22hab23?: FloatFilter<"consommation_espaces_naf"> | number
-    art22mix23?: FloatFilter<"consommation_espaces_naf"> | number
-    art22rou23?: FloatFilter<"consommation_espaces_naf"> | number
-    art22fer23?: FloatFilter<"consommation_espaces_naf"> | number
-    art22inc23?: FloatFilter<"consommation_espaces_naf"> | number
-    naf09art23?: FloatFilter<"consommation_espaces_naf"> | number
-    art09act23?: FloatFilter<"consommation_espaces_naf"> | number
-    art09hab23?: FloatFilter<"consommation_espaces_naf"> | number
-    art09mix23?: FloatFilter<"consommation_espaces_naf"> | number
-    art09inc23?: FloatFilter<"consommation_espaces_naf"> | number
-    art09rou23?: FloatFilter<"consommation_espaces_naf"> | number
-    art09fer23?: FloatFilter<"consommation_espaces_naf"> | number
-    artcom0923?: FloatFilter<"consommation_espaces_naf"> | number
+    naf09art10?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09act10?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09hab10?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09mix10?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09rou10?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09fer10?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09inc10?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf10art11?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art10act11?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art10hab11?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art10mix11?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art10rou11?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art10fer11?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art10inc11?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf11art12?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art11act12?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art11hab12?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art11mix12?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art11rou12?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art11fer12?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art11inc12?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf12art13?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art12act13?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art12hab13?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art12mix13?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art12rou13?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art12fer13?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art12inc13?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf13art14?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art13act14?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art13hab14?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art13mix14?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art13rou14?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art13fer14?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art13inc14?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf14art15?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art14act15?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art14hab15?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art14mix15?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art14rou15?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art14fer15?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art14inc15?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf15art16?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art15act16?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art15hab16?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art15mix16?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art15rou16?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art15fer16?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art15inc16?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf16art17?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art16act17?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art16hab17?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art16mix17?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art16rou17?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art16fer17?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art16inc17?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf17art18?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art17act18?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art17hab18?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art17mix18?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art17rou18?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art17fer18?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art17inc18?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf18art19?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art18act19?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art18hab19?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art18mix19?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art18rou19?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art18fer19?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art18inc19?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf19art20?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art19act20?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art19hab20?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art19mix20?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art19rou20?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art19fer20?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art19inc20?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf20art21?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art20act21?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art20hab21?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art20mix21?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art20rou21?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art20fer21?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art20inc21?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf21art22?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art21act22?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art21hab22?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art21mix22?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art21rou22?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art21fer22?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art21inc22?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf22art23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art22act23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art22hab23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art22mix23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art22rou23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art22fer23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art22inc23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    naf09art23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09act23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09hab23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09mix23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09inc23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09rou23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    art09fer23?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    artcom0923?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
   }, "index">
 
   export type consommation_espaces_nafOrderByWithAggregationInput = {
@@ -56115,112 +57790,112 @@ export namespace Prisma {
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
-    naf09art10?: SortOrder
-    art09act10?: SortOrder
-    art09hab10?: SortOrder
-    art09mix10?: SortOrder
-    art09rou10?: SortOrder
-    art09fer10?: SortOrder
-    art09inc10?: SortOrder
-    naf10art11?: SortOrder
-    art10act11?: SortOrder
-    art10hab11?: SortOrder
-    art10mix11?: SortOrder
-    art10rou11?: SortOrder
-    art10fer11?: SortOrder
-    art10inc11?: SortOrder
-    naf11art12?: SortOrder
-    art11act12?: SortOrder
-    art11hab12?: SortOrder
-    art11mix12?: SortOrder
-    art11rou12?: SortOrder
-    art11fer12?: SortOrder
-    art11inc12?: SortOrder
-    naf12art13?: SortOrder
-    art12act13?: SortOrder
-    art12hab13?: SortOrder
-    art12mix13?: SortOrder
-    art12rou13?: SortOrder
-    art12fer13?: SortOrder
-    art12inc13?: SortOrder
-    naf13art14?: SortOrder
-    art13act14?: SortOrder
-    art13hab14?: SortOrder
-    art13mix14?: SortOrder
-    art13rou14?: SortOrder
-    art13fer14?: SortOrder
-    art13inc14?: SortOrder
-    naf14art15?: SortOrder
-    art14act15?: SortOrder
-    art14hab15?: SortOrder
-    art14mix15?: SortOrder
-    art14rou15?: SortOrder
-    art14fer15?: SortOrder
-    art14inc15?: SortOrder
-    naf15art16?: SortOrder
-    art15act16?: SortOrder
-    art15hab16?: SortOrder
-    art15mix16?: SortOrder
-    art15rou16?: SortOrder
-    art15fer16?: SortOrder
-    art15inc16?: SortOrder
-    naf16art17?: SortOrder
-    art16act17?: SortOrder
-    art16hab17?: SortOrder
-    art16mix17?: SortOrder
-    art16rou17?: SortOrder
-    art16fer17?: SortOrder
-    art16inc17?: SortOrder
-    naf17art18?: SortOrder
-    art17act18?: SortOrder
-    art17hab18?: SortOrder
-    art17mix18?: SortOrder
-    art17rou18?: SortOrder
-    art17fer18?: SortOrder
-    art17inc18?: SortOrder
-    naf18art19?: SortOrder
-    art18act19?: SortOrder
-    art18hab19?: SortOrder
-    art18mix19?: SortOrder
-    art18rou19?: SortOrder
-    art18fer19?: SortOrder
-    art18inc19?: SortOrder
-    naf19art20?: SortOrder
-    art19act20?: SortOrder
-    art19hab20?: SortOrder
-    art19mix20?: SortOrder
-    art19rou20?: SortOrder
-    art19fer20?: SortOrder
-    art19inc20?: SortOrder
-    naf20art21?: SortOrder
-    art20act21?: SortOrder
-    art20hab21?: SortOrder
-    art20mix21?: SortOrder
-    art20rou21?: SortOrder
-    art20fer21?: SortOrder
-    art20inc21?: SortOrder
-    naf21art22?: SortOrder
-    art21act22?: SortOrder
-    art21hab22?: SortOrder
-    art21mix22?: SortOrder
-    art21rou22?: SortOrder
-    art21fer22?: SortOrder
-    art21inc22?: SortOrder
-    naf22art23?: SortOrder
-    art22act23?: SortOrder
-    art22hab23?: SortOrder
-    art22mix23?: SortOrder
-    art22rou23?: SortOrder
-    art22fer23?: SortOrder
-    art22inc23?: SortOrder
-    naf09art23?: SortOrder
-    art09act23?: SortOrder
-    art09hab23?: SortOrder
-    art09mix23?: SortOrder
-    art09inc23?: SortOrder
-    art09rou23?: SortOrder
-    art09fer23?: SortOrder
-    artcom0923?: SortOrder
+    naf09art10?: SortOrderInput | SortOrder
+    art09act10?: SortOrderInput | SortOrder
+    art09hab10?: SortOrderInput | SortOrder
+    art09mix10?: SortOrderInput | SortOrder
+    art09rou10?: SortOrderInput | SortOrder
+    art09fer10?: SortOrderInput | SortOrder
+    art09inc10?: SortOrderInput | SortOrder
+    naf10art11?: SortOrderInput | SortOrder
+    art10act11?: SortOrderInput | SortOrder
+    art10hab11?: SortOrderInput | SortOrder
+    art10mix11?: SortOrderInput | SortOrder
+    art10rou11?: SortOrderInput | SortOrder
+    art10fer11?: SortOrderInput | SortOrder
+    art10inc11?: SortOrderInput | SortOrder
+    naf11art12?: SortOrderInput | SortOrder
+    art11act12?: SortOrderInput | SortOrder
+    art11hab12?: SortOrderInput | SortOrder
+    art11mix12?: SortOrderInput | SortOrder
+    art11rou12?: SortOrderInput | SortOrder
+    art11fer12?: SortOrderInput | SortOrder
+    art11inc12?: SortOrderInput | SortOrder
+    naf12art13?: SortOrderInput | SortOrder
+    art12act13?: SortOrderInput | SortOrder
+    art12hab13?: SortOrderInput | SortOrder
+    art12mix13?: SortOrderInput | SortOrder
+    art12rou13?: SortOrderInput | SortOrder
+    art12fer13?: SortOrderInput | SortOrder
+    art12inc13?: SortOrderInput | SortOrder
+    naf13art14?: SortOrderInput | SortOrder
+    art13act14?: SortOrderInput | SortOrder
+    art13hab14?: SortOrderInput | SortOrder
+    art13mix14?: SortOrderInput | SortOrder
+    art13rou14?: SortOrderInput | SortOrder
+    art13fer14?: SortOrderInput | SortOrder
+    art13inc14?: SortOrderInput | SortOrder
+    naf14art15?: SortOrderInput | SortOrder
+    art14act15?: SortOrderInput | SortOrder
+    art14hab15?: SortOrderInput | SortOrder
+    art14mix15?: SortOrderInput | SortOrder
+    art14rou15?: SortOrderInput | SortOrder
+    art14fer15?: SortOrderInput | SortOrder
+    art14inc15?: SortOrderInput | SortOrder
+    naf15art16?: SortOrderInput | SortOrder
+    art15act16?: SortOrderInput | SortOrder
+    art15hab16?: SortOrderInput | SortOrder
+    art15mix16?: SortOrderInput | SortOrder
+    art15rou16?: SortOrderInput | SortOrder
+    art15fer16?: SortOrderInput | SortOrder
+    art15inc16?: SortOrderInput | SortOrder
+    naf16art17?: SortOrderInput | SortOrder
+    art16act17?: SortOrderInput | SortOrder
+    art16hab17?: SortOrderInput | SortOrder
+    art16mix17?: SortOrderInput | SortOrder
+    art16rou17?: SortOrderInput | SortOrder
+    art16fer17?: SortOrderInput | SortOrder
+    art16inc17?: SortOrderInput | SortOrder
+    naf17art18?: SortOrderInput | SortOrder
+    art17act18?: SortOrderInput | SortOrder
+    art17hab18?: SortOrderInput | SortOrder
+    art17mix18?: SortOrderInput | SortOrder
+    art17rou18?: SortOrderInput | SortOrder
+    art17fer18?: SortOrderInput | SortOrder
+    art17inc18?: SortOrderInput | SortOrder
+    naf18art19?: SortOrderInput | SortOrder
+    art18act19?: SortOrderInput | SortOrder
+    art18hab19?: SortOrderInput | SortOrder
+    art18mix19?: SortOrderInput | SortOrder
+    art18rou19?: SortOrderInput | SortOrder
+    art18fer19?: SortOrderInput | SortOrder
+    art18inc19?: SortOrderInput | SortOrder
+    naf19art20?: SortOrderInput | SortOrder
+    art19act20?: SortOrderInput | SortOrder
+    art19hab20?: SortOrderInput | SortOrder
+    art19mix20?: SortOrderInput | SortOrder
+    art19rou20?: SortOrderInput | SortOrder
+    art19fer20?: SortOrderInput | SortOrder
+    art19inc20?: SortOrderInput | SortOrder
+    naf20art21?: SortOrderInput | SortOrder
+    art20act21?: SortOrderInput | SortOrder
+    art20hab21?: SortOrderInput | SortOrder
+    art20mix21?: SortOrderInput | SortOrder
+    art20rou21?: SortOrderInput | SortOrder
+    art20fer21?: SortOrderInput | SortOrder
+    art20inc21?: SortOrderInput | SortOrder
+    naf21art22?: SortOrderInput | SortOrder
+    art21act22?: SortOrderInput | SortOrder
+    art21hab22?: SortOrderInput | SortOrder
+    art21mix22?: SortOrderInput | SortOrder
+    art21rou22?: SortOrderInput | SortOrder
+    art21fer22?: SortOrderInput | SortOrder
+    art21inc22?: SortOrderInput | SortOrder
+    naf22art23?: SortOrderInput | SortOrder
+    art22act23?: SortOrderInput | SortOrder
+    art22hab23?: SortOrderInput | SortOrder
+    art22mix23?: SortOrderInput | SortOrder
+    art22rou23?: SortOrderInput | SortOrder
+    art22fer23?: SortOrderInput | SortOrder
+    art22inc23?: SortOrderInput | SortOrder
+    naf09art23?: SortOrderInput | SortOrder
+    art09act23?: SortOrderInput | SortOrder
+    art09hab23?: SortOrderInput | SortOrder
+    art09mix23?: SortOrderInput | SortOrder
+    art09inc23?: SortOrderInput | SortOrder
+    art09rou23?: SortOrderInput | SortOrder
+    art09fer23?: SortOrderInput | SortOrder
+    artcom0923?: SortOrderInput | SortOrder
     _count?: consommation_espaces_nafCountOrderByAggregateInput
     _avg?: consommation_espaces_nafAvgOrderByAggregateInput
     _max?: consommation_espaces_nafMaxOrderByAggregateInput
@@ -56244,112 +57919,112 @@ export namespace Prisma {
     libelle_petr?: StringNullableWithAggregatesFilter<"consommation_espaces_naf"> | string | null
     code_pnr?: StringNullableWithAggregatesFilter<"consommation_espaces_naf"> | string | null
     libelle_pnr?: StringNullableWithAggregatesFilter<"consommation_espaces_naf"> | string | null
-    naf09art10?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art09act10?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art09hab10?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art09mix10?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art09rou10?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art09fer10?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art09inc10?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    naf10art11?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art10act11?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art10hab11?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art10mix11?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art10rou11?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art10fer11?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art10inc11?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    naf11art12?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art11act12?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art11hab12?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art11mix12?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art11rou12?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art11fer12?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art11inc12?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    naf12art13?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art12act13?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art12hab13?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art12mix13?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art12rou13?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art12fer13?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art12inc13?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    naf13art14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art13act14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art13hab14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art13mix14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art13rou14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art13fer14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art13inc14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    naf14art15?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art14act15?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art14hab15?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art14mix15?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art14rou15?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art14fer15?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art14inc15?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    naf15art16?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art15act16?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art15hab16?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art15mix16?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art15rou16?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art15fer16?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art15inc16?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    naf16art17?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art16act17?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art16hab17?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art16mix17?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art16rou17?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art16fer17?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art16inc17?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    naf17art18?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art17act18?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art17hab18?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art17mix18?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art17rou18?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art17fer18?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art17inc18?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    naf18art19?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art18act19?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art18hab19?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art18mix19?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art18rou19?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art18fer19?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art18inc19?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    naf19art20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art19act20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art19hab20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art19mix20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art19rou20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art19fer20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art19inc20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    naf20art21?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art20act21?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art20hab21?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art20mix21?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art20rou21?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art20fer21?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art20inc21?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    naf21art22?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art21act22?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art21hab22?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art21mix22?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art21rou22?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art21fer22?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art21inc22?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    naf22art23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art22act23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art22hab23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art22mix23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art22rou23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art22fer23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art22inc23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    naf09art23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art09act23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art09hab23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art09mix23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art09inc23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art09rou23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    art09fer23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
-    artcom0923?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf09art10?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art09act10?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art09hab10?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art09mix10?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art09rou10?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art09fer10?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art09inc10?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    naf10art11?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art10act11?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art10hab11?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art10mix11?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art10rou11?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art10fer11?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art10inc11?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    naf11art12?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art11act12?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art11hab12?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art11mix12?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art11rou12?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art11fer12?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art11inc12?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    naf12art13?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art12act13?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art12hab13?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art12mix13?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art12rou13?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art12fer13?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art12inc13?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    naf13art14?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art13act14?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art13hab14?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art13mix14?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art13rou14?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art13fer14?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art13inc14?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    naf14art15?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art14act15?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art14hab15?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art14mix15?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art14rou15?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art14fer15?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art14inc15?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    naf15art16?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art15act16?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art15hab16?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art15mix16?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art15rou16?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art15fer16?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art15inc16?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    naf16art17?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art16act17?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art16hab17?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art16mix17?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art16rou17?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art16fer17?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art16inc17?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    naf17art18?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art17act18?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art17hab18?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art17mix18?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art17rou18?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art17fer18?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art17inc18?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    naf18art19?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art18act19?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art18hab19?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art18mix19?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art18rou19?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art18fer19?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art18inc19?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    naf19art20?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art19act20?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art19hab20?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art19mix20?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art19rou20?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art19fer20?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art19inc20?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    naf20art21?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art20act21?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art20hab21?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art20mix21?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art20rou21?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art20fer21?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art20inc21?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    naf21art22?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art21act22?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art21hab22?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art21mix22?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art21rou22?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art21fer22?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art21inc22?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    naf22art23?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art22act23?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art22hab23?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art22mix23?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art22rou23?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art22fer23?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art22inc23?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    naf09art23?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art09act23?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art09hab23?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art09mix23?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art09inc23?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art09rou23?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    art09fer23?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    artcom0923?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
   }
 
   export type feux_foretWhereInput = {
@@ -56368,8 +58043,8 @@ export namespace Prisma {
     libelle_petr?: StringNullableFilter<"feux_foret"> | string | null
     code_pnr?: StringNullableFilter<"feux_foret"> | string | null
     libelle_pnr?: StringNullableFilter<"feux_foret"> | string | null
-    nature?: StringNullableFilter<"feux_foret"> | string | null
     annee?: FloatFilter<"feux_foret"> | number
+    nature?: StringNullableFilter<"feux_foret"> | string | null
     surface_parcourue?: FloatFilter<"feux_foret"> | number
     surface_foret?: FloatNullableFilter<"feux_foret"> | number | null
     surface_maquis_garrigues?: FloatNullableFilter<"feux_foret"> | number | null
@@ -56395,8 +58070,8 @@ export namespace Prisma {
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
-    nature?: SortOrderInput | SortOrder
     annee?: SortOrder
+    nature?: SortOrderInput | SortOrder
     surface_parcourue?: SortOrder
     surface_foret?: SortOrderInput | SortOrder
     surface_maquis_garrigues?: SortOrderInput | SortOrder
@@ -56425,8 +58100,8 @@ export namespace Prisma {
     libelle_petr?: StringNullableFilter<"feux_foret"> | string | null
     code_pnr?: StringNullableFilter<"feux_foret"> | string | null
     libelle_pnr?: StringNullableFilter<"feux_foret"> | string | null
-    nature?: StringNullableFilter<"feux_foret"> | string | null
     annee?: FloatFilter<"feux_foret"> | number
+    nature?: StringNullableFilter<"feux_foret"> | string | null
     surface_parcourue?: FloatFilter<"feux_foret"> | number
     surface_foret?: FloatNullableFilter<"feux_foret"> | number | null
     surface_maquis_garrigues?: FloatNullableFilter<"feux_foret"> | number | null
@@ -56452,8 +58127,8 @@ export namespace Prisma {
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
-    nature?: SortOrderInput | SortOrder
     annee?: SortOrder
+    nature?: SortOrderInput | SortOrder
     surface_parcourue?: SortOrder
     surface_foret?: SortOrderInput | SortOrder
     surface_maquis_garrigues?: SortOrderInput | SortOrder
@@ -56487,8 +58162,8 @@ export namespace Prisma {
     libelle_petr?: StringNullableWithAggregatesFilter<"feux_foret"> | string | null
     code_pnr?: StringNullableWithAggregatesFilter<"feux_foret"> | string | null
     libelle_pnr?: StringNullableWithAggregatesFilter<"feux_foret"> | string | null
-    nature?: StringNullableWithAggregatesFilter<"feux_foret"> | string | null
     annee?: FloatWithAggregatesFilter<"feux_foret"> | number
+    nature?: StringNullableWithAggregatesFilter<"feux_foret"> | string | null
     surface_parcourue?: FloatWithAggregatesFilter<"feux_foret"> | number
     surface_foret?: FloatNullableWithAggregatesFilter<"feux_foret"> | number | null
     surface_maquis_garrigues?: FloatNullableWithAggregatesFilter<"feux_foret"> | number | null
@@ -57719,34 +59394,34 @@ export namespace Prisma {
     OR?: clc_territoiresWhereInput[]
     NOT?: clc_territoiresWhereInput | clc_territoiresWhereInput[]
     pk?: IntFilter<"clc_territoires"> | number
-    code_geographique?: StringFilter<"clc_territoires"> | string
-    libelle_geographique?: StringFilter<"clc_territoires"> | string
-    epci?: StringFilter<"clc_territoires"> | string
-    libelle_epci?: StringFilter<"clc_territoires"> | string
-    departement?: StringFilter<"clc_territoires"> | string
-    libelle_departement?: StringFilter<"clc_territoires"> | string
-    region?: IntFilter<"clc_territoires"> | number
+    code_geographique?: StringNullableFilter<"clc_territoires"> | string | null
+    libelle_geographique?: StringNullableFilter<"clc_territoires"> | string | null
+    epci?: StringNullableFilter<"clc_territoires"> | string | null
+    libelle_epci?: StringNullableFilter<"clc_territoires"> | string | null
+    departement?: StringNullableFilter<"clc_territoires"> | string | null
+    libelle_departement?: StringNullableFilter<"clc_territoires"> | string | null
+    region?: BigIntNullableFilter<"clc_territoires"> | bigint | number | null
     ept?: StringNullableFilter<"clc_territoires"> | string | null
     libelle_petr?: StringNullableFilter<"clc_territoires"> | string | null
     code_pnr?: StringNullableFilter<"clc_territoires"> | string | null
     libelle_pnr?: StringNullableFilter<"clc_territoires"> | string | null
-    legend?: StringFilter<"clc_territoires"> | string
+    legend?: StringNullableFilter<"clc_territoires"> | string | null
   }
 
   export type clc_territoiresOrderByWithRelationInput = {
     pk?: SortOrder
-    code_geographique?: SortOrder
-    libelle_geographique?: SortOrder
-    epci?: SortOrder
-    libelle_epci?: SortOrder
-    departement?: SortOrder
-    libelle_departement?: SortOrder
-    region?: SortOrder
+    code_geographique?: SortOrderInput | SortOrder
+    libelle_geographique?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    departement?: SortOrderInput | SortOrder
+    libelle_departement?: SortOrderInput | SortOrder
+    region?: SortOrderInput | SortOrder
     ept?: SortOrderInput | SortOrder
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
-    legend?: SortOrder
+    legend?: SortOrderInput | SortOrder
   }
 
   export type clc_territoiresWhereUniqueInput = Prisma.AtLeast<{
@@ -57754,34 +59429,34 @@ export namespace Prisma {
     AND?: clc_territoiresWhereInput | clc_territoiresWhereInput[]
     OR?: clc_territoiresWhereInput[]
     NOT?: clc_territoiresWhereInput | clc_territoiresWhereInput[]
-    code_geographique?: StringFilter<"clc_territoires"> | string
-    libelle_geographique?: StringFilter<"clc_territoires"> | string
-    epci?: StringFilter<"clc_territoires"> | string
-    libelle_epci?: StringFilter<"clc_territoires"> | string
-    departement?: StringFilter<"clc_territoires"> | string
-    libelle_departement?: StringFilter<"clc_territoires"> | string
-    region?: IntFilter<"clc_territoires"> | number
+    code_geographique?: StringNullableFilter<"clc_territoires"> | string | null
+    libelle_geographique?: StringNullableFilter<"clc_territoires"> | string | null
+    epci?: StringNullableFilter<"clc_territoires"> | string | null
+    libelle_epci?: StringNullableFilter<"clc_territoires"> | string | null
+    departement?: StringNullableFilter<"clc_territoires"> | string | null
+    libelle_departement?: StringNullableFilter<"clc_territoires"> | string | null
+    region?: BigIntNullableFilter<"clc_territoires"> | bigint | number | null
     ept?: StringNullableFilter<"clc_territoires"> | string | null
     libelle_petr?: StringNullableFilter<"clc_territoires"> | string | null
     code_pnr?: StringNullableFilter<"clc_territoires"> | string | null
     libelle_pnr?: StringNullableFilter<"clc_territoires"> | string | null
-    legend?: StringFilter<"clc_territoires"> | string
+    legend?: StringNullableFilter<"clc_territoires"> | string | null
   }, "pk">
 
   export type clc_territoiresOrderByWithAggregationInput = {
     pk?: SortOrder
-    code_geographique?: SortOrder
-    libelle_geographique?: SortOrder
-    epci?: SortOrder
-    libelle_epci?: SortOrder
-    departement?: SortOrder
-    libelle_departement?: SortOrder
-    region?: SortOrder
+    code_geographique?: SortOrderInput | SortOrder
+    libelle_geographique?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    departement?: SortOrderInput | SortOrder
+    libelle_departement?: SortOrderInput | SortOrder
+    region?: SortOrderInput | SortOrder
     ept?: SortOrderInput | SortOrder
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
-    legend?: SortOrder
+    legend?: SortOrderInput | SortOrder
     _count?: clc_territoiresCountOrderByAggregateInput
     _avg?: clc_territoiresAvgOrderByAggregateInput
     _max?: clc_territoiresMaxOrderByAggregateInput
@@ -57794,18 +59469,18 @@ export namespace Prisma {
     OR?: clc_territoiresScalarWhereWithAggregatesInput[]
     NOT?: clc_territoiresScalarWhereWithAggregatesInput | clc_territoiresScalarWhereWithAggregatesInput[]
     pk?: IntWithAggregatesFilter<"clc_territoires"> | number
-    code_geographique?: StringWithAggregatesFilter<"clc_territoires"> | string
-    libelle_geographique?: StringWithAggregatesFilter<"clc_territoires"> | string
-    epci?: StringWithAggregatesFilter<"clc_territoires"> | string
-    libelle_epci?: StringWithAggregatesFilter<"clc_territoires"> | string
-    departement?: StringWithAggregatesFilter<"clc_territoires"> | string
-    libelle_departement?: StringWithAggregatesFilter<"clc_territoires"> | string
-    region?: IntWithAggregatesFilter<"clc_territoires"> | number
+    code_geographique?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
+    libelle_geographique?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
+    epci?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
+    libelle_epci?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
+    departement?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
+    libelle_departement?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
+    region?: BigIntNullableWithAggregatesFilter<"clc_territoires"> | bigint | number | null
     ept?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
     libelle_petr?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
     code_pnr?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
     libelle_pnr?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
-    legend?: StringWithAggregatesFilter<"clc_territoires"> | string
+    legend?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
   }
 
   export type communes_dromWhereInput = {
@@ -59440,22 +61115,26 @@ export namespace Prisma {
     AND?: table_communeWhereInput | table_communeWhereInput[]
     OR?: table_communeWhereInput[]
     NOT?: table_communeWhereInput | table_communeWhereInput[]
-    index?: IntFilter<"table_commune"> | number
+    index?: BigIntFilter<"table_commune"> | bigint | number
     code_geographique?: StringFilter<"table_commune"> | string
     libelle_geographique?: StringFilter<"table_commune"> | string
     epci?: StringFilter<"table_commune"> | string
     libelle_epci?: StringFilter<"table_commune"> | string
     departement?: StringFilter<"table_commune"> | string
     libelle_departement?: StringFilter<"table_commune"> | string
-    region?: IntFilter<"table_commune"> | number
+    region?: BigIntFilter<"table_commune"> | bigint | number
     ept?: StringNullableFilter<"table_commune"> | string | null
     libelle_petr?: StringNullableFilter<"table_commune"> | string | null
     code_pnr?: StringNullableFilter<"table_commune"> | string | null
     libelle_pnr?: StringNullableFilter<"table_commune"> | string | null
-    type_touristique?: StringNullableFilter<"table_commune"> | string | null
     atlas_biodiversite_nom?: StringNullableFilter<"table_commune"> | string | null
     atlas_biodiversite_annee_debut?: StringNullableFilter<"table_commune"> | string | null
     atlas_biodiversite_avancement?: StringNullableFilter<"table_commune"> | string | null
+    type_touristique?: StringNullableFilter<"table_commune"> | string | null
+    otex_12_postes?: StringNullableFilter<"table_commune"> | string | null
+    part_irr_sau_2020?: StringNullableFilter<"table_commune"> | string | null
+    agriculture_part_over_55?: StringNullableFilter<"table_commune"> | string | null
+    couverture_lcz?: StringNullableFilter<"table_commune"> | string | null
   }
 
   export type table_communeOrderByWithRelationInput = {
@@ -59471,14 +61150,18 @@ export namespace Prisma {
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
-    type_touristique?: SortOrderInput | SortOrder
     atlas_biodiversite_nom?: SortOrderInput | SortOrder
     atlas_biodiversite_annee_debut?: SortOrderInput | SortOrder
     atlas_biodiversite_avancement?: SortOrderInput | SortOrder
+    type_touristique?: SortOrderInput | SortOrder
+    otex_12_postes?: SortOrderInput | SortOrder
+    part_irr_sau_2020?: SortOrderInput | SortOrder
+    agriculture_part_over_55?: SortOrderInput | SortOrder
+    couverture_lcz?: SortOrderInput | SortOrder
   }
 
   export type table_communeWhereUniqueInput = Prisma.AtLeast<{
-    index?: number
+    index?: bigint | number
     AND?: table_communeWhereInput | table_communeWhereInput[]
     OR?: table_communeWhereInput[]
     NOT?: table_communeWhereInput | table_communeWhereInput[]
@@ -59488,15 +61171,19 @@ export namespace Prisma {
     libelle_epci?: StringFilter<"table_commune"> | string
     departement?: StringFilter<"table_commune"> | string
     libelle_departement?: StringFilter<"table_commune"> | string
-    region?: IntFilter<"table_commune"> | number
+    region?: BigIntFilter<"table_commune"> | bigint | number
     ept?: StringNullableFilter<"table_commune"> | string | null
     libelle_petr?: StringNullableFilter<"table_commune"> | string | null
     code_pnr?: StringNullableFilter<"table_commune"> | string | null
     libelle_pnr?: StringNullableFilter<"table_commune"> | string | null
-    type_touristique?: StringNullableFilter<"table_commune"> | string | null
     atlas_biodiversite_nom?: StringNullableFilter<"table_commune"> | string | null
     atlas_biodiversite_annee_debut?: StringNullableFilter<"table_commune"> | string | null
     atlas_biodiversite_avancement?: StringNullableFilter<"table_commune"> | string | null
+    type_touristique?: StringNullableFilter<"table_commune"> | string | null
+    otex_12_postes?: StringNullableFilter<"table_commune"> | string | null
+    part_irr_sau_2020?: StringNullableFilter<"table_commune"> | string | null
+    agriculture_part_over_55?: StringNullableFilter<"table_commune"> | string | null
+    couverture_lcz?: StringNullableFilter<"table_commune"> | string | null
   }, "index">
 
   export type table_communeOrderByWithAggregationInput = {
@@ -59512,10 +61199,14 @@ export namespace Prisma {
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
-    type_touristique?: SortOrderInput | SortOrder
     atlas_biodiversite_nom?: SortOrderInput | SortOrder
     atlas_biodiversite_annee_debut?: SortOrderInput | SortOrder
     atlas_biodiversite_avancement?: SortOrderInput | SortOrder
+    type_touristique?: SortOrderInput | SortOrder
+    otex_12_postes?: SortOrderInput | SortOrder
+    part_irr_sau_2020?: SortOrderInput | SortOrder
+    agriculture_part_over_55?: SortOrderInput | SortOrder
+    couverture_lcz?: SortOrderInput | SortOrder
     _count?: table_communeCountOrderByAggregateInput
     _avg?: table_communeAvgOrderByAggregateInput
     _max?: table_communeMaxOrderByAggregateInput
@@ -59527,22 +61218,26 @@ export namespace Prisma {
     AND?: table_communeScalarWhereWithAggregatesInput | table_communeScalarWhereWithAggregatesInput[]
     OR?: table_communeScalarWhereWithAggregatesInput[]
     NOT?: table_communeScalarWhereWithAggregatesInput | table_communeScalarWhereWithAggregatesInput[]
-    index?: IntWithAggregatesFilter<"table_commune"> | number
+    index?: BigIntWithAggregatesFilter<"table_commune"> | bigint | number
     code_geographique?: StringWithAggregatesFilter<"table_commune"> | string
     libelle_geographique?: StringWithAggregatesFilter<"table_commune"> | string
     epci?: StringWithAggregatesFilter<"table_commune"> | string
     libelle_epci?: StringWithAggregatesFilter<"table_commune"> | string
     departement?: StringWithAggregatesFilter<"table_commune"> | string
     libelle_departement?: StringWithAggregatesFilter<"table_commune"> | string
-    region?: IntWithAggregatesFilter<"table_commune"> | number
+    region?: BigIntWithAggregatesFilter<"table_commune"> | bigint | number
     ept?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
     libelle_petr?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
     code_pnr?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
     libelle_pnr?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
-    type_touristique?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
     atlas_biodiversite_nom?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
     atlas_biodiversite_annee_debut?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
     atlas_biodiversite_avancement?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
+    type_touristique?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
+    otex_12_postes?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
+    part_irr_sau_2020?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
+    agriculture_part_over_55?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
+    couverture_lcz?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
   }
 
   export type spatial_ref_sysWhereInput = {
@@ -59631,6 +61326,170 @@ export namespace Prisma {
     OR?: debroussaillementScalarWhereWithAggregatesInput[]
     NOT?: debroussaillementScalarWhereWithAggregatesInput | debroussaillementScalarWhereWithAggregatesInput[]
     pk?: IntWithAggregatesFilter<"debroussaillement"> | number
+  }
+
+  export type prelevements_eauWhereInput = {
+    AND?: prelevements_eauWhereInput | prelevements_eauWhereInput[]
+    OR?: prelevements_eauWhereInput[]
+    NOT?: prelevements_eauWhereInput | prelevements_eauWhereInput[]
+    index?: BigIntFilter<"prelevements_eau"> | bigint | number
+    code_geographique?: StringFilter<"prelevements_eau"> | string
+    libelle_geographique?: StringFilter<"prelevements_eau"> | string
+    epci?: StringFilter<"prelevements_eau"> | string
+    libelle_epci?: StringFilter<"prelevements_eau"> | string
+    departement?: StringFilter<"prelevements_eau"> | string
+    libelle_departement?: StringFilter<"prelevements_eau"> | string
+    region?: BigIntFilter<"prelevements_eau"> | bigint | number
+    ept?: StringNullableFilter<"prelevements_eau"> | string | null
+    libelle_petr?: StringNullableFilter<"prelevements_eau"> | string | null
+    code_pnr?: StringNullableFilter<"prelevements_eau"> | string | null
+    libelle_pnr?: StringNullableFilter<"prelevements_eau"> | string | null
+    libelle_sous_champ?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2020?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2019?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2018?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2017?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2016?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2015?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2014?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2013?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2012?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2011?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2010?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2009?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2008?: StringNullableFilter<"prelevements_eau"> | string | null
+    sous_champ?: StringNullableFilter<"prelevements_eau"> | string | null
+  }
+
+  export type prelevements_eauOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    libelle_sous_champ?: SortOrderInput | SortOrder
+    A2020?: SortOrderInput | SortOrder
+    A2019?: SortOrderInput | SortOrder
+    A2018?: SortOrderInput | SortOrder
+    A2017?: SortOrderInput | SortOrder
+    A2016?: SortOrderInput | SortOrder
+    A2015?: SortOrderInput | SortOrder
+    A2014?: SortOrderInput | SortOrder
+    A2013?: SortOrderInput | SortOrder
+    A2012?: SortOrderInput | SortOrder
+    A2011?: SortOrderInput | SortOrder
+    A2010?: SortOrderInput | SortOrder
+    A2009?: SortOrderInput | SortOrder
+    A2008?: SortOrderInput | SortOrder
+    sous_champ?: SortOrderInput | SortOrder
+  }
+
+  export type prelevements_eauWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: prelevements_eauWhereInput | prelevements_eauWhereInput[]
+    OR?: prelevements_eauWhereInput[]
+    NOT?: prelevements_eauWhereInput | prelevements_eauWhereInput[]
+    code_geographique?: StringFilter<"prelevements_eau"> | string
+    libelle_geographique?: StringFilter<"prelevements_eau"> | string
+    epci?: StringFilter<"prelevements_eau"> | string
+    libelle_epci?: StringFilter<"prelevements_eau"> | string
+    departement?: StringFilter<"prelevements_eau"> | string
+    libelle_departement?: StringFilter<"prelevements_eau"> | string
+    region?: BigIntFilter<"prelevements_eau"> | bigint | number
+    ept?: StringNullableFilter<"prelevements_eau"> | string | null
+    libelle_petr?: StringNullableFilter<"prelevements_eau"> | string | null
+    code_pnr?: StringNullableFilter<"prelevements_eau"> | string | null
+    libelle_pnr?: StringNullableFilter<"prelevements_eau"> | string | null
+    libelle_sous_champ?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2020?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2019?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2018?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2017?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2016?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2015?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2014?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2013?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2012?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2011?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2010?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2009?: StringNullableFilter<"prelevements_eau"> | string | null
+    A2008?: StringNullableFilter<"prelevements_eau"> | string | null
+    sous_champ?: StringNullableFilter<"prelevements_eau"> | string | null
+  }, "index">
+
+  export type prelevements_eauOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    libelle_sous_champ?: SortOrderInput | SortOrder
+    A2020?: SortOrderInput | SortOrder
+    A2019?: SortOrderInput | SortOrder
+    A2018?: SortOrderInput | SortOrder
+    A2017?: SortOrderInput | SortOrder
+    A2016?: SortOrderInput | SortOrder
+    A2015?: SortOrderInput | SortOrder
+    A2014?: SortOrderInput | SortOrder
+    A2013?: SortOrderInput | SortOrder
+    A2012?: SortOrderInput | SortOrder
+    A2011?: SortOrderInput | SortOrder
+    A2010?: SortOrderInput | SortOrder
+    A2009?: SortOrderInput | SortOrder
+    A2008?: SortOrderInput | SortOrder
+    sous_champ?: SortOrderInput | SortOrder
+    _count?: prelevements_eauCountOrderByAggregateInput
+    _avg?: prelevements_eauAvgOrderByAggregateInput
+    _max?: prelevements_eauMaxOrderByAggregateInput
+    _min?: prelevements_eauMinOrderByAggregateInput
+    _sum?: prelevements_eauSumOrderByAggregateInput
+  }
+
+  export type prelevements_eauScalarWhereWithAggregatesInput = {
+    AND?: prelevements_eauScalarWhereWithAggregatesInput | prelevements_eauScalarWhereWithAggregatesInput[]
+    OR?: prelevements_eauScalarWhereWithAggregatesInput[]
+    NOT?: prelevements_eauScalarWhereWithAggregatesInput | prelevements_eauScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"prelevements_eau"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"prelevements_eau"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"prelevements_eau"> | string
+    epci?: StringWithAggregatesFilter<"prelevements_eau"> | string
+    libelle_epci?: StringWithAggregatesFilter<"prelevements_eau"> | string
+    departement?: StringWithAggregatesFilter<"prelevements_eau"> | string
+    libelle_departement?: StringWithAggregatesFilter<"prelevements_eau"> | string
+    region?: BigIntWithAggregatesFilter<"prelevements_eau"> | bigint | number
+    ept?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    libelle_sous_champ?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    A2020?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    A2019?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    A2018?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    A2017?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    A2016?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    A2015?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    A2014?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    A2013?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    A2012?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    A2011?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    A2010?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    A2009?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    A2008?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+    sous_champ?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
   }
 
   export type pg_stat_statementsWhereInput = {
@@ -60583,11 +62442,11 @@ export namespace Prisma {
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    nom: string
+    nom?: string | null
     structure_porteuse?: string | null
     type_de_structure_porteuse?: string | null
     annee_debut?: number | null
-    avancement: string
+    avancement?: string | null
   }
 
   export type atlas_biodiversiteUncheckedCreateInput = {
@@ -60603,11 +62462,11 @@ export namespace Prisma {
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    nom: string
+    nom?: string | null
     structure_porteuse?: string | null
     type_de_structure_porteuse?: string | null
     annee_debut?: number | null
-    avancement: string
+    avancement?: string | null
   }
 
   export type atlas_biodiversiteUpdateInput = {
@@ -60623,11 +62482,11 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    nom?: StringFieldUpdateOperationsInput | string
+    nom?: NullableStringFieldUpdateOperationsInput | string | null
     structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
     type_de_structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
     annee_debut?: NullableFloatFieldUpdateOperationsInput | number | null
-    avancement?: StringFieldUpdateOperationsInput | string
+    avancement?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type atlas_biodiversiteUncheckedUpdateInput = {
@@ -60643,11 +62502,11 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    nom?: StringFieldUpdateOperationsInput | string
+    nom?: NullableStringFieldUpdateOperationsInput | string | null
     structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
     type_de_structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
     annee_debut?: NullableFloatFieldUpdateOperationsInput | number | null
-    avancement?: StringFieldUpdateOperationsInput | string
+    avancement?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type atlas_biodiversiteCreateManyInput = {
@@ -60663,11 +62522,11 @@ export namespace Prisma {
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    nom: string
+    nom?: string | null
     structure_porteuse?: string | null
     type_de_structure_porteuse?: string | null
     annee_debut?: number | null
-    avancement: string
+    avancement?: string | null
   }
 
   export type atlas_biodiversiteUpdateManyMutationInput = {
@@ -60683,11 +62542,11 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    nom?: StringFieldUpdateOperationsInput | string
+    nom?: NullableStringFieldUpdateOperationsInput | string | null
     structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
     type_de_structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
     annee_debut?: NullableFloatFieldUpdateOperationsInput | number | null
-    avancement?: StringFieldUpdateOperationsInput | string
+    avancement?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type atlas_biodiversiteUncheckedUpdateManyInput = {
@@ -60703,11 +62562,11 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    nom?: StringFieldUpdateOperationsInput | string
+    nom?: NullableStringFieldUpdateOperationsInput | string | null
     structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
     type_de_structure_porteuse?: NullableStringFieldUpdateOperationsInput | string | null
     annee_debut?: NullableFloatFieldUpdateOperationsInput | number | null
-    avancement?: StringFieldUpdateOperationsInput | string
+    avancement?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type collectivites_searchbarCreateInput = {
@@ -60842,112 +62701,112 @@ export namespace Prisma {
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    naf09art10: number
-    art09act10: number
-    art09hab10: number
-    art09mix10: number
-    art09rou10: number
-    art09fer10: number
-    art09inc10: number
-    naf10art11: number
-    art10act11: number
-    art10hab11: number
-    art10mix11: number
-    art10rou11: number
-    art10fer11: number
-    art10inc11: number
-    naf11art12: number
-    art11act12: number
-    art11hab12: number
-    art11mix12: number
-    art11rou12: number
-    art11fer12: number
-    art11inc12: number
-    naf12art13: number
-    art12act13: number
-    art12hab13: number
-    art12mix13: number
-    art12rou13: number
-    art12fer13: number
-    art12inc13: number
-    naf13art14: number
-    art13act14: number
-    art13hab14: number
-    art13mix14: number
-    art13rou14: number
-    art13fer14: number
-    art13inc14: number
-    naf14art15: number
-    art14act15: number
-    art14hab15: number
-    art14mix15: number
-    art14rou15: number
-    art14fer15: number
-    art14inc15: number
-    naf15art16: number
-    art15act16: number
-    art15hab16: number
-    art15mix16: number
-    art15rou16: number
-    art15fer16: number
-    art15inc16: number
-    naf16art17: number
-    art16act17: number
-    art16hab17: number
-    art16mix17: number
-    art16rou17: number
-    art16fer17: number
-    art16inc17: number
-    naf17art18: number
-    art17act18: number
-    art17hab18: number
-    art17mix18: number
-    art17rou18: number
-    art17fer18: number
-    art17inc18: number
-    naf18art19: number
-    art18act19: number
-    art18hab19: number
-    art18mix19: number
-    art18rou19: number
-    art18fer19: number
-    art18inc19: number
-    naf19art20: number
-    art19act20: number
-    art19hab20: number
-    art19mix20: number
-    art19rou20: number
-    art19fer20: number
-    art19inc20: number
-    naf20art21: number
-    art20act21: number
-    art20hab21: number
-    art20mix21: number
-    art20rou21: number
-    art20fer21: number
-    art20inc21: number
-    naf21art22: number
-    art21act22: number
-    art21hab22: number
-    art21mix22: number
-    art21rou22: number
-    art21fer22: number
-    art21inc22: number
-    naf22art23: number
-    art22act23: number
-    art22hab23: number
-    art22mix23: number
-    art22rou23: number
-    art22fer23: number
-    art22inc23: number
-    naf09art23: number
-    art09act23: number
-    art09hab23: number
-    art09mix23: number
-    art09inc23: number
-    art09rou23: number
-    art09fer23: number
-    artcom0923: number
+    naf09art10?: number | null
+    art09act10?: number | null
+    art09hab10?: number | null
+    art09mix10?: number | null
+    art09rou10?: number | null
+    art09fer10?: number | null
+    art09inc10?: number | null
+    naf10art11?: number | null
+    art10act11?: number | null
+    art10hab11?: number | null
+    art10mix11?: number | null
+    art10rou11?: number | null
+    art10fer11?: number | null
+    art10inc11?: number | null
+    naf11art12?: number | null
+    art11act12?: number | null
+    art11hab12?: number | null
+    art11mix12?: number | null
+    art11rou12?: number | null
+    art11fer12?: number | null
+    art11inc12?: number | null
+    naf12art13?: number | null
+    art12act13?: number | null
+    art12hab13?: number | null
+    art12mix13?: number | null
+    art12rou13?: number | null
+    art12fer13?: number | null
+    art12inc13?: number | null
+    naf13art14?: number | null
+    art13act14?: number | null
+    art13hab14?: number | null
+    art13mix14?: number | null
+    art13rou14?: number | null
+    art13fer14?: number | null
+    art13inc14?: number | null
+    naf14art15?: number | null
+    art14act15?: number | null
+    art14hab15?: number | null
+    art14mix15?: number | null
+    art14rou15?: number | null
+    art14fer15?: number | null
+    art14inc15?: number | null
+    naf15art16?: number | null
+    art15act16?: number | null
+    art15hab16?: number | null
+    art15mix16?: number | null
+    art15rou16?: number | null
+    art15fer16?: number | null
+    art15inc16?: number | null
+    naf16art17?: number | null
+    art16act17?: number | null
+    art16hab17?: number | null
+    art16mix17?: number | null
+    art16rou17?: number | null
+    art16fer17?: number | null
+    art16inc17?: number | null
+    naf17art18?: number | null
+    art17act18?: number | null
+    art17hab18?: number | null
+    art17mix18?: number | null
+    art17rou18?: number | null
+    art17fer18?: number | null
+    art17inc18?: number | null
+    naf18art19?: number | null
+    art18act19?: number | null
+    art18hab19?: number | null
+    art18mix19?: number | null
+    art18rou19?: number | null
+    art18fer19?: number | null
+    art18inc19?: number | null
+    naf19art20?: number | null
+    art19act20?: number | null
+    art19hab20?: number | null
+    art19mix20?: number | null
+    art19rou20?: number | null
+    art19fer20?: number | null
+    art19inc20?: number | null
+    naf20art21?: number | null
+    art20act21?: number | null
+    art20hab21?: number | null
+    art20mix21?: number | null
+    art20rou21?: number | null
+    art20fer21?: number | null
+    art20inc21?: number | null
+    naf21art22?: number | null
+    art21act22?: number | null
+    art21hab22?: number | null
+    art21mix22?: number | null
+    art21rou22?: number | null
+    art21fer22?: number | null
+    art21inc22?: number | null
+    naf22art23?: number | null
+    art22act23?: number | null
+    art22hab23?: number | null
+    art22mix23?: number | null
+    art22rou23?: number | null
+    art22fer23?: number | null
+    art22inc23?: number | null
+    naf09art23?: number | null
+    art09act23?: number | null
+    art09hab23?: number | null
+    art09mix23?: number | null
+    art09inc23?: number | null
+    art09rou23?: number | null
+    art09fer23?: number | null
+    artcom0923?: number | null
   }
 
   export type consommation_espaces_nafUncheckedCreateInput = {
@@ -60963,112 +62822,112 @@ export namespace Prisma {
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    naf09art10: number
-    art09act10: number
-    art09hab10: number
-    art09mix10: number
-    art09rou10: number
-    art09fer10: number
-    art09inc10: number
-    naf10art11: number
-    art10act11: number
-    art10hab11: number
-    art10mix11: number
-    art10rou11: number
-    art10fer11: number
-    art10inc11: number
-    naf11art12: number
-    art11act12: number
-    art11hab12: number
-    art11mix12: number
-    art11rou12: number
-    art11fer12: number
-    art11inc12: number
-    naf12art13: number
-    art12act13: number
-    art12hab13: number
-    art12mix13: number
-    art12rou13: number
-    art12fer13: number
-    art12inc13: number
-    naf13art14: number
-    art13act14: number
-    art13hab14: number
-    art13mix14: number
-    art13rou14: number
-    art13fer14: number
-    art13inc14: number
-    naf14art15: number
-    art14act15: number
-    art14hab15: number
-    art14mix15: number
-    art14rou15: number
-    art14fer15: number
-    art14inc15: number
-    naf15art16: number
-    art15act16: number
-    art15hab16: number
-    art15mix16: number
-    art15rou16: number
-    art15fer16: number
-    art15inc16: number
-    naf16art17: number
-    art16act17: number
-    art16hab17: number
-    art16mix17: number
-    art16rou17: number
-    art16fer17: number
-    art16inc17: number
-    naf17art18: number
-    art17act18: number
-    art17hab18: number
-    art17mix18: number
-    art17rou18: number
-    art17fer18: number
-    art17inc18: number
-    naf18art19: number
-    art18act19: number
-    art18hab19: number
-    art18mix19: number
-    art18rou19: number
-    art18fer19: number
-    art18inc19: number
-    naf19art20: number
-    art19act20: number
-    art19hab20: number
-    art19mix20: number
-    art19rou20: number
-    art19fer20: number
-    art19inc20: number
-    naf20art21: number
-    art20act21: number
-    art20hab21: number
-    art20mix21: number
-    art20rou21: number
-    art20fer21: number
-    art20inc21: number
-    naf21art22: number
-    art21act22: number
-    art21hab22: number
-    art21mix22: number
-    art21rou22: number
-    art21fer22: number
-    art21inc22: number
-    naf22art23: number
-    art22act23: number
-    art22hab23: number
-    art22mix23: number
-    art22rou23: number
-    art22fer23: number
-    art22inc23: number
-    naf09art23: number
-    art09act23: number
-    art09hab23: number
-    art09mix23: number
-    art09inc23: number
-    art09rou23: number
-    art09fer23: number
-    artcom0923: number
+    naf09art10?: number | null
+    art09act10?: number | null
+    art09hab10?: number | null
+    art09mix10?: number | null
+    art09rou10?: number | null
+    art09fer10?: number | null
+    art09inc10?: number | null
+    naf10art11?: number | null
+    art10act11?: number | null
+    art10hab11?: number | null
+    art10mix11?: number | null
+    art10rou11?: number | null
+    art10fer11?: number | null
+    art10inc11?: number | null
+    naf11art12?: number | null
+    art11act12?: number | null
+    art11hab12?: number | null
+    art11mix12?: number | null
+    art11rou12?: number | null
+    art11fer12?: number | null
+    art11inc12?: number | null
+    naf12art13?: number | null
+    art12act13?: number | null
+    art12hab13?: number | null
+    art12mix13?: number | null
+    art12rou13?: number | null
+    art12fer13?: number | null
+    art12inc13?: number | null
+    naf13art14?: number | null
+    art13act14?: number | null
+    art13hab14?: number | null
+    art13mix14?: number | null
+    art13rou14?: number | null
+    art13fer14?: number | null
+    art13inc14?: number | null
+    naf14art15?: number | null
+    art14act15?: number | null
+    art14hab15?: number | null
+    art14mix15?: number | null
+    art14rou15?: number | null
+    art14fer15?: number | null
+    art14inc15?: number | null
+    naf15art16?: number | null
+    art15act16?: number | null
+    art15hab16?: number | null
+    art15mix16?: number | null
+    art15rou16?: number | null
+    art15fer16?: number | null
+    art15inc16?: number | null
+    naf16art17?: number | null
+    art16act17?: number | null
+    art16hab17?: number | null
+    art16mix17?: number | null
+    art16rou17?: number | null
+    art16fer17?: number | null
+    art16inc17?: number | null
+    naf17art18?: number | null
+    art17act18?: number | null
+    art17hab18?: number | null
+    art17mix18?: number | null
+    art17rou18?: number | null
+    art17fer18?: number | null
+    art17inc18?: number | null
+    naf18art19?: number | null
+    art18act19?: number | null
+    art18hab19?: number | null
+    art18mix19?: number | null
+    art18rou19?: number | null
+    art18fer19?: number | null
+    art18inc19?: number | null
+    naf19art20?: number | null
+    art19act20?: number | null
+    art19hab20?: number | null
+    art19mix20?: number | null
+    art19rou20?: number | null
+    art19fer20?: number | null
+    art19inc20?: number | null
+    naf20art21?: number | null
+    art20act21?: number | null
+    art20hab21?: number | null
+    art20mix21?: number | null
+    art20rou21?: number | null
+    art20fer21?: number | null
+    art20inc21?: number | null
+    naf21art22?: number | null
+    art21act22?: number | null
+    art21hab22?: number | null
+    art21mix22?: number | null
+    art21rou22?: number | null
+    art21fer22?: number | null
+    art21inc22?: number | null
+    naf22art23?: number | null
+    art22act23?: number | null
+    art22hab23?: number | null
+    art22mix23?: number | null
+    art22rou23?: number | null
+    art22fer23?: number | null
+    art22inc23?: number | null
+    naf09art23?: number | null
+    art09act23?: number | null
+    art09hab23?: number | null
+    art09mix23?: number | null
+    art09inc23?: number | null
+    art09rou23?: number | null
+    art09fer23?: number | null
+    artcom0923?: number | null
   }
 
   export type consommation_espaces_nafUpdateInput = {
@@ -61084,112 +62943,112 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    naf09art10?: FloatFieldUpdateOperationsInput | number
-    art09act10?: FloatFieldUpdateOperationsInput | number
-    art09hab10?: FloatFieldUpdateOperationsInput | number
-    art09mix10?: FloatFieldUpdateOperationsInput | number
-    art09rou10?: FloatFieldUpdateOperationsInput | number
-    art09fer10?: FloatFieldUpdateOperationsInput | number
-    art09inc10?: FloatFieldUpdateOperationsInput | number
-    naf10art11?: FloatFieldUpdateOperationsInput | number
-    art10act11?: FloatFieldUpdateOperationsInput | number
-    art10hab11?: FloatFieldUpdateOperationsInput | number
-    art10mix11?: FloatFieldUpdateOperationsInput | number
-    art10rou11?: FloatFieldUpdateOperationsInput | number
-    art10fer11?: FloatFieldUpdateOperationsInput | number
-    art10inc11?: FloatFieldUpdateOperationsInput | number
-    naf11art12?: FloatFieldUpdateOperationsInput | number
-    art11act12?: FloatFieldUpdateOperationsInput | number
-    art11hab12?: FloatFieldUpdateOperationsInput | number
-    art11mix12?: FloatFieldUpdateOperationsInput | number
-    art11rou12?: FloatFieldUpdateOperationsInput | number
-    art11fer12?: FloatFieldUpdateOperationsInput | number
-    art11inc12?: FloatFieldUpdateOperationsInput | number
-    naf12art13?: FloatFieldUpdateOperationsInput | number
-    art12act13?: FloatFieldUpdateOperationsInput | number
-    art12hab13?: FloatFieldUpdateOperationsInput | number
-    art12mix13?: FloatFieldUpdateOperationsInput | number
-    art12rou13?: FloatFieldUpdateOperationsInput | number
-    art12fer13?: FloatFieldUpdateOperationsInput | number
-    art12inc13?: FloatFieldUpdateOperationsInput | number
-    naf13art14?: FloatFieldUpdateOperationsInput | number
-    art13act14?: FloatFieldUpdateOperationsInput | number
-    art13hab14?: FloatFieldUpdateOperationsInput | number
-    art13mix14?: FloatFieldUpdateOperationsInput | number
-    art13rou14?: FloatFieldUpdateOperationsInput | number
-    art13fer14?: FloatFieldUpdateOperationsInput | number
-    art13inc14?: FloatFieldUpdateOperationsInput | number
-    naf14art15?: FloatFieldUpdateOperationsInput | number
-    art14act15?: FloatFieldUpdateOperationsInput | number
-    art14hab15?: FloatFieldUpdateOperationsInput | number
-    art14mix15?: FloatFieldUpdateOperationsInput | number
-    art14rou15?: FloatFieldUpdateOperationsInput | number
-    art14fer15?: FloatFieldUpdateOperationsInput | number
-    art14inc15?: FloatFieldUpdateOperationsInput | number
-    naf15art16?: FloatFieldUpdateOperationsInput | number
-    art15act16?: FloatFieldUpdateOperationsInput | number
-    art15hab16?: FloatFieldUpdateOperationsInput | number
-    art15mix16?: FloatFieldUpdateOperationsInput | number
-    art15rou16?: FloatFieldUpdateOperationsInput | number
-    art15fer16?: FloatFieldUpdateOperationsInput | number
-    art15inc16?: FloatFieldUpdateOperationsInput | number
-    naf16art17?: FloatFieldUpdateOperationsInput | number
-    art16act17?: FloatFieldUpdateOperationsInput | number
-    art16hab17?: FloatFieldUpdateOperationsInput | number
-    art16mix17?: FloatFieldUpdateOperationsInput | number
-    art16rou17?: FloatFieldUpdateOperationsInput | number
-    art16fer17?: FloatFieldUpdateOperationsInput | number
-    art16inc17?: FloatFieldUpdateOperationsInput | number
-    naf17art18?: FloatFieldUpdateOperationsInput | number
-    art17act18?: FloatFieldUpdateOperationsInput | number
-    art17hab18?: FloatFieldUpdateOperationsInput | number
-    art17mix18?: FloatFieldUpdateOperationsInput | number
-    art17rou18?: FloatFieldUpdateOperationsInput | number
-    art17fer18?: FloatFieldUpdateOperationsInput | number
-    art17inc18?: FloatFieldUpdateOperationsInput | number
-    naf18art19?: FloatFieldUpdateOperationsInput | number
-    art18act19?: FloatFieldUpdateOperationsInput | number
-    art18hab19?: FloatFieldUpdateOperationsInput | number
-    art18mix19?: FloatFieldUpdateOperationsInput | number
-    art18rou19?: FloatFieldUpdateOperationsInput | number
-    art18fer19?: FloatFieldUpdateOperationsInput | number
-    art18inc19?: FloatFieldUpdateOperationsInput | number
-    naf19art20?: FloatFieldUpdateOperationsInput | number
-    art19act20?: FloatFieldUpdateOperationsInput | number
-    art19hab20?: FloatFieldUpdateOperationsInput | number
-    art19mix20?: FloatFieldUpdateOperationsInput | number
-    art19rou20?: FloatFieldUpdateOperationsInput | number
-    art19fer20?: FloatFieldUpdateOperationsInput | number
-    art19inc20?: FloatFieldUpdateOperationsInput | number
-    naf20art21?: FloatFieldUpdateOperationsInput | number
-    art20act21?: FloatFieldUpdateOperationsInput | number
-    art20hab21?: FloatFieldUpdateOperationsInput | number
-    art20mix21?: FloatFieldUpdateOperationsInput | number
-    art20rou21?: FloatFieldUpdateOperationsInput | number
-    art20fer21?: FloatFieldUpdateOperationsInput | number
-    art20inc21?: FloatFieldUpdateOperationsInput | number
-    naf21art22?: FloatFieldUpdateOperationsInput | number
-    art21act22?: FloatFieldUpdateOperationsInput | number
-    art21hab22?: FloatFieldUpdateOperationsInput | number
-    art21mix22?: FloatFieldUpdateOperationsInput | number
-    art21rou22?: FloatFieldUpdateOperationsInput | number
-    art21fer22?: FloatFieldUpdateOperationsInput | number
-    art21inc22?: FloatFieldUpdateOperationsInput | number
-    naf22art23?: FloatFieldUpdateOperationsInput | number
-    art22act23?: FloatFieldUpdateOperationsInput | number
-    art22hab23?: FloatFieldUpdateOperationsInput | number
-    art22mix23?: FloatFieldUpdateOperationsInput | number
-    art22rou23?: FloatFieldUpdateOperationsInput | number
-    art22fer23?: FloatFieldUpdateOperationsInput | number
-    art22inc23?: FloatFieldUpdateOperationsInput | number
-    naf09art23?: FloatFieldUpdateOperationsInput | number
-    art09act23?: FloatFieldUpdateOperationsInput | number
-    art09hab23?: FloatFieldUpdateOperationsInput | number
-    art09mix23?: FloatFieldUpdateOperationsInput | number
-    art09inc23?: FloatFieldUpdateOperationsInput | number
-    art09rou23?: FloatFieldUpdateOperationsInput | number
-    art09fer23?: FloatFieldUpdateOperationsInput | number
-    artcom0923?: FloatFieldUpdateOperationsInput | number
+    naf09art10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09act10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09hab10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09mix10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09rou10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09fer10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09inc10?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf10art11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10act11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10hab11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10mix11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10rou11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10fer11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10inc11?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf11art12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11act12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11hab12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11mix12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11rou12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11fer12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11inc12?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf12art13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12act13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12hab13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12mix13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12rou13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12fer13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12inc13?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf13art14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13act14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13hab14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13mix14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13rou14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13fer14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13inc14?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf14art15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14act15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14hab15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14mix15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14rou15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14fer15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14inc15?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf15art16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15act16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15hab16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15mix16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15rou16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15fer16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15inc16?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf16art17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16act17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16hab17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16mix17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16rou17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16fer17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16inc17?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf17art18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17act18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17hab18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17mix18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17rou18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17fer18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17inc18?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf18art19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18act19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18hab19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18mix19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18rou19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18fer19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18inc19?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf19art20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19act20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19hab20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19mix20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19rou20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19fer20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19inc20?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf20art21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20act21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20hab21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20mix21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20rou21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20fer21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20inc21?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf21art22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21act22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21hab22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21mix22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21rou22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21fer22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21inc22?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf22art23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22act23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22hab23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22mix23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22rou23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22fer23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22inc23?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf09art23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09act23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09hab23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09mix23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09inc23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09rou23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09fer23?: NullableFloatFieldUpdateOperationsInput | number | null
+    artcom0923?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type consommation_espaces_nafUncheckedUpdateInput = {
@@ -61205,112 +63064,112 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    naf09art10?: FloatFieldUpdateOperationsInput | number
-    art09act10?: FloatFieldUpdateOperationsInput | number
-    art09hab10?: FloatFieldUpdateOperationsInput | number
-    art09mix10?: FloatFieldUpdateOperationsInput | number
-    art09rou10?: FloatFieldUpdateOperationsInput | number
-    art09fer10?: FloatFieldUpdateOperationsInput | number
-    art09inc10?: FloatFieldUpdateOperationsInput | number
-    naf10art11?: FloatFieldUpdateOperationsInput | number
-    art10act11?: FloatFieldUpdateOperationsInput | number
-    art10hab11?: FloatFieldUpdateOperationsInput | number
-    art10mix11?: FloatFieldUpdateOperationsInput | number
-    art10rou11?: FloatFieldUpdateOperationsInput | number
-    art10fer11?: FloatFieldUpdateOperationsInput | number
-    art10inc11?: FloatFieldUpdateOperationsInput | number
-    naf11art12?: FloatFieldUpdateOperationsInput | number
-    art11act12?: FloatFieldUpdateOperationsInput | number
-    art11hab12?: FloatFieldUpdateOperationsInput | number
-    art11mix12?: FloatFieldUpdateOperationsInput | number
-    art11rou12?: FloatFieldUpdateOperationsInput | number
-    art11fer12?: FloatFieldUpdateOperationsInput | number
-    art11inc12?: FloatFieldUpdateOperationsInput | number
-    naf12art13?: FloatFieldUpdateOperationsInput | number
-    art12act13?: FloatFieldUpdateOperationsInput | number
-    art12hab13?: FloatFieldUpdateOperationsInput | number
-    art12mix13?: FloatFieldUpdateOperationsInput | number
-    art12rou13?: FloatFieldUpdateOperationsInput | number
-    art12fer13?: FloatFieldUpdateOperationsInput | number
-    art12inc13?: FloatFieldUpdateOperationsInput | number
-    naf13art14?: FloatFieldUpdateOperationsInput | number
-    art13act14?: FloatFieldUpdateOperationsInput | number
-    art13hab14?: FloatFieldUpdateOperationsInput | number
-    art13mix14?: FloatFieldUpdateOperationsInput | number
-    art13rou14?: FloatFieldUpdateOperationsInput | number
-    art13fer14?: FloatFieldUpdateOperationsInput | number
-    art13inc14?: FloatFieldUpdateOperationsInput | number
-    naf14art15?: FloatFieldUpdateOperationsInput | number
-    art14act15?: FloatFieldUpdateOperationsInput | number
-    art14hab15?: FloatFieldUpdateOperationsInput | number
-    art14mix15?: FloatFieldUpdateOperationsInput | number
-    art14rou15?: FloatFieldUpdateOperationsInput | number
-    art14fer15?: FloatFieldUpdateOperationsInput | number
-    art14inc15?: FloatFieldUpdateOperationsInput | number
-    naf15art16?: FloatFieldUpdateOperationsInput | number
-    art15act16?: FloatFieldUpdateOperationsInput | number
-    art15hab16?: FloatFieldUpdateOperationsInput | number
-    art15mix16?: FloatFieldUpdateOperationsInput | number
-    art15rou16?: FloatFieldUpdateOperationsInput | number
-    art15fer16?: FloatFieldUpdateOperationsInput | number
-    art15inc16?: FloatFieldUpdateOperationsInput | number
-    naf16art17?: FloatFieldUpdateOperationsInput | number
-    art16act17?: FloatFieldUpdateOperationsInput | number
-    art16hab17?: FloatFieldUpdateOperationsInput | number
-    art16mix17?: FloatFieldUpdateOperationsInput | number
-    art16rou17?: FloatFieldUpdateOperationsInput | number
-    art16fer17?: FloatFieldUpdateOperationsInput | number
-    art16inc17?: FloatFieldUpdateOperationsInput | number
-    naf17art18?: FloatFieldUpdateOperationsInput | number
-    art17act18?: FloatFieldUpdateOperationsInput | number
-    art17hab18?: FloatFieldUpdateOperationsInput | number
-    art17mix18?: FloatFieldUpdateOperationsInput | number
-    art17rou18?: FloatFieldUpdateOperationsInput | number
-    art17fer18?: FloatFieldUpdateOperationsInput | number
-    art17inc18?: FloatFieldUpdateOperationsInput | number
-    naf18art19?: FloatFieldUpdateOperationsInput | number
-    art18act19?: FloatFieldUpdateOperationsInput | number
-    art18hab19?: FloatFieldUpdateOperationsInput | number
-    art18mix19?: FloatFieldUpdateOperationsInput | number
-    art18rou19?: FloatFieldUpdateOperationsInput | number
-    art18fer19?: FloatFieldUpdateOperationsInput | number
-    art18inc19?: FloatFieldUpdateOperationsInput | number
-    naf19art20?: FloatFieldUpdateOperationsInput | number
-    art19act20?: FloatFieldUpdateOperationsInput | number
-    art19hab20?: FloatFieldUpdateOperationsInput | number
-    art19mix20?: FloatFieldUpdateOperationsInput | number
-    art19rou20?: FloatFieldUpdateOperationsInput | number
-    art19fer20?: FloatFieldUpdateOperationsInput | number
-    art19inc20?: FloatFieldUpdateOperationsInput | number
-    naf20art21?: FloatFieldUpdateOperationsInput | number
-    art20act21?: FloatFieldUpdateOperationsInput | number
-    art20hab21?: FloatFieldUpdateOperationsInput | number
-    art20mix21?: FloatFieldUpdateOperationsInput | number
-    art20rou21?: FloatFieldUpdateOperationsInput | number
-    art20fer21?: FloatFieldUpdateOperationsInput | number
-    art20inc21?: FloatFieldUpdateOperationsInput | number
-    naf21art22?: FloatFieldUpdateOperationsInput | number
-    art21act22?: FloatFieldUpdateOperationsInput | number
-    art21hab22?: FloatFieldUpdateOperationsInput | number
-    art21mix22?: FloatFieldUpdateOperationsInput | number
-    art21rou22?: FloatFieldUpdateOperationsInput | number
-    art21fer22?: FloatFieldUpdateOperationsInput | number
-    art21inc22?: FloatFieldUpdateOperationsInput | number
-    naf22art23?: FloatFieldUpdateOperationsInput | number
-    art22act23?: FloatFieldUpdateOperationsInput | number
-    art22hab23?: FloatFieldUpdateOperationsInput | number
-    art22mix23?: FloatFieldUpdateOperationsInput | number
-    art22rou23?: FloatFieldUpdateOperationsInput | number
-    art22fer23?: FloatFieldUpdateOperationsInput | number
-    art22inc23?: FloatFieldUpdateOperationsInput | number
-    naf09art23?: FloatFieldUpdateOperationsInput | number
-    art09act23?: FloatFieldUpdateOperationsInput | number
-    art09hab23?: FloatFieldUpdateOperationsInput | number
-    art09mix23?: FloatFieldUpdateOperationsInput | number
-    art09inc23?: FloatFieldUpdateOperationsInput | number
-    art09rou23?: FloatFieldUpdateOperationsInput | number
-    art09fer23?: FloatFieldUpdateOperationsInput | number
-    artcom0923?: FloatFieldUpdateOperationsInput | number
+    naf09art10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09act10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09hab10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09mix10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09rou10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09fer10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09inc10?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf10art11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10act11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10hab11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10mix11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10rou11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10fer11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10inc11?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf11art12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11act12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11hab12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11mix12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11rou12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11fer12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11inc12?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf12art13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12act13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12hab13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12mix13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12rou13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12fer13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12inc13?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf13art14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13act14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13hab14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13mix14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13rou14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13fer14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13inc14?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf14art15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14act15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14hab15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14mix15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14rou15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14fer15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14inc15?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf15art16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15act16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15hab16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15mix16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15rou16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15fer16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15inc16?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf16art17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16act17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16hab17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16mix17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16rou17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16fer17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16inc17?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf17art18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17act18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17hab18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17mix18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17rou18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17fer18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17inc18?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf18art19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18act19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18hab19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18mix19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18rou19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18fer19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18inc19?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf19art20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19act20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19hab20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19mix20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19rou20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19fer20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19inc20?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf20art21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20act21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20hab21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20mix21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20rou21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20fer21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20inc21?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf21art22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21act22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21hab22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21mix22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21rou22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21fer22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21inc22?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf22art23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22act23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22hab23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22mix23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22rou23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22fer23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22inc23?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf09art23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09act23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09hab23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09mix23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09inc23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09rou23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09fer23?: NullableFloatFieldUpdateOperationsInput | number | null
+    artcom0923?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type consommation_espaces_nafCreateManyInput = {
@@ -61326,112 +63185,112 @@ export namespace Prisma {
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    naf09art10: number
-    art09act10: number
-    art09hab10: number
-    art09mix10: number
-    art09rou10: number
-    art09fer10: number
-    art09inc10: number
-    naf10art11: number
-    art10act11: number
-    art10hab11: number
-    art10mix11: number
-    art10rou11: number
-    art10fer11: number
-    art10inc11: number
-    naf11art12: number
-    art11act12: number
-    art11hab12: number
-    art11mix12: number
-    art11rou12: number
-    art11fer12: number
-    art11inc12: number
-    naf12art13: number
-    art12act13: number
-    art12hab13: number
-    art12mix13: number
-    art12rou13: number
-    art12fer13: number
-    art12inc13: number
-    naf13art14: number
-    art13act14: number
-    art13hab14: number
-    art13mix14: number
-    art13rou14: number
-    art13fer14: number
-    art13inc14: number
-    naf14art15: number
-    art14act15: number
-    art14hab15: number
-    art14mix15: number
-    art14rou15: number
-    art14fer15: number
-    art14inc15: number
-    naf15art16: number
-    art15act16: number
-    art15hab16: number
-    art15mix16: number
-    art15rou16: number
-    art15fer16: number
-    art15inc16: number
-    naf16art17: number
-    art16act17: number
-    art16hab17: number
-    art16mix17: number
-    art16rou17: number
-    art16fer17: number
-    art16inc17: number
-    naf17art18: number
-    art17act18: number
-    art17hab18: number
-    art17mix18: number
-    art17rou18: number
-    art17fer18: number
-    art17inc18: number
-    naf18art19: number
-    art18act19: number
-    art18hab19: number
-    art18mix19: number
-    art18rou19: number
-    art18fer19: number
-    art18inc19: number
-    naf19art20: number
-    art19act20: number
-    art19hab20: number
-    art19mix20: number
-    art19rou20: number
-    art19fer20: number
-    art19inc20: number
-    naf20art21: number
-    art20act21: number
-    art20hab21: number
-    art20mix21: number
-    art20rou21: number
-    art20fer21: number
-    art20inc21: number
-    naf21art22: number
-    art21act22: number
-    art21hab22: number
-    art21mix22: number
-    art21rou22: number
-    art21fer22: number
-    art21inc22: number
-    naf22art23: number
-    art22act23: number
-    art22hab23: number
-    art22mix23: number
-    art22rou23: number
-    art22fer23: number
-    art22inc23: number
-    naf09art23: number
-    art09act23: number
-    art09hab23: number
-    art09mix23: number
-    art09inc23: number
-    art09rou23: number
-    art09fer23: number
-    artcom0923: number
+    naf09art10?: number | null
+    art09act10?: number | null
+    art09hab10?: number | null
+    art09mix10?: number | null
+    art09rou10?: number | null
+    art09fer10?: number | null
+    art09inc10?: number | null
+    naf10art11?: number | null
+    art10act11?: number | null
+    art10hab11?: number | null
+    art10mix11?: number | null
+    art10rou11?: number | null
+    art10fer11?: number | null
+    art10inc11?: number | null
+    naf11art12?: number | null
+    art11act12?: number | null
+    art11hab12?: number | null
+    art11mix12?: number | null
+    art11rou12?: number | null
+    art11fer12?: number | null
+    art11inc12?: number | null
+    naf12art13?: number | null
+    art12act13?: number | null
+    art12hab13?: number | null
+    art12mix13?: number | null
+    art12rou13?: number | null
+    art12fer13?: number | null
+    art12inc13?: number | null
+    naf13art14?: number | null
+    art13act14?: number | null
+    art13hab14?: number | null
+    art13mix14?: number | null
+    art13rou14?: number | null
+    art13fer14?: number | null
+    art13inc14?: number | null
+    naf14art15?: number | null
+    art14act15?: number | null
+    art14hab15?: number | null
+    art14mix15?: number | null
+    art14rou15?: number | null
+    art14fer15?: number | null
+    art14inc15?: number | null
+    naf15art16?: number | null
+    art15act16?: number | null
+    art15hab16?: number | null
+    art15mix16?: number | null
+    art15rou16?: number | null
+    art15fer16?: number | null
+    art15inc16?: number | null
+    naf16art17?: number | null
+    art16act17?: number | null
+    art16hab17?: number | null
+    art16mix17?: number | null
+    art16rou17?: number | null
+    art16fer17?: number | null
+    art16inc17?: number | null
+    naf17art18?: number | null
+    art17act18?: number | null
+    art17hab18?: number | null
+    art17mix18?: number | null
+    art17rou18?: number | null
+    art17fer18?: number | null
+    art17inc18?: number | null
+    naf18art19?: number | null
+    art18act19?: number | null
+    art18hab19?: number | null
+    art18mix19?: number | null
+    art18rou19?: number | null
+    art18fer19?: number | null
+    art18inc19?: number | null
+    naf19art20?: number | null
+    art19act20?: number | null
+    art19hab20?: number | null
+    art19mix20?: number | null
+    art19rou20?: number | null
+    art19fer20?: number | null
+    art19inc20?: number | null
+    naf20art21?: number | null
+    art20act21?: number | null
+    art20hab21?: number | null
+    art20mix21?: number | null
+    art20rou21?: number | null
+    art20fer21?: number | null
+    art20inc21?: number | null
+    naf21art22?: number | null
+    art21act22?: number | null
+    art21hab22?: number | null
+    art21mix22?: number | null
+    art21rou22?: number | null
+    art21fer22?: number | null
+    art21inc22?: number | null
+    naf22art23?: number | null
+    art22act23?: number | null
+    art22hab23?: number | null
+    art22mix23?: number | null
+    art22rou23?: number | null
+    art22fer23?: number | null
+    art22inc23?: number | null
+    naf09art23?: number | null
+    art09act23?: number | null
+    art09hab23?: number | null
+    art09mix23?: number | null
+    art09inc23?: number | null
+    art09rou23?: number | null
+    art09fer23?: number | null
+    artcom0923?: number | null
   }
 
   export type consommation_espaces_nafUpdateManyMutationInput = {
@@ -61447,112 +63306,112 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    naf09art10?: FloatFieldUpdateOperationsInput | number
-    art09act10?: FloatFieldUpdateOperationsInput | number
-    art09hab10?: FloatFieldUpdateOperationsInput | number
-    art09mix10?: FloatFieldUpdateOperationsInput | number
-    art09rou10?: FloatFieldUpdateOperationsInput | number
-    art09fer10?: FloatFieldUpdateOperationsInput | number
-    art09inc10?: FloatFieldUpdateOperationsInput | number
-    naf10art11?: FloatFieldUpdateOperationsInput | number
-    art10act11?: FloatFieldUpdateOperationsInput | number
-    art10hab11?: FloatFieldUpdateOperationsInput | number
-    art10mix11?: FloatFieldUpdateOperationsInput | number
-    art10rou11?: FloatFieldUpdateOperationsInput | number
-    art10fer11?: FloatFieldUpdateOperationsInput | number
-    art10inc11?: FloatFieldUpdateOperationsInput | number
-    naf11art12?: FloatFieldUpdateOperationsInput | number
-    art11act12?: FloatFieldUpdateOperationsInput | number
-    art11hab12?: FloatFieldUpdateOperationsInput | number
-    art11mix12?: FloatFieldUpdateOperationsInput | number
-    art11rou12?: FloatFieldUpdateOperationsInput | number
-    art11fer12?: FloatFieldUpdateOperationsInput | number
-    art11inc12?: FloatFieldUpdateOperationsInput | number
-    naf12art13?: FloatFieldUpdateOperationsInput | number
-    art12act13?: FloatFieldUpdateOperationsInput | number
-    art12hab13?: FloatFieldUpdateOperationsInput | number
-    art12mix13?: FloatFieldUpdateOperationsInput | number
-    art12rou13?: FloatFieldUpdateOperationsInput | number
-    art12fer13?: FloatFieldUpdateOperationsInput | number
-    art12inc13?: FloatFieldUpdateOperationsInput | number
-    naf13art14?: FloatFieldUpdateOperationsInput | number
-    art13act14?: FloatFieldUpdateOperationsInput | number
-    art13hab14?: FloatFieldUpdateOperationsInput | number
-    art13mix14?: FloatFieldUpdateOperationsInput | number
-    art13rou14?: FloatFieldUpdateOperationsInput | number
-    art13fer14?: FloatFieldUpdateOperationsInput | number
-    art13inc14?: FloatFieldUpdateOperationsInput | number
-    naf14art15?: FloatFieldUpdateOperationsInput | number
-    art14act15?: FloatFieldUpdateOperationsInput | number
-    art14hab15?: FloatFieldUpdateOperationsInput | number
-    art14mix15?: FloatFieldUpdateOperationsInput | number
-    art14rou15?: FloatFieldUpdateOperationsInput | number
-    art14fer15?: FloatFieldUpdateOperationsInput | number
-    art14inc15?: FloatFieldUpdateOperationsInput | number
-    naf15art16?: FloatFieldUpdateOperationsInput | number
-    art15act16?: FloatFieldUpdateOperationsInput | number
-    art15hab16?: FloatFieldUpdateOperationsInput | number
-    art15mix16?: FloatFieldUpdateOperationsInput | number
-    art15rou16?: FloatFieldUpdateOperationsInput | number
-    art15fer16?: FloatFieldUpdateOperationsInput | number
-    art15inc16?: FloatFieldUpdateOperationsInput | number
-    naf16art17?: FloatFieldUpdateOperationsInput | number
-    art16act17?: FloatFieldUpdateOperationsInput | number
-    art16hab17?: FloatFieldUpdateOperationsInput | number
-    art16mix17?: FloatFieldUpdateOperationsInput | number
-    art16rou17?: FloatFieldUpdateOperationsInput | number
-    art16fer17?: FloatFieldUpdateOperationsInput | number
-    art16inc17?: FloatFieldUpdateOperationsInput | number
-    naf17art18?: FloatFieldUpdateOperationsInput | number
-    art17act18?: FloatFieldUpdateOperationsInput | number
-    art17hab18?: FloatFieldUpdateOperationsInput | number
-    art17mix18?: FloatFieldUpdateOperationsInput | number
-    art17rou18?: FloatFieldUpdateOperationsInput | number
-    art17fer18?: FloatFieldUpdateOperationsInput | number
-    art17inc18?: FloatFieldUpdateOperationsInput | number
-    naf18art19?: FloatFieldUpdateOperationsInput | number
-    art18act19?: FloatFieldUpdateOperationsInput | number
-    art18hab19?: FloatFieldUpdateOperationsInput | number
-    art18mix19?: FloatFieldUpdateOperationsInput | number
-    art18rou19?: FloatFieldUpdateOperationsInput | number
-    art18fer19?: FloatFieldUpdateOperationsInput | number
-    art18inc19?: FloatFieldUpdateOperationsInput | number
-    naf19art20?: FloatFieldUpdateOperationsInput | number
-    art19act20?: FloatFieldUpdateOperationsInput | number
-    art19hab20?: FloatFieldUpdateOperationsInput | number
-    art19mix20?: FloatFieldUpdateOperationsInput | number
-    art19rou20?: FloatFieldUpdateOperationsInput | number
-    art19fer20?: FloatFieldUpdateOperationsInput | number
-    art19inc20?: FloatFieldUpdateOperationsInput | number
-    naf20art21?: FloatFieldUpdateOperationsInput | number
-    art20act21?: FloatFieldUpdateOperationsInput | number
-    art20hab21?: FloatFieldUpdateOperationsInput | number
-    art20mix21?: FloatFieldUpdateOperationsInput | number
-    art20rou21?: FloatFieldUpdateOperationsInput | number
-    art20fer21?: FloatFieldUpdateOperationsInput | number
-    art20inc21?: FloatFieldUpdateOperationsInput | number
-    naf21art22?: FloatFieldUpdateOperationsInput | number
-    art21act22?: FloatFieldUpdateOperationsInput | number
-    art21hab22?: FloatFieldUpdateOperationsInput | number
-    art21mix22?: FloatFieldUpdateOperationsInput | number
-    art21rou22?: FloatFieldUpdateOperationsInput | number
-    art21fer22?: FloatFieldUpdateOperationsInput | number
-    art21inc22?: FloatFieldUpdateOperationsInput | number
-    naf22art23?: FloatFieldUpdateOperationsInput | number
-    art22act23?: FloatFieldUpdateOperationsInput | number
-    art22hab23?: FloatFieldUpdateOperationsInput | number
-    art22mix23?: FloatFieldUpdateOperationsInput | number
-    art22rou23?: FloatFieldUpdateOperationsInput | number
-    art22fer23?: FloatFieldUpdateOperationsInput | number
-    art22inc23?: FloatFieldUpdateOperationsInput | number
-    naf09art23?: FloatFieldUpdateOperationsInput | number
-    art09act23?: FloatFieldUpdateOperationsInput | number
-    art09hab23?: FloatFieldUpdateOperationsInput | number
-    art09mix23?: FloatFieldUpdateOperationsInput | number
-    art09inc23?: FloatFieldUpdateOperationsInput | number
-    art09rou23?: FloatFieldUpdateOperationsInput | number
-    art09fer23?: FloatFieldUpdateOperationsInput | number
-    artcom0923?: FloatFieldUpdateOperationsInput | number
+    naf09art10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09act10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09hab10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09mix10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09rou10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09fer10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09inc10?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf10art11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10act11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10hab11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10mix11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10rou11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10fer11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10inc11?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf11art12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11act12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11hab12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11mix12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11rou12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11fer12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11inc12?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf12art13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12act13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12hab13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12mix13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12rou13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12fer13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12inc13?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf13art14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13act14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13hab14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13mix14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13rou14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13fer14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13inc14?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf14art15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14act15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14hab15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14mix15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14rou15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14fer15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14inc15?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf15art16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15act16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15hab16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15mix16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15rou16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15fer16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15inc16?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf16art17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16act17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16hab17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16mix17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16rou17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16fer17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16inc17?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf17art18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17act18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17hab18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17mix18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17rou18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17fer18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17inc18?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf18art19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18act19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18hab19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18mix19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18rou19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18fer19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18inc19?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf19art20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19act20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19hab20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19mix20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19rou20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19fer20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19inc20?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf20art21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20act21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20hab21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20mix21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20rou21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20fer21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20inc21?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf21art22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21act22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21hab22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21mix22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21rou22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21fer22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21inc22?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf22art23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22act23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22hab23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22mix23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22rou23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22fer23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22inc23?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf09art23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09act23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09hab23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09mix23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09inc23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09rou23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09fer23?: NullableFloatFieldUpdateOperationsInput | number | null
+    artcom0923?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type consommation_espaces_nafUncheckedUpdateManyInput = {
@@ -61568,112 +63427,112 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    naf09art10?: FloatFieldUpdateOperationsInput | number
-    art09act10?: FloatFieldUpdateOperationsInput | number
-    art09hab10?: FloatFieldUpdateOperationsInput | number
-    art09mix10?: FloatFieldUpdateOperationsInput | number
-    art09rou10?: FloatFieldUpdateOperationsInput | number
-    art09fer10?: FloatFieldUpdateOperationsInput | number
-    art09inc10?: FloatFieldUpdateOperationsInput | number
-    naf10art11?: FloatFieldUpdateOperationsInput | number
-    art10act11?: FloatFieldUpdateOperationsInput | number
-    art10hab11?: FloatFieldUpdateOperationsInput | number
-    art10mix11?: FloatFieldUpdateOperationsInput | number
-    art10rou11?: FloatFieldUpdateOperationsInput | number
-    art10fer11?: FloatFieldUpdateOperationsInput | number
-    art10inc11?: FloatFieldUpdateOperationsInput | number
-    naf11art12?: FloatFieldUpdateOperationsInput | number
-    art11act12?: FloatFieldUpdateOperationsInput | number
-    art11hab12?: FloatFieldUpdateOperationsInput | number
-    art11mix12?: FloatFieldUpdateOperationsInput | number
-    art11rou12?: FloatFieldUpdateOperationsInput | number
-    art11fer12?: FloatFieldUpdateOperationsInput | number
-    art11inc12?: FloatFieldUpdateOperationsInput | number
-    naf12art13?: FloatFieldUpdateOperationsInput | number
-    art12act13?: FloatFieldUpdateOperationsInput | number
-    art12hab13?: FloatFieldUpdateOperationsInput | number
-    art12mix13?: FloatFieldUpdateOperationsInput | number
-    art12rou13?: FloatFieldUpdateOperationsInput | number
-    art12fer13?: FloatFieldUpdateOperationsInput | number
-    art12inc13?: FloatFieldUpdateOperationsInput | number
-    naf13art14?: FloatFieldUpdateOperationsInput | number
-    art13act14?: FloatFieldUpdateOperationsInput | number
-    art13hab14?: FloatFieldUpdateOperationsInput | number
-    art13mix14?: FloatFieldUpdateOperationsInput | number
-    art13rou14?: FloatFieldUpdateOperationsInput | number
-    art13fer14?: FloatFieldUpdateOperationsInput | number
-    art13inc14?: FloatFieldUpdateOperationsInput | number
-    naf14art15?: FloatFieldUpdateOperationsInput | number
-    art14act15?: FloatFieldUpdateOperationsInput | number
-    art14hab15?: FloatFieldUpdateOperationsInput | number
-    art14mix15?: FloatFieldUpdateOperationsInput | number
-    art14rou15?: FloatFieldUpdateOperationsInput | number
-    art14fer15?: FloatFieldUpdateOperationsInput | number
-    art14inc15?: FloatFieldUpdateOperationsInput | number
-    naf15art16?: FloatFieldUpdateOperationsInput | number
-    art15act16?: FloatFieldUpdateOperationsInput | number
-    art15hab16?: FloatFieldUpdateOperationsInput | number
-    art15mix16?: FloatFieldUpdateOperationsInput | number
-    art15rou16?: FloatFieldUpdateOperationsInput | number
-    art15fer16?: FloatFieldUpdateOperationsInput | number
-    art15inc16?: FloatFieldUpdateOperationsInput | number
-    naf16art17?: FloatFieldUpdateOperationsInput | number
-    art16act17?: FloatFieldUpdateOperationsInput | number
-    art16hab17?: FloatFieldUpdateOperationsInput | number
-    art16mix17?: FloatFieldUpdateOperationsInput | number
-    art16rou17?: FloatFieldUpdateOperationsInput | number
-    art16fer17?: FloatFieldUpdateOperationsInput | number
-    art16inc17?: FloatFieldUpdateOperationsInput | number
-    naf17art18?: FloatFieldUpdateOperationsInput | number
-    art17act18?: FloatFieldUpdateOperationsInput | number
-    art17hab18?: FloatFieldUpdateOperationsInput | number
-    art17mix18?: FloatFieldUpdateOperationsInput | number
-    art17rou18?: FloatFieldUpdateOperationsInput | number
-    art17fer18?: FloatFieldUpdateOperationsInput | number
-    art17inc18?: FloatFieldUpdateOperationsInput | number
-    naf18art19?: FloatFieldUpdateOperationsInput | number
-    art18act19?: FloatFieldUpdateOperationsInput | number
-    art18hab19?: FloatFieldUpdateOperationsInput | number
-    art18mix19?: FloatFieldUpdateOperationsInput | number
-    art18rou19?: FloatFieldUpdateOperationsInput | number
-    art18fer19?: FloatFieldUpdateOperationsInput | number
-    art18inc19?: FloatFieldUpdateOperationsInput | number
-    naf19art20?: FloatFieldUpdateOperationsInput | number
-    art19act20?: FloatFieldUpdateOperationsInput | number
-    art19hab20?: FloatFieldUpdateOperationsInput | number
-    art19mix20?: FloatFieldUpdateOperationsInput | number
-    art19rou20?: FloatFieldUpdateOperationsInput | number
-    art19fer20?: FloatFieldUpdateOperationsInput | number
-    art19inc20?: FloatFieldUpdateOperationsInput | number
-    naf20art21?: FloatFieldUpdateOperationsInput | number
-    art20act21?: FloatFieldUpdateOperationsInput | number
-    art20hab21?: FloatFieldUpdateOperationsInput | number
-    art20mix21?: FloatFieldUpdateOperationsInput | number
-    art20rou21?: FloatFieldUpdateOperationsInput | number
-    art20fer21?: FloatFieldUpdateOperationsInput | number
-    art20inc21?: FloatFieldUpdateOperationsInput | number
-    naf21art22?: FloatFieldUpdateOperationsInput | number
-    art21act22?: FloatFieldUpdateOperationsInput | number
-    art21hab22?: FloatFieldUpdateOperationsInput | number
-    art21mix22?: FloatFieldUpdateOperationsInput | number
-    art21rou22?: FloatFieldUpdateOperationsInput | number
-    art21fer22?: FloatFieldUpdateOperationsInput | number
-    art21inc22?: FloatFieldUpdateOperationsInput | number
-    naf22art23?: FloatFieldUpdateOperationsInput | number
-    art22act23?: FloatFieldUpdateOperationsInput | number
-    art22hab23?: FloatFieldUpdateOperationsInput | number
-    art22mix23?: FloatFieldUpdateOperationsInput | number
-    art22rou23?: FloatFieldUpdateOperationsInput | number
-    art22fer23?: FloatFieldUpdateOperationsInput | number
-    art22inc23?: FloatFieldUpdateOperationsInput | number
-    naf09art23?: FloatFieldUpdateOperationsInput | number
-    art09act23?: FloatFieldUpdateOperationsInput | number
-    art09hab23?: FloatFieldUpdateOperationsInput | number
-    art09mix23?: FloatFieldUpdateOperationsInput | number
-    art09inc23?: FloatFieldUpdateOperationsInput | number
-    art09rou23?: FloatFieldUpdateOperationsInput | number
-    art09fer23?: FloatFieldUpdateOperationsInput | number
-    artcom0923?: FloatFieldUpdateOperationsInput | number
+    naf09art10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09act10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09hab10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09mix10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09rou10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09fer10?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09inc10?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf10art11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10act11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10hab11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10mix11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10rou11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10fer11?: NullableFloatFieldUpdateOperationsInput | number | null
+    art10inc11?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf11art12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11act12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11hab12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11mix12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11rou12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11fer12?: NullableFloatFieldUpdateOperationsInput | number | null
+    art11inc12?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf12art13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12act13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12hab13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12mix13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12rou13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12fer13?: NullableFloatFieldUpdateOperationsInput | number | null
+    art12inc13?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf13art14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13act14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13hab14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13mix14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13rou14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13fer14?: NullableFloatFieldUpdateOperationsInput | number | null
+    art13inc14?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf14art15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14act15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14hab15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14mix15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14rou15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14fer15?: NullableFloatFieldUpdateOperationsInput | number | null
+    art14inc15?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf15art16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15act16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15hab16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15mix16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15rou16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15fer16?: NullableFloatFieldUpdateOperationsInput | number | null
+    art15inc16?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf16art17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16act17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16hab17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16mix17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16rou17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16fer17?: NullableFloatFieldUpdateOperationsInput | number | null
+    art16inc17?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf17art18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17act18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17hab18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17mix18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17rou18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17fer18?: NullableFloatFieldUpdateOperationsInput | number | null
+    art17inc18?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf18art19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18act19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18hab19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18mix19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18rou19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18fer19?: NullableFloatFieldUpdateOperationsInput | number | null
+    art18inc19?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf19art20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19act20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19hab20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19mix20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19rou20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19fer20?: NullableFloatFieldUpdateOperationsInput | number | null
+    art19inc20?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf20art21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20act21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20hab21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20mix21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20rou21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20fer21?: NullableFloatFieldUpdateOperationsInput | number | null
+    art20inc21?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf21art22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21act22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21hab22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21mix22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21rou22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21fer22?: NullableFloatFieldUpdateOperationsInput | number | null
+    art21inc22?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf22art23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22act23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22hab23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22mix23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22rou23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22fer23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art22inc23?: NullableFloatFieldUpdateOperationsInput | number | null
+    naf09art23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09act23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09hab23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09mix23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09inc23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09rou23?: NullableFloatFieldUpdateOperationsInput | number | null
+    art09fer23?: NullableFloatFieldUpdateOperationsInput | number | null
+    artcom0923?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type feux_foretCreateInput = {
@@ -61689,8 +63548,8 @@ export namespace Prisma {
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    nature?: string | null
     annee: number
+    nature?: string | null
     surface_parcourue: number
     surface_foret?: number | null
     surface_maquis_garrigues?: number | null
@@ -61716,8 +63575,8 @@ export namespace Prisma {
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    nature?: string | null
     annee: number
+    nature?: string | null
     surface_parcourue: number
     surface_foret?: number | null
     surface_maquis_garrigues?: number | null
@@ -61743,8 +63602,8 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    nature?: NullableStringFieldUpdateOperationsInput | string | null
     annee?: FloatFieldUpdateOperationsInput | number
+    nature?: NullableStringFieldUpdateOperationsInput | string | null
     surface_parcourue?: FloatFieldUpdateOperationsInput | number
     surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
     surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -61770,8 +63629,8 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    nature?: NullableStringFieldUpdateOperationsInput | string | null
     annee?: FloatFieldUpdateOperationsInput | number
+    nature?: NullableStringFieldUpdateOperationsInput | string | null
     surface_parcourue?: FloatFieldUpdateOperationsInput | number
     surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
     surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -61797,8 +63656,8 @@ export namespace Prisma {
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    nature?: string | null
     annee: number
+    nature?: string | null
     surface_parcourue: number
     surface_foret?: number | null
     surface_maquis_garrigues?: number | null
@@ -61824,8 +63683,8 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    nature?: NullableStringFieldUpdateOperationsInput | string | null
     annee?: FloatFieldUpdateOperationsInput | number
+    nature?: NullableStringFieldUpdateOperationsInput | string | null
     surface_parcourue?: FloatFieldUpdateOperationsInput | number
     surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
     surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -61851,8 +63710,8 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    nature?: NullableStringFieldUpdateOperationsInput | string | null
     annee?: FloatFieldUpdateOperationsInput | number
+    nature?: NullableStringFieldUpdateOperationsInput | string | null
     surface_parcourue?: FloatFieldUpdateOperationsInput | number
     surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
     surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -63426,66 +65285,113 @@ export namespace Prisma {
     superficie_sau_jardins?: FloatFieldUpdateOperationsInput | number
   }
 
+  export type clc_territoiresCreateInput = {
+    code_geographique?: string | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    libelle_departement?: string | null
+    region?: bigint | number | null
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    legend?: string | null
+  }
+
+  export type clc_territoiresUncheckedCreateInput = {
+    pk?: number
+    code_geographique?: string | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    libelle_departement?: string | null
+    region?: bigint | number | null
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    legend?: string | null
+  }
+
   export type clc_territoiresUpdateInput = {
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    libelle_geographique?: StringFieldUpdateOperationsInput | string
-    epci?: StringFieldUpdateOperationsInput | string
-    libelle_epci?: StringFieldUpdateOperationsInput | string
-    departement?: StringFieldUpdateOperationsInput | string
-    libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: IntFieldUpdateOperationsInput | number
+    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    legend?: StringFieldUpdateOperationsInput | string
+    legend?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type clc_territoiresUncheckedUpdateInput = {
     pk?: IntFieldUpdateOperationsInput | number
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    libelle_geographique?: StringFieldUpdateOperationsInput | string
-    epci?: StringFieldUpdateOperationsInput | string
-    libelle_epci?: StringFieldUpdateOperationsInput | string
-    departement?: StringFieldUpdateOperationsInput | string
-    libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: IntFieldUpdateOperationsInput | number
+    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    legend?: StringFieldUpdateOperationsInput | string
+    legend?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type clc_territoiresCreateManyInput = {
+    pk?: number
+    code_geographique?: string | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    libelle_departement?: string | null
+    region?: bigint | number | null
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    legend?: string | null
   }
 
   export type clc_territoiresUpdateManyMutationInput = {
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    libelle_geographique?: StringFieldUpdateOperationsInput | string
-    epci?: StringFieldUpdateOperationsInput | string
-    libelle_epci?: StringFieldUpdateOperationsInput | string
-    departement?: StringFieldUpdateOperationsInput | string
-    libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: IntFieldUpdateOperationsInput | number
+    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    legend?: StringFieldUpdateOperationsInput | string
+    legend?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type clc_territoiresUncheckedUpdateManyInput = {
     pk?: IntFieldUpdateOperationsInput | number
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    libelle_geographique?: StringFieldUpdateOperationsInput | string
-    epci?: StringFieldUpdateOperationsInput | string
-    libelle_epci?: StringFieldUpdateOperationsInput | string
-    departement?: StringFieldUpdateOperationsInput | string
-    libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: IntFieldUpdateOperationsInput | number
+    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    legend?: StringFieldUpdateOperationsInput | string
+    legend?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type communes_dromCreateInput = {
@@ -65329,136 +67235,164 @@ export namespace Prisma {
   }
 
   export type table_communeCreateInput = {
-    index: number
+    index: bigint | number
     code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: number
+    region: bigint | number
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    type_touristique?: string | null
     atlas_biodiversite_nom?: string | null
     atlas_biodiversite_annee_debut?: string | null
     atlas_biodiversite_avancement?: string | null
+    type_touristique?: string | null
+    otex_12_postes?: string | null
+    part_irr_sau_2020?: string | null
+    agriculture_part_over_55?: string | null
+    couverture_lcz?: string | null
   }
 
   export type table_communeUncheckedCreateInput = {
-    index: number
+    index: bigint | number
     code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: number
+    region: bigint | number
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    type_touristique?: string | null
     atlas_biodiversite_nom?: string | null
     atlas_biodiversite_annee_debut?: string | null
     atlas_biodiversite_avancement?: string | null
+    type_touristique?: string | null
+    otex_12_postes?: string | null
+    part_irr_sau_2020?: string | null
+    agriculture_part_over_55?: string | null
+    couverture_lcz?: string | null
   }
 
   export type table_communeUpdateInput = {
-    index?: IntFieldUpdateOperationsInput | number
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: IntFieldUpdateOperationsInput | number
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    type_touristique?: NullableStringFieldUpdateOperationsInput | string | null
     atlas_biodiversite_nom?: NullableStringFieldUpdateOperationsInput | string | null
     atlas_biodiversite_annee_debut?: NullableStringFieldUpdateOperationsInput | string | null
     atlas_biodiversite_avancement?: NullableStringFieldUpdateOperationsInput | string | null
+    type_touristique?: NullableStringFieldUpdateOperationsInput | string | null
+    otex_12_postes?: NullableStringFieldUpdateOperationsInput | string | null
+    part_irr_sau_2020?: NullableStringFieldUpdateOperationsInput | string | null
+    agriculture_part_over_55?: NullableStringFieldUpdateOperationsInput | string | null
+    couverture_lcz?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type table_communeUncheckedUpdateInput = {
-    index?: IntFieldUpdateOperationsInput | number
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: IntFieldUpdateOperationsInput | number
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    type_touristique?: NullableStringFieldUpdateOperationsInput | string | null
     atlas_biodiversite_nom?: NullableStringFieldUpdateOperationsInput | string | null
     atlas_biodiversite_annee_debut?: NullableStringFieldUpdateOperationsInput | string | null
     atlas_biodiversite_avancement?: NullableStringFieldUpdateOperationsInput | string | null
+    type_touristique?: NullableStringFieldUpdateOperationsInput | string | null
+    otex_12_postes?: NullableStringFieldUpdateOperationsInput | string | null
+    part_irr_sau_2020?: NullableStringFieldUpdateOperationsInput | string | null
+    agriculture_part_over_55?: NullableStringFieldUpdateOperationsInput | string | null
+    couverture_lcz?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type table_communeCreateManyInput = {
-    index: number
+    index: bigint | number
     code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: number
+    region: bigint | number
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    type_touristique?: string | null
     atlas_biodiversite_nom?: string | null
     atlas_biodiversite_annee_debut?: string | null
     atlas_biodiversite_avancement?: string | null
+    type_touristique?: string | null
+    otex_12_postes?: string | null
+    part_irr_sau_2020?: string | null
+    agriculture_part_over_55?: string | null
+    couverture_lcz?: string | null
   }
 
   export type table_communeUpdateManyMutationInput = {
-    index?: IntFieldUpdateOperationsInput | number
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: IntFieldUpdateOperationsInput | number
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    type_touristique?: NullableStringFieldUpdateOperationsInput | string | null
     atlas_biodiversite_nom?: NullableStringFieldUpdateOperationsInput | string | null
     atlas_biodiversite_annee_debut?: NullableStringFieldUpdateOperationsInput | string | null
     atlas_biodiversite_avancement?: NullableStringFieldUpdateOperationsInput | string | null
+    type_touristique?: NullableStringFieldUpdateOperationsInput | string | null
+    otex_12_postes?: NullableStringFieldUpdateOperationsInput | string | null
+    part_irr_sau_2020?: NullableStringFieldUpdateOperationsInput | string | null
+    agriculture_part_over_55?: NullableStringFieldUpdateOperationsInput | string | null
+    couverture_lcz?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type table_communeUncheckedUpdateManyInput = {
-    index?: IntFieldUpdateOperationsInput | number
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: IntFieldUpdateOperationsInput | number
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    type_touristique?: NullableStringFieldUpdateOperationsInput | string | null
     atlas_biodiversite_nom?: NullableStringFieldUpdateOperationsInput | string | null
     atlas_biodiversite_annee_debut?: NullableStringFieldUpdateOperationsInput | string | null
     atlas_biodiversite_avancement?: NullableStringFieldUpdateOperationsInput | string | null
+    type_touristique?: NullableStringFieldUpdateOperationsInput | string | null
+    otex_12_postes?: NullableStringFieldUpdateOperationsInput | string | null
+    part_irr_sau_2020?: NullableStringFieldUpdateOperationsInput | string | null
+    agriculture_part_over_55?: NullableStringFieldUpdateOperationsInput | string | null
+    couverture_lcz?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type spatial_ref_sysCreateInput = {
@@ -65543,6 +67477,216 @@ export namespace Prisma {
 
   export type debroussaillementUncheckedUpdateManyInput = {
     pk?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type prelevements_eauCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: bigint | number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    libelle_sous_champ?: string | null
+    A2020?: string | null
+    A2019?: string | null
+    A2018?: string | null
+    A2017?: string | null
+    A2016?: string | null
+    A2015?: string | null
+    A2014?: string | null
+    A2013?: string | null
+    A2012?: string | null
+    A2011?: string | null
+    A2010?: string | null
+    A2009?: string | null
+    A2008?: string | null
+    sous_champ?: string | null
+  }
+
+  export type prelevements_eauUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: bigint | number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    libelle_sous_champ?: string | null
+    A2020?: string | null
+    A2019?: string | null
+    A2018?: string | null
+    A2017?: string | null
+    A2016?: string | null
+    A2015?: string | null
+    A2014?: string | null
+    A2013?: string | null
+    A2012?: string | null
+    A2011?: string | null
+    A2010?: string | null
+    A2009?: string | null
+    A2008?: string | null
+    sous_champ?: string | null
+  }
+
+  export type prelevements_eauUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_sous_champ?: NullableStringFieldUpdateOperationsInput | string | null
+    A2020?: NullableStringFieldUpdateOperationsInput | string | null
+    A2019?: NullableStringFieldUpdateOperationsInput | string | null
+    A2018?: NullableStringFieldUpdateOperationsInput | string | null
+    A2017?: NullableStringFieldUpdateOperationsInput | string | null
+    A2016?: NullableStringFieldUpdateOperationsInput | string | null
+    A2015?: NullableStringFieldUpdateOperationsInput | string | null
+    A2014?: NullableStringFieldUpdateOperationsInput | string | null
+    A2013?: NullableStringFieldUpdateOperationsInput | string | null
+    A2012?: NullableStringFieldUpdateOperationsInput | string | null
+    A2011?: NullableStringFieldUpdateOperationsInput | string | null
+    A2010?: NullableStringFieldUpdateOperationsInput | string | null
+    A2009?: NullableStringFieldUpdateOperationsInput | string | null
+    A2008?: NullableStringFieldUpdateOperationsInput | string | null
+    sous_champ?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type prelevements_eauUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_sous_champ?: NullableStringFieldUpdateOperationsInput | string | null
+    A2020?: NullableStringFieldUpdateOperationsInput | string | null
+    A2019?: NullableStringFieldUpdateOperationsInput | string | null
+    A2018?: NullableStringFieldUpdateOperationsInput | string | null
+    A2017?: NullableStringFieldUpdateOperationsInput | string | null
+    A2016?: NullableStringFieldUpdateOperationsInput | string | null
+    A2015?: NullableStringFieldUpdateOperationsInput | string | null
+    A2014?: NullableStringFieldUpdateOperationsInput | string | null
+    A2013?: NullableStringFieldUpdateOperationsInput | string | null
+    A2012?: NullableStringFieldUpdateOperationsInput | string | null
+    A2011?: NullableStringFieldUpdateOperationsInput | string | null
+    A2010?: NullableStringFieldUpdateOperationsInput | string | null
+    A2009?: NullableStringFieldUpdateOperationsInput | string | null
+    A2008?: NullableStringFieldUpdateOperationsInput | string | null
+    sous_champ?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type prelevements_eauCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: bigint | number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    libelle_sous_champ?: string | null
+    A2020?: string | null
+    A2019?: string | null
+    A2018?: string | null
+    A2017?: string | null
+    A2016?: string | null
+    A2015?: string | null
+    A2014?: string | null
+    A2013?: string | null
+    A2012?: string | null
+    A2011?: string | null
+    A2010?: string | null
+    A2009?: string | null
+    A2008?: string | null
+    sous_champ?: string | null
+  }
+
+  export type prelevements_eauUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_sous_champ?: NullableStringFieldUpdateOperationsInput | string | null
+    A2020?: NullableStringFieldUpdateOperationsInput | string | null
+    A2019?: NullableStringFieldUpdateOperationsInput | string | null
+    A2018?: NullableStringFieldUpdateOperationsInput | string | null
+    A2017?: NullableStringFieldUpdateOperationsInput | string | null
+    A2016?: NullableStringFieldUpdateOperationsInput | string | null
+    A2015?: NullableStringFieldUpdateOperationsInput | string | null
+    A2014?: NullableStringFieldUpdateOperationsInput | string | null
+    A2013?: NullableStringFieldUpdateOperationsInput | string | null
+    A2012?: NullableStringFieldUpdateOperationsInput | string | null
+    A2011?: NullableStringFieldUpdateOperationsInput | string | null
+    A2010?: NullableStringFieldUpdateOperationsInput | string | null
+    A2009?: NullableStringFieldUpdateOperationsInput | string | null
+    A2008?: NullableStringFieldUpdateOperationsInput | string | null
+    sous_champ?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type prelevements_eauUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_sous_champ?: NullableStringFieldUpdateOperationsInput | string | null
+    A2020?: NullableStringFieldUpdateOperationsInput | string | null
+    A2019?: NullableStringFieldUpdateOperationsInput | string | null
+    A2018?: NullableStringFieldUpdateOperationsInput | string | null
+    A2017?: NullableStringFieldUpdateOperationsInput | string | null
+    A2016?: NullableStringFieldUpdateOperationsInput | string | null
+    A2015?: NullableStringFieldUpdateOperationsInput | string | null
+    A2014?: NullableStringFieldUpdateOperationsInput | string | null
+    A2013?: NullableStringFieldUpdateOperationsInput | string | null
+    A2012?: NullableStringFieldUpdateOperationsInput | string | null
+    A2011?: NullableStringFieldUpdateOperationsInput | string | null
+    A2010?: NullableStringFieldUpdateOperationsInput | string | null
+    A2009?: NullableStringFieldUpdateOperationsInput | string | null
+    A2008?: NullableStringFieldUpdateOperationsInput | string | null
+    sous_champ?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -66867,8 +69011,8 @@ export namespace Prisma {
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
-    nature?: SortOrder
     annee?: SortOrder
+    nature?: SortOrder
     surface_parcourue?: SortOrder
     surface_foret?: SortOrder
     surface_maquis_garrigues?: SortOrder
@@ -66910,8 +69054,8 @@ export namespace Prisma {
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
-    nature?: SortOrder
     annee?: SortOrder
+    nature?: SortOrder
     surface_parcourue?: SortOrder
     surface_foret?: SortOrder
     surface_maquis_garrigues?: SortOrder
@@ -66937,8 +69081,8 @@ export namespace Prisma {
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
-    nature?: SortOrder
     annee?: SortOrder
+    nature?: SortOrder
     surface_parcourue?: SortOrder
     surface_foret?: SortOrder
     surface_maquis_garrigues?: SortOrder
@@ -67968,6 +70112,17 @@ export namespace Prisma {
     superficie_sau_jardins?: SortOrder
   }
 
+  export type BigIntNullableFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
+  }
+
   export type clc_territoiresCountOrderByAggregateInput = {
     pk?: SortOrder
     code_geographique?: SortOrder
@@ -68026,7 +70181,7 @@ export namespace Prisma {
     region?: SortOrder
   }
 
-  export type BigIntNullableFilter<$PrismaModel = never> = {
+  export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
     notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
@@ -68034,7 +70189,12 @@ export namespace Prisma {
     lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
+    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedBigIntNullableFilter<$PrismaModel>
+    _min?: NestedBigIntNullableFilter<$PrismaModel>
+    _max?: NestedBigIntNullableFilter<$PrismaModel>
   }
 
   export type communes_dromCountOrderByAggregateInput = {
@@ -68103,22 +70263,6 @@ export namespace Prisma {
     region?: SortOrder
     precarite_logement?: SortOrder
     surface?: SortOrder
-  }
-
-  export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedBigIntNullableFilter<$PrismaModel>
-    _min?: NestedBigIntNullableFilter<$PrismaModel>
-    _max?: NestedBigIntNullableFilter<$PrismaModel>
   }
 
   export type erosion_cotiereCountOrderByAggregateInput = {
@@ -69242,10 +71386,14 @@ export namespace Prisma {
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
-    type_touristique?: SortOrder
     atlas_biodiversite_nom?: SortOrder
     atlas_biodiversite_annee_debut?: SortOrder
     atlas_biodiversite_avancement?: SortOrder
+    type_touristique?: SortOrder
+    otex_12_postes?: SortOrder
+    part_irr_sau_2020?: SortOrder
+    agriculture_part_over_55?: SortOrder
+    couverture_lcz?: SortOrder
   }
 
   export type table_communeAvgOrderByAggregateInput = {
@@ -69266,10 +71414,14 @@ export namespace Prisma {
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
-    type_touristique?: SortOrder
     atlas_biodiversite_nom?: SortOrder
     atlas_biodiversite_annee_debut?: SortOrder
     atlas_biodiversite_avancement?: SortOrder
+    type_touristique?: SortOrder
+    otex_12_postes?: SortOrder
+    part_irr_sau_2020?: SortOrder
+    agriculture_part_over_55?: SortOrder
+    couverture_lcz?: SortOrder
   }
 
   export type table_communeMinOrderByAggregateInput = {
@@ -69285,10 +71437,14 @@ export namespace Prisma {
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
-    type_touristique?: SortOrder
     atlas_biodiversite_nom?: SortOrder
     atlas_biodiversite_annee_debut?: SortOrder
     atlas_biodiversite_avancement?: SortOrder
+    type_touristique?: SortOrder
+    otex_12_postes?: SortOrder
+    part_irr_sau_2020?: SortOrder
+    agriculture_part_over_55?: SortOrder
+    couverture_lcz?: SortOrder
   }
 
   export type table_communeSumOrderByAggregateInput = {
@@ -69375,6 +71531,106 @@ export namespace Prisma {
 
   export type debroussaillementSumOrderByAggregateInput = {
     pk?: SortOrder
+  }
+
+  export type prelevements_eauCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    libelle_sous_champ?: SortOrder
+    A2020?: SortOrder
+    A2019?: SortOrder
+    A2018?: SortOrder
+    A2017?: SortOrder
+    A2016?: SortOrder
+    A2015?: SortOrder
+    A2014?: SortOrder
+    A2013?: SortOrder
+    A2012?: SortOrder
+    A2011?: SortOrder
+    A2010?: SortOrder
+    A2009?: SortOrder
+    A2008?: SortOrder
+    sous_champ?: SortOrder
+  }
+
+  export type prelevements_eauAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+  }
+
+  export type prelevements_eauMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    libelle_sous_champ?: SortOrder
+    A2020?: SortOrder
+    A2019?: SortOrder
+    A2018?: SortOrder
+    A2017?: SortOrder
+    A2016?: SortOrder
+    A2015?: SortOrder
+    A2014?: SortOrder
+    A2013?: SortOrder
+    A2012?: SortOrder
+    A2011?: SortOrder
+    A2010?: SortOrder
+    A2009?: SortOrder
+    A2008?: SortOrder
+    sous_champ?: SortOrder
+  }
+
+  export type prelevements_eauMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    libelle_sous_champ?: SortOrder
+    A2020?: SortOrder
+    A2019?: SortOrder
+    A2018?: SortOrder
+    A2017?: SortOrder
+    A2016?: SortOrder
+    A2015?: SortOrder
+    A2014?: SortOrder
+    A2013?: SortOrder
+    A2012?: SortOrder
+    A2011?: SortOrder
+    A2010?: SortOrder
+    A2009?: SortOrder
+    A2008?: SortOrder
+    sous_champ?: SortOrder
+  }
+
+  export type prelevements_eauSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
   }
 
   export type DecimalNullableFilter<$PrismaModel = never> = {

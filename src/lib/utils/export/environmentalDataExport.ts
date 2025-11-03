@@ -13,8 +13,8 @@ import {
   ExportCoursDeau,
   IncendiesForet,
   InconfortThermique,
+  PrelevementsEauParsed,
   QualiteSitesBaignade,
-  RessourcesEau,
   RGAdb,
   SurfacesAgricolesModel
 } from '@/lib/postgres/models';
@@ -249,7 +249,7 @@ export const IndicatorExportTransformations = {
     }
   },
   ressourcesEau: {
-    PrelevementEau: (prelevementEau: RessourcesEau[]) => {
+    PrelevementEau: (prelevementEau: PrelevementsEauParsed[]) => {
       return prelevementEau.map((el) => {
         return {
           code_geographique: el.code_geographique,
@@ -263,8 +263,8 @@ export const IndicatorExportTransformations = {
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
           region: el.region,
-          sous_champ: el.SOUS_CHAMP,
-          libelle_sous_champ: el.LIBELLE_SOUS_CHAMP,
+          sous_champ: el.sous_champ,
+          libelle_sous_champ: el.libelle_sous_champ,
           prelevement_2008_m3: el.A2008,
           prelevement_2009_m3: el.A2009,
           prelevement_2010_m3: el.A2010,

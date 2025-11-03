@@ -157,7 +157,7 @@ export type CommunesIndicateursDto = {
     libelle_departement: string;
     precarite_logement: number;
     coordinates: string;
-    naf?: number;
+    naf?: number | null;
     surfacesIrriguees?: number;
     incendiesForet?: number | null;
     rga?: number;

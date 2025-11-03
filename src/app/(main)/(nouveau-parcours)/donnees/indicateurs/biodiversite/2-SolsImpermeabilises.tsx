@@ -48,10 +48,10 @@ export const SolsImpermeabilises = (props: {
     (el) => el.properties.naf != undefined
   )
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
-  const sumNaf = type === "commune"
+  const sumNaf = (type === "commune"
     ? consommationNAF.filter((item) => item.code_geographique === code)[0]
       ?.naf09art23
-    : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
+    : consommationNAF.reduce((acc, item) => acc + (item.naf09art23 ?? 0), 0)) ?? 0;
   const exportData = IndicatorExportTransformations.biodiversite.EspacesNaf(consommationNAF);
 
   return (

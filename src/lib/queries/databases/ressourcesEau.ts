@@ -1,6 +1,6 @@
 'use server';
 
-import { QualiteSitesBaignade, RessourcesEau } from '@/lib/postgres/models';
+import { PrelevementsEau, QualiteSitesBaignade, RessourcesEau } from '@/lib/postgres/models';
 import * as Sentry from '@sentry/nextjs';
 // import { PrismaPostgres } from '../db';
 import { ColumnCodeCheck, ColumnLibelleCheck } from '../columns';
@@ -96,6 +96,113 @@ export const GetRessourceEau = async (
           return value;
         } else if (type === 'pnr') {
           const value = await prisma.ressources_eau.findMany({
+            where: {
+              libelle_pnr: libelle
+            }
+          });
+          return value;
+        } else return [];
+      }
+    } catch (error) {
+      console.error(error);
+      // prisma.$disconnect();
+      Sentry.captureException(error);
+      return [];
+    }
+  })();
+  return Promise.race([dbQuery, timeoutPromise]);
+};
+
+export const GetPrelevementsEau = async (
+  code: string,
+  libelle: string,
+  type: string
+): Promise<PrelevementsEau[]> => {
+  const column = ColumnCodeCheck(type);
+  //race Promise pour éviter un crash de la requête lorsqu'elle est trop longue
+  const timeoutPromise = new Promise<[]>((resolve) =>
+    setTimeout(() => {
+      resolve([]);
+    }, 9000)
+  );
+  const dbQuery = (async () => {
+    try {
+      // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
+      const exists = await prisma.prelevements_eau.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code },
+        select: { departement: true }
+      });
+      if (!exists) return [];
+      else {
+        if (type === 'commune') {
+          console.time('Query Execution Time PRELEVEMENT EAUX');
+          const value = await prisma.$queryRaw`
+          SELECT *
+          FROM databases.prelevements_eau
+          WHERE departement = (
+            SELECT departement
+            FROM databases.prelevements_eau
+            WHERE code_geographique = ${code}
+            LIMIT 1
+          )
+        `;
+          console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
+          return value as PrelevementsEau[];
+        } else if (type === 'epci') {
+          console.time('Query Execution Time PRELEVEMENT EAUX');
+          const value = await prisma.$queryRaw`
+          SELECT *
+          FROM databases.prelevements_eau
+          WHERE departement = (
+            SELECT departement
+            FROM databases.prelevements_eau
+            WHERE epci = ${code}
+            LIMIT 1
+          )
+        `;
+          console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
+          return value as PrelevementsEau[];
+        } else if (type === 'petr') {
+          console.time('Query Execution Time PRELEVEMENT EAUX');
+          // await prisma.$executeRaw`SET statement_timeout = 1000;`;
+          const value = await prisma.$queryRaw`
+          SELECT *
+          FROM databases.prelevements_eau
+          WHERE departement = (
+            SELECT departement
+            FROM databases.prelevements_eau
+            WHERE libelle_petr = ${libelle}
+            LIMIT 1
+          )
+        `;
+          console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
+          return value as PrelevementsEau[];
+        } else if (type === 'ept') {
+          console.time('Query Execution Time PRELEVEMENT EAUX');
+          const value = await prisma.$queryRaw`
+          SELECT *
+          FROM databases.prelevements_eau
+          WHERE departement = (
+            SELECT departement
+            FROM databases.prelevements_eau
+            WHERE ept = ${libelle}
+            LIMIT 1
+          )
+        `;
+          console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
+          return value as PrelevementsEau[];
+        } else if (type === 'departement') {
+          console.time('Query Execution Time RESSOURCES EAUX');
+          const value = await prisma.prelevements_eau.findMany({
+            where: {
+              departement: code
+            }
+          });
+          console.timeEnd('Query Execution Time RESSOURCES EAUX');
+          return value;
+        } else if (type === 'pnr') {
+          const value = await prisma.prelevements_eau.findMany({
             where: {
               libelle_pnr: libelle
             }

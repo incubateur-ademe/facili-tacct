@@ -18,11 +18,11 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
         ((code || libelle) && type) &&
         <Suspense fallback={<LoaderText text='Nous chargeons vos données' />}>
           {thematique === 'Confort thermique' ? (
-            <ConfortThermiqueServerPage searchParams={props.searchParams} />
+            <ConfortThermiqueServerPage searchParams={props.searchParams} tableCommune={dbTableCommune} />
           ) : thematique === "Biodiversité" ? (
             <BiodiversiteServerPage searchParams={props.searchParams} tableCommune={dbTableCommune} />
           ) : thematique === "Agriculture" ? (
-            <AgricultureServerPage searchParams={props.searchParams} />
+            <AgricultureServerPage searchParams={props.searchParams} tableCommune={dbTableCommune} />
           ) : thematique === "Aménagement" ? (
             <AmenagementServerPage searchParams={props.searchParams} />
           ) : thematique === "Eau" ? (

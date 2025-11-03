@@ -110,9 +110,11 @@ export const GetRGACarte = async (
           )
           GROUP BY code_geographique, alea;
         `;
-        console.log(`RGA ${type}: ${JSON.stringify(departement).length} caractères`);
-const size = Buffer.byteLength(stringifyWithBigInt(departement));
-console.log(`GetRGA ${type}: ${(size / 1024 / 1024).toFixed(2)} MB`);
+        console.log(
+          `RGA ${type}: ${JSON.stringify(departement).length} caractères`
+        );
+        const size = Buffer.byteLength(stringifyWithBigInt(departement));
+        console.log(`GetRGA ${type}: ${(size / 1024 / 1024).toFixed(2)} MB`);
         return departement;
       } else if (type === 'ept') {
         const ept = await prisma.$queryRaw<RGACarte[]>`
