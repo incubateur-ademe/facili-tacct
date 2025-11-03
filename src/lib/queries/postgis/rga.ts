@@ -71,7 +71,7 @@ export const GetRGACarte = async (
           SELECT
             code_geographique,
             alea,
-            ST_AsGeoJSON(ST_Union(geometry)) as geometry
+            ST_AsGeoJSON(ST_Simplify(ST_Union(geometry), 0.0001)) as geometry
           FROM postgis."rga"
           WHERE code_geographique = ANY (
             SELECT code_geographique

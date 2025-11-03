@@ -218,7 +218,7 @@ export const GetClcTerritoires = async (
             SELECT 
             legend, 
             ST_AsText(ST_Centroid(geometry)) centroid,
-            ST_AsGeoJSON(geometry) geometry
+            ST_AsGeoJSON(ST_SimplifyPreserveTopology(geometry, 0.0001)) geometry
             FROM postgis."clc_territoires" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
           return value.length ? value : undefined;
         } else if (type === 'petr') {
@@ -234,8 +234,10 @@ export const GetClcTerritoires = async (
             SELECT 
             legend, 
             ST_AsText(ST_Centroid(geometry)) centroid,
-            ST_AsGeoJSON(geometry) geometry
+            ST_AsGeoJSON(ST_SimplifyPreserveTopology(geometry, 0.0001)) geometry
             FROM postgis."clc_territoires" WHERE departement=${code};`;
+          const size = Buffer.byteLength(JSON.stringify(value));
+          console.log(`GetClcTerritoires ${type}: ${(size / 1024 / 1024).toFixed(2)} MB`);
           return value.length ? value : undefined;
         } else return undefined;
       }
