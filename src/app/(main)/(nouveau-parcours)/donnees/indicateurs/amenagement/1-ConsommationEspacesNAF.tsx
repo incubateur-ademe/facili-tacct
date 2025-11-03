@@ -25,10 +25,10 @@ export const ConsommationEspacesNAFAmenagement = (props: {
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
   const exportData = IndicatorExportTransformations.biodiversite.EspacesNaf(consommationNAF);
-  const sumNaf = type === "commune"
+  const sumNaf = (type === "commune"
     ? consommationNAF.filter((item) => item.code_geographique === code)[0]
       ?.naf09art23
-    : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
+    : consommationNAF.reduce((acc, item) => acc + (item.naf09art23 ?? 0), 0)) ?? 0;
 
   return (
     <>
