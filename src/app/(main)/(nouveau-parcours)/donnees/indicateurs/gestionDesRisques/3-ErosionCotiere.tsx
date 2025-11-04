@@ -20,7 +20,7 @@ export const ErosionCotiereComp = ({
   erosionCotiere,
   carteCommunes
 }: {
-  erosionCotiere: ErosionCotiere[];
+  erosionCotiere: [ErosionCotiere[], string];
   carteCommunes: CarteCommunes[];
 }) => {
   const searchParams = useSearchParams();
@@ -29,7 +29,7 @@ export const ErosionCotiereComp = ({
   const type = searchParams.get('type')!;
   const mapRef = useRef<maplibregl.Map | null>(null);
   const mapContainer = useRef<HTMLDivElement>(null);
-  const erosionCotiereMap = erosionCotiere.map(ErosionCotiereMapper);
+  const erosionCotiereMap = erosionCotiere[0].map(ErosionCotiereMapper);
   const communesMap = carteCommunes.map(CommunesIndicateursMapper);
 
   return (
@@ -47,10 +47,11 @@ export const ErosionCotiereComp = ({
         </ReadMoreFade>
         <div className={styles.mapWrapper} style={{ height: 'fit-content' }}>
           {
-            erosionCotiere.length > 0 ?
+            erosionCotiere[0].length > 0 ?
               <>
                 <MapErosionCotiere
                   erosionCotiere={erosionCotiereMap}
+                  envelope={JSON.parse(erosionCotiere[1])}
                   carteCommunes={communesMap}
                   mapRef={mapRef}
                   mapContainer={mapContainer}

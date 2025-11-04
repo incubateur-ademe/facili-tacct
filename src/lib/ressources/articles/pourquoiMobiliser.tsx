@@ -1,8 +1,8 @@
-import BookIcon from '@/assets/icons/book_icon_black.svg';
 import ForwardArrow from '@/assets/icons/keyboard_arrow_next_icon_black.svg';
 import ArticleImage2 from '@/assets/images/article13.png';
 import ArticleImage from '@/assets/images/article4.png';
 import { RetourHautDePage } from '@/components/interactions/RetourHautDePage';
+import ZoomOnClick from '@/components/utils/ZoomOnClick';
 import EndPageTrigger from '@/hooks/EndPageTrigger';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,274 +12,341 @@ const PourquoiMobiliser = () => {
   return (
     <div>
       <RetourHautDePage />
-      <h1>Pourquoi mobiliser en interne et externe ?</h1>
+      <div className={styles.grayWrapper} style={{ margin: "2rem 0 2rem" }}>
+        <p style={{ fontSize: "1.5rem", fontWeight: 600 }}>À retenir</p>
+        <ul style={{ margin: "0 0 0 2rem" }}>
+          <li>
+            <b>Mobiliser pour réaliser un diagnostic de vulnérabilité ne va pas de soi.</b>
+          </li>
+          <li>
+            <b>Un cadrage partagé avec les élus est essentiel.</b> Il évite les flous sur le
+            sens de la démarche, la manière dont elle sera menée et l’ampleur à donner
+            à la mobilisation des parties prenantes.
+          </li>
+          <li>
+            <b>Des formats courts et conviviaux</b> augmentent la participation et l’adhésion des parties prenantes.
+          </li>
+          <li>
+            <b>Communiquer après les ateliers</b> entretient la dynamique et valorise les contributions.
+          </li>
+          <li>
+            <b>La mobilisation crédibilise le rôle du chargé de mission</b> en le rendant visible et légitime sur son territoire.
+          </li>
+        </ul>
+      </div>
+      <h1>
+        Comment mobiliser en interne et en externe pour la réalisation du diagnostic de
+        vulnérabilité aux effets du changement climatique ? Retour d’expérience de la Vallée de Villé.
+      </h1>
       <div className={styles.textBloc}>
+        <p>
+          <b>Mobiliser autour d’un diagnostic de vulnérabilité reste un défi</b> : entre les invitations
+          sans réponse et les ateliers peu fréquentés, les obstacles sont fréquents. Incompréhensions,
+          blocages ou manque d’adhésion expliquent souvent cette difficulté.
+        </p>
+        <p>
+          À la communauté de communes de la Vallée de Villé (CCVV), <b>Jolet Van Kipshagen</b>, chargée de
+          projet “Adaptation au changement climatique”, a, dès la phase d’élaboration du diagnostic,
+          proposé pour validation à ses élus, un plan de mobilisation des acteurs.
+        </p>
+        <p>
+          Ce retour d’expérience montre <b>comment elle s’y est prise</b>, <b>ce que cela a changé</b> et <b>les
+            conditions à réunir pour reproduire la dynamique ailleurs.</b>
+        </p>
         <h2>
-          Une mobilisation réussie : témoignage de Jolet Van Kipshagen (Vallée
-          de Villé).
+          Comprendre les blocages pour mieux mobiliser
         </h2>
         <p>
-          Combien de mails envoyés et restés sans réponse ? Combien d’ateliers
-          avec un nombre de participants trop faible ? Mobiliser n’est pas
-          simple et nécessite une expertise spécifique.
+          Avant même de mobiliser, <b>le vrai défi est que l’adaptation reste un concept flou</b> : beaucoup
+          d’élus, de partenaires ou de collègues en interne ne perçoivent pas son lien direct avec leurs
+          activités ou ne se sentent pas concernés. Le terme "adaptation" seul ne suffit pas à déclencher
+          l’engagement – il faut l’ancrer dans des exemples tangibles, même si cela implique de sortir de
+          son domaine d’expertise.
         </p>
         <p>
-          <b>Notre vision de la problématique :</b>
+          Le dialogue tourne vite au <b>dialogue de sourds</b> si l’on ne part pas des réalités
+          concrètes vécues localement.
         </p>
-        <p>
-          Adaptation au changement climatique : le concept reste mal compris. En
-          conséquence, peu de personnes se sentent concernées ou ont conscience
-          des interférences entre impacts du changement climatique et leurs
-          activités : le concept ne mobilise pas.
-        </p>
-        <p>
-          Pour les mobiliser, il est important de pouvoir aborder des sujets qui
-          les concernent mais dont vous n’êtes pas expert. Cela peut vite
-          tourner au “dialogue de sourd”.
-        </p>
-        <Image
+        <ZoomOnClick
           src={ArticleImage}
           alt="Dessin comique sur l'incompréhension du vocabulaire technique"
-          width={0}
-          height={0}
           sizes="100%"
-          style={{ width: '100%', height: 'auto' }}
         />
-        <div>
-          <p>Notre idée pour aider au dialogue :</p>
-          <ul>
-            <li>
-              Vous aider à développer une expertise de la problématique, (par
-              opposition à l’expert technique qui a l’expertise de la solution).
-            </li>
-            <li>
-              Grâce à votre connaissance du contexte climatique, vous mettre en
-              capacité d’expliquer à vos interlocuteurs le besoin d’adaptation
-              sous jacent de chaque thématique.
-            </li>
-          </ul>
-        </div>
+        <p style={{ marginTop: "1rem" }}>
+          Dans ce contexte, le rôle du chargé de mission n’est pas d’être expert technique, mais
+          de développer une expertise de la problématique : savoir expliquer, pour chaque domaine,
+          en quoi la prise en compte des impacts du changement climatique est nécessaire.
+        </p>
         <h2>
-          Retour d’expérience de Jolet Van Kipshagen (Vallée de Villé)
+          Une mobilisation des acteurs pensée dès le départ
         </h2>
         <p>
-          Dans le cadre du dispositif "Accélérateur de transitions”, la CC de la
-          Vallée de Villé mène une démarche TACCT. Le diagnostic de
-          vulnérabilité vient de s’achever ; les réflexions sur la stratégie
-          débutent.
+          Dans le cadre du dispositif "Accélérateur de transitions", la CCVV a recruté Jolet Van
+          Kipshagen pour mener notamment une démarche TACCT. Jolet entame sa prise de poste
+          en rencontrant ses collègues et les vice-présidents du territoire.
         </p>
         <p>
-          Cette première phase a nécessité plus d’un an de travail, alternant
-          recherches (littérature scientifique, interviews, articles de presses,
-          etc.), compilation de données et ateliers, pour finir par
-          l’élaboration du document final.
+          Avant même de lancer le diagnostic de vulnérabilité, elle fait valider par les
+          élus un <b>plan de mobilisation des acteurs</b>, pour s’assurer que la démarche
+          soit conduite sous le signe de la concertation.
         </p>
-        <p>
-          Jolet a initié sa prise de poste en rencontrant ses collègues et les
-          VP du territoire. Avant de démarrer le diagnostic de vulnérabilité,
-          elle fait valider par les élus un plan de mobilisation des acteurs
-          afin de s’assurer que l’exercice sera mené sous le signe de la
-          concertation.
-        </p>
-        <div>
-          <p>Résultats :</p>
-          <ul>
+        <div className={styles.grayWrapper} style={{ margin: "2rem 0 2rem" }}>
+          <h3 style={{ margin: 0 }}>En chiffres : une mobilisation structurée et progressive</h3>
+          <ul style={{ margin: "0 0 0 2rem" }}>
             <li>
-              <b>8 ateliers de sensibilisation</b> afin de récolter des retours
-              internes et externes : plus de 100 personnes consultées ;
+              <b>8 ateliers de sensibilisation</b> pour capter des retours croisés
+              (élus, services, partenaires) → <b>100 personnes mobilisées</b>.
             </li>
             <li>
-              <b>3 ateliers thématiques</b> avec des contributeurs spécifiques
-              pour définir la sensibilité des thématiques priorisées ; près
-              d'une soixantaine de personnes présentes.
+              <b>3 ateliers thématiques</b> avec des contributeurs ciblés pour affiner la
+              lecture des enjeux prioritaires → environ <b>60 participants</b>.
             </li>
             <li>
-              <b>Une dizaine d'entretiens individuels</b> avec des partenaires
-              indisponibles au moment des ateliers et des experts techniques non
-              liés à la CCVV.
+              <b>10 entretiens individuels</b>, menés avec des partenaires indisponibles
+              ou des experts techniques extérieurs à la CCVV.
             </li>
             <li>
-              Enfin, <b>une session de restitution grand public</b> avec plus de
-              50 participants.
+              Une <b>session de restitution grand public</b>, à laquelle plus de 50 personnes ont participé.
             </li>
           </ul>
         </div>
-        <h2>Une mobilisation pour quels bénéfices ?</h2>
         <p>
-          Le travail en ateliers vise à{' '}
-          <b>valoriser le vécu et les ressentis de différents acteurs</b>,
-          démocratisant ainsi les sujets liés à la transition écologique et
-          sociale. Un exemple de vécu : l’épicerie solidaire de ce territoire
-          rural constate une augmentation des demandes d’aide des habitants
-          pendant les périodes de sécheresse, du fait de la baisse de production
-          dans les potagers. Cet exemple met en lumière un impact local qui
-          serait passé inaperçu si l’exercice de diagnostic avait été mené en
-          chambre par la CCVV. Le dialogue fait émerger les “vrais” enjeux du
-          territoire.
+          Ce plan de mobilisation a permis d’organiser une concertation multiforme afin
+          de <b>croiser les regards</b>, exercice incontournable pour favoriser ultérieurement
+          l’adhésion aux orientations de la stratégie d’adaptation.
         </p>
         <p>
-          Cette co-construction permet de rédiger un état des lieux ancré
-          localement, dépassant les rapports plus globaux qui paraissent souvent
-          déconnectés du territoire. Ce travail d’écoute permet d’aboutir à un
-          diagnostic précis, pertinent et qui “parle” au territoire, “on y parle
-          de nos forêts, de nos arbres” - Jolet Van Kipshagen. À terme ce
-          fonctionnement favorise l’adhésion aux orientations de la stratégie et
-          du plan d’actions qui suivront.
-        </p>
-        <h2>Les apprentissages clés partagés</h2>
-        <h3>En amont :</h3>
-        <div>
-          <ul>
-            <li>
-              Un prérequis essentiel : la validation d’une vision commune avec
-              les élus (via le plan de mobilisation). Malgré des objectifs
-              globaux communs, des divergences sur les façons de faire ont
-              persisté, d’où l’importance d’en discuter sur la base d’un
-              document validé en amont.
-            </li>
-            <li>
-              La mise à contribution des vice-présidents et des maires pour
-              réaliser une large mobilisation à différentes échelles (de
-              l’interco jusqu’aux communes).
-            </li>
-            <li>
-              Invitations personnalisées, relances téléphoniques et rencontres
-              individuelles sont incontournables pour surmonter les réticences.
-              Vos interlocuteurs peuvent avoir des craintes à venir, par exemple
-              la peur d’être jugé (je prends la voiture au quotidien), ou la
-              crainte d’être solliciter pour faire plus ou différemment leur
-              travail. Une prise de contact directe les rassure et contribue à
-              une plus grande mobilisation. Le cas échéant, votre service
-              Communication peut vous aider à améliorer votre visibilité.
-            </li>
-            <li>
-              Enfin, s’appuyer sur les services techniques de votre collectivité
-              qui travaillent déjà au quotidien avec nombre de parties
-              prenantes, vous facilite l’obtention de contacts.
-            </li>
-          </ul>
-        </div>
-        <h3>Lors des temps collectifs :</h3>
-        <div>
-          <ul>
-            <li>
-              Mettre la convivialité au cœur des moments collectifs. Pour Jolet,
-              un buffet paysan local a renforcé la cohérence entre les discours
-              et les actes, tout en créant des synergies avec les agriculteurs
-              (un public souvent compliqué à mobiliser).
-            </li>
-            <li>
-              Limiter le temps d’ateliers (2h dans l’agenda d’un élu, c’est déjà
-              bien !), des ateliers plus longs seront potentiellement plus
-              difficiles à remplir. Respecter les temps annoncés.
-            </li>
-            <li>
-              Finir par une évaluation à chaud avec les participants permet
-              d'ajuster (ou non) les prochains événements, en fonction des
-              retours reçus.
-            </li>
-            <li>
-              <i>
-                Pour rappel, sur ce que peut apporter la facilitation en
-                intelligence collective :{' '}
-                <Link href="/ressources/articles?title=La%20facilitation%20d’ateliers%20:%20une%20démarche%20éprouvée%20d’engagement">
-                  <i>
-                    La facilitation d’ateliers : une démarche éprouvée
-                    d’engagement
-                  </i>
-                </Link>
-              </i>
-            </li>
-          </ul>
-        </div>
-        <h3>À la suite de la mobilisation :</h3>
-        <p>
-          Communiquer, communiquer, communiquer : c’est-à-dire rendre visible le
-          travail effectué lors des ateliers (en comprenant l’intérêt de leurs
-          contributions, les participants seront d’autant plus enclins à
-          revenir). Il faut permettre un accès simple à ces documents, par
-          exemple via une centralisation des comptes-rendus sur le site web de
-          l’intercommunalité. Des comptes-rendus illustrés peuvent servir de
-          rappel visuel pour tous : les participants, comme les absents qui
-          peuvent ainsi se rendre compte du travail effectué.
-        </p>
-      </div>
-      <div className={styles.grayWrapper}>
-        <div className={styles.h2title}>
-          <Image src={ForwardArrow} alt="" />
-          <h2>Pour aller plus loin</h2>
-        </div>
-        <p>
-          En Vallée de Villé, la mobilisation dès la phase de diagnostic a fait
-          émerger une communauté locale prête à agir sur le sujet et dont l’élan
-          dépasse la capacité de la communauté de communes. En attendant la
-          stratégie d’adaptation, les acteurs les plus motivés ont identifié des
-          actions rapides et concrètes qu’ils souhaitaient mettre en place (par
-          exemple, la rédaction d’un guide sur les aides locales).
+          Le diagnostic s’achève un an plus tard : un travail de fond mêlant recherches
+          (littérature scientifique, interviews, articles de presse) et compilation de
+          données et de travail en ateliers, avant d’aboutir à un document final.
         </p>
         <p>
-          Cette communauté qui se réunit tous les 6 mois, permet aussi
-          d’expérimenter les outils d’accompagnement du changement, pour les
-          améliorer et ainsi toucher une audience plus difficile à mobiliser.
+          La réflexion sur la stratégie, elle, ne fait que commencer.
+        </p>
+        <h2>Ce que la mobilisation change concrètement</h2>
+        <p>
+          Les ateliers n’ont pas seulement produit des données : ils ont <b>donné la parole
+            aux acteurs du territoire</b>.
         </p>
         <p>
-          En définitive, la communication continue a permis d’identifier Jolet
-          comme point de contact sur les sujets de transition écologique au sein
-          de l’interco : plus de 11 invitations tierces reçues pour continuer à
-          porter ce sujet !
+          Leurs vécus et ressentis, habituellement absents des rapports de diagnostic, ont
+          permis de <b>mettre en lumière des impacts concrets</b> du changement climatique.
         </p>
-      </div>
-      <div className={styles.grayWrapper}>
-        <div className={styles.h2title}>
-          <Image src={BookIcon} alt="" />
-          <h2>Ressources proposées</h2>
-        </div>
-        <div className={styles.links}>
-          <div className={styles.link}>
-            <div>
-              <ul>
-                <li>
-                  <Link
-                    href="https://cornu.viabloga.com/texts/jean-michel-cornu"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    1h pour animer un réseau, de Jean Michel Cornu
-                  </Link>
-                </li>
-                <li>
-                  Jolet, vous partage également, un nombre de ressources issues
-                  de son travail, accessibles à ce lien :
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={styles.textBloc}>
-        <h2>
-          <u>En conclusion :</u>
-        </h2>
-        <div className={styles.textImage}>
+        <div className={styles.grayWrapper} style={{ margin: "2rem 0 2rem" }}>
+          <p>Un exemple marquant :</p>
           <p>
-            Bravo à Jolet qui a su inspirer une communauté d’action sur son
-            territoire, illustrant le rôle fondamental d’animation du chargé(e)
-            de mission.
+            Pendant les périodes de sécheresse, <b>l’épicerie solidaire du territoire a constaté une hausse des demandes d’aide</b>,
+            liée à la baisse de production dans les potagers familiaux. Sans interaction avec un acteur local,
+            ce type d’impact serait passé inaperçu.
+          </p>
+        </div>
+        <p>
+          Au-delà des chiffres, ce <b>dialogue a fait émerger les vrais enjeux du territoire</b>.
+        </p>
+        <p>
+          Résultat : un diagnostic <b>ancré dans le quotidien</b>, qui “<b>parle de nos forêts, de nos arbres</b>”, comme
+          le résume Jolet.
+        </p>
+        <p>
+          Un tel état des lieux, plus concret et plus proche du vécu local, <b>favorise l’adhésion</b> des acteurs
+          aux prochaines étapes de la stratégie d’adaptation et du plan d’action.
+        </p>
+        <h2>Les leviers d’une mobilisation réussie</h2>
+        <p>
+          Au-delà des formats et outils utilisés, plusieurs choix stratégiques ont facilité la
+          mobilisation des acteurs dans l’élaboration du diagnostic de vulnérabilité.
+        </p>
+        <p>
+          Voici ce qui a permis, concrètement, de faire la différence dans la démarche conduite
+          à la Vallée de Villé.
+        </p>
+        <h3>En amont : cadrer, inviter, rassurer</h3>
+        <p>C’est dans la préparation que tout commence.</p>
+        <p>
+          Avant même les invitations, l’<b>alignement avec les élus</b>, la <b>clarté du message</b> et
+          la <b>qualité des relais</b> jouent un rôle décisif.
+        </p>
+        <ul style={{ margin: "0 0 2rem 2rem" }}>
+          <li>
+            <b>Valider une vision commune avec les élus</b>, dès le départ, via un plan de
+            mobilisation formalisé. Même avec des objectifs partagés, des divergences de
+            méthode peuvent exister : mieux vaut les poser à plat sur un document de travail
+            validé ensemble.
+          </li>
+          <li>
+            <b>Impliquer les vice-présidents et les maires</b> dès cette phase : ce sont
+            eux qui donnent le ton et permettent une mobilisation large, de l’intercommunalité
+            jusqu’aux communes.
+          </li>
+          <li>
+            <b>Personnaliser les invitations</b>, relancer par téléphone, proposer des rencontres
+            individuelles. Ces gestes sont essentiels pour lever des freins fréquents : peur
+            d’être jugé (ex. “je prends la voiture tous les jours”), ou crainte d’être
+            mobilisé sur des tâches supplémentaires.
+          </li>
+          <li>
+            <b>Faire appel au service communication</b>, si besoin, pour gagner en visibilité.
+          </li>
+          <li>
+            <b>S’appuyer sur les services techniques</b>, déjà en lien avec de nombreuses
+            parties prenantes, pour faciliter l’identification des bons contacts.
+          </li>
+        </ul>
+        <h3>Pendant les temps collectifs : incarner, rythmer, écouter</h3>
+        <p>Une fois les participants présents, encore faut-il qu’ils aient envie de rester, de contribuer, et de revenir.</p>
+        <p>
+          La façon dont se déroule un atelier, dans sa forme autant que dans son fond, conditionne
+          la qualité de l’engagement.
+        </p>
+        <ul style={{ margin: "0 0 2rem 2rem" }}>
+          <li>
+            <b>Soigner la convivialité.</b> Un buffet paysan local, par exemple, a créé
+            une cohérence entre le fond du message et la forme de l’accueil, tout en
+            tissant des liens avec les agriculteurs (un public parfois difficile à mobiliser).
+          </li>
+          <li>
+            <b>Limiter la durée à 2 h</b> : c’est un format acceptable
+            pour un élu. Aller au-delà réduit significativement le taux de participation.
+          </li>
+          <li>
+            <b>Tenir les horaires annoncés</b>, toujours.
+          </li>
+          <li>
+            <b>Clore chaque atelier par une évaluation à chaud</b>, pour ajuster la suite en
+            fonction des retours réels, et montrer que l’écoute continue.
+          </li>
+        </ul>
+        <p>
+          Pour aller plus loin sur l’animation d’ateliers courts, efficaces et engageants :{" "}
+          <Link href="/ressources/articles/facilitation-ateliers-mobilisation">
+            <i>
+              La facilitation d’ateliers : une démarche éprouvée
+              d’engagement.
+            </i>
+          </Link>
+        </p>
+        <h2>Prolonger la mobilisation : rendre visibles les résultats et enclencher la suite</h2>
+        <p>
+          À la Communauté de communes de la Vallée de Villé, la mobilisation ne s’est pas arrêtée
+          une fois les ateliers terminés.
+        </p>
+        <p>
+          Grâce à une <b>communication continue</b> et à l’<b>animation régulière d’un collectif local</b>, la
+          dynamique s’est prolongée dans le temps, bien au-delà du diagnostic.
+        </p>
+        <p>
+          Cette suite n’a rien d’automatique : elle repose sur la volonté de capitaliser sur le travail mené.
+        </p>
+        <h3>Communiquer après les ateliers</h3>
+        <p>
+          <b>Rendre visible le travail accompli</b> est essentiel pour entretenir l’intérêt des
+          participants… et pour embarquer ceux qui n’étaient pas là.
+        </p>
+        <p>
+          En Vallée de Villé, les comptes-rendus ont été centralisés sur le site de l’intercommunalité,
+          avec un soin particulier porté à leur <b>lisibilité</b> : formulations claires, visuels,
+          accès rapide.
+        </p>
+        <p>
+          Résultat : les participants y reviennent facilement, et même les absents peuvent s’en emparer.
+        </p>
+        <p>
+          <b>Bon à savoir</b> : un <b>compte-rendu illustré, partagé rapidement</b>, sert à la fois de <b>rappel
+            collectif</b> et de <b>trace opérationnelle</b>.
+        </p>
+        <p>
+          Il alimente la mémoire, la communication et la suite du processus.
+        </p>
+        <h3>Faire vivre la dynamique collective</h3>
+        <p>
+          La mobilisation a aussi fait émerger une <b>communauté locale active</b>, qui poursuit la dynamique engagée pendant le diagnostic.
+        </p>
+        <ul style={{ margin: "0 0 2rem 2rem" }}>
+          <li>
+            Elle se réunit <b>tous les six mois</b>,
+          </li>
+          <li>
+            elle identifie des <b>actions concrètes</b> à lancer rapidement (ex. guide des aides locales),
+          </li>
+          <li>
+            elle teste des <b>outils d’accompagnement du changement</b> pour toucher de nouveaux publics.
+          </li>
+        </ul>
+        <p>
+          Cette communauté permet de maintenir l’élan, d’enrichir les pratiques, et de faire avancer la stratégie.
+        </p>
+        <h3>Valoriser le rôle du ou de la chargé(e) de mission</h3>
+        <p>
+          Ce prolongement de la mobilisation a aussi eu un effet structurant sur le rôle de la personne qui la porte.
+        </p>
+        <p>
+          La communication continue autour de la démarche a permis de faire émerger <b>Jolet comme référente
+            reconnue</b> sur les sujets de transition écologique au sein de la commune.
+        </p>
+        <p>
+          Elle a été <b>sollicitée à 11 reprises</b> par des partenaires extérieurs souhaitant relayer la
+          dynamique ou demander conseil.
+        </p>
+        <p>
+          Jolet a su transformer une phase de diagnostic en <b>levier d’action collective</b>.
+        </p>
+        <p>
+          À travers une mobilisation <b>structurée</b>, elle a permis à la collectivité :
+        </p>
+        <ul style={{ margin: "0 0 2rem 2rem" }}>
+          <li>
+            d'identifier des <b>enjeux ancrés dans le vécu</b>
+          </li>
+          <li>
+            de faire émerger des <b>actions concrètes</b>
+          </li>
+          <li>
+            de construire une <b>adhésion durable</b>
+          </li>
+        </ul>
+        <p>
+          Les acteurs du territoire peuvent désormais <b>travailler collectivement</b>, avec une meilleure
+          compréhension des priorités, en attendant la stratégie finalisée d’adaptation au changement
+          Les plus motivés ont identifié des actions rapides et concrètes qu'ils souhaitaient
+          mettre en place (par exemple, la rédaction d'un guide sur les aides locales).
+        </p>
+        <div className="flex flex-col-reverse sm:flex-row gap-8" style={{ margin: "3rem 0 3rem" }}>
+          <p style={{ fontSize: "14px" }}>
+            Bravo à Jolet qui a su inspirer une communauté d'action sur son territoire, illustrant le rôle
+            fondamental d'animation du ou de la chargé(e) de mission.
           </p>
           <Image
             src={ArticleImage2}
             alt="Dessin comique sur l'incompréhension du vocabulaire technique"
             width={0}
             height={0}
-            style={{ width: '70%', height: 'auto' }}
+            className="w-full sm:w-[70%]"
+            style={{ height: 'auto' }}
           />
         </div>
         <p>
-          Les acteurs de la Vallée de Villé peuvent ainsi travailler
-          collectivement sur des actions concrètes, issues de leurs besoins, et
-          poursuivre leurs collaborations, en attendant la stratégie finalisée
-          d’adaptation au changement climatique de leur collectivité.
+          Évidemment, ce <b>retour d’expérience n’est pas une recette toute faite</b>,
+          mais il peut <b>inspirer d’autres territoires</b> pour enclencher une dynamique
+          durable, et ce <b>dès la phase du diagnostic de vulnérabilité.</b>
         </p>
+
+        <div className={styles.grayWrapper} style={{ margin: "4rem 0 2rem" }}>
+          <div className={styles.h2title}>
+            <Image src={ForwardArrow} alt="" />
+            <h2>Pour aller plus loin</h2>
+          </div>
+          <ul>
+            <li>
+              <Link
+                href="https://docs.google.com/document/d/1A5Ep7s2yAHLi3DxPANKpGTbeZctwRvDPYpK9KDsH_EI/edit?tab=t.0"
+                target="_blank"
+                rel="noreferrer"
+              >
+                1h pour animer un réseau, de Jean Michel Cornu
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
       <EndPageTrigger />
     </div>

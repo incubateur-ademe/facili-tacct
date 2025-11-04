@@ -4,22 +4,18 @@ import { mapStyles } from 'carte-facile';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
-import { BoundsFromCollection } from './components/boundsFromCollection';
 
 export const MapErosionCotiere = (props: {
   erosionCotiere: ErosionCotiereDto[];
+  envelope: { type: "Polygon"; coordinates: number[][][] };
   carteCommunes: CommunesIndicateursDto[];
   mapRef: React.RefObject<maplibregl.Map | null>;
   mapContainer: React.RefObject<HTMLDivElement | null>;
   style?: React.CSSProperties;
 }) => {
-  const { erosionCotiere, carteCommunes, style, mapRef, mapContainer } = props;
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const type = searchParams.get('type')!;
-  const enveloppe = BoundsFromCollection(carteCommunes, type, code);
+  const { erosionCotiere, envelope, carteCommunes, style, mapRef, mapContainer } = props;
+  const envelopeParsed = envelope.coordinates[0].map(([lng, lat]) => [lat, lng]);
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -79,9 +75,9 @@ export const MapErosionCotiere = (props: {
         }
       });
       // Fit bounds
-      if (enveloppe && Array.isArray(enveloppe) && enveloppe.length > 1 && Array.isArray(enveloppe[0]) && enveloppe[0].length === 2) {
-        const lons = enveloppe.map(coord => coord[1]);
-        const lats = enveloppe.map(coord => coord[0]);
+      if (envelopeParsed && Array.isArray(envelopeParsed) && envelopeParsed.length > 1 && Array.isArray(envelopeParsed[0]) && envelopeParsed[0].length === 2) {
+        const lons = envelopeParsed.map(coord => coord[1]);
+        const lats = envelopeParsed.map(coord => coord[0]);
         const minLng = Math.min(...lons);
         const maxLng = Math.max(...lons);
         const minLat = Math.min(...lats);
@@ -102,7 +98,7 @@ export const MapErosionCotiere = (props: {
         mapRef.current = null;
       }
     };
-  }, [erosionCotiere, carteCommunes, enveloppe]);
+  }, [erosionCotiere, carteCommunes, envelope]);
 
   return (
     <div style={{ position: 'relative', ...style }}>
