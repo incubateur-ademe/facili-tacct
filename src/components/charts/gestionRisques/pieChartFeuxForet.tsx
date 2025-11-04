@@ -30,7 +30,8 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
 
   const graphData = Object.entries(countTypes).map(([id, value]) => ({
     id,
-    value
+    count: value,
+    value: value / Sum(Object.values(countTypes)) * 100
   }));
 
   const CenteredMetric = ({
