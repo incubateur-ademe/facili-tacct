@@ -5,6 +5,7 @@ import { RgaEvolutionTooltip, RgaRepartitionTooltip } from "@/components/charts/
 import { NivoBarChart } from '@/components/charts/NivoBarChart';
 import { RgaEvolutionLegend, RgaRepartitionLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
+import RGAMapExport from "@/components/maps/mapRGAExport";
 import SubTabs from '@/components/ui/SubTabs';
 import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
@@ -13,7 +14,7 @@ import { Average } from '@/lib/utils/reusableFunctions/average';
 import { BarDatum } from '@nivo/bar';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { RefObject, useEffect, useState } from "react";
+import { RefObject, useEffect, useLayoutEffect, useState } from "react";
 import RGAMap from '../../maps/mapRGA';
 import styles from './gestionRisquesCharts.module.scss';
 
@@ -143,6 +144,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
   const [multipleDepartements, setMultipleDepartements] = useState<string[]>([]);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   // options de filtre pour les départements (plusieurs départements possibles pour un EPCI)
   const departement = type === "epci" ? rga[0]?.libelle_departement : "";
   const rgaTerritoireSup = type === "epci" ? rga.filter(item => item.libelle_departement === departement) : rga
@@ -163,8 +165,20 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
     }
   }, [type, code, rga]);
 
+  useLayoutEffect(() => {
+    if (datavizTab === 'Cartographie') return;
+    setIsTransitioning(true);
+    const timer = setTimeout(() => setIsTransitioning(false), 800);
+    return () => clearTimeout(timer);
+  }, [datavizTab]);
+
   return (
     <div className={styles.dataWrapper}>
+      <style>{`
+        .rga-charts-wrapper .nivo-bar-chart-container .bottom-tick {
+          opacity: ${isTransitioning ? '0' : '1'};
+        }
+      `}</style>
       <div className={styles.graphTabsWrapper}>
         <SubTabs
           data={
@@ -178,7 +192,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
       </div>
       {datavizTab === 'Comparaison' ? (
         <>
-          <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
+          <div className="rga-charts-wrapper" style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
             <NivoBarChart
               colors={RgaRepartitionLegend.map(e => e.couleur)}
               graphData={repartitionRga as BarDatum[]}
@@ -229,7 +243,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
         </>
       ) : datavizTab === 'Répartition' ? (
         <>
-          <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
+          <div className="rga-charts-wrapper" style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
             <NivoBarChart
               colors={RgaEvolutionLegend.map(e => e.couleur)}
               graphData={evolutionRga}
@@ -254,14 +268,12 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
         <RGAMap
           rgaCarte={rgaCarte}
           carteCommunes={carteCommunes}
-          mapRef={mapRef}
-          mapContainer={mapContainer}
         />
       ) : (
         ''
       )}
       {/* Génère une map cachée pour l'export */}
-      <RGAMap
+      <RGAMapExport
         rgaCarte={rgaCarte}
         carteCommunes={carteCommunes}
         mapRef={mapRef}

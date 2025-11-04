@@ -5,8 +5,10 @@ import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
 import { GetArretesCatnat, GetIncendiesForet } from '@/lib/queries/databases/gestionRisques';
 import { GetCommunes, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
+import Notice from '@codegouvfr/react-dsfr/Notice';
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { useStyles } from 'tss-react/dsfr';
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { ArretesCatnat } from '../../indicateurs/gestionDesRisques/1-ArretesCatnat';
@@ -17,7 +19,7 @@ import { RetraitGonflementDesArgiles } from '../../indicateurs/gestionDesRisques
 interface Props {
   gestionRisques: ArreteCatNat[];
   carteCommunes: CarteCommunes[];
-  erosionCotiere: ErosionCotiere[];
+  erosionCotiere: [ErosionCotiere[], string] | [];
   incendiesForet: IncendiesForet[];
 }
 
@@ -25,8 +27,9 @@ export const DonneesGestionRisques = ({
   carteCommunes,
   gestionRisques,
   erosionCotiere,
-  incendiesForet
+  incendiesForet,
 }: Props) => {
+  const { css } = useStyles();
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Gestion des risques";
   const code = searchParams.get('code')!;
@@ -40,26 +43,36 @@ export const DonneesGestionRisques = ({
     carteCommunes,
     gestionRisques,
     erosionCotiere,
-    incendiesForet
+    incendiesForet,
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
   const ongletsMenu = sommaireThematiques[thematique];
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);
       return;
     }
     setIsLoading(true);
     void (async () => {
-      const [newCarteCommunes, newGestionRisques, newErosionCotiere, newIncendiesForet] = await Promise.all([
+      const [
+        newCarteCommunes,
+        newGestionRisques,
+        newErosionCotiere,
+        newIncendiesForet,
+      ] = await Promise.all([
         GetCommunes(code, libelle, type),
         GetArretesCatnat(code, libelle, type),
         GetErosionCotiere(code, libelle, type),
-        GetIncendiesForet(code, libelle, type)
+        GetIncendiesForet(code, libelle, type),
       ]);
-      setData({ carteCommunes: newCarteCommunes, gestionRisques: newGestionRisques, erosionCotiere: newErosionCotiere, incendiesForet: newIncendiesForet });
+      setData({
+        carteCommunes: newCarteCommunes,
+        gestionRisques: newGestionRisques,
+        erosionCotiere: newErosionCotiere,
+        incendiesForet: newIncendiesForet,
+      });
       setIsLoading(false);
     })();
   }, [libelle]);
@@ -115,13 +128,32 @@ export const DonneesGestionRisques = ({
                 Arrêtés de catastrophes naturelles
               </H3>
             </div>
+            <Notice
+              className={css({
+                backgroundColor: 'var(--gris-medium)',
+                borderRadius: '1rem',
+                color: "#201F1E",
+                marginRight: 32,
+                marginBottom: "2rem",
+                '& .fr-container': {
+                  maxWidth: 'none'
+                }
+              })}
+              isClosable={true}
+              title={"Différence avec le nombre d’arrêtés GASPAR :"}
+              description={
+                <>
+                  l’équipe Facili-TACCT a identifié plusieurs doublons dans la base de données GASPAR, initialement supprimés. Suite à plusieurs retours concernant cet écart, les doublons ont été réintégrés : notre base de données est désormais identique à celle de GASPAR. Veuillez noter également que Facili-TACCT affiche à présent la date de début de l’évènement et non celle de publication de l’arrêté.
+                </>
+              }
+            />
             <ArretesCatnat
               gestionRisques={data.gestionRisques}
               carteCommunes={data.carteCommunes}
             />
           </div>
 
-          {/* Faux de forêt */}
+          {/* Feux de forêt */}
           <div id="Feux de forêt" className={styles.indicateurWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
@@ -168,7 +200,7 @@ export const DonneesGestionRisques = ({
           </div>
         </section>
         {
-          erosionCotiere.length > 0 && (
+          data.erosionCotiere.length > 0 && (
             <>
               {/* Section Aménagement */}
               <section className={styles.sectionType}>
@@ -191,7 +223,7 @@ export const DonneesGestionRisques = ({
                     </H3>
                   </div>
                   <ErosionCotiereComp
-                    erosionCotiere={data.erosionCotiere}
+                    erosionCotiere={data.erosionCotiere as [ErosionCotiere[], string]}
                     carteCommunes={data.carteCommunes}
                   />
                 </div>

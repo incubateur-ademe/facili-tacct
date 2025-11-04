@@ -5,6 +5,7 @@ import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { BarDatum } from '@/lib/nivo/bar';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
+import { useLayoutEffect, useState } from 'react';
 import { simpleBarChartTooltip } from '../ChartTooltips';
 import { NivoBarChartCatnat } from '../NivoBarChart';
 
@@ -19,6 +20,7 @@ type GraphData = {
 
 export const BarChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
   const { gestionRisques } = props;
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const graphData = CountOccByIndex(
     gestionRisques,
     'annee_arrete',
@@ -26,10 +28,24 @@ export const BarChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }
   ) as unknown as GraphData[];
   const minDate = Math.min(...gestionRisques.map((e) => e.annee_arrete));
   const maxDate = Math.max(...gestionRisques.map((e) => e.annee_arrete));
+
+  useLayoutEffect(() => {
+    setIsTransitioning(true);
+    const timer = setTimeout(() => setIsTransitioning(false), 800);
+    return () => clearTimeout(timer);
+  }, [minDate, maxDate]);
+
   return (
     <div
+      className="catnat-chart-wrapper"
       style={{ height: '450px', width: '100%', backgroundColor: 'white' }}
     >
+      <style>{`
+        .catnat-chart-wrapper .nivo-bar-chart-container .bottom-tick {
+          opacity: ${isTransitioning ? '0' : '1'};
+          transition: opacity 0.2s ease-in-out;
+        }
+      `}</style>
       {graphData.length === 0 ? (
         <div
           style={{

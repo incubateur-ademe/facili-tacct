@@ -639,8 +639,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.17.1
-   * Query Engine version: 272a37d34178c2894197e17273bf937f25acdeac
+   * Prisma Client JS version: 6.15.0
+   * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
    */
   export type PrismaVersion = {
     client: string
@@ -3192,10 +3192,6 @@ export namespace Prisma {
       timeout?: number
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
-    /**
-     * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
-     */
-    adapter?: runtime.SqlDriverAdapterFactory | null
     /**
      * Global configuration for omitting model fields by default.
      * 
@@ -43731,14 +43727,14 @@ export namespace Prisma {
   }
 
   export type sandbox_usersWhereUniqueInput = Prisma.AtLeast<{
+    username?: string
     pk?: number
     AND?: sandbox_usersWhereInput | sandbox_usersWhereInput[]
     OR?: sandbox_usersWhereInput[]
     NOT?: sandbox_usersWhereInput | sandbox_usersWhereInput[]
-    username?: StringFilter<"sandbox_users"> | string
     password?: StringFilter<"sandbox_users"> | string
     created_at?: DateTimeFilter<"sandbox_users"> | Date | string
-  }, "pk">
+  }, "pk" | "username">
 
   export type sandbox_usersOrderByWithAggregationInput = {
     username?: SortOrder

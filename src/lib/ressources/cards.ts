@@ -203,10 +203,11 @@ export const cards = {
         'Vous voulez réviser un diagnostic connu',
         'Vous découvrez le diagnostic pour la 1ère fois'
       ],
-      titre: 'Pourquoi mobiliser en interne et externe ?',
+      titre:
+        'Comment mobiliser élus, services et partenaires autour d’un diagnostic de vulnérabilité ?',
       tag: 'Article',
       description:
-        'Le climat c’est notre affaire à tous, pour autant la mobilisation autour de ce sujet reste toujours difficile aujourd’hui.',
+        'Découvrez le retour d’expérience de Jolet Van Kipshagen (CC Vallée de Villé) et les clés d’une démarche concertée et ancrée dans le territoire.',
       link: '/ressources/articles/mobilisation-diagnostic-vulnerabilite'
     },
     {

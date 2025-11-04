@@ -6,7 +6,7 @@ import { Feature, FeatureCollection, GeoJsonProperties, Geometry } from 'geojson
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
-import { RefObject, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { RgaMapLegend } from './legends/datavizLegends';
 import { LegendCompColor } from './legends/legendComp';
 import styles from './maps.module.scss';
@@ -17,11 +17,11 @@ const RGAMap = (props: {
     type: string;
     features: RGADto[];
   };
-  mapRef: RefObject<maplibregl.Map | null>;
-  mapContainer: RefObject<HTMLDivElement | null>;
   style?: React.CSSProperties;
 }) => {
-  const { carteCommunes, rgaCarte, mapRef, mapContainer, style } = props;
+  const { carteCommunes, rgaCarte, style } = props;
+  const mapRef = useRef<maplibregl.Map | null>(null);
+  const mapContainer = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -33,6 +33,8 @@ const RGAMap = (props: {
 
   useEffect(() => {
     if (!mapContainer.current) return;
+    if (mapRef.current) return;
+    
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
@@ -113,13 +115,11 @@ const RGAMap = (props: {
   return (
     <div style={{ position: 'relative', ...style }}>
       <div ref={mapContainer} style={{ height: "500px", width: "100%" }} />
-      <div className="exportPNGWrapper">
         <div
           className={styles.legendRGA}
           style={{ width: 'auto', justifyContent: 'center' }}
         >
           <LegendCompColor legends={RgaMapLegend} />
-        </div>
       </div>
     </div>
   );
