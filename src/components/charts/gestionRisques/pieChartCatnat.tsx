@@ -5,6 +5,7 @@ import { catnatPieChartLegend } from '@/components/maps/legends/datavizLegends';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
+import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { DefaultRawDatum, PieCustomLayerProps } from '@nivo/pie';
 import styles from '../charts.module.scss';
 import { simplePieChartTooltip } from '../ChartTooltips';
@@ -22,7 +23,8 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
     return {
       id: el.lib_risque_jo ?? '',
       label: el.lib_risque_jo ?? '',
-      value: countTypes[el.lib_risque_jo!]
+      value: countTypes[el.lib_risque_jo!] / Sum(Object.values(countTypes)) * 100,
+      count: countTypes[el.lib_risque_jo!]
     };
   });
   const graphData = mapGraphData.filter(
@@ -35,10 +37,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
     centerX,
     centerY
   }: PieCustomLayerProps<DefaultRawDatum>) => {
-    let total = 0;
-    dataWithArc.forEach((datum: { value: number }) => {
-      total += datum.value;
-    });
+    const total = Sum(Object.values(countTypes));
     const mainFontSize = windowDimensions?.width > 1248 ? 32 : windowDimensions?.width > 1024 ? 26 : 18;
     const subFontSize = Math.max(10, Math.round(mainFontSize / 3));
     const mainYOffset = -Math.round(mainFontSize / 2);
