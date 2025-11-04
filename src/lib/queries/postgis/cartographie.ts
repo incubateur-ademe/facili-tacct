@@ -184,7 +184,7 @@ export const GetClcTerritoires = async (
     try {
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.clc_territoires.findFirst({
+      const exists = await prisma.clc_par_communes.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return undefined;
@@ -195,7 +195,7 @@ export const GetClcTerritoires = async (
             legend, 
             ST_AsText(ST_Centroid(geometry)) centroid,
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."clc_territoires" WHERE code_geographique=${code};`;
+            FROM postgis."clc_par_communes" WHERE code_geographique=${code};`;
           return value.length ? value : undefined;
         } else if (type === 'ept' && eptRegex.test(libelle)) {
           const value = await prisma.$queryRaw<CLCTerritoires[]>`
@@ -203,7 +203,7 @@ export const GetClcTerritoires = async (
             legend, 
             ST_AsText(ST_Centroid(geometry)) centroid,
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."clc_territoires" WHERE ept IS NOT NULL AND ept=${libelle};`;
+            FROM postgis."clc_par_communes" WHERE ept IS NOT NULL AND ept=${libelle};`;
           return value.length ? value : undefined;
         } else if (type === 'epci' && !eptRegex.test(libelle)) {
           const value = await prisma.$queryRaw<CLCTerritoires[]>`
@@ -211,7 +211,7 @@ export const GetClcTerritoires = async (
             legend, 
             ST_AsText(ST_Centroid(geometry)) centroid,
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."clc_territoires" WHERE epci=${code};`;
+            FROM postgis."clc_par_communes" WHERE epci=${code};`;
           return value.length ? value : undefined;
         } else if (type === 'pnr') {
           const value = await prisma.$queryRaw<CLCTerritoires[]>`
@@ -219,7 +219,7 @@ export const GetClcTerritoires = async (
             legend, 
             ST_AsText(ST_Centroid(geometry)) centroid,
             ST_AsGeoJSON(ST_SimplifyPreserveTopology(geometry, 0.0001)) geometry
-            FROM postgis."clc_territoires" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
+            FROM postgis."clc_par_communes" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
           return value.length ? value : undefined;
         } else if (type === 'petr') {
           const value = await prisma.$queryRaw<CLCTerritoires[]>`
@@ -227,7 +227,7 @@ export const GetClcTerritoires = async (
             legend, 
             ST_AsText(ST_Centroid(geometry)) centroid,
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."clc_territoires" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
+            FROM postgis."clc_par_communes" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
           return value.length ? value : undefined;
         } else if (type === 'departement') {
           const value = await prisma.$queryRaw<CLCTerritoires[]>`
@@ -235,7 +235,7 @@ export const GetClcTerritoires = async (
             legend, 
             ST_AsText(ST_Centroid(geometry)) centroid,
             ST_AsGeoJSON(ST_SimplifyPreserveTopology(geometry, 0.0001)) geometry
-            FROM postgis."clc_territoires" WHERE departement=${code};`;
+            FROM postgis."clc_par_communes" WHERE departement=${code};`;
           const size = Buffer.byteLength(JSON.stringify(value));
           console.log(`GetClcTerritoires ${type}: ${(size / 1024 / 1024).toFixed(2)} MB`);
           return value.length ? value : undefined;
@@ -534,7 +534,7 @@ export const GetDebroussaillement = async (
           pk,
           ST_AsGeoJSON(geometry) geometry
           FROM postgis."debroussaillement"
-          WHERE ST_Within(geometry, ST_GeomFromText(${commune[0].geometry}, 4326));`;
+          WHERE ST_Intersects(geometry, ST_GeomFromText(${commune[0].geometry}, 4326));`;
           return intersect;
         }
         return [];

@@ -1085,6 +1085,27 @@ model table_territoires {
   @@schema("databases")
 }
 
+model clc_par_communes {
+  pk                   Int                     @id @default(autoincrement())
+  code_geographique    String                  @db.VarChar
+  libelle_geographique String                  @db.VarChar
+  epci                 String                  @db.VarChar
+  libelle_epci         String                  @db.VarChar
+  departement          String                  @db.VarChar
+  libelle_departement  String                  @db.VarChar
+  region               BigInt
+  ept                  String?                 @db.VarChar
+  libelle_petr         String?                 @db.VarChar
+  code_pnr             String?                 @db.VarChar
+  libelle_pnr          String?                 @db.VarChar
+  legend               String                  @db.VarChar
+  geometry             Unsupported("geometry")
+
+  @@index([geometry], map: "clc_par_communes_geometry_geom_idx", type: Gist)
+  @@index([code_geographique], map: "clc_par_communes_communes_index")
+  @@schema("postgis")
+}
+
 view pg_stat_statements {
   userid                 Int?     @db.Oid
   dbid                   Int?     @db.Oid

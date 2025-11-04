@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.18.0
- * Query Engine version: 34b5a692b7bd79939a9a2c3ef97d816e749cda2f
+ * Prisma Client JS version: 6.15.0
+ * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
  */
 Prisma.prismaVersion = {
-  client: "6.18.0",
-  engine: "34b5a692b7bd79939a9a2c3ef97d816e749cda2f"
+  client: "6.15.0",
+  engine: "85179d7826409ee107a6ba334b5e305ae3fba9fb"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -974,6 +974,22 @@ exports.Prisma.Prelevements_eauScalarFieldEnum = {
   sous_champ: 'sous_champ'
 };
 
+exports.Prisma.Clc_par_communesScalarFieldEnum = {
+  pk: 'pk',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  legend: 'legend'
+};
+
 exports.Prisma.Pg_stat_statementsScalarFieldEnum = {
   userid: 'userid',
   dbid: 'dbid',
@@ -1105,6 +1121,7 @@ exports.Prisma.ModelName = {
   spatial_ref_sys: 'spatial_ref_sys',
   debroussaillement: 'debroussaillement',
   prelevements_eau: 'prelevements_eau',
+  clc_par_communes: 'clc_par_communes',
   pg_stat_statements: 'pg_stat_statements',
   pg_stat_statements_info: 'pg_stat_statements_info',
   geography_columns: 'geography_columns',
