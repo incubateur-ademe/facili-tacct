@@ -214,6 +214,11 @@ export type prelevements_eau = $Result.DefaultSelection<Prisma.$prelevements_eau
  */
 export type clc_par_communes = $Result.DefaultSelection<Prisma.$clc_par_communesPayload>
 /**
+ * Model rga_par_communes
+ * 
+ */
+export type rga_par_communes = $Result.DefaultSelection<Prisma.$rga_par_communesPayload>
+/**
  * Model pg_stat_statements
  * 
  */
@@ -753,6 +758,16 @@ export class PrismaClient<
   get clc_par_communes(): Prisma.clc_par_communesDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.rga_par_communes`: Exposes CRUD operations for the **rga_par_communes** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Rga_par_communes
+    * const rga_par_communes = await prisma.rga_par_communes.findMany()
+    * ```
+    */
+  get rga_par_communes(): Prisma.rga_par_communesDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.pg_stat_statements`: Exposes CRUD operations for the **pg_stat_statements** model.
     * Example usage:
     * ```ts
@@ -1271,6 +1286,7 @@ export namespace Prisma {
     debroussaillement: 'debroussaillement',
     prelevements_eau: 'prelevements_eau',
     clc_par_communes: 'clc_par_communes',
+    rga_par_communes: 'rga_par_communes',
     pg_stat_statements: 'pg_stat_statements',
     pg_stat_statements_info: 'pg_stat_statements_info',
     geography_columns: 'geography_columns',
@@ -1293,7 +1309,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "rga" | "surfaces_agricoles" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "sandbox_users" | "users" | "export_cours_d_eau" | "confort_thermique" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "ressources_consultees" | "thematique" | "surfaces_protegees" | "table_commune" | "spatial_ref_sys" | "debroussaillement" | "prelevements_eau" | "clc_par_communes" | "pg_stat_statements" | "pg_stat_statements_info" | "geography_columns" | "geometry_columns"
+      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "rga" | "surfaces_agricoles" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "sandbox_users" | "users" | "export_cours_d_eau" | "confort_thermique" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "ressources_consultees" | "thematique" | "surfaces_protegees" | "table_commune" | "spatial_ref_sys" | "debroussaillement" | "prelevements_eau" | "clc_par_communes" | "rga_par_communes" | "pg_stat_statements" | "pg_stat_statements_info" | "geography_columns" | "geometry_columns"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -4011,18 +4027,6 @@ export namespace Prisma {
             args: Prisma.debroussaillementFindManyArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>[]
           }
-          create: {
-            args: Prisma.debroussaillementCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>
-          }
-          createMany: {
-            args: Prisma.debroussaillementCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.debroussaillementCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>[]
-          }
           delete: {
             args: Prisma.debroussaillementDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>
@@ -4042,10 +4046,6 @@ export namespace Prisma {
           updateManyAndReturn: {
             args: Prisma.debroussaillementUpdateManyAndReturnArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>[]
-          }
-          upsert: {
-            args: Prisma.debroussaillementUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$debroussaillementPayload>
           }
           aggregate: {
             args: Prisma.DebroussaillementAggregateArgs<ExtArgs>
@@ -4190,6 +4190,64 @@ export namespace Prisma {
           count: {
             args: Prisma.clc_par_communesCountArgs<ExtArgs>
             result: $Utils.Optional<Clc_par_communesCountAggregateOutputType> | number
+          }
+        }
+      }
+      rga_par_communes: {
+        payload: Prisma.$rga_par_communesPayload<ExtArgs>
+        fields: Prisma.rga_par_communesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.rga_par_communesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rga_par_communesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.rga_par_communesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rga_par_communesPayload>
+          }
+          findFirst: {
+            args: Prisma.rga_par_communesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rga_par_communesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.rga_par_communesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rga_par_communesPayload>
+          }
+          findMany: {
+            args: Prisma.rga_par_communesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rga_par_communesPayload>[]
+          }
+          delete: {
+            args: Prisma.rga_par_communesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rga_par_communesPayload>
+          }
+          update: {
+            args: Prisma.rga_par_communesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rga_par_communesPayload>
+          }
+          deleteMany: {
+            args: Prisma.rga_par_communesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.rga_par_communesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.rga_par_communesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$rga_par_communesPayload>[]
+          }
+          aggregate: {
+            args: Prisma.Rga_par_communesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRga_par_communes>
+          }
+          groupBy: {
+            args: Prisma.rga_par_communesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Rga_par_communesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.rga_par_communesCountArgs<ExtArgs>
+            result: $Utils.Optional<Rga_par_communesCountAggregateOutputType> | number
           }
         }
       }
@@ -4445,6 +4503,7 @@ export namespace Prisma {
     debroussaillement?: debroussaillementOmit
     prelevements_eau?: prelevements_eauOmit
     clc_par_communes?: clc_par_communesOmit
+    rga_par_communes?: rga_par_communesOmit
     pg_stat_statements?: pg_stat_statementsOmit
     pg_stat_statements_info?: pg_stat_statements_infoOmit
     geography_columns?: geography_columnsOmit
@@ -50311,44 +50370,114 @@ export namespace Prisma {
 
   export type DebroussaillementAvgAggregateOutputType = {
     pk: number | null
+    region: number | null
   }
 
   export type DebroussaillementSumAggregateOutputType = {
     pk: number | null
+    region: bigint | null
   }
 
   export type DebroussaillementMinAggregateOutputType = {
     pk: number | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: bigint | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
   }
 
   export type DebroussaillementMaxAggregateOutputType = {
     pk: number | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: bigint | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
   }
 
   export type DebroussaillementCountAggregateOutputType = {
     pk: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
     _all: number
   }
 
 
   export type DebroussaillementAvgAggregateInputType = {
     pk?: true
+    region?: true
   }
 
   export type DebroussaillementSumAggregateInputType = {
     pk?: true
+    region?: true
   }
 
   export type DebroussaillementMinAggregateInputType = {
     pk?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
   }
 
   export type DebroussaillementMaxAggregateInputType = {
     pk?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
   }
 
   export type DebroussaillementCountAggregateInputType = {
     pk?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
     _all?: true
   }
 
@@ -50440,6 +50569,17 @@ export namespace Prisma {
 
   export type DebroussaillementGroupByOutputType = {
     pk: number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: bigint
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
     _count: DebroussaillementCountAggregateOutputType | null
     _avg: DebroussaillementAvgAggregateOutputType | null
     _sum: DebroussaillementSumAggregateOutputType | null
@@ -50463,27 +50603,68 @@ export namespace Prisma {
 
   export type debroussaillementSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     pk?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
   }, ExtArgs["result"]["debroussaillement"]>
 
-  export type debroussaillementSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
-  }, ExtArgs["result"]["debroussaillement"]>
 
   export type debroussaillementSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     pk?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
   }, ExtArgs["result"]["debroussaillement"]>
 
   export type debroussaillementSelectScalar = {
     pk?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
   }
 
-  export type debroussaillementOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk", ExtArgs["result"]["debroussaillement"]>
+  export type debroussaillementOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr", ExtArgs["result"]["debroussaillement"]>
 
   export type $debroussaillementPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "debroussaillement"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       pk: number
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: bigint
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
     }, ExtArgs["result"]["debroussaillement"]>
     composites: {}
   }
@@ -50572,58 +50753,6 @@ export namespace Prisma {
      * 
      */
     findMany<T extends debroussaillementFindManyArgs>(args?: SelectSubset<T, debroussaillementFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Debroussaillement.
-     * @param {debroussaillementCreateArgs} args - Arguments to create a Debroussaillement.
-     * @example
-     * // Create one Debroussaillement
-     * const Debroussaillement = await prisma.debroussaillement.create({
-     *   data: {
-     *     // ... data to create a Debroussaillement
-     *   }
-     * })
-     * 
-     */
-    create<T extends debroussaillementCreateArgs>(args: SelectSubset<T, debroussaillementCreateArgs<ExtArgs>>): Prisma__debroussaillementClient<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Debroussaillements.
-     * @param {debroussaillementCreateManyArgs} args - Arguments to create many Debroussaillements.
-     * @example
-     * // Create many Debroussaillements
-     * const debroussaillement = await prisma.debroussaillement.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends debroussaillementCreateManyArgs>(args?: SelectSubset<T, debroussaillementCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Debroussaillements and returns the data saved in the database.
-     * @param {debroussaillementCreateManyAndReturnArgs} args - Arguments to create many Debroussaillements.
-     * @example
-     * // Create many Debroussaillements
-     * const debroussaillement = await prisma.debroussaillement.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Debroussaillements and only return the `pk`
-     * const debroussaillementWithPkOnly = await prisma.debroussaillement.createManyAndReturn({
-     *   select: { pk: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends debroussaillementCreateManyAndReturnArgs>(args?: SelectSubset<T, debroussaillementCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Delete a Debroussaillement.
@@ -50718,25 +50847,6 @@ export namespace Prisma {
      * 
      */
     updateManyAndReturn<T extends debroussaillementUpdateManyAndReturnArgs>(args: SelectSubset<T, debroussaillementUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Debroussaillement.
-     * @param {debroussaillementUpsertArgs} args - Arguments to update or create a Debroussaillement.
-     * @example
-     * // Update or create a Debroussaillement
-     * const debroussaillement = await prisma.debroussaillement.upsert({
-     *   create: {
-     *     // ... data to create a Debroussaillement
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Debroussaillement we want to update
-     *   }
-     * })
-     */
-    upsert<T extends debroussaillementUpsertArgs>(args: SelectSubset<T, debroussaillementUpsertArgs<ExtArgs>>): Prisma__debroussaillementClient<$Result.GetResult<Prisma.$debroussaillementPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
@@ -50908,6 +51018,17 @@ export namespace Prisma {
    */
   interface debroussaillementFieldRefs {
     readonly pk: FieldRef<"debroussaillement", 'Int'>
+    readonly code_geographique: FieldRef<"debroussaillement", 'String'>
+    readonly libelle_geographique: FieldRef<"debroussaillement", 'String'>
+    readonly epci: FieldRef<"debroussaillement", 'String'>
+    readonly libelle_epci: FieldRef<"debroussaillement", 'String'>
+    readonly departement: FieldRef<"debroussaillement", 'String'>
+    readonly libelle_departement: FieldRef<"debroussaillement", 'String'>
+    readonly region: FieldRef<"debroussaillement", 'BigInt'>
+    readonly ept: FieldRef<"debroussaillement", 'String'>
+    readonly libelle_petr: FieldRef<"debroussaillement", 'String'>
+    readonly code_pnr: FieldRef<"debroussaillement", 'String'>
+    readonly libelle_pnr: FieldRef<"debroussaillement", 'String'>
   }
     
 
@@ -51088,54 +51209,6 @@ export namespace Prisma {
   }
 
   /**
-   * debroussaillement create
-   */
-  export type debroussaillementCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the debroussaillement
-     */
-    select?: debroussaillementSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the debroussaillement
-     */
-    omit?: debroussaillementOmit<ExtArgs> | null
-    /**
-     * The data needed to create a debroussaillement.
-     */
-    data?: XOR<debroussaillementCreateInput, debroussaillementUncheckedCreateInput>
-  }
-
-  /**
-   * debroussaillement createMany
-   */
-  export type debroussaillementCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many debroussaillements.
-     */
-    data: debroussaillementCreateManyInput | debroussaillementCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * debroussaillement createManyAndReturn
-   */
-  export type debroussaillementCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the debroussaillement
-     */
-    select?: debroussaillementSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the debroussaillement
-     */
-    omit?: debroussaillementOmit<ExtArgs> | null
-    /**
-     * The data used to create many debroussaillements.
-     */
-    data: debroussaillementCreateManyInput | debroussaillementCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * debroussaillement update
    */
   export type debroussaillementUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -51199,32 +51272,6 @@ export namespace Prisma {
      * Limit how many debroussaillements to update.
      */
     limit?: number
-  }
-
-  /**
-   * debroussaillement upsert
-   */
-  export type debroussaillementUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the debroussaillement
-     */
-    select?: debroussaillementSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the debroussaillement
-     */
-    omit?: debroussaillementOmit<ExtArgs> | null
-    /**
-     * The filter to search for the debroussaillement to update in case it exists.
-     */
-    where: debroussaillementWhereUniqueInput
-    /**
-     * In case the debroussaillement found by the `where` argument doesn't exist, create a new debroussaillement with this data.
-     */
-    create: XOR<debroussaillementCreateInput, debroussaillementUncheckedCreateInput>
-    /**
-     * In case the debroussaillement was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<debroussaillementUpdateInput, debroussaillementUncheckedUpdateInput>
   }
 
   /**
@@ -53567,6 +53614,983 @@ export namespace Prisma {
      * Omit specific fields from the clc_par_communes
      */
     omit?: clc_par_communesOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model rga_par_communes
+   */
+
+  export type AggregateRga_par_communes = {
+    _count: Rga_par_communesCountAggregateOutputType | null
+    _avg: Rga_par_communesAvgAggregateOutputType | null
+    _sum: Rga_par_communesSumAggregateOutputType | null
+    _min: Rga_par_communesMinAggregateOutputType | null
+    _max: Rga_par_communesMaxAggregateOutputType | null
+  }
+
+  export type Rga_par_communesAvgAggregateOutputType = {
+    pk: number | null
+    region: number | null
+  }
+
+  export type Rga_par_communesSumAggregateOutputType = {
+    pk: number | null
+    region: number | null
+  }
+
+  export type Rga_par_communesMinAggregateOutputType = {
+    pk: number | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    alea: string | null
+  }
+
+  export type Rga_par_communesMaxAggregateOutputType = {
+    pk: number | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    alea: string | null
+  }
+
+  export type Rga_par_communesCountAggregateOutputType = {
+    pk: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    alea: number
+    _all: number
+  }
+
+
+  export type Rga_par_communesAvgAggregateInputType = {
+    pk?: true
+    region?: true
+  }
+
+  export type Rga_par_communesSumAggregateInputType = {
+    pk?: true
+    region?: true
+  }
+
+  export type Rga_par_communesMinAggregateInputType = {
+    pk?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    alea?: true
+  }
+
+  export type Rga_par_communesMaxAggregateInputType = {
+    pk?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    alea?: true
+  }
+
+  export type Rga_par_communesCountAggregateInputType = {
+    pk?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    alea?: true
+    _all?: true
+  }
+
+  export type Rga_par_communesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which rga_par_communes to aggregate.
+     */
+    where?: rga_par_communesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of rga_par_communes to fetch.
+     */
+    orderBy?: rga_par_communesOrderByWithRelationInput | rga_par_communesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: rga_par_communesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` rga_par_communes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` rga_par_communes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned rga_par_communes
+    **/
+    _count?: true | Rga_par_communesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Rga_par_communesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Rga_par_communesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Rga_par_communesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Rga_par_communesMaxAggregateInputType
+  }
+
+  export type GetRga_par_communesAggregateType<T extends Rga_par_communesAggregateArgs> = {
+        [P in keyof T & keyof AggregateRga_par_communes]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRga_par_communes[P]>
+      : GetScalarType<T[P], AggregateRga_par_communes[P]>
+  }
+
+
+
+
+  export type rga_par_communesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: rga_par_communesWhereInput
+    orderBy?: rga_par_communesOrderByWithAggregationInput | rga_par_communesOrderByWithAggregationInput[]
+    by: Rga_par_communesScalarFieldEnum[] | Rga_par_communesScalarFieldEnum
+    having?: rga_par_communesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Rga_par_communesCountAggregateInputType | true
+    _avg?: Rga_par_communesAvgAggregateInputType
+    _sum?: Rga_par_communesSumAggregateInputType
+    _min?: Rga_par_communesMinAggregateInputType
+    _max?: Rga_par_communesMaxAggregateInputType
+  }
+
+  export type Rga_par_communesGroupByOutputType = {
+    pk: number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    alea: string
+    _count: Rga_par_communesCountAggregateOutputType | null
+    _avg: Rga_par_communesAvgAggregateOutputType | null
+    _sum: Rga_par_communesSumAggregateOutputType | null
+    _min: Rga_par_communesMinAggregateOutputType | null
+    _max: Rga_par_communesMaxAggregateOutputType | null
+  }
+
+  type GetRga_par_communesGroupByPayload<T extends rga_par_communesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Rga_par_communesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Rga_par_communesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Rga_par_communesGroupByOutputType[P]>
+            : GetScalarType<T[P], Rga_par_communesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type rga_par_communesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    alea?: boolean
+  }, ExtArgs["result"]["rga_par_communes"]>
+
+
+  export type rga_par_communesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    alea?: boolean
+  }, ExtArgs["result"]["rga_par_communes"]>
+
+  export type rga_par_communesSelectScalar = {
+    pk?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    alea?: boolean
+  }
+
+  export type rga_par_communesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "alea", ExtArgs["result"]["rga_par_communes"]>
+
+  export type $rga_par_communesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "rga_par_communes"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: number
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      alea: string
+    }, ExtArgs["result"]["rga_par_communes"]>
+    composites: {}
+  }
+
+  type rga_par_communesGetPayload<S extends boolean | null | undefined | rga_par_communesDefaultArgs> = $Result.GetResult<Prisma.$rga_par_communesPayload, S>
+
+  type rga_par_communesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<rga_par_communesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Rga_par_communesCountAggregateInputType | true
+    }
+
+  export interface rga_par_communesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['rga_par_communes'], meta: { name: 'rga_par_communes' } }
+    /**
+     * Find zero or one Rga_par_communes that matches the filter.
+     * @param {rga_par_communesFindUniqueArgs} args - Arguments to find a Rga_par_communes
+     * @example
+     * // Get one Rga_par_communes
+     * const rga_par_communes = await prisma.rga_par_communes.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends rga_par_communesFindUniqueArgs>(args: SelectSubset<T, rga_par_communesFindUniqueArgs<ExtArgs>>): Prisma__rga_par_communesClient<$Result.GetResult<Prisma.$rga_par_communesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Rga_par_communes that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {rga_par_communesFindUniqueOrThrowArgs} args - Arguments to find a Rga_par_communes
+     * @example
+     * // Get one Rga_par_communes
+     * const rga_par_communes = await prisma.rga_par_communes.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends rga_par_communesFindUniqueOrThrowArgs>(args: SelectSubset<T, rga_par_communesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__rga_par_communesClient<$Result.GetResult<Prisma.$rga_par_communesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Rga_par_communes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {rga_par_communesFindFirstArgs} args - Arguments to find a Rga_par_communes
+     * @example
+     * // Get one Rga_par_communes
+     * const rga_par_communes = await prisma.rga_par_communes.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends rga_par_communesFindFirstArgs>(args?: SelectSubset<T, rga_par_communesFindFirstArgs<ExtArgs>>): Prisma__rga_par_communesClient<$Result.GetResult<Prisma.$rga_par_communesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Rga_par_communes that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {rga_par_communesFindFirstOrThrowArgs} args - Arguments to find a Rga_par_communes
+     * @example
+     * // Get one Rga_par_communes
+     * const rga_par_communes = await prisma.rga_par_communes.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends rga_par_communesFindFirstOrThrowArgs>(args?: SelectSubset<T, rga_par_communesFindFirstOrThrowArgs<ExtArgs>>): Prisma__rga_par_communesClient<$Result.GetResult<Prisma.$rga_par_communesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Rga_par_communes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {rga_par_communesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Rga_par_communes
+     * const rga_par_communes = await prisma.rga_par_communes.findMany()
+     * 
+     * // Get first 10 Rga_par_communes
+     * const rga_par_communes = await prisma.rga_par_communes.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const rga_par_communesWithPkOnly = await prisma.rga_par_communes.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends rga_par_communesFindManyArgs>(args?: SelectSubset<T, rga_par_communesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rga_par_communesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Delete a Rga_par_communes.
+     * @param {rga_par_communesDeleteArgs} args - Arguments to delete one Rga_par_communes.
+     * @example
+     * // Delete one Rga_par_communes
+     * const Rga_par_communes = await prisma.rga_par_communes.delete({
+     *   where: {
+     *     // ... filter to delete one Rga_par_communes
+     *   }
+     * })
+     * 
+     */
+    delete<T extends rga_par_communesDeleteArgs>(args: SelectSubset<T, rga_par_communesDeleteArgs<ExtArgs>>): Prisma__rga_par_communesClient<$Result.GetResult<Prisma.$rga_par_communesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Rga_par_communes.
+     * @param {rga_par_communesUpdateArgs} args - Arguments to update one Rga_par_communes.
+     * @example
+     * // Update one Rga_par_communes
+     * const rga_par_communes = await prisma.rga_par_communes.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends rga_par_communesUpdateArgs>(args: SelectSubset<T, rga_par_communesUpdateArgs<ExtArgs>>): Prisma__rga_par_communesClient<$Result.GetResult<Prisma.$rga_par_communesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Rga_par_communes.
+     * @param {rga_par_communesDeleteManyArgs} args - Arguments to filter Rga_par_communes to delete.
+     * @example
+     * // Delete a few Rga_par_communes
+     * const { count } = await prisma.rga_par_communes.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends rga_par_communesDeleteManyArgs>(args?: SelectSubset<T, rga_par_communesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Rga_par_communes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {rga_par_communesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Rga_par_communes
+     * const rga_par_communes = await prisma.rga_par_communes.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends rga_par_communesUpdateManyArgs>(args: SelectSubset<T, rga_par_communesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Rga_par_communes and returns the data updated in the database.
+     * @param {rga_par_communesUpdateManyAndReturnArgs} args - Arguments to update many Rga_par_communes.
+     * @example
+     * // Update many Rga_par_communes
+     * const rga_par_communes = await prisma.rga_par_communes.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Rga_par_communes and only return the `pk`
+     * const rga_par_communesWithPkOnly = await prisma.rga_par_communes.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends rga_par_communesUpdateManyAndReturnArgs>(args: SelectSubset<T, rga_par_communesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rga_par_communesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+
+    /**
+     * Count the number of Rga_par_communes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {rga_par_communesCountArgs} args - Arguments to filter Rga_par_communes to count.
+     * @example
+     * // Count the number of Rga_par_communes
+     * const count = await prisma.rga_par_communes.count({
+     *   where: {
+     *     // ... the filter for the Rga_par_communes we want to count
+     *   }
+     * })
+    **/
+    count<T extends rga_par_communesCountArgs>(
+      args?: Subset<T, rga_par_communesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Rga_par_communesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Rga_par_communes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rga_par_communesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Rga_par_communesAggregateArgs>(args: Subset<T, Rga_par_communesAggregateArgs>): Prisma.PrismaPromise<GetRga_par_communesAggregateType<T>>
+
+    /**
+     * Group by Rga_par_communes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {rga_par_communesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends rga_par_communesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: rga_par_communesGroupByArgs['orderBy'] }
+        : { orderBy?: rga_par_communesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, rga_par_communesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRga_par_communesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the rga_par_communes model
+   */
+  readonly fields: rga_par_communesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for rga_par_communes.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__rga_par_communesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the rga_par_communes model
+   */
+  interface rga_par_communesFieldRefs {
+    readonly pk: FieldRef<"rga_par_communes", 'Int'>
+    readonly code_geographique: FieldRef<"rga_par_communes", 'String'>
+    readonly libelle_geographique: FieldRef<"rga_par_communes", 'String'>
+    readonly epci: FieldRef<"rga_par_communes", 'String'>
+    readonly libelle_epci: FieldRef<"rga_par_communes", 'String'>
+    readonly departement: FieldRef<"rga_par_communes", 'String'>
+    readonly libelle_departement: FieldRef<"rga_par_communes", 'String'>
+    readonly region: FieldRef<"rga_par_communes", 'Float'>
+    readonly ept: FieldRef<"rga_par_communes", 'String'>
+    readonly libelle_petr: FieldRef<"rga_par_communes", 'String'>
+    readonly code_pnr: FieldRef<"rga_par_communes", 'String'>
+    readonly libelle_pnr: FieldRef<"rga_par_communes", 'String'>
+    readonly alea: FieldRef<"rga_par_communes", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * rga_par_communes findUnique
+   */
+  export type rga_par_communesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rga_par_communes
+     */
+    select?: rga_par_communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the rga_par_communes
+     */
+    omit?: rga_par_communesOmit<ExtArgs> | null
+    /**
+     * Filter, which rga_par_communes to fetch.
+     */
+    where: rga_par_communesWhereUniqueInput
+  }
+
+  /**
+   * rga_par_communes findUniqueOrThrow
+   */
+  export type rga_par_communesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rga_par_communes
+     */
+    select?: rga_par_communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the rga_par_communes
+     */
+    omit?: rga_par_communesOmit<ExtArgs> | null
+    /**
+     * Filter, which rga_par_communes to fetch.
+     */
+    where: rga_par_communesWhereUniqueInput
+  }
+
+  /**
+   * rga_par_communes findFirst
+   */
+  export type rga_par_communesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rga_par_communes
+     */
+    select?: rga_par_communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the rga_par_communes
+     */
+    omit?: rga_par_communesOmit<ExtArgs> | null
+    /**
+     * Filter, which rga_par_communes to fetch.
+     */
+    where?: rga_par_communesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of rga_par_communes to fetch.
+     */
+    orderBy?: rga_par_communesOrderByWithRelationInput | rga_par_communesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for rga_par_communes.
+     */
+    cursor?: rga_par_communesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` rga_par_communes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` rga_par_communes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of rga_par_communes.
+     */
+    distinct?: Rga_par_communesScalarFieldEnum | Rga_par_communesScalarFieldEnum[]
+  }
+
+  /**
+   * rga_par_communes findFirstOrThrow
+   */
+  export type rga_par_communesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rga_par_communes
+     */
+    select?: rga_par_communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the rga_par_communes
+     */
+    omit?: rga_par_communesOmit<ExtArgs> | null
+    /**
+     * Filter, which rga_par_communes to fetch.
+     */
+    where?: rga_par_communesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of rga_par_communes to fetch.
+     */
+    orderBy?: rga_par_communesOrderByWithRelationInput | rga_par_communesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for rga_par_communes.
+     */
+    cursor?: rga_par_communesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` rga_par_communes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` rga_par_communes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of rga_par_communes.
+     */
+    distinct?: Rga_par_communesScalarFieldEnum | Rga_par_communesScalarFieldEnum[]
+  }
+
+  /**
+   * rga_par_communes findMany
+   */
+  export type rga_par_communesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rga_par_communes
+     */
+    select?: rga_par_communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the rga_par_communes
+     */
+    omit?: rga_par_communesOmit<ExtArgs> | null
+    /**
+     * Filter, which rga_par_communes to fetch.
+     */
+    where?: rga_par_communesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of rga_par_communes to fetch.
+     */
+    orderBy?: rga_par_communesOrderByWithRelationInput | rga_par_communesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing rga_par_communes.
+     */
+    cursor?: rga_par_communesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` rga_par_communes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` rga_par_communes.
+     */
+    skip?: number
+    distinct?: Rga_par_communesScalarFieldEnum | Rga_par_communesScalarFieldEnum[]
+  }
+
+  /**
+   * rga_par_communes update
+   */
+  export type rga_par_communesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rga_par_communes
+     */
+    select?: rga_par_communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the rga_par_communes
+     */
+    omit?: rga_par_communesOmit<ExtArgs> | null
+    /**
+     * The data needed to update a rga_par_communes.
+     */
+    data: XOR<rga_par_communesUpdateInput, rga_par_communesUncheckedUpdateInput>
+    /**
+     * Choose, which rga_par_communes to update.
+     */
+    where: rga_par_communesWhereUniqueInput
+  }
+
+  /**
+   * rga_par_communes updateMany
+   */
+  export type rga_par_communesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update rga_par_communes.
+     */
+    data: XOR<rga_par_communesUpdateManyMutationInput, rga_par_communesUncheckedUpdateManyInput>
+    /**
+     * Filter which rga_par_communes to update
+     */
+    where?: rga_par_communesWhereInput
+    /**
+     * Limit how many rga_par_communes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * rga_par_communes updateManyAndReturn
+   */
+  export type rga_par_communesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rga_par_communes
+     */
+    select?: rga_par_communesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the rga_par_communes
+     */
+    omit?: rga_par_communesOmit<ExtArgs> | null
+    /**
+     * The data used to update rga_par_communes.
+     */
+    data: XOR<rga_par_communesUpdateManyMutationInput, rga_par_communesUncheckedUpdateManyInput>
+    /**
+     * Filter which rga_par_communes to update
+     */
+    where?: rga_par_communesWhereInput
+    /**
+     * Limit how many rga_par_communes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * rga_par_communes delete
+   */
+  export type rga_par_communesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rga_par_communes
+     */
+    select?: rga_par_communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the rga_par_communes
+     */
+    omit?: rga_par_communesOmit<ExtArgs> | null
+    /**
+     * Filter which rga_par_communes to delete.
+     */
+    where: rga_par_communesWhereUniqueInput
+  }
+
+  /**
+   * rga_par_communes deleteMany
+   */
+  export type rga_par_communesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which rga_par_communes to delete
+     */
+    where?: rga_par_communesWhereInput
+    /**
+     * Limit how many rga_par_communes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * rga_par_communes without action
+   */
+  export type rga_par_communesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rga_par_communes
+     */
+    select?: rga_par_communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the rga_par_communes
+     */
+    omit?: rga_par_communesOmit<ExtArgs> | null
   }
 
 
@@ -57448,7 +58472,18 @@ export namespace Prisma {
 
 
   export const DebroussaillementScalarFieldEnum: {
-    pk: 'pk'
+    pk: 'pk',
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    libelle_departement: 'libelle_departement',
+    region: 'region',
+    ept: 'ept',
+    libelle_petr: 'libelle_petr',
+    code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr'
   };
 
   export type DebroussaillementScalarFieldEnum = (typeof DebroussaillementScalarFieldEnum)[keyof typeof DebroussaillementScalarFieldEnum]
@@ -57504,6 +58539,25 @@ export namespace Prisma {
   };
 
   export type Clc_par_communesScalarFieldEnum = (typeof Clc_par_communesScalarFieldEnum)[keyof typeof Clc_par_communesScalarFieldEnum]
+
+
+  export const Rga_par_communesScalarFieldEnum: {
+    pk: 'pk',
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    libelle_departement: 'libelle_departement',
+    region: 'region',
+    ept: 'ept',
+    libelle_petr: 'libelle_petr',
+    code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr',
+    alea: 'alea'
+  };
+
+  export type Rga_par_communesScalarFieldEnum = (typeof Rga_par_communesScalarFieldEnum)[keyof typeof Rga_par_communesScalarFieldEnum]
 
 
   export const Pg_stat_statementsScalarFieldEnum: {
@@ -62365,10 +63419,32 @@ export namespace Prisma {
     OR?: debroussaillementWhereInput[]
     NOT?: debroussaillementWhereInput | debroussaillementWhereInput[]
     pk?: IntFilter<"debroussaillement"> | number
+    code_geographique?: StringFilter<"debroussaillement"> | string
+    libelle_geographique?: StringFilter<"debroussaillement"> | string
+    epci?: StringFilter<"debroussaillement"> | string
+    libelle_epci?: StringFilter<"debroussaillement"> | string
+    departement?: StringFilter<"debroussaillement"> | string
+    libelle_departement?: StringFilter<"debroussaillement"> | string
+    region?: BigIntFilter<"debroussaillement"> | bigint | number
+    ept?: StringNullableFilter<"debroussaillement"> | string | null
+    libelle_petr?: StringNullableFilter<"debroussaillement"> | string | null
+    code_pnr?: StringNullableFilter<"debroussaillement"> | string | null
+    libelle_pnr?: StringNullableFilter<"debroussaillement"> | string | null
   }
 
   export type debroussaillementOrderByWithRelationInput = {
     pk?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
   }
 
   export type debroussaillementWhereUniqueInput = Prisma.AtLeast<{
@@ -62376,10 +63452,32 @@ export namespace Prisma {
     AND?: debroussaillementWhereInput | debroussaillementWhereInput[]
     OR?: debroussaillementWhereInput[]
     NOT?: debroussaillementWhereInput | debroussaillementWhereInput[]
+    code_geographique?: StringFilter<"debroussaillement"> | string
+    libelle_geographique?: StringFilter<"debroussaillement"> | string
+    epci?: StringFilter<"debroussaillement"> | string
+    libelle_epci?: StringFilter<"debroussaillement"> | string
+    departement?: StringFilter<"debroussaillement"> | string
+    libelle_departement?: StringFilter<"debroussaillement"> | string
+    region?: BigIntFilter<"debroussaillement"> | bigint | number
+    ept?: StringNullableFilter<"debroussaillement"> | string | null
+    libelle_petr?: StringNullableFilter<"debroussaillement"> | string | null
+    code_pnr?: StringNullableFilter<"debroussaillement"> | string | null
+    libelle_pnr?: StringNullableFilter<"debroussaillement"> | string | null
   }, "pk">
 
   export type debroussaillementOrderByWithAggregationInput = {
     pk?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
     _count?: debroussaillementCountOrderByAggregateInput
     _avg?: debroussaillementAvgOrderByAggregateInput
     _max?: debroussaillementMaxOrderByAggregateInput
@@ -62392,6 +63490,17 @@ export namespace Prisma {
     OR?: debroussaillementScalarWhereWithAggregatesInput[]
     NOT?: debroussaillementScalarWhereWithAggregatesInput | debroussaillementScalarWhereWithAggregatesInput[]
     pk?: IntWithAggregatesFilter<"debroussaillement"> | number
+    code_geographique?: StringWithAggregatesFilter<"debroussaillement"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"debroussaillement"> | string
+    epci?: StringWithAggregatesFilter<"debroussaillement"> | string
+    libelle_epci?: StringWithAggregatesFilter<"debroussaillement"> | string
+    departement?: StringWithAggregatesFilter<"debroussaillement"> | string
+    libelle_departement?: StringWithAggregatesFilter<"debroussaillement"> | string
+    region?: BigIntWithAggregatesFilter<"debroussaillement"> | bigint | number
+    ept?: StringNullableWithAggregatesFilter<"debroussaillement"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"debroussaillement"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"debroussaillement"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"debroussaillement"> | string | null
   }
 
   export type prelevements_eauWhereInput = {
@@ -62650,6 +63759,100 @@ export namespace Prisma {
     code_pnr?: StringNullableWithAggregatesFilter<"clc_par_communes"> | string | null
     libelle_pnr?: StringNullableWithAggregatesFilter<"clc_par_communes"> | string | null
     legend?: StringWithAggregatesFilter<"clc_par_communes"> | string
+  }
+
+  export type rga_par_communesWhereInput = {
+    AND?: rga_par_communesWhereInput | rga_par_communesWhereInput[]
+    OR?: rga_par_communesWhereInput[]
+    NOT?: rga_par_communesWhereInput | rga_par_communesWhereInput[]
+    pk?: IntFilter<"rga_par_communes"> | number
+    code_geographique?: StringFilter<"rga_par_communes"> | string
+    libelle_geographique?: StringFilter<"rga_par_communes"> | string
+    epci?: StringFilter<"rga_par_communes"> | string
+    libelle_epci?: StringFilter<"rga_par_communes"> | string
+    departement?: StringFilter<"rga_par_communes"> | string
+    libelle_departement?: StringFilter<"rga_par_communes"> | string
+    region?: FloatFilter<"rga_par_communes"> | number
+    ept?: StringNullableFilter<"rga_par_communes"> | string | null
+    libelle_petr?: StringNullableFilter<"rga_par_communes"> | string | null
+    code_pnr?: StringNullableFilter<"rga_par_communes"> | string | null
+    libelle_pnr?: StringNullableFilter<"rga_par_communes"> | string | null
+    alea?: StringFilter<"rga_par_communes"> | string
+  }
+
+  export type rga_par_communesOrderByWithRelationInput = {
+    pk?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    alea?: SortOrder
+  }
+
+  export type rga_par_communesWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: rga_par_communesWhereInput | rga_par_communesWhereInput[]
+    OR?: rga_par_communesWhereInput[]
+    NOT?: rga_par_communesWhereInput | rga_par_communesWhereInput[]
+    code_geographique?: StringFilter<"rga_par_communes"> | string
+    libelle_geographique?: StringFilter<"rga_par_communes"> | string
+    epci?: StringFilter<"rga_par_communes"> | string
+    libelle_epci?: StringFilter<"rga_par_communes"> | string
+    departement?: StringFilter<"rga_par_communes"> | string
+    libelle_departement?: StringFilter<"rga_par_communes"> | string
+    region?: FloatFilter<"rga_par_communes"> | number
+    ept?: StringNullableFilter<"rga_par_communes"> | string | null
+    libelle_petr?: StringNullableFilter<"rga_par_communes"> | string | null
+    code_pnr?: StringNullableFilter<"rga_par_communes"> | string | null
+    libelle_pnr?: StringNullableFilter<"rga_par_communes"> | string | null
+    alea?: StringFilter<"rga_par_communes"> | string
+  }, "pk">
+
+  export type rga_par_communesOrderByWithAggregationInput = {
+    pk?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    alea?: SortOrder
+    _count?: rga_par_communesCountOrderByAggregateInput
+    _avg?: rga_par_communesAvgOrderByAggregateInput
+    _max?: rga_par_communesMaxOrderByAggregateInput
+    _min?: rga_par_communesMinOrderByAggregateInput
+    _sum?: rga_par_communesSumOrderByAggregateInput
+  }
+
+  export type rga_par_communesScalarWhereWithAggregatesInput = {
+    AND?: rga_par_communesScalarWhereWithAggregatesInput | rga_par_communesScalarWhereWithAggregatesInput[]
+    OR?: rga_par_communesScalarWhereWithAggregatesInput[]
+    NOT?: rga_par_communesScalarWhereWithAggregatesInput | rga_par_communesScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"rga_par_communes"> | number
+    code_geographique?: StringWithAggregatesFilter<"rga_par_communes"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"rga_par_communes"> | string
+    epci?: StringWithAggregatesFilter<"rga_par_communes"> | string
+    libelle_epci?: StringWithAggregatesFilter<"rga_par_communes"> | string
+    departement?: StringWithAggregatesFilter<"rga_par_communes"> | string
+    libelle_departement?: StringWithAggregatesFilter<"rga_par_communes"> | string
+    region?: FloatWithAggregatesFilter<"rga_par_communes"> | number
+    ept?: StringNullableWithAggregatesFilter<"rga_par_communes"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"rga_par_communes"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"rga_par_communes"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"rga_par_communes"> | string | null
+    alea?: StringWithAggregatesFilter<"rga_par_communes"> | string
   }
 
   export type pg_stat_statementsWhereInput = {
@@ -68611,32 +69814,62 @@ export namespace Prisma {
     proj4text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type debroussaillementCreateInput = {
-
-  }
-
-  export type debroussaillementUncheckedCreateInput = {
-    pk?: number
-  }
-
   export type debroussaillementUpdateInput = {
-
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type debroussaillementUncheckedUpdateInput = {
     pk?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type debroussaillementCreateManyInput = {
-    pk?: number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type debroussaillementUpdateManyMutationInput = {
-
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type debroussaillementUncheckedUpdateManyInput = {
     pk?: IntFieldUpdateOperationsInput | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type prelevements_eauCreateInput = {
@@ -68909,6 +70142,68 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     legend?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type rga_par_communesUpdateInput = {
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    alea?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type rga_par_communesUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    alea?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type rga_par_communesUpdateManyMutationInput = {
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    alea?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type rga_par_communesUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    alea?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -72737,22 +74032,57 @@ export namespace Prisma {
 
   export type debroussaillementCountOrderByAggregateInput = {
     pk?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
   }
 
   export type debroussaillementAvgOrderByAggregateInput = {
     pk?: SortOrder
+    region?: SortOrder
   }
 
   export type debroussaillementMaxOrderByAggregateInput = {
     pk?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
   }
 
   export type debroussaillementMinOrderByAggregateInput = {
     pk?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
   }
 
   export type debroussaillementSumOrderByAggregateInput = {
     pk?: SortOrder
+    region?: SortOrder
   }
 
   export type prelevements_eauCountOrderByAggregateInput = {
@@ -72909,6 +74239,64 @@ export namespace Prisma {
   }
 
   export type clc_par_communesSumOrderByAggregateInput = {
+    pk?: SortOrder
+    region?: SortOrder
+  }
+
+  export type rga_par_communesCountOrderByAggregateInput = {
+    pk?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    alea?: SortOrder
+  }
+
+  export type rga_par_communesAvgOrderByAggregateInput = {
+    pk?: SortOrder
+    region?: SortOrder
+  }
+
+  export type rga_par_communesMaxOrderByAggregateInput = {
+    pk?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    alea?: SortOrder
+  }
+
+  export type rga_par_communesMinOrderByAggregateInput = {
+    pk?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    alea?: SortOrder
+  }
+
+  export type rga_par_communesSumOrderByAggregateInput = {
     pk?: SortOrder
     region?: SortOrder
   }

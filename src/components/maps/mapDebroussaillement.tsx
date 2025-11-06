@@ -44,8 +44,6 @@ export const MapDebroussaillement = (
       attributionControl: false,
     });
     mapRef.current = map;
-    // s'assure que le zoom au scroll est désactivé immédiatement pour éviter de capturer les défilements de page
-    try { map.scrollZoom.disable(); } catch (e) { /* noop */ }
 
     map.on('load', () => {
       if (
@@ -88,9 +86,15 @@ export const MapDebroussaillement = (
         type: 'geojson',
         data: {
           type: 'FeatureCollection',
-          features: carteContours as Feature<Geometry, GeoJsonProperties>[]
+          features: carteContours.map(commune => ({
+            type: 'Feature' as const,
+            geometry: commune.geometry as Geometry,
+            properties: commune.properties,
+            id: commune.properties.code_geographique
+          }))
         }
       });
+      
       map.addLayer({
         id: 'communes-outline-layer',
         type: 'line',
@@ -98,7 +102,7 @@ export const MapDebroussaillement = (
         paint: {
           'line-color': '#161616',
           'line-width': 1,
-          'line-opacity': 0.5
+          'line-opacity': 1
         }
       });
 

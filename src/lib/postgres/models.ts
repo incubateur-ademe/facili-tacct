@@ -834,5 +834,16 @@ export type TableCommuneModel = {
 
 export type DebroussaillementModel = {
   pk: number;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: bigint;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
   geometry: string;
 };

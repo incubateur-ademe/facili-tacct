@@ -4,7 +4,8 @@ import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { ArreteCatNat, CarteCommunes, DebroussaillementModel, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
 import { GetArretesCatnat, GetIncendiesForet } from '@/lib/queries/databases/gestionRisques';
-import { GetCommunes, GetDebroussaillement, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
+import { GetCommunes, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
+import { GetDebroussaillement } from '@/lib/queries/postgis/debroussaillement';
 import Notice from '@codegouvfr/react-dsfr/Notice';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useState } from "react";
@@ -161,7 +162,7 @@ export const DonneesGestionRisques = ({
           </div>
 
           {/* Feux de forêt */}
-          <div id="Feux de forêt" className={styles.indicateurWrapper}>
+          <div id="Feux de forêt" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Départs de feux et surfaces brûlées depuis 2006

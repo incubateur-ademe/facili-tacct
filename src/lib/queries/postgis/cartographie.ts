@@ -3,7 +3,6 @@
 import {
   CarteCommunes,
   CLCTerritoires,
-  DebroussaillementModel,
   ErosionCotiere
 } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
@@ -505,78 +504,6 @@ export const GetCommunesGeometries = async (
     }
   })();
 
-  return Promise.race([dbQuery, timeoutPromise]);
-};
-
-export const GetDebroussaillement = async (
-  code: string,
-  libelle: string,
-  type: string
-): Promise<DebroussaillementModel[]> => {
-  const timeoutPromise = new Promise<DebroussaillementModel[]>((resolve) =>
-    setTimeout(() => {
-      resolve([]);
-    }, 20000)
-  );
-  const dbQuery: Promise<DebroussaillementModel[]> = (async () => {
-    try {
-      if (!libelle || !type || (!code && type !== 'petr')) return [];
-      if (type === 'commune') {
-        const commune = await prisma.$queryRaw<CarteCommunes[]>`
-          SELECT
-          code_geographique,
-          ST_AsText(geometry) geometry
-          FROM postgis."communes_drom" 
-          WHERE code_geographique=${code} LIMIT 1;`;
-        if (commune.length !== 0) {
-          const intersect = await prisma.$queryRaw<DebroussaillementModel[]>`
-          SELECT
-          pk,
-          ST_AsGeoJSON(geometry) geometry
-          FROM postgis."debroussaillement"
-          WHERE ST_Intersects(geometry, ST_GeomFromText(${commune[0].geometry}, 4326));`;
-          return intersect;
-        }
-        return [];
-      } else if (type === 'epci' && !eptRegex.test(libelle)) {
-        const epci = await prisma.$queryRaw<CarteCommunes[]>`
-            SELECT
-            ST_AsText(ST_Union(geometry)) as geometry
-            FROM postgis."communes_drom" WHERE epci=${code};`;
-        if (epci.length !== 0) {
-          const intersect = await prisma.$queryRaw<DebroussaillementModel[]>`
-            SELECT
-            pk,
-            ST_AsGeoJSON(geometry) geometry
-            FROM postgis."debroussaillement"
-            WHERE ST_Within(geometry, ST_GeomFromText(${epci[0].geometry}, 4326))`;
-          return intersect;
-        }
-        return [];
-      } else if (type === 'pnr') {
-        const pnr = await prisma.$queryRaw<CarteCommunes[]>`
-          SELECT
-          ST_AsText(ST_Union(geometry)) as geometry
-          FROM postgis."communes_drom" WHERE code_pnr=${code};`;
-        if (pnr.length !== 0) {
-          const intersect = await prisma.$queryRaw<DebroussaillementModel[]>`
-            SELECT
-            pk,
-            ST_AsGeoJSON(geometry) geometry
-            FROM postgis."debroussaillement"
-            WHERE ST_Intersects(geometry, ST_GeomFromText(${pnr[0].geometry}, 4326))`;
-          console.log(
-            `GetDebroussaillement PNR ${code}: ${intersect.length} polygones trouvés`
-          );
-          return intersect;
-        }
-        return [];
-      } else return [];
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
-  })();
   return Promise.race([dbQuery, timeoutPromise]);
 };
 
