@@ -941,7 +941,18 @@ exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
 };
 
 exports.Prisma.DebroussaillementScalarFieldEnum = {
-  pk: 'pk'
+  pk: 'pk',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr'
 };
 
 exports.Prisma.Prelevements_eauScalarFieldEnum = {
@@ -988,6 +999,22 @@ exports.Prisma.Clc_par_communesScalarFieldEnum = {
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
   legend: 'legend'
+};
+
+exports.Prisma.Rga_par_communesScalarFieldEnum = {
+  pk: 'pk',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  alea: 'alea'
 };
 
 exports.Prisma.Pg_stat_statementsScalarFieldEnum = {
@@ -1122,6 +1149,7 @@ exports.Prisma.ModelName = {
   debroussaillement: 'debroussaillement',
   prelevements_eau: 'prelevements_eau',
   clc_par_communes: 'clc_par_communes',
+  rga_par_communes: 'rga_par_communes',
   pg_stat_statements: 'pg_stat_statements',
   pg_stat_statements_info: 'pg_stat_statements_info',
   geography_columns: 'geography_columns',

@@ -1,6 +1,7 @@
 import { SearchParams } from "@/app/(main)/types";
 import { GetArretesCatnat, GetIncendiesForet } from "@/lib/queries/databases/gestionRisques";
-import { GetCommunes, GetDebroussaillement, GetErosionCotiere } from "@/lib/queries/postgis/cartographie";
+import { GetCommunes, GetErosionCotiere } from "@/lib/queries/postgis/cartographie";
+import { GetDebroussaillement } from "@/lib/queries/postgis/debroussaillement";
 import { DonneesGestionRisques } from "./DonneesGestionRisques";
 
 const GestionRisquesServerPage = async (props: { searchParams: SearchParams }) => {

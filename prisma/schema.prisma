@@ -1019,10 +1019,28 @@ model spatial_ref_sys {
 }
 
 model debroussaillement {
-  pk       Int                      @id @default(autoincrement())
-  geometry Unsupported("geometry")?
+  pk                   Int                     @id @default(autoincrement())
+  code_geographique    String                  @db.VarChar
+  libelle_geographique String                  @db.VarChar
+  epci                 String                  @db.VarChar
+  libelle_epci         String                  @db.VarChar
+  departement          String                  @db.VarChar
+  libelle_departement  String                  @db.VarChar
+  region               BigInt
+  ept                  String?                 @db.VarChar
+  libelle_petr         String?                 @db.VarChar
+  code_pnr             String?                 @db.VarChar
+  libelle_pnr          String?                 @db.VarChar
+  geometry             Unsupported("geometry")
 
   @@index([geometry], map: "debroussaillement_geometry_geom_idx", type: Gist)
+  @@index([code_geographique], map: "debroussaillement_communes_index")
+  @@index([departement], map: "debroussaillement_departement_index")
+  @@index([epci], map: "debroussaillement_epci_index")
+  @@index([ept], map: "debroussaillement_ept_index")
+  @@index([libelle_petr], map: "debroussaillement_petr_index")
+  @@index([code_pnr], map: "debroussaillement_pnr_index")
+  @@index([departement], map: "debroussaillemt_departement_iiindex")
   @@schema("postgis")
 }
 
@@ -1103,6 +1121,36 @@ model clc_par_communes {
 
   @@index([geometry], map: "clc_par_communes_geometry_geom_idx", type: Gist)
   @@index([code_geographique], map: "clc_par_communes_communes_index")
+  @@index([departement], map: "clc_par_communes_departement_index")
+  @@index([epci], map: "clc_par_communes_epci_index")
+  @@index([ept], map: "clc_par_communes_ept_index")
+  @@index([libelle_petr], map: "clc_par_communes_petr_index")
+  @@index([code_pnr], map: "clc_par_communes_pnr_index")
+  @@schema("postgis")
+}
+
+model rga_par_communes {
+  pk                   Int                     @id @default(autoincrement())
+  code_geographique    String                  @db.VarChar
+  libelle_geographique String                  @db.VarChar
+  epci                 String                  @db.VarChar
+  libelle_epci         String                  @db.VarChar
+  departement          String                  @db.VarChar
+  libelle_departement  String                  @db.VarChar
+  region               Float
+  ept                  String?                 @db.VarChar
+  libelle_petr         String?                 @db.VarChar
+  code_pnr             String?                 @db.VarChar
+  libelle_pnr          String?                 @db.VarChar
+  alea                 String                  @db.VarChar
+  geometry             Unsupported("geometry")
+
+  @@index([code_geographique], map: "rga_par_communes_communes_index")
+  @@index([departement], map: "rga_par_communes_departement_index")
+  @@index([ept], map: "rga_par_communes_ept_index")
+  @@index([geometry], map: "rga_par_communes_geometry_geom_idx", type: Gist)
+  @@index([libelle_petr], map: "rga_par_communes_petr_index")
+  @@index([code_pnr], map: "rga_par_communes_pnr_index")
   @@schema("postgis")
 }
 

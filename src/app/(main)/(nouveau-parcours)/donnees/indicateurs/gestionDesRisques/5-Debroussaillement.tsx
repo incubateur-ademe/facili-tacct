@@ -3,7 +3,7 @@ import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { MapDebroussaillement } from '@/components/maps/mapDebroussaillement';
 import { Body } from "@/design-system/base/Textes";
-import { CommunesContourMapper } from '@/lib/mapper/communes';
+import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, DebroussaillementModel } from "@/lib/postgres/models";
 import { eptRegex } from "@/lib/utils/regex";
 import { useSearchParams } from "next/navigation";
@@ -31,7 +31,7 @@ export const Debroussaillement = ({
         : type === 'epci' && !eptRegex.test(libelle)
           ? carteCommunes.filter((e) => e.epci === code)
           : carteCommunes;
-  const carteContours = carteTerritoire.map(CommunesContourMapper);
+  const carteContours = carteTerritoire.map(CommunesIndicateursMapper);
 
   return (
     <>
