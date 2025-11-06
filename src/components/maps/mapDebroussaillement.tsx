@@ -1,25 +1,31 @@
 
-import { CommunesContoursDto } from '@/lib/dto';
+"use client";
+
+import { CommunesIndicateursDto } from '@/lib/dto';
 import { DebroussaillementMapper } from '@/lib/mapper/debroussaillement';
 import { DebroussaillementModel } from '@/lib/postgres/models';
 import { mapStyles } from 'carte-facile';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect, useMemo } from 'react';
-import { BoundsFromCollectionDebroussaillement } from './components/boundsFromCollection';
+import { BoundsFromCollection } from './components/boundsFromCollection';
 
 export const MapDebroussaillement = (
   props: {
     debroussaillement: DebroussaillementModel[];
-    carteContours: CommunesContoursDto[];
+    carteContours: CommunesIndicateursDto[];
     mapRef: RefObject<maplibregl.Map | null>;
     mapContainer: RefObject<HTMLDivElement | null>;
   }
 ) => {
   const { debroussaillement, carteContours, mapRef, mapContainer } = props;
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
   const dataParsed = useMemo(() => debroussaillement.map(DebroussaillementMapper), [debroussaillement]);
-  const enveloppe = BoundsFromCollectionDebroussaillement(dataParsed);
+  const enveloppe = BoundsFromCollection(carteContours, type, code);
 
   const geoJsonData = useMemo(() => {
     return {
@@ -94,7 +100,7 @@ export const MapDebroussaillement = (
           }))
         }
       });
-      
+
       map.addLayer({
         id: 'communes-outline-layer',
         type: 'line',
