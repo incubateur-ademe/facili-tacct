@@ -1,7 +1,6 @@
 import {
   ClcDto,
-  CommunesIndicateursDto,
-  DebroussaillementDto
+  CommunesIndicateursDto
 } from '@/lib/dto';
 import { Any } from '@/lib/utils/types';
 import * as turf from '@turf/turf';
@@ -38,14 +37,14 @@ export const BoundsFromCollectionCLC = (collection: ClcDto[]) => {
   return enveloppe;
 };
 
-export const BoundsFromCollectionDebroussaillement = (
-  collection: DebroussaillementDto[]
-) => {
-  const featureCollection = turf.featureCollection(collection as Any);
-  const bbox = turf.bboxPolygon(turf.bbox(featureCollection));
-  const enveloppe = bbox.geometry.coordinates[0].map(([lng, lat]) => [
-    lat,
-    lng
-  ]);
-  return enveloppe;
-};
+// export const BoundsFromCollectionDebroussaillement = (
+//   collection: DebroussaillementDto[]
+// ) => {
+//   const featureCollection = turf.featureCollection(collection as Any);
+//   const bbox = turf.bboxPolygon(turf.bbox(featureCollection));
+//   const enveloppe = bbox.geometry.coordinates[0].map(([lng, lat]) => [
+//     lat,
+//     lng
+//   ]);
+//   return enveloppe;
+// };
