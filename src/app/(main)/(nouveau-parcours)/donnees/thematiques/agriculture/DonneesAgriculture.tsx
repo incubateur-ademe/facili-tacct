@@ -3,9 +3,10 @@ import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { SourcesSection } from "@/components/interactions/scrollToSource";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { Agriculture, AgricultureBio, CarteCommunes, SurfacesAgricolesModel } from "@/lib/postgres/models";
-import { GetAgriculture, GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
+import { AgricultureBio, CarteCommunes, SurfacesAgricolesModel, TableCommuneModel } from "@/lib/postgres/models";
+import { GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
 import { GetAgricultureBio } from "@/lib/queries/databases/biodiversite";
+import { GetTablecommune } from "@/lib/queries/databases/tableCommune";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { useSearchParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
@@ -17,16 +18,16 @@ import { SurfacesEnBio } from '../../indicateurs/agriculture/3-SurfacesEnBio';
 
 interface Props {
   carteCommunes: CarteCommunes[];
-  agriculture: Agriculture[];
   surfacesAgricoles: SurfacesAgricolesModel[];
   agricultureBio: AgricultureBio[];
+  tableCommune: TableCommuneModel[];
 }
 
 export const DonneesAgriculture = ({
   carteCommunes,
-  agriculture,
   surfacesAgricoles,
-  agricultureBio
+  agricultureBio,
+  tableCommune
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Agriculture";
@@ -36,9 +37,9 @@ export const DonneesAgriculture = ({
   const ongletsMenu = sommaireThematiques[thematique];
   const [data, setData] = useState({
     carteCommunes,
-    agriculture,
     surfacesAgricoles,
-    agricultureBio
+    agricultureBio,
+    tableCommune
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -50,13 +51,18 @@ export const DonneesAgriculture = ({
     }
     setIsLoading(true);
     void (async () => {
-      const [newCarteCommunes, newAgriculture, newSurfacesAgricoles, newAgricultureBio] = await Promise.all([
+      const [newCarteCommunes, newSurfacesAgricoles, newAgricultureBio, newTableCommune] = await Promise.all([
         GetCommunes(code, libelle, type),
-        GetAgriculture(code, libelle, type),
         GetSurfacesAgricoles(code, libelle, type),
-        GetAgricultureBio(libelle, type, code)
+        GetAgricultureBio(libelle, type, code),
+        GetTablecommune(code, libelle, type)
       ]);
-      setData({ carteCommunes: newCarteCommunes, agriculture: newAgriculture, surfacesAgricoles: newSurfacesAgricoles, agricultureBio: newAgricultureBio });
+      setData({ 
+        carteCommunes: newCarteCommunes, 
+        surfacesAgricoles: newSurfacesAgricoles, 
+        agricultureBio: newAgricultureBio,
+        tableCommune: newTableCommune
+      });
       setIsLoading(false);
     })();
   }, [libelle]);
@@ -96,7 +102,8 @@ export const DonneesAgriculture = ({
             </div>
             <TypesDeCulture
               surfacesAgricoles={data.surfacesAgricoles}
-              agriculture={data.agriculture}
+              // agriculture={data.agriculture}
+              tableCommune={data.tableCommune}
             />
           </div>
         </section>
@@ -121,7 +128,8 @@ export const DonneesAgriculture = ({
               </H3>
             </div>
             <SuperficiesIrriguees
-              agriculture={data.agriculture}
+              // agriculture={data.agriculture}
+              tableCommune={data.tableCommune}
               carteCommunes={data.carteCommunes}
             />
           </div>

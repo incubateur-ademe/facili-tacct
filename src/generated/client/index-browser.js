@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.18.0
- * Query Engine version: 34b5a692b7bd79939a9a2c3ef97d816e749cda2f
+ * Prisma Client JS version: 6.15.0
+ * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
  */
 Prisma.prismaVersion = {
-  client: "6.18.0",
-  engine: "34b5a692b7bd79939a9a2c3ef97d816e749cda2f"
+  client: "6.15.0",
+  engine: "85179d7826409ee107a6ba334b5e305ae3fba9fb"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -149,14 +149,38 @@ exports.Prisma.Agriculture_bioScalarFieldEnum = {
   libelle_epci: 'libelle_epci',
   VARIABLE: 'VARIABLE',
   LIBELLE_SOUS_CHAMP: 'LIBELLE_SOUS_CHAMP',
+  surface_2023: 'surface_2023',
   surface_2022: 'surface_2022',
   surface_2021: 'surface_2021',
   surface_2020: 'surface_2020',
   surface_2019: 'surface_2019',
+  surface_2018: 'surface_2018',
+  surface_2017: 'surface_2017',
+  surface_2016: 'surface_2016',
+  surface_2015: 'surface_2015',
+  surface_2014: 'surface_2014',
+  surface_2013: 'surface_2013',
+  surface_2012: 'surface_2012',
+  surface_2011: 'surface_2011',
+  surface_2010: 'surface_2010',
+  surface_2009: 'surface_2009',
+  surface_2008: 'surface_2008',
+  nombre_2023: 'nombre_2023',
   nombre_2022: 'nombre_2022',
   nombre_2021: 'nombre_2021',
   nombre_2020: 'nombre_2020',
-  nombre_2019: 'nombre_2019'
+  nombre_2019: 'nombre_2019',
+  nombre_2018: 'nombre_2018',
+  nombre_2017: 'nombre_2017',
+  nombre_2016: 'nombre_2016',
+  nombre_2015: 'nombre_2015',
+  nombre_2014: 'nombre_2014',
+  nombre_2013: 'nombre_2013',
+  nombre_2012: 'nombre_2012',
+  nombre_2011: 'nombre_2011',
+  nombre_2010: 'nombre_2010',
+  nombre_2009: 'nombre_2009',
+  nombre_2008: 'nombre_2008'
 };
 
 exports.Prisma.Aot_40ScalarFieldEnum = {
@@ -358,8 +382,8 @@ exports.Prisma.Feux_foretScalarFieldEnum = {
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
-  nature: 'nature',
   annee: 'annee',
+  nature: 'nature',
   surface_parcourue: 'surface_parcourue',
   surface_foret: 'surface_foret',
   surface_maquis_garrigues: 'surface_maquis_garrigues',
@@ -530,25 +554,25 @@ exports.Prisma.RgaScalarFieldEnum = {
   nb_logement_alea_faible: 'nb_logement_alea_faible',
   nb_logement_sans_alea: 'nb_logement_sans_alea',
   nb_logement_alea_moyen_fort_avant_1920: 'nb_logement_alea_moyen_fort_avant_1920',
-  part_logement_alea_moyen_fort_avant_1920: 'part_logement_alea_moyen_fort_avant_1920',
   nb_logement_alea_moyen_fort_1920_1945: 'nb_logement_alea_moyen_fort_1920_1945',
-  part_logement_alea_moyen_fort_1920_1945: 'part_logement_alea_moyen_fort_1920_1945',
   nb_logement_alea_moyen_fort_1945_1975: 'nb_logement_alea_moyen_fort_1945_1975',
-  part_logement_alea_moyen_fort_1945_1975: 'part_logement_alea_moyen_fort_1945_1975',
   nb_logement_alea_moyen_fort_apres_1975: 'nb_logement_alea_moyen_fort_apres_1975',
-  part_logement_alea_moyen_fort_apres_1975: 'part_logement_alea_moyen_fort_apres_1975',
   nb_logement_alea_faible_avant_1920: 'nb_logement_alea_faible_avant_1920',
-  part_logement_alea_faible_avant_1920: 'part_logement_alea_faible_avant_1920',
   nb_logement_alea_faible_1920_1945: 'nb_logement_alea_faible_1920_1945',
-  part_logement_alea_faible_1920_1945: 'part_logement_alea_faible_1920_1945',
   nb_logement_alea_faible_1945_1975: 'nb_logement_alea_faible_1945_1975',
-  part_logement_alea_faible_1945_1975: 'part_logement_alea_faible_1945_1975',
   nb_logement_alea_faible_apres_1975: 'nb_logement_alea_faible_apres_1975',
-  part_logement_alea_faible_apres_1975: 'part_logement_alea_faible_apres_1975',
   surface_commune: 'surface_commune',
   surface_alea_faible_commune: 'surface_alea_faible_commune',
-  part_alea_faible_commune: 'part_alea_faible_commune',
   surface_alea_moyen_fort_commune: 'surface_alea_moyen_fort_commune',
+  part_logement_alea_moyen_fort_avant_1920: 'part_logement_alea_moyen_fort_avant_1920',
+  part_logement_alea_moyen_fort_1920_1945: 'part_logement_alea_moyen_fort_1920_1945',
+  part_logement_alea_moyen_fort_1945_1975: 'part_logement_alea_moyen_fort_1945_1975',
+  part_logement_alea_moyen_fort_apres_1975: 'part_logement_alea_moyen_fort_apres_1975',
+  part_logement_alea_faible_avant_1920: 'part_logement_alea_faible_avant_1920',
+  part_logement_alea_faible_1920_1945: 'part_logement_alea_faible_1920_1945',
+  part_logement_alea_faible_1945_1975: 'part_logement_alea_faible_1945_1975',
+  part_logement_alea_faible_apres_1975: 'part_logement_alea_faible_apres_1975',
+  part_alea_faible_commune: 'part_alea_faible_commune',
   part_alea_moyen_fort_commune: 'part_alea_moyen_fort_commune'
 };
 
@@ -625,7 +649,6 @@ exports.Prisma.Communes_dromScalarFieldEnum = {
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
   coordinates: 'coordinates',
-  densite_bati: 'densite_bati',
   precarite_logement: 'precarite_logement',
   surface: 'surface'
 };
@@ -899,10 +922,14 @@ exports.Prisma.Table_communeScalarFieldEnum = {
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
-  type_touristique: 'type_touristique',
   atlas_biodiversite_nom: 'atlas_biodiversite_nom',
   atlas_biodiversite_annee_debut: 'atlas_biodiversite_annee_debut',
-  atlas_biodiversite_avancement: 'atlas_biodiversite_avancement'
+  atlas_biodiversite_avancement: 'atlas_biodiversite_avancement',
+  type_touristique: 'type_touristique',
+  otex_12_postes: 'otex_12_postes',
+  part_irr_sau_2020: 'part_irr_sau_2020',
+  agriculture_part_over_55: 'agriculture_part_over_55',
+  couverture_lcz: 'couverture_lcz'
 };
 
 exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
@@ -914,7 +941,80 @@ exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
 };
 
 exports.Prisma.DebroussaillementScalarFieldEnum = {
-  pk: 'pk'
+  pk: 'pk',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr'
+};
+
+exports.Prisma.Prelevements_eauScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  libelle_sous_champ: 'libelle_sous_champ',
+  A2020: 'A2020',
+  A2019: 'A2019',
+  A2018: 'A2018',
+  A2017: 'A2017',
+  A2016: 'A2016',
+  A2015: 'A2015',
+  A2014: 'A2014',
+  A2013: 'A2013',
+  A2012: 'A2012',
+  A2011: 'A2011',
+  A2010: 'A2010',
+  A2009: 'A2009',
+  A2008: 'A2008',
+  sous_champ: 'sous_champ'
+};
+
+exports.Prisma.Clc_par_communesScalarFieldEnum = {
+  pk: 'pk',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  legend: 'legend'
+};
+
+exports.Prisma.Rga_par_communesScalarFieldEnum = {
+  pk: 'pk',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  alea: 'alea'
 };
 
 exports.Prisma.Pg_stat_statementsScalarFieldEnum = {
@@ -1047,6 +1147,9 @@ exports.Prisma.ModelName = {
   table_commune: 'table_commune',
   spatial_ref_sys: 'spatial_ref_sys',
   debroussaillement: 'debroussaillement',
+  prelevements_eau: 'prelevements_eau',
+  clc_par_communes: 'clc_par_communes',
+  rga_par_communes: 'rga_par_communes',
   pg_stat_statements: 'pg_stat_statements',
   pg_stat_statements_info: 'pg_stat_statements_info',
   geography_columns: 'geography_columns',

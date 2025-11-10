@@ -13,26 +13,15 @@ import { BoundsFromCollection } from './components/boundsFromCollection';
 import { DensiteBatiTooltip, FragiliteEconomiqueTooltip } from './components/tooltips';
 
 const getColor = (d: number, data: string) => {
-  if (data === 'densite_bati') {
-    return d > 0.2
-      ? '#FF5E54'
+  return d > 0.3
+    ? couleurs.graphiques.bleu[5]
+    : d > 0.2
+      ? couleurs.graphiques.bleu[1]
       : d > 0.1
-        ? '#FFBD00'
-        : d > 0.05
-          ? '#FFFA6A'
-          : d > 0
-            ? '#D5F4A3'
-            : '#5CFF54';
-  } else
-    return d > 0.3
-      ? couleurs.graphiques.bleu[5]
-      : d > 0.2
-        ? couleurs.graphiques.bleu[1]
-        : d > 0.1
-          ? couleurs.graphiques.bleu[2]
-          : d > 0
-            ? couleurs.graphiques.bleu[3]
-            : couleurs.graphiques.bleu[4];
+        ? couleurs.graphiques.bleu[2]
+        : d > 0
+          ? couleurs.graphiques.bleu[3]
+          : couleurs.graphiques.bleu[4];
 };
 
 
@@ -67,9 +56,7 @@ export const MapInconfortThermique = (props: {
     return {
       type: 'FeatureCollection',
       features: carteCommunesFiltered.map(commune => {
-        const value = data === 'densite_bati'
-          ? commune.properties.densite_bati
-          : commune.properties.precarite_logement;
+        const value = commune.properties.precarite_logement;
         const fillColor = getColor(value, data);
         return {
           ...commune,

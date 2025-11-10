@@ -3,9 +3,8 @@ import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { MapDebroussaillement } from '@/components/maps/mapDebroussaillement';
 import { Body } from "@/design-system/base/Textes";
-import { CommunesContourMapper } from '@/lib/mapper/communes';
+import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, DebroussaillementModel } from "@/lib/postgres/models";
-import { eptRegex } from "@/lib/utils/regex";
 import { useSearchParams } from "next/navigation";
 import { useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';
@@ -23,15 +22,15 @@ export const Debroussaillement = ({
   const type = searchParams.get('type')!;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
-  const carteTerritoire =
-    type === 'commune'
-      ? carteCommunes.filter((e) => e.code_geographique === code)
-      : type === 'ept' && eptRegex.test(libelle)
-        ? carteCommunes.filter((e) => e.ept === libelle)
-        : type === 'epci' && !eptRegex.test(libelle)
-          ? carteCommunes.filter((e) => e.epci === code)
-          : carteCommunes;
-  const carteContours = carteTerritoire.map(CommunesContourMapper);
+  // const carteTerritoire =
+  //   type === 'commune'
+  //     ? carteCommunes.filter((e) => e.code_geographique === code)
+  //     : type === 'ept' && eptRegex.test(libelle)
+  //       ? carteCommunes.filter((e) => e.ept === libelle)
+  //       : type === 'epci' && !eptRegex.test(libelle)
+  //         ? carteCommunes.filter((e) => e.epci === code)
+  //         : carteCommunes;
+  const carteContours = carteCommunes.map(CommunesIndicateursMapper);
 
   return (
     <>

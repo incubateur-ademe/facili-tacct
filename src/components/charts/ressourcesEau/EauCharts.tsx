@@ -3,7 +3,7 @@
 import RangeSlider from "@/components/Slider";
 import SubTabs from '@/components/ui/SubTabs';
 import { Body } from "@/design-system/base/Textes";
-import { RessourcesEau } from '@/lib/postgres/models';
+import { PrelevementsEauParsed } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
 import { useState } from "react";
 import styles from './eau.module.scss';
@@ -14,7 +14,7 @@ import PrelevementEauProgressBarsPNR from "./prelevementEauProgressBarPNR";
 type Props = {
   datavizTab: string;
   setDatavizTab: (value: string) => void;
-  ressourcesEau: RessourcesEau[];
+  ressourcesEau: PrelevementsEauParsed[];
 };
 
 const EauCharts = (props: Props) => {
@@ -61,8 +61,8 @@ const EauCharts = (props: Props) => {
         <>
           {
             type === "pnr" || type === "departement" ?
-              <PrelevementEauProgressBarsPNR ressourcesEau={ressourcesEau} />
-              : <PrelevementEauProgressBars ressourcesEau={ressourcesEau} />
+              <PrelevementEauProgressBarsPNR ressourcesEau={ressourcesEau as unknown as PrelevementsEauParsed[]} />
+              : <PrelevementEauProgressBars ressourcesEau={ressourcesEau as unknown as PrelevementsEauParsed[]} />
           }
         </>
       ) : <>
@@ -76,7 +76,7 @@ const EauCharts = (props: Props) => {
           />
         </div>
         <PrelevementEauBarChart
-          ressourcesEau={ressourcesEau}
+          ressourcesEau={ressourcesEau as unknown as PrelevementsEauParsed[]}
           sliderValue={sliderValue}
         />
       </>
