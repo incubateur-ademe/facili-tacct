@@ -1,3 +1,5 @@
+import { JsonValue } from '@/generated/client/runtime/library';
+
 export type InconfortThermique = {
   NA5AZ_sum: number | null;
   NA5BE_sum: number | null;
@@ -159,6 +161,33 @@ export type ArreteCatNat = {
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
+};
+
+export type Secheresse = {
+  id: number;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  restrictions_2013: JsonValue[] | null;
+  restrictions_2014: JsonValue[] | null;
+  restrictions_2015: JsonValue[] | null;
+  restrictions_2016: JsonValue[] | null;
+  restrictions_2017: JsonValue[] | null;
+  restrictions_2018: JsonValue[] | null;
+  restrictions_2019: JsonValue[] | null;
+  restrictions_2020: JsonValue[] | null;
+  restrictions_2021: JsonValue[] | null;
+  restrictions_2022: JsonValue[] | null;
+  restrictions_2023: JsonValue[] | null;
+  restrictions_2024: JsonValue[] | null;
 };
 
 export type RessourcesEau = {

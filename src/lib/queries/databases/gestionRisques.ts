@@ -1,6 +1,11 @@
 'use server';
 
-import { ArreteCatNat, IncendiesForet, RGAdb } from '@/lib/postgres/models';
+import {
+  ArreteCatNat,
+  IncendiesForet,
+  RGAdb,
+  Secheresse
+} from '@/lib/postgres/models';
 import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../redis';
@@ -139,6 +144,42 @@ export const GetRga = async (
         return value as RGAdb[];
       } else {
         const value = await prisma.rga.findMany({
+          where: {
+            [column]: type === 'petr' || type === 'ept' ? libelle : code
+          }
+        });
+        return value;
+      }
+    } catch (error) {
+      console.error(error);
+      Sentry.captureException(error);
+      return [];
+    }
+  })();
+  return Promise.race([dbQuery, timeoutPromise]);
+};
+
+export const GetSecheresses = async (
+  code: string,
+  libelle: string,
+  type: string
+): Promise<Secheresse[]> => {
+  const column = ColumnCodeCheck(type);
+  const timeoutPromise = new Promise<[]>((resolve) =>
+    setTimeout(() => {
+      resolve([]);
+    }, 6000)
+  );
+  const dbQuery = (async () => {
+    try {
+      // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
+      const exists = await prisma.secheresses.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+      });
+      if (!exists) return [];
+      else {
+        const value = await prisma.secheresses.findMany({
           where: {
             [column]: type === 'petr' || type === 'ept' ? libelle : code
           }

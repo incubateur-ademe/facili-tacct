@@ -2,7 +2,7 @@
 import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { ArreteCatNat, CarteCommunes, DebroussaillementModel, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
+import { ArreteCatNat, CarteCommunes, DebroussaillementModel, ErosionCotiere, IncendiesForet, RGACarte, RGAdb, Secheresse } from "@/lib/postgres/models";
 import { GetArretesCatnat, GetIncendiesForet } from '@/lib/queries/databases/gestionRisques';
 import { GetCommunes, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import { GetDebroussaillement } from '@/lib/queries/postgis/debroussaillement';
@@ -24,6 +24,7 @@ interface Props {
   erosionCotiere: [ErosionCotiere[], string] | [];
   incendiesForet: IncendiesForet[];
   debroussaillement: DebroussaillementModel[];
+  secheresse: Secheresse[];
 }
 
 export const DonneesGestionRisques = ({
@@ -31,7 +32,8 @@ export const DonneesGestionRisques = ({
   gestionRisques,
   erosionCotiere,
   incendiesForet,
-  debroussaillement
+  debroussaillement,
+  secheresse
 }: Props) => {
   const { css } = useStyles();
   const searchParams = useSearchParams();
