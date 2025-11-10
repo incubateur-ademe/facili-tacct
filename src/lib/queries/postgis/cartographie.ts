@@ -19,7 +19,7 @@ export const GetCommunes = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 3000)
+    }, 6000)
   );
   const column = ColumnCodeCheck(type);
   const dbQuery = (async () => {
@@ -236,7 +236,9 @@ export const GetClcTerritoires = async (
             ST_AsGeoJSON(ST_SimplifyPreserveTopology(geometry, 0.0001)) geometry
             FROM postgis."clc_par_communes" WHERE departement=${code};`;
           const size = Buffer.byteLength(JSON.stringify(value));
-          console.log(`GetClcTerritoires ${type}: ${(size / 1024 / 1024).toFixed(2)} MB`);
+          console.log(
+            `GetClcTerritoires ${type}: ${(size / 1024 / 1024).toFixed(2)} MB`
+          );
           return value.length ? value : undefined;
         } else return undefined;
       }
