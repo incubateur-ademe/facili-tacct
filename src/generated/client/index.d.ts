@@ -219,25 +219,10 @@ export type clc_par_communes = $Result.DefaultSelection<Prisma.$clc_par_communes
  */
 export type rga_par_communes = $Result.DefaultSelection<Prisma.$rga_par_communesPayload>
 /**
- * Model pg_stat_statements
+ * Model secheresses
  * 
  */
-export type pg_stat_statements = $Result.DefaultSelection<Prisma.$pg_stat_statementsPayload>
-/**
- * Model pg_stat_statements_info
- * 
- */
-export type pg_stat_statements_info = $Result.DefaultSelection<Prisma.$pg_stat_statements_infoPayload>
-/**
- * Model geography_columns
- * 
- */
-export type geography_columns = $Result.DefaultSelection<Prisma.$geography_columnsPayload>
-/**
- * Model geometry_columns
- * 
- */
-export type geometry_columns = $Result.DefaultSelection<Prisma.$geometry_columnsPayload>
+export type secheresses = $Result.DefaultSelection<Prisma.$secheressesPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -768,44 +753,14 @@ export class PrismaClient<
   get rga_par_communes(): Prisma.rga_par_communesDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.pg_stat_statements`: Exposes CRUD operations for the **pg_stat_statements** model.
+   * `prisma.secheresses`: Exposes CRUD operations for the **secheresses** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Pg_stat_statements
-    * const pg_stat_statements = await prisma.pg_stat_statements.findMany()
+    * // Fetch zero or more Secheresses
+    * const secheresses = await prisma.secheresses.findMany()
     * ```
     */
-  get pg_stat_statements(): Prisma.pg_stat_statementsDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.pg_stat_statements_info`: Exposes CRUD operations for the **pg_stat_statements_info** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Pg_stat_statements_infos
-    * const pg_stat_statements_infos = await prisma.pg_stat_statements_info.findMany()
-    * ```
-    */
-  get pg_stat_statements_info(): Prisma.pg_stat_statements_infoDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.geography_columns`: Exposes CRUD operations for the **geography_columns** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Geography_columns
-    * const geography_columns = await prisma.geography_columns.findMany()
-    * ```
-    */
-  get geography_columns(): Prisma.geography_columnsDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.geometry_columns`: Exposes CRUD operations for the **geometry_columns** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Geometry_columns
-    * const geometry_columns = await prisma.geometry_columns.findMany()
-    * ```
-    */
-  get geometry_columns(): Prisma.geometry_columnsDelegate<ExtArgs, ClientOptions>;
+  get secheresses(): Prisma.secheressesDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -864,8 +819,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.15.0
-   * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
+   * Prisma Client JS version: 6.19.0
+   * Query Engine version: 2ba551f319ab1df4bc874a89965d8b3641056773
    */
   export type PrismaVersion = {
     client: string
@@ -878,6 +833,7 @@ export namespace Prisma {
    */
 
 
+  export import Bytes = runtime.Bytes
   export import JsonObject = runtime.JsonObject
   export import JsonArray = runtime.JsonArray
   export import JsonValue = runtime.JsonValue
@@ -1287,10 +1243,7 @@ export namespace Prisma {
     prelevements_eau: 'prelevements_eau',
     clc_par_communes: 'clc_par_communes',
     rga_par_communes: 'rga_par_communes',
-    pg_stat_statements: 'pg_stat_statements',
-    pg_stat_statements_info: 'pg_stat_statements_info',
-    geography_columns: 'geography_columns',
-    geometry_columns: 'geometry_columns'
+    secheresses: 'secheresses'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1309,7 +1262,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "rga" | "surfaces_agricoles" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "sandbox_users" | "users" | "export_cours_d_eau" | "confort_thermique" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "ressources_consultees" | "thematique" | "surfaces_protegees" | "table_commune" | "spatial_ref_sys" | "debroussaillement" | "prelevements_eau" | "clc_par_communes" | "rga_par_communes" | "pg_stat_statements" | "pg_stat_statements_info" | "geography_columns" | "geometry_columns"
+      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "rga" | "surfaces_agricoles" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "sandbox_users" | "users" | "export_cours_d_eau" | "confort_thermique" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "ressources_consultees" | "thematique" | "surfaces_protegees" | "table_commune" | "spatial_ref_sys" | "debroussaillement" | "prelevements_eau" | "clc_par_communes" | "rga_par_communes" | "secheresses"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -4251,123 +4204,77 @@ export namespace Prisma {
           }
         }
       }
-      pg_stat_statements: {
-        payload: Prisma.$pg_stat_statementsPayload<ExtArgs>
-        fields: Prisma.pg_stat_statementsFieldRefs
+      secheresses: {
+        payload: Prisma.$secheressesPayload<ExtArgs>
+        fields: Prisma.secheressesFieldRefs
         operations: {
+          findUnique: {
+            args: Prisma.secheressesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.secheressesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>
+          }
           findFirst: {
-            args: Prisma.pg_stat_statementsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pg_stat_statementsPayload> | null
+            args: Prisma.secheressesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.pg_stat_statementsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pg_stat_statementsPayload>
+            args: Prisma.secheressesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>
           }
           findMany: {
-            args: Prisma.pg_stat_statementsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pg_stat_statementsPayload>[]
+            args: Prisma.secheressesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>[]
+          }
+          create: {
+            args: Prisma.secheressesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>
+          }
+          createMany: {
+            args: Prisma.secheressesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.secheressesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>[]
+          }
+          delete: {
+            args: Prisma.secheressesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>
+          }
+          update: {
+            args: Prisma.secheressesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>
+          }
+          deleteMany: {
+            args: Prisma.secheressesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.secheressesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.secheressesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>[]
+          }
+          upsert: {
+            args: Prisma.secheressesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>
           }
           aggregate: {
-            args: Prisma.Pg_stat_statementsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePg_stat_statements>
+            args: Prisma.SecheressesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSecheresses>
           }
           groupBy: {
-            args: Prisma.pg_stat_statementsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Pg_stat_statementsGroupByOutputType>[]
+            args: Prisma.secheressesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SecheressesGroupByOutputType>[]
           }
           count: {
-            args: Prisma.pg_stat_statementsCountArgs<ExtArgs>
-            result: $Utils.Optional<Pg_stat_statementsCountAggregateOutputType> | number
-          }
-        }
-      }
-      pg_stat_statements_info: {
-        payload: Prisma.$pg_stat_statements_infoPayload<ExtArgs>
-        fields: Prisma.pg_stat_statements_infoFieldRefs
-        operations: {
-          findFirst: {
-            args: Prisma.pg_stat_statements_infoFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pg_stat_statements_infoPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.pg_stat_statements_infoFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pg_stat_statements_infoPayload>
-          }
-          findMany: {
-            args: Prisma.pg_stat_statements_infoFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pg_stat_statements_infoPayload>[]
-          }
-          aggregate: {
-            args: Prisma.Pg_stat_statements_infoAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePg_stat_statements_info>
-          }
-          groupBy: {
-            args: Prisma.pg_stat_statements_infoGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Pg_stat_statements_infoGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.pg_stat_statements_infoCountArgs<ExtArgs>
-            result: $Utils.Optional<Pg_stat_statements_infoCountAggregateOutputType> | number
-          }
-        }
-      }
-      geography_columns: {
-        payload: Prisma.$geography_columnsPayload<ExtArgs>
-        fields: Prisma.geography_columnsFieldRefs
-        operations: {
-          findFirst: {
-            args: Prisma.geography_columnsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$geography_columnsPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.geography_columnsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$geography_columnsPayload>
-          }
-          findMany: {
-            args: Prisma.geography_columnsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$geography_columnsPayload>[]
-          }
-          aggregate: {
-            args: Prisma.Geography_columnsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateGeography_columns>
-          }
-          groupBy: {
-            args: Prisma.geography_columnsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Geography_columnsGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.geography_columnsCountArgs<ExtArgs>
-            result: $Utils.Optional<Geography_columnsCountAggregateOutputType> | number
-          }
-        }
-      }
-      geometry_columns: {
-        payload: Prisma.$geometry_columnsPayload<ExtArgs>
-        fields: Prisma.geometry_columnsFieldRefs
-        operations: {
-          findFirst: {
-            args: Prisma.geometry_columnsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$geometry_columnsPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.geometry_columnsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$geometry_columnsPayload>
-          }
-          findMany: {
-            args: Prisma.geometry_columnsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$geometry_columnsPayload>[]
-          }
-          aggregate: {
-            args: Prisma.Geometry_columnsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateGeometry_columns>
-          }
-          groupBy: {
-            args: Prisma.geometry_columnsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Geometry_columnsGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.geometry_columnsCountArgs<ExtArgs>
-            result: $Utils.Optional<Geometry_columnsCountAggregateOutputType> | number
+            args: Prisma.secheressesCountArgs<ExtArgs>
+            result: $Utils.Optional<SecheressesCountAggregateOutputType> | number
           }
         }
       }
@@ -4447,6 +4354,10 @@ export namespace Prisma {
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
     /**
+     * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
+     */
+    adapter?: runtime.SqlDriverAdapterFactory | null
+    /**
      * Global configuration for omitting model fields by default.
      * 
      * @example
@@ -4504,10 +4415,7 @@ export namespace Prisma {
     prelevements_eau?: prelevements_eauOmit
     clc_par_communes?: clc_par_communesOmit
     rga_par_communes?: rga_par_communesOmit
-    pg_stat_statements?: pg_stat_statementsOmit
-    pg_stat_statements_info?: pg_stat_statements_infoOmit
-    geography_columns?: geography_columnsOmit
-    geometry_columns?: geometry_columnsOmit
+    secheresses?: secheressesOmit
   }
 
   /* Types for Logging */
@@ -54595,863 +54503,707 @@ export namespace Prisma {
 
 
   /**
-   * Model pg_stat_statements
+   * Model secheresses
    */
 
-  export type AggregatePg_stat_statements = {
-    _count: Pg_stat_statementsCountAggregateOutputType | null
-    _avg: Pg_stat_statementsAvgAggregateOutputType | null
-    _sum: Pg_stat_statementsSumAggregateOutputType | null
-    _min: Pg_stat_statementsMinAggregateOutputType | null
-    _max: Pg_stat_statementsMaxAggregateOutputType | null
+  export type AggregateSecheresses = {
+    _count: SecheressesCountAggregateOutputType | null
+    _avg: SecheressesAvgAggregateOutputType | null
+    _sum: SecheressesSumAggregateOutputType | null
+    _min: SecheressesMinAggregateOutputType | null
+    _max: SecheressesMaxAggregateOutputType | null
   }
 
-  export type Pg_stat_statementsAvgAggregateOutputType = {
-    userid: number | null
-    dbid: number | null
-    queryid: number | null
-    plans: number | null
-    total_plan_time: number | null
-    min_plan_time: number | null
-    max_plan_time: number | null
-    mean_plan_time: number | null
-    stddev_plan_time: number | null
-    calls: number | null
-    total_exec_time: number | null
-    min_exec_time: number | null
-    max_exec_time: number | null
-    mean_exec_time: number | null
-    stddev_exec_time: number | null
-    rows: number | null
-    shared_blks_hit: number | null
-    shared_blks_read: number | null
-    shared_blks_dirtied: number | null
-    shared_blks_written: number | null
-    local_blks_hit: number | null
-    local_blks_read: number | null
-    local_blks_dirtied: number | null
-    local_blks_written: number | null
-    temp_blks_read: number | null
-    temp_blks_written: number | null
-    blk_read_time: number | null
-    blk_write_time: number | null
-    temp_blk_read_time: number | null
-    temp_blk_write_time: number | null
-    wal_records: number | null
-    wal_fpi: number | null
-    wal_bytes: Decimal | null
-    jit_functions: number | null
-    jit_generation_time: number | null
-    jit_inlining_count: number | null
-    jit_inlining_time: number | null
-    jit_optimization_count: number | null
-    jit_optimization_time: number | null
-    jit_emission_count: number | null
-    jit_emission_time: number | null
+  export type SecheressesAvgAggregateOutputType = {
+    region: number | null
+    id: number | null
   }
 
-  export type Pg_stat_statementsSumAggregateOutputType = {
-    userid: number | null
-    dbid: number | null
-    queryid: bigint | null
-    plans: bigint | null
-    total_plan_time: number | null
-    min_plan_time: number | null
-    max_plan_time: number | null
-    mean_plan_time: number | null
-    stddev_plan_time: number | null
-    calls: bigint | null
-    total_exec_time: number | null
-    min_exec_time: number | null
-    max_exec_time: number | null
-    mean_exec_time: number | null
-    stddev_exec_time: number | null
-    rows: bigint | null
-    shared_blks_hit: bigint | null
-    shared_blks_read: bigint | null
-    shared_blks_dirtied: bigint | null
-    shared_blks_written: bigint | null
-    local_blks_hit: bigint | null
-    local_blks_read: bigint | null
-    local_blks_dirtied: bigint | null
-    local_blks_written: bigint | null
-    temp_blks_read: bigint | null
-    temp_blks_written: bigint | null
-    blk_read_time: number | null
-    blk_write_time: number | null
-    temp_blk_read_time: number | null
-    temp_blk_write_time: number | null
-    wal_records: bigint | null
-    wal_fpi: bigint | null
-    wal_bytes: Decimal | null
-    jit_functions: bigint | null
-    jit_generation_time: number | null
-    jit_inlining_count: bigint | null
-    jit_inlining_time: number | null
-    jit_optimization_count: bigint | null
-    jit_optimization_time: number | null
-    jit_emission_count: bigint | null
-    jit_emission_time: number | null
+  export type SecheressesSumAggregateOutputType = {
+    region: number | null
+    id: number | null
   }
 
-  export type Pg_stat_statementsMinAggregateOutputType = {
-    userid: number | null
-    dbid: number | null
-    toplevel: boolean | null
-    queryid: bigint | null
-    query: string | null
-    plans: bigint | null
-    total_plan_time: number | null
-    min_plan_time: number | null
-    max_plan_time: number | null
-    mean_plan_time: number | null
-    stddev_plan_time: number | null
-    calls: bigint | null
-    total_exec_time: number | null
-    min_exec_time: number | null
-    max_exec_time: number | null
-    mean_exec_time: number | null
-    stddev_exec_time: number | null
-    rows: bigint | null
-    shared_blks_hit: bigint | null
-    shared_blks_read: bigint | null
-    shared_blks_dirtied: bigint | null
-    shared_blks_written: bigint | null
-    local_blks_hit: bigint | null
-    local_blks_read: bigint | null
-    local_blks_dirtied: bigint | null
-    local_blks_written: bigint | null
-    temp_blks_read: bigint | null
-    temp_blks_written: bigint | null
-    blk_read_time: number | null
-    blk_write_time: number | null
-    temp_blk_read_time: number | null
-    temp_blk_write_time: number | null
-    wal_records: bigint | null
-    wal_fpi: bigint | null
-    wal_bytes: Decimal | null
-    jit_functions: bigint | null
-    jit_generation_time: number | null
-    jit_inlining_count: bigint | null
-    jit_inlining_time: number | null
-    jit_optimization_count: bigint | null
-    jit_optimization_time: number | null
-    jit_emission_count: bigint | null
-    jit_emission_time: number | null
+  export type SecheressesMinAggregateOutputType = {
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    id: number | null
   }
 
-  export type Pg_stat_statementsMaxAggregateOutputType = {
-    userid: number | null
-    dbid: number | null
-    toplevel: boolean | null
-    queryid: bigint | null
-    query: string | null
-    plans: bigint | null
-    total_plan_time: number | null
-    min_plan_time: number | null
-    max_plan_time: number | null
-    mean_plan_time: number | null
-    stddev_plan_time: number | null
-    calls: bigint | null
-    total_exec_time: number | null
-    min_exec_time: number | null
-    max_exec_time: number | null
-    mean_exec_time: number | null
-    stddev_exec_time: number | null
-    rows: bigint | null
-    shared_blks_hit: bigint | null
-    shared_blks_read: bigint | null
-    shared_blks_dirtied: bigint | null
-    shared_blks_written: bigint | null
-    local_blks_hit: bigint | null
-    local_blks_read: bigint | null
-    local_blks_dirtied: bigint | null
-    local_blks_written: bigint | null
-    temp_blks_read: bigint | null
-    temp_blks_written: bigint | null
-    blk_read_time: number | null
-    blk_write_time: number | null
-    temp_blk_read_time: number | null
-    temp_blk_write_time: number | null
-    wal_records: bigint | null
-    wal_fpi: bigint | null
-    wal_bytes: Decimal | null
-    jit_functions: bigint | null
-    jit_generation_time: number | null
-    jit_inlining_count: bigint | null
-    jit_inlining_time: number | null
-    jit_optimization_count: bigint | null
-    jit_optimization_time: number | null
-    jit_emission_count: bigint | null
-    jit_emission_time: number | null
+  export type SecheressesMaxAggregateOutputType = {
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    id: number | null
   }
 
-  export type Pg_stat_statementsCountAggregateOutputType = {
-    userid: number
-    dbid: number
-    toplevel: number
-    queryid: number
-    query: number
-    plans: number
-    total_plan_time: number
-    min_plan_time: number
-    max_plan_time: number
-    mean_plan_time: number
-    stddev_plan_time: number
-    calls: number
-    total_exec_time: number
-    min_exec_time: number
-    max_exec_time: number
-    mean_exec_time: number
-    stddev_exec_time: number
-    rows: number
-    shared_blks_hit: number
-    shared_blks_read: number
-    shared_blks_dirtied: number
-    shared_blks_written: number
-    local_blks_hit: number
-    local_blks_read: number
-    local_blks_dirtied: number
-    local_blks_written: number
-    temp_blks_read: number
-    temp_blks_written: number
-    blk_read_time: number
-    blk_write_time: number
-    temp_blk_read_time: number
-    temp_blk_write_time: number
-    wal_records: number
-    wal_fpi: number
-    wal_bytes: number
-    jit_functions: number
-    jit_generation_time: number
-    jit_inlining_count: number
-    jit_inlining_time: number
-    jit_optimization_count: number
-    jit_optimization_time: number
-    jit_emission_count: number
-    jit_emission_time: number
+  export type SecheressesCountAggregateOutputType = {
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    restrictions_2013: number
+    restrictions_2014: number
+    restrictions_2015: number
+    restrictions_2016: number
+    restrictions_2017: number
+    restrictions_2018: number
+    restrictions_2019: number
+    restrictions_2020: number
+    restrictions_2021: number
+    restrictions_2022: number
+    restrictions_2023: number
+    restrictions_2024: number
+    id: number
     _all: number
   }
 
 
-  export type Pg_stat_statementsAvgAggregateInputType = {
-    userid?: true
-    dbid?: true
-    queryid?: true
-    plans?: true
-    total_plan_time?: true
-    min_plan_time?: true
-    max_plan_time?: true
-    mean_plan_time?: true
-    stddev_plan_time?: true
-    calls?: true
-    total_exec_time?: true
-    min_exec_time?: true
-    max_exec_time?: true
-    mean_exec_time?: true
-    stddev_exec_time?: true
-    rows?: true
-    shared_blks_hit?: true
-    shared_blks_read?: true
-    shared_blks_dirtied?: true
-    shared_blks_written?: true
-    local_blks_hit?: true
-    local_blks_read?: true
-    local_blks_dirtied?: true
-    local_blks_written?: true
-    temp_blks_read?: true
-    temp_blks_written?: true
-    blk_read_time?: true
-    blk_write_time?: true
-    temp_blk_read_time?: true
-    temp_blk_write_time?: true
-    wal_records?: true
-    wal_fpi?: true
-    wal_bytes?: true
-    jit_functions?: true
-    jit_generation_time?: true
-    jit_inlining_count?: true
-    jit_inlining_time?: true
-    jit_optimization_count?: true
-    jit_optimization_time?: true
-    jit_emission_count?: true
-    jit_emission_time?: true
+  export type SecheressesAvgAggregateInputType = {
+    region?: true
+    id?: true
   }
 
-  export type Pg_stat_statementsSumAggregateInputType = {
-    userid?: true
-    dbid?: true
-    queryid?: true
-    plans?: true
-    total_plan_time?: true
-    min_plan_time?: true
-    max_plan_time?: true
-    mean_plan_time?: true
-    stddev_plan_time?: true
-    calls?: true
-    total_exec_time?: true
-    min_exec_time?: true
-    max_exec_time?: true
-    mean_exec_time?: true
-    stddev_exec_time?: true
-    rows?: true
-    shared_blks_hit?: true
-    shared_blks_read?: true
-    shared_blks_dirtied?: true
-    shared_blks_written?: true
-    local_blks_hit?: true
-    local_blks_read?: true
-    local_blks_dirtied?: true
-    local_blks_written?: true
-    temp_blks_read?: true
-    temp_blks_written?: true
-    blk_read_time?: true
-    blk_write_time?: true
-    temp_blk_read_time?: true
-    temp_blk_write_time?: true
-    wal_records?: true
-    wal_fpi?: true
-    wal_bytes?: true
-    jit_functions?: true
-    jit_generation_time?: true
-    jit_inlining_count?: true
-    jit_inlining_time?: true
-    jit_optimization_count?: true
-    jit_optimization_time?: true
-    jit_emission_count?: true
-    jit_emission_time?: true
+  export type SecheressesSumAggregateInputType = {
+    region?: true
+    id?: true
   }
 
-  export type Pg_stat_statementsMinAggregateInputType = {
-    userid?: true
-    dbid?: true
-    toplevel?: true
-    queryid?: true
-    query?: true
-    plans?: true
-    total_plan_time?: true
-    min_plan_time?: true
-    max_plan_time?: true
-    mean_plan_time?: true
-    stddev_plan_time?: true
-    calls?: true
-    total_exec_time?: true
-    min_exec_time?: true
-    max_exec_time?: true
-    mean_exec_time?: true
-    stddev_exec_time?: true
-    rows?: true
-    shared_blks_hit?: true
-    shared_blks_read?: true
-    shared_blks_dirtied?: true
-    shared_blks_written?: true
-    local_blks_hit?: true
-    local_blks_read?: true
-    local_blks_dirtied?: true
-    local_blks_written?: true
-    temp_blks_read?: true
-    temp_blks_written?: true
-    blk_read_time?: true
-    blk_write_time?: true
-    temp_blk_read_time?: true
-    temp_blk_write_time?: true
-    wal_records?: true
-    wal_fpi?: true
-    wal_bytes?: true
-    jit_functions?: true
-    jit_generation_time?: true
-    jit_inlining_count?: true
-    jit_inlining_time?: true
-    jit_optimization_count?: true
-    jit_optimization_time?: true
-    jit_emission_count?: true
-    jit_emission_time?: true
+  export type SecheressesMinAggregateInputType = {
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    id?: true
   }
 
-  export type Pg_stat_statementsMaxAggregateInputType = {
-    userid?: true
-    dbid?: true
-    toplevel?: true
-    queryid?: true
-    query?: true
-    plans?: true
-    total_plan_time?: true
-    min_plan_time?: true
-    max_plan_time?: true
-    mean_plan_time?: true
-    stddev_plan_time?: true
-    calls?: true
-    total_exec_time?: true
-    min_exec_time?: true
-    max_exec_time?: true
-    mean_exec_time?: true
-    stddev_exec_time?: true
-    rows?: true
-    shared_blks_hit?: true
-    shared_blks_read?: true
-    shared_blks_dirtied?: true
-    shared_blks_written?: true
-    local_blks_hit?: true
-    local_blks_read?: true
-    local_blks_dirtied?: true
-    local_blks_written?: true
-    temp_blks_read?: true
-    temp_blks_written?: true
-    blk_read_time?: true
-    blk_write_time?: true
-    temp_blk_read_time?: true
-    temp_blk_write_time?: true
-    wal_records?: true
-    wal_fpi?: true
-    wal_bytes?: true
-    jit_functions?: true
-    jit_generation_time?: true
-    jit_inlining_count?: true
-    jit_inlining_time?: true
-    jit_optimization_count?: true
-    jit_optimization_time?: true
-    jit_emission_count?: true
-    jit_emission_time?: true
+  export type SecheressesMaxAggregateInputType = {
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    id?: true
   }
 
-  export type Pg_stat_statementsCountAggregateInputType = {
-    userid?: true
-    dbid?: true
-    toplevel?: true
-    queryid?: true
-    query?: true
-    plans?: true
-    total_plan_time?: true
-    min_plan_time?: true
-    max_plan_time?: true
-    mean_plan_time?: true
-    stddev_plan_time?: true
-    calls?: true
-    total_exec_time?: true
-    min_exec_time?: true
-    max_exec_time?: true
-    mean_exec_time?: true
-    stddev_exec_time?: true
-    rows?: true
-    shared_blks_hit?: true
-    shared_blks_read?: true
-    shared_blks_dirtied?: true
-    shared_blks_written?: true
-    local_blks_hit?: true
-    local_blks_read?: true
-    local_blks_dirtied?: true
-    local_blks_written?: true
-    temp_blks_read?: true
-    temp_blks_written?: true
-    blk_read_time?: true
-    blk_write_time?: true
-    temp_blk_read_time?: true
-    temp_blk_write_time?: true
-    wal_records?: true
-    wal_fpi?: true
-    wal_bytes?: true
-    jit_functions?: true
-    jit_generation_time?: true
-    jit_inlining_count?: true
-    jit_inlining_time?: true
-    jit_optimization_count?: true
-    jit_optimization_time?: true
-    jit_emission_count?: true
-    jit_emission_time?: true
+  export type SecheressesCountAggregateInputType = {
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    restrictions_2013?: true
+    restrictions_2014?: true
+    restrictions_2015?: true
+    restrictions_2016?: true
+    restrictions_2017?: true
+    restrictions_2018?: true
+    restrictions_2019?: true
+    restrictions_2020?: true
+    restrictions_2021?: true
+    restrictions_2022?: true
+    restrictions_2023?: true
+    restrictions_2024?: true
+    id?: true
     _all?: true
   }
 
-  export type Pg_stat_statementsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SecheressesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which pg_stat_statements to aggregate.
+     * Filter which secheresses to aggregate.
      */
-    where?: pg_stat_statementsWhereInput
+    where?: secheressesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of pg_stat_statements to fetch.
+     * Determine the order of secheresses to fetch.
      */
-    orderBy?: pg_stat_statementsOrderByWithRelationInput | pg_stat_statementsOrderByWithRelationInput[]
+    orderBy?: secheressesOrderByWithRelationInput | secheressesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: secheressesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` pg_stat_statements from the position of the cursor.
+     * Take `±n` secheresses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` pg_stat_statements.
+     * Skip the first `n` secheresses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned pg_stat_statements
+     * Count returned secheresses
     **/
-    _count?: true | Pg_stat_statementsCountAggregateInputType
+    _count?: true | SecheressesCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: Pg_stat_statementsAvgAggregateInputType
+    _avg?: SecheressesAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: Pg_stat_statementsSumAggregateInputType
+    _sum?: SecheressesSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: Pg_stat_statementsMinAggregateInputType
+    _min?: SecheressesMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: Pg_stat_statementsMaxAggregateInputType
+    _max?: SecheressesMaxAggregateInputType
   }
 
-  export type GetPg_stat_statementsAggregateType<T extends Pg_stat_statementsAggregateArgs> = {
-        [P in keyof T & keyof AggregatePg_stat_statements]: P extends '_count' | 'count'
+  export type GetSecheressesAggregateType<T extends SecheressesAggregateArgs> = {
+        [P in keyof T & keyof AggregateSecheresses]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregatePg_stat_statements[P]>
-      : GetScalarType<T[P], AggregatePg_stat_statements[P]>
+        : GetScalarType<T[P], AggregateSecheresses[P]>
+      : GetScalarType<T[P], AggregateSecheresses[P]>
   }
 
 
 
 
-  export type pg_stat_statementsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: pg_stat_statementsWhereInput
-    orderBy?: pg_stat_statementsOrderByWithAggregationInput | pg_stat_statementsOrderByWithAggregationInput[]
-    by: Pg_stat_statementsScalarFieldEnum[] | Pg_stat_statementsScalarFieldEnum
-    having?: pg_stat_statementsScalarWhereWithAggregatesInput
+  export type secheressesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: secheressesWhereInput
+    orderBy?: secheressesOrderByWithAggregationInput | secheressesOrderByWithAggregationInput[]
+    by: SecheressesScalarFieldEnum[] | SecheressesScalarFieldEnum
+    having?: secheressesScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: Pg_stat_statementsCountAggregateInputType | true
-    _avg?: Pg_stat_statementsAvgAggregateInputType
-    _sum?: Pg_stat_statementsSumAggregateInputType
-    _min?: Pg_stat_statementsMinAggregateInputType
-    _max?: Pg_stat_statementsMaxAggregateInputType
+    _count?: SecheressesCountAggregateInputType | true
+    _avg?: SecheressesAvgAggregateInputType
+    _sum?: SecheressesSumAggregateInputType
+    _min?: SecheressesMinAggregateInputType
+    _max?: SecheressesMaxAggregateInputType
   }
 
-  export type Pg_stat_statementsGroupByOutputType = {
-    userid: number | null
-    dbid: number | null
-    toplevel: boolean | null
-    queryid: bigint | null
-    query: string | null
-    plans: bigint | null
-    total_plan_time: number | null
-    min_plan_time: number | null
-    max_plan_time: number | null
-    mean_plan_time: number | null
-    stddev_plan_time: number | null
-    calls: bigint | null
-    total_exec_time: number | null
-    min_exec_time: number | null
-    max_exec_time: number | null
-    mean_exec_time: number | null
-    stddev_exec_time: number | null
-    rows: bigint | null
-    shared_blks_hit: bigint | null
-    shared_blks_read: bigint | null
-    shared_blks_dirtied: bigint | null
-    shared_blks_written: bigint | null
-    local_blks_hit: bigint | null
-    local_blks_read: bigint | null
-    local_blks_dirtied: bigint | null
-    local_blks_written: bigint | null
-    temp_blks_read: bigint | null
-    temp_blks_written: bigint | null
-    blk_read_time: number | null
-    blk_write_time: number | null
-    temp_blk_read_time: number | null
-    temp_blk_write_time: number | null
-    wal_records: bigint | null
-    wal_fpi: bigint | null
-    wal_bytes: Decimal | null
-    jit_functions: bigint | null
-    jit_generation_time: number | null
-    jit_inlining_count: bigint | null
-    jit_inlining_time: number | null
-    jit_optimization_count: bigint | null
-    jit_optimization_time: number | null
-    jit_emission_count: bigint | null
-    jit_emission_time: number | null
-    _count: Pg_stat_statementsCountAggregateOutputType | null
-    _avg: Pg_stat_statementsAvgAggregateOutputType | null
-    _sum: Pg_stat_statementsSumAggregateOutputType | null
-    _min: Pg_stat_statementsMinAggregateOutputType | null
-    _max: Pg_stat_statementsMaxAggregateOutputType | null
+  export type SecheressesGroupByOutputType = {
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    restrictions_2013: JsonValue[]
+    restrictions_2014: JsonValue[]
+    restrictions_2015: JsonValue[]
+    restrictions_2016: JsonValue[]
+    restrictions_2017: JsonValue[]
+    restrictions_2018: JsonValue[]
+    restrictions_2019: JsonValue[]
+    restrictions_2020: JsonValue[]
+    restrictions_2021: JsonValue[]
+    restrictions_2022: JsonValue[]
+    restrictions_2023: JsonValue[]
+    restrictions_2024: JsonValue[]
+    id: number
+    _count: SecheressesCountAggregateOutputType | null
+    _avg: SecheressesAvgAggregateOutputType | null
+    _sum: SecheressesSumAggregateOutputType | null
+    _min: SecheressesMinAggregateOutputType | null
+    _max: SecheressesMaxAggregateOutputType | null
   }
 
-  type GetPg_stat_statementsGroupByPayload<T extends pg_stat_statementsGroupByArgs> = Prisma.PrismaPromise<
+  type GetSecheressesGroupByPayload<T extends secheressesGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<Pg_stat_statementsGroupByOutputType, T['by']> &
+      PickEnumerable<SecheressesGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof Pg_stat_statementsGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof SecheressesGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], Pg_stat_statementsGroupByOutputType[P]>
-            : GetScalarType<T[P], Pg_stat_statementsGroupByOutputType[P]>
+              : GetScalarType<T[P], SecheressesGroupByOutputType[P]>
+            : GetScalarType<T[P], SecheressesGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type pg_stat_statementsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    userid?: boolean
-    dbid?: boolean
-    toplevel?: boolean
-    queryid?: boolean
-    query?: boolean
-    plans?: boolean
-    total_plan_time?: boolean
-    min_plan_time?: boolean
-    max_plan_time?: boolean
-    mean_plan_time?: boolean
-    stddev_plan_time?: boolean
-    calls?: boolean
-    total_exec_time?: boolean
-    min_exec_time?: boolean
-    max_exec_time?: boolean
-    mean_exec_time?: boolean
-    stddev_exec_time?: boolean
-    rows?: boolean
-    shared_blks_hit?: boolean
-    shared_blks_read?: boolean
-    shared_blks_dirtied?: boolean
-    shared_blks_written?: boolean
-    local_blks_hit?: boolean
-    local_blks_read?: boolean
-    local_blks_dirtied?: boolean
-    local_blks_written?: boolean
-    temp_blks_read?: boolean
-    temp_blks_written?: boolean
-    blk_read_time?: boolean
-    blk_write_time?: boolean
-    temp_blk_read_time?: boolean
-    temp_blk_write_time?: boolean
-    wal_records?: boolean
-    wal_fpi?: boolean
-    wal_bytes?: boolean
-    jit_functions?: boolean
-    jit_generation_time?: boolean
-    jit_inlining_count?: boolean
-    jit_inlining_time?: boolean
-    jit_optimization_count?: boolean
-    jit_optimization_time?: boolean
-    jit_emission_count?: boolean
-    jit_emission_time?: boolean
-  }, ExtArgs["result"]["pg_stat_statements"]>
+  export type secheressesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    restrictions_2013?: boolean
+    restrictions_2014?: boolean
+    restrictions_2015?: boolean
+    restrictions_2016?: boolean
+    restrictions_2017?: boolean
+    restrictions_2018?: boolean
+    restrictions_2019?: boolean
+    restrictions_2020?: boolean
+    restrictions_2021?: boolean
+    restrictions_2022?: boolean
+    restrictions_2023?: boolean
+    restrictions_2024?: boolean
+    id?: boolean
+  }, ExtArgs["result"]["secheresses"]>
 
+  export type secheressesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    restrictions_2013?: boolean
+    restrictions_2014?: boolean
+    restrictions_2015?: boolean
+    restrictions_2016?: boolean
+    restrictions_2017?: boolean
+    restrictions_2018?: boolean
+    restrictions_2019?: boolean
+    restrictions_2020?: boolean
+    restrictions_2021?: boolean
+    restrictions_2022?: boolean
+    restrictions_2023?: boolean
+    restrictions_2024?: boolean
+    id?: boolean
+  }, ExtArgs["result"]["secheresses"]>
 
+  export type secheressesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    restrictions_2013?: boolean
+    restrictions_2014?: boolean
+    restrictions_2015?: boolean
+    restrictions_2016?: boolean
+    restrictions_2017?: boolean
+    restrictions_2018?: boolean
+    restrictions_2019?: boolean
+    restrictions_2020?: boolean
+    restrictions_2021?: boolean
+    restrictions_2022?: boolean
+    restrictions_2023?: boolean
+    restrictions_2024?: boolean
+    id?: boolean
+  }, ExtArgs["result"]["secheresses"]>
 
-  export type pg_stat_statementsSelectScalar = {
-    userid?: boolean
-    dbid?: boolean
-    toplevel?: boolean
-    queryid?: boolean
-    query?: boolean
-    plans?: boolean
-    total_plan_time?: boolean
-    min_plan_time?: boolean
-    max_plan_time?: boolean
-    mean_plan_time?: boolean
-    stddev_plan_time?: boolean
-    calls?: boolean
-    total_exec_time?: boolean
-    min_exec_time?: boolean
-    max_exec_time?: boolean
-    mean_exec_time?: boolean
-    stddev_exec_time?: boolean
-    rows?: boolean
-    shared_blks_hit?: boolean
-    shared_blks_read?: boolean
-    shared_blks_dirtied?: boolean
-    shared_blks_written?: boolean
-    local_blks_hit?: boolean
-    local_blks_read?: boolean
-    local_blks_dirtied?: boolean
-    local_blks_written?: boolean
-    temp_blks_read?: boolean
-    temp_blks_written?: boolean
-    blk_read_time?: boolean
-    blk_write_time?: boolean
-    temp_blk_read_time?: boolean
-    temp_blk_write_time?: boolean
-    wal_records?: boolean
-    wal_fpi?: boolean
-    wal_bytes?: boolean
-    jit_functions?: boolean
-    jit_generation_time?: boolean
-    jit_inlining_count?: boolean
-    jit_inlining_time?: boolean
-    jit_optimization_count?: boolean
-    jit_optimization_time?: boolean
-    jit_emission_count?: boolean
-    jit_emission_time?: boolean
+  export type secheressesSelectScalar = {
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    restrictions_2013?: boolean
+    restrictions_2014?: boolean
+    restrictions_2015?: boolean
+    restrictions_2016?: boolean
+    restrictions_2017?: boolean
+    restrictions_2018?: boolean
+    restrictions_2019?: boolean
+    restrictions_2020?: boolean
+    restrictions_2021?: boolean
+    restrictions_2022?: boolean
+    restrictions_2023?: boolean
+    restrictions_2024?: boolean
+    id?: boolean
   }
 
-  export type pg_stat_statementsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userid" | "dbid" | "toplevel" | "queryid" | "query" | "plans" | "total_plan_time" | "min_plan_time" | "max_plan_time" | "mean_plan_time" | "stddev_plan_time" | "calls" | "total_exec_time" | "min_exec_time" | "max_exec_time" | "mean_exec_time" | "stddev_exec_time" | "rows" | "shared_blks_hit" | "shared_blks_read" | "shared_blks_dirtied" | "shared_blks_written" | "local_blks_hit" | "local_blks_read" | "local_blks_dirtied" | "local_blks_written" | "temp_blks_read" | "temp_blks_written" | "blk_read_time" | "blk_write_time" | "temp_blk_read_time" | "temp_blk_write_time" | "wal_records" | "wal_fpi" | "wal_bytes" | "jit_functions" | "jit_generation_time" | "jit_inlining_count" | "jit_inlining_time" | "jit_optimization_count" | "jit_optimization_time" | "jit_emission_count" | "jit_emission_time", ExtArgs["result"]["pg_stat_statements"]>
+  export type secheressesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "restrictions_2013" | "restrictions_2014" | "restrictions_2015" | "restrictions_2016" | "restrictions_2017" | "restrictions_2018" | "restrictions_2019" | "restrictions_2020" | "restrictions_2021" | "restrictions_2022" | "restrictions_2023" | "restrictions_2024" | "id", ExtArgs["result"]["secheresses"]>
 
-  export type $pg_stat_statementsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "pg_stat_statements"
+  export type $secheressesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "secheresses"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      userid: number | null
-      dbid: number | null
-      toplevel: boolean | null
-      queryid: bigint | null
-      query: string | null
-      plans: bigint | null
-      total_plan_time: number | null
-      min_plan_time: number | null
-      max_plan_time: number | null
-      mean_plan_time: number | null
-      stddev_plan_time: number | null
-      calls: bigint | null
-      total_exec_time: number | null
-      min_exec_time: number | null
-      max_exec_time: number | null
-      mean_exec_time: number | null
-      stddev_exec_time: number | null
-      rows: bigint | null
-      shared_blks_hit: bigint | null
-      shared_blks_read: bigint | null
-      shared_blks_dirtied: bigint | null
-      shared_blks_written: bigint | null
-      local_blks_hit: bigint | null
-      local_blks_read: bigint | null
-      local_blks_dirtied: bigint | null
-      local_blks_written: bigint | null
-      temp_blks_read: bigint | null
-      temp_blks_written: bigint | null
-      blk_read_time: number | null
-      blk_write_time: number | null
-      temp_blk_read_time: number | null
-      temp_blk_write_time: number | null
-      wal_records: bigint | null
-      wal_fpi: bigint | null
-      wal_bytes: Prisma.Decimal | null
-      jit_functions: bigint | null
-      jit_generation_time: number | null
-      jit_inlining_count: bigint | null
-      jit_inlining_time: number | null
-      jit_optimization_count: bigint | null
-      jit_optimization_time: number | null
-      jit_emission_count: bigint | null
-      jit_emission_time: number | null
-    }, ExtArgs["result"]["pg_stat_statements"]>
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: number
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      restrictions_2013: Prisma.JsonValue[]
+      restrictions_2014: Prisma.JsonValue[]
+      restrictions_2015: Prisma.JsonValue[]
+      restrictions_2016: Prisma.JsonValue[]
+      restrictions_2017: Prisma.JsonValue[]
+      restrictions_2018: Prisma.JsonValue[]
+      restrictions_2019: Prisma.JsonValue[]
+      restrictions_2020: Prisma.JsonValue[]
+      restrictions_2021: Prisma.JsonValue[]
+      restrictions_2022: Prisma.JsonValue[]
+      restrictions_2023: Prisma.JsonValue[]
+      restrictions_2024: Prisma.JsonValue[]
+      id: number
+    }, ExtArgs["result"]["secheresses"]>
     composites: {}
   }
 
-  type pg_stat_statementsGetPayload<S extends boolean | null | undefined | pg_stat_statementsDefaultArgs> = $Result.GetResult<Prisma.$pg_stat_statementsPayload, S>
+  type secheressesGetPayload<S extends boolean | null | undefined | secheressesDefaultArgs> = $Result.GetResult<Prisma.$secheressesPayload, S>
 
-  type pg_stat_statementsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<pg_stat_statementsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Pg_stat_statementsCountAggregateInputType | true
+  type secheressesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<secheressesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SecheressesCountAggregateInputType | true
     }
 
-  export interface pg_stat_statementsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['pg_stat_statements'], meta: { name: 'pg_stat_statements' } }
+  export interface secheressesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['secheresses'], meta: { name: 'secheresses' } }
     /**
-     * Find the first Pg_stat_statements that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pg_stat_statementsFindFirstArgs} args - Arguments to find a Pg_stat_statements
+     * Find zero or one Secheresses that matches the filter.
+     * @param {secheressesFindUniqueArgs} args - Arguments to find a Secheresses
      * @example
-     * // Get one Pg_stat_statements
-     * const pg_stat_statements = await prisma.pg_stat_statements.findFirst({
+     * // Get one Secheresses
+     * const secheresses = await prisma.secheresses.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends pg_stat_statementsFindFirstArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}>(args?: SelectSubset<T, pg_stat_statementsFindFirstArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma__pg_stat_statementsClient<$Result.GetResult<Prisma.$pg_stat_statementsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends secheressesFindUniqueArgs>(args: SelectSubset<T, secheressesFindUniqueArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Pg_stat_statements that matches the filter or
+     * Find one Secheresses that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {secheressesFindUniqueOrThrowArgs} args - Arguments to find a Secheresses
+     * @example
+     * // Get one Secheresses
+     * const secheresses = await prisma.secheresses.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends secheressesFindUniqueOrThrowArgs>(args: SelectSubset<T, secheressesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Secheresses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {secheressesFindFirstArgs} args - Arguments to find a Secheresses
+     * @example
+     * // Get one Secheresses
+     * const secheresses = await prisma.secheresses.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends secheressesFindFirstArgs>(args?: SelectSubset<T, secheressesFindFirstArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Secheresses that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {pg_stat_statementsFindFirstOrThrowArgs} args - Arguments to find a Pg_stat_statements
+     * @param {secheressesFindFirstOrThrowArgs} args - Arguments to find a Secheresses
      * @example
-     * // Get one Pg_stat_statements
-     * const pg_stat_statements = await prisma.pg_stat_statements.findFirstOrThrow({
+     * // Get one Secheresses
+     * const secheresses = await prisma.secheresses.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends pg_stat_statementsFindFirstOrThrowArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}>(args?: SelectSubset<T, pg_stat_statementsFindFirstOrThrowArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma__pg_stat_statementsClient<$Result.GetResult<Prisma.$pg_stat_statementsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends secheressesFindFirstOrThrowArgs>(args?: SelectSubset<T, secheressesFindFirstOrThrowArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Pg_stat_statements that matches the filter.
+     * Find zero or more Secheresses that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {pg_stat_statementsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {secheressesFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Pg_stat_statements
-     * const pg_stat_statements = await prisma.pg_stat_statements.findMany()
+     * // Get all Secheresses
+     * const secheresses = await prisma.secheresses.findMany()
      * 
-     * // Get first 10 Pg_stat_statements
-     * const pg_stat_statements = await prisma.pg_stat_statements.findMany({ take: 10 })
+     * // Get first 10 Secheresses
+     * const secheresses = await prisma.secheresses.findMany({ take: 10 })
      * 
-     * // Only select the `userid`
-     * const pg_stat_statementsWithUseridOnly = await prisma.pg_stat_statements.findMany({ select: { userid: true } })
+     * // Only select the `code_geographique`
+     * const secheressesWithCode_geographiqueOnly = await prisma.secheresses.findMany({ select: { code_geographique: true } })
      * 
      */
-    findMany<T extends pg_stat_statementsFindManyArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}>(args?: SelectSubset<T, pg_stat_statementsFindManyArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pg_stat_statementsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends secheressesFindManyArgs>(args?: SelectSubset<T, secheressesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Secheresses.
+     * @param {secheressesCreateArgs} args - Arguments to create a Secheresses.
+     * @example
+     * // Create one Secheresses
+     * const Secheresses = await prisma.secheresses.create({
+     *   data: {
+     *     // ... data to create a Secheresses
+     *   }
+     * })
+     * 
+     */
+    create<T extends secheressesCreateArgs>(args: SelectSubset<T, secheressesCreateArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Secheresses.
+     * @param {secheressesCreateManyArgs} args - Arguments to create many Secheresses.
+     * @example
+     * // Create many Secheresses
+     * const secheresses = await prisma.secheresses.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends secheressesCreateManyArgs>(args?: SelectSubset<T, secheressesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Secheresses and returns the data saved in the database.
+     * @param {secheressesCreateManyAndReturnArgs} args - Arguments to create many Secheresses.
+     * @example
+     * // Create many Secheresses
+     * const secheresses = await prisma.secheresses.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Secheresses and only return the `code_geographique`
+     * const secheressesWithCode_geographiqueOnly = await prisma.secheresses.createManyAndReturn({
+     *   select: { code_geographique: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends secheressesCreateManyAndReturnArgs>(args?: SelectSubset<T, secheressesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Secheresses.
+     * @param {secheressesDeleteArgs} args - Arguments to delete one Secheresses.
+     * @example
+     * // Delete one Secheresses
+     * const Secheresses = await prisma.secheresses.delete({
+     *   where: {
+     *     // ... filter to delete one Secheresses
+     *   }
+     * })
+     * 
+     */
+    delete<T extends secheressesDeleteArgs>(args: SelectSubset<T, secheressesDeleteArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Secheresses.
+     * @param {secheressesUpdateArgs} args - Arguments to update one Secheresses.
+     * @example
+     * // Update one Secheresses
+     * const secheresses = await prisma.secheresses.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends secheressesUpdateArgs>(args: SelectSubset<T, secheressesUpdateArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Secheresses.
+     * @param {secheressesDeleteManyArgs} args - Arguments to filter Secheresses to delete.
+     * @example
+     * // Delete a few Secheresses
+     * const { count } = await prisma.secheresses.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends secheressesDeleteManyArgs>(args?: SelectSubset<T, secheressesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Secheresses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {secheressesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Secheresses
+     * const secheresses = await prisma.secheresses.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends secheressesUpdateManyArgs>(args: SelectSubset<T, secheressesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Secheresses and returns the data updated in the database.
+     * @param {secheressesUpdateManyAndReturnArgs} args - Arguments to update many Secheresses.
+     * @example
+     * // Update many Secheresses
+     * const secheresses = await prisma.secheresses.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Secheresses and only return the `code_geographique`
+     * const secheressesWithCode_geographiqueOnly = await prisma.secheresses.updateManyAndReturn({
+     *   select: { code_geographique: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends secheressesUpdateManyAndReturnArgs>(args: SelectSubset<T, secheressesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Secheresses.
+     * @param {secheressesUpsertArgs} args - Arguments to update or create a Secheresses.
+     * @example
+     * // Update or create a Secheresses
+     * const secheresses = await prisma.secheresses.upsert({
+     *   create: {
+     *     // ... data to create a Secheresses
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Secheresses we want to update
+     *   }
+     * })
+     */
+    upsert<T extends secheressesUpsertArgs>(args: SelectSubset<T, secheressesUpsertArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Pg_stat_statements.
+     * Count the number of Secheresses.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {pg_stat_statementsCountArgs} args - Arguments to filter Pg_stat_statements to count.
+     * @param {secheressesCountArgs} args - Arguments to filter Secheresses to count.
      * @example
-     * // Count the number of Pg_stat_statements
-     * const count = await prisma.pg_stat_statements.count({
+     * // Count the number of Secheresses
+     * const count = await prisma.secheresses.count({
      *   where: {
-     *     // ... the filter for the Pg_stat_statements we want to count
+     *     // ... the filter for the Secheresses we want to count
      *   }
      * })
     **/
-    count<T extends pg_stat_statementsCountArgs>(
-      args?: Subset<T, pg_stat_statementsCountArgs>,
+    count<T extends secheressesCountArgs>(
+      args?: Subset<T, secheressesCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], Pg_stat_statementsCountAggregateOutputType>
+          : GetScalarType<T['select'], SecheressesCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Pg_stat_statements.
+     * Allows you to perform aggregations operations on a Secheresses.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Pg_stat_statementsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {SecheressesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -55471,13 +55223,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends Pg_stat_statementsAggregateArgs>(args: Subset<T, Pg_stat_statementsAggregateArgs>): Prisma.PrismaPromise<GetPg_stat_statementsAggregateType<T>>
+    aggregate<T extends SecheressesAggregateArgs>(args: Subset<T, SecheressesAggregateArgs>): Prisma.PrismaPromise<GetSecheressesAggregateType<T>>
 
     /**
-     * Group by Pg_stat_statements.
+     * Group by Secheresses.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {pg_stat_statementsGroupByArgs} args - Group by arguments.
+     * @param {secheressesGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -55492,14 +55244,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends pg_stat_statementsGroupByArgs,
+      T extends secheressesGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: pg_stat_statementsGroupByArgs['orderBy'] }
-        : { orderBy?: pg_stat_statementsGroupByArgs['orderBy'] },
+        ? { orderBy: secheressesGroupByArgs['orderBy'] }
+        : { orderBy?: secheressesGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -55548,20 +55300,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, pg_stat_statementsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPg_stat_statementsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, secheressesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSecheressesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the pg_stat_statements model
+   * Fields of the secheresses model
    */
-  readonly fields: pg_stat_statementsFieldRefs;
+  readonly fields: secheressesFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for pg_stat_statements.
+   * The delegate class that acts as a "Promise-like" for secheresses.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__pg_stat_statementsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__secheressesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -55589,1940 +55341,396 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the pg_stat_statements model
+   * Fields of the secheresses model
    */
-  interface pg_stat_statementsFieldRefs {
-    readonly userid: FieldRef<"pg_stat_statements", 'Int'>
-    readonly dbid: FieldRef<"pg_stat_statements", 'Int'>
-    readonly toplevel: FieldRef<"pg_stat_statements", 'Boolean'>
-    readonly queryid: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly query: FieldRef<"pg_stat_statements", 'String'>
-    readonly plans: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly total_plan_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly min_plan_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly max_plan_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly mean_plan_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly stddev_plan_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly calls: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly total_exec_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly min_exec_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly max_exec_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly mean_exec_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly stddev_exec_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly rows: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly shared_blks_hit: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly shared_blks_read: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly shared_blks_dirtied: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly shared_blks_written: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly local_blks_hit: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly local_blks_read: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly local_blks_dirtied: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly local_blks_written: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly temp_blks_read: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly temp_blks_written: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly blk_read_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly blk_write_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly temp_blk_read_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly temp_blk_write_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly wal_records: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly wal_fpi: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly wal_bytes: FieldRef<"pg_stat_statements", 'Decimal'>
-    readonly jit_functions: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly jit_generation_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly jit_inlining_count: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly jit_inlining_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly jit_optimization_count: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly jit_optimization_time: FieldRef<"pg_stat_statements", 'Float'>
-    readonly jit_emission_count: FieldRef<"pg_stat_statements", 'BigInt'>
-    readonly jit_emission_time: FieldRef<"pg_stat_statements", 'Float'>
+  interface secheressesFieldRefs {
+    readonly code_geographique: FieldRef<"secheresses", 'String'>
+    readonly libelle_geographique: FieldRef<"secheresses", 'String'>
+    readonly epci: FieldRef<"secheresses", 'String'>
+    readonly libelle_epci: FieldRef<"secheresses", 'String'>
+    readonly departement: FieldRef<"secheresses", 'String'>
+    readonly libelle_departement: FieldRef<"secheresses", 'String'>
+    readonly region: FieldRef<"secheresses", 'Float'>
+    readonly ept: FieldRef<"secheresses", 'String'>
+    readonly libelle_petr: FieldRef<"secheresses", 'String'>
+    readonly code_pnr: FieldRef<"secheresses", 'String'>
+    readonly libelle_pnr: FieldRef<"secheresses", 'String'>
+    readonly restrictions_2013: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2014: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2015: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2016: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2017: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2018: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2019: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2020: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2021: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2022: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2023: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2024: FieldRef<"secheresses", 'Json[]'>
+    readonly id: FieldRef<"secheresses", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * pg_stat_statements findFirst
+   * secheresses findUnique
    */
-  export type pg_stat_statementsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type secheressesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the pg_stat_statements
+     * Select specific fields to fetch from the secheresses
      */
-    select?: pg_stat_statementsSelect<ExtArgs> | null
+    select?: secheressesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the pg_stat_statements
+     * Omit specific fields from the secheresses
      */
-    omit?: pg_stat_statementsOmit<ExtArgs> | null
+    omit?: secheressesOmit<ExtArgs> | null
     /**
-     * Filter, which pg_stat_statements to fetch.
+     * Filter, which secheresses to fetch.
      */
-    where?: pg_stat_statementsWhereInput
+    where: secheressesWhereUniqueInput
+  }
+
+  /**
+   * secheresses findUniqueOrThrow
+   */
+  export type secheressesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the secheresses
+     */
+    select?: secheressesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the secheresses
+     */
+    omit?: secheressesOmit<ExtArgs> | null
+    /**
+     * Filter, which secheresses to fetch.
+     */
+    where: secheressesWhereUniqueInput
+  }
+
+  /**
+   * secheresses findFirst
+   */
+  export type secheressesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the secheresses
+     */
+    select?: secheressesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the secheresses
+     */
+    omit?: secheressesOmit<ExtArgs> | null
+    /**
+     * Filter, which secheresses to fetch.
+     */
+    where?: secheressesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of pg_stat_statements to fetch.
+     * Determine the order of secheresses to fetch.
      */
-    orderBy?: pg_stat_statementsOrderByWithRelationInput | pg_stat_statementsOrderByWithRelationInput[]
+    orderBy?: secheressesOrderByWithRelationInput | secheressesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for secheresses.
+     */
+    cursor?: secheressesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` pg_stat_statements from the position of the cursor.
+     * Take `±n` secheresses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` pg_stat_statements.
+     * Skip the first `n` secheresses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of pg_stat_statements.
+     * Filter by unique combinations of secheresses.
      */
-    distinct?: Pg_stat_statementsScalarFieldEnum | Pg_stat_statementsScalarFieldEnum[]
+    distinct?: SecheressesScalarFieldEnum | SecheressesScalarFieldEnum[]
   }
 
   /**
-   * pg_stat_statements findFirstOrThrow
+   * secheresses findFirstOrThrow
    */
-  export type pg_stat_statementsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type secheressesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the pg_stat_statements
+     * Select specific fields to fetch from the secheresses
      */
-    select?: pg_stat_statementsSelect<ExtArgs> | null
+    select?: secheressesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the pg_stat_statements
+     * Omit specific fields from the secheresses
      */
-    omit?: pg_stat_statementsOmit<ExtArgs> | null
+    omit?: secheressesOmit<ExtArgs> | null
     /**
-     * Filter, which pg_stat_statements to fetch.
+     * Filter, which secheresses to fetch.
      */
-    where?: pg_stat_statementsWhereInput
+    where?: secheressesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of pg_stat_statements to fetch.
+     * Determine the order of secheresses to fetch.
      */
-    orderBy?: pg_stat_statementsOrderByWithRelationInput | pg_stat_statementsOrderByWithRelationInput[]
+    orderBy?: secheressesOrderByWithRelationInput | secheressesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for secheresses.
+     */
+    cursor?: secheressesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` pg_stat_statements from the position of the cursor.
+     * Take `±n` secheresses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` pg_stat_statements.
+     * Skip the first `n` secheresses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of pg_stat_statements.
+     * Filter by unique combinations of secheresses.
      */
-    distinct?: Pg_stat_statementsScalarFieldEnum | Pg_stat_statementsScalarFieldEnum[]
+    distinct?: SecheressesScalarFieldEnum | SecheressesScalarFieldEnum[]
   }
 
   /**
-   * pg_stat_statements findMany
+   * secheresses findMany
    */
-  export type pg_stat_statementsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type secheressesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the pg_stat_statements
+     * Select specific fields to fetch from the secheresses
      */
-    select?: pg_stat_statementsSelect<ExtArgs> | null
+    select?: secheressesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the pg_stat_statements
+     * Omit specific fields from the secheresses
      */
-    omit?: pg_stat_statementsOmit<ExtArgs> | null
+    omit?: secheressesOmit<ExtArgs> | null
     /**
-     * Filter, which pg_stat_statements to fetch.
+     * Filter, which secheresses to fetch.
      */
-    where?: pg_stat_statementsWhereInput
+    where?: secheressesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of pg_stat_statements to fetch.
+     * Determine the order of secheresses to fetch.
      */
-    orderBy?: pg_stat_statementsOrderByWithRelationInput | pg_stat_statementsOrderByWithRelationInput[]
+    orderBy?: secheressesOrderByWithRelationInput | secheressesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing secheresses.
+     */
+    cursor?: secheressesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` pg_stat_statements from the position of the cursor.
+     * Take `±n` secheresses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` pg_stat_statements.
+     * Skip the first `n` secheresses.
      */
     skip?: number
-    distinct?: Pg_stat_statementsScalarFieldEnum | Pg_stat_statementsScalarFieldEnum[]
+    distinct?: SecheressesScalarFieldEnum | SecheressesScalarFieldEnum[]
   }
 
   /**
-   * pg_stat_statements without action
+   * secheresses create
    */
-  export type pg_stat_statementsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type secheressesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the pg_stat_statements
+     * Select specific fields to fetch from the secheresses
      */
-    select?: pg_stat_statementsSelect<ExtArgs> | null
+    select?: secheressesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the pg_stat_statements
+     * Omit specific fields from the secheresses
      */
-    omit?: pg_stat_statementsOmit<ExtArgs> | null
-  }
-
-
-  /**
-   * Model pg_stat_statements_info
-   */
-
-  export type AggregatePg_stat_statements_info = {
-    _count: Pg_stat_statements_infoCountAggregateOutputType | null
-    _avg: Pg_stat_statements_infoAvgAggregateOutputType | null
-    _sum: Pg_stat_statements_infoSumAggregateOutputType | null
-    _min: Pg_stat_statements_infoMinAggregateOutputType | null
-    _max: Pg_stat_statements_infoMaxAggregateOutputType | null
-  }
-
-  export type Pg_stat_statements_infoAvgAggregateOutputType = {
-    dealloc: number | null
-  }
-
-  export type Pg_stat_statements_infoSumAggregateOutputType = {
-    dealloc: bigint | null
-  }
-
-  export type Pg_stat_statements_infoMinAggregateOutputType = {
-    dealloc: bigint | null
-    stats_reset: Date | null
-  }
-
-  export type Pg_stat_statements_infoMaxAggregateOutputType = {
-    dealloc: bigint | null
-    stats_reset: Date | null
-  }
-
-  export type Pg_stat_statements_infoCountAggregateOutputType = {
-    dealloc: number
-    stats_reset: number
-    _all: number
-  }
-
-
-  export type Pg_stat_statements_infoAvgAggregateInputType = {
-    dealloc?: true
-  }
-
-  export type Pg_stat_statements_infoSumAggregateInputType = {
-    dealloc?: true
-  }
-
-  export type Pg_stat_statements_infoMinAggregateInputType = {
-    dealloc?: true
-    stats_reset?: true
-  }
-
-  export type Pg_stat_statements_infoMaxAggregateInputType = {
-    dealloc?: true
-    stats_reset?: true
-  }
-
-  export type Pg_stat_statements_infoCountAggregateInputType = {
-    dealloc?: true
-    stats_reset?: true
-    _all?: true
-  }
-
-  export type Pg_stat_statements_infoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    omit?: secheressesOmit<ExtArgs> | null
     /**
-     * Filter which pg_stat_statements_info to aggregate.
+     * The data needed to create a secheresses.
      */
-    where?: pg_stat_statements_infoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of pg_stat_statements_infos to fetch.
-     */
-    orderBy?: pg_stat_statements_infoOrderByWithRelationInput | pg_stat_statements_infoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` pg_stat_statements_infos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` pg_stat_statements_infos.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned pg_stat_statements_infos
-    **/
-    _count?: true | Pg_stat_statements_infoCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Pg_stat_statements_infoAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Pg_stat_statements_infoSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Pg_stat_statements_infoMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Pg_stat_statements_infoMaxAggregateInputType
-  }
-
-  export type GetPg_stat_statements_infoAggregateType<T extends Pg_stat_statements_infoAggregateArgs> = {
-        [P in keyof T & keyof AggregatePg_stat_statements_info]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePg_stat_statements_info[P]>
-      : GetScalarType<T[P], AggregatePg_stat_statements_info[P]>
-  }
-
-
-
-
-  export type pg_stat_statements_infoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: pg_stat_statements_infoWhereInput
-    orderBy?: pg_stat_statements_infoOrderByWithAggregationInput | pg_stat_statements_infoOrderByWithAggregationInput[]
-    by: Pg_stat_statements_infoScalarFieldEnum[] | Pg_stat_statements_infoScalarFieldEnum
-    having?: pg_stat_statements_infoScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Pg_stat_statements_infoCountAggregateInputType | true
-    _avg?: Pg_stat_statements_infoAvgAggregateInputType
-    _sum?: Pg_stat_statements_infoSumAggregateInputType
-    _min?: Pg_stat_statements_infoMinAggregateInputType
-    _max?: Pg_stat_statements_infoMaxAggregateInputType
-  }
-
-  export type Pg_stat_statements_infoGroupByOutputType = {
-    dealloc: bigint | null
-    stats_reset: Date | null
-    _count: Pg_stat_statements_infoCountAggregateOutputType | null
-    _avg: Pg_stat_statements_infoAvgAggregateOutputType | null
-    _sum: Pg_stat_statements_infoSumAggregateOutputType | null
-    _min: Pg_stat_statements_infoMinAggregateOutputType | null
-    _max: Pg_stat_statements_infoMaxAggregateOutputType | null
-  }
-
-  type GetPg_stat_statements_infoGroupByPayload<T extends pg_stat_statements_infoGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Pg_stat_statements_infoGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Pg_stat_statements_infoGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Pg_stat_statements_infoGroupByOutputType[P]>
-            : GetScalarType<T[P], Pg_stat_statements_infoGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type pg_stat_statements_infoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    dealloc?: boolean
-    stats_reset?: boolean
-  }, ExtArgs["result"]["pg_stat_statements_info"]>
-
-
-
-  export type pg_stat_statements_infoSelectScalar = {
-    dealloc?: boolean
-    stats_reset?: boolean
-  }
-
-  export type pg_stat_statements_infoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"dealloc" | "stats_reset", ExtArgs["result"]["pg_stat_statements_info"]>
-
-  export type $pg_stat_statements_infoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "pg_stat_statements_info"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      dealloc: bigint | null
-      stats_reset: Date | null
-    }, ExtArgs["result"]["pg_stat_statements_info"]>
-    composites: {}
-  }
-
-  type pg_stat_statements_infoGetPayload<S extends boolean | null | undefined | pg_stat_statements_infoDefaultArgs> = $Result.GetResult<Prisma.$pg_stat_statements_infoPayload, S>
-
-  type pg_stat_statements_infoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<pg_stat_statements_infoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Pg_stat_statements_infoCountAggregateInputType | true
-    }
-
-  export interface pg_stat_statements_infoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['pg_stat_statements_info'], meta: { name: 'pg_stat_statements_info' } }
-    /**
-     * Find the first Pg_stat_statements_info that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pg_stat_statements_infoFindFirstArgs} args - Arguments to find a Pg_stat_statements_info
-     * @example
-     * // Get one Pg_stat_statements_info
-     * const pg_stat_statements_info = await prisma.pg_stat_statements_info.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends pg_stat_statements_infoFindFirstArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}>(args?: SelectSubset<T, pg_stat_statements_infoFindFirstArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma__pg_stat_statements_infoClient<$Result.GetResult<Prisma.$pg_stat_statements_infoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Pg_stat_statements_info that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pg_stat_statements_infoFindFirstOrThrowArgs} args - Arguments to find a Pg_stat_statements_info
-     * @example
-     * // Get one Pg_stat_statements_info
-     * const pg_stat_statements_info = await prisma.pg_stat_statements_info.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends pg_stat_statements_infoFindFirstOrThrowArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}>(args?: SelectSubset<T, pg_stat_statements_infoFindFirstOrThrowArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma__pg_stat_statements_infoClient<$Result.GetResult<Prisma.$pg_stat_statements_infoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Pg_stat_statements_infos that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pg_stat_statements_infoFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Pg_stat_statements_infos
-     * const pg_stat_statements_infos = await prisma.pg_stat_statements_info.findMany()
-     * 
-     * // Get first 10 Pg_stat_statements_infos
-     * const pg_stat_statements_infos = await prisma.pg_stat_statements_info.findMany({ take: 10 })
-     * 
-     * // Only select the `dealloc`
-     * const pg_stat_statements_infoWithDeallocOnly = await prisma.pg_stat_statements_info.findMany({ select: { dealloc: true } })
-     * 
-     */
-    findMany<T extends pg_stat_statements_infoFindManyArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}>(args?: SelectSubset<T, pg_stat_statements_infoFindManyArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pg_stat_statements_infoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-
-    /**
-     * Count the number of Pg_stat_statements_infos.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pg_stat_statements_infoCountArgs} args - Arguments to filter Pg_stat_statements_infos to count.
-     * @example
-     * // Count the number of Pg_stat_statements_infos
-     * const count = await prisma.pg_stat_statements_info.count({
-     *   where: {
-     *     // ... the filter for the Pg_stat_statements_infos we want to count
-     *   }
-     * })
-    **/
-    count<T extends pg_stat_statements_infoCountArgs>(
-      args?: Subset<T, pg_stat_statements_infoCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Pg_stat_statements_infoCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Pg_stat_statements_info.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Pg_stat_statements_infoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Pg_stat_statements_infoAggregateArgs>(args: Subset<T, Pg_stat_statements_infoAggregateArgs>): Prisma.PrismaPromise<GetPg_stat_statements_infoAggregateType<T>>
-
-    /**
-     * Group by Pg_stat_statements_info.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pg_stat_statements_infoGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends pg_stat_statements_infoGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: pg_stat_statements_infoGroupByArgs['orderBy'] }
-        : { orderBy?: pg_stat_statements_infoGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, pg_stat_statements_infoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPg_stat_statements_infoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the pg_stat_statements_info model
-   */
-  readonly fields: pg_stat_statements_infoFieldRefs;
+    data: XOR<secheressesCreateInput, secheressesUncheckedCreateInput>
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for pg_stat_statements_info.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
+   * secheresses createMany
    */
-  export interface Prisma__pg_stat_statements_infoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
+  export type secheressesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
+     * The data used to create many secheresses.
      */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the pg_stat_statements_info model
-   */
-  interface pg_stat_statements_infoFieldRefs {
-    readonly dealloc: FieldRef<"pg_stat_statements_info", 'BigInt'>
-    readonly stats_reset: FieldRef<"pg_stat_statements_info", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * pg_stat_statements_info findFirst
-   */
-  export type pg_stat_statements_infoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pg_stat_statements_info
-     */
-    select?: pg_stat_statements_infoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pg_stat_statements_info
-     */
-    omit?: pg_stat_statements_infoOmit<ExtArgs> | null
-    /**
-     * Filter, which pg_stat_statements_info to fetch.
-     */
-    where?: pg_stat_statements_infoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of pg_stat_statements_infos to fetch.
-     */
-    orderBy?: pg_stat_statements_infoOrderByWithRelationInput | pg_stat_statements_infoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` pg_stat_statements_infos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` pg_stat_statements_infos.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of pg_stat_statements_infos.
-     */
-    distinct?: Pg_stat_statements_infoScalarFieldEnum | Pg_stat_statements_infoScalarFieldEnum[]
+    data: secheressesCreateManyInput | secheressesCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
-   * pg_stat_statements_info findFirstOrThrow
+   * secheresses createManyAndReturn
    */
-  export type pg_stat_statements_infoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type secheressesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the pg_stat_statements_info
+     * Select specific fields to fetch from the secheresses
      */
-    select?: pg_stat_statements_infoSelect<ExtArgs> | null
+    select?: secheressesSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the pg_stat_statements_info
+     * Omit specific fields from the secheresses
      */
-    omit?: pg_stat_statements_infoOmit<ExtArgs> | null
+    omit?: secheressesOmit<ExtArgs> | null
     /**
-     * Filter, which pg_stat_statements_info to fetch.
+     * The data used to create many secheresses.
      */
-    where?: pg_stat_statements_infoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of pg_stat_statements_infos to fetch.
-     */
-    orderBy?: pg_stat_statements_infoOrderByWithRelationInput | pg_stat_statements_infoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` pg_stat_statements_infos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` pg_stat_statements_infos.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of pg_stat_statements_infos.
-     */
-    distinct?: Pg_stat_statements_infoScalarFieldEnum | Pg_stat_statements_infoScalarFieldEnum[]
+    data: secheressesCreateManyInput | secheressesCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
-   * pg_stat_statements_info findMany
+   * secheresses update
    */
-  export type pg_stat_statements_infoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type secheressesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the pg_stat_statements_info
+     * Select specific fields to fetch from the secheresses
      */
-    select?: pg_stat_statements_infoSelect<ExtArgs> | null
+    select?: secheressesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the pg_stat_statements_info
+     * Omit specific fields from the secheresses
      */
-    omit?: pg_stat_statements_infoOmit<ExtArgs> | null
+    omit?: secheressesOmit<ExtArgs> | null
     /**
-     * Filter, which pg_stat_statements_infos to fetch.
+     * The data needed to update a secheresses.
      */
-    where?: pg_stat_statements_infoWhereInput
+    data: XOR<secheressesUpdateInput, secheressesUncheckedUpdateInput>
     /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of pg_stat_statements_infos to fetch.
+     * Choose, which secheresses to update.
      */
-    orderBy?: pg_stat_statements_infoOrderByWithRelationInput | pg_stat_statements_infoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` pg_stat_statements_infos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` pg_stat_statements_infos.
-     */
-    skip?: number
-    distinct?: Pg_stat_statements_infoScalarFieldEnum | Pg_stat_statements_infoScalarFieldEnum[]
+    where: secheressesWhereUniqueInput
   }
 
   /**
-   * pg_stat_statements_info without action
+   * secheresses updateMany
    */
-  export type pg_stat_statements_infoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type secheressesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the pg_stat_statements_info
+     * The data used to update secheresses.
      */
-    select?: pg_stat_statements_infoSelect<ExtArgs> | null
+    data: XOR<secheressesUpdateManyMutationInput, secheressesUncheckedUpdateManyInput>
     /**
-     * Omit specific fields from the pg_stat_statements_info
+     * Filter which secheresses to update
      */
-    omit?: pg_stat_statements_infoOmit<ExtArgs> | null
-  }
-
-
-  /**
-   * Model geography_columns
-   */
-
-  export type AggregateGeography_columns = {
-    _count: Geography_columnsCountAggregateOutputType | null
-    _avg: Geography_columnsAvgAggregateOutputType | null
-    _sum: Geography_columnsSumAggregateOutputType | null
-    _min: Geography_columnsMinAggregateOutputType | null
-    _max: Geography_columnsMaxAggregateOutputType | null
-  }
-
-  export type Geography_columnsAvgAggregateOutputType = {
-    coord_dimension: number | null
-    srid: number | null
-  }
-
-  export type Geography_columnsSumAggregateOutputType = {
-    coord_dimension: number | null
-    srid: number | null
-  }
-
-  export type Geography_columnsMinAggregateOutputType = {
-    coord_dimension: number | null
-    srid: number | null
-    type: string | null
-  }
-
-  export type Geography_columnsMaxAggregateOutputType = {
-    coord_dimension: number | null
-    srid: number | null
-    type: string | null
-  }
-
-  export type Geography_columnsCountAggregateOutputType = {
-    coord_dimension: number
-    srid: number
-    type: number
-    _all: number
-  }
-
-
-  export type Geography_columnsAvgAggregateInputType = {
-    coord_dimension?: true
-    srid?: true
-  }
-
-  export type Geography_columnsSumAggregateInputType = {
-    coord_dimension?: true
-    srid?: true
-  }
-
-  export type Geography_columnsMinAggregateInputType = {
-    coord_dimension?: true
-    srid?: true
-    type?: true
-  }
-
-  export type Geography_columnsMaxAggregateInputType = {
-    coord_dimension?: true
-    srid?: true
-    type?: true
-  }
-
-  export type Geography_columnsCountAggregateInputType = {
-    coord_dimension?: true
-    srid?: true
-    type?: true
-    _all?: true
-  }
-
-  export type Geography_columnsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: secheressesWhereInput
     /**
-     * Filter which geography_columns to aggregate.
+     * Limit how many secheresses to update.
      */
-    where?: geography_columnsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of geography_columns to fetch.
-     */
-    orderBy?: geography_columnsOrderByWithRelationInput | geography_columnsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` geography_columns from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` geography_columns.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned geography_columns
-    **/
-    _count?: true | Geography_columnsCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Geography_columnsAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Geography_columnsSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Geography_columnsMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Geography_columnsMaxAggregateInputType
-  }
-
-  export type GetGeography_columnsAggregateType<T extends Geography_columnsAggregateArgs> = {
-        [P in keyof T & keyof AggregateGeography_columns]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateGeography_columns[P]>
-      : GetScalarType<T[P], AggregateGeography_columns[P]>
-  }
-
-
-
-
-  export type geography_columnsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: geography_columnsWhereInput
-    orderBy?: geography_columnsOrderByWithAggregationInput | geography_columnsOrderByWithAggregationInput[]
-    by: Geography_columnsScalarFieldEnum[] | Geography_columnsScalarFieldEnum
-    having?: geography_columnsScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Geography_columnsCountAggregateInputType | true
-    _avg?: Geography_columnsAvgAggregateInputType
-    _sum?: Geography_columnsSumAggregateInputType
-    _min?: Geography_columnsMinAggregateInputType
-    _max?: Geography_columnsMaxAggregateInputType
-  }
-
-  export type Geography_columnsGroupByOutputType = {
-    coord_dimension: number | null
-    srid: number | null
-    type: string | null
-    _count: Geography_columnsCountAggregateOutputType | null
-    _avg: Geography_columnsAvgAggregateOutputType | null
-    _sum: Geography_columnsSumAggregateOutputType | null
-    _min: Geography_columnsMinAggregateOutputType | null
-    _max: Geography_columnsMaxAggregateOutputType | null
-  }
-
-  type GetGeography_columnsGroupByPayload<T extends geography_columnsGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Geography_columnsGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Geography_columnsGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Geography_columnsGroupByOutputType[P]>
-            : GetScalarType<T[P], Geography_columnsGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type geography_columnsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    coord_dimension?: boolean
-    srid?: boolean
-    type?: boolean
-  }, ExtArgs["result"]["geography_columns"]>
-
-
-
-  export type geography_columnsSelectScalar = {
-    coord_dimension?: boolean
-    srid?: boolean
-    type?: boolean
-  }
-
-  export type geography_columnsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"coord_dimension" | "srid" | "type", ExtArgs["result"]["geography_columns"]>
-
-  export type $geography_columnsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "geography_columns"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      coord_dimension: number | null
-      srid: number | null
-      type: string | null
-    }, ExtArgs["result"]["geography_columns"]>
-    composites: {}
-  }
-
-  type geography_columnsGetPayload<S extends boolean | null | undefined | geography_columnsDefaultArgs> = $Result.GetResult<Prisma.$geography_columnsPayload, S>
-
-  type geography_columnsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<geography_columnsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Geography_columnsCountAggregateInputType | true
-    }
-
-  export interface geography_columnsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['geography_columns'], meta: { name: 'geography_columns' } }
-    /**
-     * Find the first Geography_columns that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {geography_columnsFindFirstArgs} args - Arguments to find a Geography_columns
-     * @example
-     * // Get one Geography_columns
-     * const geography_columns = await prisma.geography_columns.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends geography_columnsFindFirstArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}>(args?: SelectSubset<T, geography_columnsFindFirstArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma__geography_columnsClient<$Result.GetResult<Prisma.$geography_columnsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Geography_columns that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {geography_columnsFindFirstOrThrowArgs} args - Arguments to find a Geography_columns
-     * @example
-     * // Get one Geography_columns
-     * const geography_columns = await prisma.geography_columns.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends geography_columnsFindFirstOrThrowArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}>(args?: SelectSubset<T, geography_columnsFindFirstOrThrowArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma__geography_columnsClient<$Result.GetResult<Prisma.$geography_columnsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Geography_columns that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {geography_columnsFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Geography_columns
-     * const geography_columns = await prisma.geography_columns.findMany()
-     * 
-     * // Get first 10 Geography_columns
-     * const geography_columns = await prisma.geography_columns.findMany({ take: 10 })
-     * 
-     * // Only select the `coord_dimension`
-     * const geography_columnsWithCoord_dimensionOnly = await prisma.geography_columns.findMany({ select: { coord_dimension: true } })
-     * 
-     */
-    findMany<T extends geography_columnsFindManyArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}>(args?: SelectSubset<T, geography_columnsFindManyArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma.PrismaPromise<$Result.GetResult<Prisma.$geography_columnsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-
-    /**
-     * Count the number of Geography_columns.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {geography_columnsCountArgs} args - Arguments to filter Geography_columns to count.
-     * @example
-     * // Count the number of Geography_columns
-     * const count = await prisma.geography_columns.count({
-     *   where: {
-     *     // ... the filter for the Geography_columns we want to count
-     *   }
-     * })
-    **/
-    count<T extends geography_columnsCountArgs>(
-      args?: Subset<T, geography_columnsCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Geography_columnsCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Geography_columns.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Geography_columnsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Geography_columnsAggregateArgs>(args: Subset<T, Geography_columnsAggregateArgs>): Prisma.PrismaPromise<GetGeography_columnsAggregateType<T>>
-
-    /**
-     * Group by Geography_columns.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {geography_columnsGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends geography_columnsGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: geography_columnsGroupByArgs['orderBy'] }
-        : { orderBy?: geography_columnsGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, geography_columnsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGeography_columnsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the geography_columns model
-   */
-  readonly fields: geography_columnsFieldRefs;
+    limit?: number
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for geography_columns.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
+   * secheresses updateManyAndReturn
    */
-  export interface Prisma__geography_columnsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
+  export type secheressesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
+     * Select specific fields to fetch from the secheresses
      */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    select?: secheressesSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
+     * Omit specific fields from the secheresses
      */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    omit?: secheressesOmit<ExtArgs> | null
     /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
+     * The data used to update secheresses.
      */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the geography_columns model
-   */
-  interface geography_columnsFieldRefs {
-    readonly coord_dimension: FieldRef<"geography_columns", 'Int'>
-    readonly srid: FieldRef<"geography_columns", 'Int'>
-    readonly type: FieldRef<"geography_columns", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * geography_columns findFirst
-   */
-  export type geography_columnsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    data: XOR<secheressesUpdateManyMutationInput, secheressesUncheckedUpdateManyInput>
     /**
-     * Select specific fields to fetch from the geography_columns
+     * Filter which secheresses to update
      */
-    select?: geography_columnsSelect<ExtArgs> | null
+    where?: secheressesWhereInput
     /**
-     * Omit specific fields from the geography_columns
+     * Limit how many secheresses to update.
      */
-    omit?: geography_columnsOmit<ExtArgs> | null
-    /**
-     * Filter, which geography_columns to fetch.
-     */
-    where?: geography_columnsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of geography_columns to fetch.
-     */
-    orderBy?: geography_columnsOrderByWithRelationInput | geography_columnsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` geography_columns from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` geography_columns.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of geography_columns.
-     */
-    distinct?: Geography_columnsScalarFieldEnum | Geography_columnsScalarFieldEnum[]
+    limit?: number
   }
 
   /**
-   * geography_columns findFirstOrThrow
+   * secheresses upsert
    */
-  export type geography_columnsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type secheressesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the geography_columns
+     * Select specific fields to fetch from the secheresses
      */
-    select?: geography_columnsSelect<ExtArgs> | null
+    select?: secheressesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the geography_columns
+     * Omit specific fields from the secheresses
      */
-    omit?: geography_columnsOmit<ExtArgs> | null
+    omit?: secheressesOmit<ExtArgs> | null
     /**
-     * Filter, which geography_columns to fetch.
+     * The filter to search for the secheresses to update in case it exists.
      */
-    where?: geography_columnsWhereInput
+    where: secheressesWhereUniqueInput
     /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of geography_columns to fetch.
+     * In case the secheresses found by the `where` argument doesn't exist, create a new secheresses with this data.
      */
-    orderBy?: geography_columnsOrderByWithRelationInput | geography_columnsOrderByWithRelationInput[]
+    create: XOR<secheressesCreateInput, secheressesUncheckedCreateInput>
     /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` geography_columns from the position of the cursor.
+     * In case the secheresses was found with the provided `where` argument, update it with this data.
      */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` geography_columns.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of geography_columns.
-     */
-    distinct?: Geography_columnsScalarFieldEnum | Geography_columnsScalarFieldEnum[]
+    update: XOR<secheressesUpdateInput, secheressesUncheckedUpdateInput>
   }
 
   /**
-   * geography_columns findMany
+   * secheresses delete
    */
-  export type geography_columnsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type secheressesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the geography_columns
+     * Select specific fields to fetch from the secheresses
      */
-    select?: geography_columnsSelect<ExtArgs> | null
+    select?: secheressesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the geography_columns
+     * Omit specific fields from the secheresses
      */
-    omit?: geography_columnsOmit<ExtArgs> | null
+    omit?: secheressesOmit<ExtArgs> | null
     /**
-     * Filter, which geography_columns to fetch.
+     * Filter which secheresses to delete.
      */
-    where?: geography_columnsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of geography_columns to fetch.
-     */
-    orderBy?: geography_columnsOrderByWithRelationInput | geography_columnsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` geography_columns from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` geography_columns.
-     */
-    skip?: number
-    distinct?: Geography_columnsScalarFieldEnum | Geography_columnsScalarFieldEnum[]
+    where: secheressesWhereUniqueInput
   }
 
   /**
-   * geography_columns without action
+   * secheresses deleteMany
    */
-  export type geography_columnsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type secheressesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the geography_columns
+     * Filter which secheresses to delete
      */
-    select?: geography_columnsSelect<ExtArgs> | null
+    where?: secheressesWhereInput
     /**
-     * Omit specific fields from the geography_columns
+     * Limit how many secheresses to delete.
      */
-    omit?: geography_columnsOmit<ExtArgs> | null
-  }
-
-
-  /**
-   * Model geometry_columns
-   */
-
-  export type AggregateGeometry_columns = {
-    _count: Geometry_columnsCountAggregateOutputType | null
-    _avg: Geometry_columnsAvgAggregateOutputType | null
-    _sum: Geometry_columnsSumAggregateOutputType | null
-    _min: Geometry_columnsMinAggregateOutputType | null
-    _max: Geometry_columnsMaxAggregateOutputType | null
-  }
-
-  export type Geometry_columnsAvgAggregateOutputType = {
-    coord_dimension: number | null
-    srid: number | null
-  }
-
-  export type Geometry_columnsSumAggregateOutputType = {
-    coord_dimension: number | null
-    srid: number | null
-  }
-
-  export type Geometry_columnsMinAggregateOutputType = {
-    f_table_catalog: string | null
-    coord_dimension: number | null
-    srid: number | null
-    type: string | null
-  }
-
-  export type Geometry_columnsMaxAggregateOutputType = {
-    f_table_catalog: string | null
-    coord_dimension: number | null
-    srid: number | null
-    type: string | null
-  }
-
-  export type Geometry_columnsCountAggregateOutputType = {
-    f_table_catalog: number
-    coord_dimension: number
-    srid: number
-    type: number
-    _all: number
-  }
-
-
-  export type Geometry_columnsAvgAggregateInputType = {
-    coord_dimension?: true
-    srid?: true
-  }
-
-  export type Geometry_columnsSumAggregateInputType = {
-    coord_dimension?: true
-    srid?: true
-  }
-
-  export type Geometry_columnsMinAggregateInputType = {
-    f_table_catalog?: true
-    coord_dimension?: true
-    srid?: true
-    type?: true
-  }
-
-  export type Geometry_columnsMaxAggregateInputType = {
-    f_table_catalog?: true
-    coord_dimension?: true
-    srid?: true
-    type?: true
-  }
-
-  export type Geometry_columnsCountAggregateInputType = {
-    f_table_catalog?: true
-    coord_dimension?: true
-    srid?: true
-    type?: true
-    _all?: true
-  }
-
-  export type Geometry_columnsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which geometry_columns to aggregate.
-     */
-    where?: geometry_columnsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of geometry_columns to fetch.
-     */
-    orderBy?: geometry_columnsOrderByWithRelationInput | geometry_columnsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` geometry_columns from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` geometry_columns.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned geometry_columns
-    **/
-    _count?: true | Geometry_columnsCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Geometry_columnsAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Geometry_columnsSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Geometry_columnsMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Geometry_columnsMaxAggregateInputType
-  }
-
-  export type GetGeometry_columnsAggregateType<T extends Geometry_columnsAggregateArgs> = {
-        [P in keyof T & keyof AggregateGeometry_columns]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateGeometry_columns[P]>
-      : GetScalarType<T[P], AggregateGeometry_columns[P]>
-  }
-
-
-
-
-  export type geometry_columnsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: geometry_columnsWhereInput
-    orderBy?: geometry_columnsOrderByWithAggregationInput | geometry_columnsOrderByWithAggregationInput[]
-    by: Geometry_columnsScalarFieldEnum[] | Geometry_columnsScalarFieldEnum
-    having?: geometry_columnsScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Geometry_columnsCountAggregateInputType | true
-    _avg?: Geometry_columnsAvgAggregateInputType
-    _sum?: Geometry_columnsSumAggregateInputType
-    _min?: Geometry_columnsMinAggregateInputType
-    _max?: Geometry_columnsMaxAggregateInputType
-  }
-
-  export type Geometry_columnsGroupByOutputType = {
-    f_table_catalog: string | null
-    coord_dimension: number | null
-    srid: number | null
-    type: string | null
-    _count: Geometry_columnsCountAggregateOutputType | null
-    _avg: Geometry_columnsAvgAggregateOutputType | null
-    _sum: Geometry_columnsSumAggregateOutputType | null
-    _min: Geometry_columnsMinAggregateOutputType | null
-    _max: Geometry_columnsMaxAggregateOutputType | null
-  }
-
-  type GetGeometry_columnsGroupByPayload<T extends geometry_columnsGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Geometry_columnsGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Geometry_columnsGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Geometry_columnsGroupByOutputType[P]>
-            : GetScalarType<T[P], Geometry_columnsGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type geometry_columnsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    f_table_catalog?: boolean
-    coord_dimension?: boolean
-    srid?: boolean
-    type?: boolean
-  }, ExtArgs["result"]["geometry_columns"]>
-
-
-
-  export type geometry_columnsSelectScalar = {
-    f_table_catalog?: boolean
-    coord_dimension?: boolean
-    srid?: boolean
-    type?: boolean
-  }
-
-  export type geometry_columnsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"f_table_catalog" | "coord_dimension" | "srid" | "type", ExtArgs["result"]["geometry_columns"]>
-
-  export type $geometry_columnsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "geometry_columns"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      f_table_catalog: string | null
-      coord_dimension: number | null
-      srid: number | null
-      type: string | null
-    }, ExtArgs["result"]["geometry_columns"]>
-    composites: {}
-  }
-
-  type geometry_columnsGetPayload<S extends boolean | null | undefined | geometry_columnsDefaultArgs> = $Result.GetResult<Prisma.$geometry_columnsPayload, S>
-
-  type geometry_columnsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<geometry_columnsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Geometry_columnsCountAggregateInputType | true
-    }
-
-  export interface geometry_columnsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['geometry_columns'], meta: { name: 'geometry_columns' } }
-    /**
-     * Find the first Geometry_columns that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {geometry_columnsFindFirstArgs} args - Arguments to find a Geometry_columns
-     * @example
-     * // Get one Geometry_columns
-     * const geometry_columns = await prisma.geometry_columns.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends geometry_columnsFindFirstArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}>(args?: SelectSubset<T, geometry_columnsFindFirstArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma__geometry_columnsClient<$Result.GetResult<Prisma.$geometry_columnsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Geometry_columns that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {geometry_columnsFindFirstOrThrowArgs} args - Arguments to find a Geometry_columns
-     * @example
-     * // Get one Geometry_columns
-     * const geometry_columns = await prisma.geometry_columns.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends geometry_columnsFindFirstOrThrowArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}>(args?: SelectSubset<T, geometry_columnsFindFirstOrThrowArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma__geometry_columnsClient<$Result.GetResult<Prisma.$geometry_columnsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Geometry_columns that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {geometry_columnsFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Geometry_columns
-     * const geometry_columns = await prisma.geometry_columns.findMany()
-     * 
-     * // Get first 10 Geometry_columns
-     * const geometry_columns = await prisma.geometry_columns.findMany({ take: 10 })
-     * 
-     * // Only select the `f_table_catalog`
-     * const geometry_columnsWithF_table_catalogOnly = await prisma.geometry_columns.findMany({ select: { f_table_catalog: true } })
-     * 
-     */
-    findMany<T extends geometry_columnsFindManyArgs, TakeDependenciesValidator extends "take" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}, SkipDependenciesValidator extends "skip" extends Prisma.Keys<T> ? {
-      orderBy: {}
-    } : {}>(args?: SelectSubset<T, geometry_columnsFindManyArgs<ExtArgs>> & TakeDependenciesValidator & SkipDependenciesValidator): Prisma.PrismaPromise<$Result.GetResult<Prisma.$geometry_columnsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-
-    /**
-     * Count the number of Geometry_columns.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {geometry_columnsCountArgs} args - Arguments to filter Geometry_columns to count.
-     * @example
-     * // Count the number of Geometry_columns
-     * const count = await prisma.geometry_columns.count({
-     *   where: {
-     *     // ... the filter for the Geometry_columns we want to count
-     *   }
-     * })
-    **/
-    count<T extends geometry_columnsCountArgs>(
-      args?: Subset<T, geometry_columnsCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Geometry_columnsCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Geometry_columns.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Geometry_columnsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Geometry_columnsAggregateArgs>(args: Subset<T, Geometry_columnsAggregateArgs>): Prisma.PrismaPromise<GetGeometry_columnsAggregateType<T>>
-
-    /**
-     * Group by Geometry_columns.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {geometry_columnsGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends geometry_columnsGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: geometry_columnsGroupByArgs['orderBy'] }
-        : { orderBy?: geometry_columnsGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, geometry_columnsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGeometry_columnsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the geometry_columns model
-   */
-  readonly fields: geometry_columnsFieldRefs;
+    limit?: number
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for geometry_columns.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
+   * secheresses without action
    */
-  export interface Prisma__geometry_columnsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
+  export type secheressesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
+     * Select specific fields to fetch from the secheresses
      */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    select?: secheressesSelect<ExtArgs> | null
     /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
+     * Omit specific fields from the secheresses
      */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the geometry_columns model
-   */
-  interface geometry_columnsFieldRefs {
-    readonly f_table_catalog: FieldRef<"geometry_columns", 'String'>
-    readonly coord_dimension: FieldRef<"geometry_columns", 'Int'>
-    readonly srid: FieldRef<"geometry_columns", 'Int'>
-    readonly type: FieldRef<"geometry_columns", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * geometry_columns findFirst
-   */
-  export type geometry_columnsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the geometry_columns
-     */
-    select?: geometry_columnsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the geometry_columns
-     */
-    omit?: geometry_columnsOmit<ExtArgs> | null
-    /**
-     * Filter, which geometry_columns to fetch.
-     */
-    where?: geometry_columnsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of geometry_columns to fetch.
-     */
-    orderBy?: geometry_columnsOrderByWithRelationInput | geometry_columnsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` geometry_columns from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` geometry_columns.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of geometry_columns.
-     */
-    distinct?: Geometry_columnsScalarFieldEnum | Geometry_columnsScalarFieldEnum[]
-  }
-
-  /**
-   * geometry_columns findFirstOrThrow
-   */
-  export type geometry_columnsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the geometry_columns
-     */
-    select?: geometry_columnsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the geometry_columns
-     */
-    omit?: geometry_columnsOmit<ExtArgs> | null
-    /**
-     * Filter, which geometry_columns to fetch.
-     */
-    where?: geometry_columnsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of geometry_columns to fetch.
-     */
-    orderBy?: geometry_columnsOrderByWithRelationInput | geometry_columnsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` geometry_columns from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` geometry_columns.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of geometry_columns.
-     */
-    distinct?: Geometry_columnsScalarFieldEnum | Geometry_columnsScalarFieldEnum[]
-  }
-
-  /**
-   * geometry_columns findMany
-   */
-  export type geometry_columnsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the geometry_columns
-     */
-    select?: geometry_columnsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the geometry_columns
-     */
-    omit?: geometry_columnsOmit<ExtArgs> | null
-    /**
-     * Filter, which geometry_columns to fetch.
-     */
-    where?: geometry_columnsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of geometry_columns to fetch.
-     */
-    orderBy?: geometry_columnsOrderByWithRelationInput | geometry_columnsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` geometry_columns from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` geometry_columns.
-     */
-    skip?: number
-    distinct?: Geometry_columnsScalarFieldEnum | Geometry_columnsScalarFieldEnum[]
-  }
-
-  /**
-   * geometry_columns without action
-   */
-  export type geometry_columnsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the geometry_columns
-     */
-    select?: geometry_columnsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the geometry_columns
-     */
-    omit?: geometry_columnsOmit<ExtArgs> | null
+    omit?: secheressesOmit<ExtArgs> | null
   }
 
 
@@ -58560,80 +56768,34 @@ export namespace Prisma {
   export type Rga_par_communesScalarFieldEnum = (typeof Rga_par_communesScalarFieldEnum)[keyof typeof Rga_par_communesScalarFieldEnum]
 
 
-  export const Pg_stat_statementsScalarFieldEnum: {
-    userid: 'userid',
-    dbid: 'dbid',
-    toplevel: 'toplevel',
-    queryid: 'queryid',
-    query: 'query',
-    plans: 'plans',
-    total_plan_time: 'total_plan_time',
-    min_plan_time: 'min_plan_time',
-    max_plan_time: 'max_plan_time',
-    mean_plan_time: 'mean_plan_time',
-    stddev_plan_time: 'stddev_plan_time',
-    calls: 'calls',
-    total_exec_time: 'total_exec_time',
-    min_exec_time: 'min_exec_time',
-    max_exec_time: 'max_exec_time',
-    mean_exec_time: 'mean_exec_time',
-    stddev_exec_time: 'stddev_exec_time',
-    rows: 'rows',
-    shared_blks_hit: 'shared_blks_hit',
-    shared_blks_read: 'shared_blks_read',
-    shared_blks_dirtied: 'shared_blks_dirtied',
-    shared_blks_written: 'shared_blks_written',
-    local_blks_hit: 'local_blks_hit',
-    local_blks_read: 'local_blks_read',
-    local_blks_dirtied: 'local_blks_dirtied',
-    local_blks_written: 'local_blks_written',
-    temp_blks_read: 'temp_blks_read',
-    temp_blks_written: 'temp_blks_written',
-    blk_read_time: 'blk_read_time',
-    blk_write_time: 'blk_write_time',
-    temp_blk_read_time: 'temp_blk_read_time',
-    temp_blk_write_time: 'temp_blk_write_time',
-    wal_records: 'wal_records',
-    wal_fpi: 'wal_fpi',
-    wal_bytes: 'wal_bytes',
-    jit_functions: 'jit_functions',
-    jit_generation_time: 'jit_generation_time',
-    jit_inlining_count: 'jit_inlining_count',
-    jit_inlining_time: 'jit_inlining_time',
-    jit_optimization_count: 'jit_optimization_count',
-    jit_optimization_time: 'jit_optimization_time',
-    jit_emission_count: 'jit_emission_count',
-    jit_emission_time: 'jit_emission_time'
+  export const SecheressesScalarFieldEnum: {
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    libelle_departement: 'libelle_departement',
+    region: 'region',
+    ept: 'ept',
+    libelle_petr: 'libelle_petr',
+    code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr',
+    restrictions_2013: 'restrictions_2013',
+    restrictions_2014: 'restrictions_2014',
+    restrictions_2015: 'restrictions_2015',
+    restrictions_2016: 'restrictions_2016',
+    restrictions_2017: 'restrictions_2017',
+    restrictions_2018: 'restrictions_2018',
+    restrictions_2019: 'restrictions_2019',
+    restrictions_2020: 'restrictions_2020',
+    restrictions_2021: 'restrictions_2021',
+    restrictions_2022: 'restrictions_2022',
+    restrictions_2023: 'restrictions_2023',
+    restrictions_2024: 'restrictions_2024',
+    id: 'id'
   };
 
-  export type Pg_stat_statementsScalarFieldEnum = (typeof Pg_stat_statementsScalarFieldEnum)[keyof typeof Pg_stat_statementsScalarFieldEnum]
-
-
-  export const Pg_stat_statements_infoScalarFieldEnum: {
-    dealloc: 'dealloc',
-    stats_reset: 'stats_reset'
-  };
-
-  export type Pg_stat_statements_infoScalarFieldEnum = (typeof Pg_stat_statements_infoScalarFieldEnum)[keyof typeof Pg_stat_statements_infoScalarFieldEnum]
-
-
-  export const Geography_columnsScalarFieldEnum: {
-    coord_dimension: 'coord_dimension',
-    srid: 'srid',
-    type: 'type'
-  };
-
-  export type Geography_columnsScalarFieldEnum = (typeof Geography_columnsScalarFieldEnum)[keyof typeof Geography_columnsScalarFieldEnum]
-
-
-  export const Geometry_columnsScalarFieldEnum: {
-    f_table_catalog: 'f_table_catalog',
-    coord_dimension: 'coord_dimension',
-    srid: 'srid',
-    type: 'type'
-  };
-
-  export type Geometry_columnsScalarFieldEnum = (typeof Geometry_columnsScalarFieldEnum)[keyof typeof Geometry_columnsScalarFieldEnum]
+  export type SecheressesScalarFieldEnum = (typeof SecheressesScalarFieldEnum)[keyof typeof SecheressesScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -58774,16 +56936,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Decimal'
+   * Reference to a field of type 'Json[]'
    */
-  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal[]'
-   */
-  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+  export type ListJsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json[]'>
     
   /**
    * Deep Input Types
@@ -63855,304 +62010,153 @@ export namespace Prisma {
     alea?: StringWithAggregatesFilter<"rga_par_communes"> | string
   }
 
-  export type pg_stat_statementsWhereInput = {
-    AND?: pg_stat_statementsWhereInput | pg_stat_statementsWhereInput[]
-    OR?: pg_stat_statementsWhereInput[]
-    NOT?: pg_stat_statementsWhereInput | pg_stat_statementsWhereInput[]
-    userid?: IntNullableFilter<"pg_stat_statements"> | number | null
-    dbid?: IntNullableFilter<"pg_stat_statements"> | number | null
-    toplevel?: BoolNullableFilter<"pg_stat_statements"> | boolean | null
-    queryid?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    query?: StringNullableFilter<"pg_stat_statements"> | string | null
-    plans?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    total_plan_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    min_plan_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    max_plan_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    mean_plan_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    stddev_plan_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    calls?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    total_exec_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    min_exec_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    max_exec_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    mean_exec_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    stddev_exec_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    rows?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    shared_blks_hit?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    shared_blks_read?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    shared_blks_dirtied?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    shared_blks_written?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    local_blks_hit?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    local_blks_read?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    local_blks_dirtied?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    local_blks_written?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    temp_blks_read?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    temp_blks_written?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    blk_read_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    blk_write_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    temp_blk_read_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    temp_blk_write_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    wal_records?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    wal_fpi?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    wal_bytes?: DecimalNullableFilter<"pg_stat_statements"> | Decimal | DecimalJsLike | number | string | null
-    jit_functions?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    jit_generation_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    jit_inlining_count?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    jit_inlining_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    jit_optimization_count?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    jit_optimization_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
-    jit_emission_count?: BigIntNullableFilter<"pg_stat_statements"> | bigint | number | null
-    jit_emission_time?: FloatNullableFilter<"pg_stat_statements"> | number | null
+  export type secheressesWhereInput = {
+    AND?: secheressesWhereInput | secheressesWhereInput[]
+    OR?: secheressesWhereInput[]
+    NOT?: secheressesWhereInput | secheressesWhereInput[]
+    code_geographique?: StringFilter<"secheresses"> | string
+    libelle_geographique?: StringFilter<"secheresses"> | string
+    epci?: StringFilter<"secheresses"> | string
+    libelle_epci?: StringFilter<"secheresses"> | string
+    departement?: StringFilter<"secheresses"> | string
+    libelle_departement?: StringFilter<"secheresses"> | string
+    region?: FloatFilter<"secheresses"> | number
+    ept?: StringNullableFilter<"secheresses"> | string | null
+    libelle_petr?: StringNullableFilter<"secheresses"> | string | null
+    code_pnr?: StringNullableFilter<"secheresses"> | string | null
+    libelle_pnr?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2013?: JsonNullableListFilter<"secheresses">
+    restrictions_2014?: JsonNullableListFilter<"secheresses">
+    restrictions_2015?: JsonNullableListFilter<"secheresses">
+    restrictions_2016?: JsonNullableListFilter<"secheresses">
+    restrictions_2017?: JsonNullableListFilter<"secheresses">
+    restrictions_2018?: JsonNullableListFilter<"secheresses">
+    restrictions_2019?: JsonNullableListFilter<"secheresses">
+    restrictions_2020?: JsonNullableListFilter<"secheresses">
+    restrictions_2021?: JsonNullableListFilter<"secheresses">
+    restrictions_2022?: JsonNullableListFilter<"secheresses">
+    restrictions_2023?: JsonNullableListFilter<"secheresses">
+    restrictions_2024?: JsonNullableListFilter<"secheresses">
+    id?: IntFilter<"secheresses"> | number
   }
 
-  export type pg_stat_statementsOrderByWithRelationInput = {
-    userid?: SortOrderInput | SortOrder
-    dbid?: SortOrderInput | SortOrder
-    toplevel?: SortOrderInput | SortOrder
-    queryid?: SortOrderInput | SortOrder
-    query?: SortOrderInput | SortOrder
-    plans?: SortOrderInput | SortOrder
-    total_plan_time?: SortOrderInput | SortOrder
-    min_plan_time?: SortOrderInput | SortOrder
-    max_plan_time?: SortOrderInput | SortOrder
-    mean_plan_time?: SortOrderInput | SortOrder
-    stddev_plan_time?: SortOrderInput | SortOrder
-    calls?: SortOrderInput | SortOrder
-    total_exec_time?: SortOrderInput | SortOrder
-    min_exec_time?: SortOrderInput | SortOrder
-    max_exec_time?: SortOrderInput | SortOrder
-    mean_exec_time?: SortOrderInput | SortOrder
-    stddev_exec_time?: SortOrderInput | SortOrder
-    rows?: SortOrderInput | SortOrder
-    shared_blks_hit?: SortOrderInput | SortOrder
-    shared_blks_read?: SortOrderInput | SortOrder
-    shared_blks_dirtied?: SortOrderInput | SortOrder
-    shared_blks_written?: SortOrderInput | SortOrder
-    local_blks_hit?: SortOrderInput | SortOrder
-    local_blks_read?: SortOrderInput | SortOrder
-    local_blks_dirtied?: SortOrderInput | SortOrder
-    local_blks_written?: SortOrderInput | SortOrder
-    temp_blks_read?: SortOrderInput | SortOrder
-    temp_blks_written?: SortOrderInput | SortOrder
-    blk_read_time?: SortOrderInput | SortOrder
-    blk_write_time?: SortOrderInput | SortOrder
-    temp_blk_read_time?: SortOrderInput | SortOrder
-    temp_blk_write_time?: SortOrderInput | SortOrder
-    wal_records?: SortOrderInput | SortOrder
-    wal_fpi?: SortOrderInput | SortOrder
-    wal_bytes?: SortOrderInput | SortOrder
-    jit_functions?: SortOrderInput | SortOrder
-    jit_generation_time?: SortOrderInput | SortOrder
-    jit_inlining_count?: SortOrderInput | SortOrder
-    jit_inlining_time?: SortOrderInput | SortOrder
-    jit_optimization_count?: SortOrderInput | SortOrder
-    jit_optimization_time?: SortOrderInput | SortOrder
-    jit_emission_count?: SortOrderInput | SortOrder
-    jit_emission_time?: SortOrderInput | SortOrder
+  export type secheressesOrderByWithRelationInput = {
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    restrictions_2013?: SortOrder
+    restrictions_2014?: SortOrder
+    restrictions_2015?: SortOrder
+    restrictions_2016?: SortOrder
+    restrictions_2017?: SortOrder
+    restrictions_2018?: SortOrder
+    restrictions_2019?: SortOrder
+    restrictions_2020?: SortOrder
+    restrictions_2021?: SortOrder
+    restrictions_2022?: SortOrder
+    restrictions_2023?: SortOrder
+    restrictions_2024?: SortOrder
+    id?: SortOrder
   }
 
-  export type pg_stat_statementsOrderByWithAggregationInput = {
-    userid?: SortOrderInput | SortOrder
-    dbid?: SortOrderInput | SortOrder
-    toplevel?: SortOrderInput | SortOrder
-    queryid?: SortOrderInput | SortOrder
-    query?: SortOrderInput | SortOrder
-    plans?: SortOrderInput | SortOrder
-    total_plan_time?: SortOrderInput | SortOrder
-    min_plan_time?: SortOrderInput | SortOrder
-    max_plan_time?: SortOrderInput | SortOrder
-    mean_plan_time?: SortOrderInput | SortOrder
-    stddev_plan_time?: SortOrderInput | SortOrder
-    calls?: SortOrderInput | SortOrder
-    total_exec_time?: SortOrderInput | SortOrder
-    min_exec_time?: SortOrderInput | SortOrder
-    max_exec_time?: SortOrderInput | SortOrder
-    mean_exec_time?: SortOrderInput | SortOrder
-    stddev_exec_time?: SortOrderInput | SortOrder
-    rows?: SortOrderInput | SortOrder
-    shared_blks_hit?: SortOrderInput | SortOrder
-    shared_blks_read?: SortOrderInput | SortOrder
-    shared_blks_dirtied?: SortOrderInput | SortOrder
-    shared_blks_written?: SortOrderInput | SortOrder
-    local_blks_hit?: SortOrderInput | SortOrder
-    local_blks_read?: SortOrderInput | SortOrder
-    local_blks_dirtied?: SortOrderInput | SortOrder
-    local_blks_written?: SortOrderInput | SortOrder
-    temp_blks_read?: SortOrderInput | SortOrder
-    temp_blks_written?: SortOrderInput | SortOrder
-    blk_read_time?: SortOrderInput | SortOrder
-    blk_write_time?: SortOrderInput | SortOrder
-    temp_blk_read_time?: SortOrderInput | SortOrder
-    temp_blk_write_time?: SortOrderInput | SortOrder
-    wal_records?: SortOrderInput | SortOrder
-    wal_fpi?: SortOrderInput | SortOrder
-    wal_bytes?: SortOrderInput | SortOrder
-    jit_functions?: SortOrderInput | SortOrder
-    jit_generation_time?: SortOrderInput | SortOrder
-    jit_inlining_count?: SortOrderInput | SortOrder
-    jit_inlining_time?: SortOrderInput | SortOrder
-    jit_optimization_count?: SortOrderInput | SortOrder
-    jit_optimization_time?: SortOrderInput | SortOrder
-    jit_emission_count?: SortOrderInput | SortOrder
-    jit_emission_time?: SortOrderInput | SortOrder
-    _count?: pg_stat_statementsCountOrderByAggregateInput
-    _avg?: pg_stat_statementsAvgOrderByAggregateInput
-    _max?: pg_stat_statementsMaxOrderByAggregateInput
-    _min?: pg_stat_statementsMinOrderByAggregateInput
-    _sum?: pg_stat_statementsSumOrderByAggregateInput
+  export type secheressesWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: secheressesWhereInput | secheressesWhereInput[]
+    OR?: secheressesWhereInput[]
+    NOT?: secheressesWhereInput | secheressesWhereInput[]
+    code_geographique?: StringFilter<"secheresses"> | string
+    libelle_geographique?: StringFilter<"secheresses"> | string
+    epci?: StringFilter<"secheresses"> | string
+    libelle_epci?: StringFilter<"secheresses"> | string
+    departement?: StringFilter<"secheresses"> | string
+    libelle_departement?: StringFilter<"secheresses"> | string
+    region?: FloatFilter<"secheresses"> | number
+    ept?: StringNullableFilter<"secheresses"> | string | null
+    libelle_petr?: StringNullableFilter<"secheresses"> | string | null
+    code_pnr?: StringNullableFilter<"secheresses"> | string | null
+    libelle_pnr?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2013?: JsonNullableListFilter<"secheresses">
+    restrictions_2014?: JsonNullableListFilter<"secheresses">
+    restrictions_2015?: JsonNullableListFilter<"secheresses">
+    restrictions_2016?: JsonNullableListFilter<"secheresses">
+    restrictions_2017?: JsonNullableListFilter<"secheresses">
+    restrictions_2018?: JsonNullableListFilter<"secheresses">
+    restrictions_2019?: JsonNullableListFilter<"secheresses">
+    restrictions_2020?: JsonNullableListFilter<"secheresses">
+    restrictions_2021?: JsonNullableListFilter<"secheresses">
+    restrictions_2022?: JsonNullableListFilter<"secheresses">
+    restrictions_2023?: JsonNullableListFilter<"secheresses">
+    restrictions_2024?: JsonNullableListFilter<"secheresses">
+  }, "id">
+
+  export type secheressesOrderByWithAggregationInput = {
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    restrictions_2013?: SortOrder
+    restrictions_2014?: SortOrder
+    restrictions_2015?: SortOrder
+    restrictions_2016?: SortOrder
+    restrictions_2017?: SortOrder
+    restrictions_2018?: SortOrder
+    restrictions_2019?: SortOrder
+    restrictions_2020?: SortOrder
+    restrictions_2021?: SortOrder
+    restrictions_2022?: SortOrder
+    restrictions_2023?: SortOrder
+    restrictions_2024?: SortOrder
+    id?: SortOrder
+    _count?: secheressesCountOrderByAggregateInput
+    _avg?: secheressesAvgOrderByAggregateInput
+    _max?: secheressesMaxOrderByAggregateInput
+    _min?: secheressesMinOrderByAggregateInput
+    _sum?: secheressesSumOrderByAggregateInput
   }
 
-  export type pg_stat_statementsScalarWhereWithAggregatesInput = {
-    AND?: pg_stat_statementsScalarWhereWithAggregatesInput | pg_stat_statementsScalarWhereWithAggregatesInput[]
-    OR?: pg_stat_statementsScalarWhereWithAggregatesInput[]
-    NOT?: pg_stat_statementsScalarWhereWithAggregatesInput | pg_stat_statementsScalarWhereWithAggregatesInput[]
-    userid?: IntNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    dbid?: IntNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    toplevel?: BoolNullableWithAggregatesFilter<"pg_stat_statements"> | boolean | null
-    queryid?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    query?: StringNullableWithAggregatesFilter<"pg_stat_statements"> | string | null
-    plans?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    total_plan_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    min_plan_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    max_plan_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    mean_plan_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    stddev_plan_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    calls?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    total_exec_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    min_exec_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    max_exec_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    mean_exec_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    stddev_exec_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    rows?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    shared_blks_hit?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    shared_blks_read?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    shared_blks_dirtied?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    shared_blks_written?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    local_blks_hit?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    local_blks_read?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    local_blks_dirtied?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    local_blks_written?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    temp_blks_read?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    temp_blks_written?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    blk_read_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    blk_write_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    temp_blk_read_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    temp_blk_write_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    wal_records?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    wal_fpi?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    wal_bytes?: DecimalNullableWithAggregatesFilter<"pg_stat_statements"> | Decimal | DecimalJsLike | number | string | null
-    jit_functions?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    jit_generation_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    jit_inlining_count?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    jit_inlining_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    jit_optimization_count?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    jit_optimization_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-    jit_emission_count?: BigIntNullableWithAggregatesFilter<"pg_stat_statements"> | bigint | number | null
-    jit_emission_time?: FloatNullableWithAggregatesFilter<"pg_stat_statements"> | number | null
-  }
-
-  export type pg_stat_statements_infoWhereInput = {
-    AND?: pg_stat_statements_infoWhereInput | pg_stat_statements_infoWhereInput[]
-    OR?: pg_stat_statements_infoWhereInput[]
-    NOT?: pg_stat_statements_infoWhereInput | pg_stat_statements_infoWhereInput[]
-    dealloc?: BigIntNullableFilter<"pg_stat_statements_info"> | bigint | number | null
-    stats_reset?: DateTimeNullableFilter<"pg_stat_statements_info"> | Date | string | null
-  }
-
-  export type pg_stat_statements_infoOrderByWithRelationInput = {
-    dealloc?: SortOrderInput | SortOrder
-    stats_reset?: SortOrderInput | SortOrder
-  }
-
-  export type pg_stat_statements_infoOrderByWithAggregationInput = {
-    dealloc?: SortOrderInput | SortOrder
-    stats_reset?: SortOrderInput | SortOrder
-    _count?: pg_stat_statements_infoCountOrderByAggregateInput
-    _avg?: pg_stat_statements_infoAvgOrderByAggregateInput
-    _max?: pg_stat_statements_infoMaxOrderByAggregateInput
-    _min?: pg_stat_statements_infoMinOrderByAggregateInput
-    _sum?: pg_stat_statements_infoSumOrderByAggregateInput
-  }
-
-  export type pg_stat_statements_infoScalarWhereWithAggregatesInput = {
-    AND?: pg_stat_statements_infoScalarWhereWithAggregatesInput | pg_stat_statements_infoScalarWhereWithAggregatesInput[]
-    OR?: pg_stat_statements_infoScalarWhereWithAggregatesInput[]
-    NOT?: pg_stat_statements_infoScalarWhereWithAggregatesInput | pg_stat_statements_infoScalarWhereWithAggregatesInput[]
-    dealloc?: BigIntNullableWithAggregatesFilter<"pg_stat_statements_info"> | bigint | number | null
-    stats_reset?: DateTimeNullableWithAggregatesFilter<"pg_stat_statements_info"> | Date | string | null
-  }
-
-  export type geography_columnsWhereInput = {
-    AND?: geography_columnsWhereInput | geography_columnsWhereInput[]
-    OR?: geography_columnsWhereInput[]
-    NOT?: geography_columnsWhereInput | geography_columnsWhereInput[]
-    coord_dimension?: IntNullableFilter<"geography_columns"> | number | null
-    srid?: IntNullableFilter<"geography_columns"> | number | null
-    type?: StringNullableFilter<"geography_columns"> | string | null
-  }
-
-  export type geography_columnsOrderByWithRelationInput = {
-    coord_dimension?: SortOrderInput | SortOrder
-    srid?: SortOrderInput | SortOrder
-    type?: SortOrderInput | SortOrder
-  }
-
-  export type geography_columnsOrderByWithAggregationInput = {
-    coord_dimension?: SortOrderInput | SortOrder
-    srid?: SortOrderInput | SortOrder
-    type?: SortOrderInput | SortOrder
-    _count?: geography_columnsCountOrderByAggregateInput
-    _avg?: geography_columnsAvgOrderByAggregateInput
-    _max?: geography_columnsMaxOrderByAggregateInput
-    _min?: geography_columnsMinOrderByAggregateInput
-    _sum?: geography_columnsSumOrderByAggregateInput
-  }
-
-  export type geography_columnsScalarWhereWithAggregatesInput = {
-    AND?: geography_columnsScalarWhereWithAggregatesInput | geography_columnsScalarWhereWithAggregatesInput[]
-    OR?: geography_columnsScalarWhereWithAggregatesInput[]
-    NOT?: geography_columnsScalarWhereWithAggregatesInput | geography_columnsScalarWhereWithAggregatesInput[]
-    coord_dimension?: IntNullableWithAggregatesFilter<"geography_columns"> | number | null
-    srid?: IntNullableWithAggregatesFilter<"geography_columns"> | number | null
-    type?: StringNullableWithAggregatesFilter<"geography_columns"> | string | null
-  }
-
-  export type geometry_columnsWhereInput = {
-    AND?: geometry_columnsWhereInput | geometry_columnsWhereInput[]
-    OR?: geometry_columnsWhereInput[]
-    NOT?: geometry_columnsWhereInput | geometry_columnsWhereInput[]
-    f_table_catalog?: StringNullableFilter<"geometry_columns"> | string | null
-    coord_dimension?: IntNullableFilter<"geometry_columns"> | number | null
-    srid?: IntNullableFilter<"geometry_columns"> | number | null
-    type?: StringNullableFilter<"geometry_columns"> | string | null
-  }
-
-  export type geometry_columnsOrderByWithRelationInput = {
-    f_table_catalog?: SortOrderInput | SortOrder
-    coord_dimension?: SortOrderInput | SortOrder
-    srid?: SortOrderInput | SortOrder
-    type?: SortOrderInput | SortOrder
-  }
-
-  export type geometry_columnsOrderByWithAggregationInput = {
-    f_table_catalog?: SortOrderInput | SortOrder
-    coord_dimension?: SortOrderInput | SortOrder
-    srid?: SortOrderInput | SortOrder
-    type?: SortOrderInput | SortOrder
-    _count?: geometry_columnsCountOrderByAggregateInput
-    _avg?: geometry_columnsAvgOrderByAggregateInput
-    _max?: geometry_columnsMaxOrderByAggregateInput
-    _min?: geometry_columnsMinOrderByAggregateInput
-    _sum?: geometry_columnsSumOrderByAggregateInput
-  }
-
-  export type geometry_columnsScalarWhereWithAggregatesInput = {
-    AND?: geometry_columnsScalarWhereWithAggregatesInput | geometry_columnsScalarWhereWithAggregatesInput[]
-    OR?: geometry_columnsScalarWhereWithAggregatesInput[]
-    NOT?: geometry_columnsScalarWhereWithAggregatesInput | geometry_columnsScalarWhereWithAggregatesInput[]
-    f_table_catalog?: StringNullableWithAggregatesFilter<"geometry_columns"> | string | null
-    coord_dimension?: IntNullableWithAggregatesFilter<"geometry_columns"> | number | null
-    srid?: IntNullableWithAggregatesFilter<"geometry_columns"> | number | null
-    type?: StringNullableWithAggregatesFilter<"geometry_columns"> | string | null
+  export type secheressesScalarWhereWithAggregatesInput = {
+    AND?: secheressesScalarWhereWithAggregatesInput | secheressesScalarWhereWithAggregatesInput[]
+    OR?: secheressesScalarWhereWithAggregatesInput[]
+    NOT?: secheressesScalarWhereWithAggregatesInput | secheressesScalarWhereWithAggregatesInput[]
+    code_geographique?: StringWithAggregatesFilter<"secheresses"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"secheresses"> | string
+    epci?: StringWithAggregatesFilter<"secheresses"> | string
+    libelle_epci?: StringWithAggregatesFilter<"secheresses"> | string
+    departement?: StringWithAggregatesFilter<"secheresses"> | string
+    libelle_departement?: StringWithAggregatesFilter<"secheresses"> | string
+    region?: FloatWithAggregatesFilter<"secheresses"> | number
+    ept?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    restrictions_2013?: JsonNullableListFilter<"secheresses">
+    restrictions_2014?: JsonNullableListFilter<"secheresses">
+    restrictions_2015?: JsonNullableListFilter<"secheresses">
+    restrictions_2016?: JsonNullableListFilter<"secheresses">
+    restrictions_2017?: JsonNullableListFilter<"secheresses">
+    restrictions_2018?: JsonNullableListFilter<"secheresses">
+    restrictions_2019?: JsonNullableListFilter<"secheresses">
+    restrictions_2020?: JsonNullableListFilter<"secheresses">
+    restrictions_2021?: JsonNullableListFilter<"secheresses">
+    restrictions_2022?: JsonNullableListFilter<"secheresses">
+    restrictions_2023?: JsonNullableListFilter<"secheresses">
+    restrictions_2024?: JsonNullableListFilter<"secheresses">
+    id?: IntWithAggregatesFilter<"secheresses"> | number
   }
 
   export type north_star_metricCreateInput = {
@@ -70206,6 +68210,192 @@ export namespace Prisma {
     alea?: StringFieldUpdateOperationsInput | string
   }
 
+  export type secheressesCreateInput = {
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    restrictions_2013?: secheressesCreaterestrictions_2013Input | InputJsonValue[]
+    restrictions_2014?: secheressesCreaterestrictions_2014Input | InputJsonValue[]
+    restrictions_2015?: secheressesCreaterestrictions_2015Input | InputJsonValue[]
+    restrictions_2016?: secheressesCreaterestrictions_2016Input | InputJsonValue[]
+    restrictions_2017?: secheressesCreaterestrictions_2017Input | InputJsonValue[]
+    restrictions_2018?: secheressesCreaterestrictions_2018Input | InputJsonValue[]
+    restrictions_2019?: secheressesCreaterestrictions_2019Input | InputJsonValue[]
+    restrictions_2020?: secheressesCreaterestrictions_2020Input | InputJsonValue[]
+    restrictions_2021?: secheressesCreaterestrictions_2021Input | InputJsonValue[]
+    restrictions_2022?: secheressesCreaterestrictions_2022Input | InputJsonValue[]
+    restrictions_2023?: secheressesCreaterestrictions_2023Input | InputJsonValue[]
+    restrictions_2024?: secheressesCreaterestrictions_2024Input | InputJsonValue[]
+  }
+
+  export type secheressesUncheckedCreateInput = {
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    restrictions_2013?: secheressesCreaterestrictions_2013Input | InputJsonValue[]
+    restrictions_2014?: secheressesCreaterestrictions_2014Input | InputJsonValue[]
+    restrictions_2015?: secheressesCreaterestrictions_2015Input | InputJsonValue[]
+    restrictions_2016?: secheressesCreaterestrictions_2016Input | InputJsonValue[]
+    restrictions_2017?: secheressesCreaterestrictions_2017Input | InputJsonValue[]
+    restrictions_2018?: secheressesCreaterestrictions_2018Input | InputJsonValue[]
+    restrictions_2019?: secheressesCreaterestrictions_2019Input | InputJsonValue[]
+    restrictions_2020?: secheressesCreaterestrictions_2020Input | InputJsonValue[]
+    restrictions_2021?: secheressesCreaterestrictions_2021Input | InputJsonValue[]
+    restrictions_2022?: secheressesCreaterestrictions_2022Input | InputJsonValue[]
+    restrictions_2023?: secheressesCreaterestrictions_2023Input | InputJsonValue[]
+    restrictions_2024?: secheressesCreaterestrictions_2024Input | InputJsonValue[]
+    id?: number
+  }
+
+  export type secheressesUpdateInput = {
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2013?: secheressesUpdaterestrictions_2013Input | InputJsonValue[]
+    restrictions_2014?: secheressesUpdaterestrictions_2014Input | InputJsonValue[]
+    restrictions_2015?: secheressesUpdaterestrictions_2015Input | InputJsonValue[]
+    restrictions_2016?: secheressesUpdaterestrictions_2016Input | InputJsonValue[]
+    restrictions_2017?: secheressesUpdaterestrictions_2017Input | InputJsonValue[]
+    restrictions_2018?: secheressesUpdaterestrictions_2018Input | InputJsonValue[]
+    restrictions_2019?: secheressesUpdaterestrictions_2019Input | InputJsonValue[]
+    restrictions_2020?: secheressesUpdaterestrictions_2020Input | InputJsonValue[]
+    restrictions_2021?: secheressesUpdaterestrictions_2021Input | InputJsonValue[]
+    restrictions_2022?: secheressesUpdaterestrictions_2022Input | InputJsonValue[]
+    restrictions_2023?: secheressesUpdaterestrictions_2023Input | InputJsonValue[]
+    restrictions_2024?: secheressesUpdaterestrictions_2024Input | InputJsonValue[]
+  }
+
+  export type secheressesUncheckedUpdateInput = {
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2013?: secheressesUpdaterestrictions_2013Input | InputJsonValue[]
+    restrictions_2014?: secheressesUpdaterestrictions_2014Input | InputJsonValue[]
+    restrictions_2015?: secheressesUpdaterestrictions_2015Input | InputJsonValue[]
+    restrictions_2016?: secheressesUpdaterestrictions_2016Input | InputJsonValue[]
+    restrictions_2017?: secheressesUpdaterestrictions_2017Input | InputJsonValue[]
+    restrictions_2018?: secheressesUpdaterestrictions_2018Input | InputJsonValue[]
+    restrictions_2019?: secheressesUpdaterestrictions_2019Input | InputJsonValue[]
+    restrictions_2020?: secheressesUpdaterestrictions_2020Input | InputJsonValue[]
+    restrictions_2021?: secheressesUpdaterestrictions_2021Input | InputJsonValue[]
+    restrictions_2022?: secheressesUpdaterestrictions_2022Input | InputJsonValue[]
+    restrictions_2023?: secheressesUpdaterestrictions_2023Input | InputJsonValue[]
+    restrictions_2024?: secheressesUpdaterestrictions_2024Input | InputJsonValue[]
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type secheressesCreateManyInput = {
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    restrictions_2013?: secheressesCreaterestrictions_2013Input | InputJsonValue[]
+    restrictions_2014?: secheressesCreaterestrictions_2014Input | InputJsonValue[]
+    restrictions_2015?: secheressesCreaterestrictions_2015Input | InputJsonValue[]
+    restrictions_2016?: secheressesCreaterestrictions_2016Input | InputJsonValue[]
+    restrictions_2017?: secheressesCreaterestrictions_2017Input | InputJsonValue[]
+    restrictions_2018?: secheressesCreaterestrictions_2018Input | InputJsonValue[]
+    restrictions_2019?: secheressesCreaterestrictions_2019Input | InputJsonValue[]
+    restrictions_2020?: secheressesCreaterestrictions_2020Input | InputJsonValue[]
+    restrictions_2021?: secheressesCreaterestrictions_2021Input | InputJsonValue[]
+    restrictions_2022?: secheressesCreaterestrictions_2022Input | InputJsonValue[]
+    restrictions_2023?: secheressesCreaterestrictions_2023Input | InputJsonValue[]
+    restrictions_2024?: secheressesCreaterestrictions_2024Input | InputJsonValue[]
+    id?: number
+  }
+
+  export type secheressesUpdateManyMutationInput = {
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2013?: secheressesUpdaterestrictions_2013Input | InputJsonValue[]
+    restrictions_2014?: secheressesUpdaterestrictions_2014Input | InputJsonValue[]
+    restrictions_2015?: secheressesUpdaterestrictions_2015Input | InputJsonValue[]
+    restrictions_2016?: secheressesUpdaterestrictions_2016Input | InputJsonValue[]
+    restrictions_2017?: secheressesUpdaterestrictions_2017Input | InputJsonValue[]
+    restrictions_2018?: secheressesUpdaterestrictions_2018Input | InputJsonValue[]
+    restrictions_2019?: secheressesUpdaterestrictions_2019Input | InputJsonValue[]
+    restrictions_2020?: secheressesUpdaterestrictions_2020Input | InputJsonValue[]
+    restrictions_2021?: secheressesUpdaterestrictions_2021Input | InputJsonValue[]
+    restrictions_2022?: secheressesUpdaterestrictions_2022Input | InputJsonValue[]
+    restrictions_2023?: secheressesUpdaterestrictions_2023Input | InputJsonValue[]
+    restrictions_2024?: secheressesUpdaterestrictions_2024Input | InputJsonValue[]
+  }
+
+  export type secheressesUncheckedUpdateManyInput = {
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2013?: secheressesUpdaterestrictions_2013Input | InputJsonValue[]
+    restrictions_2014?: secheressesUpdaterestrictions_2014Input | InputJsonValue[]
+    restrictions_2015?: secheressesUpdaterestrictions_2015Input | InputJsonValue[]
+    restrictions_2016?: secheressesUpdaterestrictions_2016Input | InputJsonValue[]
+    restrictions_2017?: secheressesUpdaterestrictions_2017Input | InputJsonValue[]
+    restrictions_2018?: secheressesUpdaterestrictions_2018Input | InputJsonValue[]
+    restrictions_2019?: secheressesUpdaterestrictions_2019Input | InputJsonValue[]
+    restrictions_2020?: secheressesUpdaterestrictions_2020Input | InputJsonValue[]
+    restrictions_2021?: secheressesUpdaterestrictions_2021Input | InputJsonValue[]
+    restrictions_2022?: secheressesUpdaterestrictions_2022Input | InputJsonValue[]
+    restrictions_2023?: secheressesUpdaterestrictions_2023Input | InputJsonValue[]
+    restrictions_2024?: secheressesUpdaterestrictions_2024Input | InputJsonValue[]
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -74300,340 +72490,86 @@ export namespace Prisma {
     pk?: SortOrder
     region?: SortOrder
   }
+  export type JsonNullableListFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableListFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableListFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>
 
-  export type DecimalNullableFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  export type JsonNullableListFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel> | null
+    has?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    hasEvery?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel>
+    hasSome?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
   }
 
-  export type pg_stat_statementsCountOrderByAggregateInput = {
-    userid?: SortOrder
-    dbid?: SortOrder
-    toplevel?: SortOrder
-    queryid?: SortOrder
-    query?: SortOrder
-    plans?: SortOrder
-    total_plan_time?: SortOrder
-    min_plan_time?: SortOrder
-    max_plan_time?: SortOrder
-    mean_plan_time?: SortOrder
-    stddev_plan_time?: SortOrder
-    calls?: SortOrder
-    total_exec_time?: SortOrder
-    min_exec_time?: SortOrder
-    max_exec_time?: SortOrder
-    mean_exec_time?: SortOrder
-    stddev_exec_time?: SortOrder
-    rows?: SortOrder
-    shared_blks_hit?: SortOrder
-    shared_blks_read?: SortOrder
-    shared_blks_dirtied?: SortOrder
-    shared_blks_written?: SortOrder
-    local_blks_hit?: SortOrder
-    local_blks_read?: SortOrder
-    local_blks_dirtied?: SortOrder
-    local_blks_written?: SortOrder
-    temp_blks_read?: SortOrder
-    temp_blks_written?: SortOrder
-    blk_read_time?: SortOrder
-    blk_write_time?: SortOrder
-    temp_blk_read_time?: SortOrder
-    temp_blk_write_time?: SortOrder
-    wal_records?: SortOrder
-    wal_fpi?: SortOrder
-    wal_bytes?: SortOrder
-    jit_functions?: SortOrder
-    jit_generation_time?: SortOrder
-    jit_inlining_count?: SortOrder
-    jit_inlining_time?: SortOrder
-    jit_optimization_count?: SortOrder
-    jit_optimization_time?: SortOrder
-    jit_emission_count?: SortOrder
-    jit_emission_time?: SortOrder
+  export type secheressesCountOrderByAggregateInput = {
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    restrictions_2013?: SortOrder
+    restrictions_2014?: SortOrder
+    restrictions_2015?: SortOrder
+    restrictions_2016?: SortOrder
+    restrictions_2017?: SortOrder
+    restrictions_2018?: SortOrder
+    restrictions_2019?: SortOrder
+    restrictions_2020?: SortOrder
+    restrictions_2021?: SortOrder
+    restrictions_2022?: SortOrder
+    restrictions_2023?: SortOrder
+    restrictions_2024?: SortOrder
+    id?: SortOrder
   }
 
-  export type pg_stat_statementsAvgOrderByAggregateInput = {
-    userid?: SortOrder
-    dbid?: SortOrder
-    queryid?: SortOrder
-    plans?: SortOrder
-    total_plan_time?: SortOrder
-    min_plan_time?: SortOrder
-    max_plan_time?: SortOrder
-    mean_plan_time?: SortOrder
-    stddev_plan_time?: SortOrder
-    calls?: SortOrder
-    total_exec_time?: SortOrder
-    min_exec_time?: SortOrder
-    max_exec_time?: SortOrder
-    mean_exec_time?: SortOrder
-    stddev_exec_time?: SortOrder
-    rows?: SortOrder
-    shared_blks_hit?: SortOrder
-    shared_blks_read?: SortOrder
-    shared_blks_dirtied?: SortOrder
-    shared_blks_written?: SortOrder
-    local_blks_hit?: SortOrder
-    local_blks_read?: SortOrder
-    local_blks_dirtied?: SortOrder
-    local_blks_written?: SortOrder
-    temp_blks_read?: SortOrder
-    temp_blks_written?: SortOrder
-    blk_read_time?: SortOrder
-    blk_write_time?: SortOrder
-    temp_blk_read_time?: SortOrder
-    temp_blk_write_time?: SortOrder
-    wal_records?: SortOrder
-    wal_fpi?: SortOrder
-    wal_bytes?: SortOrder
-    jit_functions?: SortOrder
-    jit_generation_time?: SortOrder
-    jit_inlining_count?: SortOrder
-    jit_inlining_time?: SortOrder
-    jit_optimization_count?: SortOrder
-    jit_optimization_time?: SortOrder
-    jit_emission_count?: SortOrder
-    jit_emission_time?: SortOrder
+  export type secheressesAvgOrderByAggregateInput = {
+    region?: SortOrder
+    id?: SortOrder
   }
 
-  export type pg_stat_statementsMaxOrderByAggregateInput = {
-    userid?: SortOrder
-    dbid?: SortOrder
-    toplevel?: SortOrder
-    queryid?: SortOrder
-    query?: SortOrder
-    plans?: SortOrder
-    total_plan_time?: SortOrder
-    min_plan_time?: SortOrder
-    max_plan_time?: SortOrder
-    mean_plan_time?: SortOrder
-    stddev_plan_time?: SortOrder
-    calls?: SortOrder
-    total_exec_time?: SortOrder
-    min_exec_time?: SortOrder
-    max_exec_time?: SortOrder
-    mean_exec_time?: SortOrder
-    stddev_exec_time?: SortOrder
-    rows?: SortOrder
-    shared_blks_hit?: SortOrder
-    shared_blks_read?: SortOrder
-    shared_blks_dirtied?: SortOrder
-    shared_blks_written?: SortOrder
-    local_blks_hit?: SortOrder
-    local_blks_read?: SortOrder
-    local_blks_dirtied?: SortOrder
-    local_blks_written?: SortOrder
-    temp_blks_read?: SortOrder
-    temp_blks_written?: SortOrder
-    blk_read_time?: SortOrder
-    blk_write_time?: SortOrder
-    temp_blk_read_time?: SortOrder
-    temp_blk_write_time?: SortOrder
-    wal_records?: SortOrder
-    wal_fpi?: SortOrder
-    wal_bytes?: SortOrder
-    jit_functions?: SortOrder
-    jit_generation_time?: SortOrder
-    jit_inlining_count?: SortOrder
-    jit_inlining_time?: SortOrder
-    jit_optimization_count?: SortOrder
-    jit_optimization_time?: SortOrder
-    jit_emission_count?: SortOrder
-    jit_emission_time?: SortOrder
+  export type secheressesMaxOrderByAggregateInput = {
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    id?: SortOrder
   }
 
-  export type pg_stat_statementsMinOrderByAggregateInput = {
-    userid?: SortOrder
-    dbid?: SortOrder
-    toplevel?: SortOrder
-    queryid?: SortOrder
-    query?: SortOrder
-    plans?: SortOrder
-    total_plan_time?: SortOrder
-    min_plan_time?: SortOrder
-    max_plan_time?: SortOrder
-    mean_plan_time?: SortOrder
-    stddev_plan_time?: SortOrder
-    calls?: SortOrder
-    total_exec_time?: SortOrder
-    min_exec_time?: SortOrder
-    max_exec_time?: SortOrder
-    mean_exec_time?: SortOrder
-    stddev_exec_time?: SortOrder
-    rows?: SortOrder
-    shared_blks_hit?: SortOrder
-    shared_blks_read?: SortOrder
-    shared_blks_dirtied?: SortOrder
-    shared_blks_written?: SortOrder
-    local_blks_hit?: SortOrder
-    local_blks_read?: SortOrder
-    local_blks_dirtied?: SortOrder
-    local_blks_written?: SortOrder
-    temp_blks_read?: SortOrder
-    temp_blks_written?: SortOrder
-    blk_read_time?: SortOrder
-    blk_write_time?: SortOrder
-    temp_blk_read_time?: SortOrder
-    temp_blk_write_time?: SortOrder
-    wal_records?: SortOrder
-    wal_fpi?: SortOrder
-    wal_bytes?: SortOrder
-    jit_functions?: SortOrder
-    jit_generation_time?: SortOrder
-    jit_inlining_count?: SortOrder
-    jit_inlining_time?: SortOrder
-    jit_optimization_count?: SortOrder
-    jit_optimization_time?: SortOrder
-    jit_emission_count?: SortOrder
-    jit_emission_time?: SortOrder
+  export type secheressesMinOrderByAggregateInput = {
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    id?: SortOrder
   }
 
-  export type pg_stat_statementsSumOrderByAggregateInput = {
-    userid?: SortOrder
-    dbid?: SortOrder
-    queryid?: SortOrder
-    plans?: SortOrder
-    total_plan_time?: SortOrder
-    min_plan_time?: SortOrder
-    max_plan_time?: SortOrder
-    mean_plan_time?: SortOrder
-    stddev_plan_time?: SortOrder
-    calls?: SortOrder
-    total_exec_time?: SortOrder
-    min_exec_time?: SortOrder
-    max_exec_time?: SortOrder
-    mean_exec_time?: SortOrder
-    stddev_exec_time?: SortOrder
-    rows?: SortOrder
-    shared_blks_hit?: SortOrder
-    shared_blks_read?: SortOrder
-    shared_blks_dirtied?: SortOrder
-    shared_blks_written?: SortOrder
-    local_blks_hit?: SortOrder
-    local_blks_read?: SortOrder
-    local_blks_dirtied?: SortOrder
-    local_blks_written?: SortOrder
-    temp_blks_read?: SortOrder
-    temp_blks_written?: SortOrder
-    blk_read_time?: SortOrder
-    blk_write_time?: SortOrder
-    temp_blk_read_time?: SortOrder
-    temp_blk_write_time?: SortOrder
-    wal_records?: SortOrder
-    wal_fpi?: SortOrder
-    wal_bytes?: SortOrder
-    jit_functions?: SortOrder
-    jit_generation_time?: SortOrder
-    jit_inlining_count?: SortOrder
-    jit_inlining_time?: SortOrder
-    jit_optimization_count?: SortOrder
-    jit_optimization_time?: SortOrder
-    jit_emission_count?: SortOrder
-    jit_emission_time?: SortOrder
-  }
-
-  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedDecimalNullableFilter<$PrismaModel>
-    _sum?: NestedDecimalNullableFilter<$PrismaModel>
-    _min?: NestedDecimalNullableFilter<$PrismaModel>
-    _max?: NestedDecimalNullableFilter<$PrismaModel>
-  }
-
-  export type pg_stat_statements_infoCountOrderByAggregateInput = {
-    dealloc?: SortOrder
-    stats_reset?: SortOrder
-  }
-
-  export type pg_stat_statements_infoAvgOrderByAggregateInput = {
-    dealloc?: SortOrder
-  }
-
-  export type pg_stat_statements_infoMaxOrderByAggregateInput = {
-    dealloc?: SortOrder
-    stats_reset?: SortOrder
-  }
-
-  export type pg_stat_statements_infoMinOrderByAggregateInput = {
-    dealloc?: SortOrder
-    stats_reset?: SortOrder
-  }
-
-  export type pg_stat_statements_infoSumOrderByAggregateInput = {
-    dealloc?: SortOrder
-  }
-
-  export type geography_columnsCountOrderByAggregateInput = {
-    coord_dimension?: SortOrder
-    srid?: SortOrder
-    type?: SortOrder
-  }
-
-  export type geography_columnsAvgOrderByAggregateInput = {
-    coord_dimension?: SortOrder
-    srid?: SortOrder
-  }
-
-  export type geography_columnsMaxOrderByAggregateInput = {
-    coord_dimension?: SortOrder
-    srid?: SortOrder
-    type?: SortOrder
-  }
-
-  export type geography_columnsMinOrderByAggregateInput = {
-    coord_dimension?: SortOrder
-    srid?: SortOrder
-    type?: SortOrder
-  }
-
-  export type geography_columnsSumOrderByAggregateInput = {
-    coord_dimension?: SortOrder
-    srid?: SortOrder
-  }
-
-  export type geometry_columnsCountOrderByAggregateInput = {
-    f_table_catalog?: SortOrder
-    coord_dimension?: SortOrder
-    srid?: SortOrder
-    type?: SortOrder
-  }
-
-  export type geometry_columnsAvgOrderByAggregateInput = {
-    coord_dimension?: SortOrder
-    srid?: SortOrder
-  }
-
-  export type geometry_columnsMaxOrderByAggregateInput = {
-    f_table_catalog?: SortOrder
-    coord_dimension?: SortOrder
-    srid?: SortOrder
-    type?: SortOrder
-  }
-
-  export type geometry_columnsMinOrderByAggregateInput = {
-    f_table_catalog?: SortOrder
-    coord_dimension?: SortOrder
-    srid?: SortOrder
-    type?: SortOrder
-  }
-
-  export type geometry_columnsSumOrderByAggregateInput = {
-    coord_dimension?: SortOrder
-    srid?: SortOrder
+  export type secheressesSumOrderByAggregateInput = {
+    region?: SortOrder
+    id?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -74846,6 +72782,114 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type secheressesCreaterestrictions_2013Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2014Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2015Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2016Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2017Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2018Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2019Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2020Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2021Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2022Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2023Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2024Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2013Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2014Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2015Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2016Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2017Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2018Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2019Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2020Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2021Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2022Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2023Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2024Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -75156,33 +73200,6 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedDecimalNullableFilter<$PrismaModel>
-    _sum?: NestedDecimalNullableFilter<$PrismaModel>
-    _min?: NestedDecimalNullableFilter<$PrismaModel>
-    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
 
