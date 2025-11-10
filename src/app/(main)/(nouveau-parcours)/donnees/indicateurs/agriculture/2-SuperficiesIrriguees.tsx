@@ -11,7 +11,7 @@ import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
+import { CarteCommunes, TableCommuneModel } from '@/lib/postgres/models';
 import { SurfacesIrrigueesText } from '@/lib/staticTexts';
 import { surfacesIrrigueesTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
@@ -22,10 +22,10 @@ import { useSearchParams } from 'next/navigation';
 import styles from '../../explorerDonnees.module.scss';
 
 export const SuperficiesIrriguees = (props: {
-  agriculture: Agriculture[];
+  tableCommune: TableCommuneModel[];
   carteCommunes: CarteCommunes[];
 }) => {
-  const { agriculture, carteCommunes } = props;
+  const { tableCommune, carteCommunes } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -34,8 +34,8 @@ export const SuperficiesIrriguees = (props: {
     return {
       ...el,
       surfacesIrriguees:
-        agriculture.find((item) => item.code_geographique === el.code_geographique)
-          ?.part_irr_SAU_2020 ?? NaN
+        Number(tableCommune.find((item) => item.code_geographique === el.code_geographique)
+          ?.part_irr_sau_2020) ?? NaN
     };
   });
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);

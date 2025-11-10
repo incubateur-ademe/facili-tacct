@@ -2,8 +2,8 @@
 import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { CarteCommunes, EtatCoursDeau, RessourcesEau } from "@/lib/postgres/models";
-import { GetRessourceEau } from "@/lib/queries/databases/ressourcesEau";
+import { CarteCommunes, EtatCoursDeau, PrelevementsEau } from "@/lib/postgres/models";
+import { GetPrelevementsEau } from "@/lib/queries/databases/ressourcesEau";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
 import { useSearchParams } from "next/navigation";
@@ -15,14 +15,14 @@ import { PrelevementsEnEau } from '../../indicateurs/eau/2-PrelevementsEnEau';
 
 interface Props {
   carteCommunes: CarteCommunes[];
-  ressourcesEau: RessourcesEau[];
   etatCoursDeau: EtatCoursDeau[];
+  prelevementsEau: PrelevementsEau[];
 }
 
 export const DonneesEau = ({
   carteCommunes,
-  ressourcesEau,
-  etatCoursDeau
+  etatCoursDeau,
+  prelevementsEau
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Eau";
@@ -32,8 +32,8 @@ export const DonneesEau = ({
   const ongletsMenu = sommaireThematiques[thematique];
   const [data, setData] = useState({
     carteCommunes,
-    ressourcesEau,
-  etatCoursDeau
+    etatCoursDeau,
+    prelevementsEau
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -45,12 +45,16 @@ export const DonneesEau = ({
     }
     setIsLoading(true);
     void (async () => {
-      const [newCarteCommunes, newRessourcesEau, newEtatCoursDeau] = await Promise.all([
+      const [newCarteCommunes, newEtatCoursDeau, newPrelevementsEau] = await Promise.all([
         GetCommunes(code, libelle, type),
-        GetRessourceEau(code, libelle, type),
-        GetEtatCoursDeau(code, libelle, type)
+        GetEtatCoursDeau(code, libelle, type),
+        GetPrelevementsEau(code, libelle, type)
       ]);
-      setData({ carteCommunes: newCarteCommunes, ressourcesEau: newRessourcesEau, etatCoursDeau: newEtatCoursDeau });
+      setData({
+        carteCommunes: newCarteCommunes,
+        etatCoursDeau: newEtatCoursDeau,
+        prelevementsEau: newPrelevementsEau
+      });
       setIsLoading(false);
     })();
   }, [libelle]);
@@ -87,7 +91,7 @@ export const DonneesEau = ({
                 Répartition des prélèvements d’eau par usage
               </H3>
             </div>
-            <PrelevementsEnEau ressourcesEau={data.ressourcesEau} />
+            <PrelevementsEnEau prelevementsEau={data.prelevementsEau} />
           </div>
 
           {/* État écologique des cours d'eau */}

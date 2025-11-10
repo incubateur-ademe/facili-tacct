@@ -3,7 +3,6 @@
 import {
   CarteCommunes,
   CLCTerritoires,
-  DebroussaillementModel,
   ErosionCotiere
 } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
@@ -184,7 +183,7 @@ export const GetClcTerritoires = async (
     try {
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.clc_territoires.findFirst({
+      const exists = await prisma.clc_par_communes.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return undefined;
@@ -195,7 +194,7 @@ export const GetClcTerritoires = async (
             legend, 
             ST_AsText(ST_Centroid(geometry)) centroid,
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."clc_territoires" WHERE code_geographique=${code};`;
+            FROM postgis."clc_par_communes" WHERE code_geographique=${code};`;
           return value.length ? value : undefined;
         } else if (type === 'ept' && eptRegex.test(libelle)) {
           const value = await prisma.$queryRaw<CLCTerritoires[]>`
@@ -203,7 +202,7 @@ export const GetClcTerritoires = async (
             legend, 
             ST_AsText(ST_Centroid(geometry)) centroid,
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."clc_territoires" WHERE ept IS NOT NULL AND ept=${libelle};`;
+            FROM postgis."clc_par_communes" WHERE ept IS NOT NULL AND ept=${libelle};`;
           return value.length ? value : undefined;
         } else if (type === 'epci' && !eptRegex.test(libelle)) {
           const value = await prisma.$queryRaw<CLCTerritoires[]>`
@@ -211,15 +210,15 @@ export const GetClcTerritoires = async (
             legend, 
             ST_AsText(ST_Centroid(geometry)) centroid,
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."clc_territoires" WHERE epci=${code};`;
+            FROM postgis."clc_par_communes" WHERE epci=${code};`;
           return value.length ? value : undefined;
         } else if (type === 'pnr') {
           const value = await prisma.$queryRaw<CLCTerritoires[]>`
             SELECT 
             legend, 
             ST_AsText(ST_Centroid(geometry)) centroid,
-            ST_AsGeoJSON(geometry) geometry
-            FROM postgis."clc_territoires" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
+            ST_AsGeoJSON(ST_SimplifyPreserveTopology(geometry, 0.0001)) geometry
+            FROM postgis."clc_par_communes" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
           return value.length ? value : undefined;
         } else if (type === 'petr') {
           const value = await prisma.$queryRaw<CLCTerritoires[]>`
@@ -227,15 +226,17 @@ export const GetClcTerritoires = async (
             legend, 
             ST_AsText(ST_Centroid(geometry)) centroid,
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."clc_territoires" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
+            FROM postgis."clc_par_communes" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
           return value.length ? value : undefined;
         } else if (type === 'departement') {
           const value = await prisma.$queryRaw<CLCTerritoires[]>`
             SELECT 
             legend, 
             ST_AsText(ST_Centroid(geometry)) centroid,
-            ST_AsGeoJSON(geometry) geometry
-            FROM postgis."clc_territoires" WHERE departement=${code};`;
+            ST_AsGeoJSON(ST_SimplifyPreserveTopology(geometry, 0.0001)) geometry
+            FROM postgis."clc_par_communes" WHERE departement=${code};`;
+          const size = Buffer.byteLength(JSON.stringify(value));
+          console.log(`GetClcTerritoires ${type}: ${(size / 1024 / 1024).toFixed(2)} MB`);
           return value.length ? value : undefined;
         } else return undefined;
       }
@@ -503,78 +504,6 @@ export const GetCommunesGeometries = async (
     }
   })();
 
-  return Promise.race([dbQuery, timeoutPromise]);
-};
-
-export const GetDebroussaillement = async (
-  code: string,
-  libelle: string,
-  type: string
-): Promise<DebroussaillementModel[]> => {
-  const timeoutPromise = new Promise<DebroussaillementModel[]>((resolve) =>
-    setTimeout(() => {
-      resolve([]);
-    }, 20000)
-  );
-  const dbQuery: Promise<DebroussaillementModel[]> = (async () => {
-    try {
-      if (!libelle || !type || (!code && type !== 'petr')) return [];
-      if (type === 'commune') {
-        const commune = await prisma.$queryRaw<CarteCommunes[]>`
-          SELECT
-          code_geographique,
-          ST_AsText(geometry) geometry
-          FROM postgis."communes_drom" 
-          WHERE code_geographique=${code} LIMIT 1;`;
-        if (commune.length !== 0) {
-          const intersect = await prisma.$queryRaw<DebroussaillementModel[]>`
-          SELECT
-          pk,
-          ST_AsGeoJSON(geometry) geometry
-          FROM postgis."debroussaillement"
-          WHERE ST_Within(geometry, ST_GeomFromText(${commune[0].geometry}, 4326));`;
-          return intersect;
-        }
-        return [];
-      } else if (type === 'epci' && !eptRegex.test(libelle)) {
-        const epci = await prisma.$queryRaw<CarteCommunes[]>`
-            SELECT
-            ST_AsText(ST_Union(geometry)) as geometry
-            FROM postgis."communes_drom" WHERE epci=${code};`;
-        if (epci.length !== 0) {
-          const intersect = await prisma.$queryRaw<DebroussaillementModel[]>`
-            SELECT
-            pk,
-            ST_AsGeoJSON(geometry) geometry
-            FROM postgis."debroussaillement"
-            WHERE ST_Within(geometry, ST_GeomFromText(${epci[0].geometry}, 4326))`;
-          return intersect;
-        }
-        return [];
-      } else if (type === 'pnr') {
-        const pnr = await prisma.$queryRaw<CarteCommunes[]>`
-          SELECT
-          ST_AsText(ST_Union(geometry)) as geometry
-          FROM postgis."communes_drom" WHERE code_pnr=${code};`;
-        if (pnr.length !== 0) {
-          const intersect = await prisma.$queryRaw<DebroussaillementModel[]>`
-            SELECT
-            pk,
-            ST_AsGeoJSON(geometry) geometry
-            FROM postgis."debroussaillement"
-            WHERE ST_Intersects(geometry, ST_GeomFromText(${pnr[0].geometry}, 4326))`;
-          console.log(
-            `GetDebroussaillement PNR ${code}: ${intersect.length} polygones trouvés`
-          );
-          return intersect;
-        }
-        return [];
-      } else return [];
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
-  })();
   return Promise.race([dbQuery, timeoutPromise]);
 };
 

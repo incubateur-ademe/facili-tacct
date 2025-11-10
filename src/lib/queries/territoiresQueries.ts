@@ -2,6 +2,19 @@ import { CollectivitesSearchbar } from '../postgres/models';
 import { PrismaPostgres } from './db';
 
 export const PNR = async (variableCollectivite: string) => {
+  const searchPattern = variableCollectivite + '%';
+  const searchPatternSpace = '% ' + variableCollectivite + '%';
+  const searchPatternDash = '%-' + variableCollectivite + '%';
+  const searchPatternApostrophe = "%'" + variableCollectivite + '%';
+  const searchPatternSpaceReplace =
+    '% ' + variableCollectivite.replace(' ', '-') + '%';
+  const searchPatternDashReplace =
+    '%-' + variableCollectivite.replace(' ', '-') + '%';
+  const searchPatternSpaceComma =
+    '% ' + variableCollectivite.replace(' ', ', ') + '%';
+  const searchPatternDashComma =
+    '%-' + variableCollectivite.replace(' ', ', ') + '%';
+
   const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
     SELECT 
     search_code,
@@ -19,10 +32,17 @@ export const PNR = async (variableCollectivite: string) => {
     code_pnr
     FROM databases."collectivites_searchbar" WHERE (code_geographique IS NULL AND libelle_pnr IS NOT NULL) AND 
       (
-        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', '))
-        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${variableCollectivite})
+        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPattern})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpace})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDash})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternApostrophe})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceReplace})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashReplace})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceComma})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashComma})
+        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPattern})
+        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternSpace})
+        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternDash})
       )
       LIMIT 20;
     `;
@@ -30,6 +50,19 @@ export const PNR = async (variableCollectivite: string) => {
 };
 
 export const PETR = async (variableCollectivite: string) => {
+  const searchPattern = variableCollectivite + '%';
+  const searchPatternSpace = '% ' + variableCollectivite + '%';
+  const searchPatternDash = '%-' + variableCollectivite + '%';
+  const searchPatternApostrophe = "%'" + variableCollectivite + '%';
+  const searchPatternSpaceReplace =
+    '% ' + variableCollectivite.replace(' ', '-') + '%';
+  const searchPatternDashReplace =
+    '%-' + variableCollectivite.replace(' ', '-') + '%';
+  const searchPatternSpaceComma =
+    '% ' + variableCollectivite.replace(' ', ', ') + '%';
+  const searchPatternDashComma =
+    '%-' + variableCollectivite.replace(' ', ', ') + '%';
+
   const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
     SELECT 
     search_code,
@@ -47,9 +80,14 @@ export const PETR = async (variableCollectivite: string) => {
     code_pnr
     FROM databases."collectivites_searchbar" WHERE (code_geographique IS NULL AND libelle_petr IS NOT NULL) AND 
       (
-        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', '))
+        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPattern})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpace})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDash})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternApostrophe})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceReplace})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashReplace})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceComma})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashComma})
       )
       LIMIT 20;
     `;
@@ -57,6 +95,19 @@ export const PETR = async (variableCollectivite: string) => {
 };
 
 export const EPCI = async (variableCollectivite: string) => {
+  const searchPattern = variableCollectivite + '%';
+  const searchPatternSpace = '% ' + variableCollectivite + '%';
+  const searchPatternDash = '%-' + variableCollectivite + '%';
+  const searchPatternApostrophe = "%'" + variableCollectivite + '%';
+  const searchPatternSpaceReplace =
+    '% ' + variableCollectivite.replace(' ', '-') + '%';
+  const searchPatternDashReplace =
+    '%-' + variableCollectivite.replace(' ', '-') + '%';
+  const searchPatternSpaceComma =
+    '% ' + variableCollectivite.replace(' ', ', ') + '%';
+  const searchPatternDashComma =
+    '%-' + variableCollectivite.replace(' ', ', ') + '%';
+
   const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
     SELECT 
     search_code,
@@ -79,10 +130,17 @@ export const EPCI = async (variableCollectivite: string) => {
       ) 
       AND 
       (
-        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', '))
-        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${variableCollectivite})
+        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPattern})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpace})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDash})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternApostrophe})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceReplace})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashReplace})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceComma})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashComma})
+        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPattern})
+        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternSpace})
+        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternDash})
       )
       ORDER BY libelle_epci ASC
       LIMIT 20;
@@ -108,10 +166,10 @@ export const Commune = async (variableCollectivite: string) => {
     code_pnr
     FROM databases."collectivites_searchbar" WHERE (code_geographique IS NOT NULL) AND 
       (
-        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', '))
-        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${variableCollectivite})
+        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite + '%'})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite + '%'}, ' ', '-')) 
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite + '%'}, ' ', ', '))
+        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${variableCollectivite + '%'})
       )
       LIMIT 20;
     `;
@@ -119,6 +177,19 @@ export const Commune = async (variableCollectivite: string) => {
 };
 
 export const Departement = async (variableCollectivite: string) => {
+  const searchPattern = variableCollectivite + '%';
+  const searchPatternSpace = '% ' + variableCollectivite + '%';
+  const searchPatternDash = '%-' + variableCollectivite + '%';
+  const searchPatternApostrophe = "%'" + variableCollectivite + '%';
+  const searchPatternSpaceReplace =
+    '% ' + variableCollectivite.replace(' ', '-') + '%';
+  const searchPatternDashReplace =
+    '%-' + variableCollectivite.replace(' ', '-') + '%';
+  const searchPatternSpaceComma =
+    '% ' + variableCollectivite.replace(' ', ', ') + '%';
+  const searchPatternDashComma =
+    '%-' + variableCollectivite.replace(' ', ', ') + '%';
+
   const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
     SELECT 
     search_code,
@@ -136,10 +207,17 @@ export const Departement = async (variableCollectivite: string) => {
     code_pnr
     FROM databases."collectivites_searchbar" WHERE (departement IS NOT NULL AND code_geographique IS NULL) AND 
       (
-        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', '))
-        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${variableCollectivite})
+        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPattern})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpace})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDash})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternApostrophe})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceReplace})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashReplace})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceComma})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashComma})
+        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPattern})
+        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternSpace})
+        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternDash})
       )
       ORDER BY index ASC LIMIT 20;
     `;

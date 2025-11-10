@@ -62,9 +62,7 @@ export const Map = (props: {
   const style: StyleFunction<Any> = (feature) => {
     const typedFeature = feature as CommunesIndicateursDto;
     return {
-      fillColor: getColor(data === 'densite_bati' 
-        ? typedFeature?.properties.densite_bati 
-        : typedFeature?.properties.precarite_logement
+      fillColor: getColor(typedFeature?.properties.precarite_logement
       ),
       weight: typedFeature.properties.code_geographique === code ? 3 : 1,
       opacity: 1,
@@ -86,35 +84,20 @@ export const Map = (props: {
       layer.feature && 'properties' in layer.feature
         ? Number(layer.feature.properties.precarite_logement).toFixed(2)
         : undefined;
-    const densite_bati =
-      layer.feature && 'properties' in layer.feature
-        ? layer.feature.properties.densite_bati.toFixed(2)
-        : undefined;
     layer.setStyle({
       weight: 3,
       color: '#0D2100',
       fillOpacity: 0.9
     });
     layer.bringToFront();
-    if (data === 'densite_bati' && commune_name && densite_bati) {
-      layer.bindTooltip(
-        `<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`,
-        {
-          direction: e.originalEvent.offsetY > 250 ? 'top' : 'bottom',
-          opacity: 0.97
-        }
-      );
-      layer.openTooltip();
-    } else {
-      layer.bindTooltip(
-        `<div>${commune_name}</div><div>Part des ménages en précarité : ${(100 * Number(precarite_logement)).toFixed(0)}%</div>`,
-        {
-          direction: e.originalEvent.offsetY > 250 ? 'top' : 'bottom',
-          opacity: 0.97
-        }
-      );
-      layer.openTooltip();
-    }
+    layer.bindTooltip(
+      `<div>${commune_name}</div><div>Part des ménages en précarité : ${(100 * Number(precarite_logement)).toFixed(0)}%</div>`,
+      {
+        direction: e.originalEvent.offsetY > 250 ? 'top' : 'bottom',
+        opacity: 0.97
+      }
+    );
+    layer.openTooltip();
   };
 
   //make style after hover disappear

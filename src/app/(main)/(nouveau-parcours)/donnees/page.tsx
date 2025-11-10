@@ -1,4 +1,3 @@
-import { ErrorDisplay } from '@/app/ErrorDisplay';
 import { LoaderText } from '@/components/ui/loader';
 import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import { Suspense } from 'react';
@@ -16,23 +15,22 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
   return (
     <>
       {
-        ((code || libelle) && type) ?
-          <Suspense fallback={<LoaderText text='Nous chargeons vos données' />}>
-            {thematique === 'Confort thermique' ? (
-              <ConfortThermiqueServerPage searchParams={props.searchParams} />
-            ) : thematique === "Biodiversité" ? (
-              <BiodiversiteServerPage searchParams={props.searchParams} tableCommune={dbTableCommune} />
-            ) : thematique === "Agriculture" ? (
-              <AgricultureServerPage searchParams={props.searchParams} />
-            ) : thematique === "Aménagement" ? (
-              <AmenagementServerPage searchParams={props.searchParams} />
-            ) : thematique === "Eau" ? (
-              <EauServerPage searchParams={props.searchParams} />
-            ) : thematique === "Gestion des risques" ? (
-              <GestionRisquesServerPage searchParams={props.searchParams} />
-            ) : ""}
-          </Suspense>
-          : <ErrorDisplay code="404" />
+        ((code || libelle) && type) &&
+        <Suspense fallback={<LoaderText text='Nous chargeons vos données' />}>
+          {thematique === 'Confort thermique' ? (
+            <ConfortThermiqueServerPage searchParams={props.searchParams} tableCommune={dbTableCommune} />
+          ) : thematique === "Biodiversité" ? (
+            <BiodiversiteServerPage searchParams={props.searchParams} tableCommune={dbTableCommune} />
+          ) : thematique === "Agriculture" ? (
+            <AgricultureServerPage searchParams={props.searchParams} tableCommune={dbTableCommune} />
+          ) : thematique === "Aménagement" ? (
+            <AmenagementServerPage searchParams={props.searchParams} />
+          ) : thematique === "Eau" ? (
+            <EauServerPage searchParams={props.searchParams} />
+          ) : thematique === "Gestion des risques" ? (
+            <GestionRisquesServerPage searchParams={props.searchParams} />
+          ) : ""}
+        </Suspense>
       }
     </>
   );

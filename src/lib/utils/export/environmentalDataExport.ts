@@ -13,8 +13,8 @@ import {
   ExportCoursDeau,
   IncendiesForet,
   InconfortThermique,
+  PrelevementsEauParsed,
   QualiteSitesBaignade,
-  RessourcesEau,
   RGAdb,
   SurfacesAgricolesModel
 } from '@/lib/postgres/models';
@@ -157,7 +157,7 @@ export const IndicatorExportTransformations = {
           part_age_bati_post_2006: el.age_bati_post06
         };
       }),
-      GrandAge75: (grandAge: GrandAgeDto[]) =>
+    GrandAge75: (grandAge: GrandAgeDto[]) =>
       grandAge.map((el) => {
         return {
           code_geographique: el.code_geographique,
@@ -226,24 +226,6 @@ export const IndicatorExportTransformations = {
             : ''
         };
       }),
-    densiteBati: (carteCommunes: CarteCommunes[]) => {
-      return carteCommunes.map((commune) => {
-        return {
-          code_geographique: commune.code_geographique,
-          libelle_geographique: commune.libelle_geographique,
-          code_epci: commune.epci,
-          libelle_epci: commune.libelle_epci,
-          code_departement: commune.departement,
-          libelle_departement: commune.libelle_departement,
-          region: commune.region,
-          ept: commune.ept,
-          code_pnr: commune.code_pnr,
-          libelle_pnr: commune.libelle_pnr,
-          libelle_petr: commune.libelle_petr,
-          densite_bati: commune.densite_bati
-        };
-      });
-    },
     vegetalisation: (vegetalisation: VegetalisationDto[]) => {
       return vegetalisation.map((el) => {
         return {
@@ -267,7 +249,7 @@ export const IndicatorExportTransformations = {
     }
   },
   ressourcesEau: {
-    PrelevementEau: (prelevementEau: RessourcesEau[]) => {
+    PrelevementEau: (prelevementEau: PrelevementsEauParsed[]) => {
       return prelevementEau.map((el) => {
         return {
           code_geographique: el.code_geographique,
@@ -281,8 +263,8 @@ export const IndicatorExportTransformations = {
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
           region: el.region,
-          sous_champ: el.SOUS_CHAMP,
-          libelle_sous_champ: el.LIBELLE_SOUS_CHAMP,
+          sous_champ: el.sous_champ,
+          libelle_sous_champ: el.libelle_sous_champ,
           prelevement_2008_m3: el.A2008,
           prelevement_2009_m3: el.A2009,
           prelevement_2010_m3: el.A2010,
@@ -669,7 +651,6 @@ export const ThematiquesExports = {
         age_bati_1946_1990: el.age_bati_46_90,
         age_bati_1991_2005: el.age_bati_91_05,
         age_bati_post_2006: el.age_bati_post06,
-        densite_bati: el.densite_bati,
         surface_artificialisee_ha: el.clc_1_artificialise,
         surface_agricole_ha: el.clc_2_agricole,
         surface_foret_et_espaces_semi_naturels_ha: el.clc_3_foret_semiNaturel,

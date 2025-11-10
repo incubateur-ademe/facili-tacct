@@ -6,7 +6,7 @@ import { CustomTooltipNouveauParcours, DefinitionTooltip } from "@/components/ut
 import { Body } from "@/design-system/base/Textes";
 import { PieChartDataSurfacesAgricoles } from "@/lib/charts/surfacesAgricoles";
 import { otex } from "@/lib/definitions";
-import { Agriculture, SurfacesAgricolesModel } from "@/lib/postgres/models";
+import { SurfacesAgricolesModel, TableCommuneModel } from "@/lib/postgres/models";
 import { SurfacesAgricolesText } from "@/lib/staticTexts";
 import { multipleEpciBydepartementLibelle } from "@/lib/territoireData/multipleEpciBydepartement";
 import { multipleEpciByPnrLibelle } from "@/lib/territoireData/multipleEpciByPnr";
@@ -21,15 +21,15 @@ import styles from '../../explorerDonnees.module.scss';
 
 export const TypesDeCulture = (props: {
   surfacesAgricoles: SurfacesAgricolesModel[];
-  agriculture: Agriculture[];
+  tableCommune: TableCommuneModel[];
 }) => {
-  const { surfacesAgricoles, agriculture } = props;
+  const { surfacesAgricoles, tableCommune } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
   const [datavizTab, setDatavizTab] = useState<string>('Détail par culture');
-  const otexCommune = type === "commune" && agriculture.find(el => el.code_geographique === code)?.otex_12_postes;
+  const otexCommune = type === "commune" && tableCommune.find(el => el.code_geographique === code)?.otex_12_postes;
   const categoriesData = PieChartDataSurfacesAgricoles(surfacesAgricoles);
   const maxCategory = categoriesData.reduce(
     (max, item) => (item.count > max.count ? item : max),
