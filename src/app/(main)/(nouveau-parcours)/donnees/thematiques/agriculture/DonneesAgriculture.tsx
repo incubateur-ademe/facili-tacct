@@ -12,9 +12,10 @@ import { useSearchParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
-import { TypesDeCulture } from '../../indicateurs/agriculture/1-TypesDeCultures';
-import { SuperficiesIrriguees } from '../../indicateurs/agriculture/2-SuperficiesIrriguees';
-import { SurfacesEnBio } from '../../indicateurs/agriculture/3-SurfacesEnBio';
+import { PartChefsExploitationSeniors } from "../../indicateurs/agriculture/1-ChefsExploitationSeniors";
+import { TypesDeCulture } from '../../indicateurs/agriculture/2-TypesDeCultures';
+import { SuperficiesIrriguees } from '../../indicateurs/agriculture/3-SuperficiesIrriguees';
+import { SurfacesEnBio } from '../../indicateurs/agriculture/4-SurfacesEnBio';
 
 interface Props {
   carteCommunes: CarteCommunes[];
@@ -93,6 +94,18 @@ export const DonneesAgriculture = ({
           }}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
+          {/* Part des chefs d’exploitation séniors */}
+          <div id="Part des chefs d’exploitation séniors" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Part des chefs d’exploitation (ou coexploitants) de plus de 55 ans
+              </H3>
+            </div>
+            <PartChefsExploitationSeniors
+              tableCommune={data.tableCommune}
+            />
+          </div>
+
           {/* Types de cultures */}
           <div id="Types de culture" className={styles.indicateurWrapper}>
             <div className={styles.h3Titles}>

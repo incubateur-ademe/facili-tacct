@@ -1,11 +1,13 @@
 import { MicroCircleGrid } from "@/components/charts/MicroDataviz";
+import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { SurfacesAgricolesModel } from "@/lib/postgres/models";
 import { multipleEpciBydepartementLibelle } from "@/lib/territoireData/multipleEpciBydepartement";
 import { multipleEpciByPnrLibelle } from "@/lib/territoireData/multipleEpciByPnr";
-import { SurfacesEnHerbeSynamicText } from "@/lib/textesIndicateurs/biodiversiteDynamicTexts";
+import { SurfacesEnHerbeDynamicText } from "@/lib/textesIndicateurs/biodiversiteDynamicTexts";
 import { SurfacesToujoursEnHerbeText } from "@/lib/tooltipTexts";
+import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
 import { useSearchParams } from "next/navigation";
 import styles from '../../explorerDonnees.module.scss';
 
@@ -26,6 +28,7 @@ export const SurfacesToujoursEnHerbe = ({
     : type === 'pnr'
       ? multipleEpciByPnrLibelle.find(pnr => pnr.libelle_pnr === libelle)?.liste_epci_multi_pnr
       : undefined;
+  const exportData = IndicatorExportTransformations.agriculture.surfacesAgricoles(surfacesAgricoles);
 
   return (
     <>
@@ -36,7 +39,7 @@ export const SurfacesToujoursEnHerbe = ({
         >
           <MicroCircleGrid pourcentage={pourcentageSurfacesToujoursEnHerbe} arrondi={1} ariaLabel="Surface toujours en herbe" />
           <div className={styles.text}>
-            <SurfacesEnHerbeSynamicText
+            <SurfacesEnHerbeDynamicText
               surfacesAgricoles={surfacesAgricoles}
               pourcentageSurfacesToujoursEnHerbe={pourcentageSurfacesToujoursEnHerbe}
               type={type}
@@ -53,6 +56,15 @@ export const SurfacesToujoursEnHerbe = ({
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
           Source : AGRESTE 2020.
         </Body>
+        <ExportButtonNouveauParcours
+          data={exportData}
+          baseName="surfaces_toujours_en_herbe"
+          type={type}
+          libelle={libelle}
+          code={code}
+          sheetName="Surfaces agricoles"
+          anchor="Surfaces toujours en herbe"
+        />
       </div>
     </>
   )

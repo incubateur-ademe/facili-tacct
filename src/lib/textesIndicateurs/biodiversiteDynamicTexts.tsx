@@ -58,7 +58,7 @@ export const SolsImpermeabilisesBiodiversiteDynamicText = ({
   );
 };
 
-export const SurfacesEnHerbeSynamicText = ({
+export const SurfacesEnHerbeDynamicText = ({
   surfacesAgricoles,
   pourcentageSurfacesToujoursEnHerbe,
   type,
