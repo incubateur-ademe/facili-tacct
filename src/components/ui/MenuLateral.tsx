@@ -312,7 +312,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                     )
                   }
                 </div>
-                {thematique === "Confort thermique" ? (
+                {thematique === "Confort thermique" || thematique === "Agriculture" ? (
                   <>
                     <button
                       onClick={handleEtape2Toggle}
