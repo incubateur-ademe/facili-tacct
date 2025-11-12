@@ -1154,6 +1154,41 @@ model rga_par_communes {
   @@schema("postgis")
 }
 
+model secheresses {
+  code_geographique    String  @db.VarChar(6)
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  restrictions_2013    Json[]
+  restrictions_2014    Json[]
+  restrictions_2015    Json[]
+  restrictions_2016    Json[]
+  restrictions_2017    Json[]
+  restrictions_2018    Json[]
+  restrictions_2019    Json[]
+  restrictions_2020    Json[]
+  restrictions_2021    Json[]
+  restrictions_2022    Json[]
+  restrictions_2023    Json[]
+  restrictions_2024    Json[]
+  id                   Int     @id @default(autoincrement())
+
+  @@index([code_geographique], map: "secheresses_communes_index")
+  @@index([departement], map: "secheresses_departement_index")
+  @@index([epci], map: "secheresses_epci_index")
+  @@index([ept], map: "secheresses_ept_index")
+  @@index([libelle_petr], map: "secheresses_petr_index")
+  @@index([code_pnr], map: "secheresses_pnr_index")
+  @@schema("databases")
+}
+
 view pg_stat_statements {
   userid                 Int?     @db.Oid
   dbid                   Int?     @db.Oid

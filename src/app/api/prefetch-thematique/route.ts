@@ -1,4 +1,4 @@
-import { GetInconfortThermique } from '@/lib/queries/databases/inconfortThermique';
+import { GetConfortThermique } from '@/lib/queries/databases/inconfortThermique';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { getPrefetchKey, redis, safeGet, safeSet } from '@/lib/redisClient';
 import { NextResponse } from 'next/server';
@@ -37,14 +37,14 @@ export async function GET(request: Request) {
   const _libelle = libelle || '';
   const _type = type || '';
   const carteCommunes = await GetCommunes(_code, _libelle, _type);
-  const dbInconfortThermique = await GetInconfortThermique(_code, _libelle, _type);
+  const dbConfortThermique = await GetConfortThermique(_code, _libelle, _type);
 
     const replacer = (_key: string, value: any) => {
       if (typeof value === 'bigint') return value.toString();
       if (value instanceof Date) return value.toISOString();
       return value;
     };
-    const payload = JSON.stringify({ carteCommunes, dbInconfortThermique }, replacer);
+    const payload = JSON.stringify({ carteCommunes, dbConfortThermique }, replacer);
   // Store in redis with TTL (use safeSet)
   await safeSet(key, payload, TTL_SECONDS);
 

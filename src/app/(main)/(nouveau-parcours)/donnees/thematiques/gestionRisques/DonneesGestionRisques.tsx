@@ -2,8 +2,8 @@
 import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { ArreteCatNat, CarteCommunes, DebroussaillementModel, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
-import { GetArretesCatnat, GetIncendiesForet } from '@/lib/queries/databases/gestionRisques';
+import { ArreteCatNat, CarteCommunes, DebroussaillementModel, ErosionCotiere, IncendiesForet, RGACarte, RGAdb, Secheresses } from "@/lib/postgres/models";
+import { GetArretesCatnat, GetIncendiesForet, GetSecheresses } from '@/lib/queries/databases/gestionRisques';
 import { GetCommunes, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import { GetDebroussaillement } from '@/lib/queries/postgis/debroussaillement';
 import Notice from '@codegouvfr/react-dsfr/Notice';
@@ -24,6 +24,7 @@ interface Props {
   erosionCotiere: [ErosionCotiere[], string] | [];
   incendiesForet: IncendiesForet[];
   debroussaillement: DebroussaillementModel[];
+  secheresses: Secheresses[];
 }
 
 export const DonneesGestionRisques = ({
@@ -31,7 +32,8 @@ export const DonneesGestionRisques = ({
   gestionRisques,
   erosionCotiere,
   incendiesForet,
-  debroussaillement
+  debroussaillement,
+  secheresses
 }: Props) => {
   const { css } = useStyles();
   const searchParams = useSearchParams();
@@ -48,11 +50,16 @@ export const DonneesGestionRisques = ({
     gestionRisques,
     erosionCotiere,
     incendiesForet,
-    debroussaillement
+    debroussaillement,
+    secheresses
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
   const ongletsMenu = sommaireThematiques[thematique];
+
+  
+  console.log("data.secheresses", data.secheresses);
+
 
   useLayoutEffect(() => {
     if (isFirstRender) {
@@ -66,20 +73,23 @@ export const DonneesGestionRisques = ({
         newGestionRisques,
         newErosionCotiere,
         newIncendiesForet,
-        newDebroussaillement
+        newDebroussaillement,
+        newSecheresses
       ] = await Promise.all([
         GetCommunes(code, libelle, type),
         GetArretesCatnat(code, libelle, type),
         GetErosionCotiere(code, libelle, type),
         GetIncendiesForet(code, libelle, type),
-        GetDebroussaillement(code, libelle, type)
+        GetDebroussaillement(code, libelle, type),
+        GetSecheresses(code, libelle, type)
       ]);
       setData({
         carteCommunes: newCarteCommunes,
         gestionRisques: newGestionRisques,
         erosionCotiere: newErosionCotiere,
         incendiesForet: newIncendiesForet,
-        debroussaillement: newDebroussaillement
+        debroussaillement: newDebroussaillement,
+        secheresses: newSecheresses
       });
       setIsLoading(false);
     })();
