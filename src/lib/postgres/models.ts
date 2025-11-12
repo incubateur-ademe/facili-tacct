@@ -1,4 +1,4 @@
-import { JsonValue } from '@/generated/client/runtime/library';
+import { Prisma } from '@/generated/client';
 
 export type InconfortThermique = {
   NA5AZ_sum: number | null;
@@ -163,31 +163,31 @@ export type ArreteCatNat = {
   libelle_pnr: string | null;
 };
 
-export type Secheresse = {
+export type Secheresses = {
   id: number;
   code_geographique: string;
-  libelle_geographique: string;
-  epci: string;
-  libelle_epci: string;
   departement: string;
   libelle_departement: string;
+  epci: string;
+  libelle_epci: string;
+  libelle_geographique: string;
   region: number;
   ept: string | null;
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
-  restrictions_2013: JsonValue[] | null;
-  restrictions_2014: JsonValue[] | null;
-  restrictions_2015: JsonValue[] | null;
-  restrictions_2016: JsonValue[] | null;
-  restrictions_2017: JsonValue[] | null;
-  restrictions_2018: JsonValue[] | null;
-  restrictions_2019: JsonValue[] | null;
-  restrictions_2020: JsonValue[] | null;
-  restrictions_2021: JsonValue[] | null;
-  restrictions_2022: JsonValue[] | null;
-  restrictions_2023: JsonValue[] | null;
-  restrictions_2024: JsonValue[] | null;
+  restrictions_2013: Prisma.JsonValue[];
+  restrictions_2014: Prisma.JsonValue[];
+  restrictions_2015: Prisma.JsonValue[];
+  restrictions_2016: Prisma.JsonValue[];
+  restrictions_2017: Prisma.JsonValue[];
+  restrictions_2018: Prisma.JsonValue[];
+  restrictions_2019: Prisma.JsonValue[];
+  restrictions_2020: Prisma.JsonValue[];
+  restrictions_2021: Prisma.JsonValue[];
+  restrictions_2022: Prisma.JsonValue[];
+  restrictions_2023: Prisma.JsonValue[];
+  restrictions_2024: Prisma.JsonValue[];
 };
 
 export type RessourcesEau = {

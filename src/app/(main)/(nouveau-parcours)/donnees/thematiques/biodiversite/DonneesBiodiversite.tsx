@@ -29,7 +29,7 @@ interface Props {
   aot40: AOT40[];
   etatCoursDeau: EtatCoursDeau[];
   qualiteEauxBaignade: QualiteSitesBaignade[];
-  inconfortThermique: ConfortThermique[];
+  confortThermique: ConfortThermique[];
   surfacesAgricoles: SurfacesAgricolesModel[];
   tableCommune: TableCommuneModel[];
 }
@@ -50,7 +50,7 @@ export const DonneesBiodiversite = ({
   aot40,
   etatCoursDeau,
   qualiteEauxBaignade,
-  inconfortThermique,
+  confortThermique,
   surfacesAgricoles,
   tableCommune
 }: Props) => {
@@ -69,7 +69,7 @@ export const DonneesBiodiversite = ({
     aot40,
     etatCoursDeau,
     qualiteEauxBaignade,
-    inconfortThermique,
+    confortThermique,
     surfacesAgricoles,
     tableCommune
   });
@@ -90,7 +90,7 @@ export const DonneesBiodiversite = ({
         newAOT40,
         newEtatCoursDeau,
         newQualiteEauxBaignade,
-        newInconfortThermique,
+        newConfortThermique,
         newSurfacesAgricoles,
         newTableCommune
       ] = await Promise.all([
@@ -111,7 +111,7 @@ export const DonneesBiodiversite = ({
         aot40: newAOT40,
         etatCoursDeau: newEtatCoursDeau,
         qualiteEauxBaignade: newQualiteEauxBaignade,
-        inconfortThermique: newInconfortThermique,
+        confortThermique: newConfortThermique,
         surfacesAgricoles: newSurfacesAgricoles,
         tableCommune: newTableCommune
       });
@@ -165,7 +165,7 @@ export const DonneesBiodiversite = ({
             </div>
             {
               loadingClc ? <LoaderText text='Chargement de la cartographie' /> : (
-                <TypesDeSols inconfortThermique={data.inconfortThermique} carteCommunes={data.carteCommunes} clc={clcState} />
+                <TypesDeSols confortThermique={data.confortThermique} carteCommunes={data.carteCommunes} clc={clcState} />
               )
             }
           </div>

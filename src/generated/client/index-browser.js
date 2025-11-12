@@ -1043,6 +1043,73 @@ exports.Prisma.SecheressesScalarFieldEnum = {
   restrictions_2023: 'restrictions_2023',
   restrictions_2024: 'restrictions_2024',
   id: 'id'
+<<<<<<< HEAD
+=======
+};
+
+exports.Prisma.Pg_stat_statementsScalarFieldEnum = {
+  userid: 'userid',
+  dbid: 'dbid',
+  toplevel: 'toplevel',
+  queryid: 'queryid',
+  query: 'query',
+  plans: 'plans',
+  total_plan_time: 'total_plan_time',
+  min_plan_time: 'min_plan_time',
+  max_plan_time: 'max_plan_time',
+  mean_plan_time: 'mean_plan_time',
+  stddev_plan_time: 'stddev_plan_time',
+  calls: 'calls',
+  total_exec_time: 'total_exec_time',
+  min_exec_time: 'min_exec_time',
+  max_exec_time: 'max_exec_time',
+  mean_exec_time: 'mean_exec_time',
+  stddev_exec_time: 'stddev_exec_time',
+  rows: 'rows',
+  shared_blks_hit: 'shared_blks_hit',
+  shared_blks_read: 'shared_blks_read',
+  shared_blks_dirtied: 'shared_blks_dirtied',
+  shared_blks_written: 'shared_blks_written',
+  local_blks_hit: 'local_blks_hit',
+  local_blks_read: 'local_blks_read',
+  local_blks_dirtied: 'local_blks_dirtied',
+  local_blks_written: 'local_blks_written',
+  temp_blks_read: 'temp_blks_read',
+  temp_blks_written: 'temp_blks_written',
+  blk_read_time: 'blk_read_time',
+  blk_write_time: 'blk_write_time',
+  temp_blk_read_time: 'temp_blk_read_time',
+  temp_blk_write_time: 'temp_blk_write_time',
+  wal_records: 'wal_records',
+  wal_fpi: 'wal_fpi',
+  wal_bytes: 'wal_bytes',
+  jit_functions: 'jit_functions',
+  jit_generation_time: 'jit_generation_time',
+  jit_inlining_count: 'jit_inlining_count',
+  jit_inlining_time: 'jit_inlining_time',
+  jit_optimization_count: 'jit_optimization_count',
+  jit_optimization_time: 'jit_optimization_time',
+  jit_emission_count: 'jit_emission_count',
+  jit_emission_time: 'jit_emission_time'
+};
+
+exports.Prisma.Pg_stat_statements_infoScalarFieldEnum = {
+  dealloc: 'dealloc',
+  stats_reset: 'stats_reset'
+};
+
+exports.Prisma.Geography_columnsScalarFieldEnum = {
+  coord_dimension: 'coord_dimension',
+  srid: 'srid',
+  type: 'type'
+};
+
+exports.Prisma.Geometry_columnsScalarFieldEnum = {
+  f_table_catalog: 'f_table_catalog',
+  coord_dimension: 'coord_dimension',
+  srid: 'srid',
+  type: 'type'
+>>>>>>> 81230303e09ff6d0d4c5e8f2ed6dcd095ada2e04
 };
 
 exports.Prisma.SortOrder = {
@@ -1114,7 +1181,15 @@ exports.Prisma.ModelName = {
   prelevements_eau: 'prelevements_eau',
   clc_par_communes: 'clc_par_communes',
   rga_par_communes: 'rga_par_communes',
+<<<<<<< HEAD
   secheresses: 'secheresses'
+=======
+  secheresses: 'secheresses',
+  pg_stat_statements: 'pg_stat_statements',
+  pg_stat_statements_info: 'pg_stat_statements_info',
+  geography_columns: 'geography_columns',
+  geometry_columns: 'geometry_columns'
+>>>>>>> 81230303e09ff6d0d4c5e8f2ed6dcd095ada2e04
 };
 
 /**

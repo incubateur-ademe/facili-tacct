@@ -10,8 +10,7 @@ export const eutrophisation = (
 export const irrigable = (
   <span>
     Une surface est dite « irrigable » si elle est munie d’un moyen
-    d’irrigation. Une surface est dite « irriguée » si elle a été arrosée au
-    moins une fois dans l’année.
+    d’irrigation.
   </span>
 );
 

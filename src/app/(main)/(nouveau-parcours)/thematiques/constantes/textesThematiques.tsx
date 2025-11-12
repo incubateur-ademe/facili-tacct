@@ -80,7 +80,7 @@ export const sommaireThematiques = {
         id: "section1",
         thematique: "Agriculture",
         icone: "🌾",
-        sousCategories: ["Types de culture"]
+        sousCategories: ["Part des chefs d’exploitation séniors", "Types de culture"]
       },
       {
         id: "section2",
@@ -134,11 +134,11 @@ export const sommaireImpacts = {
   "Agriculture": [
     {
       id: "section1",
-      titre: "Échanger pour diagnostiquer",
+      titre: "Comment associer renouvellement agricole et pratiques durables pour un territoire résilient ?",
     },
     {
       id: "section2",
-      titre: "??????????",
+      titre: "Prendre RDV avec TACCT",
     }
   ],
   "Aménagement": [],

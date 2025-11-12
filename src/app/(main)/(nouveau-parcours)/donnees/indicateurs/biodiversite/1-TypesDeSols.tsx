@@ -21,11 +21,11 @@ import styles from '../../explorerDonnees.module.scss';
 import { sumProperty } from '../fonctions';
 
 export const TypesDeSols = ({
-  inconfortThermique,
+  confortThermique,
   carteCommunes,
   clc,
 }: {
-  inconfortThermique: ConfortThermique[];
+  confortThermique: ConfortThermique[];
   carteCommunes: CarteCommunes[];
   clc: CLCTerritoires[] | undefined;
 }) => {
@@ -41,7 +41,7 @@ export const TypesDeSols = ({
   )
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
-  const vegetalisationMapped = inconfortThermique.map(vegetalisationMapper);
+  const vegetalisationMapped = confortThermique.map(vegetalisationMapper);
   const vegetalisationTerritoire =
     type === 'commune'
       ? vegetalisationMapped.filter((e) => e.code_geographique === code)

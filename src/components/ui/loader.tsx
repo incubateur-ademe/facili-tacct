@@ -2,15 +2,15 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "../components.module.scss";
 
-export const Loader = () => {
+export const Loader = ({ height }: { height?: string }) => {
   return (
-    <div className="flex flex-col justify-center" style={{height: "80dvh"}}>
+    <div className="flex flex-col justify-center" style={{ height: height || "80dvh" }}>
       <div className={styles.loader}></div>
     </div>
   );
 }
 
-export const LoaderText = ({ text }: { text: string }) => {
+export const LoaderText = ({ text, height }: { text: string; height?: string }) => {
   const [show, setShow] = useState(false);
   const [visible, setVisible] = useState(false);
   const [first, setFirst] = useState(true);
@@ -62,7 +62,9 @@ export const LoaderText = ({ text }: { text: string }) => {
   }, [visible]);
 
   return (
-    <div className="flex flex-col items-center justify-center" style={{height: "80dvh", position: 'relative'}}>
+    <div
+      className="flex flex-col items-center justify-center"
+      style={{ height: height || "80dvh", position: 'relative' }}>
       <div className={styles.loader}></div>
       <div
         style={{
