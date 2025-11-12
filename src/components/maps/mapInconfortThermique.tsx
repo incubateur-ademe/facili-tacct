@@ -261,7 +261,7 @@ export const MapInconfortThermique = (props: {
           ref={mapContainer}
           className='map-container'
           style={{
-            height: '500px',
+            height: isMapLoaded ? '500px' : '0px',
             width: '100%',
             opacity: isMapLoaded ? 1 : 0,
             transition: 'opacity 0.3s ease-in'
