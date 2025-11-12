@@ -21,9 +21,8 @@ const ScrollToHash = () => {
         }
       }
     };
-    
     // Retarder légèrement pour laisser le DOM se stabiliser
-    const timer = setTimeout(scrollToHash, 150);
+    const timer = setTimeout(scrollToHash, 250);
     return () => clearTimeout(timer);
   }, []);
 

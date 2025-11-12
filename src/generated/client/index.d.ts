@@ -219,6 +219,11 @@ export type clc_par_communes = $Result.DefaultSelection<Prisma.$clc_par_communes
  */
 export type rga_par_communes = $Result.DefaultSelection<Prisma.$rga_par_communesPayload>
 /**
+ * Model secheresses
+ * 
+ */
+export type secheresses = $Result.DefaultSelection<Prisma.$secheressesPayload>
+/**
  * Model pg_stat_statements
  * 
  */
@@ -768,6 +773,16 @@ export class PrismaClient<
   get rga_par_communes(): Prisma.rga_par_communesDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.secheresses`: Exposes CRUD operations for the **secheresses** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Secheresses
+    * const secheresses = await prisma.secheresses.findMany()
+    * ```
+    */
+  get secheresses(): Prisma.secheressesDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.pg_stat_statements`: Exposes CRUD operations for the **pg_stat_statements** model.
     * Example usage:
     * ```ts
@@ -864,8 +879,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.15.0
-   * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
+   * Prisma Client JS version: 6.19.0
+   * Query Engine version: 2ba551f319ab1df4bc874a89965d8b3641056773
    */
   export type PrismaVersion = {
     client: string
@@ -878,6 +893,7 @@ export namespace Prisma {
    */
 
 
+  export import Bytes = runtime.Bytes
   export import JsonObject = runtime.JsonObject
   export import JsonArray = runtime.JsonArray
   export import JsonValue = runtime.JsonValue
@@ -1287,6 +1303,7 @@ export namespace Prisma {
     prelevements_eau: 'prelevements_eau',
     clc_par_communes: 'clc_par_communes',
     rga_par_communes: 'rga_par_communes',
+    secheresses: 'secheresses',
     pg_stat_statements: 'pg_stat_statements',
     pg_stat_statements_info: 'pg_stat_statements_info',
     geography_columns: 'geography_columns',
@@ -1309,7 +1326,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "rga" | "surfaces_agricoles" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "sandbox_users" | "users" | "export_cours_d_eau" | "confort_thermique" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "ressources_consultees" | "thematique" | "surfaces_protegees" | "table_commune" | "spatial_ref_sys" | "debroussaillement" | "prelevements_eau" | "clc_par_communes" | "rga_par_communes" | "pg_stat_statements" | "pg_stat_statements_info" | "geography_columns" | "geometry_columns"
+      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "atlas_biodiversite" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "lcz_couverture" | "patch4c" | "qualite_sites_baignade" | "ressources_eau" | "rga" | "surfaces_agricoles" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "postgis_rga" | "sandbox_users" | "users" | "export_cours_d_eau" | "confort_thermique" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "ressources_consultees" | "thematique" | "surfaces_protegees" | "table_commune" | "spatial_ref_sys" | "debroussaillement" | "prelevements_eau" | "clc_par_communes" | "rga_par_communes" | "secheresses" | "pg_stat_statements" | "pg_stat_statements_info" | "geography_columns" | "geometry_columns"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -4251,6 +4268,80 @@ export namespace Prisma {
           }
         }
       }
+      secheresses: {
+        payload: Prisma.$secheressesPayload<ExtArgs>
+        fields: Prisma.secheressesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.secheressesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.secheressesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>
+          }
+          findFirst: {
+            args: Prisma.secheressesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.secheressesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>
+          }
+          findMany: {
+            args: Prisma.secheressesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>[]
+          }
+          create: {
+            args: Prisma.secheressesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>
+          }
+          createMany: {
+            args: Prisma.secheressesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.secheressesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>[]
+          }
+          delete: {
+            args: Prisma.secheressesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>
+          }
+          update: {
+            args: Prisma.secheressesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>
+          }
+          deleteMany: {
+            args: Prisma.secheressesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.secheressesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.secheressesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>[]
+          }
+          upsert: {
+            args: Prisma.secheressesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$secheressesPayload>
+          }
+          aggregate: {
+            args: Prisma.SecheressesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSecheresses>
+          }
+          groupBy: {
+            args: Prisma.secheressesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SecheressesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.secheressesCountArgs<ExtArgs>
+            result: $Utils.Optional<SecheressesCountAggregateOutputType> | number
+          }
+        }
+      }
       pg_stat_statements: {
         payload: Prisma.$pg_stat_statementsPayload<ExtArgs>
         fields: Prisma.pg_stat_statementsFieldRefs
@@ -4447,6 +4538,10 @@ export namespace Prisma {
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
     /**
+     * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
+     */
+    adapter?: runtime.SqlDriverAdapterFactory | null
+    /**
      * Global configuration for omitting model fields by default.
      * 
      * @example
@@ -4504,6 +4599,7 @@ export namespace Prisma {
     prelevements_eau?: prelevements_eauOmit
     clc_par_communes?: clc_par_communesOmit
     rga_par_communes?: rga_par_communesOmit
+    secheresses?: secheressesOmit
     pg_stat_statements?: pg_stat_statementsOmit
     pg_stat_statements_info?: pg_stat_statements_infoOmit
     geography_columns?: geography_columnsOmit
@@ -54595,6 +54691,1238 @@ export namespace Prisma {
 
 
   /**
+   * Model secheresses
+   */
+
+  export type AggregateSecheresses = {
+    _count: SecheressesCountAggregateOutputType | null
+    _avg: SecheressesAvgAggregateOutputType | null
+    _sum: SecheressesSumAggregateOutputType | null
+    _min: SecheressesMinAggregateOutputType | null
+    _max: SecheressesMaxAggregateOutputType | null
+  }
+
+  export type SecheressesAvgAggregateOutputType = {
+    region: number | null
+    id: number | null
+  }
+
+  export type SecheressesSumAggregateOutputType = {
+    region: number | null
+    id: number | null
+  }
+
+  export type SecheressesMinAggregateOutputType = {
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    id: number | null
+  }
+
+  export type SecheressesMaxAggregateOutputType = {
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    id: number | null
+  }
+
+  export type SecheressesCountAggregateOutputType = {
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    restrictions_2013: number
+    restrictions_2014: number
+    restrictions_2015: number
+    restrictions_2016: number
+    restrictions_2017: number
+    restrictions_2018: number
+    restrictions_2019: number
+    restrictions_2020: number
+    restrictions_2021: number
+    restrictions_2022: number
+    restrictions_2023: number
+    restrictions_2024: number
+    id: number
+    _all: number
+  }
+
+
+  export type SecheressesAvgAggregateInputType = {
+    region?: true
+    id?: true
+  }
+
+  export type SecheressesSumAggregateInputType = {
+    region?: true
+    id?: true
+  }
+
+  export type SecheressesMinAggregateInputType = {
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    id?: true
+  }
+
+  export type SecheressesMaxAggregateInputType = {
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    id?: true
+  }
+
+  export type SecheressesCountAggregateInputType = {
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    restrictions_2013?: true
+    restrictions_2014?: true
+    restrictions_2015?: true
+    restrictions_2016?: true
+    restrictions_2017?: true
+    restrictions_2018?: true
+    restrictions_2019?: true
+    restrictions_2020?: true
+    restrictions_2021?: true
+    restrictions_2022?: true
+    restrictions_2023?: true
+    restrictions_2024?: true
+    id?: true
+    _all?: true
+  }
+
+  export type SecheressesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which secheresses to aggregate.
+     */
+    where?: secheressesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of secheresses to fetch.
+     */
+    orderBy?: secheressesOrderByWithRelationInput | secheressesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: secheressesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` secheresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` secheresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned secheresses
+    **/
+    _count?: true | SecheressesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SecheressesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SecheressesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SecheressesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SecheressesMaxAggregateInputType
+  }
+
+  export type GetSecheressesAggregateType<T extends SecheressesAggregateArgs> = {
+        [P in keyof T & keyof AggregateSecheresses]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSecheresses[P]>
+      : GetScalarType<T[P], AggregateSecheresses[P]>
+  }
+
+
+
+
+  export type secheressesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: secheressesWhereInput
+    orderBy?: secheressesOrderByWithAggregationInput | secheressesOrderByWithAggregationInput[]
+    by: SecheressesScalarFieldEnum[] | SecheressesScalarFieldEnum
+    having?: secheressesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SecheressesCountAggregateInputType | true
+    _avg?: SecheressesAvgAggregateInputType
+    _sum?: SecheressesSumAggregateInputType
+    _min?: SecheressesMinAggregateInputType
+    _max?: SecheressesMaxAggregateInputType
+  }
+
+  export type SecheressesGroupByOutputType = {
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    restrictions_2013: JsonValue[]
+    restrictions_2014: JsonValue[]
+    restrictions_2015: JsonValue[]
+    restrictions_2016: JsonValue[]
+    restrictions_2017: JsonValue[]
+    restrictions_2018: JsonValue[]
+    restrictions_2019: JsonValue[]
+    restrictions_2020: JsonValue[]
+    restrictions_2021: JsonValue[]
+    restrictions_2022: JsonValue[]
+    restrictions_2023: JsonValue[]
+    restrictions_2024: JsonValue[]
+    id: number
+    _count: SecheressesCountAggregateOutputType | null
+    _avg: SecheressesAvgAggregateOutputType | null
+    _sum: SecheressesSumAggregateOutputType | null
+    _min: SecheressesMinAggregateOutputType | null
+    _max: SecheressesMaxAggregateOutputType | null
+  }
+
+  type GetSecheressesGroupByPayload<T extends secheressesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SecheressesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SecheressesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SecheressesGroupByOutputType[P]>
+            : GetScalarType<T[P], SecheressesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type secheressesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    restrictions_2013?: boolean
+    restrictions_2014?: boolean
+    restrictions_2015?: boolean
+    restrictions_2016?: boolean
+    restrictions_2017?: boolean
+    restrictions_2018?: boolean
+    restrictions_2019?: boolean
+    restrictions_2020?: boolean
+    restrictions_2021?: boolean
+    restrictions_2022?: boolean
+    restrictions_2023?: boolean
+    restrictions_2024?: boolean
+    id?: boolean
+  }, ExtArgs["result"]["secheresses"]>
+
+  export type secheressesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    restrictions_2013?: boolean
+    restrictions_2014?: boolean
+    restrictions_2015?: boolean
+    restrictions_2016?: boolean
+    restrictions_2017?: boolean
+    restrictions_2018?: boolean
+    restrictions_2019?: boolean
+    restrictions_2020?: boolean
+    restrictions_2021?: boolean
+    restrictions_2022?: boolean
+    restrictions_2023?: boolean
+    restrictions_2024?: boolean
+    id?: boolean
+  }, ExtArgs["result"]["secheresses"]>
+
+  export type secheressesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    restrictions_2013?: boolean
+    restrictions_2014?: boolean
+    restrictions_2015?: boolean
+    restrictions_2016?: boolean
+    restrictions_2017?: boolean
+    restrictions_2018?: boolean
+    restrictions_2019?: boolean
+    restrictions_2020?: boolean
+    restrictions_2021?: boolean
+    restrictions_2022?: boolean
+    restrictions_2023?: boolean
+    restrictions_2024?: boolean
+    id?: boolean
+  }, ExtArgs["result"]["secheresses"]>
+
+  export type secheressesSelectScalar = {
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    restrictions_2013?: boolean
+    restrictions_2014?: boolean
+    restrictions_2015?: boolean
+    restrictions_2016?: boolean
+    restrictions_2017?: boolean
+    restrictions_2018?: boolean
+    restrictions_2019?: boolean
+    restrictions_2020?: boolean
+    restrictions_2021?: boolean
+    restrictions_2022?: boolean
+    restrictions_2023?: boolean
+    restrictions_2024?: boolean
+    id?: boolean
+  }
+
+  export type secheressesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "restrictions_2013" | "restrictions_2014" | "restrictions_2015" | "restrictions_2016" | "restrictions_2017" | "restrictions_2018" | "restrictions_2019" | "restrictions_2020" | "restrictions_2021" | "restrictions_2022" | "restrictions_2023" | "restrictions_2024" | "id", ExtArgs["result"]["secheresses"]>
+
+  export type $secheressesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "secheresses"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: number
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      restrictions_2013: Prisma.JsonValue[]
+      restrictions_2014: Prisma.JsonValue[]
+      restrictions_2015: Prisma.JsonValue[]
+      restrictions_2016: Prisma.JsonValue[]
+      restrictions_2017: Prisma.JsonValue[]
+      restrictions_2018: Prisma.JsonValue[]
+      restrictions_2019: Prisma.JsonValue[]
+      restrictions_2020: Prisma.JsonValue[]
+      restrictions_2021: Prisma.JsonValue[]
+      restrictions_2022: Prisma.JsonValue[]
+      restrictions_2023: Prisma.JsonValue[]
+      restrictions_2024: Prisma.JsonValue[]
+      id: number
+    }, ExtArgs["result"]["secheresses"]>
+    composites: {}
+  }
+
+  type secheressesGetPayload<S extends boolean | null | undefined | secheressesDefaultArgs> = $Result.GetResult<Prisma.$secheressesPayload, S>
+
+  type secheressesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<secheressesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SecheressesCountAggregateInputType | true
+    }
+
+  export interface secheressesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['secheresses'], meta: { name: 'secheresses' } }
+    /**
+     * Find zero or one Secheresses that matches the filter.
+     * @param {secheressesFindUniqueArgs} args - Arguments to find a Secheresses
+     * @example
+     * // Get one Secheresses
+     * const secheresses = await prisma.secheresses.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends secheressesFindUniqueArgs>(args: SelectSubset<T, secheressesFindUniqueArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Secheresses that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {secheressesFindUniqueOrThrowArgs} args - Arguments to find a Secheresses
+     * @example
+     * // Get one Secheresses
+     * const secheresses = await prisma.secheresses.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends secheressesFindUniqueOrThrowArgs>(args: SelectSubset<T, secheressesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Secheresses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {secheressesFindFirstArgs} args - Arguments to find a Secheresses
+     * @example
+     * // Get one Secheresses
+     * const secheresses = await prisma.secheresses.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends secheressesFindFirstArgs>(args?: SelectSubset<T, secheressesFindFirstArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Secheresses that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {secheressesFindFirstOrThrowArgs} args - Arguments to find a Secheresses
+     * @example
+     * // Get one Secheresses
+     * const secheresses = await prisma.secheresses.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends secheressesFindFirstOrThrowArgs>(args?: SelectSubset<T, secheressesFindFirstOrThrowArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Secheresses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {secheressesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Secheresses
+     * const secheresses = await prisma.secheresses.findMany()
+     * 
+     * // Get first 10 Secheresses
+     * const secheresses = await prisma.secheresses.findMany({ take: 10 })
+     * 
+     * // Only select the `code_geographique`
+     * const secheressesWithCode_geographiqueOnly = await prisma.secheresses.findMany({ select: { code_geographique: true } })
+     * 
+     */
+    findMany<T extends secheressesFindManyArgs>(args?: SelectSubset<T, secheressesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Secheresses.
+     * @param {secheressesCreateArgs} args - Arguments to create a Secheresses.
+     * @example
+     * // Create one Secheresses
+     * const Secheresses = await prisma.secheresses.create({
+     *   data: {
+     *     // ... data to create a Secheresses
+     *   }
+     * })
+     * 
+     */
+    create<T extends secheressesCreateArgs>(args: SelectSubset<T, secheressesCreateArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Secheresses.
+     * @param {secheressesCreateManyArgs} args - Arguments to create many Secheresses.
+     * @example
+     * // Create many Secheresses
+     * const secheresses = await prisma.secheresses.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends secheressesCreateManyArgs>(args?: SelectSubset<T, secheressesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Secheresses and returns the data saved in the database.
+     * @param {secheressesCreateManyAndReturnArgs} args - Arguments to create many Secheresses.
+     * @example
+     * // Create many Secheresses
+     * const secheresses = await prisma.secheresses.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Secheresses and only return the `code_geographique`
+     * const secheressesWithCode_geographiqueOnly = await prisma.secheresses.createManyAndReturn({
+     *   select: { code_geographique: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends secheressesCreateManyAndReturnArgs>(args?: SelectSubset<T, secheressesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Secheresses.
+     * @param {secheressesDeleteArgs} args - Arguments to delete one Secheresses.
+     * @example
+     * // Delete one Secheresses
+     * const Secheresses = await prisma.secheresses.delete({
+     *   where: {
+     *     // ... filter to delete one Secheresses
+     *   }
+     * })
+     * 
+     */
+    delete<T extends secheressesDeleteArgs>(args: SelectSubset<T, secheressesDeleteArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Secheresses.
+     * @param {secheressesUpdateArgs} args - Arguments to update one Secheresses.
+     * @example
+     * // Update one Secheresses
+     * const secheresses = await prisma.secheresses.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends secheressesUpdateArgs>(args: SelectSubset<T, secheressesUpdateArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Secheresses.
+     * @param {secheressesDeleteManyArgs} args - Arguments to filter Secheresses to delete.
+     * @example
+     * // Delete a few Secheresses
+     * const { count } = await prisma.secheresses.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends secheressesDeleteManyArgs>(args?: SelectSubset<T, secheressesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Secheresses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {secheressesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Secheresses
+     * const secheresses = await prisma.secheresses.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends secheressesUpdateManyArgs>(args: SelectSubset<T, secheressesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Secheresses and returns the data updated in the database.
+     * @param {secheressesUpdateManyAndReturnArgs} args - Arguments to update many Secheresses.
+     * @example
+     * // Update many Secheresses
+     * const secheresses = await prisma.secheresses.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Secheresses and only return the `code_geographique`
+     * const secheressesWithCode_geographiqueOnly = await prisma.secheresses.updateManyAndReturn({
+     *   select: { code_geographique: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends secheressesUpdateManyAndReturnArgs>(args: SelectSubset<T, secheressesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Secheresses.
+     * @param {secheressesUpsertArgs} args - Arguments to update or create a Secheresses.
+     * @example
+     * // Update or create a Secheresses
+     * const secheresses = await prisma.secheresses.upsert({
+     *   create: {
+     *     // ... data to create a Secheresses
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Secheresses we want to update
+     *   }
+     * })
+     */
+    upsert<T extends secheressesUpsertArgs>(args: SelectSubset<T, secheressesUpsertArgs<ExtArgs>>): Prisma__secheressesClient<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Secheresses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {secheressesCountArgs} args - Arguments to filter Secheresses to count.
+     * @example
+     * // Count the number of Secheresses
+     * const count = await prisma.secheresses.count({
+     *   where: {
+     *     // ... the filter for the Secheresses we want to count
+     *   }
+     * })
+    **/
+    count<T extends secheressesCountArgs>(
+      args?: Subset<T, secheressesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SecheressesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Secheresses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SecheressesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SecheressesAggregateArgs>(args: Subset<T, SecheressesAggregateArgs>): Prisma.PrismaPromise<GetSecheressesAggregateType<T>>
+
+    /**
+     * Group by Secheresses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {secheressesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends secheressesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: secheressesGroupByArgs['orderBy'] }
+        : { orderBy?: secheressesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, secheressesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSecheressesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the secheresses model
+   */
+  readonly fields: secheressesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for secheresses.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__secheressesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the secheresses model
+   */
+  interface secheressesFieldRefs {
+    readonly code_geographique: FieldRef<"secheresses", 'String'>
+    readonly libelle_geographique: FieldRef<"secheresses", 'String'>
+    readonly epci: FieldRef<"secheresses", 'String'>
+    readonly libelle_epci: FieldRef<"secheresses", 'String'>
+    readonly departement: FieldRef<"secheresses", 'String'>
+    readonly libelle_departement: FieldRef<"secheresses", 'String'>
+    readonly region: FieldRef<"secheresses", 'Float'>
+    readonly ept: FieldRef<"secheresses", 'String'>
+    readonly libelle_petr: FieldRef<"secheresses", 'String'>
+    readonly code_pnr: FieldRef<"secheresses", 'String'>
+    readonly libelle_pnr: FieldRef<"secheresses", 'String'>
+    readonly restrictions_2013: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2014: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2015: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2016: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2017: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2018: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2019: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2020: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2021: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2022: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2023: FieldRef<"secheresses", 'Json[]'>
+    readonly restrictions_2024: FieldRef<"secheresses", 'Json[]'>
+    readonly id: FieldRef<"secheresses", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * secheresses findUnique
+   */
+  export type secheressesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the secheresses
+     */
+    select?: secheressesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the secheresses
+     */
+    omit?: secheressesOmit<ExtArgs> | null
+    /**
+     * Filter, which secheresses to fetch.
+     */
+    where: secheressesWhereUniqueInput
+  }
+
+  /**
+   * secheresses findUniqueOrThrow
+   */
+  export type secheressesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the secheresses
+     */
+    select?: secheressesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the secheresses
+     */
+    omit?: secheressesOmit<ExtArgs> | null
+    /**
+     * Filter, which secheresses to fetch.
+     */
+    where: secheressesWhereUniqueInput
+  }
+
+  /**
+   * secheresses findFirst
+   */
+  export type secheressesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the secheresses
+     */
+    select?: secheressesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the secheresses
+     */
+    omit?: secheressesOmit<ExtArgs> | null
+    /**
+     * Filter, which secheresses to fetch.
+     */
+    where?: secheressesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of secheresses to fetch.
+     */
+    orderBy?: secheressesOrderByWithRelationInput | secheressesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for secheresses.
+     */
+    cursor?: secheressesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` secheresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` secheresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of secheresses.
+     */
+    distinct?: SecheressesScalarFieldEnum | SecheressesScalarFieldEnum[]
+  }
+
+  /**
+   * secheresses findFirstOrThrow
+   */
+  export type secheressesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the secheresses
+     */
+    select?: secheressesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the secheresses
+     */
+    omit?: secheressesOmit<ExtArgs> | null
+    /**
+     * Filter, which secheresses to fetch.
+     */
+    where?: secheressesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of secheresses to fetch.
+     */
+    orderBy?: secheressesOrderByWithRelationInput | secheressesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for secheresses.
+     */
+    cursor?: secheressesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` secheresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` secheresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of secheresses.
+     */
+    distinct?: SecheressesScalarFieldEnum | SecheressesScalarFieldEnum[]
+  }
+
+  /**
+   * secheresses findMany
+   */
+  export type secheressesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the secheresses
+     */
+    select?: secheressesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the secheresses
+     */
+    omit?: secheressesOmit<ExtArgs> | null
+    /**
+     * Filter, which secheresses to fetch.
+     */
+    where?: secheressesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of secheresses to fetch.
+     */
+    orderBy?: secheressesOrderByWithRelationInput | secheressesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing secheresses.
+     */
+    cursor?: secheressesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` secheresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` secheresses.
+     */
+    skip?: number
+    distinct?: SecheressesScalarFieldEnum | SecheressesScalarFieldEnum[]
+  }
+
+  /**
+   * secheresses create
+   */
+  export type secheressesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the secheresses
+     */
+    select?: secheressesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the secheresses
+     */
+    omit?: secheressesOmit<ExtArgs> | null
+    /**
+     * The data needed to create a secheresses.
+     */
+    data: XOR<secheressesCreateInput, secheressesUncheckedCreateInput>
+  }
+
+  /**
+   * secheresses createMany
+   */
+  export type secheressesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many secheresses.
+     */
+    data: secheressesCreateManyInput | secheressesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * secheresses createManyAndReturn
+   */
+  export type secheressesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the secheresses
+     */
+    select?: secheressesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the secheresses
+     */
+    omit?: secheressesOmit<ExtArgs> | null
+    /**
+     * The data used to create many secheresses.
+     */
+    data: secheressesCreateManyInput | secheressesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * secheresses update
+   */
+  export type secheressesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the secheresses
+     */
+    select?: secheressesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the secheresses
+     */
+    omit?: secheressesOmit<ExtArgs> | null
+    /**
+     * The data needed to update a secheresses.
+     */
+    data: XOR<secheressesUpdateInput, secheressesUncheckedUpdateInput>
+    /**
+     * Choose, which secheresses to update.
+     */
+    where: secheressesWhereUniqueInput
+  }
+
+  /**
+   * secheresses updateMany
+   */
+  export type secheressesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update secheresses.
+     */
+    data: XOR<secheressesUpdateManyMutationInput, secheressesUncheckedUpdateManyInput>
+    /**
+     * Filter which secheresses to update
+     */
+    where?: secheressesWhereInput
+    /**
+     * Limit how many secheresses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * secheresses updateManyAndReturn
+   */
+  export type secheressesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the secheresses
+     */
+    select?: secheressesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the secheresses
+     */
+    omit?: secheressesOmit<ExtArgs> | null
+    /**
+     * The data used to update secheresses.
+     */
+    data: XOR<secheressesUpdateManyMutationInput, secheressesUncheckedUpdateManyInput>
+    /**
+     * Filter which secheresses to update
+     */
+    where?: secheressesWhereInput
+    /**
+     * Limit how many secheresses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * secheresses upsert
+   */
+  export type secheressesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the secheresses
+     */
+    select?: secheressesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the secheresses
+     */
+    omit?: secheressesOmit<ExtArgs> | null
+    /**
+     * The filter to search for the secheresses to update in case it exists.
+     */
+    where: secheressesWhereUniqueInput
+    /**
+     * In case the secheresses found by the `where` argument doesn't exist, create a new secheresses with this data.
+     */
+    create: XOR<secheressesCreateInput, secheressesUncheckedCreateInput>
+    /**
+     * In case the secheresses was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<secheressesUpdateInput, secheressesUncheckedUpdateInput>
+  }
+
+  /**
+   * secheresses delete
+   */
+  export type secheressesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the secheresses
+     */
+    select?: secheressesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the secheresses
+     */
+    omit?: secheressesOmit<ExtArgs> | null
+    /**
+     * Filter which secheresses to delete.
+     */
+    where: secheressesWhereUniqueInput
+  }
+
+  /**
+   * secheresses deleteMany
+   */
+  export type secheressesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which secheresses to delete
+     */
+    where?: secheressesWhereInput
+    /**
+     * Limit how many secheresses to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * secheresses without action
+   */
+  export type secheressesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the secheresses
+     */
+    select?: secheressesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the secheresses
+     */
+    omit?: secheressesOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model pg_stat_statements
    */
 
@@ -58560,6 +59888,36 @@ export namespace Prisma {
   export type Rga_par_communesScalarFieldEnum = (typeof Rga_par_communesScalarFieldEnum)[keyof typeof Rga_par_communesScalarFieldEnum]
 
 
+  export const SecheressesScalarFieldEnum: {
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    libelle_departement: 'libelle_departement',
+    region: 'region',
+    ept: 'ept',
+    libelle_petr: 'libelle_petr',
+    code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr',
+    restrictions_2013: 'restrictions_2013',
+    restrictions_2014: 'restrictions_2014',
+    restrictions_2015: 'restrictions_2015',
+    restrictions_2016: 'restrictions_2016',
+    restrictions_2017: 'restrictions_2017',
+    restrictions_2018: 'restrictions_2018',
+    restrictions_2019: 'restrictions_2019',
+    restrictions_2020: 'restrictions_2020',
+    restrictions_2021: 'restrictions_2021',
+    restrictions_2022: 'restrictions_2022',
+    restrictions_2023: 'restrictions_2023',
+    restrictions_2024: 'restrictions_2024',
+    id: 'id'
+  };
+
+  export type SecheressesScalarFieldEnum = (typeof SecheressesScalarFieldEnum)[keyof typeof SecheressesScalarFieldEnum]
+
+
   export const Pg_stat_statementsScalarFieldEnum: {
     userid: 'userid',
     dbid: 'dbid',
@@ -58770,6 +60128,13 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json[]'
+   */
+  export type ListJsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json[]'>
     
 
 
@@ -63853,6 +65218,155 @@ export namespace Prisma {
     code_pnr?: StringNullableWithAggregatesFilter<"rga_par_communes"> | string | null
     libelle_pnr?: StringNullableWithAggregatesFilter<"rga_par_communes"> | string | null
     alea?: StringWithAggregatesFilter<"rga_par_communes"> | string
+  }
+
+  export type secheressesWhereInput = {
+    AND?: secheressesWhereInput | secheressesWhereInput[]
+    OR?: secheressesWhereInput[]
+    NOT?: secheressesWhereInput | secheressesWhereInput[]
+    code_geographique?: StringFilter<"secheresses"> | string
+    libelle_geographique?: StringFilter<"secheresses"> | string
+    epci?: StringFilter<"secheresses"> | string
+    libelle_epci?: StringFilter<"secheresses"> | string
+    departement?: StringFilter<"secheresses"> | string
+    libelle_departement?: StringFilter<"secheresses"> | string
+    region?: FloatFilter<"secheresses"> | number
+    ept?: StringNullableFilter<"secheresses"> | string | null
+    libelle_petr?: StringNullableFilter<"secheresses"> | string | null
+    code_pnr?: StringNullableFilter<"secheresses"> | string | null
+    libelle_pnr?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2013?: JsonNullableListFilter<"secheresses">
+    restrictions_2014?: JsonNullableListFilter<"secheresses">
+    restrictions_2015?: JsonNullableListFilter<"secheresses">
+    restrictions_2016?: JsonNullableListFilter<"secheresses">
+    restrictions_2017?: JsonNullableListFilter<"secheresses">
+    restrictions_2018?: JsonNullableListFilter<"secheresses">
+    restrictions_2019?: JsonNullableListFilter<"secheresses">
+    restrictions_2020?: JsonNullableListFilter<"secheresses">
+    restrictions_2021?: JsonNullableListFilter<"secheresses">
+    restrictions_2022?: JsonNullableListFilter<"secheresses">
+    restrictions_2023?: JsonNullableListFilter<"secheresses">
+    restrictions_2024?: JsonNullableListFilter<"secheresses">
+    id?: IntFilter<"secheresses"> | number
+  }
+
+  export type secheressesOrderByWithRelationInput = {
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    restrictions_2013?: SortOrder
+    restrictions_2014?: SortOrder
+    restrictions_2015?: SortOrder
+    restrictions_2016?: SortOrder
+    restrictions_2017?: SortOrder
+    restrictions_2018?: SortOrder
+    restrictions_2019?: SortOrder
+    restrictions_2020?: SortOrder
+    restrictions_2021?: SortOrder
+    restrictions_2022?: SortOrder
+    restrictions_2023?: SortOrder
+    restrictions_2024?: SortOrder
+    id?: SortOrder
+  }
+
+  export type secheressesWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: secheressesWhereInput | secheressesWhereInput[]
+    OR?: secheressesWhereInput[]
+    NOT?: secheressesWhereInput | secheressesWhereInput[]
+    code_geographique?: StringFilter<"secheresses"> | string
+    libelle_geographique?: StringFilter<"secheresses"> | string
+    epci?: StringFilter<"secheresses"> | string
+    libelle_epci?: StringFilter<"secheresses"> | string
+    departement?: StringFilter<"secheresses"> | string
+    libelle_departement?: StringFilter<"secheresses"> | string
+    region?: FloatFilter<"secheresses"> | number
+    ept?: StringNullableFilter<"secheresses"> | string | null
+    libelle_petr?: StringNullableFilter<"secheresses"> | string | null
+    code_pnr?: StringNullableFilter<"secheresses"> | string | null
+    libelle_pnr?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2013?: JsonNullableListFilter<"secheresses">
+    restrictions_2014?: JsonNullableListFilter<"secheresses">
+    restrictions_2015?: JsonNullableListFilter<"secheresses">
+    restrictions_2016?: JsonNullableListFilter<"secheresses">
+    restrictions_2017?: JsonNullableListFilter<"secheresses">
+    restrictions_2018?: JsonNullableListFilter<"secheresses">
+    restrictions_2019?: JsonNullableListFilter<"secheresses">
+    restrictions_2020?: JsonNullableListFilter<"secheresses">
+    restrictions_2021?: JsonNullableListFilter<"secheresses">
+    restrictions_2022?: JsonNullableListFilter<"secheresses">
+    restrictions_2023?: JsonNullableListFilter<"secheresses">
+    restrictions_2024?: JsonNullableListFilter<"secheresses">
+  }, "id">
+
+  export type secheressesOrderByWithAggregationInput = {
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    restrictions_2013?: SortOrder
+    restrictions_2014?: SortOrder
+    restrictions_2015?: SortOrder
+    restrictions_2016?: SortOrder
+    restrictions_2017?: SortOrder
+    restrictions_2018?: SortOrder
+    restrictions_2019?: SortOrder
+    restrictions_2020?: SortOrder
+    restrictions_2021?: SortOrder
+    restrictions_2022?: SortOrder
+    restrictions_2023?: SortOrder
+    restrictions_2024?: SortOrder
+    id?: SortOrder
+    _count?: secheressesCountOrderByAggregateInput
+    _avg?: secheressesAvgOrderByAggregateInput
+    _max?: secheressesMaxOrderByAggregateInput
+    _min?: secheressesMinOrderByAggregateInput
+    _sum?: secheressesSumOrderByAggregateInput
+  }
+
+  export type secheressesScalarWhereWithAggregatesInput = {
+    AND?: secheressesScalarWhereWithAggregatesInput | secheressesScalarWhereWithAggregatesInput[]
+    OR?: secheressesScalarWhereWithAggregatesInput[]
+    NOT?: secheressesScalarWhereWithAggregatesInput | secheressesScalarWhereWithAggregatesInput[]
+    code_geographique?: StringWithAggregatesFilter<"secheresses"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"secheresses"> | string
+    epci?: StringWithAggregatesFilter<"secheresses"> | string
+    libelle_epci?: StringWithAggregatesFilter<"secheresses"> | string
+    departement?: StringWithAggregatesFilter<"secheresses"> | string
+    libelle_departement?: StringWithAggregatesFilter<"secheresses"> | string
+    region?: FloatWithAggregatesFilter<"secheresses"> | number
+    ept?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    restrictions_2013?: JsonNullableListFilter<"secheresses">
+    restrictions_2014?: JsonNullableListFilter<"secheresses">
+    restrictions_2015?: JsonNullableListFilter<"secheresses">
+    restrictions_2016?: JsonNullableListFilter<"secheresses">
+    restrictions_2017?: JsonNullableListFilter<"secheresses">
+    restrictions_2018?: JsonNullableListFilter<"secheresses">
+    restrictions_2019?: JsonNullableListFilter<"secheresses">
+    restrictions_2020?: JsonNullableListFilter<"secheresses">
+    restrictions_2021?: JsonNullableListFilter<"secheresses">
+    restrictions_2022?: JsonNullableListFilter<"secheresses">
+    restrictions_2023?: JsonNullableListFilter<"secheresses">
+    restrictions_2024?: JsonNullableListFilter<"secheresses">
+    id?: IntWithAggregatesFilter<"secheresses"> | number
   }
 
   export type pg_stat_statementsWhereInput = {
@@ -70206,6 +71720,192 @@ export namespace Prisma {
     alea?: StringFieldUpdateOperationsInput | string
   }
 
+  export type secheressesCreateInput = {
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    restrictions_2013?: secheressesCreaterestrictions_2013Input | InputJsonValue[]
+    restrictions_2014?: secheressesCreaterestrictions_2014Input | InputJsonValue[]
+    restrictions_2015?: secheressesCreaterestrictions_2015Input | InputJsonValue[]
+    restrictions_2016?: secheressesCreaterestrictions_2016Input | InputJsonValue[]
+    restrictions_2017?: secheressesCreaterestrictions_2017Input | InputJsonValue[]
+    restrictions_2018?: secheressesCreaterestrictions_2018Input | InputJsonValue[]
+    restrictions_2019?: secheressesCreaterestrictions_2019Input | InputJsonValue[]
+    restrictions_2020?: secheressesCreaterestrictions_2020Input | InputJsonValue[]
+    restrictions_2021?: secheressesCreaterestrictions_2021Input | InputJsonValue[]
+    restrictions_2022?: secheressesCreaterestrictions_2022Input | InputJsonValue[]
+    restrictions_2023?: secheressesCreaterestrictions_2023Input | InputJsonValue[]
+    restrictions_2024?: secheressesCreaterestrictions_2024Input | InputJsonValue[]
+  }
+
+  export type secheressesUncheckedCreateInput = {
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    restrictions_2013?: secheressesCreaterestrictions_2013Input | InputJsonValue[]
+    restrictions_2014?: secheressesCreaterestrictions_2014Input | InputJsonValue[]
+    restrictions_2015?: secheressesCreaterestrictions_2015Input | InputJsonValue[]
+    restrictions_2016?: secheressesCreaterestrictions_2016Input | InputJsonValue[]
+    restrictions_2017?: secheressesCreaterestrictions_2017Input | InputJsonValue[]
+    restrictions_2018?: secheressesCreaterestrictions_2018Input | InputJsonValue[]
+    restrictions_2019?: secheressesCreaterestrictions_2019Input | InputJsonValue[]
+    restrictions_2020?: secheressesCreaterestrictions_2020Input | InputJsonValue[]
+    restrictions_2021?: secheressesCreaterestrictions_2021Input | InputJsonValue[]
+    restrictions_2022?: secheressesCreaterestrictions_2022Input | InputJsonValue[]
+    restrictions_2023?: secheressesCreaterestrictions_2023Input | InputJsonValue[]
+    restrictions_2024?: secheressesCreaterestrictions_2024Input | InputJsonValue[]
+    id?: number
+  }
+
+  export type secheressesUpdateInput = {
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2013?: secheressesUpdaterestrictions_2013Input | InputJsonValue[]
+    restrictions_2014?: secheressesUpdaterestrictions_2014Input | InputJsonValue[]
+    restrictions_2015?: secheressesUpdaterestrictions_2015Input | InputJsonValue[]
+    restrictions_2016?: secheressesUpdaterestrictions_2016Input | InputJsonValue[]
+    restrictions_2017?: secheressesUpdaterestrictions_2017Input | InputJsonValue[]
+    restrictions_2018?: secheressesUpdaterestrictions_2018Input | InputJsonValue[]
+    restrictions_2019?: secheressesUpdaterestrictions_2019Input | InputJsonValue[]
+    restrictions_2020?: secheressesUpdaterestrictions_2020Input | InputJsonValue[]
+    restrictions_2021?: secheressesUpdaterestrictions_2021Input | InputJsonValue[]
+    restrictions_2022?: secheressesUpdaterestrictions_2022Input | InputJsonValue[]
+    restrictions_2023?: secheressesUpdaterestrictions_2023Input | InputJsonValue[]
+    restrictions_2024?: secheressesUpdaterestrictions_2024Input | InputJsonValue[]
+  }
+
+  export type secheressesUncheckedUpdateInput = {
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2013?: secheressesUpdaterestrictions_2013Input | InputJsonValue[]
+    restrictions_2014?: secheressesUpdaterestrictions_2014Input | InputJsonValue[]
+    restrictions_2015?: secheressesUpdaterestrictions_2015Input | InputJsonValue[]
+    restrictions_2016?: secheressesUpdaterestrictions_2016Input | InputJsonValue[]
+    restrictions_2017?: secheressesUpdaterestrictions_2017Input | InputJsonValue[]
+    restrictions_2018?: secheressesUpdaterestrictions_2018Input | InputJsonValue[]
+    restrictions_2019?: secheressesUpdaterestrictions_2019Input | InputJsonValue[]
+    restrictions_2020?: secheressesUpdaterestrictions_2020Input | InputJsonValue[]
+    restrictions_2021?: secheressesUpdaterestrictions_2021Input | InputJsonValue[]
+    restrictions_2022?: secheressesUpdaterestrictions_2022Input | InputJsonValue[]
+    restrictions_2023?: secheressesUpdaterestrictions_2023Input | InputJsonValue[]
+    restrictions_2024?: secheressesUpdaterestrictions_2024Input | InputJsonValue[]
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type secheressesCreateManyInput = {
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    restrictions_2013?: secheressesCreaterestrictions_2013Input | InputJsonValue[]
+    restrictions_2014?: secheressesCreaterestrictions_2014Input | InputJsonValue[]
+    restrictions_2015?: secheressesCreaterestrictions_2015Input | InputJsonValue[]
+    restrictions_2016?: secheressesCreaterestrictions_2016Input | InputJsonValue[]
+    restrictions_2017?: secheressesCreaterestrictions_2017Input | InputJsonValue[]
+    restrictions_2018?: secheressesCreaterestrictions_2018Input | InputJsonValue[]
+    restrictions_2019?: secheressesCreaterestrictions_2019Input | InputJsonValue[]
+    restrictions_2020?: secheressesCreaterestrictions_2020Input | InputJsonValue[]
+    restrictions_2021?: secheressesCreaterestrictions_2021Input | InputJsonValue[]
+    restrictions_2022?: secheressesCreaterestrictions_2022Input | InputJsonValue[]
+    restrictions_2023?: secheressesCreaterestrictions_2023Input | InputJsonValue[]
+    restrictions_2024?: secheressesCreaterestrictions_2024Input | InputJsonValue[]
+    id?: number
+  }
+
+  export type secheressesUpdateManyMutationInput = {
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2013?: secheressesUpdaterestrictions_2013Input | InputJsonValue[]
+    restrictions_2014?: secheressesUpdaterestrictions_2014Input | InputJsonValue[]
+    restrictions_2015?: secheressesUpdaterestrictions_2015Input | InputJsonValue[]
+    restrictions_2016?: secheressesUpdaterestrictions_2016Input | InputJsonValue[]
+    restrictions_2017?: secheressesUpdaterestrictions_2017Input | InputJsonValue[]
+    restrictions_2018?: secheressesUpdaterestrictions_2018Input | InputJsonValue[]
+    restrictions_2019?: secheressesUpdaterestrictions_2019Input | InputJsonValue[]
+    restrictions_2020?: secheressesUpdaterestrictions_2020Input | InputJsonValue[]
+    restrictions_2021?: secheressesUpdaterestrictions_2021Input | InputJsonValue[]
+    restrictions_2022?: secheressesUpdaterestrictions_2022Input | InputJsonValue[]
+    restrictions_2023?: secheressesUpdaterestrictions_2023Input | InputJsonValue[]
+    restrictions_2024?: secheressesUpdaterestrictions_2024Input | InputJsonValue[]
+  }
+
+  export type secheressesUncheckedUpdateManyInput = {
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2013?: secheressesUpdaterestrictions_2013Input | InputJsonValue[]
+    restrictions_2014?: secheressesUpdaterestrictions_2014Input | InputJsonValue[]
+    restrictions_2015?: secheressesUpdaterestrictions_2015Input | InputJsonValue[]
+    restrictions_2016?: secheressesUpdaterestrictions_2016Input | InputJsonValue[]
+    restrictions_2017?: secheressesUpdaterestrictions_2017Input | InputJsonValue[]
+    restrictions_2018?: secheressesUpdaterestrictions_2018Input | InputJsonValue[]
+    restrictions_2019?: secheressesUpdaterestrictions_2019Input | InputJsonValue[]
+    restrictions_2020?: secheressesUpdaterestrictions_2020Input | InputJsonValue[]
+    restrictions_2021?: secheressesUpdaterestrictions_2021Input | InputJsonValue[]
+    restrictions_2022?: secheressesUpdaterestrictions_2022Input | InputJsonValue[]
+    restrictions_2023?: secheressesUpdaterestrictions_2023Input | InputJsonValue[]
+    restrictions_2024?: secheressesUpdaterestrictions_2024Input | InputJsonValue[]
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -74300,6 +76000,87 @@ export namespace Prisma {
     pk?: SortOrder
     region?: SortOrder
   }
+  export type JsonNullableListFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableListFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableListFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableListFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel> | null
+    has?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    hasEvery?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel>
+    hasSome?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type secheressesCountOrderByAggregateInput = {
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    restrictions_2013?: SortOrder
+    restrictions_2014?: SortOrder
+    restrictions_2015?: SortOrder
+    restrictions_2016?: SortOrder
+    restrictions_2017?: SortOrder
+    restrictions_2018?: SortOrder
+    restrictions_2019?: SortOrder
+    restrictions_2020?: SortOrder
+    restrictions_2021?: SortOrder
+    restrictions_2022?: SortOrder
+    restrictions_2023?: SortOrder
+    restrictions_2024?: SortOrder
+    id?: SortOrder
+  }
+
+  export type secheressesAvgOrderByAggregateInput = {
+    region?: SortOrder
+    id?: SortOrder
+  }
+
+  export type secheressesMaxOrderByAggregateInput = {
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    id?: SortOrder
+  }
+
+  export type secheressesMinOrderByAggregateInput = {
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    id?: SortOrder
+  }
+
+  export type secheressesSumOrderByAggregateInput = {
+    region?: SortOrder
+    id?: SortOrder
+  }
 
   export type DecimalNullableFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
@@ -74846,6 +76627,114 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type secheressesCreaterestrictions_2013Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2014Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2015Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2016Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2017Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2018Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2019Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2020Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2021Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2022Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2023Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesCreaterestrictions_2024Input = {
+    set: InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2013Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2014Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2015Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2016Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2017Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2018Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2019Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2020Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2021Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2022Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2023Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
+  }
+
+  export type secheressesUpdaterestrictions_2024Input = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {

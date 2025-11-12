@@ -5,8 +5,8 @@ import { LoaderText } from '@/components/ui/loader';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import { handleRedirectionThematique } from '@/hooks/Redirections';
-import { CarteCommunes, ConfortThermique, InconfortThermique, TableCommuneModel } from '@/lib/postgres/models';
-import { GetConfortThermique, GetInconfortThermique } from "@/lib/queries/databases/inconfortThermique";
+import { CarteCommunes, ConfortThermique, TableCommuneModel } from '@/lib/postgres/models';
+import { GetConfortThermique } from "@/lib/queries/databases/inconfortThermique";
 import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import Image from 'next/image';
@@ -14,7 +14,6 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { useLayoutEffect, useState } from 'react';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
-import { GrandAge } from '../../indicateurs/confortThermique/1-GrandAge';
 import { GrandAge75 } from '../../indicateurs/confortThermique/1-GrandAge75';
 import { PrecariteEnergetique } from '../../indicateurs/confortThermique/2-PrecariteEnergetique';
 import { EmploisEnExterieur } from '../../indicateurs/confortThermique/3-EmploisExterieurs';
@@ -23,12 +22,10 @@ import { LCZ } from '../../indicateurs/confortThermique/6-LCZ';
 
 const DonneesConfortThermique = ({
   carteCommunes,
-  inconfortThermique,
   confortThermique,
   tableCommune
 }: {
   carteCommunes: CarteCommunes[];
-  inconfortThermique: InconfortThermique[];
   confortThermique: ConfortThermique[];
   tableCommune: TableCommuneModel[];
 }) => {
@@ -38,7 +35,7 @@ const DonneesConfortThermique = ({
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const [data, setData] = useState({ carteCommunes, inconfortThermique, confortThermique, tableCommune });
+  const [data, setData] = useState({ carteCommunes, confortThermique, tableCommune });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
   const ongletsMenu = sommaireThematiques[thematique];
@@ -50,15 +47,13 @@ const DonneesConfortThermique = ({
     }
     setIsLoading(true);
     void (async () => {
-      const [newCarteCommunes, newInconfortThermique, newConfortThermique, newTableCommune] = await Promise.all([
+      const [newCarteCommunes, newConfortThermique, newTableCommune] = await Promise.all([
         GetCommunes(code, libelle, type),
-        GetInconfortThermique(code, libelle, type),
         GetConfortThermique(code, libelle, type),
         GetTablecommune(code, libelle, type)
       ]);
       setData({
         carteCommunes: newCarteCommunes,
-        inconfortThermique: newInconfortThermique,
         confortThermique: newConfortThermique,
         tableCommune: newTableCommune
       });
@@ -106,15 +101,6 @@ const DonneesConfortThermique = ({
           }}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
-          {/* Grand âge */}
-          <div id="Grand âge" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
-            <div className={styles.h3Titles}>
-              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-                Évolution de la part des 80 ans et plus dans la population
-              </H3>
-            </div>
-            <GrandAge inconfortThermique={data.inconfortThermique} />
-          </div>
 
           {/* Grand âge */}
           <div id="Grand âge" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>

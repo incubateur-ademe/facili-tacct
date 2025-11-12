@@ -243,7 +243,7 @@ export const MapInconfortThermique = (props: {
 
   return (
     <>
-    <style jsx global>{`
+      <style jsx global>{`
         .maplibregl-popup .maplibregl-popup-content {
           box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16) !important;
           border-radius: 6px !important;
@@ -255,9 +255,18 @@ export const MapInconfortThermique = (props: {
       `}</style>
       <div style={{ position: 'relative' }}>
         {!isMapLoaded && (
-          <LoaderText text='Chargement de la cartographie...' />
+          <LoaderText text='Chargement de la cartographie...' height="500px" />
         )}
-        <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
+        <div
+          ref={mapContainer}
+          className='map-container'
+          style={{
+            height: '500px',
+            width: '100%',
+            opacity: isMapLoaded ? 1 : 0,
+            transition: 'opacity 0.3s ease-in'
+          }}
+        />
       </div>
     </>
   );
