@@ -1,14 +1,18 @@
 "use client";
+import DiagnoticImage from '@/assets/images/diagnostiquer_impacts.png';
 import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { SourcesSection } from "@/components/interactions/scrollToSource";
 import { LoaderText } from "@/components/ui/loader";
+import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
+import { handleRedirectionThematique } from "@/hooks/Redirections";
 import { AgricultureBio, CarteCommunes, SurfacesAgricolesModel, TableCommuneModel } from "@/lib/postgres/models";
 import { GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
 import { GetAgricultureBio } from "@/lib/queries/databases/biodiversite";
 import { GetTablecommune } from "@/lib/queries/databases/tableCommune";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
-import { useSearchParams } from "next/navigation";
+import Image from "next/image";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
@@ -31,6 +35,7 @@ export const DonneesAgriculture = ({
   tableCommune
 }: Props) => {
   const searchParams = useSearchParams();
+  const params = usePathname();
   const thematique = searchParams.get('thematique') as "Agriculture";
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
@@ -58,9 +63,9 @@ export const DonneesAgriculture = ({
         GetAgricultureBio(libelle, type, code),
         GetTablecommune(code, libelle, type)
       ]);
-      setData({ 
-        carteCommunes: newCarteCommunes, 
-        surfacesAgricoles: newSurfacesAgricoles, 
+      setData({
+        carteCommunes: newCarteCommunes,
+        surfacesAgricoles: newSurfacesAgricoles,
         agricultureBio: newAgricultureBio,
         tableCommune: newTableCommune
       });
@@ -78,7 +83,7 @@ export const DonneesAgriculture = ({
         {/* Introduction */}
         <section>
           <Body size='lg'>
-            Ces quelques indicateurs vous aideront à poser les bonnes questions, le terrain vous donnera les vraies réponses.
+            Ces quelques indicateurs vous aideront à poser les bonnes questions, le terrain (étape 2) vous donnera les vraies réponses.
           </Body>
         </section>
 
@@ -171,6 +176,31 @@ export const DonneesAgriculture = ({
         </section>
         {/* Sources */}
         <SourcesSection tag="h2" thematique="agriculture" />
+        <div className={styles.redirectionEtape2Wrapper} >
+          <Image
+            src={DiagnoticImage}
+            alt=""
+            style={{ width: '100%', height: 'auto', maxWidth: "180px" }}
+          />
+          <div className={styles.textBloc} >
+            <Body style={{ fontSize: "20px", color: "var(--gris-dark)", fontWeight: 700, maxWidth: "700px" }}>
+              Ces pistes d'investigation en main, partez découvrir sur le terrain comment votre territoire 
+              intègre ces dimensions, entre pratiques locales et enjeux globaux.
+            </Body>
+            <BoutonPrimaireClassic
+              size='lg'
+              text='Diagnostiquer les impacts'
+              link={handleRedirectionThematique({
+                code: code,
+                libelle: libelle,
+                type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+                page: params === "/iframe/donnees" ? "iframe/impacts" : 'impacts',
+                thematique: "Agriculture",
+                anchor: ""
+              })}
+            />
+          </div>
+        </div>
       </div>
   );
 };
