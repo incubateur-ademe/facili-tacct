@@ -32,7 +32,7 @@ const BiodiversiteServerPage = async (props: {
   const dbAOT40 = await GetAOT40();
   const dbEtatCoursDeau = await GetEtatCoursDeau(code, libelle, type);
   const qualiteEauxBaignadeParDpmt = await GetQualiteEauxBaignade(code, libelle, type);
-  const dbInconfortThermique = await GetConfortThermique(code, libelle, type);
+  const dbConfortThermique = await GetConfortThermique(code, libelle, type);
   const dbSurfacesAgricoles = await GetSurfacesAgricoles(code, libelle, type);
 
   return (
@@ -43,7 +43,7 @@ const BiodiversiteServerPage = async (props: {
       aot40={serializeData(dbAOT40)}
       etatCoursDeau={serializeData(dbEtatCoursDeau)}
       qualiteEauxBaignade={serializeData(qualiteEauxBaignadeParDpmt)}
-      inconfortThermique={serializeData(dbInconfortThermique)}
+      confortThermique={serializeData(dbConfortThermique)}
       surfacesAgricoles={serializeData(dbSurfacesAgricoles)}
       tableCommune={props.tableCommune}
     />

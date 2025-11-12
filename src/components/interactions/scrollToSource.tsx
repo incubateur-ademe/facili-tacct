@@ -27,7 +27,7 @@ export const SourcesSection = (
   }:
     {
       tag: string;
-      thematique: "confortThermique" | "agriculture" | "biodiversite";
+      thematique: "confortThermique" | "agriculture" | "agricultureImpact" | "biodiversite";
     }
 ) => {
   return (

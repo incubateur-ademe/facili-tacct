@@ -16,7 +16,8 @@ import {
   PrelevementsEauParsed,
   QualiteSitesBaignade,
   RGAdb,
-  SurfacesAgricolesModel
+  SurfacesAgricolesModel,
+  TableCommuneModel
 } from '@/lib/postgres/models';
 import { Round } from '../reusableFunctions/round';
 
@@ -134,7 +135,29 @@ export const IndicatorExportTransformations = {
             el.superficie_sau_herbe_bois_patures,
           superficie_sau_jardins_ha: el.superficie_sau_jardins
         };
-      })
+      }),
+    chefsExploitationSeniors: (tableCommune: TableCommuneModel[]) => 
+      tableCommune.map((el) => {
+        return {
+          code_geographique: el.code_geographique,
+          libelle_geographique: el.libelle_geographique,
+          code_epci: el.epci,
+          libelle_epci: el.libelle_epci,
+          ept: el.ept,
+          code_pnr: el.code_pnr,
+          libelle_pnr: el.libelle_pnr,
+          libelle_petr: el.libelle_petr,
+          code_departement: el.departement,
+          libelle_departement: el.libelle_departement,
+          region: el.region,
+          'Part des chefs d’exploitation de plus de 55 ans (%)': (() => {
+            if (Number(el.agriculture_part_over_55) === 0) return 0;
+            if (!el.agriculture_part_over_55 || isNaN(Number(el.agriculture_part_over_55)))
+              return 'secret statistique';
+            return el.agriculture_part_over_55;
+          })()
+        };
+      }),
   },
   inconfort_thermique: {
     AgeBati: (ageBati: AgeBatiDto[]) =>

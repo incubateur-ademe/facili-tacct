@@ -4,7 +4,7 @@ import {
   ArreteCatNat,
   IncendiesForet,
   RGAdb,
-  Secheresse
+  Secheresses
 } from '@/lib/postgres/models';
 import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck } from '../columns';
@@ -163,7 +163,7 @@ export const GetSecheresses = async (
   code: string,
   libelle: string,
   type: string
-): Promise<Secheresse[]> => {
+): Promise<Secheresses[]> => {
   const column = ColumnCodeCheck(type);
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {

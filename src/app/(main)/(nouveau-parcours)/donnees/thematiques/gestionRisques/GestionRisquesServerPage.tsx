@@ -11,7 +11,7 @@ const GestionRisquesServerPage = async (props: { searchParams: SearchParams }) =
   const erosionCotiere = await GetErosionCotiere(code, libelle, type);
   const dbIncendiesForet = await GetIncendiesForet(code, libelle, type);
   const dbDebroussaillement = await GetDebroussaillement(code, libelle, type);
-  const dbSecheresse = await GetSecheresses(code, libelle, type);
+  const dbSecheresses = await GetSecheresses(code, libelle, type);
 
   // Si les données ne sont pas disponibles, on peut soit retourner notFound() soit un message d'erreur
   // if (!carteCommunes.length || !dbGestionRisques || !dbIncendiesForet) {
@@ -25,7 +25,7 @@ const GestionRisquesServerPage = async (props: { searchParams: SearchParams }) =
       erosionCotiere={erosionCotiere}
       incendiesForet={dbIncendiesForet}
       debroussaillement={dbDebroussaillement}
-      secheresse={dbSecheresse}
+      secheresses={dbSecheresses}
     />
   );
 };

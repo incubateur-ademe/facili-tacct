@@ -1,8 +1,11 @@
 "use client";
 import RDVImage from '@/assets/images/prendreRDV.png';
+import { MicroPieChart } from '@/components/charts/MicroDataviz';
+import { ScrollToSourceTag, SourcesSection } from '@/components/interactions/scrollToSource';
+import { DefinitionTooltip } from '@/components/utils/Tooltips';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H2 } from "@/design-system/base/Textes";
-import { sourcesEtudes } from '@/lib/sources';
+import { irrigable } from '@/lib/definitions';
 import Image from "next/image";
 import { ThematiquesLieesNavigation } from '../components/ThematiquesLieesNavigation';
 import styles from '../impacts.module.scss';
@@ -13,38 +16,24 @@ export const DiagnostiquerImpactsAgriculture = () => {
       {/* Introduction */}
       <section>
         <Body>
-          Les défis de l’agriculture sont doubles : réduire ses émissions de gaz à effet de serre
-          et s'adapter aux impacts du changement climatique : l’intensification des sécheresses
-          menaçant la disponibilité en eau, la dégradation des sols, etc. Face à ces enjeux,
-          l'agriculture biologique, même si elle n’est pas la solution parfaite, apporte des
-          réponses concrètes, aux côtés de l'agroforesterie et des cultures à bas intrants. Le
-          bio renforce la résistance des exploitations agricoles. Comment ? Par la non-utilisation
-          des produits chimiques de synthèse et des OGM. Grâce au recyclage des matières
-          organiques. Par la rotation des cultures. À travers la lutte biologique. Le compostage
-          et la couverture permanente des sols enrichissent la vie microbienne. Les résultats
-          parlent d'eux-mêmes : jusqu'à 35 % de carbone supplémentaire dans les sols. Une meilleure
-          disponibilité en eau pour les plantes, avec des gains de 4 % à 45 %. Un territoire
-          comptant plus d'exploitations bio résiste mieux aux aléas climatiques. Enfin, à
-          surface égale, les cultures biologiques végétales émettent 50 % de gaz à effet
-          de serre en moins que les cultures conventionnelles.
-          <br></br><br></br>
-          - - - <br></br>Le Plan national d’adaptation au changement climatique (PNACC 3)
-          prévoit d’accompagner les agriculteurs pour assurer la résilience de leur exploitation (mesure 37).
+          Voici quelques repères nationaux sur des enjeux agricoles. Mais c’est sur le terrain que vous identifierez
+          les (dés)équilibres propres à votre territoire.
         </Body>
       </section>
       <section className={styles.sectionType}>
         <div id="section1" className={styles.diagnosticWrapper}>
           <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-            XXXXXXXXXXX
+            Comment associer renouvellement agricole et pratiques durables pour un territoire résilient ?
           </H2>
-          <Body>
-            XXXXXXXXXXXXXXX
-          </Body>
           <div className={styles.donneesNationalesWrapper}>
             <div className={styles.leftData}>
-              {/* <MicroPieChart pourcentage={28} ariaLabel="Pourcentage des décès liés à la chaleur" /> */}
+              <MicroPieChart pourcentage={50} ariaLabel="Pourcentage des exploitations dirigées par au moins un exploitant de 55 ans ou plus" />
               <Body>
-                XXXXXX
+                1 exploitation française sur 2 est dirigée par au moins un exploitant de 55 ans ou plus, même si cette proportion
+                varie selon les spécialisations. <br></br>En dix ans (2010-2020), les régions françaises ont par ailleurs perdu{" "}
+                <ScrollToSourceTag sourceNumero={1}>
+                  entre 12 % à 25 % de leurs exploitations sans perdre de surface agricole (-2 %  max de SAU).
+                </ScrollToSourceTag>
               </Body>
             </div>
             <div className={styles.rightData}>
@@ -52,22 +41,30 @@ export const DiagnostiquerImpactsAgriculture = () => {
                 Ce que cela révèle
               </Body>
               <Body>
-                XXXX
+                Pour une agriculture durable et résiliente, le renouvellement des générations est aussi crucial que
+                la taille des exploitations – un équilibre à retrouver d’urgence.
               </Body>
               <Body weight='bold' style={{ marginTop: '0.5rem', marginBottom: '-0.5rem' }}>
                 Avec qui pourriez-vous échanger
               </Body>
               <ul>
-                <li><Body>XXXXX</Body></li>
-                <li><Body>XXXXX</Body></li>
+                <li><Body>sur l’anticipation des départs</Body></li>
+                <li><Body>sur l’accès au foncier</Body></li>
+                <li><Body>sur les aides à l’installation et à l’investissement</Body></li>
+                <li><Body>...</Body></li>
               </ul>
             </div>
           </div>
           <div className={styles.donneesNationalesWrapper}>
             <div className={styles.leftData}>
-              {/* <MicroPieChart pourcentage={71} ariaLabel="Pourcentage des consultations SOS médecinspour les plus de 75 ans" /> */}
+              <MicroPieChart pourcentage={15} ariaLabel="Augmentation des surfaces irriguées en 10 ans" />
               <Body>
-                XXXXX
+                <b>L'irrigation explose</b> : +15 % de surfaces irriguées en dix ans ; +23 % de{" "}
+                <DefinitionTooltip title={irrigable}>
+                  surfaces irrigables.
+                </DefinitionTooltip>
+                {" "}6,8 % de la surface agricole utile (SAU) est <b>irriguée en France, mais avec des écarts
+                  vertigineux</b> : de 1 % à 40 % selon les territoires.
               </Body>
             </div>
             <div className={styles.rightData}>
@@ -75,14 +72,52 @@ export const DiagnostiquerImpactsAgriculture = () => {
                 Ce que cela révèle
               </Body>
               <Body>
-                XXXXX
+                Malgré les risques pour la ressource, l’irrigation demeure un réflexe dominant du monde agricole pour affronter les sécheresses.
               </Body>
               <Body weight='bold' style={{ marginTop: '0.5rem', marginBottom: '-0.5rem' }}>
                 Avec qui pourriez-vous échanger
               </Body>
               <ul>
-                <li><Body>XXXXX</Body></li>
-                <li><Body>XXXXX</Body></li>
+                <li><Body>des dispositions ou opportunités des outils de gestion partagée de la ressource en eau (SAGE, PTGE...)</Body></li>
+                <li><Body>de la disponibilité de la ressource</Body></li>
+                <li><Body>des arbitrages entre usages</Body></li>
+                <li><Body>de l’évolution des modèles et pratiques économes en eau</Body></li>
+                <li><Body>...</Body></li>
+              </ul>
+            </div>
+          </div>
+          <div className={styles.donneesNationalesWrapper}>
+            <div className={styles.leftData}>
+              <MicroPieChart pourcentage={50} ariaLabel="Réduction des émissions de gaz à effet de serre en agriculture biologique" />
+              <Body>
+                Par rapport aux cultures conventionnelles, les cultures végétales biologiques émettent de l’ordre de{" "}
+                <ScrollToSourceTag sourceNumero={3}>
+                  50 % de gaz à effet de serre en moins
+                </ScrollToSourceTag>
+                {" "}par unité de surface.
+              </Body>
+            </div>
+            <div className={styles.rightData}>
+              <Body weight='bold'>
+                Ce que cela révèle
+              </Body>
+              <Body>
+                Au-delà des émissions de l’agriculture, c’est aussi l’empreinte carbone globale de notre alimentation 
+                qui pose question, en raison notamment du risque d’émissions délocalisées via les importations. 
+                Pour éviter ce piège, la transition vers des modes de production moins intensifs doit s’accompagner 
+                d’une évolution des habitudes alimentaires, afin de réduire à la fois les émissions territoriales et 
+                l’empreinte carbone de notre assiette.
+              </Body>
+              <Body weight='bold' style={{ marginTop: '0.5rem', marginBottom: '-0.5rem' }}>
+                Avec qui pourriez-vous échanger
+              </Body>
+              <ul>
+                <li><Body>de la relocalisation des productions agricoles nourricières</Body></li>
+                <li><Body>de nouvelles formes de coopérations avec les agriculteurs</Body></li>
+                <li><Body>de la précarité alimentaire sur votre territoire</Body></li>
+                <li><Body>des dispositifs d’éducation alimentaire</Body></li>
+                <li><Body>des liens avec votre contrat local de santé (CLS)</Body></li>
+                <li><Body>…</Body></li>
               </ul>
             </div>
           </div>
@@ -113,26 +148,7 @@ export const DiagnostiquerImpactsAgriculture = () => {
           />
         </div>
       </section>
-      <section className={styles.sectionType}>
-        <div id="section3" className={styles.diagnosticWrapper}>
-          <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
-            Sources des données
-          </H2>
-          {sourcesEtudes.agriculture.map(source => (
-            <Body key={source.numero} size="sm" style={{ marginBottom: '0.5rem' }}>
-              [{source.numero}]{" "}
-              <a
-                href={source.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: "var(--graphiques-bleu-1" }}
-              >
-                {source.texte}
-              </a>
-            </Body>
-          ))}
-        </div>
-      </section>
+      <SourcesSection tag="h2" thematique="agricultureImpact" />
       <section className={styles.sectionType}>
         <div id="section4" className={styles.diagnosticWrapper}>
           <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
