@@ -6,8 +6,8 @@ import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H2 } from "@/design-system/base/Textes";
 import MiddlePageTrigger from '@/hooks/MiddlePageTrigger';
 import Image from "next/image";
-import { ThematiquesLieesNavigation } from '../../components/ThematiquesLieesNavigation';
-import styles from '../../impacts.module.scss';
+import { ThematiquesLieesNavigation } from '../components/ThematiquesLieesNavigation';
+import styles from '../impacts.module.scss';
 
 export const DiagnostiquerImpactsConfortThermique = () => {
   const handleScrollToSources = (e: React.MouseEvent) => {
