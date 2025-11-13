@@ -52,3 +52,5 @@ next-env.d.ts
 *.crt
 *.key
 *.pem
+
+/.specstory
