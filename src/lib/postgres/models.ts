@@ -1,4 +1,3 @@
-import { Prisma } from '@/generated/client';
 
 export type InconfortThermique = {
   NA5AZ_sum: number | null;
@@ -164,7 +163,7 @@ export type ArreteCatNat = {
 };
 
 export type Secheresses = {
-  id: number;
+  index: bigint;
   code_geographique: string;
   departement: string;
   libelle_departement: string;
@@ -176,18 +175,53 @@ export type Secheresses = {
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
-  restrictions_2013: Prisma.JsonValue[];
-  restrictions_2014: Prisma.JsonValue[];
-  restrictions_2015: Prisma.JsonValue[];
-  restrictions_2016: Prisma.JsonValue[];
-  restrictions_2017: Prisma.JsonValue[];
-  restrictions_2018: Prisma.JsonValue[];
-  restrictions_2019: Prisma.JsonValue[];
-  restrictions_2020: Prisma.JsonValue[];
-  restrictions_2021: Prisma.JsonValue[];
-  restrictions_2022: Prisma.JsonValue[];
-  restrictions_2023: Prisma.JsonValue[];
-  restrictions_2024: Prisma.JsonValue[];
+  restrictions_2013: string | null;
+  restrictions_2014: string | null;
+  restrictions_2015: string | null;
+  restrictions_2016: string | null;
+  restrictions_2017: string | null;
+  restrictions_2018: string | null;
+  restrictions_2019: string | null;
+  restrictions_2020: string | null;
+  restrictions_2021: string | null;
+  restrictions_2022: string | null;
+  restrictions_2023: string | null;
+  restrictions_2024: string | null;
+};
+
+
+type RestrictionArrete = {
+  dat_deb: string;
+  dat_fin: string;
+};
+
+type RestrictionUsage = {
+  nom: string;
+  theme: string | null;
+  part: number;
+  entr: number;
+  coll: number;
+  expl: number;
+  eso: number;
+  esu: number;
+  aep: number;
+};
+
+type RestrictionZas = {
+  code: string;
+  type: string;
+  grav: number;
+  pct: number;
+};
+
+export type RestrictionData = {
+  arrete: RestrictionArrete;
+  usage: RestrictionUsage;
+  zas: RestrictionZas;
+};
+
+export type SecheressesParsed = Omit<Secheresses, `restrictions_${number}`> & {
+  [key: `restrictions_${number}`]: RestrictionData[] | null;
 };
 
 export type RessourcesEau = {

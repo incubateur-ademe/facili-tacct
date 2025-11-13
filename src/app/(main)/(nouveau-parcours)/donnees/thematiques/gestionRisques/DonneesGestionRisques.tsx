@@ -17,6 +17,7 @@ import { FeuxDeForet } from '../../indicateurs/gestionDesRisques/2-FeuxDeForet';
 import { ErosionCotiereComp } from '../../indicateurs/gestionDesRisques/3-ErosionCotiere';
 import { RetraitGonflementDesArgiles } from '../../indicateurs/gestionDesRisques/4-RetraitGonflementDesArgiles';
 import { Debroussaillement } from '../../indicateurs/gestionDesRisques/5-Debroussaillement';
+import { SecheressesPassees } from '../../indicateurs/gestionDesRisques/6-Secheresses';
 
 interface Props {
   gestionRisques: ArreteCatNat[];
@@ -56,10 +57,6 @@ export const DonneesGestionRisques = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
   const ongletsMenu = sommaireThematiques[thematique];
-
-  
-  console.log("data.secheresses", data.secheresses);
-
 
   useLayoutEffect(() => {
     if (isFirstRender) {
@@ -182,7 +179,7 @@ export const DonneesGestionRisques = ({
           </div>
 
           {/* Débroussailement */}
-          <div id="Débroussailement" className={styles.indicateurMapWrapper}>
+          <div id="Débroussailement" className={styles.indicateurMapWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Débroussailement
@@ -191,6 +188,18 @@ export const DonneesGestionRisques = ({
             <Debroussaillement
               debroussaillement={data.debroussaillement}
               carteCommunes={data.carteCommunes}
+            />
+          </div>
+
+          {/* Sécheresses passées */}
+          <div id="Sécheresses passées" className={styles.indicateurWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Sécheresses passées
+              </H3>
+            </div>
+            <SecheressesPassees
+              secheresses={data.secheresses}
             />
           </div>
         </section>
