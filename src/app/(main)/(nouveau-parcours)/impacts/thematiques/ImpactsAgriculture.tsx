@@ -1,6 +1,6 @@
 "use client";
 import RDVImage from '@/assets/images/prendreRDV.png';
-import { MicroPieChart } from '@/components/charts/MicroDataviz';
+import { MicroNumberCircle, MicroPieChart } from '@/components/charts/MicroDataviz';
 import { ScrollToSourceTag, SourcesSection } from '@/components/interactions/scrollToSource';
 import { DefinitionTooltip } from '@/components/utils/Tooltips';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
@@ -57,13 +57,20 @@ export const DiagnostiquerImpactsAgriculture = () => {
           </div>
           <div className={styles.donneesNationalesWrapper}>
             <div className={styles.leftData}>
-              <MicroPieChart pourcentage={15} ariaLabel="Augmentation des surfaces irriguées en 10 ans" />
+              <MicroNumberCircle
+                comparateur='+' 
+                valeur={15} 
+                ariaLabel="Augmentation des surfaces irriguées en 10 ans" 
+                unite='%'
+              />
               <Body>
-                <b>L'irrigation explose</b> : +15 % de surfaces irriguées en dix ans ; +23 % de{" "}
+                <ScrollToSourceTag sourceNumero={2}>
+                  <b>L'irrigation explose</b>
+                </ScrollToSourceTag> : +15 % de surfaces irriguées en dix ans ; +23 % de{" "}
                 <DefinitionTooltip title={irrigable}>
                   surfaces irrigables.
                 </DefinitionTooltip>
-                {" "}6,8 % de la surface agricole utile (SAU) est <b>irriguée en France, mais avec des écarts
+                <br></br>6,8 % de la surface agricole utile (SAU) est irriguée en France, mais <b>avec des écarts
                   vertigineux</b> : de 1 % à 40 % selon les territoires.
               </Body>
             </div>
@@ -86,9 +93,14 @@ export const DiagnostiquerImpactsAgriculture = () => {
               </ul>
             </div>
           </div>
-          <div className={styles.donneesNationalesWrapper}>
+          <div className={styles.donneesNationalesWrapper} style={{ borderBottom: "none" }}>
             <div className={styles.leftData}>
-              <MicroPieChart pourcentage={50} ariaLabel="Réduction des émissions de gaz à effet de serre en agriculture biologique" />
+              <MicroNumberCircle
+                comparateur='-' 
+                valeur={50} 
+                ariaLabel="Réduction des émissions de gaz à effet de serre en agriculture biologique" 
+                unite='%'
+              />
               <Body>
                 Par rapport aux cultures conventionnelles, les cultures végétales biologiques émettent de l’ordre de{" "}
                 <ScrollToSourceTag sourceNumero={3}>
@@ -102,10 +114,10 @@ export const DiagnostiquerImpactsAgriculture = () => {
                 Ce que cela révèle
               </Body>
               <Body>
-                Au-delà des émissions de l’agriculture, c’est aussi l’empreinte carbone globale de notre alimentation 
-                qui pose question, en raison notamment du risque d’émissions délocalisées via les importations. 
-                Pour éviter ce piège, la transition vers des modes de production moins intensifs doit s’accompagner 
-                d’une évolution des habitudes alimentaires, afin de réduire à la fois les émissions territoriales et 
+                Au-delà des émissions de l’agriculture, c’est aussi l’empreinte carbone globale de notre alimentation
+                qui pose question, en raison notamment du risque d’émissions délocalisées via les importations.
+                Pour éviter ce piège, la transition vers des modes de production moins intensifs doit s’accompagner
+                d’une évolution des habitudes alimentaires, afin de réduire à la fois les émissions territoriales et
                 l’empreinte carbone de notre assiette.
               </Body>
               <Body weight='bold' style={{ marginTop: '0.5rem', marginBottom: '-0.5rem' }}>

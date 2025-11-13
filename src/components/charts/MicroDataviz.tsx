@@ -89,16 +89,18 @@ export const MicroNumberCircle = ({
   arrondi = 0,
   ariaLabel = "",
   unite = '',
-  size='md'
+  size='md',
+  comparateur = ""
 }: {
   valeur: number | string;
   arrondi?: number;
   ariaLabel?: string;
   unite?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg';
+  comparateur?: '>' | '<' | '>=' | '<=' | '=' | '+' | '-' | '';
 }) => {
   const displayValue = Round(Number(valeur), arrondi);
-  const displayString = `${displayValue} ${unite}`.trim();
+  const displayString = `${comparateur}${displayValue} ${unite}`.trim();
   const shouldBreak = displayString.length > 8;
   return (
     <>
@@ -114,7 +116,49 @@ export const MicroNumberCircle = ({
             />
             <div className={styles.microChartText}>
               <Body style={{ color: couleurs.gris.dark }} weight="bold" size={size}>
-                {shouldBreak ? <>{displayValue}<br />{unite}</> : <>{displayValue} {unite}</>}
+                {shouldBreak ? <>{comparateur}{displayValue}<br />{unite}</> : <>{comparateur}{displayValue} {unite}</>}
+              </Body>
+            </div>
+          </div>
+        )
+      }
+    </>
+  );
+}
+
+export const MicroNumberCircleWithText = ({
+  valeur,
+  arrondi = 0,
+  ariaLabel = "",
+  unite = '',
+  size='md',
+  comparateur = "",
+  texte = ""
+}: {
+  valeur: number | string;
+  arrondi?: number;
+  ariaLabel?: string;
+  unite?: string;
+  size?: 'xs' | 'sm' | 'md' | 'lg';
+  comparateur?: '>' | '<' | '>=' | '<=' | '=' | '+' | '-' | '';
+  texte?: string;
+}) => {
+  const displayValue = Round(Number(valeur), arrondi);
+  return (
+    <>
+      {
+        isNaN(Number(valeur)) ? null : (
+          <div className={styles.microNumberCircleWrapper}>
+            <Progress
+              {...NumberCircleProps}
+              aria-label={ariaLabel}
+              percent={100}
+              strokeColor={couleurs.gris.dark}
+              trailColor={couleurs.gris.medium}
+            />
+            <div className={styles.microChartText}>
+              <Body style={{ color: couleurs.gris.dark }} weight="bold" size={size}>
+                {<>{comparateur}{displayValue} {unite}</>}{texte && <><br />{texte}</>}
               </Body>
             </div>
           </div>
