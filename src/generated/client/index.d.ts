@@ -879,8 +879,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.19.0
-   * Query Engine version: 2ba551f319ab1df4bc874a89965d8b3641056773
+   * Prisma Client JS version: 6.15.0
+   * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
    */
   export type PrismaVersion = {
     client: string
@@ -893,7 +893,6 @@ export namespace Prisma {
    */
 
 
-  export import Bytes = runtime.Bytes
   export import JsonObject = runtime.JsonObject
   export import JsonArray = runtime.JsonArray
   export import JsonValue = runtime.JsonValue
@@ -4537,10 +4536,6 @@ export namespace Prisma {
       timeout?: number
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
-    /**
-     * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
-     */
-    adapter?: runtime.SqlDriverAdapterFactory | null
     /**
      * Global configuration for omitting model fields by default.
      * 
@@ -54703,16 +54698,17 @@ export namespace Prisma {
   }
 
   export type SecheressesAvgAggregateOutputType = {
+    index: number | null
     region: number | null
-    id: number | null
   }
 
   export type SecheressesSumAggregateOutputType = {
+    index: bigint | null
     region: number | null
-    id: number | null
   }
 
   export type SecheressesMinAggregateOutputType = {
+    index: bigint | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -54724,10 +54720,22 @@ export namespace Prisma {
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    id: number | null
+    restrictions_2024: string | null
+    restrictions_2023: string | null
+    restrictions_2022: string | null
+    restrictions_2021: string | null
+    restrictions_2020: string | null
+    restrictions_2019: string | null
+    restrictions_2018: string | null
+    restrictions_2017: string | null
+    restrictions_2016: string | null
+    restrictions_2015: string | null
+    restrictions_2014: string | null
+    restrictions_2013: string | null
   }
 
   export type SecheressesMaxAggregateOutputType = {
+    index: bigint | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -54739,10 +54747,22 @@ export namespace Prisma {
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    id: number | null
+    restrictions_2024: string | null
+    restrictions_2023: string | null
+    restrictions_2022: string | null
+    restrictions_2021: string | null
+    restrictions_2020: string | null
+    restrictions_2019: string | null
+    restrictions_2018: string | null
+    restrictions_2017: string | null
+    restrictions_2016: string | null
+    restrictions_2015: string | null
+    restrictions_2014: string | null
+    restrictions_2013: string | null
   }
 
   export type SecheressesCountAggregateOutputType = {
+    index: number
     code_geographique: number
     libelle_geographique: number
     epci: number
@@ -54754,34 +54774,34 @@ export namespace Prisma {
     libelle_petr: number
     code_pnr: number
     libelle_pnr: number
-    restrictions_2013: number
-    restrictions_2014: number
-    restrictions_2015: number
-    restrictions_2016: number
-    restrictions_2017: number
-    restrictions_2018: number
-    restrictions_2019: number
-    restrictions_2020: number
-    restrictions_2021: number
-    restrictions_2022: number
-    restrictions_2023: number
     restrictions_2024: number
-    id: number
+    restrictions_2023: number
+    restrictions_2022: number
+    restrictions_2021: number
+    restrictions_2020: number
+    restrictions_2019: number
+    restrictions_2018: number
+    restrictions_2017: number
+    restrictions_2016: number
+    restrictions_2015: number
+    restrictions_2014: number
+    restrictions_2013: number
     _all: number
   }
 
 
   export type SecheressesAvgAggregateInputType = {
+    index?: true
     region?: true
-    id?: true
   }
 
   export type SecheressesSumAggregateInputType = {
+    index?: true
     region?: true
-    id?: true
   }
 
   export type SecheressesMinAggregateInputType = {
+    index?: true
     code_geographique?: true
     libelle_geographique?: true
     epci?: true
@@ -54793,10 +54813,22 @@ export namespace Prisma {
     libelle_petr?: true
     code_pnr?: true
     libelle_pnr?: true
-    id?: true
+    restrictions_2024?: true
+    restrictions_2023?: true
+    restrictions_2022?: true
+    restrictions_2021?: true
+    restrictions_2020?: true
+    restrictions_2019?: true
+    restrictions_2018?: true
+    restrictions_2017?: true
+    restrictions_2016?: true
+    restrictions_2015?: true
+    restrictions_2014?: true
+    restrictions_2013?: true
   }
 
   export type SecheressesMaxAggregateInputType = {
+    index?: true
     code_geographique?: true
     libelle_geographique?: true
     epci?: true
@@ -54808,10 +54840,22 @@ export namespace Prisma {
     libelle_petr?: true
     code_pnr?: true
     libelle_pnr?: true
-    id?: true
+    restrictions_2024?: true
+    restrictions_2023?: true
+    restrictions_2022?: true
+    restrictions_2021?: true
+    restrictions_2020?: true
+    restrictions_2019?: true
+    restrictions_2018?: true
+    restrictions_2017?: true
+    restrictions_2016?: true
+    restrictions_2015?: true
+    restrictions_2014?: true
+    restrictions_2013?: true
   }
 
   export type SecheressesCountAggregateInputType = {
+    index?: true
     code_geographique?: true
     libelle_geographique?: true
     epci?: true
@@ -54823,19 +54867,18 @@ export namespace Prisma {
     libelle_petr?: true
     code_pnr?: true
     libelle_pnr?: true
-    restrictions_2013?: true
-    restrictions_2014?: true
-    restrictions_2015?: true
-    restrictions_2016?: true
-    restrictions_2017?: true
-    restrictions_2018?: true
-    restrictions_2019?: true
-    restrictions_2020?: true
-    restrictions_2021?: true
-    restrictions_2022?: true
-    restrictions_2023?: true
     restrictions_2024?: true
-    id?: true
+    restrictions_2023?: true
+    restrictions_2022?: true
+    restrictions_2021?: true
+    restrictions_2020?: true
+    restrictions_2019?: true
+    restrictions_2018?: true
+    restrictions_2017?: true
+    restrictions_2016?: true
+    restrictions_2015?: true
+    restrictions_2014?: true
+    restrictions_2013?: true
     _all?: true
   }
 
@@ -54926,6 +54969,7 @@ export namespace Prisma {
   }
 
   export type SecheressesGroupByOutputType = {
+    index: bigint
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -54937,19 +54981,18 @@ export namespace Prisma {
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    restrictions_2013: JsonValue[]
-    restrictions_2014: JsonValue[]
-    restrictions_2015: JsonValue[]
-    restrictions_2016: JsonValue[]
-    restrictions_2017: JsonValue[]
-    restrictions_2018: JsonValue[]
-    restrictions_2019: JsonValue[]
-    restrictions_2020: JsonValue[]
-    restrictions_2021: JsonValue[]
-    restrictions_2022: JsonValue[]
-    restrictions_2023: JsonValue[]
-    restrictions_2024: JsonValue[]
-    id: number
+    restrictions_2024: string | null
+    restrictions_2023: string | null
+    restrictions_2022: string | null
+    restrictions_2021: string | null
+    restrictions_2020: string | null
+    restrictions_2019: string | null
+    restrictions_2018: string | null
+    restrictions_2017: string | null
+    restrictions_2016: string | null
+    restrictions_2015: string | null
+    restrictions_2014: string | null
+    restrictions_2013: string | null
     _count: SecheressesCountAggregateOutputType | null
     _avg: SecheressesAvgAggregateOutputType | null
     _sum: SecheressesSumAggregateOutputType | null
@@ -54972,6 +55015,7 @@ export namespace Prisma {
 
 
   export type secheressesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
     code_geographique?: boolean
     libelle_geographique?: boolean
     epci?: boolean
@@ -54983,22 +55027,22 @@ export namespace Prisma {
     libelle_petr?: boolean
     code_pnr?: boolean
     libelle_pnr?: boolean
-    restrictions_2013?: boolean
-    restrictions_2014?: boolean
-    restrictions_2015?: boolean
-    restrictions_2016?: boolean
-    restrictions_2017?: boolean
-    restrictions_2018?: boolean
-    restrictions_2019?: boolean
-    restrictions_2020?: boolean
-    restrictions_2021?: boolean
-    restrictions_2022?: boolean
-    restrictions_2023?: boolean
     restrictions_2024?: boolean
-    id?: boolean
+    restrictions_2023?: boolean
+    restrictions_2022?: boolean
+    restrictions_2021?: boolean
+    restrictions_2020?: boolean
+    restrictions_2019?: boolean
+    restrictions_2018?: boolean
+    restrictions_2017?: boolean
+    restrictions_2016?: boolean
+    restrictions_2015?: boolean
+    restrictions_2014?: boolean
+    restrictions_2013?: boolean
   }, ExtArgs["result"]["secheresses"]>
 
   export type secheressesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
     code_geographique?: boolean
     libelle_geographique?: boolean
     epci?: boolean
@@ -55010,22 +55054,22 @@ export namespace Prisma {
     libelle_petr?: boolean
     code_pnr?: boolean
     libelle_pnr?: boolean
-    restrictions_2013?: boolean
-    restrictions_2014?: boolean
-    restrictions_2015?: boolean
-    restrictions_2016?: boolean
-    restrictions_2017?: boolean
-    restrictions_2018?: boolean
-    restrictions_2019?: boolean
-    restrictions_2020?: boolean
-    restrictions_2021?: boolean
-    restrictions_2022?: boolean
-    restrictions_2023?: boolean
     restrictions_2024?: boolean
-    id?: boolean
+    restrictions_2023?: boolean
+    restrictions_2022?: boolean
+    restrictions_2021?: boolean
+    restrictions_2020?: boolean
+    restrictions_2019?: boolean
+    restrictions_2018?: boolean
+    restrictions_2017?: boolean
+    restrictions_2016?: boolean
+    restrictions_2015?: boolean
+    restrictions_2014?: boolean
+    restrictions_2013?: boolean
   }, ExtArgs["result"]["secheresses"]>
 
   export type secheressesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
     code_geographique?: boolean
     libelle_geographique?: boolean
     epci?: boolean
@@ -55037,22 +55081,22 @@ export namespace Prisma {
     libelle_petr?: boolean
     code_pnr?: boolean
     libelle_pnr?: boolean
-    restrictions_2013?: boolean
-    restrictions_2014?: boolean
-    restrictions_2015?: boolean
-    restrictions_2016?: boolean
-    restrictions_2017?: boolean
-    restrictions_2018?: boolean
-    restrictions_2019?: boolean
-    restrictions_2020?: boolean
-    restrictions_2021?: boolean
-    restrictions_2022?: boolean
-    restrictions_2023?: boolean
     restrictions_2024?: boolean
-    id?: boolean
+    restrictions_2023?: boolean
+    restrictions_2022?: boolean
+    restrictions_2021?: boolean
+    restrictions_2020?: boolean
+    restrictions_2019?: boolean
+    restrictions_2018?: boolean
+    restrictions_2017?: boolean
+    restrictions_2016?: boolean
+    restrictions_2015?: boolean
+    restrictions_2014?: boolean
+    restrictions_2013?: boolean
   }, ExtArgs["result"]["secheresses"]>
 
   export type secheressesSelectScalar = {
+    index?: boolean
     code_geographique?: boolean
     libelle_geographique?: boolean
     epci?: boolean
@@ -55064,27 +55108,27 @@ export namespace Prisma {
     libelle_petr?: boolean
     code_pnr?: boolean
     libelle_pnr?: boolean
-    restrictions_2013?: boolean
-    restrictions_2014?: boolean
-    restrictions_2015?: boolean
-    restrictions_2016?: boolean
-    restrictions_2017?: boolean
-    restrictions_2018?: boolean
-    restrictions_2019?: boolean
-    restrictions_2020?: boolean
-    restrictions_2021?: boolean
-    restrictions_2022?: boolean
-    restrictions_2023?: boolean
     restrictions_2024?: boolean
-    id?: boolean
+    restrictions_2023?: boolean
+    restrictions_2022?: boolean
+    restrictions_2021?: boolean
+    restrictions_2020?: boolean
+    restrictions_2019?: boolean
+    restrictions_2018?: boolean
+    restrictions_2017?: boolean
+    restrictions_2016?: boolean
+    restrictions_2015?: boolean
+    restrictions_2014?: boolean
+    restrictions_2013?: boolean
   }
 
-  export type secheressesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "restrictions_2013" | "restrictions_2014" | "restrictions_2015" | "restrictions_2016" | "restrictions_2017" | "restrictions_2018" | "restrictions_2019" | "restrictions_2020" | "restrictions_2021" | "restrictions_2022" | "restrictions_2023" | "restrictions_2024" | "id", ExtArgs["result"]["secheresses"]>
+  export type secheressesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "restrictions_2024" | "restrictions_2023" | "restrictions_2022" | "restrictions_2021" | "restrictions_2020" | "restrictions_2019" | "restrictions_2018" | "restrictions_2017" | "restrictions_2016" | "restrictions_2015" | "restrictions_2014" | "restrictions_2013", ExtArgs["result"]["secheresses"]>
 
   export type $secheressesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "secheresses"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
+      index: bigint
       code_geographique: string
       libelle_geographique: string
       epci: string
@@ -55096,19 +55140,18 @@ export namespace Prisma {
       libelle_petr: string | null
       code_pnr: string | null
       libelle_pnr: string | null
-      restrictions_2013: Prisma.JsonValue[]
-      restrictions_2014: Prisma.JsonValue[]
-      restrictions_2015: Prisma.JsonValue[]
-      restrictions_2016: Prisma.JsonValue[]
-      restrictions_2017: Prisma.JsonValue[]
-      restrictions_2018: Prisma.JsonValue[]
-      restrictions_2019: Prisma.JsonValue[]
-      restrictions_2020: Prisma.JsonValue[]
-      restrictions_2021: Prisma.JsonValue[]
-      restrictions_2022: Prisma.JsonValue[]
-      restrictions_2023: Prisma.JsonValue[]
-      restrictions_2024: Prisma.JsonValue[]
-      id: number
+      restrictions_2024: string | null
+      restrictions_2023: string | null
+      restrictions_2022: string | null
+      restrictions_2021: string | null
+      restrictions_2020: string | null
+      restrictions_2019: string | null
+      restrictions_2018: string | null
+      restrictions_2017: string | null
+      restrictions_2016: string | null
+      restrictions_2015: string | null
+      restrictions_2014: string | null
+      restrictions_2013: string | null
     }, ExtArgs["result"]["secheresses"]>
     composites: {}
   }
@@ -55192,8 +55235,8 @@ export namespace Prisma {
      * // Get first 10 Secheresses
      * const secheresses = await prisma.secheresses.findMany({ take: 10 })
      * 
-     * // Only select the `code_geographique`
-     * const secheressesWithCode_geographiqueOnly = await prisma.secheresses.findMany({ select: { code_geographique: true } })
+     * // Only select the `index`
+     * const secheressesWithIndexOnly = await prisma.secheresses.findMany({ select: { index: true } })
      * 
      */
     findMany<T extends secheressesFindManyArgs>(args?: SelectSubset<T, secheressesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$secheressesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -55237,9 +55280,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Secheresses and only return the `code_geographique`
-     * const secheressesWithCode_geographiqueOnly = await prisma.secheresses.createManyAndReturn({
-     *   select: { code_geographique: true },
+     * // Create many Secheresses and only return the `index`
+     * const secheressesWithIndexOnly = await prisma.secheresses.createManyAndReturn({
+     *   select: { index: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -55328,9 +55371,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Secheresses and only return the `code_geographique`
-     * const secheressesWithCode_geographiqueOnly = await prisma.secheresses.updateManyAndReturn({
-     *   select: { code_geographique: true },
+     * // Update zero or more Secheresses and only return the `index`
+     * const secheressesWithIndexOnly = await prisma.secheresses.updateManyAndReturn({
+     *   select: { index: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -55532,6 +55575,7 @@ export namespace Prisma {
    * Fields of the secheresses model
    */
   interface secheressesFieldRefs {
+    readonly index: FieldRef<"secheresses", 'BigInt'>
     readonly code_geographique: FieldRef<"secheresses", 'String'>
     readonly libelle_geographique: FieldRef<"secheresses", 'String'>
     readonly epci: FieldRef<"secheresses", 'String'>
@@ -55543,19 +55587,18 @@ export namespace Prisma {
     readonly libelle_petr: FieldRef<"secheresses", 'String'>
     readonly code_pnr: FieldRef<"secheresses", 'String'>
     readonly libelle_pnr: FieldRef<"secheresses", 'String'>
-    readonly restrictions_2013: FieldRef<"secheresses", 'Json[]'>
-    readonly restrictions_2014: FieldRef<"secheresses", 'Json[]'>
-    readonly restrictions_2015: FieldRef<"secheresses", 'Json[]'>
-    readonly restrictions_2016: FieldRef<"secheresses", 'Json[]'>
-    readonly restrictions_2017: FieldRef<"secheresses", 'Json[]'>
-    readonly restrictions_2018: FieldRef<"secheresses", 'Json[]'>
-    readonly restrictions_2019: FieldRef<"secheresses", 'Json[]'>
-    readonly restrictions_2020: FieldRef<"secheresses", 'Json[]'>
-    readonly restrictions_2021: FieldRef<"secheresses", 'Json[]'>
-    readonly restrictions_2022: FieldRef<"secheresses", 'Json[]'>
-    readonly restrictions_2023: FieldRef<"secheresses", 'Json[]'>
-    readonly restrictions_2024: FieldRef<"secheresses", 'Json[]'>
-    readonly id: FieldRef<"secheresses", 'Int'>
+    readonly restrictions_2024: FieldRef<"secheresses", 'String'>
+    readonly restrictions_2023: FieldRef<"secheresses", 'String'>
+    readonly restrictions_2022: FieldRef<"secheresses", 'String'>
+    readonly restrictions_2021: FieldRef<"secheresses", 'String'>
+    readonly restrictions_2020: FieldRef<"secheresses", 'String'>
+    readonly restrictions_2019: FieldRef<"secheresses", 'String'>
+    readonly restrictions_2018: FieldRef<"secheresses", 'String'>
+    readonly restrictions_2017: FieldRef<"secheresses", 'String'>
+    readonly restrictions_2016: FieldRef<"secheresses", 'String'>
+    readonly restrictions_2015: FieldRef<"secheresses", 'String'>
+    readonly restrictions_2014: FieldRef<"secheresses", 'String'>
+    readonly restrictions_2013: FieldRef<"secheresses", 'String'>
   }
     
 
@@ -59889,6 +59932,7 @@ export namespace Prisma {
 
 
   export const SecheressesScalarFieldEnum: {
+    index: 'index',
     code_geographique: 'code_geographique',
     libelle_geographique: 'libelle_geographique',
     epci: 'epci',
@@ -59900,19 +59944,18 @@ export namespace Prisma {
     libelle_petr: 'libelle_petr',
     code_pnr: 'code_pnr',
     libelle_pnr: 'libelle_pnr',
-    restrictions_2013: 'restrictions_2013',
-    restrictions_2014: 'restrictions_2014',
-    restrictions_2015: 'restrictions_2015',
-    restrictions_2016: 'restrictions_2016',
-    restrictions_2017: 'restrictions_2017',
-    restrictions_2018: 'restrictions_2018',
-    restrictions_2019: 'restrictions_2019',
-    restrictions_2020: 'restrictions_2020',
-    restrictions_2021: 'restrictions_2021',
-    restrictions_2022: 'restrictions_2022',
-    restrictions_2023: 'restrictions_2023',
     restrictions_2024: 'restrictions_2024',
-    id: 'id'
+    restrictions_2023: 'restrictions_2023',
+    restrictions_2022: 'restrictions_2022',
+    restrictions_2021: 'restrictions_2021',
+    restrictions_2020: 'restrictions_2020',
+    restrictions_2019: 'restrictions_2019',
+    restrictions_2018: 'restrictions_2018',
+    restrictions_2017: 'restrictions_2017',
+    restrictions_2016: 'restrictions_2016',
+    restrictions_2015: 'restrictions_2015',
+    restrictions_2014: 'restrictions_2014',
+    restrictions_2013: 'restrictions_2013'
   };
 
   export type SecheressesScalarFieldEnum = (typeof SecheressesScalarFieldEnum)[keyof typeof SecheressesScalarFieldEnum]
@@ -60128,13 +60171,6 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
-   * Reference to a field of type 'Json[]'
-   */
-  export type ListJsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json[]'>
     
 
 
@@ -65224,6 +65260,7 @@ export namespace Prisma {
     AND?: secheressesWhereInput | secheressesWhereInput[]
     OR?: secheressesWhereInput[]
     NOT?: secheressesWhereInput | secheressesWhereInput[]
+    index?: BigIntFilter<"secheresses"> | bigint | number
     code_geographique?: StringFilter<"secheresses"> | string
     libelle_geographique?: StringFilter<"secheresses"> | string
     epci?: StringFilter<"secheresses"> | string
@@ -65235,22 +65272,22 @@ export namespace Prisma {
     libelle_petr?: StringNullableFilter<"secheresses"> | string | null
     code_pnr?: StringNullableFilter<"secheresses"> | string | null
     libelle_pnr?: StringNullableFilter<"secheresses"> | string | null
-    restrictions_2013?: JsonNullableListFilter<"secheresses">
-    restrictions_2014?: JsonNullableListFilter<"secheresses">
-    restrictions_2015?: JsonNullableListFilter<"secheresses">
-    restrictions_2016?: JsonNullableListFilter<"secheresses">
-    restrictions_2017?: JsonNullableListFilter<"secheresses">
-    restrictions_2018?: JsonNullableListFilter<"secheresses">
-    restrictions_2019?: JsonNullableListFilter<"secheresses">
-    restrictions_2020?: JsonNullableListFilter<"secheresses">
-    restrictions_2021?: JsonNullableListFilter<"secheresses">
-    restrictions_2022?: JsonNullableListFilter<"secheresses">
-    restrictions_2023?: JsonNullableListFilter<"secheresses">
-    restrictions_2024?: JsonNullableListFilter<"secheresses">
-    id?: IntFilter<"secheresses"> | number
+    restrictions_2024?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2023?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2022?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2021?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2020?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2019?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2018?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2017?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2016?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2015?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2014?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2013?: StringNullableFilter<"secheresses"> | string | null
   }
 
   export type secheressesOrderByWithRelationInput = {
+    index?: SortOrder
     code_geographique?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
@@ -65262,23 +65299,22 @@ export namespace Prisma {
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
-    restrictions_2013?: SortOrder
-    restrictions_2014?: SortOrder
-    restrictions_2015?: SortOrder
-    restrictions_2016?: SortOrder
-    restrictions_2017?: SortOrder
-    restrictions_2018?: SortOrder
-    restrictions_2019?: SortOrder
-    restrictions_2020?: SortOrder
-    restrictions_2021?: SortOrder
-    restrictions_2022?: SortOrder
-    restrictions_2023?: SortOrder
-    restrictions_2024?: SortOrder
-    id?: SortOrder
+    restrictions_2024?: SortOrderInput | SortOrder
+    restrictions_2023?: SortOrderInput | SortOrder
+    restrictions_2022?: SortOrderInput | SortOrder
+    restrictions_2021?: SortOrderInput | SortOrder
+    restrictions_2020?: SortOrderInput | SortOrder
+    restrictions_2019?: SortOrderInput | SortOrder
+    restrictions_2018?: SortOrderInput | SortOrder
+    restrictions_2017?: SortOrderInput | SortOrder
+    restrictions_2016?: SortOrderInput | SortOrder
+    restrictions_2015?: SortOrderInput | SortOrder
+    restrictions_2014?: SortOrderInput | SortOrder
+    restrictions_2013?: SortOrderInput | SortOrder
   }
 
   export type secheressesWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    index?: bigint | number
     AND?: secheressesWhereInput | secheressesWhereInput[]
     OR?: secheressesWhereInput[]
     NOT?: secheressesWhereInput | secheressesWhereInput[]
@@ -65293,21 +65329,22 @@ export namespace Prisma {
     libelle_petr?: StringNullableFilter<"secheresses"> | string | null
     code_pnr?: StringNullableFilter<"secheresses"> | string | null
     libelle_pnr?: StringNullableFilter<"secheresses"> | string | null
-    restrictions_2013?: JsonNullableListFilter<"secheresses">
-    restrictions_2014?: JsonNullableListFilter<"secheresses">
-    restrictions_2015?: JsonNullableListFilter<"secheresses">
-    restrictions_2016?: JsonNullableListFilter<"secheresses">
-    restrictions_2017?: JsonNullableListFilter<"secheresses">
-    restrictions_2018?: JsonNullableListFilter<"secheresses">
-    restrictions_2019?: JsonNullableListFilter<"secheresses">
-    restrictions_2020?: JsonNullableListFilter<"secheresses">
-    restrictions_2021?: JsonNullableListFilter<"secheresses">
-    restrictions_2022?: JsonNullableListFilter<"secheresses">
-    restrictions_2023?: JsonNullableListFilter<"secheresses">
-    restrictions_2024?: JsonNullableListFilter<"secheresses">
-  }, "id">
+    restrictions_2024?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2023?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2022?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2021?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2020?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2019?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2018?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2017?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2016?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2015?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2014?: StringNullableFilter<"secheresses"> | string | null
+    restrictions_2013?: StringNullableFilter<"secheresses"> | string | null
+  }, "index">
 
   export type secheressesOrderByWithAggregationInput = {
+    index?: SortOrder
     code_geographique?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
@@ -65319,19 +65356,18 @@ export namespace Prisma {
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
     libelle_pnr?: SortOrderInput | SortOrder
-    restrictions_2013?: SortOrder
-    restrictions_2014?: SortOrder
-    restrictions_2015?: SortOrder
-    restrictions_2016?: SortOrder
-    restrictions_2017?: SortOrder
-    restrictions_2018?: SortOrder
-    restrictions_2019?: SortOrder
-    restrictions_2020?: SortOrder
-    restrictions_2021?: SortOrder
-    restrictions_2022?: SortOrder
-    restrictions_2023?: SortOrder
-    restrictions_2024?: SortOrder
-    id?: SortOrder
+    restrictions_2024?: SortOrderInput | SortOrder
+    restrictions_2023?: SortOrderInput | SortOrder
+    restrictions_2022?: SortOrderInput | SortOrder
+    restrictions_2021?: SortOrderInput | SortOrder
+    restrictions_2020?: SortOrderInput | SortOrder
+    restrictions_2019?: SortOrderInput | SortOrder
+    restrictions_2018?: SortOrderInput | SortOrder
+    restrictions_2017?: SortOrderInput | SortOrder
+    restrictions_2016?: SortOrderInput | SortOrder
+    restrictions_2015?: SortOrderInput | SortOrder
+    restrictions_2014?: SortOrderInput | SortOrder
+    restrictions_2013?: SortOrderInput | SortOrder
     _count?: secheressesCountOrderByAggregateInput
     _avg?: secheressesAvgOrderByAggregateInput
     _max?: secheressesMaxOrderByAggregateInput
@@ -65343,6 +65379,7 @@ export namespace Prisma {
     AND?: secheressesScalarWhereWithAggregatesInput | secheressesScalarWhereWithAggregatesInput[]
     OR?: secheressesScalarWhereWithAggregatesInput[]
     NOT?: secheressesScalarWhereWithAggregatesInput | secheressesScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"secheresses"> | bigint | number
     code_geographique?: StringWithAggregatesFilter<"secheresses"> | string
     libelle_geographique?: StringWithAggregatesFilter<"secheresses"> | string
     epci?: StringWithAggregatesFilter<"secheresses"> | string
@@ -65354,19 +65391,18 @@ export namespace Prisma {
     libelle_petr?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
     code_pnr?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
     libelle_pnr?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
-    restrictions_2013?: JsonNullableListFilter<"secheresses">
-    restrictions_2014?: JsonNullableListFilter<"secheresses">
-    restrictions_2015?: JsonNullableListFilter<"secheresses">
-    restrictions_2016?: JsonNullableListFilter<"secheresses">
-    restrictions_2017?: JsonNullableListFilter<"secheresses">
-    restrictions_2018?: JsonNullableListFilter<"secheresses">
-    restrictions_2019?: JsonNullableListFilter<"secheresses">
-    restrictions_2020?: JsonNullableListFilter<"secheresses">
-    restrictions_2021?: JsonNullableListFilter<"secheresses">
-    restrictions_2022?: JsonNullableListFilter<"secheresses">
-    restrictions_2023?: JsonNullableListFilter<"secheresses">
-    restrictions_2024?: JsonNullableListFilter<"secheresses">
-    id?: IntWithAggregatesFilter<"secheresses"> | number
+    restrictions_2024?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    restrictions_2023?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    restrictions_2022?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    restrictions_2021?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    restrictions_2020?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    restrictions_2019?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    restrictions_2018?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    restrictions_2017?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    restrictions_2016?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    restrictions_2015?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    restrictions_2014?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
+    restrictions_2013?: StringNullableWithAggregatesFilter<"secheresses"> | string | null
   }
 
   export type pg_stat_statementsWhereInput = {
@@ -71721,6 +71757,7 @@ export namespace Prisma {
   }
 
   export type secheressesCreateInput = {
+    index: bigint | number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -71732,21 +71769,22 @@ export namespace Prisma {
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    restrictions_2013?: secheressesCreaterestrictions_2013Input | InputJsonValue[]
-    restrictions_2014?: secheressesCreaterestrictions_2014Input | InputJsonValue[]
-    restrictions_2015?: secheressesCreaterestrictions_2015Input | InputJsonValue[]
-    restrictions_2016?: secheressesCreaterestrictions_2016Input | InputJsonValue[]
-    restrictions_2017?: secheressesCreaterestrictions_2017Input | InputJsonValue[]
-    restrictions_2018?: secheressesCreaterestrictions_2018Input | InputJsonValue[]
-    restrictions_2019?: secheressesCreaterestrictions_2019Input | InputJsonValue[]
-    restrictions_2020?: secheressesCreaterestrictions_2020Input | InputJsonValue[]
-    restrictions_2021?: secheressesCreaterestrictions_2021Input | InputJsonValue[]
-    restrictions_2022?: secheressesCreaterestrictions_2022Input | InputJsonValue[]
-    restrictions_2023?: secheressesCreaterestrictions_2023Input | InputJsonValue[]
-    restrictions_2024?: secheressesCreaterestrictions_2024Input | InputJsonValue[]
+    restrictions_2024?: string | null
+    restrictions_2023?: string | null
+    restrictions_2022?: string | null
+    restrictions_2021?: string | null
+    restrictions_2020?: string | null
+    restrictions_2019?: string | null
+    restrictions_2018?: string | null
+    restrictions_2017?: string | null
+    restrictions_2016?: string | null
+    restrictions_2015?: string | null
+    restrictions_2014?: string | null
+    restrictions_2013?: string | null
   }
 
   export type secheressesUncheckedCreateInput = {
+    index: bigint | number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -71758,22 +71796,22 @@ export namespace Prisma {
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    restrictions_2013?: secheressesCreaterestrictions_2013Input | InputJsonValue[]
-    restrictions_2014?: secheressesCreaterestrictions_2014Input | InputJsonValue[]
-    restrictions_2015?: secheressesCreaterestrictions_2015Input | InputJsonValue[]
-    restrictions_2016?: secheressesCreaterestrictions_2016Input | InputJsonValue[]
-    restrictions_2017?: secheressesCreaterestrictions_2017Input | InputJsonValue[]
-    restrictions_2018?: secheressesCreaterestrictions_2018Input | InputJsonValue[]
-    restrictions_2019?: secheressesCreaterestrictions_2019Input | InputJsonValue[]
-    restrictions_2020?: secheressesCreaterestrictions_2020Input | InputJsonValue[]
-    restrictions_2021?: secheressesCreaterestrictions_2021Input | InputJsonValue[]
-    restrictions_2022?: secheressesCreaterestrictions_2022Input | InputJsonValue[]
-    restrictions_2023?: secheressesCreaterestrictions_2023Input | InputJsonValue[]
-    restrictions_2024?: secheressesCreaterestrictions_2024Input | InputJsonValue[]
-    id?: number
+    restrictions_2024?: string | null
+    restrictions_2023?: string | null
+    restrictions_2022?: string | null
+    restrictions_2021?: string | null
+    restrictions_2020?: string | null
+    restrictions_2019?: string | null
+    restrictions_2018?: string | null
+    restrictions_2017?: string | null
+    restrictions_2016?: string | null
+    restrictions_2015?: string | null
+    restrictions_2014?: string | null
+    restrictions_2013?: string | null
   }
 
   export type secheressesUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -71785,21 +71823,22 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    restrictions_2013?: secheressesUpdaterestrictions_2013Input | InputJsonValue[]
-    restrictions_2014?: secheressesUpdaterestrictions_2014Input | InputJsonValue[]
-    restrictions_2015?: secheressesUpdaterestrictions_2015Input | InputJsonValue[]
-    restrictions_2016?: secheressesUpdaterestrictions_2016Input | InputJsonValue[]
-    restrictions_2017?: secheressesUpdaterestrictions_2017Input | InputJsonValue[]
-    restrictions_2018?: secheressesUpdaterestrictions_2018Input | InputJsonValue[]
-    restrictions_2019?: secheressesUpdaterestrictions_2019Input | InputJsonValue[]
-    restrictions_2020?: secheressesUpdaterestrictions_2020Input | InputJsonValue[]
-    restrictions_2021?: secheressesUpdaterestrictions_2021Input | InputJsonValue[]
-    restrictions_2022?: secheressesUpdaterestrictions_2022Input | InputJsonValue[]
-    restrictions_2023?: secheressesUpdaterestrictions_2023Input | InputJsonValue[]
-    restrictions_2024?: secheressesUpdaterestrictions_2024Input | InputJsonValue[]
+    restrictions_2024?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2023?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2022?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2021?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2020?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2019?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2018?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2017?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2016?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2015?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2014?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2013?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type secheressesUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -71811,22 +71850,22 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    restrictions_2013?: secheressesUpdaterestrictions_2013Input | InputJsonValue[]
-    restrictions_2014?: secheressesUpdaterestrictions_2014Input | InputJsonValue[]
-    restrictions_2015?: secheressesUpdaterestrictions_2015Input | InputJsonValue[]
-    restrictions_2016?: secheressesUpdaterestrictions_2016Input | InputJsonValue[]
-    restrictions_2017?: secheressesUpdaterestrictions_2017Input | InputJsonValue[]
-    restrictions_2018?: secheressesUpdaterestrictions_2018Input | InputJsonValue[]
-    restrictions_2019?: secheressesUpdaterestrictions_2019Input | InputJsonValue[]
-    restrictions_2020?: secheressesUpdaterestrictions_2020Input | InputJsonValue[]
-    restrictions_2021?: secheressesUpdaterestrictions_2021Input | InputJsonValue[]
-    restrictions_2022?: secheressesUpdaterestrictions_2022Input | InputJsonValue[]
-    restrictions_2023?: secheressesUpdaterestrictions_2023Input | InputJsonValue[]
-    restrictions_2024?: secheressesUpdaterestrictions_2024Input | InputJsonValue[]
-    id?: IntFieldUpdateOperationsInput | number
+    restrictions_2024?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2023?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2022?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2021?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2020?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2019?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2018?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2017?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2016?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2015?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2014?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2013?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type secheressesCreateManyInput = {
+    index: bigint | number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -71838,22 +71877,22 @@ export namespace Prisma {
     libelle_petr?: string | null
     code_pnr?: string | null
     libelle_pnr?: string | null
-    restrictions_2013?: secheressesCreaterestrictions_2013Input | InputJsonValue[]
-    restrictions_2014?: secheressesCreaterestrictions_2014Input | InputJsonValue[]
-    restrictions_2015?: secheressesCreaterestrictions_2015Input | InputJsonValue[]
-    restrictions_2016?: secheressesCreaterestrictions_2016Input | InputJsonValue[]
-    restrictions_2017?: secheressesCreaterestrictions_2017Input | InputJsonValue[]
-    restrictions_2018?: secheressesCreaterestrictions_2018Input | InputJsonValue[]
-    restrictions_2019?: secheressesCreaterestrictions_2019Input | InputJsonValue[]
-    restrictions_2020?: secheressesCreaterestrictions_2020Input | InputJsonValue[]
-    restrictions_2021?: secheressesCreaterestrictions_2021Input | InputJsonValue[]
-    restrictions_2022?: secheressesCreaterestrictions_2022Input | InputJsonValue[]
-    restrictions_2023?: secheressesCreaterestrictions_2023Input | InputJsonValue[]
-    restrictions_2024?: secheressesCreaterestrictions_2024Input | InputJsonValue[]
-    id?: number
+    restrictions_2024?: string | null
+    restrictions_2023?: string | null
+    restrictions_2022?: string | null
+    restrictions_2021?: string | null
+    restrictions_2020?: string | null
+    restrictions_2019?: string | null
+    restrictions_2018?: string | null
+    restrictions_2017?: string | null
+    restrictions_2016?: string | null
+    restrictions_2015?: string | null
+    restrictions_2014?: string | null
+    restrictions_2013?: string | null
   }
 
   export type secheressesUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -71865,21 +71904,22 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    restrictions_2013?: secheressesUpdaterestrictions_2013Input | InputJsonValue[]
-    restrictions_2014?: secheressesUpdaterestrictions_2014Input | InputJsonValue[]
-    restrictions_2015?: secheressesUpdaterestrictions_2015Input | InputJsonValue[]
-    restrictions_2016?: secheressesUpdaterestrictions_2016Input | InputJsonValue[]
-    restrictions_2017?: secheressesUpdaterestrictions_2017Input | InputJsonValue[]
-    restrictions_2018?: secheressesUpdaterestrictions_2018Input | InputJsonValue[]
-    restrictions_2019?: secheressesUpdaterestrictions_2019Input | InputJsonValue[]
-    restrictions_2020?: secheressesUpdaterestrictions_2020Input | InputJsonValue[]
-    restrictions_2021?: secheressesUpdaterestrictions_2021Input | InputJsonValue[]
-    restrictions_2022?: secheressesUpdaterestrictions_2022Input | InputJsonValue[]
-    restrictions_2023?: secheressesUpdaterestrictions_2023Input | InputJsonValue[]
-    restrictions_2024?: secheressesUpdaterestrictions_2024Input | InputJsonValue[]
+    restrictions_2024?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2023?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2022?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2021?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2020?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2019?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2018?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2017?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2016?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2015?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2014?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2013?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type secheressesUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -71891,19 +71931,18 @@ export namespace Prisma {
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
-    restrictions_2013?: secheressesUpdaterestrictions_2013Input | InputJsonValue[]
-    restrictions_2014?: secheressesUpdaterestrictions_2014Input | InputJsonValue[]
-    restrictions_2015?: secheressesUpdaterestrictions_2015Input | InputJsonValue[]
-    restrictions_2016?: secheressesUpdaterestrictions_2016Input | InputJsonValue[]
-    restrictions_2017?: secheressesUpdaterestrictions_2017Input | InputJsonValue[]
-    restrictions_2018?: secheressesUpdaterestrictions_2018Input | InputJsonValue[]
-    restrictions_2019?: secheressesUpdaterestrictions_2019Input | InputJsonValue[]
-    restrictions_2020?: secheressesUpdaterestrictions_2020Input | InputJsonValue[]
-    restrictions_2021?: secheressesUpdaterestrictions_2021Input | InputJsonValue[]
-    restrictions_2022?: secheressesUpdaterestrictions_2022Input | InputJsonValue[]
-    restrictions_2023?: secheressesUpdaterestrictions_2023Input | InputJsonValue[]
-    restrictions_2024?: secheressesUpdaterestrictions_2024Input | InputJsonValue[]
-    id?: IntFieldUpdateOperationsInput | number
+    restrictions_2024?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2023?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2022?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2021?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2020?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2019?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2018?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2017?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2016?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2015?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2014?: NullableStringFieldUpdateOperationsInput | string | null
+    restrictions_2013?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -76000,22 +76039,9 @@ export namespace Prisma {
     pk?: SortOrder
     region?: SortOrder
   }
-  export type JsonNullableListFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableListFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableListFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableListFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel> | null
-    has?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    hasEvery?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel>
-    hasSome?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
-  }
 
   export type secheressesCountOrderByAggregateInput = {
+    index?: SortOrder
     code_geographique?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
@@ -76027,27 +76053,27 @@ export namespace Prisma {
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
-    restrictions_2013?: SortOrder
-    restrictions_2014?: SortOrder
-    restrictions_2015?: SortOrder
-    restrictions_2016?: SortOrder
-    restrictions_2017?: SortOrder
-    restrictions_2018?: SortOrder
-    restrictions_2019?: SortOrder
-    restrictions_2020?: SortOrder
-    restrictions_2021?: SortOrder
-    restrictions_2022?: SortOrder
-    restrictions_2023?: SortOrder
     restrictions_2024?: SortOrder
-    id?: SortOrder
+    restrictions_2023?: SortOrder
+    restrictions_2022?: SortOrder
+    restrictions_2021?: SortOrder
+    restrictions_2020?: SortOrder
+    restrictions_2019?: SortOrder
+    restrictions_2018?: SortOrder
+    restrictions_2017?: SortOrder
+    restrictions_2016?: SortOrder
+    restrictions_2015?: SortOrder
+    restrictions_2014?: SortOrder
+    restrictions_2013?: SortOrder
   }
 
   export type secheressesAvgOrderByAggregateInput = {
+    index?: SortOrder
     region?: SortOrder
-    id?: SortOrder
   }
 
   export type secheressesMaxOrderByAggregateInput = {
+    index?: SortOrder
     code_geographique?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
@@ -76059,10 +76085,22 @@ export namespace Prisma {
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
-    id?: SortOrder
+    restrictions_2024?: SortOrder
+    restrictions_2023?: SortOrder
+    restrictions_2022?: SortOrder
+    restrictions_2021?: SortOrder
+    restrictions_2020?: SortOrder
+    restrictions_2019?: SortOrder
+    restrictions_2018?: SortOrder
+    restrictions_2017?: SortOrder
+    restrictions_2016?: SortOrder
+    restrictions_2015?: SortOrder
+    restrictions_2014?: SortOrder
+    restrictions_2013?: SortOrder
   }
 
   export type secheressesMinOrderByAggregateInput = {
+    index?: SortOrder
     code_geographique?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
@@ -76074,12 +76112,23 @@ export namespace Prisma {
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
     libelle_pnr?: SortOrder
-    id?: SortOrder
+    restrictions_2024?: SortOrder
+    restrictions_2023?: SortOrder
+    restrictions_2022?: SortOrder
+    restrictions_2021?: SortOrder
+    restrictions_2020?: SortOrder
+    restrictions_2019?: SortOrder
+    restrictions_2018?: SortOrder
+    restrictions_2017?: SortOrder
+    restrictions_2016?: SortOrder
+    restrictions_2015?: SortOrder
+    restrictions_2014?: SortOrder
+    restrictions_2013?: SortOrder
   }
 
   export type secheressesSumOrderByAggregateInput = {
+    index?: SortOrder
     region?: SortOrder
-    id?: SortOrder
   }
 
   export type DecimalNullableFilter<$PrismaModel = never> = {
@@ -76627,114 +76676,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type secheressesCreaterestrictions_2013Input = {
-    set: InputJsonValue[]
-  }
-
-  export type secheressesCreaterestrictions_2014Input = {
-    set: InputJsonValue[]
-  }
-
-  export type secheressesCreaterestrictions_2015Input = {
-    set: InputJsonValue[]
-  }
-
-  export type secheressesCreaterestrictions_2016Input = {
-    set: InputJsonValue[]
-  }
-
-  export type secheressesCreaterestrictions_2017Input = {
-    set: InputJsonValue[]
-  }
-
-  export type secheressesCreaterestrictions_2018Input = {
-    set: InputJsonValue[]
-  }
-
-  export type secheressesCreaterestrictions_2019Input = {
-    set: InputJsonValue[]
-  }
-
-  export type secheressesCreaterestrictions_2020Input = {
-    set: InputJsonValue[]
-  }
-
-  export type secheressesCreaterestrictions_2021Input = {
-    set: InputJsonValue[]
-  }
-
-  export type secheressesCreaterestrictions_2022Input = {
-    set: InputJsonValue[]
-  }
-
-  export type secheressesCreaterestrictions_2023Input = {
-    set: InputJsonValue[]
-  }
-
-  export type secheressesCreaterestrictions_2024Input = {
-    set: InputJsonValue[]
-  }
-
-  export type secheressesUpdaterestrictions_2013Input = {
-    set?: InputJsonValue[]
-    push?: InputJsonValue | InputJsonValue[]
-  }
-
-  export type secheressesUpdaterestrictions_2014Input = {
-    set?: InputJsonValue[]
-    push?: InputJsonValue | InputJsonValue[]
-  }
-
-  export type secheressesUpdaterestrictions_2015Input = {
-    set?: InputJsonValue[]
-    push?: InputJsonValue | InputJsonValue[]
-  }
-
-  export type secheressesUpdaterestrictions_2016Input = {
-    set?: InputJsonValue[]
-    push?: InputJsonValue | InputJsonValue[]
-  }
-
-  export type secheressesUpdaterestrictions_2017Input = {
-    set?: InputJsonValue[]
-    push?: InputJsonValue | InputJsonValue[]
-  }
-
-  export type secheressesUpdaterestrictions_2018Input = {
-    set?: InputJsonValue[]
-    push?: InputJsonValue | InputJsonValue[]
-  }
-
-  export type secheressesUpdaterestrictions_2019Input = {
-    set?: InputJsonValue[]
-    push?: InputJsonValue | InputJsonValue[]
-  }
-
-  export type secheressesUpdaterestrictions_2020Input = {
-    set?: InputJsonValue[]
-    push?: InputJsonValue | InputJsonValue[]
-  }
-
-  export type secheressesUpdaterestrictions_2021Input = {
-    set?: InputJsonValue[]
-    push?: InputJsonValue | InputJsonValue[]
-  }
-
-  export type secheressesUpdaterestrictions_2022Input = {
-    set?: InputJsonValue[]
-    push?: InputJsonValue | InputJsonValue[]
-  }
-
-  export type secheressesUpdaterestrictions_2023Input = {
-    set?: InputJsonValue[]
-    push?: InputJsonValue | InputJsonValue[]
-  }
-
-  export type secheressesUpdaterestrictions_2024Input = {
-    set?: InputJsonValue[]
-    push?: InputJsonValue | InputJsonValue[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
