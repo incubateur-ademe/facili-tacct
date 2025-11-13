@@ -17,7 +17,7 @@ export const sourcesEtudes = {
     {
       numero: 1,
       url: 'https://www.agreste.agriculture.gouv.fr/agreste-web/',
-      texte: 'Agreste 2020'
+      texte: 'Agreste, 2020'
     },
     {
       numero: 2,
