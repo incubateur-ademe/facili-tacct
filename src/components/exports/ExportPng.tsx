@@ -201,6 +201,10 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
   }, [isLoading]);
 
   const handleExportPng = async () => {
+    if (isLoading) return;
+    
+    setIsLoading(true);
+    
     posthog.capture(
       'export_png_bouton', {
       thematique: thematique,
@@ -209,7 +213,7 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
       type: type,
       date: new Date()
     });
-    setIsLoading(true);
+    
     if (mapRef.current && mapContainer.current) {
       // On cache les contrôles de navigation pour éviter qu'ils n'apparaissent sur le screenshot
       const navControls = mapContainer.current.querySelectorAll('.maplibregl-ctrl-top-right');
@@ -262,12 +266,15 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
           });
           if (exportButton) exportButton.style.display = '';
         } finally {
-          setIsLoading(false);
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 3000);
         }
       });
       mapRef.current.triggerRepaint();
     } else {
       console.log('Map or container not found');
+      setIsLoading(false);
     }
   }
   return (
@@ -276,7 +283,7 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
       <BoutonPrimaireClassic
         onClick={handleExportPng}
         disabled={isLoading}
-        icone={ExporterIcon}
+        icone={isLoading ? null : ExporterIcon}
         size='sm'
         text={isLoading ? 'Export en cours...' : 'Exporter'}
         style={{
@@ -300,15 +307,28 @@ export async function generateMapPngBlob({
 }: {
   mapRef: RefObject<maplibregl.Map | null>,
   mapContainer: RefObject<HTMLDivElement | null>,
-  documentDiv?: string,
+  documentDiv?: string | HTMLElement,
   fileName?: string,
 }): Promise<Blob | null> {
+  
   if (mapRef.current && mapContainer.current) {
     const navControls = mapContainer.current.querySelectorAll('.maplibregl-ctrl-top-right');
     navControls.forEach(control => {
       (control as HTMLElement).style.display = 'none';
     });
-    const originalLegendDiv = document.querySelector(documentDiv) as HTMLElement;
+    
+    const originalLegendDiv = typeof documentDiv === 'string' 
+      ? document.querySelector(documentDiv) as HTMLElement
+      : documentDiv;
+        
+    if (!originalLegendDiv) {
+      console.error(`generateMapPngBlob - Element not found with selector: ${documentDiv}`);
+      navControls.forEach(control => {
+        (control as HTMLElement).style.display = '';
+      });
+      return null;
+    }
+    
     const exportButton = originalLegendDiv?.querySelector('.' + styles.exportIndicatorButton) as HTMLElement;
     if (exportButton) exportButton.style.display = 'none';
     // Wait for map to render
@@ -319,7 +339,7 @@ export async function generateMapPngBlob({
           const legendCanvas = await html2canvas(originalLegendDiv, { useCORS: true });
           const finalCanvas = document.createElement('canvas');
           const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
-          finalCanvas.width = mapCanvas.width;
+          finalCanvas.width = mapCanvas.width - 16;
           finalCanvas.height = mapCanvas.height + legendCanvas.height;
           ctx.drawImage(mapCanvas, 0, 0);
           ctx.drawImage(legendCanvas, 0, mapCanvas.height);
@@ -331,6 +351,7 @@ export async function generateMapPngBlob({
             resolve(blob);
           });
         } catch (error) {
+          console.error("generateMapPngBlob - error:", error);
           navControls.forEach(control => {
             (control as HTMLElement).style.display = '';
           });
@@ -341,6 +362,7 @@ export async function generateMapPngBlob({
       mapRef.current!.triggerRepaint();
     });
   } else {
+    console.log("generateMapPngBlob - mapRef or mapContainer not found");
     return null;
   }
 }
