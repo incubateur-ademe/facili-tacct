@@ -1,12 +1,16 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "name": "prisma-client-c89c0958b41939f0a2965e722ec2ee9184f7c03918e4fac69409244438642f81",
 =======
   "name": "prisma-client-dfbea208cd5fc55be1803cfb9e92d126e44f7dd4d936e89ab06f384953dbfccb",
 >>>>>>> 81230303e09ff6d0d4c5e8f2ed6dcd095ada2e04
+=======
+  "name": "prisma-client-f5fdef4e19dce3be5f52c3721179c62d2c73572f576837a87097f5bbe336ddd1",
+>>>>>>> 39a85c08787df417d60bd436edac3338b9bf7a47
   "main": "index.js",
   "types": "index.d.ts",
-  "browser": "default.js",
+  "browser": "index-browser.js",
   "exports": {
     "./client": {
       "require": {
@@ -129,12 +133,6 @@
       "import": "./runtime/react-native.js",
       "default": "./runtime/react-native.js"
     },
-    "./runtime/index-browser": {
-      "types": "./runtime/index-browser.d.ts",
-      "require": "./runtime/index-browser.js",
-      "import": "./runtime/index-browser.mjs",
-      "default": "./runtime/index-browser.mjs"
-    },
     "./generator-build": {
       "require": "./generator-build/index.js",
       "import": "./generator-build/index.js",
@@ -155,33 +153,6 @@
     },
     "./*": "./*"
   },
-  "version": "6.19.0",
-  "sideEffects": false,
-  "imports": {
-    "#wasm-engine-loader": {
-      "edge-light": "./wasm-edge-light-loader.mjs",
-      "workerd": "./wasm-worker-loader.mjs",
-      "worker": "./wasm-worker-loader.mjs",
-      "default": "./wasm-worker-loader.mjs"
-    },
-    "#main-entry-point": {
-      "require": {
-        "node": "./index.js",
-        "edge-light": "./wasm.js",
-        "workerd": "./wasm.js",
-        "worker": "./wasm.js",
-        "browser": "./index-browser.js",
-        "default": "./index.js"
-      },
-      "import": {
-        "node": "./index.js",
-        "edge-light": "./wasm.js",
-        "workerd": "./wasm.js",
-        "worker": "./wasm.js",
-        "browser": "./index-browser.js",
-        "default": "./index.js"
-      },
-      "default": "./index.js"
-    }
-  }
+  "version": "6.15.0",
+  "sideEffects": false
 }

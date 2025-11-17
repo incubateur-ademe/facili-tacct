@@ -7,6 +7,7 @@ import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { vegetalisationLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import { MapCLC } from '@/components/maps/mapCLC';
+import { MapCLCTiles } from '@/components/maps/mapCLCTiles';
 import { Body } from "@/design-system/base/Textes";
 import { CommunesContourMapper } from '@/lib/mapper/communes';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
@@ -41,6 +42,7 @@ export const TypesDeSols = ({
   )
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
+  const legendRef = useRef<HTMLDivElement>(null);
   const vegetalisationMapped = confortThermique.map(vegetalisationMapper);
   const vegetalisationTerritoire =
     type === 'commune'
@@ -107,7 +109,9 @@ export const TypesDeSols = ({
             clc && clc.length ? (
               <>
                 <MapCLC clc={clc} mapRef={mapRef} mapContainer={mapContainer} />
+                <MapCLCTiles clc={clc} mapRef={mapRef} mapContainer={mapContainer} />
                 <div
+                  ref={legendRef}
                   className={styles.legendTypesDeSols}
                   style={{ width: 'auto', justifyContent: 'center' }}
                 >
@@ -122,7 +126,7 @@ export const TypesDeSols = ({
         clc && clc.length &&
         <div className={styles.sourcesExportMapWrapper}>
           <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-            Source : CORINE Land Cover, 2018.
+            Source : CORINE Land Cover, 2018.
           </Body>
           <ZipExportButtonNouveauParcours
             anchor='Types de sols'
@@ -130,7 +134,7 @@ export const TypesDeSols = ({
               const pngBlob = await generateMapPngBlob({
                 mapRef,
                 mapContainer,
-                documentDiv: ".explorerDonnees_legendTypesDeSols__otdtp",
+                documentDiv: legendRef.current!,
               });
               if (!pngBlob) {
                 alert("Erreur lors de la génération de l'image PNG.");
@@ -151,7 +155,6 @@ export const TypesDeSols = ({
                 zipFilename: `vegetalisation_export_${new Date().toISOString().split('T')[0]}.zip`
               })
             }}
-            style={{ backgroundColor: 'var(--principales-vert)' }}
             code={code}
             libelle={libelle}
             type={type}

@@ -9,7 +9,8 @@ export const PartExploitationSeniorsDynamicText = ({
   partOver55: TableCommuneModel[];
   type: string;
 }) => {
-  const nombreSecretStatistique = partOver55.filter(tc => tc.agriculture_part_over_55 === "NaN").length;
+  const nombreSecretStatistique = partOver55.filter(tc => tc.agriculture_part_over_55 === "NaN" && tc.otex_12_postes !== "Sans exploitation").length;
+  const communeSansExploitation = type === "commune" ? partOver55[0]?.otex_12_postes === "Sans exploitation" : false;
   const meanPartOver55 = type === "commune"
     ? Number(partOver55[0]?.agriculture_part_over_55)
     : partOver55.filter(
@@ -25,15 +26,15 @@ export const PartExploitationSeniorsDynamicText = ({
           <>
             {
               type === "commune" ? (
-                isNaN(meanPartOver55) ?
+                communeSansExploitation ?
                   <Body weight="bold" style={{ color: "var(--gris-dark)", paddingBottom: '1rem' }}>
-                    Cette donnée est sous secret statistique. Cette règle s'applique aux statistiques agrégées si elles
-                    rendent possible la déduction d'informations individuelles.
+                    D’après le recensement agricole de 2020, aucun chef d’exploitation n’a été identifié sur votre territoire.
+                    Cette absence peut refléter une limite du recensement ou une réalité locale spécifique.
                   </Body>
-                  : meanPartOver55 === 0 ?
+                  : isNaN(meanPartOver55) ?
                     <Body weight="bold" style={{ color: "var(--gris-dark)", paddingBottom: '1rem' }}>
-                      D’après le recensement agricole de 2020, aucun chef d’exploitation n’a été identifié sur votre territoire.
-                      Cette absence peut refléter une limite du recensement ou une réalité locale spécifique.
+                      Cette donnée est sous secret statistique. Cette règle s'applique aux statistiques agrégées si elles
+                      rendent possible la déduction d'informations individuelles.
                     </Body>
                     : <Body weight="bold" style={{ color: "var(--gris-dark)", paddingBottom: '1rem' }}>
                       En 2020, {Round(meanPartOver55, 1)} % des exploitations de votre commune étaient dirigées par des agriculteurs
@@ -41,17 +42,21 @@ export const PartExploitationSeniorsDynamicText = ({
                     </Body>
               ) : type === "departement" ? (
                 <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
-                  En 2020, {Round(meanPartOver55, 1)} % des exploitations de votre commune étaient dirigées par des agriculteurs
+                  En 2020, {Round(meanPartOver55, 1)} % des exploitations de votre département étaient dirigées par des agriculteurs
                   de plus de 55 ans – un enjeu clé pour l’avenir.
                 </Body>
               ) : (
-                <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
-                  Votre territoire comptait en moyenne {Round(meanPartOver55, 1)} % de chefs d’exploitation de plus de 55 ans en 2020.
+                <>
+                  <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
+                    En 2020, votre territoire comptait en moyenne {Round(meanPartOver55, 1)} % de chefs d’exploitation de plus de 55 ans.
+                  </Body>
                   {nombreSecretStatistique > 0 && (
-                    <><br></br>À noter : {nombreSecretStatistique} donnée(s) communale(s), soumises au secret 
-                    statistique, ne sont pas incluses dans ce calcul.</>
+                    <Body size="sm">
+                      <br></br>À noter : {nombreSecretStatistique} donnée(s) communale(s), soumises au secret
+                      statistique, ne sont pas incluses dans ce calcul.
+                    </Body>
                   )}
-                </Body>
+                </>
               )
             }
           </>

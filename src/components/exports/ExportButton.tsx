@@ -112,21 +112,23 @@ export const ExportButtonNouveauParcours = ({
   const [isExporting, setIsExporting] = useState(false);
 
   const handleExport = async () => {
-    posthog.capture(
-      baseName === "inconfort_thermique"
-        ? "export_xlsx_thematique_bouton"
-        : 'export_xlsx_bouton', {
+    if (isExporting) return;
+    setIsExporting(true);
+    
+    posthog.capture('export_xlsx_bouton', {
       thematique: baseName,
       code: code,
       libelle: libelle,
       type: type,
       date: new Date()
     });
+    
     if (!data || data.length === 0) {
       console.log('Aucune donnée à exporter');
+      setIsExporting(false);
       return;
     }
-    setIsExporting(true);
+
     try {
       if (documentation) {
         exportMultipleSheetToXLSX(
@@ -144,7 +146,9 @@ export const ExportButtonNouveauParcours = ({
     } catch (error) {
       console.error('Export failed:', error);
     } finally {
-      setIsExporting(false);
+      setTimeout(() => {
+        setIsExporting(false);
+      }, 3000);
     }
   };
   return (
@@ -156,7 +160,7 @@ export const ExportButtonNouveauParcours = ({
             <BoutonPrimaireClassic
               onClick={handleExport}
               disabled={disabled || isExporting}
-              icone={ExporterIcon}
+              icone={isExporting ? null : ExporterIcon}
               size='sm'
               text={isExporting ? 'Export en cours...' : children as string}
               style={{

@@ -1084,14 +1084,14 @@ model prelevements_eau {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model table_territoires {
-    index                BigInt?
-    code_geographique    String?
-    libelle_geographique String?
-    epci                 String?
-    libelle_epci         String?
-    departement          String?
-    libelle_departement  String?
-    region               BigInt?
+    index                BigInt  @id
+    code_geographique    String
+    libelle_geographique String
+    epci                 String
+    libelle_epci         String
+    departement          String
+    libelle_departement  String
+    region               BigInt
     ept                  String?
     libelle_petr         String?
     code_pnr             String?
@@ -1154,30 +1154,30 @@ model rga_par_communes {
 }
 
 model secheresses {
-    code_geographique    String  @db.VarChar(6)
-    libelle_geographique String
-    epci                 String
-    libelle_epci         String
-    departement          String
-    libelle_departement  String
+    index                BigInt  @id
+    code_geographique    String  @db.VarChar
+    libelle_geographique String  @db.VarChar
+    epci                 String  @db.VarChar
+    libelle_epci         String  @db.VarChar
+    departement          String  @db.VarChar
+    libelle_departement  String  @db.VarChar
     region               Float
-    ept                  String?
-    libelle_petr         String?
-    code_pnr             String?
-    libelle_pnr          String?
-    restrictions_2013    Json[]
-    restrictions_2014    Json[]
-    restrictions_2015    Json[]
-    restrictions_2016    Json[]
-    restrictions_2017    Json[]
-    restrictions_2018    Json[]
-    restrictions_2019    Json[]
-    restrictions_2020    Json[]
-    restrictions_2021    Json[]
-    restrictions_2022    Json[]
-    restrictions_2023    Json[]
-    restrictions_2024    Json[]
-    id                   Int     @id @default(autoincrement())
+    ept                  String? @db.VarChar
+    libelle_petr         String? @db.VarChar
+    code_pnr             String? @db.VarChar
+    libelle_pnr          String? @db.VarChar
+    restrictions_2024    String?
+    restrictions_2023    String?
+    restrictions_2022    String?
+    restrictions_2021    String?
+    restrictions_2020    String?
+    restrictions_2019    String?
+    restrictions_2018    String?
+    restrictions_2017    String?
+    restrictions_2016    String?
+    restrictions_2015    String?
+    restrictions_2014    String?
+    restrictions_2013    String?
 
     @@index([code_geographique], map: "secheresses_communes_index")
     @@index([departement], map: "secheresses_departement_index")
