@@ -1,24 +1,26 @@
 "use client";
 
 import { RetardScroll } from '@/hooks/RetardScroll';
-import { ClcMapper } from '@/lib/mapper/clc';
-import { CLCTerritoires } from '@/lib/postgres/models';
+import { CommunesIndicateursDto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { RefObject, useEffect, useMemo } from 'react';
-import { BoundsFromCollectionCLC } from './components/boundsFromCollection';
+import { useSearchParams } from 'next/navigation';
+import { RefObject, useEffect } from 'react';
+import { BoundsFromCollection } from './components/boundsFromCollection';
 
 export const MapCLCTiles = (
   props: {
-    clc: CLCTerritoires[];
+    carteContours: CommunesIndicateursDto[];
     mapRef: RefObject<maplibregl.Map | null>;
     mapContainer: RefObject<HTMLDivElement | null>;
   }
 ) => {
-  const { clc, mapRef, mapContainer } = props;
-  const clcParsed = useMemo(() => clc.map(ClcMapper), [clc]);
-  const enveloppe = BoundsFromCollectionCLC(clcParsed);
+  const { carteContours, mapRef, mapContainer } = props;
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const enveloppe = BoundsFromCollection(carteContours, type, code);
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -29,7 +31,7 @@ export const MapCLCTiles = (
       attributionControl: false,
     });
     mapRef.current = map;
-    
+
     // Désactive le zoom au scroll immédiatement
     try { map.scrollZoom.disable(); } catch (e) { /* noop */ }
 
@@ -71,33 +73,33 @@ export const MapCLCTiles = (
         paint: {
           'fill-color': [
             'match',
-            ['get', 'label'],
+            ['get', 'legend'],
             'Continuous urban fabric', '#ffff99',
             'Discontinuous urban fabric', '#ffff99',
             'Industrial or commercial units', '#ffff99',
-            'Road and rail networks and associated land', '#ffff99', 
+            'Road and rail networks and associated land', '#ffff99',
             'Port areas', '#ffff99',
             "Airports", '#ffff99',
             'Mineral extraction sites', '#ffff99',
             'Dump sites', '#ffff99',
             'Construction sites', '#ffff99',
-            'Green urban areas', '#7fc97f', 
+            'Green urban areas', '#7fc97f',
             'Sport and leisure facilities', '#ffff99',
             'Non-irrigated arable land', '#fdc086',
             'Permanently irrigated land', '#fdc086',
             'Rice fields', '#fdc086',
-            "Vineyards", '#fdc086', 
+            "Vineyards", '#fdc086',
             'Fruit trees and berry plantations', '#fdc086',
-            'Olive groves', '#fdc086', 
+            'Olive groves', '#fdc086',
             "Pastures", '#fdc086',
             'Annual crops associated with permanent crops', '#fdc086',
             'Complex cultivation patterns', '#fdc086',
             'Land principally occupied by agriculture, with significant areas of natural vegetation', '#fdc086',
-            'Agro-forestry areas', '#fdc086', 
-            'Broad-leaved forest', '#7fc97f', 
-            'Coniferous forest', '#7fc97f', 
-            'Mixed forest', '#7fc97f', 
-            'Natural grasslands', '#7fc97f', 
+            'Agro-forestry areas', '#fdc086',
+            'Broad-leaved forest', '#7fc97f',
+            'Coniferous forest', '#7fc97f',
+            'Mixed forest', '#7fc97f',
+            'Natural grasslands', '#7fc97f',
             'Moors and heathland', '#7fc97f',
             'Sclerophyllous vegetation', '#7fc97f',
             'Transitional woodland-shrub', '#7fc97f',
@@ -122,6 +124,31 @@ export const MapCLCTiles = (
         }
       });
 
+      // Add communes outline
+      map.addSource('communes-outline', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: carteContours.map(commune => ({
+            type: 'Feature' as const,
+            geometry: commune.geometry as import('geojson').Geometry,
+            properties: commune.properties,
+            id: commune.properties.code_geographique
+          }))
+        }
+      });
+
+      map.addLayer({
+        id: 'communes-outline-layer',
+        type: 'line',
+        source: 'communes-outline',
+        paint: {
+          'line-color': '#161616',
+          'line-width': 1,
+          'line-opacity': 1
+        }
+      });
+
       map.addControl(new maplibregl.NavigationControl(), 'top-right');
     });
 
@@ -131,7 +158,7 @@ export const MapCLCTiles = (
         mapRef.current = null;
       }
     };
-  }, [enveloppe]);
+  }, [enveloppe, carteContours]);
 
   // Ref local pour le RetardScroll
   const localContainerRef = mapContainer as RefObject<HTMLElement>;

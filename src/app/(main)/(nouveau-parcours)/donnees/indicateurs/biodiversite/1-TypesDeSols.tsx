@@ -6,12 +6,11 @@ import { ZipExportButtonNouveauParcours } from '@/components/exports/ZipExportBu
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { vegetalisationLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
-import { MapCLC } from '@/components/maps/mapCLC';
 import { MapCLCTiles } from '@/components/maps/mapCLCTiles';
 import { Body } from "@/design-system/base/Textes";
-import { CommunesContourMapper } from '@/lib/mapper/communes';
+import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
-import { CarteCommunes, CLCTerritoires, ConfortThermique } from "@/lib/postgres/models";
+import { CarteCommunes, ConfortThermique } from "@/lib/postgres/models";
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { exportAsZip } from '@/lib/utils/export/exportZipGeneric';
 import { eptRegex } from "@/lib/utils/regex";
@@ -24,11 +23,9 @@ import { sumProperty } from '../fonctions';
 export const TypesDeSols = ({
   confortThermique,
   carteCommunes,
-  clc,
 }: {
   confortThermique: ConfortThermique[];
   carteCommunes: CarteCommunes[];
-  clc: CLCTerritoires[] | undefined;
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
@@ -52,15 +49,7 @@ export const TypesDeSols = ({
         : type === 'epci' && !eptRegex.test(libelle)
           ? vegetalisationMapped.filter((e) => e.epci === code)
           : vegetalisationMapped;
-  const carteTerritoire =
-    type === 'commune'
-      ? carteCommunes.filter((e) => e.code_geographique === code)
-      : type === 'ept' && eptRegex.test(libelle)
-        ? carteCommunes.filter((e) => e.ept === libelle)
-        : type === 'epci' && !eptRegex.test(libelle)
-          ? carteCommunes.filter((e) => e.epci === code)
-          : carteCommunes;
-  const carteContours = carteTerritoire.map(CommunesContourMapper);
+  const carteContours = carteCommunes.map(CommunesIndicateursMapper);
 
   const foretSum = sumProperty(
     vegetalisationTerritoire,
@@ -106,10 +95,10 @@ export const TypesDeSols = ({
         </Body>
         <div className={styles.mapWrapper}>
           {
-            clc && clc.length ? (
+            confortThermique && confortThermique.length ? (
               <>
-                <MapCLC clc={clc} mapRef={mapRef} mapContainer={mapContainer} />
-                <MapCLCTiles clc={clc} mapRef={mapRef} mapContainer={mapContainer} />
+                {/* <MapCLC clc={clc} mapRef={mapRef} mapContainer={mapContainer} /> */}
+                <MapCLCTiles carteContours={carteContours} mapRef={mapRef} mapContainer={mapContainer} />
                 <div
                   ref={legendRef}
                   className={styles.legendTypesDeSols}
@@ -123,7 +112,7 @@ export const TypesDeSols = ({
         </div>
       </div>
       {
-        clc && clc.length &&
+        confortThermique && confortThermique.length &&
         <div className={styles.sourcesExportMapWrapper}>
           <Body size='sm' style={{ color: "var(--gris-dark)" }}>
             Source : CORINE Land Cover, 2018.

@@ -3,7 +3,7 @@ import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { SourcesSection } from "@/components/interactions/scrollToSource";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { AgricultureBio, AOT40, CarteCommunes, CLCTerritoires, ConfortThermique, ConsommationNAF, EtatCoursDeau, QualiteSitesBaignade, SurfacesAgricolesModel, TableCommuneModel } from "@/lib/postgres/models";
+import { AgricultureBio, AOT40, CarteCommunes, ConfortThermique, ConsommationNAF, EtatCoursDeau, QualiteSitesBaignade, SurfacesAgricolesModel, TableCommuneModel } from "@/lib/postgres/models";
 import { GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
 import { GetAgricultureBio, GetAOT40, GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
 import { GetConfortThermique } from "@/lib/queries/databases/inconfortThermique";
@@ -12,7 +12,7 @@ import { GetTablecommune } from "@/lib/queries/databases/tableCommune";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { TypesDeSols } from "../../indicateurs/biodiversite/1-TypesDeSols";
@@ -60,7 +60,7 @@ export const DonneesBiodiversite = ({
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
   const ongletsMenu = sommaireThematiques[thematique];
-  const [clcState, setClcState] = useState<CLCTerritoires[] | undefined>(undefined);
+  // const [clcState, setClcState] = useState<CLCTerritoires[] | undefined>(undefined);
   const [loadingClc, setLoadingClc] = useState(true);
   const [data, setData] = useState({
     carteCommunes,
@@ -119,22 +119,22 @@ export const DonneesBiodiversite = ({
     })();
   }, [libelle]);
 
-  useEffect(() => {
-    const fetchClc = async () => {
-      try {
-        setLoadingClc(true);
-        const params = new URLSearchParams({ libelle, type, code });
-        const res = await fetch(`/api/clc?${params.toString()}`);
-        const json = await res.json();
-        if (json.ok) setClcState(json.data);
-      } catch (e) {
-        console.error('Failed to fetch CLC', e);
-      } finally {
-        setLoadingClc(false);
-      }
-    };
-    fetchClc();
-  }, [libelle]);
+  // useEffect(() => {
+  //   const fetchClc = async () => {
+  //     try {
+  //       setLoadingClc(true);
+  //       const params = new URLSearchParams({ libelle, type, code });
+  //       const res = await fetch(`/api/clc?${params.toString()}`);
+  //       const json = await res.json();
+  //       if (json.ok) setClcState(json.data);
+  //     } catch (e) {
+  //       console.error('Failed to fetch CLC', e);
+  //     } finally {
+  //       setLoadingClc(false);
+  //     }
+  //   };
+  //   fetchClc();
+  // }, [libelle]);
 
   return (
     isLoading ? <LoaderText text='Mise à jour des données' /> :
@@ -163,11 +163,7 @@ export const DonneesBiodiversite = ({
                 Cartographie des différents types de sols
               </H3>
             </div>
-            {
-              loadingClc ? <LoaderText text='Chargement de la cartographie' /> : (
-                <TypesDeSols confortThermique={data.confortThermique} carteCommunes={data.carteCommunes} clc={clcState} />
-              )
-            }
+            <TypesDeSols confortThermique={data.confortThermique} carteCommunes={data.carteCommunes} />
           </div>
         </section>
 
