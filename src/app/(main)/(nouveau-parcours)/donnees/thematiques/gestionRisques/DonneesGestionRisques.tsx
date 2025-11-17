@@ -2,10 +2,9 @@
 import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { ArreteCatNat, CarteCommunes, DebroussaillementModel, ErosionCotiere, IncendiesForet, RGACarte, RGAdb, Secheresses } from "@/lib/postgres/models";
+import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, RGAdb, Secheresses } from "@/lib/postgres/models";
 import { GetArretesCatnat, GetIncendiesForet, GetSecheresses } from '@/lib/queries/databases/gestionRisques';
 import { GetCommunes, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
-import { GetDebroussaillement } from '@/lib/queries/postgis/debroussaillement';
 import Notice from '@codegouvfr/react-dsfr/Notice';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useState } from "react";
@@ -24,7 +23,7 @@ interface Props {
   carteCommunes: CarteCommunes[];
   erosionCotiere: [ErosionCotiere[], string] | [];
   incendiesForet: IncendiesForet[];
-  debroussaillement: DebroussaillementModel[];
+  // debroussaillement: DebroussaillementModel[];
   secheresses: Secheresses[];
 }
 
@@ -33,7 +32,6 @@ export const DonneesGestionRisques = ({
   gestionRisques,
   erosionCotiere,
   incendiesForet,
-  debroussaillement,
   secheresses
 }: Props) => {
   const { css } = useStyles();
@@ -51,7 +49,6 @@ export const DonneesGestionRisques = ({
     gestionRisques,
     erosionCotiere,
     incendiesForet,
-    debroussaillement,
     secheresses
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -70,14 +67,12 @@ export const DonneesGestionRisques = ({
         newGestionRisques,
         newErosionCotiere,
         newIncendiesForet,
-        newDebroussaillement,
         newSecheresses
       ] = await Promise.all([
         GetCommunes(code, libelle, type),
         GetArretesCatnat(code, libelle, type),
         GetErosionCotiere(code, libelle, type),
         GetIncendiesForet(code, libelle, type),
-        GetDebroussaillement(code, libelle, type),
         GetSecheresses(code, libelle, type)
       ]);
       setData({
@@ -85,7 +80,6 @@ export const DonneesGestionRisques = ({
         gestionRisques: newGestionRisques,
         erosionCotiere: newErosionCotiere,
         incendiesForet: newIncendiesForet,
-        debroussaillement: newDebroussaillement,
         secheresses: newSecheresses
       });
       setIsLoading(false);
@@ -186,7 +180,7 @@ export const DonneesGestionRisques = ({
               </H3>
             </div>
             <Debroussaillement
-              debroussaillement={data.debroussaillement}
+              // debroussaillement={data.debroussaillement}
               carteCommunes={data.carteCommunes}
             />
           </div>

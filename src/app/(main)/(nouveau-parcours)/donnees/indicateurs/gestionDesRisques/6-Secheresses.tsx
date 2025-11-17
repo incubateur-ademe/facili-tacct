@@ -46,7 +46,6 @@ export const SecheressesPassees = (props: {
     return total + count;
   }, 0);
 
-  console.log("parsedSecheresses", parsedSecheresses);
   return (
     <>
       <div className={styles.datavizContainer}>
