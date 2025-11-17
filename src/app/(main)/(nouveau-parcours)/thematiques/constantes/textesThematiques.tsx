@@ -134,7 +134,7 @@ export const sommaireImpacts = {
   "Agriculture": [
     {
       id: "section1",
-      titre: "Comment associer renouvellement agricole et pratiques durables pour un territoire résilient ?",
+      titre: "Échanger pour diagnostiquer",
     },
     {
       id: "section2",

@@ -152,6 +152,7 @@ export const IndicatorExportTransformations = {
           region: el.region,
           'Part des chefs d’exploitation de plus de 55 ans (%)': (() => {
             if (Number(el.agriculture_part_over_55) === 0) return 0;
+            if (el.otex_12_postes === "Sans exploitation") return 'sans exploitation';
             if (!el.agriculture_part_over_55 || isNaN(Number(el.agriculture_part_over_55)))
               return 'secret statistique';
             return el.agriculture_part_over_55;

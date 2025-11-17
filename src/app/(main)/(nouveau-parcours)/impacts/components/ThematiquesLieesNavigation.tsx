@@ -2,6 +2,7 @@
 
 import { nomThematiques } from '@/app/(main)/(nouveau-parcours)/thematiques/constantes/categories';
 import roueImage from '@/assets/images/roue_systemique_shape.png';
+import { HtmlTooltip } from '@/components/utils/Tooltips';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { couleursBoutons } from '@/design-system/couleurs';
 import { handleRedirection, handleRedirectionThematique } from '@/hooks/Redirections';
@@ -162,30 +163,44 @@ export const ThematiquesLieesNavigation = ({
       {/* Partie droite : Thématiques liées */}
       <div ref={rightSectionRef} className={styles.rightSection}>
         {thematiquesLiees.length > 0 ? (
-          thematiquesLiees.map((lieeLabel, index) => (
-            <div
-              key={`thematique-wrapper-${index}-${lieeLabel}`}
-              ref={(el) => {
-                rightButtonsRef.current[index] = el;
-              }}
-            >
-              <BoutonPrimaireClassic
-                text={lieeLabel}
-                size="md"
-                onClick={(lieeLabel !== "Aménagement" && lieeLabel !== "Eau" && lieeLabel !== "Biodiversité") ? undefined : () => window.location.href = handleRedirectionThematique({
-                  code: code,
-                  libelle: libelle,
-                  type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
-                  page: 'donnees',
-                  thematique: lieeLabel,
-                  anchor: ""
-                })}
-                style={{
-                  cursor: (lieeLabel !== "Aménagement" && lieeLabel !== "Eau" && lieeLabel !== "Biodiversité") ? 'default' : 'pointer',
+          thematiquesLiees.map((lieeLabel, index) => {
+            const isDisabled = lieeLabel !== "Aménagement" && lieeLabel !== "Eau" && lieeLabel !== "Biodiversité";
+            const buttonElement = (
+              <div
+                key={`thematique-wrapper-${index}-${lieeLabel}`}
+                ref={(el) => {
+                  rightButtonsRef.current[index] = el;
                 }}
-              />
-            </div>
-          ))
+              >
+                <BoutonPrimaireClassic
+                  text={lieeLabel}
+                  size="md"
+                  onClick={isDisabled ? undefined : () => window.location.href = handleRedirectionThematique({
+                    code: code,
+                    libelle: libelle,
+                    type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+                    page: 'donnees',
+                    thematique: lieeLabel,
+                    anchor: ""
+                  })}
+                  style={{
+                    cursor: isDisabled ? 'default' : 'pointer',
+                  }}
+                  disabled={isDisabled}
+                />
+              </div>
+            );
+
+            return isDisabled ? (
+              <HtmlTooltip
+                key={`tooltip-${index}`}
+                title={`La thématique "${lieeLabel}" n'est pas encore disponible.`}
+                placement="top"
+              >
+                {buttonElement}
+              </HtmlTooltip>
+            ) : buttonElement;
+          })
         ) : (
           <div style={{
             padding: '1rem',

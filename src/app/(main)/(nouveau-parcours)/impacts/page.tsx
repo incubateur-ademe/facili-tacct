@@ -2,8 +2,8 @@ import { ClientOnly } from '@/components/utils/ClientOnly';
 import { H1 } from '@/design-system/base/Textes';
 import { SearchParams } from '../../types';
 import styles from '../donnees/explorerDonnees.module.scss';
-import { DiagnostiquerImpactsConfortThermique } from './thematiques/confortThermique/ImpactsConfortThermique';
 import { DiagnostiquerImpactsAgriculture } from './thematiques/ImpactsAgriculture';
+import { DiagnostiquerImpactsConfortThermique } from './thematiques/ImpactsConfortThermique';
 
 const ImpactsTerritoirePage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type, thematique } = await props.searchParams;

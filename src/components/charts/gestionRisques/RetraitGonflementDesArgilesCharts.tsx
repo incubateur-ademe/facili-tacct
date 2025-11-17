@@ -6,6 +6,7 @@ import { NivoBarChart } from '@/components/charts/NivoBarChart';
 import { RgaEvolutionLegend, RgaRepartitionLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import RGAMapExport from "@/components/maps/mapRGAExport";
+import { MapRGATiles } from "@/components/maps/mapRGATiles";
 import SubTabs from '@/components/ui/SubTabs';
 import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
@@ -15,7 +16,6 @@ import { BarDatum } from '@nivo/bar';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect, useLayoutEffect, useState } from "react";
-import RGAMap from '../../maps/mapRGA';
 import styles from './gestionRisquesCharts.module.scss';
 
 type Props = {
@@ -87,7 +87,7 @@ const barChartComparaison = (rga: RGAdb[], code: string, type: string) => {
       { territoire: 0, territoireSup: 0, alea: "Exposition moyenne / forte" }
     ];
   }
-  
+
   const territoireAlea = type === "commune" ?
     rga.find(item => item.code_geographique === code) :
     type === "epci" ?
@@ -265,9 +265,14 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
           </div>
         </>
       ) : datavizTab === 'Cartographie' ? (
-        <RGAMap
-          rgaCarte={rgaCarte}
+        // <RGAMap
+        //   rgaCarte={rgaCarte}
+        //   carteCommunes={carteCommunes}
+        // />
+        <MapRGATiles
           carteCommunes={carteCommunes}
+          mapRef={mapRef}
+          mapContainer={mapContainer}
         />
       ) : (
         ''

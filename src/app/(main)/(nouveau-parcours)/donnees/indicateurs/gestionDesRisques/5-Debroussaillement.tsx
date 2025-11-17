@@ -1,35 +1,20 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
-import { MapDebroussaillement } from '@/components/maps/mapDebroussaillement';
+import { MapDebroussaillementTiles } from '@/components/maps/mapDebroussaillementTiles';
 import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { CarteCommunes, DebroussaillementModel } from "@/lib/postgres/models";
-import { useSearchParams } from "next/navigation";
+import { CarteCommunes } from "@/lib/postgres/models";
 import { useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 
 export const Debroussaillement = ({
-  debroussaillement,
   carteCommunes,
 }: {
-  debroussaillement: DebroussaillementModel[];
   carteCommunes: CarteCommunes[];
 }) => {
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const libelle = searchParams.get('libelle')!;
-  const type = searchParams.get('type')!;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
-  // const carteTerritoire =
-  //   type === 'commune'
-  //     ? carteCommunes.filter((e) => e.code_geographique === code)
-  //     : type === 'ept' && eptRegex.test(libelle)
-  //       ? carteCommunes.filter((e) => e.ept === libelle)
-  //       : type === 'epci' && !eptRegex.test(libelle)
-  //         ? carteCommunes.filter((e) => e.epci === code)
-  //         : carteCommunes;
   const carteContours = carteCommunes.map(CommunesIndicateursMapper);
 
   return (
@@ -47,10 +32,15 @@ export const Debroussaillement = ({
         </Body>
         <div className={styles.mapWrapper}>
           {
-            debroussaillement && debroussaillement.length ? (
+            carteContours && carteContours.length ? (
               <>
-                <MapDebroussaillement
+                {/* <MapDebroussaillement
                   debroussaillement={debroussaillement}
+                  carteContours={carteContours}
+                  mapRef={mapRef}
+                  mapContainer={mapContainer}
+                /> */}
+                <MapDebroussaillementTiles
                   carteContours={carteContours}
                   mapRef={mapRef}
                   mapContainer={mapContainer}
