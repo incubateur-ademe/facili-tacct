@@ -1,7 +1,4 @@
-import {
-  ClcDto,
-  CommunesIndicateursDto
-} from '@/lib/dto';
+import { ClcDto, CommunesIndicateursDto } from '@/lib/dto';
 import { Any } from '@/lib/utils/types';
 import * as turf from '@turf/turf';
 
