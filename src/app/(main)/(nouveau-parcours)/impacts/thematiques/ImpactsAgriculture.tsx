@@ -93,7 +93,7 @@ export const DiagnostiquerImpactsAgriculture = () => {
               </ul>
             </div>
           </div>
-          <div className={styles.donneesNationalesWrapper} style={{ borderBottom: "none" }}>
+          <div className={styles.donneesNationalesWrapper} style={{ borderBottom: "none", paddingBottom: 0 }}>
             <div className={styles.leftData}>
               <MicroNumberCircle
                 comparateur='-' 

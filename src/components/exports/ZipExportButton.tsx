@@ -146,6 +146,10 @@ export const ZipExportButtonNouveauParcours = ({
   }, [isExporting]);
 
   const handleClick = async () => {
+    if (isExporting) return;
+    
+    setIsExporting(true);
+    
     posthog.capture('export_zip_bouton', {
       thematique: thematique,
       code: code,
@@ -153,11 +157,15 @@ export const ZipExportButtonNouveauParcours = ({
       type: type,
       date: new Date()
     });
-    setIsExporting(true);
+    
     try {
       await handleExport();
+    } catch (error) {
+      console.error('Export failed:', error);
     } finally {
-      setIsExporting(false);
+      setTimeout(() => {
+        setIsExporting(false);
+      }, 3000);
     }
   };
 
@@ -167,7 +175,7 @@ export const ZipExportButtonNouveauParcours = ({
       <BoutonPrimaireClassic
         onClick={handleClick}
         disabled={isExporting}
-        icone={ExporterIcon}
+        icone={isExporting ? null : ExporterIcon}
         size='sm'
         text={isExporting ? 'Export en cours...' : children as string}
         style={{
