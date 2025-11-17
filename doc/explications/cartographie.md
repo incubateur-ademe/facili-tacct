@@ -59,7 +59,7 @@ Chaque tuile est identifiée par trois coordonnées : `z/x/y`
 
 **Exemple** : la tuile `12/2048/1365.pbf` représente une portion de territoire au niveau de zoom 12, à la colonne 2048 et ligne 1365.
 
-Plus on veut un zoom important sur notre outil, plus le nombre de tuiles sera important. Pour la plupart des usages, nous nous limiterons à un zoom de 15.
+Plus on veut un zoom important sur notre outil, plus le nombre de tuiles sera important. Pour la plupart des usages, nous nous limiterons à un zoom de 13.
 
 ### Simplification géométrique adaptative
 
@@ -116,7 +116,7 @@ Le format `.mbtiles` est un **conteneur SQLite** qui stocke toutes les tuiles da
 
 **Principe** :
 - Lit le GeoJSON préparé
-- Découpe automatiquement selon les niveaux de zoom (ex : 4 à 15)
+- Découpe automatiquement selon les niveaux de zoom (ex : 4 à 13)
 - Applique une **simplification progressive** : plus le zoom est faible, plus la géométrie est simplifiée
 - Compresse chaque tuile au format Protobuf (`.pbf`)
 - Stocke l'ensemble dans une base SQLite
@@ -140,7 +140,7 @@ indicateur_X/
         10.pbf
         11.pbf
     …
-    15/
+    13/
 ```
 
 Chaque fichier `.pbf` est une tuile individuelle, servie via une URL de type :

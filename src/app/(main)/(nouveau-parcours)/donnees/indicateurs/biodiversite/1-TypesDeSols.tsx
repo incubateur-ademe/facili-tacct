@@ -7,6 +7,7 @@ import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { vegetalisationLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import { MapCLC } from '@/components/maps/mapCLC';
+import { MapCLCTiles } from '@/components/maps/mapCLCTiles';
 import { Body } from "@/design-system/base/Textes";
 import { CommunesContourMapper } from '@/lib/mapper/communes';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
@@ -108,6 +109,7 @@ export const TypesDeSols = ({
             clc && clc.length ? (
               <>
                 <MapCLC clc={clc} mapRef={mapRef} mapContainer={mapContainer} />
+                <MapCLCTiles clc={clc} mapRef={mapRef} mapContainer={mapContainer} />
                 <div
                   ref={legendRef}
                   className={styles.legendTypesDeSols}

@@ -61,19 +61,19 @@ docker run --rm `
   -v "C:\path\to\folder:/data" `
   -w /data `
   klokantech/tippecanoe `
-  tippecanoe -l layer_name -o output_z15.mbtiles -Z 4 -z 15 -s EPSG:3857 clean_layer.geojson
+  tippecanoe -l layer_name -o output_z13.mbtiles -Z 4 -z 13 -s EPSG:3857 clean_layer.geojson
 ```
 
 ### Explications des paramètres
 
 - `-v "path/to/folder:/data"` : monte le dossier contenant le GeoJSON
 - `-Z 4` : zoom minimal
-- `-z 15` : zoom maximal
+- `-z 13` : zoom maximal
 - `-s EPSG:3857` : projection correcte pour MVT
 - `-l` : spécifie le layer qui sera à exploiter dans le front pour afficher les tuiles
-- `output_z15.mbtiles` : nom du fichier généré avec la taille de zoom maximal
+- `output_z13.mbtiles` : nom du fichier généré avec la taille de zoom maximal
 
-**👉 Résultat :** un fichier `output_z15.mbtiles` dans le dossier.
+**👉 Résultat :** un fichier `output_z13.mbtiles` dans le dossier.
 
 ---
 
@@ -90,7 +90,7 @@ docker run --rm -it `
   -v "C:\path\to\folder:/data" `
   -w /data `
   python:3.10-slim `
-  sh -c "pip install mbutil && mb-util --image_format=pbf output_z15.mbtiles tiles"
+  sh -c "pip install mbutil && mb-util --image_format=pbf output_z13.mbtiles tiles"
 ```
 
 **👉 Résultat :** une structure de dossiers sur votre disque local :
@@ -100,7 +100,7 @@ path/to/folder/tiles/
     4/
     5/
     ...
-    15/
+    13/
         x/
             y.pbf
 ```
