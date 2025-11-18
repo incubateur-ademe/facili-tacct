@@ -51,7 +51,7 @@ export const PartExploitationSeniorsDynamicText = ({
                     En 2020, votre territoire comptait en moyenne {Round(meanPartOver55, 1)} % de chefs d’exploitation de plus de 55 ans.
                   </Body>
                   {nombreSecretStatistique > 0 && (
-                    <Body size="sm">
+                    <Body size="sm" style={{ marginTop: "-0.5rem" }}>
                       <br></br>À noter : {nombreSecretStatistique} donnée(s) communale(s), soumises au secret
                       statistique, ne sont pas incluses dans ce calcul.
                     </Body>
