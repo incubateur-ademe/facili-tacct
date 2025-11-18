@@ -23,7 +23,9 @@ export const SecheressesPassees = (props: {
     Object.keys(secheresse).forEach(key => {
       if (key.startsWith('restrictions_') && secheresse[key as keyof Secheresses]) {
         try {
-          parsed[key] = JSON.parse(secheresse[key as keyof Secheresses] as string) as RestrictionData[];
+          const restrictions = JSON.parse(secheresse[key as keyof Secheresses] as string) as RestrictionData[];
+          // Filtrer les restrictions où zas.pct > 0.01
+          parsed[key] = restrictions.filter(r => r.zas.pct > 0.01);
         } catch (error) {
           console.error(`Erreur lors du parsing de ${key}:`, error);
           parsed[key] = null;

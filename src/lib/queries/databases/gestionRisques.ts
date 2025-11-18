@@ -168,7 +168,7 @@ export const GetSecheresses = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 6000)
+    }, 15000)
   );
   const dbQuery = (async () => {
     try {

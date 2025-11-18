@@ -23,6 +23,7 @@ const AnneesSecheresses = [
 export const SecheressesBarChart = (
   { secheresses }: { secheresses: SecheressesParsed[] }
 ) => {
+  console.log("secheresses dans SecheressesBarChart:", secheresses);
   // Transformer les données pour avoir une entrée par année avec le nombre total de restrictions
   const graphData = AnneesSecheresses.map(yearKey => {
     const year = yearKey.replace('restrictions_', '');
