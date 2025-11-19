@@ -89,10 +89,6 @@ export const GetCommunes = async (
             surface,
             ST_AsGeoJSON(geometry) geometry 
             FROM postgis."communes_drom" WHERE epci=${code};`;
-          const size = Buffer.byteLength(JSON.stringify(value));
-          console.log(
-            `GetCommunes ${type} (${code}): ${value.length} communes, ${(size / 1024 / 1024).toFixed(2)} MB`
-          );
           return value;
         } else if (type === 'pnr') {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
@@ -133,10 +129,6 @@ export const GetCommunes = async (
               surface,
               ST_AsGeoJSON(geometry) geometry 
               FROM postgis."communes_drom" WHERE departement=${code};`;
-          const size = Buffer.byteLength(JSON.stringify(value));
-          console.log(
-            `GetCommunes ${type} (${code}): ${value.length} communes, ${(size / 1024 / 1024).toFixed(2)} MB`
-          );
           return value;
         }
       }
@@ -294,12 +286,6 @@ export const GetCommunesCoordinates = async (
       }
 
       if (!result || result.length === 0 || !result[0].codes) return null;
-
-      const size = Buffer.byteLength(JSON.stringify(result[0]));
-      console.log(
-        `GetCommunesCoordinates ${type} (${code || libelle}): ${result[0].codes.length} communes, ${(size / 1024).toFixed(2)} KB`
-      );
-
       return {
         codes: result[0].codes,
         bbox: {
@@ -387,10 +373,6 @@ export const GetClcTerritoires = async (
             ST_AsText(ST_Centroid(geometry)) centroid,
             ST_AsGeoJSON(ST_SimplifyPreserveTopology(geometry, 0.0001)) geometry
             FROM postgis."clc_par_communes" WHERE departement=${code};`;
-          const size = Buffer.byteLength(JSON.stringify(value));
-          console.log(
-            `GetClcTerritoires ${type}: ${(size / 1024 / 1024).toFixed(2)} MB`
-          );
           return value.length ? value : undefined;
         } else return undefined;
       }
@@ -661,11 +643,6 @@ export const GetCommunesContours = async (
       }
 
       if (!result || result.length === 0 || !result[0].geometry) return null;
-
-      const size = Buffer.byteLength(result[0].geometry);
-      console.log(
-        `GetCommunesContours ${type} (${code || libelle}): ${(size / 1024).toFixed(2)} KB`
-      );
 
       return { geometry: result[0].geometry };
     } catch (error) {

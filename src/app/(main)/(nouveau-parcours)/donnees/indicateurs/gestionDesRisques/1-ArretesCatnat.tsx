@@ -60,10 +60,18 @@ export const ArretesCatnat = (props: {
     };
   });
 
+  // Créer un Map pour récupérer libelle_geographique depuis gestionRisques
+  const libelleByCode = new Map<string, string>();
+  gestionRisques.forEach(item => {
+    if (!libelleByCode.has(item.code_geographique)) {
+      libelleByCode.set(item.code_geographique, item.libelle_geographique);
+    }
+  });
+
   // Créer catnatData pour MapCatnat et LegendCatnat avec tuiles vectorielles
   const catnatData = dataByCodeGeographique.map(item => ({
     code: item.indexName,
-    name: '', // Le nom sera récupéré depuis les tuiles
+    name: libelleByCode.get(item.indexName) || '',
     catnat: item
   }));
 

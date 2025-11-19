@@ -7,9 +7,8 @@ import { MapErosionCotiere } from '@/components/maps/mapErosionCotiere';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
-import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { ErosionCotiereMapper } from '@/lib/mapper/erosionCotiere';
-import { CarteCommunes, ErosionCotiere } from "@/lib/postgres/models";
+import { ErosionCotiere } from "@/lib/postgres/models";
 import { ErosionCotiereText } from '@/lib/staticTexts';
 import { erosionCotiereTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from "next/navigation";
@@ -18,10 +17,10 @@ import styles from '../../explorerDonnees.module.scss';
 
 export const ErosionCotiereComp = ({
   erosionCotiere,
-  carteCommunes
+  coordonneesCommunes
 }: {
   erosionCotiere: [ErosionCotiere[], string];
-  carteCommunes: CarteCommunes[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
 }) => {
   const searchParams = useSearchParams();
   const libelle = searchParams.get('libelle')!;
@@ -30,7 +29,6 @@ export const ErosionCotiereComp = ({
   const mapRef = useRef<maplibregl.Map | null>(null);
   const mapContainer = useRef<HTMLDivElement>(null);
   const erosionCotiereMap = erosionCotiere[0].map(ErosionCotiereMapper);
-  const communesMap = carteCommunes.map(CommunesIndicateursMapper);
 
   return (
     <>
@@ -52,7 +50,7 @@ export const ErosionCotiereComp = ({
                 <MapErosionCotiere
                   erosionCotiere={erosionCotiereMap}
                   envelope={JSON.parse(erosionCotiere[1])}
-                  carteCommunes={communesMap}
+                  coordonneesCommunes={coordonneesCommunes}
                   mapRef={mapRef}
                   mapContainer={mapContainer}
                 />

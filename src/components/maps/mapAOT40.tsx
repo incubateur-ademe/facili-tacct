@@ -157,7 +157,7 @@ export const MapAOT40 = (props: {
           const maxLat = Math.max(...lats);
           map.fitBounds(
             [[minLng, minLat], [maxLng, maxLat]],
-            { padding: 50 },
+            { padding: 20 },
           );
         }
       } else {
@@ -176,7 +176,7 @@ export const MapAOT40 = (props: {
           const maxLat = Math.max(...lats);
           map.fitBounds(
             [[minLng, minLat], [maxLng, maxLat]],
-            { padding: 50 },
+            { padding: 20 },
           );
         }
       }
