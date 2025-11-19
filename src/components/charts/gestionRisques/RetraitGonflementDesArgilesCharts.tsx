@@ -5,11 +5,10 @@ import { RgaEvolutionTooltip, RgaRepartitionTooltip } from "@/components/charts/
 import { NivoBarChart } from '@/components/charts/NivoBarChart';
 import { RgaEvolutionLegend, RgaRepartitionLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
-import RGAMapExport from "@/components/maps/mapRGAExport";
+import { MapRGAExport } from "@/components/maps/mapRGAExport";
 import { MapRGATiles } from "@/components/maps/mapRGATiles";
 import SubTabs from '@/components/ui/SubTabs';
 import { Body } from "@/design-system/base/Textes";
-import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
 import { RGAdb } from '@/lib/postgres/models';
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { BarDatum } from '@nivo/bar';
@@ -19,11 +18,7 @@ import { RefObject, useEffect, useLayoutEffect, useState } from "react";
 import styles from './gestionRisquesCharts.module.scss';
 
 type Props = {
-  rgaCarte: {
-    type: string;
-    features: RGADto[];
-  };
-  carteCommunes: CommunesIndicateursDto[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   rga: RGAdb[];
   datavizTab: string;
   setDatavizTab: (value: string) => void;
@@ -132,8 +127,7 @@ const barChartComparaison = (rga: RGAdb[], code: string, type: string) => {
 
 const RetraitGonflementDesArgilesCharts = (props: Props) => {
   const {
-    rgaCarte,
-    carteCommunes,
+    coordonneesCommunes,
     rga,
     datavizTab,
     setDatavizTab,
@@ -265,12 +259,8 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
           </div>
         </>
       ) : datavizTab === 'Cartographie' ? (
-        // <RGAMap
-        //   rgaCarte={rgaCarte}
-        //   carteCommunes={carteCommunes}
-        // />
         <MapRGATiles
-          carteCommunes={carteCommunes}
+          coordonneesCommunes={coordonneesCommunes}
           mapRef={mapRef}
           mapContainer={mapContainer}
         />
@@ -278,9 +268,8 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
         ''
       )}
       {/* Génère une map cachée pour l'export */}
-      <RGAMapExport
-        rgaCarte={rgaCarte}
-        carteCommunes={carteCommunes}
+      <MapRGAExport
+        coordonneesCommunes={coordonneesCommunes}
         mapRef={mapRef}
         mapContainer={mapContainer}
         style={{

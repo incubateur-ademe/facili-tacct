@@ -71,7 +71,9 @@ export const MapCatnat = (props: {
   const nameByCommune = useMemo(() => {
     const map = new Map<string, string>();
     catnatData.forEach(item => {
-      map.set(item.code, item.name);
+      if (item.name) {
+        map.set(item.code, item.name);
+      }
     });
     return map;
   }, [catnatData]);
@@ -113,7 +115,7 @@ export const MapCatnat = (props: {
           map.fitBounds(
             [[coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
             [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]],
-            { padding: 50 }
+            { padding: 20 }
           );
         }, 100);
       }

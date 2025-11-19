@@ -8,9 +8,7 @@ import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
-import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { RGAMapper } from '@/lib/mapper/gestionRisques';
-import { CarteCommunes, RGACarte, RGAdb } from "@/lib/postgres/models";
+import { RGAdb } from "@/lib/postgres/models";
 import { RGAText } from "@/lib/staticTexts";
 import { rgaTooltipText } from "@/lib/tooltipTexts";
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
@@ -24,12 +22,10 @@ import { useRef, useState } from "react";
 import styles from '../../explorerDonnees.module.scss';
 
 export const RetraitGonflementDesArgiles = ({
-  carteCommunes,
-  rgaCarte,
+  coordonneesCommunes,
   rga
 }: {
-  carteCommunes: CarteCommunes[];
-  rgaCarte: RGACarte[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   rga: RGAdb[];
 }) => {
   const searchParams = useSearchParams();
@@ -44,20 +40,7 @@ export const RetraitGonflementDesArgiles = ({
     type === "epci" ?
       rga.filter(item => item.epci === code) :
       rga;
-  const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
-  const communesMap = carteCommunesEnriched.map((el) => {
-    return {
-      ...el,
-      rga:
-        rgaCarte.find((item) => item.code_geographique === el.properties.code_geographique)
-          ?.alea ?? NaN
-    };
-  });
-  const rgaMap = rgaCarte.map(RGAMapper);
-  const featureCollection = {
-    type: "FeatureCollection",
-    features: rgaMap
-  };
+
   const partMoyenFort = rgaFilteredByTerritory.length > 0
     ? Average(rgaFilteredByTerritory.map((el) => el.part_alea_moyen_fort_commune))
     : 0;
@@ -90,7 +73,7 @@ export const RetraitGonflementDesArgiles = ({
               )
             }
             {
-              communesMap.length > 0 && rga.length && rgaCarte.length ? (
+              rgaFilteredByTerritory.length > 0 ? (
                 <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
                   {Round(partMoyenFort, 1)} % de votre territoire est situé dans une zone où le niveau
                   d’exposition au retrait gonflement des argiles est moyen ou fort. Cela
@@ -108,10 +91,9 @@ export const RetraitGonflementDesArgiles = ({
         </div>
         <div className={styles.datavizWrapper} style={{ borderRadius: "1rem 0 0 1rem", height: "fit-content" }}>
           {
-            communesMap && rga.length && rgaCarte.length ?
+            rga.length ?
               <RetraitGonflementDesArgilesCharts
-                rgaCarte={featureCollection}
-                carteCommunes={communesMap}
+                coordonneesCommunes={coordonneesCommunes}
                 rga={rga}
                 datavizTab={datavizTab}
                 setDatavizTab={setDatavizTab}

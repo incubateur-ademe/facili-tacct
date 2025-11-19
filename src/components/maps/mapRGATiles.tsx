@@ -1,38 +1,24 @@
 "use client";
 
-import { BoundsFromCollection } from '@/components/maps/components/boundsFromCollection';
-import { CommunesIndicateursDto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
-import { Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect } from 'react';
 import { RgaMapLegend } from './legends/datavizLegends';
 import { LegendCompColor } from './legends/legendComp';
 import styles from './maps.module.scss';
 
 export const MapRGATiles = (props: {
-  carteCommunes: CommunesIndicateursDto[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   mapRef: RefObject<maplibregl.Map | null>;
   mapContainer: RefObject<HTMLDivElement | null>;
   style?: React.CSSProperties;
 }) => {
-  const { carteCommunes, mapRef, mapContainer, style } = props;
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
-
-  const carteCommunesFiltered = type === "ept"
-    ? carteCommunes.filter(el => el.properties.ept === libelle)
-    : carteCommunes;
-
-  const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
+  const { coordonneesCommunes, mapRef, mapContainer, style } = props;
 
   useEffect(() => {
-    if (!mapContainer.current) return;
+    if (!mapContainer.current || !coordonneesCommunes) return;
 
     const map = new maplibregl.Map({
       container: mapContainer.current,
@@ -42,24 +28,15 @@ export const MapRGATiles = (props: {
     mapRef.current = map;
 
     map.on('load', () => {
-      // Fit bounds
-      if (
-        enveloppe &&
-        Array.isArray(enveloppe) &&
-        enveloppe.length > 1 &&
-        Array.isArray(enveloppe[0]) &&
-        enveloppe[0].length === 2
-      ) {
-        const lons = enveloppe.map((coord: number[]) => coord[1]);
-        const lats = enveloppe.map((coord: number[]) => coord[0]);
-        const minLng = Math.min(...lons);
-        const maxLng = Math.max(...lons);
-        const minLat = Math.min(...lats);
-        const maxLat = Math.max(...lats);
-        map.fitBounds(
-          [[minLng, minLat], [maxLng, maxLat]],
-          { padding: 20 },
-        );
+      // Fit bounds avec coordonneesCommunes
+      if (coordonneesCommunes?.bbox) {
+        setTimeout(() => {
+          map.fitBounds(
+            [[coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
+            [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]],
+            { padding: 20 }
+          );
+        }, 100);
       }
 
       // Add vector tiles source
@@ -71,15 +48,12 @@ export const MapRGATiles = (props: {
       });
 
       // Add fill layer for RGA zones with color based on alea level
-      // Filtrer les features RGA pour ne montrer que celles qui intersectent les communes du territoire
-      const codesCommunesAfficher = carteCommunesFiltered.map(c => c.properties.code_geographique);
-
       map.addLayer({
         id: 'rga-fill',
         type: 'fill',
         source: 'rga-tiles',
         'source-layer': 'rga',
-        filter: ['in', ['get', 'code_geographique'], ['literal', codesCommunesAfficher]],
+        filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
         paint: {
           'fill-color': [
             'match',
@@ -93,24 +67,20 @@ export const MapRGATiles = (props: {
         }
       });
 
-      // Add communes outline
-      map.addSource('communes-outline', {
-        type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: carteCommunesFiltered.map(commune => ({
-            type: 'Feature' as const,
-            geometry: commune.geometry as Geometry,
-            properties: commune.properties,
-            id: commune.properties.code_geographique
-          }))
-        }
+      // Add communes outline avec tuiles vectorielles
+      map.addSource('communes-tiles', {
+        type: 'vector',
+        tiles: ['https://facili-tacct-dev.s3.fr-par.scw.cloud/app/communes/tiles/{z}/{x}/{y}.pbf'],
+        minzoom: 4,
+        maxzoom: 13
       });
 
       map.addLayer({
         id: 'communes-outline-layer',
         type: 'line',
-        source: 'communes-outline',
+        source: 'communes-tiles',
+        'source-layer': 'contour_communes',
+        filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
         paint: {
           'line-color': '#161616',
           'line-width': 1
@@ -126,7 +96,7 @@ export const MapRGATiles = (props: {
         mapRef.current = null;
       }
     };
-  }, [enveloppe, carteCommunesFiltered]);
+  }, [coordonneesCommunes]);
 
   return (
     <div style={{ position: 'relative', ...style }}>

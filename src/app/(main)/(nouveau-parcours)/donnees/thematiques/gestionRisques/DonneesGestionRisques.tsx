@@ -2,12 +2,12 @@
 import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, RGAdb, Secheresses } from "@/lib/postgres/models";
-import { GetArretesCatnat, GetIncendiesForet, GetSecheresses } from '@/lib/queries/databases/gestionRisques';
-import { GetCommunes, GetCommunesCoordinates, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
+import { ArreteCatNat, ErosionCotiere, IncendiesForet, RGAdb } from "@/lib/postgres/models";
+import { GetArretesCatnat, GetIncendiesForet } from '@/lib/queries/databases/gestionRisques';
+import { GetCommunesCoordinates, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import Notice from '@codegouvfr/react-dsfr/Notice';
 import { useSearchParams } from "next/navigation";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useStyles } from 'tss-react/dsfr';
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
@@ -16,26 +16,23 @@ import { FeuxDeForet } from '../../indicateurs/gestionDesRisques/2-FeuxDeForet';
 import { ErosionCotiereComp } from '../../indicateurs/gestionDesRisques/3-ErosionCotiere';
 import { RetraitGonflementDesArgiles } from '../../indicateurs/gestionDesRisques/4-RetraitGonflementDesArgiles';
 import { Debroussaillement } from '../../indicateurs/gestionDesRisques/5-Debroussaillement';
-import { SecheressesPassees } from '../../indicateurs/gestionDesRisques/6-Secheresses';
 
 interface Props {
   gestionRisques: ArreteCatNat[];
-  carteCommunes: CarteCommunes[];
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   erosionCotiere: [ErosionCotiere[], string] | [];
   incendiesForet: IncendiesForet[];
-  secheresses: Secheresses[];
-  contoursCommunes: { geometry: string } | null;
+  // secheresses: Secheresses[];
+  rga: RGAdb[];
 }
 
 export const DonneesGestionRisques = ({
-  carteCommunes,
   coordonneesCommunes,
   gestionRisques,
   erosionCotiere,
   incendiesForet,
-  secheresses,
-  contoursCommunes
+  // secheresses,
+  rga
 }: Props) => {
   const { css } = useStyles();
   const searchParams = useSearchParams();
@@ -43,17 +40,12 @@ export const DonneesGestionRisques = ({
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const [rgaCarte, setRgaCarte] = useState<RGACarte[]>([]);
-  const [rga, setRga] = useState<RGAdb[]>([]);
-  const [rgaCarteLoading, setRgaCarteLoading] = useState(false);
-  const [loadingRga, setLoadingRga] = useState(false);
   const [data, setData] = useState({
-    carteCommunes,
     coordonneesCommunes,
     gestionRisques,
     erosionCotiere,
     incendiesForet,
-    secheresses
+    // secheresses
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -67,46 +59,28 @@ export const DonneesGestionRisques = ({
     setIsLoading(true);
     void (async () => {
       const [
-        newCarteCommunes,
         newCoordonneesCommunes,
         newGestionRisques,
         newErosionCotiere,
         newIncendiesForet,
-        newSecheresses
+        // newSecheresses
       ] = await Promise.all([
-        GetCommunes(code, libelle, type),
         GetCommunesCoordinates(code, libelle, type),
         GetArretesCatnat(code, libelle, type),
         GetErosionCotiere(code, libelle, type),
         GetIncendiesForet(code, libelle, type),
-        GetSecheresses(code, libelle, type)
+        // GetSecheresses(code, libelle, type)
       ]);
       setData({
-        carteCommunes: newCarteCommunes,
         coordonneesCommunes: newCoordonneesCommunes,
         gestionRisques: newGestionRisques,
         erosionCotiere: newErosionCotiere,
         incendiesForet: newIncendiesForet,
-        secheresses: newSecheresses
+        // secheresses: newSecheresses
       });
       setIsLoading(false);
     })();
   }, [libelle]);
-
-  useEffect(() => {
-    setLoadingRga(true);
-    setRgaCarteLoading(true);
-    fetch(`/api/rga?code=${code}&libelle=${libelle}&type=${type}`)
-      .then(res => res.json())
-      .then(data => {
-        setRga(data.rga);
-        setRgaCarte(data.rgaCarte);
-      })
-      .finally(() => {
-        setLoadingRga(false);
-        setRgaCarteLoading(false);
-      });
-  }, [code, libelle, type]);
 
   return (
     isLoading ? <LoaderText text='Mise à jour des données' /> :
@@ -187,7 +161,6 @@ export const DonneesGestionRisques = ({
               </H3>
             </div>
             <Debroussaillement
-              carteCommunes={data.carteCommunes}
               coordonneesCommunes={data.coordonneesCommunes}
             />
           </div>
@@ -199,9 +172,9 @@ export const DonneesGestionRisques = ({
                 Sécheresses passées
               </H3>
             </div>
-            <SecheressesPassees
+            {/* <SecheressesPassees
               secheresses={data.secheresses}
-            />
+            /> */}
           </div>
         </section>
 
@@ -220,24 +193,15 @@ export const DonneesGestionRisques = ({
 
           {/* Retrait-gonflement des argiles */}
           <div id="Retrait-gonflement des argiles" className={styles.indicateurWrapper}>
-            {(loadingRga || rgaCarteLoading) ? (
-              <div className={styles.loaderTextWrapperStyle}>
-                <LoaderText text="Nous chargeons vos données" />
-              </div>
-            ) : (
-              <>
-                <div className={styles.h3Titles}>
-                  <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-                    Retrait-gonflement des argiles
-                  </H3>
-                </div>
-                <RetraitGonflementDesArgiles
-                  rgaCarte={rgaCarte}
-                  carteCommunes={data.carteCommunes}
-                  rga={rga}
-                />
-              </>
-            )}
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Retrait-gonflement des argiles
+              </H3>
+            </div>
+            <RetraitGonflementDesArgiles
+              coordonneesCommunes={data.coordonneesCommunes}
+              rga={rga}
+            />
           </div>
         </section>
         {
@@ -265,7 +229,7 @@ export const DonneesGestionRisques = ({
                   </div>
                   <ErosionCotiereComp
                     erosionCotiere={data.erosionCotiere as [ErosionCotiere[], string]}
-                    carteCommunes={data.carteCommunes}
+                    coordonneesCommunes={data.coordonneesCommunes}
                   />
                 </div>
               </section>
