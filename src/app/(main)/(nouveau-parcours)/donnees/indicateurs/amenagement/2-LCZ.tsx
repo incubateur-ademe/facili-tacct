@@ -2,11 +2,10 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/ExportPng';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
-import MapLCZNouveauParcours from '@/components/maps/mapLCZNouveauParcours';
+import { MapLCZ } from '@/components/maps/mapLCZ';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from "@/design-system/base/Textes";
-import { CarteCommunes } from "@/lib/postgres/models";
 import { GetLczCouverture } from '@/lib/queries/databases/inconfortThermique';
 import { LCZCeremaText1, LCZText, LCZText2 } from '@/lib/staticTexts';
 import { LCZTooltipText } from '@/lib/tooltipTexts';
@@ -15,9 +14,9 @@ import { useEffect, useRef, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 
 export const LCZ = ({
-  carteCommunes,
+  coordonneesCommunes,
 }: {
-  carteCommunes: CarteCommunes[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
@@ -47,10 +46,10 @@ export const LCZ = ({
         </ReadMoreFade>
         <div className={styles.mapWrapper}>
           {
-            carteCommunes.length > 0 ? (
+            coordonneesCommunes ? (
               <div ref={exportPNGRef}>
-                <MapLCZNouveauParcours
-                  carteCommunes={carteCommunes}
+                <MapLCZ
+                  coordonneesCommunes={coordonneesCommunes}
                   isLoading={isLoading}
                   isLczCovered={isLczCovered}
                   mapRef={mapRef}

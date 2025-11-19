@@ -22,7 +22,6 @@ import { EtatEcoCoursDeau } from "../../indicateurs/biodiversite/5-EtatCoursDeau
 import { OzoneEtVegetation } from "../../indicateurs/biodiversite/6-AOT40";
 
 interface Props {
-  // carteCommunes: CarteCommunes[];
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   contoursCommunes: { geometry: string } | null;
   agricultureBio: AgricultureBio[];
@@ -45,7 +44,6 @@ const h2SectionStyle = {
 };
 
 export const DonneesBiodiversite = ({
-  // carteCommunes,
   coordonneesCommunes,
   contoursCommunes,
   agricultureBio,
@@ -63,9 +61,7 @@ export const DonneesBiodiversite = ({
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
   const ongletsMenu = sommaireThematiques[thematique];
-  // const [clcState, setClcState] = useState<CLCTerritoires[] | undefined>(undefined);
   const [data, setData] = useState({
-    // carteCommunes,
     agricultureBio,
     consommationNAF,
     aot40,
@@ -180,7 +176,6 @@ export const DonneesBiodiversite = ({
             </div>
             <SolsImpermeabilises
               consommationNAF={data.consommationNAF}
-              // carteCommunes={data.carteCommunes}
               coordonneesCommunes={coordonneesCommunes}
               tableCommune={data.tableCommune}
             />

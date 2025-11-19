@@ -171,18 +171,6 @@ describe('agriculture code/libelle correspondance', () => {
     }
   });
 });
-describe('clc_territoires code/libelle correspondance', () => {
-  it('should have correct code_pnr/libelle_pnr pairs in postgis.clc_territoires', async () => {
-    const rows = await prisma.clc_territoires.findMany({
-      select: { code_pnr: true, libelle_pnr: true }
-    });
-    for (const row of rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
-      }
-    }
-  });
-});
 describe('communes_drom code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in postgis.communes_drom', async () => {
     const rows = await prisma.communes_drom.findMany({

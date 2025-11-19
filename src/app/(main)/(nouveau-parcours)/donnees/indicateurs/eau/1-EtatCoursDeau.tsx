@@ -4,12 +4,11 @@ import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { etatCoursDeauLegends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeauLegacy';
+import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body } from "@/design-system/base/Textes";
-import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
-import { CarteCommunes, EtatCoursDeau, ExportCoursDeau } from "@/lib/postgres/models";
+import { EtatCoursDeau, ExportCoursDeau } from "@/lib/postgres/models";
 import { EtatCoursEauRessourcesEauText } from '@/lib/staticTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from "next/navigation";
@@ -35,15 +34,15 @@ type DataToExport = {
 
 export const EtatEcoCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeau[];
-  carteCommunes: CarteCommunes[];
+  communesCodes: string[];
+  boundingBox?: [[number, number], [number, number]];
 }) => {
-  const { etatCoursDeau, carteCommunes } = props;
+  const { etatCoursDeau, communesCodes, boundingBox } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
   const etatCoursDeauMap = etatCoursDeau.map(EtatCoursDeauMapper);
-  const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
   const [exportData, setExportData] = useState<DataToExport[]>([]);
 
   useEffect(() => {
@@ -86,7 +85,8 @@ export const EtatEcoCoursDeau = (props: {
             <>
               <MapEtatCoursDeau
                 etatCoursDeau={etatCoursDeauMap}
-                carteCommunes={carteCommunesMap}
+                communesCodes={communesCodes}
+                boundingBox={boundingBox}
               />
               <div className={styles.legendCoursDeauWrapper}>
                 <LegendCompColor legends={etatCoursDeauLegends} />

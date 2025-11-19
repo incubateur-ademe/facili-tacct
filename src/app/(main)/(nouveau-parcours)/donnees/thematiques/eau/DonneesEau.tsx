@@ -2,9 +2,8 @@
 import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { CarteCommunes, EtatCoursDeau, PrelevementsEau } from "@/lib/postgres/models";
+import { EtatCoursDeau, PrelevementsEau } from "@/lib/postgres/models";
 import { GetPrelevementsEau } from "@/lib/queries/databases/ressourcesEau";
-import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
 import { useSearchParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
@@ -14,13 +13,13 @@ import { EtatEcoCoursDeau } from '../../indicateurs/eau/1-EtatCoursDeau';
 import { PrelevementsEnEau } from '../../indicateurs/eau/2-PrelevementsEnEau';
 
 interface Props {
-  carteCommunes: CarteCommunes[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   etatCoursDeau: EtatCoursDeau[];
   prelevementsEau: PrelevementsEau[];
 }
 
 export const DonneesEau = ({
-  carteCommunes,
+  coordonneesCommunes,
   etatCoursDeau,
   prelevementsEau
 }: Props) => {
@@ -31,7 +30,6 @@ export const DonneesEau = ({
   const code = searchParams.get('code')!;
   const ongletsMenu = sommaireThematiques[thematique];
   const [data, setData] = useState({
-    carteCommunes,
     etatCoursDeau,
     prelevementsEau
   });
@@ -45,13 +43,11 @@ export const DonneesEau = ({
     }
     setIsLoading(true);
     void (async () => {
-      const [newCarteCommunes, newEtatCoursDeau, newPrelevementsEau] = await Promise.all([
-        GetCommunes(code, libelle, type),
+      const [newEtatCoursDeau, newPrelevementsEau] = await Promise.all([
         GetEtatCoursDeau(code, libelle, type),
         GetPrelevementsEau(code, libelle, type)
       ]);
       setData({
-        carteCommunes: newCarteCommunes,
         etatCoursDeau: newEtatCoursDeau,
         prelevementsEau: newPrelevementsEau
       });
@@ -103,7 +99,13 @@ export const DonneesEau = ({
             </div>
             <EtatEcoCoursDeau
               etatCoursDeau={data.etatCoursDeau}
-              carteCommunes={data.carteCommunes}
+              communesCodes={coordonneesCommunes?.codes ?? []}
+              boundingBox={
+                coordonneesCommunes ? [
+                  [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
+                  [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]
+                ] : undefined
+              }
             />
           </div>
         </section>

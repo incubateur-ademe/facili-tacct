@@ -185,7 +185,7 @@ export const MapAOT40 = (props: {
         type: 'vector',
         tiles: ['https://facili-tacct-dev.s3.fr-par.scw.cloud/app/communes/tiles/{z}/{x}/{y}.pbf'],
         minzoom: 4,
-        maxzoom: 13
+        maxzoom: 13,
       });
 
       map.addLayer({

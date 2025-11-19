@@ -1,28 +1,21 @@
 "use client";
 
-import { CommunesIndicateursDto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect } from 'react';
-import { BoundsFromCollection } from './components/boundsFromCollection';
 
 export const MapDebroussaillementTiles = (
   props: {
-    carteContours: CommunesIndicateursDto[];
+    coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
     mapRef: RefObject<maplibregl.Map | null>;
     mapContainer: RefObject<HTMLDivElement | null>;
   }
 ) => {
-  const { carteContours, mapRef, mapContainer } = props;
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const type = searchParams.get('type')!;
-  const enveloppe = BoundsFromCollection(carteContours, type, code);
+  const { coordonneesCommunes, mapRef, mapContainer } = props;
 
   useEffect(() => {
-    if (!mapContainer.current) return;
+    if (!mapContainer.current || !coordonneesCommunes) return;
 
     const map = new maplibregl.Map({
       container: mapContainer.current,
@@ -32,25 +25,6 @@ export const MapDebroussaillementTiles = (
     mapRef.current = map;
 
     map.on('load', () => {
-      // Fit bounds
-      if (
-        enveloppe &&
-        Array.isArray(enveloppe) &&
-        enveloppe.length > 1 &&
-        Array.isArray(enveloppe[0]) &&
-        enveloppe[0].length === 2
-      ) {
-        const lons = enveloppe.map((coord: number[]) => coord[1]);
-        const lats = enveloppe.map((coord: number[]) => coord[0]);
-        const minLng = Math.min(...lons);
-        const maxLng = Math.max(...lons);
-        const minLat = Math.min(...lats);
-        const maxLat = Math.max(...lats);
-        map.fitBounds(
-          [[minLng, minLat], [maxLng, maxLat]],
-          { padding: 20 },
-        );
-      }
 
       // Add vector tiles source
       map.addSource('debroussaillement-tiles', {
@@ -66,36 +40,44 @@ export const MapDebroussaillementTiles = (
         type: 'fill',
         source: 'debroussaillement-tiles',
         'source-layer': 'debroussaillement',
+        filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
         paint: {
           'fill-color': '#F83DD9',
           'fill-opacity': 0.8
         }
       });
 
-      // Add communes outline
-      map.addSource('communes-outline', {
-        type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: carteContours.map(commune => ({
-            type: 'Feature' as const,
-            geometry: commune.geometry as import('geojson').Geometry,
-            properties: commune.properties,
-            id: commune.properties.code_geographique
-          }))
-        }
+      // Add communes outline with vector tiles
+      map.addSource('communes-tiles', {
+        type: 'vector',
+        tiles: ['https://facili-tacct-dev.s3.fr-par.scw.cloud/app/communes/tiles/{z}/{x}/{y}.pbf'],
+        minzoom: 4,
+        maxzoom: 13,
       });
 
       map.addLayer({
         id: 'communes-outline-layer',
         type: 'line',
-        source: 'communes-outline',
+        source: 'communes-tiles',
+        'source-layer': 'contour_communes',
+        filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
         paint: {
           'line-color': '#161616',
           'line-width': 1,
           'line-opacity': 1
         }
       });
+
+      // Appliquer le fitBounds après un court délai pour l'effet de zoom
+      setTimeout(() => {
+        map.fitBounds(
+          [
+            [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
+            [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]
+          ],
+          { padding: 20 }
+        );
+      }, 100);
 
       map.addControl(new maplibregl.NavigationControl(), 'top-right');
     });
@@ -106,9 +88,7 @@ export const MapDebroussaillementTiles = (
         mapRef.current = null;
       }
     };
-  }, [enveloppe, carteContours]);
-
-  return (
+  }, [coordonneesCommunes]); return (
     <div style={{ position: 'relative' }}>
       <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />
     </div>

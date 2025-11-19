@@ -8,8 +8,7 @@ import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
-import { CommunesIndicateursMapper } from "@/lib/mapper/communes";
-import { ArreteCatNat, CarteCommunes } from "@/lib/postgres/models";
+import { ArreteCatNat } from "@/lib/postgres/models";
 import { CatNatText } from "@/lib/staticTexts";
 import { catnatTooltipText } from "@/lib/tooltipTexts";
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
@@ -26,9 +25,9 @@ type ArreteCatNatEnriched = ArreteCatNat & {
 
 export const ArretesCatnat = (props: {
   gestionRisques: ArreteCatNat[];
-  carteCommunes: CarteCommunes[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
 }) => {
-  const { gestionRisques, carteCommunes } = props;
+  const { gestionRisques, coordonneesCommunes } = props;
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
   const [sliderValue, setSliderValue] = useState<number[]>([1982, 2025]);
   const [typeRisqueValue, setTypeRisqueValue] =
@@ -60,15 +59,13 @@ export const ArretesCatnat = (props: {
       sumCatnat: sum
     };
   });
-  const carteCommunesEnriched = carteCommunes.map((el) => {
-    return {
-      ...el,
-      catnat: dataByCodeGeographique.find(
-        (item) => item.indexName === el.code_geographique
-      )
-    };
-  });
-  const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
+
+  // Créer catnatData pour MapCatnat et LegendCatnat avec tuiles vectorielles
+  const catnatData = dataByCodeGeographique.map(item => ({
+    code: item.indexName,
+    name: '', // Le nom sera récupéré depuis les tuiles
+    catnat: item
+  }));
 
   useEffect(() => {
     const catnatFilteredByType =
@@ -139,7 +136,8 @@ export const ArretesCatnat = (props: {
           {
             gestionRisques.length !== 0 ?
               <ArretesCatnatCharts
-                carteCommunes={communesMap}
+                catnatData={catnatData}
+                coordonneesCommunes={coordonneesCommunes}
                 datavizTab={datavizTab}
                 setDatavizTab={setDatavizTab}
                 typeRisqueValue={typeRisqueValue}
