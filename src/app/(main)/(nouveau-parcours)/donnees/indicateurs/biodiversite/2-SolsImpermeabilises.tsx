@@ -34,19 +34,6 @@ export const SolsImpermeabilises = (props: {
     el.atlas_biodiversite_avancement !== null &&
     el.atlas_biodiversite_annee_debut !== null
   );
-  // const carteCommunesEnriched = carteCommunes.map((el) => {
-  //   return {
-  //     ...el,
-  //     naf: consommationNAF.find(
-  //       (item) => item.code_geographique === el.code_geographique
-  //     )?.naf09art23
-  //   };
-  // });
-  // const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
-  // const carteCommunesFiltered = communesMap.filter(
-  //   (el) => el.properties.naf != undefined
-  // )
-  // const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
   const sumNaf = (type === "commune"
     ? consommationNAF.filter((item) => item.code_geographique === code)[0]
       ?.naf09art23
@@ -81,10 +68,6 @@ export const SolsImpermeabilises = (props: {
           {
             consommationNAF && coordonneesCommunes ? (
               <>
-                {/* <MapEspacesNaf
-                  carteCommunesFiltered={carteCommunesFiltered}
-                  enveloppe={enveloppe}
-                /> */}
                 <MapEspacesNafTiles
                   consommationNAF={consommationNAF}
                   communesCodes={coordonneesCommunes?.codes ?? []}

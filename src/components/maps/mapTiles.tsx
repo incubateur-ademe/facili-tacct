@@ -1,21 +1,33 @@
 "use client";
 
+import { Any } from '@/lib/utils/types';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect } from 'react';
-import { RgaMapLegend } from './legends/datavizLegends';
-import { LegendCompColor } from './legends/legendComp';
 import styles from './maps.module.scss';
 
-export const MapRGATiles = (props: {
+export const MapTiles = (props: {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   mapRef: RefObject<maplibregl.Map | null>;
   mapContainer: RefObject<HTMLDivElement | null>;
+  bucketUrl: string;
+  layer: string;
+  paint: { [key: string]: Any }
+  legend?: React.ReactNode;
   style?: React.CSSProperties;
 }) => {
-  const { coordonneesCommunes, mapRef, mapContainer, style } = props;
+  const {
+    coordonneesCommunes,
+    mapRef,
+    mapContainer,
+    style,
+    bucketUrl,
+    layer,
+    paint,
+    legend
+  } = props;
 
   useEffect(() => {
     if (!mapContainer.current || !coordonneesCommunes) return;
@@ -28,7 +40,6 @@ export const MapRGATiles = (props: {
     mapRef.current = map;
 
     map.on('load', () => {
-      // Fit bounds avec coordonneesCommunes
       if (coordonneesCommunes?.bbox) {
         setTimeout(() => {
           map.fitBounds(
@@ -40,31 +51,21 @@ export const MapRGATiles = (props: {
       }
 
       // Add vector tiles source
-      map.addSource('rga-tiles', {
+      map.addSource(`${bucketUrl}-tiles`, {
         type: 'vector',
-        tiles: ['https://facili-tacct-dev.s3.fr-par.scw.cloud/app/rga/tiles/{z}/{x}/{y}.pbf'],
+        tiles: [`https://facili-tacct-dev.s3.fr-par.scw.cloud/app/${bucketUrl}/tiles/{z}/{x}/{y}.pbf`],
         minzoom: 4,
         maxzoom: 13
       });
 
       // Add fill layer for RGA zones with color based on alea level
       map.addLayer({
-        id: 'rga-fill',
+        id: `${bucketUrl}-fill`,
         type: 'fill',
-        source: 'rga-tiles',
-        'source-layer': 'rga',
+        source: `${bucketUrl}-tiles`,
+        'source-layer': layer,
         filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
-        paint: {
-          'fill-color': [
-            'match',
-            ['get', 'alea'],
-            'Moyen', '#F66E19',
-            'Faible', '#FFCF5E',
-            'Fort', '#E8323B',
-            'white'
-          ],
-          'fill-opacity': 0.45
-        }
+        paint: paint
       });
 
       // Add communes outline avec tuiles vectorielles
@@ -105,7 +106,7 @@ export const MapRGATiles = (props: {
         className={styles.legendRGA}
         style={{ width: 'auto', justifyContent: 'center' }}
       >
-        <LegendCompColor legends={RgaMapLegend} />
+        {legend && legend}
       </div>
     </div>
   );

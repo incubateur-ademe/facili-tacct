@@ -2,7 +2,7 @@
 import { RetardScroll } from '@/hooks/RetardScroll';
 import { ConsommationNAF } from '@/lib/postgres/models';
 import { mapStyles } from 'carte-facile';
-import maplibregl from 'maplibre-gl';
+import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef } from 'react';
 import { EspacesNafTooltip } from './components/tooltips';
@@ -68,16 +68,16 @@ export const MapEspacesNafTiles = (props: {
       });
 
       // Créer l'expression de couleur basée sur les valeurs NAF
-      const colorExpression: any = ['case'];
+      const colorPairs: (ExpressionSpecification | string)[] = [];
       consommationNAF.forEach(item => {
         const naf = item.naf09art23 ?? 0;
         const color = getColor(naf);
-        colorExpression.push(
+        colorPairs.push(
           ['==', ['get', 'code_geographique'], item.code_geographique],
           color
         );
       });
-      colorExpression.push('#D8EFFA'); // couleur par défaut
+      const colorExpression: ExpressionSpecification = ['case', ...colorPairs, '#D8EFFA'] as ExpressionSpecification;
 
       map.addLayer({
         id: 'naf-fill',
