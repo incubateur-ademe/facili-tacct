@@ -3,13 +3,12 @@ import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { SourcesSection } from "@/components/interactions/scrollToSource";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { AgricultureBio, AOT40, CarteCommunes, ConfortThermique, ConsommationNAF, EtatCoursDeau, QualiteSitesBaignade, SurfacesAgricolesModel, TableCommuneModel } from "@/lib/postgres/models";
+import { AgricultureBio, AOT40, ConfortThermique, ConsommationNAF, EtatCoursDeau, QualiteSitesBaignade, SurfacesAgricolesModel, TableCommuneModel } from "@/lib/postgres/models";
 import { GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
 import { GetAgricultureBio, GetAOT40, GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
 import { GetConfortThermique } from "@/lib/queries/databases/inconfortThermique";
 import { GetQualiteEauxBaignade } from "@/lib/queries/databases/ressourcesEau";
 import { GetTablecommune } from "@/lib/queries/databases/tableCommune";
-import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
 import { useSearchParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
@@ -23,13 +22,15 @@ import { EtatEcoCoursDeau } from "../../indicateurs/biodiversite/5-EtatCoursDeau
 import { OzoneEtVegetation } from "../../indicateurs/biodiversite/6-AOT40";
 
 interface Props {
-  carteCommunes: CarteCommunes[];
+  // carteCommunes: CarteCommunes[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
+  contoursCommunes: { geometry: string } | null;
   agricultureBio: AgricultureBio[];
   consommationNAF: ConsommationNAF[];
   aot40: AOT40[];
   etatCoursDeau: EtatCoursDeau[];
   qualiteEauxBaignade: QualiteSitesBaignade[];
-  confortThermique: ConfortThermique[];
+  confortThermique: Partial<ConfortThermique>[];
   surfacesAgricoles: SurfacesAgricolesModel[];
   tableCommune: TableCommuneModel[];
 }
@@ -44,7 +45,9 @@ const h2SectionStyle = {
 };
 
 export const DonneesBiodiversite = ({
-  carteCommunes,
+  // carteCommunes,
+  coordonneesCommunes,
+  contoursCommunes,
   agricultureBio,
   consommationNAF,
   aot40,
@@ -61,9 +64,8 @@ export const DonneesBiodiversite = ({
   const code = searchParams.get('code')!;
   const ongletsMenu = sommaireThematiques[thematique];
   // const [clcState, setClcState] = useState<CLCTerritoires[] | undefined>(undefined);
-  const [loadingClc, setLoadingClc] = useState(true);
   const [data, setData] = useState({
-    carteCommunes,
+    // carteCommunes,
     agricultureBio,
     consommationNAF,
     aot40,
@@ -84,7 +86,6 @@ export const DonneesBiodiversite = ({
     setIsLoading(true);
     void (async () => {
       const [
-        newCarteCommunes,
         newAgricultureBio,
         newConsommationNAF,
         newAOT40,
@@ -94,7 +95,6 @@ export const DonneesBiodiversite = ({
         newSurfacesAgricoles,
         newTableCommune
       ] = await Promise.all([
-        GetCommunes(code, libelle, type),
         GetAgricultureBio(libelle, type, code),
         GetConsommationNAF(code, libelle, type),
         GetAOT40(),
@@ -105,7 +105,6 @@ export const DonneesBiodiversite = ({
         GetTablecommune(code, libelle, type)
       ]);
       setData({
-        carteCommunes: newCarteCommunes,
         agricultureBio: newAgricultureBio,
         consommationNAF: newConsommationNAF,
         aot40: newAOT40,
@@ -163,7 +162,7 @@ export const DonneesBiodiversite = ({
                 Cartographie des différents types de sols
               </H3>
             </div>
-            <TypesDeSols confortThermique={data.confortThermique} carteCommunes={data.carteCommunes} />
+            <TypesDeSols confortThermique={data.confortThermique} coordonneesCommunes={coordonneesCommunes} contoursCommunes={contoursCommunes} />
           </div>
         </section>
 
@@ -181,7 +180,8 @@ export const DonneesBiodiversite = ({
             </div>
             <SolsImpermeabilises
               consommationNAF={data.consommationNAF}
-              carteCommunes={data.carteCommunes}
+              // carteCommunes={data.carteCommunes}
+              coordonneesCommunes={coordonneesCommunes}
               tableCommune={data.tableCommune}
             />
           </div>
@@ -226,7 +226,13 @@ export const DonneesBiodiversite = ({
             </div>
             <EtatEcoCoursDeau
               etatCoursDeau={data.etatCoursDeau}
-              carteCommunes={data.carteCommunes}
+              communesCodes={coordonneesCommunes?.codes ?? []}
+              boundingBox={
+                coordonneesCommunes ? [
+                  [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
+                  [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]
+                ] : undefined
+              }
               qualiteEauxBaignade={data.qualiteEauxBaignade}
             />
           </div>
@@ -246,7 +252,8 @@ export const DonneesBiodiversite = ({
             </div>
             <OzoneEtVegetation
               aot40={data.aot40}
-              carteCommunes={data.carteCommunes}
+              contoursCommunes={contoursCommunes}
+              communesCodes={coordonneesCommunes?.codes ?? []}
             />
           </div>
         </section>

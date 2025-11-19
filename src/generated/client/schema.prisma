@@ -19,7 +19,7 @@ model north_star_metric {
 }
 
 model agriculture {
-  index                BigInt  @id(map: "agriculture_cleaned_pkey")
+  index                Int     @id(map: "agriculture_cleaned_pkey")
   code_geographique    String
   libelle_geographique String
   epci                 String
@@ -47,7 +47,7 @@ model agriculture {
 }
 
 model agriculture_bio {
-  index              BigInt  @id
+  index              Int     @id
   epci               String
   libelle_epci       String
   VARIABLE           String
@@ -90,7 +90,7 @@ model agriculture_bio {
 }
 
 model aot_40 {
-  index               BigInt @id
+  index               Int    @id
   nom_site            String @map("nom site")
   type_d_implantation String @map("type d'implantation")
   valeur_brute        Float  @map("valeur brute")
@@ -102,7 +102,7 @@ model aot_40 {
 }
 
 model arretes_catnat {
-  index                BigInt  @id
+  index                Int     @id
   code_geographique    String
   libelle_geographique String
   epci                 String
@@ -129,7 +129,7 @@ model arretes_catnat {
 }
 
 model atlas_biodiversite {
-  index                      BigInt  @id
+  index                      Int     @id
   code_geographique          String
   libelle_geographique       String
   epci                       String
@@ -158,7 +158,7 @@ model atlas_biodiversite {
 }
 
 model collectivites_searchbar {
-  index                BigInt  @id
+  index                Int     @id
   code_geographique    String?
   libelle_geographique String?
   epci                 String?
@@ -180,7 +180,7 @@ model collectivites_searchbar {
 }
 
 model consommation_espaces_naf {
-  index                BigInt  @id
+  index                Int     @id
   code_geographique    String
   libelle_geographique String
   epci                 String
@@ -306,7 +306,7 @@ model consommation_espaces_naf {
 }
 
 model feux_foret {
-  index                                 BigInt  @id
+  index                                 Int     @id
   code_geographique                     String
   libelle_geographique                  String
   epci                                  String
@@ -416,7 +416,7 @@ model inconfort_thermique {
 }
 
 model lcz_couverture {
-  index                BigInt  @id
+  index                Int     @id
   code_geographique    String
   libelle_geographique String?
   epci                 String?
@@ -441,7 +441,7 @@ model lcz_couverture {
 }
 
 model patch4c {
-  index                 BigInt @id
+  index                 Int    @id
   code_geographique     String
   niveaux_marins        Float?
   feux_foret            Float
@@ -455,7 +455,7 @@ model patch4c {
 }
 
 model qualite_sites_baignade {
-  index    BigInt  @id
+  index    Int     @id
   DEP_NOM  String
   DEP_NUM  String
   TYPE     String
@@ -477,7 +477,7 @@ model qualite_sites_baignade {
 }
 
 model ressources_eau {
-  index                BigInt  @id(map: "ressources_eau_new_pkey")
+  index                Int     @id(map: "ressources_eau_new_pkey")
   code_geographique    String
   LIBELLE_SOUS_CHAMP   String
   A2020                Float
@@ -516,7 +516,7 @@ model ressources_eau {
 }
 
 model rga {
-  index                                    BigInt  @id
+  index                                    Int     @id
   code_geographique                        String
   libelle_geographique                     String
   epci                                     String
@@ -566,7 +566,7 @@ model rga {
 }
 
 model surfaces_agricoles {
-  index                                                  BigInt @id
+  index                                                  Int    @id
   epci                                                   String
   exploitation_sau                                       Float
   exploitation_sau_terres_arables                        Float
@@ -620,7 +620,7 @@ model clc_territoires {
   libelle_epci         String?                  @db.VarChar
   departement          String?                  @db.VarChar
   libelle_departement  String?                  @db.VarChar
-  region               BigInt?
+  region               Int?
   ept                  String?                  @db.VarChar
   libelle_petr         String?                  @db.VarChar
   code_pnr             String?                  @db.VarChar
@@ -646,7 +646,7 @@ model communes_drom {
   libelle_epci         String?                  @db.VarChar
   departement          String?                  @db.VarChar
   libelle_departement  String?                  @db.VarChar
-  region               BigInt?
+  region               Int?
   ept                  String?                  @db.VarChar
   libelle_petr         String?                  @db.VarChar
   code_pnr             String?                  @db.VarChar
@@ -664,8 +664,8 @@ model erosion_cotiere {
   pk         Int                     @id @default(autoincrement())
   taux       Float
   duree      Float
-  tdc_ancien BigInt
-  tdc_rec    BigInt
+  tdc_ancien Int
+  tdc_rec    Int
   geometry   Unsupported("geometry")
 
   @@index([geometry], map: "erosion_cotiere_geometry_geom_idx", type: Gist)
@@ -717,7 +717,7 @@ model users {
 }
 
 model export_cours_d_eau {
-  index                BigInt  @id
+  index                Int     @id
   code_geographique    String
   libelle_geographique String
   epci                 String
@@ -739,7 +739,7 @@ model export_cours_d_eau {
 }
 
 model confort_thermique {
-  index                   BigInt  @id
+  index                   Int     @id
   code_geographique       String
   libelle_geographique    String
   epci                    String
@@ -943,7 +943,7 @@ model thematique {
 }
 
 model surfaces_protegees {
-  index                BigInt  @id
+  index                Int     @id
   code_geographique    String
   PNC                  String?
   RAMSAR               String?
@@ -975,14 +975,14 @@ model surfaces_protegees {
 }
 
 model table_commune {
-  index                          BigInt  @id
+  index                          Int     @id
   code_geographique              String
   libelle_geographique           String
   epci                           String
   libelle_epci                   String
   departement                    String
   libelle_departement            String
-  region                         BigInt
+  region                         Int
   ept                            String?
   libelle_petr                   String?
   code_pnr                       String?
@@ -1025,7 +1025,7 @@ model debroussaillement {
   libelle_epci         String                  @db.VarChar
   departement          String                  @db.VarChar
   libelle_departement  String                  @db.VarChar
-  region               BigInt
+  region               Int
   ept                  String?                 @db.VarChar
   libelle_petr         String?                 @db.VarChar
   code_pnr             String?                 @db.VarChar
@@ -1044,14 +1044,14 @@ model debroussaillement {
 }
 
 model prelevements_eau {
-  index                BigInt  @id
+  index                Int     @id
   code_geographique    String
   libelle_geographique String
   epci                 String
   libelle_epci         String
   departement          String
   libelle_departement  String
-  region               BigInt
+  region               Int
   ept                  String?
   libelle_petr         String?
   code_pnr             String?
@@ -1084,14 +1084,14 @@ model prelevements_eau {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model table_territoires {
-  index                BigInt  @id
+  index                Int     @id
   code_geographique    String
   libelle_geographique String
   epci                 String
   libelle_epci         String
   departement          String
   libelle_departement  String
-  region               BigInt
+  region               Int
   ept                  String?
   libelle_petr         String?
   code_pnr             String?
@@ -1110,7 +1110,7 @@ model clc_par_communes {
   libelle_epci         String                  @db.VarChar
   departement          String                  @db.VarChar
   libelle_departement  String                  @db.VarChar
-  region               BigInt
+  region               Int
   ept                  String?                 @db.VarChar
   libelle_petr         String?                 @db.VarChar
   code_pnr             String?                 @db.VarChar
@@ -1154,7 +1154,7 @@ model rga_par_communes {
 }
 
 model secheresses {
-  index                BigInt  @id
+  index                Int     @id
   code_geographique    String  @db.VarChar
   libelle_geographique String  @db.VarChar
   epci                 String  @db.VarChar

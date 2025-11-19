@@ -8,9 +8,8 @@ import { vegetalisationLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import { MapCLCTiles } from '@/components/maps/mapCLCTiles';
 import { Body } from "@/design-system/base/Textes";
-import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
-import { CarteCommunes, ConfortThermique } from "@/lib/postgres/models";
+import { ConfortThermique } from "@/lib/postgres/models";
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { exportAsZip } from '@/lib/utils/export/exportZipGeneric';
 import { eptRegex } from "@/lib/utils/regex";
@@ -22,10 +21,12 @@ import { sumProperty } from '../fonctions';
 
 export const TypesDeSols = ({
   confortThermique,
-  carteCommunes,
+  coordonneesCommunes,
+  contoursCommunes,
 }: {
-  confortThermique: ConfortThermique[];
-  carteCommunes: CarteCommunes[];
+  confortThermique: Partial<ConfortThermique>[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
+  contoursCommunes: { geometry: string } | null;
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
@@ -40,6 +41,20 @@ export const TypesDeSols = ({
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const legendRef = useRef<HTMLDivElement>(null);
+
+  // Parse la géométrie GeoJSON du contour du territoire
+  const territoireContours = contoursCommunes ? [{
+    type: 'Feature',
+    properties: {
+      epci: '',
+      libelle_epci: '',
+      libelle_geographique: libelle,
+      code_geographique: code,
+      coordinates: ''
+    },
+    geometry: JSON.parse(contoursCommunes.geometry)
+  }] : [];
+
   const vegetalisationMapped = confortThermique.map(vegetalisationMapper);
   const vegetalisationTerritoire =
     type === 'commune'
@@ -49,7 +64,9 @@ export const TypesDeSols = ({
         : type === 'epci' && !eptRegex.test(libelle)
           ? vegetalisationMapped.filter((e) => e.epci === code)
           : vegetalisationMapped;
-  const carteContours = carteCommunes.map(CommunesIndicateursMapper);
+
+  // COMMENTÉ : carteContours n'est plus nécessaire avec les tiles
+  // const carteContours = carteCommunes.map(CommunesIndicateursMapper);
 
   const foretSum = sumProperty(
     vegetalisationTerritoire,
@@ -70,14 +87,16 @@ export const TypesDeSols = ({
             {
               isNaN(foretPercent) ? "" : (
                 <>
-                  <MicroRemplissageTerritoire
-                    pourcentage={foretPercent}
-                    territoireContours={carteContours}
-                    arrondi={1}
-                  />
+                  {contoursCommunes && (
+                    <MicroRemplissageTerritoire
+                      pourcentage={foretPercent}
+                      territoireContours={territoireContours}
+                      arrondi={1}
+                    />
+                  )}
                   <div className={styles.text}>
                     <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                      {foretPercent == Infinity ? 0 : Round(foretPercent, 1)} % de votre territoire est
+                      {foretPercent == Infinity ? 0 : Round(foretPercent, 1)} % de votre territoire est
                       recouvert par de la forêt ou des espaces semi-naturels.
                     </Body>
                   </div>
@@ -95,10 +114,16 @@ export const TypesDeSols = ({
         </Body>
         <div className={styles.mapWrapper}>
           {
-            confortThermique && confortThermique.length ? (
+            confortThermique && confortThermique.length && coordonneesCommunes ? (
               <>
                 {/* <MapCLC clc={clc} mapRef={mapRef} mapContainer={mapContainer} /> */}
-                <MapCLCTiles carteContours={carteContours} mapRef={mapRef} mapContainer={mapContainer} />
+                {/* MODIFIÉ : Utilisation de coordonneesCommunes au lieu de carteContours */}
+                <MapCLCTiles
+                  communesCodes={coordonneesCommunes.codes}
+                  boundingBox={[[coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat], [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]]}
+                  mapRef={mapRef}
+                  mapContainer={mapContainer}
+                />
                 <div
                   ref={legendRef}
                   className={styles.legendTypesDeSols}

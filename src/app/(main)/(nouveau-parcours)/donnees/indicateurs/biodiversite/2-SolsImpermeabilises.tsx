@@ -4,15 +4,13 @@ import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
-import { BoundsFromCollection } from '@/components/maps/components/boundsFromCollection';
 import { espacesNAFDatavizLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
+import { MapEspacesNafTiles } from '@/components/maps/mapEspacesNAFTiles';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
-import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { CarteCommunes, ConsommationNAF, TableCommuneModel } from '@/lib/postgres/models';
+import { ConsommationNAF, TableCommuneModel } from '@/lib/postgres/models';
 import { SolsImpermeabilisesText } from '@/lib/staticTexts';
 import { SolsImpermeabilisesBiodiversiteDynamicText } from '@/lib/textesIndicateurs/biodiversiteDynamicTexts';
 import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
@@ -23,10 +21,11 @@ import styles from '../../explorerDonnees.module.scss';
 
 export const SolsImpermeabilises = (props: {
   consommationNAF: ConsommationNAF[];
-  carteCommunes: CarteCommunes[];
+  // carteCommunes: CarteCommunes[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   tableCommune: TableCommuneModel[];
 }) => {
-  const { consommationNAF, carteCommunes, tableCommune } = props;
+  const { consommationNAF, coordonneesCommunes, tableCommune } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -35,19 +34,19 @@ export const SolsImpermeabilises = (props: {
     el.atlas_biodiversite_avancement !== null &&
     el.atlas_biodiversite_annee_debut !== null
   );
-  const carteCommunesEnriched = carteCommunes.map((el) => {
-    return {
-      ...el,
-      naf: consommationNAF.find(
-        (item) => item.code_geographique === el.code_geographique
-      )?.naf09art23
-    };
-  });
-  const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
-  const carteCommunesFiltered = communesMap.filter(
-    (el) => el.properties.naf != undefined
-  )
-  const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
+  // const carteCommunesEnriched = carteCommunes.map((el) => {
+  //   return {
+  //     ...el,
+  //     naf: consommationNAF.find(
+  //       (item) => item.code_geographique === el.code_geographique
+  //     )?.naf09art23
+  //   };
+  // });
+  // const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
+  // const carteCommunesFiltered = communesMap.filter(
+  //   (el) => el.properties.naf != undefined
+  // )
+  // const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
   const sumNaf = (type === "commune"
     ? consommationNAF.filter((item) => item.code_geographique === code)[0]
       ?.naf09art23
@@ -80,11 +79,21 @@ export const SolsImpermeabilises = (props: {
         </div>
         <div className={styles.mapWrapper}>
           {
-            carteCommunes.length !== 0 && enveloppe && carteCommunesFiltered !== null ? (
+            consommationNAF && coordonneesCommunes ? (
               <>
-                <MapEspacesNaf
+                {/* <MapEspacesNaf
                   carteCommunesFiltered={carteCommunesFiltered}
                   enveloppe={enveloppe}
+                /> */}
+                <MapEspacesNafTiles
+                  consommationNAF={consommationNAF}
+                  communesCodes={coordonneesCommunes?.codes ?? []}
+                  boundingBox={
+                    coordonneesCommunes ? [
+                      [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
+                      [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]
+                    ] : undefined
+                  }
                 />
                 <div
                   className={styles.legend}
@@ -104,7 +113,7 @@ export const SolsImpermeabilises = (props: {
           Source : CEREMA, avril 2024.
         </Body>
         {
-          carteCommunes.length !== 0 && enveloppe && carteCommunesFiltered !== null && (
+          consommationNAF && coordonneesCommunes && (
             <ExportButtonNouveauParcours
               data={exportData}
               baseName="consommation_espaces_naf"

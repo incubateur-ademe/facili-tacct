@@ -24,11 +24,11 @@ export const MapRGATiles = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  
+
   const carteCommunesFiltered = type === "ept"
     ? carteCommunes.filter(el => el.properties.ept === libelle)
     : carteCommunes;
-  
+
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
 
   useEffect(() => {
@@ -71,11 +71,15 @@ export const MapRGATiles = (props: {
       });
 
       // Add fill layer for RGA zones with color based on alea level
+      // Filtrer les features RGA pour ne montrer que celles qui intersectent les communes du territoire
+      const codesCommunesAfficher = carteCommunesFiltered.map(c => c.properties.code_geographique);
+
       map.addLayer({
         id: 'rga-fill',
         type: 'fill',
         source: 'rga-tiles',
         'source-layer': 'rga',
+        filter: ['in', ['get', 'code_geographique'], ['literal', codesCommunesAfficher]],
         paint: {
           'fill-color': [
             'match',

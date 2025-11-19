@@ -1,26 +1,24 @@
 "use client";
 
 import { RetardScroll } from '@/hooks/RetardScroll';
-import { CommunesIndicateursDto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect } from 'react';
-import { BoundsFromCollection } from './components/boundsFromCollection';
 
 export const MapCLCTiles = (
   props: {
-    carteContours: CommunesIndicateursDto[];
+    communesCodes: string[];
+    boundingBox?: [[number, number], [number, number]];
     mapRef: RefObject<maplibregl.Map | null>;
     mapContainer: RefObject<HTMLDivElement | null>;
   }
 ) => {
-  const { carteContours, mapRef, mapContainer } = props;
+  const { communesCodes, boundingBox, mapRef, mapContainer } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
-  const enveloppe = BoundsFromCollection(carteContours, type, code);
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -36,24 +34,9 @@ export const MapCLCTiles = (
     try { map.scrollZoom.disable(); } catch (e) { /* noop */ }
 
     map.on('load', () => {
-      // Fit bounds
-      if (
-        enveloppe &&
-        Array.isArray(enveloppe) &&
-        enveloppe.length > 1 &&
-        Array.isArray(enveloppe[0]) &&
-        enveloppe[0].length === 2
-      ) {
-        const lons = enveloppe.map((coord: number[]) => coord[1]);
-        const lats = enveloppe.map((coord: number[]) => coord[0]);
-        const minLng = Math.min(...lons);
-        const maxLng = Math.max(...lons);
-        const minLat = Math.min(...lats);
-        const maxLat = Math.max(...lats);
-        map.fitBounds(
-          [[minLng, minLat], [maxLng, maxLat]],
-          { padding: 20 },
-        );
+      // Fit bounds si fourni
+      if (boundingBox) {
+        map.fitBounds(boundingBox, { padding: 20 });
       }
 
       // Add vector tiles source
@@ -70,6 +53,7 @@ export const MapCLCTiles = (
         type: 'fill',
         source: 'clc-tiles',
         'source-layer': 'clc',
+        filter: ['in', ['get', 'code_geographique'], ['literal', communesCodes]],
         paint: {
           'fill-color': [
             'match',
@@ -126,22 +110,18 @@ export const MapCLCTiles = (
 
       // Add communes outline
       map.addSource('communes-outline', {
-        type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: carteContours.map(commune => ({
-            type: 'Feature' as const,
-            geometry: commune.geometry as import('geojson').Geometry,
-            properties: commune.properties,
-            id: commune.properties.code_geographique
-          }))
-        }
+        type: 'vector',
+        tiles: ['https://facili-tacct-dev.s3.fr-par.scw.cloud/app/communes/tiles/{z}/{x}/{y}.pbf'],
+        minzoom: 4,
+        maxzoom: 13
       });
 
       map.addLayer({
         id: 'communes-outline-layer',
         type: 'line',
         source: 'communes-outline',
+        'source-layer': 'contour_communes',
+        filter: ['in', ['get', 'code_geographique'], ['literal', communesCodes]],
         paint: {
           'line-color': '#161616',
           'line-width': 1,
@@ -158,7 +138,7 @@ export const MapCLCTiles = (
         mapRef.current = null;
       }
     };
-  }, [enveloppe, carteContours]);
+  }, [communesCodes, boundingBox]);
 
   // Ref local pour le RetardScroll
   const localContainerRef = mapContainer as RefObject<HTMLElement>;

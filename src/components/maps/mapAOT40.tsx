@@ -1,17 +1,13 @@
 'use client';
 
 import { RetardScroll } from '@/hooks/RetardScroll';
-import { CommunesIndicateursDto } from '@/lib/dto';
 import { AOT40 } from '@/lib/postgres/models';
-import { getArrayDepth } from '@/lib/utils/reusableFunctions/arrayDepth';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Any } from '@/lib/utils/types';
 import * as turf from '@turf/turf';
 import { mapStyles } from 'carte-facile';
-import { Position } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
 import { AOT40Tooltip } from './components/tooltips';
 import './maps.css';
@@ -57,38 +53,30 @@ const getCoordinates = (coords: number[][][]) => {
 
 export const MapAOT40 = (props: {
   aot40: AOT40[];
-  carteCommunes: CommunesIndicateursDto[];
+  contoursCommunes: { geometry: string } | null;
+  communesCodes: string[];
 }) => {
-  const { aot40, carteCommunes } = props;
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
+  const { aot40, contoursCommunes, communesCodes } = props;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
 
-  const commune = type === "commune"
-    ? carteCommunes.find(
-      (commune) => commune.properties.code_geographique === code
-    ) : null;
+  // Parse le GeoJSON des contours
+  const territoireGeometry = contoursCommunes
+    ? JSON.parse(contoursCommunes.geometry)
+    : null;
 
-  const carteCommunesFiltered = type === "ept"
-    ? carteCommunes.filter(
-      (el) => el.properties.ept === libelle
-    )
-    : carteCommunes;
-  const allCoordinates = carteCommunesFiltered
-    .map((el) => el.geometry.coordinates?.[0]?.[0])
-    .filter((coords): coords is number[][] => coords !== undefined && coords !== null);
+  // Créer un feature turf à partir du GeoJSON
+  const polygonTerritoire = territoireGeometry
+    ? turf.feature(territoireGeometry)
+    : null;
 
-  const union = turf.union(
-    turf.featureCollection(carteCommunesFiltered as Any),
-  );
+  // Calculer le centroïde du territoire
+  const centroid = polygonTerritoire
+    ? turf.centroid(polygonTerritoire).geometry.coordinates
+    : null;
 
-  const centerCoord: number[] = commune
-    ? commune.properties.coordinates.split(',').map(Number).sort((a, b) => a - b)
-    : getCoordinates(allCoordinates);
+  const centerCoord: number[] = centroid ? [centroid[0], centroid[1]] : [0, 0];
 
   const aot40Data = useMemo(() => {
     return aot40.map((aot) => {
@@ -102,42 +90,28 @@ export const MapAOT40 = (props: {
     });
   }, [aot40]);
 
-  const polygonTerritoire = type === "commune" && commune?.geometry.coordinates
-    ? turf.multiPolygon(commune.geometry.coordinates as Position[][][])
-    : union?.geometry.coordinates
-      ? turf.multiPolygon(union.geometry.coordinates as Position[][][])
-      : null;
+  // Calculer l'enveloppe du territoire
+  const enveloppe = polygonTerritoire
+    ? turf.envelope(polygonTerritoire).geometry.coordinates[0]
+    : [[0, 0], [0, 0.001], [0.001, 0.001], [0.001, 0], [0, 0]];
 
-  // Pour certains multipolygones, on a plusieurs arrays de coordonnées si les territoires sont disjoints
-  const flattenedCoordinates = polygonTerritoire && polygonTerritoire.geometry.coordinates
-    ? (getArrayDepth(polygonTerritoire.geometry.coordinates) === 4
-      ? polygonTerritoire.geometry.coordinates[0]
-      : polygonTerritoire.geometry.coordinates)
-    : [];
-
-  // On inverse les coordonnées pour les passer à turf.polygon
-  // car turf.polygon attend des coordonnées au format [longitude, latitude]
-  const newPolygonTerritoire = flattenedCoordinates.length > 0
-    ? turf.polygon(flattenedCoordinates.map(
-      el => el.map(
-        coords => [coords[1], coords[0]]
-      )
-    ) as unknown as Position[][]
-    )
-    : turf.polygon([[[0, 0], [0, 0.001], [0.001, 0.001], [0.001, 0], [0, 0]]]);
-
-  const enveloppe = turf.envelope(newPolygonTerritoire).geometry.coordinates[0];
+  // Trouver le point le plus proche du centre
   const pointCollection = aot40Data.map((aot) => {
-    return turf.point([aot.coordinates[1], aot.coordinates[0]]); // [longitude, latitude] inversé pour turf
+    return turf.point([aot.coordinates[0], aot.coordinates[1]]);
   });
   const featureCollection = turf.featureCollection(pointCollection);
-  const nearestPoint = turf.nearestPoint(
-    turf.point([centerCoord[1], centerCoord[0]]),
-    featureCollection
-  );
-  const bbox = turf.bbox(
-    turf.featureCollection([nearestPoint as Any, newPolygonTerritoire])
-  );
+  const nearestPoint = featureCollection.features.length > 0 && polygonTerritoire
+    ? turf.nearestPoint(
+      turf.point([centerCoord[0], centerCoord[1]]),
+      featureCollection
+    )
+    : turf.point([0, 0]);
+
+  // Calculer le bbox incluant le territoire et le point le plus proche
+  const bbox = polygonTerritoire && nearestPoint
+    ? turf.bbox(turf.featureCollection([nearestPoint as Any, polygonTerritoire]))
+    : [0, 0, 0.001, 0.001];
+
   const boundsIfNoPoint = [
     [bbox[0], bbox[3]],
     [bbox[0], bbox[1]],
@@ -145,29 +119,6 @@ export const MapAOT40 = (props: {
     [bbox[2], bbox[3]],
     [bbox[0], bbox[3]]
   ];
-
-  const geoJsonData = useMemo(() => {
-    if (commune) {
-      return {
-        type: "FeatureCollection" as "FeatureCollection",
-        features: [{
-          type: "Feature" as "Feature",
-          geometry: commune.geometry as import('geojson').Geometry,
-          properties: commune.properties,
-          id: commune.properties.code_geographique
-        }]
-      };
-    }
-    return {
-      type: "FeatureCollection" as "FeatureCollection",
-      features: carteCommunesFiltered.map(commune => ({
-        type: "Feature" as "Feature",
-        geometry: commune.geometry as import('geojson').Geometry,
-        properties: commune.properties,
-        id: commune.properties.code_geographique
-      }))
-    };
-  }, [commune, carteCommunesFiltered]);
 
   const aot40GeoJson = useMemo(() => {
     return {
@@ -191,16 +142,12 @@ export const MapAOT40 = (props: {
 
   useEffect(() => {
     if (mapRef.current && mapRef.current.isStyleLoaded()) {
-      const source = mapRef.current.getSource('territoire');
-      if (source) {
-        (source as maplibregl.GeoJSONSource).setData(geoJsonData);
-      }
       const aot40Source = mapRef.current.getSource('aot40-points');
       if (aot40Source) {
         (aot40Source as maplibregl.GeoJSONSource).setData(aot40GeoJson);
       }
     }
-  }, [geoJsonData, aot40GeoJson]);
+  }, [aot40GeoJson]);
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -215,10 +162,9 @@ export const MapAOT40 = (props: {
 
     map.on('load', () => {
       // Déterminer les limites en fonction de si le point le plus proche est dans le polygone
-      const shouldUseTerritoireBounds = turf.booleanPointInPolygon(
-        nearestPoint,
-        turf.polygon([enveloppe])
-      );
+      const shouldUseTerritoireBounds = polygonTerritoire && nearestPoint && nearestPoint.geometry
+        ? turf.booleanPointInPolygon(nearestPoint, polygonTerritoire)
+        : false;
 
       if (shouldUseTerritoireBounds) {
         if (
@@ -228,8 +174,8 @@ export const MapAOT40 = (props: {
           Array.isArray(enveloppe[0]) &&
           enveloppe[0].length === 2
         ) {
-          const lons = enveloppe.map((coord: number[]) => coord[1]);
-          const lats = enveloppe.map((coord: number[]) => coord[0]);
+          const lons = enveloppe.map((coord: number[]) => coord[0]);
+          const lats = enveloppe.map((coord: number[]) => coord[1]);
           const minLng = Math.min(...lons);
           const maxLng = Math.max(...lons);
           const minLat = Math.min(...lats);
@@ -247,8 +193,8 @@ export const MapAOT40 = (props: {
           Array.isArray(boundsIfNoPoint[0]) &&
           boundsIfNoPoint[0].length === 2
         ) {
-          const lons = boundsIfNoPoint.map((coord: number[]) => coord[1]);
-          const lats = boundsIfNoPoint.map((coord: number[]) => coord[0]);
+          const lons = boundsIfNoPoint.map((coord: number[]) => coord[0]);
+          const lats = boundsIfNoPoint.map((coord: number[]) => coord[1]);
           const minLng = Math.min(...lons);
           const maxLng = Math.max(...lons);
           const minLat = Math.min(...lats);
@@ -260,24 +206,19 @@ export const MapAOT40 = (props: {
         }
       }
 
-      map.addSource('territoire', {
-        type: 'geojson',
-        data: geoJsonData,
-      });
-
-      map.addLayer({
-        id: 'territoire-fill',
-        type: 'fill',
-        source: 'territoire',
-        paint: {
-          'fill-opacity': 0
-        }
+      map.addSource('communes-tiles', {
+        type: 'vector',
+        tiles: ['https://facili-tacct-dev.s3.fr-par.scw.cloud/app/communes/tiles/{z}/{x}/{y}.pbf'],
+        minzoom: 4,
+        maxzoom: 13
       });
 
       map.addLayer({
         id: 'territoire-stroke',
         type: 'line',
-        source: 'territoire',
+        source: 'communes-tiles',
+        'source-layer': 'contour_communes',
+        filter: ['in', ['get', 'code_geographique'], ['literal', communesCodes]],
         paint: {
           'line-color': '#161616',
           'line-width': 1,
@@ -515,7 +456,7 @@ export const MapAOT40 = (props: {
         mapRef.current = null;
       }
     };
-  }, [geoJsonData, aot40GeoJson, enveloppe, boundsIfNoPoint, nearestPoint]);
+  }, [aot40GeoJson, enveloppe, boundsIfNoPoint, nearestPoint, polygonTerritoire, communesCodes]);
 
   // Ref local pour le RetardScroll
   const localContainerRef = mapContainer as RefObject<HTMLElement>;
