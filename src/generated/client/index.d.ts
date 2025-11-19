@@ -819,8 +819,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.15.0
-   * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
+   * Prisma Client JS version: 6.19.0
+   * Query Engine version: 2ba551f319ab1df4bc874a89965d8b3641056773
    */
   export type PrismaVersion = {
     client: string
@@ -833,6 +833,7 @@ export namespace Prisma {
    */
 
 
+  export import Bytes = runtime.Bytes
   export import JsonObject = runtime.JsonObject
   export import JsonArray = runtime.JsonArray
   export import JsonValue = runtime.JsonValue
@@ -4353,6 +4354,10 @@ export namespace Prisma {
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
     /**
+     * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
+     */
+    adapter?: runtime.SqlDriverAdapterFactory | null
+    /**
      * Global configuration for omitting model fields by default.
      * 
      * @example
@@ -5513,13 +5518,13 @@ export namespace Prisma {
   }
 
   export type AgricultureSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     region: number | null
     part_irr_SAU_2020: number | null
   }
 
   export type AgricultureMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -5536,7 +5541,7 @@ export namespace Prisma {
   }
 
   export type AgricultureMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -5722,7 +5727,7 @@ export namespace Prisma {
   }
 
   export type AgricultureGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -5831,7 +5836,7 @@ export namespace Prisma {
     name: "agriculture"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       libelle_geographique: string
       epci: string
@@ -6268,7 +6273,7 @@ export namespace Prisma {
    * Fields of the agriculture model
    */
   interface agricultureFieldRefs {
-    readonly index: FieldRef<"agriculture", 'BigInt'>
+    readonly index: FieldRef<"agriculture", 'Int'>
     readonly code_geographique: FieldRef<"agriculture", 'String'>
     readonly libelle_geographique: FieldRef<"agriculture", 'String'>
     readonly epci: FieldRef<"agriculture", 'String'>
@@ -6697,7 +6702,7 @@ export namespace Prisma {
   }
 
   export type Agriculture_bioSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     surface_2023: number | null
     surface_2022: number | null
     surface_2021: number | null
@@ -6733,7 +6738,7 @@ export namespace Prisma {
   }
 
   export type Agriculture_bioMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     epci: string | null
     libelle_epci: string | null
     VARIABLE: string | null
@@ -6773,7 +6778,7 @@ export namespace Prisma {
   }
 
   export type Agriculture_bioMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     epci: string | null
     libelle_epci: string | null
     VARIABLE: string | null
@@ -7134,7 +7139,7 @@ export namespace Prisma {
   }
 
   export type Agriculture_bioGroupByOutputType = {
-    index: bigint
+    index: number
     epci: string
     libelle_epci: string
     VARIABLE: string
@@ -7358,7 +7363,7 @@ export namespace Prisma {
     name: "agriculture_bio"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       epci: string
       libelle_epci: string
       VARIABLE: string
@@ -7818,7 +7823,7 @@ export namespace Prisma {
    * Fields of the agriculture_bio model
    */
   interface agriculture_bioFieldRefs {
-    readonly index: FieldRef<"agriculture_bio", 'BigInt'>
+    readonly index: FieldRef<"agriculture_bio", 'Int'>
     readonly epci: FieldRef<"agriculture_bio", 'String'>
     readonly libelle_epci: FieldRef<"agriculture_bio", 'String'>
     readonly VARIABLE: FieldRef<"agriculture_bio", 'String'>
@@ -8241,14 +8246,14 @@ export namespace Prisma {
   }
 
   export type Aot_40SumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     valeur_brute: number | null
     Latitude: number | null
     Longitude: number | null
   }
 
   export type Aot_40MinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     nom_site: string | null
     type_d_implantation: string | null
     valeur_brute: number | null
@@ -8257,7 +8262,7 @@ export namespace Prisma {
   }
 
   export type Aot_40MaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     nom_site: string | null
     type_d_implantation: string | null
     valeur_brute: number | null
@@ -8405,7 +8410,7 @@ export namespace Prisma {
   }
 
   export type Aot_40GroupByOutputType = {
-    index: bigint
+    index: number
     nom_site: string
     type_d_implantation: string
     valeur_brute: number
@@ -8474,7 +8479,7 @@ export namespace Prisma {
     name: "aot_40"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       nom_site: string
       type_d_implantation: string
       valeur_brute: number
@@ -8903,7 +8908,7 @@ export namespace Prisma {
    * Fields of the aot_40 model
    */
   interface aot_40FieldRefs {
-    readonly index: FieldRef<"aot_40", 'BigInt'>
+    readonly index: FieldRef<"aot_40", 'Int'>
     readonly nom_site: FieldRef<"aot_40", 'String'>
     readonly type_d_implantation: FieldRef<"aot_40", 'String'>
     readonly valeur_brute: FieldRef<"aot_40", 'Float'>
@@ -9293,12 +9298,12 @@ export namespace Prisma {
   }
 
   export type Arretes_catnatSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     region: number | null
   }
 
   export type Arretes_catnatMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -9317,7 +9322,7 @@ export namespace Prisma {
   }
 
   export type Arretes_catnatMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -9511,7 +9516,7 @@ export namespace Prisma {
   }
 
   export type Arretes_catnatGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -9630,7 +9635,7 @@ export namespace Prisma {
     name: "arretes_catnat"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       libelle_geographique: string
       epci: string
@@ -10069,7 +10074,7 @@ export namespace Prisma {
    * Fields of the arretes_catnat model
    */
   interface arretes_catnatFieldRefs {
-    readonly index: FieldRef<"arretes_catnat", 'BigInt'>
+    readonly index: FieldRef<"arretes_catnat", 'Int'>
     readonly code_geographique: FieldRef<"arretes_catnat", 'String'>
     readonly libelle_geographique: FieldRef<"arretes_catnat", 'String'>
     readonly epci: FieldRef<"arretes_catnat", 'String'>
@@ -10470,13 +10475,13 @@ export namespace Prisma {
   }
 
   export type Atlas_biodiversiteSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     region: number | null
     annee_debut: number | null
   }
 
   export type Atlas_biodiversiteMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -10496,7 +10501,7 @@ export namespace Prisma {
   }
 
   export type Atlas_biodiversiteMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -10697,7 +10702,7 @@ export namespace Prisma {
   }
 
   export type Atlas_biodiversiteGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -10821,7 +10826,7 @@ export namespace Prisma {
     name: "atlas_biodiversite"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       libelle_geographique: string
       epci: string
@@ -11261,7 +11266,7 @@ export namespace Prisma {
    * Fields of the atlas_biodiversite model
    */
   interface atlas_biodiversiteFieldRefs {
-    readonly index: FieldRef<"atlas_biodiversite", 'BigInt'>
+    readonly index: FieldRef<"atlas_biodiversite", 'Int'>
     readonly code_geographique: FieldRef<"atlas_biodiversite", 'String'>
     readonly libelle_geographique: FieldRef<"atlas_biodiversite", 'String'>
     readonly epci: FieldRef<"atlas_biodiversite", 'String'>
@@ -11661,11 +11666,11 @@ export namespace Prisma {
   }
 
   export type Collectivites_searchbarSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
   }
 
   export type Collectivites_searchbarMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -11682,7 +11687,7 @@ export namespace Prisma {
   }
 
   export type Collectivites_searchbarMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -11864,7 +11869,7 @@ export namespace Prisma {
   }
 
   export type Collectivites_searchbarGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -11973,7 +11978,7 @@ export namespace Prisma {
     name: "collectivites_searchbar"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string | null
       libelle_geographique: string | null
       epci: string | null
@@ -12410,7 +12415,7 @@ export namespace Prisma {
    * Fields of the collectivites_searchbar model
    */
   interface collectivites_searchbarFieldRefs {
-    readonly index: FieldRef<"collectivites_searchbar", 'BigInt'>
+    readonly index: FieldRef<"collectivites_searchbar", 'Int'>
     readonly code_geographique: FieldRef<"collectivites_searchbar", 'String'>
     readonly libelle_geographique: FieldRef<"collectivites_searchbar", 'String'>
     readonly epci: FieldRef<"collectivites_searchbar", 'String'>
@@ -12914,7 +12919,7 @@ export namespace Prisma {
   }
 
   export type Consommation_espaces_nafSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     region: number | null
     naf09art10: number | null
     art09act10: number | null
@@ -13025,7 +13030,7 @@ export namespace Prisma {
   }
 
   export type Consommation_espaces_nafMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -13146,7 +13151,7 @@ export namespace Prisma {
   }
 
   export type Consommation_espaces_nafMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -14062,7 +14067,7 @@ export namespace Prisma {
   }
 
   export type Consommation_espaces_nafGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -14691,7 +14696,7 @@ export namespace Prisma {
     name: "consommation_espaces_naf"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       libelle_geographique: string
       epci: string
@@ -15232,7 +15237,7 @@ export namespace Prisma {
    * Fields of the consommation_espaces_naf model
    */
   interface consommation_espaces_nafFieldRefs {
-    readonly index: FieldRef<"consommation_espaces_naf", 'BigInt'>
+    readonly index: FieldRef<"consommation_espaces_naf", 'Int'>
     readonly code_geographique: FieldRef<"consommation_espaces_naf", 'String'>
     readonly libelle_geographique: FieldRef<"consommation_espaces_naf", 'String'>
     readonly epci: FieldRef<"consommation_espaces_naf", 'String'>
@@ -15745,7 +15750,7 @@ export namespace Prisma {
   }
 
   export type Feux_foretSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     region: number | null
     annee: number | null
     surface_parcourue: number | null
@@ -15761,7 +15766,7 @@ export namespace Prisma {
   }
 
   export type Feux_foretMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -15788,7 +15793,7 @@ export namespace Prisma {
   }
 
   export type Feux_foretMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -16044,7 +16049,7 @@ export namespace Prisma {
   }
 
   export type Feux_foretGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -16203,7 +16208,7 @@ export namespace Prisma {
     name: "feux_foret"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       libelle_geographique: string
       epci: string
@@ -16650,7 +16655,7 @@ export namespace Prisma {
    * Fields of the feux_foret model
    */
   interface feux_foretFieldRefs {
-    readonly index: FieldRef<"feux_foret", 'BigInt'>
+    readonly index: FieldRef<"feux_foret", 'Int'>
     readonly code_geographique: FieldRef<"feux_foret", 'String'>
     readonly libelle_geographique: FieldRef<"feux_foret", 'String'>
     readonly epci: FieldRef<"feux_foret", 'String'>
@@ -19033,13 +19038,13 @@ export namespace Prisma {
   }
 
   export type Lcz_couvertureSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     region: number | null
     couverture_lcz: number | null
   }
 
   export type Lcz_couvertureMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -19055,7 +19060,7 @@ export namespace Prisma {
   }
 
   export type Lcz_couvertureMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -19236,7 +19241,7 @@ export namespace Prisma {
   }
 
   export type Lcz_couvertureGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     libelle_geographique: string | null
     epci: string | null
@@ -19340,7 +19345,7 @@ export namespace Prisma {
     name: "lcz_couverture"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       libelle_geographique: string | null
       epci: string | null
@@ -19776,7 +19781,7 @@ export namespace Prisma {
    * Fields of the lcz_couverture model
    */
   interface lcz_couvertureFieldRefs {
-    readonly index: FieldRef<"lcz_couverture", 'BigInt'>
+    readonly index: FieldRef<"lcz_couverture", 'Int'>
     readonly code_geographique: FieldRef<"lcz_couverture", 'String'>
     readonly libelle_geographique: FieldRef<"lcz_couverture", 'String'>
     readonly epci: FieldRef<"lcz_couverture", 'String'>
@@ -20177,7 +20182,7 @@ export namespace Prisma {
   }
 
   export type Patch4cSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     niveaux_marins: number | null
     feux_foret: number | null
     secheresse_sols: number | null
@@ -20186,7 +20191,7 @@ export namespace Prisma {
   }
 
   export type Patch4cMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     niveaux_marins: number | null
     feux_foret: number | null
@@ -20196,7 +20201,7 @@ export namespace Prisma {
   }
 
   export type Patch4cMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     niveaux_marins: number | null
     feux_foret: number | null
@@ -20353,7 +20358,7 @@ export namespace Prisma {
   }
 
   export type Patch4cGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     niveaux_marins: number | null
     feux_foret: number
@@ -20427,7 +20432,7 @@ export namespace Prisma {
     name: "patch4c"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       niveaux_marins: number | null
       feux_foret: number
@@ -20857,7 +20862,7 @@ export namespace Prisma {
    * Fields of the patch4c model
    */
   interface patch4cFieldRefs {
-    readonly index: FieldRef<"patch4c", 'BigInt'>
+    readonly index: FieldRef<"patch4c", 'Int'>
     readonly code_geographique: FieldRef<"patch4c", 'String'>
     readonly niveaux_marins: FieldRef<"patch4c", 'Float'>
     readonly feux_foret: FieldRef<"patch4c", 'Float'>
@@ -21249,13 +21254,13 @@ export namespace Prisma {
   }
 
   export type Qualite_sites_baignadeSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     LONG: number | null
     LAT: number | null
   }
 
   export type Qualite_sites_baignadeMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     DEP_NOM: string | null
     DEP_NUM: string | null
     TYPE: string | null
@@ -21274,7 +21279,7 @@ export namespace Prisma {
   }
 
   export type Qualite_sites_baignadeMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     DEP_NOM: string | null
     DEP_NUM: string | null
     TYPE: string | null
@@ -21470,7 +21475,7 @@ export namespace Prisma {
   }
 
   export type Qualite_sites_baignadeGroupByOutputType = {
-    index: bigint
+    index: number
     DEP_NOM: string
     DEP_NUM: string
     TYPE: string
@@ -21589,7 +21594,7 @@ export namespace Prisma {
     name: "qualite_sites_baignade"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       DEP_NOM: string
       DEP_NUM: string
       TYPE: string
@@ -22028,7 +22033,7 @@ export namespace Prisma {
    * Fields of the qualite_sites_baignade model
    */
   interface qualite_sites_baignadeFieldRefs {
-    readonly index: FieldRef<"qualite_sites_baignade", 'BigInt'>
+    readonly index: FieldRef<"qualite_sites_baignade", 'Int'>
     readonly DEP_NOM: FieldRef<"qualite_sites_baignade", 'String'>
     readonly DEP_NUM: FieldRef<"qualite_sites_baignade", 'String'>
     readonly TYPE: FieldRef<"qualite_sites_baignade", 'String'>
@@ -22441,7 +22446,7 @@ export namespace Prisma {
   }
 
   export type Ressources_eauSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     A2020: number | null
     A2019: number | null
     A2018: number | null
@@ -22459,7 +22464,7 @@ export namespace Prisma {
   }
 
   export type Ressources_eauMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     LIBELLE_SOUS_CHAMP: string | null
     A2020: number | null
@@ -22489,7 +22494,7 @@ export namespace Prisma {
   }
 
   export type Ressources_eauMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     LIBELLE_SOUS_CHAMP: string | null
     A2020: number | null
@@ -22764,7 +22769,7 @@ export namespace Prisma {
   }
 
   export type Ressources_eauGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     LIBELLE_SOUS_CHAMP: string
     A2020: number
@@ -22938,7 +22943,7 @@ export namespace Prisma {
     name: "ressources_eau"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       LIBELLE_SOUS_CHAMP: string
       A2020: number
@@ -23388,7 +23393,7 @@ export namespace Prisma {
    * Fields of the ressources_eau model
    */
   interface ressources_eauFieldRefs {
-    readonly index: FieldRef<"ressources_eau", 'BigInt'>
+    readonly index: FieldRef<"ressources_eau", 'Int'>
     readonly code_geographique: FieldRef<"ressources_eau", 'String'>
     readonly LIBELLE_SOUS_CHAMP: FieldRef<"ressources_eau", 'String'>
     readonly A2020: FieldRef<"ressources_eau", 'Float'>
@@ -23824,7 +23829,7 @@ export namespace Prisma {
   }
 
   export type RgaSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     region: number | null
     nb_logement: number | null
     nb_logement_alea_moyen_fort: number | null
@@ -23854,7 +23859,7 @@ export namespace Prisma {
   }
 
   export type RgaMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -23894,7 +23899,7 @@ export namespace Prisma {
   }
 
   export type RgaMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -24243,7 +24248,7 @@ export namespace Prisma {
   }
 
   export type RgaGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -24467,7 +24472,7 @@ export namespace Prisma {
     name: "rga"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       libelle_geographique: string
       epci: string
@@ -24927,7 +24932,7 @@ export namespace Prisma {
    * Fields of the rga model
    */
   interface rgaFieldRefs {
-    readonly index: FieldRef<"rga", 'BigInt'>
+    readonly index: FieldRef<"rga", 'Int'>
     readonly code_geographique: FieldRef<"rga", 'String'>
     readonly libelle_geographique: FieldRef<"rga", 'String'>
     readonly epci: FieldRef<"rga", 'String'>
@@ -25385,7 +25390,7 @@ export namespace Prisma {
   }
 
   export type Surfaces_agricolesSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     exploitation_sau: number | null
     exploitation_sau_terres_arables: number | null
     exploitation_sau_terres_arables_cereales: number | null
@@ -25427,7 +25432,7 @@ export namespace Prisma {
   }
 
   export type Surfaces_agricolesMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     epci: string | null
     exploitation_sau: number | null
     exploitation_sau_terres_arables: number | null
@@ -25470,7 +25475,7 @@ export namespace Prisma {
   }
 
   export type Surfaces_agricolesMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     epci: string | null
     exploitation_sau: number | null
     exploitation_sau_terres_arables: number | null
@@ -25858,7 +25863,7 @@ export namespace Prisma {
   }
 
   export type Surfaces_agricolesGroupByOutputType = {
-    index: bigint
+    index: number
     epci: string
     exploitation_sau: number
     exploitation_sau_terres_arables: number
@@ -26097,7 +26102,7 @@ export namespace Prisma {
     name: "surfaces_agricoles"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       epci: string
       exploitation_sau: number
       exploitation_sau_terres_arables: number
@@ -26560,7 +26565,7 @@ export namespace Prisma {
    * Fields of the surfaces_agricoles model
    */
   interface surfaces_agricolesFieldRefs {
-    readonly index: FieldRef<"surfaces_agricoles", 'BigInt'>
+    readonly index: FieldRef<"surfaces_agricoles", 'Int'>
     readonly epci: FieldRef<"surfaces_agricoles", 'String'>
     readonly exploitation_sau: FieldRef<"surfaces_agricoles", 'Float'>
     readonly exploitation_sau_terres_arables: FieldRef<"surfaces_agricoles", 'Float'>
@@ -26985,7 +26990,7 @@ export namespace Prisma {
 
   export type Clc_territoiresSumAggregateOutputType = {
     pk: number | null
-    region: bigint | null
+    region: number | null
   }
 
   export type Clc_territoiresMinAggregateOutputType = {
@@ -26996,7 +27001,7 @@ export namespace Prisma {
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: bigint | null
+    region: number | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -27012,7 +27017,7 @@ export namespace Prisma {
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: bigint | null
+    region: number | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -27191,7 +27196,7 @@ export namespace Prisma {
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: bigint | null
+    region: number | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -27295,7 +27300,7 @@ export namespace Prisma {
       libelle_epci: string | null
       departement: string | null
       libelle_departement: string | null
-      region: bigint | null
+      region: number | null
       ept: string | null
       libelle_petr: string | null
       code_pnr: string | null
@@ -27731,7 +27736,7 @@ export namespace Prisma {
     readonly libelle_epci: FieldRef<"clc_territoires", 'String'>
     readonly departement: FieldRef<"clc_territoires", 'String'>
     readonly libelle_departement: FieldRef<"clc_territoires", 'String'>
-    readonly region: FieldRef<"clc_territoires", 'BigInt'>
+    readonly region: FieldRef<"clc_territoires", 'Int'>
     readonly ept: FieldRef<"clc_territoires", 'String'>
     readonly libelle_petr: FieldRef<"clc_territoires", 'String'>
     readonly code_pnr: FieldRef<"clc_territoires", 'String'>
@@ -28124,7 +28129,7 @@ export namespace Prisma {
 
   export type Communes_dromSumAggregateOutputType = {
     pk: number | null
-    region: bigint | null
+    region: number | null
     precarite_logement: number | null
     surface: number | null
   }
@@ -28137,7 +28142,7 @@ export namespace Prisma {
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: bigint | null
+    region: number | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -28155,7 +28160,7 @@ export namespace Prisma {
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: bigint | null
+    region: number | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -28348,7 +28353,7 @@ export namespace Prisma {
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: bigint | null
+    region: number | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -28462,7 +28467,7 @@ export namespace Prisma {
       libelle_epci: string | null
       departement: string | null
       libelle_departement: string | null
-      region: bigint | null
+      region: number | null
       ept: string | null
       libelle_petr: string | null
       code_pnr: string | null
@@ -28900,7 +28905,7 @@ export namespace Prisma {
     readonly libelle_epci: FieldRef<"communes_drom", 'String'>
     readonly departement: FieldRef<"communes_drom", 'String'>
     readonly libelle_departement: FieldRef<"communes_drom", 'String'>
-    readonly region: FieldRef<"communes_drom", 'BigInt'>
+    readonly region: FieldRef<"communes_drom", 'Int'>
     readonly ept: FieldRef<"communes_drom", 'String'>
     readonly libelle_petr: FieldRef<"communes_drom", 'String'>
     readonly code_pnr: FieldRef<"communes_drom", 'String'>
@@ -29298,24 +29303,24 @@ export namespace Prisma {
     pk: number | null
     taux: number | null
     duree: number | null
-    tdc_ancien: bigint | null
-    tdc_rec: bigint | null
+    tdc_ancien: number | null
+    tdc_rec: number | null
   }
 
   export type Erosion_cotiereMinAggregateOutputType = {
     pk: number | null
     taux: number | null
     duree: number | null
-    tdc_ancien: bigint | null
-    tdc_rec: bigint | null
+    tdc_ancien: number | null
+    tdc_rec: number | null
   }
 
   export type Erosion_cotiereMaxAggregateOutputType = {
     pk: number | null
     taux: number | null
     duree: number | null
-    tdc_ancien: bigint | null
-    tdc_rec: bigint | null
+    tdc_ancien: number | null
+    tdc_rec: number | null
   }
 
   export type Erosion_cotiereCountAggregateOutputType = {
@@ -29459,8 +29464,8 @@ export namespace Prisma {
     pk: number
     taux: number
     duree: number
-    tdc_ancien: bigint
-    tdc_rec: bigint
+    tdc_ancien: number
+    tdc_rec: number
     _count: Erosion_cotiereCountAggregateOutputType | null
     _avg: Erosion_cotiereAvgAggregateOutputType | null
     _sum: Erosion_cotiereSumAggregateOutputType | null
@@ -29516,8 +29521,8 @@ export namespace Prisma {
       pk: number
       taux: number
       duree: number
-      tdc_ancien: bigint
-      tdc_rec: bigint
+      tdc_ancien: number
+      tdc_rec: number
     }, ExtArgs["result"]["erosion_cotiere"]>
     composites: {}
   }
@@ -29873,8 +29878,8 @@ export namespace Prisma {
     readonly pk: FieldRef<"erosion_cotiere", 'Int'>
     readonly taux: FieldRef<"erosion_cotiere", 'Float'>
     readonly duree: FieldRef<"erosion_cotiere", 'Float'>
-    readonly tdc_ancien: FieldRef<"erosion_cotiere", 'BigInt'>
-    readonly tdc_rec: FieldRef<"erosion_cotiere", 'BigInt'>
+    readonly tdc_ancien: FieldRef<"erosion_cotiere", 'Int'>
+    readonly tdc_rec: FieldRef<"erosion_cotiere", 'Int'>
   }
     
 
@@ -33979,13 +33984,13 @@ export namespace Prisma {
   }
 
   export type Export_cours_d_eauSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     region: number | null
     longueur: number | null
   }
 
   export type Export_cours_d_eauMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -34003,7 +34008,7 @@ export namespace Prisma {
   }
 
   export type Export_cours_d_eauMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -34194,7 +34199,7 @@ export namespace Prisma {
   }
 
   export type Export_cours_d_eauGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -34308,7 +34313,7 @@ export namespace Prisma {
     name: "export_cours_d_eau"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       libelle_geographique: string
       epci: string
@@ -34746,7 +34751,7 @@ export namespace Prisma {
    * Fields of the export_cours_d_eau model
    */
   interface export_cours_d_eauFieldRefs {
-    readonly index: FieldRef<"export_cours_d_eau", 'BigInt'>
+    readonly index: FieldRef<"export_cours_d_eau", 'Int'>
     readonly code_geographique: FieldRef<"export_cours_d_eau", 'String'>
     readonly libelle_geographique: FieldRef<"export_cours_d_eau", 'String'>
     readonly epci: FieldRef<"export_cours_d_eau", 'String'>
@@ -35188,7 +35193,7 @@ export namespace Prisma {
   }
 
   export type Confort_thermiqueSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     region: number | null
     age_bati_post06: number | null
     age_bati_91_05: number | null
@@ -35236,7 +35241,7 @@ export namespace Prisma {
   }
 
   export type Confort_thermiqueMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -35294,7 +35299,7 @@ export namespace Prisma {
   }
 
   export type Confort_thermiqueMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -35769,7 +35774,7 @@ export namespace Prisma {
   }
 
   export type Confort_thermiqueGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -36083,7 +36088,7 @@ export namespace Prisma {
     name: "confort_thermique"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       libelle_geographique: string
       epci: string
@@ -36561,7 +36566,7 @@ export namespace Prisma {
    * Fields of the confort_thermique model
    */
   interface confort_thermiqueFieldRefs {
-    readonly index: FieldRef<"confort_thermique", 'BigInt'>
+    readonly index: FieldRef<"confort_thermique", 'Int'>
     readonly code_geographique: FieldRef<"confort_thermique", 'String'>
     readonly libelle_geographique: FieldRef<"confort_thermique", 'String'>
     readonly epci: FieldRef<"confort_thermique", 'String'>
@@ -46710,12 +46715,12 @@ export namespace Prisma {
   }
 
   export type Surfaces_protegeesSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     region: number | null
   }
 
   export type Surfaces_protegeesMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     PNC: string | null
     RAMSAR: string | null
@@ -46744,7 +46749,7 @@ export namespace Prisma {
   }
 
   export type Surfaces_protegeesMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     PNC: string | null
     RAMSAR: string | null
@@ -46988,7 +46993,7 @@ export namespace Prisma {
   }
 
   export type Surfaces_protegeesGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     PNC: string | null
     RAMSAR: string | null
@@ -47157,7 +47162,7 @@ export namespace Prisma {
     name: "surfaces_protegees"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       PNC: string | null
       RAMSAR: string | null
@@ -47606,7 +47611,7 @@ export namespace Prisma {
    * Fields of the surfaces_protegees model
    */
   interface surfaces_protegeesFieldRefs {
-    readonly index: FieldRef<"surfaces_protegees", 'BigInt'>
+    readonly index: FieldRef<"surfaces_protegees", 'Int'>
     readonly code_geographique: FieldRef<"surfaces_protegees", 'String'>
     readonly PNC: FieldRef<"surfaces_protegees", 'String'>
     readonly RAMSAR: FieldRef<"surfaces_protegees", 'String'>
@@ -48016,19 +48021,19 @@ export namespace Prisma {
   }
 
   export type Table_communeSumAggregateOutputType = {
-    index: bigint | null
-    region: bigint | null
+    index: number | null
+    region: number | null
   }
 
   export type Table_communeMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: bigint | null
+    region: number | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -48044,14 +48049,14 @@ export namespace Prisma {
   }
 
   export type Table_communeMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: bigint | null
+    region: number | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -48258,14 +48263,14 @@ export namespace Prisma {
   }
 
   export type Table_communeGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: bigint
+    region: number
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -48397,14 +48402,14 @@ export namespace Prisma {
     name: "table_commune"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       libelle_geographique: string
       epci: string
       libelle_epci: string
       departement: string
       libelle_departement: string
-      region: bigint
+      region: number
       ept: string | null
       libelle_petr: string | null
       code_pnr: string | null
@@ -48840,14 +48845,14 @@ export namespace Prisma {
    * Fields of the table_commune model
    */
   interface table_communeFieldRefs {
-    readonly index: FieldRef<"table_commune", 'BigInt'>
+    readonly index: FieldRef<"table_commune", 'Int'>
     readonly code_geographique: FieldRef<"table_commune", 'String'>
     readonly libelle_geographique: FieldRef<"table_commune", 'String'>
     readonly epci: FieldRef<"table_commune", 'String'>
     readonly libelle_epci: FieldRef<"table_commune", 'String'>
     readonly departement: FieldRef<"table_commune", 'String'>
     readonly libelle_departement: FieldRef<"table_commune", 'String'>
-    readonly region: FieldRef<"table_commune", 'BigInt'>
+    readonly region: FieldRef<"table_commune", 'Int'>
     readonly ept: FieldRef<"table_commune", 'String'>
     readonly libelle_petr: FieldRef<"table_commune", 'String'>
     readonly code_pnr: FieldRef<"table_commune", 'String'>
@@ -50278,7 +50283,7 @@ export namespace Prisma {
 
   export type DebroussaillementSumAggregateOutputType = {
     pk: number | null
-    region: bigint | null
+    region: number | null
   }
 
   export type DebroussaillementMinAggregateOutputType = {
@@ -50289,7 +50294,7 @@ export namespace Prisma {
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: bigint | null
+    region: number | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -50304,7 +50309,7 @@ export namespace Prisma {
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: bigint | null
+    region: number | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -50478,7 +50483,7 @@ export namespace Prisma {
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: bigint
+    region: number
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -50563,7 +50568,7 @@ export namespace Prisma {
       libelle_epci: string
       departement: string
       libelle_departement: string
-      region: bigint
+      region: number
       ept: string | null
       libelle_petr: string | null
       code_pnr: string | null
@@ -50927,7 +50932,7 @@ export namespace Prisma {
     readonly libelle_epci: FieldRef<"debroussaillement", 'String'>
     readonly departement: FieldRef<"debroussaillement", 'String'>
     readonly libelle_departement: FieldRef<"debroussaillement", 'String'>
-    readonly region: FieldRef<"debroussaillement", 'BigInt'>
+    readonly region: FieldRef<"debroussaillement", 'Int'>
     readonly ept: FieldRef<"debroussaillement", 'String'>
     readonly libelle_petr: FieldRef<"debroussaillement", 'String'>
     readonly code_pnr: FieldRef<"debroussaillement", 'String'>
@@ -51242,19 +51247,19 @@ export namespace Prisma {
   }
 
   export type Prelevements_eauSumAggregateOutputType = {
-    index: bigint | null
-    region: bigint | null
+    index: number | null
+    region: number | null
   }
 
   export type Prelevements_eauMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: bigint | null
+    region: number | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -51277,14 +51282,14 @@ export namespace Prisma {
   }
 
   export type Prelevements_eauMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: bigint | null
+    region: number | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -51526,14 +51531,14 @@ export namespace Prisma {
   }
 
   export type Prelevements_eauGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: bigint
+    region: number
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -51700,14 +51705,14 @@ export namespace Prisma {
     name: "prelevements_eau"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       libelle_geographique: string
       epci: string
       libelle_epci: string
       departement: string
       libelle_departement: string
-      region: bigint
+      region: number
       ept: string | null
       libelle_petr: string | null
       code_pnr: string | null
@@ -52150,14 +52155,14 @@ export namespace Prisma {
    * Fields of the prelevements_eau model
    */
   interface prelevements_eauFieldRefs {
-    readonly index: FieldRef<"prelevements_eau", 'BigInt'>
+    readonly index: FieldRef<"prelevements_eau", 'Int'>
     readonly code_geographique: FieldRef<"prelevements_eau", 'String'>
     readonly libelle_geographique: FieldRef<"prelevements_eau", 'String'>
     readonly epci: FieldRef<"prelevements_eau", 'String'>
     readonly libelle_epci: FieldRef<"prelevements_eau", 'String'>
     readonly departement: FieldRef<"prelevements_eau", 'String'>
     readonly libelle_departement: FieldRef<"prelevements_eau", 'String'>
-    readonly region: FieldRef<"prelevements_eau", 'BigInt'>
+    readonly region: FieldRef<"prelevements_eau", 'Int'>
     readonly ept: FieldRef<"prelevements_eau", 'String'>
     readonly libelle_petr: FieldRef<"prelevements_eau", 'String'>
     readonly code_pnr: FieldRef<"prelevements_eau", 'String'>
@@ -52562,7 +52567,7 @@ export namespace Prisma {
 
   export type Clc_par_communesSumAggregateOutputType = {
     pk: number | null
-    region: bigint | null
+    region: number | null
   }
 
   export type Clc_par_communesMinAggregateOutputType = {
@@ -52573,7 +52578,7 @@ export namespace Prisma {
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: bigint | null
+    region: number | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -52589,7 +52594,7 @@ export namespace Prisma {
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: bigint | null
+    region: number | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -52768,7 +52773,7 @@ export namespace Prisma {
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: bigint
+    region: number
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -52857,7 +52862,7 @@ export namespace Prisma {
       libelle_epci: string
       departement: string
       libelle_departement: string
-      region: bigint
+      region: number
       ept: string | null
       libelle_petr: string | null
       code_pnr: string | null
@@ -53222,7 +53227,7 @@ export namespace Prisma {
     readonly libelle_epci: FieldRef<"clc_par_communes", 'String'>
     readonly departement: FieldRef<"clc_par_communes", 'String'>
     readonly libelle_departement: FieldRef<"clc_par_communes", 'String'>
-    readonly region: FieldRef<"clc_par_communes", 'BigInt'>
+    readonly region: FieldRef<"clc_par_communes", 'Int'>
     readonly ept: FieldRef<"clc_par_communes", 'String'>
     readonly libelle_petr: FieldRef<"clc_par_communes", 'String'>
     readonly code_pnr: FieldRef<"clc_par_communes", 'String'>
@@ -54515,12 +54520,12 @@ export namespace Prisma {
   }
 
   export type SecheressesSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     region: number | null
   }
 
   export type SecheressesMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -54547,7 +54552,7 @@ export namespace Prisma {
   }
 
   export type SecheressesMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -54781,7 +54786,7 @@ export namespace Prisma {
   }
 
   export type SecheressesGroupByOutputType = {
-    index: bigint
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -54940,7 +54945,7 @@ export namespace Prisma {
     name: "secheresses"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_geographique: string
       libelle_geographique: string
       epci: string
@@ -55387,7 +55392,7 @@ export namespace Prisma {
    * Fields of the secheresses model
    */
   interface secheressesFieldRefs {
-    readonly index: FieldRef<"secheresses", 'BigInt'>
+    readonly index: FieldRef<"secheresses", 'Int'>
     readonly code_geographique: FieldRef<"secheresses", 'String'>
     readonly libelle_geographique: FieldRef<"secheresses", 'String'>
     readonly epci: FieldRef<"secheresses", 'String'>
@@ -56930,20 +56935,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'BigInt'
-   */
-  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
-    
-
-
-  /**
-   * Reference to a field of type 'BigInt[]'
-   */
-  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -56954,6 +56945,20 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'BigInt'
+   */
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+    
+
+
+  /**
+   * Reference to a field of type 'BigInt[]'
+   */
+  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
     
 
 
@@ -57029,7 +57034,7 @@ export namespace Prisma {
     AND?: agricultureWhereInput | agricultureWhereInput[]
     OR?: agricultureWhereInput[]
     NOT?: agricultureWhereInput | agricultureWhereInput[]
-    index?: BigIntFilter<"agriculture"> | bigint | number
+    index?: IntFilter<"agriculture"> | number
     code_geographique?: StringFilter<"agriculture"> | string
     libelle_geographique?: StringFilter<"agriculture"> | string
     epci?: StringFilter<"agriculture"> | string
@@ -57063,7 +57068,7 @@ export namespace Prisma {
   }
 
   export type agricultureWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: agricultureWhereInput | agricultureWhereInput[]
     OR?: agricultureWhereInput[]
     NOT?: agricultureWhereInput | agricultureWhereInput[]
@@ -57108,7 +57113,7 @@ export namespace Prisma {
     AND?: agricultureScalarWhereWithAggregatesInput | agricultureScalarWhereWithAggregatesInput[]
     OR?: agricultureScalarWhereWithAggregatesInput[]
     NOT?: agricultureScalarWhereWithAggregatesInput | agricultureScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"agriculture"> | bigint | number
+    index?: IntWithAggregatesFilter<"agriculture"> | number
     code_geographique?: StringWithAggregatesFilter<"agriculture"> | string
     libelle_geographique?: StringWithAggregatesFilter<"agriculture"> | string
     epci?: StringWithAggregatesFilter<"agriculture"> | string
@@ -57128,7 +57133,7 @@ export namespace Prisma {
     AND?: agriculture_bioWhereInput | agriculture_bioWhereInput[]
     OR?: agriculture_bioWhereInput[]
     NOT?: agriculture_bioWhereInput | agriculture_bioWhereInput[]
-    index?: BigIntFilter<"agriculture_bio"> | bigint | number
+    index?: IntFilter<"agriculture_bio"> | number
     epci?: StringFilter<"agriculture_bio"> | string
     libelle_epci?: StringFilter<"agriculture_bio"> | string
     VARIABLE?: StringFilter<"agriculture_bio"> | string
@@ -57208,7 +57213,7 @@ export namespace Prisma {
   }
 
   export type agriculture_bioWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: agriculture_bioWhereInput | agriculture_bioWhereInput[]
     OR?: agriculture_bioWhereInput[]
     NOT?: agriculture_bioWhereInput | agriculture_bioWhereInput[]
@@ -57299,7 +57304,7 @@ export namespace Prisma {
     AND?: agriculture_bioScalarWhereWithAggregatesInput | agriculture_bioScalarWhereWithAggregatesInput[]
     OR?: agriculture_bioScalarWhereWithAggregatesInput[]
     NOT?: agriculture_bioScalarWhereWithAggregatesInput | agriculture_bioScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"agriculture_bio"> | bigint | number
+    index?: IntWithAggregatesFilter<"agriculture_bio"> | number
     epci?: StringWithAggregatesFilter<"agriculture_bio"> | string
     libelle_epci?: StringWithAggregatesFilter<"agriculture_bio"> | string
     VARIABLE?: StringWithAggregatesFilter<"agriculture_bio"> | string
@@ -57342,7 +57347,7 @@ export namespace Prisma {
     AND?: aot_40WhereInput | aot_40WhereInput[]
     OR?: aot_40WhereInput[]
     NOT?: aot_40WhereInput | aot_40WhereInput[]
-    index?: BigIntFilter<"aot_40"> | bigint | number
+    index?: IntFilter<"aot_40"> | number
     nom_site?: StringFilter<"aot_40"> | string
     type_d_implantation?: StringFilter<"aot_40"> | string
     valeur_brute?: FloatFilter<"aot_40"> | number
@@ -57360,7 +57365,7 @@ export namespace Prisma {
   }
 
   export type aot_40WhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: aot_40WhereInput | aot_40WhereInput[]
     OR?: aot_40WhereInput[]
     NOT?: aot_40WhereInput | aot_40WhereInput[]
@@ -57389,7 +57394,7 @@ export namespace Prisma {
     AND?: aot_40ScalarWhereWithAggregatesInput | aot_40ScalarWhereWithAggregatesInput[]
     OR?: aot_40ScalarWhereWithAggregatesInput[]
     NOT?: aot_40ScalarWhereWithAggregatesInput | aot_40ScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"aot_40"> | bigint | number
+    index?: IntWithAggregatesFilter<"aot_40"> | number
     nom_site?: StringWithAggregatesFilter<"aot_40"> | string
     type_d_implantation?: StringWithAggregatesFilter<"aot_40"> | string
     valeur_brute?: FloatWithAggregatesFilter<"aot_40"> | number
@@ -57401,7 +57406,7 @@ export namespace Prisma {
     AND?: arretes_catnatWhereInput | arretes_catnatWhereInput[]
     OR?: arretes_catnatWhereInput[]
     NOT?: arretes_catnatWhereInput | arretes_catnatWhereInput[]
-    index?: BigIntFilter<"arretes_catnat"> | bigint | number
+    index?: IntFilter<"arretes_catnat"> | number
     code_geographique?: StringFilter<"arretes_catnat"> | string
     libelle_geographique?: StringFilter<"arretes_catnat"> | string
     epci?: StringFilter<"arretes_catnat"> | string
@@ -57439,7 +57444,7 @@ export namespace Prisma {
   }
 
   export type arretes_catnatWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: arretes_catnatWhereInput | arretes_catnatWhereInput[]
     OR?: arretes_catnatWhereInput[]
     NOT?: arretes_catnatWhereInput | arretes_catnatWhereInput[]
@@ -57488,7 +57493,7 @@ export namespace Prisma {
     AND?: arretes_catnatScalarWhereWithAggregatesInput | arretes_catnatScalarWhereWithAggregatesInput[]
     OR?: arretes_catnatScalarWhereWithAggregatesInput[]
     NOT?: arretes_catnatScalarWhereWithAggregatesInput | arretes_catnatScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"arretes_catnat"> | bigint | number
+    index?: IntWithAggregatesFilter<"arretes_catnat"> | number
     code_geographique?: StringWithAggregatesFilter<"arretes_catnat"> | string
     libelle_geographique?: StringWithAggregatesFilter<"arretes_catnat"> | string
     epci?: StringWithAggregatesFilter<"arretes_catnat"> | string
@@ -57510,7 +57515,7 @@ export namespace Prisma {
     AND?: atlas_biodiversiteWhereInput | atlas_biodiversiteWhereInput[]
     OR?: atlas_biodiversiteWhereInput[]
     NOT?: atlas_biodiversiteWhereInput | atlas_biodiversiteWhereInput[]
-    index?: BigIntFilter<"atlas_biodiversite"> | bigint | number
+    index?: IntFilter<"atlas_biodiversite"> | number
     code_geographique?: StringFilter<"atlas_biodiversite"> | string
     libelle_geographique?: StringFilter<"atlas_biodiversite"> | string
     epci?: StringFilter<"atlas_biodiversite"> | string
@@ -57550,7 +57555,7 @@ export namespace Prisma {
   }
 
   export type atlas_biodiversiteWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: atlas_biodiversiteWhereInput | atlas_biodiversiteWhereInput[]
     OR?: atlas_biodiversiteWhereInput[]
     NOT?: atlas_biodiversiteWhereInput | atlas_biodiversiteWhereInput[]
@@ -57601,7 +57606,7 @@ export namespace Prisma {
     AND?: atlas_biodiversiteScalarWhereWithAggregatesInput | atlas_biodiversiteScalarWhereWithAggregatesInput[]
     OR?: atlas_biodiversiteScalarWhereWithAggregatesInput[]
     NOT?: atlas_biodiversiteScalarWhereWithAggregatesInput | atlas_biodiversiteScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"atlas_biodiversite"> | bigint | number
+    index?: IntWithAggregatesFilter<"atlas_biodiversite"> | number
     code_geographique?: StringWithAggregatesFilter<"atlas_biodiversite"> | string
     libelle_geographique?: StringWithAggregatesFilter<"atlas_biodiversite"> | string
     epci?: StringWithAggregatesFilter<"atlas_biodiversite"> | string
@@ -57624,7 +57629,7 @@ export namespace Prisma {
     AND?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
     OR?: collectivites_searchbarWhereInput[]
     NOT?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
-    index?: BigIntFilter<"collectivites_searchbar"> | bigint | number
+    index?: IntFilter<"collectivites_searchbar"> | number
     code_geographique?: StringNullableFilter<"collectivites_searchbar"> | string | null
     libelle_geographique?: StringNullableFilter<"collectivites_searchbar"> | string | null
     epci?: StringNullableFilter<"collectivites_searchbar"> | string | null
@@ -57658,7 +57663,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
     OR?: collectivites_searchbarWhereInput[]
     NOT?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
@@ -57703,7 +57708,7 @@ export namespace Prisma {
     AND?: collectivites_searchbarScalarWhereWithAggregatesInput | collectivites_searchbarScalarWhereWithAggregatesInput[]
     OR?: collectivites_searchbarScalarWhereWithAggregatesInput[]
     NOT?: collectivites_searchbarScalarWhereWithAggregatesInput | collectivites_searchbarScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"collectivites_searchbar"> | bigint | number
+    index?: IntWithAggregatesFilter<"collectivites_searchbar"> | number
     code_geographique?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
     libelle_geographique?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
     epci?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
@@ -57723,7 +57728,7 @@ export namespace Prisma {
     AND?: consommation_espaces_nafWhereInput | consommation_espaces_nafWhereInput[]
     OR?: consommation_espaces_nafWhereInput[]
     NOT?: consommation_espaces_nafWhereInput | consommation_espaces_nafWhereInput[]
-    index?: BigIntFilter<"consommation_espaces_naf"> | bigint | number
+    index?: IntFilter<"consommation_espaces_naf"> | number
     code_geographique?: StringFilter<"consommation_espaces_naf"> | string
     libelle_geographique?: StringFilter<"consommation_espaces_naf"> | string
     epci?: StringFilter<"consommation_espaces_naf"> | string
@@ -57965,7 +57970,7 @@ export namespace Prisma {
   }
 
   export type consommation_espaces_nafWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: consommation_espaces_nafWhereInput | consommation_espaces_nafWhereInput[]
     OR?: consommation_espaces_nafWhereInput[]
     NOT?: consommation_espaces_nafWhereInput | consommation_espaces_nafWhereInput[]
@@ -58218,7 +58223,7 @@ export namespace Prisma {
     AND?: consommation_espaces_nafScalarWhereWithAggregatesInput | consommation_espaces_nafScalarWhereWithAggregatesInput[]
     OR?: consommation_espaces_nafScalarWhereWithAggregatesInput[]
     NOT?: consommation_espaces_nafScalarWhereWithAggregatesInput | consommation_espaces_nafScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"consommation_espaces_naf"> | bigint | number
+    index?: IntWithAggregatesFilter<"consommation_espaces_naf"> | number
     code_geographique?: StringWithAggregatesFilter<"consommation_espaces_naf"> | string
     libelle_geographique?: StringWithAggregatesFilter<"consommation_espaces_naf"> | string
     epci?: StringWithAggregatesFilter<"consommation_espaces_naf"> | string
@@ -58342,7 +58347,7 @@ export namespace Prisma {
     AND?: feux_foretWhereInput | feux_foretWhereInput[]
     OR?: feux_foretWhereInput[]
     NOT?: feux_foretWhereInput | feux_foretWhereInput[]
-    index?: BigIntFilter<"feux_foret"> | bigint | number
+    index?: IntFilter<"feux_foret"> | number
     code_geographique?: StringFilter<"feux_foret"> | string
     libelle_geographique?: StringFilter<"feux_foret"> | string
     epci?: StringFilter<"feux_foret"> | string
@@ -58396,7 +58401,7 @@ export namespace Prisma {
   }
 
   export type feux_foretWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: feux_foretWhereInput | feux_foretWhereInput[]
     OR?: feux_foretWhereInput[]
     NOT?: feux_foretWhereInput | feux_foretWhereInput[]
@@ -58461,7 +58466,7 @@ export namespace Prisma {
     AND?: feux_foretScalarWhereWithAggregatesInput | feux_foretScalarWhereWithAggregatesInput[]
     OR?: feux_foretScalarWhereWithAggregatesInput[]
     NOT?: feux_foretScalarWhereWithAggregatesInput | feux_foretScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"feux_foret"> | bigint | number
+    index?: IntWithAggregatesFilter<"feux_foret"> | number
     code_geographique?: StringWithAggregatesFilter<"feux_foret"> | string
     libelle_geographique?: StringWithAggregatesFilter<"feux_foret"> | string
     epci?: StringWithAggregatesFilter<"feux_foret"> | string
@@ -58830,7 +58835,7 @@ export namespace Prisma {
     AND?: lcz_couvertureWhereInput | lcz_couvertureWhereInput[]
     OR?: lcz_couvertureWhereInput[]
     NOT?: lcz_couvertureWhereInput | lcz_couvertureWhereInput[]
-    index?: BigIntFilter<"lcz_couverture"> | bigint | number
+    index?: IntFilter<"lcz_couverture"> | number
     code_geographique?: StringFilter<"lcz_couverture"> | string
     libelle_geographique?: StringNullableFilter<"lcz_couverture"> | string | null
     epci?: StringNullableFilter<"lcz_couverture"> | string | null
@@ -58862,7 +58867,7 @@ export namespace Prisma {
   }
 
   export type lcz_couvertureWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: lcz_couvertureWhereInput | lcz_couvertureWhereInput[]
     OR?: lcz_couvertureWhereInput[]
     NOT?: lcz_couvertureWhereInput | lcz_couvertureWhereInput[]
@@ -58905,7 +58910,7 @@ export namespace Prisma {
     AND?: lcz_couvertureScalarWhereWithAggregatesInput | lcz_couvertureScalarWhereWithAggregatesInput[]
     OR?: lcz_couvertureScalarWhereWithAggregatesInput[]
     NOT?: lcz_couvertureScalarWhereWithAggregatesInput | lcz_couvertureScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"lcz_couverture"> | bigint | number
+    index?: IntWithAggregatesFilter<"lcz_couverture"> | number
     code_geographique?: StringWithAggregatesFilter<"lcz_couverture"> | string
     libelle_geographique?: StringNullableWithAggregatesFilter<"lcz_couverture"> | string | null
     epci?: StringNullableWithAggregatesFilter<"lcz_couverture"> | string | null
@@ -58924,7 +58929,7 @@ export namespace Prisma {
     AND?: patch4cWhereInput | patch4cWhereInput[]
     OR?: patch4cWhereInput[]
     NOT?: patch4cWhereInput | patch4cWhereInput[]
-    index?: BigIntFilter<"patch4c"> | bigint | number
+    index?: IntFilter<"patch4c"> | number
     code_geographique?: StringFilter<"patch4c"> | string
     niveaux_marins?: FloatNullableFilter<"patch4c"> | number | null
     feux_foret?: FloatFilter<"patch4c"> | number
@@ -58944,7 +58949,7 @@ export namespace Prisma {
   }
 
   export type patch4cWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: patch4cWhereInput | patch4cWhereInput[]
     OR?: patch4cWhereInput[]
     NOT?: patch4cWhereInput | patch4cWhereInput[]
@@ -58975,7 +58980,7 @@ export namespace Prisma {
     AND?: patch4cScalarWhereWithAggregatesInput | patch4cScalarWhereWithAggregatesInput[]
     OR?: patch4cScalarWhereWithAggregatesInput[]
     NOT?: patch4cScalarWhereWithAggregatesInput | patch4cScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"patch4c"> | bigint | number
+    index?: IntWithAggregatesFilter<"patch4c"> | number
     code_geographique?: StringWithAggregatesFilter<"patch4c"> | string
     niveaux_marins?: FloatNullableWithAggregatesFilter<"patch4c"> | number | null
     feux_foret?: FloatWithAggregatesFilter<"patch4c"> | number
@@ -58988,7 +58993,7 @@ export namespace Prisma {
     AND?: qualite_sites_baignadeWhereInput | qualite_sites_baignadeWhereInput[]
     OR?: qualite_sites_baignadeWhereInput[]
     NOT?: qualite_sites_baignadeWhereInput | qualite_sites_baignadeWhereInput[]
-    index?: BigIntFilter<"qualite_sites_baignade"> | bigint | number
+    index?: IntFilter<"qualite_sites_baignade"> | number
     DEP_NOM?: StringFilter<"qualite_sites_baignade"> | string
     DEP_NUM?: StringFilter<"qualite_sites_baignade"> | string
     TYPE?: StringFilter<"qualite_sites_baignade"> | string
@@ -59026,7 +59031,7 @@ export namespace Prisma {
   }
 
   export type qualite_sites_baignadeWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: qualite_sites_baignadeWhereInput | qualite_sites_baignadeWhereInput[]
     OR?: qualite_sites_baignadeWhereInput[]
     NOT?: qualite_sites_baignadeWhereInput | qualite_sites_baignadeWhereInput[]
@@ -59075,7 +59080,7 @@ export namespace Prisma {
     AND?: qualite_sites_baignadeScalarWhereWithAggregatesInput | qualite_sites_baignadeScalarWhereWithAggregatesInput[]
     OR?: qualite_sites_baignadeScalarWhereWithAggregatesInput[]
     NOT?: qualite_sites_baignadeScalarWhereWithAggregatesInput | qualite_sites_baignadeScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"qualite_sites_baignade"> | bigint | number
+    index?: IntWithAggregatesFilter<"qualite_sites_baignade"> | number
     DEP_NOM?: StringWithAggregatesFilter<"qualite_sites_baignade"> | string
     DEP_NUM?: StringWithAggregatesFilter<"qualite_sites_baignade"> | string
     TYPE?: StringWithAggregatesFilter<"qualite_sites_baignade"> | string
@@ -59097,7 +59102,7 @@ export namespace Prisma {
     AND?: ressources_eauWhereInput | ressources_eauWhereInput[]
     OR?: ressources_eauWhereInput[]
     NOT?: ressources_eauWhereInput | ressources_eauWhereInput[]
-    index?: BigIntFilter<"ressources_eau"> | bigint | number
+    index?: IntFilter<"ressources_eau"> | number
     code_geographique?: StringFilter<"ressources_eau"> | string
     LIBELLE_SOUS_CHAMP?: StringFilter<"ressources_eau"> | string
     A2020?: FloatFilter<"ressources_eau"> | number
@@ -59157,7 +59162,7 @@ export namespace Prisma {
   }
 
   export type ressources_eauWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: ressources_eauWhereInput | ressources_eauWhereInput[]
     OR?: ressources_eauWhereInput[]
     NOT?: ressources_eauWhereInput | ressources_eauWhereInput[]
@@ -59228,7 +59233,7 @@ export namespace Prisma {
     AND?: ressources_eauScalarWhereWithAggregatesInput | ressources_eauScalarWhereWithAggregatesInput[]
     OR?: ressources_eauScalarWhereWithAggregatesInput[]
     NOT?: ressources_eauScalarWhereWithAggregatesInput | ressources_eauScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"ressources_eau"> | bigint | number
+    index?: IntWithAggregatesFilter<"ressources_eau"> | number
     code_geographique?: StringWithAggregatesFilter<"ressources_eau"> | string
     LIBELLE_SOUS_CHAMP?: StringWithAggregatesFilter<"ressources_eau"> | string
     A2020?: FloatWithAggregatesFilter<"ressources_eau"> | number
@@ -59261,7 +59266,7 @@ export namespace Prisma {
     AND?: rgaWhereInput | rgaWhereInput[]
     OR?: rgaWhereInput[]
     NOT?: rgaWhereInput | rgaWhereInput[]
-    index?: BigIntFilter<"rga"> | bigint | number
+    index?: IntFilter<"rga"> | number
     code_geographique?: StringFilter<"rga"> | string
     libelle_geographique?: StringFilter<"rga"> | string
     epci?: StringFilter<"rga"> | string
@@ -59341,7 +59346,7 @@ export namespace Prisma {
   }
 
   export type rgaWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: rgaWhereInput | rgaWhereInput[]
     OR?: rgaWhereInput[]
     NOT?: rgaWhereInput | rgaWhereInput[]
@@ -59432,7 +59437,7 @@ export namespace Prisma {
     AND?: rgaScalarWhereWithAggregatesInput | rgaScalarWhereWithAggregatesInput[]
     OR?: rgaScalarWhereWithAggregatesInput[]
     NOT?: rgaScalarWhereWithAggregatesInput | rgaScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"rga"> | bigint | number
+    index?: IntWithAggregatesFilter<"rga"> | number
     code_geographique?: StringWithAggregatesFilter<"rga"> | string
     libelle_geographique?: StringWithAggregatesFilter<"rga"> | string
     epci?: StringWithAggregatesFilter<"rga"> | string
@@ -59475,7 +59480,7 @@ export namespace Prisma {
     AND?: surfaces_agricolesWhereInput | surfaces_agricolesWhereInput[]
     OR?: surfaces_agricolesWhereInput[]
     NOT?: surfaces_agricolesWhereInput | surfaces_agricolesWhereInput[]
-    index?: BigIntFilter<"surfaces_agricoles"> | bigint | number
+    index?: IntFilter<"surfaces_agricoles"> | number
     epci?: StringFilter<"surfaces_agricoles"> | string
     exploitation_sau?: FloatFilter<"surfaces_agricoles"> | number
     exploitation_sau_terres_arables?: FloatFilter<"surfaces_agricoles"> | number
@@ -59561,7 +59566,7 @@ export namespace Prisma {
   }
 
   export type surfaces_agricolesWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: surfaces_agricolesWhereInput | surfaces_agricolesWhereInput[]
     OR?: surfaces_agricolesWhereInput[]
     NOT?: surfaces_agricolesWhereInput | surfaces_agricolesWhereInput[]
@@ -59658,7 +59663,7 @@ export namespace Prisma {
     AND?: surfaces_agricolesScalarWhereWithAggregatesInput | surfaces_agricolesScalarWhereWithAggregatesInput[]
     OR?: surfaces_agricolesScalarWhereWithAggregatesInput[]
     NOT?: surfaces_agricolesScalarWhereWithAggregatesInput | surfaces_agricolesScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"surfaces_agricoles"> | bigint | number
+    index?: IntWithAggregatesFilter<"surfaces_agricoles"> | number
     epci?: StringWithAggregatesFilter<"surfaces_agricoles"> | string
     exploitation_sau?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
     exploitation_sau_terres_arables?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
@@ -59711,7 +59716,7 @@ export namespace Prisma {
     libelle_epci?: StringNullableFilter<"clc_territoires"> | string | null
     departement?: StringNullableFilter<"clc_territoires"> | string | null
     libelle_departement?: StringNullableFilter<"clc_territoires"> | string | null
-    region?: BigIntNullableFilter<"clc_territoires"> | bigint | number | null
+    region?: IntNullableFilter<"clc_territoires"> | number | null
     ept?: StringNullableFilter<"clc_territoires"> | string | null
     libelle_petr?: StringNullableFilter<"clc_territoires"> | string | null
     code_pnr?: StringNullableFilter<"clc_territoires"> | string | null
@@ -59746,7 +59751,7 @@ export namespace Prisma {
     libelle_epci?: StringNullableFilter<"clc_territoires"> | string | null
     departement?: StringNullableFilter<"clc_territoires"> | string | null
     libelle_departement?: StringNullableFilter<"clc_territoires"> | string | null
-    region?: BigIntNullableFilter<"clc_territoires"> | bigint | number | null
+    region?: IntNullableFilter<"clc_territoires"> | number | null
     ept?: StringNullableFilter<"clc_territoires"> | string | null
     libelle_petr?: StringNullableFilter<"clc_territoires"> | string | null
     code_pnr?: StringNullableFilter<"clc_territoires"> | string | null
@@ -59786,7 +59791,7 @@ export namespace Prisma {
     libelle_epci?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
     departement?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
     libelle_departement?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
-    region?: BigIntNullableWithAggregatesFilter<"clc_territoires"> | bigint | number | null
+    region?: IntNullableWithAggregatesFilter<"clc_territoires"> | number | null
     ept?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
     libelle_petr?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
     code_pnr?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
@@ -59805,7 +59810,7 @@ export namespace Prisma {
     libelle_epci?: StringNullableFilter<"communes_drom"> | string | null
     departement?: StringNullableFilter<"communes_drom"> | string | null
     libelle_departement?: StringNullableFilter<"communes_drom"> | string | null
-    region?: BigIntNullableFilter<"communes_drom"> | bigint | number | null
+    region?: IntNullableFilter<"communes_drom"> | number | null
     ept?: StringNullableFilter<"communes_drom"> | string | null
     libelle_petr?: StringNullableFilter<"communes_drom"> | string | null
     code_pnr?: StringNullableFilter<"communes_drom"> | string | null
@@ -59844,7 +59849,7 @@ export namespace Prisma {
     libelle_epci?: StringNullableFilter<"communes_drom"> | string | null
     departement?: StringNullableFilter<"communes_drom"> | string | null
     libelle_departement?: StringNullableFilter<"communes_drom"> | string | null
-    region?: BigIntNullableFilter<"communes_drom"> | bigint | number | null
+    region?: IntNullableFilter<"communes_drom"> | number | null
     ept?: StringNullableFilter<"communes_drom"> | string | null
     libelle_petr?: StringNullableFilter<"communes_drom"> | string | null
     code_pnr?: StringNullableFilter<"communes_drom"> | string | null
@@ -59888,7 +59893,7 @@ export namespace Prisma {
     libelle_epci?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
     departement?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
     libelle_departement?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
-    region?: BigIntNullableWithAggregatesFilter<"communes_drom"> | bigint | number | null
+    region?: IntNullableWithAggregatesFilter<"communes_drom"> | number | null
     ept?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
     libelle_petr?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
     code_pnr?: StringNullableWithAggregatesFilter<"communes_drom"> | string | null
@@ -59905,8 +59910,8 @@ export namespace Prisma {
     pk?: IntFilter<"erosion_cotiere"> | number
     taux?: FloatFilter<"erosion_cotiere"> | number
     duree?: FloatFilter<"erosion_cotiere"> | number
-    tdc_ancien?: BigIntFilter<"erosion_cotiere"> | bigint | number
-    tdc_rec?: BigIntFilter<"erosion_cotiere"> | bigint | number
+    tdc_ancien?: IntFilter<"erosion_cotiere"> | number
+    tdc_rec?: IntFilter<"erosion_cotiere"> | number
   }
 
   export type erosion_cotiereOrderByWithRelationInput = {
@@ -59924,8 +59929,8 @@ export namespace Prisma {
     NOT?: erosion_cotiereWhereInput | erosion_cotiereWhereInput[]
     taux?: FloatFilter<"erosion_cotiere"> | number
     duree?: FloatFilter<"erosion_cotiere"> | number
-    tdc_ancien?: BigIntFilter<"erosion_cotiere"> | bigint | number
-    tdc_rec?: BigIntFilter<"erosion_cotiere"> | bigint | number
+    tdc_ancien?: IntFilter<"erosion_cotiere"> | number
+    tdc_rec?: IntFilter<"erosion_cotiere"> | number
   }, "pk">
 
   export type erosion_cotiereOrderByWithAggregationInput = {
@@ -59948,8 +59953,8 @@ export namespace Prisma {
     pk?: IntWithAggregatesFilter<"erosion_cotiere"> | number
     taux?: FloatWithAggregatesFilter<"erosion_cotiere"> | number
     duree?: FloatWithAggregatesFilter<"erosion_cotiere"> | number
-    tdc_ancien?: BigIntWithAggregatesFilter<"erosion_cotiere"> | bigint | number
-    tdc_rec?: BigIntWithAggregatesFilter<"erosion_cotiere"> | bigint | number
+    tdc_ancien?: IntWithAggregatesFilter<"erosion_cotiere"> | number
+    tdc_rec?: IntWithAggregatesFilter<"erosion_cotiere"> | number
   }
 
   export type etat_cours_d_eauWhereInput = {
@@ -60162,7 +60167,7 @@ export namespace Prisma {
     AND?: export_cours_d_eauWhereInput | export_cours_d_eauWhereInput[]
     OR?: export_cours_d_eauWhereInput[]
     NOT?: export_cours_d_eauWhereInput | export_cours_d_eauWhereInput[]
-    index?: BigIntFilter<"export_cours_d_eau"> | bigint | number
+    index?: IntFilter<"export_cours_d_eau"> | number
     code_geographique?: StringFilter<"export_cours_d_eau"> | string
     libelle_geographique?: StringFilter<"export_cours_d_eau"> | string
     epci?: StringFilter<"export_cours_d_eau"> | string
@@ -60198,7 +60203,7 @@ export namespace Prisma {
   }
 
   export type export_cours_d_eauWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: export_cours_d_eauWhereInput | export_cours_d_eauWhereInput[]
     OR?: export_cours_d_eauWhereInput[]
     NOT?: export_cours_d_eauWhereInput | export_cours_d_eauWhereInput[]
@@ -60245,7 +60250,7 @@ export namespace Prisma {
     AND?: export_cours_d_eauScalarWhereWithAggregatesInput | export_cours_d_eauScalarWhereWithAggregatesInput[]
     OR?: export_cours_d_eauScalarWhereWithAggregatesInput[]
     NOT?: export_cours_d_eauScalarWhereWithAggregatesInput | export_cours_d_eauScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"export_cours_d_eau"> | bigint | number
+    index?: IntWithAggregatesFilter<"export_cours_d_eau"> | number
     code_geographique?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
     libelle_geographique?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
     epci?: StringWithAggregatesFilter<"export_cours_d_eau"> | string
@@ -60266,7 +60271,7 @@ export namespace Prisma {
     AND?: confort_thermiqueWhereInput | confort_thermiqueWhereInput[]
     OR?: confort_thermiqueWhereInput[]
     NOT?: confort_thermiqueWhereInput | confort_thermiqueWhereInput[]
-    index?: BigIntFilter<"confort_thermique"> | bigint | number
+    index?: IntFilter<"confort_thermique"> | number
     code_geographique?: StringFilter<"confort_thermique"> | string
     libelle_geographique?: StringFilter<"confort_thermique"> | string
     epci?: StringFilter<"confort_thermique"> | string
@@ -60382,7 +60387,7 @@ export namespace Prisma {
   }
 
   export type confort_thermiqueWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: confort_thermiqueWhereInput | confort_thermiqueWhereInput[]
     OR?: confort_thermiqueWhereInput[]
     NOT?: confort_thermiqueWhereInput | confort_thermiqueWhereInput[]
@@ -60509,7 +60514,7 @@ export namespace Prisma {
     AND?: confort_thermiqueScalarWhereWithAggregatesInput | confort_thermiqueScalarWhereWithAggregatesInput[]
     OR?: confort_thermiqueScalarWhereWithAggregatesInput[]
     NOT?: confort_thermiqueScalarWhereWithAggregatesInput | confort_thermiqueScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"confort_thermique"> | bigint | number
+    index?: IntWithAggregatesFilter<"confort_thermique"> | number
     code_geographique?: StringWithAggregatesFilter<"confort_thermique"> | string
     libelle_geographique?: StringWithAggregatesFilter<"confort_thermique"> | string
     epci?: StringWithAggregatesFilter<"confort_thermique"> | string
@@ -61267,7 +61272,7 @@ export namespace Prisma {
     AND?: surfaces_protegeesWhereInput | surfaces_protegeesWhereInput[]
     OR?: surfaces_protegeesWhereInput[]
     NOT?: surfaces_protegeesWhereInput | surfaces_protegeesWhereInput[]
-    index?: BigIntFilter<"surfaces_protegees"> | bigint | number
+    index?: IntFilter<"surfaces_protegees"> | number
     code_geographique?: StringFilter<"surfaces_protegees"> | string
     PNC?: StringNullableFilter<"surfaces_protegees"> | string | null
     RAMSAR?: StringNullableFilter<"surfaces_protegees"> | string | null
@@ -61325,7 +61330,7 @@ export namespace Prisma {
   }
 
   export type surfaces_protegeesWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: surfaces_protegeesWhereInput | surfaces_protegeesWhereInput[]
     OR?: surfaces_protegeesWhereInput[]
     NOT?: surfaces_protegeesWhereInput | surfaces_protegeesWhereInput[]
@@ -61394,7 +61399,7 @@ export namespace Prisma {
     AND?: surfaces_protegeesScalarWhereWithAggregatesInput | surfaces_protegeesScalarWhereWithAggregatesInput[]
     OR?: surfaces_protegeesScalarWhereWithAggregatesInput[]
     NOT?: surfaces_protegeesScalarWhereWithAggregatesInput | surfaces_protegeesScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"surfaces_protegees"> | bigint | number
+    index?: IntWithAggregatesFilter<"surfaces_protegees"> | number
     code_geographique?: StringWithAggregatesFilter<"surfaces_protegees"> | string
     PNC?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
     RAMSAR?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
@@ -61426,14 +61431,14 @@ export namespace Prisma {
     AND?: table_communeWhereInput | table_communeWhereInput[]
     OR?: table_communeWhereInput[]
     NOT?: table_communeWhereInput | table_communeWhereInput[]
-    index?: BigIntFilter<"table_commune"> | bigint | number
+    index?: IntFilter<"table_commune"> | number
     code_geographique?: StringFilter<"table_commune"> | string
     libelle_geographique?: StringFilter<"table_commune"> | string
     epci?: StringFilter<"table_commune"> | string
     libelle_epci?: StringFilter<"table_commune"> | string
     departement?: StringFilter<"table_commune"> | string
     libelle_departement?: StringFilter<"table_commune"> | string
-    region?: BigIntFilter<"table_commune"> | bigint | number
+    region?: IntFilter<"table_commune"> | number
     ept?: StringNullableFilter<"table_commune"> | string | null
     libelle_petr?: StringNullableFilter<"table_commune"> | string | null
     code_pnr?: StringNullableFilter<"table_commune"> | string | null
@@ -61472,7 +61477,7 @@ export namespace Prisma {
   }
 
   export type table_communeWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: table_communeWhereInput | table_communeWhereInput[]
     OR?: table_communeWhereInput[]
     NOT?: table_communeWhereInput | table_communeWhereInput[]
@@ -61482,7 +61487,7 @@ export namespace Prisma {
     libelle_epci?: StringFilter<"table_commune"> | string
     departement?: StringFilter<"table_commune"> | string
     libelle_departement?: StringFilter<"table_commune"> | string
-    region?: BigIntFilter<"table_commune"> | bigint | number
+    region?: IntFilter<"table_commune"> | number
     ept?: StringNullableFilter<"table_commune"> | string | null
     libelle_petr?: StringNullableFilter<"table_commune"> | string | null
     code_pnr?: StringNullableFilter<"table_commune"> | string | null
@@ -61529,14 +61534,14 @@ export namespace Prisma {
     AND?: table_communeScalarWhereWithAggregatesInput | table_communeScalarWhereWithAggregatesInput[]
     OR?: table_communeScalarWhereWithAggregatesInput[]
     NOT?: table_communeScalarWhereWithAggregatesInput | table_communeScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"table_commune"> | bigint | number
+    index?: IntWithAggregatesFilter<"table_commune"> | number
     code_geographique?: StringWithAggregatesFilter<"table_commune"> | string
     libelle_geographique?: StringWithAggregatesFilter<"table_commune"> | string
     epci?: StringWithAggregatesFilter<"table_commune"> | string
     libelle_epci?: StringWithAggregatesFilter<"table_commune"> | string
     departement?: StringWithAggregatesFilter<"table_commune"> | string
     libelle_departement?: StringWithAggregatesFilter<"table_commune"> | string
-    region?: BigIntWithAggregatesFilter<"table_commune"> | bigint | number
+    region?: IntWithAggregatesFilter<"table_commune"> | number
     ept?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
     libelle_petr?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
     code_pnr?: StringNullableWithAggregatesFilter<"table_commune"> | string | null
@@ -61616,7 +61621,7 @@ export namespace Prisma {
     libelle_epci?: StringFilter<"debroussaillement"> | string
     departement?: StringFilter<"debroussaillement"> | string
     libelle_departement?: StringFilter<"debroussaillement"> | string
-    region?: BigIntFilter<"debroussaillement"> | bigint | number
+    region?: IntFilter<"debroussaillement"> | number
     ept?: StringNullableFilter<"debroussaillement"> | string | null
     libelle_petr?: StringNullableFilter<"debroussaillement"> | string | null
     code_pnr?: StringNullableFilter<"debroussaillement"> | string | null
@@ -61649,7 +61654,7 @@ export namespace Prisma {
     libelle_epci?: StringFilter<"debroussaillement"> | string
     departement?: StringFilter<"debroussaillement"> | string
     libelle_departement?: StringFilter<"debroussaillement"> | string
-    region?: BigIntFilter<"debroussaillement"> | bigint | number
+    region?: IntFilter<"debroussaillement"> | number
     ept?: StringNullableFilter<"debroussaillement"> | string | null
     libelle_petr?: StringNullableFilter<"debroussaillement"> | string | null
     code_pnr?: StringNullableFilter<"debroussaillement"> | string | null
@@ -61687,7 +61692,7 @@ export namespace Prisma {
     libelle_epci?: StringWithAggregatesFilter<"debroussaillement"> | string
     departement?: StringWithAggregatesFilter<"debroussaillement"> | string
     libelle_departement?: StringWithAggregatesFilter<"debroussaillement"> | string
-    region?: BigIntWithAggregatesFilter<"debroussaillement"> | bigint | number
+    region?: IntWithAggregatesFilter<"debroussaillement"> | number
     ept?: StringNullableWithAggregatesFilter<"debroussaillement"> | string | null
     libelle_petr?: StringNullableWithAggregatesFilter<"debroussaillement"> | string | null
     code_pnr?: StringNullableWithAggregatesFilter<"debroussaillement"> | string | null
@@ -61698,14 +61703,14 @@ export namespace Prisma {
     AND?: prelevements_eauWhereInput | prelevements_eauWhereInput[]
     OR?: prelevements_eauWhereInput[]
     NOT?: prelevements_eauWhereInput | prelevements_eauWhereInput[]
-    index?: BigIntFilter<"prelevements_eau"> | bigint | number
+    index?: IntFilter<"prelevements_eau"> | number
     code_geographique?: StringFilter<"prelevements_eau"> | string
     libelle_geographique?: StringFilter<"prelevements_eau"> | string
     epci?: StringFilter<"prelevements_eau"> | string
     libelle_epci?: StringFilter<"prelevements_eau"> | string
     departement?: StringFilter<"prelevements_eau"> | string
     libelle_departement?: StringFilter<"prelevements_eau"> | string
-    region?: BigIntFilter<"prelevements_eau"> | bigint | number
+    region?: IntFilter<"prelevements_eau"> | number
     ept?: StringNullableFilter<"prelevements_eau"> | string | null
     libelle_petr?: StringNullableFilter<"prelevements_eau"> | string | null
     code_pnr?: StringNullableFilter<"prelevements_eau"> | string | null
@@ -61758,7 +61763,7 @@ export namespace Prisma {
   }
 
   export type prelevements_eauWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: prelevements_eauWhereInput | prelevements_eauWhereInput[]
     OR?: prelevements_eauWhereInput[]
     NOT?: prelevements_eauWhereInput | prelevements_eauWhereInput[]
@@ -61768,7 +61773,7 @@ export namespace Prisma {
     libelle_epci?: StringFilter<"prelevements_eau"> | string
     departement?: StringFilter<"prelevements_eau"> | string
     libelle_departement?: StringFilter<"prelevements_eau"> | string
-    region?: BigIntFilter<"prelevements_eau"> | bigint | number
+    region?: IntFilter<"prelevements_eau"> | number
     ept?: StringNullableFilter<"prelevements_eau"> | string | null
     libelle_petr?: StringNullableFilter<"prelevements_eau"> | string | null
     code_pnr?: StringNullableFilter<"prelevements_eau"> | string | null
@@ -61829,14 +61834,14 @@ export namespace Prisma {
     AND?: prelevements_eauScalarWhereWithAggregatesInput | prelevements_eauScalarWhereWithAggregatesInput[]
     OR?: prelevements_eauScalarWhereWithAggregatesInput[]
     NOT?: prelevements_eauScalarWhereWithAggregatesInput | prelevements_eauScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"prelevements_eau"> | bigint | number
+    index?: IntWithAggregatesFilter<"prelevements_eau"> | number
     code_geographique?: StringWithAggregatesFilter<"prelevements_eau"> | string
     libelle_geographique?: StringWithAggregatesFilter<"prelevements_eau"> | string
     epci?: StringWithAggregatesFilter<"prelevements_eau"> | string
     libelle_epci?: StringWithAggregatesFilter<"prelevements_eau"> | string
     departement?: StringWithAggregatesFilter<"prelevements_eau"> | string
     libelle_departement?: StringWithAggregatesFilter<"prelevements_eau"> | string
-    region?: BigIntWithAggregatesFilter<"prelevements_eau"> | bigint | number
+    region?: IntWithAggregatesFilter<"prelevements_eau"> | number
     ept?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
     libelle_petr?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
     code_pnr?: StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
@@ -61869,7 +61874,7 @@ export namespace Prisma {
     libelle_epci?: StringFilter<"clc_par_communes"> | string
     departement?: StringFilter<"clc_par_communes"> | string
     libelle_departement?: StringFilter<"clc_par_communes"> | string
-    region?: BigIntFilter<"clc_par_communes"> | bigint | number
+    region?: IntFilter<"clc_par_communes"> | number
     ept?: StringNullableFilter<"clc_par_communes"> | string | null
     libelle_petr?: StringNullableFilter<"clc_par_communes"> | string | null
     code_pnr?: StringNullableFilter<"clc_par_communes"> | string | null
@@ -61904,7 +61909,7 @@ export namespace Prisma {
     libelle_epci?: StringFilter<"clc_par_communes"> | string
     departement?: StringFilter<"clc_par_communes"> | string
     libelle_departement?: StringFilter<"clc_par_communes"> | string
-    region?: BigIntFilter<"clc_par_communes"> | bigint | number
+    region?: IntFilter<"clc_par_communes"> | number
     ept?: StringNullableFilter<"clc_par_communes"> | string | null
     libelle_petr?: StringNullableFilter<"clc_par_communes"> | string | null
     code_pnr?: StringNullableFilter<"clc_par_communes"> | string | null
@@ -61944,7 +61949,7 @@ export namespace Prisma {
     libelle_epci?: StringWithAggregatesFilter<"clc_par_communes"> | string
     departement?: StringWithAggregatesFilter<"clc_par_communes"> | string
     libelle_departement?: StringWithAggregatesFilter<"clc_par_communes"> | string
-    region?: BigIntWithAggregatesFilter<"clc_par_communes"> | bigint | number
+    region?: IntWithAggregatesFilter<"clc_par_communes"> | number
     ept?: StringNullableWithAggregatesFilter<"clc_par_communes"> | string | null
     libelle_petr?: StringNullableWithAggregatesFilter<"clc_par_communes"> | string | null
     code_pnr?: StringNullableWithAggregatesFilter<"clc_par_communes"> | string | null
@@ -62050,7 +62055,7 @@ export namespace Prisma {
     AND?: secheressesWhereInput | secheressesWhereInput[]
     OR?: secheressesWhereInput[]
     NOT?: secheressesWhereInput | secheressesWhereInput[]
-    index?: BigIntFilter<"secheresses"> | bigint | number
+    index?: IntFilter<"secheresses"> | number
     code_geographique?: StringFilter<"secheresses"> | string
     libelle_geographique?: StringFilter<"secheresses"> | string
     epci?: StringFilter<"secheresses"> | string
@@ -62104,7 +62109,7 @@ export namespace Prisma {
   }
 
   export type secheressesWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: secheressesWhereInput | secheressesWhereInput[]
     OR?: secheressesWhereInput[]
     NOT?: secheressesWhereInput | secheressesWhereInput[]
@@ -62169,7 +62174,7 @@ export namespace Prisma {
     AND?: secheressesScalarWhereWithAggregatesInput | secheressesScalarWhereWithAggregatesInput[]
     OR?: secheressesScalarWhereWithAggregatesInput[]
     NOT?: secheressesScalarWhereWithAggregatesInput | secheressesScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"secheresses"> | bigint | number
+    index?: IntWithAggregatesFilter<"secheresses"> | number
     code_geographique?: StringWithAggregatesFilter<"secheresses"> | string
     libelle_geographique?: StringWithAggregatesFilter<"secheresses"> | string
     epci?: StringWithAggregatesFilter<"secheresses"> | string
@@ -62238,7 +62243,7 @@ export namespace Prisma {
   }
 
   export type agricultureCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -62255,7 +62260,7 @@ export namespace Prisma {
   }
 
   export type agricultureUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -62272,7 +62277,7 @@ export namespace Prisma {
   }
 
   export type agricultureUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -62289,7 +62294,7 @@ export namespace Prisma {
   }
 
   export type agricultureUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -62306,7 +62311,7 @@ export namespace Prisma {
   }
 
   export type agricultureCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -62323,7 +62328,7 @@ export namespace Prisma {
   }
 
   export type agricultureUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -62340,7 +62345,7 @@ export namespace Prisma {
   }
 
   export type agricultureUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -62357,7 +62362,7 @@ export namespace Prisma {
   }
 
   export type agriculture_bioCreateInput = {
-    index: bigint | number
+    index: number
     epci: string
     libelle_epci: string
     VARIABLE: string
@@ -62397,7 +62402,7 @@ export namespace Prisma {
   }
 
   export type agriculture_bioUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     epci: string
     libelle_epci: string
     VARIABLE: string
@@ -62437,7 +62442,7 @@ export namespace Prisma {
   }
 
   export type agriculture_bioUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     VARIABLE?: StringFieldUpdateOperationsInput | string
@@ -62477,7 +62482,7 @@ export namespace Prisma {
   }
 
   export type agriculture_bioUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     VARIABLE?: StringFieldUpdateOperationsInput | string
@@ -62517,7 +62522,7 @@ export namespace Prisma {
   }
 
   export type agriculture_bioCreateManyInput = {
-    index: bigint | number
+    index: number
     epci: string
     libelle_epci: string
     VARIABLE: string
@@ -62557,7 +62562,7 @@ export namespace Prisma {
   }
 
   export type agriculture_bioUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     VARIABLE?: StringFieldUpdateOperationsInput | string
@@ -62597,7 +62602,7 @@ export namespace Prisma {
   }
 
   export type agriculture_bioUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     VARIABLE?: StringFieldUpdateOperationsInput | string
@@ -62637,7 +62642,7 @@ export namespace Prisma {
   }
 
   export type aot_40CreateInput = {
-    index: bigint | number
+    index: number
     nom_site: string
     type_d_implantation: string
     valeur_brute: number
@@ -62646,7 +62651,7 @@ export namespace Prisma {
   }
 
   export type aot_40UncheckedCreateInput = {
-    index: bigint | number
+    index: number
     nom_site: string
     type_d_implantation: string
     valeur_brute: number
@@ -62655,7 +62660,7 @@ export namespace Prisma {
   }
 
   export type aot_40UpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     nom_site?: StringFieldUpdateOperationsInput | string
     type_d_implantation?: StringFieldUpdateOperationsInput | string
     valeur_brute?: FloatFieldUpdateOperationsInput | number
@@ -62664,7 +62669,7 @@ export namespace Prisma {
   }
 
   export type aot_40UncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     nom_site?: StringFieldUpdateOperationsInput | string
     type_d_implantation?: StringFieldUpdateOperationsInput | string
     valeur_brute?: FloatFieldUpdateOperationsInput | number
@@ -62673,7 +62678,7 @@ export namespace Prisma {
   }
 
   export type aot_40CreateManyInput = {
-    index: bigint | number
+    index: number
     nom_site: string
     type_d_implantation: string
     valeur_brute: number
@@ -62682,7 +62687,7 @@ export namespace Prisma {
   }
 
   export type aot_40UpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     nom_site?: StringFieldUpdateOperationsInput | string
     type_d_implantation?: StringFieldUpdateOperationsInput | string
     valeur_brute?: FloatFieldUpdateOperationsInput | number
@@ -62691,7 +62696,7 @@ export namespace Prisma {
   }
 
   export type aot_40UncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     nom_site?: StringFieldUpdateOperationsInput | string
     type_d_implantation?: StringFieldUpdateOperationsInput | string
     valeur_brute?: FloatFieldUpdateOperationsInput | number
@@ -62700,7 +62705,7 @@ export namespace Prisma {
   }
 
   export type arretes_catnatCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -62719,7 +62724,7 @@ export namespace Prisma {
   }
 
   export type arretes_catnatUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -62738,7 +62743,7 @@ export namespace Prisma {
   }
 
   export type arretes_catnatUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -62757,7 +62762,7 @@ export namespace Prisma {
   }
 
   export type arretes_catnatUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -62776,7 +62781,7 @@ export namespace Prisma {
   }
 
   export type arretes_catnatCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -62795,7 +62800,7 @@ export namespace Prisma {
   }
 
   export type arretes_catnatUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -62814,7 +62819,7 @@ export namespace Prisma {
   }
 
   export type arretes_catnatUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -62833,7 +62838,7 @@ export namespace Prisma {
   }
 
   export type atlas_biodiversiteCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -62853,7 +62858,7 @@ export namespace Prisma {
   }
 
   export type atlas_biodiversiteUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -62873,7 +62878,7 @@ export namespace Prisma {
   }
 
   export type atlas_biodiversiteUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -62893,7 +62898,7 @@ export namespace Prisma {
   }
 
   export type atlas_biodiversiteUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -62913,7 +62918,7 @@ export namespace Prisma {
   }
 
   export type atlas_biodiversiteCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -62933,7 +62938,7 @@ export namespace Prisma {
   }
 
   export type atlas_biodiversiteUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -62953,7 +62958,7 @@ export namespace Prisma {
   }
 
   export type atlas_biodiversiteUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -62973,7 +62978,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique?: string | null
     libelle_geographique?: string | null
     epci?: string | null
@@ -62990,7 +62995,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique?: string | null
     libelle_geographique?: string | null
     epci?: string | null
@@ -63007,7 +63012,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63024,7 +63029,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63041,7 +63046,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique?: string | null
     libelle_geographique?: string | null
     epci?: string | null
@@ -63058,7 +63063,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63075,7 +63080,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63092,7 +63097,7 @@ export namespace Prisma {
   }
 
   export type consommation_espaces_nafCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -63213,7 +63218,7 @@ export namespace Prisma {
   }
 
   export type consommation_espaces_nafUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -63334,7 +63339,7 @@ export namespace Prisma {
   }
 
   export type consommation_espaces_nafUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -63455,7 +63460,7 @@ export namespace Prisma {
   }
 
   export type consommation_espaces_nafUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -63576,7 +63581,7 @@ export namespace Prisma {
   }
 
   export type consommation_espaces_nafCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -63697,7 +63702,7 @@ export namespace Prisma {
   }
 
   export type consommation_espaces_nafUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -63818,7 +63823,7 @@ export namespace Prisma {
   }
 
   export type consommation_espaces_nafUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -63939,7 +63944,7 @@ export namespace Prisma {
   }
 
   export type feux_foretCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -63966,7 +63971,7 @@ export namespace Prisma {
   }
 
   export type feux_foretUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -63993,7 +63998,7 @@ export namespace Prisma {
   }
 
   export type feux_foretUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -64020,7 +64025,7 @@ export namespace Prisma {
   }
 
   export type feux_foretUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -64047,7 +64052,7 @@ export namespace Prisma {
   }
 
   export type feux_foretCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -64074,7 +64079,7 @@ export namespace Prisma {
   }
 
   export type feux_foretUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -64101,7 +64106,7 @@ export namespace Prisma {
   }
 
   export type feux_foretUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -64583,7 +64588,7 @@ export namespace Prisma {
   }
 
   export type lcz_couvertureCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique?: string | null
     epci?: string | null
@@ -64599,7 +64604,7 @@ export namespace Prisma {
   }
 
   export type lcz_couvertureUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique?: string | null
     epci?: string | null
@@ -64615,7 +64620,7 @@ export namespace Prisma {
   }
 
   export type lcz_couvertureUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64631,7 +64636,7 @@ export namespace Prisma {
   }
 
   export type lcz_couvertureUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64647,7 +64652,7 @@ export namespace Prisma {
   }
 
   export type lcz_couvertureCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique?: string | null
     epci?: string | null
@@ -64663,7 +64668,7 @@ export namespace Prisma {
   }
 
   export type lcz_couvertureUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64679,7 +64684,7 @@ export namespace Prisma {
   }
 
   export type lcz_couvertureUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64695,7 +64700,7 @@ export namespace Prisma {
   }
 
   export type patch4cCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     niveaux_marins?: number | null
     feux_foret: number
@@ -64705,7 +64710,7 @@ export namespace Prisma {
   }
 
   export type patch4cUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     niveaux_marins?: number | null
     feux_foret: number
@@ -64715,7 +64720,7 @@ export namespace Prisma {
   }
 
   export type patch4cUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
     feux_foret?: FloatFieldUpdateOperationsInput | number
@@ -64725,7 +64730,7 @@ export namespace Prisma {
   }
 
   export type patch4cUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
     feux_foret?: FloatFieldUpdateOperationsInput | number
@@ -64735,7 +64740,7 @@ export namespace Prisma {
   }
 
   export type patch4cCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     niveaux_marins?: number | null
     feux_foret: number
@@ -64745,7 +64750,7 @@ export namespace Prisma {
   }
 
   export type patch4cUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
     feux_foret?: FloatFieldUpdateOperationsInput | number
@@ -64755,7 +64760,7 @@ export namespace Prisma {
   }
 
   export type patch4cUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
     feux_foret?: FloatFieldUpdateOperationsInput | number
@@ -64765,7 +64770,7 @@ export namespace Prisma {
   }
 
   export type qualite_sites_baignadeCreateInput = {
-    index: bigint | number
+    index: number
     DEP_NOM: string
     DEP_NUM: string
     TYPE: string
@@ -64784,7 +64789,7 @@ export namespace Prisma {
   }
 
   export type qualite_sites_baignadeUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     DEP_NOM: string
     DEP_NUM: string
     TYPE: string
@@ -64803,7 +64808,7 @@ export namespace Prisma {
   }
 
   export type qualite_sites_baignadeUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     DEP_NOM?: StringFieldUpdateOperationsInput | string
     DEP_NUM?: StringFieldUpdateOperationsInput | string
     TYPE?: StringFieldUpdateOperationsInput | string
@@ -64822,7 +64827,7 @@ export namespace Prisma {
   }
 
   export type qualite_sites_baignadeUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     DEP_NOM?: StringFieldUpdateOperationsInput | string
     DEP_NUM?: StringFieldUpdateOperationsInput | string
     TYPE?: StringFieldUpdateOperationsInput | string
@@ -64841,7 +64846,7 @@ export namespace Prisma {
   }
 
   export type qualite_sites_baignadeCreateManyInput = {
-    index: bigint | number
+    index: number
     DEP_NOM: string
     DEP_NUM: string
     TYPE: string
@@ -64860,7 +64865,7 @@ export namespace Prisma {
   }
 
   export type qualite_sites_baignadeUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     DEP_NOM?: StringFieldUpdateOperationsInput | string
     DEP_NUM?: StringFieldUpdateOperationsInput | string
     TYPE?: StringFieldUpdateOperationsInput | string
@@ -64879,7 +64884,7 @@ export namespace Prisma {
   }
 
   export type qualite_sites_baignadeUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     DEP_NOM?: StringFieldUpdateOperationsInput | string
     DEP_NUM?: StringFieldUpdateOperationsInput | string
     TYPE?: StringFieldUpdateOperationsInput | string
@@ -64898,7 +64903,7 @@ export namespace Prisma {
   }
 
   export type ressources_eauCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     LIBELLE_SOUS_CHAMP: string
     A2020: number
@@ -64928,7 +64933,7 @@ export namespace Prisma {
   }
 
   export type ressources_eauUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     LIBELLE_SOUS_CHAMP: string
     A2020: number
@@ -64958,7 +64963,7 @@ export namespace Prisma {
   }
 
   export type ressources_eauUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     LIBELLE_SOUS_CHAMP?: StringFieldUpdateOperationsInput | string
     A2020?: FloatFieldUpdateOperationsInput | number
@@ -64988,7 +64993,7 @@ export namespace Prisma {
   }
 
   export type ressources_eauUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     LIBELLE_SOUS_CHAMP?: StringFieldUpdateOperationsInput | string
     A2020?: FloatFieldUpdateOperationsInput | number
@@ -65018,7 +65023,7 @@ export namespace Prisma {
   }
 
   export type ressources_eauCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     LIBELLE_SOUS_CHAMP: string
     A2020: number
@@ -65048,7 +65053,7 @@ export namespace Prisma {
   }
 
   export type ressources_eauUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     LIBELLE_SOUS_CHAMP?: StringFieldUpdateOperationsInput | string
     A2020?: FloatFieldUpdateOperationsInput | number
@@ -65078,7 +65083,7 @@ export namespace Prisma {
   }
 
   export type ressources_eauUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     LIBELLE_SOUS_CHAMP?: StringFieldUpdateOperationsInput | string
     A2020?: FloatFieldUpdateOperationsInput | number
@@ -65108,7 +65113,7 @@ export namespace Prisma {
   }
 
   export type rgaCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -65148,7 +65153,7 @@ export namespace Prisma {
   }
 
   export type rgaUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -65188,7 +65193,7 @@ export namespace Prisma {
   }
 
   export type rgaUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -65228,7 +65233,7 @@ export namespace Prisma {
   }
 
   export type rgaUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -65268,7 +65273,7 @@ export namespace Prisma {
   }
 
   export type rgaCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -65308,7 +65313,7 @@ export namespace Prisma {
   }
 
   export type rgaUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -65348,7 +65353,7 @@ export namespace Prisma {
   }
 
   export type rgaUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -65388,7 +65393,7 @@ export namespace Prisma {
   }
 
   export type surfaces_agricolesCreateInput = {
-    index: bigint | number
+    index: number
     epci: string
     exploitation_sau: number
     exploitation_sau_terres_arables: number
@@ -65431,7 +65436,7 @@ export namespace Prisma {
   }
 
   export type surfaces_agricolesUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     epci: string
     exploitation_sau: number
     exploitation_sau_terres_arables: number
@@ -65474,7 +65479,7 @@ export namespace Prisma {
   }
 
   export type surfaces_agricolesUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     epci?: StringFieldUpdateOperationsInput | string
     exploitation_sau?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
@@ -65517,7 +65522,7 @@ export namespace Prisma {
   }
 
   export type surfaces_agricolesUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     epci?: StringFieldUpdateOperationsInput | string
     exploitation_sau?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
@@ -65560,7 +65565,7 @@ export namespace Prisma {
   }
 
   export type surfaces_agricolesCreateManyInput = {
-    index: bigint | number
+    index: number
     epci: string
     exploitation_sau: number
     exploitation_sau_terres_arables: number
@@ -65603,7 +65608,7 @@ export namespace Prisma {
   }
 
   export type surfaces_agricolesUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     epci?: StringFieldUpdateOperationsInput | string
     exploitation_sau?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
@@ -65646,7 +65651,7 @@ export namespace Prisma {
   }
 
   export type surfaces_agricolesUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     epci?: StringFieldUpdateOperationsInput | string
     exploitation_sau?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
@@ -65695,7 +65700,7 @@ export namespace Prisma {
     libelle_epci?: string | null
     departement?: string | null
     libelle_departement?: string | null
-    region?: bigint | number | null
+    region?: number | null
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -65711,7 +65716,7 @@ export namespace Prisma {
     libelle_epci?: string | null
     departement?: string | null
     libelle_departement?: string | null
-    region?: bigint | number | null
+    region?: number | null
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -65726,7 +65731,7 @@ export namespace Prisma {
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
     departement?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    region?: NullableIntFieldUpdateOperationsInput | number | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65742,7 +65747,7 @@ export namespace Prisma {
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
     departement?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    region?: NullableIntFieldUpdateOperationsInput | number | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65758,7 +65763,7 @@ export namespace Prisma {
     libelle_epci?: string | null
     departement?: string | null
     libelle_departement?: string | null
-    region?: bigint | number | null
+    region?: number | null
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -65773,7 +65778,7 @@ export namespace Prisma {
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
     departement?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    region?: NullableIntFieldUpdateOperationsInput | number | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65789,7 +65794,7 @@ export namespace Prisma {
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
     departement?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    region?: NullableIntFieldUpdateOperationsInput | number | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65804,7 +65809,7 @@ export namespace Prisma {
     libelle_epci?: string | null
     departement?: string | null
     libelle_departement?: string | null
-    region?: bigint | number | null
+    region?: number | null
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -65822,7 +65827,7 @@ export namespace Prisma {
     libelle_epci?: string | null
     departement?: string | null
     libelle_departement?: string | null
-    region?: bigint | number | null
+    region?: number | null
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -65839,7 +65844,7 @@ export namespace Prisma {
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
     departement?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    region?: NullableIntFieldUpdateOperationsInput | number | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65857,7 +65862,7 @@ export namespace Prisma {
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
     departement?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    region?: NullableIntFieldUpdateOperationsInput | number | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65875,7 +65880,7 @@ export namespace Prisma {
     libelle_epci?: string | null
     departement?: string | null
     libelle_departement?: string | null
-    region?: bigint | number | null
+    region?: number | null
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -65892,7 +65897,7 @@ export namespace Prisma {
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
     departement?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    region?: NullableIntFieldUpdateOperationsInput | number | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65910,7 +65915,7 @@ export namespace Prisma {
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
     departement?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    region?: NullableIntFieldUpdateOperationsInput | number | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65923,31 +65928,31 @@ export namespace Prisma {
   export type erosion_cotiereUpdateInput = {
     taux?: FloatFieldUpdateOperationsInput | number
     duree?: FloatFieldUpdateOperationsInput | number
-    tdc_ancien?: BigIntFieldUpdateOperationsInput | bigint | number
-    tdc_rec?: BigIntFieldUpdateOperationsInput | bigint | number
+    tdc_ancien?: IntFieldUpdateOperationsInput | number
+    tdc_rec?: IntFieldUpdateOperationsInput | number
   }
 
   export type erosion_cotiereUncheckedUpdateInput = {
     pk?: IntFieldUpdateOperationsInput | number
     taux?: FloatFieldUpdateOperationsInput | number
     duree?: FloatFieldUpdateOperationsInput | number
-    tdc_ancien?: BigIntFieldUpdateOperationsInput | bigint | number
-    tdc_rec?: BigIntFieldUpdateOperationsInput | bigint | number
+    tdc_ancien?: IntFieldUpdateOperationsInput | number
+    tdc_rec?: IntFieldUpdateOperationsInput | number
   }
 
   export type erosion_cotiereUpdateManyMutationInput = {
     taux?: FloatFieldUpdateOperationsInput | number
     duree?: FloatFieldUpdateOperationsInput | number
-    tdc_ancien?: BigIntFieldUpdateOperationsInput | bigint | number
-    tdc_rec?: BigIntFieldUpdateOperationsInput | bigint | number
+    tdc_ancien?: IntFieldUpdateOperationsInput | number
+    tdc_rec?: IntFieldUpdateOperationsInput | number
   }
 
   export type erosion_cotiereUncheckedUpdateManyInput = {
     pk?: IntFieldUpdateOperationsInput | number
     taux?: FloatFieldUpdateOperationsInput | number
     duree?: FloatFieldUpdateOperationsInput | number
-    tdc_ancien?: BigIntFieldUpdateOperationsInput | bigint | number
-    tdc_rec?: BigIntFieldUpdateOperationsInput | bigint | number
+    tdc_ancien?: IntFieldUpdateOperationsInput | number
+    tdc_rec?: IntFieldUpdateOperationsInput | number
   }
 
   export type etat_cours_d_eauUpdateInput = {
@@ -66112,7 +66117,7 @@ export namespace Prisma {
   }
 
   export type export_cours_d_eauCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -66130,7 +66135,7 @@ export namespace Prisma {
   }
 
   export type export_cours_d_eauUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -66148,7 +66153,7 @@ export namespace Prisma {
   }
 
   export type export_cours_d_eauUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -66166,7 +66171,7 @@ export namespace Prisma {
   }
 
   export type export_cours_d_eauUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -66184,7 +66189,7 @@ export namespace Prisma {
   }
 
   export type export_cours_d_eauCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -66202,7 +66207,7 @@ export namespace Prisma {
   }
 
   export type export_cours_d_eauUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -66220,7 +66225,7 @@ export namespace Prisma {
   }
 
   export type export_cours_d_eauUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -66238,7 +66243,7 @@ export namespace Prisma {
   }
 
   export type confort_thermiqueCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -66296,7 +66301,7 @@ export namespace Prisma {
   }
 
   export type confort_thermiqueUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -66354,7 +66359,7 @@ export namespace Prisma {
   }
 
   export type confort_thermiqueUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -66412,7 +66417,7 @@ export namespace Prisma {
   }
 
   export type confort_thermiqueUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -66470,7 +66475,7 @@ export namespace Prisma {
   }
 
   export type confort_thermiqueCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -66528,7 +66533,7 @@ export namespace Prisma {
   }
 
   export type confort_thermiqueUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -66586,7 +66591,7 @@ export namespace Prisma {
   }
 
   export type confort_thermiqueUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -67435,7 +67440,7 @@ export namespace Prisma {
   }
 
   export type surfaces_protegeesCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     PNC?: string | null
     RAMSAR?: string | null
@@ -67464,7 +67469,7 @@ export namespace Prisma {
   }
 
   export type surfaces_protegeesUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     PNC?: string | null
     RAMSAR?: string | null
@@ -67493,7 +67498,7 @@ export namespace Prisma {
   }
 
   export type surfaces_protegeesUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     PNC?: NullableStringFieldUpdateOperationsInput | string | null
     RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67522,7 +67527,7 @@ export namespace Prisma {
   }
 
   export type surfaces_protegeesUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     PNC?: NullableStringFieldUpdateOperationsInput | string | null
     RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67551,7 +67556,7 @@ export namespace Prisma {
   }
 
   export type surfaces_protegeesCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     PNC?: string | null
     RAMSAR?: string | null
@@ -67580,7 +67585,7 @@ export namespace Prisma {
   }
 
   export type surfaces_protegeesUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     PNC?: NullableStringFieldUpdateOperationsInput | string | null
     RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67609,7 +67614,7 @@ export namespace Prisma {
   }
 
   export type surfaces_protegeesUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     PNC?: NullableStringFieldUpdateOperationsInput | string | null
     RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67638,14 +67643,14 @@ export namespace Prisma {
   }
 
   export type table_communeCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: bigint | number
+    region: number
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -67661,14 +67666,14 @@ export namespace Prisma {
   }
 
   export type table_communeUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: bigint | number
+    region: number
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -67684,14 +67689,14 @@ export namespace Prisma {
   }
 
   export type table_communeUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67707,14 +67712,14 @@ export namespace Prisma {
   }
 
   export type table_communeUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67730,14 +67735,14 @@ export namespace Prisma {
   }
 
   export type table_communeCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: bigint | number
+    region: number
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -67753,14 +67758,14 @@ export namespace Prisma {
   }
 
   export type table_communeUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67776,14 +67781,14 @@ export namespace Prisma {
   }
 
   export type table_communeUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67861,7 +67866,7 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67876,7 +67881,7 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67890,7 +67895,7 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67905,7 +67910,7 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67913,14 +67918,14 @@ export namespace Prisma {
   }
 
   export type prelevements_eauCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: bigint | number
+    region: number
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -67943,14 +67948,14 @@ export namespace Prisma {
   }
 
   export type prelevements_eauUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: bigint | number
+    region: number
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -67973,14 +67978,14 @@ export namespace Prisma {
   }
 
   export type prelevements_eauUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68003,14 +68008,14 @@ export namespace Prisma {
   }
 
   export type prelevements_eauUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68033,14 +68038,14 @@ export namespace Prisma {
   }
 
   export type prelevements_eauCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: bigint | number
+    region: number
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -68063,14 +68068,14 @@ export namespace Prisma {
   }
 
   export type prelevements_eauUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68093,14 +68098,14 @@ export namespace Prisma {
   }
 
   export type prelevements_eauUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68129,7 +68134,7 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68145,7 +68150,7 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68160,7 +68165,7 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68176,7 +68181,7 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: BigIntFieldUpdateOperationsInput | bigint | number
+    region?: IntFieldUpdateOperationsInput | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68247,7 +68252,7 @@ export namespace Prisma {
   }
 
   export type secheressesCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -68274,7 +68279,7 @@ export namespace Prisma {
   }
 
   export type secheressesUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -68301,7 +68306,7 @@ export namespace Prisma {
   }
 
   export type secheressesUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -68328,7 +68333,7 @@ export namespace Prisma {
   }
 
   export type secheressesUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -68355,7 +68360,7 @@ export namespace Prisma {
   }
 
   export type secheressesCreateManyInput = {
-    index: bigint | number
+    index: number
     code_geographique: string
     libelle_geographique: string
     epci: string
@@ -68382,7 +68387,7 @@ export namespace Prisma {
   }
 
   export type secheressesUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -68409,7 +68414,7 @@ export namespace Prisma {
   }
 
   export type secheressesUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
@@ -68546,17 +68551,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type BigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -68660,22 +68654,6 @@ export namespace Prisma {
     index?: SortOrder
     region?: SortOrder
     part_irr_SAU_2020?: SortOrder
-  }
-
-  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -69857,6 +69835,17 @@ export namespace Prisma {
     autres_surfaces?: SortOrder
   }
 
+  export type BigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
   export type inconfort_thermiqueCountOrderByAggregateInput = {
     index?: SortOrder
     code_geographique?: SortOrder
@@ -70160,6 +70149,22 @@ export namespace Prisma {
     clc_4_humide?: SortOrder
     clc_5_eau?: SortOrder
     superf_choro?: SortOrder
+  }
+
+  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type lcz_couvertureCountOrderByAggregateInput = {
@@ -70858,15 +70863,15 @@ export namespace Prisma {
     superficie_sau_jardins?: SortOrder
   }
 
-  export type BigIntNullableFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type clc_territoiresCountOrderByAggregateInput = {
@@ -70927,20 +70932,20 @@ export namespace Prisma {
     region?: SortOrder
   }
 
-  export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedBigIntNullableFilter<$PrismaModel>
-    _min?: NestedBigIntNullableFilter<$PrismaModel>
-    _max?: NestedBigIntNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type communes_dromCountOrderByAggregateInput = {
@@ -72198,17 +72203,6 @@ export namespace Prisma {
     region?: SortOrder
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type spatial_ref_sysCountOrderByAggregateInput = {
     srid?: SortOrder
     auth_name?: SortOrder
@@ -72241,22 +72235,6 @@ export namespace Prisma {
   export type spatial_ref_sysSumOrderByAggregateInput = {
     srid?: SortOrder
     auth_srid?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type debroussaillementCountOrderByAggregateInput = {
@@ -72637,14 +72615,6 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type BigIntFieldUpdateOperationsInput = {
-    set?: bigint | number
-    increment?: bigint | number
-    decrement?: bigint | number
-    multiply?: bigint | number
-    divide?: bigint | number
-  }
-
   export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -72665,12 +72635,20 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableBigIntFieldUpdateOperationsInput = {
-    set?: bigint | number | null
+  export type BigIntFieldUpdateOperationsInput = {
+    set?: bigint | number
     increment?: bigint | number
     decrement?: bigint | number
     multiply?: bigint | number
     divide?: bigint | number
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -72825,14 +72803,6 @@ export namespace Prisma {
     push?: string | string[]
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -72927,17 +72897,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedBigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -72961,22 +72920,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -73039,31 +72982,47 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
-  export type NestedBigIntNullableFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+  export type NestedBigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
     lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
-  export type NestedBigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
     lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedBigIntNullableFilter<$PrismaModel>
-    _min?: NestedBigIntNullableFilter<$PrismaModel>
-    _max?: NestedBigIntNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
@@ -73125,22 +73084,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
 

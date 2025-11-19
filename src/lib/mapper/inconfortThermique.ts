@@ -8,18 +8,18 @@ import {
 import { ConfortThermique, type InconfortThermique } from '../postgres/models';
 
 export const vegetalisationMapper = (
-  vegetalisation: ConfortThermique
+  vegetalisation: ConfortThermique | Partial<ConfortThermique>
 ): VegetalisationDto => ({
-  code_geographique: vegetalisation.code_geographique,
-  libelle_geographique: vegetalisation.libelle_geographique,
-  epci: vegetalisation.epci,
-  libelle_epci: vegetalisation.libelle_epci,
-  ept: vegetalisation.ept,
-  libelle_petr: vegetalisation.libelle_petr,
-  libelle_pnr: vegetalisation.libelle_pnr,
-  code_pnr: vegetalisation.code_pnr,
-  departement: vegetalisation.departement,
-  libelle_departement: vegetalisation.libelle_departement,
+  code_geographique: vegetalisation.code_geographique!,
+  libelle_geographique: vegetalisation.libelle_geographique!,
+  epci: vegetalisation.epci!,
+  libelle_epci: vegetalisation.libelle_epci!,
+  ept: vegetalisation.ept!,
+  libelle_petr: vegetalisation.libelle_petr!,
+  libelle_pnr: vegetalisation.libelle_pnr!,
+  code_pnr: vegetalisation.code_pnr!,
+  departement: vegetalisation.departement!,
+  libelle_departement: vegetalisation.libelle_departement!,
   clc_1_artificialise: Number(vegetalisation.clc_1_artificialise),
   clc_2_agricole: Number(vegetalisation.clc_2_agricole),
   clc_3_foret_semiNaturel: Number(vegetalisation.clc_3_foret_semiNaturel),
@@ -107,9 +107,7 @@ export const grandAgeIsolementMapper = (
   over_80_sum_2020: Number(grandAgeIsolement.over_80_sum_2020)
 });
 
-export const grandAgeMapper = (
-  grandAge: ConfortThermique
-): GrandAgeDto => ({
+export const grandAgeMapper = (grandAge: ConfortThermique): GrandAgeDto => ({
   code_geographique: grandAge.code_geographique,
   libelle_geographique: grandAge.libelle_geographique,
   epci: grandAge.epci,
@@ -121,27 +119,27 @@ export const grandAgeMapper = (
   departement: grandAge.departement,
   libelle_departement: grandAge.libelle_departement,
   under_4_sum_1968: Number(grandAge.under_4_sum_1968),
-  "to_75_sum_1968": Number(grandAge["4_to_75_sum_1968"]),
+  to_75_sum_1968: Number(grandAge['4_to_75_sum_1968']),
   over_75_sum_1968: Number(grandAge.over_75_sum_1968),
   under_4_sum_1975: Number(grandAge.under_4_sum_1975),
-  "to_75_sum_1975": Number(grandAge["4_to_75_sum_1975"]),
+  to_75_sum_1975: Number(grandAge['4_to_75_sum_1975']),
   over_75_sum_1975: Number(grandAge.over_75_sum_1975),
   under_4_sum_1982: Number(grandAge.under_4_sum_1982),
-  "to_75_sum_1982": Number(grandAge["4_to_75_sum_1982"]),
+  to_75_sum_1982: Number(grandAge['4_to_75_sum_1982']),
   over_75_sum_1982: Number(grandAge.over_75_sum_1982),
   under_4_sum_1990: Number(grandAge.under_4_sum_1990),
-  "to_75_sum_1990": Number(grandAge["4_to_75_sum_1990"]),
+  to_75_sum_1990: Number(grandAge['4_to_75_sum_1990']),
   over_75_sum_1990: Number(grandAge.over_75_sum_1990),
   under_4_sum_1999: Number(grandAge.under_4_sum_1999),
-  "to_75_sum_1999": Number(grandAge["4_to_75_sum_1999"]),
+  to_75_sum_1999: Number(grandAge['4_to_75_sum_1999']),
   over_75_sum_1999: Number(grandAge.over_75_sum_1999),
   under_4_sum_2009: Number(grandAge.under_4_sum_2009),
-  "to_75_sum_2009": Number(grandAge["4_to_75_sum_2009"]),
+  to_75_sum_2009: Number(grandAge['4_to_75_sum_2009']),
   over_75_sum_2009: Number(grandAge.over_75_sum_2009),
   under_4_sum_2014: Number(grandAge.under_4_sum_2014),
-  "to_75_sum_2014": Number(grandAge["4_to_75_sum_2014"]),
+  to_75_sum_2014: Number(grandAge['4_to_75_sum_2014']),
   over_75_sum_2014: Number(grandAge.over_75_sum_2014),
   under_4_sum_2020: Number(grandAge.under_4_sum_2020),
-  "to_75_sum_2020": Number(grandAge["4_to_75_sum_2020"]),
+  to_75_sum_2020: Number(grandAge['4_to_75_sum_2020']),
   over_75_sum_2020: Number(grandAge.over_75_sum_2020)
 });

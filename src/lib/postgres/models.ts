@@ -1,4 +1,3 @@
-
 export type InconfortThermique = {
   NA5AZ_sum: number | null;
   NA5BE_sum: number | null;
@@ -63,7 +62,7 @@ export type InconfortThermique = {
 };
 
 export type ConfortThermique = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   epci: string;
   libelle_epci: string;
@@ -125,7 +124,7 @@ export type Biodiversite = {
   code_geographique: string | null;
   departement: string | null;
   epci: string | null;
-  index: bigint | null;
+  index: number | null;
   libelle_epci: string | null;
   libelle_geographique: string | null;
   region: number | null;
@@ -137,7 +136,7 @@ export type GestionRisques = {
   code_geographique: string;
   departement: string;
   epci: string;
-  index: bigint;
+  index: number;
   libelle_epci: string;
   libelle_geographique: string;
   region: number;
@@ -152,7 +151,7 @@ export type ArreteCatNat = {
   departement: string;
   libelle_departement: string;
   epci: string;
-  index: bigint;
+  index: number;
   libelle_epci: string;
   libelle_geographique: string;
   region: number;
@@ -163,7 +162,7 @@ export type ArreteCatNat = {
 };
 
 export type Secheresses = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   departement: string;
   libelle_departement: string;
@@ -188,7 +187,6 @@ export type Secheresses = {
   restrictions_2023: string | null;
   restrictions_2024: string | null;
 };
-
 
 type RestrictionArrete = {
   dat_deb: string;
@@ -231,7 +229,7 @@ export type RessourcesEau = {
   departement: string;
   libelle_departement: string;
   epci: string;
-  index: bigint;
+  index: number;
   libelle_epci: string;
   libelle_geographique: string;
   ept: string | null;
@@ -261,14 +259,14 @@ export type PrelevementsEau = {
   departement: string;
   libelle_departement: string;
   epci: string;
-  index: bigint;
+  index: number;
   libelle_epci: string;
   libelle_geographique: string;
   ept: string | null;
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
-  region: bigint;
+  region: number;
   A2008: string | null;
   A2009: string | null;
   A2010: string | null;
@@ -291,14 +289,14 @@ export type PrelevementsEauParsed = {
   departement: string;
   libelle_departement: string;
   epci: string;
-  index: bigint;
+  index: number;
   libelle_epci: string;
   libelle_geographique: string;
   ept: string | null;
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
-  region: bigint;
+  region: number;
   A2008: number;
   A2009: number;
   A2010: number;
@@ -315,7 +313,7 @@ export type PrelevementsEauParsed = {
 };
 
 export type AgricultureBio = {
-  index: bigint | number;
+  index: number | number;
   epci: string;
   libelle_epci: string;
   VARIABLE: string;
@@ -490,7 +488,7 @@ export type DataGrandAge = {
 };
 
 export type SurfacesProtegeesByCol = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   PNC: string | null;
   RAMSAR: string | null;
@@ -519,7 +517,7 @@ export type SurfacesProtegeesByCol = {
 };
 
 export type ConsommationNAF = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -647,7 +645,7 @@ export type EtatCoursDeau = {
 };
 
 export type AOT40 = {
-  index: bigint;
+  index: number;
   nom_site: string;
   type_d_implantation: string;
   valeur_brute: number;
@@ -656,7 +654,7 @@ export type AOT40 = {
 };
 
 export type QualiteSitesBaignade = {
-  index: bigint;
+  index: number;
   DEP_NOM: string;
   DEP_NUM: string;
   TYPE: string;
@@ -675,7 +673,7 @@ export type QualiteSitesBaignade = {
 };
 
 export type Agriculture = {
-  index: bigint | number;
+  index: number | number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -692,7 +690,7 @@ export type Agriculture = {
 };
 
 export type ExportCoursDeau = {
-  index: bigint | number;
+  index: number | number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -710,7 +708,7 @@ export type ExportCoursDeau = {
 };
 
 export type IncendiesForet = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -744,7 +742,7 @@ export type RGACarte = {
 };
 
 export type RGAdb = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -784,7 +782,7 @@ export type RGAdb = {
 };
 
 export type SurfacesAgricolesModel = {
-  index: bigint | number;
+  index: number | number;
   epci: string;
   exploitation_sau: number;
   exploitation_sau_terres_arables: number;
@@ -827,7 +825,7 @@ export type SurfacesAgricolesModel = {
 };
 
 export type Patch4 = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   niveaux_marins: number | null;
   feux_foret: number;
@@ -837,7 +835,7 @@ export type Patch4 = {
 };
 
 export type LczCouverture = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -853,7 +851,7 @@ export type LczCouverture = {
 };
 
 export type AtlasBiodiversiteModel = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -873,14 +871,14 @@ export type AtlasBiodiversiteModel = {
 };
 
 export type TableCommuneModel = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
   libelle_epci: string;
   departement: string;
   libelle_departement: string;
-  region: bigint;
+  region: number;
   ept: string | null;
   libelle_petr: string | null;
   code_pnr: string | null;
@@ -903,7 +901,7 @@ export type DebroussaillementModel = {
   libelle_epci: string;
   departement: string;
   libelle_departement: string;
-  region: bigint;
+  region: number;
   ept: string | null;
   libelle_petr: string | null;
   code_pnr: string | null;

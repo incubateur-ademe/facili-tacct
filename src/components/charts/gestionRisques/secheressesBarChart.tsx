@@ -23,19 +23,18 @@ const AnneesSecheresses = [
 export const SecheressesBarChart = (
   { secheresses }: { secheresses: SecheressesParsed[] }
 ) => {
-  console.log("secheresses dans SecheressesBarChart:", secheresses);
   // Transformer les données pour avoir une entrée par année avec le nombre total de restrictions
   const graphData = AnneesSecheresses.map(yearKey => {
     const year = yearKey.replace('restrictions_', '');
     let totalRestrictions = 0;
-    
+
     secheresses.forEach(secheresse => {
       const restrictions = secheresse[yearKey as keyof SecheressesParsed];
       if (restrictions && Array.isArray(restrictions)) {
         totalRestrictions += restrictions.length;
       }
     });
-    
+
     return {
       annee: year,
       restrictions: totalRestrictions
@@ -53,11 +52,11 @@ export const SecheressesBarChart = (
   }, [minValueXTicks, maxValueXTicks]);
 
   return (
-    <div 
-      style={{ 
-        height: "450px", 
-        minWidth: "450px", 
-        width: '100%', 
+    <div
+      style={{
+        height: "450px",
+        minWidth: "450px",
+        width: '100%',
         backgroundColor: "white",
         borderRadius: "1rem"
       }}>
@@ -75,10 +74,10 @@ export const SecheressesBarChart = (
           showLegend={false}
           axisLeftLegend="Nombre de restrictions"
           bottomTickValues={
-              minValueXTicks !== maxValueXTicks
-                ? [`${minValueXTicks}`, `${maxValueXTicks}`]
-                : [`${minValueXTicks}`]
-            }
+            minValueXTicks !== maxValueXTicks
+              ? [`${minValueXTicks}`, `${maxValueXTicks}`]
+              : [`${minValueXTicks}`]
+          }
         />
         : <div
           style={{
