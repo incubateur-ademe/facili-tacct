@@ -26,31 +26,6 @@ const color = (valeur: number) => {
             : '#5EEDF3';
 };
 
-const getCentroid = (arr: number[][]) => {
-  if (!arr || arr.length === 0) {
-    return [0, 0]; // Valeur par défaut si pas de coordonnées
-  }
-  const centroid = arr.reduce(
-    (x: number[], y: number[]) => {
-      return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
-    },
-    [0, 0]
-  );
-  return [centroid[1], centroid[0]];
-};
-
-const getCoordinates = (coords: number[][][]) => {
-  if (!coords || coords.length === 0) {
-    return [0, 0]; // Valeur par défaut si pas de coordonnées
-  }
-  const coords_arr = [];
-  for (let i = 0; i < coords.length; i++) {
-    const center = getCentroid(coords[i]);
-    coords_arr.push(center);
-  }
-  return getCentroid(coords_arr);
-};
-
 export const MapAOT40 = (props: {
   aot40: AOT40[];
   contoursCommunes: { geometry: string } | null;
