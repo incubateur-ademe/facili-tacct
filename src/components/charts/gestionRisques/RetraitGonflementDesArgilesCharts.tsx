@@ -3,10 +3,10 @@
 import WarningIcon from "@/assets/icons/exclamation_point_icon_black.png";
 import { RgaEvolutionTooltip, RgaRepartitionTooltip } from "@/components/charts/ChartTooltips";
 import { NivoBarChart } from '@/components/charts/NivoBarChart';
-import { RgaEvolutionLegend, RgaRepartitionLegend } from '@/components/maps/legends/datavizLegends';
+import { RgaEvolutionLegend, RgaMapLegend, RgaRepartitionLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import { MapRGAExport } from "@/components/maps/mapRGAExport";
-import { MapRGATiles } from "@/components/maps/mapRGATiles";
+import { MapTiles } from "@/components/maps/mapTiles";
 import SubTabs from '@/components/ui/SubTabs';
 import { Body } from "@/design-system/base/Textes";
 import { RGAdb } from '@/lib/postgres/models';
@@ -259,10 +259,24 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
           </div>
         </>
       ) : datavizTab === 'Cartographie' ? (
-        <MapRGATiles
+        <MapTiles
           coordonneesCommunes={coordonneesCommunes}
           mapRef={mapRef}
           mapContainer={mapContainer}
+          bucketUrl="rga"
+          layer="rga"
+          paint={{
+            'fill-color': [
+              'match',
+              ['get', 'alea'],
+              'Moyen', '#F66E19',
+              'Faible', '#FFCF5E',
+              'Fort', '#E8323B',
+              'white'
+            ],
+            'fill-opacity': 0.45
+          }}
+          legend={<LegendCompColor legends={RgaMapLegend} />}
         />
       ) : (
         ''
