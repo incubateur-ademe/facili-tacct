@@ -6,11 +6,11 @@ import { LoaderText } from "@/components/ui/loader";
 import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { handleRedirectionThematique } from "@/hooks/Redirections";
-import { AgricultureBio, CarteCommunes, SurfacesAgricolesModel, TableCommuneModel } from "@/lib/postgres/models";
+import { AgricultureBio, SurfacesAgricolesModel, TableCommuneModel } from "@/lib/postgres/models";
 import { GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
 import { GetAgricultureBio } from "@/lib/queries/databases/biodiversite";
 import { GetTablecommune } from "@/lib/queries/databases/tableCommune";
-import { GetCommunes } from "@/lib/queries/postgis/cartographie";
+import { GetCommunesContours, GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
 import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
@@ -22,14 +22,16 @@ import { SuperficiesIrriguees } from '../../indicateurs/agriculture/3-Superficie
 import { SurfacesEnBio } from '../../indicateurs/agriculture/4-SurfacesEnBio';
 
 interface Props {
-  carteCommunes: CarteCommunes[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
+  contoursCommunes: { geometry: string } | null;
   surfacesAgricoles: SurfacesAgricolesModel[];
   agricultureBio: AgricultureBio[];
   tableCommune: TableCommuneModel[];
 }
 
 export const DonneesAgriculture = ({
-  carteCommunes,
+  coordonneesCommunes,
+  contoursCommunes,
   surfacesAgricoles,
   agricultureBio,
   tableCommune
@@ -42,7 +44,8 @@ export const DonneesAgriculture = ({
   const code = searchParams.get('code')!;
   const ongletsMenu = sommaireThematiques[thematique];
   const [data, setData] = useState({
-    carteCommunes,
+    coordonneesCommunes,
+    contoursCommunes,
     surfacesAgricoles,
     agricultureBio,
     tableCommune
@@ -57,14 +60,16 @@ export const DonneesAgriculture = ({
     }
     setIsLoading(true);
     void (async () => {
-      const [newCarteCommunes, newSurfacesAgricoles, newAgricultureBio, newTableCommune] = await Promise.all([
-        GetCommunes(code, libelle, type),
+      const [newCoordonneesCommunes, newContoursCommunes, newSurfacesAgricoles, newAgricultureBio, newTableCommune] = await Promise.all([
+        GetCommunesCoordinates(code, libelle, type),
+        GetCommunesContours(code, libelle, type),
         GetSurfacesAgricoles(code, libelle, type),
         GetAgricultureBio(libelle, type, code),
         GetTablecommune(code, libelle, type)
       ]);
       setData({
-        carteCommunes: newCarteCommunes,
+        coordonneesCommunes: newCoordonneesCommunes,
+        contoursCommunes: newContoursCommunes,
         surfacesAgricoles: newSurfacesAgricoles,
         agricultureBio: newAgricultureBio,
         tableCommune: newTableCommune
@@ -120,7 +125,6 @@ export const DonneesAgriculture = ({
             </div>
             <TypesDeCulture
               surfacesAgricoles={data.surfacesAgricoles}
-              // agriculture={data.agriculture}
               tableCommune={data.tableCommune}
             />
           </div>
@@ -146,9 +150,9 @@ export const DonneesAgriculture = ({
               </H3>
             </div>
             <SuperficiesIrriguees
-              // agriculture={data.agriculture}
               tableCommune={data.tableCommune}
-              carteCommunes={data.carteCommunes}
+              coordonneesCommunes={data.coordonneesCommunes}
+              contoursCommunes={data.contoursCommunes}
             />
           </div>
         </section>
@@ -184,7 +188,7 @@ export const DonneesAgriculture = ({
           />
           <div className={styles.textBloc} >
             <Body style={{ fontSize: "20px", color: "var(--gris-dark)", fontWeight: 700, maxWidth: "700px" }}>
-              Ces pistes d'investigation en main, partez découvrir sur le terrain comment votre territoire 
+              Ces pistes d'investigation en main, partez découvrir sur le terrain comment votre territoire
               intègre ces dimensions, entre pratiques locales et enjeux globaux.
             </Body>
             <BoutonPrimaireClassic

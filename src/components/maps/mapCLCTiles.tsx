@@ -22,19 +22,15 @@ export const MapCLCTiles = (
 
   useEffect(() => {
     if (!mapContainer.current) return;
-
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
     });
     mapRef.current = map;
-
-    // Désactive le zoom au scroll immédiatement
     try { map.scrollZoom.disable(); } catch (e) { /* noop */ }
 
     map.on('load', () => {
-      // Fit bounds si fourni
       if (boundingBox) {
         map.fitBounds(boundingBox, { padding: 20 });
       }

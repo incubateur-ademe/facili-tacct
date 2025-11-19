@@ -5,68 +5,78 @@ import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { CopyLinkClipboard } from '@/components/interactions/CopyLinkClipboard';
 import { fragiliteEcoLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
-import { MapInconfortThermique } from '@/components/maps/mapInconfortThermique';
+import { MapConfortThermique } from '@/components/maps/mapConfortThermique';
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
-import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { CarteCommunes } from "@/lib/postgres/models";
+import { ConfortThermique } from "@/lib/postgres/models";
 import { fragiliteEconomiqueTooltipText } from '@/lib/tooltipTexts';
-import { eptRegex } from "@/lib/utils/regex";
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from "next/navigation";
 import styles from '../../explorerDonnees.module.scss';
 
 export const PrecariteEnergetique = ({
-  carteCommunes
+  confortThermique,
+  contoursCommunes,
+  coordonneesCommunes
 }: {
-  carteCommunes: CarteCommunes[];
+  confortThermique: ConfortThermique[];
+  contoursCommunes: { geometry: string } | null;
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const communesMap = carteCommunes
-    .map(CommunesIndicateursMapper)
-    .filter((e) => !isNaN(e.properties.precarite_logement));
-
-  const carteTerritoire =
-    type === 'ept' && eptRegex.test(libelle)
-      ? communesMap.filter((e) => e.properties.ept === libelle)
-      : communesMap;
-
-  const territoireSeul = type === "commune"
-    ? carteTerritoire.filter((e) => e.properties.code_geographique === code)
-    : type === "epci"
-      ? carteTerritoire.filter((e) => e.properties.epci === code)
-      : carteTerritoire;
+  const confortThermiqueFiltered = confortThermique.filter((e) => e.precarite_logement !== null && !isNaN(e.precarite_logement));
 
   const precariteLogTerritoire =
     type === 'commune'
       ? Number(
-        carteTerritoire.find(
-          (obj) => obj.properties['code_geographique'] === code
-        )?.properties['precarite_logement']
+        confortThermique.find(
+          (obj) => obj['code_geographique'] === code
+        )?.['precarite_logement']
       )
       : Number(
-        carteTerritoire.reduce(function (a, b) {
-          return a + b.properties['precarite_logement'];
-        }, 0) / carteTerritoire.length
+        confortThermiqueFiltered.reduce(function (a, b) {
+          return a + (b.precarite_logement ?? 0);
+        }, 0) / confortThermiqueFiltered.length
       );
   const precariteLogTerritoireSup = Number(
-    carteTerritoire.reduce(function (a, b) {
-      return a + b.properties['precarite_logement'];
-    }, 0) / carteTerritoire.length
+    confortThermiqueFiltered.reduce(function (a, b) {
+      return a + (b.precarite_logement ?? 0);
+    }, 0) / confortThermiqueFiltered.length
   );
+
+  const territoireContours = contoursCommunes ? [{
+    type: 'Feature' as const,
+    properties: {
+      epci: '',
+      libelle_epci: '',
+      libelle_geographique: libelle,
+      code_geographique: code,
+      coordinates: ''
+    },
+    geometry: JSON.parse(contoursCommunes.geometry)
+  }] : [];
+
+  // Préparer les données de précarité pour la map
+  const precariteData = confortThermique
+    .filter(c => c.precarite_logement !== null)
+    .map(c => ({
+      code: c.code_geographique,
+      value: c.precarite_logement as number,
+      name: c.libelle_geographique
+    }));
 
   return (
     <>
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper}>
           {
-            !precariteLogTerritoire ? "" :
+            !precariteLogTerritoire || territoireContours.length === 0 ? "" :
               <MicroRemplissageTerritoire
                 pourcentage={100 * precariteLogTerritoire}
-                territoireContours={territoireSeul}
+                territoireContours={territoireContours}
                 arrondi={1}
               />
           }
@@ -99,9 +109,9 @@ export const PrecariteEnergetique = ({
         </div>
         <div className={styles.mapWrapper}>
           {
-            carteTerritoire.length > 0 && precariteLogTerritoire ? (
+            confortThermique.length > 0 && precariteLogTerritoire ? (
               <>
-                <MapInconfortThermique carteCommunes={carteTerritoire} />
+                <MapConfortThermique precariteData={precariteData} coordonneesCommunes={coordonneesCommunes} />
                 <div
                   className={styles.legend}
                   style={{ width: 'auto', justifyContent: 'center' }}
@@ -122,7 +132,7 @@ export const PrecariteEnergetique = ({
           Source : <a href="https://geodip.onpe.org/" target='_blank' rel='noopener noreferrer'>Observatoire de la précarité énergétique (ONPE), GEODIP, 2022.</a>
           <br></br>Export indisponible : cette donnée est diffusée sur demande aux territoires par Geodip
         </Body>
-        {(carteTerritoire.length > 0 && precariteLogTerritoire) ? <CopyLinkClipboard anchor={"Précarité énergétique"} /> : null}
+        {(confortThermique.length > 0 && precariteLogTerritoire) ? <CopyLinkClipboard anchor={"Précarité énergétique"} /> : null}
       </div>
     </>
   );

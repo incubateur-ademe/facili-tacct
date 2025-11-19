@@ -4,7 +4,7 @@ import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, RGAdb, Secheresses } from "@/lib/postgres/models";
 import { GetArretesCatnat, GetIncendiesForet, GetSecheresses } from '@/lib/queries/databases/gestionRisques';
-import { GetCommunes, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
+import { GetCommunes, GetCommunesCoordinates, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import Notice from '@codegouvfr/react-dsfr/Notice';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useState } from "react";
@@ -21,18 +21,21 @@ import { SecheressesPassees } from '../../indicateurs/gestionDesRisques/6-Secher
 interface Props {
   gestionRisques: ArreteCatNat[];
   carteCommunes: CarteCommunes[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   erosionCotiere: [ErosionCotiere[], string] | [];
   incendiesForet: IncendiesForet[];
-  // debroussaillement: DebroussaillementModel[];
   secheresses: Secheresses[];
+  contoursCommunes: { geometry: string } | null;
 }
 
 export const DonneesGestionRisques = ({
   carteCommunes,
+  coordonneesCommunes,
   gestionRisques,
   erosionCotiere,
   incendiesForet,
-  secheresses
+  secheresses,
+  contoursCommunes
 }: Props) => {
   const { css } = useStyles();
   const searchParams = useSearchParams();
@@ -46,6 +49,7 @@ export const DonneesGestionRisques = ({
   const [loadingRga, setLoadingRga] = useState(false);
   const [data, setData] = useState({
     carteCommunes,
+    coordonneesCommunes,
     gestionRisques,
     erosionCotiere,
     incendiesForet,
@@ -64,12 +68,14 @@ export const DonneesGestionRisques = ({
     void (async () => {
       const [
         newCarteCommunes,
+        newCoordonneesCommunes,
         newGestionRisques,
         newErosionCotiere,
         newIncendiesForet,
         newSecheresses
       ] = await Promise.all([
         GetCommunes(code, libelle, type),
+        GetCommunesCoordinates(code, libelle, type),
         GetArretesCatnat(code, libelle, type),
         GetErosionCotiere(code, libelle, type),
         GetIncendiesForet(code, libelle, type),
@@ -77,6 +83,7 @@ export const DonneesGestionRisques = ({
       ]);
       setData({
         carteCommunes: newCarteCommunes,
+        coordonneesCommunes: newCoordonneesCommunes,
         gestionRisques: newGestionRisques,
         erosionCotiere: newErosionCotiere,
         incendiesForet: newIncendiesForet,
@@ -158,7 +165,7 @@ export const DonneesGestionRisques = ({
             />
             <ArretesCatnat
               gestionRisques={data.gestionRisques}
-              carteCommunes={data.carteCommunes}
+              coordonneesCommunes={data.coordonneesCommunes}
             />
           </div>
 
@@ -180,8 +187,8 @@ export const DonneesGestionRisques = ({
               </H3>
             </div>
             <Debroussaillement
-              // debroussaillement={data.debroussaillement}
               carteCommunes={data.carteCommunes}
+              coordonneesCommunes={data.coordonneesCommunes}
             />
           </div>
 

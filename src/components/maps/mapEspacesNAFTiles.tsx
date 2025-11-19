@@ -63,7 +63,8 @@ export const MapEspacesNafTiles = (props: {
         type: 'vector',
         tiles: ['https://facili-tacct-dev.s3.fr-par.scw.cloud/app/communes/tiles/{z}/{x}/{y}.pbf'],
         minzoom: 4,
-        maxzoom: 13
+        maxzoom: 13,
+        promoteId: 'code_geographique'
       });
 
       // Créer l'expression de couleur basée sur les valeurs NAF

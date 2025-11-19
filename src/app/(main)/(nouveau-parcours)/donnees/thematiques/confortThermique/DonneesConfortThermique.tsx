@@ -5,10 +5,10 @@ import { LoaderText } from '@/components/ui/loader';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import { handleRedirectionThematique } from '@/hooks/Redirections';
-import { CarteCommunes, ConfortThermique, TableCommuneModel } from '@/lib/postgres/models';
+import { ConfortThermique, TableCommuneModel } from '@/lib/postgres/models';
 import { GetConfortThermique } from "@/lib/queries/databases/inconfortThermique";
 import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
-import { GetCommunes } from "@/lib/queries/postgis/cartographie";
+import { GetCommunesContours, GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useLayoutEffect, useState } from 'react';
@@ -21,11 +21,13 @@ import { DateConstructionResidences } from '../../indicateurs/confortThermique/4
 import { LCZ } from '../../indicateurs/confortThermique/6-LCZ';
 
 const DonneesConfortThermique = ({
-  carteCommunes,
+  coordonneesCommunes,
+  contoursCommunes,
   confortThermique,
   tableCommune
 }: {
-  carteCommunes: CarteCommunes[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
+  contoursCommunes: { geometry: string } | null;
   confortThermique: ConfortThermique[];
   tableCommune: TableCommuneModel[];
 }) => {
@@ -35,7 +37,7 @@ const DonneesConfortThermique = ({
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const [data, setData] = useState({ carteCommunes, confortThermique, tableCommune });
+  const [data, setData] = useState({ coordonneesCommunes, contoursCommunes, confortThermique, tableCommune });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
   const ongletsMenu = sommaireThematiques[thematique];
@@ -47,31 +49,21 @@ const DonneesConfortThermique = ({
     }
     setIsLoading(true);
     void (async () => {
-      const [newCarteCommunes, newConfortThermique, newTableCommune] = await Promise.all([
-        GetCommunes(code, libelle, type),
+      const [newCoordonneesCommunes, newContoursCommunes, newConfortThermique, newTableCommune] = await Promise.all([
+        GetCommunesCoordinates(code, libelle, type),
+        GetCommunesContours(code, libelle, type),
         GetConfortThermique(code, libelle, type),
         GetTablecommune(code, libelle, type)
       ]);
       setData({
-        carteCommunes: newCarteCommunes,
+        coordonneesCommunes: newCoordonneesCommunes,
+        contoursCommunes: newContoursCommunes,
         confortThermique: newConfortThermique,
         tableCommune: newTableCommune
       });
       setIsLoading(false);
     })();
   }, [libelle]);
-
-  // Refetch({
-  //   isFirstRender,
-  //   setIsFirstRender,
-  //   fetchFunctions: [
-  //     () => GetCommunes(code, libelle, type),
-  //     () => GetInconfortThermique(code, libelle, type)
-  //   ],
-  //   setData,
-  //   setIsLoading,
-  //   param: libelle
-  // })
 
   return (
     isLoading ? <LoaderText text='Mise à jour des données' /> :
@@ -119,7 +111,11 @@ const DonneesConfortThermique = ({
                 Part des ménages en situation de précarité énergétique liée au logement
               </H3>
             </div>
-            {data.carteCommunes ? <PrecariteEnergetique carteCommunes={data.carteCommunes} /> : <LoaderText text='Chargement de la cartographie' />}
+            <PrecariteEnergetique
+              confortThermique={data.confortThermique}
+              contoursCommunes={data.contoursCommunes}
+              coordonneesCommunes={data.coordonneesCommunes}
+            />
           </div>
 
           {/* Emplois en extérieur */}
@@ -175,7 +171,7 @@ const DonneesConfortThermique = ({
                 Cartographie des zones climatiques locales (LCZ)
               </H3>
             </div>
-            <LCZ carteCommunes={data.carteCommunes} tableCommune={data.tableCommune} />
+            <LCZ coordonneesCommunes={data.coordonneesCommunes} tableCommune={data.tableCommune} />
           </div>
         </section>
         <div className={styles.redirectionEtape2Wrapper} >

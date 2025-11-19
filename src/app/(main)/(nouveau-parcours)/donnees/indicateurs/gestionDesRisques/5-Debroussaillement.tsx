@@ -10,8 +10,10 @@ import styles from '../../explorerDonnees.module.scss';
 
 export const Debroussaillement = ({
   carteCommunes,
+  coordonneesCommunes
 }: {
   carteCommunes: CarteCommunes[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
 }) => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
@@ -41,7 +43,7 @@ export const Debroussaillement = ({
                   mapContainer={mapContainer}
                 /> */}
                 <MapDebroussaillementTiles
-                  carteContours={carteContours}
+                  coordonneesCommunes={coordonneesCommunes}
                   mapRef={mapRef}
                   mapContainer={mapContainer}
                 />

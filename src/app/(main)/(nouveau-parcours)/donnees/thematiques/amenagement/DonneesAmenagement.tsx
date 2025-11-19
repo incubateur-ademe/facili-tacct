@@ -2,9 +2,9 @@
 import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { CarteCommunes, ConsommationNAF } from "@/lib/postgres/models";
+import { ConsommationNAF } from "@/lib/postgres/models";
 import { GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
-import { GetCommunes } from "@/lib/queries/postgis/cartographie";
+import { GetCommunes, GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
 import { useSearchParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
@@ -13,12 +13,12 @@ import { ConsommationEspacesNAFAmenagement } from '../../indicateurs/amenagement
 import { LCZ } from '../../indicateurs/amenagement/2-LCZ';
 
 interface Props {
-  carteCommunes: CarteCommunes[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   consommationNAF: ConsommationNAF[];
 }
 
 export const DonneesAmenagement = ({
-  carteCommunes,
+  coordonneesCommunes,
   consommationNAF,
 }: Props) => {
   const searchParams = useSearchParams();
@@ -28,7 +28,7 @@ export const DonneesAmenagement = ({
   const code = searchParams.get('code')!;
   const ongletsMenu = sommaireThematiques[thematique];
   const [data, setData] = useState({
-    carteCommunes,
+    coordonneesCommunes,
     consommationNAF,
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -41,11 +41,12 @@ export const DonneesAmenagement = ({
     }
     setIsLoading(true);
     void (async () => {
-      const [newCarteCommunes, newConsommationNAF] = await Promise.all([
+      const [newCarteCommunes, newCoordonneesCommunes, newConsommationNAF] = await Promise.all([
         GetCommunes(code, libelle, type),
+        GetCommunesCoordinates(code, libelle, type),
         GetConsommationNAF(code, libelle, type),
       ]);
-      setData({ carteCommunes: newCarteCommunes, consommationNAF: newConsommationNAF });
+      setData({ coordonneesCommunes: newCoordonneesCommunes, consommationNAF: newConsommationNAF });
       setIsLoading(false);
     })();
   }, [libelle]);
@@ -95,7 +96,7 @@ export const DonneesAmenagement = ({
                 Cartographie des zones climatiques locales (LCZ)
               </H3>
             </div>
-            <LCZ carteCommunes={data.carteCommunes} />
+            <LCZ coordonneesCommunes={data.coordonneesCommunes} />
           </div>
         </section>
       </div>

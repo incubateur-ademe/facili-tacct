@@ -2,11 +2,11 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/ExportPng';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
-import MapLCZNouveauParcours from '@/components/maps/mapLCZNouveauParcours';
+import { MapLCZ } from '@/components/maps/mapLCZ';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from "@/design-system/base/Textes";
-import { CarteCommunes, TableCommuneModel } from "@/lib/postgres/models";
+import { TableCommuneModel } from "@/lib/postgres/models";
 import { LCZCeremaText1, LCZText, LCZText2 } from '@/lib/staticTexts';
 import { LCZTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from "next/navigation";
@@ -14,10 +14,10 @@ import { useEffect, useRef, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 
 export const LCZ = ({
-  carteCommunes,
+  coordonneesCommunes,
   tableCommune
 }: {
-  carteCommunes: CarteCommunes[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   tableCommune: TableCommuneModel[];
 }) => {
   const searchParams = useSearchParams();
@@ -40,7 +40,7 @@ export const LCZ = ({
     if (couvertureLcz.every(el => el.couverture_lcz === null)) {
       setIsLczCovered(false);
       setIsLoading(false);
-    } else { 
+    } else {
       setIsLczCovered(true);
       setIsLoading(false);
     }
@@ -56,10 +56,10 @@ export const LCZ = ({
         </ReadMoreFade>
         <div className={styles.mapWrapper}>
           {
-            carteCommunes ? (
+            coordonneesCommunes ? (
               <div ref={exportPNGRef}>
-                <MapLCZNouveauParcours
-                  carteCommunes={carteCommunes}
+                <MapLCZ
+                  coordonneesCommunes={coordonneesCommunes}
                   isLoading={isLoading}
                   isLczCovered={isLczCovered}
                   mapRef={mapRef}

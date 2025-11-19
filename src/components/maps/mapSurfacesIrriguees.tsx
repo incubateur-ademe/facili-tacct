@@ -1,45 +1,37 @@
 
 import couleurs from '@/design-system/couleurs';
-import { CommunesIndicateursDto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
-import maplibregl from 'maplibre-gl';
+import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef } from 'react';
-import { BoundsFromCollection } from './components/boundsFromCollection';
 import { SurfacesIrrigueesTooltip } from './components/tooltips';
 
 export const MapSurfacesIrriguees = (props: {
-  carteCommunes: CommunesIndicateursDto[];
+  communesCodes: string[];
+  surfacesIrriguees: { code: string; value: number; name: string }[];
+  boundingBox: number[][] | null;
 }) => {
-  const { carteCommunes } = props;
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
+  const { communesCodes, surfacesIrriguees, boundingBox } = props;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const hoveredFeatureRef = useRef<string | null>(null);
 
-  const carteCommunesFiltered = useMemo(() => (
-    type === "ept"
-      ? carteCommunes.filter(el => el.properties.ept === libelle)
-      : carteCommunes
-  ), [carteCommunes, type, libelle]);
-  const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
+  const surfacesIrrigueesByCommune = useMemo(() => {
+    const map = new Map<string, number>();
+    surfacesIrriguees.forEach(item => {
+      map.set(item.code, item.value);
+    });
+    return map;
+  }, [surfacesIrriguees]);
 
-  const geoJsonData = useMemo(() => {
-    return {
-      type: "FeatureCollection" as "FeatureCollection",
-      features: carteCommunesFiltered.map(commune => ({
-        type: "Feature" as "Feature",
-        geometry: commune.geometry as import('geojson').Geometry,
-        properties: commune.properties,
-        id: commune.properties.code_geographique
-      }))
-    };
-  }, [carteCommunesFiltered]);
+  const nameByCommune = useMemo(() => {
+    const map = new Map<string, string>();
+    surfacesIrriguees.forEach(item => {
+      map.set(item.code, item.name);
+    });
+    return map;
+  }, [surfacesIrriguees]);
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -53,14 +45,14 @@ export const MapSurfacesIrriguees = (props: {
 
     map.on('load', () => {
       if (
-        enveloppe &&
-        Array.isArray(enveloppe) &&
-        enveloppe.length > 1 &&
-        Array.isArray(enveloppe[0]) &&
-        enveloppe[0].length === 2
+        boundingBox &&
+        Array.isArray(boundingBox) &&
+        boundingBox.length > 1 &&
+        Array.isArray(boundingBox[0]) &&
+        boundingBox[0].length === 2
       ) {
-        const lons = enveloppe.map((coord: number[]) => coord[1]);
-        const lats = enveloppe.map((coord: number[]) => coord[0]);
+        const lons = boundingBox.map((coord: number[]) => coord[0]);
+        const lats = boundingBox.map((coord: number[]) => coord[1]);
         const minLng = Math.min(...lons);
         const maxLng = Math.max(...lons);
         const minLat = Math.min(...lats);
@@ -71,46 +63,60 @@ export const MapSurfacesIrriguees = (props: {
         );
       }
 
-      map.addSource('surfaces-irriguees-communes', {
-        type: 'geojson',
-        data: geoJsonData,
-        generateId: false
+      // Add vector tiles source
+      map.addSource('communes-tiles', {
+        type: 'vector',
+        tiles: ['https://facili-tacct-dev.s3.fr-par.scw.cloud/app/communes/tiles/{z}/{x}/{y}.pbf'],
+        minzoom: 4,
+        maxzoom: 13,
+        promoteId: 'code_geographique'
       });
+
+      // Créer l'expression de couleur basée sur les valeurs
+      const colorPairs: (ExpressionSpecification | string)[] = [];
+      surfacesIrriguees.forEach(item => {
+        const value = item.value;
+        let color: string;
+        // Gérer les NaN et valeurs manquantes
+        if (value === null || value === undefined || isNaN(value)) {
+          color = 'white';
+        } else if (value > 60) {
+          color = couleurs.graphiques.bleu[5];
+        } else if (value > 40) {
+          color = couleurs.graphiques.bleu[1];
+        } else if (value > 20) {
+          color = couleurs.graphiques.bleu[2];
+        } else if (value >= 0.01) {
+          color = couleurs.graphiques.bleu[3];
+        } else {
+          color = couleurs.graphiques.bleu[4];
+        }
+        colorPairs.push(
+          ['==', ['get', 'code_geographique'], item.code],
+          color
+        );
+      });
+      const colorExpression: ExpressionSpecification = ['case', ...colorPairs, 'white'] as ExpressionSpecification;
 
       map.addLayer({
         id: 'surfaces-irriguees-fill',
         type: 'fill',
-        source: 'surfaces-irriguees-communes',
+        source: 'communes-tiles',
+        'source-layer': 'contour_communes',
+        filter: ['in', ['get', 'code_geographique'], ['literal', communesCodes]],
         paint: {
-          'fill-color': [
-            'let',
-            'value',
-            ['coalesce', ['get', 'surfacesIrriguees'], -1], // Remplace les nan par -1
-            ['case',
-              ['==', ['var', 'value'], -1],
-              'white',
-              ['step',
-                ['var', 'value'],
-                couleurs.graphiques.bleu[4],
-                0.01,
-                couleurs.graphiques.bleu[3],
-                20,
-                couleurs.graphiques.bleu[2],
-                40,
-                couleurs.graphiques.bleu[1],
-                60,
-                couleurs.graphiques.bleu[5],
-              ]
-            ]
-          ],
+          'fill-color': colorExpression,
           'fill-opacity': 1,
         }
       });
 
+      // Add stroke layer
       map.addLayer({
         id: 'surfaces-irriguees-stroke',
         type: 'line',
-        source: 'surfaces-irriguees-communes',
+        source: 'communes-tiles',
+        'source-layer': 'contour_communes',
+        filter: ['in', ['get', 'code_geographique'], ['literal', communesCodes]],
         paint: {
           'line-color': [
             'case',
@@ -131,23 +137,27 @@ export const MapSurfacesIrriguees = (props: {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const properties = feature.properties;
+          const code = properties?.code_geographique;
+
           if (hoveredFeatureRef.current) {
             map.setFeatureState(
-              { source: 'surfaces-irriguees-communes', id: hoveredFeatureRef.current },
+              { source: 'communes-tiles', sourceLayer: 'contour_communes', id: hoveredFeatureRef.current },
               { hover: false }
             );
           }
-          const newHoveredFeature = properties?.code_geographique;
+          const newHoveredFeature = code;
           hoveredFeatureRef.current = newHoveredFeature;
           if (newHoveredFeature) {
             map.setFeatureState(
-              { source: 'surfaces-irriguees-communes', id: newHoveredFeature },
+              { source: 'communes-tiles', sourceLayer: 'contour_communes', id: newHoveredFeature },
               { hover: true }
             );
           }
-          const communeName = properties?.libelle_geographique;
-          const surfacesIrriguees = properties?.surfacesIrriguees;
-          const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrriguees);
+
+          const communeName = nameByCommune.get(code) || properties?.libelle_geographique || 'Commune inconnue';
+          const surfacesIrrigueesValue = surfacesIrrigueesByCommune.get(code) ?? 0;
+          const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrrigueesValue);
+
           if (popupRef.current) {
             popupRef.current.remove();
           }
@@ -170,7 +180,7 @@ export const MapSurfacesIrriguees = (props: {
       map.on('mouseleave', 'surfaces-irriguees-fill', () => {
         if (hoveredFeatureRef.current) {
           map.setFeatureState(
-            { source: 'surfaces-irriguees-communes', id: hoveredFeatureRef.current },
+            { source: 'communes-tiles', sourceLayer: 'contour_communes', id: hoveredFeatureRef.current },
             { hover: false }
           );
         }
@@ -185,28 +195,32 @@ export const MapSurfacesIrriguees = (props: {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const properties = feature.properties;
-          const newHoveredFeature = properties?.code_geographique;
+          const code = properties?.code_geographique;
+          const newHoveredFeature = code;
+
           const containerHeight = mapContainer.current?.clientHeight || 500;
           const mouseY = e.point.y;
           const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';
+
           if (hoveredFeatureRef.current !== newHoveredFeature) {
             if (hoveredFeatureRef.current) {
               map.setFeatureState(
-                { source: 'surfaces-irriguees-communes', id: hoveredFeatureRef.current },
+                { source: 'communes-tiles', sourceLayer: 'contour_communes', id: hoveredFeatureRef.current },
                 { hover: false }
               );
             }
             hoveredFeatureRef.current = newHoveredFeature;
             if (newHoveredFeature) {
               map.setFeatureState(
-                { source: 'surfaces-irriguees-communes', id: newHoveredFeature },
+                { source: 'communes-tiles', sourceLayer: 'contour_communes', id: newHoveredFeature },
                 { hover: true }
               );
             }
-            // Tooltip content
-            const communeName = properties?.libelle_geographique;
-            const surfacesIrriguees = properties?.surfacesIrriguees;
-            const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrriguees);
+
+            const communeName = nameByCommune.get(code) || properties?.libelle_geographique || 'Commune inconnue';
+            const surfacesIrrigueesValue = surfacesIrrigueesByCommune.get(code) ?? 0;
+            const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrrigueesValue);
+
             if (popupRef.current) popupRef.current.remove();
             popupRef.current = new maplibregl.Popup({
               closeButton: false,
@@ -222,9 +236,9 @@ export const MapSurfacesIrriguees = (props: {
             popupRef.current.setLngLat(e.lngLat);
             const currentAnchor = popupRef.current.getElement()?.getAttribute('class')?.includes('anchor-top') ? 'top' : 'bottom';
             if (currentAnchor !== placement) {
-              const communeName = properties?.libelle_geographique;
-              const surfacesIrriguees = properties?.surfacesIrriguees;
-              const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrriguees);
+              const communeName = nameByCommune.get(code) || properties?.libelle_geographique || 'Commune inconnue';
+              const surfacesIrrigueesValue = surfacesIrrigueesByCommune.get(code) ?? 0;
+              const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrrigueesValue);
               popupRef.current.remove();
               popupRef.current = new maplibregl.Popup({
                 closeButton: false,
@@ -258,7 +272,7 @@ export const MapSurfacesIrriguees = (props: {
         mapRef.current = null;
       }
     };
-  }, [geoJsonData, enveloppe]);
+  }, [communesCodes, surfacesIrrigueesByCommune, nameByCommune, boundingBox, surfacesIrriguees]);
 
   return (
     <>
