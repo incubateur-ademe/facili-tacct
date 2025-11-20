@@ -4,7 +4,7 @@ import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { ConsommationNAF } from "@/lib/postgres/models";
 import { GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
-import { GetCommunes, GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
+import { GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
 import { useSearchParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
@@ -41,8 +41,7 @@ export const DonneesAmenagement = ({
     }
     setIsLoading(true);
     void (async () => {
-      const [newCarteCommunes, newCoordonneesCommunes, newConsommationNAF] = await Promise.all([
-        GetCommunes(code, libelle, type),
+      const [newCoordonneesCommunes, newConsommationNAF] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
         GetConsommationNAF(code, libelle, type),
       ]);

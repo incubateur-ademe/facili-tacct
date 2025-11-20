@@ -24,6 +24,8 @@ type Props = {
   setDatavizTab: (value: string) => void;
   mapRef: RefObject<maplibregl.Map | null>;
   mapContainer: RefObject<HTMLDivElement | null>;
+  exportMapRef: RefObject<maplibregl.Map | null>;
+  exportMapContainer: RefObject<HTMLDivElement | null>;
 };
 
 const isRGAdb = (obj: unknown): obj is RGAdb => {
@@ -132,7 +134,9 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
     datavizTab,
     setDatavizTab,
     mapRef,
-    mapContainer
+    mapContainer,
+    exportMapRef,
+    exportMapContainer
   } = props;
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
@@ -284,8 +288,8 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
       {/* Génère une map cachée pour l'export */}
       <MapRGAExport
         coordonneesCommunes={coordonneesCommunes}
-        mapRef={mapRef}
-        mapContainer={mapContainer}
+        exportMapRef={exportMapRef}
+        exportMapContainer={exportMapContainer}
         style={{
           position: 'absolute',
           top: 0,
