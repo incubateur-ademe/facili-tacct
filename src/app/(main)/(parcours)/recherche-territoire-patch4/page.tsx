@@ -1,11 +1,12 @@
 "use client";
 import { BarreDeRecherche } from "@/components/searchbar/BarreDeRecherche";
-import { handleRechercheRedirection } from "@/components/searchbar/fonctions";
+import { getLastTerritory, handleRechercheRedirection } from "@/components/searchbar/fonctions";
 import { patch4ActiveRadioOptions, patch4DisabledRadioOptions } from "@/components/searchbar/radioButtons";
+import { Loader } from "@/components/ui/loader";
 import { H1 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const RechercherSonTerritoire = () => {
   const router = useRouter();
@@ -14,6 +15,22 @@ const RechercherSonTerritoire = () => {
   const [typeTerritoire, setTypeTerritoire] = useState<
     'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
   >('epci');
+  const [isChecking, setIsChecking] = useState(true);
+
+  useEffect(() => {
+    const lastTerritory = getLastTerritory();
+    if (lastTerritory?.code && lastTerritory?.libelle && lastTerritory?.type) {
+      if (lastTerritory.type === 'epci' || lastTerritory.type === 'ept' || lastTerritory.type === 'commune') {
+        router.replace(
+          `/patch4c?code=${lastTerritory.code}&libelle=${lastTerritory.libelle}&type=${lastTerritory.type}`
+        );
+      } else {
+        setIsChecking(false);
+      }
+    } else {
+      setIsChecking(false);
+    }
+  }, [router]);
   const handleRechercher = () => handleRechercheRedirection({
     searchCode,
     searchLibelle,
@@ -26,6 +43,10 @@ const RechercherSonTerritoire = () => {
     setSearchLibelle('');
   };
   const radioButtonsOptions = [patch4ActiveRadioOptions(typeTerritoire, handleRadioChange), patch4DisabledRadioOptions(typeTerritoire)];
+
+  if (isChecking) {
+    return <div style={{ display: "flex", justifyContent: "center" }}><Loader /></div>;
+  }
 
   return (
     <NewContainer size="md">
