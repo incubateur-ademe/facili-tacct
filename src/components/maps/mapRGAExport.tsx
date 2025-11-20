@@ -11,29 +11,29 @@ import styles from './maps.module.scss';
 
 export const MapRGAExport = (props: {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
-  mapRef: RefObject<maplibregl.Map | null>;
-  mapContainer: RefObject<HTMLDivElement | null>;
+  exportMapRef: RefObject<maplibregl.Map | null>;
+  exportMapContainer: RefObject<HTMLDivElement | null>;
   style?: React.CSSProperties;
 }) => {
-  const { coordonneesCommunes, mapRef, mapContainer, style } = props;
+  const { coordonneesCommunes, exportMapRef, exportMapContainer, style } = props;
 
   useEffect(() => {
-    if (!mapContainer.current || !coordonneesCommunes) return;
+    if (!exportMapContainer.current || !coordonneesCommunes) return;
 
     const map = new maplibregl.Map({
-      container: mapContainer.current,
+      container: exportMapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
     });
-    mapRef.current = map;
+    exportMapRef.current = map;
 
     map.on('load', () => {
-      // Fit bounds avec coordonneesCommunes
+      // Fit bounds avec coordonneesCommunes (sans animation pour l'export)
       if (coordonneesCommunes?.bbox) {
         map.fitBounds(
           [[coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
           [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]],
-          { padding: 20 }
+          { padding: 20, duration: 0 }
         );
       }
 
@@ -84,21 +84,13 @@ export const MapRGAExport = (props: {
           'line-width': 1
         }
       });
-
-      map.addControl(new maplibregl.NavigationControl(), 'top-right');
     });
 
-    return () => {
-      if (mapRef.current) {
-        mapRef.current.remove();
-        mapRef.current = null;
-      }
-    };
-  }, [coordonneesCommunes]);
+  }, []);
 
   return (
     <div style={{ position: 'relative', ...style }}>
-      <div ref={mapContainer} style={{ height: "500px", width: "100%" }} />
+      <div ref={exportMapContainer} style={{ height: "500px", width: "100%" }} />
       <div className="exportPNGWrapper">
         <div
           className={styles.legendRGA}

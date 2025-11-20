@@ -34,6 +34,8 @@ export const RetraitGonflementDesArgiles = ({
   const libelle = searchParams.get('libelle')!;
   const mapRef = useRef<maplibregl.Map | null>(null);
   const mapContainer = useRef<HTMLDivElement>(null);
+  const exportMapRef = useRef<maplibregl.Map | null>(null);
+  const exportMapContainer = useRef<HTMLDivElement>(null);
   const [datavizTab, setDatavizTab] = useState<string>((type === "commune" || type === "epci") ? 'Comparaison' : "Répartition");
   const rgaFilteredByTerritory = type === "commune" ?
     rga.filter(item => item.code_geographique === code) :
@@ -99,6 +101,8 @@ export const RetraitGonflementDesArgiles = ({
                 setDatavizTab={setDatavizTab}
                 mapRef={mapRef}
                 mapContainer={mapContainer}
+                exportMapRef={exportMapRef}
+                exportMapContainer={exportMapContainer}
               /> : (
                 <div className={styles.dataNotFoundForGraph}>
                   <DataNotFoundForGraph image={DataNotFound} />
@@ -118,8 +122,8 @@ export const RetraitGonflementDesArgiles = ({
               anchor='Retrait-gonflement des argiles'
               handleExport={async () => {
                 const pngBlob = await generateMapPngBlob({
-                  mapRef,
-                  mapContainer,
+                  mapRef: exportMapRef,
+                  mapContainer: exportMapContainer,
                   documentDiv: ".exportPNGWrapper",
                 });
                 if (!pngBlob) {

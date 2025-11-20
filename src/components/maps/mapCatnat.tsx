@@ -306,7 +306,7 @@ export const MapCatnat = (props: {
         mapRef.current = null;
       }
     };
-  }, [coordonneesCommunes, catnatByCommune, nameByCommune, createColorExpression]);
+  }, [coordonneesCommunes]);
 
   // Mettre à jour les couleurs quand typeRisqueValue change
   useEffect(() => {

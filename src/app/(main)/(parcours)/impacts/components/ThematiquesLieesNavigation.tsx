@@ -1,6 +1,5 @@
 'use client';
 
-import { nomThematiques } from '@/app/(main)/(nouveau-parcours)/thematiques/constantes/categories';
 import roueImage from '@/assets/images/roue_systemique_shape.png';
 import { HtmlTooltip } from '@/components/utils/Tooltips';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
@@ -9,6 +8,7 @@ import { handleRedirection, handleRedirectionThematique } from '@/hooks/Redirect
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import { nomThematiques } from '../../thematiques/constantes/categories';
 import styles from '../impacts.module.scss';
 
 interface ThematiquesLieesNavigationProps {

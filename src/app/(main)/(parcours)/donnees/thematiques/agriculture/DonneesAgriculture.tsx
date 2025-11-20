@@ -60,7 +60,13 @@ export const DonneesAgriculture = ({
     }
     setIsLoading(true);
     void (async () => {
-      const [newCoordonneesCommunes, newContoursCommunes, newSurfacesAgricoles, newAgricultureBio, newTableCommune] = await Promise.all([
+      const [
+        newCoordonneesCommunes, 
+        newContoursCommunes, 
+        newSurfacesAgricoles, 
+        newAgricultureBio, 
+        newTableCommune
+      ] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
         GetCommunesContours(code, libelle, type),
         GetSurfacesAgricoles(code, libelle, type),
@@ -105,7 +111,11 @@ export const DonneesAgriculture = ({
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
           {/* Part des chefs d’exploitation séniors */}
-          <div id="Part des chefs d’exploitation séniors" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+          <div 
+            id="Part des chefs d’exploitation séniors"
+            className={styles.indicateurWrapper}
+            style={{ borderBottom: '1px solid var(--gris-medium)' }}
+          >
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Part des chefs d’exploitation (ou coexploitants) de plus de 55 ans

@@ -1,6 +1,6 @@
 'use client';
 
-import { sommaireImpacts, sommaireThematiques } from '@/app/(main)/(nouveau-parcours)/thematiques/constantes/textesThematiques';
+import { sommaireImpacts, sommaireThematiques } from '@/app/(main)/(parcours)/thematiques/constantes/textesThematiques';
 import { ErrorDisplay } from '@/app/ErrorDisplay';
 import DoubleChevronIcon from '@/assets/icons/double_chevron_icon_black.svg';
 import retourIcon from '@/assets/icons/retour_icon_black.svg';
