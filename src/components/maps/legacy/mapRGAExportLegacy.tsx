@@ -7,8 +7,8 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect } from 'react';
-import { RgaMapLegend } from './legends/datavizLegends';
-import { LegendCompColor } from './legends/legendComp';
+import { RgaMapLegend } from '../legends/datavizLegends';
+import { LegendCompColor } from '../legends/legendComp';
 import styles from './maps.module.scss';
 
 const RGAMapExport = (props: {

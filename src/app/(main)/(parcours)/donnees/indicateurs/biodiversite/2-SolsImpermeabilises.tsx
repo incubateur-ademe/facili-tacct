@@ -6,7 +6,7 @@ import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { espacesNAFDatavizLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import { MapEspacesNafTiles } from '@/components/maps/mapEspacesNAFTiles';
+import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -68,7 +68,7 @@ export const SolsImpermeabilises = (props: {
           {
             consommationNAF && coordonneesCommunes ? (
               <>
-                <MapEspacesNafTiles
+                <MapEspacesNaf
                   consommationNAF={consommationNAF}
                   communesCodes={coordonneesCommunes?.codes ?? []}
                   boundingBox={

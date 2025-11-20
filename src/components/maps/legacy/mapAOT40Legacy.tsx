@@ -13,7 +13,7 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
-import { AOT40Tooltip } from './components/tooltips';
+import { AOT40Tooltip } from '../components/tooltips';
 import './maps.css';
 
 const color = (valeur: number) => {

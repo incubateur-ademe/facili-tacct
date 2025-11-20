@@ -10,10 +10,10 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef } from 'react';
-import { GraphDataNotFound } from '../graph-data-not-found';
-import { BoundsFromCollection } from './components/boundsFromCollection';
-import { CatnatTooltip } from './components/tooltips';
-import { colorsCatnat } from './legends/legendCatnat';
+import { GraphDataNotFound } from '../../graph-data-not-found';
+import { BoundsFromCollection } from '../components/boundsFromCollection';
+import { CatnatTooltip } from '../components/tooltips';
+import { colorsCatnat } from '../legends/legendCatnat';
 
 const getColor = (d: number, max: number, typeCatnat: string) => {
   const colorPalette = colorsCatnat[typeCatnat];

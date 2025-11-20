@@ -1,102 +1,116 @@
 
-import { RetardScroll } from '@/hooks/RetardScroll';
-import { ConsommationNAF } from '@/lib/postgres/models';
+import couleurs from '@/design-system/couleurs';
+import { CommunesIndicateursDto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
-import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
+import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { RefObject, useEffect, useRef } from 'react';
-import { EspacesNafTooltip } from './components/tooltips';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useMemo, useRef } from 'react';
+import { BoundsFromCollection } from '../components/boundsFromCollection';
+import { SurfacesIrrigueesTooltip } from '../components/tooltips';
 
-const getColor = (d: number) => {
-  return d > 200000
-    ? '#680000'
-    : d > 100000
-      ? '#B5000E'
-      : d > 50000
-        ? '#E8323B'
-        : d > 20000
-          ? '#FF9699'
-          : d > 10000
-            ? '#FFECEE'
-            : '#D8EFFA';
-};
-
-export const MapEspacesNafTiles = (props: {
-  consommationNAF: ConsommationNAF[];
-  communesCodes: string[];
-  boundingBox?: [[number, number], [number, number]];
+export const MapSurfacesIrriguees = (props: {
+  carteCommunes: CommunesIndicateursDto[];
 }) => {
-  const { consommationNAF, communesCodes, boundingBox } = props;
+  const { carteCommunes } = props;
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const hoveredFeatureRef = useRef<string | null>(null);
 
-  // Créer une Map des valeurs NAF par code commune
-  const nafByCommune = new Map(
-    consommationNAF.map(item => [item.code_geographique, item.naf09art23 ?? 0])
-  );
+  const carteCommunesFiltered = useMemo(() => (
+    type === "ept"
+      ? carteCommunes.filter(el => el.properties.ept === libelle)
+      : carteCommunes
+  ), [carteCommunes, type, libelle]);
+  const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
 
-  // Créer une Map des noms de communes par code
-  const nameByCommune = new Map(
-    consommationNAF.map(item => [item.code_geographique, item.libelle_geographique])
-  );
+  const geoJsonData = useMemo(() => {
+    return {
+      type: "FeatureCollection" as "FeatureCollection",
+      features: carteCommunesFiltered.map(commune => ({
+        type: "Feature" as "Feature",
+        geometry: commune.geometry as import('geojson').Geometry,
+        properties: commune.properties,
+        id: commune.properties.code_geographique
+      }))
+    };
+  }, [carteCommunesFiltered]);
 
   useEffect(() => {
     if (!mapContainer.current) return;
+
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
     });
     mapRef.current = map;
-    // s'assure que le zoom au scroll est désactivé immédiatement pour éviter de capturer les défilements de page
-    try { map.scrollZoom.disable(); } catch (e) { /* noop */ }
 
     map.on('load', () => {
-      if (boundingBox) {
-        map.fitBounds(boundingBox, { padding: 20 });
+      if (
+        enveloppe &&
+        Array.isArray(enveloppe) &&
+        enveloppe.length > 1 &&
+        Array.isArray(enveloppe[0]) &&
+        enveloppe[0].length === 2
+      ) {
+        const lons = enveloppe.map((coord: number[]) => coord[1]);
+        const lats = enveloppe.map((coord: number[]) => coord[0]);
+        const minLng = Math.min(...lons);
+        const maxLng = Math.max(...lons);
+        const minLat = Math.min(...lats);
+        const maxLat = Math.max(...lats);
+        map.fitBounds(
+          [[minLng, minLat], [maxLng, maxLat]],
+          { padding: 20 },
+        );
       }
 
-      // Ajouter la source de tiles pour les communes
-      map.addSource('communes-tiles', {
-        type: 'vector',
-        tiles: ['https://facili-tacct-dev.s3.fr-par.scw.cloud/app/communes/tiles/{z}/{x}/{y}.pbf'],
-        minzoom: 4,
-        maxzoom: 13,
-        promoteId: 'code_geographique'
+      map.addSource('surfaces-irriguees-communes', {
+        type: 'geojson',
+        data: geoJsonData,
+        generateId: false
       });
-
-      // Créer l'expression de couleur basée sur les valeurs NAF
-      const colorPairs: (ExpressionSpecification | string)[] = [];
-      consommationNAF.forEach(item => {
-        const naf = item.naf09art23 ?? 0;
-        const color = getColor(naf);
-        colorPairs.push(
-          ['==', ['get', 'code_geographique'], item.code_geographique],
-          color
-        );
-      });
-      const colorExpression: ExpressionSpecification = ['case', ...colorPairs, '#D8EFFA'] as ExpressionSpecification;
 
       map.addLayer({
-        id: 'naf-fill',
+        id: 'surfaces-irriguees-fill',
         type: 'fill',
-        source: 'communes-tiles',
-        'source-layer': 'contour_communes',
-        filter: ['in', ['get', 'code_geographique'], ['literal', communesCodes]],
+        source: 'surfaces-irriguees-communes',
         paint: {
-          'fill-color': colorExpression,
-          'fill-opacity': 1
+          'fill-color': [
+            'let',
+            'value',
+            ['coalesce', ['get', 'surfacesIrriguees'], -1], // Remplace les nan par -1
+            ['case',
+              ['==', ['var', 'value'], -1],
+              'white',
+              ['step',
+                ['var', 'value'],
+                couleurs.graphiques.bleu[4],
+                0.01,
+                couleurs.graphiques.bleu[3],
+                20,
+                couleurs.graphiques.bleu[2],
+                40,
+                couleurs.graphiques.bleu[1],
+                60,
+                couleurs.graphiques.bleu[5],
+              ]
+            ]
+          ],
+          'fill-opacity': 1,
         }
       });
 
       map.addLayer({
-        id: 'naf-stroke',
+        id: 'surfaces-irriguees-stroke',
         type: 'line',
-        source: 'communes-tiles',
-        'source-layer': 'contour_communes',
-        filter: ['in', ['get', 'code_geographique'], ['literal', communesCodes]],
+        source: 'surfaces-irriguees-communes',
         paint: {
           'line-color': [
             'case',
@@ -113,13 +127,13 @@ export const MapEspacesNafTiles = (props: {
         }
       });
 
-      map.on('mouseenter', 'naf-fill', (e) => {
+      map.on('mouseenter', 'surfaces-irriguees-fill', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const properties = feature.properties;
           if (hoveredFeatureRef.current) {
             map.setFeatureState(
-              { source: 'communes-tiles', sourceLayer: 'contour_communes', id: hoveredFeatureRef.current },
+              { source: 'surfaces-irriguees-communes', id: hoveredFeatureRef.current },
               { hover: false }
             );
           }
@@ -127,13 +141,13 @@ export const MapEspacesNafTiles = (props: {
           hoveredFeatureRef.current = newHoveredFeature;
           if (newHoveredFeature) {
             map.setFeatureState(
-              { source: 'communes-tiles', sourceLayer: 'contour_communes', id: newHoveredFeature },
+              { source: 'surfaces-irriguees-communes', id: newHoveredFeature },
               { hover: true }
             );
           }
-          const communeName = nameByCommune.get(newHoveredFeature) ?? 'Commune inconnue';
-          const naf = nafByCommune.get(newHoveredFeature) ?? 0;
-          const tooltipContent = EspacesNafTooltip(communeName, naf);
+          const communeName = properties?.libelle_geographique;
+          const surfacesIrriguees = properties?.surfacesIrriguees;
+          const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrriguees);
           if (popupRef.current) {
             popupRef.current.remove();
           }
@@ -143,7 +157,7 @@ export const MapEspacesNafTiles = (props: {
           popupRef.current = new maplibregl.Popup({
             closeButton: false,
             closeOnClick: false,
-            className: 'naf-tooltip',
+            className: 'surfaces-irriguees-tooltip',
             anchor: placement,
             maxWidth: 'none'
           })
@@ -153,10 +167,10 @@ export const MapEspacesNafTiles = (props: {
         }
       });
 
-      map.on('mouseleave', 'naf-fill', () => {
+      map.on('mouseleave', 'surfaces-irriguees-fill', () => {
         if (hoveredFeatureRef.current) {
           map.setFeatureState(
-            { source: 'communes-tiles', sourceLayer: 'contour_communes', id: hoveredFeatureRef.current },
+            { source: 'surfaces-irriguees-communes', id: hoveredFeatureRef.current },
             { hover: false }
           );
         }
@@ -167,7 +181,7 @@ export const MapEspacesNafTiles = (props: {
         }
       });
 
-      map.on('mousemove', 'naf-fill', (e) => {
+      map.on('mousemove', 'surfaces-irriguees-fill', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const properties = feature.properties;
@@ -178,25 +192,26 @@ export const MapEspacesNafTiles = (props: {
           if (hoveredFeatureRef.current !== newHoveredFeature) {
             if (hoveredFeatureRef.current) {
               map.setFeatureState(
-                { source: 'communes-tiles', sourceLayer: 'contour_communes', id: hoveredFeatureRef.current },
+                { source: 'surfaces-irriguees-communes', id: hoveredFeatureRef.current },
                 { hover: false }
               );
             }
             hoveredFeatureRef.current = newHoveredFeature;
             if (newHoveredFeature) {
               map.setFeatureState(
-                { source: 'communes-tiles', sourceLayer: 'contour_communes', id: newHoveredFeature },
+                { source: 'surfaces-irriguees-communes', id: newHoveredFeature },
                 { hover: true }
               );
             }
-            const communeName = nameByCommune.get(newHoveredFeature) ?? 'Commune inconnue';
-            const naf = nafByCommune.get(newHoveredFeature) ?? 0;
-            const tooltipContent = EspacesNafTooltip(communeName, naf);
+            // Tooltip content
+            const communeName = properties?.libelle_geographique;
+            const surfacesIrriguees = properties?.surfacesIrriguees;
+            const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrriguees);
             if (popupRef.current) popupRef.current.remove();
             popupRef.current = new maplibregl.Popup({
               closeButton: false,
               closeOnClick: false,
-              className: 'naf-tooltip',
+              className: 'surfaces-irriguees-tooltip',
               anchor: placement,
               maxWidth: 'none'
             })
@@ -207,14 +222,14 @@ export const MapEspacesNafTiles = (props: {
             popupRef.current.setLngLat(e.lngLat);
             const currentAnchor = popupRef.current.getElement()?.getAttribute('class')?.includes('anchor-top') ? 'top' : 'bottom';
             if (currentAnchor !== placement) {
-              const communeName = nameByCommune.get(newHoveredFeature) ?? 'Commune inconnue';
-              const naf = nafByCommune.get(newHoveredFeature) ?? 0;
-              const tooltipContent = EspacesNafTooltip(communeName, naf);
+              const communeName = properties?.libelle_geographique;
+              const surfacesIrriguees = properties?.surfacesIrriguees;
+              const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrriguees);
               popupRef.current.remove();
               popupRef.current = new maplibregl.Popup({
                 closeButton: false,
                 closeOnClick: false,
-                className: 'naf-tooltip',
+                className: 'surfaces-irriguees-tooltip',
                 anchor: placement,
                 maxWidth: 'none'
               })
@@ -226,10 +241,11 @@ export const MapEspacesNafTiles = (props: {
         }
       });
 
-      map.on('mouseenter', 'naf-fill', () => {
+      // Change cursor on hover
+      map.on('mouseenter', 'surfaces-irriguees-fill', () => {
         map.getCanvas().style.cursor = 'pointer';
       });
-      map.on('mouseleave', 'naf-fill', () => {
+      map.on('mouseleave', 'surfaces-irriguees-fill', () => {
         map.getCanvas().style.cursor = '';
       });
 
@@ -242,10 +258,7 @@ export const MapEspacesNafTiles = (props: {
         mapRef.current = null;
       }
     };
-  }, [consommationNAF, communesCodes, boundingBox]);
-
-  // Ref local pour le RetardScroll
-  const localContainerRef = mapContainer as RefObject<HTMLElement>;
+  }, [geoJsonData, enveloppe]);
 
   return (
     <>
@@ -261,7 +274,6 @@ export const MapEspacesNafTiles = (props: {
       `}</style>
       <div style={{ position: 'relative' }}>
         <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
-        <RetardScroll mapRef={mapRef} containerRef={localContainerRef} delay={300} />
       </div>
     </>
   );

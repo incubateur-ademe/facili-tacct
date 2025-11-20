@@ -421,6 +421,20 @@ export const cards = {
       description:
         '22 indicateurs pour aider les chargés de mission climat à évaluer la résilience agricole et repérer les vulnérabilités au changement climatique.',
       link: '/ressources/articles/resilience-agricole-indicateurs-territoire'
+    },
+    {
+      id: 36,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        "Vous n'avez pas de diagnostic",
+        'Vous découvrez le diagnostic pour la 1ère fois'
+      ],
+      titre:
+        'Témoignages d’une projection sur le temps long avec l’exemple de Miquelon.',
+      tag: 'Article',
+      description:
+        'De la gestion du risque à l’adaptation ou Quand reculer devient avancer : témoignages d’une projection sur le temps long avec l’exemple de Miquelon.',
+      link: '/ressources/articles/strategie-adaptation-gestion-risque-relocalisation'
     }
   ],
   inconfortThermique: [
