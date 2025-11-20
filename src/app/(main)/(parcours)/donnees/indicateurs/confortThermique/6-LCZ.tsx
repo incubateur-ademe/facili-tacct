@@ -32,11 +32,6 @@ export const LCZ = ({
   const couvertureLcz = type === "commune" ? tableCommune.filter(el => el.code_geographique === code) : tableCommune
 
   useEffect(() => {
-    // void (async () => {
-    //   const temp = await GetLczCouverture(code, libelle, type);
-    //   setIsLczCovered(temp);
-    //   setIsLoading(false);
-    // })()
     if (couvertureLcz.every(el => el.couverture_lcz === null)) {
       setIsLczCovered(false);
       setIsLoading(false);

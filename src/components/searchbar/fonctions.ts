@@ -71,7 +71,7 @@ export const handleChangementTerritoireRedirection = ({
       libelle: searchLibelle,
       type: typeTerritoire === 'epci' && eptRegex.test(searchLibelle) ? 'ept' : typeTerritoire
     };
-    sessionStorage.setItem('lastTerritory', JSON.stringify(territoryData));
+    sessionStorage.setItem('dernierTerritoireRecherché', JSON.stringify(territoryData));
   }
 
   // if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
@@ -95,7 +95,7 @@ export const handleChangementTerritoireRedirection = ({
   }
 };
 
-export const getLastTerritory = (): { code: string; libelle: string; type: string } | null => {
+export const getLastTerritory = (): { code: string; libelle: string; type: string; thematique?: string } | null => {
   if (typeof window === 'undefined') return null;
   
   const stored = sessionStorage.getItem('dernierTerritoireRecherché');
@@ -105,6 +105,21 @@ export const getLastTerritory = (): { code: string; libelle: string; type: strin
     return JSON.parse(stored);
   } catch {
     return null;
+  }
+};
+
+export const saveThematique = (thematique: string) => {
+  if (typeof window === 'undefined') return;
+  
+  const stored = sessionStorage.getItem('dernierTerritoireRecherché');
+  if (stored) {
+    try {
+      const data = JSON.parse(stored);
+      data.thematique = thematique;
+      sessionStorage.setItem('dernierTerritoireRecherché', JSON.stringify(data));
+    } catch {
+      // Si erreur de parsing, on ne fait rien
+    }
   }
 };
 

@@ -1,4 +1,5 @@
 "use client";
+import { saveThematique } from "@/components/searchbar/fonctions";
 import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
 import { H2 } from "@/design-system/base/Textes";
 import useWindowDimensions from "@/hooks/windowDimensions";
@@ -95,6 +96,7 @@ const PanneauLateral = ({
                     posthog.capture('clic_explore_thematique', {
                       thematique: selectedItem
                     })
+                    saveThematique(thematique.link);
                     if (code) router.push(`/donnees?code=${code}&libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`);
                     else router.push(`/donnees?libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`);
                   }}

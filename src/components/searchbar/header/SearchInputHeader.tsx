@@ -106,7 +106,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
         if (input) (input as HTMLInputElement).focus();
         if (isTerritoryChanging) {
           setIsOpen(true);
-        } else setTimeout(() => setIsOpen(true), 500);
+        } else setTimeout(() => { setIsOpen(true); }, 500);
       }}
       onClose={() => setIsOpen(false)}
       onChange={(event, newValue: SearchInputOptions | null) => {

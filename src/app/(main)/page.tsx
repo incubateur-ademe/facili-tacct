@@ -1,7 +1,7 @@
 'use client';
 
-import { getLastTerritory } from '@/components/searchbar/fonctions';
 import Notice from '@codegouvfr/react-dsfr/Notice';
+import { useEffect } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { CommunauteBloc } from './(home)/CommunauteBloc';
 import { DiagnosticBloc } from './(home)/DiagnosticBloc';
@@ -13,7 +13,13 @@ import { VerbatimBloc } from './(home)/VerbatimBloc';
 
 const Home = () => {
   const { css } = useStyles();
-  const lastTerritory = getLastTerritory();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('dernierTerritoireRecherché');
+    }
+  }, []);
+
   return (
     <div>
       <Notice

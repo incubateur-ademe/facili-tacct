@@ -1,11 +1,13 @@
 'use client';
 
 import maisonIcon from '@/assets/icons/maison_icon_black.svg';
+import { getLastTerritory } from '@/components/searchbar/fonctions';
 import { handleRedirection } from '@/hooks/Redirections';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import Header from '@codegouvfr/react-dsfr/Header';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { Brand } from '../Brand';
 import HeaderRechercheTerrtoire from '../searchbar/header/HeaderRechercheTerrtoire';
@@ -13,24 +15,50 @@ import HeaderRechercheTerrtoire from '../searchbar/header/HeaderRechercheTerrtoi
 const HeaderComp = () => {
   const searchParams = useSearchParams();
   const params = usePathname();
-  const code = searchParams.get('code')!;
-  const libelle = searchParams.get('libelle')!;
-  const type = searchParams.get('type') as "epci" | "commune" | "departement" | "ept" | "petr" | "pnr";
+  const urlCode = searchParams.get('code');
+  const urlLibelle = searchParams.get('libelle');
+  const urlType = searchParams.get('type') as "epci" | "commune" | "departement" | "ept" | "petr" | "pnr";
+  
+  const [displayCode, setDisplayCode] = useState(urlCode);
+  const [displayLibelle, setDisplayLibelle] = useState(urlLibelle);
+  const [displayType, setDisplayType] = useState(urlType);
+
+  useEffect(() => {
+    if (!urlCode && !urlLibelle && !urlType) {
+      const lastTerritory = getLastTerritory();
+      if (lastTerritory) {
+        setDisplayCode(lastTerritory.code);
+        setDisplayLibelle(lastTerritory.libelle);
+        setDisplayType(lastTerritory.type as "epci" | "commune" | "departement" | "ept" | "petr" | "pnr");
+      }
+    } else {
+      setDisplayCode(urlCode);
+      setDisplayLibelle(urlLibelle);
+      setDisplayType(urlType);
+    }
+  }, [urlCode, urlLibelle, urlType]);
+
   const { css } = useStyles();
   const windowDimensions = useWindowDimensions();
+  const lastTerritory = getLastTerritory();
+
+  console.log("displayCode", displayCode);
+  console.log("displayLibelle", displayLibelle);
+  console.log("displayType", displayType);
 
   const redirectionPatch4 = handleRedirection({
-    searchCode: (type === "epci" || type === "commune") ? code : '',
-    searchLibelle: (type === "epci" || type === "commune") ? libelle : '',
-    typeTerritoire: type as 'epci' | 'commune',
-    page: (type === "epci" || type === "commune") ? 'patch4c' : 'recherche-territoire-patch4'
+    searchCode: displayCode ?? '',
+    searchLibelle: displayLibelle ?? '',
+    typeTerritoire: displayType as 'epci' | 'commune',
+    page: (displayType === "epci" || displayType === "commune") ? 'patch4c' : 'recherche-territoire-patch4'
   });
 
   const redirectionExplorerMesDonnees = handleRedirection({
-    searchCode: code || '',
-    searchLibelle: libelle || '',
-    typeTerritoire: type as 'epci' | 'commune',
-    page: type ? 'thematiques' : 'recherche-territoire'
+    searchCode: displayCode || '',
+    searchLibelle: displayLibelle || '',
+    typeTerritoire: displayType || '',
+    page: lastTerritory?.thematique ? 'donnees' : displayType ? 'thematiques' : 'recherche-territoire',
+    thematique: lastTerritory?.thematique
   });
 
   return (
@@ -64,8 +92,8 @@ const HeaderComp = () => {
         imgUrl: '/logo-ademe-tacct.png',
         orientation: 'horizontal'
       }}
-      quickAccessItems={windowDimensions.width && windowDimensions.width < 992 && type ? [] : [
-        <HeaderRechercheTerrtoire libelle={libelle} code={code} type={type} />
+      quickAccessItems={windowDimensions.width && windowDimensions.width < 992 && displayType ? [] : [
+        <HeaderRechercheTerrtoire libelle={displayLibelle ?? ''} code={displayCode ?? ''} type={displayType} />
       ]}
       navigation={params !== "/" ? [
         {
@@ -90,14 +118,6 @@ const HeaderComp = () => {
           },
           text: 'Explorer les données de mon territoire'
         },
-        // ...(type === "epci" || type === "commune" ? [{
-        //   isActive: params === '/patch4c' ? true : false,
-        //   linkProps: {
-        //     href: redirectionPatch4,
-        //     target: '_self'
-        //   },
-        //   text: 'Patch 4°C'
-        // }] : []),
         {
           isActive: [
             '/patch4c',
