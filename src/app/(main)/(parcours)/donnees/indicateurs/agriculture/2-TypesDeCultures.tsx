@@ -36,10 +36,21 @@ export const TypesDeCulture = (props: {
     categoriesData[0]
   );
   const sommeToutesSuperficies = Sum(surfacesAgricoles.map(
-    el => el.superficie_sau_cultures_permanentes
-      + el.superficie_sau_herbe
-      + el.superficie_sau_terres_arables
-      + el.superficie_sau_jardins
+    el => el.superficie_sau_terres_arables_cereales +
+      el.superficie_sau_terres_arables_oleagineux +
+      el.superficie_sau_terres_arables_fourrageres +
+      el.superficie_sau_terres_arables_tubercules +
+      el.superficie_sau_terres_arables_legumes_melons_fraises +
+      el.superficie_sau_terres_arables_fleurs +
+      el.superficie_sau_terres_arables_autres +
+      el.superficie_sau_cultures_permanentes_vigne +
+      el.superficie_sau_cultures_permanentes_fruits +
+      el.superficie_sau_cultures_permanentes_autres +
+      el.superficie_sau_herbe_prairies_productives +
+      el.superficie_sau_herbe_prairies_peu_productives +
+      el.superficie_sau_herbe_subventions +
+      el.superficie_sau_herbe_bois_patures +
+      el.superficie_sau_jardins
   ));
   const territoiresPartiellementCouverts = type === 'departement'
     ? multipleEpciBydepartementLibelle.find(dept => dept.departement === code)?.liste_epci_multi_dept

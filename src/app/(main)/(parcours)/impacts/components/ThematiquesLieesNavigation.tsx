@@ -110,6 +110,9 @@ export const ThematiquesLieesNavigation = ({
                 typeTerritoire: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
                 page: 'thematiques'
               })}
+              style={{
+                width: 'fit-content'
+              }}
             />
           </div>
         </div>
