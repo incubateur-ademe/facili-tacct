@@ -22,9 +22,9 @@ export const fetchGestionRisquesForExport = async (
   try {
     // Fetch all data in parallel
     const [feuxForetRaw, arretesCatnatRaw, rgaRaw] = await Promise.all([
-      prisma.feux_foret.findMany({ where: whereCondition }),
-      prisma.arretes_catnat.findMany({ where: whereCondition }),
-      prisma.rga.findMany({ where: whereCondition })
+      prisma.databases_v2_feux_foret.findMany({ where: whereCondition }),
+      prisma.databases_v2_arretes_catnat.findMany({ where: whereCondition }),
+      prisma.databases_v2_rga.findMany({ where: whereCondition })
     ]);
 
     const feuxForet = feuxForetRaw.map((item: IncendiesForet) => ({

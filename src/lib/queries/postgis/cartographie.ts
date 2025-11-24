@@ -1,10 +1,6 @@
 'use server';
 
-import {
-  CarteCommunes,
-  CLCTerritoires,
-  ErosionCotiere
-} from '@/lib/postgres/models';
+import { CarteCommunes, ErosionCotiere } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck } from '../columns';
@@ -304,88 +300,6 @@ export const GetCommunesCoordinates = async (
   })();
 
   return Promise.race([dbQuery, timeoutPromise]);
-};
-
-export const GetClcTerritoires = async (
-  libelle: string,
-  type: string,
-  code?: string
-): Promise<CLCTerritoires[] | undefined> => {
-  const timeoutPromise = new Promise<CLCTerritoires[] | undefined>((resolve) =>
-    setTimeout(() => {
-      resolve(undefined);
-    }, 10000)
-  );
-  const column = ColumnCodeCheck(type);
-  const dbQuery = (async () => {
-    try {
-      // Fast existence check
-      if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.clc_par_communes.findFirst({
-        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
-      });
-      if (!exists) return undefined;
-      else {
-        if (type === 'commune') {
-          const value = await prisma.$queryRaw<CLCTerritoires[]>`
-            SELECT 
-            legend, 
-            ST_AsText(ST_Centroid(geometry)) centroid,
-            ST_AsGeoJSON(geometry) geometry
-            FROM postgis."clc_par_communes" WHERE code_geographique=${code};`;
-          return value.length ? value : undefined;
-        } else if (type === 'ept' && eptRegex.test(libelle)) {
-          const value = await prisma.$queryRaw<CLCTerritoires[]>`
-            SELECT 
-            legend, 
-            ST_AsText(ST_Centroid(geometry)) centroid,
-            ST_AsGeoJSON(geometry) geometry
-            FROM postgis."clc_par_communes" WHERE ept IS NOT NULL AND ept=${libelle};`;
-          return value.length ? value : undefined;
-        } else if (type === 'epci' && !eptRegex.test(libelle)) {
-          const value = await prisma.$queryRaw<CLCTerritoires[]>`
-            SELECT 
-            legend, 
-            ST_AsText(ST_Centroid(geometry)) centroid,
-            ST_AsGeoJSON(geometry) geometry
-            FROM postgis."clc_par_communes" WHERE epci=${code};`;
-          return value.length ? value : undefined;
-        } else if (type === 'pnr') {
-          const value = await prisma.$queryRaw<CLCTerritoires[]>`
-            SELECT 
-            legend, 
-            ST_AsText(ST_Centroid(geometry)) centroid,
-            ST_AsGeoJSON(ST_SimplifyPreserveTopology(geometry, 0.0001)) geometry
-            FROM postgis."clc_par_communes" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
-          return value.length ? value : undefined;
-        } else if (type === 'petr') {
-          const value = await prisma.$queryRaw<CLCTerritoires[]>`
-            SELECT 
-            legend, 
-            ST_AsText(ST_Centroid(geometry)) centroid,
-            ST_AsGeoJSON(geometry) geometry
-            FROM postgis."clc_par_communes" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
-          return value.length ? value : undefined;
-        } else if (type === 'departement') {
-          const value = await prisma.$queryRaw<CLCTerritoires[]>`
-            SELECT 
-            legend, 
-            ST_AsText(ST_Centroid(geometry)) centroid,
-            ST_AsGeoJSON(ST_SimplifyPreserveTopology(geometry, 0.0001)) geometry
-            FROM postgis."clc_par_communes" WHERE departement=${code};`;
-          return value.length ? value : undefined;
-        } else return undefined;
-      }
-    } catch (error) {
-      console.error(error);
-      return undefined;
-    }
-  })();
-  const result = Promise.race([dbQuery, timeoutPromise]);
-  if (result === undefined) {
-    console.log('GetCLC: Timeout reached (5 seconds), returning undefined.');
-  }
-  return result;
 };
 
 export const GetErosionCotiere = async (
