@@ -1,9 +1,8 @@
 import { readFileSync } from 'fs';
 import { NextRequest, NextResponse } from 'next/server';
 import { join } from 'path';
-import { PrismaClient as PostgresClient } from '../../../generated/client';
+import { prisma as PrismaPostgres } from '../../../lib/queries/db';
 export const dynamic = 'force-dynamic';
-const PrismaPostgres = new PostgresClient();
 
 interface Stat {
   value: number;

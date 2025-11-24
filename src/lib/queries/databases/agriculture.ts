@@ -4,7 +4,7 @@ import * as Sentry from '@sentry/nextjs';
 import fs from 'fs/promises';
 import path from 'path';
 import { ColumnCodeCheck } from '../columns';
-import { prisma } from '../redis';
+import { prisma } from '../db';
 
 export const GetAgricultureLocal = async (
   code: string,
@@ -20,19 +20,22 @@ export const GetAgricultureLocal = async (
   if (!libelle || !type || (!code && type !== 'petr')) return [];
 
   if (type === 'ept' || type === 'petr') {
-    return db.databases.agriculture.filter(
+    return db.databases_v2.agriculture.filter(
       (row: any) => row[column] === libelle
     );
   } else if (type === 'commune') {
-    const collectivite = db.databases.collectivites_searchbar.find(
-      (c: any) => c.code_geographique === code
-    );
+    const collectivite =
+      db.databases_v2.databases_v2_collectivites_searchbar.find(
+        (c: any) => c.code_geographique === code
+      );
     if (!collectivite) return [];
-    return db.databases.agriculture.filter(
+    return db.databases_v2.agriculture.filter(
       (row: any) => row.epci === collectivite.epci
     );
   } else {
-    return db.databases.agriculture.filter((row: any) => row[column] === code);
+    return db.databases_v2.agriculture.filter(
+      (row: any) => row[column] === code
+    );
   }
 };
 
@@ -54,13 +57,13 @@ export const GetAgriculture = async (
     try {
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.agriculture.findFirst({
+      const exists = await prisma.databases_v2_agriculture.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return [];
       else {
         if (type === 'ept' || type === 'petr') {
-          const value = await prisma.agriculture.findMany({
+          const value = await prisma.databases_v2_agriculture.findMany({
             where: {
               [column]: libelle
             }
@@ -70,17 +73,17 @@ export const GetAgriculture = async (
           // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
           const value = await prisma.$queryRaw`
             SELECT a.*
-            FROM databases.agriculture a
+            FROM databases_v2.agriculture a
             WHERE a.epci = (
               SELECT c.epci
-              FROM databases.collectivites_searchbar c
+              FROM databases_v2.collectivites_searchbar c
               WHERE c.code_geographique = ${code}
               LIMIT 1
             )
           `;
           return value as Agriculture[];
         } else {
-          const value = await prisma.agriculture.findMany({
+          const value = await prisma.databases_v2_agriculture.findMany({
             where: {
               [column]: code
             }
@@ -91,7 +94,6 @@ export const GetAgriculture = async (
     } catch (error) {
       console.error(error);
       Sentry.captureException(error);
-      // prisma.$disconnect();
       return [];
     }
   })();
@@ -113,44 +115,49 @@ export const GetSurfacesAgricoles = async (
     try {
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.collectivites_searchbar.findFirst({
-        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
-      });
+      const exists =
+        await prisma.databases_v2_collectivites_searchbar.findFirst({
+          where: {
+            [column]: type === 'petr' || type === 'ept' ? libelle : code
+          }
+        });
       if (!exists) return [];
       else {
         if (type === 'commune') {
-          const epci = await prisma.collectivites_searchbar.findFirst({
-            select: {
-              epci: true
-            },
-            where: {
-              code_geographique: code
-            }
-          });
-          const value = await prisma.surfaces_agricoles.findMany({
+          const epci =
+            await prisma.databases_v2_collectivites_searchbar.findFirst({
+              select: {
+                epci: true
+              },
+              where: {
+                code_geographique: code
+              }
+            });
+          const value = await prisma.databases_v2_surfaces_agricoles.findMany({
             where: {
               epci: epci?.epci as string
             }
           });
           return value as SurfacesAgricolesModel[];
         } else {
-          const territoire = await prisma.collectivites_searchbar.findMany({
-            select: {
-              epci: true
-            },
-            where: {
-              AND: [
-                {
-                  epci: { not: null }
-                },
-                {
-                  [column]: type === 'petr' || type === 'ept' ? libelle : code
-                }
-              ]
-            },
-            distinct: ['epci']
-          });
-          const value = await prisma.surfaces_agricoles.findMany({
+          const territoire =
+            await prisma.databases_v2_collectivites_searchbar.findMany({
+              select: {
+                epci: true
+              },
+              where: {
+                AND: [
+                  {
+                    epci: { not: null }
+                  },
+                  {
+                    [column]: type === 'petr' || type === 'ept' ? libelle : code
+                  }
+                ]
+              },
+              distinct: ['epci']
+            });
+          const value = await prisma.databases_v2_surfaces_agricoles.findMany({
             where: {
               epci: {
                 in: territoire.map((t) => t.epci) as string[]

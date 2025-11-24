@@ -141,7 +141,11 @@ export const DonneesBiodiversite = ({
                 Cartographie des différents types de sols
               </H3>
             </div>
-            <TypesDeSols confortThermique={data.confortThermique} coordonneesCommunes={coordonneesCommunes} contoursCommunes={contoursCommunes} />
+            <TypesDeSols
+              confortThermique={data.confortThermique}
+              coordonneesCommunes={coordonneesCommunes}
+              contoursCommunes={contoursCommunes}
+            />
           </div>
         </section>
 

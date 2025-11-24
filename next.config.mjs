@@ -86,7 +86,11 @@ const config = {
             allowedOrigins: ['*.beta.gouv.fr']
         }
     },
-    serverExternalPackages: ['require-in-the-middle', 'import-in-the-middle'],
+    serverExternalPackages: [
+        'require-in-the-middle',
+        'import-in-the-middle',
+        '@prisma/client'
+    ],
     eslint: {
         ignoreDuringBuilds: true
     },

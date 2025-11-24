@@ -1,4 +1,4 @@
-import { prisma } from '../redis';
+import { prisma } from '../db';
 jest.setTimeout(120000);
 
 afterAll(async () => {

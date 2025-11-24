@@ -183,7 +183,7 @@ export const MapAOT40 = (props: {
 
       map.addSource('communes-tiles', {
         type: 'vector',
-        tiles: ['https://facili-tacct-dev.s3.fr-par.scw.cloud/app/communes/tiles/{z}/{x}/{y}.pbf'],
+        tiles: [`${process.env.NEXT_PUBLIC_SCALEWAY_BUCKET_URL}/communes/tiles/{z}/{x}/{y}.pbf`],
         minzoom: 4,
         maxzoom: 13,
       });

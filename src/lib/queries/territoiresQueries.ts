@@ -1,5 +1,5 @@
 import { CollectivitesSearchbar } from '../postgres/models';
-import { PrismaPostgres } from './db';
+import { prisma as PrismaPostgres } from './db';
 
 export const PNR = async (variableCollectivite: string) => {
   const searchPattern = variableCollectivite + '%';

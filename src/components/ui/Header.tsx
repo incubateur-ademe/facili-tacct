@@ -18,7 +18,7 @@ const HeaderComp = () => {
   const urlCode = searchParams.get('code');
   const urlLibelle = searchParams.get('libelle');
   const urlType = searchParams.get('type') as "epci" | "commune" | "departement" | "ept" | "petr" | "pnr";
-  
+
   const [displayCode, setDisplayCode] = useState(urlCode);
   const [displayLibelle, setDisplayLibelle] = useState(urlLibelle);
   const [displayType, setDisplayType] = useState(urlType);
@@ -42,10 +42,6 @@ const HeaderComp = () => {
   const windowDimensions = useWindowDimensions();
   const lastTerritory = getLastTerritory();
 
-  console.log("displayCode", displayCode);
-  console.log("displayLibelle", displayLibelle);
-  console.log("displayType", displayType);
-
   const redirectionPatch4 = handleRedirection({
     searchCode: displayCode ?? '',
     searchLibelle: displayLibelle ?? '',
@@ -65,7 +61,7 @@ const HeaderComp = () => {
     <Header
       className={css({
         zIndex: '500',
-        '.fr-container': windowDimensions.width  && windowDimensions.width > 992 && (params === "/donnees" || params === "/impacts") ? {
+        '.fr-container': windowDimensions.width && windowDimensions.width > 992 && (params === "/donnees" || params === "/impacts") ? {
           marginRight: "1.5rem",
           maxWidth: '85dvw',
         } : {},

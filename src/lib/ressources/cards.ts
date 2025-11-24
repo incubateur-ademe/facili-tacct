@@ -430,7 +430,7 @@ export const cards = {
         'Vous découvrez le diagnostic pour la 1ère fois'
       ],
       titre:
-        'Témoignages d’une projection sur le temps long avec l’exemple de Miquelon.',
+        'Témoignages d’une projection sur le temps long avec l’exemple de Miquelon',
       tag: 'Article',
       description:
         'De la gestion du risque à l’adaptation ou Quand reculer devient avancer : témoignages d’une projection sur le temps long avec l’exemple de Miquelon.',

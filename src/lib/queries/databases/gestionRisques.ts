@@ -1,14 +1,9 @@
 'use server';
 
-import {
-  ArreteCatNat,
-  IncendiesForet,
-  RGAdb,
-  Secheresses
-} from '@/lib/postgres/models';
+import { ArreteCatNat, IncendiesForet, RGAdb } from '@/lib/postgres/models';
 import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck } from '../columns';
-import { prisma } from '../redis';
+import { prisma } from '../db';
 
 export const GetArretesCatnat = async (
   code: string,
@@ -25,12 +20,12 @@ export const GetArretesCatnat = async (
     try {
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.arretes_catnat.findFirst({
+      const exists = await prisma.databases_v2_arretes_catnat.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return [];
       else {
-        const value = await prisma.arretes_catnat.findMany({
+        const value = await prisma.databases_v2_arretes_catnat.findMany({
           where: {
             [column]: type === 'petr' || type === 'ept' ? libelle : code
           }
@@ -39,7 +34,6 @@ export const GetArretesCatnat = async (
       }
     } catch (error) {
       console.error(error);
-      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }
@@ -62,20 +56,20 @@ export const GetIncendiesForet = async (
     try {
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.feux_foret.findFirst({
+      const exists = await prisma.databases_v2_feux_foret.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return [];
       else {
         if (type === 'petr' || type === 'ept') {
-          const value = await prisma.feux_foret.findMany({
+          const value = await prisma.databases_v2_feux_foret.findMany({
             where: {
               [column]: libelle
             }
           });
           return value;
         } else {
-          const value = await prisma.feux_foret.findMany({
+          const value = await prisma.databases_v2_feux_foret.findMany({
             where: {
               [column]: code
             }
@@ -107,7 +101,7 @@ export const GetRga = async (
   const dbQuery = (async () => {
     try {
       // Fast existence check
-      const exists = await prisma.rga.findFirst({
+      const exists = await prisma.databases_v2_rga.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (
@@ -122,10 +116,10 @@ export const GetRga = async (
       else if (type === 'commune') {
         const value = await prisma.$queryRaw`
           SELECT *
-          FROM "databases"."rga"
+          FROM "databases_v2"."rga"
           WHERE epci = (
             SELECT epci
-            FROM "databases"."rga"
+            FROM "databases_v2"."rga"
             WHERE code_geographique = ${code}
             LIMIT 1
           )
@@ -134,52 +128,16 @@ export const GetRga = async (
       } else if (type === 'epci') {
         const value = await prisma.$queryRaw`
           SELECT *
-          FROM "databases"."rga"
+          FROM "databases_v2"."rga"
           WHERE departement IN (
             SELECT departement
-            FROM "databases"."rga"
+            FROM "databases_v2"."rga"
             WHERE epci = ${code}
           )
         `;
         return value as RGAdb[];
       } else {
-        const value = await prisma.rga.findMany({
-          where: {
-            [column]: type === 'petr' || type === 'ept' ? libelle : code
-          }
-        });
-        return value;
-      }
-    } catch (error) {
-      console.error(error);
-      Sentry.captureException(error);
-      return [];
-    }
-  })();
-  return Promise.race([dbQuery, timeoutPromise]);
-};
-
-export const GetSecheresses = async (
-  code: string,
-  libelle: string,
-  type: string
-): Promise<Secheresses[]> => {
-  const column = ColumnCodeCheck(type);
-  const timeoutPromise = new Promise<[]>((resolve) =>
-    setTimeout(() => {
-      resolve([]);
-    }, 15000)
-  );
-  const dbQuery = (async () => {
-    try {
-      // Fast existence check
-      if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.secheresses.findFirst({
-        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
-      });
-      if (!exists) return [];
-      else {
-        const value = await prisma.secheresses.findMany({
+        const value = await prisma.databases_v2_rga.findMany({
           where: {
             [column]: type === 'petr' || type === 'ept' ? libelle : code
           }

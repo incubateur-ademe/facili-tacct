@@ -140,7 +140,7 @@ export const allArticles = [
     Component: RisqueALadaptation,
     metadata: {
       title:
-        'Témoignages d’une projection sur le temps long avec l’exemple de Miquelon.',
+        'Témoignages d’une projection sur le temps long avec l’exemple de Miquelon',
       description:
         'De la gestion du risque à l’adaptation ou Quand reculer devient avancer : témoignages d’une projection sur le temps long avec l’exemple de Miquelon.'
     }

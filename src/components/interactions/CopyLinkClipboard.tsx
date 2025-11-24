@@ -18,8 +18,8 @@ export const CopyLinkClipboard = ({
     setCopied(true);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
-      setTimeout(() => setCopied(false), 400); // allow fade out
-    }, 3000);
+      setTimeout(() => setCopied(false), 100); // allow fade out
+    }, 700);
   };
 
   useEffect(() => {

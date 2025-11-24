@@ -3,7 +3,7 @@
 import { CarteCommunes, EtatCoursDeau } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import { ColumnCodeCheck } from '../columns';
-import { prisma } from '../redis';
+import { prisma } from '../db';
 
 export const GetEtatCoursDeau = async (
   code: string,

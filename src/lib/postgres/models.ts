@@ -313,7 +313,7 @@ export type PrelevementsEauParsed = {
 };
 
 export type AgricultureBio = {
-  index: number | number;
+  index: number;
   epci: string;
   libelle_epci: string;
   VARIABLE: string;
@@ -673,7 +673,7 @@ export type QualiteSitesBaignade = {
 };
 
 export type Agriculture = {
-  index: number | number;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -690,7 +690,7 @@ export type Agriculture = {
 };
 
 export type ExportCoursDeau = {
-  index: number | number;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -782,7 +782,7 @@ export type RGAdb = {
 };
 
 export type SurfacesAgricolesModel = {
-  index: number | number;
+  index: number;
   epci: string;
   exploitation_sau: number;
   exploitation_sau_terres_arables: number;

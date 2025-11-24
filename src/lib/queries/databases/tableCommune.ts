@@ -3,7 +3,7 @@
 import { TableCommuneModel } from '@/lib/postgres/models';
 import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck } from '../columns';
-import { prisma } from '../redis';
+import { prisma } from '../db';
 
 export const GetTablecommune = async (
   code: string,
@@ -20,24 +20,24 @@ export const GetTablecommune = async (
     try {
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.table_commune.findFirst({
+      const exists = await prisma.databases_v2_table_commune.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return [];
       else if (type === 'commune') {
         const value = await prisma.$queryRaw`
           SELECT a.*
-          FROM databases.table_commune a
+          FROM databases_v2.table_commune a
           WHERE a.epci = (
             SELECT c.epci
-            FROM databases.collectivites_searchbar c
+            FROM databases_v2.collectivites_searchbar c
             WHERE c.code_geographique = ${code}
             LIMIT 1
           )
         `;
         return value as TableCommuneModel[];
       } else {
-        const value = await prisma.table_commune.findMany({
+        const value = await prisma.databases_v2_table_commune.findMany({
           where: {
             [column]: type === 'petr' || type === 'ept' ? libelle : code
           }
