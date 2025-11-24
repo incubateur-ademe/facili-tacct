@@ -76,8 +76,6 @@ export const TypesDeSols = ({
     (100 * sumProperty(vegetalisationTerritoire, 'superf_choro'));
   const exportData = IndicatorExportTransformations.inconfort_thermique.vegetalisation(vegetalisationTerritoire);
 
-  console.log("coordonneesCommunes dans TypesDeSols :", coordonneesCommunes);
-
   return (
     <>
       <div className={styles.datavizMapContainer}>

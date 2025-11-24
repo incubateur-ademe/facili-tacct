@@ -22,7 +22,7 @@ export const GetCommunes = async (
     try {
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.communes_drom.findFirst({
+      const exists = await prisma.postgis_v2_communes_drom.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return [];
@@ -45,9 +45,9 @@ export const GetCommunes = async (
             precarite_logement,
             surface,
             ST_AsGeoJSON(geometry) geometry 
-            FROM postgis."communes_drom" 
+            FROM postgis_v2."communes_drom" 
             WHERE epci = (
-              SELECT epci FROM postgis."communes_drom" WHERE code_geographique = ${code} LIMIT 1
+              SELECT epci FROM postgis_v2."communes_drom" WHERE code_geographique = ${code} LIMIT 1
               );`;
           return value;
         } else if (type === 'ept' && eptRegex.test(libelle)) {
@@ -68,7 +68,7 @@ export const GetCommunes = async (
               precarite_logement,
               surface,
               ST_AsGeoJSON(geometry) geometry 
-              FROM postgis."communes_drom" WHERE epci='200054781';`;
+              FROM postgis_v2."communes_drom" WHERE epci='200054781';`;
           return value;
         } else if (type === 'epci' && !eptRegex.test(libelle)) {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
@@ -84,7 +84,7 @@ export const GetCommunes = async (
             precarite_logement,
             surface,
             ST_AsGeoJSON(geometry) geometry 
-            FROM postgis."communes_drom" WHERE epci=${code};`;
+            FROM postgis_v2."communes_drom" WHERE epci=${code};`;
           return value;
         } else if (type === 'pnr') {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
@@ -99,7 +99,7 @@ export const GetCommunes = async (
             precarite_logement,
             surface,
             ST_AsGeoJSON(geometry) geometry 
-            FROM postgis."communes_drom" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
+            FROM postgis_v2."communes_drom" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
           return value;
         } else if (type === 'petr') {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
@@ -112,7 +112,7 @@ export const GetCommunes = async (
               precarite_logement,
               surface,
               ST_AsGeoJSON(geometry) geometry 
-              FROM postgis."communes_drom" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
+              FROM postgis_v2."communes_drom" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
           return value;
         } else {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
@@ -124,7 +124,7 @@ export const GetCommunes = async (
               precarite_logement,
               surface,
               ST_AsGeoJSON(geometry) geometry 
-              FROM postgis."communes_drom" WHERE departement=${code};`;
+              FROM postgis_v2."communes_drom" WHERE departement=${code};`;
           return value;
         }
       }
@@ -157,7 +157,7 @@ export const GetCommunesCoordinates = async (
   const dbQuery = (async () => {
     try {
       if (!libelle || !type || (!code && type !== 'petr')) return null;
-      const exists = await prisma.communes_drom.findFirst({
+      const exists = await prisma.postgis_v2_communes_drom.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return null;
@@ -181,8 +181,8 @@ export const GetCommunesCoordinates = async (
             ST_YMin(ST_Extent(geometry)) as minLat,
             ST_XMax(ST_Extent(geometry)) as maxLng,
             ST_YMax(ST_Extent(geometry)) as maxLat
-          FROM postgis."communes_drom"
-          WHERE epci = (SELECT epci FROM postgis."communes_drom" WHERE code_geographique = ${code} LIMIT 1)
+          FROM postgis_v2."communes_drom"
+          WHERE epci = (SELECT epci FROM postgis_v2."communes_drom" WHERE code_geographique = ${code} LIMIT 1)
         `;
       } else if (type === 'ept' && eptRegex.test(libelle)) {
         result = await prisma.$queryRaw<
@@ -200,7 +200,7 @@ export const GetCommunesCoordinates = async (
             ST_YMin(ST_Extent(geometry)) as minLat,
             ST_XMax(ST_Extent(geometry)) as maxLng,
             ST_YMax(ST_Extent(geometry)) as maxLat
-          FROM postgis."communes_drom"
+          FROM postgis_v2."communes_drom"
           WHERE epci='200054781'
         `;
       } else if (type === 'epci' && !eptRegex.test(libelle)) {
@@ -219,7 +219,7 @@ export const GetCommunesCoordinates = async (
             ST_YMin(ST_Extent(geometry)) as minLat,
             ST_XMax(ST_Extent(geometry)) as maxLng,
             ST_YMax(ST_Extent(geometry)) as maxLat
-          FROM postgis."communes_drom"
+          FROM postgis_v2."communes_drom"
           WHERE epci = ${code}
         `;
       } else if (type === 'pnr') {
@@ -238,7 +238,7 @@ export const GetCommunesCoordinates = async (
             ST_YMin(ST_Extent(geometry)) as minLat,
             ST_XMax(ST_Extent(geometry)) as maxLng,
             ST_YMax(ST_Extent(geometry)) as maxLat
-          FROM postgis."communes_drom"
+          FROM postgis_v2."communes_drom"
           WHERE code_pnr IS NOT NULL AND code_pnr = ${code}
         `;
       } else if (type === 'petr') {
@@ -257,7 +257,7 @@ export const GetCommunesCoordinates = async (
             ST_YMin(ST_Extent(geometry)) as minLat,
             ST_XMax(ST_Extent(geometry)) as maxLng,
             ST_YMax(ST_Extent(geometry)) as maxLat
-          FROM postgis."communes_drom"
+          FROM postgis_v2."communes_drom"
           WHERE libelle_petr IS NOT NULL AND libelle_petr = ${libelle}
         `;
       } else {
@@ -276,7 +276,7 @@ export const GetCommunesCoordinates = async (
             ST_YMin(ST_Extent(geometry)) as minLat,
             ST_XMax(ST_Extent(geometry)) as maxLng,
             ST_YMax(ST_Extent(geometry)) as maxLat
-          FROM postgis."communes_drom"
+          FROM postgis_v2."communes_drom"
           WHERE departement = ${code}
         `;
       }
@@ -337,25 +337,25 @@ export const GetErosionCotiere = async (
           SELECT
           code_geographique,
           ST_AsText(geometry) geometry
-          FROM postgis."communes_drom" 
+          FROM postgis_v2."communes_drom" 
           WHERE code_geographique=${code} LIMIT 1;`;
         if (commune.length !== 0) {
           const intersect = await prisma.$queryRaw<CarteCommunes[]>`
           SELECT
           ST_AsGeoJSON(geometry) geometry
-          FROM postgis."erosion_cotiere"
+          FROM postgis_v2."erosion_cotiere"
           WHERE ST_Intersects(geometry, ST_GeomFromText(${commune[0].geometry}, 4326)) LIMIT 1;`;
           if (intersect.length) {
             const value = await prisma.$queryRaw<ErosionCotiere[]>`
               SELECT
               taux,
               ST_AsGeoJSON(geometry) geometry
-              FROM postgis."erosion_cotiere" 
+              FROM postgis_v2."erosion_cotiere" 
               WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${commune[0].geometry})), 4326), ${distance});
             `;
             const envelope = await prisma.$queryRaw<{ envelope: string }[]>`
               SELECT ST_AsGeoJSON(ST_Envelope(ST_Collect(geometry))) as envelope
-              FROM postgis."erosion_cotiere"
+              FROM postgis_v2."erosion_cotiere"
               WHERE ST_Intersects(geometry, ST_GeomFromText(${commune[0].geometry}, 4326));
             `;
             if (!envelope || !envelope[0].envelope) return [];
@@ -367,24 +367,24 @@ export const GetErosionCotiere = async (
         const epci = await prisma.$queryRaw<CarteCommunes[]>`
           SELECT
           ST_AsText(ST_Union(geometry)) as geometry
-          FROM postgis."communes_drom" WHERE epci=${code};`;
+          FROM postgis_v2."communes_drom" WHERE epci=${code};`;
         if (epci.length !== 0) {
           const intersect = await prisma.$queryRaw<CarteCommunes[]>`
           SELECT
           ST_AsGeoJSON(geometry) geometry
-          FROM postgis."erosion_cotiere"
+          FROM postgis_v2."erosion_cotiere"
           WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326))`;
           if (intersect.length) {
             const value = await prisma.$queryRaw<ErosionCotiere[]>`
             SELECT
             taux,
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."erosion_cotiere" 
+            FROM postgis_v2."erosion_cotiere" 
             WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), ${distance});
             `;
             const envelope = await prisma.$queryRaw<{ envelope: string }[]>`
               SELECT ST_AsGeoJSON(ST_Envelope(ST_Collect(geometry))) as envelope
-              FROM postgis."erosion_cotiere"
+              FROM postgis_v2."erosion_cotiere"
               WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));
             `;
             if (!envelope || !envelope[0].envelope) return [];
@@ -396,24 +396,24 @@ export const GetErosionCotiere = async (
         const pnr = await prisma.$queryRaw<CarteCommunes[]>`
           SELECT 
           ST_AsText(ST_Union(geometry)) as geometry
-          FROM postgis."communes_drom" WHERE code_pnr=${code};`;
+          FROM postgis_v2."communes_drom" WHERE code_pnr=${code};`;
         if (pnr.length !== 0) {
           const intersect = await prisma.$queryRaw<CarteCommunes[]>`
             SELECT
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."erosion_cotiere"
+            FROM postgis_v2."erosion_cotiere"
             WHERE ST_Intersects(geometry, ST_GeomFromText(${pnr[0].geometry}, 4326))`;
           if (intersect.length) {
             const value = await prisma.$queryRaw<ErosionCotiere[]>`
               SELECT
               taux,
               ST_AsGeoJSON(geometry) geometry
-              FROM postgis."erosion_cotiere"
+              FROM postgis_v2."erosion_cotiere"
               WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${pnr[0].geometry})), 4326), ${distance});
             `;
             const envelope = await prisma.$queryRaw<{ envelope: string }[]>`
               SELECT ST_AsGeoJSON(ST_Envelope(ST_Collect(geometry))) as envelope
-              FROM postgis."erosion_cotiere"
+              FROM postgis_v2."erosion_cotiere"
               WHERE ST_Intersects(geometry, ST_GeomFromText(${pnr[0].geometry}, 4326));
             `;
             if (!envelope || !envelope[0].envelope) return [];
@@ -424,24 +424,24 @@ export const GetErosionCotiere = async (
         const petr = await prisma.$queryRaw<CarteCommunes[]>`
           SELECT 
           ST_AsText(ST_Union(geometry)) as geometry
-          FROM postgis."communes_drom" WHERE libelle_petr=${libelle};`;
+          FROM postgis_v2."communes_drom" WHERE libelle_petr=${libelle};`;
         if (petr.length !== 0) {
           const intersect = await prisma.$queryRaw<CarteCommunes[]>`
             SELECT
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."erosion_cotiere"
+            FROM postgis_v2."erosion_cotiere"
             WHERE ST_Intersects(geometry, ST_GeomFromText(${petr[0].geometry}, 4326)) LIMIT 1`;
           if (intersect.length) {
             const value = await prisma.$queryRaw<ErosionCotiere[]>`
               SELECT
               taux,
               ST_AsGeoJSON(geometry) geometry
-              FROM postgis."erosion_cotiere"
+              FROM postgis_v2."erosion_cotiere"
               WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${petr[0].geometry})), 4326), ${distance});
             `;
             const envelope = await prisma.$queryRaw<{ envelope: string }[]>`
               SELECT ST_AsGeoJSON(ST_Envelope(ST_Collect(geometry))) as envelope
-              FROM postgis."erosion_cotiere"
+              FROM postgis_v2."erosion_cotiere"
               WHERE ST_Intersects(geometry, ST_GeomFromText(${petr[0].geometry}, 4326));
             `;
             if (!envelope || !envelope[0].envelope) return [];
@@ -452,24 +452,24 @@ export const GetErosionCotiere = async (
         const departement = await prisma.$queryRaw<CarteCommunes[]>`
           SELECT 
           ST_AsText(ST_Union(geometry)) as geometry
-          FROM postgis."communes_drom" WHERE departement=${code};`;
+          FROM postgis_v2."communes_drom" WHERE departement=${code};`;
         if (departement.length !== 0) {
           const intersect = await prisma.$queryRaw<CarteCommunes[]>`
             SELECT
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."erosion_cotiere"
+            FROM postgis_v2."erosion_cotiere"
             WHERE ST_Intersects(geometry, ST_GeomFromText(${departement[0].geometry}, 4326))`;
           if (intersect.length) {
             const value = await prisma.$queryRaw<ErosionCotiere[]>`
               SELECT
               taux,
               ST_AsGeoJSON(geometry) geometry
-              FROM postgis."erosion_cotiere"
+              FROM postgis_v2."erosion_cotiere"
               WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${departement[0].geometry})), 4326), ${distance});
             `; //ST_Intersects(geometry, ST_GeomFromText(${departement[0].geometry}, 4326));
             const envelope = await prisma.$queryRaw<{ envelope: string }[]>`
               SELECT ST_AsGeoJSON(ST_Envelope(ST_Collect(geometry))) as envelope
-              FROM postgis."erosion_cotiere"
+              FROM postgis_v2."erosion_cotiere"
               WHERE ST_Intersects(geometry, ST_GeomFromText(${departement[0].geometry}, 4326));
             `;
             if (!envelope || !envelope[0].envelope) return [];
@@ -499,7 +499,7 @@ export const GetCommunesContours = async (
   const dbQuery = (async () => {
     try {
       if (!libelle || !type || (!code && type !== 'petr')) return null;
-      const exists = await prisma.communes_drom.findFirst({
+      const exists = await prisma.postgis_v2_communes_drom.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return null;
@@ -511,15 +511,15 @@ export const GetCommunesContours = async (
           SELECT ST_AsGeoJSON(
             ST_SimplifyPreserveTopology(geometry, 0.001)
           ) as geometry
-          FROM postgis."communes_drom"
-          WHERE epci = (SELECT epci FROM postgis."communes_drom" WHERE code_geographique = ${code} LIMIT 1)
+          FROM postgis_v2."communes_drom"
+          WHERE epci = (SELECT epci FROM postgis_v2."communes_drom" WHERE code_geographique = ${code} LIMIT 1)
         `;
       } else if (type === 'ept' && eptRegex.test(libelle)) {
         result = await prisma.$queryRaw<Array<{ geometry: string }>>`
           SELECT ST_AsGeoJSON(
             ST_SimplifyPreserveTopology(ST_Union(geometry), 0.001)
           ) as geometry
-          FROM postgis."communes_drom"
+          FROM postgis_v2."communes_drom"
           WHERE epci='200054781'
         `;
       } else if (type === 'epci' && !eptRegex.test(libelle)) {
@@ -527,7 +527,7 @@ export const GetCommunesContours = async (
           SELECT ST_AsGeoJSON(
             ST_SimplifyPreserveTopology(ST_Union(geometry), 0.001)
           ) as geometry
-          FROM postgis."communes_drom"
+          FROM postgis_v2."communes_drom"
           WHERE epci = ${code}
         `;
       } else if (type === 'pnr') {
@@ -535,7 +535,7 @@ export const GetCommunesContours = async (
           SELECT ST_AsGeoJSON(
             ST_SimplifyPreserveTopology(ST_Union(geometry), 0.001)
           ) as geometry
-          FROM postgis."communes_drom"
+          FROM postgis_v2."communes_drom"
           WHERE code_pnr IS NOT NULL AND code_pnr = ${code}
         `;
       } else if (type === 'petr') {
@@ -543,7 +543,7 @@ export const GetCommunesContours = async (
           SELECT ST_AsGeoJSON(
             ST_SimplifyPreserveTopology(ST_Union(geometry), 0.001)
           ) as geometry
-          FROM postgis."communes_drom"
+          FROM postgis_v2."communes_drom"
           WHERE libelle_petr IS NOT NULL AND libelle_petr = ${libelle}
         `;
       } else {
@@ -551,7 +551,7 @@ export const GetCommunesContours = async (
           SELECT ST_AsGeoJSON(
             ST_SimplifyPreserveTopology(ST_Union(geometry), 0.001)
           ) as geometry
-          FROM postgis."communes_drom"
+          FROM postgis_v2."communes_drom"
           WHERE departement = ${code}
         `;
       }
@@ -586,7 +586,7 @@ export const GetCommunesGeometries = async (
     try {
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.communes_drom.findFirst({
+      const exists = await prisma.postgis_v2_communes_drom.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return [];
@@ -595,7 +595,7 @@ export const GetCommunesGeometries = async (
           const value = await prisma.$queryRaw<CarteCommunes[]>`
             SELECT 
             ST_AsText(geometry) as geometry 
-            FROM postgis."communes_drom" 
+            FROM postgis_v2."communes_drom" 
             WHERE code_geographique = ${code} LIMIT 1
           ;`;
           return value;
@@ -603,31 +603,31 @@ export const GetCommunesGeometries = async (
           const value = await prisma.$queryRaw<CarteCommunes[]>`
             SELECT 
               ST_AsText(ST_Union(geometry)) as geometry
-              FROM postgis."communes_drom" WHERE ept IS NOT NULL AND ept=${libelle};`;
+              FROM postgis_v2."communes_drom" WHERE ept IS NOT NULL AND ept=${libelle};`;
           return value;
         } else if (type === 'epci' && !eptRegex.test(libelle)) {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
             SELECT 
             ST_AsText(ST_Union(geometry)) as geometry 
-            FROM postgis."communes_drom" WHERE epci IS NOT NULL AND epci=${code};`;
+            FROM postgis_v2."communes_drom" WHERE epci IS NOT NULL AND epci=${code};`;
           return value;
         } else if (type === 'pnr') {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
           SELECT 
             ST_AsText(ST_Union(geometry)) as geometry
-            FROM postgis."communes_drom" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
+            FROM postgis_v2."communes_drom" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
           return value;
         } else if (type === 'petr') {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
             SELECT 
               ST_AsText(ST_Union(geometry)) as geometry
-              FROM postgis."communes_drom" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
+              FROM postgis_v2."communes_drom" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
           return value;
         } else {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
             SELECT 
               ST_AsText(ST_Union(geometry)) as geometry
-              FROM postgis."communes_drom" WHERE departement IS NOT NULL AND departement=${code};`;
+              FROM postgis_v2."communes_drom" WHERE departement IS NOT NULL AND departement=${code};`;
           return value;
         }
       }
