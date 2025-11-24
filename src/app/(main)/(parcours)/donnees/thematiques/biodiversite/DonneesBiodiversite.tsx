@@ -114,23 +114,6 @@ export const DonneesBiodiversite = ({
     })();
   }, [libelle]);
 
-  // useEffect(() => {
-  //   const fetchClc = async () => {
-  //     try {
-  //       setLoadingClc(true);
-  //       const params = new URLSearchParams({ libelle, type, code });
-  //       const res = await fetch(`/api/clc?${params.toString()}`);
-  //       const json = await res.json();
-  //       if (json.ok) setClcState(json.data);
-  //     } catch (e) {
-  //       console.error('Failed to fetch CLC', e);
-  //     } finally {
-  //       setLoadingClc(false);
-  //     }
-  //   };
-  //   fetchClc();
-  // }, [libelle]);
-
   return (
     isLoading ? <LoaderText text='Mise à jour des données' /> :
       <div className={styles.explorerMesDonneesContainer}>
