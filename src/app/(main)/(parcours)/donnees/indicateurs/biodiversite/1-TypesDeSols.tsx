@@ -75,6 +75,9 @@ export const TypesDeSols = ({
   const foretPercent = (100 * foretSum) /
     (100 * sumProperty(vegetalisationTerritoire, 'superf_choro'));
   const exportData = IndicatorExportTransformations.inconfort_thermique.vegetalisation(vegetalisationTerritoire);
+
+  console.log("coordonneesCommunes dans TypesDeSols :", coordonneesCommunes);
+
   return (
     <>
       <div className={styles.datavizMapContainer}>
@@ -183,7 +186,11 @@ export const TypesDeSols = ({
                   <LegendCompColor legends={vegetalisationLegend} />
                 </div>
               </>
-            ) : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
+            ) : (
+              <div className='p-10 flex flex-row justify-center'>
+                <DataNotFoundForGraph image={DataNotFound} />
+              </div>
+            )
           }
         </div>
       </div>

@@ -114,6 +114,9 @@ export const DonneesBiodiversite = ({
     })();
   }, [libelle]);
 
+  console.log("Rendu DonneesBiodiversite avec coordonneesCommunes :", coordonneesCommunes);
+  console.log("Rendu DonneesBiodiversite avec contoursCommunes :", contoursCommunes);
+
   return (
     isLoading ? <LoaderText text='Mise à jour des données' /> :
       <div className={styles.explorerMesDonneesContainer}>
