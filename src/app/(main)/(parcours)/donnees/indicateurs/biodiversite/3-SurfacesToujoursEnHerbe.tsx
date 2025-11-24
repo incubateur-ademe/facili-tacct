@@ -21,7 +21,12 @@ export const SurfacesToujoursEnHerbe = ({
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
   const SAU = surfacesAgricoles.map(el => el.superficie_sau);
-  const surfacesToujoursEnHerbe = surfacesAgricoles.map(el => el.superficie_sau_herbe);
+  const surfacesToujoursEnHerbe = surfacesAgricoles.map(el =>
+    el.superficie_sau_herbe_prairies_productives +
+    el.superficie_sau_herbe_prairies_peu_productives +
+    el.superficie_sau_herbe_subventions +
+    el.superficie_sau_herbe_bois_patures
+  );
   const pourcentageSurfacesToujoursEnHerbe = SAU.length && (surfacesToujoursEnHerbe.reduce((a, b) => a + b, 0) / SAU.reduce((a, b) => a + b, 0)) * 100;
   const territoiresPartiellementCouverts = type === 'departement'
     ? multipleEpciBydepartementLibelle.find(dept => dept.departement === code)?.liste_epci_multi_dept
