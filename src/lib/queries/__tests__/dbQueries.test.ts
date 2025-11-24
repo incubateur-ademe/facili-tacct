@@ -87,8 +87,8 @@ describe('Integration: query functions for ressourcesEau', () => {
 });
 
 describe('Integration: query functions for inconfortThermique', () => {
-  it('GetInconfortThermique returns array', async () => {
-    const result = await inconfortThermique.GetInconfortThermique(
+  it('GetConfortThermique returns array', async () => {
+    const result = await inconfortThermique.GetConfortThermique(
       '200070555',
       'Communauté de communes de la Veyle',
       'epci'

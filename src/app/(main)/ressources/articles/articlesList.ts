@@ -11,6 +11,7 @@ import MiseEnRecit from '@/lib/ressources/articles/miseEnRecit';
 import PnaccTracc from '@/lib/ressources/articles/pnaccTracc';
 import PourquoiMobiliser from '@/lib/ressources/articles/pourquoiMobiliser';
 import RecruterStagiaire from '@/lib/ressources/articles/recruterStagiaire';
+import RisqueALadaptation from '@/lib/ressources/articles/risqueALadaptation';
 
 export const allArticles = [
   {
@@ -132,6 +133,16 @@ export const allArticles = [
         'Indicateurs de résilience de l’agriculture face au changement climatique',
       description:
         '22 indicateurs pour aider les chargés de mission climat à évaluer la résilience agricole et repérer les vulnérabilités au changement climatique.'
+    }
+  },
+  {
+    slug: 'strategie-adaptation-gestion-risque-relocalisation',
+    Component: RisqueALadaptation,
+    metadata: {
+      title:
+        'Témoignages d’une projection sur le temps long avec l’exemple de Miquelon.',
+      description:
+        'De la gestion du risque à l’adaptation ou Quand reculer devient avancer : témoignages d’une projection sur le temps long avec l’exemple de Miquelon.'
     }
   }
 ];

@@ -13,6 +13,25 @@ export const sourcesEtudes = {
         'INRAE, Changement climatique et risques, Irriguer différemment, 3 juin 2022'
     }
   ],
+  agricultureImpact: [
+    {
+      numero: 1,
+      url: 'https://www.agreste.agriculture.gouv.fr/agreste-web/',
+      texte: 'Agreste, 2020'
+    },
+    {
+      numero: 2,
+      url: 'https://www.statistiques.developpement-durable.gouv.fr/media/7165/download?inline#:~:text=Une%20surface%20est%20dite%20%C2%AB%20irrigu%C3%A9e,environ%20en%202000%20et%202010',
+      texte:
+        'DataLab, L’irrigation des surfaces agricoles : évolution entre 2010 et 2020, février 2024'
+    },
+    {
+      numero: 3,
+      url: 'https://itab.bio/sites/default/files/medias/fichier/2024/06/Quantification_Externalites_AB_Note_4p_0.pdf',
+      texte:
+        "ITAB, Quantification des externalités de l’agriculture biologique, juin 2024"
+    }
+  ],
   confortThermique: [
     {
       numero: 1,

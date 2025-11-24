@@ -1,6 +1,6 @@
 'use client';
 
-import { nomThematiques } from '@/app/(main)/(nouveau-parcours)/thematiques/constantes/categories';
+import { nomThematiques } from '@/app/(main)/(parcours)/thematiques/constantes/categories';
 import roueImage from '@/assets/images/roue_systemique_shape.png';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { couleursBoutons } from '@/design-system/couleurs';

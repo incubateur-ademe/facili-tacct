@@ -1,7 +1,6 @@
 import ShareIcon from '@/assets/icons/share_icon_white.svg';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 
 export const CopyLinkClipboard = ({
   anchor
@@ -10,7 +9,6 @@ export const CopyLinkClipboard = ({
 }) => {
 
   const [copied, setCopied] = useState(false);
-  const [show, setShow] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleCopy = () => {
@@ -18,12 +16,10 @@ export const CopyLinkClipboard = ({
     url.hash = `#${anchor}`;
     navigator.clipboard.writeText(url.toString());
     setCopied(true);
-    setShow(true);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
-      setShow(false);
       setTimeout(() => setCopied(false), 400); // allow fade out
-    }, 2500);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -36,11 +32,12 @@ export const CopyLinkClipboard = ({
     <>
       <BoutonPrimaireClassic
         onClick={handleCopy}
-        icone={ShareIcon}
+        icone={copied ? null : ShareIcon}
         size='sm'
-        text='Partager'
+        text={copied ? 'Lien copié' : 'Partager'}
+        disabled={copied}
       />
-      {copied && typeof window !== 'undefined' && createPortal(
+      {/* {copied && typeof window !== 'undefined' && createPortal(
         <div
           style={{
             position: 'fixed',
@@ -63,7 +60,7 @@ export const CopyLinkClipboard = ({
           Lien copié
         </div>,
         document.body
-      )}
+      )} */}
     </>
   );
 }

@@ -46,7 +46,7 @@ export const BarreDeRecherche = ({
     const foundInputId = Array
       .from(document.querySelectorAll('[id]'))
       .map(el => el.id)
-      .find(id => id.startsWith("search-fr-search-bar-"));
+      .find(id => id.startsWith("search-fr-search-bar-") && !document.getElementById(id)?.closest('header'));
     if (foundInputId) {
       FocusOnElement(foundInputId);
     }

@@ -1,22 +1,23 @@
 "use client";
-import { CommunesIndicateursDto, EtatCoursDeauDto } from '@/lib/dto';
+import { RetardScroll } from '@/hooks/RetardScroll';
+import { EtatCoursDeauDto } from '@/lib/dto';
 import { QualiteSitesBaignade } from '@/lib/postgres/models';
 import { mapStyles } from 'carte-facile';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useMemo, useRef } from 'react';
-import { BoundsFromCollection } from './components/boundsFromCollection';
+import { RefObject, useEffect, useMemo, useRef } from 'react';
 import { CoursDeauTooltip } from './components/tooltips';
 import styles from './maps.module.scss';
 
 export const MapEtatCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
-  carteCommunes: CommunesIndicateursDto[];
+  communesCodes: string[];
+  boundingBox?: [[number, number], [number, number]];
   qualiteEauxBaignade?: QualiteSitesBaignade[];
 }) => {
-  const { etatCoursDeau, carteCommunes, qualiteEauxBaignade } = props;
+  const { etatCoursDeau, communesCodes, boundingBox, qualiteEauxBaignade } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -25,13 +26,6 @@ export const MapEtatCoursDeau = (props: {
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const hoveredFeatureRef = useRef<string | null>(null);
-
-  const carteCommunesFiltered = useMemo(() => (
-    type === "ept"
-      ? carteCommunes.filter(el => el.properties.ept === libelle)
-      : carteCommunes
-  ), [carteCommunes, type, libelle]);
-  const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
 
   // Helper functions for sites de baignade
   const qualiteIcon = (qualite: string | undefined) => {
@@ -79,16 +73,7 @@ export const MapEtatCoursDeau = (props: {
     }
   };
 
-  // GeoJSON for territory polygons
-  const territoryGeoJson = useMemo(() => ({
-    type: "FeatureCollection" as "FeatureCollection",
-    features: carteCommunesFiltered.map(commune => ({
-      type: "Feature" as "Feature",
-      geometry: commune.geometry as import('geojson').Geometry,
-      properties: commune.properties,
-      id: commune.properties.code_geographique
-    }))
-  }), [carteCommunesFiltered]);
+
 
   const coursDeauGeoJson = useMemo(() => ({
     type: "FeatureCollection" as const,
@@ -129,58 +114,30 @@ export const MapEtatCoursDeau = (props: {
       attributionControl: false,
     });
     mapRef.current = map;
+    // s'assure que le zoom au scroll est désactivé immédiatement pour éviter de capturer les défilements de page
+    try { map.scrollZoom.disable(); } catch (e) { /* noop */ }
 
     map.on('load', () => {
-      // Fit bounds
-      if (
-        enveloppe &&
-        Array.isArray(enveloppe) &&
-        enveloppe.length > 1 &&
-        Array.isArray(enveloppe[0]) &&
-        enveloppe[0].length === 2
-      ) {
-        const lons = enveloppe.map((coord: number[]) => coord[1]);
-        const lats = enveloppe.map((coord: number[]) => coord[0]);
-        const minLng = Math.min(...lons);
-        const maxLng = Math.max(...lons);
-        const minLat = Math.min(...lats);
-        const maxLat = Math.max(...lats);
-        map.fitBounds(
-          [[minLng, minLat], [maxLng, maxLat]],
-          { padding: 20 },
-        );
+      if (boundingBox) {
+        map.fitBounds(boundingBox, { padding: 20 });
       }
 
-      map.addSource('territory', {
-        type: 'geojson',
-        data: territoryGeoJson,
-        generateId: false
+      map.addSource('communes-tiles', {
+        type: 'vector',
+        tiles: ['https://facili-tacct-dev.s3.fr-par.scw.cloud/app/communes/tiles/{z}/{x}/{y}.pbf'],
+        minzoom: 4,
+        maxzoom: 13
       });
-      map.addLayer({
-        id: 'territory-fill',
-        type: 'fill',
-        source: 'territory',
-        paint: {
-          'fill-opacity': 0,
-        }
-      });
+
       map.addLayer({
         id: 'territory-stroke',
         type: 'line',
-        source: 'territory',
+        source: 'communes-tiles',
+        'source-layer': 'contour_communes',
+        filter: ['in', ['get', 'code_geographique'], ['literal', communesCodes]],
         paint: {
-          'line-color': [
-            'case',
-            ['==', ['get', 'code_geographique'], code],
-            '#161616',
-            '#161616'
-          ],
-          'line-width': [
-            'case',
-            ['==', ['get', 'code_geographique'], code],
-            2,
-            0.5
-          ],
+          'line-color': '#161616',
+          'line-width': 1,
           'line-opacity': 0.9
         }
       });
@@ -593,7 +550,10 @@ export const MapEtatCoursDeau = (props: {
         mapRef.current = null;
       }
     };
-  }, [territoryGeoJson, coursDeauGeoJson, sitesBaignadeGeoJson, enveloppe, code]);
+  }, [coursDeauGeoJson, sitesBaignadeGeoJson, boundingBox, communesCodes]);
+
+  // Ref local pour le RetardScroll
+  const localContainerRef = mapContainer as RefObject<HTMLElement>;
 
   return (
     <>
@@ -611,6 +571,7 @@ export const MapEtatCoursDeau = (props: {
       `}</style>
       <div style={{ position: 'relative' }}>
         <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%', cursor: 'pointer' }} />
+        <RetardScroll mapRef={mapRef} containerRef={localContainerRef} delay={300} />
       </div>
     </>
   );

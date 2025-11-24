@@ -1,7 +1,7 @@
 import { ScrollToSourceTag } from "@/components/interactions/scrollToSource";
 import { DefinitionTooltip } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
-import { directiveCadreSurLeau, eutrophisation } from "@/lib/definitions";
+import { AgricultureBiologique, directiveCadreSurLeau, eutrophisation, irriguee } from "@/lib/definitions";
 
 { /* Confort thermique */ }
 
@@ -112,9 +112,10 @@ export const SurfacesIrrigueesText = () => (
       “de résilience” visant à stabiliser les récoltes. C’est aussi une question
       d’orientation stratégique :{" "}
       <ScrollToSourceTag sourceNumero={1}>
-        un tiers de nos surfaces irriguées nourrissent l'export
-      </ScrollToSourceTag>
-      , pas la France.
+        un tiers
+      </ScrollToSourceTag> de nos <DefinitionTooltip title={irriguee}>
+        surfaces irriguées
+      </DefinitionTooltip> nourrissent l'export, pas la France.
     </Body>
     <Body size='sm'>
       <b>Un défi de sobriété à prioriser</b> : abandonner l'aspersion (
@@ -239,7 +240,9 @@ export const SurfacesEnBioText = () => (
       pratiques moins intensives et favoriser la diversité des paysages.
     </Body>
     <Body size='sm'>
-      L'agriculture biologique ainsi que les pratiques à bas-intrants, la rotation des
+      <DefinitionTooltip title={AgricultureBiologique}>
+        L'agriculture biologique
+      </DefinitionTooltip> ainsi que les pratiques à bas-intrants, la rotation des
       cultures, la lutte biologique, le recyclage des matières organiques, et l’abandon
       des produits chimiques de synthèse - représentent aujourd'hui les meilleures
       réponses. Leurs effets positifs sur la vie des sols sont démontrés, un atout
@@ -268,8 +271,11 @@ export const SurfacesEnBioAgricultureText = () => (
     </Body>
     <Body size='sm'>
       <b>Aux côtés de l'agroforesterie et des agricultures limitant le travail des sols et
-        favorisant les couverts</b> (agriculture de conservation, régénératrice...), l'agriculture
-      biologique dessine les contours d'une agriculture qui ne subit plus le climat... mais compose avec lui.
+        favorisant les couverts</b> (agriculture de conservation, régénératrice...),{" "}
+      <DefinitionTooltip title={AgricultureBiologique}>
+        l'agriculture biologique
+      </DefinitionTooltip>
+      {" "}dessine les contours d'une agriculture qui ne subit plus le climat... mais compose avec lui.
     </Body>
   </div>
 );
@@ -319,12 +325,12 @@ export const EtatsCoursEauBiodiversiteText = () => (
 export const EtatsCoursEauBiodiversiteTextNouveauParcours = () => (
   <>
     <Body size="sm">
-      La pollution (de l’air et de l’eau) par des substances dangereuses figure 
-      parmi les cinq principales pressions à l’origine de l’effondrement de la 
-      biodiversité. L’objectif d’atteindre un bon état général des eaux d’ici 2027, 
+      La pollution (de l’air et de l’eau) par des substances dangereuses figure
+      parmi les cinq principales pressions à l’origine de l’effondrement de la
+      biodiversité. L’objectif d’atteindre un bon état général des eaux d’ici 2027,
       fixé par la{' '}
       <DefinitionTooltip title={directiveCadreSurLeau}>
-        directive cadre sur l’eau 
+        directive cadre sur l’eau
       </DefinitionTooltip>
       {" "}de 2000, paraît désormais inatteignable.
     </Body>
@@ -362,11 +368,11 @@ export const EtatCoursEauRessourcesEauText = () => (
 export const AOT40Text = () => (
   <>
     <Body size="sm">
-      La pollution figure parmi les cinq principales pressions à 
-      l’origine de l’effondrement de la biodiversité. Portée par 
-      le vent, la pollution à l’ozone ne s'arrête pas aux frontières 
-      des agglomérations. La dispersion peut s’étendre sur plusieurs 
-      centaines de kilomètres. Même les territoires éloignés des 
+      La pollution figure parmi les cinq principales pressions à
+      l’origine de l’effondrement de la biodiversité. Portée par
+      le vent, la pollution à l’ozone ne s'arrête pas aux frontières
+      des agglomérations. La dispersion peut s’étendre sur plusieurs
+      centaines de kilomètres. Même les territoires éloignés des
       sources de pollution en subissent les effets.
     </Body>
   </>

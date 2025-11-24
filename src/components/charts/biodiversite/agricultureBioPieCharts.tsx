@@ -32,43 +32,37 @@ export const AgricultureBioPieCharts = ({
 }) => {
   const surfaceCertifiee = agricultureBio.reduce((acc, obj) => {
     if (obj.LIBELLE_SOUS_CHAMP === 'Surface certifiée') {
-      return acc + obj.surface_2022!;
+      return acc + obj.surface_2023!;
     }
     return acc;
   }, 0);
-  const surfaceCertifiee2019 = agricultureBio.reduce((acc, obj) => {
+  const surfaceCertifiee2008 = agricultureBio.reduce((acc, obj) => {
     if (obj.LIBELLE_SOUS_CHAMP === 'Surface certifiée') {
-      return acc + obj.surface_2019!;
+      return acc + obj.surface_2008!;
     }
     return acc;
   }, 0);
   const surfaceEnConversion = agricultureBio.reduce((acc, obj) => {
     if (obj.LIBELLE_SOUS_CHAMP === 'Surface en conversion') {
-      return acc + obj.surface_2022!;
+      return acc + obj.surface_2023!;
     }
     return acc;
   }, 0);
-  const surfaceEnConversion2019 = agricultureBio.reduce((acc, obj) => {
+  const surfaceEnConversion2008 = agricultureBio.reduce((acc, obj) => {
     if (obj.LIBELLE_SOUS_CHAMP === 'Surface en conversion') {
-      return acc + obj.surface_2019!;
+      return acc + obj.surface_2008!;
     }
     return acc;
   }, 0);
   const surfaceTotale = agricultureBio.reduce((acc, obj) => {
     if (obj.VARIABLE === 'saue') {
-      return acc + obj.surface_2022!;
-    }
-    return acc;
-  }, 0);
-  const surfaceTotale2019 = agricultureBio.reduce((acc, obj) => {
-    if (obj.VARIABLE === 'saue') {
-      return acc + obj.surface_2019!;
+      return acc + obj.surface_2023!;
     }
     return acc;
   }, 0);
   const nombreExploitations = agricultureBio.reduce((acc, obj) => {
     if (obj.VARIABLE === 'saue') {
-      return acc + obj.nombre_2022!;
+      return acc + obj.nombre_2023!;
     }
     return acc;
   }, 0);
@@ -77,11 +71,11 @@ export const AgricultureBioPieCharts = ({
   const partEnConversion = (
     (surfaceEnConversion / surfaceTotale) * 100
   );
-  const evolutionCertifiee = surfaceCertifiee2019 === 0 ? 0 :
-    ((surfaceCertifiee - surfaceCertifiee2019) / surfaceCertifiee2019) * 100;
-  const evolutionConversion = surfaceEnConversion2019 === 0 ? 0 :
-    ((surfaceEnConversion - surfaceEnConversion2019) /
-      surfaceEnConversion2019) *
+  const evolutionCertifiee = surfaceCertifiee2008 === 0 ? 0 :
+    ((surfaceCertifiee - surfaceCertifiee2008) / surfaceCertifiee2008) * 100;
+  const evolutionConversion = surfaceEnConversion2008 === 0 ? 0 :
+    ((surfaceEnConversion - surfaceEnConversion2008) /
+      surfaceEnConversion2008) *
     100;
   const partCertifieeRounded =
     100 - partEnConversion < partCertifiee
@@ -98,17 +92,17 @@ export const AgricultureBioPieCharts = ({
         <ArrowHtmlTooltip
           title={
             <>
-              <H4 style={{ fontSize: '1rem', marginBottom: "0.5rem" }}>Surface déjà certifiée (2022)</H4>
+              <H4 style={{ fontSize: '1rem', marginBottom: "0.5rem" }}>Surface déjà certifiée (2023)</H4>
               <Body size='sm'>
                 <b>{Round(surfaceCertifiee, 0)}</b> ha
               </Body>
               {evolutionCertifiee >= 0 ? (
                 <Body size='sm'>
-                  <b>+{Round(evolutionCertifiee, 1)} %</b> depuis 2019
+                  <b>+{Round(evolutionCertifiee, 1)} %</b> depuis 2008
                 </Body>
               ) : (
                 <Body size='sm'>
-                  <b>{Round(evolutionCertifiee, 1)} %</b> depuis 2019
+                  <b>{Round(evolutionCertifiee, 1)} %</b> depuis 2008
                 </Body>
               )}
               <Body size='sm'>
@@ -142,17 +136,17 @@ export const AgricultureBioPieCharts = ({
         <ArrowHtmlTooltip
           title={
             <>
-              <H4 style={{ fontSize: '1rem', marginBottom: "0.5rem" }}>Surface en conversion (2022)</H4>
+              <H4 style={{ fontSize: '1rem', marginBottom: "0.5rem" }}>Surface en conversion (2023)</H4>
               <Body size='sm'>
                 <b>{Round(surfaceEnConversion, 0)}</b> ha
               </Body>
               {evolutionConversion >= 0 ? (
                 <Body size='sm'>
-                  <b>+{Round(evolutionConversion, 1)} %</b> depuis 2019
+                  <b>+{Round(evolutionConversion, 1)} %</b> depuis 2008
                 </Body>
               ) : (
                 <Body size='sm'>
-                  <b>{Round(evolutionConversion, 1)} %</b> depuis 2019
+                  <b>{Round(evolutionConversion, 1)} %</b> depuis 2008
                 </Body>
               )}
               <Body size='sm'>

@@ -1,0 +1,141 @@
+.CursorVisualizationBarColor {
+    width: 550px;
+    height: 1rem;
+    background: linear-gradient(
+        to right,
+        white 0%,
+        white 5%,
+        #ffc03f 33%,
+        #f66e19 67%,
+        #f80206 100%
+    );
+    margin: 20px auto;
+    position: relative;
+    overflow: visible;
+    border: 1px solid #f7f7f7ff;
+    .barColorText {
+        position: absolute;
+        top: -25px;
+        transform: translateY(-50%);
+        white-space: nowrap;
+    }
+    .infoIcon {
+        margin-left: 5px;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    .cursor {
+        position: absolute;
+        top: -12px;
+        width: 1px;
+        height: 10px;
+        background-color: black;
+    }
+}
+
+.CircleVisualizationContainer {
+    width: 100%;
+    display: flex;
+    min-height: 400px;
+    margin: 1rem 0 1rem;
+}
+
+.CircleVisualizationWrapper {
+    transition: all 1s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -4rem;
+    .extCircle {
+        width: 338px;
+        height: 338px;
+        border: 1px solid var(--gris-medium);
+        // box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        border-radius: 50%;
+        position: relative;
+        .CircleItem {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            &:hover {
+                transform: scale(1.1);
+            }
+            .CircleIcon {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                // border: 1px solid black;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+}
+
+.lateralView {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition:
+        width 1s ease-in-out,
+        opacity 1s ease-in-out;
+    .lateralWrapper {
+        display: flex;
+        height: fit-content;
+        max-height: 300px;
+        flex-direction: column;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        position: relative;
+    }
+    .closeBtn {
+        position: absolute;
+        width: fit-content;
+        top: 10px;
+        right: 10px;
+        background-color: transparent;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--gris-dark);
+        font-size: 1rem;
+        font-weight: bold;
+    }
+}
+
+.IndicesDetailContainer {
+    margin: 0 0 4rem;
+}
+
+.IndicesDetailWrapper {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--gris-medium);
+    border-radius: 1rem;
+    padding: 1.875rem;
+    margin: 2rem 0;
+    column-gap: 1.5rem;
+    // box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    .IndiceIcon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 1px solid var(--gris-medium);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .IndiceDetailsText {
+        width: 93%;
+    }
+}

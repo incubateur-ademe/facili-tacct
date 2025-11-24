@@ -34,6 +34,7 @@ type SearchInputHeaderProps = {
   typeTerritoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
   setIsTypeChanging: (a: boolean) => void;
   setIsTerritoryChanging: (a: boolean) => void;
+  isTerritoryChanging: boolean;
   setIsNewTypeChosen: (a: boolean) => void;
   focusAutocomplete: boolean;
 };
