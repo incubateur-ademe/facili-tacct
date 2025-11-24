@@ -3,7 +3,7 @@
 import { prelevementEauBarChartLegend, ressourcesEauBarChartLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import useWindowDimensions from '@/hooks/windowDimensions';
-import { RessourcesEau } from '@/lib/postgres/models';
+import { PrelevementsEauParsed } from '@/lib/postgres/models';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useLayoutEffect, useState } from 'react';
@@ -51,12 +51,12 @@ const ressourcesEauYears = [
   'A2020'
 ];
 
-const graphDataFunct = (filteredYears: string[], data: RessourcesEau[]) => {
+const graphDataFunct = (filteredYears: string[], data: PrelevementsEauParsed[]) => {
   const dataArr: GraphData[] = [];
   filteredYears.forEach((year) => {
     const genericObjects = (text: string) =>
       data
-        .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(text))
+        .filter((item) => item.libelle_sous_champ?.includes(text))
         .map((e) => e[year as Years])
         .filter((value): value is number => value !== null);
     const obj = {
@@ -84,7 +84,7 @@ const PrelevementEauBarChart = ({
   ressourcesEau,
   sliderValue
 }: {
-  ressourcesEau: RessourcesEau[];
+  ressourcesEau: PrelevementsEauParsed[];
   sliderValue: number[];
 }) => {
   const searchParams = useSearchParams();

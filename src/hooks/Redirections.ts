@@ -4,19 +4,23 @@ export const handleRedirection = ({
   searchCode,
   searchLibelle,
   typeTerritoire,
-  page
+  page,
+  thematique
 }: {
   searchCode: string | undefined;
   searchLibelle: string;
-  typeTerritoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
+  typeTerritoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement' | 'ept';
   page: string;
+  thematique?: string;
 }) => {
+  const thematiqueParam = thematique ? `&thematique=${thematique}` : '';
+  
   if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
-    return `/${page}?code=200054781&libelle=${searchLibelle}&type=ept`;
+    return `/${page}?code=200054781&libelle=${searchLibelle}&type=ept${thematiqueParam}`;
   } else if (searchCode && searchCode.length !== 0) {
-    return `/${page}?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`;
+    return `/${page}?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}${thematiqueParam}`;
   } else if (!searchCode && searchLibelle.length !== 0) {
-    return `/${page}?libelle=${searchLibelle}&type=${typeTerritoire}`;
+    return `/${page}?libelle=${searchLibelle}&type=${typeTerritoire}${thematiqueParam}`;
   } else return `/${page}`;
 };
 

@@ -1,11 +1,11 @@
 "use client";
-import { thematiquesInfo } from "@/app/(main)/(nouveau-parcours)/thematiques/constantes/textesThematiques";
+import { thematiquesInfo } from "@/app/(main)/(parcours)/thematiques/constantes/textesThematiques";
 import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
 import { H2 } from "@/design-system/base/Textes";
 import useWindowDimensions from "@/hooks/windowDimensions";
 import { useRouter, useSearchParams } from "next/navigation";
 import { usePostHog } from "posthog-js/react";
-import styles from "../../(main)/(nouveau-parcours)/thematiques/roue.module.scss";
+import styles from "../../(main)/(parcours)/thematiques/roue.module.scss";
 
 const PanneauLateral = ({
   setSelectedItem,

@@ -1,17 +1,13 @@
 'use client';
 
 import { CatnatTypes } from '@/app/(main)/types';
-import { CommunesIndicateursDto } from '@/lib/dto';
-import { eptRegex } from '@/lib/utils/regex';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
-import { Feature, GeoJsonProperties, Geometry } from 'geojson';
-import maplibregl from 'maplibre-gl';
+import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
-import { BoundsFromCollection } from './components/boundsFromCollection';
 import { CatnatTooltip } from './components/tooltips';
 import { colorsCatnat } from './legends/legendCatnat';
 
@@ -51,72 +47,61 @@ const getColor = (d: number, max: number, typeCatnat: string) => {
 };
 
 export const MapCatnat = (props: {
-  carteCommunes: CommunesIndicateursDto[];
+  catnatData: { code: string; name: string; catnat: any }[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   typeRisqueValue: CatnatTypes;
 }) => {
-  const { carteCommunes, typeRisqueValue } = props;
+  const { catnatData, coordonneesCommunes, typeRisqueValue } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
-  const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const hoveredFeatureRef = useRef<string | null>(null);
 
-  const carteTerritoire = useMemo(() => {
-    return type === 'ept' && eptRegex.test(libelle)
-      ? carteCommunes.filter((e) => e.properties.ept === libelle)
-      : carteCommunes;
-  }, [carteCommunes, type, libelle]);
-  const enveloppe = BoundsFromCollection(carteTerritoire, type, code);
+  const catnatByCommune = useMemo(() => {
+    const map = new Map<string, any>();
+    catnatData.forEach(item => {
+      map.set(item.code, item.catnat);
+    });
+    return map;
+  }, [catnatData]);
+
+  const nameByCommune = useMemo(() => {
+    const map = new Map<string, string>();
+    catnatData.forEach(item => {
+      if (item.name) {
+        map.set(item.code, item.name);
+      }
+    });
+    return map;
+  }, [catnatData]);
+
   const maxValue = useMemo(() => {
     return typeRisqueValue === 'Tous types'
-      ? Math.max(
-        ...carteCommunes.map((el) =>
-          el.properties.catnat?.sumCatnat ? el.properties.catnat?.sumCatnat : 0
-        )
-      )
-      : Math.max(
-        ...carteCommunes.map((el) =>
-          el.properties.catnat?.[typeRisqueValue]
-            ? (el.properties.catnat?.[typeRisqueValue] as number)
-            : 0
-        )
+      ? Math.max(...catnatData.map(el => el.catnat?.sumCatnat || 0))
+      : Math.max(...catnatData.map(el => el.catnat?.[typeRisqueValue] || 0));
+  }, [catnatData, typeRisqueValue]);
+
+  const createColorExpression = useMemo(() => {
+    const colorPairs: (ExpressionSpecification | string)[] = [];
+    catnatData.forEach(item => {
+      const value = typeRisqueValue === 'Tous types'
+        ? item.catnat?.sumCatnat || 0
+        : item.catnat?.[typeRisqueValue] || 0;
+      const color = value > 0 ? getColor(value, maxValue, typeRisqueValue) : 'transparent';
+      colorPairs.push(
+        ['==', ['get', 'code_geographique'], item.code],
+        color
       );
-  }, [carteCommunes, typeRisqueValue]);
-
-  const geoJsonData = useMemo(() => {
-    return {
-      type: 'FeatureCollection' as const,
-      features: carteTerritoire.map(commune => {
-        const value = typeRisqueValue === 'Tous types'
-          ? commune.properties.catnat?.sumCatnat || 0
-          : (commune.properties.catnat?.[typeRisqueValue] as number) || 0;
-        const color = value > 0 ? getColor(value, maxValue, typeRisqueValue) : 'transparent';
-        return {
-          ...commune,
-          id: commune.properties.code_geographique,
-          properties: {
-            ...commune.properties,
-            color
-          }
-        };
-      }) as Feature<Geometry, GeoJsonProperties>[]
-    };
-  }, [carteTerritoire, maxValue, typeRisqueValue]);
+    });
+    return ['case', ...colorPairs, 'transparent'] as ExpressionSpecification;
+  }, [catnatData, typeRisqueValue, maxValue]);
 
   useEffect(() => {
-    if (mapRef.current && mapRef.current.isStyleLoaded()) {
-      const source = mapRef.current.getSource('catnat-communes');
-      if (source) {
-        (source as maplibregl.GeoJSONSource).setData(geoJsonData);
-      }
-    }
-  }, [geoJsonData]);
+    if (!mapContainer.current || !coordonneesCommunes) return;
 
-  useEffect(() => {
-    if (!mapContainer.current) return;
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
@@ -125,44 +110,42 @@ export const MapCatnat = (props: {
     mapRef.current = map;
 
     map.on('load', () => {
-      if (
-        enveloppe &&
-        Array.isArray(enveloppe) &&
-        enveloppe.length > 1 &&
-        Array.isArray(enveloppe[0]) &&
-        enveloppe[0].length === 2
-      ) {
-        const lons = enveloppe.map(coord => coord[1]);
-        const lats = enveloppe.map(coord => coord[0]);
-        const minLng = Math.min(...lons);
-        const maxLng = Math.max(...lons);
-        const minLat = Math.min(...lats);
-        const maxLat = Math.max(...lats);
-        map.fitBounds(
-          [[minLng, minLat], [maxLng, maxLat]],
-          { padding: 20 },
-        );
+      if (coordonneesCommunes?.bbox) {
+        setTimeout(() => {
+          map.fitBounds(
+            [[coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
+            [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]],
+            { padding: 20 }
+          );
+        }, 100);
       }
 
-      map.addSource('catnat-communes', {
-        type: 'geojson',
-        data: geoJsonData,
-        generateId: false
+      map.addSource('communes-tiles', {
+        type: 'vector',
+        tiles: ['https://facili-tacct-dev.s3.fr-par.scw.cloud/app/communes/tiles/{z}/{x}/{y}.pbf'],
+        minzoom: 4,
+        maxzoom: 13,
+        promoteId: 'code_geographique'
       });
 
       map.addLayer({
         id: 'catnat-fill',
         type: 'fill',
-        source: 'catnat-communes',
+        source: 'communes-tiles',
+        'source-layer': 'contour_communes',
+        filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
         paint: {
-          'fill-color': ['get', 'color']
+          'fill-color': createColorExpression,
+          'fill-opacity': 1,
         }
       });
 
       map.addLayer({
         id: 'catnat-stroke',
         type: 'line',
-        source: 'catnat-communes',
+        source: 'communes-tiles',
+        'source-layer': 'contour_communes',
+        filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
         paint: {
           'line-color': [
             'case',
@@ -183,22 +166,25 @@ export const MapCatnat = (props: {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const properties = feature.properties;
+          const code = properties?.code_geographique;
+
           if (hoveredFeatureRef.current) {
             map.setFeatureState(
-              { source: 'catnat-communes', id: hoveredFeatureRef.current },
+              { source: 'communes-tiles', sourceLayer: 'contour_communes', id: hoveredFeatureRef.current },
               { hover: false }
             );
           }
-          const newHoveredFeature = properties?.code_geographique;
+          const newHoveredFeature = code;
           hoveredFeatureRef.current = newHoveredFeature;
           if (newHoveredFeature) {
             map.setFeatureState(
-              { source: 'catnat-communes', id: newHoveredFeature },
+              { source: 'communes-tiles', sourceLayer: 'contour_communes', id: newHoveredFeature },
               { hover: true }
             );
           }
-          const communeName = properties?.libelle_geographique;
-          const catnat = JSON.parse(properties?.catnat);
+
+          const communeName = nameByCommune.get(code) || properties?.libelle_geographique || 'Commune inconnue';
+          const catnat = catnatByCommune.get(code);
           if (catnat && communeName) {
             const { indexName, sumCatnat, ...restCatnat } = catnat;
             const tooltipContent = CatnatTooltip(restCatnat, communeName);
@@ -226,7 +212,7 @@ export const MapCatnat = (props: {
       map.on('mouseleave', 'catnat-fill', () => {
         if (hoveredFeatureRef.current) {
           map.setFeatureState(
-            { source: 'catnat-communes', id: hoveredFeatureRef.current },
+            { source: 'communes-tiles', sourceLayer: 'contour_communes', id: hoveredFeatureRef.current },
             { hover: false }
           );
         }
@@ -236,11 +222,13 @@ export const MapCatnat = (props: {
           popupRef.current = null;
         }
       });
+
       map.on('mousemove', 'catnat-fill', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const properties = feature.properties;
-          const newHoveredFeature = properties?.code_geographique;
+          const code = properties?.code_geographique;
+          const newHoveredFeature = code;
           const containerHeight = mapContainer.current?.clientHeight || 500;
           const mouseY = e.point.y;
           const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';
@@ -248,19 +236,19 @@ export const MapCatnat = (props: {
           if (hoveredFeatureRef.current !== newHoveredFeature) {
             if (hoveredFeatureRef.current) {
               map.setFeatureState(
-                { source: 'catnat-communes', id: hoveredFeatureRef.current },
+                { source: 'communes-tiles', sourceLayer: 'contour_communes', id: hoveredFeatureRef.current },
                 { hover: false }
               );
             }
             hoveredFeatureRef.current = newHoveredFeature;
             if (newHoveredFeature) {
               map.setFeatureState(
-                { source: 'catnat-communes', id: newHoveredFeature },
+                { source: 'communes-tiles', sourceLayer: 'contour_communes', id: newHoveredFeature },
                 { hover: true }
               );
             }
-            const communeName = properties?.libelle_geographique;
-            const catnat = JSON.parse(properties?.catnat);
+            const communeName = nameByCommune.get(code) || properties?.libelle_geographique || 'Commune inconnue';
+            const catnat = catnatByCommune.get(code);
             if (catnat && communeName) {
               const { indexName, sumCatnat, ...restCatnat } = catnat;
               const tooltipContent = CatnatTooltip(restCatnat, communeName);
@@ -280,8 +268,8 @@ export const MapCatnat = (props: {
             popupRef.current.setLngLat(e.lngLat);
             const currentAnchor = popupRef.current.getElement()?.getAttribute('class')?.includes('anchor-top') ? 'top' : 'bottom';
             if (currentAnchor !== placement) {
-              const communeName = properties?.libelle_geographique;
-              const catnat = JSON.parse(properties?.catnat);
+              const communeName = nameByCommune.get(code) || properties?.libelle_geographique || 'Commune inconnue';
+              const catnat = catnatByCommune.get(code);
               if (catnat && communeName) {
                 const { indexName, sumCatnat, ...restCatnat } = catnat;
                 const tooltipContent = CatnatTooltip(restCatnat, communeName);
@@ -308,9 +296,9 @@ export const MapCatnat = (props: {
       map.on('mouseleave', 'catnat-fill', () => {
         map.getCanvas().style.cursor = '';
       });
-    });
 
-    map.addControl(new maplibregl.NavigationControl(), 'top-right');
+      map.addControl(new maplibregl.NavigationControl(), 'top-right');
+    });
 
     return () => {
       if (mapRef.current) {
@@ -318,7 +306,14 @@ export const MapCatnat = (props: {
         mapRef.current = null;
       }
     };
-  }, []);
+  }, [coordonneesCommunes]);
+
+  // Mettre à jour les couleurs quand typeRisqueValue change
+  useEffect(() => {
+    if (mapRef.current && mapRef.current.isStyleLoaded() && mapRef.current.getLayer('catnat-fill')) {
+      mapRef.current.setPaintProperty('catnat-fill', 'fill-color', createColorExpression);
+    }
+  }, [createColorExpression]);
 
   return (
     <>
@@ -332,7 +327,7 @@ export const MapCatnat = (props: {
             overflow: visible !important;
           }
       `}</style>
-      {carteCommunes === null ? (
+      {!coordonneesCommunes ? (
         <GraphDataNotFound code={code} libelle={libelle} />
       ) : (
         <div style={{ position: 'relative' }}>

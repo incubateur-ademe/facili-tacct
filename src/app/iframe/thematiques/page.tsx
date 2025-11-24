@@ -1,6 +1,6 @@
 'use client';
 
-import RoueSystemique from '@/app/(main)/(nouveau-parcours)/thematiques/components/roue';
+import RoueSystemique from '@/app/(main)/(parcours)/thematiques/components/roue';
 import { NewContainer } from '@/design-system/layout';
 import { Suspense, useState } from 'react';
 import PanneauLateral from './panneauLateral';

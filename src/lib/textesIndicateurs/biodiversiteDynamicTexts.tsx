@@ -1,6 +1,6 @@
 import { Body } from "@/design-system/base/Textes";
 import { Feature, MultiPoint, Point } from 'geojson';
-import { AtlasBiodiversiteModel, SurfacesAgricolesModel } from "../postgres/models";
+import { SurfacesAgricolesModel, TableCommuneModel } from "../postgres/models";
 import { Round } from "../utils/reusableFunctions/round";
 
 interface NearestPoint extends Feature<Point> {
@@ -18,7 +18,7 @@ export const SolsImpermeabilisesBiodiversiteDynamicText = ({
   type
 }: {
   sumNaf: number | undefined;
-  atlasBiodiversite: AtlasBiodiversiteModel[];
+  atlasBiodiversite: TableCommuneModel[];
   type: string;
 }) => {
   return (
@@ -44,12 +44,12 @@ export const SolsImpermeabilisesBiodiversiteDynamicText = ({
           <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
             Entre 2009 et 2023, {Round(sumNaf / 10000, 1)} hectare(s) d'espaces naturels, agricoles
             ou forestiers ont été consommés sur votre commune. Face à cet enjeu, l'Atlas de
-            la biodiversité communale lancé en {atlasBiodiversite[0].annee_debut}{" "}
-            {atlasBiodiversite[0].avancement === "Fini" ? "apporte" : "apportera"} une réponse
+            la biodiversité communale lancé en {atlasBiodiversite[0].atlas_biodiversite_annee_debut}{" "}
+            {atlasBiodiversite[0].atlas_biodiversite_avancement === "Fini" ? "apporte" : "apportera"} une réponse
             concrète : un inventaire cartographié détaillé de la faune, la flore et des habitats
-            qui vous {atlasBiodiversite[0].avancement === "Fini" ? "permet" : "permettra"} d'intégrer
+            qui vous {atlasBiodiversite[0].atlas_biodiversite_avancement === "Fini" ? "permet" : "permettra"} d'intégrer
             concrètement la biodiversité dans votre politique d'aménagement et{" "}
-            {atlasBiodiversite[0].avancement === "Fini" ? "constitue" : "constituera"} un levier
+            {atlasBiodiversite[0].atlas_biodiversite_avancement === "Fini" ? "constitue" : "constituera"} un levier
             privilégié pour limiter l'artificialisation des sols.
           </Body>
         ) : ""
@@ -58,7 +58,7 @@ export const SolsImpermeabilisesBiodiversiteDynamicText = ({
   );
 };
 
-export const SurfacesEnHerbeSynamicText = ({
+export const SurfacesEnHerbeDynamicText = ({
   surfacesAgricoles,
   pourcentageSurfacesToujoursEnHerbe,
   type,
@@ -149,22 +149,22 @@ export const AOT40DynamicText = ({
           <br></br>
           {stationWithMaxValue[0].properties.value < 6000 ? (
             <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-              Bonne nouvelle : votre territoire anticipe l'objectif 2050 avec 
-              un seuil de 6 000 µg/m³ par heure déjà respecté. Ce résultat 
-              favorable pour la végétation nécessite toutefois de rester vigilant 
+              Bonne nouvelle : votre territoire anticipe l'objectif 2050 avec
+              un seuil de 6 000 µg/m³ par heure déjà respecté. Ce résultat
+              favorable pour la végétation nécessite toutefois de rester vigilant
               face aux évolutions de la pollution à l’ozone.
             </Body>
           ) : stationWithMaxValue[0].properties.value > 18000 ? (
             <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
               Le cumul d’ozone enregistré ces 5 dernières années pendant la
               période de végétation risque d’engendrer des réactions de la part des végétaux de
-              votre territoire (croissance réduite, perte de rendement, altération des feuilles). Une 
+              votre territoire (croissance réduite, perte de rendement, altération des feuilles). Une
               vigilance accrue est nécessaire pour limiter l’exposition de la végétation.
             </Body>
           ) : (
             <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-              Le seuil actuel de 18 000 µg/m³ par heure est respecté, mais le cumul 
-              d'ozone dépasse encore l'objectif de 6 000 µg/m³ fixé pour 2050. Poursuivez 
+              Le seuil actuel de 18 000 µg/m³ par heure est respecté, mais le cumul
+              d'ozone dépasse encore l'objectif de 6 000 µg/m³ fixé pour 2050. Poursuivez
               vos efforts !
             </Body>
           )}

@@ -117,9 +117,8 @@ export type CommunesIndicateursDto = {
     departement: string;
     libelle_departement: string;
     precarite_logement: number;
-    densite_bati: number;
     coordinates: string;
-    naf?: number;
+    naf?: number | null;
     surfacesIrriguees?: number;
     incendiesForet?: number | null;
     rga?: number;
@@ -215,4 +214,10 @@ export type RGADto = {
     coordinates: number[][][][];
     type: string;
   };
+};
+
+export type DebroussaillementDto = {
+  geometry: GeoGeometryObjects;
+  properties: {};
+  type: string;
 };

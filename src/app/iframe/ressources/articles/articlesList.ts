@@ -35,9 +35,10 @@ export const allArticles = [
     slug: 'mobilisation-diagnostic-vulnerabilite',
     Component: PourquoiMobiliser,
     metadata: {
-      title: 'Pourquoi mobiliser en interne et externe ?',
+      title:
+        'Comment mobiliser élus, services et partenaires autour d’un diagnostic de vulnérabilité ?',
       description:
-        'Comprendre l’importance de la mobilisation interne et externe pour la réussite des démarches d’adaptation.'
+        'Découvrez le retour d’expérience de Jolet Van Kipshagen (CC Vallée de Villé) et les clés d’une démarche concertée et ancrée dans le territoire.'
     }
   },
   {

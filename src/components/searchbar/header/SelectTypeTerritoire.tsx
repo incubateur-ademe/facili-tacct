@@ -26,7 +26,7 @@ export const SelectTypeTerritoire = ({
   const pathname = usePathname();
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const collectivites = pathname === "/patch4c" ? ["EPCI/EPT", "Commune"] : ["EPCI/EPT", "Commune", "Département", "PETR", "PNR"];
-
+  
   return (
     <Select
       labelId="Sélection du territoire"

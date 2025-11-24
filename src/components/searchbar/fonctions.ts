@@ -28,6 +28,16 @@ export const handleRechercheRedirection = ({
   router: ReturnType<typeof useRouter>;
   page: string;
 }) => {
+  // Stocker le territoire sélectionné dans le sessionStorage
+  if (typeof window !== 'undefined') {
+    const territoryData = {
+      code: searchCode,
+      libelle: searchLibelle,
+      type: typeTerritoire
+    };
+    sessionStorage.setItem('dernierTerritoireRecherché', JSON.stringify(territoryData));
+  }
+
   if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
     router.replace(`/${page}?code=200054781&libelle=${searchLibelle}&type=ept`);
   } else if (searchCode.length !== 0) {
@@ -54,6 +64,16 @@ export const handleChangementTerritoireRedirection = ({
   page: string;
   thematique?: string;
 }) => {
+  // Stocker le territoire sélectionné dans le sessionStorage
+  if (typeof window !== 'undefined') {
+    const territoryData = {
+      code: searchCode,
+      libelle: searchLibelle,
+      type: typeTerritoire === 'epci' && eptRegex.test(searchLibelle) ? 'ept' : typeTerritoire
+    };
+    sessionStorage.setItem('dernierTerritoireRecherché', JSON.stringify(territoryData));
+  }
+
   // if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
   //   const url = `/${page}?code=200054781&libelle=${searchLibelle}&type=ept${thematique ? `&thematique=${thematique}` : ''}`;
   //   window.location.assign(url);
@@ -74,3 +94,32 @@ export const handleChangementTerritoireRedirection = ({
     router.replace(`/${page}?libelle=${searchLibelle}&type=${typeTerritoire}${thematique ? `&thematique=${thematique}` : ''}`);
   }
 };
+
+export const getLastTerritory = (): { code: string; libelle: string; type: string; thematique?: string } | null => {
+  if (typeof window === 'undefined') return null;
+  
+  const stored = sessionStorage.getItem('dernierTerritoireRecherché');
+  if (!stored) return null;
+  
+  try {
+    return JSON.parse(stored);
+  } catch {
+    return null;
+  }
+};
+
+export const saveThematique = (thematique: string) => {
+  if (typeof window === 'undefined') return;
+  
+  const stored = sessionStorage.getItem('dernierTerritoireRecherché');
+  if (stored) {
+    try {
+      const data = JSON.parse(stored);
+      data.thematique = thematique;
+      sessionStorage.setItem('dernierTerritoireRecherché', JSON.stringify(data));
+    } catch {
+      // Si erreur de parsing, on ne fait rien
+    }
+  }
+};
+
