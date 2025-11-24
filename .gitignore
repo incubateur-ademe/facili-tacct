@@ -15,8 +15,6 @@
 
 # prisma
 /prisma/migrations
-/src/generated
-
 
 # production
 /build
