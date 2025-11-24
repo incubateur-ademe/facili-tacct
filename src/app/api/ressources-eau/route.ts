@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/queries/redis';
+import { prisma } from '@/lib/queries/db';
 import { NextRequest } from 'next/server';
 
 function replacer(key: string, value: any) {
@@ -9,9 +9,9 @@ export async function GET(req: NextRequest) {
   const departement = req.nextUrl.searchParams.get('code');
   if (!departement) {
     return new Response(JSON.stringify({ error: 'Missing code' }), {
-    status: 400,
-    headers: { 'Content-Type': 'application/json' },
-  });
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 
   const stream = new ReadableStream({
@@ -26,23 +26,25 @@ export async function GET(req: NextRequest) {
         const rows = await prisma.ressources_eau.findMany({
           where: { departement },
           skip,
-          take: batchSize,
+          take: batchSize
         });
         hasMore = rows.length === batchSize;
         skip += batchSize;
 
         for (const row of rows) {
           if (!first) controller.enqueue(new TextEncoder().encode(','));
-          controller.enqueue(new TextEncoder().encode(JSON.stringify(row, replacer)));
+          controller.enqueue(
+            new TextEncoder().encode(JSON.stringify(row, replacer))
+          );
           first = false;
         }
       }
       controller.enqueue(new TextEncoder().encode(']'));
       controller.close();
-    },
+    }
   });
 
   return new Response(stream, {
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' }
   });
 }

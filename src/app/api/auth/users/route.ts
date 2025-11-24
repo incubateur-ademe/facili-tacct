@@ -1,17 +1,15 @@
 'use server';
 
+import { prisma } from '@/lib/queries/db';
 import { NextResponse } from 'next/server';
-import { PrismaClient as PostgresClient } from '../../../../generated/client';
-
-const PrismaPostgres = new PostgresClient();
 
 export const GET = async () => {
   try {
-    const users = await PrismaPostgres.users.findMany();
+    const users = await prisma.users.findMany();
     return new NextResponse(JSON.stringify(users), { status: 200 });
   } catch (error) {
     console.error(error);
-    await PrismaPostgres.$disconnect();
+    await prisma.$disconnect();
   }
 };
 

@@ -6,7 +6,7 @@ import { Feature, FeatureCollection, GeoJsonProperties, Geometry } from 'geojson
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { RgaMapLegend } from '../legends/datavizLegends';
 import { LegendCompColor } from '../legends/legendComp';
 import styles from './maps.module.scss';
