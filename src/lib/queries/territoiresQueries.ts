@@ -30,7 +30,7 @@ export const PNR = async (variableCollectivite: string) => {
     libelle_petr,
     libelle_pnr,
     code_pnr
-    FROM databases."collectivites_searchbar" WHERE (code_geographique IS NULL AND libelle_pnr IS NOT NULL) AND 
+    FROM databases_v2."collectivites_searchbar" WHERE (code_geographique IS NULL AND libelle_pnr IS NOT NULL) AND 
       (
         unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPattern})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpace})
@@ -78,7 +78,7 @@ export const PETR = async (variableCollectivite: string) => {
     libelle_petr,
     libelle_pnr,
     code_pnr
-    FROM databases."collectivites_searchbar" WHERE (code_geographique IS NULL AND libelle_petr IS NOT NULL) AND 
+    FROM databases_v2."collectivites_searchbar" WHERE (code_geographique IS NULL AND libelle_petr IS NOT NULL) AND 
       (
         unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPattern})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpace})
@@ -123,7 +123,7 @@ export const EPCI = async (variableCollectivite: string) => {
     libelle_petr,
     libelle_pnr,
     code_pnr
-    FROM databases."collectivites_searchbar" WHERE 
+    FROM databases_v2."collectivites_searchbar" WHERE 
       (
         code_geographique IS NULL 
         AND (libelle_epci IS NOT NULL OR ept IS NOT NULL)
@@ -164,7 +164,7 @@ export const Commune = async (variableCollectivite: string) => {
     libelle_petr,
     libelle_pnr,
     code_pnr
-    FROM databases."collectivites_searchbar" WHERE (code_geographique IS NOT NULL) AND 
+    FROM databases_v2."collectivites_searchbar" WHERE (code_geographique IS NOT NULL) AND 
       (
         unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite + '%'})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite + '%'}, ' ', '-')) 
@@ -205,7 +205,7 @@ export const Departement = async (variableCollectivite: string) => {
     libelle_petr,
     libelle_pnr,
     code_pnr
-    FROM databases."collectivites_searchbar" WHERE (departement IS NOT NULL AND code_geographique IS NULL) AND 
+    FROM databases_v2."collectivites_searchbar" WHERE (departement IS NOT NULL AND code_geographique IS NULL) AND 
       (
         unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPattern})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpace})

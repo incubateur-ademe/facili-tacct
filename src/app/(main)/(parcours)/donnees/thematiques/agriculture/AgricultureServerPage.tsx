@@ -21,7 +21,7 @@ const AgricultureServerPage = async (props:
       coordonneesCommunes={coordonneesCommunes}
       contoursCommunes={contoursCommunes}
       surfacesAgricoles={dbSurfacesAgricoles}
-      agricultureBio={dbAgricultureBio!}
+      agricultureBio={dbAgricultureBio}
       tableCommune={props.tableCommune}
     />
   );

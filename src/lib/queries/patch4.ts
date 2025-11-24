@@ -20,14 +20,15 @@ export const GetPatch4 = async (
     try {
       if (!libelle || !type || (!code && type !== 'petr')) return undefined;
       if (type === 'commune' || type === 'epci') {
-        const departement = await prisma.collectivites_searchbar.findFirst({
-          where: {
-            OR: [{ code_geographique: code }, { epci: code }],
-            departement: {
-              not: null
+        const departement =
+          await prisma.databases_v2_collectivites_searchbar.findFirst({
+            where: {
+              OR: [{ code_geographique: code }, { epci: code }],
+              departement: {
+                not: null
+              }
             }
-          }
-        });
+          });
         // Exclusion des DROM puisque le patch4 ne les inclut pas
         if (
           departement &&
