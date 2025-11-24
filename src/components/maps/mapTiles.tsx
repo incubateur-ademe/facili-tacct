@@ -57,8 +57,6 @@ export const MapTiles = (props: {
         maxzoom: 13
       });
 
-      console.log('Source added, adding layer...');
-
       // Add fill layer for RGA zones with color based on alea level
       map.addLayer({
         id: `${bucketUrl}-fill`,
