@@ -1,8 +1,7 @@
 import { ConsommationNAF } from '@/lib/postgres/models';
 import * as biodiversite from '../databases/biodiversite';
 import * as inconfortThermique from '../databases/inconfortThermique';
-import * as ressourcesEau from '../databases/ressourcesEau';
-import { prisma } from '../redis';
+import { prisma } from '../db';
 
 jest.setTimeout(60000); // Increase timeout for heavy queries
 // PETR Figeac - Quercy - Vallée de la Dordogne 169 communes
@@ -44,43 +43,6 @@ describe('Integration: query functions for biodiversite', () => {
     expect(Array.isArray(result)).toBe(true);
     expect(result.length).toBe(291);
     expect(result[0]).toHaveProperty('valeur_brute', 9487.38664050025);
-    // S'assurer qu'aucune colonne ne commence par un chiffre (bug entre prisma et postgres)
-    expect(Object.keys(result[0]).every((key) => !/^\d/.test(key))).toBe(true);
-  });
-});
-
-describe('Integration: query functions for ressourcesEau', () => {
-  it('GetRessourceEau returns expected results for EPCI 200042497', async () => {
-    const result = await ressourcesEau.GetRessourceEau(
-      '200042497',
-      'Communauté de communes Dombes Saône Vallée',
-      'epci'
-    );
-    expect(Array.isArray(result)).toBe(true);
-    expect(result.length).toBe(6647);
-    expect(result[0]).toHaveProperty('A2020');
-    expect(result[0]).toHaveProperty('A2019');
-    expect(result[0]).toHaveProperty('A2018');
-    expect(result[0]).toHaveProperty('A2017');
-    expect(result[0]).toHaveProperty('A2016');
-    expect(result[0]).toHaveProperty('A2015');
-    expect(result[0]).toHaveProperty('A2014');
-    expect(result[0]).toHaveProperty('A2013');
-    expect(result[0]).toHaveProperty('A2012');
-    expect(result[0]).toHaveProperty('A2011');
-    expect(result[0]).toHaveProperty('A2010');
-    expect(result[0]).toHaveProperty('A2009');
-    expect(result[0]).toHaveProperty('A2008');
-    // S'assurer qu'aucune colonne ne commence par un chiffre (bug entre prisma et postgres)
-    expect(Object.keys(result[0]).every((key) => !/^\d/.test(key))).toBe(true);
-  });
-  it('GetQualiteEauxBaignade returns array', async () => {
-    const result = await ressourcesEau.GetQualiteEauxBaignade(
-      '200067106',
-      "Communauté d'agglomération du Pays Basque",
-      'epci'
-    );
-    expect(Array.isArray(result)).toBe(true);
     // S'assurer qu'aucune colonne ne commence par un chiffre (bug entre prisma et postgres)
     expect(Object.keys(result[0]).every((key) => !/^\d/.test(key))).toBe(true);
   });

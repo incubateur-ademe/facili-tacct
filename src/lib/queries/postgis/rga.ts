@@ -2,7 +2,7 @@
 
 import { RGACarte } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
-import { prisma } from '../redis';
+import { prisma } from '../db';
 const stringifyWithBigInt = (data: any) => {
   return JSON.stringify(data, (key, value) =>
     typeof value === 'bigint' ? value.toString() : value

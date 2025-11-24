@@ -8,7 +8,6 @@ const AmenagementServerPage = async (props: { searchParams: SearchParams }) => {
   const dbConsommationNAF = await GetConsommationNAF(code, libelle, type);
   const coordonneesCommunes = await GetCommunesCoordinates(code, libelle, type);
 
-
   return (
     <DonneesAmenagement
       coordonneesCommunes={coordonneesCommunes}

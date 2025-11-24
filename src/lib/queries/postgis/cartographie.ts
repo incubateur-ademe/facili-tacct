@@ -8,7 +8,7 @@ import {
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck } from '../columns';
-import { prisma } from '../redis';
+import { prisma } from '../db';
 
 export const GetCommunes = async (
   code: string,

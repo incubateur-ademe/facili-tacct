@@ -3,7 +3,7 @@ import {
   SurfacesBiocolabApi
 } from '@/lib/postgres/EcolabApi';
 import { ColumnLibelleCheck } from '../columns';
-import { prisma } from '../redis';
+import { prisma } from '../db';
 
 export const GetPartSurfaceBio = async () => {
   const url = `https://api.ind  const response = await request.json();
@@ -129,7 +129,7 @@ export const GetSurfaceBioEcolab = async (
             granularity: 'year',
             dateRange: ['2010-01-01', '2024-12-01']
           }
-        ],
+        ]
         // order: { 'surface_bio_epci.geocode_epci': 'asc' }
       }
     })

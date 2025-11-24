@@ -9,7 +9,6 @@ const GestionRisquesServerPage = async (props: { searchParams: SearchParams }) =
   const coordonneesCommunes = await GetCommunesCoordinates(code, libelle, type);
   const erosionCotiere = await GetErosionCotiere(code, libelle, type);
   const dbIncendiesForet = await GetIncendiesForet(code, libelle, type);
-  // const dbSecheresses = await GetSecheresses(code, libelle, type);
   const rga = await GetRga(code, libelle, type);
 
   return (
@@ -18,7 +17,6 @@ const GestionRisquesServerPage = async (props: { searchParams: SearchParams }) =
       coordonneesCommunes={coordonneesCommunes}
       erosionCotiere={erosionCotiere}
       incendiesForet={dbIncendiesForet}
-      // secheresses={dbSecheresses}
       rga={rga}
     />
   );

@@ -15,14 +15,12 @@ import { ArretesCatnat } from '../../indicateurs/gestionDesRisques/1-ArretesCatn
 import { FeuxDeForet } from '../../indicateurs/gestionDesRisques/2-FeuxDeForet';
 import { ErosionCotiereComp } from '../../indicateurs/gestionDesRisques/3-ErosionCotiere';
 import { RetraitGonflementDesArgiles } from '../../indicateurs/gestionDesRisques/4-RetraitGonflementDesArgiles';
-import { Debroussaillement } from '../../indicateurs/gestionDesRisques/5-Debroussaillement';
 
 interface Props {
   gestionRisques: ArreteCatNat[];
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   erosionCotiere: [ErosionCotiere[], string] | [];
   incendiesForet: IncendiesForet[];
-  // secheresses: Secheresses[];
   rga: RGAdb[];
 }
 
@@ -31,7 +29,6 @@ export const DonneesGestionRisques = ({
   gestionRisques,
   erosionCotiere,
   incendiesForet,
-  // secheresses,
   rga
 }: Props) => {
   const { css } = useStyles();
@@ -45,7 +42,6 @@ export const DonneesGestionRisques = ({
     gestionRisques,
     erosionCotiere,
     incendiesForet,
-    // secheresses
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -63,20 +59,17 @@ export const DonneesGestionRisques = ({
         newGestionRisques,
         newErosionCotiere,
         newIncendiesForet,
-        // newSecheresses
       ] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
         GetArretesCatnat(code, libelle, type),
         GetErosionCotiere(code, libelle, type),
         GetIncendiesForet(code, libelle, type),
-        // GetSecheresses(code, libelle, type)
       ]);
       setData({
         coordonneesCommunes: newCoordonneesCommunes,
         gestionRisques: newGestionRisques,
         erosionCotiere: newErosionCotiere,
         incendiesForet: newIncendiesForet,
-        // secheresses: newSecheresses
       });
       setIsLoading(false);
     })();
@@ -151,30 +144,6 @@ export const DonneesGestionRisques = ({
               </H3>
             </div>
             <FeuxDeForet incendiesForet={data.incendiesForet} />
-          </div>
-
-          {/* Débroussailement */}
-          <div id="Débroussailement" className={styles.indicateurMapWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
-            <div className={styles.h3Titles}>
-              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-                Débroussailement
-              </H3>
-            </div>
-            <Debroussaillement
-              coordonneesCommunes={data.coordonneesCommunes}
-            />
-          </div>
-
-          {/* Sécheresses passées */}
-          <div id="Sécheresses passées" className={styles.indicateurWrapper}>
-            <div className={styles.h3Titles}>
-              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-                Sécheresses passées
-              </H3>
-            </div>
-            {/* <SecheressesPassees
-              secheresses={data.secheresses}
-            /> */}
           </div>
         </section>
 

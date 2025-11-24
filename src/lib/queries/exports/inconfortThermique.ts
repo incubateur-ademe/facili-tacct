@@ -3,7 +3,7 @@
 import { InconfortThermique } from '@/lib/postgres/models';
 import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck } from '../columns';
-import { prisma } from '../redis';
+import { prisma } from '../db';
 
 export const GetInconfortThermiqueExport = async (
   code: string | undefined,
@@ -27,8 +27,8 @@ export const GetInconfortThermiqueExport = async (
       else {
         const value = await prisma.inconfort_thermique.findMany({
           where: {
-            [column]: type === 'petr' || type === 'ept' ? libelle : code,
-          },
+            [column]: type === 'petr' || type === 'ept' ? libelle : code
+          }
         });
         return value;
       }

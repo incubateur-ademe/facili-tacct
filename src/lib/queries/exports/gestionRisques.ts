@@ -2,7 +2,7 @@
 
 import { ArreteCatNat, IncendiesForet, RGAdb } from '@/lib/postgres/models';
 import { ColumnCodeCheck } from '../columns';
-import { prisma } from '../redis';
+import { prisma } from '../db';
 import { ArreteCatNatExport, FeuxForetExport, RGAdbExport } from './types';
 
 export const fetchGestionRisquesForExport = async (

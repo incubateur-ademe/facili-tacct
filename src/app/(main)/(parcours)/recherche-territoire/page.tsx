@@ -19,9 +19,8 @@ const RechercherSonTerritoire = () => {
 
   useEffect(() => {
     const lastTerritory = getLastTerritory();
-    console.log("lastTerritory", lastTerritory);
     if (lastTerritory?.code && lastTerritory?.libelle && lastTerritory?.type) {
-      const url = lastTerritory.thematique 
+      const url = lastTerritory.thematique
         ? `/donnees?code=${lastTerritory.code}&libelle=${lastTerritory.libelle}&type=${lastTerritory.type}&thematique=${lastTerritory.thematique}`
         : `/thematiques?code=${lastTerritory.code}&libelle=${lastTerritory.libelle}&type=${lastTerritory.type}`;
       router.replace(url);
@@ -37,7 +36,7 @@ const RechercherSonTerritoire = () => {
     router,
     page: "thematiques"
   });
-  
+
   const handleRadioChange = (territoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement') => {
     setTypeTerritoire(territoire);
     setSearchLibelle('');

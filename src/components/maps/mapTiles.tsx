@@ -31,7 +31,6 @@ export const MapTiles = (props: {
 
   useEffect(() => {
     if (!mapContainer.current || !coordonneesCommunes) return;
-
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
@@ -53,10 +52,12 @@ export const MapTiles = (props: {
       // Add vector tiles source
       map.addSource(`${bucketUrl}-tiles`, {
         type: 'vector',
-        tiles: [`https://facili-tacct-dev.s3.fr-par.scw.cloud/app/${bucketUrl}/tiles/{z}/{x}/{y}.pbf`],
+        tiles: [`${process.env.NEXT_PUBLIC_SCALEWAY_BUCKET_URL}/${bucketUrl}/tiles/{z}/{x}/{y}.pbf`],
         minzoom: 4,
         maxzoom: 13
       });
+
+      console.log('Source added, adding layer...');
 
       // Add fill layer for RGA zones with color based on alea level
       map.addLayer({
@@ -68,10 +69,12 @@ export const MapTiles = (props: {
         paint: paint
       });
 
+      console.log('Layer added');
+
       // Add communes outline avec tuiles vectorielles
       map.addSource('communes-tiles', {
         type: 'vector',
-        tiles: ['https://facili-tacct-dev.s3.fr-par.scw.cloud/app/communes/tiles/{z}/{x}/{y}.pbf'],
+        tiles: [`${process.env.NEXT_PUBLIC_SCALEWAY_BUCKET_URL}/communes/tiles/{z}/{x}/{y}.pbf`],
         minzoom: 4,
         maxzoom: 13
       });

@@ -25,7 +25,10 @@ export const TypesDeSols = ({
   contoursCommunes,
 }: {
   confortThermique: Partial<ConfortThermique>[];
-  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
+  coordonneesCommunes: {
+    codes: string[],
+    bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number }
+  } | null;
   contoursCommunes: { geometry: string } | null;
 }) => {
   const searchParams = useSearchParams();
