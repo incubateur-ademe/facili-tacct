@@ -20,7 +20,7 @@ export const GetEtatCoursDeau = async (
     try {
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.communes_drom.findFirst({
+      const exists = await prisma.postgis_v2_communes_drom.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return [];
@@ -32,14 +32,14 @@ export const GetEtatCoursDeau = async (
             epci,
             ST_AsText(ST_Centroid(geometry)) centroid,
             ST_AsText(geometry) geometry
-            FROM postgis."communes_drom" WHERE code_geographique=${code};`;
+            FROM postgis_v2."communes_drom" WHERE code_geographique=${code};`;
           if (commune.length !== 0) {
             const value = await prisma.$queryRaw<EtatCoursDeau[]>`
             SELECT
             name,
             etateco,
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."etat_cours_d_eau" 
+            FROM postgis_v2."etat_cours_d_eau" 
             WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${commune[0].geometry})), 4326), ${distance});`;
             return value;
           }
@@ -49,14 +49,14 @@ export const GetEtatCoursDeau = async (
             SELECT 
             ept,
             ST_AsText(ST_Union(geometry)) as geometry
-            FROM postgis."communes_drom" WHERE ept=${libelle} GROUP BY ept;`;
+            FROM postgis_v2."communes_drom" WHERE ept=${libelle} GROUP BY ept;`;
           if (ept.length !== 0) {
             const value = await prisma.$queryRaw<EtatCoursDeau[]>`
             SELECT
             name,
             etateco,
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."etat_cours_d_eau" 
+            FROM postgis_v2."etat_cours_d_eau" 
             WHERE ST_Intersects(geometry, ST_GeomFromText(${ept[0].geometry}, 4326));`; //WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${ept[0].geometry})), 4326), ${distance});`;
             return value;
           }
@@ -66,14 +66,14 @@ export const GetEtatCoursDeau = async (
             SELECT 
             epci,
             ST_AsText(ST_Union(geometry)) as geometry
-            FROM postgis."communes_drom" WHERE epci=${code} GROUP BY epci;`;
+            FROM postgis_v2."communes_drom" WHERE epci=${code} GROUP BY epci;`;
           if (epci.length !== 0) {
             const value = await prisma.$queryRaw<EtatCoursDeau[]>`
             SELECT
             name,
             etateco,
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis."etat_cours_d_eau" 
+            FROM postgis_v2."etat_cours_d_eau" 
             WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`;
             return value;
           }
@@ -83,14 +83,14 @@ export const GetEtatCoursDeau = async (
             SELECT 
             libelle_petr,
             ST_AsText(ST_Union(geometry)) as geometry
-            FROM postgis."communes_drom" WHERE libelle_petr=${libelle} GROUP BY libelle_petr;`;
+            FROM postgis_v2."communes_drom" WHERE libelle_petr=${libelle} GROUP BY libelle_petr;`;
           if (petr.length !== 0) {
             const value = await prisma.$queryRaw<EtatCoursDeau[]>`
               SELECT
               name,
               etateco,
               ST_AsGeoJSON(geometry) geometry
-              FROM postgis."etat_cours_d_eau" 
+              FROM postgis_v2."etat_cours_d_eau" 
               WHERE ST_Intersects(geometry, ST_GeomFromText(${petr[0].geometry}, 4326));`;
             return value;
           }
@@ -100,14 +100,14 @@ export const GetEtatCoursDeau = async (
             SELECT 
             code_pnr,
             ST_AsText(ST_Union(geometry)) as geometry
-            FROM postgis."communes_drom" WHERE code_pnr=${code} GROUP BY code_pnr;`;
+            FROM postgis_v2."communes_drom" WHERE code_pnr=${code} GROUP BY code_pnr;`;
           if (pnr.length !== 0) {
             const value = await prisma.$queryRaw<EtatCoursDeau[]>`
               SELECT
               name,
               etateco,
               ST_AsGeoJSON(geometry) geometry
-              FROM postgis."etat_cours_d_eau" 
+              FROM postgis_v2."etat_cours_d_eau" 
               WHERE ST_Intersects(geometry, ST_GeomFromText(${pnr[0].geometry}, 4326));`;
             return value;
           }
@@ -117,14 +117,14 @@ export const GetEtatCoursDeau = async (
             SELECT 
             departement, 
             ST_AsText(ST_Union(geometry)) as geometry 
-            FROM postgis."communes_drom" WHERE departement=${code} GROUP BY departement;`;
+            FROM postgis_v2."communes_drom" WHERE departement=${code} GROUP BY departement;`;
           if (departement.length !== 0) {
             const value = await prisma.$queryRaw<EtatCoursDeau[]>`
               SELECT
               name,
               etateco,
               ST_AsGeoJSON(geometry) geometry
-              FROM postgis."etat_cours_d_eau" 
+              FROM postgis_v2."etat_cours_d_eau" 
               WHERE ST_Intersects(geometry, ST_GeomFromText(${departement[0].geometry}, 4326));`;
             return value;
           }
