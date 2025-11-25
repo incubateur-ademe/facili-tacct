@@ -57,7 +57,9 @@ export const EtatEcoCoursDeau = (props: {
         if (response.ok) {
           const { coursDeau }: { coursDeau: ExportCoursDeau[] } = await response.json();
           if (coursDeau && coursDeau.length > 0) {
-            const transformedData = IndicatorExportTransformations.ressourcesEau.EtatCoursEau(coursDeau)
+            const transformedData = IndicatorExportTransformations.ressourcesEau.EtatCoursEau(
+              coursDeau
+            ).sort((a, b) => a.libelle_geographique.localeCompare(b.libelle_geographique));
             setExportDataCoursDeau(transformedData);
           }
         }
