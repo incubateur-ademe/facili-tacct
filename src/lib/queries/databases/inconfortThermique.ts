@@ -193,11 +193,12 @@ export const GetConfortThermiqueBiodiversite = async (
           `;
           return value as Partial<ConfortThermique>[];
         } else if (type === 'epci') {
-          const departements = await prisma.confort_thermique.findMany({
-            select: { departement: true },
-            where: { [column]: code },
-            distinct: ['departement']
-          });
+          const departements =
+            await prisma.databases_v2_confort_thermique.findMany({
+              select: { departement: true },
+              where: { [column]: code },
+              distinct: ['departement']
+            });
           const value = await prisma.$queryRaw`
             SELECT code_geographique, libelle_geographique, epci, libelle_epci, ept, 
                    libelle_petr, libelle_pnr, code_pnr, departement, libelle_departement,
