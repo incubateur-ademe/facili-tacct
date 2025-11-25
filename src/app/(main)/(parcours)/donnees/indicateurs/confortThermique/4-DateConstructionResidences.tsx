@@ -85,7 +85,7 @@ export const DateConstructionResidences = ({
                 libelle={libelle}
                 code={code}
                 sheetName="Age du bâti"
-                // style={{ backgroundColor: 'var(--principales-vert)' }}
+              // style={{ backgroundColor: 'var(--principales-vert)' }}
               />
             }
           />

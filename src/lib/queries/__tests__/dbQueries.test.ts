@@ -67,7 +67,7 @@ describe('Integration: query functions to check if collectivites_searchbar has r
     const result = await prisma.$queryRaw<[{ checksum: string }]>`
       SELECT md5(string_agg(t::text, '')) AS checksum
       FROM (
-        SELECT * FROM databases.collectivites_searchbar ORDER BY index
+        SELECT * FROM databases_v2.collectivites_searchbar ORDER BY index
       ) t;
     `;
     expect(result).toHaveLength(1);

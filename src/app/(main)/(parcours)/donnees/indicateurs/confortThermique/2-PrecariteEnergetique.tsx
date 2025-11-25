@@ -29,18 +29,31 @@ export const PrecariteEnergetique = ({
   const type = searchParams.get('type')!;
   const confortThermiqueFiltered = confortThermique.filter((e) => e.precarite_logement !== null && !isNaN(e.precarite_logement));
 
+  const confortThermiqueParMaille = type === 'epci'
+    ? confortThermiqueFiltered.filter((obj) => obj.epci === code)
+    : type === 'commune'
+      ? confortThermiqueFiltered.filter((obj) => obj.code_geographique === code)
+      : type === 'petr'
+        ? confortThermiqueFiltered.filter((obj) => obj.libelle_petr === libelle)
+        : type === 'ept'
+          ? confortThermiqueFiltered.filter((obj) => obj.ept === libelle)
+          : type === "pnr"
+            ? confortThermiqueFiltered.filter((obj) => obj.libelle_pnr === libelle)
+            : confortThermiqueFiltered;
+
   const precariteLogTerritoire =
     type === 'commune'
       ? Number(
-        confortThermique.find(
+        confortThermiqueParMaille.find(
           (obj) => obj['code_geographique'] === code
         )?.['precarite_logement']
       )
       : Number(
-        confortThermiqueFiltered.reduce(function (a, b) {
+        confortThermiqueParMaille.reduce(function (a, b) {
           return a + (b.precarite_logement ?? 0);
-        }, 0) / confortThermiqueFiltered.length
+        }, 0) / confortThermiqueParMaille.length
       );
+
   const precariteLogTerritoireSup = Number(
     confortThermiqueFiltered.reduce(function (a, b) {
       return a + (b.precarite_logement ?? 0);
