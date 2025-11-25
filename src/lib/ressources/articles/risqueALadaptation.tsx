@@ -174,8 +174,6 @@ const RisqueALadaptation = () => {
         <H3>Frein temporel : gérer les décalages de rythmes</H3>
         <p>
           Le temps administratif, politique, social, humain… ne suit jamais la même cadence.
-        </p>
-        <p>
           À Miquelon, il faut concilier le court terme d’un PAPI avec la stratégie de long terme de relocalisation,
           faire vivre la participation dans la durée malgré l’essoufflement du groupe moteur des débuts composé des
           premiers relogés, résister aux aléas politiques (élections à venir).
