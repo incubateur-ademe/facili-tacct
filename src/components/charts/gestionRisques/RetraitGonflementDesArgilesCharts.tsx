@@ -233,7 +233,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
                 <Body style={{ fontSize: 12 }}>
                   L’EPCI sélectionné s’étend sur
                   plusieurs départements. La comparaison proposée est
-                  effectuée avec : {departement}
+                  effectuée avec : {departement}
                 </Body>
               </div>
             </div>
