@@ -1,6 +1,7 @@
 'use client';
 
 import Notice from '@codegouvfr/react-dsfr/Notice';
+import Link from 'next/link';
 import { useEffect } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { CommunauteBloc } from './(home)/CommunauteBloc';
@@ -28,12 +29,19 @@ const Home = () => {
           color: "#201F1E"
         })}
         isClosable={true}
-        title={"Facili-TACCT se refait une beauté, nouvelle charte, nouveau parcours !"}
+        title={"Nouveautés sur le site :"}
         description={
           <>
-            Découvrez notre toute nouvelle présentation des indicateurs dans un parcours repensé et transverse ainsi que des conseils
-            pour vos enquêtes terrain (uniquement disponible sur la thématique Confort thermique pour le moment).
-            Une remarque, une suggestion ?{' '}
+            Découvrez dans notre dernier article{" "}
+            <Link
+              href="/ressources/articles/strategie-adaptation-gestion-risque-relocalisation"
+            >
+              comment passer de la gestion du risque à l’adaptation
+            </Link>
+            , consultez la part des chefs d’exploitation de plus de 55 ans
+            sur votre territoire et parcourez nos conseils terrain pour diagnostiquer
+            vos futurs impacts agricoles (thématique Agriculture).
+            <p></p>Une remarque, une suggestion ?{' '}
             <a
               href="https://tally.so/r/mJGELz"
               target="_blank"
