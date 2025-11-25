@@ -53,7 +53,6 @@ export const GetCollectivite = async (
     } catch (error) {
       console.error(error);
       Sentry.captureException(error);
-      // PrismaPostgres.$disconnect();
       return [];
     }
   })();
