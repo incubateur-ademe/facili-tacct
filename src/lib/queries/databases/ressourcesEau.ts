@@ -36,7 +36,6 @@ export const GetPrelevementsEau = async (
             SELECT departement
             FROM databases_v2.prelevements_eau
             WHERE code_geographique = ${code}
-            LIMIT 1
           )
         `;
           console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
@@ -46,11 +45,10 @@ export const GetPrelevementsEau = async (
           const value = await prisma.$queryRaw`
           SELECT *
           FROM databases_v2.prelevements_eau
-          WHERE departement = (
+          WHERE departement IN (
             SELECT departement
             FROM databases_v2.prelevements_eau
             WHERE epci = ${code}
-            LIMIT 1
           )
         `;
           console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
@@ -61,11 +59,10 @@ export const GetPrelevementsEau = async (
           const value = await prisma.$queryRaw`
           SELECT *
           FROM databases_v2.prelevements_eau
-          WHERE departement = (
+          WHERE departement IN (
             SELECT departement
             FROM databases_v2.prelevements_eau
             WHERE libelle_petr = ${libelle}
-            LIMIT 1
           )
         `;
           console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
@@ -75,11 +72,10 @@ export const GetPrelevementsEau = async (
           const value = await prisma.$queryRaw`
           SELECT *
           FROM databases_v2.prelevements_eau
-          WHERE departement = (
+          WHERE departement IN (
             SELECT departement
             FROM databases_v2.prelevements_eau
             WHERE ept = ${libelle}
-            LIMIT 1
           )
         `;
           console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
@@ -104,7 +100,6 @@ export const GetPrelevementsEau = async (
       }
     } catch (error) {
       console.error(error);
-      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }
