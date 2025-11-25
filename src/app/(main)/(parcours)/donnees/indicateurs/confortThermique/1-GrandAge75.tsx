@@ -34,6 +34,7 @@ export const GrandAge75 = ({
   const libelleDepartement = type === "epci" ? confortThermique[0]?.libelle_departement : "";
   const departement = type === "epci" ? confortThermique[0]?.departement : "";
   const [multipleDepartements, setMultipleDepartements] = useState<string[]>([]);
+  console.log("multipleDepartements", multipleDepartements);
   const grandAgeMapped = confortThermique.map(
     grandAgeMapper
   );
@@ -121,10 +122,10 @@ export const GrandAge75 = ({
               {
                 !Object.values(yData).slice(0, -2).includes('NaN') ? (
                   <>
-                    <LineChartGrandAge xData={xData} yData={yGraphData} />
+                    <LineChartGrandAge xData={xData} yData={yGraphData} disclaimer={multipleDepartements.length > 1} />
                     {
                       multipleDepartements.length > 1 &&
-                      <div style={{ minWidth: "450px", backgroundColor: "white", padding: "1em" }}>
+                      <div style={{ minWidth: "450px", backgroundColor: "white", padding: "1em", transform: "translateY(-80px)" }}>
                         <div className='flex flex-row items-center justify-center'>
                           <Image
                             src={WarningIcon}
@@ -134,9 +135,9 @@ export const GrandAge75 = ({
                             style={{ marginRight: '0.5em', alignItems: 'center' }}
                           />
                           <Body style={{ fontSize: 12 }}>
-                            L’EPCI sélectionné s’étend sur
+                            L'EPCI sélectionné s'étend sur
                             plusieurs départements. La comparaison proposée est
-                            effectuée avec : {libelleDepartement}
+                            effectuée avec : {libelleDepartement}
                           </Body>
                         </div>
                       </div>

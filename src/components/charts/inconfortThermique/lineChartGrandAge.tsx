@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 type Props = {
   xData: Array<string | undefined>;
   yData: Array<number | null>;
+  disclaimer?: boolean;
 };
 
 type GraphData = {
@@ -16,7 +17,7 @@ type GraphData = {
 };
 
 export const LineChartGrandAge = (props: Props) => {
-  const { xData, yData } = props;
+  const { xData, yData, disclaimer } = props;
   const [children, setChildren] = useState<GraphData[]>([]);
   const tempChildren: GraphData[] = [];
 
@@ -72,7 +73,7 @@ export const LineChartGrandAge = (props: Props) => {
       margin={{
         top: 30,
         right: 30,
-        bottom: 60,
+        bottom: disclaimer ? 160 : 60,
         left: 60
       }}
       axisBottom={{
