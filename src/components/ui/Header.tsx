@@ -10,21 +10,24 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { Brand } from '../Brand';
-import HeaderRechercheTerrtoire from '../searchbar/header/HeaderRechercheTerrtoire';
+import HeaderRechercheTerritoire from '../searchbar/header/HeaderRechercheTerritoire';
 
 const HeaderComp = () => {
   const searchParams = useSearchParams();
   const params = usePathname();
   const urlCode = searchParams.get('code');
   const urlLibelle = searchParams.get('libelle');
-  const urlType = searchParams.get('type') as "epci" | "commune" | "departement" | "ept" | "petr" | "pnr";
-
-  const [displayCode, setDisplayCode] = useState(urlCode);
-  const [displayLibelle, setDisplayLibelle] = useState(urlLibelle);
-  const [displayType, setDisplayType] = useState(urlType);
+  const urlType = searchParams.get('type') as "epci" | "commune" | "departement" | "ept" | "petr" | "pnr" | null;
+  const [displayCode, setDisplayCode] = useState<string | null>(urlCode);
+  const [displayLibelle, setDisplayLibelle] = useState<string | null>(urlLibelle);
+  const [displayType, setDisplayType] = useState<"epci" | "commune" | "departement" | "ept" | "petr" | "pnr" | null>(urlType);
 
   useEffect(() => {
-    if (!urlCode && !urlLibelle && !urlType) {
+    if (params === "/") {
+      setDisplayCode(null);
+      setDisplayLibelle(null);
+      setDisplayType(null);
+    } else if (!urlCode && !urlLibelle && !urlType) {
       const lastTerritory = getLastTerritory();
       if (lastTerritory) {
         setDisplayCode(lastTerritory.code);
@@ -36,7 +39,7 @@ const HeaderComp = () => {
       setDisplayLibelle(urlLibelle);
       setDisplayType(urlType);
     }
-  }, [urlCode, urlLibelle, urlType]);
+  }, [urlCode, urlLibelle, urlType, params]);
 
   const { css } = useStyles();
   const windowDimensions = useWindowDimensions();
@@ -88,9 +91,13 @@ const HeaderComp = () => {
         imgUrl: '/logo-ademe-tacct.png',
         orientation: 'horizontal'
       }}
-      quickAccessItems={windowDimensions.width && windowDimensions.width < 992 && displayType ? [] : [
-        <HeaderRechercheTerrtoire libelle={displayLibelle ?? ''} code={displayCode ?? ''} type={displayType} />
-      ]}
+      quickAccessItems={windowDimensions.width && windowDimensions.width < 992 && displayType && params !== "/" ? [] : displayType && params !== "/" ? [
+        <HeaderRechercheTerritoire
+          libelle={displayLibelle ?? ''}
+          code={displayCode ?? ''}
+          type={displayType}
+        />
+      ] : []}
       navigation={params !== "/" ? [
         {
           linkProps: {

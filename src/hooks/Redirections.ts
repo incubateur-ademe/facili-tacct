@@ -9,12 +9,19 @@ export const handleRedirection = ({
 }: {
   searchCode: string | undefined;
   searchLibelle: string;
-  typeTerritoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement' | 'ept';
+  typeTerritoire:
+    | 'epci'
+    | 'commune'
+    | 'petr'
+    | 'pnr'
+    | 'departement'
+    | 'ept'
+    | '';
   page: string;
   thematique?: string;
 }) => {
   const thematiqueParam = thematique ? `&thematique=${thematique}` : '';
-  
+
   if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
     return `/${page}?code=200054781&libelle=${searchLibelle}&type=ept${thematiqueParam}`;
   } else if (searchCode && searchCode.length !== 0) {
