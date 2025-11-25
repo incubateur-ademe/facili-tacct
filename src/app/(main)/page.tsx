@@ -41,7 +41,7 @@ const Home = () => {
             , consultez la part des chefs d’exploitation de plus de 55 ans
             sur votre territoire et parcourez nos conseils terrain pour diagnostiquer
             vos futurs impacts agricoles (thématique Agriculture).
-            <p></p>Une remarque, une suggestion ?{' '}
+            Une remarque, une suggestion ?{' '}
             <a
               href="https://tally.so/r/mJGELz"
               target="_blank"
