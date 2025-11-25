@@ -107,6 +107,7 @@ export const EPCI = async (variableCollectivite: string) => {
     '% ' + variableCollectivite.replace(' ', ', ') + '%';
   const searchPatternDashComma =
     '%-' + variableCollectivite.replace(' ', ', ') + '%';
+  const searchPatternGuillemetsFr = '%«' + variableCollectivite + '%';
 
   const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
     SELECT 
@@ -138,6 +139,7 @@ export const EPCI = async (variableCollectivite: string) => {
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashReplace})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceComma})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashComma})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternGuillemetsFr})
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPattern})
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternSpace})
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternDash})
