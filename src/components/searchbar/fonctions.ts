@@ -10,9 +10,9 @@ export const ReplaceDisplayEpci = (libelleEpci: string) => {
 
 export const ReplaceSearchEpci = (libelleEpci: string) => {
   return libelleEpci
-    .replace("CA ", "Communauté d'agglomération ")
-    .replace("CC ", "Communauté de communes ")
-    .replace("CU ", "Communauté urbaine ");
+    .replace('CA ', "Communauté d'agglomération ")
+    .replace('CC ', 'Communauté de communes ')
+    .replace('CU ', 'Communauté urbaine ');
 };
 
 export const handleRechercheRedirection = ({
@@ -35,7 +35,10 @@ export const handleRechercheRedirection = ({
       libelle: searchLibelle,
       type: typeTerritoire
     };
-    sessionStorage.setItem('dernierTerritoireRecherché', JSON.stringify(territoryData));
+    sessionStorage.setItem(
+      'dernierTerritoireRecherché',
+      JSON.stringify(territoryData)
+    );
   }
 
   if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
@@ -69,9 +72,16 @@ export const handleChangementTerritoireRedirection = ({
     const territoryData = {
       code: searchCode,
       libelle: searchLibelle,
-      type: typeTerritoire === 'epci' && eptRegex.test(searchLibelle) ? 'ept' : typeTerritoire
+      type:
+        typeTerritoire === 'epci' && eptRegex.test(searchLibelle)
+          ? 'ept'
+          : typeTerritoire,
+      thematique: thematique
     };
-    sessionStorage.setItem('dernierTerritoireRecherché', JSON.stringify(territoryData));
+    sessionStorage.setItem(
+      'dernierTerritoireRecherché',
+      JSON.stringify(territoryData)
+    );
   }
 
   // if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
@@ -85,22 +95,31 @@ export const handleChangementTerritoireRedirection = ({
   //   window.location.assign(url);
   // }
   if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
-    router.replace(`/${page}?code=200054781&libelle=${searchLibelle}&type=ept${thematique ? `&thematique=${thematique}` : ''}`);
+    router.replace(
+      `/${page}?code=200054781&libelle=${searchLibelle}&type=ept${thematique ? `&thematique=${thematique}` : ''}`
+    );
   } else if (searchCode.length !== 0) {
     router.replace(
       `/${page}?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}${thematique ? `&thematique=${thematique}` : ''}`
     );
   } else if (searchLibelle.length !== 0) {
-    router.replace(`/${page}?libelle=${searchLibelle}&type=${typeTerritoire}${thematique ? `&thematique=${thematique}` : ''}`);
+    router.replace(
+      `/${page}?libelle=${searchLibelle}&type=${typeTerritoire}${thematique ? `&thematique=${thematique}` : ''}`
+    );
   }
 };
 
-export const getLastTerritory = (): { code: string; libelle: string; type: string; thematique?: string } | null => {
+export const getLastTerritory = (): {
+  code: string;
+  libelle: string;
+  type: string;
+  thematique?: string;
+} | null => {
   if (typeof window === 'undefined') return null;
-  
+
   const stored = sessionStorage.getItem('dernierTerritoireRecherché');
   if (!stored) return null;
-  
+
   try {
     return JSON.parse(stored);
   } catch {
@@ -110,16 +129,18 @@ export const getLastTerritory = (): { code: string; libelle: string; type: strin
 
 export const saveThematique = (thematique: string) => {
   if (typeof window === 'undefined') return;
-  
+
   const stored = sessionStorage.getItem('dernierTerritoireRecherché');
   if (stored) {
     try {
       const data = JSON.parse(stored);
       data.thematique = thematique;
-      sessionStorage.setItem('dernierTerritoireRecherché', JSON.stringify(data));
+      sessionStorage.setItem(
+        'dernierTerritoireRecherché',
+        JSON.stringify(data)
+      );
     } catch {
       // Si erreur de parsing, on ne fait rien
     }
   }
 };
-

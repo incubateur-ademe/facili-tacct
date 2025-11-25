@@ -8,7 +8,7 @@ import { BoutonRechercherHeader } from './BoutonRechercher';
 import { SearchInputHeader } from './SearchInputHeader';
 import { SelectTypeTerritoire } from './SelectTypeTerritoire';
 
-const HeaderRechercheTerrtoire = (props:
+const HeaderRechercheTerritoire = (props:
   {
     libelle: string;
     type: "epci" | "commune" | "departement" | "ept" | "petr" | "pnr";
@@ -157,4 +157,4 @@ const HeaderRechercheTerrtoire = (props:
   );
 };
 
-export default HeaderRechercheTerrtoire;
+export default HeaderRechercheTerritoire;
