@@ -145,11 +145,12 @@ export const ZipExportButtonNouveauParcours = ({
     };
   }, [isExporting]);
 
-  const handleClick = async () => {
+  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isExporting) return;
-    
+
+    e.currentTarget.blur();
     setIsExporting(true);
-    
+
     posthog.capture('export_zip_bouton', {
       thematique: thematique,
       code: code,
@@ -157,7 +158,10 @@ export const ZipExportButtonNouveauParcours = ({
       type: type,
       date: new Date()
     });
-    
+
+    // Attendre que React affiche "Export en cours..." avant de démarrer l'export
+    await new Promise(resolve => setTimeout(resolve, 0));
+
     try {
       await handleExport();
     } catch (error) {

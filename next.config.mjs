@@ -88,7 +88,7 @@ const config = {
     },
     serverExternalPackages: [
         'require-in-the-middle',
-        'import-in-the-middle',
+        'imporin-the-middle',
         '@prisma/client'
     ],
     eslint: {
