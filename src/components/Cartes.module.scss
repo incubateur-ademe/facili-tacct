@@ -1,0 +1,83 @@
+.carteHoverContainer {
+    padding: 1.5rem 2rem;
+    background-color: var(--boutons-primaire-2);
+    width: 319px;
+    height: 136px;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+
+    .contentWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0.5rem;
+        max-height: 100%;
+        overflow: hidden;
+
+        .left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            justify-content: flex-start;
+            position: relative;
+        }
+    }
+
+    .icon {
+        transition: opacity 0.5s ease;
+        opacity: 1;
+    }
+
+    .title {
+        transition: transform 0.5s ease;
+        transform: translateY(0);
+    }
+
+    .description {
+        opacity: 0;
+        transition:
+            opacity 0.5s ease,
+            transform 0.5s ease;
+        transform: translateY(0);
+        text-align: left;
+    }
+
+    &:hover {
+        background-color: var(--boutons-primaire-5) !important;
+
+        .icon {
+            opacity: 0;
+        }
+
+        .title {
+            transform: translateY(-32px);
+        }
+
+        .description {
+            opacity: 1;
+            transform: translateY(-32px);
+        }
+    }
+
+    &:focus {
+        outline: none;
+        border: 1px solid var(--boutons-primaire-5);
+        box-shadow:
+            0 0 0 2px white,
+            0 0 0 4px var(--boutons-primaire-5);
+        .icon {
+            opacity: 0;
+        }
+
+        .title {
+            transform: translateY(-32px);
+        }
+
+        .description {
+            opacity: 1;
+            transform: translateY(-34px);
+        }
+    }
+}

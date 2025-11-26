@@ -1,8 +1,8 @@
 "use client";
 
-import { CarteCollection } from "@/design-system/base/CarteCollection";
-import { ressourcesCartes } from "@/lib/ressources/cartes";
+import { collectionsCartes } from "@/lib/ressources/cartes";
 import { useRef } from "react";
+import { CarteCollection } from "./CarteCollection";
 import styles from "./ressources.module.scss";
 
 export const SliderCollections = () => {
@@ -41,7 +41,7 @@ export const SliderCollections = () => {
       <div className={styles.sliderInnerWrapper}>
         <div className={styles.sliderWrapper} ref={sliderRef}>
           {
-            ressourcesCartes.map((carte, index) => (
+            collectionsCartes.map((carte, index) => (
               <CarteCollection
                 key={index}
                 texte={carte.texte}
