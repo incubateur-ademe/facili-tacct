@@ -12,6 +12,14 @@ export const ressourcesCartes = [
     image: Collection1Img
   },
   {
+    texte: 'Evaluer les impacts du changement climatique',
+    image: Collection5Img
+  },
+  {
+    texte: 'Mobiliser les acteurs du territoire',
+    image: Collection6Img
+  },
+  {
     texte: 'Piloter la démarche d’adaptation',
     image: Collection2Img
   },
@@ -22,14 +30,6 @@ export const ressourcesCartes = [
   {
     texte: 'Ajuster sa posture d’animation',
     image: Collection4Img
-  },
-  {
-    texte: 'Evaluer les impacts du changement climatique',
-    image: Collection5Img
-  },
-  {
-    texte: 'Mobiliser les acteurs du territoire',
-    image: Collection6Img
   },
   {
     texte: 'Partager le diagnostic de vulnérabilité',

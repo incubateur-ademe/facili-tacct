@@ -15,5 +15,3 @@ export const CarteCollection = ({
     </div>
   );
 };
-
-//<span class="fr-icon-arrow-left-line" aria-hidden="true"></span>

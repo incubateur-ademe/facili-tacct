@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { Container } from '../../../design-system/server';
+import { BlocCollections } from './blocs/blocCollections';
+import { BlocTitre } from './blocs/blocTitre';
 import RessourcesCards from './cards';
 import styles from './ressources.module.scss';
 
@@ -12,11 +14,11 @@ export const metadata: Metadata = {
 const Ressources = () => {
   return (
     <>
-      {/* <BlocCollections /> */}
+      <BlocTitre />
+      <BlocCollections />
 
       <Container size="xl" className={styles.ressourcesContainer}>
         <Suspense>
-          {/* <SliderCollections /> */}
           <RessourcesCards />
         </Suspense>
       </Container>
