@@ -98,7 +98,7 @@ export const MapEtatCoursDeau = (props: {
         },
         properties: {
           nomSite: site.POINT,
-          qualite2020: site.QEB_2020?.slice(-1),
+          qualite2020: site.QEB_2020?.slice(-1) || 'NC',
           icon: qualiteIcon(site.QEB_2020?.slice(-1))
         },
         id: idx
@@ -399,6 +399,7 @@ export const MapEtatCoursDeau = (props: {
                 'S', 'suffisant',
                 'I', 'insuffisant',
                 'P', 'manque',
+                'NC', 'non-classe',
                 'non-classe'
               ],
               'icon-size': 1,
@@ -410,13 +411,12 @@ export const MapEtatCoursDeau = (props: {
           const baignadeClusterLayers = ['baignade-clusters', 'baignade-clusters-border', 'baignade-clusters-outline'];
 
           baignadeClusterLayers.forEach(layerId => {
-            map.on('mouseenter', layerId, async (e) => {
+            map.on('mouseenter', layerId, (e) => {
               map.getCanvas().style.cursor = 'pointer';
-              if (e.features && e.features.length > 0) {
-                const clusterId = e.features[0].properties?.cluster_id;
+              if (e.features && e.features.length > 0 && e.features[0].properties?.cluster_id !== undefined) {
+                const clusterId = e.features[0].properties.cluster_id;
                 const source = map.getSource('sitesBaignade') as maplibregl.GeoJSONSource;
-                try {
-                  const features = await source.getClusterLeaves(clusterId, 100, 0);
+                source.getClusterLeaves(clusterId, 100, 0).then((features) => {
                   if (!features) return;
                   const sitesInCluster = features.map((f: any) => f.properties?.nomSite).filter(Boolean).slice(0, 10);
                   const hasMore = features.length > 10;
@@ -445,9 +445,9 @@ export const MapEtatCoursDeau = (props: {
                     .setLngLat(e.lngLat)
                     .setHTML(tooltipContent)
                     .addTo(map);
-                } catch (err) {
+                }).catch((err) => {
                   console.error('Error getting cluster leaves:', err);
-                }
+                });
               }
             });
 
@@ -465,23 +465,24 @@ export const MapEtatCoursDeau = (props: {
               }
             });
 
-            map.on('click', layerId, async (e) => {
+            map.on('click', layerId, (e) => {
               const features = map.queryRenderedFeatures(e.point, {
                 layers: [layerId]
               });
-              if (features.length > 0) {
-                const clusterId = features[0].properties?.cluster_id;
+              if (features.length > 0 && features[0].properties?.cluster_id !== undefined) {
+                const clusterId = features[0].properties.cluster_id;
+                const feature = features[0];
                 const source = map.getSource('sitesBaignade') as maplibregl.GeoJSONSource;
-                try {
-                  const zoom = await source.getClusterExpansionZoom(clusterId);
-                  if (features[0].geometry.type === 'Point') {
+                if (source && feature.geometry.type === 'Point') {
+                  const geometry = feature.geometry as { type: 'Point'; coordinates: number[] };
+                  source.getClusterExpansionZoom(clusterId).then((zoom) => {
                     map.easeTo({
-                      center: features[0].geometry.coordinates as [number, number],
+                      center: [geometry.coordinates[0], geometry.coordinates[1]],
                       zoom: zoom
                     });
-                  }
-                } catch (err) {
-                  console.error('Error getting cluster expansion zoom:', err);
+                  }).catch((err) => {
+                    console.error('Error getting cluster expansion zoom:', err);
+                  });
                 }
               }
             });

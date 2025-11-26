@@ -11,11 +11,12 @@ export const CopyLinkClipboard = ({
   const [copied, setCopied] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleCopy = () => {
+  const handleCopy = (e: React.MouseEvent<HTMLButtonElement>) => {
     const url = new URL(window.location.href);
     url.hash = `#${anchor}`;
     navigator.clipboard.writeText(url.toString());
     setCopied(true);
+    e.currentTarget.blur();
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
       setTimeout(() => setCopied(false), 100); // allow fade out

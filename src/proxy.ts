@@ -7,7 +7,7 @@ interface MiddlewareTokenOptions {
   req: NextRequest;
 }
 
-export async function middleware(req: NextRequest): Promise<NextResponse> {
+export async function proxy(req: NextRequest): Promise<NextResponse> {
   // Redirect /ressources/articles?title=... to /ressources
   if (
     req.nextUrl.pathname === '/ressources/articles' &&
