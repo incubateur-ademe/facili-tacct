@@ -9,7 +9,7 @@ export const BlocCollections = () => {
       <NewContainer size="xl">
         <div className={styles.ressourcesCollectionWrapper}>
           <div className={styles.titles}>
-            <H2 style={{ color: "#2B4B49" }}>
+            <H2 style={{ color: "#2B4B49", marginBottom: "0.5rem" }}>
               Explorez nos collections
             </H2>
             <Body style={{ color: "#3D3D3D" }}>Une sélection de ressources pour chaque situation</Body>

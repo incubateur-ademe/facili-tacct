@@ -181,6 +181,21 @@
     padding: 1.5rem 0rem;
     height: 92px;
     text-align: right;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 364px;
+        height: 364px;
+        border-radius: 50%;
+        background-color: var(--boutons-primaire-2);
+        top: 120%;
+        left: 55%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+    }
 }
 
 // Bloc Collections
@@ -198,12 +213,25 @@
         display: flex;
         flex-direction: column;
         align-self: center;
-        min-width: 248px;
+        max-width: 350px;
+        width: 30%;
     }
 }
 
 // Slider
 .sliderContainer {
+    position: relative;
+    overflow-x: visible;
+    flex: 1;
+    min-width: 0;
+}
+
+.sliderInnerWrapper {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.sliderWrapper {
     display: flex;
     flex-direction: row;
     gap: 1.5em;
@@ -221,12 +249,12 @@
     justify-content: center;
     align-items: center;
     position: absolute;
+    left: -24px;
     top: 50%;
-    transform: translateY(-128px) translateX(-50%);
+    transform: translateY(-50%);
     cursor: pointer;
-    &:hover {
-        background-color: var(--boutons-primaire-3);
-    }
+    z-index: 10;
+    box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .flecheDroite {
@@ -238,10 +266,30 @@
     justify-content: center;
     align-items: center;
     position: absolute;
+    right: -24px;
     top: 50%;
-    transform: translateX(890px) translateY(-128px);
+    transform: translateY(-50%);
     cursor: pointer;
-    &:hover {
-        background-color: var(--boutons-primaire-3);
+    z-index: 10;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+// Bloc autres outils
+
+.ressourcesAutresOutilsContainer {
+    background-color: #ecfffd;
+}
+.ressourcesAutresOutilsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2.5rem;
+    align-items: flex-start;
+    .titles {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        max-width: 350px;
+        width: 30%;
     }
 }

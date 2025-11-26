@@ -34,21 +34,25 @@ export const SliderCollections = () => {
   };
 
   return (
-    <div className={styles.sliderContainer} ref={sliderRef}>
+    <div className={styles.sliderContainer}>
       <button className={styles.flecheGauche} aria-label="Précédent" onClick={scrollLeft}>
-        <span className="fr-icon-arrow-left-line" aria-hidden="true"></span>
+        <span className="fr-icon-arrow-left-line" aria-hidden="true" style={{ color: "var(--boutons-primaire-3)" }}></span>
       </button>
-      {
-        ressourcesCartes.map((carte, index) => (
-          <CarteCollection
-            key={index}
-            texte={carte.texte}
-            image={carte.image}
-          />
-        ))
-      }
+      <div className={styles.sliderInnerWrapper}>
+        <div className={styles.sliderWrapper} ref={sliderRef}>
+          {
+            ressourcesCartes.map((carte, index) => (
+              <CarteCollection
+                key={index}
+                texte={carte.texte}
+                image={carte.image}
+              />
+            ))
+          }
+        </div>
+      </div>
       <button className={styles.flecheDroite} aria-label="Suivant" onClick={scrollRight}>
-        <span className="fr-icon-arrow-right-line" aria-hidden="true"></span>
+        <span className="fr-icon-arrow-right-line" aria-hidden="true" style={{ color: "var(--boutons-primaire-3)" }}></span>
       </button>
     </div>
   );
