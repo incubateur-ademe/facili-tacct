@@ -1,6 +1,7 @@
-import { H2 } from "@/design-system/base/Textes";
+import { Body, H2 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import styles from '../ressources.module.scss';
+import { SliderCollections } from "../sliderCollections";
 
 export const BlocCollections = () => {
   return (
@@ -11,7 +12,9 @@ export const BlocCollections = () => {
             <H2 style={{ color: "#2B4B49" }}>
               Explorez nos collections
             </H2>
+            <Body style={{ color: "#3D3D3D" }}>Une sélection de ressources pour chaque situation</Body>
           </div>
+          <SliderCollections />
         </div>
       </NewContainer>
     </div>
