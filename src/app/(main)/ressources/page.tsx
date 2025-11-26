@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { Container } from '../../../design-system/server';
+import { BlocAutresOutils } from './blocs/blocAutresOutils';
 import { BlocCollections } from './blocs/blocCollections';
 import { BlocTitre } from './blocs/blocTitre';
 import RessourcesCards from './cards';
@@ -16,6 +17,7 @@ const Ressources = () => {
     <>
       <BlocTitre />
       <BlocCollections />
+      <BlocAutresOutils />
 
       <Container size="xl" className={styles.ressourcesContainer}>
         <Suspense>
