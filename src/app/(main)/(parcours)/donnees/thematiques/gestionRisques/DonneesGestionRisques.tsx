@@ -15,6 +15,7 @@ import { ArretesCatnat } from '../../indicateurs/gestionDesRisques/1-ArretesCatn
 import { FeuxDeForet } from '../../indicateurs/gestionDesRisques/2-FeuxDeForet';
 import { ErosionCotiereComp } from '../../indicateurs/gestionDesRisques/3-ErosionCotiere';
 import { RetraitGonflementDesArgiles } from '../../indicateurs/gestionDesRisques/4-RetraitGonflementDesArgiles';
+import { Debroussaillement } from '../../indicateurs/gestionDesRisques/5-Debroussaillement';
 
 interface Props {
   gestionRisques: ArreteCatNat[];
@@ -144,6 +145,16 @@ export const DonneesGestionRisques = ({
               </H3>
             </div>
             <FeuxDeForet incendiesForet={data.incendiesForet} />
+          </div>
+
+          {/* Débroussaillement */}
+          <div id="Débroussaillement" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Obligations de débroussaillement
+              </H3>
+            </div>
+            <Debroussaillement coordonneesCommunes={coordonneesCommunes} />
           </div>
         </section>
 
