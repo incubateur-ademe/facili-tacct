@@ -167,3 +167,39 @@
         margin-bottom: 4rem;
     }
 }
+
+// Bloc Collections
+
+.ressourcesCollectionContainer {
+    background-color: var(--boutons-primaire-5);
+}
+.ressourcesCollectionWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 0 2rem;
+    .titles {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        color: #ffffff;
+    }
+    .topImage {
+        position: relative;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        max-width: 450px;
+    }
+}
+
+// Slider
+.sliderContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}

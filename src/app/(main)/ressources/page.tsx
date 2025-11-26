@@ -11,11 +11,16 @@ export const metadata: Metadata = {
 
 const Ressources = () => {
   return (
-    <Container size="xl" className={styles.ressourcesContainer}>
-      <Suspense>
-        <RessourcesCards />
-      </Suspense>
-    </Container>
+    <>
+      {/* <BlocCollections /> */}
+
+      <Container size="xl" className={styles.ressourcesContainer}>
+        <Suspense>
+          {/* <SliderCollections /> */}
+          <RessourcesCards />
+        </Suspense>
+      </Container>
+    </>
   );
 };
 
