@@ -1,5 +1,7 @@
+import { CarteHoverLink } from "@/components/Cartes";
 import { Body, H2 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
+import { autresOutilsCartes } from "@/lib/ressources/cartes";
 import styles from '../ressources.module.scss';
 
 export const BlocAutresOutils = () => {
@@ -15,6 +17,18 @@ export const BlocAutresOutils = () => {
               Des réponses à vos questions, un appui méthodologique et une communauté d’entraide,
               pour accompagner votre démarche d’adaptation.
             </Body>
+          </div>
+          <div className={styles.cartesWrapper}>
+            {
+              autresOutilsCartes.map((carte, index) => (
+                <CarteHoverLink
+                  key={index}
+                  titre={carte.titre}
+                  description={carte.description}
+                  icone={carte.icone}
+                />
+              ))
+            }
           </div>
         </div>
       </NewContainer>

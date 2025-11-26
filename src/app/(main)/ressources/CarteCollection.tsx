@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import styles from "./Cartes.module.scss";
+import styles from "./ressources.module.scss";
 
 export const CarteCollection = ({
   texte,
