@@ -91,9 +91,6 @@ const config = {
         'imporin-the-middle',
         '@prisma/client'
     ],
-    eslint: {
-        ignoreDuringBuilds: true
-    },
     output: 'standalone',
     env: {
         NEXT_TELEMETRY_DISABLED: '1',
@@ -207,7 +204,11 @@ const config = {
 };
 
 const withMDX = createMDX({
-    extension: /\.mdx?$/
+    extension: /\.mdx?$/,
+    options: {
+        remarkPlugins: [],
+        rehypePlugins: []
+    }
 });
 
 export default withSentryConfig(withMDX(config), {
