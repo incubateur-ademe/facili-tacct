@@ -1,0 +1,36 @@
+.carteCollectionWrapper {
+    border-radius: 2rem;
+    background-color: var(--boutons-primaire-1);
+    padding: 0.5rem 1rem;
+    width: 320px;
+    height: 256px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: var(--boutons-primaire-3);
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: 6px solid #971356;
+        outline-offset: -1px;
+        background-color: var(--boutons-primaire-3);
+    }
+
+    .carteCollectionImage {
+        height: 150px;
+        object-fit: cover;
+    }
+
+    p {
+        font-size: 22px;
+        color: #fafafa;
+        line-height: 28px;
+        font-weight: bold;
+        text-align: center;
+        margin: 0;
+    }
+}
