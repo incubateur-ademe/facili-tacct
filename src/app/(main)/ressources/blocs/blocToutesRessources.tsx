@@ -1,8 +1,9 @@
 "use client";
 
 import ReinitialiserIcon from "@/assets/icons/refresh_icon_green.png";
+import TestImageTuile from '@/assets/images/test_tuile.png';
 import MultiSelect from "@/components/MultiSelect";
-import { Tuile } from "@/components/Tuile";
+import { TuileHorizontale, TuileVerticale } from "@/components/Tuile";
 import { TagsSimples } from "@/design-system/base/Tags";
 import { Body, H2 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
@@ -15,6 +16,7 @@ import styles from "../ressources.module.scss";
 export const BlocToutesRessources = () => {
   const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({});
   const [ArticlesFiltres, setArticlesFiltres] = useState(TousLesArticles);
+  const territoireOptions = FiltresOptions.find(f => f.titre === 'Territoire')?.options || [];
 
   const handleSelectOptions = (filterTitre: string) => (event: SelectChangeEvent<string[]>) => {
     const value = event.target.value;
@@ -99,31 +101,36 @@ export const BlocToutesRessources = () => {
           </div>
         </div>
         <div className={styles.resultatsWrapper}>
-          <Body>X Résultat(s)</Body>
-          {
-            ArticlesFiltres.slice(0, 1).map((el, i) => {
-              return (
-                <Tuile
-                  key={i}
-                  titre={el.metadata.title}
-                  description={el.metadata.description}
-                  tags={el.filtres?.map((filtre, index) => (
-                    <TagsSimples
-                      key={index}
-                      texte={filtre}
-                      couleur="#E3FAF9"
-                      couleurTexte="var(--boutons-primaire-3)"
-                      taille="small"
-                    />
-                  ))}
-                  tempsLecture={el.tempsLecture}
-                />
-              );
-            })
-          }
-          {/* <Tuile
+          <Body style={{ padding: "2rem 0" }}><b>{ArticlesFiltres.length}</b> Résultat(s)</Body>
+          <div className={styles.listeDesArticlesWrapper}>
+            {
+              ArticlesFiltres.slice(0, 2).map((el, i) => {
+                return (
+                  <TuileVerticale
+                    key={i}
+                    titre={el.titre!}
+                    description={el.description}
+                    tags={el.filtres?.filter(filtre => !territoireOptions.includes(filtre)).map((filtre, index) => (
+                      <TagsSimples
+                        key={index}
+                        texte={filtre}
+                        couleur={filtre === "M'inspirer" ? "#FFC9E4" : filtre === "Me former" ? "#F6F69B" : filtre === "Agir" ? "#FFE2AE" : "#E3FAF9"}
+                        couleurTexte={filtre === "M'inspirer" ? "#971356" : filtre === "Me former" ? "#5A5A10" : filtre === "Agir" ? "#7E5202" : "var(--boutons-primaire-3)"}
+                        taille="small"
+                      />
+                    ))}
+                    tempsLecture={el.tempsLecture}
+                    lien={el.lien}
+                    lienExterne={el.lien && el.lien.startsWith('/ressources') ? false : true}
+                    image={el.image!}
+                  />
+                );
+              })
+            }
+          </div>
+          <div className="m-8" />
+          <TuileHorizontale
             titre="Titre de la ressource sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis "
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
             tags={[<TagsSimples
               texte="Catégorie"
               couleur="#E3FAF9"
@@ -131,7 +138,8 @@ export const BlocToutesRessources = () => {
               taille="small" />]
             }
             tempsLecture={5}
-          /> */}
+            image={TestImageTuile}
+          />
 
         </div>
       </NewContainer>

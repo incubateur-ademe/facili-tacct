@@ -383,3 +383,10 @@
         }
     }
 }
+.listeDesArticlesWrapper {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1.5rem;
+    row-gap: 4rem;
+    flex-wrap: wrap;
+}
