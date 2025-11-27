@@ -1,3 +1,4 @@
+import MultiSelect from '@/components/MultiSelect';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { Container } from '../../../design-system/server';
@@ -18,6 +19,7 @@ const Ressources = () => {
       <BlocTitre />
       <BlocCollections />
       <BlocAutresOutils />
+      <MultiSelect />
 
       <Container size="xl" className={styles.ressourcesContainer}>
         <Suspense>
