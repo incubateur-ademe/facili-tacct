@@ -7,7 +7,7 @@ import styles from '../ressources.module.scss';
 export const BlocAutresOutils = () => {
   return (
     <div className={styles.ressourcesAutresOutilsContainer}>
-      <NewContainer size="xl">
+      <NewContainer size="xl" style={{ padding: "40px 0" }}>
         <div className={styles.ressourcesAutresOutilsWrapper}>
           <div className={styles.titles}>
             <H2 style={{ color: "#038278", marginBottom: "0.5rem" }}>

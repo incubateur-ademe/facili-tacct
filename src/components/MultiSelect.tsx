@@ -6,32 +6,22 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { useState } from "react";
 
-const options = [
-  "Accessibilité",
-  "Confort",
-  "Sécurité",
-  "Esthétique",
-  "Fonctionnalité",
-  "Durabilité",
-  "Écologie"
-];
-
-const MultiSelect = () => {
-  const [selectedValues, setSelectedValues] = useState<string[]>([]);
-
-  const handleChange = (event: SelectChangeEvent<string[]>) => {
-    const value = event.target.value;
-    setSelectedValues(typeof value === "string" ? value.split(",") : value);
-  };
-
+const MultiSelect = ({
+  options,
+  handleSelectObjectifOptions,
+  selectedValues = []
+}: {
+  options: string[];
+  handleSelectObjectifOptions: (event: SelectChangeEvent<string[]>) => void;
+  selectedValues?: string[];
+}) => {
   return (
     <FormControl fullWidth>
       <Select
         multiple
         value={selectedValues}
-        onChange={handleChange}
+        onChange={handleSelectObjectifOptions}
         displayEmpty
         IconComponent={ExpandMoreOutlinedIcon}
         renderValue={(selected) =>
@@ -43,15 +33,16 @@ const MultiSelect = () => {
           sx: {
             '& .MuiPaper-root': {
               backgroundColor: '#FFFFFF',
-              borderRadius: '1rem',
+              borderRadius: '1.5rem',
               transform: 'translateY(14px) !important',
+              boxShadow: '0px 2px 6px 0px #00001229',
               '& .Mui-selected': {
                 fontWeight: 700,
                 backgroundColor: '#FFFFFF',
               },
             },
             '& .MuiList-root': {
-              padding: '0.5rem',
+              padding: '1.5rem',
             },
             '& .MuiMenuItem-root:not(:last-child)': {
               // borderBottom: '1px solid var(--gris-medium)',
@@ -64,24 +55,24 @@ const MultiSelect = () => {
               '&:focus': { fontWeight: '700 !important', backgroundColor: 'transparent !important', outline: 'none' },
             },
             '& .MuiCheckbox-root': {
-              padding: '9px',
+              padding: '6px',
             },
           },
         }}
         sx={{
           '&': {
             backgroundColor: 'white',
-            boxShadow: 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px',
             borderRadius: '30px',
             height: "48px",
             fontWeight: 400,
-            transition: 'all 0.5s ease-in-out'
+            transition: 'all 0.5s ease-in-out',
+            border: '1px solid var(--gris-medium)',
           },
           '& .MuiSelect-select': {
-            color: '#000000',
-            fontSize: '14px',
+            color: 'var(--gris-dark)',
+            fontSize: '1rem',
             fontFamily: 'Marianne',
-            fontWeight: 400,
+            fontWeight: selectedValues.length === 0 ? 'normal' : 'bold',
             border: 'none',
           },
           '& .MuiOutlinedInput-notchedOutline': {
