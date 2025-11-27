@@ -1,10 +1,10 @@
-import MultiSelect from '@/components/MultiSelect';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { Container } from '../../../design-system/server';
 import { BlocAutresOutils } from './blocs/blocAutresOutils';
 import { BlocCollections } from './blocs/blocCollections';
 import { BlocTitre } from './blocs/blocTitre';
+import { BlocToutesRessources } from './blocs/blocToutesRessources';
 import RessourcesCards from './cards';
 import styles from './ressources.module.scss';
 
@@ -13,15 +13,24 @@ export const metadata: Metadata = {
   description: 'Catalogue de ressources Facili-TACCT à destination des collectivités',
 };
 
+const options = [
+  "Accessibilité",
+  "Confort",
+  "Sécurité",
+  "Esthétique",
+  "Fonctionnalité",
+  "Durabilité",
+  "Écologie"
+];
+
 const Ressources = () => {
   return (
     <>
       <BlocTitre />
       <BlocCollections />
       <BlocAutresOutils />
-      <MultiSelect />
-
-      <Container size="xl" className={styles.ressourcesContainer}>
+      <BlocToutesRessources />
+      <Container size="xl" className={styles.ressourcesContainer} style={{ marginTop: "50rem" }}>
         <Suspense>
           <RessourcesCards />
         </Suspense>
