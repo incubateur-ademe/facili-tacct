@@ -64,7 +64,7 @@ const HeaderComp = () => {
     <Header
       className={css({
         zIndex: '500',
-        '.fr-container': windowDimensions.width && windowDimensions.width > 992 && (params === "/donnees" || params === "/impacts") ? {
+        '.fr-container': windowDimensions.width && windowDimensions.width > 992 && displayCode && displayType ? {
           marginRight: "1.5rem",
           maxWidth: '85dvw',
         } : {},
