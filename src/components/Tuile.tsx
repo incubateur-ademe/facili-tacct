@@ -41,7 +41,7 @@ export const TuileVerticale = ({
           </div>
         )}
         <div className={styles.titre}>
-          {titre.length > 80 ? `${titre.substring(0, 70)}...` : titre}
+          {titre.length > 75 ? `${titre.substring(0, 73)}...` : titre}
         </div>
         <p className={styles.description}>{description}</p>
       </div>
@@ -89,8 +89,9 @@ export const TuileHorizontale = ({
   tags = [],
   tempsLecture
 }: Props) => {
-  return (
-    <div className={styles.tuileHorizontale} tabIndex={0} role="article">
+  const lienExterne = lien ? lien.startsWith('http') : false;
+  const content = (
+    <div className={styles.tuileHorizontale} tabIndex={lien ? -1 : 0} role="article">
       <div className={styles.imageContainer}>
         <Image src={image} alt={titre} fill />
       </div>
@@ -118,10 +119,29 @@ export const TuileHorizontale = ({
               </div>
             )}
           </div>
-
-          <span className={`fr-icon-arrow-right-line ${styles.arrow}`} aria-hidden="true"></span>
+          {
+            lien && (
+              lienExterne ? <Image src={LienExterneIcon} alt="" width={24} height={24} /> :
+                <span className={`fr-icon-arrow-right-line ${styles.arrow}`} aria-hidden="true"></span>
+            )
+          }
         </div>
       </div>
     </div>
   );
+
+  if (lien) {
+    return (
+      <Link
+        href={lien}
+        target={lienExterne ? "_blank" : "_self"}
+        rel={lienExterne ? "noopener noreferrer" : undefined}
+        className={styles.tuileLink}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return content;
 }

@@ -1,13 +1,12 @@
 "use client";
 
 import ReinitialiserIcon from "@/assets/icons/refresh_icon_green.png";
-import TestImageTuile from '@/assets/images/test_tuile.png';
 import MultiSelect from "@/components/MultiSelect";
-import { TuileHorizontale, TuileVerticale } from "@/components/Tuile";
+import { TuileVerticale } from "@/components/Tuile";
 import { TagsSimples } from "@/design-system/base/Tags";
 import { Body, H2 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
-import { FiltresOptions, TousLesArticles } from "@/lib/ressources/toutesRessources";
+import { FiltresOptions, toutesLesRessources } from "@/lib/ressources/toutesRessources";
 import { SelectChangeEvent } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
@@ -15,7 +14,7 @@ import styles from "../ressources.module.scss";
 
 export const BlocToutesRessources = () => {
   const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({});
-  const [ArticlesFiltres, setArticlesFiltres] = useState(TousLesArticles);
+  const [ArticlesFiltres, setArticlesFiltres] = useState(toutesLesRessources);
   const territoireOptions = FiltresOptions.find(f => f.titre === 'Territoire')?.options || [];
 
   const handleSelectOptions = (filterTitre: string) => (event: SelectChangeEvent<string[]>) => {
@@ -30,10 +29,10 @@ export const BlocToutesRessources = () => {
     };
     const selectedFilterValues = Object.values(updatedFilters).flat();
     if (selectedFilterValues.length === 0) {
-      setArticlesFiltres(TousLesArticles);
+      setArticlesFiltres(toutesLesRessources);
     } else {
       setArticlesFiltres(
-        TousLesArticles.filter(article =>
+        toutesLesRessources.filter(article =>
           selectedFilterValues.every(filter => article.filtres?.includes(filter))
         )
       );
@@ -42,7 +41,7 @@ export const BlocToutesRessources = () => {
 
   const handleReset = () => {
     setSelectedFilters({});
-    setArticlesFiltres(TousLesArticles);
+    setArticlesFiltres(toutesLesRessources);
   };
 
   return (
@@ -84,14 +83,29 @@ export const BlocToutesRessources = () => {
                     handleClose={() => {
                       setSelectedFilters(prev => {
                         const updatedValues = prev[filterTitre].filter(v => v !== value);
+                        let updatedFilters;
                         if (updatedValues.length === 0) {
                           const { [filterTitre]: _, ...rest } = prev;
-                          return rest;
+                          updatedFilters = rest;
+                        } else {
+                          updatedFilters = {
+                            ...prev,
+                            [filterTitre]: updatedValues
+                          };
                         }
-                        return {
-                          ...prev,
-                          [filterTitre]: updatedValues
-                        };
+
+                        const selectedFilterValues = Object.values(updatedFilters).flat();
+                        if (selectedFilterValues.length === 0) {
+                          setArticlesFiltres(toutesLesRessources);
+                        } else {
+                          setArticlesFiltres(
+                            toutesLesRessources.filter(article =>
+                              selectedFilterValues.every(filter => article.filtres?.includes(filter))
+                            )
+                          );
+                        }
+
+                        return updatedFilters;
                       });
                     }}
                   />
@@ -104,7 +118,7 @@ export const BlocToutesRessources = () => {
           <Body style={{ padding: "2rem 0" }}><b>{ArticlesFiltres.length}</b> Résultat(s)</Body>
           <div className={styles.listeDesArticlesWrapper}>
             {
-              ArticlesFiltres.slice(0, 2).map((el, i) => {
+              ArticlesFiltres.map((el, i) => {
                 return (
                   <TuileVerticale
                     key={i}
@@ -129,7 +143,7 @@ export const BlocToutesRessources = () => {
             }
           </div>
           <div className="m-8" />
-          <TuileHorizontale
+          {/* <TuileHorizontale
             titre="Titre de la ressource sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis "
             tags={[<TagsSimples
               texte="Catégorie"
@@ -139,7 +153,7 @@ export const BlocToutesRessources = () => {
             }
             tempsLecture={5}
             image={TestImageTuile}
-          />
+          /> */}
 
         </div>
       </NewContainer>

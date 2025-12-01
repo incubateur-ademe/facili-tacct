@@ -1,13 +1,20 @@
 "use client";
 
-import { collectionsCartes } from "@/lib/ressources/cartes";
+import { StaticImageData } from "next/image";
 import { useRef } from "react";
 import { CarteCollection } from "./CarteCollection";
 import styles from "./ressources.module.scss";
 
-export const SliderCollections = () => {
+export const SliderCollections = ({
+  collectionsCartes
+}: {
+  collectionsCartes: {
+    texte: string;
+    image: StaticImageData;
+    lien: string;
+  }[]
+}) => {
   const sliderRef = useRef<HTMLDivElement>(null);
-
   const smoothScroll = (distance: number) => {
     if (!sliderRef.current) return;
     const start = sliderRef.current.scrollLeft;
@@ -41,11 +48,12 @@ export const SliderCollections = () => {
       <div className={styles.sliderInnerWrapper}>
         <div className={styles.sliderWrapper} ref={sliderRef}>
           {
-            collectionsCartes.map((carte, index) => (
+            collectionsCartes?.map((carte, index) => (
               <CarteCollection
                 key={index}
                 texte={carte.texte}
                 image={carte.image}
+                lien={carte.lien}
               />
             ))
           }

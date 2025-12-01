@@ -33,14 +33,6 @@ export const ressourcesTabs = {
 
 export const cards = {
   diagnostic: [
-    // {
-    //   id: 0,
-    //   tab: "Vous n'avez pas de diagnostic",
-    //   titre: 'Atelier "Mémoire"',
-    //   tag: "Atelier",
-    //   description:"Faites appel à la mémoire collective pour débuter sur l'exposition de votre territoire aux impacts du changement climatique.",
-    //   link: "/ressources/atelier"
-    // },
     {
       id: 3,
       tab: [
