@@ -515,13 +515,38 @@
             }
         }
         .blocDroit {
-            width: 366px;
+            max-width: 366px;
+            width: max-content;
             padding: 2rem 0rem;
             .seLancer {
                 position: sticky;
-                top: 32;
+                border-radius: 4px;
+                top: 32px;
                 background-color: #ffe2ae;
-                height: 200px;
+                padding: 2rem 1.5rem;
+                display: flex;
+                flex-direction: column;
+                .titre {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.5rem;
+                    margin: 0;
+                }
+                .bouton {
+                    margin-right: 1.5rem;
+                    align-self: end;
+                    font-weight: 500;
+                    color: var(--boutons-primaire-1);
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    cursor: pointer;
+                    text-decoration: none;
+                    background-image: none;
+                    &::after {
+                        display: none;
+                    }
+                }
             }
         }
     }

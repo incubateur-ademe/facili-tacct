@@ -6,6 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { useState } from 'react';
 
 const MultiSelect = ({
   options,
@@ -16,12 +17,17 @@ const MultiSelect = ({
   handleSelectObjectifOptions: (event: SelectChangeEvent<string[]>) => void;
   selectedValues?: string[];
 }) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <FormControl fullWidth>
       <Select
         multiple
         value={selectedValues}
         onChange={handleSelectObjectifOptions}
+        open={open}
+        onOpen={() => setOpen(true)}
+        onClose={() => setOpen(false)}
         displayEmpty
         IconComponent={ExpandMoreOutlinedIcon}
         renderValue={(selected) =>
@@ -65,8 +71,8 @@ const MultiSelect = ({
             borderRadius: '30px',
             height: "48px",
             fontWeight: 400,
-            transition: 'all 0.5s ease-in-out',
-            border: '1px solid var(--gris-medium)',
+            // transition: 'all 0.5s ease-in-out',
+            border: open ? '1px solid var(--boutons-primaire-1)' : '1px solid var(--gris-medium)',
           },
           '& .MuiSelect-select': {
             color: 'var(--gris-dark)',

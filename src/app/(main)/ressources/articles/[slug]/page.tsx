@@ -31,7 +31,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <Breadcrumb
         currentPageLabel={article.metadata.title}
         homeLinkProps={{ href: '/' }}
-        segments={[{ label: 'Ressources', linkProps: { href: '/ressources' } }]}
+        segments={[{ label: 'Boîte à outils', linkProps: { href: '/ressources' } }]}
       />
       <Suspense>
         <Component />
