@@ -61,8 +61,9 @@ export const ExportPngMaplibreButton = ({
     };
   }, [isLoading]);
 
-  const handleExportPng = async () => {
+  const handleExportPng = async (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsLoading(true);
+    e.currentTarget.blur();
     if (mapRef.current && mapContainer.current) {
       // On cache les contrôles de navigation pour éviter qu'ils n'apparaissent sur le screenshot
       const navControls = mapContainer.current.querySelectorAll('.maplibregl-ctrl-top-right');
@@ -200,11 +201,12 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
     };
   }, [isLoading]);
 
-  const handleExportPng = async () => {
+  const handleExportPng = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isLoading) return;
-    
+
+    e.currentTarget.blur();
     setIsLoading(true);
-    
+
     posthog.capture(
       'export_png_bouton', {
       thematique: thematique,
@@ -213,7 +215,10 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
       type: type,
       date: new Date()
     });
-    
+
+    // Attendre que React affiche "Export en cours..." avant de démarrer l'export
+    await new Promise(resolve => setTimeout(resolve, 0));
+
     if (mapRef.current && mapContainer.current) {
       // On cache les contrôles de navigation pour éviter qu'ils n'apparaissent sur le screenshot
       const navControls = mapContainer.current.querySelectorAll('.maplibregl-ctrl-top-right');
@@ -295,7 +300,6 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
   );
 };
 
-
 /**
  * Génère un Blob PNG de la carte et de la légende/source, pour un export programmatique (par exemple dans un ZIP).
  * Retourne une Promise<Blob|null>.
@@ -310,17 +314,17 @@ export async function generateMapPngBlob({
   documentDiv?: string | HTMLElement,
   fileName?: string,
 }): Promise<Blob | null> {
-  
+
   if (mapRef.current && mapContainer.current) {
     const navControls = mapContainer.current.querySelectorAll('.maplibregl-ctrl-top-right');
     navControls.forEach(control => {
       (control as HTMLElement).style.display = 'none';
     });
-    
-    const originalLegendDiv = typeof documentDiv === 'string' 
+
+    const originalLegendDiv = typeof documentDiv === 'string'
       ? document.querySelector(documentDiv) as HTMLElement
       : documentDiv;
-        
+
     if (!originalLegendDiv) {
       console.error(`generateMapPngBlob - Element not found with selector: ${documentDiv}`);
       navControls.forEach(control => {
@@ -328,7 +332,7 @@ export async function generateMapPngBlob({
       });
       return null;
     }
-    
+
     const exportButton = originalLegendDiv?.querySelector('.' + styles.exportIndicatorButton) as HTMLElement;
     if (exportButton) exportButton.style.display = 'none';
     // Wait for map to render

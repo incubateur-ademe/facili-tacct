@@ -47,12 +47,13 @@ export const ExportButton = ({
     type: type,
     date: new Date()
   });
-  const handleExport = async () => {
+  const handleExport = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!data || data.length === 0) {
       console.log('Aucune donnée à exporter');
       return;
     }
     setIsExporting(true);
+    e.currentTarget.blur();
     try {
       if (documentation) {
         exportMultipleSheetToXLSX(
@@ -111,10 +112,11 @@ export const ExportButtonNouveauParcours = ({
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
 
-  const handleExport = async () => {
+  const handleExport = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isExporting) return;
+    e.currentTarget.blur();
     setIsExporting(true);
-    
+
     posthog.capture('export_xlsx_bouton', {
       thematique: baseName,
       code: code,
@@ -122,7 +124,10 @@ export const ExportButtonNouveauParcours = ({
       type: type,
       date: new Date()
     });
-    
+
+    // Attendre que React affiche "Export en cours..." avant de démarrer l'export
+    await new Promise(resolve => setTimeout(resolve, 0));
+
     if (!data || data.length === 0) {
       console.log('Aucune donnée à exporter');
       setIsExporting(false);
