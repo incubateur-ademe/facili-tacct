@@ -13,31 +13,38 @@ import Collection7Img from '@/assets/images/collection7.png';
 export const collectionsCartes = [
   {
     texte: 'Démarrer le diagnostic de vulnérabilité',
-    image: Collection1Img
+    image: Collection1Img,
+    lien: '/ressources/demarrer-diagnostic-vulnerabilite'
   },
   {
-    texte: 'Evaluer les impacts du changement climatique',
-    image: Collection5Img
+    texte: 'Évaluer les impacts du changement climatique',
+    image: Collection5Img,
+    lien: '/ressources/evaluer-impacts-changement-climatique'
   },
   {
     texte: 'Mobiliser les acteurs du territoire',
-    image: Collection6Img
+    image: Collection6Img,
+    lien: '/ressources/mobiliser-acteurs-territoire'
   },
   {
     texte: 'Piloter la démarche d’adaptation',
-    image: Collection2Img
+    image: Collection2Img,
+    lien: '/ressources/piloter-demarche-adaptation'
   },
   {
-    texte: 'Bâtir la stratégie d’adaptation',
-    image: Collection3Img
+    texte: "Bâtir sa stratégie d'adaptation",
+    image: Collection3Img,
+    lien: '/ressources/batir-strategie-adaptation'
   },
   {
-    texte: 'Ajuster sa posture d’animation',
-    image: Collection4Img
+    texte: "Ajuster sa posture d'animation",
+    image: Collection4Img,
+    lien: '/ressources/ajuster-posture-animation'
   },
   {
     texte: 'Partager le diagnostic de vulnérabilité',
-    image: Collection7Img
+    image: Collection7Img,
+    lien: '/ressources/partager-diagnostic-vulnerabilite'
   }
 ];
 
