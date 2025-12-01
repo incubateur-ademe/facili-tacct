@@ -91,17 +91,24 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
           <div className={styles.selections}>
             <div className={styles.collectionArticlesWrapper}>
               {
-                collection?.articles.map((article) => (
-                  <div key={article.id}>
-                    {/* Tuile component */}
-                    <TuileHorizontale
-                      titre={article.titre}
-                      image={article.image}
-                      lien={article.lien}
-                      tempsLecture={article.tempsLecture}
-                    />
-                  </div>
-                ))
+                collection?.articles.map((article) => {
+                  // Extraire le slug du lien (enlever /ressources/articles/)
+                  const slug = article.lien.replace('/ressources/articles/', '');
+                  // Construire le nouveau lien avec collectionId
+                  const lienAvecCollection = `/ressources/${collectionId}/${slug}`;
+
+                  return (
+                    <div key={article.id}>
+                      {/* Tuile component */}
+                      <TuileHorizontale
+                        titre={article.titre}
+                        image={article.image}
+                        lien={lienAvecCollection}
+                        tempsLecture={article.tempsLecture}
+                      />
+                    </div>
+                  );
+                })
               }
               <div className={styles.question}>
                 <div className={styles.titre}>
