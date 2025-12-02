@@ -1,6 +1,6 @@
 "use client";
 
-import ClockIcon from "@/assets/icons/clock_icon_black.png";
+import ClockIcon from "@/assets/icons/clock_icon_black.svg";
 import LienExterneIcon from "@/assets/icons/fr-icon-external-link-line.png";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
