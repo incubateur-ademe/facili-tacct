@@ -1,0 +1,134 @@
+.articleTopBlocContainer {
+    background-color: #ffffff;
+    position: relative;
+    min-height: 400px;
+
+    .articleTopBlocMeta {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 3rem;
+        top: 3rem;
+        background-color: var(--boutons-primaire-2);
+        border-radius: 2rem 2rem 2rem 0;
+        padding: 2rem 40px;
+        align-content: flex-end;
+
+        .content {
+            gap: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            max-width: 720px;
+        }
+
+        .articleMetaBadge {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+        }
+        .articleMetaInfo {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            .tempsLecture {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .localisation {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 0.5rem;
+            }
+        }
+    }
+    .articleTopBlocImage {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+    }
+}
+
+.articleContent {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    .sommaire {
+        width: 271px;
+        flex-shrink: 0;
+
+        .sommaireSticky {
+            position: sticky;
+            border-right: 1px solid #e7e5e5;
+            top: 3rem;
+            width: 271px;
+            background-color: #ffffff;
+            padding: 1rem 0 0;
+
+            .sommaireTitle {
+                font-size: 1rem;
+                font-weight: 500;
+                color: var(--principales-vert);
+                margin: 0 0 1rem;
+            }
+
+            .sommaireList {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    margin-bottom: 0;
+                    padding: 0;
+                }
+
+                .sommaireItem {
+                    width: 100%;
+                    text-align: left;
+                    padding: 1rem;
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    font-size: 0.875rem;
+                    transition: all 0.2s;
+                    color: #3d3d3d;
+
+                    &:hover {
+                        background-color: var(--gris-light);
+                    }
+
+                    &.itemActive {
+                        background-color: var(--gris-light);
+                        font-weight: 600;
+                        border-right: 4px solid var(--principales-vert);
+                    }
+                }
+            }
+        }
+    }
+    .article {
+        flex: 1;
+        padding: 0 1rem;
+
+        .articleSection {
+            margin-bottom: 3rem;
+            scroll-margin-top: 2rem;
+
+            h2 {
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+
+.breadcrumbWrapper {
+    :global(.fr-breadcrumb) {
+        margin: 1rem 0;
+    }
+}
