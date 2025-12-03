@@ -5,10 +5,12 @@ import DocIcon from '@/assets/icons/doc_icon_white.png';
 import FlagIcon from '@/assets/icons/flag_icon_orange.png';
 import message3Icone from '@/assets/icons/message_3_icon_black.png';
 import ShareIcon from '@/assets/icons/share_icon_white.svg';
-import { TuileHorizontale } from '@/components/Tuile';
+import { TuileHorizontale, TuileVerticale } from '@/components/Tuile';
 import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
+import { TagsSimples } from "@/design-system/base/Tags";
 import { Body, H1, H2 } from '@/design-system/base/Textes';
 import { NewContainer } from "@/design-system/layout";
+import { FiltresOptions } from "@/lib/ressources/toutesRessources";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -21,8 +23,24 @@ type CollectionComponentProps = {
 
 export const CollectionComponent = ({ collectionId }: CollectionComponentProps) => {
   const collection = CollectionsData.find(c => c.slug === collectionId);
+  const territoireOptions = FiltresOptions.find(f => f.titre === 'Territoire')?.options || [];
   const [copied, setCopied] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 992);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   const handleCopy = (e: React.MouseEvent<HTMLButtonElement>) => {
     const url = new URL(window.location.href);
@@ -31,15 +49,9 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
     e.currentTarget.blur();
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
-      setTimeout(() => setCopied(false), 100); // allow fade out
+      setTimeout(() => setCopied(false), 100);
     }, 700);
   };
-
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, []);
 
   return (
     <>
@@ -79,6 +91,18 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
             <H2 style={{ color: "#161616", fontSize: "22px", marginBottom: 8 }}>
               Notre sélection
             </H2>
+            <div className={styles.boutonPartage}>
+              <BoutonPrimaireClassic
+                onClick={handleCopy}
+                icone={copied ? null : ShareIcon}
+                size='sm'
+                text={copied ? 'Lien copié' : 'Partager la collection'}
+                disabled={copied}
+              />
+            </div>
+          </div>
+          <div className={styles.separator} />
+          <div className={styles.boutonPartageMobile}>
             <BoutonPrimaireClassic
               onClick={handleCopy}
               icone={copied ? null : ShareIcon}
@@ -87,25 +111,52 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
               disabled={copied}
             />
           </div>
-          <div className={styles.separator} />
           <div className={styles.selections}>
             <div className={styles.collectionArticlesWrapper}>
               {
                 collection?.articles.map((article) => {
-                  // Extraire le slug du lien (enlever /ressources/articles/)
-                  const slug = article.lien.replace('/ressources/articles/', '');
-                  // Construire le nouveau lien avec collectionId
-                  const lienAvecCollection = `/ressources/${collectionId}/${slug}`;
+                  const isExternalLink = article.lien.startsWith('https://');
+                  const lien = isExternalLink
+                    ? article.lien
+                    : `/ressources/${collectionId}/${article.lien.replace('/ressources/articles/', '')}`;
 
                   return (
                     <div key={article.id}>
-                      {/* Tuile component */}
-                      <TuileHorizontale
-                        titre={article.titre}
-                        image={article.image}
-                        lien={lienAvecCollection}
-                        tempsLecture={article.tempsLecture}
-                      />
+                      {isMobile ? (
+                        <TuileVerticale
+                          titre={article.titre}
+                          description={article.description}
+                          tags={article.filtres?.filter(filtre => !territoireOptions.includes(filtre)).map((filtre, index) => (
+                            <TagsSimples
+                              key={index}
+                              texte={filtre}
+                              couleur={filtre === "M'inspirer" ? "#FFC9E4" : filtre === "Me former" ? "#F6F69B" : filtre === "Agir" ? "#FFE2AE" : "#E3FAF9"}
+                              couleurTexte={filtre === "M'inspirer" ? "#971356" : filtre === "Me former" ? "#5A5A10" : filtre === "Agir" ? "#7E5202" : "var(--boutons-primaire-3)"}
+                              taille="small"
+                            />
+                          ))}
+                          image={article.image}
+                          lien={lien}
+                          tempsLecture={article.tempsLecture}
+                          lienExterne={article.lien && article.lien.startsWith('/ressources') ? false : true}
+                        />
+                      ) : (
+                        <TuileHorizontale
+                          titre={article.titre}
+                          image={article.image}
+                          tags={article.filtres?.filter(filtre => !territoireOptions.includes(filtre)).map((filtre, index) => (
+                            <TagsSimples
+                              key={index}
+                              texte={filtre}
+                              couleur={filtre === "M'inspirer" ? "#FFC9E4" : filtre === "Me former" ? "#F6F69B" : filtre === "Agir" ? "#FFE2AE" : "#E3FAF9"}
+                              couleurTexte={filtre === "M'inspirer" ? "#971356" : filtre === "Me former" ? "#5A5A10" : filtre === "Agir" ? "#7E5202" : "var(--boutons-primaire-3)"}
+                              taille="small"
+                            />
+                          ))}
+                          lien={lien}
+                          tempsLecture={article.tempsLecture}
+                        />
+                      )}
                     </div>
                   );
                 })
@@ -125,7 +176,6 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                   Nous contacter
                   <span className={`fr-icon-arrow-right-line ${styles.arrow}`} aria-hidden="true"></span>
                 </Link>
-
               </div>
             </div>
             <div className={styles.blocDroit}>

@@ -1,4 +1,3 @@
-import { Text } from "@/app/articles/Text";
 import ClockIcon from "@/assets/icons/clock_icon_black.svg";
 import LocationIcon from "@/assets/icons/location_icon_black.svg";
 import ZoomOnClick from '@/components/utils/ZoomOnClick';
@@ -6,6 +5,7 @@ import { TagsSimples } from '@/design-system/base/Tags';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import { NewContainer } from "@/design-system/layout";
 import { getBlocks, getPageBySlug } from "@/lib/queries/notion/notion";
+import { Text } from "@/lib/ressources/Text";
 import { FiltresOptions, toutesLesRessources } from '@/lib/ressources/toutesRessources';
 import Image from "next/image";
 import { notFound } from "next/navigation";

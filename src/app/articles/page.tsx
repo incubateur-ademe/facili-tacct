@@ -1,7 +1,7 @@
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { getBlocks, getPage } from "@/lib/queries/notion/notion";
 import { JSX } from "react";
-import { Text } from "./Text";
+import { Text } from "../../lib/ressources/Text";
 
 const ArticlesApi = async () => {
   const id = process.env.NOTION_ID;

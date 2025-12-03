@@ -198,7 +198,7 @@ export const FiltresOptions = [
 //   }
 // ];
 
-type ToutesRessources = {
+export type ToutesRessources = {
   id: number;
   type: string;
   Component?: () => JSX.Element;

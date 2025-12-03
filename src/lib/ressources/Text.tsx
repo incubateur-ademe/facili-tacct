@@ -1,4 +1,5 @@
-import styles from './text.module.css';
+import { normalizeText } from '@/lib/utils/reusableFunctions/NormalizeTexts';
+import styles from './ressources.module.css';
 
 interface Props {
   text: RichText[];
@@ -13,6 +14,7 @@ export const Text = ({ text }: Props) => {
       annotations: { bold, code, color, italic, strikethrough, underline },
       text,
     } = value;
+    const normalizedContent = normalizeText(text.content);
     return (
       <span
         key={index}
@@ -25,7 +27,7 @@ export const Text = ({ text }: Props) => {
         ].join(" ")}
         style={color !== "default" ? { color } : {}}
       >
-        {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
+        {text.link ? <a href={text.link.url}>{normalizedContent}</a> : normalizedContent}
       </span>
     );
   });

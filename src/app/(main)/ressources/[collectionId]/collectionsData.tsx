@@ -15,7 +15,7 @@ export const CollectionsData = [
     slug: 'demarrer-diagnostic-vulnerabilite',
     texte: (
       <>
-        <Body style={{ marginTop: "12px", color: "#ffffff" }}>
+        <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
           Vous vous apprêtez à lancer votre diagnostic de vulnérabilité et vous interrogez sur
           la meilleure manière de démarrer ?
         </Body>
@@ -34,7 +34,7 @@ export const CollectionsData = [
     slug: 'evaluer-impacts-changement-climatique',
     texte: (
       <>
-        <Body style={{ marginTop: "12px", color: "#ffffff" }}>
+        <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
           Vous avez réalisé le diagnostic de vulnérabilité de votre territoire et vous souhaitez
           maintenant évaluer les impacts du changement climatique ?
         </Body>
@@ -53,7 +53,7 @@ export const CollectionsData = [
     slug: 'mobiliser-acteurs-territoire',
     texte: (
       <>
-        <Body style={{ marginTop: "12px", color: "#ffffff" }}>
+        <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
           La réussite de votre démarche d’adaptation au changement climatique dépend largement
           de la mobilisation des acteurs locaux.
         </Body>
@@ -71,7 +71,7 @@ export const CollectionsData = [
     slug: 'piloter-demarche-adaptation',
     texte: (
       <>
-        <Body style={{ marginTop: "12px", color: "#ffffff" }}>
+        <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
           Piloter efficacement votre démarche d’adaptation au changement climatique est essentiel
           pour atteindre vos objectifs.
         </Body>
@@ -89,7 +89,7 @@ export const CollectionsData = [
     slug: 'batir-strategie-adaptation',
     texte: (
       <>
-        <Body style={{ marginTop: "12px", color: "#ffffff" }}>
+        <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
           Élaborer une stratégie d’adaptation solide est une étape clé pour faire face aux défis
           posés par le changement climatique.
         </Body>
@@ -107,7 +107,7 @@ export const CollectionsData = [
     slug: 'ajuster-posture-animation',
     texte: (
       <>
-        <Body style={{ marginTop: "12px", color: "#ffffff" }}>
+        <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
           L’animation de votre démarche d’adaptation nécessite une posture adaptée pour
           favoriser l’engagement et la collaboration.
         </Body>
@@ -125,7 +125,7 @@ export const CollectionsData = [
     slug: 'partager-diagnostic-vulnerabilite',
     texte: (
       <>
-        <Body style={{ marginTop: "12px", color: "#ffffff" }}>
+        <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
           Partager les résultats de votre diagnostic de vulnérabilité est crucial pour sensibiliser
           et mobiliser les acteurs concernés.
         </Body>

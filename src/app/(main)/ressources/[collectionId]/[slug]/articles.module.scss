@@ -132,3 +132,91 @@
         margin: 1rem 0;
     }
 }
+
+@media screen and (max-width: 1200px) {
+    .articleContent {
+        padding: 0 1rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .articleTopBlocContainer {
+        border-radius: 2rem 2rem 2rem 0;
+        border: 1px dashed red;
+        padding: 0;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        width: min-content;
+        gap: 0;
+        .articleTopBlocMeta {
+            position: relative;
+            border-radius: 0 0 2rem 0;
+            right: 0;
+            top: 0;
+        }
+        .articleTopBlocImage {
+            position: relative;
+            display: flex;
+            img {
+                border-radius: 2rem 2rem 0 0 !important;
+                display: block;
+            }
+        }
+    }
+    .articleContent {
+        flex-direction: column;
+        gap: 1.5rem;
+        .sommaire {
+            width: 100%;
+            .sommaireSticky {
+                position: relative;
+                border: none;
+                top: 0;
+                width: 100%;
+                background-color: #fafafa;
+                padding: 1rem;
+                .sommaireList {
+                    .sommaireItem {
+                        &:hover {
+                            background-color: #fafafa;
+                        }
+
+                        &.itemActive {
+                            background-color: #fafafa;
+                            font-weight: 400;
+                            border-right: none;
+                        }
+                    }
+                }
+            }
+        }
+        .article {
+            padding: 0;
+        }
+    }
+}
+
+// Bloc articles même collection
+
+.articlesMemeCollectionContainer {
+    background-color: #ecfffd;
+}
+.articlesMemeCollectionWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2.5rem;
+    align-items: flex-start;
+    .titles {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        max-width: 450px;
+        width: 40%;
+        p {
+            color: #3d3d3d;
+            margin: 0;
+        }
+    }
+}
