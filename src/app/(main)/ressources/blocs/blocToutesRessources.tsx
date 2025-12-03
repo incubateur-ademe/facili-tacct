@@ -115,7 +115,9 @@ export const BlocToutesRessources = () => {
           </div>
         </div>
         <div className={styles.resultatsWrapper}>
-          <Body style={{ padding: "2rem 0" }}><b>{ArticlesFiltres.length}</b> Résultat(s)</Body>
+          <p className={styles.resultats}>
+            <b>{ArticlesFiltres.length}</b> Résultat(s)
+          </p>
           <div className={styles.listeDesArticlesWrapper}>
             {
               ArticlesFiltres.map((el, i) => {

@@ -1,3 +1,22 @@
+.carteLink {
+    text-decoration: none;
+    background-image: none;
+
+    &::after {
+        display: none;
+    }
+}
+
+.iconNav {
+    align-self: flex-end;
+}
+
+@media screen and (max-width: 992px) {
+    .iconNav {
+        align-self: center;
+    }
+}
+
 .carteHoverContainer {
     padding: 1.5rem 2rem;
     background-color: var(--boutons-primaire-2);
@@ -33,6 +52,14 @@
     .title {
         transition: transform 0.5s ease;
         transform: translateY(0);
+        p {
+            margin: 0;
+            font-size: 22px;
+            color: var(--boutons-primaire-1);
+            text-align: left;
+            font-weight: bold;
+            line-height: 28px;
+        }
     }
 
     .description {
@@ -78,6 +105,69 @@
         .description {
             opacity: 1;
             transform: translateY(-34px);
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .carteHoverContainer {
+        padding: 1rem;
+        height: fit-content;
+        width: calc(100dvw - 48px);
+        max-width: 700px;
+        .contentWrapper {
+            .left {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+        .icon {
+            opacity: 1;
+        }
+        .description {
+            display: none;
+        }
+        .title {
+            transform: none;
+            p {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+        &:hover {
+            background-color: var(--boutons-primaire-2) !important;
+
+            .icon {
+                opacity: 1;
+            }
+
+            .title {
+                transform: none;
+            }
+
+            .description {
+                opacity: 0;
+                transform: none;
+            }
+        }
+
+        &:focus {
+            outline: none;
+            border: none;
+            box-shadow: none;
+
+            .icon {
+                opacity: 1;
+            }
+
+            .title {
+                transform: none;
+            }
+
+            .description {
+                opacity: 0;
+                transform: none;
+            }
         }
     }
 }

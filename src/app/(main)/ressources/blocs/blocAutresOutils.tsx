@@ -1,5 +1,5 @@
 import { CarteHoverLink } from "@/components/Cartes";
-import { Body, H2 } from "@/design-system/base/Textes";
+import { H2 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import { autresOutilsCartes } from "@/lib/ressources/cartes";
 import styles from '../ressources.module.scss';
@@ -13,10 +13,10 @@ export const BlocAutresOutils = () => {
             <H2 style={{ color: "#038278", marginBottom: "0.5rem" }}>
               Découvrez nos autres outils
             </H2>
-            <Body style={{ color: "#3D3D3D" }}>
-              Des réponses à vos questions, un appui méthodologique et une communauté d’entraide,
-              pour accompagner votre démarche d’adaptation.
-            </Body>
+            <p className={styles.subtitle}>
+              Des réponses à vos questions, un appui méthodologique et une communauté d'entraide,
+              pour accompagner votre démarche d'adaptation.
+            </p>
           </div>
           <div className={styles.cartesWrapper}>
             {
@@ -26,6 +26,7 @@ export const BlocAutresOutils = () => {
                   titre={carte.titre}
                   description={carte.description}
                   icone={carte.icone}
+                  lien={carte.lien}
                 />
               ))
             }

@@ -52,24 +52,28 @@ export const autresOutilsCartes = [
   {
     titre: 'Communauté TACCT',
     description: 'Rejoignez la communauté d’entraide TACCT.',
-    icone: teamIcon
+    icone: teamIcon,
+    lien: 'https://tally.so/r/n0LrEZ'
   },
   {
     titre: 'Méthode TACCT',
     description:
       'Consultéz la méthode complète d’adaptation au changement climatique.',
-    icone: shapesIcon
+    icone: shapesIcon,
+    lien: 'https://tally.so/r/3Nx98W'
   },
   {
     titre: 'Questions fréquentes',
     description:
       'Trouvez des réponses aux questions les plus courantes sur l’adaptation au changement climatique.',
-    icone: questionIcon
+    icone: questionIcon,
+    lien: '/ressources'
   },
   {
     titre: "Glossaire de l'adaptation",
     description:
       "Comprenez les termes clés liés à l'adaptation au changement climatique.",
-    icone: bookIcon
+    icone: bookIcon,
+    lien: '/ressources'
   }
 ];

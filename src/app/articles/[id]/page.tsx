@@ -1,7 +1,7 @@
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { getBlocks } from "@/lib/queries/notion/notion";
 import { JSX } from "react";
-import { Text } from "../Text";
+import { Text } from "../../../lib/ressources/Text";
 
 interface ArticlePageProps {
   params: Promise<{
