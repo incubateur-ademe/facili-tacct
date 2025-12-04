@@ -1,3 +1,6 @@
+import articleIcon from "@/assets/icons/article_icon_green.svg";
+import REXIcon from "@/assets/icons/retour_exp_icon_green.svg";
+import Image from "next/image";
 import { Body } from "./Textes";
 
 export const TagsSimples = ({
@@ -41,6 +44,49 @@ export const TagsSimples = ({
           onClick={handleClose}
         >×</span>
       }
+    </div>
+  );
+};
+
+export const TagsIcone = ({
+  texte,
+  filtre,
+  taille,
+}: {
+  texte: string;
+  filtre: 'Article' | 'Retour d\'expérience' | "Agir" | "Me former" | "M'inspirer";
+  taille?: 'small' | 'medium';
+}) => {
+  return (
+    <div
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        backgroundColor: (filtre === "Article" || filtre === "Retour d'expérience") 
+          ? "#E3FAF9" 
+          : filtre === "Me former" 
+            ? "#F6F69B"
+            : filtre === "Agir"
+              ? "#FFE2AE"
+              : "#FFC9E4",
+        borderRadius: '16px',
+        padding: taille === 'small' ? '4px 8px' : '8px 16px',
+        fontSize: taille === 'small' ? '14px' : '16px',
+        fontWeight: 500,
+        color: (filtre === "Article" || filtre === "Retour d'expérience") 
+          ? "var(--boutons-primaire-3)" 
+          : filtre === "Me former"
+            ? "#5A5A10"
+            : filtre === "Agir"
+              ? "#7E5202"
+              : "#971356",
+        gap: '4px',
+      }}
+    >
+      {(filtre === "Article" || filtre === "Retour d'expérience") && <Image src={filtre === "Article" ? articleIcon : REXIcon} alt="" />}
+      <Body size={taille === 'small' ? 'sm' : 'md'} style={{ color: filtre === "Article" ? "var(--boutons-primaire-3)" : "var(--text-default)" }}>
+        {texte}
+      </Body>
     </div>
   );
 };
