@@ -3,6 +3,7 @@
 import { TuileVerticale } from "@/components/Tuile";
 import { TagsSimples } from "@/design-system/base/Tags";
 import { FiltresOptions, ToutesRessources } from "@/lib/ressources/toutesRessources";
+import { usePathname } from "next/navigation";
 import styles from "./ressources.module.scss";
 
 export const SliderArticles = ({
@@ -12,6 +13,8 @@ export const SliderArticles = ({
   listeArticles: ToutesRessources[],
   sliderRef: React.RefObject<HTMLDivElement | null>;
 }) => {
+  const pathname = usePathname();
+  const collectionSlug = pathname.split('/')[2];
   const territoireOptions = FiltresOptions.find(f => f.titre === 'Territoire')?.options || [];
   const smoothScroll = (distance: number) => {
     if (!sliderRef.current) return;
@@ -46,25 +49,32 @@ export const SliderArticles = ({
       <div className={styles.sliderInnerWrapper}>
         <div className={styles.sliderWrapper} ref={sliderRef}>
           {
-            listeArticles?.map((article, index) => (
-              <TuileVerticale
-                key={index}
-                titre={article.titre}
-                description={article.description}
-                tags={article.filtres?.filter(filtre => !territoireOptions.includes(filtre)).map((filtre, index) => (
-                  <TagsSimples
-                    key={index}
-                    texte={filtre}
-                    couleur={filtre === "M'inspirer" ? "#FFC9E4" : filtre === "Me former" ? "#F6F69B" : filtre === "Agir" ? "#FFE2AE" : "#E3FAF9"}
-                    couleurTexte={filtre === "M'inspirer" ? "#971356" : filtre === "Me former" ? "#5A5A10" : filtre === "Agir" ? "#7E5202" : "var(--boutons-primaire-3)"}
-                    taille="small"
-                  />
-                ))}
-                image={article.image}
-                lien={article.lien}
-                tempsLecture={article.tempsLecture}
-              />
-            ))
+            listeArticles?.map((article, index) => {
+              const isExternalLink = article.lien.startsWith('https://');
+              const lien = isExternalLink
+                ? article.lien
+                : `/ressources/${collectionSlug}/${article.slug}`;
+              return (
+                <TuileVerticale
+                  key={index}
+                  titre={article.titre}
+                  description={article.description}
+                  tags={article.filtres?.filter(filtre => !territoireOptions.includes(filtre)).map((filtre, index) => (
+                    <TagsSimples
+                      key={index}
+                      texte={filtre}
+                      couleur={filtre === "M'inspirer" ? "#FFC9E4" : filtre === "Me former" ? "#F6F69B" : filtre === "Agir" ? "#FFE2AE" : "#E3FAF9"}
+                      couleurTexte={filtre === "M'inspirer" ? "#971356" : filtre === "Me former" ? "#5A5A10" : filtre === "Agir" ? "#7E5202" : "var(--boutons-primaire-3)"}
+                      taille="small"
+                    />
+                  ))}
+                  image={article.image}
+                  lien={lien}
+                  lienExterne={isExternalLink}
+                  tempsLecture={article.tempsLecture}
+                />
+              )
+            })
           }
         </div>
       </div>

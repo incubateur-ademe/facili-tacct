@@ -6,7 +6,7 @@ import { normalizeText } from "@/lib/utils/reusableFunctions/NormalizeTexts";
 import Breadcrumb from "@codegouvfr/react-dsfr/Breadcrumb";
 import { notFound } from "next/navigation";
 import { CollectionsData } from "../collectionsData";
-import { ArticlesMemeCollection } from "./BlocArticlesMemeCollection";
+import { ArticlesMemeCollection, ArticlesMemeCollectionResponsive } from "./BlocArticlesMemeCollection";
 import { SommaireClient } from "./SommaireClient";
 import styles from './articles.module.scss';
 import { MetaArticleResponsive } from "./metaArticle";
@@ -20,7 +20,7 @@ interface ArticlePageProps {
 }
 
 const ArticleRessourcePage = async ({ params }: ArticlePageProps) => {
-  const { slug } = await params;
+  const { slug, collectionId } = await params;
   const article = toutesLesRessources.find(a => a.slug === slug);
   if (!article) {
     notFound();
@@ -50,7 +50,7 @@ const ArticleRessourcePage = async ({ params }: ArticlePageProps) => {
             homeLinkProps={{ href: '/' }}
             segments={[
               { label: 'Boîte à outils', linkProps: { href: '/ressources' } },
-              { label: CollectionsData.find(c => c.titre === article?.collections[0])?.titre, linkProps: { href: `/ressources/${CollectionsData.find(c => c.titre === article?.collections[0])?.slug}` } }
+              { label: CollectionsData.find(c => c.slug === collectionId)?.titre, linkProps: { href: `/ressources/${CollectionsData.find(c => c.titre === article?.collections[0])?.slug}` } }
             ]}
           />
         </div>
@@ -64,7 +64,12 @@ const ArticleRessourcePage = async ({ params }: ArticlePageProps) => {
           </div>
         </div>
       </NewContainer>
-      <ArticlesMemeCollection />
+      <div className={styles.desktopOnly}>
+        <ArticlesMemeCollection />
+      </div>
+      <div className={styles.mobileOnly}>
+        <ArticlesMemeCollectionResponsive />
+      </div>
     </>
   )
   // } catch (error) {

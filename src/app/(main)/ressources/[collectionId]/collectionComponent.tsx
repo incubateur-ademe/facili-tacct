@@ -118,7 +118,7 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                   const isExternalLink = article.lien.startsWith('https://');
                   const lien = isExternalLink
                     ? article.lien
-                    : `/ressources/${collectionId}/${article.lien.replace('/ressources/articles/', '')}`;
+                    : `/ressources/${collectionId}/${article.slug}`;
 
                   return (
                     <div key={article.id}>

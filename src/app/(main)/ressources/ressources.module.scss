@@ -298,6 +298,11 @@
     overflow-x: scroll;
     scrollbar-width: none;
     padding: 4px;
+    
+    > * {
+        flex-shrink: 0;
+        min-width: 320px;
+    }
 }
 
 .flecheGauche {

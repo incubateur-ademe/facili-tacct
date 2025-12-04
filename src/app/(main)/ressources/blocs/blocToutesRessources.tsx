@@ -10,6 +10,7 @@ import { FiltresOptions, toutesLesRessources } from "@/lib/ressources/toutesRess
 import { SelectChangeEvent } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
+import { CollectionsData } from "../[collectionId]/collectionsData";
 import styles from "../ressources.module.scss";
 
 export const BlocToutesRessources = () => {
@@ -121,6 +122,11 @@ export const BlocToutesRessources = () => {
           <div className={styles.listeDesArticlesWrapper}>
             {
               ArticlesFiltres.map((el, i) => {
+                const collectionSlug = CollectionsData.find(c => c.titre === el.collections[0])?.slug;
+                const isExternalLink = el.lien.startsWith('https://');
+                  const lien = isExternalLink
+                    ? el.lien
+                    : `/ressources/${collectionSlug}/${el.slug}`;
                 return (
                   <TuileVerticale
                     key={i}
@@ -136,8 +142,8 @@ export const BlocToutesRessources = () => {
                       />
                     ))}
                     tempsLecture={el.tempsLecture}
-                    lien={el.lien}
-                    lienExterne={el.lien && el.lien.startsWith('/ressources') ? false : true}
+                    lien={lien}
+                    lienExterne={isExternalLink}
                     image={el.image!}
                   />
                 );
