@@ -1,7 +1,7 @@
 "use client";
 
 import { TuileVerticale } from "@/components/Tuile";
-import { TagsSimples } from "@/design-system/base/Tags";
+import { TagsIcone } from "@/design-system/base/Tags";
 import { FiltresOptions, ToutesRessources } from "@/lib/ressources/toutesRessources";
 import { usePathname } from "next/navigation";
 import styles from "./ressources.module.scss";
@@ -60,11 +60,10 @@ export const SliderArticles = ({
                   titre={article.titre}
                   description={article.description}
                   tags={article.filtres?.filter(filtre => !territoireOptions.includes(filtre)).map((filtre, index) => (
-                    <TagsSimples
+                    <TagsIcone
                       key={index}
                       texte={filtre}
-                      couleur={filtre === "M'inspirer" ? "#FFC9E4" : filtre === "Me former" ? "#F6F69B" : filtre === "Agir" ? "#FFE2AE" : "#E3FAF9"}
-                      couleurTexte={filtre === "M'inspirer" ? "#971356" : filtre === "Me former" ? "#5A5A10" : filtre === "Agir" ? "#7E5202" : "var(--boutons-primaire-3)"}
+                      filtre={filtre as "Article" | "Retour d'expérience" | "M'inspirer" | "Me former" | "Agir"}
                       taille="small"
                     />
                   ))}

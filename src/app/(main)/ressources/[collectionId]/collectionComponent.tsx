@@ -7,7 +7,7 @@ import message3Icone from '@/assets/icons/message_3_icon_black.png';
 import ShareIcon from '@/assets/icons/share_icon_white.svg';
 import { TuileHorizontale, TuileVerticale } from '@/components/Tuile';
 import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
-import { TagsSimples } from "@/design-system/base/Tags";
+import { TagsIcone } from "@/design-system/base/Tags";
 import { Body, H1, H2 } from '@/design-system/base/Textes';
 import { NewContainer } from "@/design-system/layout";
 import { FiltresOptions } from "@/lib/ressources/toutesRessources";
@@ -127,11 +127,10 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                           titre={article.titre}
                           description={article.description}
                           tags={article.filtres?.filter(filtre => !territoireOptions.includes(filtre)).map((filtre, index) => (
-                            <TagsSimples
+                            <TagsIcone
                               key={index}
                               texte={filtre}
-                              couleur={filtre === "M'inspirer" ? "#FFC9E4" : filtre === "Me former" ? "#F6F69B" : filtre === "Agir" ? "#FFE2AE" : "#E3FAF9"}
-                              couleurTexte={filtre === "M'inspirer" ? "#971356" : filtre === "Me former" ? "#5A5A10" : filtre === "Agir" ? "#7E5202" : "var(--boutons-primaire-3)"}
+                              filtre={filtre as "Article" | "Retour d'expérience" | "M'inspirer" | "Me former" | "Agir"}
                               taille="small"
                             />
                           ))}
@@ -145,11 +144,10 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                           titre={article.titre}
                           image={article.image}
                           tags={article.filtres?.filter(filtre => !territoireOptions.includes(filtre)).map((filtre, index) => (
-                            <TagsSimples
+                            <TagsIcone
                               key={index}
                               texte={filtre}
-                              couleur={filtre === "M'inspirer" ? "#FFC9E4" : filtre === "Me former" ? "#F6F69B" : filtre === "Agir" ? "#FFE2AE" : "#E3FAF9"}
-                              couleurTexte={filtre === "M'inspirer" ? "#971356" : filtre === "Me former" ? "#5A5A10" : filtre === "Agir" ? "#7E5202" : "var(--boutons-primaire-3)"}
+                              filtre={filtre as "Article" | "Retour d'expérience" | "M'inspirer" | "Me former" | "Agir"}
                               taille="small"
                             />
                           ))}
