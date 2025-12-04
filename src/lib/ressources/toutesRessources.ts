@@ -44,7 +44,8 @@ export const FiltresOptions = [
       'Guyane',
       'Martinique',
       'Mayotte',
-      'Réunion'
+      'Réunion',
+      "Outremer"
     ]
   }
 ];
@@ -257,7 +258,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     collections: [
       'Démarrer le diagnostic de vulnérabilité',
       'Évaluer les impacts du changement climatique',
-      "Piloter ma démarche d'adaptation",
+      'Piloter la démarche d’adaptation',
       'Mobiliser les acteurs du territoire',
       'Partager le diagnostic de vulnérabilité'
     ],

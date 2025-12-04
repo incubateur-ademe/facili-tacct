@@ -10,11 +10,24 @@ export const Text = ({ text }: Props) => {
     return null;
   }
   return text.map((value, index) => {
+    if (!value || !value.annotations) {
+      return null;
+    }
+    
     const {
       annotations: { bold, code, color, italic, strikethrough, underline },
-      text,
+      text: textObj,
     } = value;
-    const normalizedContent = normalizeText(text.content);
+    
+    if (!textObj || typeof textObj.content === 'undefined') {
+      // Utiliser plain_text comme fallback si disponible
+      const content = value.plain_text || '';
+      return content ? (
+        <span key={index}>{content}</span>
+      ) : null;
+    }
+    
+    const normalizedContent = normalizeText(textObj.content);
     return (
       <span
         key={index}
@@ -31,7 +44,7 @@ export const Text = ({ text }: Props) => {
           }
         }
       >
-        {text.link ? <a href={text.link.url}>{normalizedContent}</a> : normalizedContent}
+        {textObj.link ? <a href={textObj.link.url}>{normalizedContent}</a> : normalizedContent}
       </span>
     );
   });

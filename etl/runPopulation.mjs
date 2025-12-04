@@ -115,7 +115,7 @@ async function loadTerritoires() {
     return await withPg(async (client) => {
         await client.query("SET search_path = 'databases'");
         const { rows } = await client.query(
-            'SELECT * FROM collectivites_searchbar'
+            'SELECT * FROM databases_v2.collectivites_searchbar'
         );
         return rows.filter((row) => row.code_geographique != null);
     });

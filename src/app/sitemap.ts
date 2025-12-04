@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { allArticles } from './(main)/ressources/articles/articlesList';
+import { allArticles } from './(main)/ressources/_articles/articlesList';
 
 const sitemap = (): MetadataRoute.Sitemap => {
   const baseUrl = 'https://facili-tacct.beta.gouv.fr';
