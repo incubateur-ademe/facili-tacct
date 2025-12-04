@@ -23,6 +23,7 @@ export const renderBlock = async (el: Block, i: number) => {
       return (
         <div key={i} id={heading2Text} style={{
           marginBottom: "3rem",
+          marginTop: "3rem",
           scrollMarginTop: "2rem"
           // scroll-margin-top: 2rem;
         }}>
@@ -32,19 +33,21 @@ export const renderBlock = async (el: Block, i: number) => {
     case "heading_3":
       const heading3Text = normalizeText(richText.map(rt => rt.plain_text || rt.text.content).join(''));
       return (
-        <div key={i}>
+        <div key={i} style={{
+          margin: "1.5rem 0",
+        }}>
           <H3>{heading3Text}</H3>
         </div>
       );
     case "bulleted_list_item":
       return (
-        <li key={i} style={{ marginLeft: "2rem" }}>
+        <li key={i} style={{ margin: "1rem 0 1rem 2rem" }}>
           <Text text={richText} />
         </li>
       );
     case "numbered_list_item":
       return (
-        <li key={i}>
+        <li key={i} style={{ margin: "1rem 0 1rem 2rem" }}>
           <Text text={richText} />
         </li>
       );

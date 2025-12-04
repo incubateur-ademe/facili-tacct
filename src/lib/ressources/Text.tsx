@@ -25,7 +25,11 @@ export const Text = ({ text }: Props) => {
           strikethrough ? styles.strikethrough : "",
           underline ? styles.underline : "",
         ].join(" ")}
-        style={color !== "default" ? { color } : {}}
+        style={
+          {
+            color: color !== "default" ? color : undefined,
+          }
+        }
       >
         {text.link ? <a href={text.link.url}>{normalizedContent}</a> : normalizedContent}
       </span>
