@@ -91,9 +91,6 @@ const config = {
         'import-in-the-middle',
         '@prisma/client'
     ],
-    eslint: {
-        ignoreDuringBuilds: true
-    },
     output: 'standalone',
     env: {
         NEXT_TELEMETRY_DISABLED: '1',
