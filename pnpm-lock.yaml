@@ -175,7 +175,7 @@ importers:
         specifier: ^1.298.0
         version: 1.298.0
       react:
-        specifier: ^19.2.1
+        specifier: ^19
         version: 19.2.1
       react-leaflet:
         specifier: ^5
