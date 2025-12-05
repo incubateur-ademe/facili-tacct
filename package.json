@@ -77,7 +77,7 @@
     "next-auth": "^4.24.11",
     "pg": "^8.11.5",
     "posthog-js": "^1.298.0",
-    "react": "^19",
+    "react": "^19.2.1",
     "react-leaflet": "^5",
     "react-leaflet-cluster": "^3.1.1",
     "rehype-katex": "^7.0.1",
