@@ -48,6 +48,9 @@ const MultiSelect = ({
                 backgroundColor: '#FFFFFF',
               },
             },
+            '& .MuiTypography-root': {
+              fontFamily: 'Marianne !important',
+            },
             '& .MuiList-root': {
               padding: '1.5rem',
             },
@@ -58,6 +61,7 @@ const MultiSelect = ({
               fontSize: '14px',
               lineHeight: '19px',
               padding: 0,
+
               '&:hover': { fontWeight: '700 !important', backgroundColor: 'transparent !important' },
               '&:focus': { fontWeight: '700 !important', backgroundColor: 'transparent !important', outline: 'none' },
             },
