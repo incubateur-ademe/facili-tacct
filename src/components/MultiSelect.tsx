@@ -38,6 +38,7 @@ const MultiSelect = ({
         MenuProps={{
           sx: {
             '& .MuiPaper-root': {
+              maxHeight: '500px',
               backgroundColor: '#FFFFFF',
               borderRadius: '1.5rem',
               transform: 'translateY(14px) !important',

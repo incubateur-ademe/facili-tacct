@@ -121,7 +121,7 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                     : `/ressources/${collectionId}/${article.slug}`;
 
                   return (
-                    <div key={article.id}>
+                    <div key={article.id} style={{ width: isMobile ? "auto" : "100%" }}>
                       {isMobile ? (
                         <TuileVerticale
                           titre={article.titre}

@@ -29,23 +29,23 @@ export const FiltresOptions = [
       'National',
       'Auvergne-Rhône-Alpes',
       'Bourgogne-Franche-Comté',
-      'Bretagne',
+      // 'Bretagne',
       'Centre-Val de Loire',
-      'Corse',
+      // 'Corse',
       'Grand Est',
-      'Hauts-de-France',
-      'Ile-de-France',
-      'Normandie',
+      // 'Hauts-de-France',
+      // 'Ile-de-France',
+      // 'Normandie',
       'Nouvelle-Aquitaine',
       'Occitanie',
-      'Pays de la Loire',
-      "Provence Alpes Côte d'Azur",
-      'Guadeloupe',
-      'Guyane',
-      'Martinique',
-      'Mayotte',
-      'Réunion',
-      "Outremer"
+      // 'Pays de la Loire',
+      // "Provence Alpes Côte d'Azur",
+      // 'Guadeloupe',
+      // 'Guyane',
+      // 'Martinique',
+      // 'Mayotte',
+      // 'Réunion',
+      'Outremer'
     ]
   }
 ];
@@ -239,10 +239,7 @@ export const toutesLesRessources: ToutesRessources[] = [
       'PNACC, TRACC autant de documents stratégiques qui orientent l’adaptation au changement climatique en France. Comprendre leur contenu est nécessaire pour anticiper et mettre en oeuvre des stratégies cohérentes.',
     lien: '/ressources/articles/pnacc-tracc-comment-suis-je-concerne',
     filtres: ['Article', 'Me former', 'National'],
-    collections: [
-      'Démarrer le diagnostic de vulnérabilité',
-      'Piloter la démarche d’adaptation'
-    ],
+    collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 1,
     image: TestImageTuile
   },

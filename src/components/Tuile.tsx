@@ -41,7 +41,7 @@ export const TuileVerticale = ({
           </div>
         )}
         <div className={styles.titre}>
-          {titre.length > 75 ? `${titre.substring(0, 73)}...` : titre}
+          {titre}
         </div>
         <p className={styles.description}>{description}</p>
       </div>
@@ -115,7 +115,7 @@ export const TuileHorizontale = ({
             {tempsLecture && (
               <div className={styles.tempsLecture}>
                 <Image src={ClockIcon} alt="Temps de lecture" width={16} height={16} />
-                <span>{tempsLecture} min</span>
+                <span>{tempsLecture} min</span>
               </div>
             )}
           </div>
