@@ -68,7 +68,9 @@ export const BlocToutesRessources = () => {
             }
             <div className={styles.reinitialiser} onClick={handleReset} style={{ cursor: "pointer" }}>
               <Image src={ReinitialiserIcon} alt="Icône réinitialiser" />
-              <Body weight="medium" style={{ color: "var(--boutons-primaire-1)" }}>Réinitialiser les filtres</Body>
+              <Body weight="medium" style={{ color: "var(--boutons-primaire-1)" }}>
+                Réinitialiser les filtres
+              </Body>
             </div>
           </div>
           <div className={styles.filtresSelectionnes}>
@@ -124,9 +126,9 @@ export const BlocToutesRessources = () => {
               ArticlesFiltres.map((el, i) => {
                 const collectionSlug = CollectionsData.find(c => c.titre === el.collections[0])?.slug;
                 const isExternalLink = el.lien.startsWith('https://');
-                  const lien = isExternalLink
-                    ? el.lien
-                    : `/ressources/${collectionSlug}/${el.slug}`;
+                const lien = isExternalLink
+                  ? el.lien
+                  : `/ressources/${collectionSlug}/${el.slug}`;
                 return (
                   <TuileVerticale
                     key={i}

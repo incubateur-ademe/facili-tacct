@@ -298,7 +298,7 @@
     overflow-x: scroll;
     scrollbar-width: none;
     padding: 4px;
-    
+
     > * {
         flex-shrink: 0;
         min-width: 320px;
@@ -723,16 +723,30 @@
 @media screen and (max-width: 1200px) {
     .collectionTopBlocWrapper {
         padding: 0 1rem;
+        flex-direction: column;
     }
     .collectionArticlesContainer {
         padding: 0 1rem;
+        .selections {
+            flex-direction: column;
+            .collectionArticlesWrapper {
+                padding-bottom: 0.5rem;
+                align-items: center;
+                width: 100%;
+            }
+            .blocDroit {
+                max-width: none;
+                width: 100%;
+                padding-top: 0;
+                .seLancer {
+                    position: static;
+                }
+            }
+        }
     }
 }
 
 @media screen and (max-width: 992px) {
-    .collectionTopBlocWrapper {
-        flex-direction: column;
-    }
     .collectionArticlesContainer {
         .boutonPartage {
             display: none;

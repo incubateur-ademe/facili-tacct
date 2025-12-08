@@ -130,7 +130,7 @@
     }
     .article {
         flex: 1;
-        padding: 0 1rem;
+        padding: 0 12rem 0 3rem;
 
         .articleSection {
             margin-bottom: 3rem;
@@ -154,6 +154,13 @@
 @media screen and (max-width: 1200px) {
     .articleContent {
         padding: 0 1rem;
+    }
+    .articleTopBlocContainer {
+        .articleTopBlocMeta {
+            .content {
+                max-width: 550px;
+            }
+        }
     }
 }
 
