@@ -88,7 +88,8 @@ export const BoutonPrimaireClassic = ({
   onClick,
   icone,
   style,
-  posthogEventName
+  posthogEventName,
+  thematique
 }: {
   link?: string;
   text: string;
@@ -99,6 +100,7 @@ export const BoutonPrimaireClassic = ({
   icone?: StaticImageData;
   style?: React.CSSProperties;
   posthogEventName?: string;
+  thematique?: string;
 }) => {
   const posthog = usePostHog();
   const buttonStyle: React.CSSProperties = {
@@ -125,7 +127,8 @@ export const BoutonPrimaireClassic = ({
       posthog.capture(
         posthogEventName,
         {
-          date: new Date()
+          date: new Date(),
+          thematique: thematique
         }
       );
     }
@@ -203,7 +206,8 @@ export const BoutonSecondaireClassic = ({
   onClick,
   icone,
   style,
-  posthogEventName
+  posthogEventName,
+  thematique
 }: {
   link?: string;
   text: string;
@@ -214,6 +218,7 @@ export const BoutonSecondaireClassic = ({
   icone?: StaticImageData;
   style?: React.CSSProperties;
   posthogEventName?: string;
+  thematique?: string;
 }) => {
   const posthog = usePostHog();
   const buttonStyle: React.CSSProperties = {
@@ -241,7 +246,8 @@ export const BoutonSecondaireClassic = ({
       posthog.capture(
         posthogEventName,
         {
-          date: new Date()
+          date: new Date(),
+          thematique: thematique
         }
       );
     }

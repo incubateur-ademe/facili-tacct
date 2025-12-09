@@ -9,6 +9,7 @@ import { handleRedirection, handleRedirectionThematique } from '@/hooks/Redirect
 import { GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { usePostHog } from 'posthog-js/react';
 import { useEffect, useRef, useState } from 'react';
 import styles from '../components.module.scss';
 
@@ -19,6 +20,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
   const thematique = searchParams.get('thematique') as "Confort thermique" | "Gestion des risques" | "Aménagement" | "Eau" | "Biodiversité" | "Agriculture";
+  const posthog = usePostHog();
   const [topPosition, setTopPosition] = useState<number>(173);
   const [navigationHeight, setNavigationHeight] = useState<number>(0);
   const [openEtape1, setOpenEtape1] = useState<boolean>(params === "/donnees" ? true : false);
@@ -160,6 +162,10 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
   };
   const handleItemClickEtape2 = (item: { id: string; titre: string }) => {
     if (params !== "/impacts") {
+      posthog.capture('clic_diagnostic_impact_menu', {
+        thematique: thematique
+      });
+
       window.location.href = handleRedirectionThematique({
         code: code || '',
         libelle: libelle || '',

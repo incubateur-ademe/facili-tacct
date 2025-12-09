@@ -208,6 +208,8 @@ const DonneesConfortThermique = ({
                 thematique: "Confort thermique",
                 anchor: ""
               })}
+              posthogEventName='clic_diagnostic_impact'
+              thematique='Confort thermique'
             />
           </div>
         </div>
