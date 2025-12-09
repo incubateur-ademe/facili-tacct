@@ -8,7 +8,7 @@ and(
             'facili-tacct-preprod.osc-fr1.scalingo.io',
             'facili-tacct.osc-secnum-fr1.scalingo.io',
             'facili-tacct-nginx.osc-secnum-fr1.scalingo.io',
-            -- 'facili-tacct.incubateur.ademe.dev',
+            'facili-tacct.incubateur.ademe.dev',
             'null'
         )
     ),
