@@ -190,6 +190,35 @@ async function insertBoutonsHomepage(client, rows) {
     return inserted;
 }
 
+async function insertBoutonsEtape2(client, rows) {
+    const sql = `
+    INSERT INTO analytics.boutons_etape2
+      (event, event_timestamp, properties, distinct_id, session_id, person_id)
+    VALUES ($1::text, $2::timestamptz, $3::jsonb, $4::text, $5::text, $6::text)
+    ON CONFLICT ON CONSTRAINT uq_boutons_etape2_natural DO NOTHING
+  `;
+    let inserted = 0;
+    for (const row of rows) {
+        if (!Array.isArray(row)) continue;
+        const [event, ts, propertiesStr, distinct_id, session_id, person_id] =
+            row;
+        const props =
+            typeof propertiesStr === 'string'
+                ? safeParseJSON(propertiesStr)
+                : propertiesStr;
+        await client.query(sql, [
+            event ?? '',
+            ts,
+            JSON.stringify(props ?? {}),
+            distinct_id ?? '',
+            session_id ?? '',
+            person_id ?? ''
+        ]);
+        inserted++;
+    }
+    return inserted;
+}
+
 async function insertThematique(client, rows) {
     const sql = `
     INSERT INTO analytics.thematique
@@ -281,6 +310,13 @@ function injectWindow(hogql, startIso) {
             table: 'boutons_homepage',
             insertFunction: insertBoutonsHomepage,
             description: 'Événements de boutons sur la homepage'
+        },
+        {
+            name: 'boutons_etape2',
+            sqlFile: './etl/queries/boutons_etape2.hogql.sql',
+            table: 'boutons_etape2',
+            insertFunction: insertBoutonsEtape2,
+            description: 'Événements de boutons étape 2'
         },
         {
             name: 'thematique',
