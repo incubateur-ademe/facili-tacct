@@ -47,12 +47,13 @@ export const ExportButton = ({
     type: type,
     date: new Date()
   });
-  const handleExport = async () => {
+  const handleExport = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!data || data.length === 0) {
       console.log('Aucune donnée à exporter');
       return;
     }
     setIsExporting(true);
+    e.currentTarget.blur();
     try {
       if (documentation) {
         exportMultipleSheetToXLSX(
@@ -111,22 +112,28 @@ export const ExportButtonNouveauParcours = ({
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
 
-  const handleExport = async () => {
-    posthog.capture(
-      baseName === "inconfort_thermique"
-        ? "export_xlsx_thematique_bouton"
-        : 'export_xlsx_bouton', {
+  const handleExport = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (isExporting) return;
+    e.currentTarget.blur();
+    setIsExporting(true);
+
+    posthog.capture('export_xlsx_bouton', {
       thematique: baseName,
       code: code,
       libelle: libelle,
       type: type,
       date: new Date()
     });
+
+    // Attendre que React affiche "Export en cours..." avant de démarrer l'export
+    await new Promise(resolve => setTimeout(resolve, 0));
+
     if (!data || data.length === 0) {
       console.log('Aucune donnée à exporter');
+      setIsExporting(false);
       return;
     }
-    setIsExporting(true);
+
     try {
       if (documentation) {
         exportMultipleSheetToXLSX(
@@ -144,7 +151,9 @@ export const ExportButtonNouveauParcours = ({
     } catch (error) {
       console.error('Export failed:', error);
     } finally {
-      setIsExporting(false);
+      setTimeout(() => {
+        setIsExporting(false);
+      }, 3000);
     }
   };
   return (
@@ -156,7 +165,7 @@ export const ExportButtonNouveauParcours = ({
             <BoutonPrimaireClassic
               onClick={handleExport}
               disabled={disabled || isExporting}
-              icone={ExporterIcon}
+              icone={isExporting ? null : ExporterIcon}
               size='sm'
               text={isExporting ? 'Export en cours...' : children as string}
               style={{

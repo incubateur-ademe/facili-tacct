@@ -1,7 +1,5 @@
+import { prisma } from '@/lib/queries/db';
 import { NextResponse } from 'next/server';
-import { PrismaClient as PostgresClient } from '../../../../generated/client';
-
-const prisma = new PostgresClient();
 
 export async function POST(request: Request) {
   try {

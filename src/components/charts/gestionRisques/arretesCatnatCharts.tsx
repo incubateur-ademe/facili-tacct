@@ -5,7 +5,6 @@ import { LegendCatnat } from '@/components/maps/legends/legendCatnat';
 import { MapCatnat } from '@/components/maps/mapCatnat';
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/ui/SubTabs';
-import { CommunesIndicateursDto } from '@/lib/dto';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
 import styles from './gestionRisquesCharts.module.scss';
@@ -14,7 +13,8 @@ type ArreteCatNatEnriched = ArreteCatNat & {
   annee_arrete: number;
 };
 type Props = {
-  carteCommunes: CommunesIndicateursDto[];
+  catnatData: { code: string; name: string; catnat: any }[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   datavizTab: string;
   setDatavizTab: (value: string) => void;
   typeRisqueValue: CatnatTypes;
@@ -28,7 +28,8 @@ type Props = {
 
 const ArretesCatnatCharts = (props: Props) => {
   const {
-    carteCommunes,
+    catnatData,
+    coordonneesCommunes,
     datavizTab,
     setDatavizTab,
     typeRisqueValue,
@@ -100,7 +101,8 @@ const ArretesCatnatCharts = (props: Props) => {
             />
           </div>
           <MapCatnat
-            carteCommunes={carteCommunes}
+            catnatData={catnatData}
+            coordonneesCommunes={coordonneesCommunes}
             typeRisqueValue={typeRisqueValue}
           />
           <div
@@ -110,7 +112,7 @@ const ArretesCatnatCharts = (props: Props) => {
             <LegendCatnat
               data={'catnat'}
               typeRisqueValue={typeRisqueValue}
-              carteCommunes={carteCommunes}
+              catnatData={catnatData}
             />
           </div>
         </>

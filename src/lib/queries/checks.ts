@@ -1,7 +1,7 @@
 'use server';
 
-import { RGAdb } from "../postgres/models";
-import { PrismaPostgres } from './db';
+import { RGAdb } from '../postgres/models';
+import { prisma as PrismaPostgres } from './db';
 
 // quand un epci est à cheval entre plusieurs départements, on retourne les départements de l'epci
 export const CheckMultipleDepartementsInEpci = async (
@@ -19,7 +19,7 @@ export const CheckMultipleDepartementsInEpci = async (
       distinct: ['libelle_departement']
     });
     // Return the list of unique departements (as strings)
-    const departementList = departements.map(d => d.libelle_departement);
+    const departementList = departements.map((d) => d.libelle_departement);
     return departementList;
   } catch (error) {
     console.error('Error in CheckMultipleDepartementsInEpci:', error);

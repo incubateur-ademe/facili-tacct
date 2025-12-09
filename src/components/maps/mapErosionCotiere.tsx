@@ -1,5 +1,5 @@
 
-import { CommunesIndicateursDto, ErosionCotiereDto } from '@/lib/dto';
+import { ErosionCotiereDto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
@@ -9,12 +9,12 @@ import { useEffect } from 'react';
 export const MapErosionCotiere = (props: {
   erosionCotiere: ErosionCotiereDto[];
   envelope: { type: "Polygon"; coordinates: number[][][] };
-  carteCommunes: CommunesIndicateursDto[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   mapRef: React.RefObject<maplibregl.Map | null>;
   mapContainer: React.RefObject<HTMLDivElement | null>;
   style?: React.CSSProperties;
 }) => {
-  const { erosionCotiere, envelope, carteCommunes, style, mapRef, mapContainer } = props;
+  const { erosionCotiere, envelope, coordonneesCommunes, style, mapRef, mapContainer } = props;
   const envelopeParsed = envelope.coordinates[0].map(([lng, lat]) => [lat, lng]);
 
   useEffect(() => {
@@ -56,18 +56,19 @@ export const MapErosionCotiere = (props: {
           'fill-opacity': 0.95,
         }
       });
-      // Add communes outline
-      map.addSource('communes-outline', {
-        type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: carteCommunes as Feature<Geometry, GeoJsonProperties>[]
-        }
+      // Add communes outline avec tuiles vectorielles
+      map.addSource('communes-tiles', {
+        type: 'vector',
+        tiles: [`${process.env.NEXT_PUBLIC_SCALEWAY_BUCKET_URL}/communes/tiles/{z}/{x}/{y}.pbf`],
+        minzoom: 4,
+        maxzoom: 13
       });
       map.addLayer({
         id: 'communes-outline-layer',
         type: 'line',
-        source: 'communes-outline',
+        source: 'communes-tiles',
+        'source-layer': 'contour_communes',
+        filter: coordonneesCommunes ? ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]] : ['==', ['get', 'code_geographique'], ''],
         paint: {
           'line-color': '#161616',
           'line-width': 1,
@@ -98,7 +99,7 @@ export const MapErosionCotiere = (props: {
         mapRef.current = null;
       }
     };
-  }, [erosionCotiere, carteCommunes, envelope]);
+  }, [erosionCotiere, coordonneesCommunes, envelope]);
 
   return (
     <div style={{ position: 'relative', ...style }}>

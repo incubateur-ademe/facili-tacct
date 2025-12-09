@@ -17,7 +17,8 @@ const Home = () => {
     <div>
       <Notice
         className={css({
-          // backgroundColor: 'var(--principales-vert)',
+          backgroundColor: 'var(--gris-medium)',
+          color: "#201F1E"
         })}
         isClosable={true}
         title={"Facili-TACCT se refait une beauté, nouvelle charte, nouveau parcours !"}

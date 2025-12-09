@@ -114,7 +114,7 @@ export const BoutonPrimaireClassic = ({
     fontWeight: 500,
     fontFamily: 'Marianne',
     fontSize: size === 'xs' ? '12px' : size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
-    width: 'fit-content',
+    width: 'max-content',
     alignItems: 'center',
     backgroundImage: 'none',
     cursor: disabled ? 'not-allowed' : 'pointer',

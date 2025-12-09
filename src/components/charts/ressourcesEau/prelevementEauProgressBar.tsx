@@ -11,7 +11,7 @@ import DataNotFound from '@/components/graphDataNotFound';
 import { ArrowHtmlTooltip } from '@/components/utils/Tooltips';
 import { Body, H4 } from '@/design-system/base/Textes';
 import couleurs from '@/design-system/couleurs';
-import { RessourcesEau } from '@/lib/postgres/models';
+import { PrelevementsEauParsed } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { Progress } from 'antd';
@@ -20,7 +20,7 @@ import { useSearchParams } from 'next/navigation';
 import styles from './eau.module.scss';
 
 const SumFiltered = (
-  data: RessourcesEau[],
+  data: PrelevementsEauParsed[],
   code: string,
   libelle: string,
   type: string,
@@ -44,19 +44,21 @@ const SumFiltered = (
     data
       .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
       )
-      .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(champ))
+      .filter((item) => item.libelle_sous_champ?.includes(champ))
       .map((e) => e.A2020)
       .filter((value): value is number => value !== null)
   );
 };
 
 const TotalSum = (
-  data: RessourcesEau[],
-  champ: string
+  data: PrelevementsEauParsed[],
+  champ: string,
+  departement: string
 ) => {
   return Sum(
     data
-      .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(champ))
+      .filter((item) => item.departement === departement)
+      .filter((item) => item.libelle_sous_champ?.includes(champ))
       .map((e) => e.A2020)
       .filter((value): value is number => value !== null)
   );
@@ -65,18 +67,20 @@ const TotalSum = (
 const PrelevementEauProgressBars = ({
   ressourcesEau
 }: {
-  ressourcesEau: RessourcesEau[];
+  ressourcesEau: PrelevementsEauParsed[];
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
+  const departement = ressourcesEau[0]?.departement;
+  const libelleDepartement = ressourcesEau[0]?.libelle_departement;
 
   const data = [
     {
       titre: 'Agriculture',
       icon: <Image src={tracteur_icon_black} alt="" />,
-      sumDptmt: TotalSum(ressourcesEau, 'agriculture'),
+      sumDptmt: TotalSum(ressourcesEau, 'agriculture', departement),
       sumTerritoire: SumFiltered(
         ressourcesEau,
         code,
@@ -89,7 +93,7 @@ const PrelevementEauProgressBars = ({
     {
       titre: 'Eau potable',
       icon: <Image src={robinet_icon_black} alt="" />,
-      sumDptmt: TotalSum(ressourcesEau, 'potable'),
+      sumDptmt: TotalSum(ressourcesEau, 'potable', departement),
       sumTerritoire: SumFiltered(
         ressourcesEau,
         code,
@@ -102,7 +106,7 @@ const PrelevementEauProgressBars = ({
     {
       titre: 'Industrie et autres usages économiques',
       icon: <Image src={usine_icon_black} alt="" />,
-      sumDptmt: TotalSum(ressourcesEau, 'industrie'),
+      sumDptmt: TotalSum(ressourcesEau, 'industrie', departement),
       sumTerritoire: SumFiltered(
         ressourcesEau,
         code,
@@ -115,7 +119,7 @@ const PrelevementEauProgressBars = ({
     {
       titre: 'Refroidissement des centrales électriques',
       icon: <Image src={flocon_icon_black} alt="" />,
-      sumDptmt: TotalSum(ressourcesEau, 'refroidissement'),
+      sumDptmt: TotalSum(ressourcesEau, 'refroidissement', departement),
       sumTerritoire: SumFiltered(
         ressourcesEau,
         code,
@@ -128,7 +132,7 @@ const PrelevementEauProgressBars = ({
     {
       titre: 'Alimentation des canaux',
       icon: <Image src={vagues_icon_black} alt="" />,
-      sumDptmt: TotalSum(ressourcesEau, 'alimentation'),
+      sumDptmt: TotalSum(ressourcesEau, 'alimentation', departement),
       sumTerritoire: SumFiltered(
         ressourcesEau,
         code,
@@ -141,7 +145,7 @@ const PrelevementEauProgressBars = ({
     {
       titre: "Production d'électricité (barrages hydro-électriques)",
       icon: <Image src={eclair_icon_black} alt="" />,
-      sumDptmt: TotalSum(ressourcesEau, 'production'),
+      sumDptmt: TotalSum(ressourcesEau, 'production', departement),
       sumTerritoire: SumFiltered(
         ressourcesEau,
         code,
@@ -153,14 +157,13 @@ const PrelevementEauProgressBars = ({
     }
   ];
   const totalDptmt =
-    TotalSum(ressourcesEau, 'total') === 0
+    TotalSum(ressourcesEau, 'total', departement) === 0
       ? 1
-      : TotalSum(ressourcesEau, 'total');
+      : TotalSum(ressourcesEau, 'total', departement);
   const total =
     SumFiltered(ressourcesEau, code, libelle, type, 'total') === 0
       ? 1
       : SumFiltered(ressourcesEau, code, libelle, type, 'total');
-  const departement = ressourcesEau[0]?.libelle_departement;
 
   return (
     libelle && data.find((e) => e.sumTerritoire !== 0) ? (
@@ -185,7 +188,7 @@ const PrelevementEauProgressBars = ({
                   {
                     type !== 'departement' && (
                       <Body size='sm'>
-                        Département ({departement}) :{' '}
+                        Département ({libelleDepartement}) :{' '}
                         <b>{Round((100 * item.sumDptmt) / totalDptmt, 2)} %</b>{' '}
                         ({Round(item.sumDptmt / 1000000, 2)} Mm3)
                       </Body>

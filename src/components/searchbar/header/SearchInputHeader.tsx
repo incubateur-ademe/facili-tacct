@@ -18,6 +18,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
     searchCode,
     searchLibelle,
     setIsTypeChanging,
+    isTerritoryChanging,
     setIsTerritoryChanging,
     setIsNewTypeChosen,
     focusAutocomplete,
@@ -103,7 +104,9 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
         setIsTypeChanging(false);
         const input = document.getElementById(id);
         if (input) (input as HTMLInputElement).focus();
-        setTimeout(() => setIsOpen(true), 500);
+        if (isTerritoryChanging) {
+          setIsOpen(true);
+        } else setTimeout(() => { setIsOpen(true); }, 500);
       }}
       onClose={() => setIsOpen(false)}
       onChange={(event, newValue: SearchInputOptions | null) => {

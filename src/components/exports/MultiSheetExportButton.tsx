@@ -183,14 +183,22 @@ export const MultiSheetExportButtonNouveauParcours = ({
     };
   }, [isExporting]);
 
-  const handleExport = async () => {
+  const handleExport = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (isExporting) return;
+
+    e.currentTarget.blur();
+    setIsExporting(true);
+
+    // Attendre que React affiche "Export en cours..." avant de démarrer l'export
+    await new Promise(resolve => setTimeout(resolve, 0));
+
     const hasData = sheetsData.some(sheet => sheet.data && sheet.data.length > 0);
     if (!hasData) {
       console.log('Aucune donnée à exporter');
+      setIsExporting(false);
       return;
     }
 
-    setIsExporting(true);
     try {
       const dataForExport: Record<string, ExportDataRow[]> = {};
       sheetsData.forEach(sheet => {
@@ -207,7 +215,9 @@ export const MultiSheetExportButtonNouveauParcours = ({
     } catch (error) {
       console.error('Export failed:', error);
     } finally {
-      setIsExporting(false);
+      setTimeout(() => {
+        setIsExporting(false);
+      }, 3000);
     }
   };
 
@@ -220,7 +230,7 @@ export const MultiSheetExportButtonNouveauParcours = ({
             <BoutonPrimaireClassic
               onClick={handleExport}
               disabled={isExporting}
-              icone={ExporterIcon}
+              icone={isExporting ? null : ExporterIcon}
               size='sm'
               text={isExporting ? 'Export en cours...' : children as string}
               style={{

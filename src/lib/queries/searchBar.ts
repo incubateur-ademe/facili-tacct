@@ -16,24 +16,19 @@ export const GetCollectivite = async (
   const dbQuery = (async () => {
     try {
       if (typeTerritoire === 'pnr') {
-        const variableCollectivite = '%' + collectivite + '%';
-        const value = await PNR(variableCollectivite);
+        const value = await PNR(collectivite);
         return value;
       } else if (typeTerritoire === 'petr') {
-        const variableCollectivite = '%' + collectivite + '%';
-        const value = await PETR(variableCollectivite);
+        const value = await PETR(collectivite);
         return value;
       } else if (typeTerritoire === 'epci') {
-        const variableCollectivite = '%' + collectivite + '%';
-        const value = await EPCI(variableCollectivite);
+        const value = await EPCI(collectivite);
         return value;
       } else if (typeTerritoire === 'commune') {
-        const variableCollectivite = collectivite + '%';
-        const value = await Commune(variableCollectivite);
+        const value = await Commune(collectivite);
         return value;
       } else if (typeTerritoire === 'departement') {
-        const variableCollectivite = collectivite + '%';
-        const value = await Departement(variableCollectivite);
+        const value = await Departement(collectivite);
         return value;
       } else {
         return [
@@ -58,7 +53,6 @@ export const GetCollectivite = async (
     } catch (error) {
       console.error(error);
       Sentry.captureException(error);
-      // PrismaPostgres.$disconnect();
       return [];
     }
   })();

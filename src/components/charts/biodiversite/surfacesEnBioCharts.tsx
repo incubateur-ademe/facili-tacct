@@ -36,7 +36,7 @@ const SurfacesEnBioCharts = ({
     : type === 'pnr'
       ? multipleEpciByPnrLibelle.find(pnr => pnr.libelle_pnr === libelle)?.liste_epci_multi_pnr
       : undefined;
-  const [sliderValue, setSliderValue] = useState<number[]>([2019, 2022]);
+  const [sliderValue, setSliderValue] = useState<number[]>([2008, 2023]);
   return (
     <>
       {
@@ -76,8 +76,8 @@ const SurfacesEnBioCharts = ({
               <>
                 <div className={styles.sliderWrapper}>
                   <RangeSlider
-                    firstValue={2019}
-                    lastValue={2022}
+                    firstValue={2008}
+                    lastValue={2023}
                     minDist={1}
                     setSliderValue={setSliderValue}
                     sliderValue={sliderValue}

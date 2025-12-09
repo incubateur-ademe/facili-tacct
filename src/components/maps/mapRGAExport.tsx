@@ -1,84 +1,57 @@
-import { BoundsFromCollection } from '@/components/maps/components/boundsFromCollection';
-import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
+"use client";
+
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
-import { Feature, FeatureCollection, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect } from 'react';
 import { RgaMapLegend } from './legends/datavizLegends';
 import { LegendCompColor } from './legends/legendComp';
 import styles from './maps.module.scss';
 
-const RGAMapExport = (props: {
-  carteCommunes: CommunesIndicateursDto[];
-  rgaCarte: {
-    type: string;
-    features: RGADto[];
-  };
-  mapRef: RefObject<maplibregl.Map | null>;
-  mapContainer: RefObject<HTMLDivElement | null>;
+export const MapRGAExport = (props: {
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
+  exportMapRef: RefObject<maplibregl.Map | null>;
+  exportMapContainer: RefObject<HTMLDivElement | null>;
   style?: React.CSSProperties;
 }) => {
-  const { carteCommunes, rgaCarte, mapRef, mapContainer, style } = props;
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
-  const carteCommunesFiltered = type === "ept"
-    ? carteCommunes.filter(el => el.properties.ept === libelle)
-    : carteCommunes
-  const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
+  const { coordonneesCommunes, exportMapRef, exportMapContainer, style } = props;
 
   useEffect(() => {
-    if (!mapContainer.current) return;
-
-    // Compute bounding box from enveloppe polygon
-    let bounds: [[number, number], [number, number]] | undefined;
-    if (
-      enveloppe &&
-      Array.isArray(enveloppe) &&
-      enveloppe.length > 1 &&
-      Array.isArray(enveloppe[0]) &&
-      enveloppe[0].length === 2
-    ) {
-      const lons = enveloppe.map(coord => coord[1]);
-      const lats = enveloppe.map(coord => coord[0]);
-      const minLng = Math.min(...lons);
-      const maxLng = Math.max(...lons);
-      const minLat = Math.min(...lats);
-      const maxLat = Math.max(...lats);
-      bounds = [[minLng, minLat], [maxLng, maxLat]];
-    }
+    if (!exportMapContainer.current || !coordonneesCommunes) return;
 
     const map = new maplibregl.Map({
-      container: mapContainer.current,
+      container: exportMapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
-      bounds: bounds,
-      fitBoundsOptions: { padding: 20 }
     });
-    mapRef.current = map;
-
-    // addOverlay(map, Overlay.administrativeBoundaries);
+    exportMapRef.current = map;
 
     map.on('load', () => {
-      map.addSource('rgaCarte', {
-        type: 'geojson',
-        data: rgaCarte as FeatureCollection<Geometry, GeoJsonProperties>,
+      // Fit bounds avec coordonneesCommunes (sans animation pour l'export)
+      if (coordonneesCommunes?.bbox) {
+        map.fitBounds(
+          [[coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
+          [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]],
+          { padding: 20, duration: 0 }
+        );
+      }
+
+      // Add vector tiles source
+      map.addSource('rga-tiles', {
+        type: 'vector',
+        tiles: [`${process.env.NEXT_PUBLIC_SCALEWAY_BUCKET_URL}/rga/tiles/{z}/{x}/{y}.pbf`],
+        minzoom: 4,
+        maxzoom: 13
       });
-      map.addSource('carteCommunes', {
-        type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: carteCommunesFiltered as Feature<Geometry, GeoJsonProperties>[]
-        }
-      });
+
+      // Add fill layer for RGA zones with color based on alea level
       map.addLayer({
-        id: 'rgaCarte-layer',
+        id: 'rga-fill',
         type: 'fill',
-        source: 'rgaCarte',
+        source: 'rga-tiles',
+        'source-layer': 'rga',
+        filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
         paint: {
           'fill-color': [
             'match',
@@ -88,24 +61,36 @@ const RGAMapExport = (props: {
             'Fort', '#E8323B',
             'white'
           ],
-          'fill-opacity': 0.45,
-        },
+          'fill-opacity': 0.45
+        }
       });
+
+      // Add communes outline avec tuiles vectorielles
+      map.addSource('communes-tiles', {
+        type: 'vector',
+        tiles: [`${process.env.NEXT_PUBLIC_SCALEWAY_BUCKET_URL}/communes/tiles/{z}/{x}/{y}.pbf`],
+        minzoom: 4,
+        maxzoom: 13
+      });
+
       map.addLayer({
-        id: 'carteCommunes-outline',
+        id: 'communes-outline-layer',
         type: 'line',
-        source: 'carteCommunes',
+        source: 'communes-tiles',
+        'source-layer': 'contour_communes',
+        filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
         paint: {
           'line-color': '#161616',
           'line-width': 1
         }
       });
     });
-  }, [rgaCarte, enveloppe]);
+
+  }, []);
 
   return (
     <div style={{ position: 'relative', ...style }}>
-      <div ref={mapContainer} style={{ height: "500px", width: "100%" }} />
+      <div ref={exportMapContainer} style={{ height: "500px", width: "100%" }} />
       <div className="exportPNGWrapper">
         <div
           className={styles.legendRGA}
@@ -117,5 +102,3 @@ const RGAMapExport = (props: {
     </div>
   );
 };
-
-export default RGAMapExport;

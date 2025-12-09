@@ -1,16 +1,15 @@
 'use server';
 
-import { QualiteSitesBaignade, RessourcesEau } from '@/lib/postgres/models';
+import { PrelevementsEau, QualiteSitesBaignade } from '@/lib/postgres/models';
 import * as Sentry from '@sentry/nextjs';
-// import { PrismaPostgres } from '../db';
 import { ColumnCodeCheck, ColumnLibelleCheck } from '../columns';
-import { prisma } from '../redis';
+import { prisma } from '../db';
 
-export const GetRessourceEau = async (
+export const GetPrelevementsEau = async (
   code: string,
   libelle: string,
   type: string
-): Promise<RessourcesEau[]> => {
+): Promise<PrelevementsEau[]> => {
   const column = ColumnCodeCheck(type);
   //race Promise pour éviter un crash de la requête lorsqu'elle est trop longue
   const timeoutPromise = new Promise<[]>((resolve) =>
@@ -22,7 +21,7 @@ export const GetRessourceEau = async (
     try {
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.ressources_eau.findFirst({
+      const exists = await prisma.databases_v2_prelevements_eau.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code },
         select: { departement: true }
       });
@@ -32,62 +31,58 @@ export const GetRessourceEau = async (
           console.time('Query Execution Time PRELEVEMENT EAUX');
           const value = await prisma.$queryRaw`
           SELECT *
-          FROM databases.ressources_eau
+          FROM databases_v2.prelevements_eau
           WHERE departement = (
             SELECT departement
-            FROM databases.ressources_eau
+            FROM databases_v2.prelevements_eau
             WHERE code_geographique = ${code}
-            LIMIT 1
           )
         `;
           console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
-          return value as RessourcesEau[];
+          return value as PrelevementsEau[];
         } else if (type === 'epci') {
           console.time('Query Execution Time PRELEVEMENT EAUX');
           const value = await prisma.$queryRaw`
           SELECT *
-          FROM databases.ressources_eau
-          WHERE departement = (
+          FROM databases_v2.prelevements_eau
+          WHERE departement IN (
             SELECT departement
-            FROM databases.ressources_eau
+            FROM databases_v2.prelevements_eau
             WHERE epci = ${code}
-            LIMIT 1
           )
         `;
           console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
-          return value as RessourcesEau[];
+          return value as PrelevementsEau[];
         } else if (type === 'petr') {
           console.time('Query Execution Time PRELEVEMENT EAUX');
           // await prisma.$executeRaw`SET statement_timeout = 1000;`;
           const value = await prisma.$queryRaw`
           SELECT *
-          FROM databases.ressources_eau
-          WHERE departement = (
+          FROM databases_v2.prelevements_eau
+          WHERE departement IN (
             SELECT departement
-            FROM databases.ressources_eau
+            FROM databases_v2.prelevements_eau
             WHERE libelle_petr = ${libelle}
-            LIMIT 1
           )
         `;
           console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
-          return value as RessourcesEau[];
+          return value as PrelevementsEau[];
         } else if (type === 'ept') {
           console.time('Query Execution Time PRELEVEMENT EAUX');
           const value = await prisma.$queryRaw`
           SELECT *
-          FROM databases.ressources_eau
-          WHERE departement = (
+          FROM databases_v2.prelevements_eau
+          WHERE departement IN (
             SELECT departement
-            FROM databases.ressources_eau
+            FROM databases_v2.prelevements_eau
             WHERE ept = ${libelle}
-            LIMIT 1
           )
         `;
           console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
-          return value as RessourcesEau[];
+          return value as PrelevementsEau[];
         } else if (type === 'departement') {
           console.time('Query Execution Time RESSOURCES EAUX');
-          const value = await prisma.ressources_eau.findMany({
+          const value = await prisma.databases_v2_prelevements_eau.findMany({
             where: {
               departement: code
             }
@@ -95,7 +90,7 @@ export const GetRessourceEau = async (
           console.timeEnd('Query Execution Time RESSOURCES EAUX');
           return value;
         } else if (type === 'pnr') {
-          const value = await prisma.ressources_eau.findMany({
+          const value = await prisma.databases_v2_prelevements_eau.findMany({
             where: {
               libelle_pnr: libelle
             }
@@ -105,7 +100,6 @@ export const GetRessourceEau = async (
       }
     } catch (error) {
       console.error(error);
-      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }
@@ -122,49 +116,54 @@ export const GetQualiteEauxBaignade = async (
   try {
     // Fast existence check
     if (!libelle || !type || (!code && type !== 'petr')) return [];
-    const exists = await prisma.collectivites_searchbar.findFirst({
+    const exists = await prisma.databases_v2_collectivites_searchbar.findFirst({
       where: { [column]: libelle }
     });
     if (!exists) return [];
     else {
       if (code === 'ZZZZZZZZZ') {
         console.time('Query Execution Time QUALITE EAUX BAIGNADE');
-        const value = await prisma.qualite_sites_baignade.findMany({
-          where: {
-            OR: [
-              { COMMUNE: "ile-d'yeu (l')" },
-              { COMMUNE: 'ile-de-brehat' },
-              { COMMUNE: 'ouessant' },
-              { COMMUNE: 'ile-de-sein' }
-            ]
+        const value = await prisma.databases_v2_qualite_sites_baignade.findMany(
+          {
+            where: {
+              OR: [
+                { COMMUNE: "ile-d'yeu (l')" },
+                { COMMUNE: 'ile-de-brehat' },
+                { COMMUNE: 'ouessant' },
+                { COMMUNE: 'ile-de-sein' }
+              ]
+            }
           }
-        });
+        );
         console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
         return value;
       } else {
         console.time('Query Execution Time QUALITE EAUX BAIGNADE');
-        const departement = await prisma.collectivites_searchbar.findMany({
-          where: {
-            AND: [
-              {
-                departement: { not: null }
-              },
-              {
-                [column]: libelle
+        const departement =
+          await prisma.databases_v2_collectivites_searchbar.findMany({
+            where: {
+              AND: [
+                {
+                  departement: { not: null }
+                },
+                {
+                  [column]: libelle
+                }
+              ]
+            },
+            distinct: ['departement']
+          });
+        const value = await prisma.databases_v2_qualite_sites_baignade.findMany(
+          {
+            where: {
+              DEP_NUM: {
+                in: departement
+                  .map((d) => d.departement)
+                  .filter((d): d is string => d !== null)
               }
-            ]
-          },
-          distinct: ['departement']
-        });
-        const value = await prisma.qualite_sites_baignade.findMany({
-          where: {
-            DEP_NUM: {
-              in: departement
-                .map((d) => d.departement)
-                .filter((d): d is string => d !== null)
             }
           }
-        });
+        );
         console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
         return value;
       }

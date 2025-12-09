@@ -3,32 +3,29 @@
 import WarningIcon from "@/assets/icons/exclamation_point_icon_black.png";
 import { RgaEvolutionTooltip, RgaRepartitionTooltip } from "@/components/charts/ChartTooltips";
 import { NivoBarChart } from '@/components/charts/NivoBarChart';
-import { RgaEvolutionLegend, RgaRepartitionLegend } from '@/components/maps/legends/datavizLegends';
+import { RgaEvolutionLegend, RgaMapLegend, RgaRepartitionLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
-import RGAMapExport from "@/components/maps/mapRGAExport";
+import { MapRGAExport } from "@/components/maps/mapRGAExport";
+import { MapTiles } from "@/components/maps/mapTiles";
 import SubTabs from '@/components/ui/SubTabs';
 import { Body } from "@/design-system/base/Textes";
-import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
 import { RGAdb } from '@/lib/postgres/models';
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { BarDatum } from '@nivo/bar';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect, useLayoutEffect, useState } from "react";
-import RGAMap from '../../maps/mapRGA';
 import styles from './gestionRisquesCharts.module.scss';
 
 type Props = {
-  rgaCarte: {
-    type: string;
-    features: RGADto[];
-  };
-  carteCommunes: CommunesIndicateursDto[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   rga: RGAdb[];
   datavizTab: string;
   setDatavizTab: (value: string) => void;
   mapRef: RefObject<maplibregl.Map | null>;
   mapContainer: RefObject<HTMLDivElement | null>;
+  exportMapRef: RefObject<maplibregl.Map | null>;
+  exportMapContainer: RefObject<HTMLDivElement | null>;
 };
 
 const isRGAdb = (obj: unknown): obj is RGAdb => {
@@ -87,7 +84,7 @@ const barChartComparaison = (rga: RGAdb[], code: string, type: string) => {
       { territoire: 0, territoireSup: 0, alea: "Exposition moyenne / forte" }
     ];
   }
-  
+
   const territoireAlea = type === "commune" ?
     rga.find(item => item.code_geographique === code) :
     type === "epci" ?
@@ -132,13 +129,14 @@ const barChartComparaison = (rga: RGAdb[], code: string, type: string) => {
 
 const RetraitGonflementDesArgilesCharts = (props: Props) => {
   const {
-    rgaCarte,
-    carteCommunes,
+    coordonneesCommunes,
     rga,
     datavizTab,
     setDatavizTab,
     mapRef,
-    mapContainer
+    mapContainer,
+    exportMapRef,
+    exportMapContainer
   } = props;
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
@@ -235,7 +233,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
                 <Body style={{ fontSize: 12 }}>
                   L’EPCI sélectionné s’étend sur
                   plusieurs départements. La comparaison proposée est
-                  effectuée avec : {departement}
+                  effectuée avec : {departement}
                 </Body>
               </div>
             </div>
@@ -265,19 +263,33 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
           </div>
         </>
       ) : datavizTab === 'Cartographie' ? (
-        <RGAMap
-          rgaCarte={rgaCarte}
-          carteCommunes={carteCommunes}
+        <MapTiles
+          coordonneesCommunes={coordonneesCommunes}
+          mapRef={mapRef}
+          mapContainer={mapContainer}
+          bucketUrl="rga"
+          layer="rga"
+          paint={{
+            'fill-color': [
+              'match',
+              ['get', 'alea'],
+              'Moyen', '#F66E19',
+              'Faible', '#FFCF5E',
+              'Fort', '#E8323B',
+              'white'
+            ],
+            'fill-opacity': 0.45
+          }}
+          legend={<LegendCompColor legends={RgaMapLegend} />}
         />
       ) : (
         ''
       )}
       {/* Génère une map cachée pour l'export */}
-      <RGAMapExport
-        rgaCarte={rgaCarte}
-        carteCommunes={carteCommunes}
-        mapRef={mapRef}
-        mapContainer={mapContainer}
+      <MapRGAExport
+        coordonneesCommunes={coordonneesCommunes}
+        exportMapRef={exportMapRef}
+        exportMapContainer={exportMapContainer}
         style={{
           position: 'absolute',
           top: 0,

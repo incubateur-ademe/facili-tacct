@@ -1,9 +1,7 @@
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
-import { PrismaClient as PostgresClient } from '../../generated/client';
-
-const PrismaPostgres = new PostgresClient();
+import { prisma } from '../queries/db';
 
 export const AuthOptions: NextAuthOptions = {
   session: {
@@ -31,11 +29,11 @@ export const AuthOptions: NextAuthOptions = {
       },
       async authorize(credentials, req) {
         let user = null;
-        user = await PrismaPostgres.sandbox_users.findFirst({
+        user = await prisma.sandbox_users.findFirst({
           where: { username: credentials!.username }
         });
         if (!user) {
-          user = await PrismaPostgres.users.findUnique({
+          user = await prisma.users.findUnique({
             where: { username: credentials!.username }
           });
         }

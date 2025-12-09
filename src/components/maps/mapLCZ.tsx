@@ -1,34 +1,36 @@
 'use client';
 
-import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { CarteCommunes } from '@/lib/postgres/models';
-import { GetLczCouverture } from '@/lib/queries/databases/inconfortThermique';
+import CeremaLogo from '@/assets/images/Logo-cerema.jpg';
+import { LCZselectionTerritoires } from '@/lib/territoireData/LCZselectionTerritoires';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
-import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl, { MapSourceDataEvent } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
-import { ExportPngMaplibreButton } from '../exports/ExportPng';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import { Loader } from '../ui/loader';
-import { BoundsFromCollection } from './components/boundsFromCollection';
 import { CeremaFallbackError, handleCeremaFallback } from './components/ceremaLCZFallback';
 import { LczLegend, LczLegendOpacity70 } from './legends/datavizLegends';
 import { LegendCompColorLCZ } from './legends/legendComp';
 import styles from './maps.module.scss';
 
 export const MapLCZ = ({
-  carteCommunes
+  coordonneesCommunes,
+  isLoading,
+  isLczCovered,
+  mapRef,
+  mapContainer
 }: {
-  carteCommunes: CarteCommunes[];
+  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
+  isLoading: boolean;
+  isLczCovered: boolean | undefined;
+  mapRef: RefObject<maplibregl.Map | null>;
+  mapContainer: RefObject<HTMLDivElement | null>;
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
-  const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLczCovered, setIsLczCovered] = useState<Boolean | undefined>(undefined);
   const [zoomMap, setZoomMap] = useState(0);
   const [isTilesLoading, setIsTilesLoading] = useState(false);
   const [serviceStatus, setServiceStatus] = useState({
@@ -37,26 +39,24 @@ export const MapLCZ = ({
     errorMessage: null as string | null
   });
   const hasTriedFallback = useRef(false);
-  const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
-  const enveloppe = BoundsFromCollection(carteCommunesEnriched, type, code);
-  const mapContainer = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<maplibregl.Map | null>(null);
+  // Vérifier si le territoire est dans la liste de sélection manuelle
+  const isInLCZSelection = LCZselectionTerritoires.some(
+    territoire => territoire.code === code && territoire.type === type
+  );
+  const useLczGenerator = !isLczCovered || isInLCZSelection;
 
   useEffect(() => {
-    void (async () => {
-      const temp = await GetLczCouverture(code, libelle, type);
-      setIsLczCovered(temp);
-      setIsLoading(false);
-    })()
-  }, [code]);
-
-  useEffect(() => {
-    if (!mapContainer.current || isLczCovered === undefined) return;
+    if (!mapContainer.current || isLczCovered === undefined || !coordonneesCommunes) return;
     hasTriedFallback.current = false;
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
+      bounds: [
+        [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
+        [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]
+      ],
+      fitBoundsOptions: { padding: 20 }
     });
     mapRef.current = map;
 
@@ -90,7 +90,7 @@ export const MapLCZ = ({
       setIsTilesLoading(false);
     }, 10000);
 
-    if (!isLczCovered) {
+    if (useLczGenerator) {
       map.on('load', () => {
         setIsTilesLoading(true);
         try {
@@ -113,40 +113,30 @@ export const MapLCZ = ({
         }
 
         try {
-          map.addSource('communes-outline', {
-            type: 'geojson',
-            data: {
-              type: 'FeatureCollection',
-              features: carteCommunesEnriched as Feature<Geometry, GeoJsonProperties>[]
-            }
+          // Add vector tiles source for commune boundaries
+          map.addSource('communes-tiles', {
+            type: 'vector',
+            tiles: [`${process.env.NEXT_PUBLIC_SCALEWAY_BUCKET_URL}/communes/tiles/{z}/{x}/{y}.pbf`],
+            minzoom: 4,
+            maxzoom: 13
           });
-          map.addLayer({
-            id: 'communes-outline-layer',
-            type: 'line',
-            source: 'communes-outline',
-            paint: {
-              'line-color': '#161616',
-              'line-width': 1
-            }
-          });
+
+          // Add commune boundaries layer from tiles
+          if (coordonneesCommunes) {
+            map.addLayer({
+              id: 'communes-outline-layer',
+              type: 'line',
+              source: 'communes-tiles',
+              'source-layer': 'contour_communes',
+              filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
+              paint: {
+                'line-color': '#161616',
+                'line-width': 1
+              }
+            });
+          }
         } catch (error) {
           console.error('Error adding communes outline layer:', error);
-        }
-
-        if (enveloppe && Array.isArray(enveloppe) && enveloppe.length > 1 && Array.isArray(enveloppe[0]) && enveloppe[0].length === 2) {
-          const lons = enveloppe.map(coord => coord[1]);
-          const lats = enveloppe.map(coord => coord[0]);
-          const minLng = Math.min(...lons);
-          const maxLng = Math.max(...lons);
-          const minLat = Math.min(...lats);
-          const maxLat = Math.max(...lats);
-          map.fitBounds(
-            [
-              [minLng, minLat],
-              [maxLng, maxLat]
-            ],
-            { padding: 20 }
-          );
         }
       });
     } else {
@@ -182,41 +172,34 @@ export const MapLCZ = ({
             paint: { 'raster-opacity': 0.7 },
             minzoom: 13.5
           });
-          map.addSource('communes-outline', {
-            type: 'geojson',
-            data: {
-              type: 'FeatureCollection',
-              features: carteCommunesEnriched as Feature<Geometry, GeoJsonProperties>[]
-            }
+
+          // Add vector tiles source for commune boundaries
+          map.addSource('communes-tiles', {
+            type: 'vector',
+            tiles: [`${process.env.NEXT_PUBLIC_SCALEWAY_BUCKET_URL}/communes/tiles/{z}/{x}/{y}.pbf`],
+            minzoom: 4,
+            maxzoom: 13
           });
-          map.addLayer({
-            id: 'communes-outline-layer',
-            type: 'line',
-            source: 'communes-outline',
-            paint: {
-              'line-color': '#161616',
-              'line-width': 1
-            }
-          });
+
+          // Add commune boundaries layer from tiles
+          if (coordonneesCommunes) {
+            map.addLayer({
+              id: 'communes-outline-layer',
+              type: 'line',
+              source: 'communes-tiles',
+              'source-layer': 'contour_communes',
+              filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
+              paint: {
+                'line-color': '#161616',
+                'line-width': 1
+              }
+            });
+          }
+          // map.addImage('cerema-logo', CeremaLogo as HTMLImageElement);
         } catch (error) {
           console.error('Error adding Cerema layers:', error);
           setIsTilesLoading(false);
           handleCeremaFallback(map, hasTriedFallback, setIsTilesLoading, setServiceStatus);
-        }
-        if (enveloppe && Array.isArray(enveloppe) && enveloppe.length > 1 && Array.isArray(enveloppe[0]) && enveloppe[0].length === 2) {
-          const lons = enveloppe.map(coord => coord[1]);
-          const lats = enveloppe.map(coord => coord[0]);
-          const minLng = Math.min(...lons);
-          const maxLng = Math.max(...lons);
-          const minLat = Math.min(...lats);
-          const maxLat = Math.max(...lats);
-          map.fitBounds(
-            [
-              [minLng, minLat],
-              [maxLng, maxLat]
-            ],
-            { padding: 20 }
-          );
         }
       });
 
@@ -261,6 +244,7 @@ export const MapLCZ = ({
               bsr: 'Taux de sol nu perméable (%)',
               war: 'Taux de surface en eau (%)',
             };
+            // const identifier = props.identifier || '';
             const lcz = props.lcz || '';
             let content = `
               <h4 style='font-size:16px; margin:0 0 0.5rem;'>
@@ -270,7 +254,7 @@ export const MapLCZ = ({
             const order = ['are', 'bur', 'hre', 'ror', 'ver', 'vhr', 'bsr', 'war'];
             for (const key of order) {
               if (props[key] !== undefined) {
-                content += `<p>${labels[key]} : ${props[key]}</p><br/>`;
+                content += `<p>${labels[key]} : <b>${props[key]}</b></p>`;
               }
             }
             new maplibregl.Popup({
@@ -332,11 +316,14 @@ export const MapLCZ = ({
   return (
     <div style={{ position: 'relative' }}>
       <style jsx global>{`
+        .maplibregl-popup {
+          z-index: 1002 !important;
+        }
         .custom-popup .maplibregl-popup-content {
           font-family: 'Marianne' !important;
           background-color: #ffffff !important;
           border-radius: 0.5rem !important;
-          padding: 1rem !important;
+          padding: 20px !important;
           position: relative !important;
           box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16) !important;
           min-width: max-content !important;
@@ -362,9 +349,18 @@ export const MapLCZ = ({
         setServiceStatus={setServiceStatus}
         styles={styles}
       />
-      {isLoading ? <Loader /> : (
+      {isLoading ? (<div style={{ display: "flex", justifyContent: "center" }}><Loader /></div>) : (
         <>
-          <div ref={mapContainer} className="map-container" style={{ width: '100%', height: '500px' }} />
+          <div ref={mapContainer} className='map-container' style={{ width: '100%', height: '500px' }}>
+            {!useLczGenerator && (
+              <Image
+                id="cerema-logo"
+                src={CeremaLogo}
+                alt="Logo du Cerema"
+                className={styles.ceremaLogoBottomRight}
+              />
+            )}
+          </div>
           {isTilesLoading && (
             <div className={styles.tileLoadingWrapper}>
               <div style={{
@@ -381,41 +377,21 @@ export const MapLCZ = ({
             </div>
           )}
           <div className='lczLegendWrapper'>
-            <div className={styles.sourcesExportWrapper}>
-              <p>
-                Source : {
-                  isLczCovered
-                    ? "CEREMA"
-                    : <a
-                      href="https://doi.org/10.5194/essd-14-3835-2022"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Matthias Demuzere et al. 2022
-                    </a>}
-              </p>
-              <ExportPngMaplibreButton
-                mapRef={mapRef}
-                mapContainer={mapContainer}
-                documentDiv=".lczLegendWrapper"
-                fileName={`LCZ_${type}_${libelle}`}
-              />
-            </div>
-            <div className={styles.legendLCZWrapper}>
+            <div className={styles.legendLCZWrapperNouveauParcours}>
               <div
-                className={styles.legendLCZ}
+                className={styles.legendLCZNouveauParcours}
               >
                 <h3>- Espaces bâtis -</h3>
                 <LegendCompColorLCZ
-                  legends={((zoomMap >= 13.5 || !isLczCovered) ? LczLegendOpacity70 : LczLegend).slice(0, 9)}
+                  legends={((zoomMap >= 13.5 || useLczGenerator) ? LczLegendOpacity70 : LczLegend).slice(0, 9)}
                 />
               </div>
               <div
                 className={styles.legendLCZ}
-                style={{ borderTop: "solid 1px #d6d6f0", padding: '1rem 0' }}
+                style={{ borderTop: "solid 1px var(--gris-medium)", padding: '1rem 0' }}
               >
                 <h3>- Espaces non bâtis -</h3>
-                <LegendCompColorLCZ legends={((zoomMap >= 13.5 || !isLczCovered) ? LczLegendOpacity70 : LczLegend).slice(9, 16)} />
+                <LegendCompColorLCZ legends={((zoomMap >= 13.5 || useLczGenerator) ? LczLegendOpacity70 : LczLegend).slice(9, 16)} />
               </div>
             </div>
           </div>

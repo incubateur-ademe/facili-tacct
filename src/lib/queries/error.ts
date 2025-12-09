@@ -1,16 +1,14 @@
 'use server';
 
-import { PrismaClient as PostgresClient } from '../../generated/client';
-
-const PrismaPostgres = new PostgresClient();
+import { prisma } from './db';
 
 export const GetError = async () => {
   if (process.env.NODE_ENV !== 'production') {
     try {
-      await PrismaPostgres.$queryRaw`SELECT * FROM non_existent_table`;
+      await prisma.$queryRaw`SELECT * FROM non_existent_table`;
     } catch (error) {
       console.error('Forced error for testing:', error);
-      await PrismaPostgres.$disconnect();
+      await prisma.$disconnect();
     }
   } else {
     console.warn('Skipping error test query in production environment.');

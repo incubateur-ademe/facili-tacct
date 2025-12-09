@@ -1,6 +1,6 @@
 'use client';
 
-import { sommaireImpacts, sommaireThematiques } from '@/app/(main)/(nouveau-parcours)/thematiques/constantes/textesThematiques';
+import { sommaireImpacts, sommaireThematiques } from '@/app/(main)/(parcours)/thematiques/constantes/textesThematiques';
 import { ErrorDisplay } from '@/app/ErrorDisplay';
 import DoubleChevronIcon from '@/assets/icons/double_chevron_icon_black.svg';
 import retourIcon from '@/assets/icons/retour_icon_black.svg';
@@ -49,11 +49,11 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
     }
     void (async () => {
       const erosionCotiere = await GetErosionCotiere(code, libelle, type);
-      if (erosionCotiere.length > 0) {
+      if (erosionCotiere.length && erosionCotiere[0].length > 0) {
         setIsErosionCotiere(true);
-      }
+      } else setIsErosionCotiere(false);
     })()
-  }, []);
+  }, [libelle]);
 
   // Mesurer la hauteur de la div de navigation
   useEffect(() => {
@@ -318,7 +318,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                     )
                   }
                 </div>
-                {thematique === "Confort thermique" ? (
+                {thematique === "Confort thermique" || thematique === "Agriculture" ? (
                   <>
                     <button
                       onClick={handleEtape2Toggle}

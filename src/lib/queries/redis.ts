@@ -1,4 +1,5 @@
-import { PrismaClient } from '@/generated/client';
+// import { PrismaClient } from '@/generated/client';
+// export const prisma = new PrismaClient();
 
 // const ca = process.env.REDIS_CA?.replace(/\\n/g, '\n');
 // const redis = new Redis(process.env.SCALINGO_REDIS_URL!, {
@@ -8,7 +9,6 @@ import { PrismaClient } from '@/generated/client';
 //   }
 // });
 // export { redis };
-export const prisma = new PrismaClient();
 
 // const cacheMiddleware = createPrismaRedisCache({
 //   models: [],

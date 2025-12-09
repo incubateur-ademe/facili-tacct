@@ -62,7 +62,7 @@ export type InconfortThermique = {
 };
 
 export type ConfortThermique = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   epci: string;
   libelle_epci: string;
@@ -87,14 +87,14 @@ export type ConfortThermique = {
   under_4_sum_2009: number | null;
   under_4_sum_2014: number | null;
   under_4_sum_2020: number | null;
-  "4_to_75_sum_1968": number | null;
-  "4_to_75_sum_1975": number | null;
-  "4_to_75_sum_1982": number | null;
-  "4_to_75_sum_1990": number | null;
-  "4_to_75_sum_1999": number | null;
-  "4_to_75_sum_2009": number | null;
-  "4_to_75_sum_2014": number | null;
-  "4_to_75_sum_2020": number | null;
+  '4_to_75_sum_1968': number | null;
+  '4_to_75_sum_1975': number | null;
+  '4_to_75_sum_1982': number | null;
+  '4_to_75_sum_1990': number | null;
+  '4_to_75_sum_1999': number | null;
+  '4_to_75_sum_2009': number | null;
+  '4_to_75_sum_2014': number | null;
+  '4_to_75_sum_2020': number | null;
   over_75_sum_1968: number | null;
   over_75_sum_1975: number | null;
   over_75_sum_1982: number | null;
@@ -124,7 +124,7 @@ export type Biodiversite = {
   code_geographique: string | null;
   departement: string | null;
   epci: string | null;
-  index: bigint | null;
+  index: number | null;
   libelle_epci: string | null;
   libelle_geographique: string | null;
   region: number | null;
@@ -136,7 +136,7 @@ export type GestionRisques = {
   code_geographique: string;
   departement: string;
   epci: string;
-  index: bigint;
+  index: number;
   libelle_epci: string;
   libelle_geographique: string;
   region: number;
@@ -151,7 +151,7 @@ export type ArreteCatNat = {
   departement: string;
   libelle_departement: string;
   epci: string;
-  index: bigint;
+  index: number;
   libelle_epci: string;
   libelle_geographique: string;
   region: number;
@@ -161,6 +161,67 @@ export type ArreteCatNat = {
   libelle_pnr: string | null;
 };
 
+export type Secheresses = {
+  index: number;
+  code_geographique: string;
+  departement: string;
+  libelle_departement: string;
+  epci: string;
+  libelle_epci: string;
+  libelle_geographique: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  restrictions_2013: string | null;
+  restrictions_2014: string | null;
+  restrictions_2015: string | null;
+  restrictions_2016: string | null;
+  restrictions_2017: string | null;
+  restrictions_2018: string | null;
+  restrictions_2019: string | null;
+  restrictions_2020: string | null;
+  restrictions_2021: string | null;
+  restrictions_2022: string | null;
+  restrictions_2023: string | null;
+  restrictions_2024: string | null;
+};
+
+type RestrictionArrete = {
+  dat_deb: string;
+  dat_fin: string;
+};
+
+type RestrictionUsage = {
+  nom: string;
+  theme: string | null;
+  part: number;
+  entr: number;
+  coll: number;
+  expl: number;
+  eso: number;
+  esu: number;
+  aep: number;
+};
+
+type RestrictionZas = {
+  code: string;
+  type: string;
+  grav: number;
+  pct: number;
+};
+
+export type RestrictionData = {
+  arrete: RestrictionArrete;
+  usage: RestrictionUsage;
+  zas: RestrictionZas;
+};
+
+export type SecheressesParsed = Omit<Secheresses, `restrictions_${number}`> & {
+  [key: `restrictions_${number}`]: RestrictionData[] | null;
+};
+
 export type RessourcesEau = {
   LIBELLE_SOUS_CHAMP: string;
   SOUS_CHAMP: string;
@@ -168,7 +229,67 @@ export type RessourcesEau = {
   departement: string;
   libelle_departement: string;
   epci: string;
-  index: bigint;
+  index: number;
+  libelle_epci: string;
+  libelle_geographique: string;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  region: number;
+  A2008: number;
+  A2009: number;
+  A2010: number;
+  A2011: number;
+  A2012: number;
+  A2013: number;
+  A2014: number;
+  A2015: number;
+  A2016: number;
+  A2017: number;
+  A2018: number;
+  A2019: number;
+  A2020: number;
+};
+
+export type PrelevementsEau = {
+  libelle_sous_champ: string | null;
+  sous_champ: string | null;
+  code_geographique: string;
+  departement: string;
+  libelle_departement: string;
+  epci: string;
+  index: number;
+  libelle_epci: string;
+  libelle_geographique: string;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  region: number;
+  A2008: string | null;
+  A2009: string | null;
+  A2010: string | null;
+  A2011: string | null;
+  A2012: string | null;
+  A2013: string | null;
+  A2014: string | null;
+  A2015: string | null;
+  A2016: string | null;
+  A2017: string | null;
+  A2018: string | null;
+  A2019: string | null;
+  A2020: string | null;
+};
+
+export type PrelevementsEauParsed = {
+  libelle_sous_champ: string | null;
+  sous_champ: string | null;
+  code_geographique: string;
+  departement: string;
+  libelle_departement: string;
+  epci: string;
+  index: number;
   libelle_epci: string;
   libelle_geographique: string;
   ept: string | null;
@@ -192,19 +313,43 @@ export type RessourcesEau = {
 };
 
 export type AgricultureBio = {
-  index: bigint | number;
+  index: number;
   epci: string;
   libelle_epci: string;
   VARIABLE: string;
   LIBELLE_SOUS_CHAMP: string | null;
+  surface_2023: number;
   surface_2022: number;
   surface_2021: number;
   surface_2020: number;
   surface_2019: number;
+  surface_2018: number;
+  surface_2017: number;
+  surface_2016: number;
+  surface_2015: number;
+  surface_2014: number;
+  surface_2013: number;
+  surface_2012: number;
+  surface_2011: number;
+  surface_2010: number;
+  surface_2009: number;
+  surface_2008: number;
+  nombre_2023: number;
   nombre_2022: number;
   nombre_2021: number;
   nombre_2020: number;
   nombre_2019: number;
+  nombre_2018: number;
+  nombre_2017: number;
+  nombre_2016: number;
+  nombre_2015: number;
+  nombre_2014: number;
+  nombre_2013: number;
+  nombre_2012: number;
+  nombre_2011: number;
+  nombre_2010: number;
+  nombre_2009: number;
+  nombre_2008: number;
 };
 
 export type CollectivitesSearchbar = {
@@ -227,7 +372,6 @@ export type CollectivitesSearchbar = {
 export type CarteCommunes = {
   code_geographique: string;
   coordinates: string;
-  densite_bati?: number;
   epci: string;
   geometry: string;
   libelle_geographique: string;
@@ -241,7 +385,7 @@ export type CarteCommunes = {
   libelle_pnr: string;
   precarite_logement?: number;
   catnat?: Object;
-  naf?: number;
+  naf?: number | null;
   surface: number;
   surfacesIrriguees?: number;
   incendiesForet?: number;
@@ -344,7 +488,7 @@ export type DataGrandAge = {
 };
 
 export type SurfacesProtegeesByCol = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   PNC: string | null;
   RAMSAR: string | null;
@@ -373,7 +517,7 @@ export type SurfacesProtegeesByCol = {
 };
 
 export type ConsommationNAF = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -385,111 +529,111 @@ export type ConsommationNAF = {
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
-  naf09art10: number;
-  art09act10: number;
-  art09hab10: number;
-  art09mix10: number;
-  art09rou10: number;
-  art09fer10: number;
-  art09inc10: number;
-  naf10art11: number;
-  art10act11: number;
-  art10hab11: number;
-  art10mix11: number;
-  art10rou11: number;
-  art10fer11: number;
-  naf11art12: number;
-  art11act12: number;
-  art11hab12: number;
-  art11mix12: number;
-  art11rou12: number;
-  art11fer12: number;
-  art11inc12: number;
-  naf12art13: number;
-  art12act13: number;
-  art12hab13: number;
-  art12mix13: number;
-  art12rou13: number;
-  art12fer13: number;
-  art12inc13: number;
-  naf13art14: number;
-  art13act14: number;
-  art13hab14: number;
-  art13mix14: number;
-  art13rou14: number;
-  art13fer14: number;
-  art13inc14: number;
-  naf14art15: number;
-  art14act15: number;
-  art14hab15: number;
-  art14mix15: number;
-  art14rou15: number;
-  art14fer15: number;
-  art14inc15: number;
-  naf15art16: number;
-  art15act16: number;
-  art15hab16: number;
-  art15mix16: number;
-  art15rou16: number;
-  art15fer16: number;
-  art15inc16: number;
-  naf16art17: number;
-  art16act17: number;
-  art16hab17: number;
-  art16mix17: number;
-  art16rou17: number;
-  art16fer17: number;
-  art16inc17: number;
-  naf17art18: number;
-  art17act18: number;
-  art17hab18: number;
-  art17mix18: number;
-  art17rou18: number;
-  art17fer18: number;
-  art17inc18: number;
-  naf18art19: number;
-  art18act19: number;
-  art18hab19: number;
-  art18mix19: number;
-  art18rou19: number;
-  art18fer19: number;
-  art18inc19: number;
-  naf19art20: number;
-  art19act20: number;
-  art19hab20: number;
-  art19mix20: number;
-  art19rou20: number;
-  art19fer20: number;
-  art19inc20: number;
-  naf20art21: number;
-  art20act21: number;
-  art20hab21: number;
-  art20mix21: number;
-  art20rou21: number;
-  art20fer21: number;
-  art20inc21: number;
-  naf21art22: number;
-  art21act22: number;
-  art21hab22: number;
-  art21mix22: number;
-  art21rou22: number;
-  art21fer22: number;
-  art21inc22: number;
-  naf22art23: number;
-  art22act23: number;
-  art22hab23: number;
-  art22mix23: number;
-  art22rou23: number;
-  art22fer23: number;
-  art22inc23: number;
-  naf09art23: number;
-  art09act23: number;
-  art09hab23: number;
-  art09mix23: number;
-  art09inc23: number;
-  art09rou23: number;
-  art09fer23: number;
-  artcom0923: number;
+  naf09art10: number | null;
+  art09act10: number | null;
+  art09hab10: number | null;
+  art09mix10: number | null;
+  art09rou10: number | null;
+  art09fer10: number | null;
+  art09inc10: number | null;
+  naf10art11: number | null;
+  art10act11: number | null;
+  art10hab11: number | null;
+  art10mix11: number | null;
+  art10rou11: number | null;
+  art10fer11: number | null;
+  naf11art12: number | null;
+  art11act12: number | null;
+  art11hab12: number | null;
+  art11mix12: number | null;
+  art11rou12: number | null;
+  art11fer12: number | null;
+  art11inc12: number | null;
+  naf12art13: number | null;
+  art12act13: number | null;
+  art12hab13: number | null;
+  art12mix13: number | null;
+  art12rou13: number | null;
+  art12fer13: number | null;
+  art12inc13: number | null;
+  naf13art14: number | null;
+  art13act14: number | null;
+  art13hab14: number | null;
+  art13mix14: number | null;
+  art13rou14: number | null;
+  art13fer14: number | null;
+  art13inc14: number | null;
+  naf14art15: number | null;
+  art14act15: number | null;
+  art14hab15: number | null;
+  art14mix15: number | null;
+  art14rou15: number | null;
+  art14fer15: number | null;
+  art14inc15: number | null;
+  naf15art16: number | null;
+  art15act16: number | null;
+  art15hab16: number | null;
+  art15mix16: number | null;
+  art15rou16: number | null;
+  art15fer16: number | null;
+  art15inc16: number | null;
+  naf16art17: number | null;
+  art16act17: number | null;
+  art16hab17: number | null;
+  art16mix17: number | null;
+  art16rou17: number | null;
+  art16fer17: number | null;
+  art16inc17: number | null;
+  naf17art18: number | null;
+  art17act18: number | null;
+  art17hab18: number | null;
+  art17mix18: number | null;
+  art17rou18: number | null;
+  art17fer18: number | null;
+  art17inc18: number | null;
+  naf18art19: number | null;
+  art18act19: number | null;
+  art18hab19: number | null;
+  art18mix19: number | null;
+  art18rou19: number | null;
+  art18fer19: number | null;
+  art18inc19: number | null;
+  naf19art20: number | null;
+  art19act20: number | null;
+  art19hab20: number | null;
+  art19mix20: number | null;
+  art19rou20: number | null;
+  art19fer20: number | null;
+  art19inc20: number | null;
+  naf20art21: number | null;
+  art20act21: number | null;
+  art20hab21: number | null;
+  art20mix21: number | null;
+  art20rou21: number | null;
+  art20fer21: number | null;
+  art20inc21: number | null;
+  naf21art22: number | null;
+  art21act22: number | null;
+  art21hab22: number | null;
+  art21mix22: number | null;
+  art21rou22: number | null;
+  art21fer22: number | null;
+  art21inc22: number | null;
+  naf22art23: number | null;
+  art22act23: number | null;
+  art22hab23: number | null;
+  art22mix23: number | null;
+  art22rou23: number | null;
+  art22fer23: number | null;
+  art22inc23: number | null;
+  naf09art23: number | null;
+  art09act23: number | null;
+  art09hab23: number | null;
+  art09mix23: number | null;
+  art09inc23: number | null;
+  art09rou23: number | null;
+  art09fer23: number | null;
+  artcom0923: number | null;
 };
 
 export type EtatCoursDeau = {
@@ -501,7 +645,7 @@ export type EtatCoursDeau = {
 };
 
 export type AOT40 = {
-  index: bigint;
+  index: number;
   nom_site: string;
   type_d_implantation: string;
   valeur_brute: number;
@@ -510,7 +654,7 @@ export type AOT40 = {
 };
 
 export type QualiteSitesBaignade = {
-  index: bigint;
+  index: number;
   DEP_NOM: string;
   DEP_NUM: string;
   TYPE: string;
@@ -529,7 +673,7 @@ export type QualiteSitesBaignade = {
 };
 
 export type Agriculture = {
-  index: bigint | number;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -546,7 +690,7 @@ export type Agriculture = {
 };
 
 export type ExportCoursDeau = {
-  index: bigint | number;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -564,7 +708,7 @@ export type ExportCoursDeau = {
 };
 
 export type IncendiesForet = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -598,7 +742,7 @@ export type RGACarte = {
 };
 
 export type RGAdb = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -638,7 +782,7 @@ export type RGAdb = {
 };
 
 export type SurfacesAgricolesModel = {
-  index: bigint | number;
+  index: number;
   epci: string;
   exploitation_sau: number;
   exploitation_sau_terres_arables: number;
@@ -681,7 +825,7 @@ export type SurfacesAgricolesModel = {
 };
 
 export type Patch4 = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   niveaux_marins: number | null;
   feux_foret: number;
@@ -691,7 +835,7 @@ export type Patch4 = {
 };
 
 export type LczCouverture = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -706,9 +850,8 @@ export type LczCouverture = {
   couverture_lcz: number | null;
 };
 
-
 export type AtlasBiodiversiteModel = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -725,4 +868,43 @@ export type AtlasBiodiversiteModel = {
   type_de_structure_porteuse: string | null;
   annee_debut: number | null;
   avancement: string | null;
+};
+
+export type TableCommuneModel = {
+  index: number;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  type_touristique: string | null;
+  atlas_biodiversite_nom: string | null;
+  atlas_biodiversite_annee_debut: number | null;
+  atlas_biodiversite_avancement: string | null;
+  otex_12_postes: string | null;
+  part_irr_sau_2020: string | null;
+  agriculture_part_over_55: string | null;
+  couverture_lcz: string | null;
+};
+
+export type DebroussaillementModel = {
+  pk: number;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  geometry: string;
 };

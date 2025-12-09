@@ -1,5 +1,9 @@
-import { ConsommationNAFEcolabApi } from '@/lib/postgres/EcolabApi';
-import { prisma } from '../redis';
+import {
+  ConsommationNAFEcolabApi,
+  SurfacesBiocolabApi
+} from '@/lib/postgres/EcolabApi';
+import { ColumnLibelleCheck } from '../columns';
+import { prisma } from '../db';
 
 export const GetPartSurfaceBio = async () => {
   const url = `https://api.ind  const response = await request.json();
@@ -54,9 +58,43 @@ export const GetPartSurfaceBio = async () => {
   return response;
 };
 
-export const GetSurfaceBio = async () => {
+export const GetSurfaceBioEcolab = async (
+  code: string,
+  libelle: string,
+  type: string
+): Promise<SurfacesBiocolabApi[]> => {
+  const column = ColumnLibelleCheck(type);
   const url = `https://api.indicateurs.ecologie.gouv.fr/cubejs-api/v1/load`;
-  console.time('Query Execution Time CUBEJS');
+  console.time('Query Execution Time CUBEJS SURFACES BIO');
+  const listeEpci =
+    type === 'commune'
+      ? [
+          await prisma.collectivites_searchbar.findFirst({
+            select: {
+              epci: true
+            },
+            where: {
+              code_geographique: code
+            }
+          })
+        ]
+      : await prisma.collectivites_searchbar.findMany({
+          select: {
+            epci: true
+          },
+          where: {
+            AND: [
+              {
+                epci: { not: null }
+              },
+              {
+                [column]: libelle
+              }
+            ]
+          },
+          distinct: ['epci']
+        });
+
   const request = await fetch(url, {
     method: 'POST',
     headers: {
@@ -70,7 +108,17 @@ export const GetSurfaceBio = async () => {
           {
             member: 'surface_bio_epci.geocode_epci',
             operator: 'equals',
-            values: ['200067106']
+            values:
+              listeEpci && listeEpci[0]?.epci && type === 'commune'
+                ? [listeEpci[0].epci]
+                : listeEpci && listeEpci[0]?.epci
+                  ? (listeEpci
+                      .filter(
+                        (el): el is { epci: string } =>
+                          el !== null && el.epci != null
+                      )
+                      .map((el) => el.epci) as string[])
+                  : []
           }
         ],
         timezone: 'UTC',
@@ -79,10 +127,10 @@ export const GetSurfaceBio = async () => {
           {
             dimension: 'surface_bio_epci.date_mesure',
             granularity: 'year',
-            dateRange: ['2023-01-01', '2023-12-01']
+            dateRange: ['2010-01-01', '2024-12-01']
           }
-        ],
-        order: { 'surface_bio_epci.geocode_epci': 'asc' }
+        ]
+        // order: { 'surface_bio_epci.geocode_epci': 'asc' }
       }
     })
   });
@@ -91,10 +139,10 @@ export const GetSurfaceBio = async () => {
     throw new Error('Failed to fetch data');
   }
 
-  const response: Response = await request.json();
-  console.timeEnd('Query Execution Time CUBEJS');
+  const response = await request.json();
+  console.timeEnd('Query Execution Time CUBEJS SURFACES BIO');
 
-  return response;
+  return response.data;
 };
 
 export const GetNAF = async (
