@@ -214,11 +214,8 @@ export const DonneesAgriculture = ({
                 thematique: "Agriculture",
                 anchor: ""
               })}
-              onClick={() => {
-                posthog.capture('clic_diagnostic_impact', {
-                  thematique: thematique
-                });
-              }}
+              posthogEventName='clic_diagnostic_impact'
+              thematique='Agriculture'
             />
           </div>
         </div>
