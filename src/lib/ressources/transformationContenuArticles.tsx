@@ -12,9 +12,8 @@ export const renderBlock = async (el: Block, i: number) => {
     case "heading_1":
       return null;
     case "paragraph":
-
       return (
-        <div key={i}>
+        <div key={i} style={{ marginBottom: "1rem" }}>
           <Body><Text text={richText} /></Body>
         </div>
       );
@@ -22,21 +21,21 @@ export const renderBlock = async (el: Block, i: number) => {
       const heading2Text = normalizeText(richText.map(rt => rt.plain_text || rt.text.content).join(''));
       return (
         <div key={i} id={heading2Text} style={{
-          marginBottom: "3rem",
-          marginTop: "3rem",
+          marginBottom: "56px",
+          marginTop: "80px",
           scrollMarginTop: "2rem"
           // scroll-margin-top: 2rem;
         }}>
-          <H2>{heading2Text}</H2>
+          <H2 style={{ margin: 0 }}>{heading2Text}</H2>
         </div>
       );
     case "heading_3":
       const heading3Text = normalizeText(richText.map(rt => rt.plain_text || rt.text.content).join(''));
       return (
         <div key={i} style={{
-          margin: "1.5rem 0",
+          margin: "56px 0 2rem 0",
         }}>
-          <H3>{heading3Text}</H3>
+          <H3 style={{ margin: 0 }}>{heading3Text}</H3>
         </div>
       );
     case "bulleted_list_item":
@@ -73,7 +72,7 @@ export const renderBlock = async (el: Block, i: number) => {
       const colorClass = value?.color?.includes('gray') ? 'bg-gray-100 border-gray-300' : 'bg-blue-50 border-blue-300';
       const icon = value?.icon?.type === 'emoji' ? value.icon.emoji : null;
       return (
-        <div key={i} className={`my-4 p-4 border-l-4 rounded ${colorClass}`}>
+        <div key={i} className={`my-8 p-8 border-l-4 rounded ${colorClass}`}>
           <div className="font-semibold mb-2 flex flex-row items-start gap-2">
             {icon && <span className="text-xl">{icon}</span>}
             <span><Text text={richText} /></span>

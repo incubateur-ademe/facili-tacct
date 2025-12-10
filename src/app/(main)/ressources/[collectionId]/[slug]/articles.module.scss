@@ -107,12 +107,11 @@
                 .sommaireItem {
                     width: 100%;
                     text-align: left;
-                    padding: 1rem;
+                    padding: 1rem 1.25rem 1rem 1rem;
                     border: none;
                     background: none;
                     cursor: pointer;
                     font-size: 0.875rem;
-                    transition: all 0.2s;
                     color: #3d3d3d;
 
                     &:hover {
@@ -123,6 +122,7 @@
                         background-color: var(--gris-light);
                         font-weight: 600;
                         border-right: 4px solid var(--principales-vert);
+                        padding: 1rem;
                     }
                 }
             }
@@ -130,7 +130,7 @@
     }
     .article {
         flex: 1;
-        padding: 0 12rem 0 3rem;
+        padding: 3rem 12rem 0 3rem;
 
         .articleSection {
             margin-bottom: 3rem;
@@ -236,7 +236,7 @@
         display: flex;
         flex-direction: column;
         align-self: center;
-        max-width: 450px;
+        max-width: 250px;
         width: 40%;
         p {
             color: #3d3d3d;
