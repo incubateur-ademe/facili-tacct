@@ -1,5 +1,6 @@
 'use client';
 
+import { ScrollToTop } from '@/components/interactions/ScrollToTop';
 import { NewContainer } from '@/design-system/layout';
 import { Suspense, useState } from 'react';
 import PanneauLateral from './components/panneauLateral';
@@ -11,6 +12,7 @@ const RouePage = () => {
 
   return (
     <Suspense>
+      <ScrollToTop />
       <NewContainer style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
         <style jsx global>
           {`

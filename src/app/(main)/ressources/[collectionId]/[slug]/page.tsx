@@ -1,3 +1,4 @@
+import { ScrollToTop } from "@/components/interactions/ScrollToTop";
 import { NewContainer } from "@/design-system/layout";
 import { getBlocks, getPageBySlug } from "@/lib/queries/notion/notion";
 import { toutesLesRessources } from "@/lib/ressources/toutesRessources";
@@ -43,6 +44,7 @@ const ArticleRessourcePage = async ({ params }: ArticlePageProps) => {
 
   return (
     <>
+      <ScrollToTop />
       <NewContainer size="xl" style={{ paddingTop: 0 }}>
         <div className={styles.breadcrumbWrapper}>
           <Breadcrumb

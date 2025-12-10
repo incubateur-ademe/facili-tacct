@@ -16,6 +16,13 @@ import styles from "../ressources.module.scss";
 export const BlocToutesRessources = () => {
   const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({});
   const [ArticlesFiltres, setArticlesFiltres] = useState(toutesLesRessources);
+  const ArticlesSorted = ArticlesFiltres.sort((a, b) => {
+    const dateComparison = new Date(b.date).getTime() - new Date(a.date).getTime();
+    if (dateComparison !== 0) {
+      return dateComparison;
+    }
+    return a.ordre - b.ordre;
+  });
   const territoireOptions = FiltresOptions.find(f => f.titre === 'Territoire')?.options || [];
 
   const handleSelectOptions = (filterTitre: string) => (event: SelectChangeEvent<string[]>) => {
@@ -119,11 +126,11 @@ export const BlocToutesRessources = () => {
         </div>
         <div className={styles.resultatsWrapper}>
           <p className={styles.resultats}>
-            <b>{ArticlesFiltres.length}</b> Résultat(s)
+            <b>{ArticlesSorted.length}</b> Résultat(s)
           </p>
           <div className={styles.listeDesArticlesWrapper}>
             {
-              ArticlesFiltres.map((el, i) => {
+              ArticlesSorted.map((el, i) => {
                 const collectionSlug = CollectionsData.find(c => c.titre === el.collections[0])?.slug;
                 const isExternalLink = el.lien.startsWith('https://');
                 const lien = isExternalLink

@@ -1,5 +1,3 @@
-import bookIcon from '@/assets/icons/fr-icon-book-2-line.png';
-import questionIcon from '@/assets/icons/fr-icon-questionnaire-line.png';
 import shapesIcon from '@/assets/icons/fr-icon-shapes-line.png';
 import teamIcon from '@/assets/icons/fr-icon-team-line.png';
 import Collection1Img from '@/assets/images/collection1.png';
@@ -51,29 +49,30 @@ export const collectionsCartes = [
 export const autresOutilsCartes = [
   {
     titre: 'Communauté TACCT',
-    description: 'Rejoignez la communauté d’entraide TACCT.',
+    description:
+      'Rejoignez notre communauté de partage entre chargés de mission',
     icone: teamIcon,
     lien: 'https://tally.so/r/n0LrEZ'
   },
   {
     titre: 'Méthode TACCT',
     description:
-      'Consultéz la méthode complète d’adaptation au changement climatique.',
+      'Découvrez la méthode de référence sur l’adaptation au changement climatique',
     icone: shapesIcon,
-    lien: 'https://tally.so/r/3Nx98W'
-  },
-  {
-    titre: 'Questions fréquentes',
-    description:
-      'Trouvez des réponses aux questions les plus courantes sur l’adaptation au changement climatique.',
-    icone: questionIcon,
-    lien: '/ressources'
-  },
-  {
-    titre: "Glossaire de l'adaptation",
-    description:
-      "Comprenez les termes clés liés à l'adaptation au changement climatique.",
-    icone: bookIcon,
-    lien: '/ressources'
+    lien: 'https://tacct.ademe.fr/'
   }
+  // {
+  //   titre: 'Questions fréquentes',
+  //   description:
+  //     'Trouvez les réponses aux questions les plus courantes sur l’adaptation au changement climatique',
+  //   icone: questionIcon,
+  //   lien: '/ressources'
+  // },
+  // {
+  //   titre: "Glossaire de l'adaptation",
+  //   description:
+  //     "Retrouvez toutes les définitions des termes de l’adaptation",
+  //   icone: bookIcon,
+  //   lien: '/ressources'
+  // }
 ];
