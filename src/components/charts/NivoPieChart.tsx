@@ -40,7 +40,8 @@ const NivoPieChart = ({
   unit,
   arrondi = 0
 }: NivoPieChartProps) => {
-
+  // filtrer les null ou undefined values
+  const filteredGraphData = graphData.filter(item => item.value !== null && item.value !== undefined);
   const windowDimensions = useWindowDimensions();
   const arcLabelsComponent = ({ datum, label, style }: Any) => {
     return (
@@ -102,7 +103,7 @@ const NivoPieChart = ({
   return (
     <div className={styles.responsivePieContainer}>
       <ResponsivePie
-        data={graphData}
+        data={filteredGraphData}
         margin={{
           top: windowDimensions.width && windowDimensions.width > 1248 ? 70 : 20,
           right: 10,

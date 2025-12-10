@@ -8,6 +8,7 @@ import { multipleEpciByPnrLibelle } from "@/lib/territoireData/multipleEpciByPnr
 import { SurfacesEnHerbeDynamicText } from "@/lib/textesIndicateurs/biodiversiteDynamicTexts";
 import { SurfacesToujoursEnHerbeText } from "@/lib/tooltipTexts";
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
+import { addWithNullHandling, SumWithNullHandling } from "@/lib/utils/reusableFunctions/sum";
 import { useSearchParams } from "next/navigation";
 import styles from '../../explorerDonnees.module.scss';
 
@@ -20,14 +21,23 @@ export const SurfacesToujoursEnHerbe = ({
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const SAU = surfacesAgricoles.map(el => el.superficie_sau);
-  const surfacesToujoursEnHerbe = surfacesAgricoles.map(el =>
-    el.superficie_sau_herbe_prairies_productives +
-    el.superficie_sau_herbe_prairies_peu_productives +
-    el.superficie_sau_herbe_subventions +
-    el.superficie_sau_herbe_bois_patures
+  const SAU = SumWithNullHandling(surfacesAgricoles.map(el => el.superficie_sau));
+  const surfacesToujoursEnHerbe = SumWithNullHandling(
+    surfacesAgricoles.map((el) => {
+      const isSecretStatistique = el.superficie_sau_herbe === null;
+      if (!isSecretStatistique) {
+        return el.superficie_sau_herbe;
+      } else {
+        return addWithNullHandling(
+          el.superficie_sau_herbe_prairies_productives,
+          el.superficie_sau_herbe_prairies_peu_productives,
+          el.superficie_sau_herbe_subventions,
+          el.superficie_sau_herbe_bois_patures
+        );
+      }
+    })
   );
-  const pourcentageSurfacesToujoursEnHerbe = SAU.length && (surfacesToujoursEnHerbe.reduce((a, b) => a + b, 0) / SAU.reduce((a, b) => a + b, 0)) * 100;
+  const pourcentageSurfacesToujoursEnHerbe = SAU && surfacesToujoursEnHerbe && (surfacesToujoursEnHerbe / SAU) * 100;
   const territoiresPartiellementCouverts = type === 'departement'
     ? multipleEpciBydepartementLibelle.find(dept => dept.departement === code)?.liste_epci_multi_dept
     : type === 'pnr'
@@ -42,11 +52,14 @@ export const SurfacesToujoursEnHerbe = ({
           className={styles.chiffreDynamiqueWrapper}
           style={{ alignItems: 'center', paddingBottom: '2rem', gap: '3rem' }}
         >
-          <MicroCircleGrid pourcentage={pourcentageSurfacesToujoursEnHerbe} arrondi={1} ariaLabel="Surface toujours en herbe" />
+          {pourcentageSurfacesToujoursEnHerbe !== null &&
+            <MicroCircleGrid pourcentage={pourcentageSurfacesToujoursEnHerbe} arrondi={1} ariaLabel="Surface toujours en herbe" />
+          }
           <div className={styles.text}>
             <SurfacesEnHerbeDynamicText
               surfacesAgricoles={surfacesAgricoles}
-              pourcentageSurfacesToujoursEnHerbe={pourcentageSurfacesToujoursEnHerbe}
+              //Jamais totalement sous secret statistique
+              pourcentageSurfacesToujoursEnHerbe={pourcentageSurfacesToujoursEnHerbe!}
               type={type}
               territoiresPartiellementCouverts={territoiresPartiellementCouverts}
             />
