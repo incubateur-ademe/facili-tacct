@@ -762,6 +762,13 @@
             font-size: 0.875rem;
         }
     }
+    .imageCropped {
+        position: relative;
+        display: flex;
+        height: 100%;
+        align-self: center;
+        right: -150px;
+    }
 }
 
 .collectionArticlesContainer {
@@ -853,6 +860,9 @@
     .collectionTopBlocWrapper {
         padding: 0 1rem;
         flex-direction: column;
+        .imageCropped {
+            right: -50px;
+        }
     }
     .collectionArticlesContainer {
         padding: 0 1rem;

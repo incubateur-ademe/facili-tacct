@@ -77,11 +77,12 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
               </div>
               {collection?.texte}
             </div>
+            <div className={styles.imageCropped}>
             <Image
               src={collection?.image!}
               alt=""
-              width={350}
             />
+            </div>
           </div>
         </NewContainer>
       </div>
