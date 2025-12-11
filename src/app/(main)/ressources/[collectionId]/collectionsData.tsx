@@ -1,10 +1,10 @@
-import Collection1Img from '@/assets/images/collection1.png';
-import Collection2Img from '@/assets/images/collection2.png';
-import Collection3Img from '@/assets/images/collection3.png';
-import Collection4Img from '@/assets/images/collection4.png';
-import Collection5Img from '@/assets/images/collection5.png';
-import Collection6Img from '@/assets/images/collection6.png';
-import Collection7Img from '@/assets/images/collection7.png';
+import Collection1Img from '@/assets/images/collection1_x2.png';
+import Collection2Img from '@/assets/images/collection2_x2.png';
+import Collection3Img from '@/assets/images/collection3_x2.png';
+import Collection4Img from '@/assets/images/collection4_x2.png';
+import Collection5Img from '@/assets/images/collection5_x2.png';
+import Collection6Img from '@/assets/images/collection6_x2.png';
+import Collection7Img from '@/assets/images/collection7_x2.png';
 import { Body } from "@/design-system/base/Textes";
 import { toutesLesRessources } from '@/lib/ressources/toutesRessources';
 

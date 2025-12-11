@@ -48,7 +48,7 @@ export const collectionsCartes = [
 
 export const autresOutilsCartes = [
   {
-    titre: 'Communauté TACCT',
+    titre: 'Communauté Adaptation',
     description:
       'Rejoignez notre communauté de partage entre chargés de mission',
     icone: teamIcon,

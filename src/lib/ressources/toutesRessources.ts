@@ -23,7 +23,7 @@ export const FiltresOptions = [
   },
   {
     titre: 'Format de ressource',
-    options: ['Article', "Retour d'expérience"]
+    options: ['Article', "Retour d'expérience", 'Formation', 'Quiz']
   },
   {
     titre: 'Territoire',
@@ -605,5 +605,44 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: TestImageTuile,
     date: '2024-09-20',
     ordre: 10
+  },
+  {
+    id: 35,
+    type: 'Quiz',
+    titre: 'Auto-évaluation sur l’adaptation au changement climatique',
+    description: "Testez vos connaissances sur l'adaptation au changement climatique et la méthode TACCT en 16 questions !",
+    lien: "https://tally.so/r/w4l8pk",
+    filtres: ['Quiz', 'Me former', 'National'],
+    collections: ["Démarrer le diagnostic de vulnérabilité"],
+    tempsLecture: 10,
+    image: TestImageTuile,
+    date: '2025-12-10',
+    ordre: 10
+  },
+  {
+    id: 36,
+    type: 'Formation',
+    titre: "Adapter son territoire au changement climatique – Se mettre en marche vers une stratégie d'adaptation",
+    description: "Cette formation permet de comprendre comment organiser et mettre en place un diagnostic de vulnérabilité et une stratégie d’adaptation au changement climatique pour son territoire.",
+    lien: "https://formations.ademe.fr/formations_changement-climatique_adapter-son-territoire-au-changement-climatique-�ie-se-mettre-en-marche-vers-une-strategie-d-adaptation_s5317.html",
+    filtres: ['Formation', "Me former", 'National'],
+    collections: ["Démarrer le diagnostic de vulnérabilité"],
+    tempsLecture: 1,
+    image: TestImageTuile,
+    date: '2025-12-10',
+    ordre: 20
+  },
+  {
+    id: 37,
+    type: 'Formation',
+    titre: "Adapter son territoire au changement climatique - Outils et méthodes pour l'adaptation",
+    description: "Cette formation en e-learning explique les principaux enjeux de l'adaptation au dérèglement climatique et comment y répondre.",
+    lien: "https://formations.ademe.fr/formations_changement-climatique_adapter-son-territoire-au-changement-climatique---outils-et-methodes-pour-l-adaptation_s5343.html",
+    filtres: ['Formation', "Me former", 'National'],
+    collections: ["Démarrer le diagnostic de vulnérabilité"],
+    tempsLecture: 1,
+    image: TestImageTuile,
+    date: '2025-12-10',
+    ordre: 30
   }
 ];
