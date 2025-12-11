@@ -19,5 +19,9 @@
   "files.associations": {
     ".env*": "dotenv"
   },
-  "mdx.server.enable": true
+  "mdx.server.enable": true,
+  "workbench.editor.customLabels.patterns": {
+    "**/app/**/{page,layout,index}.{ts,tsx}": "(${dirname})/${filename}.${extname}",
+    "**/index.{ts,tsx}": "${dirname}/index.${extname}"
+  },
 }

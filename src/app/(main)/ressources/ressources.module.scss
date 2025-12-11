@@ -527,6 +527,12 @@
 
 .toutesRessourcesContainer {
     background-color: #ffffff;
+    .boutonFiltre {
+        display: none;
+        justify-content: center;
+        width: 100dvw;
+        margin-top: 1rem;
+    }
     .filtresWrapper {
         display: flex;
         flex-direction: column;
@@ -561,7 +567,123 @@
             flex-wrap: wrap;
         }
     }
+    .filtresWrapperMobile {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 2rem 0rem;
+        border-bottom: 1px solid var(--gris-medium);
+        .filtresListe {
+            display: flex;
+            flex-direction: row;
+            gap: 1.5rem;
+            .filtreItem {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                max-width: 270px;
+                width: 100%;
+            }
+            .reinitialiser {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-end;
+                gap: 0.5rem;
+                padding-bottom: 0.75rem;
+                cursor: pointer;
+                text-wrap: nowrap;
+            }
+        }
+        .filtresSelectionnes {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+    }
+
+    // Styles pour la modale mobile
+    .modalOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .modalContent {
+        background-color: white;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        margin: auto;
+    }
+
+    .modalHeader {
+        .closeButton {
+            position: absolute;
+            right: 0;
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--principales-vert);
+            margin: 1.5rem 1rem;
+            line-height: 1;
+        }
+        .titre {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            padding: 80px 1.5rem 1.5rem;
+            border-bottom: 1px solid var(--gris-medium);
+        }
+    }
+
+    .modalBody {
+        padding: 1.5rem;
+        overflow-y: auto;
+        flex: 1;
+
+        .filtresListe {
+            display: flex;
+            flex-direction: column;
+            .filtreItem {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+            }
+        }
+
+        .reinitialiser {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+    }
+
+    .modalFooter {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1.5rem;
+        border-top: 1px solid var(--gris-medium);
+    }
 }
+
 .resultatsWrapper {
     padding: 2rem 0;
     .resultats {
@@ -588,6 +710,9 @@
 @media screen and (max-width: 992px) {
     .toutesRessourcesContainer {
         padding: 0 1rem;
+        .boutonFiltre {
+            display: flex;
+        }
         .filtresWrapper {
             display: none;
         }
