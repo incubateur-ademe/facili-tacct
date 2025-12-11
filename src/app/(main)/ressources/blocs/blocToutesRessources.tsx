@@ -1,21 +1,22 @@
 "use client";
 
-import ReinitialiserIcon from "@/assets/icons/refresh_icon_green.png";
-import MultiSelect from "@/components/MultiSelect";
+import FiltreIcon from "@/assets/icons/filtre_icon_white.svg";
 import { TuileVerticale } from "@/components/Tuile";
-import { TagsIcone, TagsSimples } from "@/design-system/base/Tags";
-import { Body, H2 } from "@/design-system/base/Textes";
+import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
+import { TagsIcone } from "@/design-system/base/Tags";
+import { H2 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import { FiltresOptions, toutesLesRessources } from "@/lib/ressources/toutesRessources";
 import { SelectChangeEvent } from "@mui/material";
-import Image from "next/image";
 import { useState } from "react";
 import { CollectionsData } from "../[collectionId]/collectionsData";
 import styles from "../ressources.module.scss";
+import { FiltresRessources, ModalFiltresRessources } from "./FiltresRessources";
 
 export const BlocToutesRessources = () => {
   const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({});
   const [ArticlesFiltres, setArticlesFiltres] = useState(toutesLesRessources);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const ArticlesSorted = ArticlesFiltres.sort((a, b) => {
     const dateComparison = new Date(b.date).getTime() - new Date(a.date).getTime();
     if (dateComparison !== 0) {
@@ -41,7 +42,7 @@ export const BlocToutesRessources = () => {
     } else {
       setArticlesFiltres(
         toutesLesRessources.filter(article =>
-          selectedFilterValues.every(filter => article.filtres?.includes(filter))
+          selectedFilterValues.some(filter => article.filtres?.includes(filter))
         )
       );
     }
@@ -52,6 +53,35 @@ export const BlocToutesRessources = () => {
     setArticlesFiltres(toutesLesRessources);
   };
 
+  const handleRemoveFilter = (filterTitre: string, value: string) => {
+    setSelectedFilters(prev => {
+      const updatedValues = prev[filterTitre].filter(v => v !== value);
+      let updatedFilters;
+      if (updatedValues.length === 0) {
+        const { [filterTitre]: _, ...rest } = prev;
+        updatedFilters = rest;
+      } else {
+        updatedFilters = {
+          ...prev,
+          [filterTitre]: updatedValues
+        };
+      }
+
+      const selectedFilterValues = Object.values(updatedFilters).flat();
+      if (selectedFilterValues.length === 0) {
+        setArticlesFiltres(toutesLesRessources);
+      } else {
+        setArticlesFiltres(
+          toutesLesRessources.filter(article =>
+            selectedFilterValues.some(filter => article.filtres?.includes(filter))
+          )
+        );
+      }
+
+      return updatedFilters;
+    });
+  };
+
   return (
     <div className={styles.toutesRessourcesContainer}>
       <NewContainer size="xl" style={{ padding: "40px 0" }}>
@@ -59,71 +89,29 @@ export const BlocToutesRessources = () => {
           Toutes les ressources
         </H2>
         <div className={styles.separator} />
-        <div className={styles.filtresWrapper} >
-          <div className={styles.filtresListe}>
-            {
-              FiltresOptions.map(filter => (
-                <div key={filter.titre} className={styles.filtreItem}>
-                  <Body>{filter.titre}</Body>
-                  <MultiSelect
-                    options={filter.options}
-                    handleSelectObjectifOptions={handleSelectOptions(filter.titre)}
-                    selectedValues={selectedFilters[filter.titre] || []}
-                  />
-                </div>
-              ))
-            }
-            <div className={styles.reinitialiser} onClick={handleReset} style={{ cursor: "pointer" }}>
-              <Image src={ReinitialiserIcon} alt="Icône réinitialiser" />
-              <Body weight="medium" style={{ color: "var(--boutons-primaire-1)" }}>
-                Réinitialiser les filtres
-              </Body>
-            </div>
-          </div>
-          <div className={styles.filtresSelectionnes}>
-            {Object.entries(selectedFilters).map(([filterTitre, values]) =>
-              values.map(value => (
-                <div key={`${filterTitre}-${value}`} className={styles.filtreTag}>
-                  <TagsSimples
-                    texte={value}
-                    couleur="#E3FAF9"
-                    couleurTexte="var(--boutons-primaire-3)"
-                    taille="small"
-                    closeable
-                    handleClose={() => {
-                      setSelectedFilters(prev => {
-                        const updatedValues = prev[filterTitre].filter(v => v !== value);
-                        let updatedFilters;
-                        if (updatedValues.length === 0) {
-                          const { [filterTitre]: _, ...rest } = prev;
-                          updatedFilters = rest;
-                        } else {
-                          updatedFilters = {
-                            ...prev,
-                            [filterTitre]: updatedValues
-                          };
-                        }
-
-                        const selectedFilterValues = Object.values(updatedFilters).flat();
-                        if (selectedFilterValues.length === 0) {
-                          setArticlesFiltres(toutesLesRessources);
-                        } else {
-                          setArticlesFiltres(
-                            toutesLesRessources.filter(article =>
-                              selectedFilterValues.every(filter => article.filtres?.includes(filter))
-                            )
-                          );
-                        }
-
-                        return updatedFilters;
-                      });
-                    }}
-                  />
-                </div>
-              ))
-            )}
-          </div>
+        <FiltresRessources
+          selectedFilters={selectedFilters}
+          onSelectOptions={handleSelectOptions}
+          onReset={handleReset}
+          onRemoveFilter={handleRemoveFilter}
+        />
+        <div className={styles.boutonFiltre}>
+          <BoutonPrimaireClassic
+            onClick={() => setIsModalOpen(true)}
+            icone={FiltreIcon}
+            size='lg'
+            text={Object.values(selectedFilters).flat().length === 0 ? 'Filtrer' : `Filtrer (${Object.values(selectedFilters).flat().length})`}
+            style={{ minWidth: "250px"}}
+          />
         </div>
+        <ModalFiltresRessources
+          isOpen={isModalOpen}
+          selectedFilters={selectedFilters}
+          onSelectOptions={handleSelectOptions}
+          onReset={handleReset}
+          onClose={() => setIsModalOpen(false)}
+          articles={ArticlesSorted}
+        />
         <div className={styles.resultatsWrapper}>
           <p className={styles.resultats}>
             <b>{ArticlesSorted.length}</b> Résultat(s)
@@ -159,18 +147,6 @@ export const BlocToutesRessources = () => {
             }
           </div>
           <div className="m-8" />
-          {/* <TuileHorizontale
-            titre="Titre de la ressource sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis "
-            tags={[<TagsSimples
-              texte="Catégorie"
-              couleur="#E3FAF9"
-              couleurTexte="var(--boutons-primaire-3)"
-              taille="small" />]
-            }
-            tempsLecture={5}
-            image={TestImageTuile}
-          /> */}
-
         </div>
       </NewContainer>
     </div>

@@ -21,7 +21,7 @@ export const ArticlesMemeCollection = () => {
       {
         listeArticlesFiltres &&
         <div className={styles.articlesMemeCollectionContainer}>
-          <NewContainer size="xl">
+          <NewContainer size="xl" style={{ paddingTop: "32px" }}>
             <div className={styles.articlesMemeCollectionWrapper}>
               <div className={styles.titles}>
                 <H2 style={{ color: "#2B4B49", marginBottom: "0.5rem" }}>

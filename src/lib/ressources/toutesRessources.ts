@@ -22,7 +22,7 @@ export const FiltresOptions = [
     options: ["M'inspirer", 'Me former', 'Agir']
   },
   {
-    titre: 'Format de ressources',
+    titre: 'Format de ressource',
     options: ['Article', "Retour d'expérience"]
   },
   {
