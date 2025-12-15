@@ -21,7 +21,6 @@ import styles from '../../explorerDonnees.module.scss';
 
 export const SolsImpermeabilises = (props: {
   consommationNAF: ConsommationNAF[];
-  // carteCommunes: CarteCommunes[];
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   tableCommune: TableCommuneModel[];
 }) => {
@@ -37,7 +36,8 @@ export const SolsImpermeabilises = (props: {
   const sumNaf = (type === "commune"
     ? consommationNAF.filter((item) => item.code_geographique === code)[0]
       ?.naf09art23
-    : consommationNAF.reduce((acc, item) => acc + (item.naf09art23 ?? 0), 0)) ?? 0;
+    : consommationNAF.reduce((acc, item) => acc + (item.naf09art23 ?? 0), 0));
+
   const exportData = IndicatorExportTransformations.biodiversite.EspacesNaf(consommationNAF);
 
   return (
@@ -45,18 +45,23 @@ export const SolsImpermeabilises = (props: {
       <div className={styles.datavizMapContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroNumberCircle valeur={sumNaf / 10000} arrondi={1} unite='ha' />
-            <div className={styles.text}>
-              <SolsImpermeabilisesBiodiversiteDynamicText
-                sumNaf={sumNaf}
-                atlasBiodiversite={atlasBiodiversite}
-                type={type}
-              />
-              <CustomTooltipNouveauParcours
-                title={espacesNAFTooltipText}
-                texte="D'où vient ce chiffre ?"
-              />
-            </div>
+            {
+              sumNaf &&
+              <>
+                <MicroNumberCircle valeur={sumNaf / 10000} arrondi={1} unite='ha' />
+                <div className={styles.text}>
+                  <SolsImpermeabilisesBiodiversiteDynamicText
+                    sumNaf={sumNaf}
+                    atlasBiodiversite={atlasBiodiversite}
+                    type={type}
+                  />
+                  <CustomTooltipNouveauParcours
+                    title={espacesNAFTooltipText}
+                    texte="D'où vient ce chiffre ?"
+                  />
+                </div>
+              </>
+            }
           </div>
           <div className='mt-4 pr-5'>
             <ReadMoreFade maxHeight={100}>

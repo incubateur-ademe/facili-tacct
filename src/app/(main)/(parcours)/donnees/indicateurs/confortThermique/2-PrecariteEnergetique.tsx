@@ -28,7 +28,6 @@ export const PrecariteEnergetique = ({
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
   const confortThermiqueFiltered = confortThermique.filter((e) => e.precarite_logement !== null && !isNaN(e.precarite_logement));
-
   const confortThermiqueParMaille = type === 'epci'
     ? confortThermiqueFiltered.filter((obj) => obj.epci === code)
     : type === 'commune'
@@ -59,6 +58,7 @@ export const PrecariteEnergetique = ({
       return a + (b.precarite_logement ?? 0);
     }, 0) / confortThermiqueFiltered.length
   );
+  console.log("precariteLogTerritoire:", precariteLogTerritoire);
 
   const territoireContours = contoursCommunes ? [{
     type: 'Feature' as const,

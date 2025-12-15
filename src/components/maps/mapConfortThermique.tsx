@@ -1,10 +1,13 @@
+"use client";
 
 import { LoaderText } from '@/components/ui/loader';
 import couleurs from '@/design-system/couleurs';
+import { listeVillesAvecArrondissements } from '@/lib/territoireData/arrondissements';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { FragiliteEconomiqueTooltip } from './components/tooltips';
 
@@ -13,14 +16,23 @@ export const MapConfortThermique = (props: {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
 }) => {
   const { precariteData, coordonneesCommunes } = props;
+   const searchParams = useSearchParams();
+    const code = searchParams.get('code')!;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const hoveredFeatureRef = useRef<string | null>(null);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
 
+  // Pour cet indicateur qui est avec une précision au niveau des arrondissements
+  // on exclut les communes de Paris, Lyon et Marseille pour éviter les conflits d'affichage
+  const filtreCommunesArrondissements = coordonneesCommunes ? {
+    codes: coordonneesCommunes.codes.filter(code => !listeVillesAvecArrondissements.includes(code)),
+    bbox: coordonneesCommunes.bbox
+  } : null;
+
   useEffect(() => {
-    if (!mapContainer.current || !coordonneesCommunes) return;
+    if (!mapContainer.current || !filtreCommunesArrondissements) return;
 
     const map = new maplibregl.Map({
       container: mapContainer.current,
@@ -69,7 +81,7 @@ export const MapConfortThermique = (props: {
         type: 'fill',
         source: 'communes-tiles',
         'source-layer': 'contour_communes',
-        filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
+        filter: ['in', ['get', 'code_geographique'], ['literal', filtreCommunesArrondissements.codes]],
         paint: {
           'fill-color': colorExpression,
           'fill-opacity': 1,
@@ -81,7 +93,7 @@ export const MapConfortThermique = (props: {
         type: 'line',
         source: 'communes-tiles',
         'source-layer': 'contour_communes',
-        filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
+        filter: ['in', ['get', 'code_geographique'], ['literal', filtreCommunesArrondissements.codes]],
         paint: {
           'line-color': '#161616',
           'line-width': [
@@ -97,8 +109,8 @@ export const MapConfortThermique = (props: {
       setTimeout(() => {
         map.fitBounds(
           [
-            [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
-            [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]
+            [filtreCommunesArrondissements.bbox.minLng, filtreCommunesArrondissements.bbox.minLat],
+            [filtreCommunesArrondissements.bbox.maxLng, filtreCommunesArrondissements.bbox.maxLat]
           ],
           { padding: 20 }
         );
@@ -237,7 +249,7 @@ export const MapConfortThermique = (props: {
         mapRef.current = null;
       }
     };
-  }, [coordonneesCommunes, precariteData]);
+  }, [filtreCommunesArrondissements, precariteData]);
 
   return (
     <>
