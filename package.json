@@ -73,11 +73,11 @@
     "jszip": "^3.10.1",
     "leaflet": "^1.9.4",
     "maplibre-gl": "^5.5.0",
-    "next": "^16.0.7",
+    "next": "^16.0.10",
     "next-auth": "^4.24.11",
     "pg": "^8.11.5",
     "posthog-js": "^1.298.0",
-    "react": "^19.2.1",
+    "react": "^19.2.3",
     "react-leaflet": "^5",
     "react-leaflet-cluster": "^3.1.1",
     "rehype-katex": "^7.0.1",
@@ -130,8 +130,8 @@
     "overrides": {
       "@types/react": "^19",
       "@types/react-dom": "^19",
-      "react": "^19",
-      "react-dom": "^19",
+      "react": "^19.2.3",
+      "react-dom": "^19.2.3",
       "ioredis": "^5.6.1"
     }
   }
