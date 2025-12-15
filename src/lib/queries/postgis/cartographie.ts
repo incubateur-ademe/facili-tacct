@@ -512,7 +512,7 @@ export const GetCommunesContours = async (
             ST_SimplifyPreserveTopology(geometry, 0.001)
           ) as geometry
           FROM postgis_v2."communes_drom"
-          WHERE epci = (SELECT epci FROM postgis_v2."communes_drom" WHERE code_geographique = ${code} LIMIT 1)
+          WHERE code_geographique = ${code} LIMIT 1
         `;
       } else if (type === 'ept' && eptRegex.test(libelle)) {
         result = await prisma.$queryRaw<Array<{ geometry: string }>>`
@@ -557,7 +557,6 @@ export const GetCommunesContours = async (
       }
 
       if (!result || result.length === 0 || !result[0].geometry) return null;
-
       return { geometry: result[0].geometry };
     } catch (error) {
       console.error(error);

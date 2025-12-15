@@ -7,7 +7,6 @@ import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { FragiliteEconomiqueTooltip } from './components/tooltips';
 
@@ -16,8 +15,6 @@ export const MapConfortThermique = (props: {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
 }) => {
   const { precariteData, coordonneesCommunes } = props;
-   const searchParams = useSearchParams();
-    const code = searchParams.get('code')!;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
