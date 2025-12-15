@@ -55,6 +55,9 @@ export const BlocToutesRessources = () => {
 
   const handleRemoveFilter = (filterTitre: string, value: string) => {
     setSelectedFilters(prev => {
+      if (!prev[filterTitre]) {
+        return prev;
+      }
       const updatedValues = prev[filterTitre].filter(v => v !== value);
       let updatedFilters;
       if (updatedValues.length === 0) {
@@ -111,6 +114,7 @@ export const BlocToutesRessources = () => {
           onReset={handleReset}
           onClose={() => setIsModalOpen(false)}
           articles={ArticlesSorted}
+          onRemoveFilter={handleRemoveFilter}
         />
         <div className={styles.resultatsWrapper}>
           <p className={styles.resultats}>

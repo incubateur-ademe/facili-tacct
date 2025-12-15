@@ -43,9 +43,12 @@ export const SliderArticles = ({
 
   return (
     <div className={styles.sliderContainer}>
-      <button className={styles.flecheGauche} aria-label="Précédent" onClick={scrollLeft}>
-        <span className="fr-icon-arrow-left-line" aria-hidden="true" style={{ color: "var(--boutons-primaire-3)" }}></span>
-      </button>
+      {
+        listeArticles && listeArticles.length > 2 &&
+        <button className={styles.flecheGauche} aria-label="Précédent" onClick={scrollLeft}>
+          <span className="fr-icon-arrow-left-line" aria-hidden="true" style={{ color: "var(--boutons-primaire-3)" }}></span>
+        </button>
+      }
       <div className={styles.sliderInnerWrapper}>
         <div className={styles.sliderWrapper} ref={sliderRef}>
           {
@@ -77,9 +80,12 @@ export const SliderArticles = ({
           }
         </div>
       </div>
-      <button className={styles.flecheDroite} aria-label="Suivant" onClick={scrollRight}>
-        <span className="fr-icon-arrow-right-line" aria-hidden="true" style={{ color: "var(--boutons-primaire-3)" }}></span>
-      </button>
+      {
+        listeArticles && listeArticles.length > 2 &&
+        <button className={styles.flecheDroite} aria-label="Suivant" onClick={scrollRight}>
+          <span className="fr-icon-arrow-right-line" aria-hidden="true" style={{ color: "var(--boutons-primaire-3)" }}></span>
+        </button>
+      }
     </div>
   );
 }

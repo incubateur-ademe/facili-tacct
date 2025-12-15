@@ -11,6 +11,7 @@ import styles from './articles.module.scss';
 export const ArticlesMemeCollection = () => {
   const pathname = usePathname();
   const collectionSlug = pathname.split('/')[2];
+  const collection = CollectionsData.find(c => c.slug === collectionSlug)?.titre;
   const articleSlug = pathname.split('/')[3];
   const sliderRef = useRef<HTMLDivElement>(null);
   const articles = CollectionsData.find(c => c.slug === collectionSlug)?.articles;
@@ -27,7 +28,9 @@ export const ArticlesMemeCollection = () => {
                 <H2 style={{ color: "#2B4B49", marginBottom: "0.5rem" }}>
                   Dans la même collection
                 </H2>
-                <Body style={{ color: "#3D3D3D" }}>Voici une sélection de ressources de la même thématique</Body>
+                <Body style={{ color: "#3D3D3D" }}>
+                  Les autres ressources de la collection "{collection}"
+                </Body>
               </div>
               <SliderArticles listeArticles={listeArticlesFiltres} sliderRef={sliderRef} />
             </div>
@@ -41,6 +44,7 @@ export const ArticlesMemeCollection = () => {
 export const ArticlesMemeCollectionResponsive = () => {
   const pathname = usePathname();
   const collectionSlug = pathname.split('/')[2];
+  const collection = CollectionsData.find(c => c.slug === collectionSlug)?.titre;
   const articleSlug = pathname.split('/')[3];
   const sliderRef = useRef<HTMLDivElement>(null);
   const articles = CollectionsData.find(c => c.slug === collectionSlug)?.articles;

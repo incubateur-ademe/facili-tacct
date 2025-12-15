@@ -24,19 +24,34 @@ export const FiltresRessources = ({
   onReset,
   onRemoveFilter
 }: FiltresRessourcesProps) => {
+  const showTerritoireFilter = selectedFilters['Format de ressource']?.includes("Retour d'expérience");
+
+  useEffect(() => {
+    if (!showTerritoireFilter && selectedFilters['Territoire']?.length > 0) {
+      selectedFilters['Territoire'].forEach(value => {
+        onRemoveFilter('Territoire', value);
+      });
+    }
+  }, [showTerritoireFilter, selectedFilters, onRemoveFilter]);
+
   return (
     <div className={styles.filtresWrapper}>
       <div className={styles.filtresListe}>
-        {FiltresOptions.map(filter => (
-          <div key={filter.titre} className={styles.filtreItem}>
-            <Body>{filter.titre}</Body>
-            <MultiSelect
-              options={filter.options}
-              handleSelectObjectifOptions={onSelectOptions(filter.titre)}
-              selectedValues={selectedFilters[filter.titre] || []}
-            />
-          </div>
-        ))}
+        {FiltresOptions.map(filter => {
+          if (filter.titre === 'Territoire' && !showTerritoireFilter) {
+            return null;
+          }
+          return (
+            <div key={filter.titre} className={styles.filtreItem}>
+              <Body>{filter.titre}</Body>
+              <MultiSelect
+                options={filter.options}
+                handleSelectObjectifOptions={onSelectOptions(filter.titre)}
+                selectedValues={selectedFilters[filter.titre] || []}
+              />
+            </div>
+          );
+        })}
         <div className={styles.reinitialiser} onClick={onReset} style={{ cursor: "pointer" }}>
           <Image src={ReinitialiserIcon} alt="Icône réinitialiser" />
           <Body weight="medium" style={{ color: "var(--boutons-primaire-1)" }}>
@@ -71,6 +86,7 @@ interface ModalFiltresRessourcesProps {
   onReset: () => void;
   onClose: () => void;
   articles: ToutesRessources[];
+  onRemoveFilter: (filterTitre: string, value: string) => void;
 }
 
 export const ModalFiltresRessources = ({
@@ -79,8 +95,11 @@ export const ModalFiltresRessources = ({
   onSelectOptions,
   onReset,
   onClose,
-  articles
+  articles,
+  onRemoveFilter
 }: ModalFiltresRessourcesProps) => {
+  const showTerritoireFilter = selectedFilters['Format de ressource']?.includes("Retour d'expérience");
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -92,6 +111,14 @@ export const ModalFiltresRessources = ({
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    if (!showTerritoireFilter && selectedFilters['Territoire']?.length > 0) {
+      selectedFilters['Territoire'].forEach(value => {
+        onRemoveFilter('Territoire', value);
+      });
+    }
+  }, [showTerritoireFilter, selectedFilters, onRemoveFilter]);
 
   if (!isOpen) return null;
 
@@ -114,15 +141,20 @@ export const ModalFiltresRessources = ({
         </div>
         <div className={styles.modalBody}>
           <div className={styles.filtresListe}>
-            {FiltresOptions.map(filtre => (
-              <div key={filtre.titre} className={styles.filtreItem}>
-                <MultiSelectResponsive
-                  handleSelectObjectifOptions={onSelectOptions(filtre.titre)}
-                  selectedValues={selectedFilters[filtre.titre] || []}
-                  filtre={filtre}
-                />
-              </div>
-            ))}
+            {FiltresOptions.map(filtre => {
+              if (filtre.titre === 'Territoire' && !showTerritoireFilter) {
+                return null;
+              }
+              return (
+                <div key={filtre.titre} className={styles.filtreItem}>
+                  <MultiSelectResponsive
+                    handleSelectObjectifOptions={onSelectOptions(filtre.titre)}
+                    selectedValues={selectedFilters[filtre.titre] || []}
+                    filtre={filtre}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
         <div className={styles.modalFooter}>

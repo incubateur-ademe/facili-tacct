@@ -16,13 +16,9 @@ export const CollectionsData = [
     texte: (
       <>
         <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
-          Vous vous apprêtez à lancer votre diagnostic de vulnérabilité et vous interrogez sur
-          la meilleure manière de démarrer ?
-        </Body>
-        <Body style={{ color: "#ffffff" }}>
-          Cette collection de ressources a été conçue pour vous accompagner. Vous y trouverez des formations,
-          des retours d'expérience et des contenus pour tirer le meilleur de la méthode TACCT,
-          afin de vous assurer du plus important : l'identification des impacts climatiques sur votre territoire.
+          Envie de vous lancer sans savoir par où commencer ? Découvrez formations, retours
+          d’expérience et contenus pour tirer le meilleur parti de la méthode TACCT et réussir
+          l’essentiel : identifier les impacts du changement climatique sur votre territoire.
         </Body>
       </>
     ),
@@ -35,35 +31,30 @@ export const CollectionsData = [
     texte: (
       <>
         <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
-          Vous avez réalisé le diagnostic de vulnérabilité de votre territoire et vous souhaitez
-          maintenant évaluer les impacts du changement climatique ?
-        </Body>
-        <Body style={{ color: "#ffffff" }}>
-          Cette collection de ressources a été conçue pour vous accompagner dans cette étape cruciale.
-          Vous y trouverez des outils, des guides pratiques et des études de cas pour vous aider à
-          comprendre et à évaluer les impacts climatiques spécifiques à votre territoire.
+          Face au changement climatique, tout territoire a ses points faibles. Pour les
+          identifier, c’est simple : évaluez ce qui vous menace (aléas) et ce qui vous
+          fragilise (sensibilité). Cette double analyse est le cœur du diagnostic de vulnérabilité.
+          Pour vous guider, explorez notre collection d’articles et de retours d’expérience.
         </Body>
       </>
     ),
     articles: toutesLesRessources.filter(ressource => ressource.collections.includes('Évaluer les impacts du changement climatique')),
   },
   {
-    titre: 'Mobiliser les acteurs du territoire',
+    titre: 'Associer les parties prenantes',
     image: Collection3Img,
-    slug: 'mobiliser-acteurs-territoire',
+    slug: 'associer-parties-prenantes',
     texte: (
       <>
         <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
-          La réussite de votre démarche d’adaptation au changement climatique dépend largement
-          de la mobilisation des acteurs locaux.
-        </Body>
-        <Body style={{ color: "#ffffff" }}>
-          Cette collection de ressources vous fournira des stratégies efficaces, des outils de communication
-          et des exemples concrets pour engager et collaborer avec les parties prenantes de votre territoire.
+          L’adaptation au changement climatique ne se décrète pas, elle se co-construit !
+          Sans l’implication d’élus, de techniciens et d’acteurs locaux, aucune stratégie
+          ne tiendra face aux défis. Associez-les dès le diagnostic : un constat partagé
+          aujourd’hui = des solutions solides demain. Découvrez comment mobiliser autour de vous.
         </Body>
       </>
     ),
-    articles: toutesLesRessources.filter(ressource => ressource.collections.includes('Mobiliser les acteurs du territoire')),
+    articles: toutesLesRessources.filter(ressource => ressource.collections.includes('Associer les parties prenantes')),
   },
   {
     titre: 'Piloter la démarche d’adaptation',
@@ -72,69 +63,61 @@ export const CollectionsData = [
     texte: (
       <>
         <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
-          Piloter efficacement votre démarche d’adaptation au changement climatique est essentiel
-          pour atteindre vos objectifs.
-        </Body>
-        <Body style={{ color: "#ffffff" }}>
-          Cette collection de ressources vous aidera à structurer votre projet, à suivre les progrès
-          et à ajuster vos actions en fonction des résultats obtenus.
+          L’adaptation est un véritable marathon, pas un sprint ! Pour conserver le cap
+          au fil des mois, entourez-vous ! Avec une équipe projet solide, vous irez plus
+          loin – et plus vite. Explorez nos ressources pour un pilotage efficace et durable !
         </Body>
       </>
     ),
     articles: toutesLesRessources.filter(ressource => ressource.collections.includes('Piloter la démarche d’adaptation')),
   },
   {
-    titre: "Bâtir sa stratégie d'adaptation",
+    titre: "Bâtir la stratégie d’adaptation",
     image: Collection5Img,
     slug: 'batir-strategie-adaptation',
     texte: (
       <>
         <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
-          Élaborer une stratégie d’adaptation solide est une étape clé pour faire face aux défis
-          posés par le changement climatique.
+          Vous avez identifié et hiérarchisé les enjeux de votre territoire ?
         </Body>
         <Body style={{ color: "#ffffff" }}>
-          Cette collection de ressources vous guidera dans la définition de vos objectifs,
-          la sélection des mesures adaptées et la planification de leur mise en œuvre.
+          Parfait, vous avez tracé la carte… Il est temps de choisir la route ! Cette étape est 
+          cruciale pour co-construire un plan d’action fédérateur qui anticipe les évolutions 
+          climatiques et articule vos documents réglementaires autour d’un projet de territoire. 
+          Découvrez nos ressources pour tracer des trajectoires solides.
         </Body>
       </>
     ),
-    articles: toutesLesRessources.filter(ressource => ressource.collections.includes("Bâtir sa stratégie d'adaptation")),
+    articles: toutesLesRessources.filter(ressource => ressource.collections.includes("Bâtir la stratégie d’adaptation")),
   },
   {
-    titre: "Ajuster sa posture d'animation",
+    titre: "Adopter la bonne posture",
     image: Collection6Img,
-    slug: 'ajuster-posture-animation',
+    slug: 'adopter-bonne-posture',
     texte: (
       <>
         <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
-          L’animation de votre démarche d’adaptation nécessite une posture adaptée pour
-          favoriser l’engagement et la collaboration.
-        </Body>
-        <Body style={{ color: "#ffffff" }}>
-          Cette collection de ressources vous fournira des conseils pratiques, des techniques
-          d’animation et des exemples pour ajuster votre posture et maximiser l’impact de vos actions.
+          Adaptation climatique : un défi qui exige de conjuguer expertises multiples et conciliation 
+          d’intérêts divergents. La clé ? Adopter la “bonne” posture pour mobiliser l'intelligence 
+          collective et valoriser les savoirs locaux. Nos conseils pratiques sont ici !
         </Body>
       </>
     ),
-    articles: toutesLesRessources.filter(ressource => ressource.collections.includes("Ajuster sa posture d'animation")),
+    articles: toutesLesRessources.filter(ressource => ressource.collections.includes("Adopter la bonne posture")),
   },
   {
-    titre: 'Partager le diagnostic de vulnérabilité',
+    titre: 'Restituer le diagnostic de vulnérabilité',
     image: Collection7Img,
-    slug: 'partager-diagnostic-vulnerabilite',
+    slug: 'restituer-diagnostic-vulnerabilite',
     texte: (
       <>
         <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
-          Partager les résultats de votre diagnostic de vulnérabilité est crucial pour sensibiliser
-          et mobiliser les acteurs concernés.
-        </Body>
-        <Body style={{ color: "#ffffff" }}>
-          Cette collection de ressources vous aidera à communiquer efficacement vos findings,
-          à élaborer des supports adaptés et à engager un dialogue constructif avec votre communauté.
+          Le diagnostic de vulnérabilité est finalisé… et après ? Ne le laissez pas prendre la poussière 
+          sur une étagère ! Transformez-le en levier d’action avec nos meilleures pratiques : un outil 
+          qui fédère, alerte et mobilise tous les acteurs autour d’un constat partagé.
         </Body>
       </>
     ),
-    articles: toutesLesRessources.filter(ressource => ressource.collections.includes('Partager le diagnostic de vulnérabilité')),
+    articles: toutesLesRessources.filter(ressource => ressource.collections.includes('Restituer le diagnostic de vulnérabilité')),
   }
 ];
