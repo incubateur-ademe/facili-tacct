@@ -58,7 +58,6 @@ export const PrecariteEnergetique = ({
       return a + (b.precarite_logement ?? 0);
     }, 0) / confortThermiqueFiltered.length
   );
-  console.log("precariteLogTerritoire:", precariteLogTerritoire);
 
   const territoireContours = contoursCommunes ? [{
     type: 'Feature' as const,
