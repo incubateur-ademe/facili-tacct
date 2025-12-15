@@ -43,18 +43,16 @@ export const SuperficiesIrriguees = (props: {
     geometry: JSON.parse(contoursCommunes.geometry)
   }] : [];
 
-  // Filter tableCommune to match coordonneesCommunes codes
   const tableCommuneFiltered = useMemo(() =>
     coordonneesCommunes
       ? tableCommune.filter(c => coordonneesCommunes.codes.includes(c.code_geographique))
       : []
     , [tableCommune, coordonneesCommunes]);
 
-  // Prepare data for tiles
   const surfacesIrrigueesData = useMemo(() =>
     tableCommuneFiltered.map(c => ({
       code: c.code_geographique,
-      value: Number(c.part_irr_sau_2020) ?? 0,
+      value: c.part_irr_sau_2020 === null ? null : Number(c.part_irr_sau_2020),
       name: c.libelle_geographique
     }))
     , [tableCommuneFiltered]);
@@ -80,12 +78,13 @@ export const SuperficiesIrriguees = (props: {
   const surfaceTerritoire = useMemo(() => {
     if (type === "commune") {
       const commune = tableCommuneFiltered.find(c => c.code_geographique === code);
-      return commune ? Number(commune.part_irr_sau_2020) : undefined;
+      return commune?.part_irr_sau_2020 ? Number(commune.part_irr_sau_2020) : undefined;
     }
     return tableCommuneFiltered
       .map(c => Number(c.part_irr_sau_2020) || 0)
       .reduce((acc, value) => acc + value, 0);
   }, [tableCommuneFiltered, type, code]);
+
 
   const averageSurfaceTerritoire = useMemo(() => {
     if (type === "commune" || !surfaceTerritoire || tableCommuneFiltered.length === 0) {
@@ -111,7 +110,7 @@ export const SuperficiesIrriguees = (props: {
                 )}
                 <div className={styles.text}>
                   <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                    Une réalité locale :{' '}
+                    Une réalité locale :{' '}
                     {Round(averageSurfaceTerritoire ?? 0, 1)} % de
                     votre agriculture dépend de l'irrigation.
                   </Body>
