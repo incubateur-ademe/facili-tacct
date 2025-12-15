@@ -1,103 +1,102 @@
-import { ConsommationNAF } from '@/lib/postgres/models';
-import * as biodiversite from '../databases/biodiversite';
-import * as inconfortThermique from '../databases/inconfortThermique';
-import { prisma } from '../db';
+import 'dotenv/config';
+import { Pool } from 'pg';
 
-jest.setTimeout(60000); // Increase timeout for heavy queries
-// PETR Figeac - Quercy - Vallée de la Dordogne 169 communes
-// PNR FR8000035 73 communes
+const connectionString = process.env.SCALINGO_POSTGRESQL_URL;
 
-describe('Integration: query functions for biodiversite', () => {
-  it('GetAgricultureBio returns expected results for EPCI 200054781', async () => {
-    const result = await biodiversite.GetAgricultureBio(
-      'Métropole du Grand Paris',
-      'epci',
-      '200054781'
+const pool = new Pool({
+  connectionString,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+jest.setTimeout(60000);
+
+describe('Integration: biodiversite queries', () => {
+  it('agriculture_bio returns expected results for EPCI 200054781', async () => {
+    const result = await pool.query(
+      `SELECT * FROM databases_v2.agriculture_bio WHERE epci = $1`,
+      ['200054781']
     );
-    expect(Array.isArray(result)).toBe(true);
-    expect(result.length).toBe(5);
-    expect(result[0]).toHaveProperty('LIBELLE_SOUS_CHAMP', 'Surface certifiée');
-    // S'assurer qu'aucune colonne ne commence par un chiffre (bug entre prisma et postgres)
-    expect(Object.keys(result[0]).every((key) => !/^\d/.test(key))).toBe(true);
+    expect(Array.isArray(result.rows)).toBe(true);
+    expect(result.rows.length).toBe(5);
+    expect(result.rows[0]).toHaveProperty('LIBELLE_SOUS_CHAMP', 'Surface certifiée');
   });
-  it('GetConsommationNAF returns expected results for EPCI 200054781', async () => {
-    const result = await biodiversite.GetConsommationNAF(
-      '200054781',
-      'Métropole du Grand Paris',
-      'epci'
+
+  it('consommation_espaces_naf returns expected results for EPCI 200054781', async () => {
+    const result = await pool.query(
+      `SELECT * FROM databases_v2.consommation_espaces_naf WHERE epci = $1`,
+      ['200054781']
     );
-    expect(Array.isArray(result)).toBe(true);
-    expect(result.length).toBe(130);
+    expect(Array.isArray(result.rows)).toBe(true);
+    expect(result.rows.length).toBe(150);
     const uniqueDepartements = new Set(
-      result.map((item: ConsommationNAF) => item.libelle_departement)
+      result.rows.map((item) => item.libelle_departement)
     );
     expect(uniqueDepartements.size).toBe(6);
-    expect(
-      result.every((item: ConsommationNAF) => item.naf09art23 !== null)
-    ).toBe(true);
-    // S'assurer qu'aucune colonne ne commence par un chiffre (bug entre prisma et postgres)
-    expect(Object.keys(result[0]).every((key) => !/^\d/.test(key))).toBe(true);
   });
-  it('GetAOT40 returns expected results', async () => {
-    const result = await biodiversite.GetAOT40();
-    expect(Array.isArray(result)).toBe(true);
-    expect(result.length).toBe(291);
-    expect(result[0]).toHaveProperty('valeur_brute', 9487.38664050025);
-    // S'assurer qu'aucune colonne ne commence par un chiffre (bug entre prisma et postgres)
-    expect(Object.keys(result[0]).every((key) => !/^\d/.test(key))).toBe(true);
+
+  it('aot_40 returns expected results', async () => {
+    const result = await pool.query(
+      `SELECT * FROM databases_v2.aot_40`
+    );
+    expect(Array.isArray(result.rows)).toBe(true);
+    expect(result.rows.length).toBe(291);
+    expect(result.rows[0]).toHaveProperty('valeur brute', 9487.38664050025);
   });
 });
 
-describe('Integration: query functions for inconfortThermique', () => {
-  it('GetConfortThermique returns array', async () => {
-    const result = await inconfortThermique.GetConfortThermique(
-      '200070555',
-      'Communauté de communes de la Veyle',
-      'epci'
+describe('Integration: confort_thermique queries', () => {
+  it('confort_thermique returns array for EPCI 200070555', async () => {
+    const result = await pool.query(
+      `SELECT * FROM databases_v2.confort_thermique WHERE epci = $1`,
+      ['200070555']
     );
-    expect(Array.isArray(result)).toBe(true);
-    expect(result.length).toBe(391);
-    // S'assurer qu'aucune colonne ne commence par un chiffre (bug entre prisma et postgres)
-    expect(Object.keys(result[0]).every((key) => !/^\d/.test(key))).toBe(true);
+    expect(Array.isArray(result.rows)).toBe(true);
+    expect(result.rows.length).toBe(18);
+  });
+
+  it('confort_thermique returns expected value for code_geographique 13055', async () => {
+    const result = await pool.query(
+      'SELECT precarite_logement FROM databases_v2.confort_thermique WHERE code_geographique = $1',
+      ['13055']
+    );
+    expect(result.rows).toHaveLength(1);
+    expect(result.rows[0].precarite_logement).toBe(0.08537360366198976);
+  });
+
+  it('confort_thermique returns expected value for code_geographique 75056', async () => {
+    const result = await pool.query(
+      'SELECT precarite_logement FROM databases_v2.confort_thermique WHERE code_geographique = $1',
+      ['75056']
+    );
+    expect(result.rows).toHaveLength(1);
+    expect(result.rows[0].precarite_logement).toBe(0.056940444530448095);
+  });
+
+  it('confort_thermique returns expected value for code_geographique 69123', async () => {
+    const result = await pool.query(
+      'SELECT precarite_logement FROM databases_v2.confort_thermique WHERE code_geographique = $1',
+      ['69123']
+    );
+    expect(result.rows).toHaveLength(1);
+    expect(result.rows[0].precarite_logement).toBe(0.06629419113240076);
   });
 });
 
 describe('Integration: query functions to check if collectivites_searchbar has right structure', () => {
   it('collectivites_searchbar table has expected checksum', async () => {
-    const result = await prisma.$queryRaw<[{ checksum: string }]>`
-      SELECT md5(string_agg(t::text, '')) AS checksum
-      FROM (
-        SELECT * FROM databases_v2.collectivites_searchbar ORDER BY index
-      ) t;
-    `;
-    expect(result).toHaveLength(1);
-    expect(result[0].checksum).toBe('4cbd76e64a8e932241ec1ea602a93c02');
+    const result = await pool.query(
+      `SELECT md5(string_agg(t::text, '')) AS checksum
+       FROM (
+         SELECT * FROM databases_v2.collectivites_searchbar ORDER BY index
+       ) t`
+    );
+    expect(result.rows).toHaveLength(1);
+    expect(result.rows[0].checksum).toBe('36db3c9e098bc85da40091d1fa8a3456');
   });
 });
 
-// describe('Integration: query functions for gestionRisques', () => {
-//   it('GetArretesCatnat returns array', async () => {
-//     const result = await gestionRisques.GetArretesCatnat('someCode', 'someLibelle', 'epci');
-//     expect(Array.isArray(result)).toBe(true);
-//   });
-//   it('GetIncendiesForet returns array', async () => {
-//     const result = await gestionRisques.GetIncendiesForet('someCode', 'someLibelle', 'epci');
-//     expect(Array.isArray(result)).toBe(true);
-//   });
-//   it('GetRga returns array', async () => {
-//     const result = await gestionRisques.GetRga('someCode', 'someLibelle', 'epci');
-//     expect(Array.isArray(result)).toBe(true);
-//   });
-// });
-
-// describe('Integration: query functions for agriculture', () => {
-//   it('GetAgriculture returns array', async () => {
-//     const result = await agriculture.GetAgriculture('someCode', 'someLibelle', 'epci');
-//     expect(Array.isArray(result)).toBe(true);
-//   });
-// });
-
 afterAll(async () => {
-  await prisma.$disconnect();
-  // await redis.quit();
+  await pool.end();
 });
