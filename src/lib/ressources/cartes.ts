@@ -20,9 +20,9 @@ export const collectionsCartes = [
     lien: '/ressources/evaluer-impacts-changement-climatique'
   },
   {
-    texte: 'Mobiliser les acteurs du territoire',
+    texte: 'Associer les parties prenantes',
     image: Collection6Img,
-    lien: '/ressources/mobiliser-acteurs-territoire'
+    lien: '/ressources/associer-parties-prenantes'
   },
   {
     texte: 'Piloter la démarche d’adaptation',
@@ -30,19 +30,19 @@ export const collectionsCartes = [
     lien: '/ressources/piloter-demarche-adaptation'
   },
   {
-    texte: "Bâtir sa stratégie d'adaptation",
+    texte: "Bâtir la stratégie d’adaptation",
     image: Collection3Img,
     lien: '/ressources/batir-strategie-adaptation'
   },
   {
-    texte: "Ajuster sa posture d'animation",
+    texte: "Adopter la bonne posture",
     image: Collection4Img,
-    lien: '/ressources/ajuster-posture-animation'
+    lien: '/ressources/adopter-bonne-posture'
   },
   {
-    texte: 'Partager le diagnostic de vulnérabilité',
+    texte: 'Restituer le diagnostic de vulnérabilité',
     image: Collection7Img,
-    lien: '/ressources/partager-diagnostic-vulnerabilite'
+    lien: '/ressources/restituer-diagnostic-vulnerabilite'
   }
 ];
 
