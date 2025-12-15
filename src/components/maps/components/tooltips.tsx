@@ -66,12 +66,12 @@ export const EspacesNafTooltip = (communeName: string, naf: number) => {
   `;
 };
 
-export const SurfacesIrrigueesTooltip = (communeName: string, surfacesIrriguees: number) => {
+export const SurfacesIrrigueesTooltip = (communeName: string, surfacesIrriguees: number | null) => {
   return `
     <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0; width: max-content;">
       <p style="font-size: 0.875rem; font-family: Marianne; font-weight: 400; margin: 0">${communeName} : </p> 
       <p style="font-size: 0.875rem; font-family: Marianne; font-weight: 700; margin: 0"> 
-        ${isNaN(surfacesIrriguees) ? 'Aucune donnée' : `${surfacesIrriguees} %`}
+        ${surfacesIrriguees === null ? 'Secret statistique' : isNaN(surfacesIrriguees) ? 'Aucune donnée' : `${surfacesIrriguees} %`}
       </p>
     </div>
   `;

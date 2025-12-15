@@ -1,6 +1,7 @@
 
 import { RetardScroll } from '@/hooks/RetardScroll';
 import { ConsommationNAF } from '@/lib/postgres/models';
+import { listeArrondissements } from '@/lib/territoireData/arrondissements';
 import { mapStyles } from 'carte-facile';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -31,6 +32,7 @@ export const MapEspacesNaf = (props: {
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const hoveredFeatureRef = useRef<string | null>(null);
+  const filteredCodes = communesCodes.filter(code => !listeArrondissements.includes(code));
 
   // Créer une Map des valeurs NAF par code commune
   const nafByCommune = new Map(
@@ -84,7 +86,7 @@ export const MapEspacesNaf = (props: {
         type: 'fill',
         source: 'communes-tiles',
         'source-layer': 'contour_communes',
-        filter: ['in', ['get', 'code_geographique'], ['literal', communesCodes]],
+        filter: ['in', ['get', 'code_geographique'], ['literal', filteredCodes]],
         paint: {
           'fill-color': colorExpression,
           'fill-opacity': 1
@@ -96,7 +98,7 @@ export const MapEspacesNaf = (props: {
         type: 'line',
         source: 'communes-tiles',
         'source-layer': 'contour_communes',
-        filter: ['in', ['get', 'code_geographique'], ['literal', communesCodes]],
+        filter: ['in', ['get', 'code_geographique'], ['literal', filteredCodes]],
         paint: {
           'line-color': [
             'case',
@@ -242,7 +244,7 @@ export const MapEspacesNaf = (props: {
         mapRef.current = null;
       }
     };
-  }, [consommationNAF, communesCodes, boundingBox]);
+  }, [consommationNAF, filteredCodes, boundingBox]);
 
   // Ref local pour le RetardScroll
   const localContainerRef = mapContainer as RefObject<HTMLElement>;

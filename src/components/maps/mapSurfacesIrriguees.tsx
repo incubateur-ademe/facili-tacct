@@ -1,5 +1,6 @@
 
 import couleurs from '@/design-system/couleurs';
+import { listeArrondissements } from '@/lib/territoireData/arrondissements';
 import { mapStyles } from 'carte-facile';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -8,7 +9,7 @@ import { SurfacesIrrigueesTooltip } from './components/tooltips';
 
 export const MapSurfacesIrriguees = (props: {
   communesCodes: string[];
-  surfacesIrriguees: { code: string; value: number; name: string }[];
+  surfacesIrriguees: { code: string; value: number | null; name: string }[];
   boundingBox: number[][] | null;
 }) => {
   const { communesCodes, surfacesIrriguees, boundingBox } = props;
@@ -16,9 +17,10 @@ export const MapSurfacesIrriguees = (props: {
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const hoveredFeatureRef = useRef<string | null>(null);
+  const filteredCodes = communesCodes.filter(code => !listeArrondissements.includes(code));
 
   const surfacesIrrigueesByCommune = useMemo(() => {
-    const map = new Map<string, number>();
+    const map = new Map<string, number | null>();
     surfacesIrriguees.forEach(item => {
       map.set(item.code, item.value);
     });
@@ -103,7 +105,7 @@ export const MapSurfacesIrriguees = (props: {
         type: 'fill',
         source: 'communes-tiles',
         'source-layer': 'contour_communes',
-        filter: ['in', ['get', 'code_geographique'], ['literal', communesCodes]],
+        filter: ['in', ['get', 'code_geographique'], ['literal', filteredCodes]],
         paint: {
           'fill-color': colorExpression,
           'fill-opacity': 1,
@@ -116,7 +118,7 @@ export const MapSurfacesIrriguees = (props: {
         type: 'line',
         source: 'communes-tiles',
         'source-layer': 'contour_communes',
-        filter: ['in', ['get', 'code_geographique'], ['literal', communesCodes]],
+        filter: ['in', ['get', 'code_geographique'], ['literal', filteredCodes]],
         paint: {
           'line-color': [
             'case',
@@ -155,7 +157,7 @@ export const MapSurfacesIrriguees = (props: {
           }
 
           const communeName = nameByCommune.get(code) || properties?.libelle_geographique || 'Commune inconnue';
-          const surfacesIrrigueesValue = surfacesIrrigueesByCommune.get(code) ?? 0;
+          const surfacesIrrigueesValue = surfacesIrrigueesByCommune.get(code) ?? null;
           const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrrigueesValue);
 
           if (popupRef.current) {
@@ -218,7 +220,7 @@ export const MapSurfacesIrriguees = (props: {
             }
 
             const communeName = nameByCommune.get(code) || properties?.libelle_geographique || 'Commune inconnue';
-            const surfacesIrrigueesValue = surfacesIrrigueesByCommune.get(code) ?? 0;
+            const surfacesIrrigueesValue = surfacesIrrigueesByCommune.get(code) ?? null;
             const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrrigueesValue);
 
             if (popupRef.current) popupRef.current.remove();
@@ -237,7 +239,7 @@ export const MapSurfacesIrriguees = (props: {
             const currentAnchor = popupRef.current.getElement()?.getAttribute('class')?.includes('anchor-top') ? 'top' : 'bottom';
             if (currentAnchor !== placement) {
               const communeName = nameByCommune.get(code) || properties?.libelle_geographique || 'Commune inconnue';
-              const surfacesIrrigueesValue = surfacesIrrigueesByCommune.get(code) ?? 0;
+              const surfacesIrrigueesValue = surfacesIrrigueesByCommune.get(code) ?? null;
               const tooltipContent = SurfacesIrrigueesTooltip(communeName, surfacesIrrigueesValue);
               popupRef.current.remove();
               popupRef.current = new maplibregl.Popup({
