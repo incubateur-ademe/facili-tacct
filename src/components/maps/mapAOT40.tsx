@@ -324,7 +324,7 @@ export const MapAOT40 = (props: {
             try {
               const features = await source.getClusterLeaves(clusterId, 100, 0);
               if (!features) return;
-              const sitesInCluster = features.map((f: any) => f.properties?.nom_site).filter(Boolean);
+              const sitesInCluster = features.map((f) => f.properties?.nom_site).filter(Boolean);
               const containerHeight = mapContainer.current?.clientHeight || 500;
               const mouseY = e.point.y;
               const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';

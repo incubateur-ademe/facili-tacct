@@ -73,8 +73,10 @@ export const getInsightIdByShortId = async (
       return null;
     }
     const responseText = await request.text();
-    const response: any = JSON.parse(responseText);
-    const found = response.results.find((e: any) => e.short_id === shortId);
+    const response = JSON.parse(responseText);
+    const found = response.results.find(
+      (e: { id: number; short_id: string }) => e.short_id === shortId
+    );
     return found ? found.id : null;
   } catch (error) {
     console.error('getInsightIdByShortId error:', error);
@@ -213,7 +215,7 @@ LIMIT 100000
           dates.length === totals.length
         ) {
           // Convert dates to string format and calculate total
-          const formattedDates = dates.map((date: any) => {
+          const formattedDates = dates.map((date) => {
             if (date instanceof Date) {
               return date.toISOString().split('T')[0].split('-', 2).join('-');
             } else if (typeof date === 'string') {

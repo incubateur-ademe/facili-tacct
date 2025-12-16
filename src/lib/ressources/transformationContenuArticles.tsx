@@ -1,3 +1,4 @@
+import { Block, BlockType } from "@/app/(main)/types";
 import ZoomOnClick from "@/components/utils/ZoomOnClick";
 import { Body, H2, H3 } from "@/design-system/base/Textes";
 import { getBlocks } from "../queries/notion/notion";
