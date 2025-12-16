@@ -5,6 +5,7 @@ import { toutesLesRessources } from "@/lib/ressources/toutesRessources";
 import { renderBlock } from "@/lib/ressources/transformationContenuArticles";
 import { normalizeText } from "@/lib/utils/reusableFunctions/NormalizeTexts";
 import Breadcrumb from "@codegouvfr/react-dsfr/Breadcrumb";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CollectionsData } from "../collectionsData";
 import { ArticlesMemeCollection, ArticlesMemeCollectionResponsive } from "./BlocArticlesMemeCollection";
@@ -18,6 +19,22 @@ interface ArticlePageProps {
     collectionId: string;
     slug: string;
   }>;
+}
+
+export const generateMetadata = async (
+  { params }: { params: Promise<{ slug: string }> }
+): Promise<Metadata> => {
+  const { slug } = await params;
+  const article = toutesLesRessources.find(a => a.slug === slug);
+  if (!article) return {};
+  return {
+    title: article.metadata?.title,
+    description: article.metadata?.description,
+    openGraph: {
+      title: article.metadata?.title,
+      description: article.metadata?.description,
+    },
+  };
 }
 
 const ArticleRessourcePage = async ({ params }: ArticlePageProps) => {

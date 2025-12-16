@@ -64,8 +64,12 @@ export type ToutesRessources = {
   image: StaticImageData;
   date: string;
   ordre: number;
+  ordreCollection: number;
   slug?: string;
-  tab?: undefined;
+  metadata?: {
+    title: string;
+    description: string;
+  };
 };
 
 export const toutesLesRessources: ToutesRessources[] = [
@@ -80,10 +84,16 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: '/ressources/articles/analyser-diagnostic-vulnerabilite',
     filtres: ['Article', "M'inspirer"],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
-    tempsLecture: 15,
+    tempsLecture: 5,
     image: TestImageTuile,
     date: '2024-09-20',
-    ordre: 70
+    ordre: 70,
+    ordreCollection: 1,
+    metadata: {
+      title: 'Que lire en priorité dans votre diagnostic de vulnérabilité ?',
+      description:
+        'Relisez votre diagnostic de vulnérabilité aux effets du changement climatique en 10 minutes : repérez les données utiles et les enjeux clés.'
+    }
   },
   {
     id: 2,
@@ -96,10 +106,16 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: '/ressources/articles/pnacc-tracc-comment-suis-je-concerne',
     filtres: ['Article', 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
-    tempsLecture: 1,
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2025-07-25',
-    ordre: 20
+    ordre: 20,
+    ordreCollection: 2,
+    metadata: {
+      title: 'PNACC, TRACC, Comment suis-je concerné ?',
+      description:
+        'PNACC, TRACC autant de documents stratégiques qui orientent l’adaptation au changement climatique en France. Comprendre leur contenu est nécessaire pour anticiper et mettre en oeuvre des stratégies cohérentes.'
+    }
   },
   {
     id: 3,
@@ -110,17 +126,12 @@ export const toutesLesRessources: ToutesRessources[] = [
       'Le Pays Pyrénées Méditerranée a mis en œuvre la démarche TACCT du diagnostic à la stratégie. Retrouvez toutes les étapes de la démarche  !',
     lien: 'https://www.payspyreneesmediterranee.org/thematiques/transitions-energie-climat/adaptation-au-changement-climatique/',
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
-    collections: [
-      'Démarrer le diagnostic de vulnérabilité',
-      'Évaluer les impacts du changement climatique',
-      'Piloter la démarche d’adaptation',
-      'Associer les parties prenantes',
-      'Restituer le diagnostic de vulnérabilité'
-    ],
-    tempsLecture: 1,
+    collections: ['Démarrer le diagnostic de vulnérabilité'],
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 90
+    ordre: 90,
+    ordreCollection: 8
   },
   {
     id: 4,
@@ -132,10 +143,11 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://librairie.ademe.fr/changement-climatique/7910-diagnostic-de-vulnerabilite-au-rechauffement-climatique-d-un-territoire-rural-du-nord-est-de-la-france-coeur-du-pays-haut.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
-    tempsLecture: 1,
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 30
+    ordre: 30,
+    ordreCollection: 7
   },
   {
     id: 5,
@@ -147,10 +159,11 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://www.climaxion.fr/docutheque/realisation-dun-diagnostic-vulnerabilite-au-changement-climatique-epernay-agglo-champagne',
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
-    tempsLecture: 1,
+    tempsLecture: 3,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 110
+    ordre: 110,
+    ordreCollection: 6
   },
   {
     id: 6,
@@ -167,10 +180,11 @@ export const toutesLesRessources: ToutesRessources[] = [
       'Occitanie'
     ],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
-    tempsLecture: 1,
+    tempsLecture: 11,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 80
+    ordre: 80,
+    ordreCollection: 9
   },
   {
     id: 7,
@@ -182,10 +196,11 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://librairie.ademe.fr/changement-climatique/7906-evaluer-la-sensibilite-au-changement-climatique-en-atelier-retour-d-experience-de-la-vallee-de-kaysersberg-68.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Évaluer les impacts du changement climatique'],
-    tempsLecture: 1,
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 70
+    ordre: 70,
+    ordreCollection: 5
   },
   {
     id: 8,
@@ -197,10 +212,11 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://librairie.ademe.fr/changement-climatique-et-energie/6223-evaluation-en-atelier-de-la-sensibilite-du-territoire-au-changement-climatique-au-pnr-pyrenees-ariegeoises-09.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Évaluer les impacts du changement climatique'],
-    tempsLecture: 1,
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 120
+    ordre: 120,
+    ordreCollection: 4
   },
   {
     id: 9,
@@ -214,10 +230,17 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: '/ressources/articles/resilience-agricole-indicateurs-territoire',
     filtres: ['Article', 'Me former'],
     collections: ['Évaluer les impacts du changement climatique'],
-    tempsLecture: 1,
+    tempsLecture: 7,
     image: TestImageTuile,
     date: '2025-10-14',
-    ordre: 10
+    ordre: 10,
+    ordreCollection: 2,
+    metadata: {
+      title:
+        'Comment mesurer la résilience d’un territoire agricole face au changement climatique ?',
+      description:
+        '22 indicateurs pour aider les chargés de mission climat à évaluer la résilience agricole et repérer les vulnérabilités au changement climatique.'
+    }
   },
   {
     id: 10,
@@ -231,10 +254,17 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: '/ressources/articles/ilot-chaleur-urbain-erreurs-a-eviter',
     filtres: ['Article', 'Me former'],
     collections: ['Évaluer les impacts du changement climatique'],
-    tempsLecture: 1,
+    tempsLecture: 8,
     image: TestImageTuile,
     date: '2025-07-25',
-    ordre: 30
+    ordre: 30,
+    ordreCollection: 3,
+    metadata: {
+      title:
+        'Îlot de chaleur urbain : 4 erreurs fréquentes à éviter pour mieux agir sur le terrain',
+      description:
+        'Îlot de chaleur urbain : 4 erreurs fréquentes à éviter pour mieux comprendre le phénomène, cibler les bons diagnostics et adapter l’action aux enjeux locaux.'
+    }
   },
   {
     id: 11,
@@ -247,10 +277,16 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: '/ressources/articles/reussir-mobilisation-acteurs-adaptation',
     filtres: ['Article', 'Agir'],
     collections: ['Associer les parties prenantes'],
-    tempsLecture: 1,
+    tempsLecture: 3,
     image: TestImageTuile,
     date: '2024-09-20',
-    ordre: 50
+    ordre: 50,
+    ordreCollection: 2,
+    metadata: {
+      title: 'Comment éviter de prêcher dans le désert ?',
+      description:
+        'Conseils pour éviter de prêcher dans le désert et maximiser l’impact de vos actions d’adaptation.'
+    }
   },
   {
     id: 12,
@@ -264,10 +300,17 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: '/ressources/articles/ateliers-adacc-adaptation',
     filtres: ['Article', 'Agir', 'Nouvelle-Aquitaine'],
     collections: ['Associer les parties prenantes'],
-    tempsLecture: 1,
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-20',
-    ordre: 40
+    ordre: 40,
+    ordreCollection: 3,
+    metadata: {
+      title:
+        'Sensibiliser : les ateliers de l’adaptation au changement climatique (AdACC)',
+      description:
+        'Présentation des Ateliers de l’Adaptation au Changement Climatique (AdACC) pour sensibiliser les acteurs.'
+    }
   },
   {
     id: 13,
@@ -280,10 +323,16 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: '/ressources/articles/atelier-climastory-sensibilisation-adaptation',
     filtres: ['Article', 'Agir'],
     collections: ['Associer les parties prenantes'],
-    tempsLecture: 1,
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-20',
-    ordre: 30
+    ordre: 30,
+    ordreCollection: 4,
+    metadata: {
+      title: 'ClimaSTORY, une cartographie pour sensibiliser',
+      description:
+        'Découvrez ClimaSTORY, un outil cartographique pour sensibiliser à l’adaptation au changement climatique.'
+    }
   },
   {
     id: 14,
@@ -295,10 +344,11 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://librairie.ademe.fr/changement-climatique/7905-sensibiliser-au-lancement-de-la-demarche-tacct-retour-d-experience-de-la-cc-de-ardennes-thierache-08.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Associer les parties prenantes'],
-    tempsLecture: 1,
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 60
+    ordre: 60,
+    ordreCollection: 5
   },
   {
     id: 15,
@@ -309,11 +359,12 @@ export const toutesLesRessources: ToutesRessources[] = [
       'La co-construction est un important facteur de réussite d’une démarche TACCT. Epernay Agglo Champagne met en lumière dans cette fiche l’identification des enjeux et des actions liées.',
     lien: 'https://librairie.ademe.fr/changement-climatique/7909-atelier-de-co-construction-des-actions-face-aux-impacts-du-changement-climatique-d-epernay-agglo-champagne-51.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
-    collections: ["Bâtir la stratégie d’adaptation"],
-    tempsLecture: 1,
+    collections: ['Bâtir la stratégie d’adaptation'],
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 20
+    ordre: 20,
+    ordreCollection: 4
   },
   {
     id: 16,
@@ -324,11 +375,12 @@ export const toutesLesRessources: ToutesRessources[] = [
       'À la suite du diagnostic de vulnérabilité et pour la mise en oeuvre de sa stratégie, le pays Pyrénées Méditerranée a organisé 2 ateliers afin de définir ses trajectoires d’adaptation.',
     lien: 'https://librairie.ademe.fr/changement-climatique/7726-tacct-une-strategie-issue-d-une-trajectoire-d-adaptation-au-changement-climatique.html#',
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
-    collections: ["Bâtir la stratégie d’adaptation"],
-    tempsLecture: 1,
+    collections: ['Bâtir la stratégie d’adaptation'],
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2025-07-25',
-    ordre: 30
+    ordre: 30,
+    ordreCollection: 3
   },
   {
     id: 17,
@@ -339,11 +391,12 @@ export const toutesLesRessources: ToutesRessources[] = [
       'Les trajectoires d’adaptations permettent d’anticiper l’évolution climatique. Le PETR du Pays Barrois s’est basé sur ces trajectoires pour la mise en œuvre de groupements d’actions.',
     lien: 'https://librairie.ademe.fr/changement-climatique/7908-des-trajectoires-d-adaptation-pour-prevenir-les-incertitudes-du-changement-climatique-petr-du-pays-barrois-55.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
-    collections: ["Bâtir la stratégie d’adaptation"],
-    tempsLecture: 1,
+    collections: ['Bâtir la stratégie d’adaptation'],
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 50
+    ordre: 50,
+    ordreCollection: 7
   },
   {
     id: 18,
@@ -353,11 +406,12 @@ export const toutesLesRessources: ToutesRessources[] = [
       'En mobilisant de nombreuses parties prenantes, le département de l’Indre a mis en œuvre la démarche TACCT du diagnostic jusqu’à l’identification de la stratégie et du plan d’action.',
     lien: 'https://www.indre.gouv.fr/Actions-de-l-Etat/Environnement/Strategie-Climat-36-une-demarche-departementale-et-partenariale/3.-Construire-notre-feuille-de-route/La-methode',
     filtres: ["Retour d'expérience", "M'inspirer", 'Centre-Val de Loire'],
-    collections: ["Bâtir la stratégie d’adaptation"],
+    collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 1,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 100
+    ordre: 100,
+    ordreCollection: 6
   },
   {
     id: 19,
@@ -368,11 +422,12 @@ export const toutesLesRessources: ToutesRessources[] = [
       'À la suite du diagnostic de vulnérabilité, le PNR des Pyrénées Ariégeoises a organisé un atelier pour mesurer la robustesse des actions d’adaptation dans sa charte jusqu’à 2040.',
     lien: 'https://librairie.ademe.fr/changement-climatique/7727-tacct-confronter-la-robustesse-de-la-charte-d-un-parc-naturel-regional-au-changement-climatique.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
-    collections: ["Bâtir la stratégie d’adaptation"],
-    tempsLecture: 1,
+    collections: ['Bâtir la stratégie d’adaptation'],
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2025-07-25',
-    ordre: 50
+    ordre: 50,
+    ordreCollection: 5
   },
   {
     id: 20,
@@ -384,10 +439,11 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://librairie.ademe.fr/7215-questionner-l-imaginaire-pour-faire-reagir-en-atelier-tacct-retour-d-experience-de-clermont-auvergne-metropole-63.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
-    tempsLecture: 1,
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 150
+    ordre: 150,
+    ordreCollection: 3
   },
   {
     id: 21,
@@ -398,10 +454,11 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://librairie.ademe.fr/7180-comment-restituer-son-diagnostic-des-impacts-du-changement-climatique-en-haute-loire-43.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
-    tempsLecture: 1,
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 140
+    ordre: 140,
+    ordreCollection: 6
   },
   {
     id: 22,
@@ -412,10 +469,11 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://librairie.ademe.fr/7129-comment-restituer-son-diagnostic-des-impacts-du-changement-climatique-en-haute-savoie-74-.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
-    tempsLecture: 1,
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 130
+    ordre: 130,
+    ordreCollection: 7
   },
   {
     id: 23,
@@ -427,10 +485,11 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://librairie.ademe.fr/7544-mettre-en-recit-tacct-strategie-pour-engager-les-elus-retour-d-experience-du-pnr-du-pilat-42.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
-    tempsLecture: 1,
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 70
+    ordre: 70,
+    ordreCollection: 4
   },
   {
     id: 24,
@@ -441,10 +500,11 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://librairie.ademe.fr/changement-climatique/7907-presenter-le-diagnostic-de-l-exposition-retour-d-experience-du-pnr-des-vosges-du-nord-67.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
-    tempsLecture: 1,
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 10
+    ordre: 10,
+    ordreCollection: 5
   },
   {
     id: 25,
@@ -456,10 +516,11 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://librairie.ademe.fr/changement-climatique/7911-restituer-le-diagnostic-de-vulnerabilite-retour-d-experience-de-la-cc-de-la-vallee-de-ville-67.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
-    tempsLecture: 1,
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 40
+    ordre: 40,
+    ordreCollection: 2
   },
   {
     id: 26,
@@ -471,11 +532,17 @@ export const toutesLesRessources: ToutesRessources[] = [
       'Comprendre les interactions au sein de votre système est essentiel pour éviter les maladaptations. L’approche systémique vous accompagne de l’identification jusqu’à la mobilisation.',
     lien: '/ressources/articles/briser-silos-approche-systemique',
     filtres: ['Article', "M'inspirer", 'Bourgogne-Franche-Comté'],
-    collections: ["Adopter la bonne posture"],
-    tempsLecture: 1,
+    collections: ['Adopter la bonne posture'],
+    tempsLecture: 5,
     image: TestImageTuile,
     date: '2025-07-25',
-    ordre: 20
+    ordre: 20,
+    ordreCollection: 2,
+    metadata: {
+      title: 'Brisez les silos : introduction à l’approche systémique',
+      description:
+        'Comprendre les interactions au sein de votre système est essentiel pour éviter les maladaptations. L’approche systémique vous accompagne de l’identification jusqu’à la mobilisation.'
+    }
   },
   {
     id: 27,
@@ -487,11 +554,17 @@ export const toutesLesRessources: ToutesRessources[] = [
       'Pour réellement engager vos parties prenantes dans votre démarche d’adaptation, appuyez-vous sur une démarche éprouvée : la facilitation d’ateliers.',
     lien: '/ressources/articles/facilitation-ateliers-mobilisation',
     filtres: ['Article', 'Agir'],
-    collections: ["Adopter la bonne posture"],
-    tempsLecture: 1,
+    collections: ['Adopter la bonne posture'],
+    tempsLecture: 3,
     image: TestImageTuile,
     date: '2024-09-20',
-    ordre: 20
+    ordre: 20,
+    ordreCollection: 1,
+    metadata: {
+      title: 'La facilitation d’ateliers : une démarche éprouvée d’engagement',
+      description:
+        'Découvrez comment la facilitation d’ateliers peut renforcer l’engagement des parties prenantes dans l’adaptation.'
+    }
   },
   {
     id: 28,
@@ -501,11 +574,12 @@ export const toutesLesRessources: ToutesRessources[] = [
       "Pourquoi et comment coorganiser des ateliers sur les enjeux de votre territoire ? La CCBDP a identifié trois enjeux d'adaptation majeurs et a souhaité mobiliser ses partenaires.",
     lien: 'https://librairie.ademe.fr/7228-coorganiser-des-ateliers-tacct-pour-mobiliser-retour-d-experience-dans-les-baronnies-en-drome-provencale-26.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
-    collections: ["Adopter la bonne posture"],
-    tempsLecture: 1,
+    collections: ['Adopter la bonne posture'],
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 160
+    ordre: 160,
+    ordreCollection: 3
   },
   {
     id: 29,
@@ -518,10 +592,17 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: '/ressources/articles/facilitation-cahier-charges',
     filtres: ['Article', 'Agir'],
     collections: ['Piloter la démarche d’adaptation'],
-    tempsLecture: 1,
+    tempsLecture: 2,
     image: TestImageTuile,
     date: '2024-09-20',
-    ordre: 60
+    ordre: 60,
+    ordreCollection: 1,
+    metadata: {
+      title:
+        'Le cahier des charges, levier pour intégrer la facilitation d’ateliers',
+      description:
+        'Le rôle du cahier des charges dans l’intégration de la facilitation pour l’adaptation au changement climatique.'
+    }
   },
 
   {
@@ -533,10 +614,11 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://librairie.ademe.fr/7214-piloter-sa-demarche-tacct-retour-d-experience-dans-le-bocage-bourbonnais-03.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Piloter la démarche d’adaptation'],
-    tempsLecture: 1,
+    tempsLecture: 4,
     image: TestImageTuile,
     date: '2024-09-25',
-    ordre: 170
+    ordre: 170,
+    ordreCollection: 3
   },
   {
     id: 31,
@@ -550,10 +632,17 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: '/ressources/articles/stagiaire-diagnostic-vulnerabilite-climat',
     filtres: ['Article', 'Agir'],
     collections: ['Piloter la démarche d’adaptation'],
-    tempsLecture: 1,
+    tempsLecture: 5,
     image: TestImageTuile,
     date: '2025-07-25',
-    ordre: 40
+    ordre: 40,
+    ordreCollection: 2,
+    metadata: {
+      title:
+        'Recruter un stagiaire sur le diagnostic de vulnérabilité : bonne ou mauvaise idée ?',
+      description:
+        'Vous envisagez de confier le diagnostic de vulnérabilité à votre stagiaire ? Découvrez les erreurs à éviter, les missions possibles, et les bonnes pratiques pour un appui vraiment utile.'
+    }
   },
   {
     id: 32,
@@ -566,11 +655,18 @@ export const toutesLesRessources: ToutesRessources[] = [
       'Témoignages d’une projection sur le temps long avec l’exemple de Miquelon.',
     lien: '/ressources/articles/strategie-adaptation-gestion-risque-relocalisation',
     filtres: ['Article', "M'inspirer", 'Outremer'],
-    collections: ["Bâtir la stratégie d’adaptation"],
-    tempsLecture: 1,
+    collections: ['Bâtir la stratégie d’adaptation'],
+    tempsLecture: 7,
     image: TestImageTuile,
     date: '2025-11-25',
-    ordre: 10
+    ordre: 10,
+    ordreCollection: 1,
+    metadata: {
+      title:
+        'De la gestion du risque à l’adaptation : le cas de la relocalisation de Miquelon',
+      description:
+        'De la gestion du risque à l’adaptation ou quand reculer devient avancer : témoignages d’une projection sur le temps long avec l’exemple de Miquelon.'
+    }
   },
   {
     id: 33,
@@ -584,10 +680,17 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: '/ressources/articles/mobilisation-diagnostic-vulnerabilite',
     filtres: ['Article', 'Agir'],
     collections: ['Associer les parties prenantes'],
-    tempsLecture: 4,
+    tempsLecture: 6,
     image: TestImageTuile,
     date: '2025-11-04',
-    ordre: 10
+    ordre: 10,
+    ordreCollection: 1,
+    metadata: {
+      title:
+        'Comment mobiliser en interne et en externe autour du diagnostic de vulnérabilité ?',
+      description:
+        'Comment mobiliser élus, services et partenaires autour d’un diagnostic de vulnérabilité ? Découvrez le retour d’expérience de Jolet Van Kipshagen (CC Vallée de Villé) et les clés d’une démarche concertée et ancrée dans le territoire.'
+    }
   },
   {
     id: 34,
@@ -603,45 +706,59 @@ export const toutesLesRessources: ToutesRessources[] = [
     tempsLecture: 8,
     image: TestImageTuile,
     date: '2024-09-20',
-    ordre: 10
+    ordre: 10,
+    ordreCollection: 1,
+    metadata: {
+      title: 'Mettre en récit mon territoire pour engager',
+      description:
+        'Découvrez comment mettre en récit votre territoire pour engager les acteurs locaux dans l’adaptation au changement climatique.'
+    }
   },
   {
     id: 35,
     type: 'Quiz',
     titre: 'Auto-évaluation sur l’adaptation au changement climatique',
-    description: "Testez vos connaissances sur l'adaptation au changement climatique et la méthode TACCT en 16 questions !",
-    lien: "https://tally.so/r/w4l8pk",
+    description:
+      "Testez vos connaissances sur l'adaptation au changement climatique et la méthode TACCT en 16 questions !",
+    lien: 'https://tally.so/r/w4l8pk',
     filtres: ['Quiz', 'Me former'],
-    collections: ["Démarrer le diagnostic de vulnérabilité"],
+    collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 10,
     image: TestImageTuile,
     date: '2025-12-10',
-    ordre: 10
+    ordre: 10,
+    ordreCollection: 3
   },
   {
     id: 36,
     type: 'Formation',
-    titre: "Adapter son territoire au changement climatique – Se mettre en marche vers une stratégie d'adaptation",
-    description: "Cette formation permet de comprendre comment organiser et mettre en place un diagnostic de vulnérabilité et une stratégie d’adaptation au changement climatique pour son territoire.",
-    lien: "https://formations.ademe.fr/formations_changement-climatique_adapter-son-territoire-au-changement-climatique-�ie-se-mettre-en-marche-vers-une-strategie-d-adaptation_s5317.html",
-    filtres: ['Formation', "Me former"],
-    collections: ["Démarrer le diagnostic de vulnérabilité"],
-    tempsLecture: 1,
+    titre:
+      "Adapter son territoire au changement climatique – Se mettre en marche vers une stratégie d'adaptation",
+    description:
+      'Cette formation permet de comprendre comment organiser et mettre en place un diagnostic de vulnérabilité et une stratégie d’adaptation au changement climatique pour son territoire.',
+    lien: 'https://formations.ademe.fr/formations_changement-climatique_adapter-son-territoire-au-changement-climatique-�ie-se-mettre-en-marche-vers-une-strategie-d-adaptation_s5317.html',
+    filtres: ['Formation', 'Me former'],
+    collections: ['Démarrer le diagnostic de vulnérabilité'],
+    tempsLecture: 2,
     image: TestImageTuile,
     date: '2025-12-10',
-    ordre: 20
+    ordre: 20,
+    ordreCollection: 4
   },
   {
     id: 37,
     type: 'Formation',
-    titre: "Adapter son territoire au changement climatique - Outils et méthodes pour l'adaptation",
-    description: "Cette formation en e-learning explique les principaux enjeux de l'adaptation au dérèglement climatique et comment y répondre.",
-    lien: "https://formations.ademe.fr/formations_changement-climatique_adapter-son-territoire-au-changement-climatique---outils-et-methodes-pour-l-adaptation_s5343.html",
-    filtres: ['Formation', "Me former"],
-    collections: ["Démarrer le diagnostic de vulnérabilité"],
-    tempsLecture: 1,
+    titre:
+      "Adapter son territoire au changement climatique - Outils et méthodes pour l'adaptation",
+    description:
+      "Cette formation en e-learning explique les principaux enjeux de l'adaptation au dérèglement climatique et comment y répondre.",
+    lien: 'https://formations.ademe.fr/formations_changement-climatique_adapter-son-territoire-au-changement-climatique---outils-et-methodes-pour-l-adaptation_s5343.html',
+    filtres: ['Formation', 'Me former'],
+    collections: ['Démarrer le diagnostic de vulnérabilité'],
+    tempsLecture: 2,
     image: TestImageTuile,
     date: '2025-12-10',
-    ordre: 30
+    ordre: 30,
+    ordreCollection: 5
   }
 ];

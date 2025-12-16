@@ -23,6 +23,7 @@ type CollectionComponentProps = {
 
 export const CollectionComponent = ({ collectionId }: CollectionComponentProps) => {
   const collection = CollectionsData.find(c => c.slug === collectionId);
+  const articlesSorted = collection?.articles.sort((a, b) => a.ordreCollection - b.ordreCollection);
   const territoireOptions = FiltresOptions.find(f => f.titre === 'Territoire')?.options || [];
   const [copied, setCopied] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -78,10 +79,10 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
               {collection?.texte}
             </div>
             <div className={styles.imageCropped}>
-            <Image
-              src={collection?.image!}
-              alt=""
-            />
+              <Image
+                src={collection?.image!}
+                alt=""
+              />
             </div>
           </div>
         </NewContainer>
@@ -115,7 +116,7 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
           <div className={styles.selections}>
             <div className={styles.collectionArticlesWrapper}>
               {
-                collection?.articles.map((article) => {
+                articlesSorted?.map((article) => {
                   const isExternalLink = article.lien.startsWith('https://');
                   const lien = isExternalLink
                     ? article.lien
