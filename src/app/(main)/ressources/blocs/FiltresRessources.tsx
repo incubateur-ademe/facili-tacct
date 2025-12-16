@@ -52,7 +52,19 @@ export const FiltresRessources = ({
             </div>
           );
         })}
-        <div className={styles.reinitialiser} onClick={onReset} style={{ cursor: "pointer" }}>
+        <div
+          className={styles.reinitialiser}
+          onClick={onReset}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              onReset();
+            }
+          }}
+          role="button"
+          tabIndex={0}
+          style={{ cursor: "pointer" }}
+        >
           <Image src={ReinitialiserIcon} alt="Icône réinitialiser" />
           <Body weight="medium" style={{ color: "var(--boutons-primaire-1)" }}>
             Réinitialiser les filtres

@@ -63,7 +63,8 @@ export const MultiSelect = ({
               padding: 0,
 
               '&:hover': { fontWeight: '700 !important', backgroundColor: 'transparent !important' },
-              '&:focus': { fontWeight: '700 !important', backgroundColor: 'transparent !important', outline: 'none' },
+              '&:focus': { fontWeight: '700 !important', backgroundColor: 'transparent !important', outline: '2px solid var(--boutons-primaire-1)', outlineOffset: '2px' },
+              '&:focus-visible': { fontWeight: '700 !important', backgroundColor: 'transparent !important', outline: '2px solid var(--boutons-primaire-1)', outlineOffset: '2px' },
             },
             '& .MuiCheckbox-root': {
               padding: '6px',
@@ -78,6 +79,10 @@ export const MultiSelect = ({
             fontWeight: 400,
             // transition: 'all 0.5s ease-in-out',
             border: open ? '1px solid var(--boutons-primaire-1)' : '1px solid var(--gris-medium)',
+          },
+          '&:focus-within, &.Mui-focused': {
+            outline: '2px solid var(--boutons-primaire-1)',
+            outlineOffset: '2px',
           },
           '& .MuiSelect-select': {
             color: 'var(--gris-dark)',
@@ -105,6 +110,10 @@ export const MultiSelect = ({
                 },
                 '&:hover': {
                   backgroundColor: 'transparent',
+                },
+                '&:focus-visible': {
+                  outline: '2px solid var(--boutons-primaire-1)',
+                  outlineOffset: '2px',
                 },
               }}
             />
@@ -165,7 +174,8 @@ export const MultiSelectResponsive = ({
               padding: 0,
 
               '&:hover': { fontWeight: '700 !important', backgroundColor: 'transparent !important' },
-              '&:focus': { fontWeight: '700 !important', backgroundColor: 'transparent !important', outline: 'none' },
+              '&:focus': { fontWeight: '700 !important', backgroundColor: 'transparent !important', outline: '2px solid var(--boutons-primaire-1)', outlineOffset: '2px' },
+              '&:focus-visible': { fontWeight: '700 !important', backgroundColor: 'transparent !important', outline: '2px solid var(--boutons-primaire-1)', outlineOffset: '2px' },
             },
             '& .MuiCheckbox-root': {
               padding: '6px',
@@ -179,6 +189,10 @@ export const MultiSelectResponsive = ({
             height: "48px",
             fontWeight: 400,
             borderBottom: '1px solid var(--gris-medium)',
+          },
+          '&:focus-within, &.Mui-focused': {
+            outline: '2px solid var(--boutons-primaire-1)',
+            outlineOffset: '2px',
           },
           '& .MuiSelect-select': {
             color: '#161616',
@@ -209,6 +223,10 @@ export const MultiSelectResponsive = ({
                 },
                 '&:hover': {
                   backgroundColor: 'transparent',
+                },
+                '&:focus-visible': {
+                  outline: '2px solid var(--boutons-primaire-1)',
+                  outlineOffset: '2px',
                 },
               }}
             />

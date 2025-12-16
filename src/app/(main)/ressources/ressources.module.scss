@@ -592,6 +592,18 @@
                 padding-bottom: 0.75rem;
                 cursor: pointer;
                 text-wrap: nowrap;
+
+                &:focus-visible {
+                    outline: 2px solid var(--boutons-primaire-1);
+                    outline-offset: 2px;
+                    border-radius: 4px;
+                }
+
+                &:focus-visible {
+                    outline: 2px solid var(--boutons-primaire-1);
+                    outline-offset: 2px;
+                    border-radius: 4px;
+                }
             }
         }
         .filtresSelectionnes {
@@ -672,6 +684,12 @@
             gap: 0.5rem;
             margin-top: 1rem;
             cursor: pointer;
+
+            &:focus-visible {
+                outline: 2px solid var(--boutons-primaire-1);
+                outline-offset: 2px;
+                border-radius: 4px;
+            }
         }
     }
 
