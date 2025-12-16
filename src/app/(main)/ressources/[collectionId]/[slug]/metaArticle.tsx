@@ -1,5 +1,6 @@
 "use client";
 
+import { Block } from "@/app/(main)/types";
 import ClockIcon from "@/assets/icons/clock_icon_black.svg";
 import LocationIcon from "@/assets/icons/location_icon_black.svg";
 import { TagsSimples } from "@/design-system/base/Tags";

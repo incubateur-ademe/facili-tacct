@@ -1,3 +1,4 @@
+import { RichText } from '@/app/(main)/types';
 import { normalizeText } from '@/lib/utils/reusableFunctions/NormalizeTexts';
 import styles from './ressources.module.css';
 
@@ -13,12 +14,12 @@ export const Text = ({ text }: Props) => {
     if (!value || !value.annotations) {
       return null;
     }
-    
+
     const {
       annotations: { bold, code, color, italic, strikethrough, underline },
       text: textObj,
     } = value;
-    
+
     if (!textObj || typeof textObj.content === 'undefined') {
       // Utiliser plain_text comme fallback si disponible
       const content = value.plain_text || '';
@@ -26,7 +27,7 @@ export const Text = ({ text }: Props) => {
         <span key={index}>{content}</span>
       ) : null;
     }
-    
+
     const normalizedContent = normalizeText(textObj.content);
     return (
       <span

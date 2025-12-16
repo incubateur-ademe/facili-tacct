@@ -13,6 +13,7 @@ import { AOT40Text } from '@/lib/staticTexts';
 import { AOT40DynamicText } from '@/lib/textesIndicateurs/biodiversiteDynamicTexts';
 import { AOT40TooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
+import { Any } from '@/lib/utils/types';
 import * as turf from '@turf/turf';
 import type { Feature, MultiPoint, Point } from 'geojson';
 import { useSearchParams } from "next/navigation";
@@ -21,7 +22,7 @@ import styles from '../../explorerDonnees.module.scss';
 type NearestPoint = Feature<Point, {
   featureIndex: number;
   distanceToPoint: number;
-  [key: string]: any;
+  [key: string]: Any;
 }>;
 
 export const OzoneEtVegetation = (props: {

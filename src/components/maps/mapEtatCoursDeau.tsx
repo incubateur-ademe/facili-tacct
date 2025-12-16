@@ -418,7 +418,7 @@ export const MapEtatCoursDeau = (props: {
                 const source = map.getSource('sitesBaignade') as maplibregl.GeoJSONSource;
                 source.getClusterLeaves(clusterId, 100, 0).then((features) => {
                   if (!features) return;
-                  const sitesInCluster = features.map((f: any) => f.properties?.nomSite).filter(Boolean).slice(0, 10);
+                  const sitesInCluster = features.map(f => f.properties?.nomSite).filter(Boolean).slice(0, 10);
                   const hasMore = features.length > 10;
 
                   const tooltipContent = `<div style="padding: 0.25rem;">

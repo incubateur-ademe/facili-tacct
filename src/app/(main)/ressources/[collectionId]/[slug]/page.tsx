@@ -1,3 +1,4 @@
+import { Block } from "@/app/(main)/types";
 import { ScrollToTop } from "@/components/interactions/ScrollToTop";
 import { NewContainer } from "@/design-system/layout";
 import { getBlocks, getPageBySlug } from "@/lib/queries/notion/notion";
@@ -13,12 +14,23 @@ import { SommaireClient } from "./SommaireClient";
 import styles from './articles.module.scss';
 import { MetaArticleResponsive } from "./metaArticle";
 
+export const revalidate = 3600;
 
 interface ArticlePageProps {
   params: Promise<{
     collectionId: string;
     slug: string;
   }>;
+}
+
+export async function generateStaticParams() {
+  return toutesLesRessources.map((article) => {
+    const collection = CollectionsData.find(c => article.collections.includes(c.titre));
+    return {
+      collectionId: collection?.slug || '',
+      slug: article.slug || '',
+    };
+  });
 }
 
 export const generateMetadata = async (
