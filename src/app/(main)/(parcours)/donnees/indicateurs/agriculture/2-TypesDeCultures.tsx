@@ -58,7 +58,7 @@ export const TypesDeCulture = (props: {
                     (type === "departement" || type === "pnr") && maxCategory.count !== null && Number(sau) !== 0 ? (
                       <>
                         <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
-                          Sur votre territoire, <b style={{ color: "red" }}>Outre les secrets statistiques...,</b> le type de surface prédominant est constitué de {maxCategory.id.toLowerCase()},
+                          Sur votre territoire, le type de surface prédominant est constitué de {maxCategory.id.toLowerCase()},
                           couvrant <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b>, ce qui
                           représente <b>{Round((maxCategory.count / sau!) * 100, 1)} %</b> de
                           la surface agricole utile.
@@ -88,7 +88,7 @@ export const TypesDeCulture = (props: {
                           totale <DefinitionTooltip title={otex}>(OTEX)</DefinitionTooltip>.
                         </Body>
                         <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
-                          Sur votre territoire, <b style={{ color: "red" }}>Outre les secrets statistiques...,</b> le type de surface prédominant est constitué de {maxCategory.id.toLowerCase()},
+                          Sur votre territoire, le type de surface prédominant est constitué de {maxCategory.id.toLowerCase()},
                           couvrant <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b>, ce qui
                           représente <b>{Round((maxCategory.count / sau!) * 100, 1)} %</b> de
                           la surface agricole utile. (Attention, ces détails sur les types de cultures sont ceux de votre EPCI).
@@ -96,7 +96,7 @@ export const TypesDeCulture = (props: {
                       </>
                     ) : (type === "epci" || type === "petr") && maxCategory.count !== null && Number(sau) !== 0 ? (
                       <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
-                        Sur votre territoire, <b style={{ color: "red" }}>Outre les secrets statistiques...,</b> le type de surface prédominant est constitué de {maxCategory.id.toLowerCase()},
+                        Sur votre territoire, le type de surface prédominant est constitué de {maxCategory.id.toLowerCase()},
                         couvrant <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b>, ce qui
                         représente <b>{Round((maxCategory.count / sau!) * 100, 1)} %</b> de
                         la surface agricole utile.
@@ -107,7 +107,7 @@ export const TypesDeCulture = (props: {
                 </>
               ) : <Body weight='bold' style={{ color: "var(--gris-dark)" }}>Il n’y a pas de données référencées sur le territoire que vous avez sélectionné</Body>
             }
-            <CustomTooltipNouveauParcours title={surfacesAgricolesTooltipText} texte="D'où vient ce chiffre ?" />
+            <CustomTooltipNouveauParcours title={surfacesAgricolesTooltipText} texte="D'où vient ce chiffre ?" />
           </div>
           {/* <ReadMoreFade maxHeight={territoiresPartiellementCouverts?.length ? 400 / territoiresPartiellementCouverts?.length : 350}> */}
           <SurfacesAgricolesText />
@@ -127,7 +127,7 @@ export const TypesDeCulture = (props: {
             }}
           >
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : AGRESTE, 2020.
+              Source : AGRESTE, 2020.
             </Body>
             <ExportButtonNouveauParcours
               data={exportData}

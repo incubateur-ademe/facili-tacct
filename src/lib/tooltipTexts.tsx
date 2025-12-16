@@ -75,13 +75,13 @@ export const agricultureBioTooltipText = (
 
 export const AOT40TooltipText = (
   <Body weight='bold' size="sm">
-    Un seuil critique de toxicité de l’ozone pour la végétation est défini par 
-    l’indicateur AOT40 (Accumulated Exposure Over Threshold 40). Celui-ci 
-    représente l’accumulation d’exposition à l’ozone au-delà du seuil de 40 
-    parties par milliard, soit 80 µg/m³. Son calcul repose sur la somme des 
-    écarts entre les concentrations horaires d’ozone dépassant 80 µg/m³ et 
-    ce seuil de 80 µg/m³. Les mesures sont effectuées chaque jour entre 8 h 
-    et 20 h, sur la période de mai à juillet, afin de coïncider avec la 
+    Un seuil critique de toxicité de l’ozone pour la végétation est défini par
+    l’indicateur AOT40 (Accumulated Exposure Over Threshold 40). Celui-ci
+    représente l’accumulation d’exposition à l’ozone au-delà du seuil de 40
+    parties par milliard, soit 80 µg/m³. Son calcul repose sur la somme des
+    écarts entre les concentrations horaires d’ozone dépassant 80 µg/m³ et
+    ce seuil de 80 µg/m³. Les mesures sont effectuées chaque jour entre 8 h
+    et 20 h, sur la période de mai à juillet, afin de coïncider avec la
     phase active de photosynthèse.
     <br></br><br></br>
     Une valeur cible(*) de 18 000 µg/m³ par heure, en moyenne calculée sur 5
@@ -263,7 +263,7 @@ export const surfacesAgricolesTooltipText = (
       rel="noopener noreferrer"
     >
       Agreste
-    </a>.
+    </a>. À noter : le calcul du type de surface prédominant n’inclut pas les données sous secret statistique.
   </Body>
 );
 
