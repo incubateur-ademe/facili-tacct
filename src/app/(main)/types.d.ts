@@ -120,7 +120,12 @@ interface Block {
     | 'image'
     | 'callout'
     | 'bulleted_list_item'
-    | 'numbered_list_item';
+    | 'numbered_list_item'
+    | 'column_list'
+    | 'column'
+    | 'quote'
+    | 'table'
+    | 'table_row';
   paragraph?: { rich_text: RichText[]; color: string };
   callout?: {
     rich_text: RichText[];
@@ -143,4 +148,9 @@ interface Block {
   };
   bulleted_list_item?: { rich_text: RichText[]; color: string };
   numbered_list_item?: { rich_text: RichText[]; color: string };
+  column_list?: Record<string, never>;
+  column?: Record<string, never>;
+  quote?: { rich_text: RichText[]; color: string };
+  table?: { table_width: number; has_column_header: boolean; has_row_header: boolean };
+  table_row?: { cells: RichText[][] };
 }
