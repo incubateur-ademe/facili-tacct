@@ -74,7 +74,7 @@ export const renderBlock = async (el: Block, i: number) => {
       const icon = value?.icon?.type === 'emoji' ? value.icon.emoji : null;
       return (
         <div key={i} className={`my-8 p-8 border-l-4 rounded ${colorClass}`}>
-          <div className="font-semibold mb-2 flex flex-row items-start gap-2">
+          <div className="font-semibold mb-6 flex flex-row items-start gap-2 text-[20px]">
             {icon && <span className="text-xl">{icon}</span>}
             <span><Text text={richText} /></span>
           </div>
@@ -83,6 +83,52 @@ export const renderBlock = async (el: Block, i: number) => {
           </div>
         </div>
       );
+    case "column_list":
+      const columns = el.has_children ? await getBlocks(el.id) as Block[] : [];
+      const columnsContent = await Promise.all(columns.map(async (column) => {
+        if (column.type === 'column' && column.has_children) {
+          const columnBlocks = await getBlocks(column.id) as Block[];
+          const columnContent = await Promise.all(columnBlocks.map((block, idx) => renderBlock(block, idx)));
+          return columnContent;
+        }
+        return null;
+      }));
+      return (
+        <div key={i} style={{ display: 'grid', gridTemplateColumns: `repeat(${columns.length}, 1fr)`, gap: '2rem', margin: '2rem 0' }}>
+          {columnsContent.map((colContent, idx) => (
+            <div key={idx}>{colContent}</div>
+          ))}
+        </div>
+      );
+    case "column":
+      return null;
+    case "quote":
+      return (
+        <div key={i} style={{ borderLeft: '4px solid black', paddingLeft: '1.5rem', margin: '2rem 0', fontStyle: 'italic' }}>
+          <Text text={richText} />
+        </div>
+      );
+    case "table":
+      const tableRows = el.has_children ? await getBlocks(el.id) as Block[] : [];
+      return (
+        <div key={i} style={{ margin: '2rem 0', overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #ddd' }}>
+            <tbody>
+              {tableRows.map((row, rowIdx) => (
+                <tr key={rowIdx}>
+                  {row.table_row?.cells?.map((cell, cellIdx) => (
+                    <td key={cellIdx} style={{ border: '1px solid #ddd', padding: '0.75rem', fontSize: '14px' }}>
+                      <Text text={cell} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    case "table_row":
+      return null;
     default:
       return (
         <div key={i}>

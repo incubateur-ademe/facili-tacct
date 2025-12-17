@@ -1,9 +1,10 @@
 import { Block } from "@/app/(main)/types";
 import { ScrollToTop } from "@/components/interactions/ScrollToTop";
+import { ClientOnly } from "@/components/utils/ClientOnly";
 import { NewContainer } from "@/design-system/layout";
 import { getBlocks, getPageBySlug } from "@/lib/queries/notion/notion";
+import { groupAndRenderBlocks } from "@/lib/ressources/bulletListContent";
 import { toutesLesRessources } from "@/lib/ressources/toutesRessources";
-import { renderBlock } from "@/lib/ressources/transformationContenuArticles";
 import { normalizeText } from "@/lib/utils/reusableFunctions/NormalizeTexts";
 import Breadcrumb from "@codegouvfr/react-dsfr/Breadcrumb";
 import { Metadata } from "next";
@@ -14,14 +15,14 @@ import { SommaireClient } from "./SommaireClient";
 import styles from './articles.module.scss';
 import { MetaArticleResponsive } from "./metaArticle";
 
-export const revalidate = 3600;
-
 interface ArticlePageProps {
   params: Promise<{
     collectionId: string;
     slug: string;
   }>;
 }
+
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   return toutesLesRessources.map((article) => {
@@ -69,21 +70,26 @@ const ArticleRessourcePage = async ({ params }: ArticlePageProps) => {
       return normalizeText(richText.map(rt => rt.plain_text || rt.text.content).join(''));
     });
 
-  const pageContent = await Promise.all(contentWithoutH1.map(renderBlock));
+  const pageContent = await groupAndRenderBlocks(contentWithoutH1);
+  const collection = CollectionsData.find(c => c.slug === collectionId);
+  const collectionSlug = CollectionsData.find(c => c.titre === article?.collections[0])?.slug || collectionId;
+  const pageTitle = titrePrincipal?.heading_1?.rich_text?.[0]?.plain_text || '';
 
   return (
     <>
       <ScrollToTop />
       <NewContainer size="xl" style={{ paddingTop: 0 }}>
         <div className={styles.breadcrumbWrapper}>
-          <Breadcrumb
-            currentPageLabel={titrePrincipal?.heading_1?.rich_text?.[0]?.plain_text}
-            homeLinkProps={{ href: '/' }}
-            segments={[
-              { label: 'Boîte à outils', linkProps: { href: '/ressources' } },
-              { label: CollectionsData.find(c => c.slug === collectionId)?.titre, linkProps: { href: `/ressources/${CollectionsData.find(c => c.titre === article?.collections[0])?.slug}` } }
-            ]}
-          />
+          <ClientOnly>
+            <Breadcrumb
+              currentPageLabel={pageTitle}
+              homeLinkProps={{ href: '/' }}
+              segments={[
+                { label: 'Boîte à outils', linkProps: { href: '/ressources' } },
+                { label: collection?.titre, linkProps: { href: `/ressources/${collectionSlug}` } }
+              ]}
+            />
+          </ClientOnly>
         </div>
         <MetaArticleResponsive getBlocksContent={getBlocksContent} slug={slug} />
         <div className={styles.articleContent}>
