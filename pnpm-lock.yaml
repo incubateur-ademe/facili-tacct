@@ -5,11 +5,11 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@types/react': ^19
-  '@types/react-dom': ^19
+  '@types/react': ^19.2.7
+  '@types/react-dom': ^19.2.3
   react: ^19.2.3
   react-dom: ^19.2.3
-  ioredis: ^5.6.1
+  ioredis: ^5.8.2
 
 importers:
 
@@ -28,8 +28,8 @@ importers:
         specifier: ^0.8.4
         version: 0.8.4
       '@fortawesome/react-fontawesome':
-        specifier: ^0.2.6
-        version: 0.2.6(@fortawesome/fontawesome-svg-core@7.1.0)(react@19.2.3)
+        specifier: ^3.1.1
+        version: 3.1.1(@fortawesome/fontawesome-svg-core@7.1.0)(react@19.2.3)
       '@iframe-resizer/child':
         specifier: ^5.5.7
         version: 5.5.7
@@ -845,11 +845,11 @@ packages:
     resolution: {integrity: sha512-fNxRUk1KhjSbnbuBxlWSnBLKLBNun52ZBTcs22H/xEEzM6Ap81ZFTQ4bZBxVQGQgVY0xugKGoRcCbaKjLQ3XZA==}
     engines: {node: '>=6'}
 
-  '@fortawesome/react-fontawesome@0.2.6':
-    resolution: {integrity: sha512-mtBFIi1UsYQo7rYonYFkjgYKGoL8T+fEH6NGUpvuqtY3ytMsAoDaPo5rk25KuMtKDipY4bGYM/CkmCHA1N3FUg==}
-    deprecated: v0.2.x is no longer supported. Unless you are still using FontAwesome 5, please update to v3.1.1 or greater.
+  '@fortawesome/react-fontawesome@3.1.1':
+    resolution: {integrity: sha512-EDllr9hpodc21odmUywHS1alXNiCd4E8sp5GJ5s7wYINz8vSmMiNWpALTiuYODb865YyQ/NlyiN4mbXp7HCNqg==}
+    engines: {node: '>=20'}
     peerDependencies:
-      '@fortawesome/fontawesome-svg-core': ~1 || ~6 || ~7
+      '@fortawesome/fontawesome-svg-core': ~6 || ~7
       react: ^19.2.3
 
   '@hono/node-server@1.19.6':
@@ -1316,7 +1316,7 @@ packages:
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@mui/material': ^7.3.6
-      '@types/react': ^19
+      '@types/react': ^19.2.7
       react: ^19.2.3
     peerDependenciesMeta:
       '@types/react':
@@ -1329,7 +1329,7 @@ packages:
       '@emotion/react': ^11.5.0
       '@emotion/styled': ^11.3.0
       '@mui/material-pigment-css': ^7.3.6
-      '@types/react': ^19
+      '@types/react': ^19.2.7
       react: ^19.2.3
       react-dom: ^19.2.3
     peerDependenciesMeta:
@@ -1346,7 +1346,7 @@ packages:
     resolution: {integrity: sha512-Ws9wZpqM+FlnbZXaY/7yvyvWQo1+02Tbx50mVdNmzWEi51C51y56KAbaDCYyulOOBL6BJxuaqG8rNNuj7ivVyw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      '@types/react': ^19
+      '@types/react': ^19.2.7
       react: ^19.2.3
     peerDependenciesMeta:
       '@types/react':
@@ -1371,7 +1371,7 @@ packages:
     peerDependencies:
       '@emotion/react': ^11.5.0
       '@emotion/styled': ^11.3.0
-      '@types/react': ^19
+      '@types/react': ^19.2.7
       react: ^19.2.3
     peerDependenciesMeta:
       '@emotion/react':
@@ -1384,7 +1384,7 @@ packages:
   '@mui/types@7.4.9':
     resolution: {integrity: sha512-dNO8Z9T2cujkSIaCnWwprfeKmTWh97cnjkgmpFJ2sbfXLx8SMZijCYHOtP/y5nnUb/Rm2omxbDMmtUoSaUtKaw==}
     peerDependencies:
-      '@types/react': ^19
+      '@types/react': ^19.2.7
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -1393,7 +1393,7 @@ packages:
     resolution: {integrity: sha512-jn+Ba02O6PiFs7nKva8R2aJJ9kJC+3kQ2R0BbKNY3KQQ36Qng98GnPRFTlbwYTdMD6hLEBKaMLUktyg/rTfd2w==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      '@types/react': ^19
+      '@types/react': ^19.2.7
       react: ^19.2.3
     peerDependenciesMeta:
       '@types/react':
@@ -1935,7 +1935,7 @@ packages:
   '@prisma/studio-core@0.8.2':
     resolution: {integrity: sha512-/iAEWEUpTja+7gVMu1LtR2pPlvDmveAwMHdTWbDeGlT7yiv0ZTCPpmeAGdq/Y9aJ9Zj1cEGBXGRbmmNPj022PQ==}
     peerDependencies:
-      '@types/react': ^19
+      '@types/react': ^19.2.7
       react: ^19.2.3
       react-dom: ^19.2.3
 
@@ -2916,12 +2916,12 @@ packages:
   '@types/react-dom@19.2.3':
     resolution: {integrity: sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ==}
     peerDependencies:
-      '@types/react': ^19
+      '@types/react': ^19.2.7
 
   '@types/react-transition-group@4.4.12':
     resolution: {integrity: sha512-8TV6R3h2j7a91c+1DXdJi3Syo69zzIZbz7Lg5tORM5LEJG7X/E6a1V3drRyBRZq7/utz7A+c4OgYLiLcYGHG6w==}
     peerDependencies:
-      '@types/react': ^19
+      '@types/react': ^19.2.7
 
   '@types/react@19.2.7':
     resolution: {integrity: sha512-MWtvHrGZLFttgeEj28VXHxpmwYbor/ATPYbBfSFZEIRK0ecCFLl2Qo55z52Hss+UV9CRN7trSeq1zbgx7YDWWg==}
@@ -7074,7 +7074,7 @@ packages:
       '@emotion/react': ^11.4.1
       '@emotion/server': ^11.4.0
       '@mui/material': ^5.0.0 || ^6.0.0 || ^7.0.0
-      '@types/react': ^19
+      '@types/react': ^19.2.7
       react: ^19.2.3
     peerDependenciesMeta:
       '@emotion/server':
@@ -7898,10 +7898,9 @@ snapshots:
     dependencies:
       '@fortawesome/fontawesome-common-types': 7.1.0
 
-  '@fortawesome/react-fontawesome@0.2.6(@fortawesome/fontawesome-svg-core@7.1.0)(react@19.2.3)':
+  '@fortawesome/react-fontawesome@3.1.1(@fortawesome/fontawesome-svg-core@7.1.0)(react@19.2.3)':
     dependencies:
       '@fortawesome/fontawesome-svg-core': 7.1.0
-      prop-types: 15.8.1
       react: 19.2.3
 
   '@hono/node-server@1.19.6(hono@4.10.6)':
