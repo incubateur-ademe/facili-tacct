@@ -1,28 +1,37 @@
-import { Body, H1 } from '@/design-system/base/Textes';
-import { NewContainer } from '@/design-system/server';
-import { Metadata } from 'next';
-import UniqueUsers from './metrics/uniqueUsers';
+import { H1 } from '@/design-system/base/Textes';
+import { NewContainer } from '@/design-system/layout';
+import jwt from 'jsonwebtoken';
 
-export const metadata: Metadata = {
-  title: 'Statistiques',
-  description: 'Statistiques de l’utilisation de Facili-TACCT',
+export const revalidate = 3600;
+
+const generateMetabaseUrl = (dashboardId: number): string => {
+  const METABASE_URL = process.env.METABASE_URL!;
+  const METABASE_EMBEDDING_KEY = process.env.METABASE_EMBEDDING_KEY!;
+  
+  const exp = Math.floor(Date.now() / 1000) + 60 * 10;
+  const payload = {
+    resource: { dashboard: dashboardId },
+    params: {},
+    exp
+  };
+  
+  const token = jwt.sign(payload, METABASE_EMBEDDING_KEY);
+  return `${METABASE_URL}/embed/dashboard/${token}#theme=transparent&bordered=false&titled=false`;
 };
 
 const Page = async () => {
+  const embedUrl = generateMetabaseUrl(4);
+
   return (
     <NewContainer size="xl">
       <H1>Statistiques</H1>
-      <Body>
-        <i>
-          Cette page présente les statistiques d’utilisation du site Facili-TACCT.
-          Veuillez noter qu’il s’agit d’une page en cours de construction, de
-          nouvelles données viendront progressivement l’enrichir.
-        </i>
-      </Body>
-      <UniqueUsers />
-      {/* <EpciCount /> */}
-      {/* <ThematiquesTypes />
-      <RessourcesClicked /> */}
+      <iframe
+        src={embedUrl}
+        title="Tableau de bord stats"
+        width="100%"
+        height="1800"
+        className='border-none'
+      />
     </NewContainer>
   );
 };
