@@ -931,3 +931,32 @@
         }
     }
 }
+
+// Filtres non trouvés
+.filtresNonTrouvesContainer {
+    padding: 7rem;
+    background-color: #FAFAFA;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .boutons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .filtresNonTrouvesContainer {
+        padding: 3rem 1.5rem;
+        .boutons {
+            flex-direction: column;
+            width: 350px;
+            align-items: center;
+        }
+    }
+}

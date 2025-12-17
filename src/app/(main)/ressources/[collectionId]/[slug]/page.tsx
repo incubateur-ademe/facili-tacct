@@ -61,6 +61,7 @@ const ArticleRessourcePage = async ({ params }: ArticlePageProps) => {
     notFound();
   }
   const getBlocksContent = await getBlocks(page.id) as Block[];
+
   const titrePrincipal = getBlocksContent.find(block => block.type === 'heading_1');
   const contentWithoutH1 = getBlocksContent.filter(block => block.type !== 'heading_1');
   const headings = contentWithoutH1

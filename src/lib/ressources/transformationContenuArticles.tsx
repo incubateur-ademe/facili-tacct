@@ -13,6 +13,9 @@ export const renderBlock = async (el: Block, i: number) => {
     case "heading_1":
       return null;
     case "paragraph":
+      if (richText.length === 0) {
+        return <div key={i} style={{ height: "1rem" }} />;
+      }
       return (
         <div key={i} style={{ marginBottom: "1rem" }}>
           <Body><Text text={richText} /></Body>
@@ -25,7 +28,6 @@ export const renderBlock = async (el: Block, i: number) => {
           marginBottom: "56px",
           marginTop: "80px",
           scrollMarginTop: "2rem"
-          // scroll-margin-top: 2rem;
         }}>
           <H2 style={{ margin: 0 }}>{heading2Text}</H2>
         </div>
