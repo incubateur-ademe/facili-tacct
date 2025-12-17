@@ -157,7 +157,7 @@ const config = {
                     }
                 ]
             },
-            { source: '/stats', headers: statsHeaders },
+            { source: '/statistiques', headers: statsHeaders },
             { source: '/sandbox/stats', headers: statsHeaders }
         ];
     },
