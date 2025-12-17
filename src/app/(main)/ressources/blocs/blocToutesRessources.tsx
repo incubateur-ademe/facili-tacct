@@ -10,6 +10,7 @@ import { FiltresOptions, toutesLesRessources } from "@/lib/ressources/toutesRess
 import { SelectChangeEvent } from "@mui/material";
 import { useState } from "react";
 import { CollectionsData } from "../[collectionId]/collectionsData";
+import { FiltresNonTrouves } from "../components/FiltresNonTrouves";
 import styles from "../ressources.module.scss";
 import { FiltresRessources, ModalFiltresRessources } from "./FiltresRessources";
 
@@ -36,14 +37,21 @@ export const BlocToutesRessources = () => {
       ...selectedFilters,
       [filterTitre]: typeof value === "string" ? value.split(",") : value
     };
-    const selectedFilterValues = Object.values(updatedFilters).flat();
-    if (selectedFilterValues.length === 0) {
+    
+    const hasActiveFilters = Object.values(updatedFilters).some(values => values.length > 0);
+    
+    if (!hasActiveFilters) {
       setArticlesFiltres(toutesLesRessources);
     } else {
       setArticlesFiltres(
-        toutesLesRessources.filter(article =>
-          selectedFilterValues.some(filter => article.filtres?.includes(filter))
-        )
+        toutesLesRessources.filter(article => {
+          // Pour chaque type de filtre actif, vérifier que l'article satisfait au moins une des options (OR au sein du filtre)
+          return Object.entries(updatedFilters).every(([filterType, selectedValues]) => {
+            if (selectedValues.length === 0) return true;
+            // Au moins une des valeurs sélectionnées dans ce type de filtre doit être présente
+            return selectedValues.some(value => article.filtres?.includes(value));
+          });
+        })
       );
     }
   };
@@ -70,14 +78,20 @@ export const BlocToutesRessources = () => {
         };
       }
 
-      const selectedFilterValues = Object.values(updatedFilters).flat();
-      if (selectedFilterValues.length === 0) {
+      const hasActiveFilters = Object.values(updatedFilters).some(values => values.length > 0);
+      
+      if (!hasActiveFilters) {
         setArticlesFiltres(toutesLesRessources);
       } else {
         setArticlesFiltres(
-          toutesLesRessources.filter(article =>
-            selectedFilterValues.some(filter => article.filtres?.includes(filter))
-          )
+          toutesLesRessources.filter(article => {
+            // Pour chaque type de filtre actif, vérifier que l'article satisfait au moins une des options (OR au sein du filtre)
+            return Object.entries(updatedFilters).every(([filterType, selectedValues]) => {
+              if (selectedValues.length === 0) return true;
+              // Au moins une des valeurs sélectionnées dans ce type de filtre doit être présente
+              return selectedValues.some(value => article.filtres?.includes(value));
+            });
+          })
         );
       }
 
@@ -122,7 +136,7 @@ export const BlocToutesRessources = () => {
           </p>
           <div className={styles.listeDesArticlesWrapper}>
             {
-              ArticlesSorted.map((el, i) => {
+              ArticlesSorted.length !== 0 ? ArticlesSorted.map((el, i) => {
                 const collectionSlug = CollectionsData.find(c => c.titre === el.collections[0])?.slug;
                 const isExternalLink = el.lien.startsWith('https://');
                 const lien = isExternalLink
@@ -147,10 +161,9 @@ export const BlocToutesRessources = () => {
                     image={el.image!}
                   />
                 );
-              })
+              }) : <FiltresNonTrouves />
             }
           </div>
-          <div className="m-8" />
         </div>
       </NewContainer>
     </div>
