@@ -12,6 +12,7 @@ import { sommaireThematiques } from "../../../thematiques/constantes/textesThema
 import styles from '../../explorerDonnees.module.scss';
 import { ConsommationEspacesNAFAmenagement } from '../../indicateurs/amenagement/1-ConsommationEspacesNAF';
 import { LCZ } from '../../indicateurs/amenagement/2-LCZ';
+import { OCSGE } from "../../indicateurs/amenagement/3-OCSGE";
 
 interface Props {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
@@ -97,6 +98,16 @@ export const DonneesAmenagement = ({
               </H3>
             </div>
             <LCZ coordonneesCommunes={data.coordonneesCommunes} />
+          </div>
+
+          {/* OCS GE */}
+          <div id="OCSGE" className={styles.indicateurMapWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Cartographie des usages du sol - OCS GE
+              </H3>
+            </div>
+            <OCSGE coordonneesCommunes={data.coordonneesCommunes} />
           </div>
         </section>
       </div>
