@@ -36,6 +36,8 @@ export const MultiSelect = ({
             : `${selected.length} sélectionné(s)`
         }
         MenuProps={{
+          disableAutoFocusItem: true,
+          disableAutoFocus: true,
           sx: {
             '& .MuiPaper-root': {
               maxHeight: '500px',
@@ -148,6 +150,8 @@ export const MultiSelectResponsive = ({
         IconComponent={ExpandMoreOutlinedIcon}
         renderValue={() => selectedValues.length !== 0 ? `${filtre.titre} (${selectedValues.length})` : filtre.titre}
         MenuProps={{
+          disableAutoFocusItem: true,
+          disableAutoFocus: true,
           sx: {
             '& .MuiPaper-root': {
               maxHeight: '500px',
