@@ -97,6 +97,172 @@ describe('Integration: query functions to check if collectivites_searchbar has r
   });
 });
 
+describe('Integration: territorial coherence tests', () => {
+  it('territorial hierarchy is consistent for Marseille (13055)', async () => {
+    const result = await pool.query(
+      `SELECT code_geographique, epci, departement, region 
+       FROM databases_v2.table_commune 
+       WHERE code_geographique = $1`,
+      ['13055']
+    );
+    expect(result.rows).toHaveLength(1);
+    expect(result.rows[0].epci).toBe('200054807');
+    expect(result.rows[0].departement).toBe('13');
+    expect(result.rows[0].region).toBe(93);
+  });
+
+  it('territorial hierarchy is consistent for Paris (75056)', async () => {
+    const result = await pool.query(
+      `SELECT code_geographique, epci, departement, region 
+       FROM databases_v2.table_commune 
+       WHERE code_geographique = $1`,
+      ['75056']
+    );
+    expect(result.rows).toHaveLength(1);
+    expect(result.rows[0].epci).toBe('200054781');
+    expect(result.rows[0].departement).toBe('75');
+    expect(result.rows[0].region).toBe(11);
+  });
+
+  it('all communes have valid EPCI codes (9 characters)', async () => {
+    const result = await pool.query(
+      `SELECT COUNT(*) as invalid_count 
+       FROM databases_v2.table_commune 
+       WHERE epci IS NULL OR epci = '' OR LENGTH(epci) != 9`
+    );
+    expect(result.rows[0].invalid_count).toBe('0');
+  });
+
+  it('all communes have valid department codes (2-3 characters)', async () => {
+    const result = await pool.query(
+      `SELECT COUNT(*) as invalid_count 
+       FROM databases_v2.table_commune 
+       WHERE departement IS NULL OR departement = '' 
+       OR LENGTH(departement) < 2 OR LENGTH(departement) > 3`
+    );
+    expect(result.rows[0].invalid_count).toBe('0');
+  });
+
+  it('all communes have valid region codes', async () => {
+    const result = await pool.query(
+      `SELECT COUNT(*) as invalid_count 
+       FROM databases_v2.table_commune 
+       WHERE region IS NULL OR region <= 0`
+    );
+    expect(result.rows[0].invalid_count).toBe('0');
+  });
+});
+
+describe('Integration: data quality tests', () => {
+  it('precarite_logement values are between 0 and 1', async () => {
+    const result = await pool.query(
+      `SELECT COUNT(*) as invalid_count 
+       FROM databases_v2.confort_thermique 
+       WHERE precarite_logement IS NOT NULL 
+       AND (precarite_logement < 0 OR precarite_logement > 1)`
+    );
+    expect(result.rows[0].invalid_count).toBe('0');
+  });
+
+  it('no duplicate communes in confort_thermique', async () => {
+    const result = await pool.query(
+      `SELECT code_geographique, COUNT(*) as count 
+       FROM databases_v2.confort_thermique 
+       GROUP BY code_geographique 
+       HAVING COUNT(*) > 1`
+    );
+    expect(result.rows.length).toBe(0);
+  });
+
+  it('no duplicate communes in table_commune', async () => {
+    const result = await pool.query(
+      `SELECT code_geographique, COUNT(*) as count 
+       FROM databases_v2.table_commune 
+       GROUP BY code_geographique 
+       HAVING COUNT(*) > 1`
+    );
+    expect(result.rows.length).toBe(0);
+  });
+
+  it('critical fields are never null in table_commune', async () => {
+    const result = await pool.query(
+      `SELECT COUNT(*) as null_count 
+       FROM databases_v2.table_commune 
+       WHERE libelle_geographique IS NULL 
+       OR code_geographique IS NULL 
+       OR epci IS NULL`
+    );
+    expect(result.rows[0].null_count).toBe('0');
+  });
+
+  it('age_bati percentages sum to approximately 100% for Marseille', async () => {
+    const result = await pool.query(
+      `SELECT 
+        (COALESCE(age_bati_post06, 0) + COALESCE(age_bati_91_05, 0) + 
+         COALESCE(age_bati_46_90, 0) + COALESCE(age_bati_19_45, 0) + 
+         COALESCE(age_bati_pre_19, 0)) as total
+       FROM databases_v2.confort_thermique 
+       WHERE code_geographique = '13055'`
+    );
+    expect(result.rows).toHaveLength(1);
+    const total = parseFloat(result.rows[0].total);
+    expect(total).toBeGreaterThan(98.9);
+    expect(total).toBeLessThan(101);
+  });
+
+  it('agriculture_bio surfaces are positive values', async () => {
+    const result = await pool.query(
+      `SELECT COUNT(*) as invalid_count 
+       FROM databases_v2.agriculture_bio 
+       WHERE surface_2023 < 0 OR surface_2022 < 0 OR surface_2021 < 0`
+    );
+    expect(result.rows[0].invalid_count).toBe('0');
+  });
+});
+
+describe('Integration: query performance tests', () => {
+  it('query by code_geographique is fast (< 100ms)', async () => {
+    const start = Date.now();
+    await pool.query(
+      `SELECT * FROM databases_v2.confort_thermique WHERE code_geographique = $1`,
+      ['13055']
+    );
+    const duration = Date.now() - start;
+    expect(duration).toBeLessThan(100);
+  });
+
+  it('EPCI query with LIMIT is fast (< 200ms)', async () => {
+    const start = Date.now();
+    await pool.query(
+      `SELECT * FROM databases_v2.confort_thermique WHERE epci = $1 LIMIT 200`,
+      ['200054781']
+    );
+    const duration = Date.now() - start;
+    expect(duration).toBeLessThan(200);
+  });
+
+  it('searchbar query is fast (< 150ms)', async () => {
+    const start = Date.now();
+    await pool.query(
+      `SELECT * FROM databases_v2.collectivites_searchbar 
+       WHERE search_libelle ILIKE $1 LIMIT 10`,
+      ['%marseille%']
+    );
+    const duration = Date.now() - start;
+    expect(duration).toBeLessThan(150);
+  });
+
+  it('departement query is fast (< 300ms)', async () => {
+    const start = Date.now();
+    await pool.query(
+      `SELECT * FROM databases_v2.table_commune WHERE departement = $1`,
+      ['13']
+    );
+    const duration = Date.now() - start;
+    expect(duration).toBeLessThan(300);
+  });
+});
+
 afterAll(async () => {
   await pool.end();
 });
