@@ -25,6 +25,7 @@ export const MetaArticleResponsive = ({
     notFound();
   }
   const titrePrincipal = getBlocksContent.find(block => block.type === 'heading_1');
+  console.log("article.filtres?.filter(filtre => territoireOptions.includes(filtre))", article.filtres?.filter(filtre => territoireOptions.includes(filtre)).length);
 
   return (
     <div className={styles.articleTopBlocContainer}>
@@ -64,10 +65,14 @@ export const MetaArticleResponsive = ({
               <Image src={ClockIcon} alt="Temps de lecture" width={24} height={24} />
               <Body weight="bold" size="lg">{article.tempsLecture} min</Body>
             </div>
-            <div className={styles.localisation}>
-              <Image src={LocationIcon} alt="Localisation" width={24} height={24} />
-              <Body weight="bold" size="lg">{article.filtres?.filter(filtre => territoireOptions.includes(filtre))}</Body>
-            </div>
+            {
+              article.filtres?.filter(filtre => territoireOptions.includes(filtre)).length > 0 && (
+                <div className={styles.localisation}>
+                  <Image src={LocationIcon} alt="Localisation" width={24} height={24} />
+                  <Body weight="bold" size="lg">{article.filtres?.filter(filtre => territoireOptions.includes(filtre))}</Body>
+                </div>
+              )
+            }
           </div>
         </div>
       </div>
