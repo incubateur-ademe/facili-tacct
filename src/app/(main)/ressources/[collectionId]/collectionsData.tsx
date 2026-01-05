@@ -27,7 +27,7 @@ export const CollectionsData = [
   },
   {
     titre: 'Évaluer les impacts du changement climatique',
-    image: Collection2Img,
+    image: Collection5Img,
     slug: 'evaluer-impacts-changement-climatique',
     texte: (
       <>
@@ -44,7 +44,7 @@ export const CollectionsData = [
   },
   {
     titre: 'Associer les parties prenantes',
-    image: Collection3Img,
+    image: Collection6Img,
     slug: 'associer-parties-prenantes',
     texte: (
       <>
@@ -61,7 +61,7 @@ export const CollectionsData = [
   },
   {
     titre: 'Piloter la démarche d’adaptation',
-    image: Collection4Img,
+    image: Collection2Img,
     slug: 'piloter-demarche-adaptation',
     texte: (
       <>
@@ -77,7 +77,7 @@ export const CollectionsData = [
   },
   {
     titre: "Adopter la bonne posture",
-    image: Collection6Img,
+    image: Collection4Img,
     slug: 'adopter-bonne-posture',
     texte: (
       <>
@@ -109,7 +109,7 @@ export const CollectionsData = [
   },
   {
     titre: "Bâtir la stratégie d’adaptation",
-    image: Collection5Img,
+    image: Collection3Img,
     slug: 'batir-strategie-adaptation',
     texte: (
       <>
