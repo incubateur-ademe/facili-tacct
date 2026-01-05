@@ -932,10 +932,18 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    .collectionTopBlocWrapper {
+        .imageCropped {
+            right: 0;
+        }
+    }
+}
+
 // Filtres non trouvés
 .filtresNonTrouvesContainer {
     padding: 7rem;
-    background-color: #FAFAFA;
+    background-color: #fafafa;
     width: 100%;
     text-align: center;
     display: flex;

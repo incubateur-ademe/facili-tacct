@@ -19,8 +19,8 @@ const RootLayout = ({ children }: PropsWithChildren) => {
         <DsfrHead
           preloadFonts={[
             'Marianne-Regular',
-            'Spectral-Regular',
-            'Spectral-ExtraBold'
+            "Marianne-Medium",
+            "Marianne-Bold"
           ]}
         />
         <link rel="preconnect" href="https://metabase.facili-tacct.beta.gouv.fr" />

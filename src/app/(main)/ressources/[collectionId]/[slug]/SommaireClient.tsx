@@ -12,24 +12,29 @@ export const SommaireClient = ({ headings }: SommaireClientProps) => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
+      let currentActive = '';
 
-      for (const titre of headings) {
+      for (let i = headings.length - 1; i >= 0; i--) {
+        const titre = headings[i];
         const element = document.getElementById(titre);
         if (element) {
           const elementTop = element.offsetTop;
-          const elementBottom = elementTop + element.offsetHeight;
-          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
-            setActiveAnchor(titre);
+          if (scrollPosition >= elementTop) {
+            currentActive = titre;
             break;
           }
         }
+      }
+
+      if (currentActive && currentActive !== activeAnchor) {
+        setActiveAnchor(currentActive);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [headings]);
+  }, [headings, activeAnchor]);
 
   const scrollToAnchor = (anchor: string) => {
     const element = document.getElementById(anchor);

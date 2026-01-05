@@ -4,6 +4,7 @@ import ClockIcon from "@/assets/icons/clock_icon_black.svg";
 import LienExterneIcon from "@/assets/icons/fr-icon-external-link-line.png";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
+import React from "react";
 import styles from "./Tuile.module.scss";
 
 interface Props {
@@ -25,15 +26,38 @@ export const TuileVerticale = ({
   tags = [],
   tempsLecture
 }: Props) => {
+  const processedTags = React.useMemo(() => {
+    const tagTexts = tags.map(tag => {
+      if (React.isValidElement(tag) && tag.props && typeof (tag.props as { texte?: string }).texte === 'string') {
+        return (tag.props as { texte: string }).texte;
+      }
+      return '';
+    });
+
+    const hasRetourExperience = tagTexts.includes("Retour d'expérience");
+    const hasArticle = tagTexts.includes("Article");
+
+    if (hasRetourExperience && hasArticle) {
+      return tags.map(tag => {
+        if (React.isValidElement(tag) && tag.props && (tag.props as { texte?: string }).texte === "Retour d'expérience") {
+          return React.cloneElement(tag as React.ReactElement<{ texte: string }>, { ...tag.props, texte: "REX" });
+        }
+        return tag;
+      });
+    }
+
+    return tags;
+  }, [tags]);
+
   const content = (
     <div className={styles.tuile} tabIndex={lien ? -1 : 0} role="article">
       <div className={styles.imageContainer}>
         <Image src={image} alt={titre} fill />
       </div>
       <div className={styles.contenu}>
-        {tags.length > 0 && (
+        {processedTags.length > 0 && (
           <div className={styles.tags}>
-            {tags.map((tag, index) => (
+            {processedTags.map((tag, index) => (
               <span key={index}>
                 {tag}
               </span>
@@ -49,7 +73,9 @@ export const TuileVerticale = ({
         {tempsLecture && (
           <div className={styles.tempsLecture}>
             <Image src={ClockIcon} alt="Temps de lecture" width={16} height={16} />
-            <span>{tempsLecture} min</span>
+            {
+              tempsLecture < 120 ? <span>{tempsLecture} min</span> : <span>{tempsLecture / 60} h</span>
+            }
           </div>
         )}
         {

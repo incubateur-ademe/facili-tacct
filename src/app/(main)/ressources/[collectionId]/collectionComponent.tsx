@@ -10,6 +10,7 @@ import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
 import { TagsIcone } from "@/design-system/base/Tags";
 import { Body, H1, H2 } from '@/design-system/base/Textes';
 import { NewContainer } from "@/design-system/layout";
+import useWindowDimensions from "@/hooks/windowDimensions";
 import { FiltresOptions } from "@/lib/ressources/toutesRessources";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,6 +29,7 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
   const [copied, setCopied] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const windowDimensions = useWindowDimensions();
 
   useEffect(() => {
     const handleResize = () => {
@@ -81,6 +83,7 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
             <div className={styles.imageCropped}>
               <Image
                 src={collection?.image!}
+                width={windowDimensions.width && windowDimensions.width <= 768 ? 300 : 550}
                 alt=""
               />
             </div>

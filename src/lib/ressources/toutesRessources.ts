@@ -82,7 +82,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     description:
       'Relisez votre diagnostic de vulnérabilité en 10 minutes : identifiez les données utiles et les enjeux prioritaires pour enclencher une stratégie d’adaptation concertée.',
     lien: '/ressources/articles/analyser-diagnostic-vulnerabilite',
-    filtres: ['Article', "M'inspirer"],
+    filtres: ['Article', 'Agir'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 5,
     image: TestImageTuile,
@@ -298,7 +298,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     description:
       'La sensibilisation, un préalable à la mobilisation ? Retour d’expérience de Sarah Clamens avec la mise en œuvre des Ateliers de l’Adaptation au Changement Climatique à la CA de Saintes.',
     lien: '/ressources/articles/ateliers-adacc-adaptation',
-    filtres: ['Article', 'Agir', 'Nouvelle-Aquitaine'],
+    filtres: ['Article', "Retour d'expérience", 'Agir', 'Nouvelle-Aquitaine'],
     collections: ['Associer les parties prenantes'],
     tempsLecture: 4,
     image: TestImageTuile,
@@ -450,7 +450,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     type: "Retour d'expérience",
     titre: 'Comment restituer son diagnostic ? - Haute Loire (43)',
     description:
-      'Comment construire votre stratégie d’adaptation en embarquant les acteurs du territoire ? Un partage engageant du diagnostic est important : pour cela, la CA du Puy-en-Velay a articulé TACCT et l’atelier ClimaSTORY.',
+      'Comment construire votre stratégie en embarquant les acteurs du territoire ? Un partage engageant du diagnostic est important : pour cela, la CA du Puy-en-Velay a articulé TACCT et l’atelier ClimaSTORY.',
     lien: 'https://librairie.ademe.fr/7180-comment-restituer-son-diagnostic-des-impacts-du-changement-climatique-en-haute-loire-43.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
@@ -465,7 +465,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     type: "Retour d'expérience",
     titre: 'Comment restituer son diagnostic ? - Haute Savoie (74)',
     description:
-      'Comment construire votre stratégie d’adaptation en embarquant les acteurs du territoire ? Un partage engageant du diagnostic est important : pour cela, la CCVCMB a articulé TACCT et l’atelier ClimaSTORY.',
+      'Comment construire votre stratégie en embarquant les acteurs du territoire ? Un partage engageant du diagnostic est important : pour cela, la CCVCMB a articulé TACCT et l’atelier ClimaSTORY.',
     lien: 'https://librairie.ademe.fr/7129-comment-restituer-son-diagnostic-des-impacts-du-changement-climatique-en-haute-savoie-74-.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
@@ -531,7 +531,12 @@ export const toutesLesRessources: ToutesRessources[] = [
     description:
       'Comprendre les interactions au sein de votre système est essentiel pour éviter les maladaptations. L’approche systémique vous accompagne de l’identification jusqu’à la mobilisation.',
     lien: '/ressources/articles/briser-silos-approche-systemique',
-    filtres: ['Article', "M'inspirer", 'Bourgogne-Franche-Comté'],
+    filtres: [
+      'Article',
+      "Retour d'expérience",
+      "M'inspirer",
+      'Bourgogne-Franche-Comté'
+    ],
     collections: ['Adopter la bonne posture'],
     tempsLecture: 5,
     image: TestImageTuile,
@@ -654,7 +659,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     description:
       'Témoignages d’une projection sur le temps long avec l’exemple de Miquelon.',
     lien: '/ressources/articles/strategie-adaptation-gestion-risque-relocalisation',
-    filtres: ['Article', "M'inspirer", 'Outremer'],
+    filtres: ['Article', "Retour d'expérience", "M'inspirer", 'Outremer'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 7,
     image: TestImageTuile,
@@ -733,13 +738,13 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 36,
     type: 'Formation',
     titre:
-      "Adapter son territoire au changement climatique – Se mettre en marche vers une stratégie d'adaptation",
+      "Adapter son territoire – Se mettre en marche vers une stratégie d'adaptation",
     description:
       'Cette formation permet de comprendre comment organiser et mettre en place un diagnostic de vulnérabilité et une stratégie d’adaptation au changement climatique pour son territoire.',
     lien: 'https://formations.ademe.fr/formations_changement-climatique_adapter-son-territoire-au-changement-climatique-�ie-se-mettre-en-marche-vers-une-strategie-d-adaptation_s5317.html',
     filtres: ['Formation', 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
-    tempsLecture: 2,
+    tempsLecture: 60 * 14,
     image: TestImageTuile,
     date: '2025-12-10',
     ordre: 20,
@@ -748,14 +753,13 @@ export const toutesLesRessources: ToutesRessources[] = [
   {
     id: 37,
     type: 'Formation',
-    titre:
-      "Adapter son territoire au changement climatique - Outils et méthodes pour l'adaptation",
+    titre: "Adapter son territoire - Outils et méthodes pour l'adaptation",
     description:
       "Cette formation en e-learning explique les principaux enjeux de l'adaptation au dérèglement climatique et comment y répondre.",
     lien: 'https://formations.ademe.fr/formations_changement-climatique_adapter-son-territoire-au-changement-climatique---outils-et-methodes-pour-l-adaptation_s5343.html',
     filtres: ['Formation', 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
-    tempsLecture: 2,
+    tempsLecture: 180,
     image: TestImageTuile,
     date: '2025-12-10',
     ordre: 30,
