@@ -30,12 +30,7 @@ export const collectionsCartes = [
     lien: '/ressources/piloter-demarche-adaptation'
   },
   {
-    texte: "Bâtir la stratégie d’adaptation",
-    image: Collection3Img,
-    lien: '/ressources/batir-strategie-adaptation'
-  },
-  {
-    texte: "Adopter la bonne posture",
+    texte: 'Adopter la bonne posture',
     image: Collection4Img,
     lien: '/ressources/adopter-bonne-posture'
   },
@@ -43,6 +38,11 @@ export const collectionsCartes = [
     texte: 'Restituer le diagnostic de vulnérabilité',
     image: Collection7Img,
     lien: '/ressources/restituer-diagnostic-vulnerabilite'
+  },
+  {
+    texte: 'Bâtir la stratégie d’adaptation',
+    image: Collection3Img,
+    lien: '/ressources/batir-strategie-adaptation'
   }
 ];
 

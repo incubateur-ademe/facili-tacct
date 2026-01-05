@@ -23,6 +23,7 @@ export const CollectionsData = [
       </>
     ),
     articles: toutesLesRessources.filter(ressource => ressource.collections.includes('Démarrer le diagnostic de vulnérabilité')),
+    metadescription: "Envie de vous lancer sans savoir par où commencer ? Découvrez formations, retours d’expérience et contenus pour identifier les impacts du changement climatique sur votre territoire."
   },
   {
     titre: 'Évaluer les impacts du changement climatique',
@@ -39,6 +40,7 @@ export const CollectionsData = [
       </>
     ),
     articles: toutesLesRessources.filter(ressource => ressource.collections.includes('Évaluer les impacts du changement climatique')),
+    metadescription: "Évaluez ce qui vous menace (aléas) et ce qui vous fragilise (sensibilité) : cette double analyse est le cœur du diagnostic de vulnérabilité."
   },
   {
     titre: 'Associer les parties prenantes',
@@ -55,6 +57,7 @@ export const CollectionsData = [
       </>
     ),
     articles: toutesLesRessources.filter(ressource => ressource.collections.includes('Associer les parties prenantes')),
+    metadescription: "Associez vos élus, les techniciens et les acteurs locaux dès le diagnostic : un constat partagé aujourd’hui = des solutions solides demain. Découvrez comment mobiliser autour de vous."
   },
   {
     titre: 'Piloter la démarche d’adaptation',
@@ -70,6 +73,39 @@ export const CollectionsData = [
       </>
     ),
     articles: toutesLesRessources.filter(ressource => ressource.collections.includes('Piloter la démarche d’adaptation')),
+    metadescription: "Avec une équipe projet solide, vous irez plus loin – et plus vite. Explorez nos ressources pour un pilotage efficace et durable !"
+  },
+  {
+    titre: "Adopter la bonne posture",
+    image: Collection6Img,
+    slug: 'adopter-bonne-posture',
+    texte: (
+      <>
+        <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
+          Adaptation climatique : un défi qui exige de conjuguer expertises multiples et conciliation
+          d’intérêts divergents. La clé ? Adopter la “bonne” posture pour mobiliser l'intelligence
+          collective et valoriser les savoirs locaux. Nos conseils pratiques sont ici !
+        </Body>
+      </>
+    ),
+    articles: toutesLesRessources.filter(ressource => ressource.collections.includes("Adopter la bonne posture")),
+    metadescription: "Adopter la “bonne” posture pour mobiliser l'intelligence collective et valoriser les savoirs locaux !"
+  },
+  {
+    titre: 'Restituer le diagnostic de vulnérabilité',
+    image: Collection7Img,
+    slug: 'restituer-diagnostic-vulnerabilite',
+    texte: (
+      <>
+        <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
+          Le diagnostic de vulnérabilité est finalisé… et après ? Ne le laissez pas prendre la poussière
+          sur une étagère ! Transformez-le en levier d’action avec nos meilleures pratiques : un outil
+          qui fédère, alerte et mobilise tous les acteurs autour d’un constat partagé.
+        </Body>
+      </>
+    ),
+    articles: toutesLesRessources.filter(ressource => ressource.collections.includes('Restituer le diagnostic de vulnérabilité')),
+    metadescription: "Le diagnostic de vulnérabilité est un outil qui fédère, alerte et mobilise tous les acteurs autour d’un constat partagé : il s’agit d’un véritable levier d’action !"
   },
   {
     titre: "Bâtir la stratégie d’adaptation",
@@ -81,43 +117,14 @@ export const CollectionsData = [
           Vous avez identifié et hiérarchisé les enjeux de votre territoire ?
         </Body>
         <Body style={{ color: "#ffffff" }}>
-          Parfait, vous avez tracé la carte… Il est temps de choisir la route ! Cette étape est 
-          cruciale pour co-construire un plan d’action fédérateur qui anticipe les évolutions 
-          climatiques et articule vos documents réglementaires autour d’un projet de territoire. 
+          Parfait, vous avez tracé la carte… Il est temps de choisir la route ! Cette étape est
+          cruciale pour co-construire un plan d’action fédérateur qui anticipe les évolutions
+          climatiques et articule vos documents réglementaires autour d’un projet de territoire.
           Découvrez nos ressources pour tracer des trajectoires solides.
         </Body>
       </>
     ),
     articles: toutesLesRessources.filter(ressource => ressource.collections.includes("Bâtir la stratégie d’adaptation")),
+    metadescription: "Cette étape est cruciale pour co-construire un plan d’action fédérateur qui anticipe les évolutions climatiques et articule vos documents réglementaires autour d’un projet de territoire."
   },
-  {
-    titre: "Adopter la bonne posture",
-    image: Collection6Img,
-    slug: 'adopter-bonne-posture',
-    texte: (
-      <>
-        <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
-          Adaptation climatique : un défi qui exige de conjuguer expertises multiples et conciliation 
-          d’intérêts divergents. La clé ? Adopter la “bonne” posture pour mobiliser l'intelligence 
-          collective et valoriser les savoirs locaux. Nos conseils pratiques sont ici !
-        </Body>
-      </>
-    ),
-    articles: toutesLesRessources.filter(ressource => ressource.collections.includes("Adopter la bonne posture")),
-  },
-  {
-    titre: 'Restituer le diagnostic de vulnérabilité',
-    image: Collection7Img,
-    slug: 'restituer-diagnostic-vulnerabilite',
-    texte: (
-      <>
-        <Body style={{ marginTop: "1rem", color: "#ffffff" }}>
-          Le diagnostic de vulnérabilité est finalisé… et après ? Ne le laissez pas prendre la poussière 
-          sur une étagère ! Transformez-le en levier d’action avec nos meilleures pratiques : un outil 
-          qui fédère, alerte et mobilise tous les acteurs autour d’un constat partagé.
-        </Body>
-      </>
-    ),
-    articles: toutesLesRessources.filter(ressource => ressource.collections.includes('Restituer le diagnostic de vulnérabilité')),
-  }
 ];
