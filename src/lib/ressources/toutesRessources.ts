@@ -379,7 +379,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     tempsLecture: 4,
     image: TestImageTuile,
     date: '2025-07-25',
-    ordre: 30,
+    ordre: 40,
     ordreCollection: 3
   },
   {
@@ -640,7 +640,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     tempsLecture: 5,
     image: TestImageTuile,
     date: '2025-07-25',
-    ordre: 40,
+    ordre: 30,
     ordreCollection: 2,
     metadata: {
       title:
