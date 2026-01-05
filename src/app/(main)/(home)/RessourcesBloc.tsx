@@ -11,7 +11,7 @@ export const RessourcesBloc = () => {
       <NewContainer size="xl">
         <div className={styles.ressourcesWrapper}>
           <div className={styles.ressourcesText}>
-            <H2>Découvrez des ressources utiles</H2>
+            <H2>Boîte à outils de l’adaptation</H2>
             <Body>
               Bénéficiez d'articles et de retours d'expériences pour vous
               accompagner dans la mise en place de votre démarche d’adaptation
@@ -20,7 +20,7 @@ export const RessourcesBloc = () => {
             <BoutonPrimaireClassic
               size='lg'
               link="/ressources"
-              text="Découvrir les ressources"
+              text="Découvrir la boîte à outils"
               style={{ marginTop: '2rem' }}
               posthogEventName='bouton_decouvrir_ressources_home'
             />

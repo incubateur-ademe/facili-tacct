@@ -71,6 +71,16 @@ const ContentSecurityPolicy = Object.entries(csp)
 /** @type {import('next').NextConfig} */
 const config = {
     poweredByHeader: false,
+    // API Notion
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com',
+                pathname: '/**'
+            }
+        ]
+    },
     webpack: (config) => {
         config.module.rules.push({
             test: /\.(woff2|webmanifest)$/,
@@ -147,7 +157,7 @@ const config = {
                     }
                 ]
             },
-            { source: '/stats', headers: statsHeaders },
+            { source: '/statistiques', headers: statsHeaders },
             { source: '/sandbox/stats', headers: statsHeaders }
         ];
     },
@@ -204,7 +214,11 @@ const config = {
 };
 
 const withMDX = createMDX({
-    extension: /\.mdx?$/
+    extension: /\.mdx?$/,
+    options: {
+        remarkPlugins: [],
+        rehypePlugins: []
+    }
 });
 
 export default withSentryConfig(withMDX(config), {
