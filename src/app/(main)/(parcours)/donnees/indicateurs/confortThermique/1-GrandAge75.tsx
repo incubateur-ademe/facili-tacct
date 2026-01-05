@@ -34,7 +34,6 @@ export const GrandAge75 = ({
   const libelleDepartement = type === "epci" ? confortThermique[0]?.libelle_departement : "";
   const departement = type === "epci" ? confortThermique[0]?.departement : "";
   const [multipleDepartements, setMultipleDepartements] = useState<string[]>([]);
-  console.log("multipleDepartements", multipleDepartements);
   const grandAgeMapped = confortThermique.map(
     grandAgeMapper
   );
