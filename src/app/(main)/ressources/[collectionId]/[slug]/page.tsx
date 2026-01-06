@@ -22,7 +22,7 @@ interface ArticlePageProps {
   }>;
 }
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   return toutesLesRessources.map((article) => {
