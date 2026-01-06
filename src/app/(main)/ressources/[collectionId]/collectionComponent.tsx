@@ -12,6 +12,7 @@ import { Body, H1, H2 } from '@/design-system/base/Textes';
 import { NewContainer } from "@/design-system/layout";
 import useWindowDimensions from "@/hooks/windowDimensions";
 import { FiltresOptions } from "@/lib/ressources/toutesRessources";
+import { Round } from "@/lib/utils/reusableFunctions/round";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -30,6 +31,7 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
   const [isMobile, setIsMobile] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const windowDimensions = useWindowDimensions();
+  const tempsLecture = collection?.articles.reduce((total, article) => total + article.tempsLecture, 0) || 0;
 
   useEffect(() => {
     const handleResize = () => {
@@ -74,7 +76,9 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                 <div className={styles.tempsLecture}>
                   <Image src={ClockIcon} alt="Temps de lecture" width={24} height={24} />
                   <Body size="lg" weight="bold" style={{ color: "#FFFFFF" }}>
-                    {collection?.articles.reduce((total, article) => total + article.tempsLecture, 0)} min
+                    {
+                      tempsLecture < 60 ? <span>{tempsLecture} min</span> : <span>{Round(tempsLecture / 60, 0)} h</span>
+                    }
                   </Body>
                 </div>
               </div>

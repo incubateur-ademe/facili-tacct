@@ -25,7 +25,6 @@ export const MetaArticleResponsive = ({
     notFound();
   }
   const titrePrincipal = getBlocksContent.find(block => block.type === 'heading_1');
-  console.log("article.filtres?.filter(filtre => territoireOptions.includes(filtre))", article.filtres?.filter(filtre => territoireOptions.includes(filtre)).length);
 
   return (
     <div className={styles.articleTopBlocContainer}>
