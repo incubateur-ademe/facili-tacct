@@ -584,6 +584,14 @@ export type postgis_v2_communes_dromSumOrderByAggregateInput = {
   surface?: Prisma.SortOrder
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 
 
 export type postgis_v2_communes_dromSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
