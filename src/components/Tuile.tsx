@@ -2,6 +2,7 @@
 
 import ClockIcon from "@/assets/icons/clock_icon_black.svg";
 import LienExterneIcon from "@/assets/icons/fr-icon-external-link-line.png";
+import { Round } from "@/lib/utils/reusableFunctions/round";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -74,7 +75,7 @@ export const TuileVerticale = ({
           <div className={styles.tempsLecture}>
             <Image src={ClockIcon} alt="Temps de lecture" width={16} height={16} />
             {
-              tempsLecture < 120 ? <span>{tempsLecture} min</span> : <span>{tempsLecture / 60} h</span>
+              tempsLecture < 60 ? <span>{tempsLecture} min</span> : <span>{tempsLecture / 60} h</span>
             }
           </div>
         )}
@@ -141,7 +142,9 @@ export const TuileHorizontale = ({
             {tempsLecture && (
               <div className={styles.tempsLecture}>
                 <Image src={ClockIcon} alt="Temps de lecture" width={16} height={16} />
-                <span>{tempsLecture} min</span>
+                {
+                  tempsLecture < 60 ? <span>{tempsLecture} min</span> : <span>{Round(tempsLecture / 60, 0)} h</span>
+                }
               </div>
             )}
           </div>
