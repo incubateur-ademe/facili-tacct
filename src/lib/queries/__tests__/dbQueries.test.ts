@@ -1,11 +1,18 @@
 import 'dotenv/config';
+import fs from 'fs';
+import path from 'path';
 import { Pool } from 'pg';
 
 const connectionString = process.env.SCALINGO_POSTGRESQL_URL;
+const cleanConnectionString = connectionString?.split('?')[0];
+const caPemPath = path.join(__dirname, '../../../../ca.pem');
+const caPem = fs.readFileSync(caPemPath, 'utf8');
+const ca = caPem ?? process.env.POSTGRES_CA;
 
 const pool = new Pool({
-  connectionString,
+  connectionString: cleanConnectionString,
   ssl: {
+    ca,
     rejectUnauthorized: false
   }
 });
@@ -20,7 +27,10 @@ describe('Integration: biodiversite queries', () => {
     );
     expect(Array.isArray(result.rows)).toBe(true);
     expect(result.rows.length).toBe(5);
-    expect(result.rows[0]).toHaveProperty('LIBELLE_SOUS_CHAMP', 'Surface certifiée');
+    expect(result.rows[0]).toHaveProperty(
+      'LIBELLE_SOUS_CHAMP',
+      'Surface certifiée'
+    );
   });
 
   it('consommation_espaces_naf returns expected results for EPCI 200054781', async () => {
@@ -37,9 +47,7 @@ describe('Integration: biodiversite queries', () => {
   });
 
   it('aot_40 returns expected results', async () => {
-    const result = await pool.query(
-      `SELECT * FROM databases_v2.aot_40`
-    );
+    const result = await pool.query(`SELECT * FROM databases_v2.aot_40`);
     expect(Array.isArray(result.rows)).toBe(true);
     expect(result.rows.length).toBe(291);
     expect(result.rows[0]).toHaveProperty('valeur brute', 9487.38664050025);
