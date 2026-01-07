@@ -1,4 +1,6 @@
-import TestImageTuile from '@/assets/images/test_tuile.png';
+import ImageTuileArticle from '@/assets/images/imageTuileArticle.png';
+import ImageTuileAutre from '@/assets/images/imageTuileAutre.png';
+import ImageTuileRex from '@/assets/images/imageTuileRex.png';
 import { StaticImageData } from 'next/image';
 import { JSX } from 'react';
 
@@ -70,7 +72,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Agir'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 5,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 70,
     ordreCollection: 1,
@@ -91,7 +93,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2025-07-25',
     ordre: 20,
     ordreCollection: 2,
@@ -112,7 +114,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 90,
     ordreCollection: 8
@@ -128,7 +130,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 30,
     ordreCollection: 7
@@ -144,7 +146,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 3,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 110,
     ordreCollection: 6
@@ -165,7 +167,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     ],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 11,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 80,
     ordreCollection: 9
@@ -181,7 +183,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Évaluer les impacts du changement climatique'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 70,
     ordreCollection: 5
@@ -197,7 +199,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Évaluer les impacts du changement climatique'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 120,
     ordreCollection: 4
@@ -214,7 +216,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Me former'],
     collections: ['Évaluer les impacts du changement climatique'],
     tempsLecture: 7,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2025-10-14',
     ordre: 10,
     ordreCollection: 2,
@@ -237,7 +239,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Me former'],
     collections: ['Évaluer les impacts du changement climatique'],
     tempsLecture: 8,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2025-07-25',
     ordre: 30,
     ordreCollection: 3,
@@ -259,7 +261,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Agir'],
     collections: ['Associer les parties prenantes'],
     tempsLecture: 3,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 50,
     ordreCollection: 2,
@@ -281,7 +283,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', "Retour d'expérience", 'Agir', 'Nouvelle-Aquitaine'],
     collections: ['Associer les parties prenantes'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 40,
     ordreCollection: 3,
@@ -303,7 +305,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Agir'],
     collections: ['Associer les parties prenantes'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 30,
     ordreCollection: 4,
@@ -324,7 +326,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Associer les parties prenantes'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 60,
     ordreCollection: 5
@@ -340,7 +342,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 20,
     ordreCollection: 4
@@ -356,7 +358,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2025-07-25',
     ordre: 40,
     ordreCollection: 3
@@ -372,7 +374,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 50,
     ordreCollection: 7
@@ -387,7 +389,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Centre-Val de Loire'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 1,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 100,
     ordreCollection: 6
@@ -403,7 +405,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2025-07-25',
     ordre: 50,
     ordreCollection: 5
@@ -419,7 +421,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 150,
     ordreCollection: 3
@@ -434,7 +436,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 140,
     ordreCollection: 6
@@ -449,7 +451,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 130,
     ordreCollection: 7
@@ -465,7 +467,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 70,
     ordreCollection: 4
@@ -480,7 +482,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 10,
     ordreCollection: 5
@@ -496,7 +498,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 40,
     ordreCollection: 2
@@ -517,7 +519,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     ],
     collections: ['Adopter la bonne posture'],
     tempsLecture: 5,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2025-07-25',
     ordre: 20,
     ordreCollection: 2,
@@ -538,7 +540,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Agir'],
     collections: ['Adopter la bonne posture'],
     tempsLecture: 3,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 20,
     ordreCollection: 1,
@@ -558,7 +560,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Adopter la bonne posture'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 160,
     ordreCollection: 3
@@ -574,7 +576,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Agir'],
     collections: ['Piloter la démarche d’adaptation'],
     tempsLecture: 2,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 60,
     ordreCollection: 1,
@@ -596,7 +598,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Piloter la démarche d’adaptation'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 170,
     ordreCollection: 3
@@ -613,7 +615,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Agir'],
     collections: ['Piloter la démarche d’adaptation'],
     tempsLecture: 5,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2025-07-25',
     ordre: 30,
     ordreCollection: 2,
@@ -636,7 +638,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', "Retour d'expérience", "M'inspirer", 'Outremer'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 7,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2025-11-25',
     ordre: 10,
     ordreCollection: 1,
@@ -659,7 +661,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Agir'],
     collections: ['Associer les parties prenantes'],
     tempsLecture: 6,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2025-11-04',
     ordre: 10,
     ordreCollection: 1,
@@ -682,7 +684,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Agir', 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 8,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 10,
     ordreCollection: 1,
@@ -703,7 +705,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Quiz', 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 10,
-    image: TestImageTuile,
+    image: ImageTuileAutre,
     date: '2025-12-10',
     ordre: 10,
     ordreCollection: 3
@@ -719,7 +721,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Formation', 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 60 * 14,
-    image: TestImageTuile,
+    image: ImageTuileAutre,
     date: '2025-12-10',
     ordre: 20,
     ordreCollection: 4
@@ -734,7 +736,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Formation', 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 180,
-    image: TestImageTuile,
+    image: ImageTuileAutre,
     date: '2025-12-10',
     ordre: 30,
     ordreCollection: 5

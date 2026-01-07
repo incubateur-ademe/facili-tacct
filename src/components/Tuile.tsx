@@ -120,7 +120,7 @@ export const TuileHorizontale = ({
   const content = (
     <div className={styles.tuileHorizontale} tabIndex={lien ? -1 : 0} role="article">
       <div className={styles.imageContainer}>
-        <Image src={image} alt={titre} fill />
+        <Image src={image} alt={titre} fill style={{ objectFit: 'none', objectPosition: 'top' }} />
       </div>
 
       <div className={styles.contenu}>
