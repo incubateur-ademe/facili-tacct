@@ -28,13 +28,14 @@ export const MetaArticleResponsive = ({
 
   return (
     <div className={styles.articleTopBlocContainer}>
-      <div className={styles.articleTopBlocImage}>
+      <div className={styles.articleTopBlocImage} style={{ width: '384px', height: '281px' }}>
         <Image
           src={article.image!}
           alt={article.titre!}
-          width={384}
+          fill
           style={{
-            borderRadius: "2rem 2rem 2rem 0"
+            borderRadius: "2rem 2rem 2rem 0",
+            objectFit: "cover",
           }}
         />
       </div>
