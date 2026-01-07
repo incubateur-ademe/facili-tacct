@@ -58,15 +58,16 @@ export const renderBlock = async (el: Block, i: number) => {
       const caption = value?.caption?.[0]?.plain_text || "";
       if (!src) return null;
       return (
-        <figure key={i} className="flex flex-col items-center my-4">
+        <figure key={i} className="flex flex-col m-0 w-full">
           <ZoomOnClick
             src={src}
             alt={caption || "Image"}
             sizes="100%"
             width={0}
             height={0}
+            style={{ width: '100%' }}
           />
-          {caption && <figcaption className="text-sm text-gray-600 mt-2">{caption}</figcaption>}
+          {caption && <figcaption className="text-sm text-gray-600 mt-2 text-center">{caption}</figcaption>}
         </figure>
       );
     case "callout":
