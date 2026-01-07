@@ -36,9 +36,9 @@ export const TuileVerticale = ({
     });
 
     const hasRetourExperience = tagTexts.includes("Retour d'expérience");
-    const hasArticle = tagTexts.includes("Article");
+    // const hasArticle = tagTexts.includes("Article");
 
-    if (hasRetourExperience && hasArticle) {
+    if (hasRetourExperience) {
       return tags.map(tag => {
         if (React.isValidElement(tag) && tag.props && (tag.props as { texte?: string }).texte === "Retour d'expérience") {
           return React.cloneElement(tag as React.ReactElement<{ texte: string }>, { ...tag.props, texte: "REX" });

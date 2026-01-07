@@ -1,20 +1,6 @@
 import TestImageTuile from '@/assets/images/test_tuile.png';
-import Adacc from '@/lib/ressources/articles/adacc';
-import BriserSilosApprocheSystemique from '@/lib/ressources/articles/briserSilosApprocheSystemique';
-import CDC from '@/lib/ressources/articles/CDC';
-import ClimaStory from '@/lib/ressources/articles/climaStory';
-import EviterPrecherDesert from '@/lib/ressources/articles/eviterPrecherDesert';
-import FacilitationDateliers from '@/lib/ressources/articles/facilitationDateliers';
-import IlotChaleurUrbain from '@/lib/ressources/articles/ilotChaleurUrbain';
-import IndicateursDeResilience from '@/lib/ressources/articles/indicateursDeResilience';
-import LireUnDiagnostic from '@/lib/ressources/articles/lireUnDiagnostic';
-import PnaccTracc from '@/lib/ressources/articles/pnaccTracc';
-import RecruterStagiaire from '@/lib/ressources/articles/recruterStagiaire';
-import RisqueALadaptation from '@/lib/ressources/articles/risqueALadaptation';
 import { StaticImageData } from 'next/image';
 import { JSX } from 'react';
-import MiseEnRecit from './articles/miseEnRecit';
-import PourquoiMobiliser from './articles/pourquoiMobiliser';
 
 export const FiltresOptions = [
   {
@@ -77,7 +63,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 1,
     type: 'Article',
     slug: 'analyser-diagnostic-vulnerabilite',
-    Component: LireUnDiagnostic,
     titre: 'Que lire en priorité dans votre diagnostic de vulnérabilité ?',
     description:
       'Relisez votre diagnostic de vulnérabilité en 10 minutes : identifiez les données utiles et les enjeux prioritaires pour enclencher une stratégie d’adaptation concertée.',
@@ -99,7 +84,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 2,
     type: 'Article',
     slug: 'pnacc-tracc-comment-suis-je-concerne',
-    Component: PnaccTracc,
     titre: 'PNACC, TRACC, Comment suis-je concerné ?',
     description:
       'Découvrez les documents stratégiques qui orientent l’adaptation en France et permettent d’anticiper et de mettre en œuvre des stratégies cohérentes.',
@@ -222,7 +206,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 9,
     type: 'Article',
     slug: 'resilience-agricole-indicateurs-territoire',
-    Component: IndicateursDeResilience,
     titre:
       'Comment mesurer la résilience d’un territoire agricole face au changement climatique ?',
     description:
@@ -246,7 +229,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 10,
     type: 'Article',
     slug: 'ilot-chaleur-urbain-erreurs-a-eviter',
-    Component: IlotChaleurUrbain,
     titre:
       'Îlot de chaleur urbain : 4 erreurs fréquentes à éviter pour mieux agir sur le terrain',
     description:
@@ -270,8 +252,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 11,
     type: 'Article',
     slug: 'reussir-mobilisation-acteurs-adaptation',
-    Component: EviterPrecherDesert,
-    titre: 'Comment éviter de prêcher dans le désert ?',
+    titre: 'Lever les freins d’une mobilisation difficile',
     description:
       'La mobilisation n’est jamais simple, nous avons identifié des freins et des pratiques concrètes à activer pour réaliser une mobilisation efficace.',
     lien: '/ressources/articles/reussir-mobilisation-acteurs-adaptation',
@@ -283,7 +264,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     ordre: 50,
     ordreCollection: 2,
     metadata: {
-      title: 'Comment éviter de prêcher dans le désert ?',
+      title: 'Lever les freins d’une mobilisation difficile',
       description:
         'Conseils pour éviter de prêcher dans le désert et maximiser l’impact de vos actions d’adaptation.'
     }
@@ -292,7 +273,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 12,
     type: 'Article',
     slug: 'ateliers-adacc-adaptation',
-    Component: Adacc,
     titre:
       'Sensibiliser : les ateliers de l’adaptation au changement climatique (AdACC)',
     description:
@@ -316,7 +296,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 13,
     type: 'Article',
     slug: 'atelier-climastory-sensibilisation-adaptation',
-    Component: ClimaStory,
     titre: 'ClimaSTORY, une cartographie pour sensibiliser',
     description:
       'Approcher l’adaptation au changement climatique via une carte du territoire, fictive ou non : une manière sensible d’aborder le sujet.',
@@ -526,7 +505,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 26,
     type: 'Article',
     slug: 'briser-silos-approche-systemique',
-    Component: BriserSilosApprocheSystemique,
     titre: 'Brisez les silos : introduction à l’approche systémique',
     description:
       'Comprendre les interactions au sein de votre système est essentiel pour éviter les maladaptations. L’approche systémique vous accompagne de l’identification jusqu’à la mobilisation.',
@@ -553,7 +531,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 27,
     type: 'Article',
     slug: 'facilitation-ateliers-mobilisation',
-    Component: FacilitationDateliers,
     titre: 'La facilitation d’ateliers : une démarche éprouvée d’engagement',
     description:
       'Pour réellement engager vos parties prenantes dans votre démarche d’adaptation, appuyez-vous sur une démarche éprouvée : la facilitation d’ateliers.',
@@ -590,7 +567,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 29,
     type: 'Article',
     slug: 'facilitation-cahier-charges',
-    Component: CDC,
     titre: 'Le cahier des charges, levier pour intégrer la facilitation',
     description:
       'Engager vos participants, ça s’anticipe : intégrez la facilitation d’ateliers (ou l’intelligence collective) dès la conception de votre cahier des charges.',
@@ -629,7 +605,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 31,
     type: 'Article',
     slug: 'stagiaire-diagnostic-vulnerabilite-climat',
-    Component: RecruterStagiaire,
     titre:
       'Recruter un stagiaire sur le diagnostic de vulnérabilité : bonne ou mauvaise idée ?',
     description:
@@ -653,7 +628,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 32,
     type: 'Article',
     slug: 'strategie-adaptation-gestion-risque-relocalisation',
-    Component: RisqueALadaptation,
     titre:
       'De la gestion du risque à l’adaptation : le cas de la relocalisation de Miquelon',
     description:
@@ -677,7 +651,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 33,
     type: 'Article',
     slug: 'mobilisation-diagnostic-vulnerabilite',
-    Component: PourquoiMobiliser,
     titre:
       'Comment mobiliser en interne et en externe autour du diagnostic de vulnérabilité ?',
     description:
@@ -700,9 +673,9 @@ export const toutesLesRessources: ToutesRessources[] = [
   {
     id: 34,
     type: 'Article',
-    titre: 'Mettre en récit mon territoire pour engager',
+    titre:
+      'Pourquoi et comment mettre en récit son diagnostic de vulnérabilité ?',
     slug: 'mise-en-recit-territoire-adaptation-climat',
-    Component: MiseEnRecit,
     description:
       'Mettre en récit un diagnostic de vulnérabilité : un outil stratégique pour mobiliser élus et techniciens autour de l’adaptation au changement climatique.',
     lien: '/ressources/articles/mise-en-recit-territoire-adaptation-climat',
@@ -714,7 +687,8 @@ export const toutesLesRessources: ToutesRessources[] = [
     ordre: 10,
     ordreCollection: 1,
     metadata: {
-      title: 'Mettre en récit mon territoire pour engager',
+      title:
+        'Pourquoi et comment mettre en récit son diagnostic de vulnérabilité ?',
       description:
         'Découvrez comment mettre en récit votre territoire pour engager les acteurs locaux dans l’adaptation au changement climatique.'
     }

@@ -23,7 +23,7 @@ export const CollectionsData = [
       </>
     ),
     articles: toutesLesRessources.filter(ressource => ressource.collections.includes('Démarrer le diagnostic de vulnérabilité')),
-    metadescription: "Envie de vous lancer sans savoir par où commencer ? Découvrez formations, retours d’expérience et contenus pour identifier les impacts sur votre territoire."
+    metadescription: "Envie de vous lancer sans savoir par où commencer ? Découvrez formations, retours d’expérience et contenus pour identifier les impacts du changement climatique sur votre territoire."
   },
   {
     titre: 'Évaluer les impacts du changement climatique',
@@ -57,7 +57,7 @@ export const CollectionsData = [
       </>
     ),
     articles: toutesLesRessources.filter(ressource => ressource.collections.includes('Associer les parties prenantes')),
-    metadescription: "Mobilisez vos élus, les techniciens et les acteurs locaux dès le diagnostic : un constat partagé aujourd’hui = des solutions solides demain !"
+    metadescription: "Associez vos élus, les techniciens et les acteurs locaux dès le diagnostic : un constat partagé aujourd’hui = des solutions solides demain. Découvrez comment mobiliser autour de vous."
   },
   {
     titre: 'Piloter la démarche d’adaptation',
@@ -125,6 +125,6 @@ export const CollectionsData = [
       </>
     ),
     articles: toutesLesRessources.filter(ressource => ressource.collections.includes("Bâtir la stratégie d’adaptation")),
-    metadescription: "Une étape cruciale pour co-construire un plan d’action fédérateur qui articule vos documents réglementaires autour d’un projet de territoire."
+    metadescription: "Cette étape est cruciale pour co-construire un plan d’action fédérateur qui anticipe les évolutions climatiques et articule vos documents réglementaires autour d’un projet de territoire."
   },
 ];

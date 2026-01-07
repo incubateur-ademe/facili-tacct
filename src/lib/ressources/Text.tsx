@@ -45,7 +45,15 @@ export const Text = ({ text }: Props) => {
           }
         }
       >
-        {textObj.link ? <a href={textObj.link.url}>{normalizedContent}</a> : normalizedContent}
+        {textObj.link ?
+          <a
+            href={textObj.link.url}
+            target={textObj.link.url.includes("facili-tacct") ? "_self" : "_blank"}
+            rel={textObj.link.url.includes("facili-tacct") ? undefined : "noopener noreferrer"}
+            className={styles.link}
+          >
+            {normalizedContent}
+          </a> : normalizedContent}
       </span>
     );
   });
