@@ -41,7 +41,7 @@ export const groupAndRenderBlocks = async (blocks: Block[]) => {
   }
 
   const pageContent = await Promise.all(groupedBlocks.map(async (group, groupIdx) => {
-    if (group.length > 1 && (group[0].type === 'bulleted_list_item' || group[0].type === 'numbered_list_item')) {
+    if (group[0].type === 'bulleted_list_item' || group[0].type === 'numbered_list_item') {
       const items = await Promise.all(group.map((block, idx) => renderBlock(block, idx)));
       const ListTag = group[0].type === 'bulleted_list_item' ? 'ul' : 'ol';
       return <ListTag key={groupIdx}>{items}</ListTag>;

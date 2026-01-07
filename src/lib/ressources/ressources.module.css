@@ -20,3 +20,11 @@
 .underline {
     text-decoration: underline;
 }
+
+.link {
+    color: inherit;
+}
+
+.link::after {
+    content: none !important;
+}
