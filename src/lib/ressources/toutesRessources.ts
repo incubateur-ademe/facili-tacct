@@ -1,20 +1,8 @@
-import TestImageTuile from '@/assets/images/test_tuile.png';
-import Adacc from '@/lib/ressources/articles/adacc';
-import BriserSilosApprocheSystemique from '@/lib/ressources/articles/briserSilosApprocheSystemique';
-import CDC from '@/lib/ressources/articles/CDC';
-import ClimaStory from '@/lib/ressources/articles/climaStory';
-import EviterPrecherDesert from '@/lib/ressources/articles/eviterPrecherDesert';
-import FacilitationDateliers from '@/lib/ressources/articles/facilitationDateliers';
-import IlotChaleurUrbain from '@/lib/ressources/articles/ilotChaleurUrbain';
-import IndicateursDeResilience from '@/lib/ressources/articles/indicateursDeResilience';
-import LireUnDiagnostic from '@/lib/ressources/articles/lireUnDiagnostic';
-import PnaccTracc from '@/lib/ressources/articles/pnaccTracc';
-import RecruterStagiaire from '@/lib/ressources/articles/recruterStagiaire';
-import RisqueALadaptation from '@/lib/ressources/articles/risqueALadaptation';
+import ImageTuileArticle from '@/assets/images/imageTuileArticle.png';
+import ImageTuileAutre from '@/assets/images/imageTuileAutre.png';
+import ImageTuileRex from '@/assets/images/imageTuileRex.png';
 import { StaticImageData } from 'next/image';
 import { JSX } from 'react';
-import MiseEnRecit from './articles/miseEnRecit';
-import PourquoiMobiliser from './articles/pourquoiMobiliser';
 
 export const FiltresOptions = [
   {
@@ -77,7 +65,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 1,
     type: 'Article',
     slug: 'analyser-diagnostic-vulnerabilite',
-    Component: LireUnDiagnostic,
     titre: 'Que lire en priorité dans votre diagnostic de vulnérabilité ?',
     description:
       'Relisez votre diagnostic de vulnérabilité en 10 minutes : identifiez les données utiles et les enjeux prioritaires pour enclencher une stratégie d’adaptation concertée.',
@@ -85,7 +72,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Agir'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 5,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 70,
     ordreCollection: 1,
@@ -99,7 +86,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 2,
     type: 'Article',
     slug: 'pnacc-tracc-comment-suis-je-concerne',
-    Component: PnaccTracc,
     titre: 'PNACC, TRACC, Comment suis-je concerné ?',
     description:
       'Découvrez les documents stratégiques qui orientent l’adaptation en France et permettent d’anticiper et de mettre en œuvre des stratégies cohérentes.',
@@ -107,7 +93,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2025-07-25',
     ordre: 20,
     ordreCollection: 2,
@@ -128,7 +114,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 90,
     ordreCollection: 8
@@ -144,7 +130,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 30,
     ordreCollection: 7
@@ -160,7 +146,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 3,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 110,
     ordreCollection: 6
@@ -181,7 +167,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     ],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 11,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 80,
     ordreCollection: 9
@@ -197,7 +183,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Évaluer les impacts du changement climatique'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 70,
     ordreCollection: 5
@@ -213,7 +199,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Évaluer les impacts du changement climatique'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 120,
     ordreCollection: 4
@@ -222,7 +208,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 9,
     type: 'Article',
     slug: 'resilience-agricole-indicateurs-territoire',
-    Component: IndicateursDeResilience,
     titre:
       'Comment mesurer la résilience d’un territoire agricole face au changement climatique ?',
     description:
@@ -231,7 +216,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Me former'],
     collections: ['Évaluer les impacts du changement climatique'],
     tempsLecture: 7,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2025-10-14',
     ordre: 10,
     ordreCollection: 2,
@@ -246,7 +231,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 10,
     type: 'Article',
     slug: 'ilot-chaleur-urbain-erreurs-a-eviter',
-    Component: IlotChaleurUrbain,
     titre:
       'Îlot de chaleur urbain : 4 erreurs fréquentes à éviter pour mieux agir sur le terrain',
     description:
@@ -255,7 +239,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Me former'],
     collections: ['Évaluer les impacts du changement climatique'],
     tempsLecture: 8,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2025-07-25',
     ordre: 30,
     ordreCollection: 3,
@@ -270,20 +254,19 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 11,
     type: 'Article',
     slug: 'reussir-mobilisation-acteurs-adaptation',
-    Component: EviterPrecherDesert,
-    titre: 'Comment éviter de prêcher dans le désert ?',
+    titre: 'Lever les freins d’une mobilisation difficile',
     description:
       'La mobilisation n’est jamais simple, nous avons identifié des freins et des pratiques concrètes à activer pour réaliser une mobilisation efficace.',
     lien: '/ressources/articles/reussir-mobilisation-acteurs-adaptation',
     filtres: ['Article', 'Agir'],
     collections: ['Associer les parties prenantes'],
     tempsLecture: 3,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 50,
     ordreCollection: 2,
     metadata: {
-      title: 'Comment éviter de prêcher dans le désert ?',
+      title: 'Lever les freins d’une mobilisation difficile',
       description:
         'Conseils pour éviter de prêcher dans le désert et maximiser l’impact de vos actions d’adaptation.'
     }
@@ -292,7 +275,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 12,
     type: 'Article',
     slug: 'ateliers-adacc-adaptation',
-    Component: Adacc,
     titre:
       'Sensibiliser : les ateliers de l’adaptation au changement climatique (AdACC)',
     description:
@@ -301,7 +283,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', "Retour d'expérience", 'Agir', 'Nouvelle-Aquitaine'],
     collections: ['Associer les parties prenantes'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 40,
     ordreCollection: 3,
@@ -316,7 +298,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 13,
     type: 'Article',
     slug: 'atelier-climastory-sensibilisation-adaptation',
-    Component: ClimaStory,
     titre: 'ClimaSTORY, une cartographie pour sensibiliser',
     description:
       'Approcher l’adaptation au changement climatique via une carte du territoire, fictive ou non : une manière sensible d’aborder le sujet.',
@@ -324,7 +305,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Agir'],
     collections: ['Associer les parties prenantes'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 30,
     ordreCollection: 4,
@@ -345,7 +326,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Associer les parties prenantes'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 60,
     ordreCollection: 5
@@ -361,7 +342,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 20,
     ordreCollection: 4
@@ -377,7 +358,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2025-07-25',
     ordre: 40,
     ordreCollection: 3
@@ -393,7 +374,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 50,
     ordreCollection: 7
@@ -408,7 +389,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Centre-Val de Loire'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 1,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 100,
     ordreCollection: 6
@@ -424,7 +405,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2025-07-25',
     ordre: 50,
     ordreCollection: 5
@@ -440,7 +421,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 150,
     ordreCollection: 3
@@ -455,7 +436,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 140,
     ordreCollection: 6
@@ -470,7 +451,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 130,
     ordreCollection: 7
@@ -486,7 +467,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 70,
     ordreCollection: 4
@@ -501,7 +482,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 10,
     ordreCollection: 5
@@ -517,7 +498,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 40,
     ordreCollection: 2
@@ -526,7 +507,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 26,
     type: 'Article',
     slug: 'briser-silos-approche-systemique',
-    Component: BriserSilosApprocheSystemique,
     titre: 'Brisez les silos : introduction à l’approche systémique',
     description:
       'Comprendre les interactions au sein de votre système est essentiel pour éviter les maladaptations. L’approche systémique vous accompagne de l’identification jusqu’à la mobilisation.',
@@ -539,7 +519,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     ],
     collections: ['Adopter la bonne posture'],
     tempsLecture: 5,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2025-07-25',
     ordre: 20,
     ordreCollection: 2,
@@ -553,7 +533,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 27,
     type: 'Article',
     slug: 'facilitation-ateliers-mobilisation',
-    Component: FacilitationDateliers,
     titre: 'La facilitation d’ateliers : une démarche éprouvée d’engagement',
     description:
       'Pour réellement engager vos parties prenantes dans votre démarche d’adaptation, appuyez-vous sur une démarche éprouvée : la facilitation d’ateliers.',
@@ -561,7 +540,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Agir'],
     collections: ['Adopter la bonne posture'],
     tempsLecture: 3,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 20,
     ordreCollection: 1,
@@ -581,7 +560,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Adopter la bonne posture'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 160,
     ordreCollection: 3
@@ -590,7 +569,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 29,
     type: 'Article',
     slug: 'facilitation-cahier-charges',
-    Component: CDC,
     titre: 'Le cahier des charges, levier pour intégrer la facilitation',
     description:
       'Engager vos participants, ça s’anticipe : intégrez la facilitation d’ateliers (ou l’intelligence collective) dès la conception de votre cahier des charges.',
@@ -598,7 +576,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Agir'],
     collections: ['Piloter la démarche d’adaptation'],
     tempsLecture: 2,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 60,
     ordreCollection: 1,
@@ -620,7 +598,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
     collections: ['Piloter la démarche d’adaptation'],
     tempsLecture: 4,
-    image: TestImageTuile,
+    image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 170,
     ordreCollection: 3
@@ -629,7 +607,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 31,
     type: 'Article',
     slug: 'stagiaire-diagnostic-vulnerabilite-climat',
-    Component: RecruterStagiaire,
     titre:
       'Recruter un stagiaire sur le diagnostic de vulnérabilité : bonne ou mauvaise idée ?',
     description:
@@ -638,7 +615,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Agir'],
     collections: ['Piloter la démarche d’adaptation'],
     tempsLecture: 5,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2025-07-25',
     ordre: 30,
     ordreCollection: 2,
@@ -653,7 +630,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 32,
     type: 'Article',
     slug: 'strategie-adaptation-gestion-risque-relocalisation',
-    Component: RisqueALadaptation,
     titre:
       'De la gestion du risque à l’adaptation : le cas de la relocalisation de Miquelon',
     description:
@@ -662,7 +638,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', "Retour d'expérience", "M'inspirer", 'Outremer'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 7,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2025-11-25',
     ordre: 10,
     ordreCollection: 1,
@@ -677,7 +653,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 33,
     type: 'Article',
     slug: 'mobilisation-diagnostic-vulnerabilite',
-    Component: PourquoiMobiliser,
     titre:
       'Comment mobiliser en interne et en externe autour du diagnostic de vulnérabilité ?',
     description:
@@ -686,7 +661,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Article', 'Agir'],
     collections: ['Associer les parties prenantes'],
     tempsLecture: 6,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2025-11-04',
     ordre: 10,
     ordreCollection: 1,
@@ -700,21 +675,22 @@ export const toutesLesRessources: ToutesRessources[] = [
   {
     id: 34,
     type: 'Article',
-    titre: 'Mettre en récit mon territoire pour engager',
+    titre:
+      'Pourquoi et comment mettre en récit son diagnostic de vulnérabilité ?',
     slug: 'mise-en-recit-territoire-adaptation-climat',
-    Component: MiseEnRecit,
     description:
       'Mettre en récit un diagnostic de vulnérabilité : un outil stratégique pour mobiliser élus et techniciens autour de l’adaptation au changement climatique.',
     lien: '/ressources/articles/mise-en-recit-territoire-adaptation-climat',
     filtres: ['Article', 'Agir', 'Auvergne-Rhône-Alpes'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 8,
-    image: TestImageTuile,
+    image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 10,
     ordreCollection: 1,
     metadata: {
-      title: 'Mettre en récit mon territoire pour engager',
+      title:
+        'Pourquoi et comment mettre en récit son diagnostic de vulnérabilité ?',
       description:
         'Découvrez comment mettre en récit votre territoire pour engager les acteurs locaux dans l’adaptation au changement climatique.'
     }
@@ -729,7 +705,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Quiz', 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 10,
-    image: TestImageTuile,
+    image: ImageTuileAutre,
     date: '2025-12-10',
     ordre: 10,
     ordreCollection: 3
@@ -745,7 +721,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Formation', 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 60 * 14,
-    image: TestImageTuile,
+    image: ImageTuileAutre,
     date: '2025-12-10',
     ordre: 20,
     ordreCollection: 4
@@ -760,7 +736,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Formation', 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 180,
-    image: TestImageTuile,
+    image: ImageTuileAutre,
     date: '2025-12-10',
     ordre: 30,
     ordreCollection: 5

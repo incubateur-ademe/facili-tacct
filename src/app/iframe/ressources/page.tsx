@@ -1,7 +1,9 @@
+import { collectionsCartes } from '@/lib/ressources/cartes';
 import { Metadata } from 'next';
-import { Suspense } from 'react';
-import { Container } from '../../../design-system/server';
-import RessourcesCards from './cards';
+import { BlocAutresOutils } from './blocs/blocAutresOutils';
+import { BlocCollections, BlocCollectionsResponsive } from './blocs/blocCollections';
+import { BlocTitre } from './blocs/blocTitre';
+import { BlocToutesRessources } from './blocs/blocToutesRessources';
 import styles from './ressources.module.scss';
 
 export const metadata: Metadata = {
@@ -11,11 +13,17 @@ export const metadata: Metadata = {
 
 const Ressources = () => {
   return (
-    <Container size="xl" className={styles.ressourcesContainer}>
-      <Suspense>
-        <RessourcesCards />
-      </Suspense>
-    </Container>
+    <>
+      <BlocTitre />
+      <div className={styles.desktopOnly}>
+        <BlocCollections collectionsCartes={collectionsCartes} />
+      </div>
+      <div className={styles.mobileOnly}>
+        <BlocCollectionsResponsive collectionsCartes={collectionsCartes} />
+      </div>
+      <BlocAutresOutils />
+      <BlocToutesRessources />
+    </>
   );
 };
 

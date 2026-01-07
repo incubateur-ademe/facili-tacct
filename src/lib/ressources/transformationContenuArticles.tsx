@@ -3,6 +3,7 @@ import ZoomOnClick from "@/components/utils/ZoomOnClick";
 import { Body, H2, H3 } from "@/design-system/base/Textes";
 import { getBlocks } from "../queries/notion/notion";
 import { normalizeText } from "../utils/reusableFunctions/NormalizeTexts";
+import { groupAndRenderBlocks } from "./bulletListContent";
 import { Text } from "./Text";
 
 export const renderBlock = async (el: Block, i: number) => {
@@ -42,15 +43,21 @@ export const renderBlock = async (el: Block, i: number) => {
         </div>
       );
     case "bulleted_list_item":
+      const bulletChildren = el.has_children ? await getBlocks(el.id) as Block[] : [];
+      const bulletChildrenContent = bulletChildren.length > 0 ? await groupAndRenderBlocks(bulletChildren) : null;
       return (
-        <li key={i} style={{ margin: "1rem 0 1rem 2rem" }}>
+        <li key={i} style={{ margin: "1rem 0 1rem 1rem" }}>
           <Text text={richText} />
+          {bulletChildrenContent}
         </li>
       );
     case "numbered_list_item":
+      const numberedChildren = el.has_children ? await getBlocks(el.id) as Block[] : [];
+      const numberedChildrenContent = numberedChildren.length > 0 ? await groupAndRenderBlocks(numberedChildren) : null;
       return (
-        <li key={i} style={{ margin: "1rem 0 1rem 2rem" }}>
+        <li key={i} style={{ margin: "1rem 0 1rem 1rem" }}>
           <Text text={richText} />
+          {numberedChildrenContent}
         </li>
       );
     case "image":
@@ -58,20 +65,21 @@ export const renderBlock = async (el: Block, i: number) => {
       const caption = value?.caption?.[0]?.plain_text || "";
       if (!src) return null;
       return (
-        <figure key={i} className="flex flex-col items-center my-4">
+        <figure key={i} className="flex flex-col m-0 w-full">
           <ZoomOnClick
             src={src}
             alt={caption || "Image"}
             sizes="100%"
             width={0}
             height={0}
+            style={{ width: '100%' }}
           />
-          {caption && <figcaption className="text-sm text-gray-600 mt-2">{caption}</figcaption>}
+          {caption && <figcaption className="text-sm text-gray-600 mt-2 text-center">{caption}</figcaption>}
         </figure>
       );
     case "callout":
       const calloutChildren = el.has_children ? await getBlocks(el.id) as Block[] : [];
-      const childrenContent = await Promise.all(calloutChildren.map((child, idx) => renderBlock(child, idx)));
+      const childrenContent = await groupAndRenderBlocks(calloutChildren);
       const colorClass = value?.color?.includes('gray') ? 'bg-gray-100 border-gray-300' : 'bg-blue-50 border-blue-300';
       const icon = value?.icon?.type === 'emoji' ? value.icon.emoji : null;
       return (
@@ -80,7 +88,7 @@ export const renderBlock = async (el: Block, i: number) => {
             {icon && <span className="text-xl">{icon}</span>}
             <span><Text text={richText} /></span>
           </div>
-          <div className="ml-4">
+          <div>
             {childrenContent}
           </div>
         </div>
@@ -117,9 +125,17 @@ export const renderBlock = async (el: Block, i: number) => {
           <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #ddd' }}>
             <tbody>
               {tableRows.map((row, rowIdx) => (
-                <tr key={rowIdx}>
+                <tr key={rowIdx} style={rowIdx === 0 ? { backgroundColor: '#f6f6f6' } : {}}>
                   {row.table_row?.cells?.map((cell, cellIdx) => (
-                    <td key={cellIdx} style={{ border: '1px solid #ddd', padding: '0.75rem', fontSize: '14px' }}>
+                    <td
+                      key={cellIdx}
+                      style={{
+                        border: '1px solid #ddd',
+                        padding: '0.75rem',
+                        fontSize: '14px',
+                        fontWeight: rowIdx === 0 ? 'bold' : 'normal'
+                      }}
+                    >
                       <Text text={cell} />
                     </td>
                   ))}
@@ -132,8 +148,26 @@ export const renderBlock = async (el: Block, i: number) => {
     case "table_row":
       return null;
     default:
+      if (process.env.NODE_ENV === 'development') {
+        console.warn(`Type de bloc non pris en compte: ${el.type}`, el);
+      }
       return (
-        <div key={i}>
+        <div key={i} style={{
+          padding: '1rem',
+          margin: '1rem 0',
+          backgroundColor: process.env.NODE_ENV === 'development' ? '#fff3cd' : 'transparent',
+          border: process.env.NODE_ENV === 'development' ? '1px solid #ffc107' : 'none'
+        }}>
+          {process.env.NODE_ENV === 'development' && (
+            <div style={{
+              color: '#856404',
+              fontSize: '0.875rem',
+              fontWeight: 'bold',
+              marginBottom: '0.5rem'
+            }}>
+              ⚠️ Bloc non pris en compte : {el.type}
+            </div>
+          )}
           <Text text={richText} />
         </div>
       );
