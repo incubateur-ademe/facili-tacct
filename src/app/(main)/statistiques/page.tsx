@@ -1,8 +1,9 @@
 import { H1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import jwt from 'jsonwebtoken';
+import styles from './statistiques.module.scss';
 
-export const revalidate = 3600;
+export const revalidate = 300;
 
 const generateMetabaseUrl = (dashboardId: number): string => {
   const METABASE_URL = process.env.METABASE_URL!;
@@ -25,21 +26,13 @@ const Page = async () => {
   return (
     <NewContainer size="xl">
       <H1>Statistiques</H1>
-      <div style={{
-        position: 'relative',
-        width: '100%',
-        height: '1850px',
-        overflow: 'hidden',
-        marginLeft: '-4.5em',
-        marginRight: '0em',
-        marginTop: '-1rem'
-      }}>
+      <div className={styles.iframeContainer}>
         <iframe
           src={embedUrl}
           title="Tableau de bord stats"
           width="100%"
           height="2000"
-          style={{ border: 'none', position: 'absolute', top: 0, left: 0 }}
+          className={styles.iframe}
         />
       </div>
     </NewContainer>
