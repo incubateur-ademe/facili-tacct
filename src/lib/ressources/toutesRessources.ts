@@ -464,7 +464,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     description:
       'Après avoir réalisé en autonomie son diagnostic de vulnérabilité, le PNR du Pilat a décidé de suivre TACCT Stratégie pour mobiliser et mettre en récit son territoire sur un enjeu déterminé.',
     lien: 'https://librairie.ademe.fr/7544-mettre-en-recit-tacct-strategie-pour-engager-les-elus-retour-d-experience-du-pnr-du-pilat-42.html',
-    filtres: ["Retour d'expérience", "M'inspirer", 'Auvergne-Rhône-Alpes'],
+    filtres: ["Retour d'expérience", "M'inspirer"],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
     image: ImageTuileRex,
