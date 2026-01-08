@@ -29,15 +29,34 @@ const Home = () => {
           color: "#201F1E"
         })}
         isClosable={true}
-        title={"Nouveautés sur le site :"}
+        title={"Nouveau :"}
         description={
           <>
-            Nouvelles ressources{" "}
+            une sélection de ressources regroupées par "collection" pour vous accompagner
+            dans chaque situation : découvrez votre nouvel espace "
             <Link
               href="/ressources"
             >
-              ici
+              Boîte à outils
             </Link>
+            " ! Vous y trouverez également les formations ADEME de la méthode TACCT ainsi
+            qu’un{" "}
+            <Link
+              href="https://tally.so/r/w4l8pk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              quiz pour tester vos connaissances sur l’adaptation
+            </Link>
+            . Une remarque, une suggestion ?{' '}
+            <a
+              href="https://tally.so/r/mJGELz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contactez-nous
+            </a>
+            , on a hâte d’avoir vos retours !
           </>
         }
       />
