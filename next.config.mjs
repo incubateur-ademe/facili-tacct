@@ -19,6 +19,8 @@ const csp = {
     'connect-src': [
         '*',
         'https://*.gouv.fr',
+        'https://eu.posthog.com',
+        'https://eu.i.posthog.com',
         process.env.NEXT_PUBLIC_ENV === 'preprod' && 'https://vercel.live',
         process.env.NODE_ENV === 'development' && 'http://localhost'
     ],
