@@ -22,7 +22,7 @@ interface ArticlePageProps {
   }>;
 }
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   return toutesLesRessources.map((article) => {
@@ -70,7 +70,6 @@ const ArticleRessourcePage = async ({ params }: ArticlePageProps) => {
       const richText = block.heading_2?.rich_text || [];
       return normalizeText(richText.map(rt => rt.plain_text || rt.text.content).join(''));
     });
-
   const pageContent = await groupAndRenderBlocks(contentWithoutH1);
   const collection = CollectionsData.find(c => c.slug === collectionId);
   const collectionSlug = CollectionsData.find(c => c.titre === article?.collections[0])?.slug || collectionId;

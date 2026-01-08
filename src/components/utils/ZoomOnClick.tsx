@@ -6,12 +6,12 @@ interface ZoomOnClickProps extends Omit<ImageProps, "ref"> {
   wrapperStyle?: CSSProperties;
 }
 
-const ZoomOnClick: React.FC<ZoomOnClickProps> = ({ wrapperStyle, ...imgProps }) => {
+const ZoomOnClick: React.FC<ZoomOnClickProps> = ({ wrapperStyle, style, ...imgProps }) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <div style={{ position: 'relative', ...wrapperStyle }}>
       <div style={{ cursor: 'zoom-in', width: '100%' }} onClick={() => setShowModal(true)}>
-        <Image {...imgProps} style={{ width: '100%', height: 'auto', ...imgProps.style }} />
+        <Image {...imgProps} unoptimized style={{ width: 'auto', height: 'auto', ...style }} />
       </div>
       {showModal && (
         <div
@@ -25,25 +25,25 @@ const ZoomOnClick: React.FC<ZoomOnClickProps> = ({ wrapperStyle, ...imgProps }) 
             background: 'rgba(0,0,0,0.8)',
             zIndex: 1000,
             cursor: 'zoom-out',
-            overflow: 'auto',
-            padding: 0,
-            margin: 0,
-            textAlign: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '40px',
           }}
         >
-          <Image
-            {...imgProps}
+          <img
+            src={imgProps.src as string}
+            alt={imgProps.alt}
             style={{
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+              minWidth: '60vw',
               width: 'auto',
               height: 'auto',
+              objectFit: 'contain',
               boxShadow: '0 0 24px #000',
               background: '#fff',
               borderRadius: '8px',
-              display: 'inline-block',
-              margin: '40px auto',
-              maxWidth: '90dvw',
-              maxHeight: '90dvh',
-              ...imgProps.style,
             }}
           />
         </div>
