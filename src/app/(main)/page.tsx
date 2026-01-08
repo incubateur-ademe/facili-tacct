@@ -9,6 +9,8 @@ import { PremierBloc } from './(home)/PremierBloc';
 import { RessourcesBloc } from './(home)/RessourcesBloc';
 import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
+import Link from 'next/link';
+import Notice from '@codegouvfr/react-dsfr/Notice';
 
 const Home = () => {
   const { css } = useStyles();
@@ -21,7 +23,7 @@ const Home = () => {
 
   return (
     <div>
-      {/* <Notice
+      <Notice
         className={css({
           backgroundColor: 'var(--gris-medium)',
           color: "#201F1E"
@@ -30,27 +32,15 @@ const Home = () => {
         title={"Nouveautés sur le site :"}
         description={
           <>
-            Découvrez dans notre dernier article{" "}
+            Nouvelles ressources{" "}
             <Link
-              href="/ressources/articles/strategie-adaptation-gestion-risque-relocalisation"
+              href="/ressources"
             >
-              comment passer de la gestion du risque à l’adaptation
+              ici
             </Link>
-            , consultez la part des chefs d’exploitation de plus de 55 ans
-            sur votre territoire et parcourez nos conseils terrain pour diagnostiquer
-            vos futurs impacts agricoles (thématique Agriculture).
-            Une remarque, une suggestion ?{' '}
-            <a
-              href="https://tally.so/r/mJGELz"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Contactez-nous
-            </a>
-            , on a hâte d’avoir vos retours !
           </>
         }
-      /> */}
+      />
       <PremierBloc />
       <Patch4Bloc />
       <TacctBloc />
