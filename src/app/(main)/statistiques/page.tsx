@@ -7,7 +7,7 @@ const generateMetabaseUrl = (dashboardId: number): string => {
   const METABASE_URL = process.env.METABASE_URL!;
   const METABASE_EMBEDDING_KEY = process.env.METABASE_EMBEDDING_KEY!;
 
-  const exp = Math.floor(Date.now() / 1000) + 60 * 10;
+  const exp = Math.floor(Date.now() / 1000) + (3600 * 24 * 30); // 30 days expiration
   const payload = {
     resource: { dashboard: dashboardId },
     params: {},
