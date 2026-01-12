@@ -3,8 +3,6 @@ import { NewContainer } from '@/design-system/layout';
 import jwt from 'jsonwebtoken';
 import styles from './statistiques.module.scss';
 
-export const revalidate = 300;
-
 const generateMetabaseUrl = (dashboardId: number): string => {
   const METABASE_URL = process.env.METABASE_URL!;
   const METABASE_EMBEDDING_KEY = process.env.METABASE_EMBEDDING_KEY!;
