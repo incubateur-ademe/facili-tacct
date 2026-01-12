@@ -1,9 +1,7 @@
-import { H1 } from '@/design-system/base/Textes';
+import { Body, H1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import jwt from 'jsonwebtoken';
 import styles from './statistiques.module.scss';
-
-export const revalidate = 300;
 
 const generateMetabaseUrl = (dashboardId: number): string => {
   const METABASE_URL = process.env.METABASE_URL!;
@@ -26,6 +24,7 @@ const Page = async () => {
   return (
     <NewContainer size="xl">
       <H1>Statistiques</H1>
+      <Body>Cette page présente les statistiques d’utilisation du service Facili-TACCT.</Body>
       <div className={styles.iframeContainer}>
         <iframe
           src={embedUrl}
