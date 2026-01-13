@@ -711,3 +711,12 @@ export const LCZText = () => (
     </Body>
   </>
 );
+
+export const AiresAppellationsControleesText = () => (
+  <>
+    <Body size='sm'>
+      AIRES APPELLATIONS CONTRÔLÉES (AOC) ET INDICATIONS GÉOGRAPHIQUES PROTÉGÉES (IGP)
+    </Body>
+
+  </>
+);

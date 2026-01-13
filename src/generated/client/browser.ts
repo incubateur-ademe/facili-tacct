@@ -18,140 +18,10 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
- * Model north_star_metric
- * 
- */
-export type north_star_metric = Prisma.north_star_metricModel
-/**
  * Model sandbox_users
  * 
  */
 export type sandbox_users = Prisma.sandbox_usersModel
-/**
- * Model users
- * 
- */
-export type users = Prisma.usersModel
-/**
- * Model agriculture
- * 
- */
-export type agriculture = Prisma.agricultureModel
-/**
- * Model agriculture_bio
- * 
- */
-export type agriculture_bio = Prisma.agriculture_bioModel
-/**
- * Model aot_40
- * 
- */
-export type aot_40 = Prisma.aot_40Model
-/**
- * Model arretes_catnat
- * 
- */
-export type arretes_catnat = Prisma.arretes_catnatModel
-/**
- * Model atlas_biodiversite
- * 
- */
-export type atlas_biodiversite = Prisma.atlas_biodiversiteModel
-/**
- * Model collectivites_searchbar
- * 
- */
-export type collectivites_searchbar = Prisma.collectivites_searchbarModel
-/**
- * Model confort_thermique
- * 
- */
-export type confort_thermique = Prisma.confort_thermiqueModel
-/**
- * Model consommation_espaces_naf
- * 
- */
-export type consommation_espaces_naf = Prisma.consommation_espaces_nafModel
-/**
- * Model export_cours_d_eau
- * 
- */
-export type export_cours_d_eau = Prisma.export_cours_d_eauModel
-/**
- * Model feux_foret
- * 
- */
-export type feux_foret = Prisma.feux_foretModel
-/**
- * Model lcz_couverture
- * 
- */
-export type lcz_couverture = Prisma.lcz_couvertureModel
-/**
- * Model patch4c
- * 
- */
-export type patch4c = Prisma.patch4cModel
-/**
- * Model prelevements_eau
- * 
- */
-export type prelevements_eau = Prisma.prelevements_eauModel
-/**
- * Model qualite_sites_baignade
- * 
- */
-export type qualite_sites_baignade = Prisma.qualite_sites_baignadeModel
-/**
- * Model ressources_eau
- * 
- */
-export type ressources_eau = Prisma.ressources_eauModel
-/**
- * Model rga
- * 
- */
-export type rga = Prisma.rgaModel
-/**
- * Model surfaces_agricoles
- * 
- */
-export type surfaces_agricoles = Prisma.surfaces_agricolesModel
-/**
- * Model surfaces_protegees
- * 
- */
-export type surfaces_protegees = Prisma.surfaces_protegeesModel
-/**
- * Model table_commune
- * 
- */
-export type table_commune = Prisma.table_communeModel
-/**
- * Model table_territoires
- * 
- */
-export type table_territoires = Prisma.table_territoiresModel
-/**
- * Model communes_drom
- * 
- */
-export type communes_drom = Prisma.communes_dromModel
-/**
- * Model erosion_cotiere
- * 
- */
-export type erosion_cotiere = Prisma.erosion_cotiereModel
-/**
- * Model etat_cours_d_eau
- * 
- */
-export type etat_cours_d_eau = Prisma.etat_cours_d_eauModel
-/**
- * Model inconfort_thermique
- * 
- */
-export type inconfort_thermique = Prisma.inconfort_thermiqueModel
 /**
  * Model databases_v2_agriculture
  * 
@@ -223,16 +93,6 @@ export type databases_v2_prelevements_eau = Prisma.databases_v2_prelevements_eau
  */
 export type databases_v2_qualite_sites_baignade = Prisma.databases_v2_qualite_sites_baignadeModel
 /**
- * Model databases_v2_ressources_eau
- * 
- */
-export type databases_v2_ressources_eau = Prisma.databases_v2_ressources_eauModel
-/**
- * Model databases_v2_rga
- * 
- */
-export type databases_v2_rga = Prisma.databases_v2_rgaModel
-/**
  * Model databases_v2_surfaces_agricoles
  * 
  */
@@ -252,11 +112,6 @@ export type databases_v2_table_commune = Prisma.databases_v2_table_communeModel
  * 
  */
 export type databases_v2_table_territoires = Prisma.databases_v2_table_territoiresModel
-/**
- * Model clc_territoires
- * 
- */
-export type clc_territoires = Prisma.clc_territoiresModel
 /**
  * Model postgis_rga
  * 
@@ -282,3 +137,58 @@ export type postgis_v2_etat_cours_d_eau = Prisma.postgis_v2_etat_cours_d_eauMode
  * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
  */
 export type spatial_ref_sys = Prisma.spatial_ref_sysModel
+/**
+ * Model all_autocapture_raw
+ * 
+ */
+export type all_autocapture_raw = Prisma.all_autocapture_rawModel
+/**
+ * Model all_pageview_raw
+ * 
+ */
+export type all_pageview_raw = Prisma.all_pageview_rawModel
+/**
+ * Model baserow_evenements
+ * 
+ */
+export type baserow_evenements = Prisma.baserow_evenementsModel
+/**
+ * Model baserow_territoires
+ * 
+ */
+export type baserow_territoires = Prisma.baserow_territoiresModel
+/**
+ * Model boutons_export_raw
+ * 
+ */
+export type boutons_export_raw = Prisma.boutons_export_rawModel
+/**
+ * Model boutons_homepage
+ * 
+ */
+export type boutons_homepage = Prisma.boutons_homepageModel
+/**
+ * Model couverture_population
+ * 
+ */
+export type couverture_population = Prisma.couverture_populationModel
+/**
+ * Model north_star_metric
+ * 
+ */
+export type north_star_metric = Prisma.north_star_metricModel
+/**
+ * Model ressources_consultees
+ * 
+ */
+export type ressources_consultees = Prisma.ressources_consulteesModel
+/**
+ * Model thematique
+ * 
+ */
+export type thematique = Prisma.thematiqueModel
+/**
+ * Model secheresses
+ * 
+ */
+export type secheresses = Prisma.secheressesModel

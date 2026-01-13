@@ -13,7 +13,6 @@ import { GetTablecommune } from "@/lib/queries/databases/tableCommune";
 import { GetCommunesContours, GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
 import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
-import { usePostHog } from 'posthog-js/react';
 import { useLayoutEffect, useState } from "react";
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
@@ -21,6 +20,7 @@ import { PartChefsExploitationSeniors } from "../../indicateurs/agriculture/1-Ch
 import { TypesDeCulture } from '../../indicateurs/agriculture/2-TypesDeCultures';
 import { SuperficiesIrriguees } from '../../indicateurs/agriculture/3-SuperficiesIrriguees';
 import { SurfacesEnBio } from '../../indicateurs/agriculture/4-SurfacesEnBio';
+import { AiresAppellationsControlees } from '../../indicateurs/agriculture/5-AiresApellationsControlees';
 
 interface Props {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
@@ -38,7 +38,6 @@ export const DonneesAgriculture = ({
   tableCommune
 }: Props) => {
   const searchParams = useSearchParams();
-  const posthog = usePostHog();
   const params = usePathname();
   const thematique = searchParams.get('thematique') as "Agriculture";
   const libelle = searchParams.get('libelle')!;
@@ -188,6 +187,30 @@ export const DonneesAgriculture = ({
               </H3>
             </div>
             <SurfacesEnBio agricultureBio={data.agricultureBio} />
+          </div>
+        </section>
+        {/* Section Tourisme */}
+        <section className={styles.sectionType}>
+          <H2 style={{
+            color: "var(--principales-rouge)",
+            textTransform: 'uppercase',
+            fontSize: '1.75rem',
+            margin: "0 0 -1rem 0",
+            padding: "2rem 2rem 0",
+            fontWeight: 400
+          }}>
+            {ongletsMenu.thematiquesLiees[3].icone}{" "}{ongletsMenu.thematiquesLiees[3].thematique}
+          </H2>
+          {/* Aires des appellations contrôlées */}
+          <div id="Aires des appellations contrôlées" className={styles.indicateurWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Aires des appellations contrôlées
+              </H3>
+            </div>
+            <AiresAppellationsControlees
+              tableCommune={data.tableCommune}
+            />
           </div>
         </section>
         {/* Sources */}
