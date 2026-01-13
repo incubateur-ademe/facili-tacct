@@ -681,7 +681,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     description:
       'Mettre en récit un diagnostic de vulnérabilité : un outil stratégique pour mobiliser élus et techniciens autour de l’adaptation au changement climatique.',
     lien: '/ressources/articles/mise-en-recit-territoire-adaptation-climat',
-    filtres: ['Article', 'Agir', 'Auvergne-Rhône-Alpes'],
+    filtres: ['Article', 'Agir'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
     tempsLecture: 8,
     image: ImageTuileArticle,

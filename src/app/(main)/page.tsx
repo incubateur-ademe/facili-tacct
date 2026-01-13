@@ -9,6 +9,8 @@ import { PremierBloc } from './(home)/PremierBloc';
 import { RessourcesBloc } from './(home)/RessourcesBloc';
 import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
+import Link from 'next/link';
+import Notice from '@codegouvfr/react-dsfr/Notice';
 
 const Home = () => {
   const { css } = useStyles();
@@ -21,25 +23,32 @@ const Home = () => {
 
   return (
     <div>
-      {/* <Notice
+      <Notice
         className={css({
           backgroundColor: 'var(--gris-medium)',
           color: "#201F1E"
         })}
         isClosable={true}
-        title={"Nouveautés sur le site :"}
+        title={"Nouveau :"}
         description={
           <>
-            Découvrez dans notre dernier article{" "}
+            une sélection de ressources regroupées par "collection" pour vous accompagner
+            dans chaque situation : découvrez votre nouvel espace "
             <Link
-              href="/ressources/articles/strategie-adaptation-gestion-risque-relocalisation"
+              href="/ressources"
             >
-              comment passer de la gestion du risque à l’adaptation
+              Boîte à outils
             </Link>
-            , consultez la part des chefs d’exploitation de plus de 55 ans
-            sur votre territoire et parcourez nos conseils terrain pour diagnostiquer
-            vos futurs impacts agricoles (thématique Agriculture).
-            Une remarque, une suggestion ?{' '}
+            " ! Vous y trouverez également les formations ADEME de la méthode TACCT ainsi
+            qu’un{" "}
+            <Link
+              href="https://tally.so/r/w4l8pk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              quiz pour tester vos connaissances sur l’adaptation
+            </Link>
+            . Une remarque, une suggestion ?{' '}
             <a
               href="https://tally.so/r/mJGELz"
               target="_blank"
@@ -50,7 +59,7 @@ const Home = () => {
             , on a hâte d’avoir vos retours !
           </>
         }
-      /> */}
+      />
       <PremierBloc />
       <Patch4Bloc />
       <TacctBloc />

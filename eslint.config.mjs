@@ -10,4 +10,16 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+  {
+    rules: {
+      'react/react-in-jsx-scope': 'off',
+      'no-irregular-whitespace': 'off',
+      'react/no-unescaped-entities': 'off'
+    },
+    settings: {
+      react: {
+        version: 'detect'
+      }
+    }
+  }
 ];

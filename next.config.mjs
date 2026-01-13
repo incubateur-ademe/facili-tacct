@@ -19,6 +19,8 @@ const csp = {
     'connect-src': [
         '*',
         'https://*.gouv.fr',
+        'https://eu.posthog.com',
+        'https://eu.i.posthog.com',
         process.env.NEXT_PUBLIC_ENV === 'preprod' && 'https://vercel.live',
         process.env.NODE_ENV === 'development' && 'http://localhost'
     ],
@@ -52,9 +54,9 @@ const cspStats = [
     "default-src 'self'",
     'frame-src https://metabase.facili-tacct.beta.gouv.fr https://*.beta.gouv.fr',
     "img-src 'self' data: https:",
-    `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ''}`,
+    `script-src 'self' 'unsafe-inline' https://eu-assets.i.posthog.com${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ''}`,
     "style-src 'self' 'unsafe-inline'",
-    `connect-src 'self'${process.env.NODE_ENV === 'development' ? ' ws: wss:' : ''}`,
+    `connect-src 'self' https://eu.posthog.com https://eu.i.posthog.com https://eu-assets.i.posthog.com${process.env.NODE_ENV === 'development' ? ' ws: wss:' : ''}`,
     "frame-ancestors 'self'"
 ].join('; ');
 
