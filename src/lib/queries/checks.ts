@@ -13,11 +13,12 @@ export const CheckMultipleDepartementsInEpci = async (
       throw new Error("Invalid type, expected 'epci'");
     }
     // Get all unique departements for the given epci code
-    const departements = await PrismaPostgres.rga.findMany({
-      where: { epci: code },
-      select: { libelle_departement: true },
-      distinct: ['libelle_departement']
-    });
+    const departements =
+      await PrismaPostgres.databases_v2_table_territoires.findMany({
+        where: { epci: code },
+        select: { libelle_departement: true },
+        distinct: ['libelle_departement']
+      });
     // Return the list of unique departements (as strings)
     const departementList = departements.map((d) => d.libelle_departement);
     return departementList;

@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
- * This file exports the `postgis_rga` model and its related types.
+ * This file exports the `databases_v2_rga` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -13,20 +13,20 @@ import type * as $Enums from "../enums"
 import type * as Prisma from "../internal/prismaNamespace"
 
 /**
- * Model postgis_rga
+ * Model databases_v2_rga
  * 
  */
-export type postgis_rgaModel = runtime.Types.Result.DefaultSelection<Prisma.$postgis_rgaPayload>
+export type databases_v2_rgaModel = runtime.Types.Result.DefaultSelection<Prisma.$databases_v2_rgaPayload>
 
-export type AggregatePostgis_rga = {
-  _count: Postgis_rgaCountAggregateOutputType | null
-  _avg: Postgis_rgaAvgAggregateOutputType | null
-  _sum: Postgis_rgaSumAggregateOutputType | null
-  _min: Postgis_rgaMinAggregateOutputType | null
-  _max: Postgis_rgaMaxAggregateOutputType | null
+export type AggregateDatabases_v2_rga = {
+  _count: Databases_v2_rgaCountAggregateOutputType | null
+  _avg: Databases_v2_rgaAvgAggregateOutputType | null
+  _sum: Databases_v2_rgaSumAggregateOutputType | null
+  _min: Databases_v2_rgaMinAggregateOutputType | null
+  _max: Databases_v2_rgaMaxAggregateOutputType | null
 }
 
-export type Postgis_rgaAvgAggregateOutputType = {
+export type Databases_v2_rgaAvgAggregateOutputType = {
   index: number | null
   region: number | null
   nb_logement: number | null
@@ -56,7 +56,7 @@ export type Postgis_rgaAvgAggregateOutputType = {
   part_alea_moyen_fort_commune: number | null
 }
 
-export type Postgis_rgaSumAggregateOutputType = {
+export type Databases_v2_rgaSumAggregateOutputType = {
   index: number | null
   region: number | null
   nb_logement: number | null
@@ -86,47 +86,7 @@ export type Postgis_rgaSumAggregateOutputType = {
   part_alea_moyen_fort_commune: number | null
 }
 
-export type Postgis_rgaMinAggregateOutputType = {
-  index: number | null
-  code_geographique: string | null
-  libelle_geographique: string | null
-  epci: string | null
-  libelle_epci: string | null
-  departement: string | null
-  libelle_departement: string | null
-  region: number | null
-  ept: string | null
-  libelle_petr: string | null
-  code_pnr: string | null
-  libelle_pnr: string | null
-  nb_logement: number | null
-  nb_logement_alea_moyen_fort: number | null
-  nb_logement_alea_faible: number | null
-  nb_logement_sans_alea: number | null
-  nb_logement_alea_moyen_fort_avant_1920: number | null
-  nb_logement_alea_moyen_fort_1920_1945: number | null
-  nb_logement_alea_moyen_fort_1945_1975: number | null
-  nb_logement_alea_moyen_fort_apres_1975: number | null
-  nb_logement_alea_faible_avant_1920: number | null
-  nb_logement_alea_faible_1920_1945: number | null
-  nb_logement_alea_faible_1945_1975: number | null
-  nb_logement_alea_faible_apres_1975: number | null
-  surface_commune: number | null
-  surface_alea_faible_commune: number | null
-  surface_alea_moyen_fort_commune: number | null
-  part_logement_alea_moyen_fort_avant_1920: number | null
-  part_logement_alea_moyen_fort_1920_1945: number | null
-  part_logement_alea_moyen_fort_1945_1975: number | null
-  part_logement_alea_moyen_fort_apres_1975: number | null
-  part_logement_alea_faible_avant_1920: number | null
-  part_logement_alea_faible_1920_1945: number | null
-  part_logement_alea_faible_1945_1975: number | null
-  part_logement_alea_faible_apres_1975: number | null
-  part_alea_faible_commune: number | null
-  part_alea_moyen_fort_commune: number | null
-}
-
-export type Postgis_rgaMaxAggregateOutputType = {
+export type Databases_v2_rgaMinAggregateOutputType = {
   index: number | null
   code_geographique: string | null
   libelle_geographique: string | null
@@ -166,7 +126,47 @@ export type Postgis_rgaMaxAggregateOutputType = {
   part_alea_moyen_fort_commune: number | null
 }
 
-export type Postgis_rgaCountAggregateOutputType = {
+export type Databases_v2_rgaMaxAggregateOutputType = {
+  index: number | null
+  code_geographique: string | null
+  libelle_geographique: string | null
+  epci: string | null
+  libelle_epci: string | null
+  departement: string | null
+  libelle_departement: string | null
+  region: number | null
+  ept: string | null
+  libelle_petr: string | null
+  code_pnr: string | null
+  libelle_pnr: string | null
+  nb_logement: number | null
+  nb_logement_alea_moyen_fort: number | null
+  nb_logement_alea_faible: number | null
+  nb_logement_sans_alea: number | null
+  nb_logement_alea_moyen_fort_avant_1920: number | null
+  nb_logement_alea_moyen_fort_1920_1945: number | null
+  nb_logement_alea_moyen_fort_1945_1975: number | null
+  nb_logement_alea_moyen_fort_apres_1975: number | null
+  nb_logement_alea_faible_avant_1920: number | null
+  nb_logement_alea_faible_1920_1945: number | null
+  nb_logement_alea_faible_1945_1975: number | null
+  nb_logement_alea_faible_apres_1975: number | null
+  surface_commune: number | null
+  surface_alea_faible_commune: number | null
+  surface_alea_moyen_fort_commune: number | null
+  part_logement_alea_moyen_fort_avant_1920: number | null
+  part_logement_alea_moyen_fort_1920_1945: number | null
+  part_logement_alea_moyen_fort_1945_1975: number | null
+  part_logement_alea_moyen_fort_apres_1975: number | null
+  part_logement_alea_faible_avant_1920: number | null
+  part_logement_alea_faible_1920_1945: number | null
+  part_logement_alea_faible_1945_1975: number | null
+  part_logement_alea_faible_apres_1975: number | null
+  part_alea_faible_commune: number | null
+  part_alea_moyen_fort_commune: number | null
+}
+
+export type Databases_v2_rgaCountAggregateOutputType = {
   index: number
   code_geographique: number
   libelle_geographique: number
@@ -208,7 +208,7 @@ export type Postgis_rgaCountAggregateOutputType = {
 }
 
 
-export type Postgis_rgaAvgAggregateInputType = {
+export type Databases_v2_rgaAvgAggregateInputType = {
   index?: true
   region?: true
   nb_logement?: true
@@ -238,7 +238,7 @@ export type Postgis_rgaAvgAggregateInputType = {
   part_alea_moyen_fort_commune?: true
 }
 
-export type Postgis_rgaSumAggregateInputType = {
+export type Databases_v2_rgaSumAggregateInputType = {
   index?: true
   region?: true
   nb_logement?: true
@@ -268,47 +268,7 @@ export type Postgis_rgaSumAggregateInputType = {
   part_alea_moyen_fort_commune?: true
 }
 
-export type Postgis_rgaMinAggregateInputType = {
-  index?: true
-  code_geographique?: true
-  libelle_geographique?: true
-  epci?: true
-  libelle_epci?: true
-  departement?: true
-  libelle_departement?: true
-  region?: true
-  ept?: true
-  libelle_petr?: true
-  code_pnr?: true
-  libelle_pnr?: true
-  nb_logement?: true
-  nb_logement_alea_moyen_fort?: true
-  nb_logement_alea_faible?: true
-  nb_logement_sans_alea?: true
-  nb_logement_alea_moyen_fort_avant_1920?: true
-  nb_logement_alea_moyen_fort_1920_1945?: true
-  nb_logement_alea_moyen_fort_1945_1975?: true
-  nb_logement_alea_moyen_fort_apres_1975?: true
-  nb_logement_alea_faible_avant_1920?: true
-  nb_logement_alea_faible_1920_1945?: true
-  nb_logement_alea_faible_1945_1975?: true
-  nb_logement_alea_faible_apres_1975?: true
-  surface_commune?: true
-  surface_alea_faible_commune?: true
-  surface_alea_moyen_fort_commune?: true
-  part_logement_alea_moyen_fort_avant_1920?: true
-  part_logement_alea_moyen_fort_1920_1945?: true
-  part_logement_alea_moyen_fort_1945_1975?: true
-  part_logement_alea_moyen_fort_apres_1975?: true
-  part_logement_alea_faible_avant_1920?: true
-  part_logement_alea_faible_1920_1945?: true
-  part_logement_alea_faible_1945_1975?: true
-  part_logement_alea_faible_apres_1975?: true
-  part_alea_faible_commune?: true
-  part_alea_moyen_fort_commune?: true
-}
-
-export type Postgis_rgaMaxAggregateInputType = {
+export type Databases_v2_rgaMinAggregateInputType = {
   index?: true
   code_geographique?: true
   libelle_geographique?: true
@@ -348,7 +308,47 @@ export type Postgis_rgaMaxAggregateInputType = {
   part_alea_moyen_fort_commune?: true
 }
 
-export type Postgis_rgaCountAggregateInputType = {
+export type Databases_v2_rgaMaxAggregateInputType = {
+  index?: true
+  code_geographique?: true
+  libelle_geographique?: true
+  epci?: true
+  libelle_epci?: true
+  departement?: true
+  libelle_departement?: true
+  region?: true
+  ept?: true
+  libelle_petr?: true
+  code_pnr?: true
+  libelle_pnr?: true
+  nb_logement?: true
+  nb_logement_alea_moyen_fort?: true
+  nb_logement_alea_faible?: true
+  nb_logement_sans_alea?: true
+  nb_logement_alea_moyen_fort_avant_1920?: true
+  nb_logement_alea_moyen_fort_1920_1945?: true
+  nb_logement_alea_moyen_fort_1945_1975?: true
+  nb_logement_alea_moyen_fort_apres_1975?: true
+  nb_logement_alea_faible_avant_1920?: true
+  nb_logement_alea_faible_1920_1945?: true
+  nb_logement_alea_faible_1945_1975?: true
+  nb_logement_alea_faible_apres_1975?: true
+  surface_commune?: true
+  surface_alea_faible_commune?: true
+  surface_alea_moyen_fort_commune?: true
+  part_logement_alea_moyen_fort_avant_1920?: true
+  part_logement_alea_moyen_fort_1920_1945?: true
+  part_logement_alea_moyen_fort_1945_1975?: true
+  part_logement_alea_moyen_fort_apres_1975?: true
+  part_logement_alea_faible_avant_1920?: true
+  part_logement_alea_faible_1920_1945?: true
+  part_logement_alea_faible_1945_1975?: true
+  part_logement_alea_faible_apres_1975?: true
+  part_alea_faible_commune?: true
+  part_alea_moyen_fort_commune?: true
+}
+
+export type Databases_v2_rgaCountAggregateInputType = {
   index?: true
   code_geographique?: true
   libelle_geographique?: true
@@ -389,93 +389,93 @@ export type Postgis_rgaCountAggregateInputType = {
   _all?: true
 }
 
-export type Postgis_rgaAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Databases_v2_rgaAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which postgis_rga to aggregate.
+   * Filter which databases_v2_rga to aggregate.
    */
-  where?: Prisma.postgis_rgaWhereInput
+  where?: Prisma.databases_v2_rgaWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of postgis_rgas to fetch.
+   * Determine the order of databases_v2_rgas to fetch.
    */
-  orderBy?: Prisma.postgis_rgaOrderByWithRelationInput | Prisma.postgis_rgaOrderByWithRelationInput[]
+  orderBy?: Prisma.databases_v2_rgaOrderByWithRelationInput | Prisma.databases_v2_rgaOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
    * Sets the start position
    */
-  cursor?: Prisma.postgis_rgaWhereUniqueInput
+  cursor?: Prisma.databases_v2_rgaWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` postgis_rgas from the position of the cursor.
+   * Take `±n` databases_v2_rgas from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` postgis_rgas.
+   * Skip the first `n` databases_v2_rgas.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Count returned postgis_rgas
+   * Count returned databases_v2_rgas
   **/
-  _count?: true | Postgis_rgaCountAggregateInputType
+  _count?: true | Databases_v2_rgaCountAggregateInputType
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
    * Select which fields to average
   **/
-  _avg?: Postgis_rgaAvgAggregateInputType
+  _avg?: Databases_v2_rgaAvgAggregateInputType
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
    * Select which fields to sum
   **/
-  _sum?: Postgis_rgaSumAggregateInputType
+  _sum?: Databases_v2_rgaSumAggregateInputType
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
    * Select which fields to find the minimum value
   **/
-  _min?: Postgis_rgaMinAggregateInputType
+  _min?: Databases_v2_rgaMinAggregateInputType
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
    * Select which fields to find the maximum value
   **/
-  _max?: Postgis_rgaMaxAggregateInputType
+  _max?: Databases_v2_rgaMaxAggregateInputType
 }
 
-export type GetPostgis_rgaAggregateType<T extends Postgis_rgaAggregateArgs> = {
-      [P in keyof T & keyof AggregatePostgis_rga]: P extends '_count' | 'count'
+export type GetDatabases_v2_rgaAggregateType<T extends Databases_v2_rgaAggregateArgs> = {
+      [P in keyof T & keyof AggregateDatabases_v2_rga]: P extends '_count' | 'count'
     ? T[P] extends true
       ? number
-      : Prisma.GetScalarType<T[P], AggregatePostgis_rga[P]>
-    : Prisma.GetScalarType<T[P], AggregatePostgis_rga[P]>
+      : Prisma.GetScalarType<T[P], AggregateDatabases_v2_rga[P]>
+    : Prisma.GetScalarType<T[P], AggregateDatabases_v2_rga[P]>
 }
 
 
 
 
-export type postgis_rgaGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.postgis_rgaWhereInput
-  orderBy?: Prisma.postgis_rgaOrderByWithAggregationInput | Prisma.postgis_rgaOrderByWithAggregationInput[]
-  by: Prisma.Postgis_rgaScalarFieldEnum[] | Prisma.Postgis_rgaScalarFieldEnum
-  having?: Prisma.postgis_rgaScalarWhereWithAggregatesInput
+export type databases_v2_rgaGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.databases_v2_rgaWhereInput
+  orderBy?: Prisma.databases_v2_rgaOrderByWithAggregationInput | Prisma.databases_v2_rgaOrderByWithAggregationInput[]
+  by: Prisma.Databases_v2_rgaScalarFieldEnum[] | Prisma.Databases_v2_rgaScalarFieldEnum
+  having?: Prisma.databases_v2_rgaScalarWhereWithAggregatesInput
   take?: number
   skip?: number
-  _count?: Postgis_rgaCountAggregateInputType | true
-  _avg?: Postgis_rgaAvgAggregateInputType
-  _sum?: Postgis_rgaSumAggregateInputType
-  _min?: Postgis_rgaMinAggregateInputType
-  _max?: Postgis_rgaMaxAggregateInputType
+  _count?: Databases_v2_rgaCountAggregateInputType | true
+  _avg?: Databases_v2_rgaAvgAggregateInputType
+  _sum?: Databases_v2_rgaSumAggregateInputType
+  _min?: Databases_v2_rgaMinAggregateInputType
+  _max?: Databases_v2_rgaMaxAggregateInputType
 }
 
-export type Postgis_rgaGroupByOutputType = {
+export type Databases_v2_rgaGroupByOutputType = {
   index: number
   code_geographique: string
   libelle_geographique: string
@@ -513,72 +513,72 @@ export type Postgis_rgaGroupByOutputType = {
   part_logement_alea_faible_apres_1975: number
   part_alea_faible_commune: number
   part_alea_moyen_fort_commune: number
-  _count: Postgis_rgaCountAggregateOutputType | null
-  _avg: Postgis_rgaAvgAggregateOutputType | null
-  _sum: Postgis_rgaSumAggregateOutputType | null
-  _min: Postgis_rgaMinAggregateOutputType | null
-  _max: Postgis_rgaMaxAggregateOutputType | null
+  _count: Databases_v2_rgaCountAggregateOutputType | null
+  _avg: Databases_v2_rgaAvgAggregateOutputType | null
+  _sum: Databases_v2_rgaSumAggregateOutputType | null
+  _min: Databases_v2_rgaMinAggregateOutputType | null
+  _max: Databases_v2_rgaMaxAggregateOutputType | null
 }
 
-type GetPostgis_rgaGroupByPayload<T extends postgis_rgaGroupByArgs> = Prisma.PrismaPromise<
+type GetDatabases_v2_rgaGroupByPayload<T extends databases_v2_rgaGroupByArgs> = Prisma.PrismaPromise<
   Array<
-    Prisma.PickEnumerable<Postgis_rgaGroupByOutputType, T['by']> &
+    Prisma.PickEnumerable<Databases_v2_rgaGroupByOutputType, T['by']> &
       {
-        [P in ((keyof T) & (keyof Postgis_rgaGroupByOutputType))]: P extends '_count'
+        [P in ((keyof T) & (keyof Databases_v2_rgaGroupByOutputType))]: P extends '_count'
           ? T[P] extends boolean
             ? number
-            : Prisma.GetScalarType<T[P], Postgis_rgaGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], Postgis_rgaGroupByOutputType[P]>
+            : Prisma.GetScalarType<T[P], Databases_v2_rgaGroupByOutputType[P]>
+          : Prisma.GetScalarType<T[P], Databases_v2_rgaGroupByOutputType[P]>
       }
     >
   >
 
 
 
-export type postgis_rgaWhereInput = {
-  AND?: Prisma.postgis_rgaWhereInput | Prisma.postgis_rgaWhereInput[]
-  OR?: Prisma.postgis_rgaWhereInput[]
-  NOT?: Prisma.postgis_rgaWhereInput | Prisma.postgis_rgaWhereInput[]
-  index?: Prisma.IntFilter<"postgis_rga"> | number
-  code_geographique?: Prisma.StringFilter<"postgis_rga"> | string
-  libelle_geographique?: Prisma.StringFilter<"postgis_rga"> | string
-  epci?: Prisma.StringFilter<"postgis_rga"> | string
-  libelle_epci?: Prisma.StringFilter<"postgis_rga"> | string
-  departement?: Prisma.StringFilter<"postgis_rga"> | string
-  libelle_departement?: Prisma.StringFilter<"postgis_rga"> | string
-  region?: Prisma.FloatFilter<"postgis_rga"> | number
-  ept?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
-  libelle_petr?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
-  code_pnr?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
-  libelle_pnr?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
-  nb_logement?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_faible?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_sans_alea?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_faible_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_faible_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_faible_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_faible_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  surface_commune?: Prisma.IntFilter<"postgis_rga"> | number
-  surface_alea_faible_commune?: Prisma.IntFilter<"postgis_rga"> | number
-  surface_alea_moyen_fort_commune?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_moyen_fort_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_moyen_fort_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_moyen_fort_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_moyen_fort_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_faible_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_faible_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_faible_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_faible_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  part_alea_faible_commune?: Prisma.IntFilter<"postgis_rga"> | number
-  part_alea_moyen_fort_commune?: Prisma.IntFilter<"postgis_rga"> | number
+export type databases_v2_rgaWhereInput = {
+  AND?: Prisma.databases_v2_rgaWhereInput | Prisma.databases_v2_rgaWhereInput[]
+  OR?: Prisma.databases_v2_rgaWhereInput[]
+  NOT?: Prisma.databases_v2_rgaWhereInput | Prisma.databases_v2_rgaWhereInput[]
+  index?: Prisma.IntFilter<"databases_v2_rga"> | number
+  code_geographique?: Prisma.StringFilter<"databases_v2_rga"> | string
+  libelle_geographique?: Prisma.StringFilter<"databases_v2_rga"> | string
+  epci?: Prisma.StringFilter<"databases_v2_rga"> | string
+  libelle_epci?: Prisma.StringFilter<"databases_v2_rga"> | string
+  departement?: Prisma.StringFilter<"databases_v2_rga"> | string
+  libelle_departement?: Prisma.StringFilter<"databases_v2_rga"> | string
+  region?: Prisma.FloatFilter<"databases_v2_rga"> | number
+  ept?: Prisma.StringNullableFilter<"databases_v2_rga"> | string | null
+  libelle_petr?: Prisma.StringNullableFilter<"databases_v2_rga"> | string | null
+  code_pnr?: Prisma.StringNullableFilter<"databases_v2_rga"> | string | null
+  libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_rga"> | string | null
+  nb_logement?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_sans_alea?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible_avant_1920?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible_1920_1945?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible_1945_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible_apres_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  surface_commune?: Prisma.IntFilter<"databases_v2_rga"> | number
+  surface_alea_faible_commune?: Prisma.IntFilter<"databases_v2_rga"> | number
+  surface_alea_moyen_fort_commune?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_faible_avant_1920?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_faible_1920_1945?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_faible_1945_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_faible_apres_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_alea_faible_commune?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_alea_moyen_fort_commune?: Prisma.IntFilter<"databases_v2_rga"> | number
 }
 
-export type postgis_rgaOrderByWithRelationInput = {
+export type databases_v2_rgaOrderByWithRelationInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
   libelle_geographique?: Prisma.SortOrder
@@ -618,50 +618,50 @@ export type postgis_rgaOrderByWithRelationInput = {
   part_alea_moyen_fort_commune?: Prisma.SortOrder
 }
 
-export type postgis_rgaWhereUniqueInput = Prisma.AtLeast<{
+export type databases_v2_rgaWhereUniqueInput = Prisma.AtLeast<{
   index?: number
-  AND?: Prisma.postgis_rgaWhereInput | Prisma.postgis_rgaWhereInput[]
-  OR?: Prisma.postgis_rgaWhereInput[]
-  NOT?: Prisma.postgis_rgaWhereInput | Prisma.postgis_rgaWhereInput[]
-  code_geographique?: Prisma.StringFilter<"postgis_rga"> | string
-  libelle_geographique?: Prisma.StringFilter<"postgis_rga"> | string
-  epci?: Prisma.StringFilter<"postgis_rga"> | string
-  libelle_epci?: Prisma.StringFilter<"postgis_rga"> | string
-  departement?: Prisma.StringFilter<"postgis_rga"> | string
-  libelle_departement?: Prisma.StringFilter<"postgis_rga"> | string
-  region?: Prisma.FloatFilter<"postgis_rga"> | number
-  ept?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
-  libelle_petr?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
-  code_pnr?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
-  libelle_pnr?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
-  nb_logement?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_faible?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_sans_alea?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_faible_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_faible_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_faible_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  nb_logement_alea_faible_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  surface_commune?: Prisma.IntFilter<"postgis_rga"> | number
-  surface_alea_faible_commune?: Prisma.IntFilter<"postgis_rga"> | number
-  surface_alea_moyen_fort_commune?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_moyen_fort_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_moyen_fort_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_moyen_fort_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_moyen_fort_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_faible_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_faible_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_faible_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  part_logement_alea_faible_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
-  part_alea_faible_commune?: Prisma.IntFilter<"postgis_rga"> | number
-  part_alea_moyen_fort_commune?: Prisma.IntFilter<"postgis_rga"> | number
+  AND?: Prisma.databases_v2_rgaWhereInput | Prisma.databases_v2_rgaWhereInput[]
+  OR?: Prisma.databases_v2_rgaWhereInput[]
+  NOT?: Prisma.databases_v2_rgaWhereInput | Prisma.databases_v2_rgaWhereInput[]
+  code_geographique?: Prisma.StringFilter<"databases_v2_rga"> | string
+  libelle_geographique?: Prisma.StringFilter<"databases_v2_rga"> | string
+  epci?: Prisma.StringFilter<"databases_v2_rga"> | string
+  libelle_epci?: Prisma.StringFilter<"databases_v2_rga"> | string
+  departement?: Prisma.StringFilter<"databases_v2_rga"> | string
+  libelle_departement?: Prisma.StringFilter<"databases_v2_rga"> | string
+  region?: Prisma.FloatFilter<"databases_v2_rga"> | number
+  ept?: Prisma.StringNullableFilter<"databases_v2_rga"> | string | null
+  libelle_petr?: Prisma.StringNullableFilter<"databases_v2_rga"> | string | null
+  code_pnr?: Prisma.StringNullableFilter<"databases_v2_rga"> | string | null
+  libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_rga"> | string | null
+  nb_logement?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_sans_alea?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible_avant_1920?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible_1920_1945?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible_1945_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible_apres_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  surface_commune?: Prisma.IntFilter<"databases_v2_rga"> | number
+  surface_alea_faible_commune?: Prisma.IntFilter<"databases_v2_rga"> | number
+  surface_alea_moyen_fort_commune?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_faible_avant_1920?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_faible_1920_1945?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_faible_1945_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_logement_alea_faible_apres_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_alea_faible_commune?: Prisma.IntFilter<"databases_v2_rga"> | number
+  part_alea_moyen_fort_commune?: Prisma.IntFilter<"databases_v2_rga"> | number
 }, "index">
 
-export type postgis_rgaOrderByWithAggregationInput = {
+export type databases_v2_rgaOrderByWithAggregationInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
   libelle_geographique?: Prisma.SortOrder
@@ -699,57 +699,57 @@ export type postgis_rgaOrderByWithAggregationInput = {
   part_logement_alea_faible_apres_1975?: Prisma.SortOrder
   part_alea_faible_commune?: Prisma.SortOrder
   part_alea_moyen_fort_commune?: Prisma.SortOrder
-  _count?: Prisma.postgis_rgaCountOrderByAggregateInput
-  _avg?: Prisma.postgis_rgaAvgOrderByAggregateInput
-  _max?: Prisma.postgis_rgaMaxOrderByAggregateInput
-  _min?: Prisma.postgis_rgaMinOrderByAggregateInput
-  _sum?: Prisma.postgis_rgaSumOrderByAggregateInput
+  _count?: Prisma.databases_v2_rgaCountOrderByAggregateInput
+  _avg?: Prisma.databases_v2_rgaAvgOrderByAggregateInput
+  _max?: Prisma.databases_v2_rgaMaxOrderByAggregateInput
+  _min?: Prisma.databases_v2_rgaMinOrderByAggregateInput
+  _sum?: Prisma.databases_v2_rgaSumOrderByAggregateInput
 }
 
-export type postgis_rgaScalarWhereWithAggregatesInput = {
-  AND?: Prisma.postgis_rgaScalarWhereWithAggregatesInput | Prisma.postgis_rgaScalarWhereWithAggregatesInput[]
-  OR?: Prisma.postgis_rgaScalarWhereWithAggregatesInput[]
-  NOT?: Prisma.postgis_rgaScalarWhereWithAggregatesInput | Prisma.postgis_rgaScalarWhereWithAggregatesInput[]
-  index?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  code_geographique?: Prisma.StringWithAggregatesFilter<"postgis_rga"> | string
-  libelle_geographique?: Prisma.StringWithAggregatesFilter<"postgis_rga"> | string
-  epci?: Prisma.StringWithAggregatesFilter<"postgis_rga"> | string
-  libelle_epci?: Prisma.StringWithAggregatesFilter<"postgis_rga"> | string
-  departement?: Prisma.StringWithAggregatesFilter<"postgis_rga"> | string
-  libelle_departement?: Prisma.StringWithAggregatesFilter<"postgis_rga"> | string
-  region?: Prisma.FloatWithAggregatesFilter<"postgis_rga"> | number
-  ept?: Prisma.StringNullableWithAggregatesFilter<"postgis_rga"> | string | null
-  libelle_petr?: Prisma.StringNullableWithAggregatesFilter<"postgis_rga"> | string | null
-  code_pnr?: Prisma.StringNullableWithAggregatesFilter<"postgis_rga"> | string | null
-  libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"postgis_rga"> | string | null
-  nb_logement?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  nb_logement_alea_faible?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  nb_logement_sans_alea?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort_avant_1920?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort_1920_1945?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort_1945_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  nb_logement_alea_moyen_fort_apres_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  nb_logement_alea_faible_avant_1920?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  nb_logement_alea_faible_1920_1945?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  nb_logement_alea_faible_1945_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  nb_logement_alea_faible_apres_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  surface_commune?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  surface_alea_faible_commune?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  surface_alea_moyen_fort_commune?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  part_logement_alea_moyen_fort_avant_1920?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  part_logement_alea_moyen_fort_1920_1945?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  part_logement_alea_moyen_fort_1945_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  part_logement_alea_moyen_fort_apres_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  part_logement_alea_faible_avant_1920?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  part_logement_alea_faible_1920_1945?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  part_logement_alea_faible_1945_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  part_logement_alea_faible_apres_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  part_alea_faible_commune?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  part_alea_moyen_fort_commune?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+export type databases_v2_rgaScalarWhereWithAggregatesInput = {
+  AND?: Prisma.databases_v2_rgaScalarWhereWithAggregatesInput | Prisma.databases_v2_rgaScalarWhereWithAggregatesInput[]
+  OR?: Prisma.databases_v2_rgaScalarWhereWithAggregatesInput[]
+  NOT?: Prisma.databases_v2_rgaScalarWhereWithAggregatesInput | Prisma.databases_v2_rgaScalarWhereWithAggregatesInput[]
+  index?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  code_geographique?: Prisma.StringWithAggregatesFilter<"databases_v2_rga"> | string
+  libelle_geographique?: Prisma.StringWithAggregatesFilter<"databases_v2_rga"> | string
+  epci?: Prisma.StringWithAggregatesFilter<"databases_v2_rga"> | string
+  libelle_epci?: Prisma.StringWithAggregatesFilter<"databases_v2_rga"> | string
+  departement?: Prisma.StringWithAggregatesFilter<"databases_v2_rga"> | string
+  libelle_departement?: Prisma.StringWithAggregatesFilter<"databases_v2_rga"> | string
+  region?: Prisma.FloatWithAggregatesFilter<"databases_v2_rga"> | number
+  ept?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_rga"> | string | null
+  libelle_petr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_rga"> | string | null
+  code_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_rga"> | string | null
+  libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_rga"> | string | null
+  nb_logement?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  nb_logement_sans_alea?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible_avant_1920?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible_1920_1945?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible_1945_1975?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  nb_logement_alea_faible_apres_1975?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  surface_commune?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  surface_alea_faible_commune?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  surface_alea_moyen_fort_commune?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  part_logement_alea_faible_avant_1920?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  part_logement_alea_faible_1920_1945?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  part_logement_alea_faible_1945_1975?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  part_logement_alea_faible_apres_1975?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  part_alea_faible_commune?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  part_alea_moyen_fort_commune?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
 }
 
-export type postgis_rgaCreateInput = {
+export type databases_v2_rgaCreateInput = {
   index: number
   code_geographique: string
   libelle_geographique: string
@@ -789,7 +789,7 @@ export type postgis_rgaCreateInput = {
   part_alea_moyen_fort_commune: number
 }
 
-export type postgis_rgaUncheckedCreateInput = {
+export type databases_v2_rgaUncheckedCreateInput = {
   index: number
   code_geographique: string
   libelle_geographique: string
@@ -829,7 +829,7 @@ export type postgis_rgaUncheckedCreateInput = {
   part_alea_moyen_fort_commune: number
 }
 
-export type postgis_rgaUpdateInput = {
+export type databases_v2_rgaUpdateInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
@@ -869,7 +869,7 @@ export type postgis_rgaUpdateInput = {
   part_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type postgis_rgaUncheckedUpdateInput = {
+export type databases_v2_rgaUncheckedUpdateInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
@@ -909,7 +909,7 @@ export type postgis_rgaUncheckedUpdateInput = {
   part_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type postgis_rgaCreateManyInput = {
+export type databases_v2_rgaCreateManyInput = {
   index: number
   code_geographique: string
   libelle_geographique: string
@@ -949,7 +949,7 @@ export type postgis_rgaCreateManyInput = {
   part_alea_moyen_fort_commune: number
 }
 
-export type postgis_rgaUpdateManyMutationInput = {
+export type databases_v2_rgaUpdateManyMutationInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
@@ -989,7 +989,7 @@ export type postgis_rgaUpdateManyMutationInput = {
   part_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type postgis_rgaUncheckedUpdateManyInput = {
+export type databases_v2_rgaUncheckedUpdateManyInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1029,7 +1029,7 @@ export type postgis_rgaUncheckedUpdateManyInput = {
   part_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type postgis_rgaCountOrderByAggregateInput = {
+export type databases_v2_rgaCountOrderByAggregateInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
   libelle_geographique?: Prisma.SortOrder
@@ -1069,7 +1069,7 @@ export type postgis_rgaCountOrderByAggregateInput = {
   part_alea_moyen_fort_commune?: Prisma.SortOrder
 }
 
-export type postgis_rgaAvgOrderByAggregateInput = {
+export type databases_v2_rgaAvgOrderByAggregateInput = {
   index?: Prisma.SortOrder
   region?: Prisma.SortOrder
   nb_logement?: Prisma.SortOrder
@@ -1099,47 +1099,7 @@ export type postgis_rgaAvgOrderByAggregateInput = {
   part_alea_moyen_fort_commune?: Prisma.SortOrder
 }
 
-export type postgis_rgaMaxOrderByAggregateInput = {
-  index?: Prisma.SortOrder
-  code_geographique?: Prisma.SortOrder
-  libelle_geographique?: Prisma.SortOrder
-  epci?: Prisma.SortOrder
-  libelle_epci?: Prisma.SortOrder
-  departement?: Prisma.SortOrder
-  libelle_departement?: Prisma.SortOrder
-  region?: Prisma.SortOrder
-  ept?: Prisma.SortOrder
-  libelle_petr?: Prisma.SortOrder
-  code_pnr?: Prisma.SortOrder
-  libelle_pnr?: Prisma.SortOrder
-  nb_logement?: Prisma.SortOrder
-  nb_logement_alea_moyen_fort?: Prisma.SortOrder
-  nb_logement_alea_faible?: Prisma.SortOrder
-  nb_logement_sans_alea?: Prisma.SortOrder
-  nb_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
-  nb_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
-  nb_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
-  nb_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
-  nb_logement_alea_faible_avant_1920?: Prisma.SortOrder
-  nb_logement_alea_faible_1920_1945?: Prisma.SortOrder
-  nb_logement_alea_faible_1945_1975?: Prisma.SortOrder
-  nb_logement_alea_faible_apres_1975?: Prisma.SortOrder
-  surface_commune?: Prisma.SortOrder
-  surface_alea_faible_commune?: Prisma.SortOrder
-  surface_alea_moyen_fort_commune?: Prisma.SortOrder
-  part_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
-  part_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
-  part_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
-  part_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
-  part_logement_alea_faible_avant_1920?: Prisma.SortOrder
-  part_logement_alea_faible_1920_1945?: Prisma.SortOrder
-  part_logement_alea_faible_1945_1975?: Prisma.SortOrder
-  part_logement_alea_faible_apres_1975?: Prisma.SortOrder
-  part_alea_faible_commune?: Prisma.SortOrder
-  part_alea_moyen_fort_commune?: Prisma.SortOrder
-}
-
-export type postgis_rgaMinOrderByAggregateInput = {
+export type databases_v2_rgaMaxOrderByAggregateInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
   libelle_geographique?: Prisma.SortOrder
@@ -1179,7 +1139,47 @@ export type postgis_rgaMinOrderByAggregateInput = {
   part_alea_moyen_fort_commune?: Prisma.SortOrder
 }
 
-export type postgis_rgaSumOrderByAggregateInput = {
+export type databases_v2_rgaMinOrderByAggregateInput = {
+  index?: Prisma.SortOrder
+  code_geographique?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
+  departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrder
+  code_pnr?: Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrder
+  nb_logement?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort?: Prisma.SortOrder
+  nb_logement_alea_faible?: Prisma.SortOrder
+  nb_logement_sans_alea?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  surface_commune?: Prisma.SortOrder
+  surface_alea_faible_commune?: Prisma.SortOrder
+  surface_alea_moyen_fort_commune?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  part_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  part_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  part_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  part_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  part_alea_faible_commune?: Prisma.SortOrder
+  part_alea_moyen_fort_commune?: Prisma.SortOrder
+}
+
+export type databases_v2_rgaSumOrderByAggregateInput = {
   index?: Prisma.SortOrder
   region?: Prisma.SortOrder
   nb_logement?: Prisma.SortOrder
@@ -1211,7 +1211,7 @@ export type postgis_rgaSumOrderByAggregateInput = {
 
 
 
-export type postgis_rgaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type databases_v2_rgaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   index?: boolean
   code_geographique?: boolean
   libelle_geographique?: boolean
@@ -1249,9 +1249,9 @@ export type postgis_rgaSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   part_logement_alea_faible_apres_1975?: boolean
   part_alea_faible_commune?: boolean
   part_alea_moyen_fort_commune?: boolean
-}, ExtArgs["result"]["postgis_rga"]>
+}, ExtArgs["result"]["databases_v2_rga"]>
 
-export type postgis_rgaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type databases_v2_rgaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   index?: boolean
   code_geographique?: boolean
   libelle_geographique?: boolean
@@ -1289,9 +1289,9 @@ export type postgis_rgaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   part_logement_alea_faible_apres_1975?: boolean
   part_alea_faible_commune?: boolean
   part_alea_moyen_fort_commune?: boolean
-}, ExtArgs["result"]["postgis_rga"]>
+}, ExtArgs["result"]["databases_v2_rga"]>
 
-export type postgis_rgaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type databases_v2_rgaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   index?: boolean
   code_geographique?: boolean
   libelle_geographique?: boolean
@@ -1329,9 +1329,9 @@ export type postgis_rgaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   part_logement_alea_faible_apres_1975?: boolean
   part_alea_faible_commune?: boolean
   part_alea_moyen_fort_commune?: boolean
-}, ExtArgs["result"]["postgis_rga"]>
+}, ExtArgs["result"]["databases_v2_rga"]>
 
-export type postgis_rgaSelectScalar = {
+export type databases_v2_rgaSelectScalar = {
   index?: boolean
   code_geographique?: boolean
   libelle_geographique?: boolean
@@ -1371,10 +1371,10 @@ export type postgis_rgaSelectScalar = {
   part_alea_moyen_fort_commune?: boolean
 }
 
-export type postgis_rgaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nb_logement" | "nb_logement_alea_moyen_fort" | "nb_logement_alea_faible" | "nb_logement_sans_alea" | "nb_logement_alea_moyen_fort_avant_1920" | "nb_logement_alea_moyen_fort_1920_1945" | "nb_logement_alea_moyen_fort_1945_1975" | "nb_logement_alea_moyen_fort_apres_1975" | "nb_logement_alea_faible_avant_1920" | "nb_logement_alea_faible_1920_1945" | "nb_logement_alea_faible_1945_1975" | "nb_logement_alea_faible_apres_1975" | "surface_commune" | "surface_alea_faible_commune" | "surface_alea_moyen_fort_commune" | "part_logement_alea_moyen_fort_avant_1920" | "part_logement_alea_moyen_fort_1920_1945" | "part_logement_alea_moyen_fort_1945_1975" | "part_logement_alea_moyen_fort_apres_1975" | "part_logement_alea_faible_avant_1920" | "part_logement_alea_faible_1920_1945" | "part_logement_alea_faible_1945_1975" | "part_logement_alea_faible_apres_1975" | "part_alea_faible_commune" | "part_alea_moyen_fort_commune", ExtArgs["result"]["postgis_rga"]>
+export type databases_v2_rgaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nb_logement" | "nb_logement_alea_moyen_fort" | "nb_logement_alea_faible" | "nb_logement_sans_alea" | "nb_logement_alea_moyen_fort_avant_1920" | "nb_logement_alea_moyen_fort_1920_1945" | "nb_logement_alea_moyen_fort_1945_1975" | "nb_logement_alea_moyen_fort_apres_1975" | "nb_logement_alea_faible_avant_1920" | "nb_logement_alea_faible_1920_1945" | "nb_logement_alea_faible_1945_1975" | "nb_logement_alea_faible_apres_1975" | "surface_commune" | "surface_alea_faible_commune" | "surface_alea_moyen_fort_commune" | "part_logement_alea_moyen_fort_avant_1920" | "part_logement_alea_moyen_fort_1920_1945" | "part_logement_alea_moyen_fort_1945_1975" | "part_logement_alea_moyen_fort_apres_1975" | "part_logement_alea_faible_avant_1920" | "part_logement_alea_faible_1920_1945" | "part_logement_alea_faible_1945_1975" | "part_logement_alea_faible_apres_1975" | "part_alea_faible_commune" | "part_alea_moyen_fort_commune", ExtArgs["result"]["databases_v2_rga"]>
 
-export type $postgis_rgaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  name: "postgis_rga"
+export type $databases_v2_rgaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  name: "databases_v2_rga"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     index: number
@@ -1414,136 +1414,136 @@ export type $postgis_rgaPayload<ExtArgs extends runtime.Types.Extensions.Interna
     part_logement_alea_faible_apres_1975: number
     part_alea_faible_commune: number
     part_alea_moyen_fort_commune: number
-  }, ExtArgs["result"]["postgis_rga"]>
+  }, ExtArgs["result"]["databases_v2_rga"]>
   composites: {}
 }
 
-export type postgis_rgaGetPayload<S extends boolean | null | undefined | postgis_rgaDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$postgis_rgaPayload, S>
+export type databases_v2_rgaGetPayload<S extends boolean | null | undefined | databases_v2_rgaDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$databases_v2_rgaPayload, S>
 
-export type postgis_rgaCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
-  Omit<postgis_rgaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-    select?: Postgis_rgaCountAggregateInputType | true
+export type databases_v2_rgaCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
+  Omit<databases_v2_rgaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: Databases_v2_rgaCountAggregateInputType | true
   }
 
-export interface postgis_rgaDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['postgis_rga'], meta: { name: 'postgis_rga' } }
+export interface databases_v2_rgaDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['databases_v2_rga'], meta: { name: 'databases_v2_rga' } }
   /**
-   * Find zero or one Postgis_rga that matches the filter.
-   * @param {postgis_rgaFindUniqueArgs} args - Arguments to find a Postgis_rga
+   * Find zero or one Databases_v2_rga that matches the filter.
+   * @param {databases_v2_rgaFindUniqueArgs} args - Arguments to find a Databases_v2_rga
    * @example
-   * // Get one Postgis_rga
-   * const postgis_rga = await prisma.postgis_rga.findUnique({
+   * // Get one Databases_v2_rga
+   * const databases_v2_rga = await prisma.databases_v2_rga.findUnique({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    */
-  findUnique<T extends postgis_rgaFindUniqueArgs>(args: Prisma.SelectSubset<T, postgis_rgaFindUniqueArgs<ExtArgs>>): Prisma.Prisma__postgis_rgaClient<runtime.Types.Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findUnique<T extends databases_v2_rgaFindUniqueArgs>(args: Prisma.SelectSubset<T, databases_v2_rgaFindUniqueArgs<ExtArgs>>): Prisma.Prisma__databases_v2_rgaClient<runtime.Types.Result.GetResult<Prisma.$databases_v2_rgaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Find one Postgis_rga that matches the filter or throw an error with `error.code='P2025'`
+   * Find one Databases_v2_rga that matches the filter or throw an error with `error.code='P2025'`
    * if no matches were found.
-   * @param {postgis_rgaFindUniqueOrThrowArgs} args - Arguments to find a Postgis_rga
+   * @param {databases_v2_rgaFindUniqueOrThrowArgs} args - Arguments to find a Databases_v2_rga
    * @example
-   * // Get one Postgis_rga
-   * const postgis_rga = await prisma.postgis_rga.findUniqueOrThrow({
+   * // Get one Databases_v2_rga
+   * const databases_v2_rga = await prisma.databases_v2_rga.findUniqueOrThrow({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    */
-  findUniqueOrThrow<T extends postgis_rgaFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, postgis_rgaFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__postgis_rgaClient<runtime.Types.Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findUniqueOrThrow<T extends databases_v2_rgaFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, databases_v2_rgaFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__databases_v2_rgaClient<runtime.Types.Result.GetResult<Prisma.$databases_v2_rgaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Find the first Postgis_rga that matches the filter.
+   * Find the first Databases_v2_rga that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {postgis_rgaFindFirstArgs} args - Arguments to find a Postgis_rga
+   * @param {databases_v2_rgaFindFirstArgs} args - Arguments to find a Databases_v2_rga
    * @example
-   * // Get one Postgis_rga
-   * const postgis_rga = await prisma.postgis_rga.findFirst({
+   * // Get one Databases_v2_rga
+   * const databases_v2_rga = await prisma.databases_v2_rga.findFirst({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    */
-  findFirst<T extends postgis_rgaFindFirstArgs>(args?: Prisma.SelectSubset<T, postgis_rgaFindFirstArgs<ExtArgs>>): Prisma.Prisma__postgis_rgaClient<runtime.Types.Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findFirst<T extends databases_v2_rgaFindFirstArgs>(args?: Prisma.SelectSubset<T, databases_v2_rgaFindFirstArgs<ExtArgs>>): Prisma.Prisma__databases_v2_rgaClient<runtime.Types.Result.GetResult<Prisma.$databases_v2_rgaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Find the first Postgis_rga that matches the filter or
+   * Find the first Databases_v2_rga that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {postgis_rgaFindFirstOrThrowArgs} args - Arguments to find a Postgis_rga
+   * @param {databases_v2_rgaFindFirstOrThrowArgs} args - Arguments to find a Databases_v2_rga
    * @example
-   * // Get one Postgis_rga
-   * const postgis_rga = await prisma.postgis_rga.findFirstOrThrow({
+   * // Get one Databases_v2_rga
+   * const databases_v2_rga = await prisma.databases_v2_rga.findFirstOrThrow({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    */
-  findFirstOrThrow<T extends postgis_rgaFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, postgis_rgaFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__postgis_rgaClient<runtime.Types.Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findFirstOrThrow<T extends databases_v2_rgaFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, databases_v2_rgaFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__databases_v2_rgaClient<runtime.Types.Result.GetResult<Prisma.$databases_v2_rgaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Find zero or more Postgis_rgas that matches the filter.
+   * Find zero or more Databases_v2_rgas that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {postgis_rgaFindManyArgs} args - Arguments to filter and select certain fields only.
+   * @param {databases_v2_rgaFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
-   * // Get all Postgis_rgas
-   * const postgis_rgas = await prisma.postgis_rga.findMany()
+   * // Get all Databases_v2_rgas
+   * const databases_v2_rgas = await prisma.databases_v2_rga.findMany()
    * 
-   * // Get first 10 Postgis_rgas
-   * const postgis_rgas = await prisma.postgis_rga.findMany({ take: 10 })
+   * // Get first 10 Databases_v2_rgas
+   * const databases_v2_rgas = await prisma.databases_v2_rga.findMany({ take: 10 })
    * 
    * // Only select the `index`
-   * const postgis_rgaWithIndexOnly = await prisma.postgis_rga.findMany({ select: { index: true } })
+   * const databases_v2_rgaWithIndexOnly = await prisma.databases_v2_rga.findMany({ select: { index: true } })
    * 
    */
-  findMany<T extends postgis_rgaFindManyArgs>(args?: Prisma.SelectSubset<T, postgis_rgaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+  findMany<T extends databases_v2_rgaFindManyArgs>(args?: Prisma.SelectSubset<T, databases_v2_rgaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$databases_v2_rgaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
   /**
-   * Create a Postgis_rga.
-   * @param {postgis_rgaCreateArgs} args - Arguments to create a Postgis_rga.
+   * Create a Databases_v2_rga.
+   * @param {databases_v2_rgaCreateArgs} args - Arguments to create a Databases_v2_rga.
    * @example
-   * // Create one Postgis_rga
-   * const Postgis_rga = await prisma.postgis_rga.create({
+   * // Create one Databases_v2_rga
+   * const Databases_v2_rga = await prisma.databases_v2_rga.create({
    *   data: {
-   *     // ... data to create a Postgis_rga
+   *     // ... data to create a Databases_v2_rga
    *   }
    * })
    * 
    */
-  create<T extends postgis_rgaCreateArgs>(args: Prisma.SelectSubset<T, postgis_rgaCreateArgs<ExtArgs>>): Prisma.Prisma__postgis_rgaClient<runtime.Types.Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  create<T extends databases_v2_rgaCreateArgs>(args: Prisma.SelectSubset<T, databases_v2_rgaCreateArgs<ExtArgs>>): Prisma.Prisma__databases_v2_rgaClient<runtime.Types.Result.GetResult<Prisma.$databases_v2_rgaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Create many Postgis_rgas.
-   * @param {postgis_rgaCreateManyArgs} args - Arguments to create many Postgis_rgas.
+   * Create many Databases_v2_rgas.
+   * @param {databases_v2_rgaCreateManyArgs} args - Arguments to create many Databases_v2_rgas.
    * @example
-   * // Create many Postgis_rgas
-   * const postgis_rga = await prisma.postgis_rga.createMany({
+   * // Create many Databases_v2_rgas
+   * const databases_v2_rga = await prisma.databases_v2_rga.createMany({
    *   data: [
    *     // ... provide data here
    *   ]
    * })
    *     
    */
-  createMany<T extends postgis_rgaCreateManyArgs>(args?: Prisma.SelectSubset<T, postgis_rgaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  createMany<T extends databases_v2_rgaCreateManyArgs>(args?: Prisma.SelectSubset<T, databases_v2_rgaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
-   * Create many Postgis_rgas and returns the data saved in the database.
-   * @param {postgis_rgaCreateManyAndReturnArgs} args - Arguments to create many Postgis_rgas.
+   * Create many Databases_v2_rgas and returns the data saved in the database.
+   * @param {databases_v2_rgaCreateManyAndReturnArgs} args - Arguments to create many Databases_v2_rgas.
    * @example
-   * // Create many Postgis_rgas
-   * const postgis_rga = await prisma.postgis_rga.createManyAndReturn({
+   * // Create many Databases_v2_rgas
+   * const databases_v2_rga = await prisma.databases_v2_rga.createManyAndReturn({
    *   data: [
    *     // ... provide data here
    *   ]
    * })
    * 
-   * // Create many Postgis_rgas and only return the `index`
-   * const postgis_rgaWithIndexOnly = await prisma.postgis_rga.createManyAndReturn({
+   * // Create many Databases_v2_rgas and only return the `index`
+   * const databases_v2_rgaWithIndexOnly = await prisma.databases_v2_rga.createManyAndReturn({
    *   select: { index: true },
    *   data: [
    *     // ... provide data here
@@ -1553,28 +1553,28 @@ export interface postgis_rgaDelegate<ExtArgs extends runtime.Types.Extensions.In
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  createManyAndReturn<T extends postgis_rgaCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, postgis_rgaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+  createManyAndReturn<T extends databases_v2_rgaCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, databases_v2_rgaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$databases_v2_rgaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
   /**
-   * Delete a Postgis_rga.
-   * @param {postgis_rgaDeleteArgs} args - Arguments to delete one Postgis_rga.
+   * Delete a Databases_v2_rga.
+   * @param {databases_v2_rgaDeleteArgs} args - Arguments to delete one Databases_v2_rga.
    * @example
-   * // Delete one Postgis_rga
-   * const Postgis_rga = await prisma.postgis_rga.delete({
+   * // Delete one Databases_v2_rga
+   * const Databases_v2_rga = await prisma.databases_v2_rga.delete({
    *   where: {
-   *     // ... filter to delete one Postgis_rga
+   *     // ... filter to delete one Databases_v2_rga
    *   }
    * })
    * 
    */
-  delete<T extends postgis_rgaDeleteArgs>(args: Prisma.SelectSubset<T, postgis_rgaDeleteArgs<ExtArgs>>): Prisma.Prisma__postgis_rgaClient<runtime.Types.Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  delete<T extends databases_v2_rgaDeleteArgs>(args: Prisma.SelectSubset<T, databases_v2_rgaDeleteArgs<ExtArgs>>): Prisma.Prisma__databases_v2_rgaClient<runtime.Types.Result.GetResult<Prisma.$databases_v2_rgaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Update one Postgis_rga.
-   * @param {postgis_rgaUpdateArgs} args - Arguments to update one Postgis_rga.
+   * Update one Databases_v2_rga.
+   * @param {databases_v2_rgaUpdateArgs} args - Arguments to update one Databases_v2_rga.
    * @example
-   * // Update one Postgis_rga
-   * const postgis_rga = await prisma.postgis_rga.update({
+   * // Update one Databases_v2_rga
+   * const databases_v2_rga = await prisma.databases_v2_rga.update({
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1584,30 +1584,30 @@ export interface postgis_rgaDelegate<ExtArgs extends runtime.Types.Extensions.In
    * })
    * 
    */
-  update<T extends postgis_rgaUpdateArgs>(args: Prisma.SelectSubset<T, postgis_rgaUpdateArgs<ExtArgs>>): Prisma.Prisma__postgis_rgaClient<runtime.Types.Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  update<T extends databases_v2_rgaUpdateArgs>(args: Prisma.SelectSubset<T, databases_v2_rgaUpdateArgs<ExtArgs>>): Prisma.Prisma__databases_v2_rgaClient<runtime.Types.Result.GetResult<Prisma.$databases_v2_rgaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Delete zero or more Postgis_rgas.
-   * @param {postgis_rgaDeleteManyArgs} args - Arguments to filter Postgis_rgas to delete.
+   * Delete zero or more Databases_v2_rgas.
+   * @param {databases_v2_rgaDeleteManyArgs} args - Arguments to filter Databases_v2_rgas to delete.
    * @example
-   * // Delete a few Postgis_rgas
-   * const { count } = await prisma.postgis_rga.deleteMany({
+   * // Delete a few Databases_v2_rgas
+   * const { count } = await prisma.databases_v2_rga.deleteMany({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    * 
    */
-  deleteMany<T extends postgis_rgaDeleteManyArgs>(args?: Prisma.SelectSubset<T, postgis_rgaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  deleteMany<T extends databases_v2_rgaDeleteManyArgs>(args?: Prisma.SelectSubset<T, databases_v2_rgaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
-   * Update zero or more Postgis_rgas.
+   * Update zero or more Databases_v2_rgas.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {postgis_rgaUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {databases_v2_rgaUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
-   * // Update many Postgis_rgas
-   * const postgis_rga = await prisma.postgis_rga.updateMany({
+   * // Update many Databases_v2_rgas
+   * const databases_v2_rga = await prisma.databases_v2_rga.updateMany({
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1617,14 +1617,14 @@ export interface postgis_rgaDelegate<ExtArgs extends runtime.Types.Extensions.In
    * })
    * 
    */
-  updateMany<T extends postgis_rgaUpdateManyArgs>(args: Prisma.SelectSubset<T, postgis_rgaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  updateMany<T extends databases_v2_rgaUpdateManyArgs>(args: Prisma.SelectSubset<T, databases_v2_rgaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
-   * Update zero or more Postgis_rgas and returns the data updated in the database.
-   * @param {postgis_rgaUpdateManyAndReturnArgs} args - Arguments to update many Postgis_rgas.
+   * Update zero or more Databases_v2_rgas and returns the data updated in the database.
+   * @param {databases_v2_rgaUpdateManyAndReturnArgs} args - Arguments to update many Databases_v2_rgas.
    * @example
-   * // Update many Postgis_rgas
-   * const postgis_rga = await prisma.postgis_rga.updateManyAndReturn({
+   * // Update many Databases_v2_rgas
+   * const databases_v2_rga = await prisma.databases_v2_rga.updateManyAndReturn({
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1633,8 +1633,8 @@ export interface postgis_rgaDelegate<ExtArgs extends runtime.Types.Extensions.In
    *   ]
    * })
    * 
-   * // Update zero or more Postgis_rgas and only return the `index`
-   * const postgis_rgaWithIndexOnly = await prisma.postgis_rga.updateManyAndReturn({
+   * // Update zero or more Databases_v2_rgas and only return the `index`
+   * const databases_v2_rgaWithIndexOnly = await prisma.databases_v2_rga.updateManyAndReturn({
    *   select: { index: true },
    *   where: {
    *     // ... provide filter here
@@ -1647,56 +1647,56 @@ export interface postgis_rgaDelegate<ExtArgs extends runtime.Types.Extensions.In
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  updateManyAndReturn<T extends postgis_rgaUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, postgis_rgaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+  updateManyAndReturn<T extends databases_v2_rgaUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, databases_v2_rgaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$databases_v2_rgaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
   /**
-   * Create or update one Postgis_rga.
-   * @param {postgis_rgaUpsertArgs} args - Arguments to update or create a Postgis_rga.
+   * Create or update one Databases_v2_rga.
+   * @param {databases_v2_rgaUpsertArgs} args - Arguments to update or create a Databases_v2_rga.
    * @example
-   * // Update or create a Postgis_rga
-   * const postgis_rga = await prisma.postgis_rga.upsert({
+   * // Update or create a Databases_v2_rga
+   * const databases_v2_rga = await prisma.databases_v2_rga.upsert({
    *   create: {
-   *     // ... data to create a Postgis_rga
+   *     // ... data to create a Databases_v2_rga
    *   },
    *   update: {
    *     // ... in case it already exists, update
    *   },
    *   where: {
-   *     // ... the filter for the Postgis_rga we want to update
+   *     // ... the filter for the Databases_v2_rga we want to update
    *   }
    * })
    */
-  upsert<T extends postgis_rgaUpsertArgs>(args: Prisma.SelectSubset<T, postgis_rgaUpsertArgs<ExtArgs>>): Prisma.Prisma__postgis_rgaClient<runtime.Types.Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  upsert<T extends databases_v2_rgaUpsertArgs>(args: Prisma.SelectSubset<T, databases_v2_rgaUpsertArgs<ExtArgs>>): Prisma.Prisma__databases_v2_rgaClient<runtime.Types.Result.GetResult<Prisma.$databases_v2_rgaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
   /**
-   * Count the number of Postgis_rgas.
+   * Count the number of Databases_v2_rgas.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {postgis_rgaCountArgs} args - Arguments to filter Postgis_rgas to count.
+   * @param {databases_v2_rgaCountArgs} args - Arguments to filter Databases_v2_rgas to count.
    * @example
-   * // Count the number of Postgis_rgas
-   * const count = await prisma.postgis_rga.count({
+   * // Count the number of Databases_v2_rgas
+   * const count = await prisma.databases_v2_rga.count({
    *   where: {
-   *     // ... the filter for the Postgis_rgas we want to count
+   *     // ... the filter for the Databases_v2_rgas we want to count
    *   }
    * })
   **/
-  count<T extends postgis_rgaCountArgs>(
-    args?: Prisma.Subset<T, postgis_rgaCountArgs>,
+  count<T extends databases_v2_rgaCountArgs>(
+    args?: Prisma.Subset<T, databases_v2_rgaCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
         ? number
-        : Prisma.GetScalarType<T['select'], Postgis_rgaCountAggregateOutputType>
+        : Prisma.GetScalarType<T['select'], Databases_v2_rgaCountAggregateOutputType>
       : number
   >
 
   /**
-   * Allows you to perform aggregations operations on a Postgis_rga.
+   * Allows you to perform aggregations operations on a Databases_v2_rga.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {Postgis_rgaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+   * @param {Databases_v2_rgaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
    * @example
    * // Ordered by age ascending
    * // Where email contains prisma.io
@@ -1716,13 +1716,13 @@ export interface postgis_rgaDelegate<ExtArgs extends runtime.Types.Extensions.In
    *   take: 10,
    * })
   **/
-  aggregate<T extends Postgis_rgaAggregateArgs>(args: Prisma.Subset<T, Postgis_rgaAggregateArgs>): Prisma.PrismaPromise<GetPostgis_rgaAggregateType<T>>
+  aggregate<T extends Databases_v2_rgaAggregateArgs>(args: Prisma.Subset<T, Databases_v2_rgaAggregateArgs>): Prisma.PrismaPromise<GetDatabases_v2_rgaAggregateType<T>>
 
   /**
-   * Group by Postgis_rga.
+   * Group by Databases_v2_rga.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {postgis_rgaGroupByArgs} args - Group by arguments.
+   * @param {databases_v2_rgaGroupByArgs} args - Group by arguments.
    * @example
    * // Group by city, order by createdAt, get count
    * const result = await prisma.user.groupBy({
@@ -1737,14 +1737,14 @@ export interface postgis_rgaDelegate<ExtArgs extends runtime.Types.Extensions.In
    * 
   **/
   groupBy<
-    T extends postgis_rgaGroupByArgs,
+    T extends databases_v2_rgaGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
       Prisma.Extends<'skip', Prisma.Keys<T>>,
       Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: postgis_rgaGroupByArgs['orderBy'] }
-      : { orderBy?: postgis_rgaGroupByArgs['orderBy'] },
+      ? { orderBy: databases_v2_rgaGroupByArgs['orderBy'] }
+      : { orderBy?: databases_v2_rgaGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>,
     ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
@@ -1793,20 +1793,20 @@ export interface postgis_rgaDelegate<ExtArgs extends runtime.Types.Extensions.In
           ? never
           : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
       }[OrderFields]
-  >(args: Prisma.SubsetIntersection<T, postgis_rgaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPostgis_rgaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  >(args: Prisma.SubsetIntersection<T, databases_v2_rgaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDatabases_v2_rgaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 /**
- * Fields of the postgis_rga model
+ * Fields of the databases_v2_rga model
  */
-readonly fields: postgis_rgaFieldRefs;
+readonly fields: databases_v2_rgaFieldRefs;
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for postgis_rga.
+ * The delegate class that acts as a "Promise-like" for databases_v2_rga.
  * Why is this prefixed with `Prisma__`?
  * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export interface Prisma__postgis_rgaClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+export interface Prisma__databases_v2_rgaClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1834,407 +1834,407 @@ export interface Prisma__postgis_rgaClient<T, Null = never, ExtArgs extends runt
 
 
 /**
- * Fields of the postgis_rga model
+ * Fields of the databases_v2_rga model
  */
-export interface postgis_rgaFieldRefs {
-  readonly index: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly code_geographique: Prisma.FieldRef<"postgis_rga", 'String'>
-  readonly libelle_geographique: Prisma.FieldRef<"postgis_rga", 'String'>
-  readonly epci: Prisma.FieldRef<"postgis_rga", 'String'>
-  readonly libelle_epci: Prisma.FieldRef<"postgis_rga", 'String'>
-  readonly departement: Prisma.FieldRef<"postgis_rga", 'String'>
-  readonly libelle_departement: Prisma.FieldRef<"postgis_rga", 'String'>
-  readonly region: Prisma.FieldRef<"postgis_rga", 'Float'>
-  readonly ept: Prisma.FieldRef<"postgis_rga", 'String'>
-  readonly libelle_petr: Prisma.FieldRef<"postgis_rga", 'String'>
-  readonly code_pnr: Prisma.FieldRef<"postgis_rga", 'String'>
-  readonly libelle_pnr: Prisma.FieldRef<"postgis_rga", 'String'>
-  readonly nb_logement: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly nb_logement_alea_moyen_fort: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly nb_logement_alea_faible: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly nb_logement_sans_alea: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly nb_logement_alea_moyen_fort_avant_1920: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly nb_logement_alea_moyen_fort_1920_1945: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly nb_logement_alea_moyen_fort_1945_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly nb_logement_alea_moyen_fort_apres_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly nb_logement_alea_faible_avant_1920: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly nb_logement_alea_faible_1920_1945: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly nb_logement_alea_faible_1945_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly nb_logement_alea_faible_apres_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly surface_commune: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly surface_alea_faible_commune: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly surface_alea_moyen_fort_commune: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly part_logement_alea_moyen_fort_avant_1920: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly part_logement_alea_moyen_fort_1920_1945: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly part_logement_alea_moyen_fort_1945_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly part_logement_alea_moyen_fort_apres_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly part_logement_alea_faible_avant_1920: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly part_logement_alea_faible_1920_1945: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly part_logement_alea_faible_1945_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly part_logement_alea_faible_apres_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly part_alea_faible_commune: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly part_alea_moyen_fort_commune: Prisma.FieldRef<"postgis_rga", 'Int'>
+export interface databases_v2_rgaFieldRefs {
+  readonly index: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly code_geographique: Prisma.FieldRef<"databases_v2_rga", 'String'>
+  readonly libelle_geographique: Prisma.FieldRef<"databases_v2_rga", 'String'>
+  readonly epci: Prisma.FieldRef<"databases_v2_rga", 'String'>
+  readonly libelle_epci: Prisma.FieldRef<"databases_v2_rga", 'String'>
+  readonly departement: Prisma.FieldRef<"databases_v2_rga", 'String'>
+  readonly libelle_departement: Prisma.FieldRef<"databases_v2_rga", 'String'>
+  readonly region: Prisma.FieldRef<"databases_v2_rga", 'Float'>
+  readonly ept: Prisma.FieldRef<"databases_v2_rga", 'String'>
+  readonly libelle_petr: Prisma.FieldRef<"databases_v2_rga", 'String'>
+  readonly code_pnr: Prisma.FieldRef<"databases_v2_rga", 'String'>
+  readonly libelle_pnr: Prisma.FieldRef<"databases_v2_rga", 'String'>
+  readonly nb_logement: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly nb_logement_alea_moyen_fort: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly nb_logement_alea_faible: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly nb_logement_sans_alea: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly nb_logement_alea_moyen_fort_avant_1920: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly nb_logement_alea_moyen_fort_1920_1945: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly nb_logement_alea_moyen_fort_1945_1975: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly nb_logement_alea_moyen_fort_apres_1975: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly nb_logement_alea_faible_avant_1920: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly nb_logement_alea_faible_1920_1945: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly nb_logement_alea_faible_1945_1975: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly nb_logement_alea_faible_apres_1975: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly surface_commune: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly surface_alea_faible_commune: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly surface_alea_moyen_fort_commune: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly part_logement_alea_moyen_fort_avant_1920: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly part_logement_alea_moyen_fort_1920_1945: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly part_logement_alea_moyen_fort_1945_1975: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly part_logement_alea_moyen_fort_apres_1975: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly part_logement_alea_faible_avant_1920: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly part_logement_alea_faible_1920_1945: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly part_logement_alea_faible_1945_1975: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly part_logement_alea_faible_apres_1975: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly part_alea_faible_commune: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly part_alea_moyen_fort_commune: Prisma.FieldRef<"databases_v2_rga", 'Int'>
 }
     
 
 // Custom InputTypes
 /**
- * postgis_rga findUnique
+ * databases_v2_rga findUnique
  */
-export type postgis_rgaFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the postgis_rga
+   * Select specific fields to fetch from the databases_v2_rga
    */
-  select?: Prisma.postgis_rgaSelect<ExtArgs> | null
+  select?: Prisma.databases_v2_rgaSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the postgis_rga
+   * Omit specific fields from the databases_v2_rga
    */
-  omit?: Prisma.postgis_rgaOmit<ExtArgs> | null
+  omit?: Prisma.databases_v2_rgaOmit<ExtArgs> | null
   /**
-   * Filter, which postgis_rga to fetch.
+   * Filter, which databases_v2_rga to fetch.
    */
-  where: Prisma.postgis_rgaWhereUniqueInput
+  where: Prisma.databases_v2_rgaWhereUniqueInput
 }
 
 /**
- * postgis_rga findUniqueOrThrow
+ * databases_v2_rga findUniqueOrThrow
  */
-export type postgis_rgaFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the postgis_rga
+   * Select specific fields to fetch from the databases_v2_rga
    */
-  select?: Prisma.postgis_rgaSelect<ExtArgs> | null
+  select?: Prisma.databases_v2_rgaSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the postgis_rga
+   * Omit specific fields from the databases_v2_rga
    */
-  omit?: Prisma.postgis_rgaOmit<ExtArgs> | null
+  omit?: Prisma.databases_v2_rgaOmit<ExtArgs> | null
   /**
-   * Filter, which postgis_rga to fetch.
+   * Filter, which databases_v2_rga to fetch.
    */
-  where: Prisma.postgis_rgaWhereUniqueInput
+  where: Prisma.databases_v2_rgaWhereUniqueInput
 }
 
 /**
- * postgis_rga findFirst
+ * databases_v2_rga findFirst
  */
-export type postgis_rgaFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the postgis_rga
+   * Select specific fields to fetch from the databases_v2_rga
    */
-  select?: Prisma.postgis_rgaSelect<ExtArgs> | null
+  select?: Prisma.databases_v2_rgaSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the postgis_rga
+   * Omit specific fields from the databases_v2_rga
    */
-  omit?: Prisma.postgis_rgaOmit<ExtArgs> | null
+  omit?: Prisma.databases_v2_rgaOmit<ExtArgs> | null
   /**
-   * Filter, which postgis_rga to fetch.
+   * Filter, which databases_v2_rga to fetch.
    */
-  where?: Prisma.postgis_rgaWhereInput
+  where?: Prisma.databases_v2_rgaWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of postgis_rgas to fetch.
+   * Determine the order of databases_v2_rgas to fetch.
    */
-  orderBy?: Prisma.postgis_rgaOrderByWithRelationInput | Prisma.postgis_rgaOrderByWithRelationInput[]
+  orderBy?: Prisma.databases_v2_rgaOrderByWithRelationInput | Prisma.databases_v2_rgaOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for postgis_rgas.
+   * Sets the position for searching for databases_v2_rgas.
    */
-  cursor?: Prisma.postgis_rgaWhereUniqueInput
+  cursor?: Prisma.databases_v2_rgaWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` postgis_rgas from the position of the cursor.
+   * Take `±n` databases_v2_rgas from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` postgis_rgas.
+   * Skip the first `n` databases_v2_rgas.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of postgis_rgas.
+   * Filter by unique combinations of databases_v2_rgas.
    */
-  distinct?: Prisma.Postgis_rgaScalarFieldEnum | Prisma.Postgis_rgaScalarFieldEnum[]
+  distinct?: Prisma.Databases_v2_rgaScalarFieldEnum | Prisma.Databases_v2_rgaScalarFieldEnum[]
 }
 
 /**
- * postgis_rga findFirstOrThrow
+ * databases_v2_rga findFirstOrThrow
  */
-export type postgis_rgaFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the postgis_rga
+   * Select specific fields to fetch from the databases_v2_rga
    */
-  select?: Prisma.postgis_rgaSelect<ExtArgs> | null
+  select?: Prisma.databases_v2_rgaSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the postgis_rga
+   * Omit specific fields from the databases_v2_rga
    */
-  omit?: Prisma.postgis_rgaOmit<ExtArgs> | null
+  omit?: Prisma.databases_v2_rgaOmit<ExtArgs> | null
   /**
-   * Filter, which postgis_rga to fetch.
+   * Filter, which databases_v2_rga to fetch.
    */
-  where?: Prisma.postgis_rgaWhereInput
+  where?: Prisma.databases_v2_rgaWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of postgis_rgas to fetch.
+   * Determine the order of databases_v2_rgas to fetch.
    */
-  orderBy?: Prisma.postgis_rgaOrderByWithRelationInput | Prisma.postgis_rgaOrderByWithRelationInput[]
+  orderBy?: Prisma.databases_v2_rgaOrderByWithRelationInput | Prisma.databases_v2_rgaOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for postgis_rgas.
+   * Sets the position for searching for databases_v2_rgas.
    */
-  cursor?: Prisma.postgis_rgaWhereUniqueInput
+  cursor?: Prisma.databases_v2_rgaWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` postgis_rgas from the position of the cursor.
+   * Take `±n` databases_v2_rgas from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` postgis_rgas.
+   * Skip the first `n` databases_v2_rgas.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of postgis_rgas.
+   * Filter by unique combinations of databases_v2_rgas.
    */
-  distinct?: Prisma.Postgis_rgaScalarFieldEnum | Prisma.Postgis_rgaScalarFieldEnum[]
+  distinct?: Prisma.Databases_v2_rgaScalarFieldEnum | Prisma.Databases_v2_rgaScalarFieldEnum[]
 }
 
 /**
- * postgis_rga findMany
+ * databases_v2_rga findMany
  */
-export type postgis_rgaFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the postgis_rga
+   * Select specific fields to fetch from the databases_v2_rga
    */
-  select?: Prisma.postgis_rgaSelect<ExtArgs> | null
+  select?: Prisma.databases_v2_rgaSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the postgis_rga
+   * Omit specific fields from the databases_v2_rga
    */
-  omit?: Prisma.postgis_rgaOmit<ExtArgs> | null
+  omit?: Prisma.databases_v2_rgaOmit<ExtArgs> | null
   /**
-   * Filter, which postgis_rgas to fetch.
+   * Filter, which databases_v2_rgas to fetch.
    */
-  where?: Prisma.postgis_rgaWhereInput
+  where?: Prisma.databases_v2_rgaWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of postgis_rgas to fetch.
+   * Determine the order of databases_v2_rgas to fetch.
    */
-  orderBy?: Prisma.postgis_rgaOrderByWithRelationInput | Prisma.postgis_rgaOrderByWithRelationInput[]
+  orderBy?: Prisma.databases_v2_rgaOrderByWithRelationInput | Prisma.databases_v2_rgaOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for listing postgis_rgas.
+   * Sets the position for listing databases_v2_rgas.
    */
-  cursor?: Prisma.postgis_rgaWhereUniqueInput
+  cursor?: Prisma.databases_v2_rgaWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` postgis_rgas from the position of the cursor.
+   * Take `±n` databases_v2_rgas from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` postgis_rgas.
+   * Skip the first `n` databases_v2_rgas.
    */
   skip?: number
-  distinct?: Prisma.Postgis_rgaScalarFieldEnum | Prisma.Postgis_rgaScalarFieldEnum[]
+  distinct?: Prisma.Databases_v2_rgaScalarFieldEnum | Prisma.Databases_v2_rgaScalarFieldEnum[]
 }
 
 /**
- * postgis_rga create
+ * databases_v2_rga create
  */
-export type postgis_rgaCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the postgis_rga
+   * Select specific fields to fetch from the databases_v2_rga
    */
-  select?: Prisma.postgis_rgaSelect<ExtArgs> | null
+  select?: Prisma.databases_v2_rgaSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the postgis_rga
+   * Omit specific fields from the databases_v2_rga
    */
-  omit?: Prisma.postgis_rgaOmit<ExtArgs> | null
+  omit?: Prisma.databases_v2_rgaOmit<ExtArgs> | null
   /**
-   * The data needed to create a postgis_rga.
+   * The data needed to create a databases_v2_rga.
    */
-  data: Prisma.XOR<Prisma.postgis_rgaCreateInput, Prisma.postgis_rgaUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.databases_v2_rgaCreateInput, Prisma.databases_v2_rgaUncheckedCreateInput>
 }
 
 /**
- * postgis_rga createMany
+ * databases_v2_rga createMany
  */
-export type postgis_rgaCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to create many postgis_rgas.
+   * The data used to create many databases_v2_rgas.
    */
-  data: Prisma.postgis_rgaCreateManyInput | Prisma.postgis_rgaCreateManyInput[]
+  data: Prisma.databases_v2_rgaCreateManyInput | Prisma.databases_v2_rgaCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * postgis_rga createManyAndReturn
+ * databases_v2_rga createManyAndReturn
  */
-export type postgis_rgaCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the postgis_rga
+   * Select specific fields to fetch from the databases_v2_rga
    */
-  select?: Prisma.postgis_rgaSelectCreateManyAndReturn<ExtArgs> | null
+  select?: Prisma.databases_v2_rgaSelectCreateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the postgis_rga
+   * Omit specific fields from the databases_v2_rga
    */
-  omit?: Prisma.postgis_rgaOmit<ExtArgs> | null
+  omit?: Prisma.databases_v2_rgaOmit<ExtArgs> | null
   /**
-   * The data used to create many postgis_rgas.
+   * The data used to create many databases_v2_rgas.
    */
-  data: Prisma.postgis_rgaCreateManyInput | Prisma.postgis_rgaCreateManyInput[]
+  data: Prisma.databases_v2_rgaCreateManyInput | Prisma.databases_v2_rgaCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * postgis_rga update
+ * databases_v2_rga update
  */
-export type postgis_rgaUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the postgis_rga
+   * Select specific fields to fetch from the databases_v2_rga
    */
-  select?: Prisma.postgis_rgaSelect<ExtArgs> | null
+  select?: Prisma.databases_v2_rgaSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the postgis_rga
+   * Omit specific fields from the databases_v2_rga
    */
-  omit?: Prisma.postgis_rgaOmit<ExtArgs> | null
+  omit?: Prisma.databases_v2_rgaOmit<ExtArgs> | null
   /**
-   * The data needed to update a postgis_rga.
+   * The data needed to update a databases_v2_rga.
    */
-  data: Prisma.XOR<Prisma.postgis_rgaUpdateInput, Prisma.postgis_rgaUncheckedUpdateInput>
+  data: Prisma.XOR<Prisma.databases_v2_rgaUpdateInput, Prisma.databases_v2_rgaUncheckedUpdateInput>
   /**
-   * Choose, which postgis_rga to update.
+   * Choose, which databases_v2_rga to update.
    */
-  where: Prisma.postgis_rgaWhereUniqueInput
+  where: Prisma.databases_v2_rgaWhereUniqueInput
 }
 
 /**
- * postgis_rga updateMany
+ * databases_v2_rga updateMany
  */
-export type postgis_rgaUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to update postgis_rgas.
+   * The data used to update databases_v2_rgas.
    */
-  data: Prisma.XOR<Prisma.postgis_rgaUpdateManyMutationInput, Prisma.postgis_rgaUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.databases_v2_rgaUpdateManyMutationInput, Prisma.databases_v2_rgaUncheckedUpdateManyInput>
   /**
-   * Filter which postgis_rgas to update
+   * Filter which databases_v2_rgas to update
    */
-  where?: Prisma.postgis_rgaWhereInput
+  where?: Prisma.databases_v2_rgaWhereInput
   /**
-   * Limit how many postgis_rgas to update.
+   * Limit how many databases_v2_rgas to update.
    */
   limit?: number
 }
 
 /**
- * postgis_rga updateManyAndReturn
+ * databases_v2_rga updateManyAndReturn
  */
-export type postgis_rgaUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the postgis_rga
+   * Select specific fields to fetch from the databases_v2_rga
    */
-  select?: Prisma.postgis_rgaSelectUpdateManyAndReturn<ExtArgs> | null
+  select?: Prisma.databases_v2_rgaSelectUpdateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the postgis_rga
+   * Omit specific fields from the databases_v2_rga
    */
-  omit?: Prisma.postgis_rgaOmit<ExtArgs> | null
+  omit?: Prisma.databases_v2_rgaOmit<ExtArgs> | null
   /**
-   * The data used to update postgis_rgas.
+   * The data used to update databases_v2_rgas.
    */
-  data: Prisma.XOR<Prisma.postgis_rgaUpdateManyMutationInput, Prisma.postgis_rgaUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.databases_v2_rgaUpdateManyMutationInput, Prisma.databases_v2_rgaUncheckedUpdateManyInput>
   /**
-   * Filter which postgis_rgas to update
+   * Filter which databases_v2_rgas to update
    */
-  where?: Prisma.postgis_rgaWhereInput
+  where?: Prisma.databases_v2_rgaWhereInput
   /**
-   * Limit how many postgis_rgas to update.
+   * Limit how many databases_v2_rgas to update.
    */
   limit?: number
 }
 
 /**
- * postgis_rga upsert
+ * databases_v2_rga upsert
  */
-export type postgis_rgaUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the postgis_rga
+   * Select specific fields to fetch from the databases_v2_rga
    */
-  select?: Prisma.postgis_rgaSelect<ExtArgs> | null
+  select?: Prisma.databases_v2_rgaSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the postgis_rga
+   * Omit specific fields from the databases_v2_rga
    */
-  omit?: Prisma.postgis_rgaOmit<ExtArgs> | null
+  omit?: Prisma.databases_v2_rgaOmit<ExtArgs> | null
   /**
-   * The filter to search for the postgis_rga to update in case it exists.
+   * The filter to search for the databases_v2_rga to update in case it exists.
    */
-  where: Prisma.postgis_rgaWhereUniqueInput
+  where: Prisma.databases_v2_rgaWhereUniqueInput
   /**
-   * In case the postgis_rga found by the `where` argument doesn't exist, create a new postgis_rga with this data.
+   * In case the databases_v2_rga found by the `where` argument doesn't exist, create a new databases_v2_rga with this data.
    */
-  create: Prisma.XOR<Prisma.postgis_rgaCreateInput, Prisma.postgis_rgaUncheckedCreateInput>
+  create: Prisma.XOR<Prisma.databases_v2_rgaCreateInput, Prisma.databases_v2_rgaUncheckedCreateInput>
   /**
-   * In case the postgis_rga was found with the provided `where` argument, update it with this data.
+   * In case the databases_v2_rga was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<Prisma.postgis_rgaUpdateInput, Prisma.postgis_rgaUncheckedUpdateInput>
+  update: Prisma.XOR<Prisma.databases_v2_rgaUpdateInput, Prisma.databases_v2_rgaUncheckedUpdateInput>
 }
 
 /**
- * postgis_rga delete
+ * databases_v2_rga delete
  */
-export type postgis_rgaDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the postgis_rga
+   * Select specific fields to fetch from the databases_v2_rga
    */
-  select?: Prisma.postgis_rgaSelect<ExtArgs> | null
+  select?: Prisma.databases_v2_rgaSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the postgis_rga
+   * Omit specific fields from the databases_v2_rga
    */
-  omit?: Prisma.postgis_rgaOmit<ExtArgs> | null
+  omit?: Prisma.databases_v2_rgaOmit<ExtArgs> | null
   /**
-   * Filter which postgis_rga to delete.
+   * Filter which databases_v2_rga to delete.
    */
-  where: Prisma.postgis_rgaWhereUniqueInput
+  where: Prisma.databases_v2_rgaWhereUniqueInput
 }
 
 /**
- * postgis_rga deleteMany
+ * databases_v2_rga deleteMany
  */
-export type postgis_rgaDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which postgis_rgas to delete
+   * Filter which databases_v2_rgas to delete
    */
-  where?: Prisma.postgis_rgaWhereInput
+  where?: Prisma.databases_v2_rgaWhereInput
   /**
-   * Limit how many postgis_rgas to delete.
+   * Limit how many databases_v2_rgas to delete.
    */
   limit?: number
 }
 
 /**
- * postgis_rga without action
+ * databases_v2_rga without action
  */
-export type postgis_rgaDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type databases_v2_rgaDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the postgis_rga
+   * Select specific fields to fetch from the databases_v2_rga
    */
-  select?: Prisma.postgis_rgaSelect<ExtArgs> | null
+  select?: Prisma.databases_v2_rgaSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the postgis_rga
+   * Omit specific fields from the databases_v2_rga
    */
-  omit?: Prisma.postgis_rgaOmit<ExtArgs> | null
+  omit?: Prisma.databases_v2_rgaOmit<ExtArgs> | null
 }

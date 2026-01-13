@@ -135,10 +135,10 @@ export type databases_v2_table_commune = Prisma.databases_v2_table_communeModel
  */
 export type databases_v2_table_territoires = Prisma.databases_v2_table_territoiresModel
 /**
- * Model postgis_rga
+ * Model databases_v2_rga
  * 
  */
-export type postgis_rga = Prisma.postgis_rgaModel
+export type databases_v2_rga = Prisma.databases_v2_rgaModel
 /**
  * Model postgis_v2_communes_drom
  * 
