@@ -1,0 +1,142 @@
+'use client';
+
+import AiresAppellationsControleesCharts from '@/components/charts/agriculture/airesAppellationsControleesCharts';
+import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
+import { Body } from '@/design-system/base/Textes';
+import { TableCommuneModel } from '@/lib/postgres/models';
+import { AiresAppellationsControleesText } from '@/lib/staticTexts';
+import { airesAppellationsControleesTooltipText } from '@/lib/tooltipTexts';
+import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
+import styles from '../../explorerDonnees.module.scss';
+
+const parsePostgresArray = (pgArray: string | null): string[] => {
+  if (!pgArray || pgArray === '{}') return [];
+  const content = pgArray.slice(1, -1);
+  if (!content) return [];
+  const items: string[] = [];
+  let currentItem = '';
+  let inQuotes = false;
+  for (let i = 0; i < content.length; i++) {
+    const char = content[i];
+    if (char === '"') {
+      inQuotes = !inQuotes;
+    } else if (char === ',' && !inQuotes) {
+      items.push(currentItem.trim());
+      currentItem = '';
+    } else {
+      currentItem += char;
+    }
+  }
+  if (currentItem) {
+    items.push(currentItem.trim());
+  }
+  return items;
+};
+
+export const AiresAppellationsControlees = (props: {
+  tableCommune: TableCommuneModel[];
+}) => {
+  const { tableCommune } = props;
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
+  const [datavizTab, setDatavizTab] = useState<string>('Répartition');
+  const tableCommuneFiltered = type === "commune"
+    ? tableCommune.filter(el => el.code_geographique === code)
+    : type === "epci"
+      ? tableCommune.filter(el => el.epci === code)
+      : type === "departement"
+        ? tableCommune.filter(el => el.departement === code)
+        : type === "pnr"
+          ? tableCommune.filter(el => el.code_pnr === code)
+          : type === "ept"
+            ? tableCommune.filter(el => el.ept === libelle)
+            : type === "petr"
+              ? tableCommune.filter(el => el.libelle_petr === libelle)
+              : tableCommune;
+
+  const airesAppellationsControleesMap = new Map<string, string>();
+  tableCommuneFiltered
+    .filter(el => el.aires_appellations_controlees_nom !== null)
+    .forEach(el => {
+      const noms = Array.isArray(el.aires_appellations_controlees_nom)
+        ? el.aires_appellations_controlees_nom
+        : parsePostgresArray(el.aires_appellations_controlees_nom);
+
+      const signes = Array.isArray(el.aires_appellations_controlees_signe)
+        ? el.aires_appellations_controlees_signe
+        : parsePostgresArray(el.aires_appellations_controlees_signe);
+
+      noms.forEach((nom, index) => {
+        if (!airesAppellationsControleesMap.has(nom)) {
+          airesAppellationsControleesMap.set(nom, signes[index] || '');
+        }
+      });
+    });
+  const airesAppellationsControlees = Array.from(airesAppellationsControleesMap.entries()).map(([nom, signe]) => ({
+    nom,
+    signe,
+  }));
+
+  return (
+    <>
+      <div className={styles.datavizContainer}>
+        <div className={styles.dataTextWrapper}>
+          <div className={styles.chiffreDynamiqueWrapper}>
+            {
+              tableCommune !== undefined ? (
+                <>
+                  <div className={styles.text}>
+                    <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                      TEXTE
+                    </Body>
+                    <CustomTooltipNouveauParcours
+                      title={airesAppellationsControleesTooltipText}
+                      texte="D'où vient ce chiffre ?"
+                    />
+                  </div>
+                </>
+              ) : (
+                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                  Il n'y a pas de données référencées sur le territoire que vous avez sélectionné
+                </Body>
+              )
+            }
+          </div>
+          <AiresAppellationsControleesText />
+        </div>
+        <div className={styles.datavizWrapper} style={{ borderRadius: "1rem 0 0 1rem", height: "fit-content" }}>
+          <AiresAppellationsControleesCharts
+            datavizTab={datavizTab}
+            setDatavizTab={setDatavizTab}
+            airesAppellationsControlees={airesAppellationsControlees}
+          />
+          <div
+            className={styles.sourcesExportWrapper}
+            style={{
+              borderTop: "1px solid var(--gris-medium)",
+              borderRadius: "0 0 0 1rem"
+            }}
+          >
+            <Body size='sm' style={{ color: "var(--gris-dark)" }}>
+              Source : .
+            </Body>
+            {/* <ExportButtonNouveauParcours
+              data={exportData}
+              baseName="surfaces_agricoles"
+              type={type}
+              libelle={libelle}
+              code={code}
+              sheetName="Surfaces agricoles"
+              anchor="Types de culture"
+            /> */}
+          </div>
+        </div>
+      </div>
+
+
+    </>
+  );
+};

@@ -297,3 +297,8 @@ export const SurfacesToujoursEnHerbeText = (
   </Body>
 );
 
+export const airesAppellationsControleesTooltipText = (
+  <Body weight="bold" size="sm">
+    TOOLTIP
+  </Body>
+);

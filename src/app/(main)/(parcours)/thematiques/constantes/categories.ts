@@ -211,6 +211,12 @@ export const liensEntreThematiques = [
     curve: 1,
     curveRadius: 0.6
   },
+  {
+    source: 'Eau',
+    target: 'Agriculture',
+    curve: 1,
+    curveRadius: 0.1
+  },
   // Agriculture
   {
     source: 'Agriculture',

@@ -27,57 +27,365 @@ export type AggregatePostgis_rga = {
 }
 
 export type Postgis_rgaAvgAggregateOutputType = {
-  pk: number | null
+  index: number | null
+  region: number | null
+  nb_logement: number | null
+  nb_logement_alea_moyen_fort: number | null
+  nb_logement_alea_faible: number | null
+  nb_logement_sans_alea: number | null
+  nb_logement_alea_moyen_fort_avant_1920: number | null
+  nb_logement_alea_moyen_fort_1920_1945: number | null
+  nb_logement_alea_moyen_fort_1945_1975: number | null
+  nb_logement_alea_moyen_fort_apres_1975: number | null
+  nb_logement_alea_faible_avant_1920: number | null
+  nb_logement_alea_faible_1920_1945: number | null
+  nb_logement_alea_faible_1945_1975: number | null
+  nb_logement_alea_faible_apres_1975: number | null
+  surface_commune: number | null
+  surface_alea_faible_commune: number | null
+  surface_alea_moyen_fort_commune: number | null
+  part_logement_alea_moyen_fort_avant_1920: number | null
+  part_logement_alea_moyen_fort_1920_1945: number | null
+  part_logement_alea_moyen_fort_1945_1975: number | null
+  part_logement_alea_moyen_fort_apres_1975: number | null
+  part_logement_alea_faible_avant_1920: number | null
+  part_logement_alea_faible_1920_1945: number | null
+  part_logement_alea_faible_1945_1975: number | null
+  part_logement_alea_faible_apres_1975: number | null
+  part_alea_faible_commune: number | null
+  part_alea_moyen_fort_commune: number | null
 }
 
 export type Postgis_rgaSumAggregateOutputType = {
-  pk: number | null
+  index: number | null
+  region: number | null
+  nb_logement: number | null
+  nb_logement_alea_moyen_fort: number | null
+  nb_logement_alea_faible: number | null
+  nb_logement_sans_alea: number | null
+  nb_logement_alea_moyen_fort_avant_1920: number | null
+  nb_logement_alea_moyen_fort_1920_1945: number | null
+  nb_logement_alea_moyen_fort_1945_1975: number | null
+  nb_logement_alea_moyen_fort_apres_1975: number | null
+  nb_logement_alea_faible_avant_1920: number | null
+  nb_logement_alea_faible_1920_1945: number | null
+  nb_logement_alea_faible_1945_1975: number | null
+  nb_logement_alea_faible_apres_1975: number | null
+  surface_commune: number | null
+  surface_alea_faible_commune: number | null
+  surface_alea_moyen_fort_commune: number | null
+  part_logement_alea_moyen_fort_avant_1920: number | null
+  part_logement_alea_moyen_fort_1920_1945: number | null
+  part_logement_alea_moyen_fort_1945_1975: number | null
+  part_logement_alea_moyen_fort_apres_1975: number | null
+  part_logement_alea_faible_avant_1920: number | null
+  part_logement_alea_faible_1920_1945: number | null
+  part_logement_alea_faible_1945_1975: number | null
+  part_logement_alea_faible_apres_1975: number | null
+  part_alea_faible_commune: number | null
+  part_alea_moyen_fort_commune: number | null
 }
 
 export type Postgis_rgaMinAggregateOutputType = {
-  pk: number | null
-  alea: string | null
+  index: number | null
   code_geographique: string | null
+  libelle_geographique: string | null
+  epci: string | null
+  libelle_epci: string | null
+  departement: string | null
+  libelle_departement: string | null
+  region: number | null
+  ept: string | null
+  libelle_petr: string | null
+  code_pnr: string | null
+  libelle_pnr: string | null
+  nb_logement: number | null
+  nb_logement_alea_moyen_fort: number | null
+  nb_logement_alea_faible: number | null
+  nb_logement_sans_alea: number | null
+  nb_logement_alea_moyen_fort_avant_1920: number | null
+  nb_logement_alea_moyen_fort_1920_1945: number | null
+  nb_logement_alea_moyen_fort_1945_1975: number | null
+  nb_logement_alea_moyen_fort_apres_1975: number | null
+  nb_logement_alea_faible_avant_1920: number | null
+  nb_logement_alea_faible_1920_1945: number | null
+  nb_logement_alea_faible_1945_1975: number | null
+  nb_logement_alea_faible_apres_1975: number | null
+  surface_commune: number | null
+  surface_alea_faible_commune: number | null
+  surface_alea_moyen_fort_commune: number | null
+  part_logement_alea_moyen_fort_avant_1920: number | null
+  part_logement_alea_moyen_fort_1920_1945: number | null
+  part_logement_alea_moyen_fort_1945_1975: number | null
+  part_logement_alea_moyen_fort_apres_1975: number | null
+  part_logement_alea_faible_avant_1920: number | null
+  part_logement_alea_faible_1920_1945: number | null
+  part_logement_alea_faible_1945_1975: number | null
+  part_logement_alea_faible_apres_1975: number | null
+  part_alea_faible_commune: number | null
+  part_alea_moyen_fort_commune: number | null
 }
 
 export type Postgis_rgaMaxAggregateOutputType = {
-  pk: number | null
-  alea: string | null
+  index: number | null
   code_geographique: string | null
+  libelle_geographique: string | null
+  epci: string | null
+  libelle_epci: string | null
+  departement: string | null
+  libelle_departement: string | null
+  region: number | null
+  ept: string | null
+  libelle_petr: string | null
+  code_pnr: string | null
+  libelle_pnr: string | null
+  nb_logement: number | null
+  nb_logement_alea_moyen_fort: number | null
+  nb_logement_alea_faible: number | null
+  nb_logement_sans_alea: number | null
+  nb_logement_alea_moyen_fort_avant_1920: number | null
+  nb_logement_alea_moyen_fort_1920_1945: number | null
+  nb_logement_alea_moyen_fort_1945_1975: number | null
+  nb_logement_alea_moyen_fort_apres_1975: number | null
+  nb_logement_alea_faible_avant_1920: number | null
+  nb_logement_alea_faible_1920_1945: number | null
+  nb_logement_alea_faible_1945_1975: number | null
+  nb_logement_alea_faible_apres_1975: number | null
+  surface_commune: number | null
+  surface_alea_faible_commune: number | null
+  surface_alea_moyen_fort_commune: number | null
+  part_logement_alea_moyen_fort_avant_1920: number | null
+  part_logement_alea_moyen_fort_1920_1945: number | null
+  part_logement_alea_moyen_fort_1945_1975: number | null
+  part_logement_alea_moyen_fort_apres_1975: number | null
+  part_logement_alea_faible_avant_1920: number | null
+  part_logement_alea_faible_1920_1945: number | null
+  part_logement_alea_faible_1945_1975: number | null
+  part_logement_alea_faible_apres_1975: number | null
+  part_alea_faible_commune: number | null
+  part_alea_moyen_fort_commune: number | null
 }
 
 export type Postgis_rgaCountAggregateOutputType = {
-  pk: number
-  alea: number
+  index: number
   code_geographique: number
+  libelle_geographique: number
+  epci: number
+  libelle_epci: number
+  departement: number
+  libelle_departement: number
+  region: number
+  ept: number
+  libelle_petr: number
+  code_pnr: number
+  libelle_pnr: number
+  nb_logement: number
+  nb_logement_alea_moyen_fort: number
+  nb_logement_alea_faible: number
+  nb_logement_sans_alea: number
+  nb_logement_alea_moyen_fort_avant_1920: number
+  nb_logement_alea_moyen_fort_1920_1945: number
+  nb_logement_alea_moyen_fort_1945_1975: number
+  nb_logement_alea_moyen_fort_apres_1975: number
+  nb_logement_alea_faible_avant_1920: number
+  nb_logement_alea_faible_1920_1945: number
+  nb_logement_alea_faible_1945_1975: number
+  nb_logement_alea_faible_apres_1975: number
+  surface_commune: number
+  surface_alea_faible_commune: number
+  surface_alea_moyen_fort_commune: number
+  part_logement_alea_moyen_fort_avant_1920: number
+  part_logement_alea_moyen_fort_1920_1945: number
+  part_logement_alea_moyen_fort_1945_1975: number
+  part_logement_alea_moyen_fort_apres_1975: number
+  part_logement_alea_faible_avant_1920: number
+  part_logement_alea_faible_1920_1945: number
+  part_logement_alea_faible_1945_1975: number
+  part_logement_alea_faible_apres_1975: number
+  part_alea_faible_commune: number
+  part_alea_moyen_fort_commune: number
   _all: number
 }
 
 
 export type Postgis_rgaAvgAggregateInputType = {
-  pk?: true
+  index?: true
+  region?: true
+  nb_logement?: true
+  nb_logement_alea_moyen_fort?: true
+  nb_logement_alea_faible?: true
+  nb_logement_sans_alea?: true
+  nb_logement_alea_moyen_fort_avant_1920?: true
+  nb_logement_alea_moyen_fort_1920_1945?: true
+  nb_logement_alea_moyen_fort_1945_1975?: true
+  nb_logement_alea_moyen_fort_apres_1975?: true
+  nb_logement_alea_faible_avant_1920?: true
+  nb_logement_alea_faible_1920_1945?: true
+  nb_logement_alea_faible_1945_1975?: true
+  nb_logement_alea_faible_apres_1975?: true
+  surface_commune?: true
+  surface_alea_faible_commune?: true
+  surface_alea_moyen_fort_commune?: true
+  part_logement_alea_moyen_fort_avant_1920?: true
+  part_logement_alea_moyen_fort_1920_1945?: true
+  part_logement_alea_moyen_fort_1945_1975?: true
+  part_logement_alea_moyen_fort_apres_1975?: true
+  part_logement_alea_faible_avant_1920?: true
+  part_logement_alea_faible_1920_1945?: true
+  part_logement_alea_faible_1945_1975?: true
+  part_logement_alea_faible_apres_1975?: true
+  part_alea_faible_commune?: true
+  part_alea_moyen_fort_commune?: true
 }
 
 export type Postgis_rgaSumAggregateInputType = {
-  pk?: true
+  index?: true
+  region?: true
+  nb_logement?: true
+  nb_logement_alea_moyen_fort?: true
+  nb_logement_alea_faible?: true
+  nb_logement_sans_alea?: true
+  nb_logement_alea_moyen_fort_avant_1920?: true
+  nb_logement_alea_moyen_fort_1920_1945?: true
+  nb_logement_alea_moyen_fort_1945_1975?: true
+  nb_logement_alea_moyen_fort_apres_1975?: true
+  nb_logement_alea_faible_avant_1920?: true
+  nb_logement_alea_faible_1920_1945?: true
+  nb_logement_alea_faible_1945_1975?: true
+  nb_logement_alea_faible_apres_1975?: true
+  surface_commune?: true
+  surface_alea_faible_commune?: true
+  surface_alea_moyen_fort_commune?: true
+  part_logement_alea_moyen_fort_avant_1920?: true
+  part_logement_alea_moyen_fort_1920_1945?: true
+  part_logement_alea_moyen_fort_1945_1975?: true
+  part_logement_alea_moyen_fort_apres_1975?: true
+  part_logement_alea_faible_avant_1920?: true
+  part_logement_alea_faible_1920_1945?: true
+  part_logement_alea_faible_1945_1975?: true
+  part_logement_alea_faible_apres_1975?: true
+  part_alea_faible_commune?: true
+  part_alea_moyen_fort_commune?: true
 }
 
 export type Postgis_rgaMinAggregateInputType = {
-  pk?: true
-  alea?: true
+  index?: true
   code_geographique?: true
+  libelle_geographique?: true
+  epci?: true
+  libelle_epci?: true
+  departement?: true
+  libelle_departement?: true
+  region?: true
+  ept?: true
+  libelle_petr?: true
+  code_pnr?: true
+  libelle_pnr?: true
+  nb_logement?: true
+  nb_logement_alea_moyen_fort?: true
+  nb_logement_alea_faible?: true
+  nb_logement_sans_alea?: true
+  nb_logement_alea_moyen_fort_avant_1920?: true
+  nb_logement_alea_moyen_fort_1920_1945?: true
+  nb_logement_alea_moyen_fort_1945_1975?: true
+  nb_logement_alea_moyen_fort_apres_1975?: true
+  nb_logement_alea_faible_avant_1920?: true
+  nb_logement_alea_faible_1920_1945?: true
+  nb_logement_alea_faible_1945_1975?: true
+  nb_logement_alea_faible_apres_1975?: true
+  surface_commune?: true
+  surface_alea_faible_commune?: true
+  surface_alea_moyen_fort_commune?: true
+  part_logement_alea_moyen_fort_avant_1920?: true
+  part_logement_alea_moyen_fort_1920_1945?: true
+  part_logement_alea_moyen_fort_1945_1975?: true
+  part_logement_alea_moyen_fort_apres_1975?: true
+  part_logement_alea_faible_avant_1920?: true
+  part_logement_alea_faible_1920_1945?: true
+  part_logement_alea_faible_1945_1975?: true
+  part_logement_alea_faible_apres_1975?: true
+  part_alea_faible_commune?: true
+  part_alea_moyen_fort_commune?: true
 }
 
 export type Postgis_rgaMaxAggregateInputType = {
-  pk?: true
-  alea?: true
+  index?: true
   code_geographique?: true
+  libelle_geographique?: true
+  epci?: true
+  libelle_epci?: true
+  departement?: true
+  libelle_departement?: true
+  region?: true
+  ept?: true
+  libelle_petr?: true
+  code_pnr?: true
+  libelle_pnr?: true
+  nb_logement?: true
+  nb_logement_alea_moyen_fort?: true
+  nb_logement_alea_faible?: true
+  nb_logement_sans_alea?: true
+  nb_logement_alea_moyen_fort_avant_1920?: true
+  nb_logement_alea_moyen_fort_1920_1945?: true
+  nb_logement_alea_moyen_fort_1945_1975?: true
+  nb_logement_alea_moyen_fort_apres_1975?: true
+  nb_logement_alea_faible_avant_1920?: true
+  nb_logement_alea_faible_1920_1945?: true
+  nb_logement_alea_faible_1945_1975?: true
+  nb_logement_alea_faible_apres_1975?: true
+  surface_commune?: true
+  surface_alea_faible_commune?: true
+  surface_alea_moyen_fort_commune?: true
+  part_logement_alea_moyen_fort_avant_1920?: true
+  part_logement_alea_moyen_fort_1920_1945?: true
+  part_logement_alea_moyen_fort_1945_1975?: true
+  part_logement_alea_moyen_fort_apres_1975?: true
+  part_logement_alea_faible_avant_1920?: true
+  part_logement_alea_faible_1920_1945?: true
+  part_logement_alea_faible_1945_1975?: true
+  part_logement_alea_faible_apres_1975?: true
+  part_alea_faible_commune?: true
+  part_alea_moyen_fort_commune?: true
 }
 
 export type Postgis_rgaCountAggregateInputType = {
-  pk?: true
-  alea?: true
+  index?: true
   code_geographique?: true
+  libelle_geographique?: true
+  epci?: true
+  libelle_epci?: true
+  departement?: true
+  libelle_departement?: true
+  region?: true
+  ept?: true
+  libelle_petr?: true
+  code_pnr?: true
+  libelle_pnr?: true
+  nb_logement?: true
+  nb_logement_alea_moyen_fort?: true
+  nb_logement_alea_faible?: true
+  nb_logement_sans_alea?: true
+  nb_logement_alea_moyen_fort_avant_1920?: true
+  nb_logement_alea_moyen_fort_1920_1945?: true
+  nb_logement_alea_moyen_fort_1945_1975?: true
+  nb_logement_alea_moyen_fort_apres_1975?: true
+  nb_logement_alea_faible_avant_1920?: true
+  nb_logement_alea_faible_1920_1945?: true
+  nb_logement_alea_faible_1945_1975?: true
+  nb_logement_alea_faible_apres_1975?: true
+  surface_commune?: true
+  surface_alea_faible_commune?: true
+  surface_alea_moyen_fort_commune?: true
+  part_logement_alea_moyen_fort_avant_1920?: true
+  part_logement_alea_moyen_fort_1920_1945?: true
+  part_logement_alea_moyen_fort_1945_1975?: true
+  part_logement_alea_moyen_fort_apres_1975?: true
+  part_logement_alea_faible_avant_1920?: true
+  part_logement_alea_faible_1920_1945?: true
+  part_logement_alea_faible_1945_1975?: true
+  part_logement_alea_faible_apres_1975?: true
+  part_alea_faible_commune?: true
+  part_alea_moyen_fort_commune?: true
   _all?: true
 }
 
@@ -168,9 +476,43 @@ export type postgis_rgaGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 export type Postgis_rgaGroupByOutputType = {
-  pk: number
-  alea: string | null
-  code_geographique: string | null
+  index: number
+  code_geographique: string
+  libelle_geographique: string
+  epci: string
+  libelle_epci: string
+  departement: string
+  libelle_departement: string
+  region: number
+  ept: string | null
+  libelle_petr: string | null
+  code_pnr: string | null
+  libelle_pnr: string | null
+  nb_logement: number
+  nb_logement_alea_moyen_fort: number
+  nb_logement_alea_faible: number
+  nb_logement_sans_alea: number
+  nb_logement_alea_moyen_fort_avant_1920: number
+  nb_logement_alea_moyen_fort_1920_1945: number
+  nb_logement_alea_moyen_fort_1945_1975: number
+  nb_logement_alea_moyen_fort_apres_1975: number
+  nb_logement_alea_faible_avant_1920: number
+  nb_logement_alea_faible_1920_1945: number
+  nb_logement_alea_faible_1945_1975: number
+  nb_logement_alea_faible_apres_1975: number
+  surface_commune: number
+  surface_alea_faible_commune: number
+  surface_alea_moyen_fort_commune: number
+  part_logement_alea_moyen_fort_avant_1920: number
+  part_logement_alea_moyen_fort_1920_1945: number
+  part_logement_alea_moyen_fort_1945_1975: number
+  part_logement_alea_moyen_fort_apres_1975: number
+  part_logement_alea_faible_avant_1920: number
+  part_logement_alea_faible_1920_1945: number
+  part_logement_alea_faible_1945_1975: number
+  part_logement_alea_faible_apres_1975: number
+  part_alea_faible_commune: number
+  part_alea_moyen_fort_commune: number
   _count: Postgis_rgaCountAggregateOutputType | null
   _avg: Postgis_rgaAvgAggregateOutputType | null
   _sum: Postgis_rgaSumAggregateOutputType | null
@@ -197,30 +539,166 @@ export type postgis_rgaWhereInput = {
   AND?: Prisma.postgis_rgaWhereInput | Prisma.postgis_rgaWhereInput[]
   OR?: Prisma.postgis_rgaWhereInput[]
   NOT?: Prisma.postgis_rgaWhereInput | Prisma.postgis_rgaWhereInput[]
-  pk?: Prisma.IntFilter<"postgis_rga"> | number
-  alea?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
-  code_geographique?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
+  index?: Prisma.IntFilter<"postgis_rga"> | number
+  code_geographique?: Prisma.StringFilter<"postgis_rga"> | string
+  libelle_geographique?: Prisma.StringFilter<"postgis_rga"> | string
+  epci?: Prisma.StringFilter<"postgis_rga"> | string
+  libelle_epci?: Prisma.StringFilter<"postgis_rga"> | string
+  departement?: Prisma.StringFilter<"postgis_rga"> | string
+  libelle_departement?: Prisma.StringFilter<"postgis_rga"> | string
+  region?: Prisma.FloatFilter<"postgis_rga"> | number
+  ept?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
+  libelle_petr?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
+  code_pnr?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
+  libelle_pnr?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
+  nb_logement?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_faible?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_sans_alea?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_faible_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_faible_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_faible_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_faible_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  surface_commune?: Prisma.IntFilter<"postgis_rga"> | number
+  surface_alea_faible_commune?: Prisma.IntFilter<"postgis_rga"> | number
+  surface_alea_moyen_fort_commune?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_faible_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_faible_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_faible_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_faible_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  part_alea_faible_commune?: Prisma.IntFilter<"postgis_rga"> | number
+  part_alea_moyen_fort_commune?: Prisma.IntFilter<"postgis_rga"> | number
 }
 
 export type postgis_rgaOrderByWithRelationInput = {
-  pk?: Prisma.SortOrder
-  alea?: Prisma.SortOrderInput | Prisma.SortOrder
-  code_geographique?: Prisma.SortOrderInput | Prisma.SortOrder
+  index?: Prisma.SortOrder
+  code_geographique?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
+  departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_logement?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort?: Prisma.SortOrder
+  nb_logement_alea_faible?: Prisma.SortOrder
+  nb_logement_sans_alea?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  surface_commune?: Prisma.SortOrder
+  surface_alea_faible_commune?: Prisma.SortOrder
+  surface_alea_moyen_fort_commune?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  part_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  part_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  part_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  part_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  part_alea_faible_commune?: Prisma.SortOrder
+  part_alea_moyen_fort_commune?: Prisma.SortOrder
 }
 
 export type postgis_rgaWhereUniqueInput = Prisma.AtLeast<{
-  pk?: number
+  index?: number
   AND?: Prisma.postgis_rgaWhereInput | Prisma.postgis_rgaWhereInput[]
   OR?: Prisma.postgis_rgaWhereInput[]
   NOT?: Prisma.postgis_rgaWhereInput | Prisma.postgis_rgaWhereInput[]
-  alea?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
-  code_geographique?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
-}, "pk">
+  code_geographique?: Prisma.StringFilter<"postgis_rga"> | string
+  libelle_geographique?: Prisma.StringFilter<"postgis_rga"> | string
+  epci?: Prisma.StringFilter<"postgis_rga"> | string
+  libelle_epci?: Prisma.StringFilter<"postgis_rga"> | string
+  departement?: Prisma.StringFilter<"postgis_rga"> | string
+  libelle_departement?: Prisma.StringFilter<"postgis_rga"> | string
+  region?: Prisma.FloatFilter<"postgis_rga"> | number
+  ept?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
+  libelle_petr?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
+  code_pnr?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
+  libelle_pnr?: Prisma.StringNullableFilter<"postgis_rga"> | string | null
+  nb_logement?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_faible?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_sans_alea?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_faible_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_faible_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_faible_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  nb_logement_alea_faible_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  surface_commune?: Prisma.IntFilter<"postgis_rga"> | number
+  surface_alea_faible_commune?: Prisma.IntFilter<"postgis_rga"> | number
+  surface_alea_moyen_fort_commune?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_faible_avant_1920?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_faible_1920_1945?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_faible_1945_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  part_logement_alea_faible_apres_1975?: Prisma.IntFilter<"postgis_rga"> | number
+  part_alea_faible_commune?: Prisma.IntFilter<"postgis_rga"> | number
+  part_alea_moyen_fort_commune?: Prisma.IntFilter<"postgis_rga"> | number
+}, "index">
 
 export type postgis_rgaOrderByWithAggregationInput = {
-  pk?: Prisma.SortOrder
-  alea?: Prisma.SortOrderInput | Prisma.SortOrder
-  code_geographique?: Prisma.SortOrderInput | Prisma.SortOrder
+  index?: Prisma.SortOrder
+  code_geographique?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
+  departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_logement?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort?: Prisma.SortOrder
+  nb_logement_alea_faible?: Prisma.SortOrder
+  nb_logement_sans_alea?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  surface_commune?: Prisma.SortOrder
+  surface_alea_faible_commune?: Prisma.SortOrder
+  surface_alea_moyen_fort_commune?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  part_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  part_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  part_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  part_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  part_alea_faible_commune?: Prisma.SortOrder
+  part_alea_moyen_fort_commune?: Prisma.SortOrder
   _count?: Prisma.postgis_rgaCountOrderByAggregateInput
   _avg?: Prisma.postgis_rgaAvgOrderByAggregateInput
   _max?: Prisma.postgis_rgaMaxOrderByAggregateInput
@@ -232,111 +710,710 @@ export type postgis_rgaScalarWhereWithAggregatesInput = {
   AND?: Prisma.postgis_rgaScalarWhereWithAggregatesInput | Prisma.postgis_rgaScalarWhereWithAggregatesInput[]
   OR?: Prisma.postgis_rgaScalarWhereWithAggregatesInput[]
   NOT?: Prisma.postgis_rgaScalarWhereWithAggregatesInput | Prisma.postgis_rgaScalarWhereWithAggregatesInput[]
-  pk?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
-  alea?: Prisma.StringNullableWithAggregatesFilter<"postgis_rga"> | string | null
-  code_geographique?: Prisma.StringNullableWithAggregatesFilter<"postgis_rga"> | string | null
+  index?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  code_geographique?: Prisma.StringWithAggregatesFilter<"postgis_rga"> | string
+  libelle_geographique?: Prisma.StringWithAggregatesFilter<"postgis_rga"> | string
+  epci?: Prisma.StringWithAggregatesFilter<"postgis_rga"> | string
+  libelle_epci?: Prisma.StringWithAggregatesFilter<"postgis_rga"> | string
+  departement?: Prisma.StringWithAggregatesFilter<"postgis_rga"> | string
+  libelle_departement?: Prisma.StringWithAggregatesFilter<"postgis_rga"> | string
+  region?: Prisma.FloatWithAggregatesFilter<"postgis_rga"> | number
+  ept?: Prisma.StringNullableWithAggregatesFilter<"postgis_rga"> | string | null
+  libelle_petr?: Prisma.StringNullableWithAggregatesFilter<"postgis_rga"> | string | null
+  code_pnr?: Prisma.StringNullableWithAggregatesFilter<"postgis_rga"> | string | null
+  libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"postgis_rga"> | string | null
+  nb_logement?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  nb_logement_alea_faible?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  nb_logement_sans_alea?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  nb_logement_alea_faible_avant_1920?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  nb_logement_alea_faible_1920_1945?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  nb_logement_alea_faible_1945_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  nb_logement_alea_faible_apres_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  surface_commune?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  surface_alea_faible_commune?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  surface_alea_moyen_fort_commune?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  part_logement_alea_faible_avant_1920?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  part_logement_alea_faible_1920_1945?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  part_logement_alea_faible_1945_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  part_logement_alea_faible_apres_1975?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  part_alea_faible_commune?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
+  part_alea_moyen_fort_commune?: Prisma.IntWithAggregatesFilter<"postgis_rga"> | number
 }
 
 export type postgis_rgaCreateInput = {
-  alea?: string | null
-  code_geographique?: string | null
+  index: number
+  code_geographique: string
+  libelle_geographique: string
+  epci: string
+  libelle_epci: string
+  departement: string
+  libelle_departement: string
+  region: number
+  ept?: string | null
+  libelle_petr?: string | null
+  code_pnr?: string | null
+  libelle_pnr?: string | null
+  nb_logement: number
+  nb_logement_alea_moyen_fort: number
+  nb_logement_alea_faible: number
+  nb_logement_sans_alea: number
+  nb_logement_alea_moyen_fort_avant_1920: number
+  nb_logement_alea_moyen_fort_1920_1945: number
+  nb_logement_alea_moyen_fort_1945_1975: number
+  nb_logement_alea_moyen_fort_apres_1975: number
+  nb_logement_alea_faible_avant_1920: number
+  nb_logement_alea_faible_1920_1945: number
+  nb_logement_alea_faible_1945_1975: number
+  nb_logement_alea_faible_apres_1975: number
+  surface_commune: number
+  surface_alea_faible_commune: number
+  surface_alea_moyen_fort_commune: number
+  part_logement_alea_moyen_fort_avant_1920: number
+  part_logement_alea_moyen_fort_1920_1945: number
+  part_logement_alea_moyen_fort_1945_1975: number
+  part_logement_alea_moyen_fort_apres_1975: number
+  part_logement_alea_faible_avant_1920: number
+  part_logement_alea_faible_1920_1945: number
+  part_logement_alea_faible_1945_1975: number
+  part_logement_alea_faible_apres_1975: number
+  part_alea_faible_commune: number
+  part_alea_moyen_fort_commune: number
 }
 
 export type postgis_rgaUncheckedCreateInput = {
-  pk?: number
-  alea?: string | null
-  code_geographique?: string | null
+  index: number
+  code_geographique: string
+  libelle_geographique: string
+  epci: string
+  libelle_epci: string
+  departement: string
+  libelle_departement: string
+  region: number
+  ept?: string | null
+  libelle_petr?: string | null
+  code_pnr?: string | null
+  libelle_pnr?: string | null
+  nb_logement: number
+  nb_logement_alea_moyen_fort: number
+  nb_logement_alea_faible: number
+  nb_logement_sans_alea: number
+  nb_logement_alea_moyen_fort_avant_1920: number
+  nb_logement_alea_moyen_fort_1920_1945: number
+  nb_logement_alea_moyen_fort_1945_1975: number
+  nb_logement_alea_moyen_fort_apres_1975: number
+  nb_logement_alea_faible_avant_1920: number
+  nb_logement_alea_faible_1920_1945: number
+  nb_logement_alea_faible_1945_1975: number
+  nb_logement_alea_faible_apres_1975: number
+  surface_commune: number
+  surface_alea_faible_commune: number
+  surface_alea_moyen_fort_commune: number
+  part_logement_alea_moyen_fort_avant_1920: number
+  part_logement_alea_moyen_fort_1920_1945: number
+  part_logement_alea_moyen_fort_1945_1975: number
+  part_logement_alea_moyen_fort_apres_1975: number
+  part_logement_alea_faible_avant_1920: number
+  part_logement_alea_faible_1920_1945: number
+  part_logement_alea_faible_1945_1975: number
+  part_logement_alea_faible_apres_1975: number
+  part_alea_faible_commune: number
+  part_alea_moyen_fort_commune: number
 }
 
 export type postgis_rgaUpdateInput = {
-  alea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  code_geographique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  index?: Prisma.IntFieldUpdateOperationsInput | number
+  code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
+  epci?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
+  departement?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_departement?: Prisma.StringFieldUpdateOperationsInput | string
+  region?: Prisma.FloatFieldUpdateOperationsInput | number
+  ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nb_logement?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_sans_alea?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  surface_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  surface_alea_faible_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  surface_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_alea_faible_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  part_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type postgis_rgaUncheckedUpdateInput = {
-  pk?: Prisma.IntFieldUpdateOperationsInput | number
-  alea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  code_geographique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  index?: Prisma.IntFieldUpdateOperationsInput | number
+  code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
+  epci?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
+  departement?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_departement?: Prisma.StringFieldUpdateOperationsInput | string
+  region?: Prisma.FloatFieldUpdateOperationsInput | number
+  ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nb_logement?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_sans_alea?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  surface_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  surface_alea_faible_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  surface_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_alea_faible_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  part_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type postgis_rgaCreateManyInput = {
-  pk?: number
-  alea?: string | null
-  code_geographique?: string | null
+  index: number
+  code_geographique: string
+  libelle_geographique: string
+  epci: string
+  libelle_epci: string
+  departement: string
+  libelle_departement: string
+  region: number
+  ept?: string | null
+  libelle_petr?: string | null
+  code_pnr?: string | null
+  libelle_pnr?: string | null
+  nb_logement: number
+  nb_logement_alea_moyen_fort: number
+  nb_logement_alea_faible: number
+  nb_logement_sans_alea: number
+  nb_logement_alea_moyen_fort_avant_1920: number
+  nb_logement_alea_moyen_fort_1920_1945: number
+  nb_logement_alea_moyen_fort_1945_1975: number
+  nb_logement_alea_moyen_fort_apres_1975: number
+  nb_logement_alea_faible_avant_1920: number
+  nb_logement_alea_faible_1920_1945: number
+  nb_logement_alea_faible_1945_1975: number
+  nb_logement_alea_faible_apres_1975: number
+  surface_commune: number
+  surface_alea_faible_commune: number
+  surface_alea_moyen_fort_commune: number
+  part_logement_alea_moyen_fort_avant_1920: number
+  part_logement_alea_moyen_fort_1920_1945: number
+  part_logement_alea_moyen_fort_1945_1975: number
+  part_logement_alea_moyen_fort_apres_1975: number
+  part_logement_alea_faible_avant_1920: number
+  part_logement_alea_faible_1920_1945: number
+  part_logement_alea_faible_1945_1975: number
+  part_logement_alea_faible_apres_1975: number
+  part_alea_faible_commune: number
+  part_alea_moyen_fort_commune: number
 }
 
 export type postgis_rgaUpdateManyMutationInput = {
-  alea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  code_geographique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  index?: Prisma.IntFieldUpdateOperationsInput | number
+  code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
+  epci?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
+  departement?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_departement?: Prisma.StringFieldUpdateOperationsInput | string
+  region?: Prisma.FloatFieldUpdateOperationsInput | number
+  ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nb_logement?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_sans_alea?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  surface_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  surface_alea_faible_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  surface_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_alea_faible_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  part_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type postgis_rgaUncheckedUpdateManyInput = {
-  pk?: Prisma.IntFieldUpdateOperationsInput | number
-  alea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  code_geographique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  index?: Prisma.IntFieldUpdateOperationsInput | number
+  code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
+  epci?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
+  departement?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_departement?: Prisma.StringFieldUpdateOperationsInput | string
+  region?: Prisma.FloatFieldUpdateOperationsInput | number
+  ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nb_logement?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_sans_alea?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  nb_logement_alea_faible_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  surface_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  surface_alea_faible_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  surface_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_avant_1920?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_1920_1945?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_1945_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_logement_alea_faible_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
+  part_alea_faible_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  part_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type postgis_rgaCountOrderByAggregateInput = {
-  pk?: Prisma.SortOrder
-  alea?: Prisma.SortOrder
+  index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
+  departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrder
+  code_pnr?: Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrder
+  nb_logement?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort?: Prisma.SortOrder
+  nb_logement_alea_faible?: Prisma.SortOrder
+  nb_logement_sans_alea?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  surface_commune?: Prisma.SortOrder
+  surface_alea_faible_commune?: Prisma.SortOrder
+  surface_alea_moyen_fort_commune?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  part_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  part_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  part_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  part_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  part_alea_faible_commune?: Prisma.SortOrder
+  part_alea_moyen_fort_commune?: Prisma.SortOrder
 }
 
 export type postgis_rgaAvgOrderByAggregateInput = {
-  pk?: Prisma.SortOrder
+  index?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  nb_logement?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort?: Prisma.SortOrder
+  nb_logement_alea_faible?: Prisma.SortOrder
+  nb_logement_sans_alea?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  surface_commune?: Prisma.SortOrder
+  surface_alea_faible_commune?: Prisma.SortOrder
+  surface_alea_moyen_fort_commune?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  part_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  part_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  part_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  part_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  part_alea_faible_commune?: Prisma.SortOrder
+  part_alea_moyen_fort_commune?: Prisma.SortOrder
 }
 
 export type postgis_rgaMaxOrderByAggregateInput = {
-  pk?: Prisma.SortOrder
-  alea?: Prisma.SortOrder
+  index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
+  departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrder
+  code_pnr?: Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrder
+  nb_logement?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort?: Prisma.SortOrder
+  nb_logement_alea_faible?: Prisma.SortOrder
+  nb_logement_sans_alea?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  surface_commune?: Prisma.SortOrder
+  surface_alea_faible_commune?: Prisma.SortOrder
+  surface_alea_moyen_fort_commune?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  part_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  part_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  part_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  part_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  part_alea_faible_commune?: Prisma.SortOrder
+  part_alea_moyen_fort_commune?: Prisma.SortOrder
 }
 
 export type postgis_rgaMinOrderByAggregateInput = {
-  pk?: Prisma.SortOrder
-  alea?: Prisma.SortOrder
+  index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
+  departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrder
+  code_pnr?: Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrder
+  nb_logement?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort?: Prisma.SortOrder
+  nb_logement_alea_faible?: Prisma.SortOrder
+  nb_logement_sans_alea?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  surface_commune?: Prisma.SortOrder
+  surface_alea_faible_commune?: Prisma.SortOrder
+  surface_alea_moyen_fort_commune?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  part_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  part_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  part_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  part_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  part_alea_faible_commune?: Prisma.SortOrder
+  part_alea_moyen_fort_commune?: Prisma.SortOrder
 }
 
 export type postgis_rgaSumOrderByAggregateInput = {
-  pk?: Prisma.SortOrder
+  index?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  nb_logement?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort?: Prisma.SortOrder
+  nb_logement_alea_faible?: Prisma.SortOrder
+  nb_logement_sans_alea?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  nb_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  nb_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  nb_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  surface_commune?: Prisma.SortOrder
+  surface_alea_faible_commune?: Prisma.SortOrder
+  surface_alea_moyen_fort_commune?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_avant_1920?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1920_1945?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_1945_1975?: Prisma.SortOrder
+  part_logement_alea_moyen_fort_apres_1975?: Prisma.SortOrder
+  part_logement_alea_faible_avant_1920?: Prisma.SortOrder
+  part_logement_alea_faible_1920_1945?: Prisma.SortOrder
+  part_logement_alea_faible_1945_1975?: Prisma.SortOrder
+  part_logement_alea_faible_apres_1975?: Prisma.SortOrder
+  part_alea_faible_commune?: Prisma.SortOrder
+  part_alea_moyen_fort_commune?: Prisma.SortOrder
 }
 
 
 
 export type postgis_rgaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  pk?: boolean
-  alea?: boolean
+  index?: boolean
   code_geographique?: boolean
+  libelle_geographique?: boolean
+  epci?: boolean
+  libelle_epci?: boolean
+  departement?: boolean
+  libelle_departement?: boolean
+  region?: boolean
+  ept?: boolean
+  libelle_petr?: boolean
+  code_pnr?: boolean
+  libelle_pnr?: boolean
+  nb_logement?: boolean
+  nb_logement_alea_moyen_fort?: boolean
+  nb_logement_alea_faible?: boolean
+  nb_logement_sans_alea?: boolean
+  nb_logement_alea_moyen_fort_avant_1920?: boolean
+  nb_logement_alea_moyen_fort_1920_1945?: boolean
+  nb_logement_alea_moyen_fort_1945_1975?: boolean
+  nb_logement_alea_moyen_fort_apres_1975?: boolean
+  nb_logement_alea_faible_avant_1920?: boolean
+  nb_logement_alea_faible_1920_1945?: boolean
+  nb_logement_alea_faible_1945_1975?: boolean
+  nb_logement_alea_faible_apres_1975?: boolean
+  surface_commune?: boolean
+  surface_alea_faible_commune?: boolean
+  surface_alea_moyen_fort_commune?: boolean
+  part_logement_alea_moyen_fort_avant_1920?: boolean
+  part_logement_alea_moyen_fort_1920_1945?: boolean
+  part_logement_alea_moyen_fort_1945_1975?: boolean
+  part_logement_alea_moyen_fort_apres_1975?: boolean
+  part_logement_alea_faible_avant_1920?: boolean
+  part_logement_alea_faible_1920_1945?: boolean
+  part_logement_alea_faible_1945_1975?: boolean
+  part_logement_alea_faible_apres_1975?: boolean
+  part_alea_faible_commune?: boolean
+  part_alea_moyen_fort_commune?: boolean
 }, ExtArgs["result"]["postgis_rga"]>
 
 export type postgis_rgaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  pk?: boolean
-  alea?: boolean
+  index?: boolean
   code_geographique?: boolean
+  libelle_geographique?: boolean
+  epci?: boolean
+  libelle_epci?: boolean
+  departement?: boolean
+  libelle_departement?: boolean
+  region?: boolean
+  ept?: boolean
+  libelle_petr?: boolean
+  code_pnr?: boolean
+  libelle_pnr?: boolean
+  nb_logement?: boolean
+  nb_logement_alea_moyen_fort?: boolean
+  nb_logement_alea_faible?: boolean
+  nb_logement_sans_alea?: boolean
+  nb_logement_alea_moyen_fort_avant_1920?: boolean
+  nb_logement_alea_moyen_fort_1920_1945?: boolean
+  nb_logement_alea_moyen_fort_1945_1975?: boolean
+  nb_logement_alea_moyen_fort_apres_1975?: boolean
+  nb_logement_alea_faible_avant_1920?: boolean
+  nb_logement_alea_faible_1920_1945?: boolean
+  nb_logement_alea_faible_1945_1975?: boolean
+  nb_logement_alea_faible_apres_1975?: boolean
+  surface_commune?: boolean
+  surface_alea_faible_commune?: boolean
+  surface_alea_moyen_fort_commune?: boolean
+  part_logement_alea_moyen_fort_avant_1920?: boolean
+  part_logement_alea_moyen_fort_1920_1945?: boolean
+  part_logement_alea_moyen_fort_1945_1975?: boolean
+  part_logement_alea_moyen_fort_apres_1975?: boolean
+  part_logement_alea_faible_avant_1920?: boolean
+  part_logement_alea_faible_1920_1945?: boolean
+  part_logement_alea_faible_1945_1975?: boolean
+  part_logement_alea_faible_apres_1975?: boolean
+  part_alea_faible_commune?: boolean
+  part_alea_moyen_fort_commune?: boolean
 }, ExtArgs["result"]["postgis_rga"]>
 
 export type postgis_rgaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  pk?: boolean
-  alea?: boolean
+  index?: boolean
   code_geographique?: boolean
+  libelle_geographique?: boolean
+  epci?: boolean
+  libelle_epci?: boolean
+  departement?: boolean
+  libelle_departement?: boolean
+  region?: boolean
+  ept?: boolean
+  libelle_petr?: boolean
+  code_pnr?: boolean
+  libelle_pnr?: boolean
+  nb_logement?: boolean
+  nb_logement_alea_moyen_fort?: boolean
+  nb_logement_alea_faible?: boolean
+  nb_logement_sans_alea?: boolean
+  nb_logement_alea_moyen_fort_avant_1920?: boolean
+  nb_logement_alea_moyen_fort_1920_1945?: boolean
+  nb_logement_alea_moyen_fort_1945_1975?: boolean
+  nb_logement_alea_moyen_fort_apres_1975?: boolean
+  nb_logement_alea_faible_avant_1920?: boolean
+  nb_logement_alea_faible_1920_1945?: boolean
+  nb_logement_alea_faible_1945_1975?: boolean
+  nb_logement_alea_faible_apres_1975?: boolean
+  surface_commune?: boolean
+  surface_alea_faible_commune?: boolean
+  surface_alea_moyen_fort_commune?: boolean
+  part_logement_alea_moyen_fort_avant_1920?: boolean
+  part_logement_alea_moyen_fort_1920_1945?: boolean
+  part_logement_alea_moyen_fort_1945_1975?: boolean
+  part_logement_alea_moyen_fort_apres_1975?: boolean
+  part_logement_alea_faible_avant_1920?: boolean
+  part_logement_alea_faible_1920_1945?: boolean
+  part_logement_alea_faible_1945_1975?: boolean
+  part_logement_alea_faible_apres_1975?: boolean
+  part_alea_faible_commune?: boolean
+  part_alea_moyen_fort_commune?: boolean
 }, ExtArgs["result"]["postgis_rga"]>
 
 export type postgis_rgaSelectScalar = {
-  pk?: boolean
-  alea?: boolean
+  index?: boolean
   code_geographique?: boolean
+  libelle_geographique?: boolean
+  epci?: boolean
+  libelle_epci?: boolean
+  departement?: boolean
+  libelle_departement?: boolean
+  region?: boolean
+  ept?: boolean
+  libelle_petr?: boolean
+  code_pnr?: boolean
+  libelle_pnr?: boolean
+  nb_logement?: boolean
+  nb_logement_alea_moyen_fort?: boolean
+  nb_logement_alea_faible?: boolean
+  nb_logement_sans_alea?: boolean
+  nb_logement_alea_moyen_fort_avant_1920?: boolean
+  nb_logement_alea_moyen_fort_1920_1945?: boolean
+  nb_logement_alea_moyen_fort_1945_1975?: boolean
+  nb_logement_alea_moyen_fort_apres_1975?: boolean
+  nb_logement_alea_faible_avant_1920?: boolean
+  nb_logement_alea_faible_1920_1945?: boolean
+  nb_logement_alea_faible_1945_1975?: boolean
+  nb_logement_alea_faible_apres_1975?: boolean
+  surface_commune?: boolean
+  surface_alea_faible_commune?: boolean
+  surface_alea_moyen_fort_commune?: boolean
+  part_logement_alea_moyen_fort_avant_1920?: boolean
+  part_logement_alea_moyen_fort_1920_1945?: boolean
+  part_logement_alea_moyen_fort_1945_1975?: boolean
+  part_logement_alea_moyen_fort_apres_1975?: boolean
+  part_logement_alea_faible_avant_1920?: boolean
+  part_logement_alea_faible_1920_1945?: boolean
+  part_logement_alea_faible_1945_1975?: boolean
+  part_logement_alea_faible_apres_1975?: boolean
+  part_alea_faible_commune?: boolean
+  part_alea_moyen_fort_commune?: boolean
 }
 
-export type postgis_rgaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"pk" | "alea" | "code_geographique", ExtArgs["result"]["postgis_rga"]>
+export type postgis_rgaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nb_logement" | "nb_logement_alea_moyen_fort" | "nb_logement_alea_faible" | "nb_logement_sans_alea" | "nb_logement_alea_moyen_fort_avant_1920" | "nb_logement_alea_moyen_fort_1920_1945" | "nb_logement_alea_moyen_fort_1945_1975" | "nb_logement_alea_moyen_fort_apres_1975" | "nb_logement_alea_faible_avant_1920" | "nb_logement_alea_faible_1920_1945" | "nb_logement_alea_faible_1945_1975" | "nb_logement_alea_faible_apres_1975" | "surface_commune" | "surface_alea_faible_commune" | "surface_alea_moyen_fort_commune" | "part_logement_alea_moyen_fort_avant_1920" | "part_logement_alea_moyen_fort_1920_1945" | "part_logement_alea_moyen_fort_1945_1975" | "part_logement_alea_moyen_fort_apres_1975" | "part_logement_alea_faible_avant_1920" | "part_logement_alea_faible_1920_1945" | "part_logement_alea_faible_1945_1975" | "part_logement_alea_faible_apres_1975" | "part_alea_faible_commune" | "part_alea_moyen_fort_commune", ExtArgs["result"]["postgis_rga"]>
 
 export type $postgis_rgaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "postgis_rga"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    pk: number
-    alea: string | null
-    code_geographique: string | null
+    index: number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    nb_logement: number
+    nb_logement_alea_moyen_fort: number
+    nb_logement_alea_faible: number
+    nb_logement_sans_alea: number
+    nb_logement_alea_moyen_fort_avant_1920: number
+    nb_logement_alea_moyen_fort_1920_1945: number
+    nb_logement_alea_moyen_fort_1945_1975: number
+    nb_logement_alea_moyen_fort_apres_1975: number
+    nb_logement_alea_faible_avant_1920: number
+    nb_logement_alea_faible_1920_1945: number
+    nb_logement_alea_faible_1945_1975: number
+    nb_logement_alea_faible_apres_1975: number
+    surface_commune: number
+    surface_alea_faible_commune: number
+    surface_alea_moyen_fort_commune: number
+    part_logement_alea_moyen_fort_avant_1920: number
+    part_logement_alea_moyen_fort_1920_1945: number
+    part_logement_alea_moyen_fort_1945_1975: number
+    part_logement_alea_moyen_fort_apres_1975: number
+    part_logement_alea_faible_avant_1920: number
+    part_logement_alea_faible_1920_1945: number
+    part_logement_alea_faible_1945_1975: number
+    part_logement_alea_faible_apres_1975: number
+    part_alea_faible_commune: number
+    part_alea_moyen_fort_commune: number
   }, ExtArgs["result"]["postgis_rga"]>
   composites: {}
 }
@@ -420,8 +1497,8 @@ export interface postgis_rgaDelegate<ExtArgs extends runtime.Types.Extensions.In
    * // Get first 10 Postgis_rgas
    * const postgis_rgas = await prisma.postgis_rga.findMany({ take: 10 })
    * 
-   * // Only select the `pk`
-   * const postgis_rgaWithPkOnly = await prisma.postgis_rga.findMany({ select: { pk: true } })
+   * // Only select the `index`
+   * const postgis_rgaWithIndexOnly = await prisma.postgis_rga.findMany({ select: { index: true } })
    * 
    */
   findMany<T extends postgis_rgaFindManyArgs>(args?: Prisma.SelectSubset<T, postgis_rgaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$postgis_rgaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -465,9 +1542,9 @@ export interface postgis_rgaDelegate<ExtArgs extends runtime.Types.Extensions.In
    *   ]
    * })
    * 
-   * // Create many Postgis_rgas and only return the `pk`
-   * const postgis_rgaWithPkOnly = await prisma.postgis_rga.createManyAndReturn({
-   *   select: { pk: true },
+   * // Create many Postgis_rgas and only return the `index`
+   * const postgis_rgaWithIndexOnly = await prisma.postgis_rga.createManyAndReturn({
+   *   select: { index: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -556,9 +1633,9 @@ export interface postgis_rgaDelegate<ExtArgs extends runtime.Types.Extensions.In
    *   ]
    * })
    * 
-   * // Update zero or more Postgis_rgas and only return the `pk`
-   * const postgis_rgaWithPkOnly = await prisma.postgis_rga.updateManyAndReturn({
-   *   select: { pk: true },
+   * // Update zero or more Postgis_rgas and only return the `index`
+   * const postgis_rgaWithIndexOnly = await prisma.postgis_rga.updateManyAndReturn({
+   *   select: { index: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -760,9 +1837,43 @@ export interface Prisma__postgis_rgaClient<T, Null = never, ExtArgs extends runt
  * Fields of the postgis_rga model
  */
 export interface postgis_rgaFieldRefs {
-  readonly pk: Prisma.FieldRef<"postgis_rga", 'Int'>
-  readonly alea: Prisma.FieldRef<"postgis_rga", 'String'>
+  readonly index: Prisma.FieldRef<"postgis_rga", 'Int'>
   readonly code_geographique: Prisma.FieldRef<"postgis_rga", 'String'>
+  readonly libelle_geographique: Prisma.FieldRef<"postgis_rga", 'String'>
+  readonly epci: Prisma.FieldRef<"postgis_rga", 'String'>
+  readonly libelle_epci: Prisma.FieldRef<"postgis_rga", 'String'>
+  readonly departement: Prisma.FieldRef<"postgis_rga", 'String'>
+  readonly libelle_departement: Prisma.FieldRef<"postgis_rga", 'String'>
+  readonly region: Prisma.FieldRef<"postgis_rga", 'Float'>
+  readonly ept: Prisma.FieldRef<"postgis_rga", 'String'>
+  readonly libelle_petr: Prisma.FieldRef<"postgis_rga", 'String'>
+  readonly code_pnr: Prisma.FieldRef<"postgis_rga", 'String'>
+  readonly libelle_pnr: Prisma.FieldRef<"postgis_rga", 'String'>
+  readonly nb_logement: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly nb_logement_alea_moyen_fort: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly nb_logement_alea_faible: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly nb_logement_sans_alea: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly nb_logement_alea_moyen_fort_avant_1920: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly nb_logement_alea_moyen_fort_1920_1945: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly nb_logement_alea_moyen_fort_1945_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly nb_logement_alea_moyen_fort_apres_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly nb_logement_alea_faible_avant_1920: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly nb_logement_alea_faible_1920_1945: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly nb_logement_alea_faible_1945_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly nb_logement_alea_faible_apres_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly surface_commune: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly surface_alea_faible_commune: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly surface_alea_moyen_fort_commune: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly part_logement_alea_moyen_fort_avant_1920: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly part_logement_alea_moyen_fort_1920_1945: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly part_logement_alea_moyen_fort_1945_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly part_logement_alea_moyen_fort_apres_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly part_logement_alea_faible_avant_1920: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly part_logement_alea_faible_1920_1945: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly part_logement_alea_faible_1945_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly part_logement_alea_faible_apres_1975: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly part_alea_faible_commune: Prisma.FieldRef<"postgis_rga", 'Int'>
+  readonly part_alea_moyen_fort_commune: Prisma.FieldRef<"postgis_rga", 'Int'>
 }
     
 
@@ -957,7 +2068,7 @@ export type postgis_rgaCreateArgs<ExtArgs extends runtime.Types.Extensions.Inter
   /**
    * The data needed to create a postgis_rga.
    */
-  data?: Prisma.XOR<Prisma.postgis_rgaCreateInput, Prisma.postgis_rgaUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.postgis_rgaCreateInput, Prisma.postgis_rgaUncheckedCreateInput>
 }
 
 /**
