@@ -32,25 +32,6 @@ export const AuthOptions: NextAuthOptions = {
         user = await prisma.sandbox_users.findFirst({
           where: { username: credentials!.username }
         });
-        if (!user) {
-          user = await prisma.users.findUnique({
-            where: { username: credentials!.username }
-          });
-        }
-        if (user) {
-          const bcrypt = require('bcryptjs');
-          const comparedPasswords = await bcrypt.compare(
-            credentials!.password,
-            user.password
-          );
-          if (comparedPasswords) {
-            return {
-              id: user.pk?.toString() ?? user.username,
-              name: user.username,
-              username: user.username
-            };
-          }
-        }
         return null;
       }
     })

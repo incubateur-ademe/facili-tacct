@@ -891,8 +891,8 @@ export type TableCommuneModel = {
   part_irr_sau_2020: string | null;
   agriculture_part_over_55: string | null;
   couverture_lcz: string | null;
-  aires_appellations_controlees_nom: string | null;
-  aires_appellations_controlees_signe: string | null;
+  aires_appellations_controlees_nom: string[] | null;
+  aires_appellations_controlees_signe: string[] | null;
 };
 
 export type DebroussaillementModel = {

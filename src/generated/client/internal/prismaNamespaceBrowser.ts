@@ -70,7 +70,7 @@ export const ModelName = {
   databases_v2_surfaces_protegees: 'databases_v2_surfaces_protegees',
   databases_v2_table_commune: 'databases_v2_table_commune',
   databases_v2_table_territoires: 'databases_v2_table_territoires',
-  postgis_rga: 'postgis_rga',
+  databases_v2_rga: 'databases_v2_rga',
   postgis_v2_communes_drom: 'postgis_v2_communes_drom',
   postgis_v2_erosion_cotiere: 'postgis_v2_erosion_cotiere',
   postgis_v2_etat_cours_d_eau: 'postgis_v2_etat_cours_d_eau',
@@ -701,7 +701,7 @@ export const Databases_v2_table_territoiresScalarFieldEnum = {
 export type Databases_v2_table_territoiresScalarFieldEnum = (typeof Databases_v2_table_territoiresScalarFieldEnum)[keyof typeof Databases_v2_table_territoiresScalarFieldEnum]
 
 
-export const Postgis_rgaScalarFieldEnum = {
+export const Databases_v2_rgaScalarFieldEnum = {
   index: 'index',
   code_geographique: 'code_geographique',
   libelle_geographique: 'libelle_geographique',
@@ -741,7 +741,7 @@ export const Postgis_rgaScalarFieldEnum = {
   part_alea_moyen_fort_commune: 'part_alea_moyen_fort_commune'
 } as const
 
-export type Postgis_rgaScalarFieldEnum = (typeof Postgis_rgaScalarFieldEnum)[keyof typeof Postgis_rgaScalarFieldEnum]
+export type Databases_v2_rgaScalarFieldEnum = (typeof Databases_v2_rgaScalarFieldEnum)[keyof typeof Databases_v2_rgaScalarFieldEnum]
 
 
 export const Postgis_v2_communes_dromScalarFieldEnum = {
