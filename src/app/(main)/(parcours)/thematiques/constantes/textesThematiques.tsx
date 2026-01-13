@@ -121,7 +121,17 @@ export const sommaireThematiques = {
         sousCategories: ["Ressources en eau", "État des cours d'eau"]
       },
     ]
-  }
+  },
+  "Santé": {
+    thematiquesLiees: [
+      {
+        id: "section1",
+        thematique: "Santé",
+        icone: '🏥',
+        sousCategories: ["test"]
+      },
+    ]
+  },
 };
 
 export const sommaireImpacts = {
@@ -246,7 +256,7 @@ export const thematiquesInfo: {
   Santé: {
     title: 'Santé',
     description: (<div></div>),
-    link: ''
+    link: 'Santé'
   },
   Forêts: {
     title: 'Forêts',
