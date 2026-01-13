@@ -55,7 +55,7 @@ export const nomThematiques = [
     xOffset: 15,
     yOffset: -15,
     icon: '🏥',
-    disabled: true
+    disabled: false
   },
   {
     label: 'Confort thermique',
