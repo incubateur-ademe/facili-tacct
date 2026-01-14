@@ -19,185 +19,227 @@ const pool = new Pool({
 
 jest.setTimeout(120000);
 
+let expectedMap: Map<string, string>;
+
+beforeAll(async () => {
+  const result = await pool.query(
+    'SELECT code_pnr, pnr FROM databases_v2.liste_pnr'
+  );
+  expectedMap = new Map<string, string>(
+    result.rows.map((row) => [row.code_pnr, row.pnr])
+  );
+});
+
 afterAll(async () => {
   await pool.end();
 });
 
-const expectedPNR: [string, string][] = [
-  ['FR8000015', 'PNR du Haut-Jura'],
-  ['FR8000033', 'PNR du Verdon'],
-  ['FR8000003', 'PNR du Luberon'],
-  ['FR8000002', 'PNR du Queyras'],
-  ['FR8000052', 'PNR des Baronnies provençales'],
-  ['FR8000049', "PNR des Préalpes d'Azur"],
-  ['FR8000041', "PNR des Monts d'Ardèche"],
-  ['FR8000048', 'PNR des Ardennes'],
-  ['FR8000047', 'PNR des Pyrénées ariégeoises'],
-  ['FR8000013', "PNR de la Forêt d'Orient"],
-  ['FR8000059', 'PNR Corbières-Fenouillèdes'],
-  ['FR8000042', 'PNR de la Narbonnaise en Méditerranée'],
-  ['FR8000014', 'PNR des Grands Causses'],
-  ['FR8000054', "PNR de l'Aubrac"],
-  ['FR8000011', 'PNR de Camargue'],
-  ['FR8000046', 'PNR des Alpilles'],
-  ['FR8000053', 'PNR de la Sainte-Baume'],
-  ['FR8000021', 'PNR des Marais du Cotentin et du Bessin'],
-  ['FR8000028', "PNR des Volcans d'Auvergne"],
-  ['FR8000050', 'PNR du Marais poitevin'],
-  ['FR8000045', 'PNR de Millevaches en Limousin'],
-  ['FR8000025', 'PNR du Morvan'],
-  ['FR8000060', "PNR Vallée de la Rance - Côte d'Émeraude"],
-  ['FR8000035', 'PNR Périgord-Limousin'],
-  ['FR8000058', 'PNR du Doubs Horloger'],
-  ['FR8000001', 'PNR du Vercors'],
-  ['FR8000010', 'PNR des Boucles de la Seine Normande'],
-  ['FR8000034', 'PNR du Perche'],
-  ['FR8000005', "PNR d'Armorique"],
-  ['FR8000012', 'PNR de Corse'],
-  ['FR8000055', 'PNR du Médoc'],
-  ['FR8000018', 'PNR des Landes de Gascogne'],
-  ['FR8000016', 'PNR du Haut-Languedoc'],
-  ['FR8000008', 'PNR de la Brenne'],
-  ['FR8000032', 'PNR Loire-Anjou-Touraine'],
-  ['FR8000004', 'PNR de Chartreuse'],
-  ['FR8000027', 'PNR du Pilat'],
-  ['FR8000019', 'PNR Livradois-Forez'],
-  ['FR8000009', 'PNR de Brière'],
-  ['FR8000039', 'PNR des Causses du Quercy'],
-  ['FR8000026', 'PNR Normandie-Maine'],
-  ['FR8000024', 'PNR de la Montagne de Reims'],
-  ['FR8000020', 'PNR de Lorraine'],
-  ['FR8000051', 'PNR du Golfe du Morbihan'],
-  ['FR8000029', 'PNR des Vosges du Nord'],
-  ['FR8000036', "PNR de l'Avesnois"],
-  ['FR8000037', 'PNR Scarpe-Escaut'],
-  ['FR8000007', "PNR des Caps et marais d'Opale"],
-  ['FR8000043', 'PNR Oise-Pays de France'],
-  ['FR8000044', 'PNR des Pyrénées catalanes'],
-  ['FR8000006', 'PNR des Ballons des Vosges'],
-  ['FR8000031', 'PNR du Massif des Bauges'],
-  ['FR8000031 et FR8000004', 'PNR du Massif des Bauges et PNR de Chartreuse'],
-  ['FR8000038', 'PNR du Gâtinais français'],
-  ['FR8000017', 'PNR de la Haute Vallée de Chevreuse'],
-  ['FR8000030', 'PNR du Vexin Français'],
-  ['FR8000056', 'PNR du Mont-Ventoux'],
-  ['FR8000057', 'PNR Baie de Somme Picardie Maritime'],
-  ['FR8000023', 'PNR de la Martinique'],
-  ['FR8000040', 'PNR de la Guyane']
-];
-
 const expectedBrehat: [string, string] = ['22016', 'Île-de-Bréhat'];
 
-{
-  /* Test pour la correspondance PNR libelle-code */
-}
-const expectedMap = new Map<string, string>(expectedPNR);
+const normalizeLabel = (label: string): string => {
+  return label
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/^pnr\s+(de\s+la|du|des|d'|de l'|de)\s+/i, 'pnr')
+    .replace(/[^a-z0-9]/g, '');
+};
 
 describe('PNR code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in collectivites_searchbar', async () => {
     const result = await pool.query(
-      'SELECT code_pnr, libelle_pnr FROM databases_v2.collectivites_searchbar'
+      'SELECT DISTINCT code_pnr, libelle_pnr FROM databases_v2.collectivites_searchbar WHERE code_pnr IS NOT NULL'
     );
     for (const row of result.rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
+      const expected = expectedMap.get(row.code_pnr);
+      if (!expected) {
+        console.log(`[ERREUR collectivites_searchbar] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
       }
+      expect(expected).toBeDefined();
+      const normalized1 = normalizeLabel(row.libelle_pnr);
+      const normalized2 = normalizeLabel(expected ?? '');
+      if (normalized1 !== normalized2) {
+        console.log(`[ERREUR collectivites_searchbar] ${row.code_pnr}:`);
+        console.log(`  DB:  "${row.libelle_pnr}" → "${normalized1}"`);
+        console.log(`  Ref: "${expected}" → "${normalized2}"`);
+      }
+      expect(normalized1).toBe(normalized2);
     }
   });
 });
 describe('consommation_espaces_naf code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in consommation_espaces_naf', async () => {
     const result = await pool.query(
-      'SELECT code_pnr, libelle_pnr FROM databases_v2.consommation_espaces_naf'
+      'SELECT DISTINCT code_pnr, libelle_pnr FROM databases_v2.consommation_espaces_naf WHERE code_pnr IS NOT NULL'
     );
     for (const row of result.rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
+      const expected = expectedMap.get(row.code_pnr);
+      if (!expected) {
+        console.log(`[ERREUR consommation_espaces_naf] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
       }
+      expect(expected).toBeDefined();
+      const normalized1 = normalizeLabel(row.libelle_pnr);
+      const normalized2 = normalizeLabel(expected ?? '');
+      if (normalized1 !== normalized2) {
+        console.log(`[ERREUR consommation_espaces_naf] ${row.code_pnr}:`);
+        console.log(`  DB:  "${row.libelle_pnr}" → "${normalized1}"`);
+        console.log(`  Ref: "${expected}" → "${normalized2}"`);
+      }
+      expect(normalized1).toBe(normalized2);
     }
   });
 });
 describe('arretes_catnat code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in arretes_catnat', async () => {
     const result = await pool.query(
-      'SELECT code_pnr, libelle_pnr FROM databases_v2.arretes_catnat'
+      'SELECT DISTINCT code_pnr, libelle_pnr FROM databases_v2.arretes_catnat WHERE code_pnr IS NOT NULL'
     );
     for (const row of result.rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
+      const expected = expectedMap.get(row.code_pnr);
+      if (!expected) {
+        console.log(`[ERREUR arretes_catnat] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
       }
+      expect(expected).toBeDefined();
+      const normalized1 = normalizeLabel(row.libelle_pnr);
+      const normalized2 = normalizeLabel(expected ?? '');
+      if (normalized1 !== normalized2) {
+        console.log(`[ERREUR arretes_catnat] ${row.code_pnr}:`);
+        console.log(`  DB:  "${row.libelle_pnr}" → "${normalized1}"`);
+        console.log(`  Ref: "${expected}" → "${normalized2}"`);
+      }
+      expect(normalized1).toBe(normalized2);
     }
   });
 });
 describe('inconfort_thermique code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in inconfort_thermique', async () => {
     const result = await pool.query(
-      'SELECT code_pnr, libelle_pnr FROM databases_v2.confort_thermique'
+      'SELECT DISTINCT code_pnr, libelle_pnr FROM databases_v2.confort_thermique WHERE code_pnr IS NOT NULL'
     );
     for (const row of result.rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
+      const expected = expectedMap.get(row.code_pnr);
+      if (!expected) {
+        console.log(`[ERREUR inconfort_thermique] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
       }
+      expect(expected).toBeDefined();
+      const normalized1 = normalizeLabel(row.libelle_pnr);
+      const normalized2 = normalizeLabel(expected ?? '');
+      if (normalized1 !== normalized2) {
+        console.log(`[ERREUR inconfort_thermique] ${row.code_pnr}:`);
+        console.log(`  DB:  "${row.libelle_pnr}" → "${normalized1}"`);
+        console.log(`  Ref: "${expected}" → "${normalized2}"`);
+      }
+      expect(normalized1).toBe(normalized2);
     }
   });
 });
 describe('feux_foret code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in feux_foret', async () => {
     const result = await pool.query(
-      'SELECT code_pnr, libelle_pnr FROM databases_v2.feux_foret'
+      'SELECT DISTINCT code_pnr, libelle_pnr FROM databases_v2.feux_foret WHERE code_pnr IS NOT NULL'
     );
     for (const row of result.rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
+      const expected = expectedMap.get(row.code_pnr);
+      if (!expected) {
+        console.log(`[ERREUR feux_foret] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
       }
+      expect(expected).toBeDefined();
+      const normalized1 = normalizeLabel(row.libelle_pnr);
+      const normalized2 = normalizeLabel(expected ?? '');
+      if (normalized1 !== normalized2) {
+        console.log(`[ERREUR feux_foret] ${row.code_pnr}:`);
+        console.log(`  DB:  "${row.libelle_pnr}" → "${normalized1}"`);
+        console.log(`  Ref: "${expected}" → "${normalized2}"`);
+      }
+      expect(normalized1).toBe(normalized2);
     }
   });
 });
 describe('ressources_eau code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in ressources_eau', async () => {
     const result = await pool.query(
-      'SELECT code_pnr, libelle_pnr FROM databases_v2.prelevements_eau'
+      'SELECT DISTINCT code_pnr, libelle_pnr FROM databases_v2.prelevements_eau WHERE code_pnr IS NOT NULL'
     );
     for (const row of result.rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
+      const expected = expectedMap.get(row.code_pnr);
+      if (!expected) {
+        console.log(`[ERREUR ressources_eau] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
       }
+      expect(expected).toBeDefined();
+      const normalized1 = normalizeLabel(row.libelle_pnr);
+      const normalized2 = normalizeLabel(expected ?? '');
+      if (normalized1 !== normalized2) {
+        console.log(`[ERREUR ressources_eau] ${row.code_pnr}:`);
+        console.log(`  DB:  "${row.libelle_pnr}" → "${normalized1}"`);
+        console.log(`  Ref: "${expected}" → "${normalized2}"`);
+      }
+      expect(normalized1).toBe(normalized2);
     }
   });
 });
 describe('rga code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in rga', async () => {
     const result = await pool.query(
-      'SELECT code_pnr, libelle_pnr FROM databases_v2.rga'
+      'SELECT DISTINCT code_pnr, libelle_pnr FROM databases_v2.rga WHERE code_pnr IS NOT NULL'
     );
     for (const row of result.rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
+      const expected = expectedMap.get(row.code_pnr);
+      if (!expected) {
+        console.log(`[ERREUR rga] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
       }
+      expect(expected).toBeDefined();
+      const normalized1 = normalizeLabel(row.libelle_pnr);
+      const normalized2 = normalizeLabel(expected ?? '');
+      if (normalized1 !== normalized2) {
+        console.log(`[ERREUR rga] ${row.code_pnr}:`);
+        console.log(`  DB:  "${row.libelle_pnr}" → "${normalized1}"`);
+        console.log(`  Ref: "${expected}" → "${normalized2}"`);
+      }
+      expect(normalized1).toBe(normalized2);
     }
   });
 });
 describe('agriculture code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in agriculture', async () => {
     const result = await pool.query(
-      'SELECT code_pnr, libelle_pnr FROM databases_v2.agriculture'
+      'SELECT DISTINCT code_pnr, libelle_pnr FROM databases_v2.agriculture WHERE code_pnr IS NOT NULL'
     );
     for (const row of result.rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
+      const expected = expectedMap.get(row.code_pnr);
+      if (!expected) {
+        console.log(`[ERREUR agriculture] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
       }
+      expect(expected).toBeDefined();
+      const normalized1 = normalizeLabel(row.libelle_pnr);
+      const normalized2 = normalizeLabel(expected ?? '');
+      if (normalized1 !== normalized2) {
+        console.log(`[ERREUR agriculture] ${row.code_pnr}:`);
+        console.log(`  DB:  "${row.libelle_pnr}" → "${normalized1}"`);
+        console.log(`  Ref: "${expected}" → "${normalized2}"`);
+      }
+      expect(normalized1).toBe(normalized2);
     }
   });
 });
 describe('communes_drom code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in postgis.communes_drom', async () => {
     const result = await pool.query(
-      'SELECT code_pnr, libelle_pnr FROM postgis_v2.communes_drom'
+      'SELECT DISTINCT code_pnr, libelle_pnr FROM postgis_v2.communes_drom WHERE code_pnr IS NOT NULL'
     );
     for (const row of result.rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
+      const expected = expectedMap.get(row.code_pnr);
+      if (!expected) {
+        console.log(`[ERREUR communes_drom] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
       }
+      expect(expected).toBeDefined();
+      const normalized1 = normalizeLabel(row.libelle_pnr);
+      const normalized2 = normalizeLabel(expected ?? '');
+      if (normalized1 !== normalized2) {
+        console.log(`[ERREUR communes_drom] ${row.code_pnr}:`);
+        console.log(`  DB:  "${row.libelle_pnr}" → "${normalized1}"`);
+        console.log(`  Ref: "${expected}" → "${normalized2}"`);
+      }
+      expect(normalized1).toBe(normalized2);
     }
   });
 });
@@ -293,3 +335,93 @@ describe('databases_v2_arretes_catnat row count', () => {
     expect(count).toBeGreaterThan(260600);
   });
 });
+
+describe('Vérification commune par commune', () => {
+  it('should have matching PNR data for each commune in collectivites_searchbar', async () => {
+    const result = await pool.query(`
+      SELECT 
+        cs.code_geographique,
+        cs.libelle_geographique,
+        cs.code_pnr,
+        cs.libelle_pnr,
+        lp.code_pnr as ref_code_pnr,
+        lp.pnr as ref_pnr
+      FROM databases_v2.collectivites_searchbar cs
+      LEFT JOIN databases_v2.liste_pnr lp ON cs.code_geographique = lp.code_geographique
+      WHERE cs.code_geographique IS NOT NULL AND cs.code_pnr IS NOT NULL
+    `);
+
+    const errors: string[] = [];
+
+    for (const row of result.rows) {
+      if (!row.ref_code_pnr) {
+        const error = `[ERREUR collectivites_searchbar] Commune ${row.code_geographique} (${row.libelle_geographique}) absente de liste_pnr`;
+        console.log(error);
+        errors.push(error);
+        continue;
+      }
+
+      if (row.code_pnr !== row.ref_code_pnr) {
+        const error = `[ERREUR collectivites_searchbar] Commune ${row.code_geographique} (${row.libelle_geographique}) - PNR "${row.code_pnr}" dans table vs "${row.ref_code_pnr}" dans liste_pnr`;
+        console.log(error);
+        errors.push(error);
+      }
+
+      const normalized1 = normalizeLabel(row.libelle_pnr);
+      const normalized2 = normalizeLabel(row.ref_pnr ?? '');
+      if (normalized1 !== normalized2) {
+        const error = `[ERREUR collectivites_searchbar] Commune ${row.code_geographique} (${row.libelle_geographique}) - Libellé "${row.libelle_pnr}" dans table vs "${row.ref_pnr}" dans liste_pnr`;
+        console.log(error);
+        errors.push(error);
+      }
+    }
+
+    if (errors.length > 0) {
+      console.log(`\n=== RÉSUMÉ: ${errors.length} erreur(s) trouvée(s) dans collectivites_searchbar ===`);
+      errors.forEach(err => console.log(err));
+    }
+    expect(errors.length).toBe(0);
+  });
+
+  it('should have matching commune count per PNR', async () => {
+    const csResult = await pool.query(`
+      SELECT code_pnr, COUNT(*) as nb_communes
+      FROM databases_v2.collectivites_searchbar
+      WHERE code_geographique IS NOT NULL AND code_pnr IS NOT NULL
+      GROUP BY code_pnr
+      ORDER BY code_pnr
+    `);
+
+    const lpResult = await pool.query(`
+      SELECT code_pnr, COUNT(*) as nb_communes
+      FROM databases_v2.liste_pnr
+      GROUP BY code_pnr
+      ORDER BY code_pnr
+    `);
+
+    const csMap = new Map(csResult.rows.map(row => [row.code_pnr, parseInt(row.nb_communes)]));
+    const lpMap = new Map(lpResult.rows.map(row => [row.code_pnr, parseInt(row.nb_communes)]));
+
+    const errors: string[] = [];
+    const allCodes = new Set([...csMap.keys(), ...lpMap.keys()]);
+
+    for (const code of allCodes) {
+      const csCount = csMap.get(code) || 0;
+      const lpCount = lpMap.get(code) || 0;
+
+      if (csCount !== lpCount) {
+        const error = `[DIFF] PNR ${code}: ${csCount} communes dans collectivites_searchbar vs ${lpCount} dans liste_pnr`;
+        console.log(error);
+        errors.push(error);
+      }
+    }
+
+    if (errors.length > 0) {
+      console.log(`\n=== RÉSUMÉ: ${errors.length} PNR avec des différences de nombre de communes ===`);
+      errors.forEach(err => console.log(err));
+    }
+    expect(errors.length).toBe(0);
+  });
+});
+
+

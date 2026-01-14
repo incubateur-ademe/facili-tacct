@@ -72,6 +72,7 @@ export const renderBlock = async (el: Block, i: number) => {
             sizes="100%"
             width={0}
             height={0}
+            unoptimized={true}
             style={{ width: '100%' }}
           />
           {caption && <figcaption className="text-sm text-gray-600 mt-2 text-center">{caption}</figcaption>}

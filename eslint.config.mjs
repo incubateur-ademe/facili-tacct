@@ -14,7 +14,9 @@ export default [
     rules: {
       'react/react-in-jsx-scope': 'off',
       'no-irregular-whitespace': 'off',
-      'react/no-unescaped-entities': 'off'
+      'react/no-unescaped-entities': 'warn',
+      'react/no-unknown-property': 'warn',
+      'typescript-eslint/no-unused-vars': 'warn'
     },
     settings: {
       react: {
