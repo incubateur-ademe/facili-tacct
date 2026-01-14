@@ -1,6 +1,7 @@
 import ImageTuileArticle from '@/assets/images/imageTuileArticle.png';
 import ImageTuileAutre from '@/assets/images/imageTuileAutre.png';
 import ImageTuileRex from '@/assets/images/imageTuileRex.png';
+import ImageTuileQuiz from '@/assets/images/imageTuileQuiz.png';
 import { StaticImageData } from 'next/image';
 import { JSX } from 'react';
 
@@ -705,7 +706,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Quiz', 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 10,
-    image: ImageTuileAutre,
+    image: ImageTuileQuiz,
     date: '2025-12-10',
     ordre: 10,
     ordreCollection: 3
