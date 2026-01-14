@@ -11,7 +11,7 @@ const ZoomOnClick: React.FC<ZoomOnClickProps> = ({ wrapperStyle, style, ...imgPr
   return (
     <div style={{ position: 'relative', ...wrapperStyle }}>
       <div style={{ cursor: 'zoom-in', width: '100%' }} onClick={() => setShowModal(true)}>
-        <Image {...imgProps} style={{ width: 'auto', height: 'auto', ...style }} />
+        <Image {...imgProps} unoptimized style={{ width: 'auto', height: 'auto', ...style }} />
       </div>
       {showModal && (
         <div
