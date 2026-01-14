@@ -4,6 +4,7 @@ import { Body, H2, H3 } from "@/design-system/base/Textes";
 import { getBlocks } from "../queries/notion/notion";
 import { normalizeText } from "../utils/reusableFunctions/NormalizeTexts";
 import { groupAndRenderBlocks } from "./bulletListContent";
+import { downloadNotionImage } from "./downloadNotionImage";
 import { Text } from "./Text";
 
 export const renderBlock = async (el: Block, i: number) => {
@@ -64,15 +65,17 @@ export const renderBlock = async (el: Block, i: number) => {
       const src = value?.type === "external" ? value?.external?.url : value?.file?.url;
       const caption = value?.caption?.[0]?.plain_text || "";
       if (!src) return null;
+      
+      const localImagePath = await downloadNotionImage(src, el.id);
+      
       return (
         <figure key={i} className="flex flex-col m-0 w-full">
           <ZoomOnClick
-            src={src}
+            src={localImagePath}
             alt={caption || "Image"}
             sizes="100%"
             width={0}
             height={0}
-            unoptimized={true}
             style={{ width: '100%' }}
           />
           {caption && <figcaption className="text-sm text-gray-600 mt-2 text-center">{caption}</figcaption>}
