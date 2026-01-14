@@ -54,3 +54,6 @@ next-env.d.ts
 *.pem
 
 /.specstory
+
+# notion images (downloaded at build time)
+/public/notion-images
