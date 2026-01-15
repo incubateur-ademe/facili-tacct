@@ -10,13 +10,22 @@ export const PHProvider = ({ children }: { children: ReactNode }) => {
       !window.location.host.includes('127.0.0.1') &&
       !window.location.host.includes('localhost')
     ) {
+      const consent = cookieConsentGiven();
       posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
         api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
         person_profiles: 'always',
-        persistence:
-          cookieConsentGiven() === 'yes' ? 'localStorage+cookie' : 'memory',
-        capture_pageview: false
+        persistence: consent === 'yes' ? 'localStorage+cookie' : 'memory',
+        capture_pageview: false,
+        disable_session_recording: consent !== 'yes',
+        opt_out_capturing_by_default: consent !== 'yes'
       });
+
+      if (consent === 'yes') {
+        posthog.opt_in_capturing();
+        posthog.startSessionRecording();
+      } else if (consent === 'no') {
+        posthog.opt_out_capturing();
+      }
     }
   }, []);
   return <PostHogProvider client={posthog}>{children}</PostHogProvider>;
