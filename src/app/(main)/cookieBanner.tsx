@@ -31,10 +31,19 @@ export const CookieBanner = () => {
   useEffect(() => {
     if (consentGiven !== '') {
       posthog.set_config({
-        persistence: consentGiven === 'yes' ? 'localStorage+cookie' : 'memory'
+        persistence: consentGiven === 'yes' ? 'localStorage+cookie' : 'memory',
+        disable_session_recording: consentGiven !== 'yes'
       });
+
+      if (consentGiven === 'yes') {
+        posthog.opt_in_capturing();
+        posthog.startSessionRecording();
+      } else {
+        posthog.opt_out_capturing();
+        posthog.stopSessionRecording();
+      }
     }
-  }, [consentGiven]);
+  }, [consentGiven, posthog]);
 
   const handleValidateCookies = () => {
     if (areTermAccepted) {
