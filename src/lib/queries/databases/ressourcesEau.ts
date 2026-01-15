@@ -1,7 +1,6 @@
 'use server';
 
 import { PrelevementsEau, QualiteSitesBaignade } from '@/lib/postgres/models';
-import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck, ColumnLibelleCheck } from '../columns';
 import { prisma } from '../db';
 
@@ -100,7 +99,6 @@ export const GetPrelevementsEau = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     }
   })();
@@ -171,7 +169,6 @@ export const GetQualiteEauxBaignade = async (
   } catch (error) {
     console.error(error);
     // prisma.$disconnect();
-    Sentry.captureException(error);
     return [];
   }
 };

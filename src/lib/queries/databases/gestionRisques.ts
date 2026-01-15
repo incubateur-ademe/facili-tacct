@@ -1,7 +1,6 @@
 'use server';
 
 import { ArreteCatNat, IncendiesForet, RGAdb } from '@/lib/postgres/models';
-import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../db';
 
@@ -34,7 +33,6 @@ export const GetArretesCatnat = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     }
   })();
@@ -80,7 +78,6 @@ export const GetIncendiesForet = async (
     } catch (error) {
       console.error(error);
       // prisma.$disconnect();
-      Sentry.captureException(error);
       return [];
     }
   })();
@@ -146,7 +143,6 @@ export const GetRga = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     }
   })();

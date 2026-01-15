@@ -2,7 +2,6 @@
 
 import { ConfortThermique } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
-import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../db';
 
@@ -89,7 +88,6 @@ export const GetConfortThermique = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     }
   })();
@@ -112,7 +110,6 @@ export const GetLczCouverture = async (
     else return false;
   } catch (error) {
     console.error(error);
-    Sentry.captureException(error);
     return false;
   }
 };
@@ -212,7 +209,6 @@ export const GetConfortThermiqueBiodiversite = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     }
   })();
