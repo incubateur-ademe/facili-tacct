@@ -1,6 +1,7 @@
 'use client';
 
 import AiresAppellationsControleesCharts from '@/components/charts/agriculture/airesAppellationsControleesCharts';
+import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import { TableCommuneModel } from '@/lib/postgres/models';
@@ -123,15 +124,15 @@ export const AiresAppellationsControlees = (props: {
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
               Source : .
             </Body>
-            {/* <ExportButtonNouveauParcours
-              data={exportData}
-              baseName="surfaces_agricoles"
+            <ExportButtonNouveauParcours
+              data={airesAppellationsControlees}
+              baseName="aires_appellations_controlees"
               type={type}
               libelle={libelle}
               code={code}
-              sheetName="Surfaces agricoles"
-              anchor="Types de culture"
-            /> */}
+              sheetName="Aires appellations controlées"
+              anchor="Aires appellations controlées"
+            />
           </div>
         </div>
       </div>
