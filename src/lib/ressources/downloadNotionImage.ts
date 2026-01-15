@@ -1,16 +1,21 @@
-import { createHash } from 'crypto';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
 const PUBLIC_DIR = join(process.cwd(), 'public', 'notion-images');
 
-export async function downloadNotionImage(url: string, blockId: string): Promise<string> {
+export async function downloadNotionImage(
+  url: string,
+  blockId: string
+): Promise<string> {
   if (!url) return '';
 
   try {
-    const urlHash = createHash('md5').update(url).digest('hex').substring(0, 8);
-    const ext = url.includes('.png') ? 'png' : url.includes('.jpg') || url.includes('.jpeg') ? 'jpg' : 'webp';
-    const filename = `${blockId}-${urlHash}.${ext}`;
+    const ext = url.includes('.png')
+      ? 'png'
+      : url.includes('.jpg') || url.includes('.jpeg')
+        ? 'jpg'
+        : 'webp';
+    const filename = `${blockId}.${ext}`;
     const filepath = join(PUBLIC_DIR, filename);
     const publicPath = `/notion-images/${filename}`;
 
@@ -24,7 +29,9 @@ export async function downloadNotionImage(url: string, blockId: string): Promise
 
     const response = await fetch(url);
     if (!response.ok) {
-      console.error(`Failed to download image: ${url} - Status: ${response.status}`);
+      console.error(
+        `Failed to download image: ${url} - Status: ${response.status}`
+      );
       return url;
     }
 
