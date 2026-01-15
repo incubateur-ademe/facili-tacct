@@ -1,97 +1,29 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/ExportPng';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
+import { o3Legend } from '@/components/maps/legends/datavizLegends';
+import { LegendCompColor } from '@/components/maps/legends/legendComp';
+import { MapTilesFrance } from '@/components/maps/mapTilesFrance';
 import { Body } from "@/design-system/base/Textes";
-import { mapStyles } from 'carte-facile';
-import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { useEffect, useRef } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';
+
+
 
 export const SeuilsReglementairesO3 = ({
   coordonneesCommunes
 }: {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
 }) => {
-  const mapContainer = useRef<HTMLDivElement>(null);
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code')!;
+  const libelle = searchParams.get('libelle')!;
+  const type = searchParams.get('type')!;
   const mapRef = useRef<maplibregl.Map | null>(null);
-
-  useEffect(() => {
-    if (!mapContainer.current || !coordonneesCommunes) return;
-
-    const map = new maplibregl.Map({
-      container: mapContainer.current,
-      style: mapStyles.desaturated,
-      attributionControl: false,
-    });
-    mapRef.current = map;
-
-    map.on('load', () => {
-      if (coordonneesCommunes?.bbox) {
-        map.fitBounds(
-          [[coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
-          [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]],
-          { padding: 20 }
-        );
-      }
-
-      // Charger le GeoJSON directement
-      map.addSource('o3-source', {
-        type: 'geojson',
-        data: 'https://facili-tacct-dev.s3.fr-par.scw.cloud/app/seuils_reglementaires_o3/test_fixed.geojson'
-      });
-
-      map.addLayer({
-        id: 'o3-layer',
-        type: 'fill',
-        source: 'o3-source',
-        paint: {
-          'fill-color': [
-            'step',
-            ['get', 'valeur'],
-            '#A4F5EE',  // 0-1
-            1, '#A6E4D3',  // 1-4
-            4, '#F5E290',  // 4-10
-            10, '#FC9999', // 10-25
-            25, '#C97189', // 25-35
-            35, '#B982B2'  // >=35
-          ],
-          'fill-opacity': 0.7,
-          'fill-antialias': false
-        }
-      });
-
-      // Contours des communes
-      map.addSource('communes-tiles', {
-        type: 'vector',
-        tiles: [`${process.env.NEXT_PUBLIC_SCALEWAY_BUCKET_URL}/communes/tiles/{z}/{x}/{y}.pbf`],
-        minzoom: 4,
-        maxzoom: 13
-      });
-
-      map.addLayer({
-        id: 'communes-outline',
-        type: 'line',
-        source: 'communes-tiles',
-        'source-layer': 'contour_communes',
-        filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
-        paint: {
-          'line-color': '#161616',
-          'line-width': 1
-        }
-      });
-
-      map.addControl(new maplibregl.NavigationControl(), 'top-right');
-    });
-
-    return () => {
-      if (mapRef.current) {
-        mapRef.current.remove();
-        mapRef.current = null;
-      }
-    };
-  }, [coordonneesCommunes]);
-
+  const mapContainer = useRef<HTMLDivElement>(null);
   return (
     <>
       <div className={styles.datavizMapContainer}>
@@ -103,15 +35,73 @@ export const SeuilsReglementairesO3 = ({
           </div>
         </div>
         <Body size='sm' style={{ marginTop: '1rem' }}>
-          Texte statique sur les seuils réglementaires O3.
+          Texte statique des seuils réglementaires O3
         </Body>
         <div className={styles.mapWrapper}>
           {
             coordonneesCommunes && coordonneesCommunes.codes.length ? (
-              <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />
-            ) : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
+              <>
+                <MapTilesFrance
+                  coordonneesCommunes={coordonneesCommunes}
+                  mapRef={mapRef}
+                  mapContainer={mapContainer}
+                  bucketUrl="seuils_reglementaires_o3"
+                  layer="o3"
+                  paint={{
+                    'fill-color': [
+                      'step',
+                      ['/', ['round', ['*', ['get', 'valeur'], 100]], 100],
+                      '#E0F9F7',  // 0 - Bleu très très clair
+                      1, '#C8F3EE',  // 1
+                      2, '#A4F5EE',  // 2
+                      3, '#85E6D8',  // 3
+                      4, '#A6E4D3',  // 4
+                      5, '#C4E8A3',  // 5 - Vert clair
+                      6, '#DFEC7B',  // 6
+                      7, '#F5E290',  // 7 - Jaune
+                      8, '#FFD97A',  // 8
+                      10, '#FFBD6B', // 10 - Orange clair
+                      12, '#FFAB66', // 12
+                      15, '#FC9999', // 15 - Rose clair
+                      20, '#F37D7D', // 20
+                      25, '#E06060', // 25 - Rose foncé
+                      30, '#C97189', // 30
+                      35, '#B982B2'  // >=35 - Violet
+                    ],
+                    'fill-opacity': 0.7,
+                    'fill-antialias': false
+                  }}
+                />
+                <div
+                  className={styles.legend}
+                  style={{ width: 'auto', justifyContent: 'center' }}
+                >
+                  <LegendCompColor legends={o3Legend} />
+                </div>
+              </>
+            ) : (
+              <div className='p-10 flex flex-row justify-center'>
+                <DataNotFoundForGraph image={DataNotFound} />
+              </div>
+            )
           }
         </div>
+      </div>
+      <div className={styles.sourcesExportMapWrapper}>
+        <Body size='sm' style={{ color: "var(--gris-dark)" }}>
+          Source :
+        </Body>
+        <ExportPngMaplibreButtonNouveauParcours
+          mapRef={mapRef}
+          mapContainer={mapContainer}
+          documentDiv=".lczLegendWrapper"
+          fileName={`Seuils_reglementaires_o3_${type}_${libelle}`}
+          anchor='Seuils réglementaires O3'
+          type={type}
+          libelle={libelle}
+          code={code}
+          thematique="Santé"
+        />
       </div>
     </>
   );

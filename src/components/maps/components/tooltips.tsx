@@ -98,3 +98,32 @@ export const DensiteBatiTooltip = (communeName: string, value: number) => {
       </div>
   `;
 }
+
+export const getO3Color = (valeur: number): string => {
+  const valeurArrondie = Math.round(valeur * 100) / 100;
+  if (valeurArrondie >= 35) return '#B982B2';
+  if (valeurArrondie >= 30) return '#C97189';
+  if (valeurArrondie >= 25) return '#E06060';
+  if (valeurArrondie >= 20) return '#F37D7D';
+  if (valeurArrondie >= 15) return '#FC9999';
+  if (valeurArrondie >= 12) return '#FFAB66';
+  if (valeurArrondie >= 10) return '#FFBD6B';
+  if (valeurArrondie >= 8) return '#FFD97A';
+  if (valeurArrondie >= 7) return '#F5E290';
+  if (valeurArrondie >= 6) return '#DFEC7B';
+  if (valeurArrondie >= 5) return '#C4E8A3';
+  if (valeurArrondie >= 4) return '#A6E4D3';
+  if (valeurArrondie >= 3) return '#85E6D8';
+  if (valeurArrondie >= 2) return '#A4F5EE';
+  if (valeurArrondie >= 1) return '#C8F3EE';
+  return '#E0F9F7';
+};
+
+export const O3Tooltip = (valeur: number, color: string) => {
+  return `
+    <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0.5rem; gap: 0.5rem; align-items: center; width: max-content;">
+      <div style="background-color: ${color}; width: 1rem; height: 1rem; border-radius: 2px; border: 0.5px solid #161616"></div>
+      <p style="font-size: 0.875rem; font-family: Marianne; font-weight: 400; margin: 0">Nombre de jours : <b>${Round(valeur, 2)}</b></p>
+    </div>
+  `;
+}
