@@ -1,6 +1,5 @@
 "use client";
 
-import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
 import Image from "next/image";
 
 export default function AppFooter() {
@@ -129,11 +128,6 @@ export default function AppFooter() {
               </a>
             </li>
             {/* <li className="fr-footer__bottom-item">
-          <a className="fr-footer__bottom-link" href="/stats" target="_self">
-          Statistiques
-          </a>
-        </li> */}
-            <li className="fr-footer__bottom-item">
               <button {...headerFooterDisplayItem.buttonProps}
                 className="fr-footer__bottom-link"
                 id='fr-theme-modal-control-button'
@@ -152,7 +146,7 @@ export default function AppFooter() {
           `}</style>
                 {headerFooterDisplayItem.text}
               </button>
-            </li>
+            </li> */}
           </ul>
           <div className="fr-footer__bottom-copy">
             <p>

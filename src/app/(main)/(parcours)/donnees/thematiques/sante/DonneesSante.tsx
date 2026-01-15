@@ -9,8 +9,6 @@ import { useStyles } from 'tss-react/dsfr';
 import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { SeuilsReglementairesO3 } from '../../indicateurs/sante/1-o3';
-import { SeuilsReglementairesO3Bis } from '../../indicateurs/sante/2-o3';
-import { SeuilsReglementairesO3Ter } from '../../indicateurs/sante/3-o3';
 
 interface Props {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
@@ -79,17 +77,14 @@ export const DonneesSante = ({
           </H2>
 
           {/*  */}
-          <div id="" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+          <div id="Seuils réglementaires O3" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-                TEST
+                Nombre de dépassement du seuil journalier 120 µg/m³ de O3 sur 2024
               </H3>
             </div>
             <SeuilsReglementairesO3 coordonneesCommunes={data.coordonneesCommunes} />
-            <SeuilsReglementairesO3Bis coordonneesCommunes={data.coordonneesCommunes} />
-            <SeuilsReglementairesO3Ter coordonneesCommunes={data.coordonneesCommunes} />
           </div>
-
         </section>
 
       </div>

@@ -128,7 +128,7 @@ export const sommaireThematiques = {
         id: "section1",
         thematique: "Santé",
         icone: '🏥',
-        sousCategories: ["test"]
+        sousCategories: ["Seuils réglementaires O3"]
       },
     ]
   },

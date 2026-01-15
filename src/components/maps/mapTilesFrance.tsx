@@ -6,9 +6,10 @@ import 'carte-facile/carte-facile.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect } from 'react';
+import { getO3Color, O3Tooltip } from './components/tooltips';
 import styles from './maps.module.scss';
 
-export const MapTiles = (props: {
+export const MapTilesFrance = (props: {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   mapRef: RefObject<maplibregl.Map | null>;
   mapContainer: RefObject<HTMLDivElement | null>;
@@ -61,11 +62,8 @@ export const MapTiles = (props: {
         type: 'fill',
         source: `${bucketUrl}-tiles`,
         'source-layer': layer,
-        filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
         paint: paint
       });
-
-      console.log('Layer added');
 
       // Add communes outline avec tuiles vectorielles
       map.addSource('communes-tiles', {
@@ -88,6 +86,34 @@ export const MapTiles = (props: {
       });
 
       map.addControl(new maplibregl.NavigationControl(), 'top-right');
+
+      const popup = new maplibregl.Popup({
+        closeButton: false,
+        closeOnClick: false
+      });
+
+      map.on('mousemove', `${bucketUrl}-fill`, (e) => {
+        map.getCanvas().style.cursor = 'pointer';
+
+        if (e.features && e.features.length > 0) {
+          const feature = e.features[0];
+          const valeur = feature.properties?.valeur;
+          
+          if (valeur !== undefined) {
+            const color = getO3Color(valeur);
+            popup
+              .setLngLat(e.lngLat)
+              .setHTML(O3Tooltip(valeur, color))
+              .addTo(map);
+          }
+        }
+      });
+
+      // Retirer le popup quand on sort de la zone
+      map.on('mouseleave', `${bucketUrl}-fill`, () => {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+      });
     });
 
     return () => {
