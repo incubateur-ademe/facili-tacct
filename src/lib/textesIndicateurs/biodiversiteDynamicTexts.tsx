@@ -18,19 +18,20 @@ export const SolsImpermeabilisesBiodiversiteDynamicText = ({
   atlasBiodiversite,
   type
 }: {
-  sumNaf: number | undefined;
+  sumNaf: number;
   atlasBiodiversite: TableCommuneModel[];
   type: string;
 }) => {
+  console.log("sumNaf", sumNaf);
   return (
     <>
       {
-        sumNaf && sumNaf !== 0 && atlasBiodiversite.length === 0 ? (
+        atlasBiodiversite.length === 0 ? (
           <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
             Entre 2009 et 2023, {Round(sumNaf / 10000, 1)} hectare(s) d'espaces naturels,
             agricoles ou forestiers ont été consommés sur votre territoire.
           </Body>
-        ) : sumNaf && sumNaf !== 0 && atlasBiodiversite.length > 0 && type !== "commune" ? (
+        ) : atlasBiodiversite.length > 0 && type !== "commune" ? (
           <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
             Entre 2009 et 2023, {Round(sumNaf / 10000, 1)} hectare(s) d'espaces naturels,
             agricoles ou forestiers ont été consommés sur votre territoire. Face à ce constat,
@@ -41,7 +42,7 @@ export const SolsImpermeabilisesBiodiversiteDynamicText = ({
             dans leurs politiques d'aménagement et constitue un levier privilégié pour limiter
             l'artificialisation des sols.
           </Body>
-        ) : sumNaf && sumNaf !== 0 && atlasBiodiversite.length > 0 && type === "commune" ? (
+        ) : atlasBiodiversite.length > 0 && type === "commune" ? (
           <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
             Entre 2009 et 2023, {Round(sumNaf / 10000, 1)} hectare(s) d'espaces naturels, agricoles
             ou forestiers ont été consommés sur votre commune. Face à cet enjeu, l'Atlas de
