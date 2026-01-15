@@ -1,6 +1,5 @@
 'use server';
 import { Agriculture, SurfacesAgricolesModel } from '@/lib/postgres/models';
-import * as Sentry from '@sentry/nextjs';
 import fs from 'fs/promises';
 import path from 'path';
 import { ColumnCodeCheck } from '../columns';
@@ -93,7 +92,6 @@ export const GetAgriculture = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     }
   })();
@@ -169,7 +167,6 @@ export const GetSurfacesAgricoles = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     }
   })();

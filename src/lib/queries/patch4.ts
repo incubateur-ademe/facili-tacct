@@ -1,7 +1,6 @@
 'use server';
 
 import { Patch4 } from '@/lib/postgres/models';
-import * as Sentry from '@sentry/nextjs';
 import { dromRegex } from '../utils/regex';
 import { prisma } from './db';
 
@@ -52,7 +51,6 @@ export const GetPatch4 = async (
       } else return undefined;
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return undefined;
     }
   })();
