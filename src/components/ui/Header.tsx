@@ -138,7 +138,7 @@ const HeaderComp = () => {
             href: '/ressources',
             target: '_self'
           },
-          text: 'Ressources'
+          text: 'Boîte à outils'
         },
         {
           linkProps: {

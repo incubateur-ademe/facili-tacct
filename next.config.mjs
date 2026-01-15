@@ -19,6 +19,8 @@ const csp = {
     'connect-src': [
         '*',
         'https://*.gouv.fr',
+        'https://eu.posthog.com',
+        'https://eu.i.posthog.com',
         process.env.NEXT_PUBLIC_ENV === 'preprod' && 'https://vercel.live',
         process.env.NODE_ENV === 'development' && 'http://localhost'
     ],
@@ -52,9 +54,9 @@ const cspStats = [
     "default-src 'self'",
     'frame-src https://metabase.facili-tacct.beta.gouv.fr https://*.beta.gouv.fr',
     "img-src 'self' data: https:",
-    `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ''}`,
+    `script-src 'self' 'unsafe-inline' https://eu-assets.i.posthog.com${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ''}`,
     "style-src 'self' 'unsafe-inline'",
-    `connect-src 'self'${process.env.NODE_ENV === 'development' ? ' ws: wss:' : ''}`,
+    `connect-src 'self' https://eu.posthog.com https://eu.i.posthog.com https://eu-assets.i.posthog.com${process.env.NODE_ENV === 'development' ? ' ws: wss:' : ''}`,
     "frame-ancestors 'self'"
 ].join('; ');
 
@@ -71,6 +73,16 @@ const ContentSecurityPolicy = Object.entries(csp)
 /** @type {import('next').NextConfig} */
 const config = {
     poweredByHeader: false,
+    // API Notion
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com',
+                pathname: '/**'
+            }
+        ]
+    },
     webpack: (config) => {
         config.module.rules.push({
             test: /\.(woff2|webmanifest)$/,
@@ -147,7 +159,7 @@ const config = {
                     }
                 ]
             },
-            { source: '/stats', headers: statsHeaders },
+            { source: '/statistiques', headers: statsHeaders },
             { source: '/sandbox/stats', headers: statsHeaders }
         ];
     },
@@ -204,7 +216,11 @@ const config = {
 };
 
 const withMDX = createMDX({
-    extension: /\.mdx?$/
+    extension: /\.mdx?$/,
+    options: {
+        remarkPlugins: [],
+        rehypePlugins: []
+    }
 });
 
 export default withSentryConfig(withMDX(config), {

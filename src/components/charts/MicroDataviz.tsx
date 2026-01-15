@@ -265,7 +265,7 @@ export const MicroRemplissageTerritoire = (props: {
   arrondi?: number;
 }) => {
   const { territoireContours, pourcentage, arrondi = 0, height = 150 } = props;
-  const mapRef = useRef<any | null>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
   const [bounds, setBounds] = useState<number[]>([0, 0, 0, 0]);
   const south = bounds[1];
   const north = bounds[3];
@@ -551,7 +551,7 @@ export const MicroRemplissageTerritoireMapLibre = (props: {
   height?: number;
   arrondi?: number;
 }) => {
-  const { territoireContours, pourcentage, height = 200, arrondi = 0 } = props;
+  const { territoireContours } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;

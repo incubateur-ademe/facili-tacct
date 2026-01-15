@@ -4,7 +4,7 @@ import styles from "../components.module.scss";
 
 export const Loader = ({ height }: { height?: string }) => {
   return (
-    <div className="flex flex-col justify-center" style={{ height: height || "80dvh" }}>
+    <div className="flex flex-col justify-center" style={{ height: height || "80dvh", alignItems: 'center' }}>
       <div className={styles.loader}></div>
     </div>
   );

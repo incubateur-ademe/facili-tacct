@@ -46,7 +46,7 @@ export const SolsImpermeabilises = (props: {
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
             {
-              sumNaf &&
+              sumNaf !== null &&
               <>
                 <MicroNumberCircle valeur={sumNaf / 10000} arrondi={1} unite='ha' />
                 <div className={styles.text}>
@@ -57,7 +57,7 @@ export const SolsImpermeabilises = (props: {
                   />
                   <CustomTooltipNouveauParcours
                     title={espacesNAFTooltipText}
-                    texte="D'où vient ce chiffre ?"
+                    texte="D'où vient ce chiffre ?"
                   />
                 </div>
               </>
