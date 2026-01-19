@@ -24,44 +24,47 @@ export const ConsommationEspacesNAFAmenagement = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const exportData = IndicatorExportTransformations.biodiversite.EspacesNaf(consommationNAF);
-  const sumNaf = (type === "commune"
-    ? consommationNAF.filter((item) => item.code_geographique === code)[0]
-      ?.naf09art23
-    : consommationNAF.reduce((acc, item) => acc + (item.naf09art23 ?? 0), 0)) ?? 0;
+  const exportData =
+    IndicatorExportTransformations.biodiversite.EspacesNaf(consommationNAF);
+  const sumNaf =
+    (type === 'commune'
+      ? consommationNAF.filter((item) => item.code_geographique === code)[0]
+        ?.naf09art23
+      : consommationNAF.reduce(
+        (acc, item) => acc + (item.naf09art23 ?? 0),
+        0
+      )) ?? 0;
 
   return (
     <>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroNumberCircle valeur={sumNaf / 10000} arrondi={1} unite='ha' />
+            <MicroNumberCircle valeur={sumNaf / 10000} arrondi={1} unite="ha" />
             <div className={styles.text}>
-              {
-                sumNaf && sumNaf !== 0 ? (
-                  <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                    Entre 2009 et 2023, votre territoire a consommé{' '}
-                    <b>{Round(sumNaf / 10000, 1)} hectare(s)</b> d’espaces naturels
-                    et forestiers.{' '}
-                  </Body>
-                ) : ""
-              }
+              {sumNaf !== null ? (
+                <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
+                  Entre 2009 et 2023, votre territoire a consommé{' '}
+                  <b>{Round(sumNaf / 10000, 1)} hectare(s)</b> d’espaces
+                  naturels et forestiers.{' '}
+                </Body>
+              ) : (
+                ''
+              )}
               <CustomTooltipNouveauParcours
                 title={espacesNAFTooltipText}
                 texte="D'où vient ce chiffre ?"
               />
             </div>
           </div>
-          <div className='mt-4'>
+          <div className="mt-4">
             <ReadMoreFade maxHeight={500}>
               <ConsommationEspacesNAFAmenagementText />
             </ReadMoreFade>
           </div>
         </div>
         <div className={styles.datavizWrapper}>
-          <ConsommationEspacesNAFCharts
-            consommationNAF={consommationNAF}
-          />
+          <ConsommationEspacesNAFCharts consommationNAF={consommationNAF} />
           <SourceExport
             source="CEREMA, avril 2024"
             condition={sumNaf !== 0}
