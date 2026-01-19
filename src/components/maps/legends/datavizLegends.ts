@@ -781,3 +781,10 @@ export const o3Legend = [
   { color: '#C97189', value: '30-35' },
   { color: '#B982B2', value: '≥ 35' }
 ];
+
+export const debroussaillementLegend = [
+  {
+    color: '#F83DD9',
+    value: 'Zonage informatif des obligations légales de débrousaillement'
+  }
+];
