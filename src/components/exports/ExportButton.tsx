@@ -1,14 +1,21 @@
-"use client";
+'use client';
 import ExporterIcon from '@/assets/icons/export_icon_white.svg';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
-import { exportMultipleSheetToXLSX, exportToXLSX } from '@/lib/utils/export/exportXlsx';
+import ExportDataTrigger from '@/hooks/ExportDataTrigger';
+import {
+  exportMultipleSheetToXLSX,
+  exportToXLSX
+} from '@/lib/utils/export/exportXlsx';
 import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
 import { useState } from 'react';
-import styles from "../components.module.scss";
+import styles from '../components.module.scss';
 import { CopyLinkClipboard } from '../interactions/CopyLinkClipboard';
 
-type ExportDataRow = Record<string, string | number | boolean | null | bigint | undefined>;
+type ExportDataRow = Record<
+  string,
+  string | number | boolean | null | bigint | undefined
+>;
 
 interface ExportButtonProps {
   data: ExportDataRow[];
@@ -18,7 +25,7 @@ interface ExportButtonProps {
   code: string;
   sheetName: string;
   children?: React.ReactNode;
-  documentation?: { [key: string]: string; }[];
+  documentation?: { [key: string]: string }[];
   style?: React.CSSProperties;
   disabled?: boolean;
   anchor?: string;
@@ -32,21 +39,23 @@ export const ExportButton = ({
   code,
   sheetName,
   documentation,
-  children = "Exporter",
+  children = 'Exporter',
   style
 }: ExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
   posthog.capture(
-    baseName === "inconfort_thermique"
-      ? "export_xlsx_thematique_bouton"
-      : 'export_xlsx_bouton', {
-    thematique: baseName,
-    code: code,
-    libelle: libelle,
-    type: type,
-    date: new Date()
-  });
+    baseName === 'inconfort_thermique'
+      ? 'export_xlsx_thematique_bouton'
+      : 'export_xlsx_bouton',
+    {
+      thematique: baseName,
+      code: code,
+      libelle: libelle,
+      type: type,
+      date: new Date()
+    }
+  );
   const handleExport = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!data || data.length === 0) {
       console.log('Aucune donnée à exporter');
@@ -59,7 +68,9 @@ export const ExportButton = ({
         exportMultipleSheetToXLSX(
           {
             [sheetName]: data,
-            Documentation: Array.isArray(documentation) ? documentation : [{ Documentation: documentation }],
+            Documentation: Array.isArray(documentation)
+              ? documentation
+              : [{ Documentation: documentation }]
           },
           baseName,
           type,
@@ -82,7 +93,7 @@ export const ExportButton = ({
       className={styles.exportIndicatorButton}
       style={{
         cursor: isExporting ? 'wait' : 'pointer',
-        ...style,
+        ...style
       }}
     >
       {isExporting ? 'Export en cours...' : children}
@@ -104,15 +115,17 @@ export const ExportButtonNouveauParcours = ({
   code,
   sheetName,
   documentation,
-  children = "Exporter",
+  children = 'Exporter',
   style,
   disabled,
   anchor
 }: ExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleExport = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    setIsClicked(true);
     if (isExporting) return;
     e.currentTarget.blur();
     setIsExporting(true);
@@ -126,7 +139,7 @@ export const ExportButtonNouveauParcours = ({
     });
 
     // Attendre que React affiche "Export en cours..." avant de démarrer l'export
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await new Promise((resolve) => setTimeout(resolve, 0));
 
     if (!data || data.length === 0) {
       console.log('Aucune donnée à exporter');
@@ -139,7 +152,9 @@ export const ExportButtonNouveauParcours = ({
         exportMultipleSheetToXLSX(
           {
             [sheetName]: data,
-            Documentation: Array.isArray(documentation) ? documentation : [{ Documentation: documentation }],
+            Documentation: Array.isArray(documentation)
+              ? documentation
+              : [{ Documentation: documentation }]
           },
           baseName,
           type,
@@ -158,24 +173,23 @@ export const ExportButtonNouveauParcours = ({
   };
   return (
     <>
-      {
-        data.length === 0 ? null : (
-          <div className={styles.exportShareWrapper}>
-            {anchor && <CopyLinkClipboard anchor={anchor} />}
-            <BoutonPrimaireClassic
-              onClick={handleExport}
-              disabled={disabled || isExporting}
-              icone={isExporting ? null : ExporterIcon}
-              size='sm'
-              text={isExporting ? 'Export en cours...' : children as string}
-              style={{
-                cursor: isExporting ? 'wait' : 'pointer',
-                ...style,
-              }}
-            />
-          </div>
-        )
-      }
+      {data.length === 0 ? null : (
+        <div className={styles.exportShareWrapper}>
+          {anchor && <CopyLinkClipboard anchor={anchor} />}
+          <BoutonPrimaireClassic
+            onClick={handleExport}
+            disabled={disabled || isExporting}
+            icone={isExporting ? null : ExporterIcon}
+            size="sm"
+            text={isExporting ? 'Export en cours...' : (children as string)}
+            style={{
+              cursor: isExporting ? 'wait' : 'pointer',
+              ...style
+            }}
+          />
+          {isClicked && <ExportDataTrigger />}
+        </div>
+      )}
     </>
   );
 };
