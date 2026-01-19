@@ -968,3 +968,24 @@ model secheresses {
     @@index([index], map: "ix_secheresses_index")
     @@schema("databases_v2")
 }
+
+model o3_seuils {
+    index     Int    @id
+    nom_site  String
+    valeur    Float
+    latitude  Float
+    longitude Float
+
+    @@index([index], map: "ix_o3_seuils_index")
+    @@schema("databases_v2")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model liste_pnr {
+    pnr               String
+    code_pnr          String
+    code_geographique String
+
+    @@ignore
+    @@schema("databases_v2")
+}

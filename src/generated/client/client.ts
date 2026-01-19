@@ -214,3 +214,8 @@ export type thematique = Prisma.thematiqueModel
  * 
  */
 export type secheresses = Prisma.secheressesModel
+/**
+ * Model o3_seuils
+ * 
+ */
+export type o3_seuils = Prisma.o3_seuilsModel

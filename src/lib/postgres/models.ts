@@ -653,6 +653,14 @@ export type AOT40 = {
   Longitude: number;
 };
 
+export type O3 = {
+  index: number;
+  nom_site: string;
+  valeur: number;
+  latitude: number;
+  longitude: number;
+};
+
 export type QualiteSitesBaignade = {
   index: number;
   DEP_NOM: string;

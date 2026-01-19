@@ -85,7 +85,8 @@ export const ModelName = {
   north_star_metric: 'north_star_metric',
   ressources_consultees: 'ressources_consultees',
   thematique: 'thematique',
-  secheresses: 'secheresses'
+  secheresses: 'secheresses',
+  o3_seuils: 'o3_seuils'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -963,6 +964,17 @@ export const SecheressesScalarFieldEnum = {
 } as const
 
 export type SecheressesScalarFieldEnum = (typeof SecheressesScalarFieldEnum)[keyof typeof SecheressesScalarFieldEnum]
+
+
+export const O3_seuilsScalarFieldEnum = {
+  index: 'index',
+  nom_site: 'nom_site',
+  valeur: 'valeur',
+  latitude: 'latitude',
+  longitude: 'longitude'
+} as const
+
+export type O3_seuilsScalarFieldEnum = (typeof O3_seuilsScalarFieldEnum)[keyof typeof O3_seuilsScalarFieldEnum]
 
 
 export const SortOrder = {
