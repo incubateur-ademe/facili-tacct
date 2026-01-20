@@ -86,7 +86,6 @@ export const TypesDeSols = ({
       vegetalisationTerritoire
     );
 
-  console.log('foretPercent', foretPercent);
   return (
     <>
       <div className={styles.datavizMapContainer}>

@@ -70,7 +70,6 @@ export const SurfacesEnBio = (props: { agricultureBio: AgricultureBio[] }) => {
   const exportData =
     IndicatorExportTransformations.biodiversite.agricultureBio(agricultureBio);
 
-  console.log('pourcentageTotal', pourcentageTotal);
   return (
     <>
       <div className={styles.datavizContainer}>

@@ -56,7 +56,7 @@ export const GetConfortThermique = async (
           const value = await prisma.$queryRaw`
             SELECT *
             FROM databases_v2.confort_thermique
-            WHERE code_pnr = ${code}
+            WHERE code_pnr LIKE '%' || ${code} || '%' 
           `;
           return value as ConfortThermique[];
         } else if (type === 'departement') {
@@ -104,7 +104,10 @@ export const GetLczCouverture = async (
   try {
     if (!libelle || !type || (!code && type !== 'petr')) return false;
     const exists = await prisma.databases_v2_lcz_couverture.findFirst({
-      where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+      where: { [column]: type === 'petr' || type === 'ept' ? libelle : {
+        contains: code,
+        mode: 'insensitive'
+      } }
     });
     if (exists) return true;
     else return false;
@@ -176,7 +179,7 @@ export const GetConfortThermiqueBiodiversite = async (
                    clc_1_artificialise, clc_2_agricole, "clc_3_foret_semiNaturel", 
                    clc_4_humide, clc_5_eau, superf_choro
             FROM databases_v2.confort_thermique
-            WHERE code_pnr = ${code}
+            WHERE code_pnr LIKE '%' || ${code} || '%'
           `;
           return value as Partial<ConfortThermique>[];
         } else if (type === 'departement') {

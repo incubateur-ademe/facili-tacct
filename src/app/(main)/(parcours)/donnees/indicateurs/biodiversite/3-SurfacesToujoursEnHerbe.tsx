@@ -58,11 +58,6 @@ export const SurfacesToujoursEnHerbe = ({
       surfacesAgricoles
     );
 
-  console.log(
-    'pourcentageSurfacesToujoursEnHerbe',
-    pourcentageSurfacesToujoursEnHerbe
-  );
-
   return (
     <>
       <div className={styles.datavizMapContainer}>

@@ -84,7 +84,10 @@ export const GetAgriculture = async (
         } else {
           const value = await prisma.databases_v2_agriculture.findMany({
             where: {
-              [column]: code
+              [column]: {
+                contains: code,
+                mode: 'insensitive'
+              }
             }
           });
           return value;
@@ -149,7 +152,13 @@ export const GetSurfacesAgricoles = async (
                     epci: { not: null }
                   },
                   {
-                    [column]: type === 'petr' || type === 'ept' ? libelle : code
+                    [column]:
+                      type === 'petr' || type === 'ept'
+                        ? libelle
+                        : {
+                            contains: code,
+                            mode: 'insensitive'
+                          }
                   }
                 ]
               },

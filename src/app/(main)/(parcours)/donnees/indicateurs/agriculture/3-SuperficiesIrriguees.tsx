@@ -29,7 +29,6 @@ export const SuperficiesIrriguees = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-
   // Parse la géométrie GeoJSON du contour du territoire
   const territoireContours = contoursCommunes ? [{
     type: 'Feature' as const,
