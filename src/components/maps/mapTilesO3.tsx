@@ -8,7 +8,7 @@ import 'carte-facile/carte-facile.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef, useState } from 'react';
-import { getO3Color, O3Tooltip } from './components/tooltips';
+import { getO3Color, O3StationsTooltip, O3Tooltip } from './components/tooltips';
 import styles from './maps.module.scss';
 
 const color = (valeur: number) => {
@@ -54,6 +54,7 @@ export const MapTilesO3 = (props: {
     legend,
     onLoadingChange
   } = props;
+  const popupRef = useRef<maplibregl.Popup | null>(null);
 
   const [isTilesLoading, setIsTilesLoading] = useState(true);
   const hasLoadedOnce = useRef(false);
@@ -281,11 +282,6 @@ export const MapTilesO3 = (props: {
 
       map.addControl(new maplibregl.NavigationControl(), 'top-right');
 
-      const popup = new maplibregl.Popup({
-        closeButton: false,
-        closeOnClick: false
-      });
-
       // Hover sur les points O3 non clusterisés
       map.on('mouseenter', 'unclustered-point', (e) => {
         map.getCanvas().style.cursor = 'pointer';
@@ -294,27 +290,32 @@ export const MapTilesO3 = (props: {
           const nom_site = properties?.nom_site;
           const value = properties?.value;
           const color = properties?.color;
+          const containerHeight = mapContainer.current?.clientHeight || 500;
+          const mouseY = e.point.y;
+          const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';
 
-          popup
+          if (popupRef.current) {
+            popupRef.current.remove();
+          }
+
+          popupRef.current = new maplibregl.Popup({
+            closeButton: false,
+            closeOnClick: false,
+            anchor: placement,
+            maxWidth: 'max-content',
+            offset: placement === 'top' ? [0, 25] : [0, -20]
+          })
             .setLngLat(e.lngLat)
-            .setHTML(
-              `
-              <div style="display: flex; flex-direction: column; gap: 0.25rem;">
-                <div style="font-weight: bold;">${nom_site}</div>
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                  <div style="width: 12px; height: 12px; background-color: ${color}; border-radius: 50%;"></div>
-                  <span>${value} µg/m³</span>
-                </div>
-              </div>
-            `
-            )
+            .setHTML(O3StationsTooltip(value, color, nom_site))
             .addTo(map);
         }
       });
 
       map.on('mouseleave', 'unclustered-point', () => {
         map.getCanvas().style.cursor = '';
-        popup.remove();
+        if (popupRef.current) {
+          popupRef.current.remove();
+        }
       });
 
       // Hover sur les tuiles (seulement si pas sur un point O3)
@@ -331,11 +332,24 @@ export const MapTilesO3 = (props: {
 
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
-          const valeur = feature.properties?.valeur;
+          const valeur = Number(Round(feature.properties?.valeur, 0));
+          const containerHeight = mapContainer.current?.clientHeight || 500;
+          const mouseY = e.point.y;
+          const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';
+
+          if (popupRef.current) {
+            popupRef.current.remove();
+          }
+          const color = getO3Color(valeur);
 
           if (valeur !== undefined) {
-            const color = getO3Color(valeur);
-            popup
+            popupRef.current = new maplibregl.Popup({
+              closeButton: false,
+              closeOnClick: false,
+              anchor: placement,
+              maxWidth: 'max-content',
+              offset: placement === 'top' ? [0, 25] : [0, -20]
+            })
               .setLngLat(e.lngLat)
               .setHTML(O3Tooltip(valeur, color))
               .addTo(map);
@@ -346,7 +360,9 @@ export const MapTilesO3 = (props: {
       // Retirer le popup quand on sort de la zone
       map.on('mouseleave', `${bucketUrl}-fill`, () => {
         map.getCanvas().style.cursor = '';
-        popup.remove();
+        if (popupRef.current) {
+          popupRef.current.remove();
+        }
       });
 
       map.on('idle', () => {

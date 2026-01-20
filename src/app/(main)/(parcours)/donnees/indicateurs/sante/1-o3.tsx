@@ -57,38 +57,38 @@ export const SeuilsReglementairesO3 = ({
                 paint={{
                   'fill-color': [
                     'step',
-                    ['/', ['round', ['*', ['get', 'valeur'], 100]], 100],
-                    '#E0F9F7', // 0 - Bleu très très clair
+                    ['round', ['get', 'valeur']],
+                    '#E0F9F7', // < 1
                     1,
-                    '#C8F3EE', // 1
+                    '#C8F3EE',
                     2,
-                    '#A4F5EE', // 2
+                    '#A4F5EE',
                     3,
-                    '#85E6D8', // 3
+                    '#85E6D8',
                     4,
-                    '#A6E4D3', // 4
+                    '#A6E4D3',
                     5,
-                    '#C4E8A3', // 5 - Vert clair
+                    '#C4E8A3',
                     6,
-                    '#DFEC7B', // 6
-                    7,
-                    '#F5E290', // 7 - Jaune
+                    '#DFEC7B', 
                     8,
-                    '#FFD97A', // 8
+                    '#F5E290', 
                     10,
-                    '#FFBD6B', // 10 - Orange clair
+                    '#FFD97A', 
                     12,
-                    '#FFAB66', // 12
+                    '#FFBD6B', 
                     15,
-                    '#FC9999', // 15 - Rose clair
+                    '#FFAB66', 
                     20,
-                    '#F37D7D', // 20
+                    '#FC9999',
                     25,
-                    '#E06060', // 25 - Rose foncé
+                    '#F37D7D',
                     30,
-                    '#C97189', // 30
+                    '#E06060',
                     35,
-                    '#B982B2' // >=35 - Violet
+                    '#C97189',
+                    40,
+                    '#B982B2'
                   ],
                   'fill-opacity': 0.7,
                   'fill-antialias': false

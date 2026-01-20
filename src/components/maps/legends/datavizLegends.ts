@@ -764,22 +764,22 @@ export const RgaMapLegend = [
 ];
 
 export const o3Legend = [
-  { color: '#E0F9F7', value: '< 0.5' },
-  { color: '#C8F3EE', value: '0.5-1' },
-  { color: '#A4F5EE', value: '1-2' },
-  { color: '#85E6D8', value: '2-3' },
-  { color: '#A6E4D3', value: '3-4' },
-  { color: '#C4E8A3', value: '4-5' },
-  { color: '#DFEC7B', value: '5-6' },
-  { color: '#F5E290', value: '6-8' },
-  { color: '#FFD97A', value: '8-10' },
-  { color: '#FFBD6B', value: '10-12' },
-  { color: '#FFAB66', value: '12-15' },
-  { color: '#FC9999', value: '15-20' },
-  { color: '#F37D7D', value: '20-25' },
-  { color: '#E06060', value: '25-30' },
-  { color: '#C97189', value: '30-35' },
-  { color: '#B982B2', value: '≥ 35' }
+  { color: '#E0F9F7', value: '< 1' },
+  { color: '#C8F3EE', value: '1' },
+  { color: '#A4F5EE', value: '2' },
+  { color: '#85E6D8', value: '3' },
+  { color: '#A6E4D3', value: '4' },
+  { color: '#C4E8A3', value: '5' },
+  { color: '#DFEC7B', value: '6-7' },
+  { color: '#F5E290', value: '8-9' },
+  { color: '#FFD97A', value: '10-11' },
+  { color: '#FFBD6B', value: '12-14' },
+  { color: '#FFAB66', value: '15-19' },
+  { color: '#FC9999', value: '20-24' },
+  { color: '#F37D7D', value: '25-29' },
+  { color: '#E06060', value: '30-34' },
+  { color: '#C97189', value: '35-39' },
+  { color: '#B982B2', value: '≥ 40' }
 ];
 
 export const debroussaillementLegend = [

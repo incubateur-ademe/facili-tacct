@@ -77,7 +77,9 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                   <Image src={ClockIcon} alt="Temps de lecture" width={24} height={24} />
                   <Body size="lg" weight="bold" style={{ color: "#FFFFFF" }}>
                     {
-                      tempsLecture < 60 ? <span>{tempsLecture} min</span> : <span>{Round(tempsLecture / 60, 0)} h</span>
+                      collection?.titre === "Démarrer le diagnostic de vulnérabilité" 
+                      ? <span>41 min</span> 
+                      : <span>{tempsLecture} min</span>
                     }
                   </Body>
                 </div>
