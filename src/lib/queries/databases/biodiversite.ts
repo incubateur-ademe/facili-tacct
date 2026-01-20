@@ -138,9 +138,9 @@ export const GetConsommationNAF = async (
                     : type === 'departement'
                       ? 'departement'
                       : '']: {
-                        contains: code,
-                        mode: 'insensitive'
-                      }
+                  contains: code,
+                  mode: 'insensitive'
+                }
               }
             });
           return value;
@@ -201,7 +201,10 @@ export const GetAtlasBiodiversite = async (
                 annee_debut: { not: null }
               },
               {
-                [column]: type === 'petr' || type === 'ept' ? libelle : {
+                [column]:
+                  type === 'petr' || type === 'ept'
+                    ? libelle
+                    : {
                         contains: code,
                         mode: 'insensitive'
                       }
