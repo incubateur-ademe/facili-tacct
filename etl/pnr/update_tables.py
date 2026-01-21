@@ -1,17 +1,21 @@
 import pandas as pd
 from sqlalchemy import create_engine, text
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 #liste_tables_in_postgis_v2 = ["communes_drom"]
 
 liste_tables = [
-    "agriculture", "arretes_catnat", "atlas_biodiversite", "collectivites_searchbar",
+    "agriculture", "arretes_catnat", "atlas_biodiversite",
+    "collectivites_searchbar",
     "confort_thermique", "consommation_espaces_naf", "export_cours_d_eau", "feux_foret",
     "lcz_couverture", "prelevements_eau", "rga", "secheresses", "table_commune", "table_territoires"
 ]
 dbschema='databases_v2'
 SCALINGO_URL = os.environ.get('SCALINGO_POSTGRESQL_URL')
-POSTGRES_CONNECTION_STRING = SCALINGO_URL.replace('postgresql://', 'postgresql+psycopg2://').split('?')[0]
+POSTGRES_CONNECTION_STRING = SCALINGO_URL.replace('postgres://', 'postgresql://').replace('postgresql://', 'postgresql+psycopg2://').split('?')[0]
 engine = create_engine(POSTGRES_CONNECTION_STRING,
                       connect_args={'options': '-csearch_path={}'.format(dbschema)})
 
@@ -53,8 +57,8 @@ for table in liste_tables:
 
     print(f"Nombre de lignes dans liste_pnr: {len(df_reference)}")
 
-    # Faire la comparaison entre les deux tables
-    # On fait un OUTER merge pour voir TOUTES les communes (table ET liste_pnr)
+    # # Faire la comparaison entre les deux tables
+    # # On fait un OUTER merge pour voir TOUTES les communes (table ET liste_pnr)
 
     merged = df_collectivites.merge(
         df_reference,
@@ -370,3 +374,116 @@ for table in liste_tables:
                                    'libelle_pnr_table', 'libelle_pnr_reference']].head(10))
     else:
         print("❌ ERREUR")
+
+    # ÉTAPE SUPPLÉMENTAIRE : Traitement spécifique pour collectivites_searchbar
+    # Mise à jour des lignes avec code_geographique IS NULL AND code_pnr IS NOT NULL
+    if table == "collectivites_searchbar":
+        print("\n" + "="*80)
+        print("ÉTAPE SUPPLÉMENTAIRE - TRAITEMENT DES LIGNES SANS code_geographique")
+        print("="*80)
+
+        # Récupérer les lignes avec code_geographique IS NULL AND code_pnr IS NOT NULL
+        query_sans_code_geo = f"""
+        SELECT code_pnr, libelle_pnr, search_code, search_libelle
+        FROM {table}
+        WHERE code_geographique IS NULL AND code_pnr IS NOT NULL
+        """
+
+        with engine.begin() as conn:
+            df_sans_code_geo = pd.read_sql(query_sans_code_geo, conn)
+
+        print(f"Nombre de lignes avec code_geographique IS NULL AND code_pnr IS NOT NULL: {len(df_sans_code_geo)}")
+
+        if len(df_sans_code_geo) > 0:
+            # Récupérer tous les PNR uniques dans liste_pnr
+            query_pnr_uniques = """
+            SELECT DISTINCT code_pnr, pnr as libelle_pnr
+            FROM liste_pnr
+            WHERE code_pnr IS NOT NULL
+            """
+
+            with engine.begin() as conn:
+                df_pnr_uniques = pd.read_sql(query_pnr_uniques, conn)
+
+            print(f"Nombre de PNR uniques dans liste_pnr: {len(df_pnr_uniques)}")
+
+            # Construire les requêtes SQL de mise à jour
+            sql_updates_searchbar = []
+
+            for idx, row_pnr in df_pnr_uniques.iterrows():
+                code_pnr = row_pnr['code_pnr']
+                libelle_pnr = row_pnr['libelle_pnr']
+
+                # Échapper les apostrophes dans les libellés
+                if pd.notna(libelle_pnr):
+                    libelle_pnr_escaped = str(libelle_pnr).replace("'", "''")
+                else:
+                    libelle_pnr_escaped = None
+
+                if pd.notna(code_pnr):
+                    code_pnr_str = f"'{code_pnr}'"
+                else:
+                    code_pnr_str = "NULL"
+
+                if pd.notna(libelle_pnr_escaped):
+                    libelle_pnr_str = f"'{libelle_pnr_escaped}'"
+                else:
+                    libelle_pnr_str = "NULL"
+
+                # Mise à jour des 4 colonnes : code_pnr, libelle_pnr, search_code, search_libelle
+                sql_update_searchbar = f"""
+UPDATE {table}
+SET code_pnr = {code_pnr_str},
+    libelle_pnr = {libelle_pnr_str},
+    search_code = {code_pnr_str},
+    search_libelle = {libelle_pnr_str}
+WHERE code_geographique IS NULL
+  AND code_pnr = {code_pnr_str};
+"""
+                sql_updates_searchbar.append(sql_update_searchbar)
+
+            print(f"\n📊 STATISTIQUES DES MISES À JOUR SEARCHBAR:")
+            print(f"{'='*80}")
+            print(f"Nombre de requêtes SQL à exécuter: {len(sql_updates_searchbar)}")
+            print(f"{'='*80}\n")
+
+            # Afficher quelques exemples
+            print("📋 EXEMPLES DE REQUÊTES SQL:\n")
+            for i, sql in enumerate(sql_updates_searchbar[:3]):
+                print(f"--- Requête {i+1} ---")
+                print(sql)
+                print()
+
+            if len(sql_updates_searchbar) > 3:
+                print(f"... et {len(sql_updates_searchbar) - 3} autres requêtes")
+
+            # Demander confirmation
+            confirmation_searchbar = input(f"\n⚠️  Voulez-vous exécuter les mises à jour des lignes sans code_geographique pour '{table}' ? (oui/non): ").strip().lower()
+            if confirmation_searchbar not in ['oui', 'o', 'yes', 'y']:
+                print(f"❌ Mise à jour searchbar annulée pour {table}.\n")
+            else:
+                print("🚀 Exécution des mises à jour searchbar...\n")
+
+                with engine.begin() as conn:
+                    total_updates_searchbar = 0
+
+                    for i, sql in enumerate(sql_updates_searchbar):
+                        try:
+                            result = conn.execute(text(sql))
+                            total_updates_searchbar += result.rowcount if hasattr(result, 'rowcount') else 1
+
+                            if (i + 1) % 10 == 0:
+                                print(f"   Progression: {i+1}/{len(sql_updates_searchbar)} requêtes exécutées...")
+
+                        except Exception as e:
+                            print(f"❌ Erreur sur la requête {i+1}: {e}")
+                            print(f"   SQL: {sql[:100]}...")
+                            raise
+
+                print(f"\n✅ Mise à jour searchbar terminée!")
+                print(f"   Total de requêtes exécutées: {len(sql_updates_searchbar)}")
+                print(f"   Total de lignes affectées: {total_updates_searchbar}")
+                print("="*80)
+        else:
+            print("ℹ️  Aucune ligne à traiter pour ce cas spécifique.")
+            print("="*80)
