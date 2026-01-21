@@ -1,11 +1,17 @@
 import pandas as pd
 from sqlalchemy import create_engine, text
+import os
+
+#liste_tables_in_postgis_v2 = ["communes_drom"]
 
 liste_tables = [
-    "communes_drom"
+    "agriculture", "arretes_catnat", "atlas_biodiversite", "collectivites_searchbar",
+    "confort_thermique", "consommation_espaces_naf", "export_cours_d_eau", "feux_foret",
+    "lcz_couverture", "prelevements_eau", "rga", "secheresses", "table_commune", "table_territoires"
 ]
-dbschema='postgis_v2'
-POSTGRES_CONNECTION_STRING = 'postgresql+psycopg2://XXXXX'
+dbschema='databases_v2'
+SCALINGO_URL = os.environ.get('SCALINGO_POSTGRESQL_URL')
+POSTGRES_CONNECTION_STRING = SCALINGO_URL.replace('postgresql://', 'postgresql+psycopg2://').split('?')[0]
 engine = create_engine(POSTGRES_CONNECTION_STRING,
                       connect_args={'options': '-csearch_path={}'.format(dbschema)})
 
