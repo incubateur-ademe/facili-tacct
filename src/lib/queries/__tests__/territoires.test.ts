@@ -37,12 +37,12 @@ afterAll(async () => {
 const expectedBrehat: [string, string] = ['22016', 'Île-de-Bréhat'];
 
 const normalizeLabel = (label: string): string => {
-  return label
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/^pnr\s+(de\s+la|du|des|d'|de l'|de)\s+/i, 'pnr')
-    .replace(/[^a-z0-9]/g, '');
+  return label;
+  // .toLowerCase()
+  // .normalize('NFD')
+  // .replace(/[\u0300-\u036f]/g, '')
+  // .replace(/^pnr\s+(de\s+la|du|des|d'|de l'|de)\s+/i, 'pnr')
+  // .replace(/[^a-z0-9]/g, '');
 };
 
 describe('PNR code/libelle correspondance', () => {
@@ -53,7 +53,9 @@ describe('PNR code/libelle correspondance', () => {
     for (const row of result.rows) {
       const expected = expectedMap.get(row.code_pnr);
       if (!expected) {
-        console.log(`[ERREUR collectivites_searchbar] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
+        console.log(
+          `[ERREUR collectivites_searchbar] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`
+        );
       }
       expect(expected).toBeDefined();
       const normalized1 = normalizeLabel(row.libelle_pnr);
@@ -75,7 +77,9 @@ describe('consommation_espaces_naf code/libelle correspondance', () => {
     for (const row of result.rows) {
       const expected = expectedMap.get(row.code_pnr);
       if (!expected) {
-        console.log(`[ERREUR consommation_espaces_naf] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
+        console.log(
+          `[ERREUR consommation_espaces_naf] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`
+        );
       }
       expect(expected).toBeDefined();
       const normalized1 = normalizeLabel(row.libelle_pnr);
@@ -97,7 +101,9 @@ describe('arretes_catnat code/libelle correspondance', () => {
     for (const row of result.rows) {
       const expected = expectedMap.get(row.code_pnr);
       if (!expected) {
-        console.log(`[ERREUR arretes_catnat] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
+        console.log(
+          `[ERREUR arretes_catnat] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`
+        );
       }
       expect(expected).toBeDefined();
       const normalized1 = normalizeLabel(row.libelle_pnr);
@@ -119,7 +125,9 @@ describe('inconfort_thermique code/libelle correspondance', () => {
     for (const row of result.rows) {
       const expected = expectedMap.get(row.code_pnr);
       if (!expected) {
-        console.log(`[ERREUR inconfort_thermique] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
+        console.log(
+          `[ERREUR inconfort_thermique] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`
+        );
       }
       expect(expected).toBeDefined();
       const normalized1 = normalizeLabel(row.libelle_pnr);
@@ -141,7 +149,9 @@ describe('feux_foret code/libelle correspondance', () => {
     for (const row of result.rows) {
       const expected = expectedMap.get(row.code_pnr);
       if (!expected) {
-        console.log(`[ERREUR feux_foret] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
+        console.log(
+          `[ERREUR feux_foret] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`
+        );
       }
       expect(expected).toBeDefined();
       const normalized1 = normalizeLabel(row.libelle_pnr);
@@ -163,7 +173,9 @@ describe('ressources_eau code/libelle correspondance', () => {
     for (const row of result.rows) {
       const expected = expectedMap.get(row.code_pnr);
       if (!expected) {
-        console.log(`[ERREUR ressources_eau] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
+        console.log(
+          `[ERREUR ressources_eau] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`
+        );
       }
       expect(expected).toBeDefined();
       const normalized1 = normalizeLabel(row.libelle_pnr);
@@ -185,7 +197,9 @@ describe('rga code/libelle correspondance', () => {
     for (const row of result.rows) {
       const expected = expectedMap.get(row.code_pnr);
       if (!expected) {
-        console.log(`[ERREUR rga] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
+        console.log(
+          `[ERREUR rga] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`
+        );
       }
       expect(expected).toBeDefined();
       const normalized1 = normalizeLabel(row.libelle_pnr);
@@ -207,7 +221,9 @@ describe('agriculture code/libelle correspondance', () => {
     for (const row of result.rows) {
       const expected = expectedMap.get(row.code_pnr);
       if (!expected) {
-        console.log(`[ERREUR agriculture] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
+        console.log(
+          `[ERREUR agriculture] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`
+        );
       }
       expect(expected).toBeDefined();
       const normalized1 = normalizeLabel(row.libelle_pnr);
@@ -229,7 +245,9 @@ describe('communes_drom code/libelle correspondance', () => {
     for (const row of result.rows) {
       const expected = expectedMap.get(row.code_pnr);
       if (!expected) {
-        console.log(`[ERREUR communes_drom] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`);
+        console.log(
+          `[ERREUR communes_drom] Code PNR "${row.code_pnr}" absent de la table de référence liste_pnr`
+        );
       }
       expect(expected).toBeDefined();
       const normalized1 = normalizeLabel(row.libelle_pnr);
@@ -377,8 +395,10 @@ describe('Vérification commune par commune', () => {
     }
 
     if (errors.length > 0) {
-      console.log(`\n=== RÉSUMÉ: ${errors.length} erreur(s) trouvée(s) dans collectivites_searchbar ===`);
-      errors.forEach(err => console.log(err));
+      console.log(
+        `\n=== RÉSUMÉ: ${errors.length} erreur(s) trouvée(s) dans collectivites_searchbar ===`
+      );
+      errors.forEach((err) => console.log(err));
     }
     expect(errors.length).toBe(0);
   });
@@ -399,8 +419,12 @@ describe('Vérification commune par commune', () => {
       ORDER BY code_pnr
     `);
 
-    const csMap = new Map(csResult.rows.map(row => [row.code_pnr, parseInt(row.nb_communes)]));
-    const lpMap = new Map(lpResult.rows.map(row => [row.code_pnr, parseInt(row.nb_communes)]));
+    const csMap = new Map(
+      csResult.rows.map((row) => [row.code_pnr, parseInt(row.nb_communes)])
+    );
+    const lpMap = new Map(
+      lpResult.rows.map((row) => [row.code_pnr, parseInt(row.nb_communes)])
+    );
 
     const errors: string[] = [];
     const allCodes = new Set([...csMap.keys(), ...lpMap.keys()]);
@@ -417,11 +441,11 @@ describe('Vérification commune par commune', () => {
     }
 
     if (errors.length > 0) {
-      console.log(`\n=== RÉSUMÉ: ${errors.length} PNR avec des différences de nombre de communes ===`);
-      errors.forEach(err => console.log(err));
+      console.log(
+        `\n=== RÉSUMÉ: ${errors.length} PNR avec des différences de nombre de communes ===`
+      );
+      errors.forEach((err) => console.log(err));
     }
     expect(errors.length).toBe(0);
   });
 });
-
-

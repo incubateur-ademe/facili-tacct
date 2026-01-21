@@ -712,12 +712,12 @@ export const AiresAppellationsControleesText = () => (
 export const DebroussaillementText = () => (
   <>
     <Body size="sm">
-      Votre territoire est concerné par une obligation légale de{' '}
+      L’obligation légale de{' '}
       <DefinitionTooltip title={debroussaillement}>
         débroussaillement
       </DefinitionTooltip>{' '}
-      qui représente la mesure de prévention la plus efficace pour réduire le
-      nombre et l'impact des incendies de forêts, selon{' '}
+      représente la mesure de prévention la plus efficace pour réduire le nombre
+      et l'impact des incendies de forêts, selon{' '}
       <ScrollToSourceTag sourceNumero={1}>
         l’Office national des forêts
       </ScrollToSourceTag>

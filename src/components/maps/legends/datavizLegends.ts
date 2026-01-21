@@ -785,6 +785,6 @@ export const o3Legend = [
 export const debroussaillementLegend = [
   {
     color: '#F83DD9',
-    value: 'Zonage informatif des obligations légales de débrousaillement'
+    value: 'Zonage informatif des obligations légales de débroussaillement'
   }
 ];
