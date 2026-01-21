@@ -13,7 +13,7 @@ liste_tables = [
     "confort_thermique", "consommation_espaces_naf", "export_cours_d_eau", "feux_foret",
     "lcz_couverture", "prelevements_eau", "rga", "secheresses", "table_commune", "table_territoires"
 ]
-dbschema='databases_v2'
+dbschema='databases_v2' # ou postgis_v2
 SCALINGO_URL = os.environ.get('SCALINGO_POSTGRESQL_URL')
 POSTGRES_CONNECTION_STRING = SCALINGO_URL.replace('postgres://', 'postgresql://').replace('postgresql://', 'postgresql+psycopg2://').split('?')[0]
 engine = create_engine(POSTGRES_CONNECTION_STRING,
