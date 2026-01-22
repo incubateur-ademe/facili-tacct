@@ -1,7 +1,6 @@
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
-import bcrypt from 'bcryptjs';
 import { prisma } from '../queries/db';
 
 export const AuthOptions: NextAuthOptions = {
@@ -41,7 +40,8 @@ export const AuthOptions: NextAuthOptions = {
         if (!user) {
           return null;
         }
-        
+            const bcrypt = require('bcryptjs');
+
         const passwordMatch = await bcrypt.compare(credentials.password, user.password);
         
         if (!passwordMatch) {
