@@ -97,7 +97,7 @@ export const SurfacesEnHerbeDynamicText = ({
               {Round(pourcentageSurfacesToujoursEnHerbe, 1)} % de surfaces
               toujours en herbe, votre EPCI dispose d'un indicateur clé de
               l'état de sa biodiversité : plus cette part est élevée, plus les
-              écosystèmes sont préservés
+              écosystèmes sont préservés.
             </Body>
           ) : (
             <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>

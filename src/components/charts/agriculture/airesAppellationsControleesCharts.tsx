@@ -5,8 +5,6 @@ import styles from './agriculture.module.scss';
 import PieChartAiresAppellationsControlees from "./pieChartAiresAppellationsControlees";
 
 type Props = {
-  datavizTab: string;
-  setDatavizTab: (value: string) => void;
   airesAppellationsControlees: {
     nom: string;
     signe: string;
@@ -14,24 +12,24 @@ type Props = {
 };
 
 const AiresAppellationsControleesCharts = (props: Props) => {
-  const { datavizTab, setDatavizTab, airesAppellationsControlees } = props;
+  const { airesAppellationsControlees } = props;
 
   return (
     <div className={styles.dataWrapper}>
-      <div className={styles.graphTabsWrapper}>
+      {/* <div className={styles.graphTabsWrapper}>
         <SubTabs
           data={['Répartition']}
           defaultTab={datavizTab}
           setValue={setDatavizTab}
         />
-      </div>
-      {datavizTab === 'Répartition' ? (
+      </div> */}
+      {/* {datavizTab === 'Répartition' ? ( */}
         <PieChartAiresAppellationsControlees
           airesAppellationsControlees={airesAppellationsControlees}
         />
-      ) : (
-        ''
-      )}
+      {/* ) : (
+        '' 
+      )}*/}
     </div>
   );
 };

@@ -64,76 +64,81 @@ export const IndicatorExportTransformations = {
       }),
     surfacesAgricoles: (surfacesAgricoles: SurfacesAgricolesModel[]) =>
       surfacesAgricoles.map((el) => {
+        const secretStat = (value: number | null) => {
+          if (value === null || isNaN(value)) {
+            return 'secret statistique';
+          } else return value;
+        }
         return {
           code_epci: el.epci,
-          exploitation_sau: el.exploitation_sau,
-          exploitation_sau_terres_arables: el.exploitation_sau_terres_arables,
+          exploitation_sau: secretStat(el.exploitation_sau),
+          exploitation_sau_terres_arables: secretStat(el.exploitation_sau_terres_arables),
           exploitation_sau_terres_arables_cereales:
-            el.exploitation_sau_terres_arables_cereales,
+            secretStat(el.exploitation_sau_terres_arables_cereales),
           exploitation_sau_terres_arables_oleagineux:
-            el.exploitation_sau_terres_arables_oleagineux,
+            secretStat(el.exploitation_sau_terres_arables_oleagineux),
           exploitation_sau_terres_arables_fourrageres:
-            el.exploitation_sau_terres_arables_fourrageres,
+            secretStat(el.exploitation_sau_terres_arables_fourrageres),
           exploitation_sau_terres_arables_tubercules:
-            el.exploitation_sau_terres_arables_tubercules,
+            secretStat(el.exploitation_sau_terres_arables_tubercules),
           exploitation_sau_terres_arables_legumes_melons_fraises:
-            el.exploitation_sau_terres_arables_legumes_melons_fraises,
+            secretStat(el.exploitation_sau_terres_arables_legumes_melons_fraises),
           exploitation_sau_terres_arables_fleurs:
-            el.exploitation_sau_terres_arables_fleurs,
+            secretStat(el.exploitation_sau_terres_arables_fleurs),
           exploitation_sau_terres_arables_autres:
-            el.exploitation_sau_terres_arables_autres,
+            secretStat(el.exploitation_sau_terres_arables_autres),
           exploitation_sau_cultures_permanentes:
-            el.exploitation_sau_cultures_permanentes,
+            secretStat(el.exploitation_sau_cultures_permanentes),
           exploitation_sau_cultures_permanentes_vigne:
-            el.exploitation_sau_cultures_permanentes_vigne,
+            secretStat(el.exploitation_sau_cultures_permanentes_vigne),
           exploitation_sau_cultures_permanentes_fruits:
-            el.exploitation_sau_cultures_permanentes_fruits,
+            secretStat(el.exploitation_sau_cultures_permanentes_fruits),
           exploitation_sau_cultures_permanentes_autres:
-            el.exploitation_sau_cultures_permanentes_autres,
-          exploitation_sau_herbe: el.exploitation_sau_herbe,
+            secretStat(el.exploitation_sau_cultures_permanentes_autres),
+          exploitation_sau_herbe: secretStat(el.exploitation_sau_herbe),
           exploitation_sau_herbe_prairies_productives:
-            el.exploitation_sau_herbe_prairies_productives,
+            secretStat(el.exploitation_sau_herbe_prairies_productives),
           exploitation_sau_herbe_prairies_peu_productives:
-            el.exploitation_sau_herbe_prairies_peu_productives,
+            secretStat(el.exploitation_sau_herbe_prairies_peu_productives),
           exploitation_sau_herbe_subventions:
-            el.exploitation_sau_herbe_subventions,
+            secretStat(el.exploitation_sau_herbe_subventions),
           exploitation_sau_herbe_bois_patures:
-            el.exploitation_sau_herbe_bois_patures,
-          exploitation_sau_jardins: el.exploitation_sau_jardins,
-          superficie_sau_ha: el.superficie_sau,
-          superficie_sau_terres_arables_ha: el.superficie_sau_terres_arables,
+            secretStat(el.exploitation_sau_herbe_bois_patures),
+          exploitation_sau_jardins: secretStat(el.exploitation_sau_jardins),
+          superficie_sau_ha: secretStat(el.superficie_sau),
+          superficie_sau_terres_arables_ha: secretStat(el.superficie_sau_terres_arables),
           superficie_sau_terres_arables_cereales_ha:
-            el.superficie_sau_terres_arables_cereales,
+            secretStat(el.superficie_sau_terres_arables_cereales),
           superficie_sau_terres_arables_oleagineux_ha:
-            el.superficie_sau_terres_arables_oleagineux,
+            secretStat(el.superficie_sau_terres_arables_oleagineux),
           superficie_sau_terres_arables_fourrageres_ha:
-            el.superficie_sau_terres_arables_fourrageres,
+            secretStat(el.superficie_sau_terres_arables_fourrageres),
           superficie_sau_terres_arables_tubercules_ha:
-            el.superficie_sau_terres_arables_tubercules,
+            secretStat(el.superficie_sau_terres_arables_tubercules),
           superficie_sau_terres_arables_legumes_melons_fraises_ha:
-            el.superficie_sau_terres_arables_legumes_melons_fraises,
+            secretStat(el.superficie_sau_terres_arables_legumes_melons_fraises),
           superficie_sau_terres_arables_fleurs_ha:
-            el.superficie_sau_terres_arables_fleurs,
+            secretStat(el.superficie_sau_terres_arables_fleurs),
           superficie_sau_terres_arables_autres_ha:
-            el.superficie_sau_terres_arables_autres,
+            secretStat(el.superficie_sau_terres_arables_autres),
           superficie_sau_cultures_permanentes_ha:
-            el.superficie_sau_cultures_permanentes,
+            secretStat(el.superficie_sau_cultures_permanentes),
           superficie_sau_cultures_permanentes_vigne_ha:
-            el.superficie_sau_cultures_permanentes_vigne,
+            secretStat(el.superficie_sau_cultures_permanentes_vigne),
           superficie_sau_cultures_permanentes_fruits_ha:
-            el.superficie_sau_cultures_permanentes_fruits,
+            secretStat(el.superficie_sau_cultures_permanentes_fruits),
           superficie_sau_cultures_permanentes_autres_ha:
-            el.superficie_sau_cultures_permanentes_autres,
-          superficie_sau_herbe_ha: el.superficie_sau_herbe,
+            secretStat(el.superficie_sau_cultures_permanentes_autres),
+          superficie_sau_herbe_ha: secretStat(el.superficie_sau_herbe),
           superficie_sau_herbe_prairies_productives_ha:
-            el.superficie_sau_herbe_prairies_productives,
+            secretStat(el.superficie_sau_herbe_prairies_productives),
           superficie_sau_herbe_prairies_peu_productives_ha:
-            el.superficie_sau_herbe_prairies_peu_productives,
+            secretStat(el.superficie_sau_herbe_prairies_peu_productives),
           superficie_sau_herbe_subventions_ha:
-            el.superficie_sau_herbe_subventions,
+            secretStat(el.superficie_sau_herbe_subventions),
           superficie_sau_herbe_bois_patures_ha:
-            el.superficie_sau_herbe_bois_patures,
-          superficie_sau_jardins_ha: el.superficie_sau_jardins
+            secretStat(el.superficie_sau_herbe_bois_patures),
+          superficie_sau_jardins_ha: secretStat(el.superficie_sau_jardins)
         };
       }),
     chefsExploitationSeniors: (tableCommune: TableCommuneModel[]) =>

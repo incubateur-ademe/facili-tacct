@@ -43,7 +43,6 @@ export const AiresAppellationsControlees = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const [datavizTab, setDatavizTab] = useState<string>('Répartition');
   const tableCommuneFiltered = type === "commune"
     ? tableCommune.filter(el => el.code_geographique === code)
     : type === "epci"
@@ -110,8 +109,6 @@ export const AiresAppellationsControlees = (props: {
         </div>
         <div className={styles.datavizWrapper} style={{ borderRadius: "1rem 0 0 1rem", height: "fit-content" }}>
           <AiresAppellationsControleesCharts
-            datavizTab={datavizTab}
-            setDatavizTab={setDatavizTab}
             airesAppellationsControlees={airesAppellationsControlees}
           />
           <div
