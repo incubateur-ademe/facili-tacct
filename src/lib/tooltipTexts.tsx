@@ -227,7 +227,15 @@ export const debroussaillementTooltipText = (
     les bois, forêts, landes maquis et garrigues exposés aux risques d'incendie
     ainsi que dans la zone périphérique de ces espaces (jusqu'à 200 mètres
     autour). 48 départements sont concernés en France. Les zonages sont mis à
-    disposition par les préfectures.
+    disposition par les préfectures. Consultez la {" "}
+    <a
+      href="https://geoservices.ign.fr/sites/default/files/2023-05/Info_zonage-OLD-Geoportail.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      notice d’utilisation du zonage informatif des OLD
+    </a>
+    .
   </Body>
 );
 

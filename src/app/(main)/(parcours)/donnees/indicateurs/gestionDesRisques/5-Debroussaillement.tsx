@@ -36,54 +36,49 @@ export const Debroussaillement = ({
   });
 
   return (
-    <>
-      <div className={styles.datavizMapContainer}>
-        <DebroussaillementText />
-        <CustomTooltipNouveauParcours
-          title={debroussaillementTooltipText}
-          texte="Définition"
-        />
-        <div className={styles.mapWrapper}>
-          {coordonneesCommunes &&
-            coordonneesCommunes.codes.length &&
-            hasData ? (
-            <>
-              <MapTiles
-                coordonneesCommunes={coordonneesCommunes}
-                mapRef={mapRef}
-                mapContainer={mapContainer}
-                bucketUrl="debroussaillement"
-                layer="debroussaillement"
-                paint={{
-                  'fill-color': '#F83DD9',
-                  'fill-opacity': 0.8
-                }}
-                legend={<LegendCompColor legends={debroussaillementLegend} />}
-              />
-            </>
-          ) : (
-            <div className="p-10 flex flex-row justify-center">
-              <DataNotFoundForGraph image={DataNotFound} />
-            </div>
-          )}
-        </div>
-      </div>
-      <div className={styles.sourcesExportMapWrapper}>
-        <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
-          Source : Institut national de l’information géographique et forestière
-        </Body>
-        <ExportPngMaplibreButtonNouveauParcours
-          mapRef={mapRef}
-          mapContainer={mapContainer}
-          documentDiv=".debroussaillementLegendWrapper"
-          fileName={`debroussaillement_${type}_${libelle}`}
-          anchor="Débroussaillement"
-          type={type}
-          libelle={libelle}
-          code={code}
-          thematique="Gestion des risques"
-        />
-      </div>
-    </>
+    <div className={styles.datavizMapContainer}>
+      <DebroussaillementText isDebroussaillement={hasData || false} />
+      <CustomTooltipNouveauParcours
+        title={debroussaillementTooltipText}
+        texte="Définition"
+      />
+      {coordonneesCommunes &&
+        coordonneesCommunes.codes.length &&
+        hasData ? (
+        <>
+          <div className={styles.mapWrapper}>
+            <MapTiles
+              coordonneesCommunes={coordonneesCommunes}
+              mapRef={mapRef}
+              mapContainer={mapContainer}
+              bucketUrl="debroussaillement"
+              layer="debroussaillement"
+              paint={{
+                'fill-color': '#F83DD9',
+                'fill-opacity': 0.8
+              }}
+              legend={<LegendCompColor legends={debroussaillementLegend} />}
+            />
+          </div>
+          <div className={styles.sourcesExportMapWrapper}>
+            <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
+              Source : Institut national de l’information géographique et forestière, 2025
+            </Body>
+            <ExportPngMaplibreButtonNouveauParcours
+              mapRef={mapRef}
+              mapContainer={mapContainer}
+              documentDiv=".debroussaillementLegendWrapper"
+              fileName={`debroussaillement_${type}_${libelle}`}
+              anchor="Débroussaillement"
+              type={type}
+              libelle={libelle}
+              code={code}
+              thematique="Gestion des risques"
+            />
+          </div>
+        </>
+      ) : <div style={{ height: '40px' }} />
+      }
+    </div>
   );
 };
