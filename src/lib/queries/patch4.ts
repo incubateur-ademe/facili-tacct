@@ -18,7 +18,7 @@ export const GetPatch4 = async (
   const dbQuery = (async () => {
     try {
       if (!libelle || !type || (!code && type !== 'petr')) return undefined;
-      if (type === 'commune' || type === 'epci') {
+      if (type === 'commune' || type === 'epci' || type === 'petr' || type === 'departement' || type === 'pnr') {
         const departement =
           await prisma.databases_v2_collectivites_searchbar.findFirst({
             where: {

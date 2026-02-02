@@ -1,3 +1,4 @@
+"use client";
 import { eptRegex } from '@/lib/utils/regex';
 import { useRouter } from 'next/navigation';
 

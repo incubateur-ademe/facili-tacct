@@ -715,35 +715,35 @@ export const DebroussaillementText = ({
   isDebroussaillement: boolean;
 }) => (
   <>
-  {
-    isDebroussaillement ? (
-<Body size="sm">
-      Votre territoire est concerné par une obligation légale de{' '}
-      <DefinitionTooltip title={debroussaillement}>
-        débroussaillement
-      </DefinitionTooltip>{' '}
-      qui représente la mesure de prévention la plus efficace pour réduire le nombre
-      et l'impact des incendies de forêts, selon{' '}
-      <ScrollToSourceTag sourceNumero={1}>
-        l’Office national des forêts
-      </ScrollToSourceTag>
-      .
-    </Body>  ) : (
-      <Body size="sm">
-      Votre territoire n’est pas concerné par une obligation légale de{' '}
-      <DefinitionTooltip title={debroussaillement}>
-        débroussaillement
-      </DefinitionTooltip>{' '}
-      qui représente pourtant la mesure de prévention la plus efficace pour réduire le nombre
-      et l'impact des incendies de forêts, selon{' '}
-      <ScrollToSourceTag sourceNumero={1}>
-        l’Office national des forêts
-      </ScrollToSourceTag>
-      .
-    </Body>
-    )
-  }
-    
+    {
+      isDebroussaillement ? (
+        <Body size="sm">
+          Votre territoire est concerné par une obligation légale de{' '}
+          <DefinitionTooltip title={debroussaillement}>
+            débroussaillement
+          </DefinitionTooltip>{' '}
+          qui représente la mesure de prévention la plus efficace pour réduire le nombre
+          et l'impact des incendies de forêts, selon{' '}
+          <ScrollToSourceTag sourceNumero={1}>
+            l’Office national des forêts
+          </ScrollToSourceTag>
+          .
+        </Body>) : (
+        <Body size="sm">
+          Votre territoire n’est pas concerné par une obligation légale de{' '}
+          <DefinitionTooltip title={debroussaillement}>
+            débroussaillement
+          </DefinitionTooltip>{' '}
+          qui représente pourtant la mesure de prévention la plus efficace pour réduire le nombre
+          et l'impact des incendies de forêts, selon{' '}
+          <ScrollToSourceTag sourceNumero={1}>
+            l’Office national des forêts
+          </ScrollToSourceTag>
+          .
+        </Body>
+      )
+    }
+
     <Body size="sm" style={{ marginTop: '1rem' }}>
       Faute d’entretien en effet,{' '}
       <ScrollToSourceTag sourceNumero={2}>

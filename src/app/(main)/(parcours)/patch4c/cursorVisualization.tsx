@@ -8,35 +8,33 @@ import styles from './patch4c.module.scss';
 
 const CursorVisualization = () => {
   return (
-    <div className="pt-20">
-      <div className={styles.CursorVisualizationBarColor}>
-        {
-          agravationItems.map((item, index) => (
-            <div key={index}>
-              <div className={styles.barColorText} style={{ left: `calc(${index * 25}% + ${item.offset}px)` }}>
-                <div className='flex flex-row items-center'>
-                  <Body size="sm">
-                    {item.label}
-                  </Body>
-                  <HtmlTooltip
-                    title={item.hover}
-                    placement="top"
-                  >
-                    <Image
-                      src={InfoIcon}
-                      alt="hover d'information"
-                      width={20}
-                      height={20}
-                      className={styles.infoIcon}
-                    />
-                  </HtmlTooltip>
-                </div>
+    <div className={styles.CursorVisualizationBarColor}>
+      {
+        agravationItems.map((item, index) => (
+          <div key={index}>
+            <div className={styles.barColorText} style={{ left: `calc(${index * 25}% + ${item.offset}px)` }}>
+              <div className='flex flex-row items-center'>
+                <Body size="sm">
+                  {item.label}
+                </Body>
+                <HtmlTooltip
+                  title={item.hover}
+                  placement="top"
+                >
+                  <Image
+                    src={InfoIcon}
+                    alt="hover d'information"
+                    width={20}
+                    height={20}
+                    className={styles.infoIcon}
+                  />
+                </HtmlTooltip>
               </div>
-              <div className={styles.cursor} style={{ left: item.values }} />
             </div>
-          ))
-        }
-      </div>
+            <div className={styles.cursor} style={{ left: item.values }} />
+          </div>
+        ))
+      }
     </div>
   );
 }
