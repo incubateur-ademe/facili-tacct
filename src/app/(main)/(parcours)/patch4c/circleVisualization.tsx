@@ -1,15 +1,14 @@
 "use client";
+import { ReplaceDisplayEpci } from '@/components/searchbar/fonctions';
+import { TagsSimples } from '@/design-system/base/Tags';
 import { Body } from '@/design-system/base/Textes';
+import { NewContainer } from '@/design-system/layout';
 import { Patch4 } from "@/lib/postgres/models";
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { getBackgroundColor, getItemPosition, patch4Indices } from './components/fonctions';
 import styles from './patch4c.module.scss';
-import { ReplaceDisplayEpci } from '@/components/searchbar/fonctions';
-import { useSearchParams } from 'next/navigation';
-import { TagsSimples } from '@/design-system/base/Tags';
-import { NewContainer } from '@/design-system/layout';
-import CursorVisualization from './cursorVisualization';
 
 const CircleVisualization = ({
   patch4
@@ -89,7 +88,6 @@ const CircleVisualization = ({
           </div>
         </div>
       </div>
-      <CursorVisualization />
     </NewContainer>
   );
 }

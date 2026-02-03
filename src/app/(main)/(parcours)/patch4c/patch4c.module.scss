@@ -1,6 +1,17 @@
+.CursorVisualizationContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    min-height: 84px;
+    margin: 1rem 0 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .CursorVisualizationBarColor {
     width: 550px;
     height: 1rem;
+    align-self: center;
     background: linear-gradient(
         to right,
         white 0%,
@@ -38,7 +49,6 @@
 
 .CircleVisualizationTerritory {
     text-align: center;
-    margin-bottom: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,8 +59,8 @@
 .CircleVisualizationContainer {
     width: 100%;
     display: flex;
-    min-height: 400px;
-    margin: 1rem 0;
+    min-height: 380px;
+    margin: 0 0 1rem;
     justify-content: center;
 }
 
@@ -235,7 +245,6 @@
 
 .aleasTabContent {
     padding: 0;
-    border-bottom: 1px solid #e7e5e5;
 }
 
 .aleaExplicationsContainer {
@@ -245,11 +254,16 @@
     width: 100%;
     align-items: flex-end;
     padding: 1.5rem;
-    transition: background-color 0.7s ease;
+    border-bottom: 1px solid #e7e5e5;
+    transition:
+        background-color 0.7s ease,
+        border-bottom-color 2s ease;
 }
 
 .aleaExplicationsContainerOpen {
     background-color: #fafafa;
+    border-bottom-color: transparent;
+    transition: background-color 0.7s ease;
 }
 
 .aleaExplicationsToggle {
@@ -295,7 +309,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 0.5rem;
     }
     .aleaAggravationTexte {
         display: flex;
@@ -349,4 +362,56 @@
         background-color: #fafafa;
         padding: 1rem;
     }
+}
+
+// Bloc conseil aggravation fort ou très fort
+
+.conseilsAggravationContainer {
+    padding: 2rem 2rem 3rem;
+    border-radius: 1rem;
+    background-color: #ecfffd;
+    .separator {
+        width: 48px;
+        height: 1px;
+        background-color: #dddddd;
+        margin-bottom: 1rem;
+    }
+    .aNoter {
+        background-color: var(--boutons-primaire-2);
+        padding: 1.5rem;
+        border-radius: 4px;
+        margin-top: 1.5rem;
+        .aNoterTitre {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            align-items: flex-end;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.tableau {
+    margin-top: 2rem;
+}
+
+.tableauRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+}
+
+.tableauCell {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.tableauSeparator {
+    height: 1px;
+    background-color: #e7e5e5;
+    width: 100%;
 }

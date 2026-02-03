@@ -1,0 +1,151 @@
+
+import { RetardScroll } from '@/hooks/RetardScroll';
+import { listeArrondissements } from '@/lib/territoireData/arrondissements';
+import { mapStyles } from 'carte-facile';
+import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+import { RefObject, useEffect, useMemo, useRef } from 'react';
+
+const getColorByAggravation = (value: number | null) => {
+  if (value === null) return '#FFF';
+  if (value === 0) return '#FFF';
+  if (value < 0.33) return '#FFEBB6';
+  if (value <= 0.66) return '#FFB181';
+  return '#FF1C64';
+};
+
+export const MapPatch4 = (props: {
+  patch4: {
+    [x: string]: string;
+    code_geographique: string;
+  }[];
+  communesCodes: string[];
+  boundingBox?: [[number, number], [number, number]];
+}) => {
+  const { patch4, communesCodes, boundingBox } = props;
+  const mapContainer = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
+  const popupRef = useRef<maplibregl.Popup | null>(null);
+  const hoveredFeatureRef = useRef<string | null>(null);
+  const filteredCodes = communesCodes.filter(code => !listeArrondissements.includes(code));
+  const alea = patch4[0] ? Object.keys(patch4[0]).find(key => key !== 'code_geographique' && key !== 'index') as 'feux_foret' | 'fortes_chaleurs' | 'fortes_precipitations' | 'niveaux_marins' | 'secheresse_sols' | undefined : undefined;
+
+  const boundingBoxKey = useMemo(() =>
+    boundingBox ? JSON.stringify(boundingBox) : null
+    , [boundingBox]);
+
+  const createColorExpression = useMemo(() => {
+    if (!alea) return ['literal', '#E5E5E5'] as ExpressionSpecification;
+    const colorPairs: (ExpressionSpecification | string)[] = [];
+    patch4.forEach(item => {
+      const value = Number(item[alea]);
+      const color = getColorByAggravation(value);
+      colorPairs.push(
+        ['==', ['get', 'code_geographique'], item.code_geographique],
+        color
+      );
+    });
+    return ['case', ...colorPairs, '#E5E5E5'] as ExpressionSpecification;
+  }, [alea, patch4]);
+
+  const filteredCodesKey = useMemo(() => JSON.stringify(filteredCodes), [filteredCodes]);
+
+  useEffect(() => {
+    if (!mapContainer.current || filteredCodes.length === 0) return;
+    const map = new maplibregl.Map({
+      container: mapContainer.current,
+      style: mapStyles.desaturated,
+      attributionControl: false,
+    });
+    mapRef.current = map;
+    // s'assure que le zoom au scroll est désactivé immédiatement pour éviter de capturer les défilements de page
+    try { map.scrollZoom.disable(); } catch (e) { /* noop */ }
+
+    map.on('load', () => {
+      if (boundingBox) {
+        map.fitBounds(boundingBox, { padding: 20 });
+      }
+
+      // Ajouter la source de tiles pour les communes
+      map.addSource('communes-tiles', {
+        type: 'vector',
+        tiles: [`${process.env.NEXT_PUBLIC_SCALEWAY_BUCKET_URL}/communes/tiles/{z}/{x}/{y}.pbf`],
+        minzoom: 4,
+        maxzoom: 13,
+        promoteId: 'code_geographique'
+      });
+
+      map.addLayer({
+        id: 'patch4-fill',
+        type: 'fill',
+        source: 'communes-tiles',
+        'source-layer': 'contour_communes',
+        filter: ['in', ['get', 'code_geographique'], ['literal', filteredCodes]],
+        paint: {
+          'fill-color': createColorExpression,
+          'fill-opacity': 0.99
+        }
+      });
+
+      map.addLayer({
+        id: 'patch4-stroke',
+        type: 'line',
+        source: 'communes-tiles',
+        'source-layer': 'contour_communes',
+        filter: ['in', ['get', 'code_geographique'], ['literal', filteredCodes]],
+        paint: {
+          'line-color': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
+            '#0D2100',
+            '#161616'
+          ],
+          'line-width': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
+            3,
+            1
+          ]
+        }
+      });
+
+      map.addControl(new maplibregl.NavigationControl(), 'top-right');
+    });
+
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
+  }, [filteredCodesKey, boundingBoxKey]);
+
+  // Mettre à jour les couleurs quand alea/patch4 change
+  useEffect(() => {
+    if (mapRef.current && mapRef.current.isStyleLoaded() && mapRef.current.getLayer('patch4-fill')) {
+      mapRef.current.setPaintProperty('patch4-fill', 'fill-color', createColorExpression);
+    }
+  }, [createColorExpression]);
+
+  // Ref local pour le RetardScroll
+  const localContainerRef = mapContainer as RefObject<HTMLElement>;
+
+  return (
+    <>
+      <style jsx global>{`
+        .maplibregl-popup .maplibregl-popup-content {
+          box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16) !important;
+          border-radius: 6px !important;
+          padding: 1rem !important;
+        }
+        .map-container {
+            overflow: visible !important;
+          }
+      `}</style>
+      <div style={{ position: 'relative' }}>
+        <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
+        <RetardScroll mapRef={mapRef} containerRef={localContainerRef} delay={300} />
+      </div>
+    </>
+  );
+};
