@@ -192,6 +192,7 @@
     gap: 0.5rem;
     border-bottom: 1px solid #e7e5e5;
     padding-bottom: 0;
+    width: 100%;
 }
 
 .aleasTabButton {
@@ -204,7 +205,7 @@
     cursor: pointer;
     white-space: nowrap;
     color: #161616;
-    width: 224px;
+    width: inherit;
 
     &:hover {
         background-color: white;
@@ -233,24 +234,119 @@
 }
 
 .aleasTabContent {
-    padding: 2rem 1rem;
+    padding: 0;
+    border-bottom: 1px solid #e7e5e5;
 }
 
-.aleasTabValue {
-    margin-bottom: 1.5rem;
+.aleaExplicationsContainer {
     display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+    padding: 1.5rem;
+    transition: background-color 0.7s ease;
 }
 
-.aleasTabDefinition {
+.aleaExplicationsContainerOpen {
+    background-color: #fafafa;
+}
+
+.aleaExplicationsToggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.aleaExplicationsContentWrapper {
+    padding: 1rem 2.5rem 2rem;
+    background-color: #fafafa;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+        max-height 0.7s ease,
+        opacity 0.7s ease,
+        background-color 0.7s ease;
+}
+
+.aleaExplicationsContentWrapperOpen {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.aleaExplicationsContent {
+    padding: 1rem;
+    background-color: #fafafa;
+    border-top: 1px solid #e7e5e5;
+}
+
+.aleaAggravationWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    .CircleItem {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
+    .aleaAggravationTexte {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+// Bloc analyse sensibilité
+
+.analyseSensibiliteContainer {
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1.5rem;
+    .titreWrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        padding-bottom: 1.5rem;
+        .left {
+            display: flex;
+            flex-direction: column;
+            .separator {
+                width: 48px;
+                height: 1px;
+                background-color: #dddddd;
+            }
+        }
+    }
+    .themesListe {
+        .titre {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            padding: 0 0 1rem;
+            margin: 0 0 1rem;
+            border-bottom: 1px solid #e7e5e5;
+            .circleIndicator {
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                display: inline-block;
+            }
+        }
+        .linkedThemes {
+            line-height: 1rem;
+            margin-left: 0.75rem;
+        }
+    }
+    .actionsListeWrapper {
+        background-color: #fafafa;
+        padding: 1rem;
+    }
 }
-
-// @media screen and (max-width: 992px) {
-//     .patch4TitreContainer {
-//         display: none;
-//     }
-// }

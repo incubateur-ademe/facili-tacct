@@ -1,11 +1,12 @@
 'use client';
 
-import { Body } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import { Patch4 } from "@/lib/postgres/models";
 import Image from "next/image";
 import { useState } from "react";
 import styles from '../patch4c.module.scss';
+import { AleaExplications } from "./aleaExplications";
+import { AnalyseSensibilite } from "./analyseSensibilite";
 import { patch4Indices } from "./fonctions";
 
 export const BlocAleas = ({
@@ -14,20 +15,23 @@ export const BlocAleas = ({
   patch4: Patch4;
 }) => {
   const indices = patch4Indices(patch4);
+  const activeItems = patch4.niveaux_marins === null
+    ? indices.filter(item => item.key !== 'niveaux_marins')
+    : indices;
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
     <NewContainer size="xl" style={{ padding: "0 1rem" }}>
       <div className={styles.aleasTabsContainer}>
         <div className={styles.aleasTabButtons}>
-          {indices.map((alea, index) => (
+          {activeItems.map((alea, index) => (
             <button
               key={alea.key}
               className={`${styles.aleasTabButton} ${selectedIndex === index ? styles.aleasTabButtonActive : ''}`}
               onClick={() => setSelectedIndex(index)}
             >
               {selectedIndex === index ? (
-                <div 
+                <div
                   className={styles.iconMask}
                   style={{
                     width: '24px',
@@ -44,18 +48,15 @@ export const BlocAleas = ({
           ))}
         </div>
         <div className={styles.aleasTabContent}>
-          {indices[selectedIndex] && (
-            <>
-              <div className={styles.aleasTabValue}>
-                <Body weight="bold">Niveau d'aggravation : </Body>
-                <Body>{indices[selectedIndex].value || "Donnée non disponible"}</Body>
-              </div>
-              <div className={styles.aleasTabDefinition}>
-                <Body weight="bold">Définition : </Body>
-                <Body>{indices[selectedIndex].definition}</Body>
-              </div>
-            </>
-          )}
+          {activeItems[selectedIndex] && (() => {
+            const { key, ...itemProps } = activeItems[selectedIndex];
+            return (
+              <>
+                <AleaExplications key={`alea-${key}`} {...itemProps} />
+                <AnalyseSensibilite key={`sensibilite-${key}`} {...itemProps} />
+              </>
+            );
+          })()}
         </div>
       </div>
     </NewContainer>
