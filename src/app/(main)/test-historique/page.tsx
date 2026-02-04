@@ -95,7 +95,7 @@ export default function TestHistoriquePage() {
       );
 
       // Trier par date de début
-      uniqueArretes.sort(
+      const sortedArretes = uniqueArretes.toSorted(
         (a, b) => new Date(a.dateDebut).getTime() - new Date(b.dateDebut).getTime()
       );
 

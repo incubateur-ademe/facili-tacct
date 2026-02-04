@@ -169,7 +169,7 @@ const PrelevementEauProgressBars = ({
     libelle && data.find((e) => e.sumTerritoire !== 0) ? (
       <div className={styles.ressourcesEauWrapper}>
         {data
-          .sort((a, b) => b.sumTerritoire - a.sumTerritoire)
+          .toSorted((a, b) => b.sumTerritoire - a.sumTerritoire)
           .map((item, index) => (
             <ArrowHtmlTooltip
               title={

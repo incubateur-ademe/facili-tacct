@@ -145,7 +145,7 @@ const PrelevementEauProgressBarsPNR = ({
       {libelle && data.find((e) => e.sumTerritoire !== 0) ? (
         <>
           {data
-            .sort((a, b) => b.sumTerritoire - a.sumTerritoire)
+            .toSorted((a, b) => b.sumTerritoire - a.sumTerritoire)
             .map((item, index) => (
               <ArrowHtmlTooltip
                 title={

@@ -165,7 +165,7 @@ export const PrelevementsEnEau = (props: {
   //sort ascending by code_geographique
   const exportData = IndicatorExportTransformations.ressourcesEau
     .PrelevementEau(dataParMaille)
-    .sort((a, b) => a.code_geographique.localeCompare(b.code_geographique));
+    .toSorted((a, b) => a.code_geographique.localeCompare(b.code_geographique));
 
   return (
     <>
