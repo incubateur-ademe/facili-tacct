@@ -741,5 +741,27 @@ export const toutesLesRessources: ToutesRessources[] = [
     date: '2025-12-10',
     ordre: 30,
     ordreCollection: 5
+  },
+  {
+    id: 38,
+    type: 'Article',
+    titre: "Réaliser votre diagnostic de vulnérabilité ?",
+    slug: 'realiser-votre-diagnostic-de-vulnerabilite',
+    description:
+      "Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.",
+    lien: '/ressources/articles/realiser-votre-diagnostic-de-vulnerabilite',
+    filtres: ['Article', 'Retour d\'expérience', 'Me former'],
+    collections: ['Démarrer le diagnostic de vulnérabilité'],
+    tempsLecture: 6,
+    image: ImageTuileArticle,
+    date: '2026-02-04',
+    ordre: 10,
+    ordreCollection: 1,
+    metadata: {
+      title:
+        'Réaliser votre diagnostic de vulnérabilité ?',
+      description:
+        "Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT."
+    }
   }
 ];
