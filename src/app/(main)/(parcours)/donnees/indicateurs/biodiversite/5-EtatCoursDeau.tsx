@@ -4,7 +4,7 @@ import { MultiSheetExportButtonNouveauParcours } from '@/components/exports/Mult
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { etatCoursDeauLegends, qualiteEauxBaignadelegends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor, LegendCompIcons } from '@/components/maps/legends/legendComp';
-import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
+import { Loader } from '@/components/ui/loader';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from "@/design-system/base/Textes";
@@ -16,7 +16,9 @@ import { etatCoursDeauTooltipTextBiodiv } from '@/lib/tooltipTexts';
 import { sitesDeBaignadeDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
+
+const MapEtatCoursDeau = lazy(() => import('@/components/maps/mapEtatCoursDeau').then(m => ({ default: m.MapEtatCoursDeau })));
 import styles from '../../explorerDonnees.module.scss';
 
 type DataToExport = {

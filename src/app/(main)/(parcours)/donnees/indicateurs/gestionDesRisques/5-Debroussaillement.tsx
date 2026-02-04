@@ -4,14 +4,16 @@ import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/Exp
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { debroussaillementLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import { MapTiles } from '@/components/maps/mapTiles';
+import { Loader } from '@/components/ui/loader';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import { useHasMapData } from '@/hooks/useHasMapData';
 import { DebroussaillementText } from '@/lib/staticTexts';
 import { debroussaillementTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from 'next/navigation';
-import { useRef } from 'react';
+import { lazy, Suspense, useRef } from 'react';
+
+const MapTiles = lazy(() => import('@/components/maps/mapTiles').then(m => ({ default: m.MapTiles })));
 import styles from '../../explorerDonnees.module.scss';
 
 export const Debroussaillement = ({
@@ -47,18 +49,20 @@ export const Debroussaillement = ({
         hasData ? (
         <>
           <div className={styles.mapWrapper}>
-            <MapTiles
-              coordonneesCommunes={coordonneesCommunes}
-              mapRef={mapRef}
-              mapContainer={mapContainer}
-              bucketUrl="debroussaillement"
-              layer="debroussaillement"
-              paint={{
-                'fill-color': '#F83DD9',
-                'fill-opacity': 0.8
-              }}
-              legend={<LegendCompColor legends={debroussaillementLegend} />}
-            />
+            <Suspense fallback={<Loader />}>
+              <MapTiles
+                coordonneesCommunes={coordonneesCommunes}
+                mapRef={mapRef}
+                mapContainer={mapContainer}
+                bucketUrl="debroussaillement"
+                layer="debroussaillement"
+                paint={{
+                  'fill-color': '#F83DD9',
+                  'fill-opacity': 0.8
+                }}
+                legend={<LegendCompColor legends={debroussaillementLegend} />}
+              />
+            </Suspense>
           </div>
           <div className={styles.sourcesExportMapWrapper}>
             <Body size="sm" style={{ color: 'var(--gris-dark)' }}>

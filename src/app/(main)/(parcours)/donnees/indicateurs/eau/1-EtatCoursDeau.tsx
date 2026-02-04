@@ -4,7 +4,7 @@ import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { etatCoursDeauLegends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
+import { Loader } from '@/components/ui/loader';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body } from "@/design-system/base/Textes";
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
@@ -12,7 +12,9 @@ import { EtatCoursDeau, ExportCoursDeau } from "@/lib/postgres/models";
 import { EtatCoursEauRessourcesEauText } from '@/lib/staticTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
+
+const MapEtatCoursDeau = lazy(() => import('@/components/maps/mapEtatCoursDeau').then(m => ({ default: m.MapEtatCoursDeau })));
 import styles from '../../explorerDonnees.module.scss';
 
 type DataToExport = {

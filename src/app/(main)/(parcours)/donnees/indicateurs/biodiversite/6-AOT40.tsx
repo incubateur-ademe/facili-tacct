@@ -5,7 +5,7 @@ import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { aot40Legends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import { MapAOT40 } from '@/components/maps/mapAOT40';
+import { Loader } from '@/components/ui/loader';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from "@/design-system/base/Textes";
 import { AOT40 } from "@/lib/postgres/models";
@@ -17,6 +17,9 @@ import { Any } from '@/lib/utils/types';
 import * as turf from '@turf/turf';
 import type { Feature, MultiPoint, Point } from 'geojson';
 import { useSearchParams } from "next/navigation";
+import { lazy, Suspense } from 'react';
+
+const MapAOT40 = lazy(() => import('@/components/maps/mapAOT40').then(m => ({ default: m.MapAOT40 })));
 import styles from '../../explorerDonnees.module.scss';
 
 type NearestPoint = Feature<Point, {

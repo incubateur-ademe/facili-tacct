@@ -6,7 +6,7 @@ import { ZipExportButtonNouveauParcours } from '@/components/exports/ZipExportBu
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { vegetalisationLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import { MapTiles } from '@/components/maps/mapTiles';
+import { Loader } from '@/components/ui/loader';
 import { Body } from '@/design-system/base/Textes';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { ConfortThermique } from '@/lib/postgres/models';
@@ -15,7 +15,9 @@ import { exportAsZip } from '@/lib/utils/export/exportZipGeneric';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
-import { useRef } from 'react';
+import { lazy, Suspense, useRef } from 'react';
+
+const MapTiles = lazy(() => import('@/components/maps/mapTiles').then(m => ({ default: m.MapTiles })));
 import styles from '../../explorerDonnees.module.scss';
 import { sumProperty } from '../fonctions';
 

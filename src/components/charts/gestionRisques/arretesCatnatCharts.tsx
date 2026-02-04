@@ -2,12 +2,15 @@ import { CatnatTypes } from '@/app/(main)/types';
 import { BarChartCatnat } from '@/components/charts/gestionRisques/BarChartCatnat';
 import PieChartCatnat from '@/components/charts/gestionRisques/pieChartCatnat';
 import { LegendCatnat } from '@/components/maps/legends/legendCatnat';
-import { MapCatnat } from '@/components/maps/mapCatnat';
+import { Loader } from '@/components/ui/loader';
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/ui/SubTabs';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
+import { lazy, Suspense } from 'react';
 import styles from './gestionRisquesCharts.module.scss';
+
+const MapCatnat = lazy(() => import('@/components/maps/mapCatnat').then(m => ({ default: m.MapCatnat })));
 
 type ArreteCatNatEnriched = ArreteCatNat & {
   annee_arrete: number;

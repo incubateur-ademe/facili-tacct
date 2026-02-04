@@ -6,7 +6,7 @@ import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { surfacesIrrigueesLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import { MapSurfacesIrriguees } from '@/components/maps/mapSurfacesIrriguees';
+import { Loader } from '@/components/ui/loader';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -16,7 +16,9 @@ import { surfacesIrrigueesTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
-import { useMemo } from 'react';
+import { lazy, Suspense, useMemo } from 'react';
+
+const MapSurfacesIrriguees = lazy(() => import('@/components/maps/mapSurfacesIrriguees').then(m => ({ default: m.MapSurfacesIrriguees })));
 import styles from '../../explorerDonnees.module.scss';
 
 export const SuperficiesIrriguees = (props: {

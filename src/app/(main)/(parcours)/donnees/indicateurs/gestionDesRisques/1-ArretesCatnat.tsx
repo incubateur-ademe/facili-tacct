@@ -5,12 +5,12 @@ import {
   GenericObject
 } from '@/app/(main)/types';
 import DataNotFound from '@/assets/images/zero_data_found.png';
-import ArretesCatnatCharts from '@/components/charts/gestionRisques/arretesCatnatCharts';
 import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
+import { Loader } from '@/components/ui/loader';
 import { Body } from '@/design-system/base/Textes';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { CatNatText } from '@/lib/staticTexts';
@@ -19,9 +19,11 @@ import { IndicatorExportTransformations } from '@/lib/utils/export/environmental
 import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 import { SourceExport } from '../SourceExport';
+
+const ArretesCatnatCharts = lazy(() => import('@/components/charts/gestionRisques/arretesCatnatCharts').then(m => ({ default: m.default })));
 
 type ArreteCatNatEnriched = ArreteCatNat & {
   annee_arrete: number;
