@@ -338,6 +338,11 @@
             }
         }
     }
+    .themesListeMap {
+        display: flex;
+        flex-direction: row;
+        gap: 2.5rem;
+    }
     .themesListe {
         .titre {
             display: flex;

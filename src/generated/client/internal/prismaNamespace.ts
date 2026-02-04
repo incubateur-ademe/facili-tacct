@@ -80,12 +80,12 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 7.1.0
- * Query Engine version: ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba
+ * Prisma Client JS version: 7.3.0
+ * Query Engine version: 9d6ad21cbbceab97458517b147a6a09ff43aa735
  */
 export const prismaVersion: PrismaVersion = {
-  client: "7.1.0",
-  engine: "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba"
+  client: "7.3.0",
+  engine: "9d6ad21cbbceab97458517b147a6a09ff43aa735"
 }
 
 /**
@@ -3522,7 +3522,17 @@ export const Databases_v2_patch4cScalarFieldEnum = {
   feux_foret: 'feux_foret',
   secheresse_sols: 'secheresse_sols',
   fortes_precipitations: 'fortes_precipitations',
-  fortes_chaleurs: 'fortes_chaleurs'
+  fortes_chaleurs: 'fortes_chaleurs',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr'
 } as const
 
 export type Databases_v2_patch4cScalarFieldEnum = (typeof Databases_v2_patch4cScalarFieldEnum)[keyof typeof Databases_v2_patch4cScalarFieldEnum]

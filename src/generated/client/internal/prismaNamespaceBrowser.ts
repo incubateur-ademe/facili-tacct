@@ -95,12 +95,12 @@ export type ModelName = (typeof ModelName)[keyof typeof ModelName]
  * Enums
  */
 
-export const TransactionIsolationLevel = {
+export const TransactionIsolationLevel = runtime.makeStrictEnum({
   ReadUncommitted: 'ReadUncommitted',
   ReadCommitted: 'ReadCommitted',
   RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
-} as const
+} as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
@@ -517,7 +517,17 @@ export const Databases_v2_patch4cScalarFieldEnum = {
   feux_foret: 'feux_foret',
   secheresse_sols: 'secheresse_sols',
   fortes_precipitations: 'fortes_precipitations',
-  fortes_chaleurs: 'fortes_chaleurs'
+  fortes_chaleurs: 'fortes_chaleurs',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr'
 } as const
 
 export type Databases_v2_patch4cScalarFieldEnum = (typeof Databases_v2_patch4cScalarFieldEnum)[keyof typeof Databases_v2_patch4cScalarFieldEnum]
@@ -986,8 +996,8 @@ export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
 export const NullableJsonNullValueInput = {
-  DbNull: 'DbNull',
-  JsonNull: 'JsonNull'
+  DbNull: DbNull,
+  JsonNull: JsonNull
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
@@ -1010,9 +1020,9 @@ export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 export const JsonNullValueFilter = {
-  DbNull: 'DbNull',
-  JsonNull: 'JsonNull',
-  AnyNull: 'AnyNull'
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
 } as const
 
 export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]

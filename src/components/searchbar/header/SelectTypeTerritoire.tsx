@@ -1,7 +1,6 @@
 "use client";
 
 import { MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export const SelectTypeTerritoire = ({
@@ -23,9 +22,8 @@ export const SelectTypeTerritoire = ({
   setValue: (a: "EPCI/EPT" | "Commune" | "Département" | "PETR" | "PNR") => void;
   setIsNewTypeChosen: (a: boolean) => void;
 }) => {
-  const pathname = usePathname();
   const [isSelectOpen, setIsSelectOpen] = useState(false);
-  const collectivites = pathname === "/patch4c" ? ["EPCI/EPT", "Commune"] : ["EPCI/EPT", "Commune", "Département", "PETR", "PNR"];
+  const collectivites = ["EPCI/EPT", "Commune", "Département", "PETR", "PNR"];
   
   return (
     <Select

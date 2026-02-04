@@ -5,6 +5,8 @@ import { SearchParams } from '../../types';
 import { BlocAleasCarte } from "./components/blocAleasCarte";
 import { ConseilsAggravation } from './components/blocConseils';
 import { BlocTitre } from './components/blocTitre';
+import CircleVisualization from "./circleVisualization";
+import CursorVisualization from "./cursorVisualization";
 
 export const metadata: Metadata = {
   title: 'Patch4°C',
@@ -19,11 +21,11 @@ const Patch4C = async (props: { searchParams: SearchParams }) => {
   return (
     <>
       <BlocTitre />
-      {patch4.length ?
+      {patch4.length && patch4.length === 1 ?
         <>
-          {/* <CircleVisualization patch4={patch4} />
+          <CircleVisualization patch4={patch4[0]} />
           <CursorVisualization />
-          <BlocAleas patch4={patch4} /> */}
+          {/* <BlocAleas patch4={patch4} /> */}
         </>
         : null
       }

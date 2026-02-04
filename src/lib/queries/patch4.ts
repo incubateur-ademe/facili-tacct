@@ -20,35 +20,35 @@ export const GetPatch4 = async (
   const dbQuery = (async () => {
     try {
       if (!libelle || !type || (!code && type !== 'petr')) return [];
+      const departement =
+        await prisma.databases_v2_collectivites_searchbar.findFirst({
+          where: {
+            OR: [
+              { code_geographique: code },
+              { epci: code },
+              { code_pnr: code },
+              { libelle_petr: libelle },
+              { departement: code }
+            ],
+            departement: {
+              not: null
+            }
+          }
+        });
+      // Exclusion des DROM puisque le patch4 ne les inclut pas
       if (
-        type === 'commune' ||
-        type === 'epci' ||
-        type === 'petr' ||
-        type === 'departement' ||
-        type === 'pnr' ||
-        type === 'ept'
+        departement &&
+        departement.departement &&
+        !dromRegex.test(departement.departement)
       ) {
-        const departement =
-          await prisma.databases_v2_collectivites_searchbar.findFirst({
+        if (type === 'epci') {
+          const value = await prisma.databases_v2_patch4c.findMany({
             where: {
-              OR: [
-                { code_geographique: code },
-                { epci: code },
-                { code_pnr: code },
-                { libelle_petr: libelle },
-                { departement: code }
-              ],
-              departement: {
-                not: null
-              }
+              code_geographique: code
             }
           });
-        // Exclusion des DROM puisque le patch4 ne les inclut pas
-        if (
-          departement &&
-          departement.departement &&
-          !dromRegex.test(departement.departement)
-        ) {
+          return value == null ? [] : (value as Patch4[]);
+        } else {
           const listeCommunes =
             (await prisma.databases_v2_collectivites_searchbar.findMany({
               select: {
@@ -76,7 +76,7 @@ export const GetPatch4 = async (
           });
           return value == null ? [] : (value as Patch4[]);
         }
-      } else return [];
+      }
     } catch (error) {
       console.error(error);
       return [];

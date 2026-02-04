@@ -21,6 +21,7 @@ export const BlocAleasCarte = ({
   patch4: Patch4[];
 }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  console.log("patch4 dans BlocAleasCarte :", patch4);
 
   // on veut vérifier si au moins une valeur dans niveaux_marins est non nulle
   const activeItems = patch4.some(item => item.niveaux_marins !== null)
@@ -30,7 +31,8 @@ export const BlocAleasCarte = ({
   const filteredPatch4 = patch4.map(item => {
     return {
       code_geographique: item.code_geographique,
-      [selectedKey]: (item as never)[selectedKey]
+      [selectedKey]: (item as never)[selectedKey],
+      libelle_geographique: item.libelle_geographique,
     };
   });
 
@@ -66,9 +68,9 @@ export const BlocAleasCarte = ({
             const { key, ...itemProps } = activeItems[selectedIndex];
             return (
               <>
-                <AleaExplications key={`alea-${key}`} {...itemProps} />
-                <Patch4Maps coordonneesCommunes={coordonneesCommunes} patch4={filteredPatch4} />
-                <AnalyseSensibilite key={`sensibilite-${key}`} {...itemProps} />
+                <AleaExplications key={`alea-${key}`} item={itemProps} isMap={patch4.length > 1 ? true : false} />
+                {patch4.length > 1 ? <Patch4Maps coordonneesCommunes={coordonneesCommunes} patch4={filteredPatch4} /> : null}
+                <AnalyseSensibilite key={`sensibilite-${key}`} item={itemProps} isMap={patch4.length > 1 ? true : false} />
               </>
             );
           })()}

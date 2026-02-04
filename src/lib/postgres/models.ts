@@ -835,6 +835,15 @@ export type SurfacesAgricolesModel = {
 export type Patch4 = {
   index: number;
   code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
   niveaux_marins: number | null;
   feux_foret: number;
   secheresse_sols: number;
