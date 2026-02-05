@@ -1,7 +1,7 @@
 import ImageTuileArticle from '@/assets/images/imageTuileArticle.png';
 import ImageTuileAutre from '@/assets/images/imageTuileAutre.png';
-import ImageTuileRex from '@/assets/images/imageTuileRex.png';
 import ImageTuileQuiz from '@/assets/images/imageTuileQuiz.png';
+import ImageTuileRex from '@/assets/images/imageTuileRex.png';
 import { StaticImageData } from 'next/image';
 import { JSX } from 'react';
 
@@ -745,12 +745,12 @@ export const toutesLesRessources: ToutesRessources[] = [
   {
     id: 38,
     type: 'Article',
-    titre: "Réaliser votre diagnostic de vulnérabilité ?",
-    slug: 'realiser-votre-diagnostic-de-vulnerabilite',
+    titre: 'Réaliser votre diagnostic de vulnérabilité ?',
+    slug: 'realiser-diagnostic-vulnerabilite',
     description:
-      "Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.",
-    lien: '/ressources/articles/realiser-votre-diagnostic-de-vulnerabilite',
-    filtres: ['Article', 'Retour d\'expérience', 'Me former'],
+      'Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.',
+    lien: '/ressources/articles/realiser-diagnostic-vulnerabilite',
+    filtres: ['Article', "Retour d'expérience", 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 6,
     image: ImageTuileArticle,
@@ -758,10 +758,9 @@ export const toutesLesRessources: ToutesRessources[] = [
     ordre: 10,
     ordreCollection: 1,
     metadata: {
-      title:
-        'Réaliser votre diagnostic de vulnérabilité ?',
+      title: 'Réaliser votre diagnostic de vulnérabilité ?',
       description:
-        "Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT."
+        'Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.'
     }
   }
 ];
