@@ -3,7 +3,7 @@ import { GetPatch4 } from "@/lib/queries/patch4";
 import { GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
 import { Metadata } from "next";
 import CircleVisualization from "./circleVisualization";
-import { BlocAleasCarte } from "./components/blocAleasCarte";
+import { BlocAleas } from "./components/blocAleas";
 import { ConseilsAggravation } from './components/blocConseils';
 import { BlocTitre } from './components/blocTitre';
 import CursorVisualization from "./cursorVisualization";
@@ -24,17 +24,15 @@ const Patch4C = async (props: { searchParams: SearchParams }) => {
       {patch4.length && patch4.length === 1 ?
         <>
           <CircleVisualization patch4={patch4[0]} />
-          <CursorVisualization />
+          <CursorVisualization isMap={false} />
           {/* <BlocAleas patch4={patch4} /> */}
         </>
         : null
       }
-      <BlocAleasCarte
+      <BlocAleas
         coordonneesCommunes={coordonneesCommunes}
         patch4={patch4}
       />
-
-
       <ConseilsAggravation />
     </>
   );

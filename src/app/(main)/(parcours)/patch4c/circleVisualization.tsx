@@ -33,11 +33,20 @@ const CircleVisualization = ({
         <Body
           size='lg'
           weight='bold'
+          style={{ fontSize: "22px" }}
         >
           {ReplaceDisplayEpci(libelle)}
         </Body>
         <TagsSimples
-          texte={type}
+          texte={
+            (type === "epci" || type === "petr" || type === "ept" || type === "pnr")
+              ? type.toUpperCase()
+              : type === "departement"
+                ? "Département"
+                : type === "commune"
+                  ? "Commune"
+                  : type
+          }
           couleur="#E3FAF9"
           couleurTexte="var(--bouton-primaire-3)"
           taille="small"

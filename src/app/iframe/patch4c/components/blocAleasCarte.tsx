@@ -21,7 +21,6 @@ export const BlocAleasCarte = ({
   patch4: Patch4[];
 }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  console.log("patch4 dans BlocAleasCarte :", patch4);
 
   // on veut vérifier si au moins une valeur dans niveaux_marins est non nulle
   const activeItems = patch4.some(item => item.niveaux_marins !== null)

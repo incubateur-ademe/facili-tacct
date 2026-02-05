@@ -9,7 +9,11 @@ import Image from "next/image";
 import { agravationItems } from './components/constantes';
 import styles from './patch4c.module.scss';
 
-const CursorVisualization = () => {
+const CursorVisualization = ({
+  isMap
+}: {
+  isMap: boolean
+}) => {
   return (
     <NewContainer size="xl" style={{ padding: '0rem 1rem' }}>
       <div className={styles.CursorVisualizationContainer}>
@@ -41,14 +45,17 @@ const CursorVisualization = () => {
             ))
           }
         </div>
-        <BoutonPrimaireClassic
-          icone={ExporterIcon}
-          size="sm"
-          text="Exporter (.png)"
-          style={{
-            height: "fit-content"
-          }}
-        />
+        {
+          !isMap &&
+          <BoutonPrimaireClassic
+            icone={ExporterIcon}
+            size="sm"
+            text="Exporter (.png)"
+            style={{
+              height: "fit-content"
+            }}
+          />
+        }
       </div>
     </NewContainer>
   );

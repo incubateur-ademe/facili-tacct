@@ -319,7 +319,7 @@
 // Bloc analyse sensibilité
 
 .analyseSensibiliteContainer {
-    padding: 1.5rem;
+    padding: 3rem 1.5rem 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -419,4 +419,21 @@
     height: 1px;
     background-color: #e7e5e5;
     width: 100%;
+}
+
+// Export
+
+.exportShareContainer {
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e7e5e5;
+    border-bottom: 1px solid #e7e5e5;
+}
+.exportShareWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
 }

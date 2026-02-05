@@ -31,7 +31,7 @@ export const AleaExplications = ({
   item,
   isMap
 }: {
-  item: Item, 
+  item: Item,
   isMap: boolean
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +45,7 @@ export const AleaExplications = ({
           <div
             className={styles.CircleItem}
             style={{
-              backgroundColor: isMap ? "#E7E5E5" :getBackgroundColor(item.value),
+              backgroundColor: isMap ? "#E7E5E5" : getBackgroundColor(item.value),
             }}
           >
             <Image
@@ -96,12 +96,18 @@ export const AleaExplications = ({
           <Body>
             {item.definition}
           </Body>
-          <Body weight="bold" style={{ margin: '2rem 0 0.5rem' }}>
-            Niveau d’aggravation
-          </Body>
-          <Body>
-            {agravationItems.find(agr => agr.label === item.value)?.hover}
-          </Body>
+          {
+            !isMap && (
+              <>
+                <Body weight="bold" style={{ margin: '2rem 0 0.5rem' }}>
+                  Niveau d’aggravation
+                </Body>
+                <Body>
+                  {agravationItems.find(agr => agr.label === item.value)?.hover}
+                </Body>
+              </>
+            )
+          }
           <Body weight="bold" style={{ margin: '2rem 0 0.5rem' }}>
             D'où vient cette donnée ?
           </Body>
