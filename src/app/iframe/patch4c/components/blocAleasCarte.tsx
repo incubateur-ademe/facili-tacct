@@ -31,7 +31,8 @@ export const BlocAleasCarte = ({
   const filteredPatch4 = patch4.map(item => {
     return {
       code_geographique: item.code_geographique,
-      [selectedKey]: (item as never)[selectedKey]
+      [selectedKey]: (item as never)[selectedKey],
+      libelle_geographique: item.libelle_geographique,
     };
   });
 

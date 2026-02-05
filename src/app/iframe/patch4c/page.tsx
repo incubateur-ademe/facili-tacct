@@ -1,12 +1,12 @@
+import { SearchParams } from "@/app/(main)/types";
 import { GetPatch4 } from "@/lib/queries/patch4";
 import { GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
 import { Metadata } from "next";
+import CircleVisualization from "./circleVisualization";
 import { BlocAleasCarte } from "./components/blocAleasCarte";
 import { ConseilsAggravation } from './components/blocConseils';
 import { BlocTitre } from './components/blocTitre';
-import CircleVisualization from "./circleVisualization";
 import CursorVisualization from "./cursorVisualization";
-import { SearchParams } from "@/app/(main)/types";
 
 export const metadata: Metadata = {
   title: 'Patch4°C',
