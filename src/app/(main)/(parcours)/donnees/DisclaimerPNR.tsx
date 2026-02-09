@@ -32,15 +32,18 @@ export const DisclaimerPNR = () => {
         borderRadius: '1rem',
         color: '#201F1E',
         marginBottom: '2rem',
+        marginTop: '2rem',
         '& .fr-container': {
           maxWidth: 'none'
         }
       })}
-      isClosable={true}      onClose={handleClose}      title={'Attention :'}
+      isClosable={true} 
+      onClose={handleClose} 
+      title={'Attention :'}
       description={
         <>
           En raison de l’indisponibilité du site de l’INPN, la liste des communes classées PNR nous a été
-          fournie par la Fédération des Parcs naturels régionaux de France, puis actualisée avec les 
+          fournie par la Fédération des Parcs naturels régionaux de France, puis actualisée avec les
           fusions de communes 2025 (source INSEE, géographie au 01/01/2025)
         </>
       }
