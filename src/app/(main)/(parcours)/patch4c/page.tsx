@@ -2,11 +2,9 @@ import { SearchParams } from "@/app/(main)/types";
 import { GetPatch4 } from "@/lib/queries/patch4";
 import { GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
 import { Metadata } from "next";
-import CircleVisualization from "./circleVisualization";
-import { BlocAleas } from "./components/blocAleas";
 import { ConseilsAggravation } from './components/blocConseils';
 import { BlocTitre } from './components/blocTitre';
-import CursorVisualization from "./cursorVisualization";
+import { Patch4Content } from './Patch4Content';
 
 export const metadata: Metadata = {
   title: 'Patch4°C',
@@ -21,17 +19,9 @@ const Patch4C = async (props: { searchParams: SearchParams }) => {
   return (
     <>
       <BlocTitre />
-      {patch4.length && patch4.length === 1 ?
-        <>
-          <CircleVisualization patch4={patch4[0]} />
-          <CursorVisualization isMap={false} />
-          {/* <BlocAleas patch4={patch4} /> */}
-        </>
-        : null
-      }
-      <BlocAleas
-        coordonneesCommunes={coordonneesCommunes}
+      <Patch4Content
         patch4={patch4}
+        coordonneesCommunes={coordonneesCommunes}
       />
       <ConseilsAggravation />
     </>

@@ -16,39 +16,65 @@ import { Patch4Maps } from "./Patch4Maps";
 
 export const BlocAleas = ({
   coordonneesCommunes,
-  patch4
+  patch4,
+  selectedAleaKey,
+  onSelectAlea
 }: {
   coordonneesCommunes: {
     codes: string[];
     bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
   } | null;
   patch4: Patch4[];
+  selectedAleaKey?: string;
+  onSelectAlea: (key: string, shouldScroll?: boolean) => void;
 }) => {
   const searchParams = useSearchParams();
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const activeItems = patch4.some(item => item.niveaux_marins !== null)
     ? patch4Indices(patch4[0])
     : patch4Indices(patch4[0]).filter(item => item.key !== 'niveaux_marins');
 
   const getInitialIndex = () => {
+    if (selectedAleaKey) {
+      const index = activeItems.findIndex(item => item.key === selectedAleaKey);
+      if (index >= 0) return index;
+    }
     if (typeof window === 'undefined') return 0;
     const hash = window.location.hash.slice(1);
     const index = activeItems.findIndex(item => item.key === hash);
     return index >= 0 ? index : 0;
   };
 
+  const [selectedIndex, setSelectedIndex] = useState(getInitialIndex);
+
   useEffect(() => {
-    setSelectedIndex(getInitialIndex());
-  }, []);
+    if (selectedAleaKey) {
+      const index = activeItems.findIndex(item => item.key === selectedAleaKey);
+      if (index >= 0) {
+        setSelectedIndex(index);
+      } else {
+        setSelectedIndex(0);
+        onSelectAlea(activeItems[0].key, false);
+      }
+    }
+  }, [selectedAleaKey, activeItems]);
+
+  useEffect(() => {
+    if (selectedIndex >= activeItems.length) {
+      setSelectedIndex(0);
+      onSelectAlea(activeItems[0].key, false);
+    }
+  }, [patch4]);
 
   const handleTabChange = (index: number) => {
     setSelectedIndex(index);
+    onSelectAlea(activeItems[index].key, false);
   };
 
-  const selectedKey = activeItems[selectedIndex].key;
+  const safeSelectedIndex = selectedIndex < activeItems.length ? selectedIndex : 0;
+  const selectedKey = activeItems[safeSelectedIndex].key;
   const filteredPatch4 = patch4.map(item => {
     return {
       code_geographique: item.code_geographique,
@@ -85,15 +111,15 @@ export const BlocAleas = ({
           />
         </div>
       }
-      <div className={styles.aleasTabsContainer}>
+      <div className={styles.aleasTabsContainer} id={selectedKey}>
         <div className={styles.aleasTabButtons}>
           {activeItems.map((alea, index) => (
             <button
               key={alea.key}
-              className={`${styles.aleasTabButton} ${selectedIndex === index ? styles.aleasTabButtonActive : ''}`}
+              className={`${styles.aleasTabButton} ${safeSelectedIndex === index ? styles.aleasTabButtonActive : ''}`}
               onClick={() => handleTabChange(index)}
             >
-              {selectedIndex === index ? (
+              {safeSelectedIndex === index ? (
                 <div
                   className={styles.iconMask}
                   style={{
@@ -111,8 +137,8 @@ export const BlocAleas = ({
           ))}
         </div>
         <div className={styles.aleasTabContent}>
-          {activeItems[selectedIndex] && (() => {
-            const { key, ...itemProps } = activeItems[selectedIndex];
+          {activeItems[safeSelectedIndex] && (() => {
+            const { key, ...itemProps } = activeItems[safeSelectedIndex];
             return (
               <>
                 <AleaExplications key={`alea-${key}`} item={itemProps} isMap={patch4.length > 1 ? true : false} />

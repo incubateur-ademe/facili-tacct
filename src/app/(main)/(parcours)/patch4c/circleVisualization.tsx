@@ -6,25 +6,27 @@ import { NewContainer } from '@/design-system/layout';
 import { Patch4 } from "@/lib/postgres/models";
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
 import { getBackgroundColor, getItemPosition, patch4Indices } from './components/fonctions';
 import styles from './patch4c.module.scss';
 
 const CircleVisualization = ({
-  patch4
+  patch4,
+  selectedAleaKey,
+  onSelectAlea
 }: {
   patch4: Patch4;
+  selectedAleaKey?: string;
+  onSelectAlea: (key: string, shouldScroll?: boolean) => void;
 }) => {
   const searchParams = useSearchParams();
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const [selectedItem, setSelectedItem] = useState<string | undefined>(undefined);
   const indices = patch4Indices(patch4);
   const activeItems = patch4.niveaux_marins === null
     ? indices.filter(item => item.key !== 'niveaux_marins')
     : indices;
   const handleClick = (item: string) => {
-    setSelectedItem(item);
+    onSelectAlea(item, true);
   };
 
   return (
@@ -72,7 +74,7 @@ const CircleVisualization = ({
                     className={styles.CircleIcon}
                     style={{
                       backgroundColor: getBackgroundColor(item.value),
-                      border: selectedItem === item.key ? '1px solid black' : '1px solid var(--gris-medium)',
+                      border: selectedAleaKey === item.key ? '1px solid black' : '1px solid var(--gris-medium)',
                     }}
                   >
                     <Image
