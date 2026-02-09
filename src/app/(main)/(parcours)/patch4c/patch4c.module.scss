@@ -6,6 +6,10 @@
     margin: 1rem 0 0;
     justify-content: center;
     flex-wrap: wrap;
+    align-items: center;
+}
+.CursorVisualizationBarColorWrapper {
+    padding: 4rem 0 2rem;
 }
 
 .CursorVisualizationBarColor {
@@ -20,7 +24,7 @@
         #f66e19 67%,
         #f80206 100%
     );
-    margin: 20px auto;
+    margin: 0 auto;
     position: relative;
     overflow: visible;
     border: 1px solid #f7f7f7ff;
@@ -275,7 +279,7 @@
 }
 
 .aleaExplicationsContentWrapper {
-    padding: 1rem 2.5rem 2rem;
+    padding: 1rem 2.5rem 3rem;
     background-color: #fafafa;
     max-height: 0;
     overflow: hidden;

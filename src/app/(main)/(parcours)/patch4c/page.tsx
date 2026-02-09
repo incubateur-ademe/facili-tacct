@@ -4,7 +4,7 @@ import { GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
 import { Metadata } from "next";
 import { ConseilsAggravation } from './components/blocConseils';
 import { BlocTitre } from './components/blocTitre';
-import { Patch4Content } from './Patch4Content';
+import { Patch4Analyse } from './Patch4Analyse';
 
 export const metadata: Metadata = {
   title: 'Patch4°C',
@@ -19,7 +19,7 @@ const Patch4C = async (props: { searchParams: SearchParams }) => {
   return (
     <>
       <BlocTitre />
-      <Patch4Content
+      <Patch4Analyse
         patch4={patch4}
         coordonneesCommunes={coordonneesCommunes}
       />

@@ -1,12 +1,14 @@
 "use client";
 
-import ExporterIcon from '@/assets/icons/export_icon_white.svg';
 import { CopyLinkClipboard } from "@/components/interactions/CopyLinkClipboard";
+import { ExportPngMaplibreSimple } from '@/components/exports/ExportPng';
 import { MapPatch4 } from "@/components/maps/mapPatch4";
-import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
 import { Body } from '@/design-system/base/Textes';
+import maplibregl from 'maplibre-gl';
+import { RefObject, useRef, useState } from 'react';
 import CursorVisualization from "../cursorVisualization";
 import styles from '../patch4c.module.scss';
+import { useSearchParams } from "next/navigation";
 
 export const Patch4Maps = (props: {
   coordonneesCommunes: {
@@ -25,31 +27,52 @@ export const Patch4Maps = (props: {
     patch4,
     selectedAnchor
   } = props;
+
+  const params = useSearchParams()
+  const libelle = params.get('libelle')!;
+  const mapRef = useRef<maplibregl.Map | null>(null);
+  const mapContainerRef = useRef<HTMLDivElement | null>(null);
+  const exportContainerRef = useRef<HTMLDivElement>(null);
+  const [, setRefsReady] = useState(false);
+
+  const handleMapRef = (ref: RefObject<maplibregl.Map | null>) => {
+    mapRef.current = ref.current;
+    setRefsReady(true);
+  };
+
+  const handleContainerRef = (ref: RefObject<HTMLDivElement | null>) => {
+    mapContainerRef.current = ref.current;
+  };
+
   return (
     <>
-      <MapPatch4
-        patch4={patch4}
-        communesCodes={coordonneesCommunes?.codes ?? []}
-        boundingBox={
-          coordonneesCommunes ? [
-            [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
-            [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]
-          ] : undefined
-        }
-      />
-      <CursorVisualization isMap={true} />
+      <div ref={exportContainerRef}>
+        <MapPatch4
+          patch4={patch4}
+          communesCodes={coordonneesCommunes?.codes ?? []}
+          boundingBox={
+            coordonneesCommunes ? [
+              [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
+              [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]
+            ] : undefined
+          }
+          mapRefCallback={handleMapRef}
+          containerRefCallback={handleContainerRef}
+        />
+        <div className={styles.CursorVisualizationBarColorWrapper}>
+        <CursorVisualization />
+        </div>
+      </div>
       <div className={styles.exportShareContainer}>
         <Body size="sm" style={{ color: "#666666" }}>
           Source : Météo France
         </Body>
         <div className={styles.exportShareWrapper}>
           <CopyLinkClipboard anchor={selectedAnchor} />
-          <BoutonPrimaireClassic
-            onClick={() => { }}
-            disabled={false}
-            icone={ExporterIcon}
-            size="sm"
-            text="Exporter (.png)"
+          <ExportPngMaplibreSimple
+            mapRef={mapRef}
+            mapContainer={exportContainerRef}
+            fileName={`patch4c-${libelle}-${selectedAnchor}.png`}
           />
         </div>
       </div>

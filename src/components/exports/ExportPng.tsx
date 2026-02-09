@@ -6,9 +6,178 @@ import ExportDataTrigger from '@/hooks/ExportDataTrigger';
 import html2canvas from 'html2canvas';
 import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import styles from '../components.module.scss';
 import { CopyLinkClipboard } from '../interactions/CopyLinkClipboard';
+
+export const ExportPngSimple = ({
+  containerRef,
+  fileName = 'export.png',
+  buttonText = 'Exporter (.png)',
+  buttonSize = 'sm',
+  disabled = false,
+  style
+}: {
+  containerRef: RefObject<HTMLDivElement | null>;
+  fileName?: string;
+  buttonText?: string;
+  buttonSize?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  style?: React.CSSProperties;
+}) => {
+  const [isExporting, setIsExporting] = useState(false);
+
+  const handleExportPng = async () => {
+    if (!containerRef.current || isExporting || disabled) return;
+
+    setIsExporting(true);
+
+    try {
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      const canvas = await html2canvas(containerRef.current, {
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        ignoreElements: (element) => {
+          return element.classList.contains('export-button-ignore');
+        }
+      });
+
+      canvas.toBlob((blob) => {
+        if (blob) {
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = fileName;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        }
+        setIsExporting(false);
+      });
+    } catch (error) {
+      console.error('Error exporting PNG:', error);
+      setIsExporting(false);
+    }
+  };
+
+  return (
+    <div className="export-button-ignore">
+      <BoutonPrimaireClassic
+        onClick={handleExportPng}
+        disabled={isExporting || disabled}
+        icone={isExporting ? null : ExporterIcon}
+        size={buttonSize}
+        text={isExporting ? 'Export en cours...' : buttonText}
+        style={style}
+      />
+    </div>
+  );
+};
+
+export const ExportPngMaplibreSimple = ({
+  mapRef,
+  mapContainer,
+  legendContainer,
+  fileName = 'carte.png',
+  buttonText = 'Exporter (.png)',
+  buttonSize = 'sm',
+  disabled = false,
+  style
+}: {
+  mapRef: RefObject<maplibregl.Map | null>;
+  mapContainer: RefObject<HTMLDivElement | null>;
+  legendContainer?: RefObject<HTMLDivElement | null>;
+  fileName?: string;
+  buttonText?: string;
+  buttonSize?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  style?: React.CSSProperties;
+}) => {
+  const [isExporting, setIsExporting] = useState(false);
+
+  const handleExportPng = async () => {
+    if (!mapRef.current || !mapContainer.current || isExporting || disabled) return;
+
+    setIsExporting(true);
+
+    try {
+      const navControls = mapContainer.current.querySelectorAll('.maplibregl-ctrl-top-right');
+      navControls.forEach((control) => {
+        (control as HTMLElement).style.display = 'none';
+      });
+
+      await new Promise<void>((resolve) => {
+        mapRef.current!.once('render', async () => {
+          try {
+            const mapCanvas = await html2canvas(mapContainer.current!, {
+              useCORS: true,
+              allowTaint: true
+            });
+
+            let finalCanvas = mapCanvas;
+
+            if (legendContainer?.current) {
+              const legendCanvas = await html2canvas(legendContainer.current, {
+                useCORS: true,
+                allowTaint: true
+              });
+
+              finalCanvas = document.createElement('canvas');
+              const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
+              finalCanvas.width = mapCanvas.width;
+              finalCanvas.height = mapCanvas.height + legendCanvas.height;
+              ctx.drawImage(mapCanvas, 0, 0);
+              ctx.drawImage(legendCanvas, 0, mapCanvas.height);
+            }
+
+            finalCanvas.toBlob((blob) => {
+              if (blob) {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = fileName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+              }
+              navControls.forEach((control) => {
+                (control as HTMLElement).style.display = '';
+              });
+              setIsExporting(false);
+              resolve();
+            });
+          } catch (error) {
+            console.error('Error exporting PNG:', error);
+            navControls.forEach((control) => {
+              (control as HTMLElement).style.display = '';
+            });
+            setIsExporting(false);
+            resolve();
+          }
+        });
+        mapRef.current!.triggerRepaint();
+      });
+    } catch (error) {
+      console.error('Error exporting PNG:', error);
+      setIsExporting(false);
+    }
+  };
+
+  return (
+    <BoutonPrimaireClassic
+      onClick={handleExportPng}
+      disabled={isExporting || disabled}
+      icone={isExporting ? null : ExporterIcon}
+      size={buttonSize}
+      text={isExporting ? 'Export en cours...' : buttonText}
+      style={style}
+    />
+  );
+};
 
 export const ExportPngMaplibreButton = ({
   mapRef,

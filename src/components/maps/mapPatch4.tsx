@@ -31,8 +31,10 @@ export const MapPatch4 = (props: {
   }[];
   communesCodes: string[];
   boundingBox?: [[number, number], [number, number]];
+  mapRefCallback?: (ref: RefObject<maplibregl.Map | null>) => void;
+  containerRefCallback?: (ref: RefObject<HTMLDivElement | null>) => void;
 }) => {
-  const { patch4, communesCodes, boundingBox } = props;
+  const { patch4, communesCodes, boundingBox, mapRefCallback, containerRefCallback } = props;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
@@ -74,6 +76,15 @@ export const MapPatch4 = (props: {
   }, [alea, patch4]);
 
   const filteredCodesKey = useMemo(() => JSON.stringify(filteredCodes), [filteredCodes]);
+
+  useEffect(() => {
+    if (mapRefCallback) {
+      mapRefCallback(mapRef);
+    }
+    if (containerRefCallback) {
+      containerRefCallback(mapContainer);
+    }
+  }, [mapRefCallback, containerRefCallback]);
 
   useEffect(() => {
     if (!mapContainer.current || filteredCodes.length === 0) return;

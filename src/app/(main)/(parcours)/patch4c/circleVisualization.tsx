@@ -30,7 +30,7 @@ const CircleVisualization = ({
   };
 
   return (
-    <NewContainer style={{ padding: "40px 1rem 0" }}>
+    <>
       <div className={styles.CircleVisualizationTerritory}>
         <Body
           size='lg'
@@ -99,7 +99,7 @@ const CircleVisualization = ({
           </div>
         </div>
       </div>
-    </NewContainer>
+    </>
   );
 }
 

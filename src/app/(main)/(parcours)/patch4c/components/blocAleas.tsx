@@ -35,7 +35,6 @@ export const BlocAleas = ({
   const activeItems = patch4.some(item => item.niveaux_marins !== null)
     ? patch4Indices(patch4[0])
     : patch4Indices(patch4[0]).filter(item => item.key !== 'niveaux_marins');
-
   const getInitialIndex = () => {
     if (selectedAleaKey) {
       const index = activeItems.findIndex(item => item.key === selectedAleaKey);
@@ -46,7 +45,6 @@ export const BlocAleas = ({
     const index = activeItems.findIndex(item => item.key === hash);
     return index >= 0 ? index : 0;
   };
-
   const [selectedIndex, setSelectedIndex] = useState(getInitialIndex);
 
   useEffect(() => {
@@ -84,7 +82,7 @@ export const BlocAleas = ({
   });
 
   return (
-    <NewContainer size="xl" style={{ padding: "0 1rem" }}>
+    <>
       {
         patch4.length > 1 &&
         <div className={styles.CircleVisualizationTerritory} style={{ marginTop: '1.5rem' }}>
@@ -149,6 +147,6 @@ export const BlocAleas = ({
           })()}
         </div>
       </div>
-    </NewContainer>
+    </>
   )
 };
