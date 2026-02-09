@@ -19,7 +19,7 @@ export const FiltresOptions = [
     options: [
       'Auvergne-Rhône-Alpes',
       'Bourgogne-Franche-Comté',
-      // 'Bretagne',
+      'Bretagne',
       'Centre-Val de Loire',
       // 'Corse',
       'Grand Est',
@@ -745,12 +745,12 @@ export const toutesLesRessources: ToutesRessources[] = [
   {
     id: 38,
     type: 'Article',
-    titre: 'Réaliser votre diagnostic de vulnérabilité ?',
+    titre: 'Réalisation d\'un diagnostic de vulnérabilité - Epernay Agglo Champagne',
     slug: 'realiser-diagnostic-vulnerabilite',
     description:
       'Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.',
     lien: '/ressources/articles/realiser-diagnostic-vulnerabilite',
-    filtres: ['Article', "Retour d'expérience", 'Me former'],
+    filtres: ['Article', "Retour d'expérience", 'Me former', 'Bretagne'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 6,
     image: ImageTuileArticle,
@@ -758,7 +758,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     ordre: 10,
     ordreCollection: 1,
     metadata: {
-      title: 'Réaliser votre diagnostic de vulnérabilité ?',
+      title: 'Réalisation d\'un diagnostic de vulnérabilité - Epernay Agglo Champagne',
       description:
         'Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.'
     }
