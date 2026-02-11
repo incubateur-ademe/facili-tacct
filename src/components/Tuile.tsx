@@ -1,6 +1,7 @@
 "use client";
 
 import ClockIcon from "@/assets/icons/clock_icon_black.svg";
+import DocIcon from "@/assets/icons/doc_icon_white.png";
 import LienExterneIcon from "@/assets/icons/fr-icon-external-link-line.png";
 import { Round } from "@/lib/utils/reusableFunctions/round";
 import Image, { StaticImageData } from "next/image";
@@ -16,6 +17,7 @@ interface Props {
   lienExterne?: boolean;
   tags?: React.ReactNode[];
   tempsLecture?: number;
+  nombreArticles?: number;
 }
 
 export const TuileVerticale = ({
@@ -165,6 +167,79 @@ export const TuileHorizontale = ({
         href={lien}
         target={lienExterne ? "_blank" : "_self"}
         rel={lienExterne ? "noopener noreferrer" : undefined}
+        className={styles.tuileLink}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return content;
+}
+
+export const TuileHorizontaleCollection = ({
+  titre,
+  image,
+  lien,
+  tempsLecture,
+  nombreArticles
+}: Props) => {
+
+  const content = (
+    <div className={styles.tuileHorizontaleCollection} tabIndex={lien ? -1 : 0} role="collection">
+      <div className={styles.contenu}>
+        <div className={styles.titre}>
+          {titre}
+        </div>
+
+        <div className={styles.footer}>
+          <div className={styles.leftSection}>
+            {nombreArticles && (
+              <div className={styles.tempsLecture}>
+                <Image
+                  src={DocIcon}
+                  alt="Nombre d'articles"
+                  width={16}
+                  height={16}
+                  style={{ filter: 'brightness(0) invert(1)' }}
+                />                <span>
+                  {nombreArticles}
+                </span>
+              </div>
+            )}
+            {tempsLecture && (
+              <div className={styles.tempsLecture}>
+                <Image
+                  src={ClockIcon}
+                  alt="Temps de lecture"
+                  width={16}
+                  height={16}
+                  style={{ filter: 'brightness(0) invert(1)' }}
+                />
+                {
+                  tempsLecture < 60 ? <span>{tempsLecture} min</span> : <span>{Round(tempsLecture / 60, 0)} h</span>
+                }
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className={styles.imageContainer}>
+        <Image
+        src={image}
+        alt={titre}
+        fill
+        style={{ objectFit: 'cover', objectPosition: 'top' }}
+        />
+      </div>
+    </div>
+  );
+
+  if (lien) {
+    return (
+      <Link
+        href={lien}
+        target={"_self"}
         className={styles.tuileLink}
       >
         {content}

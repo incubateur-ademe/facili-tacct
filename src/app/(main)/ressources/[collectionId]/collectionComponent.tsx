@@ -78,7 +78,7 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                   <Body size="lg" weight="bold" style={{ color: "#FFFFFF" }}>
                     {
                       collection?.titre === "Démarrer le diagnostic de vulnérabilité" 
-                      ? <span>41 min</span> 
+                      ? <span>47 min</span> 
                       : <span>{tempsLecture} min</span>
                     }
                   </Body>
