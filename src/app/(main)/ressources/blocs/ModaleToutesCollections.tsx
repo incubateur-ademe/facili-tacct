@@ -26,13 +26,42 @@ export const ModaleToutesCollections = ({
   return (
     <modaleToutesCollections.Component
       title="Toutes les collections"
-      className={cx(
-        styles.modale,
-        css({
-          overflowX: 'hidden',
-          overflowY: 'auto',
-        })
-      )}
+      className={css({
+        ".fr-col-lg-8": {
+          flex: "0 0 100%",
+          width: "100%",
+          maxWidth: "100%",
+        },
+        ".fr-modal__header": {
+          position: "absolute",
+          top: 0,
+          right: 0,
+          zIndex: 10,
+        },
+        ".fr-modal__title": {
+          color: "#2B4B49",
+        },
+        ".fr-modal__body": {
+          backgroundColor: "var(--boutons-primaire-5)",
+          borderRadius: "1rem",
+          paddingTop: "2rem",
+          scrollbarWidth: "none",
+          "&:focus": {
+            backgroundColor: "var(--boutons-primaire-5)",
+          },
+        },
+        ".fr-btn--close": {
+          color: "#2B4B49",
+          fontSize: "0",
+          "&::after": {
+            fontSize: "1rem",
+            content: '"×"',
+          },
+          "&:hover": {
+            backgroundColor: "var(--boutons-primaire-5) !important",
+          },
+        },
+      })}
       size="large"
     >
       <div className={styles.contenu}>

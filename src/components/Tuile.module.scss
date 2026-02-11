@@ -136,6 +136,12 @@
         background-image: none !important;
     }
 
+    &:focus {
+        outline: 6px solid #971356;
+        outline-offset: -1px;
+        background-color: var(--boutons-primaire-3);
+    }
+
     &::after,
     &::before {
         display: none !important;
@@ -247,20 +253,13 @@
     max-width: 452px;
     height: 146px;
     border-radius: 1rem;
-    overflow: hidden;
     cursor: pointer;
-    background: var(--principales-vert);
     display: flex;
     flex-direction: row;
     position: relative;
 
     &:hover {
         background-color: var(--boutons-primaire-3);
-    }
-
-    &:focus {
-        outline: 6px solid var(--boutons-primaire-3);
-        outline-offset: -2px;
     }
 
     .imageContainer {
@@ -310,5 +309,32 @@
             width: 16px;
             height: 16px;
         }
+    }
+}
+
+.tuileLinkCollection {
+    text-decoration: none !important;
+    color: inherit;
+    display: block;
+    border-radius: 16px;
+    overflow: hidden;
+    background-image: none !important;
+    background-color: var(--principales-vert);
+
+    &:hover {
+        text-decoration: none !important;
+        background-image: none !important;
+        background-color: var(--boutons-primaire-3);
+    }
+
+    &:focus {
+        outline: 6px solid #971356;
+        outline-offset: -1px;
+        background-color: var(--boutons-primaire-3);
+    }
+
+    &::after,
+    &::before {
+        display: none !important;
     }
 }

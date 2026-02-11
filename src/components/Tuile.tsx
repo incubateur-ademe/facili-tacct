@@ -240,7 +240,7 @@ export const TuileHorizontaleCollection = ({
       <Link
         href={lien}
         target={"_self"}
-        className={styles.tuileLink}
+        className={styles.tuileLinkCollection}
       >
         {content}
       </Link>
