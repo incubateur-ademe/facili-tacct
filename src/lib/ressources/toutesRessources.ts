@@ -140,7 +140,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 5,
     type: "Retour d'expérience",
     titre:
-      "Réalisation d'un diagnostic de vulnérabilité au changement climatique",
+      "Réalisation d'un diagnostic de vulnérabilité - Epernay Agglo Champagne ",
     description:
       'Diagnostic de vulnérabilité réalisé dans le cadre d’un PCAET grâce à la démarche TACCT : découvrez les apprentissages d’Epernay Agglo Champagne !',
     lien: 'https://www.climaxion.fr/docutheque/realisation-dun-diagnostic-vulnerabilite-au-changement-climatique-epernay-agglo-champagne',
@@ -745,7 +745,7 @@ export const toutesLesRessources: ToutesRessources[] = [
   {
     id: 38,
     type: 'Article',
-    titre: 'Réalisation d\'un diagnostic de vulnérabilité - Epernay Agglo Champagne',
+    titre: 'Réaliser votre diagnostic de vulnérabilité',
     slug: 'realiser-diagnostic-vulnerabilite',
     description:
       'Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.',
@@ -758,7 +758,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     ordre: 10,
     ordreCollection: 1,
     metadata: {
-      title: 'Réalisation d\'un diagnostic de vulnérabilité - Epernay Agglo Champagne',
+      title: 'Réaliser votre diagnostic de vulnérabilité',
       description:
         'Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.'
     }
