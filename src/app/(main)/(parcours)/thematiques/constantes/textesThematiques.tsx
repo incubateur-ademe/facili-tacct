@@ -101,12 +101,6 @@ export const sommaireThematiques = {
         icone: '🌼',
         sousCategories: ['Surfaces en bio']
       },
-      {
-        id: 'section4',
-        thematique: 'Tourisme',
-        icone: '🏖️',
-        sousCategories: ['Aires des appellations contrôlées']
-      }
     ]
   },
   Aménagement: {

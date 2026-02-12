@@ -14,7 +14,7 @@ import { surfacesAgricolesTooltipText } from "@/lib/tooltipTexts";
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
 import { numberWithSpacesRegex } from "@/lib/utils/regex";
 import { Round } from "@/lib/utils/reusableFunctions/round";
-import { Sum } from "@/lib/utils/reusableFunctions/sum";
+import { SumWithNullHandling } from "@/lib/utils/reusableFunctions/sum";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import styles from '../../explorerDonnees.module.scss';
@@ -32,26 +32,10 @@ export const TypesDeCulture = (props: {
   const otexCommune = type === "commune" && tableCommune.find(el => el.code_geographique === code)?.otex_12_postes;
   const categoriesData = PieChartDataSurfacesAgricoles(surfacesAgricoles);
   const maxCategory = categoriesData.reduce(
-    (max, item) => (item.count > max.count ? item : max),
+    (max, item) => (Number(item.count) > Number(max.count) ? item : max),
     categoriesData[0]
   );
-  const sommeToutesSuperficies = Sum(surfacesAgricoles.map(
-    el => el.superficie_sau_terres_arables_cereales +
-      el.superficie_sau_terres_arables_oleagineux +
-      el.superficie_sau_terres_arables_fourrageres +
-      el.superficie_sau_terres_arables_tubercules +
-      el.superficie_sau_terres_arables_legumes_melons_fraises +
-      el.superficie_sau_terres_arables_fleurs +
-      el.superficie_sau_terres_arables_autres +
-      el.superficie_sau_cultures_permanentes_vigne +
-      el.superficie_sau_cultures_permanentes_fruits +
-      el.superficie_sau_cultures_permanentes_autres +
-      el.superficie_sau_herbe_prairies_productives +
-      el.superficie_sau_herbe_prairies_peu_productives +
-      el.superficie_sau_herbe_subventions +
-      el.superficie_sau_herbe_bois_patures +
-      el.superficie_sau_jardins
-  ));
+  const sau = SumWithNullHandling(surfacesAgricoles.map(el => el.superficie_sau));
   const territoiresPartiellementCouverts = type === 'departement'
     ? multipleEpciBydepartementLibelle.find(dept => dept.departement === code)?.liste_epci_multi_dept
     : type === 'pnr'
@@ -64,17 +48,19 @@ export const TypesDeCulture = (props: {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            {sommeToutesSuperficies !== 0 && <MicroPieChart pourcentage={(maxCategory.count / sommeToutesSuperficies) * 100} arrondi={1} ariaLabel="" />}
+            {(sau && sau !== 0 && maxCategory.count !== null) &&
+              <MicroPieChart pourcentage={(maxCategory.count / sau) * 100} arrondi={1} ariaLabel="" />
+            }
             {
               surfacesAgricoles.length ? (
                 <>
                   {
-                    (type === "departement" || type === "pnr") ? (
+                    (type === "departement" || type === "pnr") && maxCategory.count !== null && Number(sau) !== 0 ? (
                       <>
                         <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
                           Sur votre territoire, le type de surface prédominant est constitué de {maxCategory.id.toLowerCase()},
                           couvrant <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b>, ce qui
-                          représente <b>{Round((maxCategory.count / sommeToutesSuperficies) * 100, 1)} %</b> de
+                          représente <b>{Round((maxCategory.count / sau!) * 100, 1)} %</b> de
                           la surface agricole utile.
                         </Body>
 
@@ -95,7 +81,7 @@ export const TypesDeCulture = (props: {
                           )
                         }
                       </>
-                    ) : (type === "commune" && otexCommune) ? (
+                    ) : (type === "commune" && otexCommune && maxCategory.count !== null && Number(sau) !== 0) ? (
                       <>
                         <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
                           Sur votre commune, c'est le/la "{otexCommune}" qui domine le paysage agricole avec plus des deux tiers de la production
@@ -104,15 +90,15 @@ export const TypesDeCulture = (props: {
                         <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
                           Sur votre territoire, le type de surface prédominant est constitué de {maxCategory.id.toLowerCase()},
                           couvrant <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b>, ce qui
-                          représente <b>{Round((maxCategory.count / sommeToutesSuperficies) * 100, 1)} %</b> de
+                          représente <b>{Round((maxCategory.count / sau!) * 100, 1)} %</b> de
                           la surface agricole utile. (Attention, ces détails sur les types de cultures sont ceux de votre EPCI).
                         </Body>
                       </>
-                    ) : (type === "epci" || type === "petr") ? (
+                    ) : (type === "epci" || type === "petr") && maxCategory.count !== null && Number(sau) !== 0 ? (
                       <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
                         Sur votre territoire, le type de surface prédominant est constitué de {maxCategory.id.toLowerCase()},
                         couvrant <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b>, ce qui
-                        représente <b>{Round((maxCategory.count / sommeToutesSuperficies) * 100, 1)} %</b> de
+                        représente <b>{Round((maxCategory.count / sau!) * 100, 1)} %</b> de
                         la surface agricole utile.
                       </Body>
                     )
@@ -121,7 +107,7 @@ export const TypesDeCulture = (props: {
                 </>
               ) : <Body weight='bold' style={{ color: "var(--gris-dark)" }}>Il n’y a pas de données référencées sur le territoire que vous avez sélectionné</Body>
             }
-            <CustomTooltipNouveauParcours title={surfacesAgricolesTooltipText} texte="D'où vient ce chiffre ?" />
+            <CustomTooltipNouveauParcours title={surfacesAgricolesTooltipText} texte="D'où vient ce chiffre ?" />
           </div>
           {/* <ReadMoreFade maxHeight={territoiresPartiellementCouverts?.length ? 400 / territoiresPartiellementCouverts?.length : 350}> */}
           <SurfacesAgricolesText />
@@ -141,7 +127,7 @@ export const TypesDeCulture = (props: {
             }}
           >
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : AGRESTE, 2020.
+              Source : AGRESTE, 2020.
             </Body>
             <ExportButtonNouveauParcours
               data={exportData}
