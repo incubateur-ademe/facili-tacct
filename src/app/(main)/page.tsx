@@ -1,5 +1,6 @@
 'use client';
 
+import Notice from '@codegouvfr/react-dsfr/Notice';
 import { useEffect } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { CommunauteBloc } from './(home)/CommunauteBloc';
@@ -9,8 +10,6 @@ import { PremierBloc } from './(home)/PremierBloc';
 import { RessourcesBloc } from './(home)/RessourcesBloc';
 import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
-import Link from 'next/link';
-import Notice from '@codegouvfr/react-dsfr/Notice';
 
 const Home = () => {
   const { css } = useStyles();
@@ -29,17 +28,19 @@ const Home = () => {
           color: "#201F1E"
         })}
         isClosable={true}
-        title={"Nouveautés sur le site :"}
+        title={"Nouveauté sur le site :"}
         description={
           <>
-            votre territoire est-il concerné par une obligation légale de débroussaillement ? Découvrez-le 
-            dans la thématique Gestion des risques. Retrouvez également un tout nouveau retour 
-            d’expérience sur la réalisation du diagnostic de vulnérabilité, {" "}
-            <Link
-              href="/ressources/demarrer-diagnostic-vulnerabilite/realiser-diagnostic-vulnerabilite"
+            le Patch 4°C est désormais disponible pour les PNR, les PETR 
+            et les départements ! Une remarque, une suggestion ?{' '}
+            <a
+              href="https://tally.so/r/mJGELz"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              celui de Rennes Métropole
-            </Link> !
+              Contactez-nous
+            </a>
+            , on a hâte d’avoir vos retours !
           </>
         }
       />

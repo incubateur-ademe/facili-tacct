@@ -1,12 +1,12 @@
 "use client";
 
+import { BoutonSecondaireClassic } from "@/design-system/base/Boutons";
 import { Body, H2 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import { StaticImageData } from "next/image";
 import { useRef } from "react";
 import styles from '../ressources.module.scss';
 import { SliderCollections } from "../sliderCollections";
-import { BoutonSecondaireClassic } from "@/design-system/base/Boutons";
 import { modaleToutesCollections } from './ModaleToutesCollections';
 
 export const BlocCollections = ({
@@ -29,7 +29,7 @@ export const BlocCollections = ({
             </H2>
             <Body style={{ color: "#3D3D3D" }}>Une sélection de ressources pour chaque situation</Body>
             <BoutonSecondaireClassic
-              text="Voir tout →"
+              text="Voir tout  →"
               size="md"
               style={{
                 marginTop: "2rem"
@@ -97,7 +97,7 @@ export const BlocCollectionsResponsive = ({
         </div>
         <SliderCollections collectionsCartes={collectionsCartes} sliderRef={sliderRef} />
         <BoutonSecondaireClassic
-          text="Voir tout →"
+          text="Voir tout  →"
           size="md"
           style={{
             width: "100%",

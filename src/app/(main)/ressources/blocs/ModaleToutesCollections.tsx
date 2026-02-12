@@ -1,11 +1,11 @@
 "use client";
 
-import { createModal } from "@codegouvfr/react-dsfr/Modal";
 import { TuileHorizontaleCollection } from "@/components/Tuile";
+import { createModal } from "@codegouvfr/react-dsfr/Modal";
 import { StaticImageData } from "next/image";
 import { useStyles } from 'tss-react/dsfr';
-import styles from "./modaleToutesCollections.module.scss";
 import { CollectionsData } from "../[collectionId]/collectionsData";
+import styles from "./modaleToutesCollections.module.scss";
 
 export const modaleToutesCollections = createModal({
   id: "toutes-collections-modal",
@@ -37,6 +37,9 @@ export const ModaleToutesCollections = ({
           top: 0,
           right: 0,
           zIndex: 10,
+        },
+        ".fr-modal__content": {
+          marginBottom: "2rem",
         },
         ".fr-modal__title": {
           color: "#2B4B49",
