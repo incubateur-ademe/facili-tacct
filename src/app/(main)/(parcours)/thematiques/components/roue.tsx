@@ -161,7 +161,6 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       ) => {
         if (selectedThematique) {
           const sourceLabel = d.source;
-          const targetLabel = d.target;
 
           if (sourceLabel === selectedThematique) {
             // Créer un gradient pour ce lien
@@ -207,7 +206,6 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       }) => {
         if (selectedThematique) {
           const sourceLabel = d.source;
-          const targetLabel = d.target;
           if (sourceLabel === selectedThematique) {
             return 1.5;
           }
@@ -248,7 +246,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         }
         return d.color; // Utilise la couleur de la catégorie pour le contour
       })
-      .attr("stroke-width", (d: { label: string; color: string }) => {
+      .attr("stroke-width", () => {
         // Utile seulement si on veut des différences de taille de contour entre les cercles
         // if (selectedThematique === d.label) return 1.5; 
         // if (selectedThematique && getThematiquesLiees(selectedThematique).includes(d.label)) return 1.5; 
@@ -294,11 +292,6 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
 
     Object.entries(categoriesNoeuds).forEach(([category, nodes]) => {
       if (nodes.length > 0) {
-        // Utiliser les indices d'origine pour calculer les vrais angles
-        const indices = nodes
-          .map(n => n.originalIndex)
-          .filter((i): i is number => typeof i === "number")
-          .sort((a, b) => a - b);
         // Calculer les angles des arcs de cercle (en radians)
         const { startAngle, endAngle } = PositionArcsDonut(category);
 
@@ -389,7 +382,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         // Si le label fait plus de 12 caractères, le diviser en lignes
         const charsPerLine = 12;
         const words = d.label.split(' ');
-        let lines: string[] = [];
+        const lines: string[] = [];
         let currentLine = '';
         words.forEach((word: string) => {
           if ((currentLine + ' ' + word).trim().length > charsPerLine) {
@@ -420,8 +413,8 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         let rectStroke = d.color;
         let textFill = d.textColor;
         let strokeDasharray = "5 0";
-        let paddingX = 16;
-        let paddingY = 8;
+        const paddingX = 16;
+        const paddingY = 8;
         const fontSize = 14;
 
         if (thematique?.disabled) {

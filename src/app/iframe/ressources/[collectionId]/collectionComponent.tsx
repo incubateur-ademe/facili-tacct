@@ -25,7 +25,7 @@ type CollectionComponentProps = {
 
 export const CollectionComponent = ({ collectionId }: CollectionComponentProps) => {
   const collection = CollectionsData.find(c => c.slug === collectionId);
-  const articlesSorted = collection?.articles.sort((a, b) => a.ordreCollection - b.ordreCollection);
+  const articlesSorted = collection?.articles.toSorted((a, b) => a.ordreCollection - b.ordreCollection);
   const territoireOptions = FiltresOptions.find(f => f.titre === 'Territoire')?.options || [];
   const [copied, setCopied] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -86,6 +86,7 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
             </div>
             <div className={styles.imageCropped}>
               <Image
+                //eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
                 src={collection?.image!}
                 width={windowDimensions.width && windowDimensions.width <= 768 ? 300 : 550}
                 alt=""

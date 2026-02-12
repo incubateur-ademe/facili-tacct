@@ -75,7 +75,7 @@ export const SubAccordionGraph = ({
 }) => {
   const [expanded, setExpanded] = useState(isDefaultExpanded);
   const accordionTitle = Object.keys(graphDataItem)[0];
-  const sortedData = [...Object.values(graphDataItem)[0]].sort((a, b) => b.value - a.value);
+  const sortedData = [...Object.values(graphDataItem)[0]].toSorted((a, b) => b.value - a.value);
   return (
     <SubAccordion expanded={expanded} onChange={() => setExpanded(!expanded)}>
       <AccordionSummary

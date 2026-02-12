@@ -50,7 +50,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
       )
   );
   const collectivites = [
-    ...filteredCollectivite.sort((a, b) =>
+    ...filteredCollectivite.toSorted((a, b) =>
       a.searchLibelle.localeCompare(b.searchLibelle)
     )
   ];

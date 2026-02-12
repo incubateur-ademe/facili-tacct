@@ -27,7 +27,7 @@ const RessourcesClicked = async () => {
           nombre: e.aggregated_value > 3 ? e.aggregated_value : 0
         };
       })
-      .sort((a, b) => b.nombre - a.nombre)
+      .toSorted((a, b) => b.nombre - a.nombre)
     : null;
 
   return (
