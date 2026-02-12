@@ -13,26 +13,34 @@
 }
 
 .CursorVisualizationBarColor {
-    width: 550px;
+    width: 500px;
     height: 1rem;
     align-self: center;
-    background: linear-gradient(
-        to right,
-        white 0%,
-        white 5%,
-        #FFEBB6 33%,
-        #FFB181 67%,
-        #FF1C64 100%
-    );
     margin: 0 auto;
     position: relative;
     overflow: visible;
-    border: 1px solid #f7f7f7ff;
+    border: 1px solid #f7f7f7;
+    background-color: white;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to right,
+            white 0%,
+            white 5%,
+            #FFEBB6 33%,
+            #FFB181 67%,
+            #FF1C64 100%
+        );
+    }
     .barColorText {
         position: absolute;
         top: -25px;
         transform: translateY(-50%);
         white-space: nowrap;
+        z-index: 1;
     }
     .infoIcon {
         margin-left: 5px;
@@ -48,6 +56,7 @@
         width: 1px;
         height: 10px;
         background-color: black;
+        z-index: 1;
     }
 }
 

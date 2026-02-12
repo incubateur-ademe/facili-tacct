@@ -6,7 +6,7 @@ import ExportDataTrigger from '@/hooks/ExportDataTrigger';
 import html2canvas from 'html2canvas';
 import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
-import { RefObject, useEffect, useRef, useState } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 import styles from '../components.module.scss';
 import { CopyLinkClipboard } from '../interactions/CopyLinkClipboard';
 

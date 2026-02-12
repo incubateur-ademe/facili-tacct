@@ -15,6 +15,7 @@ export const GetTablecommune = async (
     }, 2000)
   );
   const column = ColumnCodeCheck(type);
+  console.log("column", column);
   const dbQuery = (async () => {
     try {
       // Fast existence check

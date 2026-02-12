@@ -28,11 +28,11 @@ type Item = {
 };
 
 export const AnalyseSensibilite = ({
-  item,
-  isMap
+    item,
+  isMap,
 }: {
   item: Item,
-  isMap: boolean
+  isMap: boolean,
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
@@ -64,7 +64,11 @@ export const AnalyseSensibilite = ({
             actions déjà entreprises et de vos capacités d’adaptation.
           </Body>
         </div>
-        <Image src={ChatChercheur} alt="illustration chat chercheur" />
+        <Image 
+          src={ChatChercheur} 
+          alt="illustration chat chercheur" 
+          style={{ height: 'auto', width: 'auto', maxHeight: 104 }}
+        />
       </div>
 
       {/* Différents conseils selon le type de territoire */}
@@ -88,33 +92,15 @@ export const AnalyseSensibilite = ({
                 </Body>
               </div>
               <div className={styles.linkedThemes} style={{ lineHeight: "1.5rem" }}>
-                <ul>
+                {item.linkedThemes.map((theme, index) => (
+                <ul key={index}>
                   <li>
                     <Body>
-                      Santé des populations et cadre de vie
-                    </Body>
-                  </li>
-                  <li>
-                    <Body>
-                      Disponibilité et qualité des ressources en eau
-                    </Body>
-                  </li>
-                  <li>
-                    <Body>
-                      Adaptation des bassins d’emploi et activités économiques
-                    </Body>
-                  </li>
-                  <li>
-                    <Body>
-                      Continuité de service des réseaux (énergie, télécom et transport)
-                    </Body>
-                  </li>
-                  <li>
-                    <Body>
-                      Inconfort thermique
+                      {theme}
                     </Body>
                   </li>
                 </ul>
+              ))}
               </div>
             </div>
             <div className={styles.themesListe}>

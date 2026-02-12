@@ -4,7 +4,7 @@ import { GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
 import { Metadata } from "next";
 import { ConseilsAggravation } from './components/blocConseils';
 import { BlocTitre } from './components/blocTitre';
-import { Patch4Analyse } from './Patch4Analyse';
+import { Patch4Analyse } from "./Patch4Analyse";
 
 export const metadata: Metadata = {
   title: 'Patch4°C',

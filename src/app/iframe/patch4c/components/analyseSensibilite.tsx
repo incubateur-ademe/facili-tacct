@@ -64,7 +64,11 @@ export const AnalyseSensibilite = ({
             actions déjà entreprises et de vos capacités d’adaptation.
           </Body>
         </div>
-        <Image src={ChatChercheur} alt="illustration chat chercheur" />
+        <Image 
+          src={ChatChercheur} 
+          alt="illustration chat chercheur" 
+          style={{ maxHeight: 104, height: 'auto', width: 'auto' }}
+        />
       </div>
 
       {/* Différents conseils selon le type de territoire */}
