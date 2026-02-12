@@ -1,14 +1,14 @@
 "use client";
 
-import { CopyLinkClipboard } from "@/components/interactions/CopyLinkClipboard";
 import { ExportPngMaplibreSimple } from '@/components/exports/ExportPng';
+import { CopyLinkClipboard } from "@/components/interactions/CopyLinkClipboard";
 import { MapPatch4 } from "@/components/maps/mapPatch4";
 import { Body } from '@/design-system/base/Textes';
 import maplibregl from 'maplibre-gl';
+import { useSearchParams } from "next/navigation";
 import { RefObject, useRef, useState } from 'react';
 import CursorVisualization from "../cursorVisualization";
 import styles from '../patch4c.module.scss';
-import { useSearchParams } from "next/navigation";
 
 export const Patch4Maps = (props: {
   coordonneesCommunes: {
@@ -60,7 +60,7 @@ export const Patch4Maps = (props: {
           containerRefCallback={handleContainerRef}
         />
         <div className={styles.CursorVisualizationBarColorWrapper}>
-        <CursorVisualization />
+          <CursorVisualization />
         </div>
       </div>
       <div className={styles.exportShareContainer}>

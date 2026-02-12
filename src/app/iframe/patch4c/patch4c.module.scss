@@ -6,29 +6,41 @@
     margin: 1rem 0 0;
     justify-content: center;
     flex-wrap: wrap;
+    align-items: center;
+}
+.CursorVisualizationBarColorWrapper {
+    padding: 4rem 0 2rem;
 }
 
 .CursorVisualizationBarColor {
-    width: 550px;
+    width: 500px;
     height: 1rem;
     align-self: center;
-    background: linear-gradient(
-        to right,
-        white 0%,
-        white 5%,
-        #ffc03f 33%,
-        #f66e19 67%,
-        #f80206 100%
-    );
-    margin: 20px auto;
+    margin: 0 auto;
     position: relative;
     overflow: visible;
-    border: 1px solid #f7f7f7ff;
+    border: 1px solid #f7f7f7;
+    background-color: white;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to right,
+            white 0%,
+            white 5%,
+            #FFEBB6 33%,
+            #FFB181 67%,
+            #FF1C64 100%
+        );
+    }
     .barColorText {
         position: absolute;
         top: -25px;
         transform: translateY(-50%);
         white-space: nowrap;
+        z-index: 1;
     }
     .infoIcon {
         margin-left: 5px;
@@ -44,6 +56,7 @@
         width: 1px;
         height: 10px;
         background-color: black;
+        z-index: 1;
     }
 }
 
@@ -275,7 +288,7 @@
 }
 
 .aleaExplicationsContentWrapper {
-    padding: 1rem 2.5rem 2rem;
+    padding: 0 2.5rem;
     background-color: #fafafa;
     max-height: 0;
     overflow: hidden;
@@ -283,10 +296,12 @@
     transition:
         max-height 0.7s ease,
         opacity 0.7s ease,
+        padding 0.7s ease,
         background-color 0.7s ease;
 }
 
 .aleaExplicationsContentWrapperOpen {
+    padding: 1rem 2.5rem 3rem;
     max-height: 1000px;
     opacity: 1;
 }
@@ -319,7 +334,7 @@
 // Bloc analyse sensibilité
 
 .analyseSensibiliteContainer {
-    padding: 1.5rem;
+    padding: 3rem 1.5rem 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -419,4 +434,21 @@
     height: 1px;
     background-color: #e7e5e5;
     width: 100%;
+}
+
+// Export
+
+.exportShareContainer {
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e7e5e5;
+    border-bottom: 1px solid #e7e5e5;
+}
+.exportShareWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
 }

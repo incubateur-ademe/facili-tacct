@@ -11,7 +11,6 @@ import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from "../components.module.scss";
 import { RechercheInput } from './rechercheInput';
-import { Body } from '@/design-system/base/Textes';
 
 export const BarreDeRecherche = ({
   RechercherRedirection,
@@ -109,7 +108,7 @@ export const BarreDeRecherche = ({
           ))
         }
       </div>
-      {
+      {/* {
         typeTerritoire === "pnr" && (
           <Body
           size='sm'
@@ -126,7 +125,7 @@ export const BarreDeRecherche = ({
             puis actualisée avec les fusions de communes 2025 (source INSEE, géographie au 01/01/2025).
           </Body>
         )
-      }
+      } */}
       <div
         className={styles.searchbarWrapper}
         style={{ flexDirection: width && width < 520 ? 'column' : 'row' }}
