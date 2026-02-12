@@ -8,6 +8,8 @@ import BiodiversiteServerPage from './thematiques/biodiversite/BiodiversiteServe
 import ConfortThermiqueServerPage from './thematiques/confortThermique/ConfortThermiqueServerPage';
 import EauServerPage from './thematiques/eau/EauServerPage';
 import GestionRisquesServerPage from './thematiques/gestionRisques/GestionRisquesServerPage';
+import { DisclaimerPNR } from './DisclaimerPNR';
+import { NewContainer } from '@/design-system/layout';
 
 const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type, thematique } = await props.searchParams;
@@ -17,6 +19,12 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
       {
         ((code || libelle) && type) &&
         <Suspense fallback={<LoaderText text='Nous chargeons vos données' />}>
+          {
+            type === "pnr" &&
+            <NewContainer style={{ padding: '0 3rem' }}>
+              <DisclaimerPNR />
+            </NewContainer>
+          }
           {thematique === 'Confort thermique' ? (
             <ConfortThermiqueServerPage searchParams={props.searchParams} tableCommune={dbTableCommune} />
           ) : thematique === "Biodiversité" ? (

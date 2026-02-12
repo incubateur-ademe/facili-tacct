@@ -17,11 +17,12 @@ import * as turf from '@turf/turf';
 import type { Feature, MultiPoint, Point } from 'geojson';
 import { useSearchParams } from "next/navigation";
 import styles from '../../explorerDonnees.module.scss';
+import { Any } from '@/lib/utils/types';
 
 type NearestPoint = Feature<Point, {
   featureIndex: number;
   distanceToPoint: number;
-  [key: string]: any;
+  [key: string]: Any;
 }>;
 
 export const OzoneEtVegetation = (props: {

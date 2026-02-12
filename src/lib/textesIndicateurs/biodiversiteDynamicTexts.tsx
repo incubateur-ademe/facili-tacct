@@ -2,12 +2,13 @@ import { Body } from "@/design-system/base/Textes";
 import { Feature, MultiPoint, Point } from 'geojson';
 import { SurfacesAgricolesModel, TableCommuneModel } from "../postgres/models";
 import { Round } from "../utils/reusableFunctions/round";
+import { Any } from "../utils/types";
 
 interface NearestPoint extends Feature<Point> {
   properties: {
     featureIndex: number;
     distanceToPoint: number;
-    [key: string]: any;
+    [key: string]: Any;
   };
 }
 

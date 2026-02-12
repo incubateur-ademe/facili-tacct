@@ -6,47 +6,52 @@ import { sumProperty } from './fonctions';
 export const GrandAge75LineChartYData = (
   grandAgeTerritoire: GrandAgeDto[]
 ) => {
+  const calculatePercent = (numerator: number, denominator: number) => {
+    const result = (100 * numerator) / denominator;
+    return isFinite(result) ? result.toFixed(2) : '0';
+  };
+
   return {
-    over_75_1968_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_1968')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_1968') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1968'))
-    ).toFixed(2),
-    over_75_1975_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_1975')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_1975') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1975'))
-    ).toFixed(2),
-    over_75_1982_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_1982')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_1982') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1982'))
-    ).toFixed(2),
-    over_75_1990_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_1990')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_1990') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1990'))
-    ).toFixed(2),
-    over_75_1999_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_1999')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_1999') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1999'))
-    ).toFixed(2),
-    over_75_2009_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_2009')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_2009') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_2009'))
-    ).toFixed(2),
-    over_75_2014_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_2014')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_2014') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_2014'))
-    ).toFixed(2),
-    over_75_2020_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_2020')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_2020') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_2020'))
-    ).toFixed(2)
+    over_75_1968_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_1968'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_1968') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1968')
+    ),
+    over_75_1975_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_1975'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_1975') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1975')
+    ),
+    over_75_1982_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_1982'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_1982') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1982')
+    ),
+    over_75_1990_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_1990'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_1990') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1990')
+    ),
+    over_75_1999_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_1999'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_1999') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1999')
+    ),
+    over_75_2009_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_2009'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_2009') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_2009')
+    ),
+    over_75_2014_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_2014'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_2014') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_2014')
+    ),
+    over_75_2020_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_2020'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_2020') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_2020')
+    )
   };
 };
 

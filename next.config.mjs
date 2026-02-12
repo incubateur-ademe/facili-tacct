@@ -1,18 +1,10 @@
 //https://github.com/incubateur-ademe/pages-legales-faciles/blob/dev/next.config.mjs
 import createMDX from '@next/mdx';
-import { withSentryConfig } from '@sentry/nextjs';
 import fs from 'fs';
 
 const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 const { version } = packageJson;
 const isDeployment = !!process.env.SOURCE_VERSION;
-
-const env = {
-    NEXT_PUBLIC_APP_VERSION: version,
-    NEXT_PUBLIC_APP_VERSION_COMMIT: isDeployment
-        ? process.env.SOURCE_VERSION
-        : 'dev'
-};
 
 const csp = {
     'default-src': ["'none'"],
@@ -39,7 +31,7 @@ const csp = {
     ],
     'style-src': ["'self'", "'unsafe-inline'", 'https://eu.posthog.com'],
     'object-src': ["'self'", 'data:'],
-    'frame-ancestors': [, 'https://metabase.facili-tacct.beta.gouv.fr'],
+    'frame-ancestors': ['https://metabase.facili-tacct.beta.gouv.fr'],
     'base-uri': ["'self'", 'https://*.gouv.fr'],
     'form-action': ["'self'", 'https://*.gouv.fr'],
     'block-all-mixed-content': [],
@@ -223,34 +215,4 @@ const withMDX = createMDX({
     }
 });
 
-export default withSentryConfig(withMDX(config), {
-    org: 'betagouv',
-    project: 'facili-tacct',
-    sentryUrl: 'https://sentry.incubateur.net',
-    authToken: process.env.SENTRY_AUTH_TOKEN,
-    silent: false,
-
-    // For all available options, see:
-    // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
-
-    // Upload a larger set of source maps for prettier stack traces (increases build time)
-    widenClientFileUpload: true,
-
-    // Automatically annotate React components to show their full name in breadcrumbs and session replay
-    reactComponentAnnotation: {
-        enabled: true
-    },
-
-    // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
-    // This can increase your server load as well as your hosting bill.
-    // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
-    // side errors will fail.
-    tunnelRoute: '/monitoring',
-
-    // Hides source maps from generated client bundles
-    hideSourceMaps: true,
-
-    // Automatically tree-shake Sentry logger statements to reduce bundle size
-    disableLogger: true,
-    automaticVercelMonitors: true
-});
+export default withMDX(config);

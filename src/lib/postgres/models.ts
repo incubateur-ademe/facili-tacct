@@ -653,6 +653,14 @@ export type AOT40 = {
   Longitude: number;
 };
 
+export type O3 = {
+  index: number;
+  nom_site: string;
+  valeur: number;
+  latitude: number;
+  longitude: number;
+};
+
 export type QualiteSitesBaignade = {
   index: number;
   DEP_NOM: string;
@@ -784,49 +792,58 @@ export type RGAdb = {
 export type SurfacesAgricolesModel = {
   index: number;
   epci: string;
-  exploitation_sau: number;
-  exploitation_sau_terres_arables: number;
-  exploitation_sau_terres_arables_cereales: number;
-  exploitation_sau_terres_arables_oleagineux: number;
-  exploitation_sau_terres_arables_fourrageres: number;
-  exploitation_sau_terres_arables_tubercules: number;
-  exploitation_sau_terres_arables_legumes_melons_fraises: number;
-  exploitation_sau_terres_arables_fleurs: number;
-  exploitation_sau_terres_arables_autres: number;
-  exploitation_sau_cultures_permanentes: number;
-  exploitation_sau_cultures_permanentes_vigne: number;
-  exploitation_sau_cultures_permanentes_fruits: number;
-  exploitation_sau_cultures_permanentes_autres: number;
-  exploitation_sau_herbe: number;
-  exploitation_sau_herbe_prairies_productives: number;
-  exploitation_sau_herbe_prairies_peu_productives: number;
-  exploitation_sau_herbe_subventions: number;
-  exploitation_sau_herbe_bois_patures: number;
-  exploitation_sau_jardins: number;
-  superficie_sau: number;
-  superficie_sau_terres_arables: number;
-  superficie_sau_terres_arables_cereales: number;
-  superficie_sau_terres_arables_oleagineux: number;
-  superficie_sau_terres_arables_fourrageres: number;
-  superficie_sau_terres_arables_tubercules: number;
-  superficie_sau_terres_arables_legumes_melons_fraises: number;
-  superficie_sau_terres_arables_fleurs: number;
-  superficie_sau_terres_arables_autres: number;
-  superficie_sau_cultures_permanentes: number;
-  superficie_sau_cultures_permanentes_vigne: number;
-  superficie_sau_cultures_permanentes_fruits: number;
-  superficie_sau_cultures_permanentes_autres: number;
-  superficie_sau_herbe: number;
-  superficie_sau_herbe_prairies_productives: number;
-  superficie_sau_herbe_prairies_peu_productives: number;
-  superficie_sau_herbe_subventions: number;
-  superficie_sau_herbe_bois_patures: number;
-  superficie_sau_jardins: number;
+  exploitation_sau: number | null;
+  exploitation_sau_terres_arables: number | null;
+  exploitation_sau_terres_arables_cereales: number | null;
+  exploitation_sau_terres_arables_oleagineux: number | null;
+  exploitation_sau_terres_arables_fourrageres: number | null;
+  exploitation_sau_terres_arables_tubercules: number | null;
+  exploitation_sau_terres_arables_legumes_melons_fraises: number | null;
+  exploitation_sau_terres_arables_fleurs: number | null;
+  exploitation_sau_terres_arables_autres: number | null;
+  exploitation_sau_cultures_permanentes: number | null;
+  exploitation_sau_cultures_permanentes_vigne: number | null;
+  exploitation_sau_cultures_permanentes_fruits: number | null;
+  exploitation_sau_cultures_permanentes_autres: number | null;
+  exploitation_sau_herbe: number | null;
+  exploitation_sau_herbe_prairies_productives: number | null;
+  exploitation_sau_herbe_prairies_peu_productives: number | null;
+  exploitation_sau_herbe_subventions: number | null;
+  exploitation_sau_herbe_bois_patures: number | null;
+  exploitation_sau_jardins: number | null;
+  superficie_sau: number | null;
+  superficie_sau_terres_arables: number | null;
+  superficie_sau_terres_arables_cereales: number | null;
+  superficie_sau_terres_arables_oleagineux: number | null;
+  superficie_sau_terres_arables_fourrageres: number | null;
+  superficie_sau_terres_arables_tubercules: number | null;
+  superficie_sau_terres_arables_legumes_melons_fraises: number | null;
+  superficie_sau_terres_arables_fleurs: number | null;
+  superficie_sau_terres_arables_autres: number | null;
+  superficie_sau_cultures_permanentes: number | null;
+  superficie_sau_cultures_permanentes_vigne: number | null;
+  superficie_sau_cultures_permanentes_fruits: number | null;
+  superficie_sau_cultures_permanentes_autres: number | null;
+  superficie_sau_herbe: number | null;
+  superficie_sau_herbe_prairies_productives: number | null;
+  superficie_sau_herbe_prairies_peu_productives: number | null;
+  superficie_sau_herbe_subventions: number | null;
+  superficie_sau_herbe_bois_patures: number | null;
+  superficie_sau_jardins: number | null;
 };
 
 export type Patch4 = {
   index: number;
   code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
   niveaux_marins: number | null;
   feux_foret: number;
   secheresse_sols: number;
@@ -891,6 +908,8 @@ export type TableCommuneModel = {
   part_irr_sau_2020: string | null;
   agriculture_part_over_55: string | null;
   couverture_lcz: string | null;
+  aires_appellations_controlees_nom: string[] | null;
+  aires_appellations_controlees_signe: string[] | null;
 };
 
 export type DebroussaillementModel = {

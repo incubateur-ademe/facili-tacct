@@ -62,18 +62,18 @@ export const BoutonPrimaire = ({
       }}
     >
       <div className="flex items-center justify-center">
-        {text}
         {
           icone && (
             <Image
-              src={icone}
-              alt=""
-              style={{ marginLeft: '8px' }}
-              width={16}
-              height={16}
+            src={icone}
+            alt=""
+            style={{ marginRight: '8px' }}
+            width={16}
+            height={16}
             />
           )
         }
+        {text}
       </div>
     </Button>
   );
@@ -180,18 +180,18 @@ export const BoutonPrimaireClassic = ({
       onBlur={handleBlur}
     >
       <div className="flex items-center justify-center">
-        {text}
         {
           icone && (
             <Image
-              src={icone}
-              alt=""
-              style={{ marginLeft: '8px' }}
-              width={size === 'xs' ? 14 : 16}
-              height={size === 'xs' ? 14 : 16}
+            src={icone}
+            alt=""
+            style={{ marginRight: '8px' }}
+            width={size === 'xs' ? 14 : size === 'lg' ? 24 : 16}
+            height={size === 'xs' ? 14 : size === 'lg' ? 24 : 16}
             />
           )
         }
+        {text}
       </div>
     </button>
   );
@@ -206,8 +206,7 @@ export const BoutonSecondaireClassic = ({
   onClick,
   icone,
   style,
-  posthogEventName,
-  thematique
+  posthogEventName
 }: {
   link?: string;
   text: string;
@@ -218,7 +217,6 @@ export const BoutonSecondaireClassic = ({
   icone?: StaticImageData;
   style?: React.CSSProperties;
   posthogEventName?: string;
-  thematique?: string;
 }) => {
   const posthog = usePostHog();
   const buttonStyle: React.CSSProperties = {
@@ -246,8 +244,7 @@ export const BoutonSecondaireClassic = ({
       posthog.capture(
         posthogEventName,
         {
-          date: new Date(),
-          thematique: thematique
+          date: new Date()
         }
       );
     }
@@ -299,18 +296,18 @@ export const BoutonSecondaireClassic = ({
       onBlur={handleBlur}
     >
       <div className="flex items-center justify-center">
-        {text}
         {
           icone && (
             <Image
-              src={icone}
-              alt=""
-              style={{ marginLeft: '8px' }}
-              width={16}
-              height={16}
+            src={icone}
+            alt=""
+            style={{ marginRight: '8px' }}
+            width={size === 'xs' ? 14 : size === 'lg' ? 24 : 16}
+            height={size === 'xs' ? 14 : size === 'lg' ? 24 : 16}
             />
           )
         }
+        {text}
       </div>
     </button>
   );
