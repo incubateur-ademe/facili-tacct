@@ -1,14 +1,13 @@
 "use client";
 
 import ChatChercheur from '@/assets/images/chat_sherlock.png';
-import { getLastTerritory, handleRechercheRedirection } from '@/components/searchbar/fonctions';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H3 } from "@/design-system/base/Textes";
+import { handleRedirection } from '@/hooks/Redirections';
 import Image, { StaticImageData } from "next/image";
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import styles from '../patch4c.module.scss';
-import { handleRedirection } from '@/hooks/Redirections';
 
 type Item = {
   value: string | null;
@@ -39,8 +38,6 @@ export const AnalyseSensibilite = ({
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const router = useRouter();
-  const lastTerritory = getLastTerritory();
   const aggravationLevel = item.value;
 
   const redirectionExplorerMesDonnees = () => {
@@ -48,10 +45,9 @@ export const AnalyseSensibilite = ({
       searchCode: code,
       searchLibelle: libelle,
       typeTerritoire: type as 'epci' | 'commune' | 'petr' | 'pnr' | 'departement' | 'ept',
-      page: lastTerritory?.thematique ? 'donnees' : 'thematiques',
-      thematique: lastTerritory?.thematique
+      page: 'thematiques',
     });
-    router.push(url);
+    window.open(url, '_blank');
   };
 
   return (

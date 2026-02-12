@@ -33,10 +33,8 @@ const HeaderRechercheTerritoire = (props:
   const [typeTerritoire, setTypeTerritoire] = useState<
     'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
   >(type === 'ept' ? 'epci' : type);
-  console.log("searchcode", searchCode);
   const territoireTexte = value + " " + ReplaceDisplayEpci(searchLibelle) + " - " + searchCode;
   const textWidth = getTextWidth(territoireTexte);
-  console.log("textWidth", textWidth);
 
   useEffect(() => {
     setSearchCode(code ?? '');

@@ -73,6 +73,9 @@ export const Patch4Maps = (props: {
             mapRef={mapRef}
             mapContainer={exportContainerRef}
             fileName={`patch4c-${libelle}-${selectedAnchor}.png`}
+            style={{
+              width: "153px"
+            }}
           />
         </div>
       </div>

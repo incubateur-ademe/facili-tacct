@@ -60,7 +60,8 @@ export const Patch4Analyse = ({
                 containerRef={circleExportRef}
                 fileName={`patch4c-cercle-${libelle}.png`}
                 style={{
-                  height: "fit-content"
+                  height: "fit-content",
+                  width: "153px"
                 }}
               />
             </div>

@@ -78,15 +78,6 @@ export const MapPatch4 = (props: {
   const filteredCodesKey = useMemo(() => JSON.stringify(filteredCodes), [filteredCodes]);
 
   useEffect(() => {
-    if (mapRefCallback) {
-      mapRefCallback(mapRef);
-    }
-    if (containerRefCallback) {
-      containerRefCallback(mapContainer);
-    }
-  }, [mapRefCallback, containerRefCallback]);
-
-  useEffect(() => {
     if (!mapContainer.current || filteredCodes.length === 0) return;
     const map = new maplibregl.Map({
       container: mapContainer.current,
@@ -94,6 +85,13 @@ export const MapPatch4 = (props: {
       attributionControl: false,
     });
     mapRef.current = map;
+    
+    if (mapRefCallback) {
+      mapRefCallback(mapRef);
+    }
+    if (containerRefCallback) {
+      containerRefCallback(mapContainer);
+    }
     // s'assure que le zoom au scroll est désactivé immédiatement pour éviter de capturer les défilements de page
     try { map.scrollZoom.disable(); } catch (e) { /* noop */ }
 

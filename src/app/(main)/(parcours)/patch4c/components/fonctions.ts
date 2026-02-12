@@ -128,11 +128,11 @@ export const patch4Indices = (patch4: Patch4) => [
 export const getBackgroundColor = (value: string | null) => {
   switch (value) {
     case 'Aggravation très forte':
-      return '#F80206';
+      return '#FF1C64';
     case 'Aggravation forte':
-      return '#F66E19';
+      return '#FFB181';
     case 'Aggravation modérée':
-      return '#FFC03F';
+      return '#FFEBB6';
     case "Pas d'évolution":
       return '#FFFFFF';
     default:
