@@ -1,11 +1,12 @@
 "use client";
 
-import { createModal } from "@codegouvfr/react-dsfr/Modal";
 import { TuileHorizontaleCollection } from "@/components/Tuile";
+import useWindowDimensions from "@/hooks/windowDimensions";
+import { createModal } from "@codegouvfr/react-dsfr/Modal";
 import { StaticImageData } from "next/image";
 import { useStyles } from 'tss-react/dsfr';
-import styles from "./modaleToutesCollections.module.scss";
 import { CollectionsData } from "../[collectionId]/collectionsData";
+import styles from "./modaleToutesCollections.module.scss";
 
 export const modaleToutesCollections = createModal({
   id: "toutes-collections-modal",
@@ -21,8 +22,9 @@ export const ModaleToutesCollections = ({
     lien: string;
   }[]
 }) => {
-  const { css, cx } = useStyles();
-
+  const { css } = useStyles();
+  const windowDimensions = useWindowDimensions();
+  
   return (
     <modaleToutesCollections.Component
       title="Toutes les collections"
@@ -37,6 +39,9 @@ export const ModaleToutesCollections = ({
           top: 0,
           right: 0,
           zIndex: 10,
+        },
+        ".fr-modal__content": {
+          marginBottom: "2rem",
         },
         ".fr-modal__title": {
           color: "#2B4B49",

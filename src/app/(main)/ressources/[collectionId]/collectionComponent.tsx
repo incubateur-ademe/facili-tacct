@@ -12,7 +12,6 @@ import { Body, H1, H2 } from '@/design-system/base/Textes';
 import { NewContainer } from "@/design-system/layout";
 import useWindowDimensions from "@/hooks/windowDimensions";
 import { FiltresOptions } from "@/lib/ressources/toutesRessources";
-import { Round } from "@/lib/utils/reusableFunctions/round";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";

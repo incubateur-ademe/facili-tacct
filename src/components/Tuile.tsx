@@ -3,6 +3,7 @@
 import ClockIcon from "@/assets/icons/clock_icon_black.svg";
 import DocIcon from "@/assets/icons/doc_icon_white.png";
 import LienExterneIcon from "@/assets/icons/fr-icon-external-link-line.png";
+import useWindowDimensions from "@/hooks/windowDimensions";
 import { Round } from "@/lib/utils/reusableFunctions/round";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -184,6 +185,7 @@ export const TuileHorizontaleCollection = ({
   tempsLecture,
   nombreArticles
 }: Props) => {
+  const windowDimensions = useWindowDimensions();
 
   const content = (
     <div className={styles.tuileHorizontaleCollection} tabIndex={lien ? -1 : 0} role="collection">
@@ -224,12 +226,18 @@ export const TuileHorizontaleCollection = ({
           </div>
         </div>
       </div>
-      <div className={styles.imageContainer}>
+      <div 
+        className={styles.imageContainer}
+        style={windowDimensions.width && windowDimensions.width <= 768 ? { maxWidth: 100 } : undefined}
+      >
         <Image
         src={image}
         alt={titre}
         fill
-        style={{ objectFit: 'cover', objectPosition: 'top' }}
+        style={{ 
+          objectFit: windowDimensions.width && windowDimensions.width <= 768 ? 'contain' : 'cover', 
+          objectPosition: windowDimensions.width && windowDimensions.width <= 768 ? 'center' : 'top', 
+        }}
         />
       </div>
     </div>
