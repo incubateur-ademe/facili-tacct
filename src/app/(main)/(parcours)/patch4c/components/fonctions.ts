@@ -35,7 +35,7 @@ export const patch4Indices = (patch4: Patch4) => [
       },
       {
         title: 'Plus fraîche ma ville',
-        link: 'https://plusfraichemaville.fr/',
+        link: 'https://plusfraichemaville.fr/fiche-solution',
         image: null
       }
     ]
