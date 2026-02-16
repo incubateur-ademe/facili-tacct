@@ -125,7 +125,7 @@ export const AnalyseSensibilite = ({
                   <li>
                     <Body>
                       {
-                        item.label === "Fortes chaleurs"
+                        item.label === "Fortes précipitations"
                           ? " Indépendamment de la tendances d’aggravation de la pluviométrie sur votre territoire, l’intensification des événements extrêmes, due au changement climatique, expose les territoires à des risques d'inondations brutales."
                           : "Éventuelles variations saisonnières à prendre en compte"}
                     </Body>
