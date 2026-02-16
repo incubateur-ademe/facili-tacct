@@ -76,7 +76,9 @@ export const patch4Indices = (patch4: Patch4) => [
       'Santé des forêts, parcs et espaces naturels',
       'Disponibilité et qualité des ressources en eau'
     ],
-    themesSansAggravation: null,
+    themesSansAggravation: [
+      "Indépendamment de la tendance d'aggravation, le rythme des sécheresses constitue un facteur de risque immédiat pour l'agriculture et les ressources en eau de tous les territoires."
+    ],
     actions: [
       {
         title:

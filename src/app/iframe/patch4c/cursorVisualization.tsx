@@ -13,7 +13,7 @@ const CursorVisualization = () => {
   return (
     <NewContainer size="xl" style={{ padding: '0rem 1rem' }}>
       <div className={styles.CursorVisualizationContainer}>
-        <div className={styles.CursorVisualizationBarColor}>
+        <div className={styles.CursorVisualizationBarColor} >
           {
             agravationItems.map((item, index) => (
               <div key={index}>
