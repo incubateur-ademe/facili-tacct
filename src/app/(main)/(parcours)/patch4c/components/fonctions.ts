@@ -53,7 +53,7 @@ export const patch4Indices = (patch4: Patch4) => [
       'Continuité de service des réseaux (énergie, télécom et transport)'
     ],
     themesSansAggravation: [
-      'Indépendamment de la tendances d’aggravation, le changement climatique intensifie le phénomène de pluie extrême, exposant tous les territoires à des risques d’inondations brutales.'
+      'Indépendamment de la tendance d’aggravation, le changement climatique intensifie le phénomène de pluie extrême, exposant tous les territoires à des risques d’inondations brutales.'
     ],
     actions: [
       {
