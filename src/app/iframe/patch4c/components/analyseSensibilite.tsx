@@ -15,6 +15,7 @@ type Item = {
   label: string;
   definition: string;
   linkedThemes: string[];
+  themesSansAggravation: string[] | null;
   actions: ({
     title: string;
     link: string;

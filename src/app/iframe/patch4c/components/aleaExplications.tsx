@@ -15,6 +15,7 @@ type Item = {
   label: string;
   definition: string;
   linkedThemes: string[];
+  themesSansAggravation: string[] | null;
   actions: ({
     title: string;
     link: string;
@@ -31,7 +32,7 @@ export const AleaExplications = ({
   item,
   isMap
 }: {
-  item: Item, 
+  item: Item,
   isMap: boolean
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +46,7 @@ export const AleaExplications = ({
           <div
             className={styles.CircleItem}
             style={{
-              backgroundColor: isMap ? "#E7E5E5" :getBackgroundColor(item.value),
+              backgroundColor: isMap ? "#E7E5E5" : getBackgroundColor(item.value),
             }}
           >
             <Image

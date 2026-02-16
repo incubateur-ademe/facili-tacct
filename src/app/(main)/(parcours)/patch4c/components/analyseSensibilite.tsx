@@ -15,6 +15,7 @@ type Item = {
   label: string;
   definition: string;
   linkedThemes: string[];
+  themesSansAggravation: string[] | null;
   actions: ({
     title: string;
     link: string;
@@ -103,36 +104,41 @@ export const AnalyseSensibilite = ({
                 ))}
               </div>
             </div>
-            <div className={styles.themesListe}>
-              <div className={styles.titre}>
-                <div
-                  className={styles.circleIndicator}
-                  style={{ backgroundColor: '#FFEBB6' }}
-                />
-                <div
-                  className={styles.circleIndicator}
-                  style={{
-                    backgroundColor: '#FFF',
-                    border: '1px solid black'
-                  }}
-                />
-                <Body weight="bold">
-                  Aggravation modérée ou pas d'évolution
-                </Body>
-              </div>
-              <div className={styles.linkedThemes} style={{ lineHeight: "1.5rem" }}>
-                <ul>
-                  <li>
-                    <Body>
-                      {
-                        item.label === "Fortes précipitations"
-                          ? " Indépendamment de la tendances d’aggravation de la pluviométrie sur votre territoire, l’intensification des événements extrêmes, due au changement climatique, expose les territoires à des risques d'inondations brutales."
-                          : "Éventuelles variations saisonnières à prendre en compte"}
+            {
+              item.themesSansAggravation && (
+                <div className={styles.themesListe}>
+                  <div className={styles.titre}>
+                    <div
+                      className={styles.circleIndicator}
+                      style={{ backgroundColor: '#FFEBB6' }}
+                    />
+                    <div
+                      className={styles.circleIndicator}
+                      style={{
+                        backgroundColor: '#FFF',
+                        border: '1px solid black'
+                      }}
+                    />
+                    <Body weight="bold">
+                      Aggravation modérée ou pas d'évolution
                     </Body>
-                  </li>
-                </ul>
-              </div>
-            </div>
+                  </div>
+                  <div className={styles.linkedThemes} style={{ lineHeight: "1.5rem" }}>
+                    {
+                      item.themesSansAggravation.map((theme, index) => (
+                        <ul key={index}>
+                          <li>
+                            <Body>
+                              {theme}
+                            </Body>
+                          </li>
+                        </ul>
+                      ))
+                    }
+                  </div>
+                </div>
+              )
+            }
           </div>
         ) : (
           <div className={styles.themesListe}>

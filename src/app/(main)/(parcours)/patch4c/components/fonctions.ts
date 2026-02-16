@@ -26,6 +26,7 @@ export const patch4Indices = (patch4: Patch4) => [
       'Continuité de service des réseaux (énergie, télécom et transport)',
       'Inconfort thermique'
     ],
+    themesSansAggravation: null,
     actions: [
       {
         title:
@@ -51,6 +52,9 @@ export const patch4Indices = (patch4: Patch4) => [
       'Adaptation des bassins d’emploi et activités économiques',
       'Continuité de service des réseaux (énergie, télécom et transport)'
     ],
+    themesSansAggravation: [
+      'Indépendamment de la tendances d’aggravation, le changement climatique intensifie le phénomène de pluie extrême, exposant tous les territoires à des risques d’inondations brutales.'
+    ],
     actions: [
       {
         title:
@@ -72,6 +76,7 @@ export const patch4Indices = (patch4: Patch4) => [
       'Santé des forêts, parcs et espaces naturels',
       'Disponibilité et qualité des ressources en eau'
     ],
+    themesSansAggravation: null,
     actions: [
       {
         title:
@@ -94,6 +99,9 @@ export const patch4Indices = (patch4: Patch4) => [
       'Continuité de service des réseaux (énergie, télécom et transport)',
       'Adaptation des bassins d’emploi et activités économiques'
     ],
+    themesSansAggravation: [
+      'Le facteur humain reste central dans le déclenchement des incendies, même sans aggravation des conditions propices aux feux de forêt.'
+    ],
     actions: [
       {
         title:
@@ -114,6 +122,7 @@ export const patch4Indices = (patch4: Patch4) => [
     definition:
       'L’indice s’appuie sur l’indicateur d’évolution de l’élévation du niveau moyen de la mer.',
     linkedThemes: ['Adaptation des bassins d’emploi et activités économiques'],
+    themesSansAggravation: null,
     actions: [
       {
         title:
