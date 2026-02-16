@@ -27,25 +27,25 @@ export const ConseilsAggravation = () => {
         <div className={styles.tableau}>
           <div className={styles.tableauRow}>
             <div className={styles.tableauCell} />
-            <div className={styles.tableauCell} 
-            style={{ justifyContent: "flex-end", gap: "3rem", maxHeight: "360px" }}>
-              <Image 
-              src={AnalyseExpositionImage} 
-              alt="Analyse Exposition" 
-              style={{ height: "auto", width: "auto", maxWidth: "300px"}} 
+            <div className={styles.tableauCell}
+              style={{ justifyContent: "flex-end", gap: "3rem", maxHeight: "360px" }}>
+              <Image
+                src={AnalyseExpositionImage}
+                alt="Analyse Exposition"
+                style={{ height: "auto", width: "auto", maxWidth: "300px" }}
               />
               <Body style={{ color: "var(--principales-vert)" }} weight='bold'>
-                Analyse d’exposition
+                Analyse de l’exposition
               </Body>
             </div>
             <div className={styles.tableauCell} style={{ maxHeight: "360px" }}>
-              <Image 
-              src={AnalyseSensibiliteImage} 
-              alt="Analyse Sensibilité" 
-              style={{ height: "auto", width: "auto", maxWidth: "300px"}} 
+              <Image
+                src={AnalyseSensibiliteImage}
+                alt="Analyse Sensibilité"
+                style={{ height: "auto", width: "auto", maxWidth: "300px" }}
               />
               <Body style={{ color: "var(--principales-vert)" }} weight='bold'>
-                Analyse de sensibilité
+                Analyse de la sensibilité
               </Body>
             </div>
           </div>
