@@ -114,9 +114,9 @@ export const ConseilsAggravation = () => {
           </div>
           <div>
             <Body style={{ marginLeft: "2rem" }}>
-              Avant de faire valider votre PCAET, vérifiez que votre analyse d’exposition tient
-              compte de la TRACC et que votre <b>plan d’action comporte des actions visant à réduire
-                vos différents facteurs de sensibilité</b> face à cette exposition. Sinon, il convient d’en ajouter.
+              Avant de faire valider votre PCAET, assurez-vous que l’analyse de l’exposition de votre territoire
+              tient compte de la TRACC et que votre <b>plan d’action comporte des mesures concrètes pour
+                réduire les facteurs de sensibilité identifiés.</b> Dans le cas contraire, enrichissez votre document.
             </Body>
           </div>
         </div>
