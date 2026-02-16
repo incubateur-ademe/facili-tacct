@@ -5,13 +5,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-#liste_tables_in_postgis_v2 = ["communes_drom"]
+# liste_tables = ["communes_drom"]
 
 liste_tables = [
     "agriculture", "arretes_catnat", "atlas_biodiversite",
     "collectivites_searchbar",
     "confort_thermique", "consommation_espaces_naf", "export_cours_d_eau", "feux_foret",
-    "lcz_couverture", "prelevements_eau", "rga", "secheresses", "table_commune", "table_territoires"
+    "lcz_couverture", "prelevements_eau", "rga", "table_commune", "table_territoires"
 ]
 dbschema='databases_v2' # ou postgis_v2
 SCALINGO_URL = os.environ.get('SCALINGO_POSTGRESQL_URL')
@@ -41,9 +41,10 @@ for table in liste_tables:
     print(f"Nombre de lignes avec PNR: {df_collectivites[['code_pnr', 'libelle_pnr']].notna().any(axis=1).sum()}")
 
     # Récupérer les données de référence (liste_pnr)
+    # IMPORTANT: liste_pnr est toujours dans databases_v2
     query_reference = """
     SELECT code_geographique, code_pnr, pnr as libelle_pnr
-    FROM liste_pnr
+    FROM databases_v2.liste_pnr
     """
 
     with engine.begin() as conn:
@@ -370,8 +371,7 @@ for table in liste_tables:
         else:
             print(f"\n⚠️  Il reste {len(differences_final)} différences à corriger.")
             print("Voici les premières lignes:")
-            display(differences_final[['code_geographique', 'code_pnr_table', 'code_pnr_reference',
-                                   'libelle_pnr_table', 'libelle_pnr_reference']].head(10))
+            print(differences_final.head(10))
     else:
         print("❌ ERREUR")
 
@@ -396,9 +396,10 @@ for table in liste_tables:
 
         if len(df_sans_code_geo) > 0:
             # Récupérer tous les PNR uniques dans liste_pnr
+            # IMPORTANT: liste_pnr est toujours dans databases_v2
             query_pnr_uniques = """
             SELECT DISTINCT code_pnr, pnr as libelle_pnr
-            FROM liste_pnr
+            FROM databases_v2.liste_pnr
             WHERE code_pnr IS NOT NULL
             """
 
