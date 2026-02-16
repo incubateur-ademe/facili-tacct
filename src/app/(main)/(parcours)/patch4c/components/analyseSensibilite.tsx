@@ -124,7 +124,10 @@ export const AnalyseSensibilite = ({
                 <ul>
                   <li>
                     <Body>
-                      Éventuelles variations saisonnières à prendre en compte
+                      {
+                        item.label === "Fortes chaleurs"
+                          ? " Indépendamment de la tendances d’aggravation de la pluviométrie sur votre territoire, l’intensification des événements extrêmes, due au changement climatique, expose les territoires à des risques d'inondations brutales."
+                          : "Éventuelles variations saisonnières à prendre en compte"}
                     </Body>
                   </li>
                 </ul>
