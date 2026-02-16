@@ -6,7 +6,6 @@ import { Body } from "@/design-system/base/Textes";
 import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
 import styles from '../patch4c.module.scss';
-import { agravationItems } from './constantes';
 import { getBackgroundColor } from "./fonctions";
 
 type Item = {
@@ -96,7 +95,7 @@ export const AleaExplications = ({
           <Body>
             {item.definition}
           </Body>
-          {
+          {/* {
             !isMap && (
               <>
                 <Body weight="bold" style={{ margin: '2rem 0 0.5rem' }}>
@@ -107,7 +106,7 @@ export const AleaExplications = ({
                 </Body>
               </>
             )
-          }
+          } */}
           <Body weight="bold" style={{ margin: '2rem 0 0.5rem' }}>
             D'où vient cette donnée ?
           </Body>
