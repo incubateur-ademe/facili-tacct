@@ -1,14 +1,14 @@
 'use client';
 
+import { ExportPngSimple } from "@/components/exports/ExportPng";
+import { NewContainer } from "@/design-system/layout";
 import { Patch4 } from "@/lib/postgres/models";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import CircleVisualization from "./circleVisualization";
 import { BlocAleas } from "./components/blocAleas";
 import CursorVisualization from "./cursorVisualization";
-import { NewContainer } from "@/design-system/layout";
 import styles from './patch4c.module.scss';
-import { ExportPngSimple } from "@/components/exports/ExportPng";
-import { useSearchParams } from "next/navigation";
 
 export const Patch4Analyse = ({
   patch4,
@@ -55,7 +55,7 @@ export const Patch4Analyse = ({
               onSelectAlea={handleSelectAlea}
             />
             <div className={styles.CursorVisualizationContainer}>
-              <CursorVisualization />
+              <CursorVisualization isMap={patch4.length > 1 ? true : false} />
               <ExportPngSimple
                 containerRef={circleExportRef}
                 fileName={`patch4c-cercle-${libelle}.png`}

@@ -233,6 +233,12 @@
     &:hover {
         background-color: white;
     }
+
+    &:focus {
+        background-color: #f6f6f6;
+        border-radius: 0.5rem 0.5rem 0 0;
+        outline: 6px solid #038278;
+    }
 }
 
 .aleasTabButtonActive {
