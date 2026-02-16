@@ -35,7 +35,6 @@ export const MapPatch4 = (props: {
   containerRefCallback?: (ref: RefObject<HTMLDivElement | null>) => void;
 }) => {
   const { patch4, communesCodes, boundingBox, mapRefCallback, containerRefCallback } = props;
-  console.log("patch4", patch4);
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
