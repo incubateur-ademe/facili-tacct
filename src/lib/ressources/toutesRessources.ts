@@ -110,7 +110,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     titre:
       'Adaptation au changement climatique : déploiement de la démarche TACCT',
     description:
-      'Le Pays Pyrénées Méditerranée a mis en œuvre la démarche TACCT du diagnostic à la stratégie. Retrouvez toutes les étapes de la démarche  !',
+      'Le Pays Pyrénées Méditerranée a mis en œuvre la démarche TACCT du diagnostic à la stratégie. Retrouvez toutes les étapes de la démarche !',
     lien: 'https://www.payspyreneesmediterranee.org/thematiques/transitions-energie-climat/adaptation-au-changement-climatique/',
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
@@ -745,7 +745,8 @@ export const toutesLesRessources: ToutesRessources[] = [
   {
     id: 38,
     type: 'Article',
-    titre: 'Réalisation d\'un diagnostic de vulnérabilité - Epernay Agglo Champagne',
+    titre:
+      "Réalisation d'un diagnostic de vulnérabilité - Epernay Agglo Champagne",
     slug: 'realiser-diagnostic-vulnerabilite',
     description:
       'Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.',
@@ -758,7 +759,8 @@ export const toutesLesRessources: ToutesRessources[] = [
     ordre: 10,
     ordreCollection: 1,
     metadata: {
-      title: 'Réalisation d\'un diagnostic de vulnérabilité - Epernay Agglo Champagne',
+      title:
+        "Réalisation d'un diagnostic de vulnérabilité - Epernay Agglo Champagne",
       description:
         'Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.'
     }

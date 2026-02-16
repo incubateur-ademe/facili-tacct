@@ -5,14 +5,17 @@ import { Loader } from '@/components/ui/loader';
 import { Body } from "@/design-system/base/Textes";
 import { useSearchParams } from "next/navigation";
 import { lazy, Suspense, useRef } from 'react';
+import styles from '../../explorerDonnees.module.scss';
 
 const MapOCSGE = lazy(() => import('@/components/maps/mapOCSGE'));
-import styles from '../../explorerDonnees.module.scss';
 
 export const OCSGE = ({
   coordonneesCommunes,
 }: {
-  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
+  coordonneesCommunes: {
+    codes: string[],
+    bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number }
+  } | null;
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;

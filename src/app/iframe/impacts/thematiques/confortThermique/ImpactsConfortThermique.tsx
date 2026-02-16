@@ -1,9 +1,7 @@
 "use client";
-import RDVImage from '@/assets/images/prendreRDV.png';
+import { AssocierLesActeurs } from '@/app/(main)/(parcours)/impacts/components/associerLesActeurs';
 import { MicroPieChart } from '@/components/charts/MicroDataviz';
-import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H2 } from "@/design-system/base/Textes";
-import Image from "next/image";
 import { ThematiquesLieesNavigation } from '../../components/ThematiquesLieesNavigation';
 import styles from '../../impacts.module.scss';
 
@@ -221,29 +219,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
         </div>
       </section>
       <section className={styles.sectionType}>
-        <div id="section2" className={styles.prendreRDVWrapper}>
-          <div className={styles.RDVText}>
-            <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
-              Point d'étape à J+20 : prenez rendez-vous avec l’équipe TACCT
-            </H2>
-            <Body>
-              Investigation terminée ? Prenons le temps de décrypter ensemble vos
-              observations de terrain pour bien préparer votre prochaine phase d'action.
-            </Body>
-            <BoutonPrimaireClassic
-              size='sm'
-              text='Prendre rendez-vous'
-              onClick={() => window.open('https://rdv.incubateur.ademe.fr/facili-tacct/echange-j-20', '_blank', 'noopener,noreferrer')}
-            />
-          </div>
-          <Image
-            src={RDVImage}
-            alt=""
-            width={300}
-            height={200}
-            style={{ width: 'auto', height: '100%', alignSelf: 'center' }}
-          />
-        </div>
+        <AssocierLesActeurs />
       </section>
       <section className={styles.sectionType}>
         <div id="section3" className={styles.diagnosticWrapper}>

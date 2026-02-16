@@ -149,7 +149,7 @@ export const sommaireImpacts = {
     },
     {
       id: 'section2',
-      titre: 'Prendre RDV avec TACCT'
+      titre: 'Associer les parties prenantes'
     }
   ],
   Biodiversité: [],
@@ -161,7 +161,7 @@ export const sommaireImpacts = {
     },
     {
       id: 'section2',
-      titre: 'Prendre RDV avec TACCT'
+      titre: 'Associer les parties prenantes'
     }
   ],
   Aménagement: [],
