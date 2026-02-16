@@ -52,18 +52,18 @@ export const AnalyseSensibilite = ({
       <div className={styles.titreWrapper}>
         <div className={styles.left}>
           <H3 style={{ fontSize: 22 }}>
-            Analyse de sensibilité : les thématiques à traiter impérativement
+            Analyse de la sensibilité : les thématiques à traiter impérativement
           </H3>
           <div className={styles.separator} />
           <Body style={{ marginTop: '1rem' }}>
-            Voici quelques pistes de thématiques à aborder lors de l’analyse de sensibilité,
+            Voici quelques pistes de thématiques à aborder lors de l’analyse de la sensibilité,
             mais celle-ci reste à effectuer en fonction de vos dynamiques territoriales, des
             actions déjà entreprises et de vos capacités d’adaptation.
           </Body>
         </div>
-        <Image 
-          src={ChatChercheur} 
-          alt="illustration chat chercheur" 
+        <Image
+          src={ChatChercheur}
+          alt="illustration chat chercheur"
           style={{ maxHeight: 104, height: 'auto', width: 'auto' }}
         />
       </div>

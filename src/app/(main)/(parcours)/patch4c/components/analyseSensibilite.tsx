@@ -28,7 +28,7 @@ type Item = {
 };
 
 export const AnalyseSensibilite = ({
-    item,
+  item,
   isMap,
 }: {
   item: Item,
@@ -55,18 +55,18 @@ export const AnalyseSensibilite = ({
       <div className={styles.titreWrapper}>
         <div className={styles.left}>
           <H3 style={{ fontSize: 22 }}>
-            Analyse de sensibilité : les thématiques à traiter impérativement
+            Analyse de la sensibilité : les thématiques à traiter impérativement
           </H3>
           <div className={styles.separator} />
           <Body style={{ marginTop: '1rem' }}>
-            Voici quelques pistes de thématiques à aborder lors de l’analyse de sensibilité,
+            Voici quelques pistes de thématiques à aborder lors de l’analyse de la sensibilité,
             mais celle-ci reste à effectuer en fonction de vos dynamiques territoriales, des
             actions déjà entreprises et de vos capacités d’adaptation.
           </Body>
         </div>
-        <Image 
-          src={ChatChercheur} 
-          alt="illustration chat chercheur" 
+        <Image
+          src={ChatChercheur}
+          alt="illustration chat chercheur"
           style={{ height: 'auto', width: 'auto', maxHeight: 104 }}
         />
       </div>
@@ -93,14 +93,14 @@ export const AnalyseSensibilite = ({
               </div>
               <div className={styles.linkedThemes} style={{ lineHeight: "1.5rem" }}>
                 {item.linkedThemes.map((theme, index) => (
-                <ul key={index}>
-                  <li>
-                    <Body>
-                      {theme}
-                    </Body>
-                  </li>
-                </ul>
-              ))}
+                  <ul key={index}>
+                    <li>
+                      <Body>
+                        {theme}
+                      </Body>
+                    </li>
+                  </ul>
+                ))}
               </div>
             </div>
             <div className={styles.themesListe}>

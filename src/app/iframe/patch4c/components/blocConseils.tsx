@@ -30,13 +30,13 @@ export const ConseilsAggravation = () => {
             <div className={styles.tableauCell} style={{ justifyContent: "space-between", gap: "1rem" }}>
               <Image src={AnalyseExpositionImage} alt="Analyse Exposition" sizes='100%' />
               <Body style={{ color: "var(--principales-vert)" }} weight='bold'>
-                Analyse d’exposition
+                Analyse de l’exposition
               </Body>
             </div>
             <div className={styles.tableauCell}>
               <Image src={AnalyseSensibiliteImage} alt="Analyse Sensibilité" sizes='100%' />
               <Body style={{ color: "var(--principales-vert)" }} weight='bold'>
-                Analyse de sensibilité
+                Analyse de la sensibilité
               </Body>
             </div>
           </div>
