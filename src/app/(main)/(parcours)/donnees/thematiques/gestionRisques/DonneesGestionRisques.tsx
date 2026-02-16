@@ -7,11 +7,13 @@ import {
   ArreteCatNat,
   ErosionCotiere,
   IncendiesForet,
-  RGAdb
+  RGAdb,
+  SecheressesPasseesModel
 } from '@/lib/postgres/models';
 import {
   GetArretesCatnat,
-  GetIncendiesForet
+  GetIncendiesForet,
+  GetSecheressesPassees
 } from '@/lib/queries/databases/gestionRisques';
 import {
   GetCommunesCoordinates,
@@ -28,6 +30,7 @@ import { FeuxDeForet } from '../../indicateurs/gestionDesRisques/2-FeuxDeForet';
 import { ErosionCotiereComp } from '../../indicateurs/gestionDesRisques/3-ErosionCotiere';
 import { RetraitGonflementDesArgiles } from '../../indicateurs/gestionDesRisques/4-RetraitGonflementDesArgiles';
 import { Debroussaillement } from '../../indicateurs/gestionDesRisques/5-Debroussaillement';
+import { SecheressesPassees } from '../../indicateurs/gestionDesRisques/6-Secheresses';
 
 interface Props {
   gestionRisques: ArreteCatNat[];
@@ -38,6 +41,7 @@ interface Props {
   erosionCotiere: [ErosionCotiere[], string] | [];
   incendiesForet: IncendiesForet[];
   rga: RGAdb[];
+  secheressesPassees: SecheressesPasseesModel[];
 }
 
 export const DonneesGestionRisques = ({
@@ -45,7 +49,8 @@ export const DonneesGestionRisques = ({
   gestionRisques,
   erosionCotiere,
   incendiesForet,
-  rga
+  rga,
+  secheressesPassees
 }: Props) => {
   const { css } = useStyles();
   const searchParams = useSearchParams();
@@ -57,7 +62,8 @@ export const DonneesGestionRisques = ({
     coordonneesCommunes,
     gestionRisques,
     erosionCotiere,
-    incendiesForet
+    incendiesForet,
+    secheressesPassees
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -74,18 +80,21 @@ export const DonneesGestionRisques = ({
         newCoordonneesCommunes,
         newGestionRisques,
         newErosionCotiere,
-        newIncendiesForet
+        newIncendiesForet,
+        newSecheressesPassees
       ] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
         GetArretesCatnat(code, libelle, type),
         GetErosionCotiere(code, libelle, type),
-        GetIncendiesForet(code, libelle, type)
+        GetIncendiesForet(code, libelle, type),
+        GetSecheressesPassees(code, libelle, type)
       ]);
       setData({
         coordonneesCommunes: newCoordonneesCommunes,
         gestionRisques: newGestionRisques,
         erosionCotiere: newErosionCotiere,
-        incendiesForet: newIncendiesForet
+        incendiesForet: newIncendiesForet,
+        secheressesPassees: newSecheressesPassees
       });
       setIsLoading(false);
     })();
@@ -195,6 +204,18 @@ export const DonneesGestionRisques = ({
             </H3>
           </div>
           <Debroussaillement coordonneesCommunes={coordonneesCommunes} />
+        </div>
+
+        {/* Intensité des sécheresses passées */}
+        <div id="Sécheresses passées" className={styles.indicateurWrapper}>
+          <div className={styles.h3Titles}>
+            <H3
+              style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
+            >
+              Intensité des sécheresses passées
+            </H3>
+          </div>
+          <SecheressesPassees secheresses={data.secheressesPassees} />
         </div>
       </section>
 

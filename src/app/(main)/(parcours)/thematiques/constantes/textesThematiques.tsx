@@ -68,7 +68,7 @@ export const sommaireThematiques = {
         id: 'section1',
         thematique: 'Gestion des risques',
         icone: '🚧',
-        sousCategories: ['Arrêtés CatNat', 'Feux de forêt', 'Débroussaillement']
+        sousCategories: ['Arrêtés CatNat', 'Feux de forêt', 'Débroussaillement', 'Sécheresses passées']
       },
       {
         id: 'section2',

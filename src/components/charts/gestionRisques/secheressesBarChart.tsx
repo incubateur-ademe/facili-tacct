@@ -1,45 +1,23 @@
 "use client";
 
 import { Body } from "@/design-system/base/Textes";
-import { SecheressesParsed } from "@/lib/postgres/models";
 import { useLayoutEffect, useState } from "react";
 import { NivoBarChart } from "../NivoBarChart";
 
-const AnneesSecheresses = [
-  "restrictions_2013",
-  "restrictions_2014",
-  "restrictions_2015",
-  "restrictions_2016",
-  "restrictions_2017",
-  "restrictions_2018",
-  "restrictions_2019",
-  "restrictions_2020",
-  "restrictions_2021",
-  "restrictions_2022",
-  "restrictions_2023",
-  "restrictions_2024"
-];
-
 export const SecheressesBarChart = (
-  { secheresses }: { secheresses: SecheressesParsed[] }
+  {
+    restrictionsParAnnee
+  }: {
+    restrictionsParAnnee: {
+      annee: string;
+      vigilance: number;
+      alerte: number;
+      alerte_renforcee: number;
+      crise: number;
+    }[]
+  }
 ) => {
-  // Transformer les données pour avoir une entrée par année avec le nombre total de restrictions
-  const graphData = AnneesSecheresses.map(yearKey => {
-    const year = yearKey.replace('restrictions_', '');
-    let totalRestrictions = 0;
-
-    secheresses.forEach(secheresse => {
-      const restrictions = secheresse[yearKey as keyof SecheressesParsed];
-      if (restrictions && Array.isArray(restrictions)) {
-        totalRestrictions += restrictions.length;
-      }
-    });
-
-    return {
-      annee: year,
-      restrictions: totalRestrictions
-    };
-  });
+  const graphData = restrictionsParAnnee.filter(data => ['2020', '2021', '2022', '2023', '2024', '2025'].includes(data.annee));
 
   const minValueXTicks = graphData[0]?.annee;
   const maxValueXTicks = graphData[graphData.length - 1]?.annee;
@@ -69,7 +47,7 @@ export const SecheressesBarChart = (
       {graphData && graphData.length ?
         <NivoBarChart
           graphData={graphData}
-          keys={["restrictions"]}
+          keys={["vigilance", "alerte", "alerte_renforcee", "crise"]}
           indexBy="annee"
           showLegend={false}
           axisLeftLegend="Nombre de restrictions"
@@ -78,6 +56,7 @@ export const SecheressesBarChart = (
               ? [`${minValueXTicks}`, `${maxValueXTicks}`]
               : [`${minValueXTicks}`]
           }
+          colors={["#FFFF00", "#FF9900", "#EA4335", "#980000"]}
         />
         : <div
           style={{
