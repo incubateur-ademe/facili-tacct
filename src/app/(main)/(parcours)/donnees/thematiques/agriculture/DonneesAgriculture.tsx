@@ -202,10 +202,10 @@ export const DonneesAgriculture = ({
             {ongletsMenu.thematiquesLiees[3].icone}{" "}{ongletsMenu.thematiquesLiees[3].thematique}
           </H2>
           {/* Aires des appellations contrôlées */}
-          <div id="Aires des appellations contrôlées" className={styles.indicateurWrapper}>
+          <div id="Appellations contrôlées" className={styles.indicateurWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-                Aires des appellations contrôlées
+                Nombre d’appellations contrôlées
               </H3>
             </div>
             <AiresAppellationsControlees

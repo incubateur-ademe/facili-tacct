@@ -105,7 +105,7 @@ export const sommaireThematiques = {
         id: 'section4',
         thematique: 'Tourisme',
         icone: '🏖️',
-        sousCategories: ['Aires des appellations contrôlées']
+        sousCategories: ['Appellations contrôlées']
       }
     ]
   },

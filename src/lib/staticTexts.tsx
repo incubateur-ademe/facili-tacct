@@ -702,9 +702,14 @@ export const LCZText = () => (
 
 export const AiresAppellationsControleesText = () => (
   <>
-    <Body size="sm">
-      AIRES APPELLATIONS CONTRÔLÉES (AOC) ET INDICATIONS GÉOGRAPHIQUES PROTÉGÉES
-      (IGP)
+    <Body size="sm" style={{ marginTop: '2rem' }}>
+      Le changement climatique vient progressivement remettre en cause les liens 
+      historiquement construits entre produits, terroirs et savoir-faire locaux reconnus. 
+      Parallèlement, les attentes des consommateurs évoluent : au-delà de l’origine et 
+      de la qualité, ils exigent désormais une exemplarité environnementale accrue. Cette 
+      double pression interroge la capacité des appellations contrôlées à évoluer sans affaiblir 
+      leur identité, alors même qu’elles jouent un rôle structurant dans l’économie des territoires 
+      et participent fortement à leur attractivité touristique et à leur image de marque.
     </Body>
   </>
 );

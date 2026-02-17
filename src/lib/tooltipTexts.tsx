@@ -375,7 +375,26 @@ export const SurfacesToujoursEnHerbeText = (
 );
 
 export const airesAppellationsControleesTooltipText = (
-  <Body weight="bold" size="sm">
-    TOOLTIP
-  </Body>
+  <>
+    <Body weight="bold" size="sm">
+      Les « 
+      <a href="https://agriculture.gouv.fr/bien-connaitre-les-produits-de-lorigine-et-de-la-qualite" target="_blank" rel="noopener noreferrer">
+        signes d’identification de qualité et d’origine
+      </a> » (SIQO) garantissent la qualité et l’origine des produits alimentaires (fromages, vins, viandes…). Reconnus
+      au niveau européen depuis 1992, AOP et IGP certifient un savoir-faire traditionnel et des contrôles
+      réguliers ; ils ne sont pas cumulables.
+    </Body>
+    <Body weight="bold" size="sm" style={{ marginTop: '1rem' }}>
+      Appellation d’Origine Protégée (AOP) : Toutes les étapes de fabrication doivent être réalisées
+      selon un savoir-faire reconnu et dans une même zone géographique.
+    </Body>
+    <Body weight="bold" size="sm" style={{ marginTop: '1rem' }}>
+      Indication Géographique Protégée (IGP) : Au moins une étape de production est réalisée dans une
+      zone géographique donnée, conférant au produit une spécificité locale.
+    </Body>
+    <Body weight="bold" size="sm" style={{ marginTop: '1rem' }}>
+      L’AOC (Appellation d’Origine Contrôlée) est l’équivalent national de l’AOP pour les produits
+      agroalimentaires et viticoles. Elle peut aussi concerner des produits non couverts par l’UE (comme ceux de la forêt).
+    </Body>
+  </>
 );

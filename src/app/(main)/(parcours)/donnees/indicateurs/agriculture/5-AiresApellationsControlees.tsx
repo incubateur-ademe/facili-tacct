@@ -1,6 +1,7 @@
 'use client';
 
-import AiresAppellationsControleesCharts from '@/components/charts/agriculture/airesAppellationsControleesCharts';
+import PieChartAiresAppellationsControlees from '@/components/charts/agriculture/pieChartAiresAppellationsControlees';
+import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -8,7 +9,6 @@ import { TableCommuneModel } from '@/lib/postgres/models';
 import { AiresAppellationsControleesText } from '@/lib/staticTexts';
 import { airesAppellationsControleesTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 
 const parsePostgresArray = (pgArray: string | null): string[] => {
@@ -85,16 +85,25 @@ export const AiresAppellationsControlees = (props: {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
+            <MicroNumberCircle valeur={airesAppellationsControlees.length} arrondi={1} unite="" />
             {
               tableCommune !== undefined ? (
                 <>
                   <div className={styles.text}>
-                    <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                      TEXTE
-                    </Body>
+                    {
+                      airesAppellationsControlees.length > 1 ?
+                        <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                          Votre territoire compte {airesAppellationsControlees.length} AOP et IGP, véritables marqueurs de son
+                          identité, de son économie et de son attractivité.
+                        </Body>
+                        : <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                          Sans disposer d’appellations reconnues, votre territoire peut néanmoins être structurellement
+                          lié à la notoriété, à l’attractivité touristique et aux retombées économiques des AOP et IGP environnantes.
+                        </Body>
+                    }
                     <CustomTooltipNouveauParcours
                       title={airesAppellationsControleesTooltipText}
-                      texte="D'où vient ce chiffre ?"
+                      texte="Définition"
                     />
                   </div>
                 </>
@@ -108,9 +117,11 @@ export const AiresAppellationsControlees = (props: {
           <AiresAppellationsControleesText />
         </div>
         <div className={styles.datavizWrapper} style={{ borderRadius: "1rem 0 0 1rem", height: "fit-content" }}>
-          <AiresAppellationsControleesCharts
-            airesAppellationsControlees={airesAppellationsControlees}
-          />
+          <div className={styles.dataWrapper}>
+            <PieChartAiresAppellationsControlees
+              airesAppellationsControlees={airesAppellationsControlees}
+            />
+          </div>
           <div
             className={styles.sourcesExportWrapper}
             style={{
@@ -119,7 +130,7 @@ export const AiresAppellationsControlees = (props: {
             }}
           >
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : .
+              Source : <a href="https://www.inao.gouv.fr/" target="_blank" rel="noopener noreferrer">Institut national de l'origine et de la qualité (INAO)</a>, consulté en janvier 2026.
             </Body>
             <ExportButtonNouveauParcours
               data={airesAppellationsControlees}
@@ -127,8 +138,8 @@ export const AiresAppellationsControlees = (props: {
               type={type}
               libelle={libelle}
               code={code}
-              sheetName="Aires appellations controlées"
-              anchor="Aires appellations controlées"
+              sheetName="Appellations contrôlées"
+              anchor="Appellations contrôlées"
             />
           </div>
         </div>
