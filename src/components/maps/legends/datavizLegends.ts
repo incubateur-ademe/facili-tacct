@@ -788,3 +788,49 @@ export const debroussaillementLegend = [
     value: 'Zonage informatif des obligations légales de débroussaillement'
   }
 ];
+
+export const secheressesBarChartLegend = [
+  {
+    value: 'Vigilance',
+    color: "#FFFF00"
+  },
+  {
+    value: 'Alerte',
+    color: "#FF9900"
+  },
+  {
+    value: 'Alerte renforcée',
+    color: "#EA4335"
+  },
+  {
+    value: 'Crise',
+    color: "#980000"
+  },
+];
+
+export const secheressesSaisonsChartLegend = [
+  {
+    value: '2020',
+    color: "#FFC9E4"
+  },
+  {
+    value: '2021',
+    color: "#FFA3D2"
+  },
+  {
+    value: '2022',
+    color: "#FD57AB"
+  },
+  {
+    value: '2023',
+    color: "#CA307E"
+  },
+  {
+    value: '2024',
+    color: "#971356"
+  },
+  {
+    value: '2025',
+    color: "#640234"
+  },
+];

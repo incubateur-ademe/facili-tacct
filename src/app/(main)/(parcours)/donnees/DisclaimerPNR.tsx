@@ -1,7 +1,7 @@
 "use client";
 import Notice from "@codegouvfr/react-dsfr/Notice";
-import { useStyles } from "tss-react/dsfr";
 import { useEffect, useState } from "react";
+import { useStyles } from "tss-react/dsfr";
 
 const LOCALSTORAGE_KEY = "disclaimerPNR_closed";
 
@@ -31,7 +31,7 @@ export const DisclaimerPNR = () => {
         backgroundColor: 'var(--gris-medium)',
         borderRadius: '1rem',
         color: '#201F1E',
-        marginBottom: '2rem',
+        margin: '2rem 3rem',
         marginTop: '2rem',
         '& .fr-container': {
           maxWidth: 'none'

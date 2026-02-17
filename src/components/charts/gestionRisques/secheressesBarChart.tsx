@@ -1,7 +1,10 @@
 "use client";
 
+import { secheressesBarChartLegend } from "@/components/maps/legends/datavizLegends";
+import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import { Body } from "@/design-system/base/Textes";
-import { useLayoutEffect, useState } from "react";
+import useWindowDimensions from "@/hooks/windowDimensions";
+import { simpleBarChartTooltip } from "../ChartTooltips";
 import { NivoBarChart } from "../NivoBarChart";
 
 export const SecheressesBarChart = (
@@ -17,47 +20,56 @@ export const SecheressesBarChart = (
     }[]
   }
 ) => {
-  const graphData = restrictionsParAnnee.filter(data => ['2020', '2021', '2022', '2023', '2024', '2025'].includes(data.annee));
+  const graphData = restrictionsParAnnee
+    .filter(data => ['2020', '2021', '2022', '2023', '2024', '2025'].includes(data.annee))
+    .map(data => ({
+      annee: data.annee,
+      'Vigilance': data.vigilance,
+      'Alerte': data.alerte,
+      'Alerte renforcée': data.alerte_renforcee,
+      'Crise': data.crise
+    }));
 
   const minValueXTicks = graphData[0]?.annee;
   const maxValueXTicks = graphData[graphData.length - 1]?.annee;
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  useLayoutEffect(() => {
-    setIsTransitioning(true);
-    const timer = setTimeout(() => setIsTransitioning(false), 800);
-    return () => clearTimeout(timer);
-  }, [minValueXTicks, maxValueXTicks]);
+  const windowDimensions = useWindowDimensions();
 
   return (
     <div
       style={{
         height: "450px",
-        minWidth: "450px",
         width: '100%',
         backgroundColor: "white",
         borderRadius: "1rem"
       }}>
-      <style>{`
-        .nivo-bar-chart-container .bottom-tick {
-          opacity: ${isTransitioning ? '0' : '1'};
-          transition: opacity 0.2s ease-in-out;
-        }
-      `}</style>
       {graphData && graphData.length ?
-        <NivoBarChart
-          graphData={graphData}
-          keys={["vigilance", "alerte", "alerte_renforcee", "crise"]}
-          indexBy="annee"
-          showLegend={false}
-          axisLeftLegend="Nombre de restrictions"
-          bottomTickValues={
-            minValueXTicks !== maxValueXTicks
-              ? [`${minValueXTicks}`, `${maxValueXTicks}`]
-              : [`${minValueXTicks}`]
-          }
-          colors={["#FFFF00", "#FF9900", "#EA4335", "#980000"]}
-        />
+        <>
+          <NivoBarChart
+            graphData={graphData}
+            keys={["Vigilance", "Alerte", "Alerte renforcée", "Crise"]}
+            indexBy="annee"
+            showLegend={false}
+            axisLeftLegend="Nombre de jours cumulés de restrictions"
+            bottomTickValues={
+              minValueXTicks !== maxValueXTicks
+                ? [`${minValueXTicks}`, `${maxValueXTicks}`]
+                : [`${minValueXTicks}`]
+            }
+            colors={secheressesBarChartLegend.map(legend => legend.color)}
+            graphMarginBottom={windowDimensions.width! < 1230 ? 120 : 100}
+            tooltip={({ data }) => simpleBarChartTooltip({ data, legende: secheressesBarChartLegend })}
+          />
+          <div style={{ position: "relative", top: windowDimensions.width! < 1230 ? "-70px" : "-50px", margin: "0 1rem" }}>
+            <LegendCompColor
+              legends={secheressesBarChartLegend.map((legend, index) => ({
+                id: index,
+                value: legend.value,
+                color: legend.color
+              }))}
+              style={{ columnGap: "1em" }}
+            />
+          </div>
+        </>
         : <div
           style={{
             height: 'inherit',
@@ -65,7 +77,7 @@ export const SecheressesBarChart = (
             textAlign: 'center'
           }}
         >
-          <Body>Aucune donnée disponible avec ces filtres</Body>
+          <Body>Aucune donnée disponible</Body>
         </div>
       }
     </div>

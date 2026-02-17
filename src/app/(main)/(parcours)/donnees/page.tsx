@@ -2,6 +2,7 @@ import { LoaderText } from '@/components/ui/loader';
 import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import { Suspense } from 'react';
 import { SearchParams } from '../../types';
+import { DisclaimerPNR } from './DisclaimerPNR';
 import AgricultureServerPage from './thematiques/agriculture/AgricultureServerPage';
 import AmenagementServerPage from './thematiques/amenagement/AmenagementServerPage';
 import BiodiversiteServerPage from './thematiques/biodiversite/BiodiversiteServerPage';
@@ -9,8 +10,6 @@ import ConfortThermiqueServerPage from './thematiques/confortThermique/ConfortTh
 import EauServerPage from './thematiques/eau/EauServerPage';
 import GestionRisquesServerPage from './thematiques/gestionRisques/GestionRisquesServerPage';
 import SanteServerPage from './thematiques/sante/SanteServerPage';
-import { DisclaimerPNR } from './DisclaimerPNR';
-import { NewContainer } from '@/design-system/layout';
 
 const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type, thematique } = await props.searchParams;
@@ -22,9 +21,7 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
         <Suspense fallback={<LoaderText text='Nous chargeons vos données' />}>
           {
             type === "pnr" &&
-            <NewContainer style={{ padding: '0 3rem' }}>
-              <DisclaimerPNR />
-            </NewContainer>
+            <DisclaimerPNR />
           }
           {thematique === 'Confort thermique' ? (
             <ConfortThermiqueServerPage searchParams={props.searchParams} tableCommune={dbTableCommune} />

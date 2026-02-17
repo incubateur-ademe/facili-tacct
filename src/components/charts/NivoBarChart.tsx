@@ -46,6 +46,7 @@ type NivoBarChartProps = {
   groupMode?: 'grouped' | 'stacked' | undefined;
   showLegend?: boolean;
   isBarLine?: boolean;
+  graphMarginBottom?: number;
 };
 
 export const NivoBarChart = ({
@@ -61,7 +62,8 @@ export const NivoBarChart = ({
   axisLeftTickFactor = 1,
   groupMode = 'stacked',
   showLegend = true,
-  isBarLine = false
+  isBarLine = false,
+  graphMarginBottom
 }: NivoBarChartProps) => {
   return (
     <div className="nivo-bar-chart-container" style={{ width: '100%', height: '100%' }}>
@@ -73,8 +75,8 @@ export const NivoBarChart = ({
         colors={colors}
         margin={
           isBarLine
-            ? { top: 40, right: 80, bottom: 60, left: 80 }
-            : { top: 40, right: 80, bottom: 100, left: 80 }
+            ? { top: 40, right: 80, bottom: graphMarginBottom ?? 60, left: 80 }
+            : { top: 40, right: 80, bottom: graphMarginBottom ?? 100, left: 80 }
         }
         groupMode={groupMode}
         padding={0.3}
