@@ -255,7 +255,8 @@ export const MapTilesO3 = (props: {
         paint: {
           'circle-color': ['get', 'color'],
           'circle-radius': 9,
-          'circle-stroke-width': 0
+          'circle-stroke-width': 1,
+          'circle-stroke-color': '#000000'
         }
       });
 
@@ -414,7 +415,7 @@ export const MapTilesO3 = (props: {
         </div>
       )}
       <div
-        className={styles.legendRGA}
+        className={`${styles.legendRGA} legendWrapper`}
         style={{ width: 'auto', justifyContent: 'center' }}
       >
         {legend && legend}

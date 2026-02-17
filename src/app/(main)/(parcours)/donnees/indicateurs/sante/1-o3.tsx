@@ -5,8 +5,13 @@ import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { o3Legend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { Loader } from '@/components/ui/loader';
+import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
+import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import { O3 } from '@/lib/postgres/models';
+import { O3Text } from '@/lib/staticTexts';
+import { O3DynamicText } from '@/lib/textesIndicateurs/biodiversiteDynamicTexts';
+import { O3TooltipText } from '@/lib/tooltipTexts';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { lazy, Suspense, useRef } from 'react';
@@ -38,14 +43,18 @@ export const SeuilsReglementairesO3 = ({
           style={{ alignItems: 'center' }}
         >
           <div className={styles.text}>
-            <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
-              Texte dynamique des seuils réglementaires O3
-            </Body>
+            <O3DynamicText />
+            <CustomTooltipNouveauParcours
+              title={O3TooltipText}
+              texte="D'où vient ce chiffre ?"
+            />
           </div>
         </div>
-        <Body size="sm" style={{ marginTop: '1rem' }}>
-          Texte statique des seuils réglementaires O3
-        </Body>
+        <div className='pr-5 pt-8'>
+          <ReadMoreFade maxHeight={100}>
+            <O3Text />
+          </ReadMoreFade>
+        </div>
         <div className={styles.mapWrapper}>
           {coordonneesCommunes && coordonneesCommunes.codes.length ? (
             <Suspense fallback={<Loader />}>
@@ -57,46 +66,32 @@ export const SeuilsReglementairesO3 = ({
                 layer="o3"
                 o3={o3}
                 paint={{
-                'fill-color': [
-                  'step',
-                  ['round', ['get', 'valeur']],
-                  '#E0F9F7', // < 1
-                  1,
-                  '#C8F3EE',
-                  2,
-                  '#A4F5EE',
-                  3,
-                  '#85E6D8',
-                  4,
-                  '#A6E4D3',
-                  5,
-                  '#C4E8A3',
-                  6,
-                  '#DFEC7B', 
-                  8,
-                  '#F5E290', 
-                  10,
-                  '#FFD97A', 
-                  12,
-                  '#FFBD6B', 
-                  15,
-                  '#FFAB66', 
-                  20,
-                  '#FC9999',
-                  25,
-                  '#F37D7D',
-                  30,
-                  '#E06060',
-                  35,
-                  '#C97189',
-                  40,
-                  '#B982B2'
-                ],
-                'fill-opacity': 0.7,
-                'fill-antialias': false
-              }}
-              legend={<LegendCompColor legends={o3Legend} />}
-            />
+                  'fill-color': [
+                    'step',
+                    ['round', ['get', 'valeur']],
+                    '#A4F5EE', // 0-4
+                    5,
+                    '#C4E8A3', // 5-9
+                    10,
+                    '#F5E290', // 10-14
+                    15,
+                    '#FFAB66', // 15-19
+                    20,
+                    '#FC9999', // 20-24
+                    25,
+                    '#F37D7D', // 25-29
+                    30,
+                    '#E06060', // 30-34
+                    35,
+                    '#C97189', // 35-39
+                    40,
+                    '#B982B2'  // >= 40
+                  ],
+                  'fill-opacity': 0.7,
+                  'fill-antialias': false
+                }}
+                legend={<LegendCompColor legends={o3Legend} />}
+              />
             </Suspense>
           ) : (
             <div className="p-10 flex flex-row justify-center">
@@ -107,14 +102,14 @@ export const SeuilsReglementairesO3 = ({
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
-          Source :
+          Source : INERIS et Geod’air (moyenne 2023-2025), consulté en janvier 2026
         </Body>
         <ExportPngMaplibreButtonNouveauParcours
           mapRef={mapRef}
           mapContainer={mapContainer}
-          documentDiv=".lczLegendWrapper"
+          documentDiv=".legendWrapper"
           fileName={`Seuils_reglementaires_o3_${type}_${libelle}`}
-          anchor="Seuils réglementaires O3"
+          anchor="Pollution à l'ozone"
           type={type}
           libelle={libelle}
           code={code}

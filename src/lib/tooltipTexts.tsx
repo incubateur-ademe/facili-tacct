@@ -398,3 +398,12 @@ export const airesAppellationsControleesTooltipText = (
     </Body>
   </>
 );
+
+export const O3TooltipText = (
+  <Body weight="bold" size="sm">
+    Au niveau européen, la valeur cible pour la protection de la santé humaine est fixé à un 
+    maximum journalier de la moyenne sur 8 h de 120 µg/m3, à ne pas dépasser plus de 25 jours 
+    par an (en moyenne sur 3 ans). Ce chiffre est calculé par l’Institut national de l'environnement 
+    industriel et des risques (Ineris) d'après des concentrations analysées, combinant modèle et observations.
+  </Body>
+);

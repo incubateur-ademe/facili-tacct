@@ -1,5 +1,6 @@
 'use client';
 import ScrollToHash from '@/components/interactions/ScrollToHash';
+import { SourcesSection } from '@/components/interactions/scrollToSource';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import { O3 } from '@/lib/postgres/models';
@@ -58,7 +59,9 @@ export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
     <div className={styles.explorerMesDonneesContainer}>
       <ScrollToHash />
       <H1 style={{ color: 'var(--principales-vert)', fontSize: '2rem' }}>
-        SANTE
+        En accentuant des fragilités existantes, le changement climatique exerce une 
+        pression croissante sur la santé des populations. Quels facteurs se combinent aujourd’hui 
+        sur votre territoire ?
       </H1>
       {/* Introduction */}
       <section>
@@ -84,16 +87,16 @@ export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
           {ongletsMenu.thematiquesLiees[0].thematique}
         </H2>
 
-        {/* Seuils réglementaires O3 */}
+        {/* Pollution à l'ozone O3 */}
         <div
-          id="Seuils réglementaires O3"
+          id="Pollution à l'ozone"
           className={styles.indicateurMapWrapper}
         >
           <div className={styles.h3Titles}>
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
             >
-              Nombre de dépassement du seuil journalier 120 µg/m³ de O3 sur 2024
+              Pollution à l’ozone
             </H3>
           </div>
           <SeuilsReglementairesO3
@@ -102,6 +105,8 @@ export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
           />
         </div>
       </section>
+      {/* Sources */}
+      <SourcesSection tag="h2" thematique="sante" />
     </div>
   );
 };

@@ -764,16 +764,9 @@ export const RgaMapLegend = [
 ];
 
 export const o3Legend = [
-  { color: '#E0F9F7', value: '< 1' },
-  { color: '#C8F3EE', value: '1' },
-  { color: '#A4F5EE', value: '2' },
-  { color: '#85E6D8', value: '3' },
-  { color: '#A6E4D3', value: '4' },
-  { color: '#C4E8A3', value: '5' },
-  { color: '#DFEC7B', value: '6-7' },
-  { color: '#F5E290', value: '8-9' },
-  { color: '#FFD97A', value: '10-11' },
-  { color: '#FFBD6B', value: '12-14' },
+  { color: '#A4F5EE', value: '0-4' },
+  { color: '#C4E8A3', value: '5-9' },
+  { color: '#F5E290', value: '10-14' },
   { color: '#FFAB66', value: '15-19' },
   { color: '#FC9999', value: '20-24' },
   { color: '#F37D7D', value: '25-29' },

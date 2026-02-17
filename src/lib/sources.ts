@@ -98,5 +98,12 @@ export const sourcesEtudes = {
       url: 'https://files.georisques.fr/ial/Fiche_OLD.pdf',
       texte: 'Fiche d’information sur les obligations de débroussaillement'
     }
+  ],
+  sante: [
+    {
+      numero: 1,
+      url: "https://www.notre-environnement.gouv.fr/actualites/breves/article/qualite-de-l-air-combien-d-agglomerations-ont-depasse-les-seuils-en-2022",
+      texte: "Qualité de l'air : combien d'agglomérations ont dépassé les seuils en 2022 ?"
+    }
   ]
 };

@@ -6,7 +6,10 @@ import {
   debroussaillement,
   directiveCadreSurLeau,
   eutrophisation,
-  irriguee
+  irriguee,
+  OMS,
+  ozone,
+  valeursGuidesO3
 } from '@/lib/definitions';
 
 {
@@ -703,12 +706,12 @@ export const LCZText = () => (
 export const AiresAppellationsControleesText = () => (
   <>
     <Body size="sm" style={{ marginTop: '2rem' }}>
-      Le changement climatique vient progressivement remettre en cause les liens 
-      historiquement construits entre produits, terroirs et savoir-faire locaux reconnus. 
-      Parallèlement, les attentes des consommateurs évoluent : au-delà de l’origine et 
-      de la qualité, ils exigent désormais une exemplarité environnementale accrue. Cette 
-      double pression interroge la capacité des appellations contrôlées à évoluer sans affaiblir 
-      leur identité, alors même qu’elles jouent un rôle structurant dans l’économie des territoires 
+      Le changement climatique vient progressivement remettre en cause les liens
+      historiquement construits entre produits, terroirs et savoir-faire locaux reconnus.
+      Parallèlement, les attentes des consommateurs évoluent : au-delà de l’origine et
+      de la qualité, ils exigent désormais une exemplarité environnementale accrue. Cette
+      double pression interroge la capacité des appellations contrôlées à évoluer sans affaiblir
+      leur identité, alors même qu’elles jouent un rôle structurant dans l’économie des territoires
       et participent fortement à leur attractivité touristique et à leur image de marque.
     </Body>
   </>
@@ -762,3 +765,21 @@ export const DebroussaillementText = ({
     </Body>
   </>
 );
+
+export const O3Text = () => (
+  <Body size="sm">
+    <DefinitionTooltip title={ozone}>L’ozone</DefinitionTooltip>{' '}
+    (O3) fait parti des 4 polluants atmosphériques pour lesquels il existe
+    une réglementation et des seuils conduisant aux déclenchement de procédures 
+    préfectorales. Si les pics de pollution aiguë provoquent des symptômes 
+    respiratoires immédiats, l’exposition chronique constitue un enjeu sanitaire 
+    plus préoccupant : elle est associée à des effets à long terme, même à des 
+    concentrations ne déclenchant pas nécessairement d’alerte. C’est notamment pourquoi 
+    l’<DefinitionTooltip title={OMS}>OMS</DefinitionTooltip> {" "}
+    recommande <DefinitionTooltip title={valeursGuidesO3}>des valeurs guides </DefinitionTooltip>
+    plus strictes que le seuil européen actuel. À titre d’exemple, en 2022, seules 12 % des 
+    agglomérations françaises le dépassaient alors que 95 % d’entre elles auraient été 
+    en dépassement si les <ScrollToSourceTag sourceNumero={1}>valeurs guides de l’OMS avaient été 
+    appliquées </ScrollToSourceTag>.
+  </Body>
+)
