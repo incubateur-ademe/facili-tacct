@@ -15,6 +15,8 @@ type Item = {
   label: string;
   definition: string;
   linkedThemes: string[];
+  themesSansAggravation: string[] | null;
+  themesSansAggravationEpciCommunes: string[] | null;
   actions: ({
     title: string;
     link: string;
@@ -52,25 +54,28 @@ export const AnalyseSensibilite = ({
 
   return (
     <div className={styles.analyseSensibiliteContainer}>
-      <div className={styles.titreWrapper}>
-        <div className={styles.left}>
-          <H3 style={{ fontSize: 22 }}>
-            Analyse de sensibilité : les thématiques à traiter impérativement
-          </H3>
-          <div className={styles.separator} />
-          <Body style={{ marginTop: '1rem' }}>
-            Voici quelques pistes de thématiques à aborder lors de l’analyse de sensibilité,
-            mais celle-ci reste à effectuer en fonction de vos dynamiques territoriales, des
-            actions déjà entreprises et de vos capacités d’adaptation.
-          </Body>
-        </div>
-        <Image 
-          src={ChatChercheur} 
-          alt="illustration chat chercheur" 
-          style={{ height: 'auto', width: 'auto', maxHeight: 104 }}
-        />
-      </div>
-
+      {
+        (isMap || aggravationLevel === "Aggravation forte" || aggravationLevel === "Aggravation très forte") && (
+          <div className={styles.titreWrapper}>
+            <div className={styles.left}>
+              <H3 style={{ fontSize: 22 }}>
+                Analyse de la sensibilité : les thématiques à traiter impérativement
+              </H3>
+              <div className={styles.separator} />
+              <Body style={{ marginTop: '1rem' }}>
+                Voici quelques pistes de thématiques à aborder lors de l’analyse de la sensibilité,
+                mais celle-ci reste à effectuer en fonction de vos dynamiques territoriales, des
+                actions déjà entreprises et de vos capacités d’adaptation.
+              </Body>
+            </div>
+            <Image
+              src={ChatChercheur}
+              alt="illustration chat chercheur"
+              style={{ height: 'auto', width: 'auto', maxHeight: 104 }}
+            />
+          </div>
+        )
+      }
       {/* Différents conseils selon le type de territoire */}
       {
         isMap ? (
@@ -92,44 +97,52 @@ export const AnalyseSensibilite = ({
                 </Body>
               </div>
               <div className={styles.linkedThemes} style={{ lineHeight: "1.5rem" }}>
-                {item.linkedThemes.map((theme, index) => (
-                <ul key={index}>
-                  <li>
-                    <Body>
-                      {theme}
-                    </Body>
-                  </li>
-                </ul>
-              ))}
-              </div>
-            </div>
-            <div className={styles.themesListe}>
-              <div className={styles.titre}>
-                <div
-                  className={styles.circleIndicator}
-                  style={{ backgroundColor: '#FFEBB6' }}
-                />
-                <div
-                  className={styles.circleIndicator}
-                  style={{
-                    backgroundColor: '#FFF',
-                    border: '1px solid black'
-                  }}
-                />
-                <Body weight="bold">
-                  Aggravation modérée ou pas d'évolution
-                </Body>
-              </div>
-              <div className={styles.linkedThemes} style={{ lineHeight: "1.5rem" }}>
                 <ul>
-                  <li>
-                    <Body>
-                      Éventuelles variations saisonnières à prendre en compte
-                    </Body>
-                  </li>
+                  {item.linkedThemes.map((theme, index) => (
+                    <li key={index}>
+                      <Body>
+                        {theme}
+                      </Body>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
+            {
+              item.themesSansAggravation && (
+                <div className={styles.themesListe}>
+                  <div className={styles.titre}>
+                    <div
+                      className={styles.circleIndicator}
+                      style={{ backgroundColor: '#FFEBB6' }}
+                    />
+                    <div
+                      className={styles.circleIndicator}
+                      style={{
+                        backgroundColor: '#FFF',
+                        border: '1px solid black'
+                      }}
+                    />
+                    <Body weight="bold">
+                      Aggravation modérée ou pas d'évolution
+                    </Body>
+                  </div>
+                  <div className={styles.linkedThemes} style={{ lineHeight: "1.5rem" }}>
+                    <ul >
+                      {
+                        item.themesSansAggravation.map((theme, index) => (
+                          <li key={index}>
+                            <Body>
+                              {theme}
+                            </Body>
+                          </li>
+                        ))
+                      }
+                    </ul>
+                  </div>
+                </div>
+              )
+            }
           </div>
         ) : (
           <div className={styles.themesListe}>
@@ -154,15 +167,23 @@ export const AnalyseSensibilite = ({
               </Body>
             </div>
             <div className={styles.linkedThemes}>
-              {item.linkedThemes.map((theme, index) => (
-                <ul key={index}>
-                  <li>
-                    <Body>
-                      {theme}
-                    </Body>
-                  </li>
-                </ul>
-              ))}
+              <ul >
+                {(aggravationLevel === "Aggravation forte" || aggravationLevel === "Aggravation très forte")
+                  && item.linkedThemes.map((theme, index) => (
+                    <li key={index}>
+                      <Body>
+                        {theme}
+                      </Body>
+                    </li>
+                  ))}
+              </ul>
+              {(aggravationLevel === "Aggravation modérée" || aggravationLevel === "Pas d'évolution")
+                && item.themesSansAggravationEpciCommunes
+                && item.themesSansAggravationEpciCommunes.map((theme, index) => (
+                  <Body key={index} style={{ lineHeight: 1.6 }}>
+                    {theme}
+                  </Body>
+                ))}
             </div>
           </div>
         )
@@ -175,18 +196,23 @@ export const AnalyseSensibilite = ({
           onClick={redirectionExplorerMesDonnees}
         />
       </div>
-      <div className={styles.actionsListeWrapper}>
-        <Body weight="bold" style={{ marginBottom: '0.5rem' }}>
-          Pistes d’actions
-        </Body>
-        {item.actions.map((action, index) => (
-          <div key={index} style={{ lineHeight: "2rem" }}>
-            <Link href={action.link} target="_blank" className={styles.actionLink}>
-              {action.title}
-            </Link>
+      {
+        (aggravationLevel === "Aggravation forte" || aggravationLevel === "Aggravation très forte")
+        && (
+          <div className={styles.actionsListeWrapper}>
+            <Body weight="bold" style={{ marginBottom: '0.5rem' }}>
+              Pistes d’actions
+            </Body>
+            {item.actions.map((action, index) => (
+              <div key={index} style={{ lineHeight: "2rem" }}>
+                <Link href={action.link} target="_blank" className={styles.actionLink}>
+                  {action.title}
+                </Link>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        )
+      }
 
 
     </div>

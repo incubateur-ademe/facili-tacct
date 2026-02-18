@@ -8,7 +8,7 @@ import styles from '../patch4c.module.scss';
 
 export const ConseilsAggravation = () => {
   return (
-    <NewContainer size="xl" style={{ padding: '0rem 1rem 4rem' }}>
+    <NewContainer size="xl" style={{ padding: '1.5rem 1rem 4rem' }}>
       <div className={styles.conseilsAggravationContainer}>
         <H2
           style={{

@@ -28,7 +28,8 @@ export const GetPatch4 = async (
               { epci: code },
               { code_pnr: code },
               { libelle_petr: libelle },
-              { departement: code }
+              { departement: code },
+              { ept: libelle }
             ],
             departement: {
               not: null
@@ -45,6 +46,13 @@ export const GetPatch4 = async (
           const value = await prisma.databases_v2_patch4c.findMany({
             where: {
               code_geographique: code
+            }
+          });
+          return value == null ? [] : (value as Patch4[]);
+        } else if (type === 'ept') {
+          const value = await prisma.databases_v2_patch4c.findMany({
+            where: {
+              code_geographique: libelle
             }
           });
           return value == null ? [] : (value as Patch4[]);
