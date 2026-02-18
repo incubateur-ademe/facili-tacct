@@ -13,9 +13,9 @@ import { ErosionCotiereText } from '@/lib/staticTexts';
 import { erosionCotiereTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from "next/navigation";
 import { lazy, Suspense, useRef } from 'react';
+import styles from '../../explorerDonnees.module.scss';
 
 const MapErosionCotiere = lazy(() => import('@/components/maps/mapErosionCotiere').then(m => ({ default: m.MapErosionCotiere })));
-import styles from '../../explorerDonnees.module.scss';
 
 export const ErosionCotiereComp = ({
   erosionCotiere,

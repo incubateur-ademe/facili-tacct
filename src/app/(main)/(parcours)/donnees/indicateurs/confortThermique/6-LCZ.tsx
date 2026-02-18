@@ -11,9 +11,9 @@ import { LCZCeremaText1, LCZText, LCZText2 } from '@/lib/staticTexts';
 import { LCZTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from "next/navigation";
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import styles from '../../explorerDonnees.module.scss';
 
 const MapLCZ = lazy(() => import('@/components/maps/mapLCZ').then(m => ({ default: m.MapLCZ })));
-import styles from '../../explorerDonnees.module.scss';
 
 export const LCZ = ({
   coordonneesCommunes,
@@ -54,15 +54,17 @@ export const LCZ = ({
         <div className={styles.mapWrapper}>
           {
             coordonneesCommunes ? (
-              <div ref={exportPNGRef}>
-                <MapLCZ
-                  coordonneesCommunes={coordonneesCommunes}
-                  isLoading={isLoading}
-                  isLczCovered={isLczCovered}
-                  mapRef={mapRef}
-                  mapContainer={mapContainer}
-                />
-              </div>
+              <Suspense fallback={<Loader />}>
+                <div ref={exportPNGRef}>
+                  <MapLCZ
+                    coordonneesCommunes={coordonneesCommunes}
+                    isLoading={isLoading}
+                    isLczCovered={isLczCovered}
+                    mapRef={mapRef}
+                    mapContainer={mapContainer}
+                  />
+                </div>
+              </Suspense>
             ) : <DataNotFoundForGraph image={DataNotFound} />
           }
         </div>

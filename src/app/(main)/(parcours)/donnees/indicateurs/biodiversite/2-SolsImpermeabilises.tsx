@@ -18,9 +18,9 @@ import { consommationEspacesNafDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
 import { lazy, Suspense } from 'react';
+import styles from '../../explorerDonnees.module.scss';
 
 const MapEspacesNaf = lazy(() => import('@/components/maps/mapEspacesNAF').then(m => ({ default: m.MapEspacesNaf })));
-import styles from '../../explorerDonnees.module.scss';
 
 export const SolsImpermeabilises = (props: {
   consommationNAF: ConsommationNAF[];
@@ -75,7 +75,7 @@ export const SolsImpermeabilises = (props: {
         <div className={styles.mapWrapper}>
           {
             consommationNAF && coordonneesCommunes ? (
-              <>
+              <Suspense fallback={<Loader />}>
                 <MapEspacesNaf
                   consommationNAF={consommationNAF}
                   communesCodes={coordonneesCommunes?.codes ?? []}
@@ -92,7 +92,7 @@ export const SolsImpermeabilises = (props: {
                 >
                   <LegendCompColor legends={espacesNAFDatavizLegend} />
                 </div>
-              </>
+              </Suspense>
             ) : <div className='p-10 flex flex-row justify-center'>
               <DataNotFoundForGraph image={DataNotFound} />
             </div>

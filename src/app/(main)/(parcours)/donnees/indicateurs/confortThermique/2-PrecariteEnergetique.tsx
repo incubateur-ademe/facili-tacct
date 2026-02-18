@@ -5,13 +5,14 @@ import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { CopyLinkClipboard } from '@/components/interactions/CopyLinkClipboard';
 import { fragiliteEcoLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
+import { Loader } from '@/components/ui/loader';
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { ConfortThermique } from "@/lib/postgres/models";
 import { fragiliteEconomiqueTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
-import { lazy, Suspense } from 'react';
 import { useSearchParams } from "next/navigation";
+import { lazy, Suspense } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 
 const MapConfortThermique = lazy(() => import('@/components/maps/mapConfortThermique').then(m => ({ default: m.MapConfortThermique })));
@@ -124,7 +125,7 @@ export const PrecariteEnergetique = ({
         <div className={styles.mapWrapper}>
           {
             confortThermique.length > 0 && precariteLogTerritoire ? (
-              <>
+              <Suspense fallback={<Loader />}>
                 <MapConfortThermique precariteData={precariteData} coordonneesCommunes={coordonneesCommunes} />
                 <div
                   className={styles.legend}
@@ -132,7 +133,7 @@ export const PrecariteEnergetique = ({
                 >
                   <LegendCompColor legends={fragiliteEcoLegend} />
                 </div>
-              </>
+              </Suspense>
             ) : (
               <div className='p-10 flex flex-row justify-center'>
                 <DataNotFoundForGraph image={DataNotFound} />

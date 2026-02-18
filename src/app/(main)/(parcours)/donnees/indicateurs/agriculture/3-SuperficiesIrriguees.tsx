@@ -17,9 +17,9 @@ import { IndicatorExportTransformations } from '@/lib/utils/export/environmental
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { lazy, Suspense, useMemo } from 'react';
+import styles from '../../explorerDonnees.module.scss';
 
 const MapSurfacesIrriguees = lazy(() => import('@/components/maps/mapSurfacesIrriguees').then(m => ({ default: m.MapSurfacesIrriguees })));
-import styles from '../../explorerDonnees.module.scss';
 
 export const SuperficiesIrriguees = (props: {
   tableCommune: TableCommuneModel[];
@@ -136,7 +136,7 @@ export const SuperficiesIrriguees = (props: {
         <div className={styles.mapWrapper}>
           {
             coordonneesCommunes && tableCommuneFiltered.length > 0 ? (
-              <>
+              <Suspense fallback={<Loader />}>
                 <MapSurfacesIrriguees
                   communesCodes={coordonneesCommunes.codes}
                   surfacesIrriguees={surfacesIrrigueesData}
@@ -151,7 +151,7 @@ export const SuperficiesIrriguees = (props: {
                 >
                   <LegendCompColor legends={surfacesIrrigueesLegend} />
                 </div>
-              </>
+              </Suspense>
             ) : (
               <div className={styles.dataNotFoundForMap}>
                 <DataNotFoundForGraph image={DataNotFound} />

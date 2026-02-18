@@ -16,10 +16,10 @@ import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { lazy, Suspense, useRef } from 'react';
-
-const MapTiles = lazy(() => import('@/components/maps/mapTiles').then(m => ({ default: m.MapTiles })));
 import styles from '../../explorerDonnees.module.scss';
 import { sumProperty } from '../fonctions';
+
+const MapTiles = lazy(() => import('@/components/maps/mapTiles').then(m => ({ default: m.MapTiles })));
 
 export const TypesDeSols = ({
   confortThermique,
@@ -139,7 +139,7 @@ export const TypesDeSols = ({
           {confortThermique &&
             confortThermique.length &&
             coordonneesCommunes ? (
-            <>
+            <Suspense fallback={<Loader />}>
               <MapTiles
                 coordonneesCommunes={coordonneesCommunes}
                 mapRef={mapRef}
@@ -250,7 +250,7 @@ export const TypesDeSols = ({
               >
                 <LegendCompColor legends={vegetalisationLegend} />
               </div>
-            </>
+            </Suspense>
           ) : (
             <div className="p-10 flex flex-row justify-center">
               <DataNotFoundForGraph image={DataNotFound} />

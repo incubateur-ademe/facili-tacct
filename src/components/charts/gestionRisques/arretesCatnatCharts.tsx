@@ -2,8 +2,8 @@ import { CatnatTypes } from '@/app/(main)/types';
 import { BarChartCatnat } from '@/components/charts/gestionRisques/BarChartCatnat';
 import PieChartCatnat from '@/components/charts/gestionRisques/pieChartCatnat';
 import { LegendCatnat } from '@/components/maps/legends/legendCatnat';
-import { Loader } from '@/components/ui/loader';
 import RangeSlider from '@/components/Slider';
+import { Loader } from '@/components/ui/loader';
 import SubTabs from '@/components/ui/SubTabs';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
@@ -103,11 +103,13 @@ const ArretesCatnatCharts = (props: Props) => {
               setValue={setTypeRisqueValue}
             />
           </div>
-          <MapCatnat
-            catnatData={catnatData}
-            coordonneesCommunes={coordonneesCommunes}
-            typeRisqueValue={typeRisqueValue}
-          />
+          <Suspense fallback={<Loader />}>
+            <MapCatnat
+              catnatData={catnatData}
+              coordonneesCommunes={coordonneesCommunes}
+              typeRisqueValue={typeRisqueValue}
+            />
+          </Suspense>
           <div
             className={styles.legend}
             style={{ width: 'auto', justifyContent: 'center' }}

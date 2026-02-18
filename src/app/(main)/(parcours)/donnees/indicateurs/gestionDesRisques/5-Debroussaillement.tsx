@@ -1,7 +1,5 @@
 'use client';
-import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/ExportPng';
-import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { debroussaillementLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { Loader } from '@/components/ui/loader';
@@ -12,9 +10,9 @@ import { DebroussaillementText } from '@/lib/staticTexts';
 import { debroussaillementTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from 'next/navigation';
 import { lazy, Suspense, useRef } from 'react';
+import styles from '../../explorerDonnees.module.scss';
 
 const MapTiles = lazy(() => import('@/components/maps/mapTiles').then(m => ({ default: m.MapTiles })));
-import styles from '../../explorerDonnees.module.scss';
 
 export const Debroussaillement = ({
   coordonneesCommunes

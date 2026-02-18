@@ -18,9 +18,9 @@ import * as turf from '@turf/turf';
 import type { Feature, MultiPoint, Point } from 'geojson';
 import { useSearchParams } from "next/navigation";
 import { lazy, Suspense } from 'react';
+import styles from '../../explorerDonnees.module.scss';
 
 const MapAOT40 = lazy(() => import('@/components/maps/mapAOT40').then(m => ({ default: m.MapAOT40 })));
-import styles from '../../explorerDonnees.module.scss';
 
 type NearestPoint = Feature<Point, {
   featureIndex: number;
@@ -91,7 +91,7 @@ export const OzoneEtVegetation = (props: {
         <div className={styles.mapWrapper}>
           {
             aot40.length && contoursCommunes ? (
-              <>
+              <Suspense fallback={<Loader />}>
                 <MapAOT40
                   aot40={aot40}
                   contoursCommunes={contoursCommunes}
@@ -103,7 +103,7 @@ export const OzoneEtVegetation = (props: {
                 >
                   <LegendCompColor legends={aot40Legends} />
                 </div>
-              </>
+              </Suspense>
             ) : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
           }
         </div>
