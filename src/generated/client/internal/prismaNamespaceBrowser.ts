@@ -83,12 +83,12 @@ export type ModelName = (typeof ModelName)[keyof typeof ModelName]
  * Enums
  */
 
-export const TransactionIsolationLevel = {
+export const TransactionIsolationLevel = runtime.makeStrictEnum({
   ReadUncommitted: 'ReadUncommitted',
   ReadCommitted: 'ReadCommitted',
   RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
-} as const
+} as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
@@ -298,7 +298,19 @@ export const Databases_v2_confort_thermiqueScalarFieldEnum = {
   clc_3_foret_semiNaturel: 'clc_3_foret_semiNaturel',
   clc_4_humide: 'clc_4_humide',
   clc_5_eau: 'clc_5_eau',
-  superf_choro: 'superf_choro'
+  superf_choro: 'superf_choro',
+  under_4_sum_2006: 'under_4_sum_2006',
+  to_75_sum_2006: 'to_75_sum_2006',
+  over_75_sum_2006: 'over_75_sum_2006',
+  under_4_sum_2011: 'under_4_sum_2011',
+  to_75_sum_2011: 'to_75_sum_2011',
+  over_75_sum_2011: 'over_75_sum_2011',
+  under_4_sum_2016: 'under_4_sum_2016',
+  to_75_sum_2016: 'to_75_sum_2016',
+  over_75_sum_2016: 'over_75_sum_2016',
+  under_4_sum_2022: 'under_4_sum_2022',
+  to_75_sum_2022: 'to_75_sum_2022',
+  over_75_sum_2022: 'over_75_sum_2022'
 } as const
 
 export type Databases_v2_confort_thermiqueScalarFieldEnum = (typeof Databases_v2_confort_thermiqueScalarFieldEnum)[keyof typeof Databases_v2_confort_thermiqueScalarFieldEnum]
@@ -505,7 +517,17 @@ export const Databases_v2_patch4cScalarFieldEnum = {
   feux_foret: 'feux_foret',
   secheresse_sols: 'secheresse_sols',
   fortes_precipitations: 'fortes_precipitations',
-  fortes_chaleurs: 'fortes_chaleurs'
+  fortes_chaleurs: 'fortes_chaleurs',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr'
 } as const
 
 export type Databases_v2_patch4cScalarFieldEnum = (typeof Databases_v2_patch4cScalarFieldEnum)[keyof typeof Databases_v2_patch4cScalarFieldEnum]
