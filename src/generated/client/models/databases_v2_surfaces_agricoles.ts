@@ -28,7 +28,6 @@ export type AggregateDatabases_v2_surfaces_agricoles = {
 
 export type Databases_v2_surfaces_agricolesAvgAggregateOutputType = {
   index: number | null
-  epci: number | null
   exploitation_sau: number | null
   exploitation_sau_terres_arables: number | null
   exploitation_sau_terres_arables_cereales: number | null
@@ -70,8 +69,7 @@ export type Databases_v2_surfaces_agricolesAvgAggregateOutputType = {
 }
 
 export type Databases_v2_surfaces_agricolesSumAggregateOutputType = {
-  index: bigint | null
-  epci: bigint | null
+  index: number | null
   exploitation_sau: number | null
   exploitation_sau_terres_arables: number | null
   exploitation_sau_terres_arables_cereales: number | null
@@ -113,8 +111,8 @@ export type Databases_v2_surfaces_agricolesSumAggregateOutputType = {
 }
 
 export type Databases_v2_surfaces_agricolesMinAggregateOutputType = {
-  index: bigint | null
-  epci: bigint | null
+  index: number | null
+  epci: string | null
   exploitation_sau: number | null
   exploitation_sau_terres_arables: number | null
   exploitation_sau_terres_arables_cereales: number | null
@@ -156,8 +154,8 @@ export type Databases_v2_surfaces_agricolesMinAggregateOutputType = {
 }
 
 export type Databases_v2_surfaces_agricolesMaxAggregateOutputType = {
-  index: bigint | null
-  epci: bigint | null
+  index: number | null
+  epci: string | null
   exploitation_sau: number | null
   exploitation_sau_terres_arables: number | null
   exploitation_sau_terres_arables_cereales: number | null
@@ -245,7 +243,6 @@ export type Databases_v2_surfaces_agricolesCountAggregateOutputType = {
 
 export type Databases_v2_surfaces_agricolesAvgAggregateInputType = {
   index?: true
-  epci?: true
   exploitation_sau?: true
   exploitation_sau_terres_arables?: true
   exploitation_sau_terres_arables_cereales?: true
@@ -288,7 +285,6 @@ export type Databases_v2_surfaces_agricolesAvgAggregateInputType = {
 
 export type Databases_v2_surfaces_agricolesSumAggregateInputType = {
   index?: true
-  epci?: true
   exploitation_sau?: true
   exploitation_sau_terres_arables?: true
   exploitation_sau_terres_arables_cereales?: true
@@ -546,8 +542,8 @@ export type databases_v2_surfaces_agricolesGroupByArgs<ExtArgs extends runtime.T
 }
 
 export type Databases_v2_surfaces_agricolesGroupByOutputType = {
-  index: bigint
-  epci: bigint
+  index: number
+  epci: string
   exploitation_sau: number | null
   exploitation_sau_terres_arables: number | null
   exploitation_sau_terres_arables_cereales: number | null
@@ -612,8 +608,8 @@ export type databases_v2_surfaces_agricolesWhereInput = {
   AND?: Prisma.databases_v2_surfaces_agricolesWhereInput | Prisma.databases_v2_surfaces_agricolesWhereInput[]
   OR?: Prisma.databases_v2_surfaces_agricolesWhereInput[]
   NOT?: Prisma.databases_v2_surfaces_agricolesWhereInput | Prisma.databases_v2_surfaces_agricolesWhereInput[]
-  index?: Prisma.BigIntFilter<"databases_v2_surfaces_agricoles"> | bigint | number
-  epci?: Prisma.BigIntFilter<"databases_v2_surfaces_agricoles"> | bigint | number
+  index?: Prisma.IntFilter<"databases_v2_surfaces_agricoles"> | number
+  epci?: Prisma.StringFilter<"databases_v2_surfaces_agricoles"> | string
   exploitation_sau?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
   exploitation_sau_terres_arables?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
   exploitation_sau_terres_arables_cereales?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
@@ -698,11 +694,11 @@ export type databases_v2_surfaces_agricolesOrderByWithRelationInput = {
 }
 
 export type databases_v2_surfaces_agricolesWhereUniqueInput = Prisma.AtLeast<{
-  index?: bigint | number
+  index?: number
   AND?: Prisma.databases_v2_surfaces_agricolesWhereInput | Prisma.databases_v2_surfaces_agricolesWhereInput[]
   OR?: Prisma.databases_v2_surfaces_agricolesWhereInput[]
   NOT?: Prisma.databases_v2_surfaces_agricolesWhereInput | Prisma.databases_v2_surfaces_agricolesWhereInput[]
-  epci?: Prisma.BigIntFilter<"databases_v2_surfaces_agricoles"> | bigint | number
+  epci?: Prisma.StringFilter<"databases_v2_surfaces_agricoles"> | string
   exploitation_sau?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
   exploitation_sau_terres_arables?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
   exploitation_sau_terres_arables_cereales?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
@@ -795,8 +791,8 @@ export type databases_v2_surfaces_agricolesScalarWhereWithAggregatesInput = {
   AND?: Prisma.databases_v2_surfaces_agricolesScalarWhereWithAggregatesInput | Prisma.databases_v2_surfaces_agricolesScalarWhereWithAggregatesInput[]
   OR?: Prisma.databases_v2_surfaces_agricolesScalarWhereWithAggregatesInput[]
   NOT?: Prisma.databases_v2_surfaces_agricolesScalarWhereWithAggregatesInput | Prisma.databases_v2_surfaces_agricolesScalarWhereWithAggregatesInput[]
-  index?: Prisma.BigIntWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | bigint | number
-  epci?: Prisma.BigIntWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | bigint | number
+  index?: Prisma.IntWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
+  epci?: Prisma.StringWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | string
   exploitation_sau?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
   exploitation_sau_terres_arables?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
   exploitation_sau_terres_arables_cereales?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
@@ -838,8 +834,8 @@ export type databases_v2_surfaces_agricolesScalarWhereWithAggregatesInput = {
 }
 
 export type databases_v2_surfaces_agricolesCreateInput = {
-  index: bigint | number
-  epci: bigint | number
+  index: number
+  epci: string
   exploitation_sau?: number | null
   exploitation_sau_terres_arables?: number | null
   exploitation_sau_terres_arables_cereales?: number | null
@@ -881,8 +877,8 @@ export type databases_v2_surfaces_agricolesCreateInput = {
 }
 
 export type databases_v2_surfaces_agricolesUncheckedCreateInput = {
-  index: bigint | number
-  epci: bigint | number
+  index: number
+  epci: string
   exploitation_sau?: number | null
   exploitation_sau_terres_arables?: number | null
   exploitation_sau_terres_arables_cereales?: number | null
@@ -924,8 +920,8 @@ export type databases_v2_surfaces_agricolesUncheckedCreateInput = {
 }
 
 export type databases_v2_surfaces_agricolesUpdateInput = {
-  index?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  epci?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  index?: Prisma.IntFieldUpdateOperationsInput | number
+  epci?: Prisma.StringFieldUpdateOperationsInput | string
   exploitation_sau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   exploitation_sau_terres_arables?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   exploitation_sau_terres_arables_cereales?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -967,8 +963,8 @@ export type databases_v2_surfaces_agricolesUpdateInput = {
 }
 
 export type databases_v2_surfaces_agricolesUncheckedUpdateInput = {
-  index?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  epci?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  index?: Prisma.IntFieldUpdateOperationsInput | number
+  epci?: Prisma.StringFieldUpdateOperationsInput | string
   exploitation_sau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   exploitation_sau_terres_arables?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   exploitation_sau_terres_arables_cereales?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1010,8 +1006,8 @@ export type databases_v2_surfaces_agricolesUncheckedUpdateInput = {
 }
 
 export type databases_v2_surfaces_agricolesCreateManyInput = {
-  index: bigint | number
-  epci: bigint | number
+  index: number
+  epci: string
   exploitation_sau?: number | null
   exploitation_sau_terres_arables?: number | null
   exploitation_sau_terres_arables_cereales?: number | null
@@ -1053,8 +1049,8 @@ export type databases_v2_surfaces_agricolesCreateManyInput = {
 }
 
 export type databases_v2_surfaces_agricolesUpdateManyMutationInput = {
-  index?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  epci?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  index?: Prisma.IntFieldUpdateOperationsInput | number
+  epci?: Prisma.StringFieldUpdateOperationsInput | string
   exploitation_sau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   exploitation_sau_terres_arables?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   exploitation_sau_terres_arables_cereales?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1096,8 +1092,8 @@ export type databases_v2_surfaces_agricolesUpdateManyMutationInput = {
 }
 
 export type databases_v2_surfaces_agricolesUncheckedUpdateManyInput = {
-  index?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  epci?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  index?: Prisma.IntFieldUpdateOperationsInput | number
+  epci?: Prisma.StringFieldUpdateOperationsInput | string
   exploitation_sau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   exploitation_sau_terres_arables?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   exploitation_sau_terres_arables_cereales?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1183,7 +1179,6 @@ export type databases_v2_surfaces_agricolesCountOrderByAggregateInput = {
 
 export type databases_v2_surfaces_agricolesAvgOrderByAggregateInput = {
   index?: Prisma.SortOrder
-  epci?: Prisma.SortOrder
   exploitation_sau?: Prisma.SortOrder
   exploitation_sau_terres_arables?: Prisma.SortOrder
   exploitation_sau_terres_arables_cereales?: Prisma.SortOrder
@@ -1312,7 +1307,6 @@ export type databases_v2_surfaces_agricolesMinOrderByAggregateInput = {
 
 export type databases_v2_surfaces_agricolesSumOrderByAggregateInput = {
   index?: Prisma.SortOrder
-  epci?: Prisma.SortOrder
   exploitation_sau?: Prisma.SortOrder
   exploitation_sau_terres_arables?: Prisma.SortOrder
   exploitation_sau_terres_arables_cereales?: Prisma.SortOrder
@@ -1351,14 +1345,6 @@ export type databases_v2_surfaces_agricolesSumOrderByAggregateInput = {
   superficie_sau_herbe_subventions?: Prisma.SortOrder
   superficie_sau_herbe_bois_patures?: Prisma.SortOrder
   superficie_sau_jardins?: Prisma.SortOrder
-}
-
-export type BigIntFieldUpdateOperationsInput = {
-  set?: bigint | number
-  increment?: bigint | number
-  decrement?: bigint | number
-  multiply?: bigint | number
-  divide?: bigint | number
 }
 
 
@@ -1541,8 +1527,8 @@ export type $databases_v2_surfaces_agricolesPayload<ExtArgs extends runtime.Type
   name: "databases_v2_surfaces_agricoles"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    index: bigint
-    epci: bigint
+    index: number
+    epci: string
     exploitation_sau: number | null
     exploitation_sau_terres_arables: number | null
     exploitation_sau_terres_arables_cereales: number | null
@@ -2004,8 +1990,8 @@ export interface Prisma__databases_v2_surfaces_agricolesClient<T, Null = never, 
  * Fields of the databases_v2_surfaces_agricoles model
  */
 export interface databases_v2_surfaces_agricolesFieldRefs {
-  readonly index: Prisma.FieldRef<"databases_v2_surfaces_agricoles", 'BigInt'>
-  readonly epci: Prisma.FieldRef<"databases_v2_surfaces_agricoles", 'BigInt'>
+  readonly index: Prisma.FieldRef<"databases_v2_surfaces_agricoles", 'Int'>
+  readonly epci: Prisma.FieldRef<"databases_v2_surfaces_agricoles", 'String'>
   readonly exploitation_sau: Prisma.FieldRef<"databases_v2_surfaces_agricoles", 'Float'>
   readonly exploitation_sau_terres_arables: Prisma.FieldRef<"databases_v2_surfaces_agricoles", 'Float'>
   readonly exploitation_sau_terres_arables_cereales: Prisma.FieldRef<"databases_v2_surfaces_agricoles", 'Float'>

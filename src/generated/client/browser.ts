@@ -103,11 +103,6 @@ export type databases_v2_rga = Prisma.databases_v2_rgaModel
  */
 export type databases_v2_surfaces_agricoles = Prisma.databases_v2_surfaces_agricolesModel
 /**
- * Model databases_v2_surfaces_protegees
- * 
- */
-export type databases_v2_surfaces_protegees = Prisma.databases_v2_surfaces_protegeesModel
-/**
  * Model databases_v2_table_commune
  * 
  */
@@ -137,3 +132,13 @@ export type postgis_v2_etat_cours_d_eau = Prisma.postgis_v2_etat_cours_d_eauMode
  * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
  */
 export type spatial_ref_sys = Prisma.spatial_ref_sysModel
+/**
+ * Model o3_seuils
+ * 
+ */
+export type o3_seuils = Prisma.o3_seuilsModel
+/**
+ * Model secheresses
+ * 
+ */
+export type secheresses = Prisma.secheressesModel

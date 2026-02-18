@@ -12,7 +12,7 @@ datasource db {
 
 model sandbox_users {
   username   String   @db.VarChar(128)
-  pk         Int      @id
+  pk         Int      @id @default(autoincrement())
   password   String   @db.VarChar(512)
   created_at DateTime @db.Timestamptz(6)
 
@@ -618,8 +618,8 @@ model databases_v2_rga {
 }
 
 model databases_v2_surfaces_agricoles {
-  index                                                  BigInt @id
-  epci                                                   BigInt
+  index                                                  Int    @id
+  epci                                                   String
   exploitation_sau                                       Float?
   exploitation_sau_terres_arables                        Float?
   exploitation_sau_terres_arables_cereales               Float?
@@ -665,60 +665,70 @@ model databases_v2_surfaces_agricoles {
   @@schema("databases_v2")
 }
 
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model databases_v2_surfaces_protegees {
-  index                Int     @id
-  code_geographique    String
-  PNC                  String?
-  RAMSAR               String?
-  PNR                  String?
-  PNP                  String?
-  FOR_PRO              String?
-  ZZZ                  String?
-  ZNIEFF2              String?
-  ZNIEFF1              String?
-  RNR                  String?
-  TOU_PRO              String?
-  NATURA               String?
-  ZPS                  String?
-  SIC                  String?
-  CELRL                String?
-  BIO                  String?
-  APB                  String?
-  RN                   String?
-  RBFD                 String?
-  RNCFS                String?
-  libelle_geographique String
-  epci                 String
-  libelle_epci         String
-  departement          String
-  region               Float
+  index                                                           BigInt?
+  code_geographique                                               String?
+  libelle_geographique                                            String?
+  epci                                                            String?
+  libelle_epci                                                    String?
+  departement                                                     String?
+  libelle_departement                                             String?
+  region                                                          Float?
+  ept                                                             String?
+  libelle_petr                                                    String?
+  code_pnr                                                        String?
+  libelle_pnr                                                     String?
+  Surface_2025_x000D__Arr_t__de_protection_de_biotope             BigInt? @map("Surface 2025_x000D_\nArrêté de protection de biotope")
+  Surface_2025_x000D__Arr_t__de_protection_de_g_otope             BigInt? @map("Surface 2025_x000D_\nArrêté de protection de géotope")
+  Surface_2025_x000D__Arr_t__de_protection_d_habitats_naturels    BigInt? @map("Surface 2025_x000D_\nArrêté de protection d'habitats naturels")
+  Surface_2025_x000D__C_ur_de_parc_national                       BigInt? @map("Surface 2025_x000D_\nCœur de parc national")
+  Surface_2025_x000D__R_serve_biologique                          BigInt? @map("Surface 2025_x000D_\nRéserve biologique")
+  Surface_2025_x000D__R_serve_naturelle_de_Corse                  BigInt? @map("Surface 2025_x000D_\nRéserve naturelle de Corse")
+  Surface_2025_x000D__R_serves_nationale_de_chasse_et_de_faune_s  BigInt? @map("Surface 2025_x000D_\nRéserves nationale de chasse et de faune s")
+  Surface_2025_x000D__R_serve_naturelle_nationale                 BigInt? @map("Surface 2025_x000D_\nRéserve naturelle nationale")
+  Surface_2025_x000D__R_serve_naturelle_r_gionale                 BigInt? @map("Surface 2025_x000D_\nRéserve naturelle régionale")
+  Surface_2025_x000D__Aire_d_adh_sion_de_parc_national            BigInt? @map("Surface 2025_x000D_\nAire d'adhésion de parc national")
+  Surface_2025_x000D__Parc_naturel_marin                          BigInt? @map("Surface 2025_x000D_\nParc naturel marin")
+  Surface_2025_x000D__Parc_naturel_r_gional                       BigInt? @map("Surface 2025_x000D_\nParc naturel régional")
+  Surface_2025_x000D__Parcelles_acquises_par_le_Conservatoire_des BigInt? @map("Surface 2025_x000D_\nParcelles acquises par le Conservatoire des")
+  Surface_2025_x000D__Site_acquis_par_le_Conservatoire_des_espace BigInt? @map("Surface 2025_x000D_\nSite acquis par le Conservatoire des espace")
+  Surface_2025_x000D__G_oparc_mondial_de_l_Unesco                 BigInt? @map("Surface 2025_x000D_\nGéoparc mondial de l'Unesco")
+  Surface_2025_x000D__Bien_inscrit_sur_la_liste_du_patrimoine_mon BigInt? @map("Surface 2025_x000D_\nBien inscrit sur la liste du patrimoine mon")
+  Surface_2025_x000D__Zone_humide_prot_g_e_par_la_Convention_de   BigInt? @map("Surface 2025_x000D_\nZone humide protégée par la Convention de")
+  Surface_2025_x000D__R_serve_de_biosph_re                        BigInt? @map("Surface 2025_x000D_\nRéserve de biosphère")
+  Surface_2025_x000D__Site_d_int_r_t_communautaire                BigInt? @map("Surface 2025_x000D_\nSite d'intérêt communautaire")
+  Surface_2025_x000D__Zone_de_protection_sp_ciale                 BigInt? @map("Surface 2025_x000D_\nZone de protection spéciale")
 
   @@index([index], map: "ix_surfaces_protegees_index")
   @@map("surfaces_protegees")
+  @@ignore
   @@schema("databases_v2")
 }
 
 model databases_v2_table_commune {
-  index                          Int     @id
-  code_geographique              String
-  libelle_geographique           String
-  epci                           String
-  libelle_epci                   String
-  departement                    String
-  libelle_departement            String
-  region                         Int
-  ept                            String?
-  libelle_petr                   String?
-  code_pnr                       String?
-  libelle_pnr                    String?
-  atlas_biodiversite_nom         String?
-  atlas_biodiversite_annee_debut String?
-  atlas_biodiversite_avancement  String?
-  type_touristique               String?
-  otex_12_postes                 String?
-  part_irr_sau_2020              String?
-  agriculture_part_over_55       String?
-  couverture_lcz                 String?
+  index                               Int      @id
+  code_geographique                   String
+  libelle_geographique                String
+  epci                                String
+  libelle_epci                        String
+  departement                         String
+  libelle_departement                 String
+  region                              Int
+  ept                                 String?
+  libelle_petr                        String?
+  code_pnr                            String?
+  libelle_pnr                         String?
+  atlas_biodiversite_nom              String?
+  atlas_biodiversite_annee_debut      String?
+  atlas_biodiversite_avancement       String?
+  type_touristique                    String?
+  otex_12_postes                      String?
+  part_irr_sau_2020                   String?
+  agriculture_part_over_55            String?
+  couverture_lcz                      String?
+  aires_appellations_controlees_nom   String[]
+  aires_appellations_controlees_signe String[]
 
   @@index([index], map: "ix_table_commune_index")
   @@index([code_geographique], map: "table_commune_communes_index")
@@ -817,4 +827,45 @@ model liste_pnr {
 
   @@ignore
   @@schema("databases_v2")
+}
+
+model o3_seuils {
+  index     Int    @id
+  nom_site  String
+  valeur    Float
+  latitude  Float
+  longitude Float
+
+  @@index([index], map: "ix_o3_seuils_index")
+  @@schema("databases_v2")
+}
+
+model secheresses {
+  index                BigInt  @id
+  code_geographique    String
+  libelle_geographique String?
+  epci                 String?
+  libelle_epci         String?
+  departement          String?
+  libelle_departement  String?
+  region               Float?
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  restrictions         String
+
+  @@index([index], map: "ix_secheresses_index")
+  @@schema("databases_v2")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model postgis_v2_liste_pnr {
+  pnr               String?
+  code_pnr          String?
+  code_geographique String?
+
+  @@map("liste_pnr")
+  @@ignore
+  @@schema("postgis_v2")
 }

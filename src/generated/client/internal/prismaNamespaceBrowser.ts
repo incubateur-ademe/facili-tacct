@@ -68,13 +68,14 @@ export const ModelName = {
   databases_v2_qualite_sites_baignade: 'databases_v2_qualite_sites_baignade',
   databases_v2_rga: 'databases_v2_rga',
   databases_v2_surfaces_agricoles: 'databases_v2_surfaces_agricoles',
-  databases_v2_surfaces_protegees: 'databases_v2_surfaces_protegees',
   databases_v2_table_commune: 'databases_v2_table_commune',
   databases_v2_table_territoires: 'databases_v2_table_territoires',
   postgis_v2_communes_drom: 'postgis_v2_communes_drom',
   postgis_v2_erosion_cotiere: 'postgis_v2_erosion_cotiere',
   postgis_v2_etat_cours_d_eau: 'postgis_v2_etat_cours_d_eau',
-  spatial_ref_sys: 'spatial_ref_sys'
+  spatial_ref_sys: 'spatial_ref_sys',
+  o3_seuils: 'o3_seuils',
+  secheresses: 'secheresses'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -677,38 +678,6 @@ export const Databases_v2_surfaces_agricolesScalarFieldEnum = {
 export type Databases_v2_surfaces_agricolesScalarFieldEnum = (typeof Databases_v2_surfaces_agricolesScalarFieldEnum)[keyof typeof Databases_v2_surfaces_agricolesScalarFieldEnum]
 
 
-export const Databases_v2_surfaces_protegeesScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  PNC: 'PNC',
-  RAMSAR: 'RAMSAR',
-  PNR: 'PNR',
-  PNP: 'PNP',
-  FOR_PRO: 'FOR_PRO',
-  ZZZ: 'ZZZ',
-  ZNIEFF2: 'ZNIEFF2',
-  ZNIEFF1: 'ZNIEFF1',
-  RNR: 'RNR',
-  TOU_PRO: 'TOU_PRO',
-  NATURA: 'NATURA',
-  ZPS: 'ZPS',
-  SIC: 'SIC',
-  CELRL: 'CELRL',
-  BIO: 'BIO',
-  APB: 'APB',
-  RN: 'RN',
-  RBFD: 'RBFD',
-  RNCFS: 'RNCFS',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  region: 'region'
-} as const
-
-export type Databases_v2_surfaces_protegeesScalarFieldEnum = (typeof Databases_v2_surfaces_protegeesScalarFieldEnum)[keyof typeof Databases_v2_surfaces_protegeesScalarFieldEnum]
-
-
 export const Databases_v2_table_communeScalarFieldEnum = {
   index: 'index',
   code_geographique: 'code_geographique',
@@ -729,7 +698,9 @@ export const Databases_v2_table_communeScalarFieldEnum = {
   otex_12_postes: 'otex_12_postes',
   part_irr_sau_2020: 'part_irr_sau_2020',
   agriculture_part_over_55: 'agriculture_part_over_55',
-  couverture_lcz: 'couverture_lcz'
+  couverture_lcz: 'couverture_lcz',
+  aires_appellations_controlees_nom: 'aires_appellations_controlees_nom',
+  aires_appellations_controlees_signe: 'aires_appellations_controlees_signe'
 } as const
 
 export type Databases_v2_table_communeScalarFieldEnum = (typeof Databases_v2_table_communeScalarFieldEnum)[keyof typeof Databases_v2_table_communeScalarFieldEnum]
@@ -804,6 +775,36 @@ export const Spatial_ref_sysScalarFieldEnum = {
 } as const
 
 export type Spatial_ref_sysScalarFieldEnum = (typeof Spatial_ref_sysScalarFieldEnum)[keyof typeof Spatial_ref_sysScalarFieldEnum]
+
+
+export const O3_seuilsScalarFieldEnum = {
+  index: 'index',
+  nom_site: 'nom_site',
+  valeur: 'valeur',
+  latitude: 'latitude',
+  longitude: 'longitude'
+} as const
+
+export type O3_seuilsScalarFieldEnum = (typeof O3_seuilsScalarFieldEnum)[keyof typeof O3_seuilsScalarFieldEnum]
+
+
+export const SecheressesScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  restrictions: 'restrictions'
+} as const
+
+export type SecheressesScalarFieldEnum = (typeof SecheressesScalarFieldEnum)[keyof typeof SecheressesScalarFieldEnum]
 
 
 export const SortOrder = {
