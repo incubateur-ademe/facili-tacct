@@ -72,11 +72,8 @@ export type GrandAgeDto = {
   over_75_sum_1990?: number;
   over_75_sum_1999?: number;
   over_75_sum_2006?: number;
-  over_75_sum_2009?: number;
   over_75_sum_2011?: number;
-  over_75_sum_2014?: number;
   over_75_sum_2016?: number;
-  over_75_sum_2020?: number;
   over_75_sum_2022?: number;
   to_75_sum_1968?: number;
   to_75_sum_1975?: number;
@@ -84,11 +81,8 @@ export type GrandAgeDto = {
   to_75_sum_1990?: number;
   to_75_sum_1999?: number;
   to_75_sum_2006?: number;
-  to_75_sum_2009?: number;
   to_75_sum_2011?: number;
-  to_75_sum_2014?: number;
   to_75_sum_2016?: number;
-  to_75_sum_2020?: number;
   to_75_sum_2022?: number;
   under_4_sum_1968?: number;
   under_4_sum_1975?: number;
@@ -96,11 +90,8 @@ export type GrandAgeDto = {
   under_4_sum_1990?: number;
   under_4_sum_1999?: number;
   under_4_sum_2006?: number;
-  under_4_sum_2009?: number;
   under_4_sum_2011?: number;
-  under_4_sum_2014?: number;
   under_4_sum_2016?: number;
-  under_4_sum_2020?: number;
   under_4_sum_2022?: number;
 };
 

@@ -218,15 +218,18 @@ export const IndicatorExportTransformations = {
           '1999_population_de_moins_de_4_ans': el.under_4_sum_1999,
           '1999_population_de_4_a_75_ans': el.to_75_sum_1999,
           '1999_population_de_plus_de_75_ans': el.over_75_sum_1999,
-          '2009_population_de_moins_de_4_ans': el.under_4_sum_2009,
-          '2009_population_de_4_a_75_ans': el.to_75_sum_2009,
-          '2009_population_de_plus_de_75_ans': el.over_75_sum_2009,
-          '2014_population_de_moins_de_4_ans': el.under_4_sum_2014,
-          '2014_population_de_4_a_75_ans': el.to_75_sum_2014,
-          '2014_population_de_plus_de_75_ans': el.over_75_sum_2014,
-          '2020_population_de_moins_de_4_ans': el.under_4_sum_2020,
-          '2020_population_de_4_a_75_ans': el.to_75_sum_2020,
-          '2020_population_de_plus_de_75_ans': el.over_75_sum_2020
+          '2006_population_de_moins_de_4_ans': el.under_4_sum_2006,
+          '2006_population_de_4_a_75_ans': el.to_75_sum_2006,
+          '2006_population_de_plus_de_75_ans': el.over_75_sum_2006,
+          '2011_population_de_moins_de_4_ans': el.under_4_sum_2011,
+          '2011_population_de_4_a_75_ans': el.to_75_sum_2011,
+          '2011_population_de_plus_de_75_ans': el.over_75_sum_2011,
+          '2016_population_de_moins_de_4_ans': el.under_4_sum_2016,
+          '2016_population_de_4_a_75_ans': el.to_75_sum_2016,
+          '2016_population_de_plus_de_75_ans': el.over_75_sum_2016,
+          '2022_population_de_moins_de_4_ans': el.under_4_sum_2022,
+          '2022_population_de_4_a_75_ans': el.to_75_sum_2022,
+          '2022_population_de_plus_de_75_ans': el.over_75_sum_2022
         };
       }),
     travailExt: (travailExt: travailExtDto[]) =>
