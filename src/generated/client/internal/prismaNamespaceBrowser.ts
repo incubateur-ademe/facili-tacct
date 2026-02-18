@@ -67,7 +67,6 @@ export const ModelName = {
   databases_v2_prelevements_eau: 'databases_v2_prelevements_eau',
   databases_v2_qualite_sites_baignade: 'databases_v2_qualite_sites_baignade',
   databases_v2_surfaces_agricoles: 'databases_v2_surfaces_agricoles',
-  databases_v2_surfaces_protegees: 'databases_v2_surfaces_protegees',
   databases_v2_table_commune: 'databases_v2_table_commune',
   databases_v2_table_territoires: 'databases_v2_table_territoires',
   databases_v2_rga: 'databases_v2_rga',
@@ -310,7 +309,19 @@ export const Databases_v2_confort_thermiqueScalarFieldEnum = {
   clc_3_foret_semiNaturel: 'clc_3_foret_semiNaturel',
   clc_4_humide: 'clc_4_humide',
   clc_5_eau: 'clc_5_eau',
-  superf_choro: 'superf_choro'
+  superf_choro: 'superf_choro',
+  under_4_sum_2006: 'under_4_sum_2006',
+  to_75_sum_2006: 'to_75_sum_2006',
+  over_75_sum_2006: 'over_75_sum_2006',
+  under_4_sum_2011: 'under_4_sum_2011',
+  to_75_sum_2011: 'to_75_sum_2011',
+  over_75_sum_2011: 'over_75_sum_2011',
+  under_4_sum_2016: 'under_4_sum_2016',
+  to_75_sum_2016: 'to_75_sum_2016',
+  over_75_sum_2016: 'over_75_sum_2016',
+  under_4_sum_2022: 'under_4_sum_2022',
+  to_75_sum_2022: 'to_75_sum_2022',
+  over_75_sum_2022: 'over_75_sum_2022'
 } as const
 
 export type Databases_v2_confort_thermiqueScalarFieldEnum = (typeof Databases_v2_confort_thermiqueScalarFieldEnum)[keyof typeof Databases_v2_confort_thermiqueScalarFieldEnum]
@@ -632,38 +643,6 @@ export const Databases_v2_surfaces_agricolesScalarFieldEnum = {
 } as const
 
 export type Databases_v2_surfaces_agricolesScalarFieldEnum = (typeof Databases_v2_surfaces_agricolesScalarFieldEnum)[keyof typeof Databases_v2_surfaces_agricolesScalarFieldEnum]
-
-
-export const Databases_v2_surfaces_protegeesScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  PNC: 'PNC',
-  RAMSAR: 'RAMSAR',
-  PNR: 'PNR',
-  PNP: 'PNP',
-  FOR_PRO: 'FOR_PRO',
-  ZZZ: 'ZZZ',
-  ZNIEFF2: 'ZNIEFF2',
-  ZNIEFF1: 'ZNIEFF1',
-  RNR: 'RNR',
-  TOU_PRO: 'TOU_PRO',
-  NATURA: 'NATURA',
-  ZPS: 'ZPS',
-  SIC: 'SIC',
-  CELRL: 'CELRL',
-  BIO: 'BIO',
-  APB: 'APB',
-  RN: 'RN',
-  RBFD: 'RBFD',
-  RNCFS: 'RNCFS',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  region: 'region'
-} as const
-
-export type Databases_v2_surfaces_protegeesScalarFieldEnum = (typeof Databases_v2_surfaces_protegeesScalarFieldEnum)[keyof typeof Databases_v2_surfaces_protegeesScalarFieldEnum]
 
 
 export const Databases_v2_table_communeScalarFieldEnum = {
