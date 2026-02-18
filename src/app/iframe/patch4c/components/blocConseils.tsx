@@ -30,13 +30,13 @@ export const ConseilsAggravation = () => {
             <div className={styles.tableauCell} style={{ justifyContent: "space-between", gap: "1rem" }}>
               <Image src={AnalyseExpositionImage} alt="Analyse Exposition" sizes='100%' />
               <Body style={{ color: "var(--principales-vert)" }} weight='bold'>
-                Analyse d’exposition
+                Analyse de l’exposition
               </Body>
             </div>
             <div className={styles.tableauCell}>
               <Image src={AnalyseSensibiliteImage} alt="Analyse Sensibilité" sizes='100%' />
               <Body style={{ color: "var(--principales-vert)" }} weight='bold'>
-                Analyse de sensibilité
+                Analyse de la sensibilité
               </Body>
             </div>
           </div>
@@ -105,9 +105,9 @@ export const ConseilsAggravation = () => {
           </div>
           <div>
             <Body style={{ marginLeft: "2rem" }}>
-              Avant de faire valider votre PCAET, vérifiez que votre analyse d’exposition tient
-              compte de la TRACC et que votre <b>plan d’action comporte des actions visant à réduire
-                vos différents facteurs de sensibilité</b> face à cette exposition. Sinon, il convient d’en ajouter.
+              Avant de faire valider votre PCAET, assurez-vous que l’analyse de l’exposition de votre territoire
+              tient compte de la TRACC et que votre <b>plan d’action comporte des mesures concrètes pour
+                réduire les facteurs de sensibilité identifiés.</b> Dans le cas contraire, enrichissez votre document.
             </Body>
           </div>
         </div>

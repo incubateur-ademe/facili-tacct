@@ -30,7 +30,7 @@ type Item = {
 };
 
 export const AnalyseSensibilite = ({
-    item,
+  item,
   isMap,
 }: {
   item: Item,

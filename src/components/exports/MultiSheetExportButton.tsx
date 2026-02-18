@@ -1,14 +1,18 @@
-"use client";
+'use client';
 import ExporterIcon from '@/assets/icons/export_icon_white.svg';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
+import ExportDataTrigger from '@/hooks/ExportDataTrigger';
 import { exportMultipleSheetToXLSX } from '@/lib/utils/export/exportXlsx';
 import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
-import styles from "../components.module.scss";
+import styles from '../components.module.scss';
 import { CopyLinkClipboard } from '../interactions/CopyLinkClipboard';
 
-type ExportDataRow = Record<string, string | number | boolean | null | bigint | undefined>;
+type ExportDataRow = Record<
+  string,
+  string | number | boolean | null | bigint | undefined
+>;
 
 interface SheetData {
   sheetName: string;
@@ -82,7 +86,9 @@ export const MultiSheetExportButton = ({
       type: type,
       date: new Date()
     });
-    const hasData = sheetsData.some(sheet => sheet.data && sheet.data.length > 0);
+    const hasData = sheetsData.some(
+      (sheet) => sheet.data && sheet.data.length > 0
+    );
     if (!hasData) {
       console.log('Aucune donnée à exporter');
       return;
@@ -91,7 +97,7 @@ export const MultiSheetExportButton = ({
     setIsExporting(true);
     try {
       const dataForExport: Record<string, ExportDataRow[]> = {};
-      sheetsData.forEach(sheet => {
+      sheetsData.forEach((sheet) => {
         if (sheet.data && sheet.data.length > 0) {
           dataForExport[sheet.sheetName] = sheet.data;
         }
@@ -126,7 +132,6 @@ export const MultiSheetExportButton = ({
   );
 };
 
-
 export const MultiSheetExportButtonNouveauParcours = ({
   sheetsData,
   baseName,
@@ -139,6 +144,8 @@ export const MultiSheetExportButtonNouveauParcours = ({
 }: MultiSheetExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
   posthog.capture('export_xlsx_bouton', {
     thematique: baseName,
     code: code,
@@ -184,15 +191,18 @@ export const MultiSheetExportButtonNouveauParcours = ({
   }, [isExporting]);
 
   const handleExport = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    setIsClicked(true);
     if (isExporting) return;
 
     e.currentTarget.blur();
     setIsExporting(true);
 
     // Attendre que React affiche "Export en cours..." avant de démarrer l'export
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await new Promise((resolve) => setTimeout(resolve, 0));
 
-    const hasData = sheetsData.some(sheet => sheet.data && sheet.data.length > 0);
+    const hasData = sheetsData.some(
+      (sheet) => sheet.data && sheet.data.length > 0
+    );
     if (!hasData) {
       console.log('Aucune donnée à exporter');
       setIsExporting(false);
@@ -201,7 +211,7 @@ export const MultiSheetExportButtonNouveauParcours = ({
 
     try {
       const dataForExport: Record<string, ExportDataRow[]> = {};
-      sheetsData.forEach(sheet => {
+      sheetsData.forEach((sheet) => {
         if (sheet.data && sheet.data.length > 0) {
           dataForExport[sheet.sheetName] = sheet.data;
         }
@@ -223,23 +233,22 @@ export const MultiSheetExportButtonNouveauParcours = ({
 
   return (
     <>
-      {
-        sheetsData.map(sheet => sheet.data).flat(1).length === 0 ? null : (
-          <div className={styles.exportShareWrapper}>
-            {anchor && <CopyLinkClipboard anchor={anchor} />}
-            <BoutonPrimaireClassic
-              onClick={handleExport}
-              disabled={isExporting}
-              icone={isExporting ? null : ExporterIcon}
-              size='sm'
-              text={isExporting ? 'Export en cours...' : children as string}
-              style={{
-                cursor: isExporting ? 'wait' : 'pointer',
-              }}
-            />
-          </div>
-        )
-      }
+      {sheetsData.map((sheet) => sheet.data).flat(1).length === 0 ? null : (
+        <div className={styles.exportShareWrapper}>
+          {anchor && <CopyLinkClipboard anchor={anchor} />}
+          <BoutonPrimaireClassic
+            onClick={handleExport}
+            disabled={isExporting}
+            icone={isExporting ? null : ExporterIcon}
+            size="sm"
+            text={isExporting ? 'Export en cours...' : (children as string)}
+            style={{
+              cursor: isExporting ? 'wait' : 'pointer'
+            }}
+          />
+          {isClicked && <ExportDataTrigger />}
+        </div>
+      )}
     </>
   );
 };

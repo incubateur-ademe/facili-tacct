@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
@@ -5,6 +6,7 @@ import ZeroData from '@/assets/images/zero_data_found.png';
 import styles from '@/components/charts/charts.module.scss';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import couleurs from '@/design-system/couleurs';
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { PieChartDataSurfacesAgricoles } from '@/lib/charts/surfacesAgricoles';
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
 import { simplePieChartTooltip } from '../ChartTooltips';
@@ -13,6 +15,7 @@ import NivoPieChart from '../NivoPieChart';
 export const PieChartAgriculture = ({ surfacesAgricoles }: { surfacesAgricoles: SurfacesAgricolesModel[] }) => {
   const graphData = PieChartDataSurfacesAgricoles(surfacesAgricoles);
   const sumAllCount = graphData.reduce((sum, item) => sum + (item.count || 0), 0);
+  const windowDimensions = useWindowDimensions();
   return (
     <div className={styles.responsivePieContainer}>
       {sumAllCount > 0 ?

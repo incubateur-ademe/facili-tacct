@@ -1,10 +1,11 @@
-"use client";
+'use client';
 import ExporterIcon from '@/assets/icons/export_icon_white.svg';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
+import ExportDataTrigger from '@/hooks/ExportDataTrigger';
 import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
-import styles from "../components.module.scss";
+import styles from '../components.module.scss';
 import { CopyLinkClipboard } from '../interactions/CopyLinkClipboard';
 
 interface ZipExportButtonProps {
@@ -21,7 +22,7 @@ interface ZipExportButtonProps {
 export const ZipExportButton = ({
   handleExport,
   children = 'Exporter',
-  style,
+  style
 }: ZipExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
@@ -108,6 +109,7 @@ export const ZipExportButtonNouveauParcours = ({
 }: ZipExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
     if (isExporting) {
@@ -146,6 +148,7 @@ export const ZipExportButtonNouveauParcours = ({
   }, [isExporting]);
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    setIsClicked(true);
     if (isExporting) return;
 
     e.currentTarget.blur();
@@ -160,7 +163,7 @@ export const ZipExportButtonNouveauParcours = ({
     });
 
     // Attendre que React affiche "Export en cours..." avant de démarrer l'export
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await new Promise((resolve) => setTimeout(resolve, 0));
 
     try {
       await handleExport();
@@ -180,13 +183,14 @@ export const ZipExportButtonNouveauParcours = ({
         onClick={handleClick}
         disabled={isExporting}
         icone={isExporting ? null : ExporterIcon}
-        size='sm'
-        text={isExporting ? 'Export en cours...' : children as string}
+        size="sm"
+        text={isExporting ? 'Export en cours...' : (children as string)}
         style={{
           cursor: isExporting ? 'wait' : 'pointer',
-          ...style,
+          ...style
         }}
       />
+      {isClicked && <ExportDataTrigger />}
     </div>
   );
 };

@@ -1,12 +1,12 @@
 "use client";
 
 import ChatChercheur from '@/assets/images/chat_sherlock.png';
+import { handleRechercheRedirection } from '@/components/searchbar/fonctions';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H3 } from "@/design-system/base/Textes";
-import { handleRedirection } from '@/hooks/Redirections';
 import Image, { StaticImageData } from "next/image";
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import styles from '../patch4c.module.scss';
 
 type Item = {
@@ -15,6 +15,7 @@ type Item = {
   label: string;
   definition: string;
   linkedThemes: string[];
+  themesSansAggravation: string[] | null;
   actions: ({
     title: string;
     link: string;
@@ -38,35 +39,32 @@ export const AnalyseSensibilite = ({
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
+  const router = useRouter();
   const aggravationLevel = item.value;
-
-  const redirectionExplorerMesDonnees = () => {
-    const url = handleRedirection({
-      searchCode: code,
-      searchLibelle: libelle,
-      typeTerritoire: type as 'epci' | 'commune' | 'petr' | 'pnr' | 'departement' | 'ept',
-      page: 'thematiques',
-    });
-    window.open(url, '_blank');
-  };
-
+  const handleRechercher = () => handleRechercheRedirection({
+    searchCode: code,
+    searchLibelle: libelle,
+    typeTerritoire: type as 'epci' | 'commune' | 'petr' | 'pnr' | 'departement',
+    router,
+    page: "thematiques"
+  });
   return (
     <div className={styles.analyseSensibiliteContainer}>
       <div className={styles.titreWrapper}>
         <div className={styles.left}>
           <H3 style={{ fontSize: 22 }}>
-            Analyse de sensibilité : les thématiques à traiter impérativement
+            Analyse de la sensibilité : les thématiques à traiter impérativement
           </H3>
           <div className={styles.separator} />
           <Body style={{ marginTop: '1rem' }}>
-            Voici quelques pistes de thématiques à aborder lors de l’analyse de sensibilité,
+            Voici quelques pistes de thématiques à aborder lors de l’analyse de la sensibilité,
             mais celle-ci reste à effectuer en fonction de vos dynamiques territoriales, des
             actions déjà entreprises et de vos capacités d’adaptation.
           </Body>
         </div>
-        <Image 
-          src={ChatChercheur} 
-          alt="illustration chat chercheur" 
+        <Image
+          src={ChatChercheur}
+          alt="illustration chat chercheur"
           style={{ maxHeight: 104, height: 'auto', width: 'auto' }}
         />
       </div>
@@ -190,7 +188,7 @@ export const AnalyseSensibilite = ({
         <BoutonPrimaireClassic
           text='Explorer les facteurs de sensibilité du territoire →'
           size='md'
-          onClick={redirectionExplorerMesDonnees}
+          onClick={handleRechercher}
         />
       </div>
       <div className={styles.actionsListeWrapper}>
