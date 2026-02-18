@@ -769,7 +769,7 @@ export const DebroussaillementText = ({
 export const O3Text = () => (
   <Body size="sm">
     <DefinitionTooltip title={ozone}>L’ozone</DefinitionTooltip>{' '}
-    (O3) fait parti des 4 polluants atmosphériques pour lesquels il existe
+    (O3) fait partie des 4 polluants atmosphériques pour lesquels il existe
     une réglementation et des seuils conduisant aux déclenchement de procédures 
     préfectorales. Si les pics de pollution aiguë provoquent des symptômes 
     respiratoires immédiats, l’exposition chronique constitue un enjeu sanitaire 
