@@ -218,15 +218,6 @@ model databases_v2_confort_thermique {
   under_4_sum_1999        Float?
   to_75_sum_1999          Float?  @map("4_to_75_sum_1999")
   over_75_sum_1999        Float?
-  under_4_sum_2009        Float?
-  to_75_sum_2009          Float?  @map("4_to_75_sum_2009")
-  over_75_sum_2009        Float?
-  under_4_sum_2014        Float?
-  to_75_sum_2014          Float?  @map("4_to_75_sum_2014")
-  over_75_sum_2014        Float?
-  under_4_sum_2020        Float?
-  to_75_sum_2020          Float?  @map("4_to_75_sum_2020")
-  over_75_sum_2020        Float?
   tee_log                 Float?
   tee_mob                 Float?
   precarite_logement      Float?
