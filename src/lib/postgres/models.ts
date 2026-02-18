@@ -85,11 +85,8 @@ export type ConfortThermique = {
   under_4_sum_1990: number | null;
   under_4_sum_1999: number | null;
   under_4_sum_2006: number | null;
-  under_4_sum_2009: number | null;
   under_4_sum_2011: number | null;
-  under_4_sum_2014: number | null;
   under_4_sum_2016: number | null;
-  under_4_sum_2020: number | null;
   under_4_sum_2022: number | null;
   '4_to_75_sum_1968': number | null;
   '4_to_75_sum_1975': number | null;
@@ -97,11 +94,8 @@ export type ConfortThermique = {
   '4_to_75_sum_1990': number | null;
   '4_to_75_sum_1999': number | null;
   '4_to_75_sum_2006': number | null;
-  '4_to_75_sum_2009': number | null;
   '4_to_75_sum_2011': number | null;
-  '4_to_75_sum_2014': number | null;
   '4_to_75_sum_2016': number | null;
-  '4_to_75_sum_2020': number | null;
   '4_to_75_sum_2022': number | null;
   over_75_sum_1968: number | null;
   over_75_sum_1975: number | null;
@@ -109,11 +103,8 @@ export type ConfortThermique = {
   over_75_sum_1990: number | null;
   over_75_sum_1999: number | null;
   over_75_sum_2006: number | null;
-  over_75_sum_2009: number | null;
   over_75_sum_2011: number | null;
-  over_75_sum_2014: number | null;
   over_75_sum_2016: number | null;
-  over_75_sum_2020: number | null;
   over_75_sum_2022: number | null;
   tee_log: number | null;
   tee_mob: number | null;

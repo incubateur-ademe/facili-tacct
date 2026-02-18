@@ -1,8 +1,10 @@
 'use client';
 
+import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import PieChartAiresAppellationsControlees from '@/components/charts/agriculture/pieChartAiresAppellationsControlees';
 import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import { TableCommuneModel } from '@/lib/postgres/models';
@@ -79,7 +81,8 @@ export const AiresAppellationsControlees = (props: {
     nom,
     signe,
   }));
-
+  const countAOC = airesAppellationsControlees.filter(el => el.signe === 'AOC').length;
+  const countIGP = airesAppellationsControlees.filter(el => el.signe === 'IGP').length;
   return (
     <>
       <div className={styles.datavizContainer}>
@@ -93,8 +96,8 @@ export const AiresAppellationsControlees = (props: {
                     {
                       airesAppellationsControlees.length > 1 ?
                         <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                          Votre territoire compte {airesAppellationsControlees.length} AOP et IGP, véritables marqueurs de son
-                          identité, de son économie et de son attractivité.
+                          Votre territoire compte {(countAOC && countIGP) ? `${countAOC} AOC et ${countIGP} IGP` : countAOC ? `${countAOC} AOC` : countIGP ? `${countIGP} IGP` : 'aucune appellation'},
+                          véritables marqueurs de son identité, de son économie et de son attractivité.
                         </Body>
                         : <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
                           Sans disposer d’appellations reconnues, votre territoire peut néanmoins être structurellement
@@ -118,9 +121,17 @@ export const AiresAppellationsControlees = (props: {
         </div>
         <div className={styles.datavizWrapper} style={{ borderRadius: "1rem 0 0 1rem", height: "fit-content" }}>
           <div className={styles.dataWrapper}>
-            <PieChartAiresAppellationsControlees
-              airesAppellationsControlees={airesAppellationsControlees}
-            />
+            {
+              airesAppellationsControlees.length > 0 ? (
+                <PieChartAiresAppellationsControlees
+                  airesAppellationsControlees={airesAppellationsControlees}
+                />
+              ) : (
+                <div className='p-10 flex flex-row justify-center'>
+                  <DataNotFoundForGraph image={DataNotFound} />
+                </div>
+              )
+            }
           </div>
           <div
             className={styles.sourcesExportWrapper}
