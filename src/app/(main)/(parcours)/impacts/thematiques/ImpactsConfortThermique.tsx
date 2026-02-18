@@ -134,7 +134,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
         </div>
       </section>
       <MiddlePageTrigger />
-      <section className={styles.sectionType}>
+      <section className={styles.sectionType} style={{ border: "none" }}>
         <AssocierLesActeurs />
       </section>
       <SourcesSection tag="h2" thematique="confortThermique" />

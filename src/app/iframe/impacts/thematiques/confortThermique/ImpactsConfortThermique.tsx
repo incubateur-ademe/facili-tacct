@@ -218,7 +218,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
           </div>
         </div>
       </section>
-      <section className={styles.sectionType}>
+      <section className={styles.sectionType} style={{ border: "none" }}>
         <AssocierLesActeurs />
       </section>
       <section className={styles.sectionType}>

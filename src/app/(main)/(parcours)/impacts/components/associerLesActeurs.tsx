@@ -24,7 +24,7 @@ export const AssocierLesActeurs = () => {
         <BoutonPrimaireClassic
           size='sm'
           text='Découvrir les ressources  →'
-          link='/ressources'
+          link='/ressources/associer-parties-prenantes'
           style={{
             marginTop: 16
           }}
