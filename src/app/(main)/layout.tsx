@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 import { Suspense, type PropsWithChildren } from 'react';
 import { NextAppDirEmotionCacheProvider } from 'tss-react/next/appDir';
 import { config } from '../../config';
-import { CookieBanner } from './cookieBanner';
+// import { CookieBanner } from './cookieBanner';
 import { sharedMetadata } from './shared-metadata';
 
 export const metadata: Metadata = {
@@ -31,7 +31,7 @@ const LayoutMain = ({ children }: PropsWithChildren) => {
       </ClientOnly>
       <main>{children}</main>
       <AppFooter />
-      <CookieBanner />
+      {/* <CookieBanner /> */}
     </NextAppDirEmotionCacheProvider>
   );
 };

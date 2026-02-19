@@ -1,6 +1,5 @@
 'use client';
 import { createModal } from '@codegouvfr/react-dsfr/Modal';
-import { useIsModalOpen } from '@codegouvfr/react-dsfr/Modal/useIsModalOpen';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 import CookieModal from './cookieModal';
@@ -20,9 +19,7 @@ const modal = createModal({
 
 export const CookieBanner = () => {
   const [consentGiven, setConsentGiven] = useState('');
-  const [areTermAccepted, setAreTermAccepted] = useState(true);
   const posthog = usePostHog();
-  const isOpen = useIsModalOpen(modal);
 
   useEffect(() => {
     setConsentGiven(cookieConsentGiven());
@@ -46,13 +43,8 @@ export const CookieBanner = () => {
   }, [consentGiven, posthog]);
 
   const handleValidateCookies = () => {
-    if (areTermAccepted) {
-      localStorage.setItem('cookie_consent', 'yes');
-      setConsentGiven('yes');
-    } else {
-      localStorage.setItem('cookie_consent', 'no');
-      setConsentGiven('no');
-    }
+    localStorage.setItem('cookie_consent', 'yes');
+    setConsentGiven('yes');
     modal.close();
   };
 
