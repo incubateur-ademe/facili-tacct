@@ -6,7 +6,6 @@ import { mapStyles } from 'carte-facile';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
 import { CoursDeauTooltip } from './components/tooltips';
 import styles from './maps.module.scss';
@@ -18,10 +17,6 @@ export const MapEtatCoursDeau = (props: {
   qualiteEauxBaignade?: QualiteSitesBaignade[];
 }) => {
   const { etatCoursDeau, communesCodes, boundingBox, qualiteEauxBaignade } = props;
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
