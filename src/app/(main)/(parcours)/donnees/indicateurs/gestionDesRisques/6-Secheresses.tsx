@@ -14,7 +14,7 @@ export const SecheressesPassees = (props: {
 }) => {
   const { secheresses } = props;
   const [datavizTab, setDatavizTab] = useState<string>('Intensité');
-  const moyenneJoursAvecRestriction = calculerMoyenneJoursMensuelleAvecRestriction({ secheresses });
+  const { moyenne: moyenneJoursAvecRestriction, annee: anneeMaxRestriction } = calculerMoyenneJoursMensuelleAvecRestriction({ secheresses });
 
   return (
     <>
@@ -23,9 +23,8 @@ export const SecheressesPassees = (props: {
           <div className={styles.chiffreDynamiqueWrapper}>
             <MicroCircleGridMois nombreJours={moyenneJoursAvecRestriction} arrondi={0} />
             <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-              Votre territoire est soumis à au moins un arrêté risque sécheresse
-              {" "} {moyenneJoursAvecRestriction} jours par mois (moyenne 2020-2025 pour
-              l’ensemble du territoire)
+              En {anneeMaxRestriction}, votre territoire a été soumis à au moins un arrêté risque sécheresse
+              en moyenne {moyenneJoursAvecRestriction} jours par mois.
             </Body>
           </div>
         </div>
