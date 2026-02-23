@@ -44,11 +44,9 @@ export const MySearchInput = ((props: SearchInputProps) => {
           t.searchCode === value.searchCode
       )
   );
-  const collectivites = [
-    ...filteredCollectivite.sort((a, b) =>
-      a.searchLibelle.localeCompare(b.searchLibelle)
-    )
-  ];
+  const collectivites = filteredCollectivite.toSorted((a, b) =>
+    a.searchLibelle.localeCompare(b.searchLibelle)
+  );
   const handleClick = () => {
     if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
       router.push(

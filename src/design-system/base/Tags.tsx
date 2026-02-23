@@ -1,11 +1,11 @@
-import articleIcon from "@/assets/icons/article_icon_green.svg";
-import REXIcon from "@/assets/icons/retour_exp_icon_red.svg";
-import formationIcon from "@/assets/icons/formation_icon_orange.svg";
-import meFormerIcon from "@/assets/icons/formation_icon_green.svg";
-import quizIcon from "@/assets/icons/quiz_icon_yellow.svg";
-import videoIcon from "@/assets/icons/video_icon_purple.svg";
-import inspirerIcon from "@/assets/icons/inspirer_icon_green.svg";
 import agirIcon from "@/assets/icons/agir_icon_green.svg";
+import articleIcon from "@/assets/icons/article_icon_green.svg";
+import meFormerIcon from "@/assets/icons/formation_icon_green.svg";
+import formationIcon from "@/assets/icons/formation_icon_orange.svg";
+import inspirerIcon from "@/assets/icons/inspirer_icon_green.svg";
+import quizIcon from "@/assets/icons/quiz_icon_yellow.svg";
+import REXIcon from "@/assets/icons/retour_exp_icon_red.svg";
+import videoIcon from "@/assets/icons/video_icon_purple.svg";
 import Image from "next/image";
 import { Body } from "./Textes";
 
@@ -33,7 +33,7 @@ export const TagsSimples = ({
         alignItems: 'center',
         backgroundColor: couleur,
         borderRadius: '16px',
-        padding: taille === 'small' ? '4px 8px' : '8px 16px',
+        padding: taille === 'small' ? '4px 4px 4px 8px' : '8px 16px',
         fontSize: taille === 'small' ? '14px' : '16px',
         fontWeight: 500,
         color: couleurTexte,
@@ -46,7 +46,7 @@ export const TagsSimples = ({
       </Body>
       {closeable &&
         <span
-          style={{ marginLeft: '8px', cursor: 'pointer', paddingBottom: '2px' }}
+          style={{cursor: 'pointer', padding: '2px 8px 2px 8px' }}
           onClick={handleClose}
         >×</span>
       }

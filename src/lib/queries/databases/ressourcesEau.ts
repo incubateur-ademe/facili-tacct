@@ -91,7 +91,10 @@ export const GetPrelevementsEau = async (
         } else if (type === 'pnr') {
           const value = await prisma.databases_v2_prelevements_eau.findMany({
             where: {
-              libelle_pnr: libelle
+              libelle_pnr: {
+                contains: libelle,
+                mode: 'insensitive'
+              }
             }
           });
           return value;
@@ -145,7 +148,10 @@ export const GetQualiteEauxBaignade = async (
                   departement: { not: null }
                 },
                 {
-                  [column]: libelle
+                  [column]: {
+                    contains: libelle,
+                    mode: 'insensitive'
+                  }
                 }
               ]
             },

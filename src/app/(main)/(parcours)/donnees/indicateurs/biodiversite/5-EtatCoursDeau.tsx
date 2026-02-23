@@ -4,7 +4,7 @@ import { MultiSheetExportButtonNouveauParcours } from '@/components/exports/Mult
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { etatCoursDeauLegends, qualiteEauxBaignadelegends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor, LegendCompIcons } from '@/components/maps/legends/legendComp';
-import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
+import { Loader } from '@/components/ui/loader';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from "@/design-system/base/Textes";
@@ -16,8 +16,10 @@ import { etatCoursDeauTooltipTextBiodiv } from '@/lib/tooltipTexts';
 import { sitesDeBaignadeDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
+
+const MapEtatCoursDeau = lazy(() => import('@/components/maps/mapEtatCoursDeau').then(m => ({ default: m.MapEtatCoursDeau })));
 
 type DataToExport = {
   code_geographique: string;
@@ -100,7 +102,7 @@ export const EtatEcoCoursDeau = (props: {
         </div>
         <div className={styles.mapWrapper}>
           {etatCoursDeau.length ? (
-            <>
+            <Suspense fallback={<Loader />}>
               <MapEtatCoursDeau
                 etatCoursDeau={etatCoursDeauMap}
                 communesCodes={communesCodes}
@@ -117,7 +119,7 @@ export const EtatEcoCoursDeau = (props: {
                   <LegendCompIcons legends={qualiteEauxBaignadelegends} />
                 </div>
               </div>
-            </>
+            </Suspense>
           ) : <div className='p-10 flex flex-row justify-center'>
             <DataNotFoundForGraph image={DataNotFound} />
           </div>

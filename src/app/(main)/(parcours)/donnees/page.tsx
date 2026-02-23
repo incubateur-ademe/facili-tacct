@@ -2,6 +2,7 @@ import { LoaderText } from '@/components/ui/loader';
 import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import { Suspense } from 'react';
 import { SearchParams } from '../../types';
+import { DisclaimerPNR } from './DisclaimerPNR';
 import AgricultureServerPage from './thematiques/agriculture/AgricultureServerPage';
 import AmenagementServerPage from './thematiques/amenagement/AmenagementServerPage';
 import BiodiversiteServerPage from './thematiques/biodiversite/BiodiversiteServerPage';
@@ -18,6 +19,10 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
       {
         ((code || libelle) && type) &&
         <Suspense fallback={<LoaderText text='Nous chargeons vos données' />}>
+          {
+            type === "pnr" &&
+            <DisclaimerPNR />
+          }
           {thematique === 'Confort thermique' ? (
             <ConfortThermiqueServerPage searchParams={props.searchParams} tableCommune={dbTableCommune} />
           ) : thematique === "Biodiversité" ? (

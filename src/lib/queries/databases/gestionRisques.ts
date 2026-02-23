@@ -1,6 +1,11 @@
 'use server';
 
-import { ArreteCatNat, IncendiesForet, RGAdb } from '@/lib/postgres/models';
+import {
+  ArreteCatNat,
+  IncendiesForet,
+  RGAdb,
+  SecheressesPasseesModel
+} from '@/lib/postgres/models';
 import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../db';
 
@@ -13,7 +18,7 @@ export const GetArretesCatnat = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 3000)
+    }, 7000)
   );
   const dbQuery = (async () => {
     try {
@@ -26,7 +31,13 @@ export const GetArretesCatnat = async (
       else {
         const value = await prisma.databases_v2_arretes_catnat.findMany({
           where: {
-            [column]: type === 'petr' || type === 'ept' ? libelle : code
+            [column]:
+              type === 'petr' || type === 'ept'
+                ? libelle
+                : {
+                    contains: code,
+                    mode: 'insensitive'
+                  }
           }
         });
         return value;
@@ -69,7 +80,10 @@ export const GetIncendiesForet = async (
         } else {
           const value = await prisma.databases_v2_feux_foret.findMany({
             where: {
-              [column]: code
+              [column]: {
+                contains: code,
+                mode: 'insensitive'
+              }
             }
           });
           return value;
@@ -136,10 +150,63 @@ export const GetRga = async (
       } else {
         const value = await prisma.databases_v2_rga.findMany({
           where: {
-            [column]: type === 'petr' || type === 'ept' ? libelle : code
+            [column]:
+              type === 'petr' || type === 'ept'
+                ? libelle
+                : {
+                    contains: code,
+                    mode: 'insensitive'
+                  }
           }
         });
         return value;
+      }
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  })();
+  return Promise.race([dbQuery, timeoutPromise]);
+};
+
+export const GetSecheressesPassees = async (
+  code: string,
+  libelle: string,
+  type: string
+): Promise<SecheressesPasseesModel[]> => {
+  const column = ColumnCodeCheck(type);
+  const timeoutPromise = new Promise<[]>((resolve) =>
+    setTimeout(() => {
+      resolve([]);
+    }, 2000)
+  );
+  const dbQuery = (async () => {
+    try {
+      // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
+      const exists = await prisma.secheresses.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+      });
+      if (!exists) return [];
+      else {
+        if (type === 'petr' || type === 'ept') {
+          const value = await prisma.secheresses.findMany({
+            where: {
+              [column]: libelle
+            }
+          });
+          return value;
+        } else {
+          const value = await prisma.secheresses.findMany({
+            where: {
+              [column]: {
+                contains: code,
+                mode: 'insensitive'
+              }
+            }
+          });
+          return value;
+        }
       }
     } catch (error) {
       console.error(error);

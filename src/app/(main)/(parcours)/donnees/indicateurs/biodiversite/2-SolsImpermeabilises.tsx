@@ -6,7 +6,7 @@ import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { espacesNAFDatavizLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
+import { Loader } from '@/components/ui/loader';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -17,7 +17,10 @@ import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
 import { consommationEspacesNafDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
+import { lazy, Suspense } from 'react';
 import styles from '../../explorerDonnees.module.scss';
+
+const MapEspacesNaf = lazy(() => import('@/components/maps/mapEspacesNAF').then(m => ({ default: m.MapEspacesNaf })));
 
 export const SolsImpermeabilises = (props: {
   consommationNAF: ConsommationNAF[];
@@ -72,7 +75,7 @@ export const SolsImpermeabilises = (props: {
         <div className={styles.mapWrapper}>
           {
             consommationNAF && coordonneesCommunes ? (
-              <>
+              <Suspense fallback={<Loader />}>
                 <MapEspacesNaf
                   consommationNAF={consommationNAF}
                   communesCodes={coordonneesCommunes?.codes ?? []}
@@ -89,7 +92,7 @@ export const SolsImpermeabilises = (props: {
                 >
                   <LegendCompColor legends={espacesNAFDatavizLegend} />
                 </div>
-              </>
+              </Suspense>
             ) : <div className='p-10 flex flex-row justify-center'>
               <DataNotFoundForGraph image={DataNotFound} />
             </div>

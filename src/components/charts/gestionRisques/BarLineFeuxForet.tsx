@@ -43,7 +43,7 @@ export const BarLineFeuxForet = (props: {
     {
       id: "Nombre de départ d'incendies",
       data: barGraphData
-        .sort((a, b) => a.annee - b.annee)
+        .toSorted((a, b) => a.annee - b.annee)
         .map((el) => {
           return {
             x: el.annee.toString(),

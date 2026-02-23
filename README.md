@@ -1,13 +1,3 @@
-## Getting Started
-
-This is a Next.js project runnning with pnpm
-
-First, run the development server:
-
-```bash
-pnpm dev
-```
-
 ## Projet Facili-tacct
 
 Facili-tacct a pour but d'accompagner les collectivités pour une meilleure appropriation de leur diagnostic de vulnérabilité.

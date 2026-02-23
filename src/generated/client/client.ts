@@ -120,11 +120,6 @@ export type databases_v2_qualite_sites_baignade = Prisma.databases_v2_qualite_si
  */
 export type databases_v2_surfaces_agricoles = Prisma.databases_v2_surfaces_agricolesModel
 /**
- * Model databases_v2_surfaces_protegees
- * 
- */
-export type databases_v2_surfaces_protegees = Prisma.databases_v2_surfaces_protegeesModel
-/**
  * Model databases_v2_table_commune
  * 
  */
@@ -214,3 +209,8 @@ export type thematique = Prisma.thematiqueModel
  * 
  */
 export type secheresses = Prisma.secheressesModel
+/**
+ * Model o3_seuils
+ * 
+ */
+export type o3_seuils = Prisma.o3_seuilsModel

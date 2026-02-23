@@ -4,13 +4,14 @@ import GoogleProvider from 'next-auth/providers/google';
 import { prisma } from '../queries/db';
 
 export const AuthOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: 'jwt',
     maxAge: 1800, // 30 minutes in seconds
     updateAge: 1800 // force session update every 30min
   },
   pages: {
-    signIn: '/login'
+    signIn: '/statistiques-login'
   },
   providers: [
     GoogleProvider({
@@ -28,11 +29,30 @@ export const AuthOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' }
       },
       async authorize(credentials, req) {
-        let user = null;
-        user = await prisma.sandbox_users.findFirst({
-          where: { username: credentials!.username }
+        if (!credentials?.username || !credentials?.password) {
+          return null;
+        }
+        
+        const user = await prisma.sandbox_users.findFirst({
+          where: { username: credentials.username }
         });
-        return null;
+        
+        if (!user) {
+          return null;
+        }
+            const bcrypt = require('bcryptjs');
+
+        const passwordMatch = await bcrypt.compare(credentials.password, user.password);
+        
+        if (!passwordMatch) {
+          return null;
+        }
+        
+        return {
+          id: user.pk.toString(),
+          name: user.username,
+          email: user.username
+        };
       }
     })
   ]

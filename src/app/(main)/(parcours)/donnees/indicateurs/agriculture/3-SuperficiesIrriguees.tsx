@@ -6,7 +6,7 @@ import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { surfacesIrrigueesLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import { MapSurfacesIrriguees } from '@/components/maps/mapSurfacesIrriguees';
+import { Loader } from '@/components/ui/loader';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -16,8 +16,10 @@ import { surfacesIrrigueesTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
-import { useMemo } from 'react';
+import { lazy, Suspense, useMemo } from 'react';
 import styles from '../../explorerDonnees.module.scss';
+
+const MapSurfacesIrriguees = lazy(() => import('@/components/maps/mapSurfacesIrriguees').then(m => ({ default: m.MapSurfacesIrriguees })));
 
 export const SuperficiesIrriguees = (props: {
   tableCommune: TableCommuneModel[];
@@ -29,7 +31,6 @@ export const SuperficiesIrriguees = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-
   // Parse la géométrie GeoJSON du contour du territoire
   const territoireContours = contoursCommunes ? [{
     type: 'Feature' as const,
@@ -135,7 +136,7 @@ export const SuperficiesIrriguees = (props: {
         <div className={styles.mapWrapper}>
           {
             coordonneesCommunes && tableCommuneFiltered.length > 0 ? (
-              <>
+              <Suspense fallback={<Loader />}>
                 <MapSurfacesIrriguees
                   communesCodes={coordonneesCommunes.codes}
                   surfacesIrriguees={surfacesIrrigueesData}
@@ -150,7 +151,7 @@ export const SuperficiesIrriguees = (props: {
                 >
                   <LegendCompColor legends={surfacesIrrigueesLegend} />
                 </div>
-              </>
+              </Suspense>
             ) : (
               <div className={styles.dataNotFoundForMap}>
                 <DataNotFoundForGraph image={DataNotFound} />

@@ -298,7 +298,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         const indices = nodes
           .map(n => n.originalIndex)
           .filter((i): i is number => typeof i === "number")
-          .sort((a, b) => a - b);
+          .toSorted((a, b) => a - b);
         // Calculer les angles des arcs de cercle (en radians)
         const { startAngle, endAngle } = PositionArcsDonut(category);
 

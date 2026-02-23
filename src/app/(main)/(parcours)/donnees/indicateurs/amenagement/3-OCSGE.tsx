@@ -1,16 +1,21 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
-import MapOCSGE from '@/components/maps/mapOCSGE';
+import { Loader } from '@/components/ui/loader';
 import { Body } from "@/design-system/base/Textes";
 import { useSearchParams } from "next/navigation";
-import { useRef } from 'react';
+import { lazy, Suspense, useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';
+
+const MapOCSGE = lazy(() => import('@/components/maps/mapOCSGE'));
 
 export const OCSGE = ({
   coordonneesCommunes,
 }: {
-  coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
+  coordonneesCommunes: {
+    codes: string[],
+    bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number }
+  } | null;
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
@@ -25,12 +30,14 @@ export const OCSGE = ({
         <div className={styles.mapWrapper}>
           {
             coordonneesCommunes ? (
-              <MapOCSGE
-                coordonneesCommunes={coordonneesCommunes}
-                mapRef={mapRef}
-                mapContainer={mapContainer}
-                isLoading={false}
-              />
+              <Suspense fallback={<Loader />}>
+                <MapOCSGE
+                  coordonneesCommunes={coordonneesCommunes}
+                  mapRef={mapRef}
+                  mapContainer={mapContainer}
+                  isLoading={false}
+                />
+              </Suspense>
             ) : (
               <div className='p-10 flex flex-row justify-center'>
                 <DataNotFoundForGraph image={DataNotFound} />

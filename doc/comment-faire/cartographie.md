@@ -139,32 +139,37 @@ https://bucket.s3.fr-par.scw.cloud/app/nom_indicateur/tiles/{z}/{x}/{y}.pbf
 
 ### Changement des CORS policy sur le bucket (https://www.scaleway.com/en/docs/object-storage/api-cli/setting-cors-rules/)
 
-Créer un fichier JSON : 
+Créer un fichier JSON :
+
 ```json
 {
-  "CORSRules": [
-    {
-      "AllowedOrigins": ["http://MY_DOMAIN_NAME", "http://www.MY_DOMAIN_NAME"],
-      "AllowedHeaders": ["*"],
-      "AllowedMethods": ["GET", "HEAD"],
-      "MaxAgeSeconds": 3000,
-      "ExposeHeaders": ["Etag"]
-    }
-  ]
+    "CORSRules": [
+        {
+            "AllowedOrigins": [
+                "http://MY_DOMAIN_NAME",
+                "http://www.MY_DOMAIN_NAME"
+            ],
+            "AllowedHeaders": ["*"],
+            "AllowedMethods": ["GET", "HEAD"],
+            "MaxAgeSeconds": 3000,
+            "ExposeHeaders": ["Etag"]
+        }
+    ]
 }
 ```
 
 Puis charger cette configuration :
+
 ```shell
 aws s3api put-bucket-cors --bucket bucketname --cors-configuration file://cors.json --endpoint-url https://s3.fr-par.scw.cloud
 
 ```
 
-Verification : 
+Verification :
+
 ```shell
 aws s3api get-bucket-cors --bucket bucketname --endpoint-url https://s3.fr-par.scw.cloud
 ```
-
 
 ## ✅ Vérification
 

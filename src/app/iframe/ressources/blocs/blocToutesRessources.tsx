@@ -18,7 +18,7 @@ export const BlocToutesRessources = () => {
   const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({});
   const [ArticlesFiltres, setArticlesFiltres] = useState(toutesLesRessources);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const ArticlesSorted = ArticlesFiltres.sort((a, b) => {
+  const ArticlesSorted = ArticlesFiltres.toSorted((a, b) => {
     const dateComparison = new Date(b.date).getTime() - new Date(a.date).getTime();
     if (dateComparison !== 0) {
       return dateComparison;

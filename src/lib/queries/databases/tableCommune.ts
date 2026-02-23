@@ -38,7 +38,13 @@ export const GetTablecommune = async (
       } else {
         const value = await prisma.databases_v2_table_commune.findMany({
           where: {
-            [column]: type === 'petr' || type === 'ept' ? libelle : code
+            [column]:
+              type === 'petr' || type === 'ept'
+                ? libelle
+                : {
+                    contains: code,
+                    mode: 'insensitive'
+                  }
           }
         });
         return value as TableCommuneModel[];

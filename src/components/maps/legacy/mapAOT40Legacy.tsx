@@ -87,7 +87,7 @@ export const MapAOT40 = (props: {
   );
 
   const centerCoord: number[] = commune
-    ? commune.properties.coordinates.split(',').map(Number).sort((a, b) => a - b)
+    ? commune.properties.coordinates.split(',').map(Number).toSorted((a, b) => a - b)
     : getCoordinates(allCoordinates);
 
   const aot40Data = useMemo(() => {

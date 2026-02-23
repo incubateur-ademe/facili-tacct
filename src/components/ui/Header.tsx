@@ -48,8 +48,8 @@ const HeaderComp = () => {
   const redirectionPatch4 = handleRedirection({
     searchCode: displayCode ?? '',
     searchLibelle: displayLibelle ?? '',
-    typeTerritoire: displayType as 'epci' | 'commune',
-    page: (displayType === "epci" || displayType === "commune") ? 'patch4c' : 'recherche-territoire-patch4'
+    typeTerritoire: displayType as 'epci' | 'commune' | 'departement' | 'ept' | 'petr' | 'pnr',
+    page: displayType && displayLibelle ? 'patch4c' : 'recherche-territoire-patch4'
   });
 
   const redirectionExplorerMesDonnees = handleRedirection({
@@ -64,7 +64,7 @@ const HeaderComp = () => {
     <Header
       className={css({
         zIndex: '500',
-        '.fr-container': windowDimensions.width && windowDimensions.width > 992 && displayCode && displayType ? {
+        '.fr-container': windowDimensions.width && windowDimensions.width > 992 && displayType ? {
           marginRight: "1.5rem",
           maxWidth: '85dvw',
         } : {},

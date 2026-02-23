@@ -1,5 +1,6 @@
 'use client';
 
+import Notice from '@codegouvfr/react-dsfr/Notice';
 import { useEffect } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { CommunauteBloc } from './(home)/CommunauteBloc';
@@ -9,8 +10,6 @@ import { PremierBloc } from './(home)/PremierBloc';
 import { RessourcesBloc } from './(home)/RessourcesBloc';
 import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
-import Link from 'next/link';
-import Notice from '@codegouvfr/react-dsfr/Notice';
 
 const Home = () => {
   const { css } = useStyles();
@@ -29,26 +28,11 @@ const Home = () => {
           color: "#201F1E"
         })}
         isClosable={true}
-        title={"Nouveau :"}
+        title={"Nouveauté sur le site :"}
         description={
           <>
-            une sélection de ressources regroupées par "collection" pour vous accompagner
-            dans chaque situation : découvrez votre nouvel espace "
-            <Link
-              href="/ressources"
-            >
-              Boîte à outils
-            </Link>
-            " ! Vous y trouverez également les formations ADEME de la méthode TACCT ainsi
-            qu’un{" "}
-            <Link
-              href="https://tally.so/r/w4l8pk"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              quiz pour tester vos connaissances sur l’adaptation
-            </Link>
-            . Une remarque, une suggestion ?{' '}
+            le Patch 4°C est désormais disponible pour les PNR, les PETR 
+            et les départements ! Une remarque, une suggestion ?{' '}
             <a
               href="https://tally.so/r/mJGELz"
               target="_blank"

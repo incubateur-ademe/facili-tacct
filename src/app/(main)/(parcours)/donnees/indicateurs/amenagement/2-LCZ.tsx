@@ -2,7 +2,7 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/ExportPng';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
-import { MapLCZ } from '@/components/maps/mapLCZ';
+import { Loader } from '@/components/ui/loader';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from "@/design-system/base/Textes";
@@ -10,8 +10,10 @@ import { GetLczCouverture } from '@/lib/queries/databases/inconfortThermique';
 import { LCZCeremaText1, LCZText, LCZText2 } from '@/lib/staticTexts';
 import { LCZTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
+
+const MapLCZ = lazy(() => import('@/components/maps/mapLCZ').then(m => ({ default: m.MapLCZ })));
 
 export const LCZ = ({
   coordonneesCommunes,
@@ -48,13 +50,15 @@ export const LCZ = ({
           {
             coordonneesCommunes ? (
               <div ref={exportPNGRef}>
-                <MapLCZ
-                  coordonneesCommunes={coordonneesCommunes}
-                  isLoading={isLoading}
-                  isLczCovered={isLczCovered}
-                  mapRef={mapRef}
-                  mapContainer={mapContainer}
-                />
+                <Suspense fallback={<Loader />}>
+                  <MapLCZ
+                    coordonneesCommunes={coordonneesCommunes}
+                    isLoading={isLoading}
+                    isLczCovered={isLczCovered}
+                    mapRef={mapRef}
+                    mapContainer={mapContainer}
+                  />
+                </Suspense>
               </div>
             ) : (
               <div className='p-10 flex flex-row justify-center'>

@@ -28,7 +28,7 @@ const ThematiquesTypes = async () => {
           nombre: e.aggregated_value
         };
       })
-      .sort((a, b) => b.nombre - a.nombre)
+      .toSorted((a, b) => b.nombre - a.nombre)
     : null;
 
   return (

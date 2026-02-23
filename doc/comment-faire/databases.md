@@ -10,7 +10,7 @@ Lorsqu'aucun lien direct n'est accessible, la base de donnée est téléchargée
 Dans le Notebook, nous utilisons la fonction create_engine de sqlalchemy :
 
 ```
-engine = create_engine('postgresql+psycopg2://XXXXXXXXXXXX',
+engine = create_engine('postgresql+psycopg2://XXXXX',
     connect_args={'options': '-csearch_path={}'.format(dbschema)})
 dataFrame.to_sql('table-name', engine, index=True, if_exists='replace')
 ```

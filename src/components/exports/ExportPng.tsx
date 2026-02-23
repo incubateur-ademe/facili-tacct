@@ -1,26 +1,196 @@
-"use client";
+'use client';
 
 import ExporterIcon from '@/assets/icons/export_icon_white.svg';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
-import html2canvas from "html2canvas";
-import Image from "next/image";
+import ExportDataTrigger from '@/hooks/ExportDataTrigger';
+import html2canvas from 'html2canvas';
+import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
-import { RefObject, useEffect, useState } from "react";
-import styles from "../components.module.scss";
+import { RefObject, useEffect, useState } from 'react';
+import styles from '../components.module.scss';
 import { CopyLinkClipboard } from '../interactions/CopyLinkClipboard';
+
+export const ExportPngSimple = ({
+  containerRef,
+  fileName = 'export.png',
+  buttonText = 'Exporter (.png)',
+  buttonSize = 'sm',
+  disabled = false,
+  style
+}: {
+  containerRef: RefObject<HTMLDivElement | null>;
+  fileName?: string;
+  buttonText?: string;
+  buttonSize?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  style?: React.CSSProperties;
+}) => {
+  const [isExporting, setIsExporting] = useState(false);
+
+  const handleExportPng = async () => {
+    if (!containerRef.current || isExporting || disabled) return;
+
+    setIsExporting(true);
+
+    try {
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      const canvas = await html2canvas(containerRef.current, {
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        ignoreElements: (element) => {
+          return element.classList.contains('export-button-ignore');
+        }
+      });
+
+      canvas.toBlob((blob) => {
+        if (blob) {
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = fileName;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        }
+        setIsExporting(false);
+      });
+    } catch (error) {
+      console.error('Error exporting PNG:', error);
+      setIsExporting(false);
+    }
+  };
+
+  return (
+    <div className="export-button-ignore">
+      <BoutonPrimaireClassic
+        onClick={handleExportPng}
+        disabled={isExporting || disabled}
+        icone={isExporting ? null : ExporterIcon}
+        size={buttonSize}
+        text={isExporting ? 'Export en cours...' : buttonText}
+        style={style}
+      />
+    </div>
+  );
+};
+
+export const ExportPngMaplibreSimple = ({
+  mapRef,
+  mapContainer,
+  legendContainer,
+  fileName = 'carte.png',
+  buttonText = 'Exporter (.png)',
+  buttonSize = 'sm',
+  disabled = false,
+  style
+}: {
+  mapRef: RefObject<maplibregl.Map | null>;
+  mapContainer: RefObject<HTMLDivElement | null>;
+  legendContainer?: RefObject<HTMLDivElement | null>;
+  fileName?: string;
+  buttonText?: string;
+  buttonSize?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  style?: React.CSSProperties;
+}) => {
+  const [isExporting, setIsExporting] = useState(false);
+
+  const handleExportPng = async () => {
+    if (!mapRef.current || !mapContainer.current || isExporting || disabled) return;
+
+    setIsExporting(true);
+
+    try {
+      const navControls = mapContainer.current.querySelectorAll('.maplibregl-ctrl-top-right');
+      navControls.forEach((control) => {
+        (control as HTMLElement).style.display = 'none';
+      });
+
+      await new Promise<void>((resolve) => {
+        mapRef.current!.once('render', async () => {
+          try {
+            const mapCanvas = await html2canvas(mapContainer.current!, {
+              useCORS: true,
+              allowTaint: true
+            });
+
+            let finalCanvas = mapCanvas;
+
+            if (legendContainer?.current) {
+              const legendCanvas = await html2canvas(legendContainer.current, {
+                useCORS: true,
+                allowTaint: true
+              });
+
+              finalCanvas = document.createElement('canvas');
+              const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
+              finalCanvas.width = mapCanvas.width;
+              finalCanvas.height = mapCanvas.height + legendCanvas.height;
+              ctx.drawImage(mapCanvas, 0, 0);
+              ctx.drawImage(legendCanvas, 0, mapCanvas.height);
+            }
+
+            finalCanvas.toBlob((blob) => {
+              if (blob) {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = fileName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+              }
+              navControls.forEach((control) => {
+                (control as HTMLElement).style.display = '';
+              });
+              setIsExporting(false);
+              resolve();
+            });
+          } catch (error) {
+            console.error('Error exporting PNG:', error);
+            navControls.forEach((control) => {
+              (control as HTMLElement).style.display = '';
+            });
+            setIsExporting(false);
+            resolve();
+          }
+        });
+        mapRef.current!.triggerRepaint();
+      });
+    } catch (error) {
+      console.error('Error exporting PNG:', error);
+      setIsExporting(false);
+    }
+  };
+
+  return (
+    <BoutonPrimaireClassic
+      onClick={handleExportPng}
+      disabled={isExporting || disabled}
+      icone={isExporting ? null : ExporterIcon}
+      size={buttonSize}
+      text={isExporting ? 'Export en cours...' : buttonText}
+      style={style}
+    />
+  );
+};
 
 export const ExportPngMaplibreButton = ({
   mapRef,
   mapContainer,
-  documentDiv = ".exportPNGWrapper",
-  fileName = "indicateur-carte.png",
-  style,
+  documentDiv = '.exportPNGWrapper',
+  fileName = 'indicateur-carte.png',
+  style
 }: {
-  mapRef: RefObject<maplibregl.Map | null>,
-  mapContainer: RefObject<HTMLDivElement | null>,
-  documentDiv?: string,
-  fileName?: string,
-  style?: React.CSSProperties
+  mapRef: RefObject<maplibregl.Map | null>;
+  mapContainer: RefObject<HTMLDivElement | null>;
+  documentDiv?: string;
+  fileName?: string;
+  style?: React.CSSProperties;
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -66,20 +236,30 @@ export const ExportPngMaplibreButton = ({
     e.currentTarget.blur();
     if (mapRef.current && mapContainer.current) {
       // On cache les contrôles de navigation pour éviter qu'ils n'apparaissent sur le screenshot
-      const navControls = mapContainer.current.querySelectorAll('.maplibregl-ctrl-top-right');
-      navControls.forEach(control => {
+      const navControls = mapContainer.current.querySelectorAll(
+        '.maplibregl-ctrl-top-right'
+      );
+      navControls.forEach((control) => {
         (control as HTMLElement).style.display = 'none';
       });
       // Ajout du div de la légende et de la source pour le screenshot
-      const originalLegendDiv = document.querySelector(documentDiv) as HTMLElement;
+      const originalLegendDiv = document.querySelector(
+        documentDiv
+      ) as HTMLElement;
       // Cacher le bouton d'export avant la capture
-      const exportButton = originalLegendDiv?.querySelector('.' + styles.exportIndicatorButton) as HTMLElement;
+      const exportButton = originalLegendDiv?.querySelector(
+        '.' + styles.exportIndicatorButton
+      ) as HTMLElement;
       if (exportButton) exportButton.style.display = 'none';
       // Trigger un render pour que le canvas soit prêt
       mapRef.current.once('render', async () => {
         try {
-          const mapCanvas = await html2canvas(mapContainer.current!, { useCORS: true });
-          const legendCanvas = await html2canvas(originalLegendDiv, { useCORS: true });
+          const mapCanvas = await html2canvas(mapContainer.current!, {
+            useCORS: true
+          });
+          const legendCanvas = await html2canvas(originalLegendDiv, {
+            useCORS: true
+          });
           //Combinaison des deux canvases
           const finalCanvas = document.createElement('canvas');
           const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
@@ -99,14 +279,14 @@ export const ExportPngMaplibreButton = ({
               document.body.removeChild(link);
               URL.revokeObjectURL(url);
             }
-            navControls.forEach(control => {
+            navControls.forEach((control) => {
               (control as HTMLElement).style.display = '';
             });
             if (exportButton) exportButton.style.display = '';
           });
         } catch (error) {
           console.error('Error capturing canvas:', error);
-          navControls.forEach(control => {
+          navControls.forEach((control) => {
             (control as HTMLElement).style.display = '';
           });
           if (exportButton) exportButton.style.display = '';
@@ -118,7 +298,7 @@ export const ExportPngMaplibreButton = ({
     } else {
       console.log('Map or container not found');
     }
-  }
+  };
   return (
     <button
       onClick={handleExportPng}
@@ -140,8 +320,8 @@ export const ExportPngMaplibreButton = ({
 export const ExportPngMaplibreButtonNouveauParcours = ({
   mapRef,
   mapContainer,
-  documentDiv = ".exportPNGWrapper",
-  fileName = "indicateur-carte.png",
+  documentDiv = '.exportPNGWrapper',
+  fileName = 'indicateur-carte.png',
   style,
   anchor,
   type,
@@ -149,19 +329,20 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
   code,
   thematique
 }: {
-  mapRef: RefObject<maplibregl.Map | null>,
-  mapContainer: RefObject<HTMLDivElement | null>,
-  type: string,
-  libelle: string,
-  code: string,
-  thematique: string,
-  documentDiv?: string,
-  fileName?: string,
-  style?: React.CSSProperties,
-  anchor?: string
+  mapRef: RefObject<maplibregl.Map | null>;
+  mapContainer: RefObject<HTMLDivElement | null>;
+  type: string;
+  libelle: string;
+  code: string;
+  thematique: string;
+  documentDiv?: string;
+  fileName?: string;
+  style?: React.CSSProperties;
+  anchor?: string;
 }) => {
   const posthog = usePostHog();
   const [isLoading, setIsLoading] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
     // ajout d'un overlay pour éviter les interactions pendant le chargement
@@ -202,13 +383,13 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
   }, [isLoading]);
 
   const handleExportPng = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    setIsClicked(true);
     if (isLoading) return;
 
     e.currentTarget.blur();
     setIsLoading(true);
 
-    posthog.capture(
-      'export_png_bouton', {
+    posthog.capture('export_png_bouton', {
       thematique: thematique,
       code: code,
       libelle: libelle,
@@ -217,29 +398,47 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
     });
 
     // Attendre que React affiche "Export en cours..." avant de démarrer l'export
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await new Promise((resolve) => setTimeout(resolve, 0));
 
     if (mapRef.current && mapContainer.current) {
       // On cache les contrôles de navigation pour éviter qu'ils n'apparaissent sur le screenshot
-      const navControls = mapContainer.current.querySelectorAll('.maplibregl-ctrl-top-right');
-      navControls.forEach(control => {
+      const navControls = mapContainer.current.querySelectorAll(
+        '.maplibregl-ctrl-top-right'
+      );
+      navControls.forEach((control) => {
         (control as HTMLElement).style.display = 'none';
       });
       // On modifie la taille du logo du cerema
-      const logoCeremaDev = mapContainer.current.querySelector('.maps-module-scss-module__4-8-aW__ceremaLogoBottomRight') as HTMLElement;
-      if (logoCeremaDev) { logoCeremaDev.style.display = 'none' }
-      const logoCeremaPreprod = mapContainer.current.querySelector('.maps_ceremaLogoBottomRight__IZXf3') as HTMLElement;
-      if (logoCeremaPreprod) { logoCeremaPreprod.style.display = 'none' }
+      const logoCeremaDev = mapContainer.current.querySelector(
+        '.maps-module-scss-module__4-8-aW__ceremaLogoBottomRight'
+      ) as HTMLElement;
+      if (logoCeremaDev) {
+        logoCeremaDev.style.display = 'none';
+      }
+      const logoCeremaPreprod = mapContainer.current.querySelector(
+        '.maps_ceremaLogoBottomRight__IZXf3'
+      ) as HTMLElement;
+      if (logoCeremaPreprod) {
+        logoCeremaPreprod.style.display = 'none';
+      }
       // Ajout du div de la légende et de la source pour le screenshot
-      const originalLegendDiv = document.querySelector(documentDiv) as HTMLElement;
+      const originalLegendDiv = document.querySelector(
+        documentDiv
+      ) as HTMLElement;
       // Cacher le bouton d'export avant la capture
-      const exportButton = originalLegendDiv?.querySelector('.' + styles.exportIndicatorButton) as HTMLElement;
+      const exportButton = originalLegendDiv?.querySelector(
+        '.' + styles.exportIndicatorButton
+      ) as HTMLElement;
       if (exportButton) exportButton.style.display = 'none';
       // Trigger un render pour que le canvas soit prêt
       mapRef.current.once('render', async () => {
         try {
-          const mapCanvas = await html2canvas(mapContainer.current!, { useCORS: true });
-          const legendCanvas = await html2canvas(originalLegendDiv, { useCORS: true });
+          const mapCanvas = await html2canvas(mapContainer.current!, {
+            useCORS: true
+          });
+          const legendCanvas = await html2canvas(originalLegendDiv, {
+            useCORS: true
+          });
           //Combinaison des deux canvases
           const finalCanvas = document.createElement('canvas');
           const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
@@ -259,14 +458,14 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
               document.body.removeChild(link);
               URL.revokeObjectURL(url);
             }
-            navControls.forEach(control => {
+            navControls.forEach((control) => {
               (control as HTMLElement).style.display = '';
             });
             if (exportButton) exportButton.style.display = '';
           });
         } catch (error) {
           console.error('Error capturing canvas:', error);
-          navControls.forEach(control => {
+          navControls.forEach((control) => {
             (control as HTMLElement).style.display = '';
           });
           if (exportButton) exportButton.style.display = '';
@@ -281,7 +480,7 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
       console.log('Map or container not found');
       setIsLoading(false);
     }
-  }
+  };
   return (
     <div className={styles.exportShareWrapper}>
       {anchor && <CopyLinkClipboard anchor={anchor} />}
@@ -289,13 +488,14 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
         onClick={handleExportPng}
         disabled={isLoading}
         icone={isLoading ? null : ExporterIcon}
-        size='sm'
+        size="sm"
         text={isLoading ? 'Export en cours...' : 'Exporter'}
         style={{
           cursor: isLoading ? 'wait' : 'pointer',
-          ...style,
+          ...style
         }}
       />
+      {isClicked && <ExportDataTrigger />}
     </div>
   );
 };
@@ -307,40 +507,50 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
 export async function generateMapPngBlob({
   mapRef,
   mapContainer,
-  documentDiv = ".exportPNGWrapper",
+  documentDiv = '.exportPNGWrapper'
 }: {
-  mapRef: RefObject<maplibregl.Map | null>,
-  mapContainer: RefObject<HTMLDivElement | null>,
-  documentDiv?: string | HTMLElement,
-  fileName?: string,
+  mapRef: RefObject<maplibregl.Map | null>;
+  mapContainer: RefObject<HTMLDivElement | null>;
+  documentDiv?: string | HTMLElement;
+  fileName?: string;
 }): Promise<Blob | null> {
-
   if (mapRef.current && mapContainer.current) {
-    const navControls = mapContainer.current.querySelectorAll('.maplibregl-ctrl-top-right');
-    navControls.forEach(control => {
+    const navControls = mapContainer.current.querySelectorAll(
+      '.maplibregl-ctrl-top-right'
+    );
+    navControls.forEach((control) => {
       (control as HTMLElement).style.display = 'none';
     });
 
-    const originalLegendDiv = typeof documentDiv === 'string'
-      ? document.querySelector(documentDiv) as HTMLElement
-      : documentDiv;
+    const originalLegendDiv =
+      typeof documentDiv === 'string'
+        ? (document.querySelector(documentDiv) as HTMLElement)
+        : documentDiv;
 
     if (!originalLegendDiv) {
-      console.error(`generateMapPngBlob - Element not found with selector: ${documentDiv}`);
-      navControls.forEach(control => {
+      console.error(
+        `generateMapPngBlob - Element not found with selector: ${documentDiv}`
+      );
+      navControls.forEach((control) => {
         (control as HTMLElement).style.display = '';
       });
       return null;
     }
 
-    const exportButton = originalLegendDiv?.querySelector('.' + styles.exportIndicatorButton) as HTMLElement;
+    const exportButton = originalLegendDiv?.querySelector(
+      '.' + styles.exportIndicatorButton
+    ) as HTMLElement;
     if (exportButton) exportButton.style.display = 'none';
     // Wait for map to render
     return new Promise((resolve) => {
       mapRef.current!.once('render', async () => {
         try {
-          const mapCanvas = await html2canvas(mapContainer.current!, { useCORS: true });
-          const legendCanvas = await html2canvas(originalLegendDiv, { useCORS: true });
+          const mapCanvas = await html2canvas(mapContainer.current!, {
+            useCORS: true
+          });
+          const legendCanvas = await html2canvas(originalLegendDiv, {
+            useCORS: true
+          });
           const finalCanvas = document.createElement('canvas');
           const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
           finalCanvas.width = mapCanvas.width - 16;
@@ -348,15 +558,15 @@ export async function generateMapPngBlob({
           ctx.drawImage(mapCanvas, 0, 0);
           ctx.drawImage(legendCanvas, 0, mapCanvas.height);
           finalCanvas.toBlob((blob) => {
-            navControls.forEach(control => {
+            navControls.forEach((control) => {
               (control as HTMLElement).style.display = '';
             });
             if (exportButton) exportButton.style.display = '';
             resolve(blob);
           });
         } catch (error) {
-          console.error("generateMapPngBlob - error:", error);
-          navControls.forEach(control => {
+          console.error('generateMapPngBlob - error:', error);
+          navControls.forEach((control) => {
             (control as HTMLElement).style.display = '';
           });
           if (exportButton) exportButton.style.display = '';
@@ -366,7 +576,7 @@ export async function generateMapPngBlob({
       mapRef.current!.triggerRepaint();
     });
   } else {
-    console.log("generateMapPngBlob - mapRef or mapContainer not found");
+    console.log('generateMapPngBlob - mapRef or mapContainer not found');
     return null;
   }
 }
