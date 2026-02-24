@@ -1116,3 +1116,15 @@ model prelevements_eau_new {
   @@index([code_pnr], map: "prelevements_eau_new_pnr_index")
   @@schema("databases_v2")
 }
+
+model arbovirose {
+  index              Int    @id
+  annee              String
+  departement        String
+  nb_cas_importes    Int
+  nb_cas_autochtones Int
+
+  @@index([departement], map: "arbovirose_departement_index")
+  @@index([index], map: "ix_arbovirose_index")
+  @@schema("databases_v2")
+}

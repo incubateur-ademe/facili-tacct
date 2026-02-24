@@ -95,7 +95,6 @@ export const PrelevementsEnEau = (props: {
   prelevementsEauNew: PrelevementsEauModel[];
 }) => {
   const { prelevementsEau, prelevementsEauNew } = props;
-  console.log("prelevementsEau", prelevementsEauNew);
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;

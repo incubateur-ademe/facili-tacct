@@ -827,3 +827,14 @@ export const secheressesSaisonsChartLegend = [
     color: "#640234"
   },
 ];
+
+export const arboviroseBarChartLegend = [
+  {
+    value: 'Cas importés',
+    color: couleurs.graphiques.bleu[3]
+  },
+  {
+    value: 'Cas autochtones',
+    color: couleurs.graphiques.bleu[1]
+  },
+];

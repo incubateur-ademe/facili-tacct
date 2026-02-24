@@ -1026,3 +1026,11 @@ export type PrelevementsEauModel = {
   annee_2023_ind: number;
   annee_2023_irr: number;
 };
+
+export type ArboviroseModel = {
+  index: number;
+  annee: string;
+  departement: string;
+  nb_cas_importes: number;
+  nb_cas_autochtones: number;
+};

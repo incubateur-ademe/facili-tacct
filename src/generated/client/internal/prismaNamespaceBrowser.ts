@@ -87,7 +87,8 @@ export const ModelName = {
   secheresses: 'secheresses',
   o3_seuils: 'o3_seuils',
   qualite_sites_baignade_new: 'qualite_sites_baignade_new',
-  prelevements_eau_new: 'prelevements_eau_new'
+  prelevements_eau_new: 'prelevements_eau_new',
+  arbovirose: 'arbovirose'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1047,6 +1048,17 @@ export const Prelevements_eau_newScalarFieldEnum = {
 } as const
 
 export type Prelevements_eau_newScalarFieldEnum = (typeof Prelevements_eau_newScalarFieldEnum)[keyof typeof Prelevements_eau_newScalarFieldEnum]
+
+
+export const ArboviroseScalarFieldEnum = {
+  index: 'index',
+  annee: 'annee',
+  departement: 'departement',
+  nb_cas_importes: 'nb_cas_importes',
+  nb_cas_autochtones: 'nb_cas_autochtones'
+} as const
+
+export type ArboviroseScalarFieldEnum = (typeof ArboviroseScalarFieldEnum)[keyof typeof ArboviroseScalarFieldEnum]
 
 
 export const SortOrder = {
