@@ -9,7 +9,7 @@ import {
   ConfortThermique,
   ConsommationNAF,
   EtatCoursDeau,
-  QualiteSitesBaignade,
+  QualiteSitesBaignadeModel,
   SurfacesAgricolesModel,
   TableCommuneModel
 } from '@/lib/postgres/models';
@@ -44,7 +44,7 @@ interface Props {
   consommationNAF: ConsommationNAF[];
   aot40: AOT40[];
   etatCoursDeau: EtatCoursDeau[];
-  qualiteEauxBaignade: QualiteSitesBaignade[];
+  qualiteEauxBaignade: QualiteSitesBaignadeModel[];
   confortThermique: Partial<ConfortThermique>[];
   surfacesAgricoles: SurfacesAgricolesModel[];
   tableCommune: TableCommuneModel[];

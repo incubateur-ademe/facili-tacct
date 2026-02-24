@@ -9,11 +9,10 @@ import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from "@/design-system/base/Textes";
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
-import { EtatCoursDeau, ExportCoursDeau, QualiteSitesBaignade } from "@/lib/postgres/models";
+import { EtatCoursDeau, ExportCoursDeau, QualiteSitesBaignadeModel } from "@/lib/postgres/models";
 import { EtatsCoursEauBiodiversiteTextNouveauParcours } from '@/lib/staticTexts';
 import { EtatCoursDeauDynamicText } from '@/lib/textesIndicateurs/biodiversiteDynamicTexts';
 import { etatCoursDeauTooltipTextBiodiv } from '@/lib/tooltipTexts';
-import { sitesDeBaignadeDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from "next/navigation";
 import { lazy, Suspense, useEffect, useState } from 'react';
@@ -42,7 +41,7 @@ export const EtatEcoCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeau[];
   communesCodes: string[];
   boundingBox?: [[number, number], [number, number]];
-  qualiteEauxBaignade: QualiteSitesBaignade[];
+  qualiteEauxBaignade: QualiteSitesBaignadeModel[];
 }) => {
   const { etatCoursDeau, communesCodes, boundingBox, qualiteEauxBaignade } = props;
   const searchParams = useSearchParams();
@@ -128,7 +127,7 @@ export const EtatEcoCoursDeau = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : Agences de l’eau et Ministère de la Santé, 2020 (plans d'eau) et 2024 (état des cours d'eau).
+          Source : Agences de l’eau et Ministère de la Santé, 2024.
         </Body>
         {
           etatCoursDeau.length > 0 && (
@@ -138,7 +137,7 @@ export const EtatEcoCoursDeau = (props: {
               type={type}
               libelle={libelle}
               code={code}
-              documentationSheet={sitesDeBaignadeDoc}
+              // documentationSheet={sitesDeBaignadeDoc}
               anchor="État des cours d'eau"
             >
               Exporter

@@ -418,7 +418,8 @@ export const ModelName = {
   ressources_consultees: 'ressources_consultees',
   thematique: 'thematique',
   secheresses: 'secheresses',
-  o3_seuils: 'o3_seuils'
+  o3_seuils: 'o3_seuils',
+  qualite_sites_baignade_new: 'qualite_sites_baignade_new'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -434,7 +435,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils"
+    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2996,6 +2997,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    qualite_sites_baignade_new: {
+      payload: Prisma.$qualite_sites_baignade_newPayload<ExtArgs>
+      fields: Prisma.qualite_sites_baignade_newFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.qualite_sites_baignade_newFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.qualite_sites_baignade_newFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>
+        }
+        findFirst: {
+          args: Prisma.qualite_sites_baignade_newFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.qualite_sites_baignade_newFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>
+        }
+        findMany: {
+          args: Prisma.qualite_sites_baignade_newFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>[]
+        }
+        create: {
+          args: Prisma.qualite_sites_baignade_newCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>
+        }
+        createMany: {
+          args: Prisma.qualite_sites_baignade_newCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.qualite_sites_baignade_newCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>[]
+        }
+        delete: {
+          args: Prisma.qualite_sites_baignade_newDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>
+        }
+        update: {
+          args: Prisma.qualite_sites_baignade_newUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>
+        }
+        deleteMany: {
+          args: Prisma.qualite_sites_baignade_newDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.qualite_sites_baignade_newUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.qualite_sites_baignade_newUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>[]
+        }
+        upsert: {
+          args: Prisma.qualite_sites_baignade_newUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>
+        }
+        aggregate: {
+          args: Prisma.Qualite_sites_baignade_newAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateQualite_sites_baignade_new>
+        }
+        groupBy: {
+          args: Prisma.qualite_sites_baignade_newGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Qualite_sites_baignade_newGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.qualite_sites_baignade_newCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Qualite_sites_baignade_newCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -3888,6 +3963,30 @@ export const O3_seuilsScalarFieldEnum = {
 export type O3_seuilsScalarFieldEnum = (typeof O3_seuilsScalarFieldEnum)[keyof typeof O3_seuilsScalarFieldEnum]
 
 
+export const Qualite_sites_baignade_newScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  nom_site: 'nom_site',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  type_eau_norm: 'type_eau_norm',
+  statut_donnees: 'statut_donnees',
+  qualite: 'qualite'
+} as const
+
+export type Qualite_sites_baignade_newScalarFieldEnum = (typeof Qualite_sites_baignade_newScalarFieldEnum)[keyof typeof Qualite_sites_baignade_newScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -4155,6 +4254,7 @@ export type GlobalOmitConfig = {
   thematique?: Prisma.thematiqueOmit
   secheresses?: Prisma.secheressesOmit
   o3_seuils?: Prisma.o3_seuilsOmit
+  qualite_sites_baignade_new?: Prisma.qualite_sites_baignade_newOmit
 }
 
 /* Types for Logging */

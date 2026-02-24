@@ -85,7 +85,8 @@ export const ModelName = {
   ressources_consultees: 'ressources_consultees',
   thematique: 'thematique',
   secheresses: 'secheresses',
-  o3_seuils: 'o3_seuils'
+  o3_seuils: 'o3_seuils',
+  qualite_sites_baignade_new: 'qualite_sites_baignade_new'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -955,6 +956,30 @@ export const O3_seuilsScalarFieldEnum = {
 } as const
 
 export type O3_seuilsScalarFieldEnum = (typeof O3_seuilsScalarFieldEnum)[keyof typeof O3_seuilsScalarFieldEnum]
+
+
+export const Qualite_sites_baignade_newScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  nom_site: 'nom_site',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  type_eau_norm: 'type_eau_norm',
+  statut_donnees: 'statut_donnees',
+  qualite: 'qualite'
+} as const
+
+export type Qualite_sites_baignade_newScalarFieldEnum = (typeof Qualite_sites_baignade_newScalarFieldEnum)[keyof typeof Qualite_sites_baignade_newScalarFieldEnum]
 
 
 export const SortOrder = {

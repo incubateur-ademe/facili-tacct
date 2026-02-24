@@ -1,6 +1,9 @@
 'use server';
 
-import { PrelevementsEau, QualiteSitesBaignade } from '@/lib/postgres/models';
+import {
+  PrelevementsEau,
+  QualiteSitesBaignadeModel
+} from '@/lib/postgres/models';
 import { ColumnCodeCheck, ColumnLibelleCheck } from '../columns';
 import { prisma } from '../db';
 
@@ -108,11 +111,82 @@ export const GetPrelevementsEau = async (
   return Promise.race([dbQuery, timeoutPromise]);
 };
 
+// export const GetQualiteEauxBaignade = async (
+//   code: string,
+//   libelle: string,
+//   type: string
+// ): Promise<QualiteSitesBaignade[]> => {
+//   const column = ColumnLibelleCheck(type);
+//   try {
+//     // Fast existence check
+//     if (!libelle || !type || (!code && type !== 'petr')) return [];
+//     const exists = await prisma.databases_v2_collectivites_searchbar.findFirst({
+//       where: { [column]: libelle }
+//     });
+//     if (!exists) return [];
+//     else {
+//       if (code === 'ZZZZZZZZZ') {
+//         console.time('Query Execution Time QUALITE EAUX BAIGNADE');
+//         const value = await prisma.databases_v2_qualite_sites_baignade.findMany(
+//           {
+//             where: {
+//               OR: [
+//                 { COMMUNE: "ile-d'yeu (l')" },
+//                 { COMMUNE: 'ile-de-brehat' },
+//                 { COMMUNE: 'ouessant' },
+//                 { COMMUNE: 'ile-de-sein' }
+//               ]
+//             }
+//           }
+//         );
+//         console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
+//         return value;
+//       } else {
+//         console.time('Query Execution Time QUALITE EAUX BAIGNADE');
+//         const departement =
+//           await prisma.databases_v2_collectivites_searchbar.findMany({
+//             where: {
+//               AND: [
+//                 {
+//                   departement: { not: null }
+//                 },
+//                 {
+//                   [column]: {
+//                     contains: libelle,
+//                     mode: 'insensitive'
+//                   }
+//                 }
+//               ]
+//             },
+//             distinct: ['departement']
+//           });
+//         const value = await prisma.databases_v2_qualite_sites_baignade.findMany(
+//           {
+//             where: {
+//               DEP_NUM: {
+//                 in: departement
+//                   .map((d) => d.departement)
+//                   .filter((d): d is string => d !== null)
+//               }
+//             }
+//           }
+//         );
+//         console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
+//         return value;
+//       }
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     // prisma.$disconnect();
+//     return [];
+//   }
+// };
+
 export const GetQualiteEauxBaignade = async (
   code: string,
   libelle: string,
   type: string
-): Promise<QualiteSitesBaignade[]> => {
+): Promise<QualiteSitesBaignadeModel[]> => {
   const column = ColumnLibelleCheck(type);
   try {
     // Fast existence check
@@ -122,59 +196,38 @@ export const GetQualiteEauxBaignade = async (
     });
     if (!exists) return [];
     else {
-      if (code === 'ZZZZZZZZZ') {
-        console.time('Query Execution Time QUALITE EAUX BAIGNADE');
-        const value = await prisma.databases_v2_qualite_sites_baignade.findMany(
-          {
-            where: {
-              OR: [
-                { COMMUNE: "ile-d'yeu (l')" },
-                { COMMUNE: 'ile-de-brehat' },
-                { COMMUNE: 'ouessant' },
-                { COMMUNE: 'ile-de-sein' }
-              ]
-            }
-          }
-        );
-        console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
-        return value;
-      } else {
-        console.time('Query Execution Time QUALITE EAUX BAIGNADE');
-        const departement =
-          await prisma.databases_v2_collectivites_searchbar.findMany({
-            where: {
-              AND: [
-                {
-                  departement: { not: null }
-                },
-                {
-                  [column]: {
-                    contains: libelle,
-                    mode: 'insensitive'
-                  }
+      console.time('Query Execution Time QUALITE EAUX BAIGNADE');
+      const departement =
+        await prisma.databases_v2_collectivites_searchbar.findMany({
+          where: {
+            AND: [
+              {
+                departement: { not: null }
+              },
+              {
+                [column]: {
+                  contains: libelle,
+                  mode: 'insensitive'
                 }
-              ]
-            },
-            distinct: ['departement']
-          });
-        const value = await prisma.databases_v2_qualite_sites_baignade.findMany(
-          {
-            where: {
-              DEP_NUM: {
-                in: departement
-                  .map((d) => d.departement)
-                  .filter((d): d is string => d !== null)
               }
-            }
+            ]
+          },
+          distinct: ['departement']
+        });
+      const value = await prisma.qualite_sites_baignade_new.findMany({
+        where: {
+          departement: {
+            in: departement
+              .map((d) => d.departement)
+              .filter((d): d is string => d !== null)
           }
-        );
-        console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
-        return value;
-      }
+        }
+      });
+      console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
+      return value;
     }
   } catch (error) {
     console.error(error);
-    // prisma.$disconnect();
     return [];
   }
 };

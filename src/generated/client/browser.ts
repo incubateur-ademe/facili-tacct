@@ -192,3 +192,8 @@ export type secheresses = Prisma.secheressesModel
  * 
  */
 export type o3_seuils = Prisma.o3_seuilsModel
+/**
+ * Model qualite_sites_baignade_new
+ * 
+ */
+export type qualite_sites_baignade_new = Prisma.qualite_sites_baignade_newModel

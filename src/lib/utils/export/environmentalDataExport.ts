@@ -14,7 +14,7 @@ import {
   IncendiesForet,
   InconfortThermique,
   PrelevementsEauParsed,
-  QualiteSitesBaignade,
+  QualiteSitesBaignadeModel,
   RGAdb,
   SurfacesAgricolesModel,
   TableCommuneModel
@@ -348,24 +348,16 @@ export const IndicatorExportTransformations = {
         };
       });
     },
-    QualiteSitesBaignade: (qualiteSitesBaignade: QualiteSitesBaignade[]) => {
+    QualiteSitesBaignade: (qualiteSitesBaignade: QualiteSitesBaignadeModel[]) => {
       return qualiteSitesBaignade.map((el) => {
         return {
-          libelle_geographique: el.COMMUNE,
-          libelle_departement: el.DEP_NOM,
-          departement: el.DEP_NUM,
-          latitude: el.LAT,
-          longitude: el.LONG,
-          point_d_eau: el.POINT,
-          qualite_eau_2013: el.QEB_2013,
-          qualite_eau_2014: el.QEB_2014,
-          qualite_eau_2015: el.QEB_2015,
-          qualite_eau_2016: el.QEB_2016,
-          qualite_eau_2017: el.QEB_2017,
-          qualite_eau_2018: el.QEB_2018,
-          qualite_eau_2019: el.QEB_2019,
-          qualite_eau_2020: el.QEB_2020,
-          type_d_eau: el.TYPE
+          libelle_geographique: el.libelle_geographique,
+          libelle_departement: el.libelle_departement,
+          departement: el.departement,
+          latitude: el.latitude,
+          longitude: el.longitude,
+          point_d_eau: el.nom_site,
+          qualite_eau_2024: el.qualite,
         };
       });
     }

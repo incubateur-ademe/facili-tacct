@@ -1,7 +1,7 @@
 "use client";
 import { RetardScroll } from '@/hooks/RetardScroll';
 import { EtatCoursDeauDto } from '@/lib/dto';
-import { QualiteSitesBaignade } from '@/lib/postgres/models';
+import { QualiteSitesBaignadeModel } from '@/lib/postgres/models';
 import { mapStyles } from 'carte-facile';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
@@ -14,7 +14,7 @@ export const MapEtatCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
   communesCodes: string[];
   boundingBox?: [[number, number], [number, number]];
-  qualiteEauxBaignade?: QualiteSitesBaignade[];
+  qualiteEauxBaignade: QualiteSitesBaignadeModel[];
 }) => {
   const { etatCoursDeau, communesCodes, boundingBox, qualiteEauxBaignade } = props;
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -24,29 +24,29 @@ export const MapEtatCoursDeau = (props: {
 
   // Helper functions for sites de baignade
   const qualiteIcon = (qualite: string | undefined) => {
-    return qualite === 'E'
+    return qualite === 'Excellent'
       ? '/qualite_baignade_excellent.svg'
-      : qualite === 'B'
+      : qualite === 'Bon'
         ? '/qualite_baignade_bon.svg'
-        : qualite === 'S'
+        : qualite === 'Suffisant'
           ? '/qualite_baignade_suffisant.svg'
-          : qualite === 'I'
+          : qualite === 'Insuffisant'
             ? '/qualite_baignade_insuffisant.svg'
-            : qualite === 'P'
+            : qualite === 'Insuffisamment de prélèvement'
               ? '/qualite_baignade_manque_prelevement.svg'
               : '/qualite_baignade_non_classe.svg';
   };
 
   const qualiteLabel = (qualite: string | undefined) => {
-    return qualite === 'E'
+    return qualite === 'Excellent'
       ? 'Excellent'
-      : qualite === 'B'
+      : qualite === 'Bon'
         ? 'Bon'
-        : qualite === 'S'
+        : qualite === 'Suffisant'
           ? 'Suffisant'
-          : qualite === 'I'
+          : qualite === 'Insuffisant'
             ? 'Insuffisant'
-            : qualite === 'P'
+            : qualite === 'Insuffisamment de prélèvement'
               ? 'Insuffisamment de prélèvement'
               : 'Site non classé';
   };
@@ -89,12 +89,12 @@ export const MapEtatCoursDeau = (props: {
         type: "Feature" as const,
         geometry: {
           type: "Point" as const,
-          coordinates: [site.LONG, site.LAT]
+          coordinates: [site.longitude, site.latitude]
         },
         properties: {
-          nomSite: site.POINT,
-          qualite2020: site.QEB_2020?.slice(-1) || 'NC',
-          icon: qualiteIcon(site.QEB_2020?.slice(-1))
+          nomSite: site.nom_site,
+          qualite: site.qualite,
+          icon: qualiteIcon(site.qualite)
         },
         id: idx
       }))
@@ -279,11 +279,11 @@ export const MapEtatCoursDeau = (props: {
       // Ajouter les sites de baignade si disponibles
       if (sitesBaignadeGeoJson) {
         const iconsToLoad = [
-          { name: 'excellent', url: qualiteIcon('E') },
-          { name: 'bon', url: qualiteIcon('B') },
-          { name: 'suffisant', url: qualiteIcon('S') },
-          { name: 'insuffisant', url: qualiteIcon('I') },
-          { name: 'manque', url: qualiteIcon('P') },
+          { name: 'excellent', url: qualiteIcon('Excellent') },
+          { name: 'bon', url: qualiteIcon('Bon') },
+          { name: 'suffisant', url: qualiteIcon('Suffisant') },
+          { name: 'insuffisant', url: qualiteIcon('Insuffisant') },
+          { name: 'manque', url: qualiteIcon('Insuffisamment de prélèvement') },
           { name: 'non-classe', url: qualiteIcon(undefined) }
         ];
 
@@ -388,13 +388,12 @@ export const MapEtatCoursDeau = (props: {
             layout: {
               'icon-image': [
                 'match',
-                ['get', 'qualite2020'],
-                'E', 'excellent',
-                'B', 'bon',
-                'S', 'suffisant',
-                'I', 'insuffisant',
-                'P', 'manque',
-                'NC', 'non-classe',
+                ['get', 'qualite'],
+                'Excellent', 'excellent',
+                'Bon', 'bon',
+                'Suffisant', 'suffisant',
+                'Insuffisant', 'insuffisant',
+                'Insuffisamment de prélèvement', 'manque',
                 'non-classe'
               ],
               'icon-size': 1,
@@ -489,7 +488,7 @@ export const MapEtatCoursDeau = (props: {
             if (e.features && e.features.length > 0) {
               const properties = e.features[0].properties;
               const nomSite = properties?.nomSite;
-              const qualite = properties?.qualite2020;
+              const qualite = properties?.qualite;
               const label = qualiteLabel(qualite);
               const icon = qualiteIcon(qualite);
 
