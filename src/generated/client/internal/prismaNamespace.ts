@@ -419,7 +419,8 @@ export const ModelName = {
   thematique: 'thematique',
   secheresses: 'secheresses',
   o3_seuils: 'o3_seuils',
-  qualite_sites_baignade_new: 'qualite_sites_baignade_new'
+  qualite_sites_baignade_new: 'qualite_sites_baignade_new',
+  prelevements_eau_new: 'prelevements_eau_new'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -435,7 +436,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new"
+    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new" | "prelevements_eau_new"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -3071,6 +3072,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    prelevements_eau_new: {
+      payload: Prisma.$prelevements_eau_newPayload<ExtArgs>
+      fields: Prisma.prelevements_eau_newFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.prelevements_eau_newFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$prelevements_eau_newPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.prelevements_eau_newFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$prelevements_eau_newPayload>
+        }
+        findFirst: {
+          args: Prisma.prelevements_eau_newFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$prelevements_eau_newPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.prelevements_eau_newFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$prelevements_eau_newPayload>
+        }
+        findMany: {
+          args: Prisma.prelevements_eau_newFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$prelevements_eau_newPayload>[]
+        }
+        create: {
+          args: Prisma.prelevements_eau_newCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$prelevements_eau_newPayload>
+        }
+        createMany: {
+          args: Prisma.prelevements_eau_newCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.prelevements_eau_newCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$prelevements_eau_newPayload>[]
+        }
+        delete: {
+          args: Prisma.prelevements_eau_newDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$prelevements_eau_newPayload>
+        }
+        update: {
+          args: Prisma.prelevements_eau_newUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$prelevements_eau_newPayload>
+        }
+        deleteMany: {
+          args: Prisma.prelevements_eau_newDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.prelevements_eau_newUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.prelevements_eau_newUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$prelevements_eau_newPayload>[]
+        }
+        upsert: {
+          args: Prisma.prelevements_eau_newUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$prelevements_eau_newPayload>
+        }
+        aggregate: {
+          args: Prisma.Prelevements_eau_newAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePrelevements_eau_new>
+        }
+        groupBy: {
+          args: Prisma.prelevements_eau_newGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Prelevements_eau_newGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.prelevements_eau_newCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Prelevements_eau_newCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -3987,6 +4062,72 @@ export const Qualite_sites_baignade_newScalarFieldEnum = {
 export type Qualite_sites_baignade_newScalarFieldEnum = (typeof Qualite_sites_baignade_newScalarFieldEnum)[keyof typeof Qualite_sites_baignade_newScalarFieldEnum]
 
 
+export const Prelevements_eau_newScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  annee_2017_aep: 'annee_2017_aep',
+  annee_2017_bar: 'annee_2017_bar',
+  annee_2017_can: 'annee_2017_can',
+  annee_2017_ene: 'annee_2017_ene',
+  annee_2017_exo: 'annee_2017_exo',
+  annee_2017_ind: 'annee_2017_ind',
+  annee_2017_irr: 'annee_2017_irr',
+  annee_2018_aep: 'annee_2018_aep',
+  annee_2018_bar: 'annee_2018_bar',
+  annee_2018_can: 'annee_2018_can',
+  annee_2018_ene: 'annee_2018_ene',
+  annee_2018_exo: 'annee_2018_exo',
+  annee_2018_ind: 'annee_2018_ind',
+  annee_2018_irr: 'annee_2018_irr',
+  annee_2019_aep: 'annee_2019_aep',
+  annee_2019_bar: 'annee_2019_bar',
+  annee_2019_can: 'annee_2019_can',
+  annee_2019_ene: 'annee_2019_ene',
+  annee_2019_exo: 'annee_2019_exo',
+  annee_2019_ind: 'annee_2019_ind',
+  annee_2019_irr: 'annee_2019_irr',
+  annee_2020_aep: 'annee_2020_aep',
+  annee_2020_bar: 'annee_2020_bar',
+  annee_2020_can: 'annee_2020_can',
+  annee_2020_ene: 'annee_2020_ene',
+  annee_2020_exo: 'annee_2020_exo',
+  annee_2020_ind: 'annee_2020_ind',
+  annee_2020_irr: 'annee_2020_irr',
+  annee_2021_aep: 'annee_2021_aep',
+  annee_2021_bar: 'annee_2021_bar',
+  annee_2021_can: 'annee_2021_can',
+  annee_2021_ene: 'annee_2021_ene',
+  annee_2021_exo: 'annee_2021_exo',
+  annee_2021_ind: 'annee_2021_ind',
+  annee_2021_irr: 'annee_2021_irr',
+  annee_2022_aep: 'annee_2022_aep',
+  annee_2022_bar: 'annee_2022_bar',
+  annee_2022_can: 'annee_2022_can',
+  annee_2022_ene: 'annee_2022_ene',
+  annee_2022_ind: 'annee_2022_ind',
+  annee_2022_irr: 'annee_2022_irr',
+  annee_2023_aep: 'annee_2023_aep',
+  annee_2023_bar: 'annee_2023_bar',
+  annee_2023_can: 'annee_2023_can',
+  annee_2023_ene: 'annee_2023_ene',
+  annee_2023_exo: 'annee_2023_exo',
+  annee_2023_ind: 'annee_2023_ind',
+  annee_2023_irr: 'annee_2023_irr'
+} as const
+
+export type Prelevements_eau_newScalarFieldEnum = (typeof Prelevements_eau_newScalarFieldEnum)[keyof typeof Prelevements_eau_newScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -4255,6 +4396,7 @@ export type GlobalOmitConfig = {
   secheresses?: Prisma.secheressesOmit
   o3_seuils?: Prisma.o3_seuilsOmit
   qualite_sites_baignade_new?: Prisma.qualite_sites_baignade_newOmit
+  prelevements_eau_new?: Prisma.prelevements_eau_newOmit
 }
 
 /* Types for Logging */

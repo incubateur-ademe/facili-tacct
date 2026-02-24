@@ -86,7 +86,8 @@ export const ModelName = {
   thematique: 'thematique',
   secheresses: 'secheresses',
   o3_seuils: 'o3_seuils',
-  qualite_sites_baignade_new: 'qualite_sites_baignade_new'
+  qualite_sites_baignade_new: 'qualite_sites_baignade_new',
+  prelevements_eau_new: 'prelevements_eau_new'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -980,6 +981,72 @@ export const Qualite_sites_baignade_newScalarFieldEnum = {
 } as const
 
 export type Qualite_sites_baignade_newScalarFieldEnum = (typeof Qualite_sites_baignade_newScalarFieldEnum)[keyof typeof Qualite_sites_baignade_newScalarFieldEnum]
+
+
+export const Prelevements_eau_newScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  annee_2017_aep: 'annee_2017_aep',
+  annee_2017_bar: 'annee_2017_bar',
+  annee_2017_can: 'annee_2017_can',
+  annee_2017_ene: 'annee_2017_ene',
+  annee_2017_exo: 'annee_2017_exo',
+  annee_2017_ind: 'annee_2017_ind',
+  annee_2017_irr: 'annee_2017_irr',
+  annee_2018_aep: 'annee_2018_aep',
+  annee_2018_bar: 'annee_2018_bar',
+  annee_2018_can: 'annee_2018_can',
+  annee_2018_ene: 'annee_2018_ene',
+  annee_2018_exo: 'annee_2018_exo',
+  annee_2018_ind: 'annee_2018_ind',
+  annee_2018_irr: 'annee_2018_irr',
+  annee_2019_aep: 'annee_2019_aep',
+  annee_2019_bar: 'annee_2019_bar',
+  annee_2019_can: 'annee_2019_can',
+  annee_2019_ene: 'annee_2019_ene',
+  annee_2019_exo: 'annee_2019_exo',
+  annee_2019_ind: 'annee_2019_ind',
+  annee_2019_irr: 'annee_2019_irr',
+  annee_2020_aep: 'annee_2020_aep',
+  annee_2020_bar: 'annee_2020_bar',
+  annee_2020_can: 'annee_2020_can',
+  annee_2020_ene: 'annee_2020_ene',
+  annee_2020_exo: 'annee_2020_exo',
+  annee_2020_ind: 'annee_2020_ind',
+  annee_2020_irr: 'annee_2020_irr',
+  annee_2021_aep: 'annee_2021_aep',
+  annee_2021_bar: 'annee_2021_bar',
+  annee_2021_can: 'annee_2021_can',
+  annee_2021_ene: 'annee_2021_ene',
+  annee_2021_exo: 'annee_2021_exo',
+  annee_2021_ind: 'annee_2021_ind',
+  annee_2021_irr: 'annee_2021_irr',
+  annee_2022_aep: 'annee_2022_aep',
+  annee_2022_bar: 'annee_2022_bar',
+  annee_2022_can: 'annee_2022_can',
+  annee_2022_ene: 'annee_2022_ene',
+  annee_2022_ind: 'annee_2022_ind',
+  annee_2022_irr: 'annee_2022_irr',
+  annee_2023_aep: 'annee_2023_aep',
+  annee_2023_bar: 'annee_2023_bar',
+  annee_2023_can: 'annee_2023_can',
+  annee_2023_ene: 'annee_2023_ene',
+  annee_2023_exo: 'annee_2023_exo',
+  annee_2023_ind: 'annee_2023_ind',
+  annee_2023_irr: 'annee_2023_irr'
+} as const
+
+export type Prelevements_eau_newScalarFieldEnum = (typeof Prelevements_eau_newScalarFieldEnum)[keyof typeof Prelevements_eau_newScalarFieldEnum]
 
 
 export const SortOrder = {

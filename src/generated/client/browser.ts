@@ -197,3 +197,8 @@ export type o3_seuils = Prisma.o3_seuilsModel
  * 
  */
 export type qualite_sites_baignade_new = Prisma.qualite_sites_baignade_newModel
+/**
+ * Model prelevements_eau_new
+ * 
+ */
+export type prelevements_eau_new = Prisma.prelevements_eau_newModel

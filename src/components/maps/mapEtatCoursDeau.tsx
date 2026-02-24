@@ -14,7 +14,7 @@ export const MapEtatCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
   communesCodes: string[];
   boundingBox?: [[number, number], [number, number]];
-  qualiteEauxBaignade: QualiteSitesBaignadeModel[];
+  qualiteEauxBaignade?: QualiteSitesBaignadeModel[];
 }) => {
   const { etatCoursDeau, communesCodes, boundingBox, qualiteEauxBaignade } = props;
   const mapContainer = useRef<HTMLDivElement>(null);
