@@ -49,7 +49,7 @@ export const SecheressesBarChart = (
             keys={["Vigilance", "Alerte", "Alerte renforcée", "Crise"]}
             indexBy="annee"
             showLegend={false}
-            axisLeftLegend="Nombre de jours cumulés de restrictions"
+            axisLeftLegend="Nombre de jours de restrictions"
             bottomTickValues={
               minValueXTicks !== maxValueXTicks
                 ? [`${minValueXTicks}`, `${maxValueXTicks}`]

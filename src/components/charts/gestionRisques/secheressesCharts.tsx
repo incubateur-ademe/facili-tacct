@@ -1,5 +1,5 @@
 import SubTabs from '@/components/ui/SubTabs';
-import { transformerRestrictionsParAnnee, transformerRestrictionsSaisons } from '@/lib/charts/gestionRisques';
+import { transformerRestrictionsParAnneeUnique, transformerRestrictionsSaisons } from '@/lib/charts/gestionRisques';
 import { SecheressesPasseesModel } from '@/lib/postgres/models';
 import styles from './gestionRisquesCharts.module.scss';
 import { SecheressesBarChart } from './secheressesBarChart';
@@ -24,7 +24,7 @@ const SecheressesCharts = (props: Props) => {
       ? JSON.parse(s.restrictions.replace(/None/g, 'null').replace(/'/g, '"'))
       : []
   );
-  const restrictionsParAnnee = transformerRestrictionsParAnnee(toutesLesRestrictions);
+  const restrictionsParAnnee = transformerRestrictionsParAnneeUnique(toutesLesRestrictions);
   const restrictionsParSaison = transformerRestrictionsSaisons(toutesLesRestrictions);
 
   return (

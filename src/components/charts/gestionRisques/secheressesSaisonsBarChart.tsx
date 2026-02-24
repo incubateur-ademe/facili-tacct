@@ -46,7 +46,7 @@ export const SecheressesSaisonsBarChart = (
             keys={anneesDisponibles}
             indexBy="saison"
             showLegend={false}
-            axisLeftLegend="Nombre de jours cumulés de restrictions"
+            axisLeftLegend="Nombre de jours de restrictions"
             colors={
               secheressesSaisonsChartLegend.filter(
                 legend => anneesDisponibles.includes(legend.value)
