@@ -779,8 +779,8 @@ export const toutesLesRessources: ToutesRessources[] = [
     tempsLecture: 6,
     image: ImageTuileArticle,
     date: '2026-02-25',
-    ordre: 15,
-    ordreCollection: 1,
+    ordre: 9,
+    ordreCollection: 0.5,
     metadata: {
       title:
         "Construire une stratégie d’adaptation : ce que nous avons appris en chemin",
