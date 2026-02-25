@@ -2,7 +2,7 @@
 
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { ArboviroseBarChart } from '@/components/charts/sante/arboviroseBarChart';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -89,7 +89,7 @@ export const Arbovirose = (props: {
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
               Source :
             </Body>
-            <ExportButtonNouveauParcours
+            <ExportButton
               data={exportData}
               baseName="arbovirose"
               type={type}

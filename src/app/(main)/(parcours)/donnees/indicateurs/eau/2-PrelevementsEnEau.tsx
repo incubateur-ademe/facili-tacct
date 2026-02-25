@@ -3,7 +3,7 @@
 import WarningIcon from '@/assets/icons/exclamation_point_icon_black.png';
 import { MicroCube } from '@/components/charts/MicroDataviz';
 import EauCharts from '@/components/charts/ressourcesEau/EauCharts';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -247,7 +247,7 @@ export const PrelevementsEnEau = (props: {
               ) !== 0
             }
             exportComponent={
-              <ExportButtonNouveauParcours
+              <ExportButton
                 data={exportData}
                 baseName="prelevements_eau"
                 type={type}

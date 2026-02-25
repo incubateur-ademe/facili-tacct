@@ -1,7 +1,7 @@
 'use client';
 import { PieChartTravailExt } from '@/components/charts/inconfortThermique/pieChartTravailExt';
 import { MicroPieChart } from '@/components/charts/MicroDataviz';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { Loader } from '@/components/ui/loader';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -99,7 +99,7 @@ export const EmploisEnExterieur = ({
             source="INSEE, Emplois au lieu de travail par sexe, secteur d'activité économique et catégorie socioprofessionnelle, 2021"
             anchor="Emplois en extérieur"
             exportComponent={
-              <ExportButtonNouveauParcours
+              <ExportButton
                 data={exportData}
                 baseName="travail_exterieur"
                 type={type}

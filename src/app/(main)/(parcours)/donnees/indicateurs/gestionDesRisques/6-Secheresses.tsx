@@ -2,7 +2,7 @@
 import DataNotFound from '@/assets/images/zero_data_found.png';
 import SecheressesCharts from '@/components/charts/gestionRisques/secheressesCharts';
 import { MicroCircleGridMois } from '@/components/charts/MicroDataviz';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
@@ -69,7 +69,7 @@ export const SecheressesPassees = (props: {
             source="Ministère de la transition écologique. Consulté en février 2026"
             condition={secheresses.length !== 0}
             exportComponent={
-              <ExportButtonNouveauParcours
+              <ExportButton
                 data={exportData}
                 baseName="secheresses_passees"
                 type={type}

@@ -1,6 +1,6 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { MultiSheetExportButtonNouveauParcours } from '@/components/exports/MultiSheetExportButton';
+import { MultiSheetExportButton } from '@/components/exports/MultiSheetExportButton';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { etatCoursDeauLegends, qualiteEauxBaignadelegends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor, LegendCompIcons } from '@/components/maps/legends/legendComp';
@@ -131,7 +131,7 @@ export const EtatEcoCoursDeau = (props: {
         </Body>
         {
           etatCoursDeau.length > 0 && (
-            <MultiSheetExportButtonNouveauParcours
+            <MultiSheetExportButton
               sheetsData={exportData}
               baseName="etat_ecologique_cours_deau"
               type={type}
@@ -141,7 +141,7 @@ export const EtatEcoCoursDeau = (props: {
               anchor="État des cours d'eau"
             >
               Exporter
-            </MultiSheetExportButtonNouveauParcours>
+            </MultiSheetExportButton>
           )}
       </div>
     </>

@@ -2,7 +2,7 @@
 
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { espacesNAFDatavizLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
@@ -105,7 +105,7 @@ export const SolsImpermeabilises = (props: {
         </Body>
         {
           consommationNAF && coordonneesCommunes && (
-            <ExportButtonNouveauParcours
+            <ExportButton
               data={exportData}
               baseName="consommation_espaces_naf"
               type={type}

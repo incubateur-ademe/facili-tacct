@@ -3,7 +3,7 @@ import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import RetraitGonflementDesArgilesCharts from '@/components/charts/gestionRisques/RetraitGonflementDesArgilesCharts';
 import { MicroCircleGrid } from '@/components/charts/MicroDataviz';
 import { generateMapPngBlob } from '@/components/exports/ExportPng';
-import { ZipExportButtonNouveauParcours } from '@/components/exports/ZipExportButton';
+import { ZipExportButton } from '@/components/exports/ZipExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
@@ -118,7 +118,7 @@ export const RetraitGonflementDesArgiles = ({
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
               Source : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021.
             </Body>
-            <ZipExportButtonNouveauParcours
+            <ZipExportButton
               anchor='Retrait-gonflement des argiles'
               handleExport={async () => {
                 const pngBlob = await generateMapPngBlob({
@@ -151,7 +151,7 @@ export const RetraitGonflementDesArgiles = ({
               thematique="Gestion des risques"
             >
               Exporter
-            </ZipExportButtonNouveauParcours>
+            </ZipExportButton>
           </div>
         </div>
       </div>

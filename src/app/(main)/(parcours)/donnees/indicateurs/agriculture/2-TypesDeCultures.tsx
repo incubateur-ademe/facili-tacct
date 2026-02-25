@@ -1,7 +1,7 @@
 "use client";
 import TypesDeCulturesCharts from "@/components/charts/agriculture/typesDeCulturesCharts";
 import { MicroPieChart } from "@/components/charts/MicroDataviz";
-import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
+import { ExportButton } from "@/components/exports/ExportButton";
 import { CustomTooltipNouveauParcours, DefinitionTooltip } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { PieChartDataSurfacesAgricoles } from "@/lib/charts/surfacesAgricoles";
@@ -129,7 +129,7 @@ export const TypesDeCulture = (props: {
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
               Source : AGRESTE, 2020.
             </Body>
-            <ExportButtonNouveauParcours
+            <ExportButton
               data={exportData}
               baseName="surfaces_agricoles"
               type={type}

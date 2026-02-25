@@ -6,7 +6,7 @@ import {
 } from '@/app/(main)/types';
 import DataNotFound from '@/assets/images/zero_data_found.png';
 import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
@@ -180,7 +180,7 @@ export const ArretesCatnat = (props: {
               septembre 2025"
             condition={gestionRisques.length !== 0}
             exportComponent={
-              <ExportButtonNouveauParcours
+              <ExportButton
                 data={exportData}
                 baseName="arretes_catnat"
                 type={type}

@@ -106,3 +106,48 @@ export const SourcesSection = ({
     </section>
   );
 };
+
+interface ScrollToSourceArticlesProps {
+  text: string;
+}
+
+const findSourcesElement = (): Element | null => {
+  // Cherche un élément dont l'id commence par "Source" (insensible à la casse)
+  const byId = Array.from(document.querySelectorAll("[id]")).find((el) =>
+    el.id.toLowerCase().startsWith("source")
+  );
+  if (byId) return byId;
+
+  // Fallback : cherche un heading dont le texte contient "sources"
+  return Array.from(document.querySelectorAll("h3")).find((el) =>
+    el.textContent?.toLowerCase().includes("source")
+  ) ?? null;
+};
+
+export const ScrollToSourceArticles = ({ text }: ScrollToSourceArticlesProps) => {
+  const handleClick = () => {
+    const element = findSourcesElement();
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      style={{
+        background: "none",
+        backgroundImage: "none",
+        border: "none",
+        padding: 0,
+        cursor: "pointer",
+        textDecoration: "underline",
+        fontStyle: "italic !important",
+        font: "inherit",
+        textUnderlineOffset: "0.3rem"
+      }}
+    >
+      {text}
+    </button>
+  );
+};
