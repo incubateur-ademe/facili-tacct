@@ -195,7 +195,11 @@ export const DonneesGestionRisques = ({
         </div>
 
         {/* Débroussaillement */}
-        <div id="Débroussaillement" className={styles.indicateurMapWrapper}>
+        <div
+          id="Débroussaillement"
+          className={styles.indicateurMapWrapper}
+          style={{ borderBottom: '1px solid var(--gris-medium)' }}
+        >
           <div className={styles.h3Titles}>
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}

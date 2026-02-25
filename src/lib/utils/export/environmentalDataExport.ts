@@ -17,6 +17,7 @@ import {
   PrelevementsEauParsed,
   QualiteSitesBaignadeModel,
   RGAdb,
+  SecheressesPasseesModel,
   SurfacesAgricolesModel,
   TableCommuneModel
 } from '@/lib/postgres/models';
@@ -662,6 +663,24 @@ export const IndicatorExportTransformations = {
           date_publication_arrete: item.dat_pub_arrete,
           libelle_risque: item.lib_risque_jo
         };
+      });
+    },
+    SecheressesPassees: (secheressesPassees: SecheressesPasseesModel[]) => {
+      return secheressesPassees.map((el) => {
+        return {
+          code_geographique: el.code_geographique,
+          libelle_geographique: el.libelle_geographique,
+          code_epci: el.epci,
+          libelle_epci: el.libelle_epci,
+          code_departement: el.departement,
+          libelle_departement: el.libelle_departement,
+          region: el.region,
+          ept: el.ept,
+          code_pnr: el.code_pnr,
+          libelle_pnr: el.libelle_pnr,
+          libelle_petr: el.libelle_petr,
+          restrictions: el.restrictions,
+        }
       });
     }
   },

@@ -782,4 +782,24 @@ export const O3Text = () => (
     en dépassement si les <ScrollToSourceTag sourceNumero={1}>valeurs guides de l’OMS avaient été 
     appliquées </ScrollToSourceTag>.
   </Body>
-)
+);
+
+export const SecheressesText = () => (
+  <>
+    <Body size="sm" style={{ marginTop: '2rem' }}>
+      La sécheresse est un déficit hydrique prolongé — dû à un manque de précipitations ou 
+      à une utilisation excessive de la ressource — suffisant pour affecter les sols, la 
+      végétation et les milieux aquatiques. Cyclique ou exceptionnelle, elle entraîne des 
+      conséquences en cascade : assèchement des cours d'eau, tensions sur l'approvisionnement 
+      en eau potable, risques accrus d'incendies…
+    </Body>
+    <Body size="sm" style={{ marginTop: '1rem' }}>
+      Le nombre de jours cumulés par niveau de restriction renseigne sur la fréquence 
+      et la sévérité des épisodes de sécheresse. La présence récurrente de niveaux élevés 
+      (alerte renforcée ou crise) révèle une vulnérabilité structurelle : la ressource 
+      disponible est régulièrement insuffisante pour satisfaire l'ensemble des usages, 
+      traduisant un déséquilibre chronique entre offre et demande en eau, indépendamment 
+      de toute aggravation future.
+    </Body>
+  </>
+);
