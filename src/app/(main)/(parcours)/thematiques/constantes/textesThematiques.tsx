@@ -133,6 +133,12 @@ export const sommaireThematiques = {
     thematiquesLiees: [
       {
         id: 'section1',
+        thematique: 'Santé',
+        icone: '🏥',
+        sousCategories: ['Arbovirose']
+      },
+      {
+        id: 'section2',
         thematique: 'Air',
         icone: '💨',
         sousCategories: ['Pollution à l’ozone']

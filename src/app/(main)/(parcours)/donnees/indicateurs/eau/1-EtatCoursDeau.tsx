@@ -1,6 +1,6 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { etatCoursDeauLegends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
@@ -104,7 +104,7 @@ export const EtatEcoCoursDeau = (props: {
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
           Source : Agences de l'eau, 2024.
         </Body>
-        <ExportButtonNouveauParcours
+        <ExportButton
           data={exportData}
           baseName="etat_cours_deau"
           type={type}
@@ -115,7 +115,7 @@ export const EtatEcoCoursDeau = (props: {
           anchor="État des cours d'eau"
         >
           Exporter
-        </ExportButtonNouveauParcours>
+        </ExportButton>
       </div>
     </>
   );

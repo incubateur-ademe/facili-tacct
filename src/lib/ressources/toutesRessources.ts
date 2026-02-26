@@ -764,5 +764,28 @@ export const toutesLesRessources: ToutesRessources[] = [
       description:
         'Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.'
     }
+  },
+  {
+    id: 39,
+    type: 'Article',
+    titre:
+      "Construire une stratégie d’adaptation : ce que nous avons appris en chemin",
+    slug: 'strategie-trajectoire-adaptation',
+    description:
+      'D’un diagnostic de vulnérabilité priorisé à la définition de votre stratégie d’adaptation : témoignage de Montpellier Méditerranée Métropole',
+    lien: '/ressources/articles/strategie-trajectoire-adaptation',
+    filtres: ['Article', "Retour d'expérience", "M'inspirer", 'Occitanie'],
+    collections: ['Bâtir la stratégie d’adaptation'],
+    tempsLecture: 6,
+    image: ImageTuileArticle,
+    date: '2026-02-25',
+    ordre: 9,
+    ordreCollection: 0.5,
+    metadata: {
+      title:
+        "Construire une stratégie d’adaptation : ce que nous avons appris en chemin",
+      description:
+        'D’un diagnostic de vulnérabilité priorisé à la définition de votre stratégie d’adaptation : témoignage de Montpellier Méditerranée Métropole'
+    }
   }
 ];

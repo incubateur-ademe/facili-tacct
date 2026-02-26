@@ -1,35 +1,28 @@
 "use client";
 
-import { secheressesBarChartLegend } from "@/components/maps/legends/datavizLegends";
+import { arboviroseBarChartLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import { Body } from "@/design-system/base/Textes";
 import useWindowDimensions from "@/hooks/windowDimensions";
 import { simpleBarChartTooltip } from "../ChartTooltips";
 import { NivoBarChart } from "../NivoBarChart";
 
-export const SecheressesBarChart = (
+export const ArboviroseBarChart = (
   {
-    restrictionsParAnnee
+    arbovirose
   }: {
-    restrictionsParAnnee: {
+    arbovirose: {
       annee: string;
-      vigilance: number;
-      alerte: number;
-      alerte_renforcee: number;
-      crise: number;
+      nb_cas_importes: number;
+      nb_cas_autochtones: number;
     }[]
   }
 ) => {
-  const graphData = restrictionsParAnnee
-    .filter(data => ['2020', '2021', '2022', '2023', '2024', '2025'].includes(data.annee))
-    .map(data => ({
+  const graphData = arbovirose.map(data => ({
       annee: data.annee,
-      'Vigilance': data.vigilance,
-      'Alerte': data.alerte,
-      'Alerte renforcée': data.alerte_renforcee,
-      'Crise': data.crise
+      'Cas importés': data.nb_cas_importes,
+      'Cas autochtones': data.nb_cas_autochtones
     }));
-
   const minValueXTicks = graphData[0]?.annee;
   const maxValueXTicks = graphData[graphData.length - 1]?.annee;
   const windowDimensions = useWindowDimensions();
@@ -46,22 +39,23 @@ export const SecheressesBarChart = (
         <>
           <NivoBarChart
             graphData={graphData}
-            keys={["Vigilance", "Alerte", "Alerte renforcée", "Crise"]}
+            keys={["Cas importés", "Cas autochtones"]}
             indexBy="annee"
             showLegend={false}
-            axisLeftLegend="Nombre de jours de restrictions"
+            axisLeftLegend="Nombre de cas"
             bottomTickValues={
               minValueXTicks !== maxValueXTicks
                 ? [`${minValueXTicks}`, `${maxValueXTicks}`]
                 : [`${minValueXTicks}`]
             }
-            colors={secheressesBarChartLegend.map(legend => legend.color)}
+            groupMode="stacked"
+            colors={arboviroseBarChartLegend.map(legend => legend.color)}
             graphMarginBottom={windowDimensions.width! < 1230 ? 120 : 100}
-            tooltip={({ data }) => simpleBarChartTooltip({ data, legende: secheressesBarChartLegend })}
+            tooltip={({ data }) => simpleBarChartTooltip({ data, legende: arboviroseBarChartLegend })}
           />
           <div style={{ position: "relative", top: windowDimensions.width! < 1230 ? "-70px" : "-50px", margin: "0 1rem" }}>
             <LegendCompColor
-              legends={secheressesBarChartLegend.map((legend, index) => ({
+              legends={arboviroseBarChartLegend.map((legend, index) => ({
                 id: index,
                 value: legend.value,
                 color: legend.color

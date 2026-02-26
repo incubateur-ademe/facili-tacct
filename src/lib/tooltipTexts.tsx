@@ -407,3 +407,11 @@ export const O3TooltipText = (
     industriel et des risques (Ineris) d'après des concentrations analysées, combinant modèle et observations.
   </Body>
 );
+
+export const secheressesPasseesTooltipText = (
+  <Body weight="bold" size="sm">
+    Il s’agit du nombre de jours où des mesures exceptionnelles de limitation ou de suspension 
+    des usages de l’eau non prioritaires sont prises par les préfets (arrêtés “sécheresse”). La 
+    distinction entre eaux souterraines, eaux superficielles et eau potable n’est pas présentée ici. 
+  </Body>
+);

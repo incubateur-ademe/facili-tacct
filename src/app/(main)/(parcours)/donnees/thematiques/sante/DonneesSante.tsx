@@ -3,14 +3,15 @@ import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { SourcesSection } from '@/components/interactions/scrollToSource';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
-import { O3 } from '@/lib/postgres/models';
-import { GetO3 } from '@/lib/queries/databases/sante';
+import { ArboviroseModel, O3 } from '@/lib/postgres/models';
+import { GetArbovirose, GetO3 } from '@/lib/queries/databases/sante';
 import { GetCommunesCoordinates } from '@/lib/queries/postgis/cartographie';
 import { useSearchParams } from 'next/navigation';
 import { useLayoutEffect, useState } from 'react';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
 import { SeuilsReglementairesO3 } from '../../indicateurs/sante/1-o3';
+import { Arbovirose } from '../../indicateurs/sante/2-Arbovirose';
 
 interface Props {
   coordonneesCommunes: {
@@ -18,9 +19,10 @@ interface Props {
     bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
   } | null;
   o3: O3[];
+  arbovirose: ArboviroseModel[];
 }
 
-export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
+export const DonneesSante = ({ coordonneesCommunes, o3, arbovirose }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as 'Gestion des risques';
   const code = searchParams.get('code')!;
@@ -28,7 +30,8 @@ export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
   const type = searchParams.get('type')!;
   const [data, setData] = useState({
     coordonneesCommunes,
-    o3
+    o3,
+    arbovirose
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -41,13 +44,15 @@ export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
     }
     setIsLoading(true);
     void (async () => {
-      const [newCoordonneesCommunes, newO3] = await Promise.all([
+      const [newCoordonneesCommunes, newO3, newArbovirose] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
-        GetO3()
+        GetO3(),
+        GetArbovirose(code, libelle, type)
       ]);
       setData({
         coordonneesCommunes: newCoordonneesCommunes,
-        o3: newO3
+        o3: newO3,
+        arbovirose: newArbovirose
       });
       setIsLoading(false);
     })();
@@ -59,8 +64,8 @@ export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
     <div className={styles.explorerMesDonneesContainer}>
       <ScrollToHash />
       <H1 style={{ color: 'var(--principales-vert)', fontSize: '2rem' }}>
-        En accentuant des fragilités existantes, le changement climatique exerce une 
-        pression croissante sur la santé des populations. Quels facteurs se combinent aujourd’hui 
+        En accentuant des fragilités existantes, le changement climatique exerce une
+        pression croissante sur la santé des populations. Quels facteurs se combinent aujourd’hui
         sur votre territoire ?
       </H1>
       {/* Introduction */}
@@ -71,7 +76,7 @@ export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
         </Body>
       </section>
 
-      {/* Section Gestion des risques */}
+      {/* Section Santé */}
       <section className={styles.sectionType}>
         <H2
           style={{
@@ -85,6 +90,39 @@ export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
         >
           {ongletsMenu.thematiquesLiees[0].icone}{' '}
           {ongletsMenu.thematiquesLiees[0].thematique}
+        </H2>
+
+        {/* Arbovirose */}
+        <div
+          id="Arbovirose"
+          className={styles.indicateurMapWrapper}
+        >
+          <div className={styles.h3Titles}>
+            <H3
+              style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
+            >
+              Arbovirose
+            </H3>
+          </div>
+          <Arbovirose arbovirose={arbovirose} />
+          
+        </div>
+      </section>
+
+      {/* Section Air */}
+      <section className={styles.sectionType}>
+        <H2
+          style={{
+            color: 'var(--principales-rouge)',
+            textTransform: 'uppercase',
+            fontSize: '1.75rem',
+            margin: '0 0 -1rem 0',
+            padding: '2rem 2rem 0',
+            fontWeight: 400
+          }}
+        >
+          {ongletsMenu.thematiquesLiees[1].icone}{' '}
+          {ongletsMenu.thematiquesLiees[1].thematique}
         </H2>
 
         {/* Pollution à l'ozone O3 */}
