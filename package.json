@@ -12,7 +12,7 @@
     "prebuild": "react-dsfr update-icons",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev --turbopack",
     "build": "cross-env NODE_OPTIONS=--inspect next build && node copy-assets.js",
-    "start": "node .next/standalone/facili-tacct/server.js",
+    "start": "node .next/standalone/server.js",
     "etl:test-posthog": "node etl/runPosthog.mjs",
     "etl:test-baserow": "node etl/runBaserow.mjs",
     "etl:test-population": "node etl/runPopulation.mjs",
