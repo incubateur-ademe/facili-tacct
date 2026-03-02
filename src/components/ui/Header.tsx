@@ -133,7 +133,7 @@ const HeaderComp = () => {
           text: 'Patch 4°C'
         },
         {
-          isActive: params === '/ressources' ? true : false,
+          isActive: params.includes('/ressources') ? true : false,
           linkProps: {
             href: '/ressources',
             target: '_self'

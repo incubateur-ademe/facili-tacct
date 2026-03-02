@@ -479,14 +479,14 @@
         }
     }
     .cartesWrapper {
-        display: flex;
-        flex-direction: row;
-        gap: 1.5rem;
-        align-self: center;
-        // display: grid;
-        // grid-template-columns: repeat(2, 1fr);
-        // grid-template-rows: repeat(2, 1fr);
+        // display: flex;
+        // flex-direction: row;
         // gap: 1.5rem;
+        // align-self: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 }
 

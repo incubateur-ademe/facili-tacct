@@ -1,10 +1,9 @@
 'use client';
 import GraphNotFound from '@/assets/images/zero_data_found.png';
 import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
-import { Loader } from '@/components/ui/loader';
 import { Body } from '@/design-system/base/Textes';
 import { IncendiesForet } from '@/lib/postgres/models';
 import { FeuxForetText } from '@/lib/staticTexts';
@@ -13,7 +12,7 @@ import { IndicatorExportTransformations } from '@/lib/utils/export/environmental
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { lazy, Suspense, useState } from 'react';
+import { lazy, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 import { SourceExport } from '../SourceExport';
 
@@ -91,7 +90,7 @@ export const FeuxDeForet = (props: { incendiesForet: IncendiesForet[] }) => {
             source="Base de Données sur les Incendies de Forêts en France, consultée en 2024 (derniers chiffres disponibles : 2023)"
             condition={incendiesForet.length !== 0}
             exportComponent={
-              <ExportButtonNouveauParcours
+              <ExportButton
                 data={exportData}
                 baseName="feux_foret"
                 type={type}

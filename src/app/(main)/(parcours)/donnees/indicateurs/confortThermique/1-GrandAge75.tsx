@@ -3,7 +3,7 @@ import WarningIcon from "@/assets/icons/exclamation_point_icon_black.png";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { LineChartGrandAge } from "@/components/charts/inconfortThermique/lineChartGrandAge";
 import { MicroCircleGrid } from "@/components/charts/MicroDataviz";
-import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
+import { ExportButton } from "@/components/exports/ExportButton";
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { Loader } from "@/components/ui/loader";
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
@@ -154,7 +154,7 @@ export const GrandAge75 = ({
           <SourceExport
             anchor="Grand âge"
             exportComponent={
-              <ExportButtonNouveauParcours
+              <ExportButton
                 data={exportData}
                 baseName="grand_age"
                 type={type}

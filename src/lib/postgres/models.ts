@@ -664,24 +664,24 @@ export type O3 = {
   longitude: number;
 };
 
-export type QualiteSitesBaignade = {
-  index: number;
-  DEP_NOM: string;
-  DEP_NUM: string;
-  TYPE: string;
-  COMMUNE: string;
-  POINT: string;
-  LONG: number;
-  LAT: number;
-  QEB_2013: string | null;
-  QEB_2014: string | null;
-  QEB_2015: string | null;
-  QEB_2016: string | null;
-  QEB_2017: string | null;
-  QEB_2018: string | null;
-  QEB_2019: string | null;
-  QEB_2020: string | null;
-};
+// export type QualiteSitesBaignade = {
+//   index: number;
+//   DEP_NOM: string;
+//   DEP_NUM: string;
+//   TYPE: string;
+//   COMMUNE: string;
+//   POINT: string;
+//   LONG: number;
+//   LAT: number;
+//   QEB_2013: string | null;
+//   QEB_2014: string | null;
+//   QEB_2015: string | null;
+//   QEB_2016: string | null;
+//   QEB_2017: string | null;
+//   QEB_2018: string | null;
+//   QEB_2019: string | null;
+//   QEB_2020: string | null;
+// };
 
 export type Agriculture = {
   index: number;
@@ -945,4 +945,92 @@ export type DebroussaillementModel = {
   code_pnr: string | null;
   libelle_pnr: string | null;
   geometry: string;
+};
+
+export type QualiteSitesBaignadeModel = {
+  index: number;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  nom_site: string;
+  latitude: number;
+  longitude: number;
+  type_eau_norm: string;
+  statut_donnees: string;
+  qualite: string;
+};
+
+export type PrelevementsEauModel = {
+  index: number;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  annee_2017_aep: number;
+  annee_2017_bar: number;
+  annee_2017_can: number;
+  annee_2017_ene: number;
+  annee_2017_exo: number;
+  annee_2017_ind: number;
+  annee_2017_irr: number;
+  annee_2018_aep: number;
+  annee_2018_bar: number;
+  annee_2018_can: number;
+  annee_2018_ene: number;
+  annee_2018_exo: number;
+  annee_2018_ind: number;
+  annee_2018_irr: number;
+  annee_2019_aep: number;
+  annee_2019_bar: number;
+  annee_2019_can: number;
+  annee_2019_ene: number;
+  annee_2019_exo: number;
+  annee_2019_ind: number;
+  annee_2019_irr: number;
+  annee_2020_aep: number;
+  annee_2020_bar: number;
+  annee_2020_can: number;
+  annee_2020_ene: number;
+  annee_2020_exo: number;
+  annee_2020_ind: number;
+  annee_2020_irr: number;
+  annee_2021_aep: number;
+  annee_2021_bar: number;
+  annee_2021_can: number;
+  annee_2021_ene: number;
+  annee_2021_exo: number;
+  annee_2021_ind: number;
+  annee_2021_irr: number;
+  annee_2022_aep: number;
+  annee_2022_bar: number;
+  annee_2022_can: number;
+  annee_2022_ene: number;
+  annee_2022_ind: number;
+  annee_2022_irr: number;
+  annee_2023_aep: number;
+  annee_2023_bar: number;
+  annee_2023_can: number;
+  annee_2023_ene: number;
+  annee_2023_exo: number;
+  annee_2023_ind: number;
+  annee_2023_irr: number;
+};
+
+export type ArboviroseModel = {
+  index: number;
+  annee: string;
+  departement: string;
+  nb_cas_importes: number;
+  nb_cas_autochtones: number;
 };

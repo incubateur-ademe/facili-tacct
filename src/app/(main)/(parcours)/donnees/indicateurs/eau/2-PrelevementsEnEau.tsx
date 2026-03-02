@@ -3,11 +3,11 @@
 import WarningIcon from '@/assets/icons/exclamation_point_icon_black.png';
 import { MicroCube } from '@/components/charts/MicroDataviz';
 import EauCharts from '@/components/charts/ressourcesEau/EauCharts';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
-import { PrelevementsEau, PrelevementsEauParsed } from '@/lib/postgres/models';
+import { PrelevementsEau, PrelevementsEauModel, PrelevementsEauParsed } from '@/lib/postgres/models';
 import { PrelevementEauText } from '@/lib/staticTexts';
 import { prelevementEauTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
@@ -92,8 +92,10 @@ const SumFiltered = (
 
 export const PrelevementsEnEau = (props: {
   prelevementsEau: PrelevementsEau[];
+  prelevementsEauNew: PrelevementsEauModel[];
 }) => {
-  const { prelevementsEau } = props;
+  const { prelevementsEau, prelevementsEauNew } = props;
+  console.log("prelevementsEauNew", prelevementsEauNew);
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -245,7 +247,7 @@ export const PrelevementsEnEau = (props: {
               ) !== 0
             }
             exportComponent={
-              <ExportButtonNouveauParcours
+              <ExportButton
                 data={exportData}
                 baseName="prelevements_eau"
                 type={type}

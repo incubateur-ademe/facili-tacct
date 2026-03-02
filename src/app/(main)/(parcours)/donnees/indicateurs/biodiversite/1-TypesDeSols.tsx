@@ -2,7 +2,7 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { MicroRemplissageTerritoire } from '@/components/charts/MicroDataviz';
 import { generateMapPngBlob } from '@/components/exports/ExportPng';
-import { ZipExportButtonNouveauParcours } from '@/components/exports/ZipExportButton';
+import { ZipExportButton } from '@/components/exports/ZipExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { vegetalisationLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
@@ -263,7 +263,7 @@ export const TypesDeSols = ({
           <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
             Source : CORINE Land Cover, 2018.
           </Body>
-          <ZipExportButtonNouveauParcours
+          <ZipExportButton
             anchor="Types de sols"
             handleExport={async () => {
               const pngBlob = await generateMapPngBlob({
@@ -300,7 +300,7 @@ export const TypesDeSols = ({
             thematique="Biodiversité"
           >
             Exporter
-          </ZipExportButtonNouveauParcours>
+          </ZipExportButton>
         </div>
       )}
     </>

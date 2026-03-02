@@ -1,7 +1,7 @@
 "use client";
 import { BarChartAgeBatiNouveauParcours } from '@/components/charts/inconfortThermique/BarChartAgeBatiNouveauParcours';
 import { MicroCircleGrid } from "@/components/charts/MicroDataviz";
-import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
+import { ExportButton } from "@/components/exports/ExportButton";
 import { Loader } from "@/components/ui/loader";
 import { Body } from "@/design-system/base/Textes";
 import { ageBatiMapper } from "@/lib/mapper/inconfortThermique";
@@ -78,7 +78,7 @@ export const DateConstructionResidences = ({
             condition={Sum(chartData.map(el => Number(el["Votre territoire"]))) !== 0 && !isNaN(Sum(chartData.map(el => Number(el["Votre territoire"]))))}
             anchor='Âge du bâtiment'
             exportComponent={
-              <ExportButtonNouveauParcours
+              <ExportButton
                 data={exportData}
                 baseName="age_bati"
                 type={type}

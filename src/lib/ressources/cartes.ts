@@ -1,3 +1,4 @@
+import questionIcon from '@/assets/icons/fr-icon-questionnaire-line.png';
 import shapesIcon from '@/assets/icons/fr-icon-shapes-line.png';
 import teamIcon from '@/assets/icons/fr-icon-team-line.png';
 import Collection1Img from '@/assets/images/collection1.png';
@@ -60,14 +61,14 @@ export const autresOutilsCartes = [
       'Découvrez la méthode de référence sur l’adaptation au changement climatique',
     icone: shapesIcon,
     lien: 'https://tacct.ademe.fr/'
+  },
+  {
+    titre: 'Questions fréquentes',
+    description:
+      'Trouvez les réponses aux questions les plus courantes sur l’adaptation au changement climatique',
+    icone: questionIcon,
+    lien: '/ressources/faq'
   }
-  // {
-  //   titre: 'Questions fréquentes',
-  //   description:
-  //     'Trouvez les réponses aux questions les plus courantes sur l’adaptation au changement climatique',
-  //   icone: questionIcon,
-  //   lien: '/ressources'
-  // },
   // {
   //   titre: "Glossaire de l'adaptation",
   //   description:

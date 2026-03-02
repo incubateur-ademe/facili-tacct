@@ -1,5 +1,5 @@
 import { MicroCircleGrid } from '@/components/charts/MicroDataviz';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
@@ -9,8 +9,8 @@ import { SurfacesEnHerbeDynamicText } from '@/lib/textesIndicateurs/biodiversite
 import { SurfacesToujoursEnHerbeText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import {
-  addWithNullHandling,
-  SumWithNullHandling
+    addWithNullHandling,
+    SumWithNullHandling
 } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import styles from '../../explorerDonnees.module.scss';
@@ -95,7 +95,7 @@ export const SurfacesToujoursEnHerbe = ({
         <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
           Source : AGRESTE, 2020.
         </Body>
-        <ExportButtonNouveauParcours
+        <ExportButton
           data={exportData}
           baseName="surfaces_toujours_en_herbe"
           type={type}

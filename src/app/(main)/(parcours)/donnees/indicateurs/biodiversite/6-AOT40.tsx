@@ -1,7 +1,7 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { aot40Legends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
@@ -114,7 +114,7 @@ export const OzoneEtVegetation = (props: {
         </Body>
         {
           aot40.length && contoursCommunes && (
-            <ExportButtonNouveauParcours
+            <ExportButton
               data={exportData}
               baseName="aot_40"
               type={type}
