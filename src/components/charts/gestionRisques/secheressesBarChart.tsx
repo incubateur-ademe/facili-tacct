@@ -30,8 +30,6 @@ export const SecheressesBarChart = (
       'Crise': data.crise
     }));
 
-  const minValueXTicks = graphData[0]?.annee;
-  const maxValueXTicks = graphData[graphData.length - 1]?.annee;
   const windowDimensions = useWindowDimensions();
 
   return (
@@ -50,11 +48,7 @@ export const SecheressesBarChart = (
             indexBy="annee"
             showLegend={false}
             axisLeftLegend="Nombre de jours de restrictions"
-            bottomTickValues={
-              minValueXTicks !== maxValueXTicks
-                ? [`${minValueXTicks}`, `${maxValueXTicks}`]
-                : [`${minValueXTicks}`]
-            }
+            bottomTickValues={graphData.map(data => data.annee)}
             colors={secheressesBarChartLegend.map(legend => legend.color)}
             graphMarginBottom={windowDimensions.width! < 1230 ? 120 : 100}
             tooltip={({ data }) => simpleBarChartTooltip({ data, legende: secheressesBarChartLegend })}

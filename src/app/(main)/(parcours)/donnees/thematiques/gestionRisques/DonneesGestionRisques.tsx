@@ -210,13 +210,13 @@ export const DonneesGestionRisques = ({
           <Debroussaillement coordonneesCommunes={coordonneesCommunes} />
         </div>
 
-        {/* Intensité des sécheresses passées */}
+        {/* Sécheresses passées */}
         <div id="Sécheresses passées" className={styles.indicateurWrapper}>
           <div className={styles.h3Titles}>
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
             >
-              Intensité des sécheresses passées
+              Sécheresses passées
             </H3>
           </div>
           <SecheressesPassees secheresses={data.secheressesPassees} />

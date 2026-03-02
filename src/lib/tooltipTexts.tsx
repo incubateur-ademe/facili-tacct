@@ -408,8 +408,9 @@ export const O3TooltipText = (
 
 export const secheressesPasseesTooltipText = (
   <Body weight="bold" size="sm">
-    Il s’agit du nombre de jours où des mesures exceptionnelles de limitation ou de suspension 
-    des usages de l’eau non prioritaires sont prises par les préfets (arrêtés “sécheresse”). La 
-    distinction entre eaux souterraines, eaux superficielles et eau potable n’est pas présentée ici. 
+    Ce chiffre représente la moyenne mensuelle du nombre de jours de restriction sécheresse,
+    calculée sur l'année la plus touchée entre 2020 et 2025. Pour chaque mois, ce chiffre correspond
+    au nombre de jours où au moins une commune du territoire était en restriction, ramené en moyenne
+    sur les 12 mois de l'année.
   </Body>
 );

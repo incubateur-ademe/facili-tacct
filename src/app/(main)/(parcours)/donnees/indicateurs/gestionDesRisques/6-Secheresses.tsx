@@ -11,6 +11,7 @@ import { calculerMoyenneJoursMensuelleAvecRestriction } from '@/lib/charts/gesti
 import { SecheressesPasseesModel } from "@/lib/postgres/models";
 import { SecheressesText } from '@/lib/staticTexts';
 import { secheressesPasseesTooltipText } from '@/lib/tooltipTexts';
+import { secheressesPasseesDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
 import { useState } from "react";
@@ -39,8 +40,9 @@ export const SecheressesPassees = (props: {
           <div className={styles.chiffreDynamiqueWrapper}>
             <MicroCircleGridMois nombreJours={moyenneJoursAvecRestriction} arrondi={0} />
             <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-              En {anneeMaxRestriction}, votre territoire a été soumis à au moins un arrêté risque sécheresse
-              en moyenne {moyenneJoursAvecRestriction} jours par mois.
+              En {anneeMaxRestriction}, l&apos;année avec le plus de jours de restriction
+              sur la période 2020-2025, votre territoire a connu en moyenne {moyenneJoursAvecRestriction} jours
+              de restriction sécheresse par mois.
             </Body>
             <CustomTooltipNouveauParcours
               title={secheressesPasseesTooltipText}
@@ -76,6 +78,7 @@ export const SecheressesPassees = (props: {
                 libelle={libelle}
                 code={code}
                 sheetName="Sécheresses passées"
+                documentation={secheressesPasseesDoc}
               />
             }
           />

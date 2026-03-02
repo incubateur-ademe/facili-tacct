@@ -271,8 +271,9 @@ export const MicroCircleGridMois = ({
           <div
             className={styles.microCircleGridWrapper}
             aria-label={ariaLabel}
+            style={{ width: "120px" }}
           >
-            <Body weight="bold">{Round(nombreJours, arrondi)} jours</Body>
+            <Body weight="bold">{Round(nombreJours, arrondi)} jours / mois</Body>
             <div className={styles.circleGrid}>
               {cercles}
             </div>

@@ -182,3 +182,27 @@ export const aot40Doc = [
     '': 'https://www.geodair.fr/reglementation'
   }
 ];
+
+export const secheressesPasseesDoc = [
+  {
+    Nomenclature: 'SOU',
+    Description: 'Eaux souterraines'
+  },
+  {
+    Nomenclature: 'AEP',
+    Description: 'Eaux potables'
+  },
+  {
+    Nomenclature: 'SUP',
+    Description: 'Eaux superficielles'
+  },
+  {
+    Nomenclature: '',
+    Description: ''
+  },
+  {
+    Nomenclature: 'Niveaux de restriction',
+    Description:
+      'Les restrictions ont 4 niveaux de sévérité croissante : 1) vigilance, 2) alerte, 3) alerte renforcée, 4) crise.'
+  }
+];
