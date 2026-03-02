@@ -377,33 +377,31 @@ export const SurfacesToujoursEnHerbeText = (
 export const airesAppellationsControleesTooltipText = (
   <>
     <Body weight="bold" size="sm">
-      Les « 
+      Les «
       <a href="https://agriculture.gouv.fr/bien-connaitre-les-produits-de-lorigine-et-de-la-qualite" target="_blank" rel="noopener noreferrer">
         signes d’identification de qualité et d’origine
-      </a> » (SIQO) garantissent la qualité et l’origine des produits alimentaires (fromages, vins, viandes…). Reconnus
-      au niveau européen depuis 1992, AOP et IGP certifient un savoir-faire traditionnel et des contrôles
-      réguliers ; ils ne sont pas cumulables.
+      </a> » (SIQO) garantissent la qualité et l’origine des produits alimentaires (fromages, vins, viandes…). Reconnus au
+      niveau européen depuis 1992, AOP [AOC] et IGP certifient un savoir-faire traditionnel et des contrôles réguliers ; ils
+      ne sont pas cumulables.
     </Body>
     <Body weight="bold" size="sm" style={{ marginTop: '1rem' }}>
-      Appellation d’Origine Protégée (AOP) : Toutes les étapes de fabrication doivent être réalisées
-      selon un savoir-faire reconnu et dans une même zone géographique.
-    </Body>
-    <Body weight="bold" size="sm" style={{ marginTop: '1rem' }}>
-      Indication Géographique Protégée (IGP) : Au moins une étape de production est réalisée dans une
+      Indication Géographique Protégée (IGP) : Au moins une étape de production est réalisée dans une
       zone géographique donnée, conférant au produit une spécificité locale.
     </Body>
     <Body weight="bold" size="sm" style={{ marginTop: '1rem' }}>
-      L’AOC (Appellation d’Origine Contrôlée) est l’équivalent national de l’AOP pour les produits
-      agroalimentaires et viticoles. Elle peut aussi concerner des produits non couverts par l’UE (comme ceux de la forêt).
+      L’AOC (Appellation d’Origine Contrôlée) est l’équivalent national de l’AOP européen (Appellation d’Origine Protégée) pour
+      les produits agroalimentaires et viticoles : toutes les étapes de fabrication doivent être réalisées
+      selon un savoir-faire reconnu et dans une même zone géographique. Mais l’AOC peut aussi concerner des
+      produits non couverts par l’Union Européenne (comme ceux de la forêt).
     </Body>
   </>
 );
 
 export const O3TooltipText = (
   <Body weight="bold" size="sm">
-    Au niveau européen, la valeur cible pour la protection de la santé humaine est fixé à un 
-    maximum journalier de la moyenne sur 8 h de 120 µg/m3, à ne pas dépasser plus de 25 jours 
-    par an (en moyenne sur 3 ans). Ce chiffre est calculé par l’Institut national de l'environnement 
+    Au niveau européen, la valeur cible pour la protection de la santé humaine est fixé à un
+    maximum journalier de la moyenne sur 8 h de 120 µg/m3, à ne pas dépasser plus de 25 jours
+    par an (en moyenne sur 3 ans). Ce chiffre est calculé par l’Institut national de l'environnement
     industriel et des risques (Ineris) d'après des concentrations analysées, combinant modèle et observations.
   </Body>
 );
