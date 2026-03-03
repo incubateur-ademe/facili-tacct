@@ -9,8 +9,8 @@ import { SurfacesEnHerbeDynamicText } from '@/lib/textesIndicateurs/biodiversite
 import { SurfacesToujoursEnHerbeText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import {
-    addWithNullHandling,
-    SumWithNullHandling
+  addWithNullHandling,
+  SumWithNullHandling
 } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import styles from '../../explorerDonnees.module.scss';
@@ -93,7 +93,7 @@ export const SurfacesToujoursEnHerbe = ({
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
-          Source : AGRESTE, 2020.
+          Source : AGRESTE, 2020
         </Body>
         <ExportButton
           data={exportData}

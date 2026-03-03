@@ -26,8 +26,6 @@ const SecheressesCharts = (props: Props) => {
   );
   const restrictionsParAnnee = transformerRestrictionsParAnneeUnique(toutesLesRestrictions);
   const restrictionsParSaison = transformerRestrictionsSaisons(toutesLesRestrictions);
-  console.log('restrictionsParAnnee', restrictionsParAnnee);
-  console.log('restrictionsParSaison', restrictionsParSaison);
 
   return (
     <div className={styles.dataWrapper}>

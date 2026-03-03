@@ -110,7 +110,7 @@ export const OzoneEtVegetation = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : Geod’air (2024).
+          Source : Geod’air (2024)
         </Body>
         {
           aot40.length && contoursCommunes && (

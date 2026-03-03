@@ -127,7 +127,7 @@ export const TypesDeCulture = (props: {
             }}
           >
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : AGRESTE, 2020.
+              Source : AGRESTE, 2020
             </Body>
             <ExportButton
               data={exportData}

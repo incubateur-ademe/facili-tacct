@@ -23,7 +23,7 @@ export const SourceExport = ({
             style={{ borderTop: '1px solid var(--gris-medium)' }}
           >
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : {source}.
+              Source : {source}
             </Body>
             <div className={styles.exportShareWrapper}>
               {anchor && <CopyLinkClipboard anchor={anchor} />}

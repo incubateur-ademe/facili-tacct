@@ -164,7 +164,7 @@ export const SuperficiesIrriguees = (props: {
         surfaceTerritoire !== undefined && !isNaN(surfaceTerritoire) && surfaceTerritoire !== 0 ? (
           <div className={styles.sourcesExportMapWrapper}>
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : AGRESTE, 2020.
+              Source : AGRESTE, 2020
             </Body>
             <ExportButton
               data={exportData}
@@ -187,7 +187,7 @@ export const SuperficiesIrriguees = (props: {
               gap: 0
             }}>
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : AGRESTE, 2020.
+              Source : AGRESTE, 2020
             </Body>
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>Export indisponible : données non référencées ou nulles.</Body>
           </div>

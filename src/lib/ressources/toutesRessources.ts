@@ -792,7 +792,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     type: "Retour d'expérience",
     titre: 'Utiliser les récits et illustrations paysagères pour s’approprier le territoire',
     description:
-      'Les supports “sensibles” permettent une meilleure appropriation des enjeux et impacts du changement climatique, découvrez des exemples et bonnes pratiques de récits et illustrations paysagères.',
+      'Les supports “sensibles” permettent une meilleure appropriation des enjeux et impacts du changement climatique, découvrez des exemples de récits et illustrations paysagères',
     lien: 'https://librairie.ademe.fr/changement-climatique/9084-recits-et-illustrations-paysageres-comme-outils-d-appropriation-des-enjeux-climatiques-territoriaux.html#',
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Restituer le diagnostic de vulnérabilité'],
@@ -807,7 +807,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     type: "Retour d'expérience",
     titre: "Faire de l'adaptation climatique un enjeu partagé par tous",
     description:
-      'CLS, PADD, PAS, DOO, Découvrez comment le “réflexe adaptation” est infusé dans différents documents réglementaires grâce aux démarches TACCT portées collectivement.',
+      'CLS, PADD, PAS, DOO, découvrez comment le “réflexe adaptation” est infusé dans différents documents réglementaires grâce aux démarches TACCT portées collectivement.',
     lien: 'https://librairie.ademe.fr/changement-climatique/9082-faire-de-l-adaptation-climatique-un-enjeu-partage-par-tous-les-services-d-une-collectivite.html#',
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Piloter la démarche d’adaptation'],
@@ -822,7 +822,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     type: "Retour d'expérience",
     titre: "Une mobilisation collective pour mettre le territoire en mouvement",
     description:
-      'Les trajectoires d’adaptation et les actions relèvent de compétences locales, découvrez comment des démarches TACCT à échelle infra ont associés leurs communes pour décupler le portage de l’adaptation.',
+      'Les trajectoires d’adaptation et les actions relèvent de compétences locales, découvrez comment des démarches TACCT à échelle infra ont associé leurs communes pour décupler le portage de l’adaptation.',
     lien: 'https://librairie.ademe.fr/changement-climatique/9083-mettre-le-territoire-en-mouvement-une-mobilisation-collective-pour-l-adaptation-au-changement-climatique.html',
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Piloter la démarche d’adaptation'],
