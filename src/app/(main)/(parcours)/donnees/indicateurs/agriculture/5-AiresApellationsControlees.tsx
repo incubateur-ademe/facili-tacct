@@ -83,15 +83,13 @@ export const AiresAppellationsControlees = (props: {
   }));
   const countAOC = airesAppellationsControlees.filter(el => el.signe === 'AOC').length;
   const countIGP = airesAppellationsControlees.filter(el => el.signe === 'IGP').length;
-console.log("airesAppellationsControlees", airesAppellationsControlees);
-// a trier par "signe" (ordre alphabétique) puis par "nom" (ordre alphabétique)
 
-const exportData = airesAppellationsControlees.sort((a, b) => {
-  if (a.signe === b.signe) {
-    return a.nom.localeCompare(b.nom);
-  }
-  return a.signe.localeCompare(b.signe);
-} );
+  const exportData = airesAppellationsControlees.sort((a, b) => {
+    if (a.signe === b.signe) {
+      return a.nom.localeCompare(b.nom);
+    }
+    return a.signe.localeCompare(b.signe);
+  });
 
   return (
     <>

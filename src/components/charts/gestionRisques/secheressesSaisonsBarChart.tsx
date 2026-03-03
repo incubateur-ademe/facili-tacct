@@ -23,12 +23,11 @@ export const SecheressesSaisonsBarChart = (
     ? Array.from(
       new Set(
         graphData.flatMap(saison =>
-          Object.keys(saison).filter(key => key !== 'saison' && parseInt(key) >= 2020)
+          Object.keys(saison).filter(key => key !== 'saison' && parseInt(key) >= 2020 && parseInt(key) <= 2025)
         )
       )
     ).toSorted()
     : [];
-
 
   return (
     <div

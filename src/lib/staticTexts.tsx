@@ -787,8 +787,8 @@ export const O3Text = () => (
 export const SecheressesText = () => (
   <>
     <Body size="sm" style={{ marginTop: '2rem' }}>
-      La sécheresse est un déficit hydrique prolongé — dû à un manque de précipitations ou 
-      à une utilisation excessive de la ressource — suffisant pour affecter les sols, la 
+      La sécheresse est un déficit hydrique prolongé - dû à un manque de précipitations ou 
+      à une utilisation excessive de la ressource - suffisant pour affecter les sols, la 
       végétation et les milieux aquatiques. Cyclique ou exceptionnelle, elle entraîne des 
       conséquences en cascade : assèchement des cours d'eau, tensions sur l'approvisionnement 
       en eau potable, risques accrus d'incendies…

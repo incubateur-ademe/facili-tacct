@@ -151,7 +151,7 @@ export const transformerRestrictionsSaisons = (restrictions: {
     for (let d = new Date(dateDebut); d <= dateFin; d.setDate(d.getDate() + 1)) {
       const annee = d.getFullYear();
 
-      if (annee < 2020) continue;
+      if (annee < 2020 || annee > 2025) continue;
 
       const anneeStr = annee.toString();
       const mois = d.getMonth() + 1;
