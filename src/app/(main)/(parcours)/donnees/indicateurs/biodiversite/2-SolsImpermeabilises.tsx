@@ -101,7 +101,7 @@ export const SolsImpermeabilises = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : CEREMA, avril 2024.
+          Source : CEREMA, 2024 (consultée en décembre 2024)
         </Body>
         {
           consommationNAF && coordonneesCommunes && (

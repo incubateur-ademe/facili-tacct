@@ -68,7 +68,7 @@ export const SecheressesPassees = (props: {
           }
           <SourceExport
             anchor="Sécheresses passées"
-            source="Ministère de la transition écologique (Consulté en février 2026)."
+            source="Ministère de la transition écologique (consultée en février 2026)."
             condition={secheresses.length !== 0}
             exportComponent={
               <ExportButton

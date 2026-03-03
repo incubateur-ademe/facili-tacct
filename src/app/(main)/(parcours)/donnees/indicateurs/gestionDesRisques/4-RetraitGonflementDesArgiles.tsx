@@ -116,7 +116,7 @@ export const RetraitGonflementDesArgiles = ({
               borderRadius: "0 0 0 1rem"
             }}>
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021.
+              Source : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021 (consultée en juin 2025)
             </Body>
             <ZipExportButton
               anchor='Retrait-gonflement des argiles'

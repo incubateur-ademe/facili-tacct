@@ -38,18 +38,15 @@ export const TagsSimples = ({
         fontWeight: 500,
         color: couleurTexte,
         gap: '4px',
+        cursor: closeable ? 'pointer' : undefined,
       }}
+      onClick={closeable ? handleClose : undefined}
     >
       {icone && <span>{icone}</span>}
       <Body size={taille === 'small' ? 'sm' : 'md'} style={{ color: couleurTexte }}>
         {texte}
       </Body>
-      {closeable &&
-        <span
-          style={{cursor: 'pointer', padding: '2px 8px 2px 8px' }}
-          onClick={handleClose}
-        >×</span>
-      }
+      {closeable && <span style={{ padding: '2px 8px 2px 8px' }}>×</span>}
     </div>
   );
 };

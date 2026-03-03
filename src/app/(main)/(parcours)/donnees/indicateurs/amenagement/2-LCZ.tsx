@@ -70,9 +70,9 @@ export const LCZ = ({
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : {
+          Source : {
             isLczCovered
-              ? "CEREMA, 2025."
+              ? "CEREMA, 2024 (consultée en décembre 2024)"
               : <a
                 href="https://doi.org/10.5194/essd-14-3835-2022"
                 target="_blank"

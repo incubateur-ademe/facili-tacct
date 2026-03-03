@@ -261,7 +261,7 @@ export const TypesDeSols = ({
       {confortThermique && confortThermique.length && (
         <div className={styles.sourcesExportMapWrapper}>
           <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
-            Source : CORINE Land Cover, 2018.
+            Source : CORINE Land Cover, 2018 (consultée en décembre 2024)
           </Body>
           <ZipExportButton
             anchor="Types de sols"
