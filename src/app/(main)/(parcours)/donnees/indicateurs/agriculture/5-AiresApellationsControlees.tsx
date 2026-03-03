@@ -94,14 +94,14 @@ export const AiresAppellationsControlees = (props: {
                 <>
                   <div className={styles.text}>
                     {
-                      airesAppellationsControlees.length > 1 ?
+                      airesAppellationsControlees.length > 0 ?
                         <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
                           Votre territoire compte {(countAOC && countIGP) ? `${countAOC} AOC et ${countIGP} IGP` : countAOC ? `${countAOC} AOC` : countIGP ? `${countIGP} IGP` : 'aucune appellation'},
                           véritables marqueurs de son identité, de son économie et de son attractivité.
                         </Body>
                         : <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
                           Sans disposer d’appellations reconnues, votre territoire peut néanmoins être structurellement
-                          lié à la notoriété, à l’attractivité touristique et aux retombées économiques des AOP et IGP environnantes.
+                          lié à la notoriété, à l’attractivité touristique et aux retombées économiques des AOC et IGP environnantes.
                         </Body>
                     }
                     <CustomTooltipNouveauParcours
@@ -141,7 +141,13 @@ export const AiresAppellationsControlees = (props: {
             }}
           >
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : <a href="https://www.inao.gouv.fr/" target="_blank" rel="noopener noreferrer">Institut national de l'origine et de la qualité (INAO)</a>, consulté en janvier 2026.
+              Source : <a
+                href="https://www.inao.gouv.fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Institut national de l’origine et de la qualité - INAO
+              </a>{" "}(consultée en janvier 2026)
             </Body>
             <ExportButton
               data={airesAppellationsControlees}
