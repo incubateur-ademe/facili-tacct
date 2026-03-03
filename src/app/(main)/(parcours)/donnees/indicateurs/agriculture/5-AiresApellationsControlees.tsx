@@ -83,6 +83,16 @@ export const AiresAppellationsControlees = (props: {
   }));
   const countAOC = airesAppellationsControlees.filter(el => el.signe === 'AOC').length;
   const countIGP = airesAppellationsControlees.filter(el => el.signe === 'IGP').length;
+console.log("airesAppellationsControlees", airesAppellationsControlees);
+// a trier par "signe" (ordre alphabétique) puis par "nom" (ordre alphabétique)
+
+const exportData = airesAppellationsControlees.sort((a, b) => {
+  if (a.signe === b.signe) {
+    return a.nom.localeCompare(b.nom);
+  }
+  return a.signe.localeCompare(b.signe);
+} );
+
   return (
     <>
       <div className={styles.datavizContainer}>
@@ -141,16 +151,10 @@ export const AiresAppellationsControlees = (props: {
             }}
           >
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : <a
-                href="https://www.inao.gouv.fr/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Institut national de l’origine et de la qualité - INAO
-              </a>{" "}(consultée en janvier 2026)
+              Source : Institut national de l’origine et de la qualité - INAO (consultée en janvier 2026)
             </Body>
             <ExportButton
-              data={airesAppellationsControlees}
+              data={exportData}
               baseName="aires_appellations_controlees"
               type={type}
               libelle={libelle}
