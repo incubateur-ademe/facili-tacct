@@ -553,49 +553,18 @@ export const RGAText = () => (
   <div className="pt-10">
     <Body size="sm">
       Phénomène lié à l’alternance de sécheresses extrêmes et de fortes pluies,
-      le retrait gonflement des argiles (RGA) impacte désormais tout le
-      territoire métropolitain à l’exception de la Bretagne et de la Normandie.
-      Il touche surtout les maisons individuelles anciennes. Mais les routes,
-      les écoles, les canalisations ou les équipements municipaux peuvent aussi
-      être affectés, mettant en jeu la sécurité et l’attractivité du territoire.
+      le retrait gonflement des argiles (RGA) touche surtout les maisons
+      individuelles anciennes. Mais les routes, les écoles, les canalisations
+      ou les équipements municipaux peuvent aussi être affectés, mettant en
+      jeu la sécurité et l’attractivité du territoire.
     </Body>
     <Body size="sm">
-      Si le phénomène est incontestablement amplifié par le changement
-      climatique, la qualité des constructions est aussi en cause. La fréquence
-      des sinistres RGA des maisons construites après 1975 est cinq fois
-      supérieure à celle des maisons construites avant 1975, alors même que ces
-      dernières ont subi davantage de cycles de RGA. Multifactoriel, le RGA est
-      donc un sujet complexe qui nécessite une approche combinée sols, bâtiment,
-      urbanisme…
-    </Body>
-    <Body size="sm">
-      Il y a urgence à mieux prendre en compte le RGA dans les politiques
-      d’aménagement car son coût explose : de 400 millions d’euros par an
-      (1989-2015) à 1 milliard d’euros par an (2016-2020), pour atteindre en
-      2022 un record à 3,5 milliards d’euros. Il représente 52 % du total des
-      indemnisations versées au titre du régime des catastrophes naturelles sur
-      les dix dernières années, devenant non seulement le péril naturel le plus
-      coûteux devant les inondations mais mettant en péril l’équilibre même du
-      régime CatNat. Il est temps de sortir d’une logique « dommages ⇒
-      indemnisations » alors qu’il existe un certain nombre d’actions de
-      prévention qui pourraient éviter ou réduire l’apparition de dommages.
-    </Body>
-    <Body size="sm">
-      ⇒ En France métropolitaine, 48 % du territoire est exposé à un risque RGA
-      moyen ou fort. Cela représente 10,4 millions de logements (près de la
-      moitié du parc de logements) et 20 millions de Français.
-    </Body>
-    <Body size="sm">
-      ⇒ En 2022, le nombre de maisons individuelles touchées par le RGA a été
-      deux fois supérieur au nombre de maisons individuelles construites en
-      2024.
-    </Body>
-    <Body size="sm">
-      - - - - Plan national d’adaptation au changement climatique (PNACC 3) :
-      <li>
-        Protéger la population des désordres sur les bâtiments liés au
-        retrait-gonflement des argiles (mesure 5)
-      </li>
+      Si le phénomène est incontestablement amplifié par le changement climatique,
+      la qualité des constructions est aussi en cause. La fréquence des sinistres
+      RGA des maisons construites après 1975 est 5 fois supérieure à celle des
+      maisons construites avant 1975, alors même que ces dernières ont subi
+      davantage de cycles de RGA. Multifactoriel, le RGA est donc un sujet
+      complexe qui nécessite une approche combinée sols, bâtiment, urbanisme…
     </Body>
   </div>
 );
@@ -770,35 +739,35 @@ export const O3Text = () => (
   <Body size="sm">
     <DefinitionTooltip title={ozone}>L’ozone</DefinitionTooltip>{' '}
     (O3) fait partie des 4 polluants atmosphériques pour lesquels il existe
-    une réglementation et des seuils conduisant aux déclenchement de procédures 
-    préfectorales. Si les pics de pollution aiguë provoquent des symptômes 
-    respiratoires immédiats, l’exposition chronique constitue un enjeu sanitaire 
-    plus préoccupant : elle est associée à des effets à long terme, même à des 
-    concentrations ne déclenchant pas nécessairement d’alerte. C’est notamment pourquoi 
+    une réglementation et des seuils conduisant aux déclenchement de procédures
+    préfectorales. Si les pics de pollution aiguë provoquent des symptômes
+    respiratoires immédiats, l’exposition chronique constitue un enjeu sanitaire
+    plus préoccupant : elle est associée à des effets à long terme, même à des
+    concentrations ne déclenchant pas nécessairement d’alerte. C’est notamment pourquoi
     l’<DefinitionTooltip title={OMS}>OMS</DefinitionTooltip> {" "}
     recommande <DefinitionTooltip title={valeursGuidesO3}>des valeurs guides </DefinitionTooltip>
-    plus strictes que le seuil européen actuel. À titre d’exemple, en 2022, seules 12 % des 
-    agglomérations françaises le dépassaient alors que 95 % d’entre elles auraient été 
-    en dépassement si les <ScrollToSourceTag sourceNumero={1}>valeurs guides de l’OMS avaient été 
-    appliquées </ScrollToSourceTag>.
+    plus strictes que le seuil européen actuel. À titre d’exemple, en 2022, seules 12 % des
+    agglomérations françaises le dépassaient alors que 95 % d’entre elles auraient été
+    en dépassement si les <ScrollToSourceTag sourceNumero={1}>valeurs guides de l’OMS avaient été
+      appliquées </ScrollToSourceTag>.
   </Body>
 );
 
 export const SecheressesText = () => (
   <>
     <Body size="sm" style={{ marginTop: '2rem' }}>
-      La sécheresse est un déficit hydrique prolongé - dû à un manque de précipitations ou 
-      à une utilisation excessive de la ressource - suffisant pour affecter les sols, la 
-      végétation et les milieux aquatiques. Cyclique ou exceptionnelle, elle entraîne des 
-      conséquences en cascade : assèchement des cours d'eau, tensions sur l'approvisionnement 
+      La sécheresse est un déficit hydrique prolongé - dû à un manque de précipitations ou
+      à une utilisation excessive de la ressource - suffisant pour affecter les sols, la
+      végétation et les milieux aquatiques. Cyclique ou exceptionnelle, elle entraîne des
+      conséquences en cascade : assèchement des cours d'eau, tensions sur l'approvisionnement
       en eau potable, risques accrus d'incendies…
     </Body>
     <Body size="sm" style={{ marginTop: '1rem' }}>
-      Le nombre de jours cumulés par niveau de restriction renseigne sur la fréquence 
-      et la sévérité des épisodes de sécheresse. La présence récurrente de niveaux élevés 
-      (alerte renforcée ou crise) révèle une vulnérabilité structurelle : la ressource 
-      disponible est régulièrement insuffisante pour satisfaire l'ensemble des usages, 
-      traduisant un déséquilibre chronique entre offre et demande en eau, indépendamment 
+      Le nombre de jours cumulés par niveau de restriction renseigne sur la fréquence
+      et la sévérité des épisodes de sécheresse. La présence récurrente de niveaux élevés
+      (alerte renforcée ou crise) révèle une vulnérabilité structurelle : la ressource
+      disponible est régulièrement insuffisante pour satisfaire l'ensemble des usages,
+      traduisant un déséquilibre chronique entre offre et demande en eau, indépendamment
       de toute aggravation future.
     </Body>
   </>
