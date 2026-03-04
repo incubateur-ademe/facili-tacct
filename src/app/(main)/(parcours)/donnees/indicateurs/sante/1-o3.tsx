@@ -1,6 +1,6 @@
 'use client';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/ExportPng';
+import { ExportPngMaplibreButton } from '@/components/exports/ExportPng';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { o3Legend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
@@ -104,7 +104,7 @@ export const SeuilsReglementairesO3 = ({
         <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
           Source : INERIS et Geod’air (moyenne 2023-2025), consulté en janvier 2026
         </Body>
-        <ExportPngMaplibreButtonNouveauParcours
+        <ExportPngMaplibreButton
           mapRef={mapRef}
           mapContainer={mapContainer}
           documentDiv=".legendWrapper"
@@ -113,7 +113,7 @@ export const SeuilsReglementairesO3 = ({
           type={type}
           libelle={libelle}
           code={code}
-          thematique="Santé"
+          thematique="o3"
         />
       </div>
     </>
