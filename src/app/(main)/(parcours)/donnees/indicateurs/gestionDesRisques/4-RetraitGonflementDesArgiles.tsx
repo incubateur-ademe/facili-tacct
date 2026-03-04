@@ -148,7 +148,7 @@ export const RetraitGonflementDesArgiles = ({
               code={code}
               libelle={libelle}
               type={type}
-              thematique="Gestion des risques"
+              thematique="rga"
             >
               Exporter
             </ZipExportButtonNouveauParcours>

@@ -1,6 +1,6 @@
 "use client";
 import GraphNotFound from '@/assets/images/no_data_on_territory.svg';
-import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/ExportPng';
+import { ExportPngMaplibreButton } from '@/components/exports/ExportPng';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { LegendErosionCotiere } from '@/components/maps/legends/legendErosionCotiere';
 import { MapErosionCotiere } from '@/components/maps/mapErosionCotiere';
@@ -66,7 +66,7 @@ export const ErosionCotiereComp = ({
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
           Source : CEREMA, 2018.
         </Body>
-        <ExportPngMaplibreButtonNouveauParcours
+        <ExportPngMaplibreButton
           mapRef={mapRef}
           mapContainer={mapContainer}
           documentDiv=".erosionCotiereLegendWrapper"
@@ -75,7 +75,7 @@ export const ErosionCotiereComp = ({
           type={type}
           libelle={libelle}
           code={code}
-          thematique="Gestion des risques"
+          thematique="erosion_cotiere"
         />
       </div>
     </>

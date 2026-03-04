@@ -1,5 +1,5 @@
 'use client';
-import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/ExportPng';
+import { ExportPngMaplibreButton } from '@/components/exports/ExportPng';
 import { debroussaillementLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { Loader } from '@/components/ui/loader';
@@ -66,7 +66,7 @@ export const Debroussaillement = ({
             <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
               Source : Institut national de l’information géographique et forestière, 2025
             </Body>
-            <ExportPngMaplibreButtonNouveauParcours
+            <ExportPngMaplibreButton
               mapRef={mapRef}
               mapContainer={mapContainer}
               documentDiv=".debroussaillementLegendWrapper"
@@ -75,7 +75,7 @@ export const Debroussaillement = ({
               type={type}
               libelle={libelle}
               code={code}
-              thematique="Gestion des risques"
+              thematique="debroussaillement"
             />
           </div>
         </>
