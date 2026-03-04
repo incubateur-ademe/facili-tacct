@@ -5,6 +5,7 @@ import ExportDataTrigger from '@/hooks/ExportDataTrigger';
 import { exportMultipleSheetToXLSX } from '@/lib/utils/export/exportXlsx';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
+
 import styles from '../components.module.scss';
 import { CopyLinkClipboard } from '../interactions/CopyLinkClipboard';
 
@@ -42,14 +43,6 @@ export const MultiSheetExportButton = ({
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-
-  posthog.capture('export_xlsx_bouton', {
-    thematique: baseName,
-    code: code,
-    libelle: libelle,
-    type: type,
-    date: new Date()
-  });
 
   useEffect(() => {
     if (isExporting) {
@@ -93,6 +86,14 @@ export const MultiSheetExportButton = ({
 
     e.currentTarget.blur();
     setIsExporting(true);
+
+    posthog.capture('export_xlsx_bouton', {
+      thematique: baseName,
+      code: code,
+      libelle: libelle,
+      type: type,
+      date: new Date()
+    });
 
     // Attendre que React affiche "Export en cours..." avant de démarrer l'export
     await new Promise((resolve) => setTimeout(resolve, 0));

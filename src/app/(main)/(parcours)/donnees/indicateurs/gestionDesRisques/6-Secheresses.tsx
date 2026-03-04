@@ -40,8 +40,8 @@ export const SecheressesPassees = (props: {
           <div className={styles.chiffreDynamiqueWrapper}>
             <MicroCircleGridMois nombreJours={moyenneJoursAvecRestriction} arrondi={0} />
             <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-              Sur la période 2020-2025, c'est en {anneeMaxRestriction} que votre territoire 
-              a connu le plus de restrictions liées à la sécheresse, avec une moyenne 
+              Sur la période 2020-2025, c'est en {anneeMaxRestriction} que votre territoire
+              a connu le plus de restrictions liées à la sécheresse, avec une moyenne
               de {moyenneJoursAvecRestriction} jours de restriction par mois.
             </Body>
             <CustomTooltipNouveauParcours
@@ -68,7 +68,7 @@ export const SecheressesPassees = (props: {
           }
           <SourceExport
             anchor="Sécheresses passées"
-            source="Ministère de la transition écologique (consultée en février 2026)"
+            source="Ministère de la transition écologique, 2026 (consultée en février 2026)"
             condition={secheresses.length !== 0}
             exportComponent={
               <ExportButton
