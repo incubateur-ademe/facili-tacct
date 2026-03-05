@@ -1,9 +1,6 @@
 'use client';
-import { createModal } from '@codegouvfr/react-dsfr/Modal';
-import { useIsModalOpen } from '@codegouvfr/react-dsfr/Modal/useIsModalOpen';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
-import CookieModal from './cookieModal';
 import styles from './main.module.scss';
 
 export const cookieConsentGiven = () => {
@@ -13,16 +10,9 @@ export const cookieConsentGiven = () => {
   return localStorage.getItem('cookie_consent') ?? 'undecided';
 };
 
-const modal = createModal({
-  id: 'foo-modal',
-  isOpenedByDefault: false
-});
-
 export const CookieBanner = () => {
   const [consentGiven, setConsentGiven] = useState('');
-  const [areTermAccepted, setAreTermAccepted] = useState(true);
   const posthog = usePostHog();
-  const isOpen = useIsModalOpen(modal);
 
   useEffect(() => {
     setConsentGiven(cookieConsentGiven());
@@ -30,35 +20,31 @@ export const CookieBanner = () => {
 
   useEffect(() => {
     if (consentGiven !== '') {
-      posthog.set_config({
-        persistence: consentGiven === 'yes' ? 'localStorage+cookie' : 'memory',
-        disable_session_recording: consentGiven !== 'yes'
-      });
-
-      if (consentGiven === 'yes') {
-        posthog.opt_in_capturing();
+      if (consentGiven === 'all') {
+        posthog.set_config({
+          persistence: 'localStorage+cookie',
+          disable_session_recording: false,
+          capture_heatmaps: true
+        });
         posthog.startSessionRecording();
       } else {
-        posthog.opt_out_capturing();
-        posthog.stopSessionRecording();
+        posthog.set_config({
+          persistence: 'memory',
+          disable_session_recording: true,
+          capture_heatmaps: false
+        });
       }
     }
   }, [consentGiven, posthog]);
 
-  const handleValidateCookies = () => {
-    if (areTermAccepted) {
-      localStorage.setItem('cookie_consent', 'yes');
-      setConsentGiven('yes');
-    } else {
-      localStorage.setItem('cookie_consent', 'no');
-      setConsentGiven('no');
-    }
-    modal.close();
+  const handleAcceptAll = () => {
+    localStorage.setItem('cookie_consent', 'all');
+    setConsentGiven('all');
   };
 
-  const handleDeclineCookies = () => {
-    localStorage.setItem('cookie_consent', 'no');
-    setConsentGiven('no');
+  const handleAcceptEssential = () => {
+    localStorage.setItem('cookie_consent', 'essential');
+    setConsentGiven('essential');
   };
 
   return (
@@ -80,26 +66,18 @@ export const CookieBanner = () => {
           </p>
           <button
             type="button"
-            onClick={handleValidateCookies}
+            onClick={handleAcceptAll}
             className={styles.acceptCookieBtn}
           >
-            Accepter
+            Accepter tous les cookies
           </button>
           <button
             type="button"
-            onClick={() => modal.open()}
-            className={styles.modifyCookieBtn}
-          >
-            Choisir mes préférences
-          </button>
-          <button
-            type="button"
-            onClick={handleDeclineCookies}
+            onClick={handleAcceptEssential}
             className={styles.declineCookieBtn}
           >
-            Tout refuser
+            Cookies obligatoires seulement
           </button>
-          <CookieModal modal={modal} setConsentGiven={setConsentGiven} />
         </div>
       )}
     </div>
