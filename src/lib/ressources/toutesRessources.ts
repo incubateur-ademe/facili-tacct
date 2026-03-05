@@ -140,7 +140,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 5,
     type: "Retour d'expérience",
     titre:
-      "Réalisation d'un diagnostic de vulnérabilité au changement climatique",
+      "Réalisation d'un diagnostic de vulnérabilité - Epernay Agglo Champagne",
     description:
       'Diagnostic de vulnérabilité réalisé dans le cadre d’un PCAET grâce à la démarche TACCT : découvrez les apprentissages d’Epernay Agglo Champagne !',
     lien: 'https://www.climaxion.fr/docutheque/realisation-dun-diagnostic-vulnerabilite-au-changement-climatique-epernay-agglo-champagne',
@@ -744,8 +744,7 @@ export const toutesLesRessources: ToutesRessources[] = [
   {
     id: 38,
     type: 'Article',
-    titre:
-      "Réalisation d'un diagnostic de vulnérabilité - Epernay Agglo Champagne",
+    titre: 'Réaliser votre diagnostic de vulnérabilité',
     slug: 'realiser-diagnostic-vulnerabilite',
     description:
       'Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.',
@@ -758,8 +757,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     ordre: 10,
     ordreCollection: 1,
     metadata: {
-      title:
-        "Réalisation d'un diagnostic de vulnérabilité - Epernay Agglo Champagne",
+      title: 'Réaliser votre diagnostic de vulnérabilité',
       description:
         'Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.'
     }
@@ -790,7 +788,8 @@ export const toutesLesRessources: ToutesRessources[] = [
   {
     id: 40,
     type: "Retour d'expérience",
-    titre: 'Utiliser les récits et illustrations paysagères pour s’approprier le territoire',
+    titre:
+      'Utiliser les récits et illustrations paysagères pour s’approprier le territoire',
     description:
       'Les supports “sensibles” permettent une meilleure appropriation des enjeux et impacts du changement climatique, découvrez des exemples de récits et illustrations paysagères.',
     lien: 'https://librairie.ademe.fr/changement-climatique/9084-recits-et-illustrations-paysageres-comme-outils-d-appropriation-des-enjeux-climatiques-territoriaux.html#',
@@ -820,7 +819,7 @@ export const toutesLesRessources: ToutesRessources[] = [
   {
     id: 42,
     type: "Retour d'expérience",
-    titre: "Une mobilisation collective pour mettre le territoire en mouvement",
+    titre: 'Une mobilisation collective pour mettre le territoire en mouvement',
     description:
       'Les trajectoires d’adaptation et les actions relèvent de compétences locales, découvrez comment des démarches TACCT à échelle infra ont associé leurs communes pour décupler le portage de l’adaptation.',
     lien: 'https://librairie.ademe.fr/changement-climatique/9083-mettre-le-territoire-en-mouvement-une-mobilisation-collective-pour-l-adaptation-au-changement-climatique.html',

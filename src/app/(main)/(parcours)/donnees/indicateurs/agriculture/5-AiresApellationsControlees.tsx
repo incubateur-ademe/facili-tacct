@@ -149,7 +149,7 @@ export const AiresAppellationsControlees = (props: {
             }}
           >
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : Institut national de l’origine et de la qualité - INAO (consultée en janvier 2026)
+              Source : Institut national de l’origine et de la qualité - INAO, 2026 (consultée en janvier 2026)
             </Body>
             <ExportButton
               data={exportData}

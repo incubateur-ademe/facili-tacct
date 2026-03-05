@@ -1,6 +1,6 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/ExportPng';
+import { ExportPngMaplibreButton } from '@/components/exports/ExportPng';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { Loader } from '@/components/ui/loader';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
@@ -82,7 +82,7 @@ export const LCZ = ({
                 Matthias Demuzere et al. 2022
               </a>}
         </Body>
-        <ExportPngMaplibreButtonNouveauParcours
+        <ExportPngMaplibreButton
           mapRef={mapRef}
           mapContainer={mapContainer}
           documentDiv=".lczLegendWrapper"
@@ -91,7 +91,7 @@ export const LCZ = ({
           type={type}
           libelle={libelle}
           code={code}
-          thematique="Confort thermique"
+          thematique="lcz"
         />
       </div>
     </>
