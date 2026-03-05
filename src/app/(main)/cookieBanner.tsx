@@ -53,9 +53,8 @@ export const CookieBanner = () => {
         <div className={styles.cookieConsentWrapper}>
           <p>
             Ce site utilise des cookies nécessaires à son bon fonctionnement.
-            Pour améliorer votre expérience, d’autres fonctionnalités (listées
-            ci-dessous) s’appuient sur des services proposés par des tiers. Pour
-            toute information supplémentaire, veuillez consulter notre{' '}
+            Pour améliorer votre expérience, certaines fonctionnalités s’appuient 
+            sur des services proposés par des tiers. Pour toute information supplémentaire, veuillez consulter notre{' '}
             <a
               href="/politique-des-cookies"
               target="_blank"
@@ -64,6 +63,7 @@ export const CookieBanner = () => {
               politique des cookies
             </a>
           </p>
+          <div className='flex flex-wrap justify-center gap-4'>
           <button
             type="button"
             onClick={handleAcceptAll}
@@ -76,8 +76,9 @@ export const CookieBanner = () => {
             onClick={handleAcceptEssential}
             className={styles.declineCookieBtn}
           >
-            Cookies obligatoires seulement
+            Cookies essentiels seulement
           </button>
+          </div>
         </div>
       )}
     </div>
