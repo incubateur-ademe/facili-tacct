@@ -4,10 +4,13 @@ import { useEffect, useState } from 'react';
 import styles from './main.module.scss';
 
 export const cookieConsentGiven = () => {
-  if (!localStorage.getItem('cookie_consent')) {
+  const stored = localStorage.getItem('cookie_consent');
+  if (!stored) return 'undecided';
+  if (stored !== 'all' && stored !== 'essential') {
+    localStorage.removeItem('cookie_consent');
     return 'undecided';
   }
-  return localStorage.getItem('cookie_consent') ?? 'undecided';
+  return stored;
 };
 
 export const CookieBanner = () => {
@@ -53,8 +56,9 @@ export const CookieBanner = () => {
         <div className={styles.cookieConsentWrapper}>
           <p>
             Ce site utilise des cookies nécessaires à son bon fonctionnement.
-            Pour améliorer votre expérience, certaines fonctionnalités s’appuient 
-            sur des services proposés par des tiers. Pour toute information supplémentaire, veuillez consulter notre{' '}
+            Pour améliorer votre expérience, certaines fonctionnalités s’appuient
+            sur des services proposés par des tiers. Pour toute information
+            supplémentaire, veuillez consulter notre{' '}
             <a
               href="/politique-des-cookies"
               target="_blank"
@@ -64,20 +68,20 @@ export const CookieBanner = () => {
             </a>
           </p>
           <div className='flex flex-wrap justify-center gap-4'>
-          <button
-            type="button"
-            onClick={handleAcceptAll}
-            className={styles.acceptCookieBtn}
-          >
-            Accepter tous les cookies
-          </button>
-          <button
-            type="button"
-            onClick={handleAcceptEssential}
-            className={styles.declineCookieBtn}
-          >
-            Cookies essentiels seulement
-          </button>
+            <button
+              type="button"
+              onClick={handleAcceptAll}
+              className={styles.acceptCookieBtn}
+            >
+              Accepter tous les cookies
+            </button>
+            <button
+              type="button"
+              onClick={handleAcceptEssential}
+              className={styles.declineCookieBtn}
+            >
+              Cookies essentiels seulement
+            </button>
           </div>
         </div>
       )}
