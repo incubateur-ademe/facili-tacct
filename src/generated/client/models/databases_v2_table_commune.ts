@@ -103,8 +103,6 @@ export type Databases_v2_table_communeCountAggregateOutputType = {
   part_irr_sau_2020: number
   agriculture_part_over_55: number
   couverture_lcz: number
-  aires_appellations_controlees_nom: number
-  aires_appellations_controlees_signe: number
   _all: number
 }
 
@@ -186,8 +184,6 @@ export type Databases_v2_table_communeCountAggregateInputType = {
   part_irr_sau_2020?: true
   agriculture_part_over_55?: true
   couverture_lcz?: true
-  aires_appellations_controlees_nom?: true
-  aires_appellations_controlees_signe?: true
   _all?: true
 }
 
@@ -298,8 +294,6 @@ export type Databases_v2_table_communeGroupByOutputType = {
   part_irr_sau_2020: string | null
   agriculture_part_over_55: string | null
   couverture_lcz: string | null
-  aires_appellations_controlees_nom: string[]
-  aires_appellations_controlees_signe: string[]
   _count: Databases_v2_table_communeCountAggregateOutputType | null
   _avg: Databases_v2_table_communeAvgAggregateOutputType | null
   _sum: Databases_v2_table_communeSumAggregateOutputType | null
@@ -346,8 +340,6 @@ export type databases_v2_table_communeWhereInput = {
   part_irr_sau_2020?: Prisma.StringNullableFilter<"databases_v2_table_commune"> | string | null
   agriculture_part_over_55?: Prisma.StringNullableFilter<"databases_v2_table_commune"> | string | null
   couverture_lcz?: Prisma.StringNullableFilter<"databases_v2_table_commune"> | string | null
-  aires_appellations_controlees_nom?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
-  aires_appellations_controlees_signe?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
 }
 
 export type databases_v2_table_communeOrderByWithRelationInput = {
@@ -371,8 +363,6 @@ export type databases_v2_table_communeOrderByWithRelationInput = {
   part_irr_sau_2020?: Prisma.SortOrderInput | Prisma.SortOrder
   agriculture_part_over_55?: Prisma.SortOrderInput | Prisma.SortOrder
   couverture_lcz?: Prisma.SortOrderInput | Prisma.SortOrder
-  aires_appellations_controlees_nom?: Prisma.SortOrder
-  aires_appellations_controlees_signe?: Prisma.SortOrder
 }
 
 export type databases_v2_table_communeWhereUniqueInput = Prisma.AtLeast<{
@@ -399,8 +389,6 @@ export type databases_v2_table_communeWhereUniqueInput = Prisma.AtLeast<{
   part_irr_sau_2020?: Prisma.StringNullableFilter<"databases_v2_table_commune"> | string | null
   agriculture_part_over_55?: Prisma.StringNullableFilter<"databases_v2_table_commune"> | string | null
   couverture_lcz?: Prisma.StringNullableFilter<"databases_v2_table_commune"> | string | null
-  aires_appellations_controlees_nom?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
-  aires_appellations_controlees_signe?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
 }, "index">
 
 export type databases_v2_table_communeOrderByWithAggregationInput = {
@@ -424,8 +412,6 @@ export type databases_v2_table_communeOrderByWithAggregationInput = {
   part_irr_sau_2020?: Prisma.SortOrderInput | Prisma.SortOrder
   agriculture_part_over_55?: Prisma.SortOrderInput | Prisma.SortOrder
   couverture_lcz?: Prisma.SortOrderInput | Prisma.SortOrder
-  aires_appellations_controlees_nom?: Prisma.SortOrder
-  aires_appellations_controlees_signe?: Prisma.SortOrder
   _count?: Prisma.databases_v2_table_communeCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_table_communeAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_table_communeMaxOrderByAggregateInput
@@ -457,8 +443,6 @@ export type databases_v2_table_communeScalarWhereWithAggregatesInput = {
   part_irr_sau_2020?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_table_commune"> | string | null
   agriculture_part_over_55?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_table_commune"> | string | null
   couverture_lcz?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_table_commune"> | string | null
-  aires_appellations_controlees_nom?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
-  aires_appellations_controlees_signe?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
 }
 
 export type databases_v2_table_communeCreateInput = {
@@ -482,8 +466,6 @@ export type databases_v2_table_communeCreateInput = {
   part_irr_sau_2020?: string | null
   agriculture_part_over_55?: string | null
   couverture_lcz?: string | null
-  aires_appellations_controlees_nom?: Prisma.databases_v2_table_communeCreateaires_appellations_controlees_nomInput | string[]
-  aires_appellations_controlees_signe?: Prisma.databases_v2_table_communeCreateaires_appellations_controlees_signeInput | string[]
 }
 
 export type databases_v2_table_communeUncheckedCreateInput = {
@@ -507,8 +489,6 @@ export type databases_v2_table_communeUncheckedCreateInput = {
   part_irr_sau_2020?: string | null
   agriculture_part_over_55?: string | null
   couverture_lcz?: string | null
-  aires_appellations_controlees_nom?: Prisma.databases_v2_table_communeCreateaires_appellations_controlees_nomInput | string[]
-  aires_appellations_controlees_signe?: Prisma.databases_v2_table_communeCreateaires_appellations_controlees_signeInput | string[]
 }
 
 export type databases_v2_table_communeUpdateInput = {
@@ -532,8 +512,6 @@ export type databases_v2_table_communeUpdateInput = {
   part_irr_sau_2020?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agriculture_part_over_55?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   couverture_lcz?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  aires_appellations_controlees_nom?: Prisma.databases_v2_table_communeUpdateaires_appellations_controlees_nomInput | string[]
-  aires_appellations_controlees_signe?: Prisma.databases_v2_table_communeUpdateaires_appellations_controlees_signeInput | string[]
 }
 
 export type databases_v2_table_communeUncheckedUpdateInput = {
@@ -557,8 +535,6 @@ export type databases_v2_table_communeUncheckedUpdateInput = {
   part_irr_sau_2020?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agriculture_part_over_55?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   couverture_lcz?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  aires_appellations_controlees_nom?: Prisma.databases_v2_table_communeUpdateaires_appellations_controlees_nomInput | string[]
-  aires_appellations_controlees_signe?: Prisma.databases_v2_table_communeUpdateaires_appellations_controlees_signeInput | string[]
 }
 
 export type databases_v2_table_communeCreateManyInput = {
@@ -582,8 +558,6 @@ export type databases_v2_table_communeCreateManyInput = {
   part_irr_sau_2020?: string | null
   agriculture_part_over_55?: string | null
   couverture_lcz?: string | null
-  aires_appellations_controlees_nom?: Prisma.databases_v2_table_communeCreateaires_appellations_controlees_nomInput | string[]
-  aires_appellations_controlees_signe?: Prisma.databases_v2_table_communeCreateaires_appellations_controlees_signeInput | string[]
 }
 
 export type databases_v2_table_communeUpdateManyMutationInput = {
@@ -607,8 +581,6 @@ export type databases_v2_table_communeUpdateManyMutationInput = {
   part_irr_sau_2020?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agriculture_part_over_55?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   couverture_lcz?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  aires_appellations_controlees_nom?: Prisma.databases_v2_table_communeUpdateaires_appellations_controlees_nomInput | string[]
-  aires_appellations_controlees_signe?: Prisma.databases_v2_table_communeUpdateaires_appellations_controlees_signeInput | string[]
 }
 
 export type databases_v2_table_communeUncheckedUpdateManyInput = {
@@ -632,16 +604,6 @@ export type databases_v2_table_communeUncheckedUpdateManyInput = {
   part_irr_sau_2020?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agriculture_part_over_55?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   couverture_lcz?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  aires_appellations_controlees_nom?: Prisma.databases_v2_table_communeUpdateaires_appellations_controlees_nomInput | string[]
-  aires_appellations_controlees_signe?: Prisma.databases_v2_table_communeUpdateaires_appellations_controlees_signeInput | string[]
-}
-
-export type StringNullableListFilter<$PrismaModel = never> = {
-  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
-  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
-  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  isEmpty?: boolean
 }
 
 export type databases_v2_table_communeCountOrderByAggregateInput = {
@@ -665,8 +627,6 @@ export type databases_v2_table_communeCountOrderByAggregateInput = {
   part_irr_sau_2020?: Prisma.SortOrder
   agriculture_part_over_55?: Prisma.SortOrder
   couverture_lcz?: Prisma.SortOrder
-  aires_appellations_controlees_nom?: Prisma.SortOrder
-  aires_appellations_controlees_signe?: Prisma.SortOrder
 }
 
 export type databases_v2_table_communeAvgOrderByAggregateInput = {
@@ -725,24 +685,6 @@ export type databases_v2_table_communeSumOrderByAggregateInput = {
   region?: Prisma.SortOrder
 }
 
-export type databases_v2_table_communeCreateaires_appellations_controlees_nomInput = {
-  set: string[]
-}
-
-export type databases_v2_table_communeCreateaires_appellations_controlees_signeInput = {
-  set: string[]
-}
-
-export type databases_v2_table_communeUpdateaires_appellations_controlees_nomInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
-export type databases_v2_table_communeUpdateaires_appellations_controlees_signeInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
 
 
 export type databases_v2_table_communeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -766,8 +708,6 @@ export type databases_v2_table_communeSelect<ExtArgs extends runtime.Types.Exten
   part_irr_sau_2020?: boolean
   agriculture_part_over_55?: boolean
   couverture_lcz?: boolean
-  aires_appellations_controlees_nom?: boolean
-  aires_appellations_controlees_signe?: boolean
 }, ExtArgs["result"]["databases_v2_table_commune"]>
 
 export type databases_v2_table_communeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -791,8 +731,6 @@ export type databases_v2_table_communeSelectCreateManyAndReturn<ExtArgs extends 
   part_irr_sau_2020?: boolean
   agriculture_part_over_55?: boolean
   couverture_lcz?: boolean
-  aires_appellations_controlees_nom?: boolean
-  aires_appellations_controlees_signe?: boolean
 }, ExtArgs["result"]["databases_v2_table_commune"]>
 
 export type databases_v2_table_communeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -816,8 +754,6 @@ export type databases_v2_table_communeSelectUpdateManyAndReturn<ExtArgs extends 
   part_irr_sau_2020?: boolean
   agriculture_part_over_55?: boolean
   couverture_lcz?: boolean
-  aires_appellations_controlees_nom?: boolean
-  aires_appellations_controlees_signe?: boolean
 }, ExtArgs["result"]["databases_v2_table_commune"]>
 
 export type databases_v2_table_communeSelectScalar = {
@@ -841,11 +777,9 @@ export type databases_v2_table_communeSelectScalar = {
   part_irr_sau_2020?: boolean
   agriculture_part_over_55?: boolean
   couverture_lcz?: boolean
-  aires_appellations_controlees_nom?: boolean
-  aires_appellations_controlees_signe?: boolean
 }
 
-export type databases_v2_table_communeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "atlas_biodiversite_nom" | "atlas_biodiversite_annee_debut" | "atlas_biodiversite_avancement" | "type_touristique" | "otex_12_postes" | "part_irr_sau_2020" | "agriculture_part_over_55" | "couverture_lcz" | "aires_appellations_controlees_nom" | "aires_appellations_controlees_signe", ExtArgs["result"]["databases_v2_table_commune"]>
+export type databases_v2_table_communeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "atlas_biodiversite_nom" | "atlas_biodiversite_annee_debut" | "atlas_biodiversite_avancement" | "type_touristique" | "otex_12_postes" | "part_irr_sau_2020" | "agriculture_part_over_55" | "couverture_lcz", ExtArgs["result"]["databases_v2_table_commune"]>
 
 export type $databases_v2_table_communePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_table_commune"
@@ -871,8 +805,6 @@ export type $databases_v2_table_communePayload<ExtArgs extends runtime.Types.Ext
     part_irr_sau_2020: string | null
     agriculture_part_over_55: string | null
     couverture_lcz: string | null
-    aires_appellations_controlees_nom: string[]
-    aires_appellations_controlees_signe: string[]
   }, ExtArgs["result"]["databases_v2_table_commune"]>
   composites: {}
 }
@@ -1316,8 +1248,6 @@ export interface databases_v2_table_communeFieldRefs {
   readonly part_irr_sau_2020: Prisma.FieldRef<"databases_v2_table_commune", 'String'>
   readonly agriculture_part_over_55: Prisma.FieldRef<"databases_v2_table_commune", 'String'>
   readonly couverture_lcz: Prisma.FieldRef<"databases_v2_table_commune", 'String'>
-  readonly aires_appellations_controlees_nom: Prisma.FieldRef<"databases_v2_table_commune", 'String[]'>
-  readonly aires_appellations_controlees_signe: Prisma.FieldRef<"databases_v2_table_commune", 'String[]'>
 }
     
 

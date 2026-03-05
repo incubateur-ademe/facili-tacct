@@ -133,12 +133,12 @@ export type postgis_v2_etat_cours_d_eau = Prisma.postgis_v2_etat_cours_d_eauMode
  */
 export type spatial_ref_sys = Prisma.spatial_ref_sysModel
 /**
- * Model o3_seuils
+ * Model prelevements_eau_new
  * 
  */
-export type o3_seuils = Prisma.o3_seuilsModel
+export type prelevements_eau_new = Prisma.prelevements_eau_newModel
 /**
- * Model secheresses
+ * Model qualite_sites_baignade_new
  * 
  */
-export type secheresses = Prisma.secheressesModel
+export type qualite_sites_baignade_new = Prisma.qualite_sites_baignade_newModel

@@ -1,15 +1,15 @@
 import { LoaderText } from '@/components/ui/loader';
+import { NewContainer } from '@/design-system/layout';
 import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import { Suspense } from 'react';
 import { SearchParams } from '../../types';
+import { DisclaimerPNR } from './DisclaimerPNR';
 import AgricultureServerPage from './thematiques/agriculture/AgricultureServerPage';
 import AmenagementServerPage from './thematiques/amenagement/AmenagementServerPage';
 import BiodiversiteServerPage from './thematiques/biodiversite/BiodiversiteServerPage';
 import ConfortThermiqueServerPage from './thematiques/confortThermique/ConfortThermiqueServerPage';
 import EauServerPage from './thematiques/eau/EauServerPage';
 import GestionRisquesServerPage from './thematiques/gestionRisques/GestionRisquesServerPage';
-import { DisclaimerPNR } from './DisclaimerPNR';
-import { NewContainer } from '@/design-system/layout';
 
 const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type, thematique } = await props.searchParams;
