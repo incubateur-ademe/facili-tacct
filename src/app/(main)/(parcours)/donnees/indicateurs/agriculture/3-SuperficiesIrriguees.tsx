@@ -2,7 +2,7 @@
 
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { MicroRemplissageTerritoire } from '@/components/charts/MicroDataviz';
-import { ExportButton } from '@/components/exports/ExportButton';
+import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { surfacesIrrigueesLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
@@ -135,7 +135,7 @@ export const SuperficiesIrriguees = (props: {
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
               Source : AGRESTE, 2020
             </Body>
-            <ExportButton
+            <ExportButtonNouveauParcours
               data={exportData}
               baseName="surfaces_irriguees"
               type={type}
