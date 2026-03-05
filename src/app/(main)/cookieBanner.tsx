@@ -2,7 +2,6 @@
 import { createModal } from '@codegouvfr/react-dsfr/Modal';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
-import CookieModal from './cookieModal';
 import styles from './main.module.scss';
 
 export const cookieConsentGiven = () => {
@@ -59,9 +58,8 @@ export const CookieBanner = () => {
         <div className={styles.cookieConsentWrapper}>
           <p>
             Ce site utilise des cookies nécessaires à son bon fonctionnement.
-            Pour améliorer votre expérience, d’autres fonctionnalités (listées
-            ci-dessous) s’appuient sur des services proposés par des tiers. Pour
-            toute information supplémentaire, veuillez consulter notre{' '}
+            Pour améliorer votre expérience, certaines fonctionnalités s’appuient 
+            sur des services proposés par des tiers. Pour toute information supplémentaire, veuillez consulter notre{' '}
             <a
               href="/politique-des-cookies"
               target="_blank"
@@ -70,6 +68,7 @@ export const CookieBanner = () => {
               politique des cookies
             </a>
           </p>
+          <div className='flex flex-wrap justify-center gap-4'>
           <button
             type="button"
             onClick={handleValidateCookies}
@@ -89,9 +88,9 @@ export const CookieBanner = () => {
             onClick={handleDeclineCookies}
             className={styles.declineCookieBtn}
           >
-            Tout refuser
+            Cookies essentiels seulement
           </button>
-          <CookieModal modal={modal} setConsentGiven={setConsentGiven} />
+          </div>
         </div>
       )}
     </div>
