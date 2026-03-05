@@ -8,7 +8,6 @@ import {
   AgricultureBio,
   AOT40,
   ArreteCatNat,
-  CarteCommunes,
   ConsommationNAF,
   ExportCoursDeau,
   IncendiesForet,
@@ -23,8 +22,8 @@ import { Round } from '../reusableFunctions/round';
 
 export const IndicatorExportTransformations = {
   agriculture: {
-    surfacesIrriguees: (carteCommunes: CarteCommunes[]) =>
-      carteCommunes.map((commune) => {
+    surfacesIrriguees: (tableCommune: TableCommuneModel[]) =>
+      tableCommune.map((commune) => {
         return {
           code_geographique: commune.code_geographique,
           libelle_geographique: commune.libelle_geographique,
@@ -38,10 +37,8 @@ export const IndicatorExportTransformations = {
           libelle_pnr: commune.libelle_pnr,
           libelle_petr: commune.libelle_petr,
           'part_surface_irriguee (%)': (() => {
-            if (commune.surfacesIrriguees === 0) return 0;
-            if (!commune.surfacesIrriguees || isNaN(commune.surfacesIrriguees))
-              return 'secret statistique';
-            return commune.surfacesIrriguees;
+            if (!commune.part_irr_sau_2020 || commune.part_irr_sau_2020 === null) return 'secret statistique';
+            return Number(commune.part_irr_sau_2020);
           })()
         };
       }),
