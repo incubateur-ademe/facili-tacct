@@ -251,21 +251,19 @@ export type sandbox_usersScalarWhereWithAggregatesInput = {
 
 export type sandbox_usersCreateInput = {
   username: string
-  pk: number
   password: string
   created_at: Date | string
 }
 
 export type sandbox_usersUncheckedCreateInput = {
   username: string
-  pk: number
+  pk?: number
   password: string
   created_at: Date | string
 }
 
 export type sandbox_usersUpdateInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
-  pk?: Prisma.IntFieldUpdateOperationsInput | number
   password?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -279,14 +277,13 @@ export type sandbox_usersUncheckedUpdateInput = {
 
 export type sandbox_usersCreateManyInput = {
   username: string
-  pk: number
+  pk?: number
   password: string
   created_at: Date | string
 }
 
 export type sandbox_usersUpdateManyMutationInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
-  pk?: Prisma.IntFieldUpdateOperationsInput | number
   password?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -331,16 +328,16 @@ export type StringFieldUpdateOperationsInput = {
   set?: string
 }
 
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
+}
+
 export type IntFieldUpdateOperationsInput = {
   set?: number
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
 }
 
 
