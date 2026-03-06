@@ -110,7 +110,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     titre:
       'Adaptation au changement climatique : déploiement de la démarche TACCT',
     description:
-      'Le Pays Pyrénées Méditerranée a mis en œuvre la démarche TACCT du diagnostic à la stratégie. Retrouvez toutes les étapes de la démarche  !',
+      'Le Pays Pyrénées Méditerranée a mis en œuvre la démarche TACCT du diagnostic à la stratégie. Retrouvez toutes les étapes de la démarche !',
     lien: 'https://www.payspyreneesmediterranee.org/thematiques/transitions-energie-climat/adaptation-au-changement-climatique/',
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
@@ -140,7 +140,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     id: 5,
     type: "Retour d'expérience",
     titre:
-      "Réalisation d'un diagnostic de vulnérabilité - Epernay Agglo Champagne ",
+      "Réalisation d'un diagnostic de vulnérabilité - Epernay Agglo Champagne",
     description:
       'Diagnostic de vulnérabilité réalisé dans le cadre d’un PCAET grâce à la démarche TACCT : découvrez les apprentissages d’Epernay Agglo Champagne !',
     lien: 'https://www.climaxion.fr/docutheque/realisation-dun-diagnostic-vulnerabilite-au-changement-climatique-epernay-agglo-champagne',
@@ -425,7 +425,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 150,
-    ordreCollection: 3
+    ordreCollection: 4
   },
   {
     id: 21,
@@ -440,7 +440,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 140,
-    ordreCollection: 6
+    ordreCollection: 7
   },
   {
     id: 22,
@@ -455,7 +455,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 130,
-    ordreCollection: 7
+    ordreCollection: 8
   },
   {
     id: 23,
@@ -471,7 +471,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 70,
-    ordreCollection: 4
+    ordreCollection: 5
   },
   {
     id: 24,
@@ -486,7 +486,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 10,
-    ordreCollection: 5
+    ordreCollection: 6
   },
   {
     id: 25,
@@ -502,7 +502,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 40,
-    ordreCollection: 2
+    ordreCollection: 3
   },
   {
     id: 26,
@@ -588,7 +588,6 @@ export const toutesLesRessources: ToutesRessources[] = [
         'Le rôle du cahier des charges dans l’intégration de la facilitation pour l’adaptation au changement climatique.'
     }
   },
-
   {
     id: 30,
     type: "Retour d'expérience",
@@ -602,7 +601,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 170,
-    ordreCollection: 3
+    ordreCollection: 5
   },
   {
     id: 31,
@@ -762,5 +761,74 @@ export const toutesLesRessources: ToutesRessources[] = [
       description:
         'Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.'
     }
+  },
+  {
+    id: 39,
+    type: 'Article',
+    titre:
+      'Construire une stratégie d’adaptation : ce que nous avons appris en chemin',
+    slug: 'strategie-trajectoire-adaptation',
+    description:
+      'D’un diagnostic de vulnérabilité priorisé à la définition de votre stratégie d’adaptation : témoignage de Montpellier Méditerranée Métropole',
+    lien: '/ressources/articles/strategie-trajectoire-adaptation',
+    filtres: ['Article', "Retour d'expérience", "M'inspirer", 'Occitanie'],
+    collections: ['Bâtir la stratégie d’adaptation'],
+    tempsLecture: 6,
+    image: ImageTuileArticle,
+    date: '2026-02-25',
+    ordre: 9,
+    ordreCollection: 0.5,
+    metadata: {
+      title:
+        'Construire une stratégie d’adaptation : ce que nous avons appris en chemin',
+      description:
+        'D’un diagnostic de vulnérabilité priorisé à la définition de votre stratégie d’adaptation : témoignage de Montpellier Méditerranée Métropole'
+    }
+  },
+  {
+    id: 40,
+    type: "Retour d'expérience",
+    titre:
+      'Utiliser les récits et illustrations paysagères pour s’approprier le territoire',
+    description:
+      'Les supports “sensibles” permettent une meilleure appropriation des enjeux et impacts du changement climatique, découvrez des exemples de récits et illustrations paysagères.',
+    lien: 'https://librairie.ademe.fr/changement-climatique/9084-recits-et-illustrations-paysageres-comme-outils-d-appropriation-des-enjeux-climatiques-territoriaux.html#',
+    filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
+    collections: ['Restituer le diagnostic de vulnérabilité'],
+    tempsLecture: 4,
+    image: ImageTuileRex,
+    date: '2026-03-03',
+    ordre: 170,
+    ordreCollection: 2
+  },
+  {
+    id: 41,
+    type: "Retour d'expérience",
+    titre: "Faire de l'adaptation climatique un enjeu partagé par tous",
+    description:
+      'CLS, PADD, PAS, DOO : découvrez comment le “réflexe adaptation” est infusé dans différents documents réglementaires grâce aux démarches TACCT portées collectivement.',
+    lien: 'https://librairie.ademe.fr/changement-climatique/9082-faire-de-l-adaptation-climatique-un-enjeu-partage-par-tous-les-services-d-une-collectivite.html#',
+    filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
+    collections: ['Piloter la démarche d’adaptation'],
+    tempsLecture: 4,
+    image: ImageTuileRex,
+    date: '2026-03-03',
+    ordre: 170,
+    ordreCollection: 3
+  },
+  {
+    id: 42,
+    type: "Retour d'expérience",
+    titre: 'Une mobilisation collective pour mettre le territoire en mouvement',
+    description:
+      'Les trajectoires d’adaptation et les actions relèvent de compétences locales, découvrez comment des démarches TACCT à échelle infra ont associé leurs communes pour décupler le portage de l’adaptation.',
+    lien: 'https://librairie.ademe.fr/changement-climatique/9083-mettre-le-territoire-en-mouvement-une-mobilisation-collective-pour-l-adaptation-au-changement-climatique.html',
+    filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
+    collections: ['Piloter la démarche d’adaptation'],
+    tempsLecture: 5,
+    image: ImageTuileRex,
+    date: '2026-03-03',
+    ordre: 170,
+    ordreCollection: 4
   }
 ];

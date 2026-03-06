@@ -1,5 +1,4 @@
 import { LoaderText } from '@/components/ui/loader';
-import { NewContainer } from '@/design-system/layout';
 import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import { Suspense } from 'react';
 import { SearchParams } from '../../types';
@@ -10,6 +9,7 @@ import BiodiversiteServerPage from './thematiques/biodiversite/BiodiversiteServe
 import ConfortThermiqueServerPage from './thematiques/confortThermique/ConfortThermiqueServerPage';
 import EauServerPage from './thematiques/eau/EauServerPage';
 import GestionRisquesServerPage from './thematiques/gestionRisques/GestionRisquesServerPage';
+import SanteServerPage from './thematiques/sante/SanteServerPage';
 
 const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type, thematique } = await props.searchParams;
@@ -21,9 +21,7 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
         <Suspense fallback={<LoaderText text='Nous chargeons vos données' />}>
           {
             type === "pnr" &&
-            <NewContainer style={{ padding: '0 3rem' }}>
-              <DisclaimerPNR />
-            </NewContainer>
+            <DisclaimerPNR />
           }
           {thematique === 'Confort thermique' ? (
             <ConfortThermiqueServerPage searchParams={props.searchParams} tableCommune={dbTableCommune} />
@@ -37,6 +35,8 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
             <EauServerPage searchParams={props.searchParams} />
           ) : thematique === "Gestion des risques" ? (
             <GestionRisquesServerPage searchParams={props.searchParams} />
+          ) : thematique === "Santé" ? (
+            <SanteServerPage searchParams={props.searchParams} />
           ) : ""}
         </Suspense>
       }

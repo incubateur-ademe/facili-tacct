@@ -24,11 +24,11 @@ const CookieModal = ({ modal, setConsentGiven }: CookieModalProps) => {
   const [areTermAccepted, setAreTermAccepted] = useState(true);
   const handleValidateCookies = () => {
     if (areTermAccepted) {
-      localStorage.setItem('cookie_consent', 'yes');
-      setConsentGiven?.('yes');
+      localStorage.setItem('cookie_consent', 'all');
+      setConsentGiven?.('all');
     } else {
-      localStorage.setItem('cookie_consent', 'no');
-      setConsentGiven?.('no');
+      localStorage.setItem('cookie_consent', 'essential');
+      setConsentGiven?.('essential');
     }
     modal.close();
   };

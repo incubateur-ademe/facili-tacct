@@ -210,3 +210,19 @@ export const AOT40DynamicText = ({
     </>
   );
 };
+
+
+export const O3DynamicText = () => {
+  return (
+    <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
+      Pas de stations sur votre territoire ?<br></br><br></br>
+      Les concentrations d’ozone les plus importantes ne sont pas toujours
+      mesurées au coeur des zones émettrices (centres villes, zones industrielles) mais
+      parfois à 50, 100 ou 150 km de là sous le vent des émetteurs. Là où, en milieu
+      urbain, l’ozone produit la journée disparaît en grande partie pendant la nuit ou
+      sous l’effet d’autres polluants, dans les zones rurales en revanche, la moindre
+      présence de polluants destructeurs peut favoriser son accumulation et générer des
+      concentrations plus élevées qu’en ville.
+    </Body>
+  )
+};

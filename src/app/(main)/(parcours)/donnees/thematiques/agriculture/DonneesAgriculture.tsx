@@ -20,6 +20,7 @@ import { PartChefsExploitationSeniors } from "../../indicateurs/agriculture/1-Ch
 import { TypesDeCulture } from '../../indicateurs/agriculture/2-TypesDeCultures';
 import { SuperficiesIrriguees } from '../../indicateurs/agriculture/3-SuperficiesIrriguees';
 import { SurfacesEnBio } from '../../indicateurs/agriculture/4-SurfacesEnBio';
+import { AiresAppellationsControlees } from '../../indicateurs/agriculture/5-AiresApellationsControlees';
 
 interface Props {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
@@ -61,10 +62,10 @@ export const DonneesAgriculture = ({
     setIsLoading(true);
     void (async () => {
       const [
-        newCoordonneesCommunes, 
-        newContoursCommunes, 
-        newSurfacesAgricoles, 
-        newAgricultureBio, 
+        newCoordonneesCommunes,
+        newContoursCommunes,
+        newSurfacesAgricoles,
+        newAgricultureBio,
         newTableCommune
       ] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
@@ -111,7 +112,7 @@ export const DonneesAgriculture = ({
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
           {/* Part des chefs d’exploitation séniors */}
-          <div 
+          <div
             id="Part des chefs d’exploitation séniors"
             className={styles.indicateurWrapper}
             style={{ borderBottom: '1px solid var(--gris-medium)' }}
@@ -188,6 +189,30 @@ export const DonneesAgriculture = ({
             <SurfacesEnBio agricultureBio={data.agricultureBio} />
           </div>
         </section>
+        {/* Section Tourisme */}
+        <section className={styles.sectionType}>
+          <H2 style={{
+            color: "var(--principales-rouge)",
+            textTransform: 'uppercase',
+            fontSize: '1.75rem',
+            margin: "0 0 -1rem 0",
+            padding: "2rem 2rem 0",
+            fontWeight: 400
+          }}>
+            {ongletsMenu.thematiquesLiees[3].icone}{" "}{ongletsMenu.thematiquesLiees[3].thematique}
+          </H2>
+          {/* Aires des appellations contrôlées */}
+          <div id="Appellations contrôlées" className={styles.indicateurWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Nombre d’appellations contrôlées
+              </H3>
+            </div>
+            <AiresAppellationsControlees
+              tableCommune={data.tableCommune}
+            />
+          </div>
+        </section>
         {/* Sources */}
         <SourcesSection tag="h2" thematique="agriculture" />
         <div className={styles.redirectionEtape2Wrapper} >
@@ -212,6 +237,8 @@ export const DonneesAgriculture = ({
                 thematique: "Agriculture",
                 anchor: ""
               })}
+              posthogEventName='clic_diagnostic_impact'
+              thematique='Agriculture'
             />
           </div>
         </div>

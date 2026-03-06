@@ -927,3 +927,19 @@ export type DebroussaillementModel = {
   libelle_pnr: string | null;
   geometry: string;
 };
+
+export type SecheressesPasseesModel = {
+  index: bigint;
+  code_geographique: string;
+  libelle_geographique: string | null;
+  epci: string | null;
+  libelle_epci: string | null;
+  departement: string | null;
+  libelle_departement: string | null;
+  region: number | null;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  restrictions: string | null;
+};
