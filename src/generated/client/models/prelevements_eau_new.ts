@@ -29,63 +29,6 @@ export type AggregatePrelevements_eau_new = {
 export type Prelevements_eau_newAvgAggregateOutputType = {
   index: number | null
   region: number | null
-  annee_2008_aep: number | null
-  annee_2008_bar: number | null
-  annee_2008_can: number | null
-  annee_2008_ene: number | null
-  annee_2008_ind: number | null
-  annee_2008_irr: number | null
-  annee_2009_aep: number | null
-  annee_2009_bar: number | null
-  annee_2009_can: number | null
-  annee_2009_ene: number | null
-  annee_2009_ind: number | null
-  annee_2009_irr: number | null
-  annee_2010_aep: number | null
-  annee_2010_bar: number | null
-  annee_2010_can: number | null
-  annee_2010_ene: number | null
-  annee_2010_ind: number | null
-  annee_2010_irr: number | null
-  annee_2011_aep: number | null
-  annee_2011_bar: number | null
-  annee_2011_can: number | null
-  annee_2011_ene: number | null
-  annee_2011_ind: number | null
-  annee_2011_irr: number | null
-  annee_2012_aep: number | null
-  annee_2012_bar: number | null
-  annee_2012_can: number | null
-  annee_2012_ene: number | null
-  annee_2012_exo: number | null
-  annee_2012_ind: number | null
-  annee_2012_irr: number | null
-  annee_2013_aep: number | null
-  annee_2013_bar: number | null
-  annee_2013_can: number | null
-  annee_2013_ene: number | null
-  annee_2013_ind: number | null
-  annee_2013_irr: number | null
-  annee_2014_aep: number | null
-  annee_2014_bar: number | null
-  annee_2014_can: number | null
-  annee_2014_ene: number | null
-  annee_2014_ind: number | null
-  annee_2014_irr: number | null
-  annee_2015_aep: number | null
-  annee_2015_bar: number | null
-  annee_2015_can: number | null
-  annee_2015_ene: number | null
-  annee_2015_exo: number | null
-  annee_2015_ind: number | null
-  annee_2015_irr: number | null
-  annee_2016_aep: number | null
-  annee_2016_bar: number | null
-  annee_2016_can: number | null
-  annee_2016_ene: number | null
-  annee_2016_exo: number | null
-  annee_2016_ind: number | null
-  annee_2016_irr: number | null
   annee_2017_aep: number | null
   annee_2017_bar: number | null
   annee_2017_can: number | null
@@ -139,63 +82,6 @@ export type Prelevements_eau_newAvgAggregateOutputType = {
 export type Prelevements_eau_newSumAggregateOutputType = {
   index: number | null
   region: number | null
-  annee_2008_aep: number | null
-  annee_2008_bar: number | null
-  annee_2008_can: number | null
-  annee_2008_ene: number | null
-  annee_2008_ind: number | null
-  annee_2008_irr: number | null
-  annee_2009_aep: number | null
-  annee_2009_bar: number | null
-  annee_2009_can: number | null
-  annee_2009_ene: number | null
-  annee_2009_ind: number | null
-  annee_2009_irr: number | null
-  annee_2010_aep: number | null
-  annee_2010_bar: number | null
-  annee_2010_can: number | null
-  annee_2010_ene: number | null
-  annee_2010_ind: number | null
-  annee_2010_irr: number | null
-  annee_2011_aep: number | null
-  annee_2011_bar: number | null
-  annee_2011_can: number | null
-  annee_2011_ene: number | null
-  annee_2011_ind: number | null
-  annee_2011_irr: number | null
-  annee_2012_aep: number | null
-  annee_2012_bar: number | null
-  annee_2012_can: number | null
-  annee_2012_ene: number | null
-  annee_2012_exo: number | null
-  annee_2012_ind: number | null
-  annee_2012_irr: number | null
-  annee_2013_aep: number | null
-  annee_2013_bar: number | null
-  annee_2013_can: number | null
-  annee_2013_ene: number | null
-  annee_2013_ind: number | null
-  annee_2013_irr: number | null
-  annee_2014_aep: number | null
-  annee_2014_bar: number | null
-  annee_2014_can: number | null
-  annee_2014_ene: number | null
-  annee_2014_ind: number | null
-  annee_2014_irr: number | null
-  annee_2015_aep: number | null
-  annee_2015_bar: number | null
-  annee_2015_can: number | null
-  annee_2015_ene: number | null
-  annee_2015_exo: number | null
-  annee_2015_ind: number | null
-  annee_2015_irr: number | null
-  annee_2016_aep: number | null
-  annee_2016_bar: number | null
-  annee_2016_can: number | null
-  annee_2016_ene: number | null
-  annee_2016_exo: number | null
-  annee_2016_ind: number | null
-  annee_2016_irr: number | null
   annee_2017_aep: number | null
   annee_2017_bar: number | null
   annee_2017_can: number | null
@@ -259,63 +145,6 @@ export type Prelevements_eau_newMinAggregateOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
-  annee_2008_aep: number | null
-  annee_2008_bar: number | null
-  annee_2008_can: number | null
-  annee_2008_ene: number | null
-  annee_2008_ind: number | null
-  annee_2008_irr: number | null
-  annee_2009_aep: number | null
-  annee_2009_bar: number | null
-  annee_2009_can: number | null
-  annee_2009_ene: number | null
-  annee_2009_ind: number | null
-  annee_2009_irr: number | null
-  annee_2010_aep: number | null
-  annee_2010_bar: number | null
-  annee_2010_can: number | null
-  annee_2010_ene: number | null
-  annee_2010_ind: number | null
-  annee_2010_irr: number | null
-  annee_2011_aep: number | null
-  annee_2011_bar: number | null
-  annee_2011_can: number | null
-  annee_2011_ene: number | null
-  annee_2011_ind: number | null
-  annee_2011_irr: number | null
-  annee_2012_aep: number | null
-  annee_2012_bar: number | null
-  annee_2012_can: number | null
-  annee_2012_ene: number | null
-  annee_2012_exo: number | null
-  annee_2012_ind: number | null
-  annee_2012_irr: number | null
-  annee_2013_aep: number | null
-  annee_2013_bar: number | null
-  annee_2013_can: number | null
-  annee_2013_ene: number | null
-  annee_2013_ind: number | null
-  annee_2013_irr: number | null
-  annee_2014_aep: number | null
-  annee_2014_bar: number | null
-  annee_2014_can: number | null
-  annee_2014_ene: number | null
-  annee_2014_ind: number | null
-  annee_2014_irr: number | null
-  annee_2015_aep: number | null
-  annee_2015_bar: number | null
-  annee_2015_can: number | null
-  annee_2015_ene: number | null
-  annee_2015_exo: number | null
-  annee_2015_ind: number | null
-  annee_2015_irr: number | null
-  annee_2016_aep: number | null
-  annee_2016_bar: number | null
-  annee_2016_can: number | null
-  annee_2016_ene: number | null
-  annee_2016_exo: number | null
-  annee_2016_ind: number | null
-  annee_2016_irr: number | null
   annee_2017_aep: number | null
   annee_2017_bar: number | null
   annee_2017_can: number | null
@@ -379,63 +208,6 @@ export type Prelevements_eau_newMaxAggregateOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
-  annee_2008_aep: number | null
-  annee_2008_bar: number | null
-  annee_2008_can: number | null
-  annee_2008_ene: number | null
-  annee_2008_ind: number | null
-  annee_2008_irr: number | null
-  annee_2009_aep: number | null
-  annee_2009_bar: number | null
-  annee_2009_can: number | null
-  annee_2009_ene: number | null
-  annee_2009_ind: number | null
-  annee_2009_irr: number | null
-  annee_2010_aep: number | null
-  annee_2010_bar: number | null
-  annee_2010_can: number | null
-  annee_2010_ene: number | null
-  annee_2010_ind: number | null
-  annee_2010_irr: number | null
-  annee_2011_aep: number | null
-  annee_2011_bar: number | null
-  annee_2011_can: number | null
-  annee_2011_ene: number | null
-  annee_2011_ind: number | null
-  annee_2011_irr: number | null
-  annee_2012_aep: number | null
-  annee_2012_bar: number | null
-  annee_2012_can: number | null
-  annee_2012_ene: number | null
-  annee_2012_exo: number | null
-  annee_2012_ind: number | null
-  annee_2012_irr: number | null
-  annee_2013_aep: number | null
-  annee_2013_bar: number | null
-  annee_2013_can: number | null
-  annee_2013_ene: number | null
-  annee_2013_ind: number | null
-  annee_2013_irr: number | null
-  annee_2014_aep: number | null
-  annee_2014_bar: number | null
-  annee_2014_can: number | null
-  annee_2014_ene: number | null
-  annee_2014_ind: number | null
-  annee_2014_irr: number | null
-  annee_2015_aep: number | null
-  annee_2015_bar: number | null
-  annee_2015_can: number | null
-  annee_2015_ene: number | null
-  annee_2015_exo: number | null
-  annee_2015_ind: number | null
-  annee_2015_irr: number | null
-  annee_2016_aep: number | null
-  annee_2016_bar: number | null
-  annee_2016_can: number | null
-  annee_2016_ene: number | null
-  annee_2016_exo: number | null
-  annee_2016_ind: number | null
-  annee_2016_irr: number | null
   annee_2017_aep: number | null
   annee_2017_bar: number | null
   annee_2017_can: number | null
@@ -499,63 +271,6 @@ export type Prelevements_eau_newCountAggregateOutputType = {
   libelle_petr: number
   code_pnr: number
   libelle_pnr: number
-  annee_2008_aep: number
-  annee_2008_bar: number
-  annee_2008_can: number
-  annee_2008_ene: number
-  annee_2008_ind: number
-  annee_2008_irr: number
-  annee_2009_aep: number
-  annee_2009_bar: number
-  annee_2009_can: number
-  annee_2009_ene: number
-  annee_2009_ind: number
-  annee_2009_irr: number
-  annee_2010_aep: number
-  annee_2010_bar: number
-  annee_2010_can: number
-  annee_2010_ene: number
-  annee_2010_ind: number
-  annee_2010_irr: number
-  annee_2011_aep: number
-  annee_2011_bar: number
-  annee_2011_can: number
-  annee_2011_ene: number
-  annee_2011_ind: number
-  annee_2011_irr: number
-  annee_2012_aep: number
-  annee_2012_bar: number
-  annee_2012_can: number
-  annee_2012_ene: number
-  annee_2012_exo: number
-  annee_2012_ind: number
-  annee_2012_irr: number
-  annee_2013_aep: number
-  annee_2013_bar: number
-  annee_2013_can: number
-  annee_2013_ene: number
-  annee_2013_ind: number
-  annee_2013_irr: number
-  annee_2014_aep: number
-  annee_2014_bar: number
-  annee_2014_can: number
-  annee_2014_ene: number
-  annee_2014_ind: number
-  annee_2014_irr: number
-  annee_2015_aep: number
-  annee_2015_bar: number
-  annee_2015_can: number
-  annee_2015_ene: number
-  annee_2015_exo: number
-  annee_2015_ind: number
-  annee_2015_irr: number
-  annee_2016_aep: number
-  annee_2016_bar: number
-  annee_2016_can: number
-  annee_2016_ene: number
-  annee_2016_exo: number
-  annee_2016_ind: number
-  annee_2016_irr: number
   annee_2017_aep: number
   annee_2017_bar: number
   annee_2017_can: number
@@ -611,63 +326,6 @@ export type Prelevements_eau_newCountAggregateOutputType = {
 export type Prelevements_eau_newAvgAggregateInputType = {
   index?: true
   region?: true
-  annee_2008_aep?: true
-  annee_2008_bar?: true
-  annee_2008_can?: true
-  annee_2008_ene?: true
-  annee_2008_ind?: true
-  annee_2008_irr?: true
-  annee_2009_aep?: true
-  annee_2009_bar?: true
-  annee_2009_can?: true
-  annee_2009_ene?: true
-  annee_2009_ind?: true
-  annee_2009_irr?: true
-  annee_2010_aep?: true
-  annee_2010_bar?: true
-  annee_2010_can?: true
-  annee_2010_ene?: true
-  annee_2010_ind?: true
-  annee_2010_irr?: true
-  annee_2011_aep?: true
-  annee_2011_bar?: true
-  annee_2011_can?: true
-  annee_2011_ene?: true
-  annee_2011_ind?: true
-  annee_2011_irr?: true
-  annee_2012_aep?: true
-  annee_2012_bar?: true
-  annee_2012_can?: true
-  annee_2012_ene?: true
-  annee_2012_exo?: true
-  annee_2012_ind?: true
-  annee_2012_irr?: true
-  annee_2013_aep?: true
-  annee_2013_bar?: true
-  annee_2013_can?: true
-  annee_2013_ene?: true
-  annee_2013_ind?: true
-  annee_2013_irr?: true
-  annee_2014_aep?: true
-  annee_2014_bar?: true
-  annee_2014_can?: true
-  annee_2014_ene?: true
-  annee_2014_ind?: true
-  annee_2014_irr?: true
-  annee_2015_aep?: true
-  annee_2015_bar?: true
-  annee_2015_can?: true
-  annee_2015_ene?: true
-  annee_2015_exo?: true
-  annee_2015_ind?: true
-  annee_2015_irr?: true
-  annee_2016_aep?: true
-  annee_2016_bar?: true
-  annee_2016_can?: true
-  annee_2016_ene?: true
-  annee_2016_exo?: true
-  annee_2016_ind?: true
-  annee_2016_irr?: true
   annee_2017_aep?: true
   annee_2017_bar?: true
   annee_2017_can?: true
@@ -721,63 +379,6 @@ export type Prelevements_eau_newAvgAggregateInputType = {
 export type Prelevements_eau_newSumAggregateInputType = {
   index?: true
   region?: true
-  annee_2008_aep?: true
-  annee_2008_bar?: true
-  annee_2008_can?: true
-  annee_2008_ene?: true
-  annee_2008_ind?: true
-  annee_2008_irr?: true
-  annee_2009_aep?: true
-  annee_2009_bar?: true
-  annee_2009_can?: true
-  annee_2009_ene?: true
-  annee_2009_ind?: true
-  annee_2009_irr?: true
-  annee_2010_aep?: true
-  annee_2010_bar?: true
-  annee_2010_can?: true
-  annee_2010_ene?: true
-  annee_2010_ind?: true
-  annee_2010_irr?: true
-  annee_2011_aep?: true
-  annee_2011_bar?: true
-  annee_2011_can?: true
-  annee_2011_ene?: true
-  annee_2011_ind?: true
-  annee_2011_irr?: true
-  annee_2012_aep?: true
-  annee_2012_bar?: true
-  annee_2012_can?: true
-  annee_2012_ene?: true
-  annee_2012_exo?: true
-  annee_2012_ind?: true
-  annee_2012_irr?: true
-  annee_2013_aep?: true
-  annee_2013_bar?: true
-  annee_2013_can?: true
-  annee_2013_ene?: true
-  annee_2013_ind?: true
-  annee_2013_irr?: true
-  annee_2014_aep?: true
-  annee_2014_bar?: true
-  annee_2014_can?: true
-  annee_2014_ene?: true
-  annee_2014_ind?: true
-  annee_2014_irr?: true
-  annee_2015_aep?: true
-  annee_2015_bar?: true
-  annee_2015_can?: true
-  annee_2015_ene?: true
-  annee_2015_exo?: true
-  annee_2015_ind?: true
-  annee_2015_irr?: true
-  annee_2016_aep?: true
-  annee_2016_bar?: true
-  annee_2016_can?: true
-  annee_2016_ene?: true
-  annee_2016_exo?: true
-  annee_2016_ind?: true
-  annee_2016_irr?: true
   annee_2017_aep?: true
   annee_2017_bar?: true
   annee_2017_can?: true
@@ -841,63 +442,6 @@ export type Prelevements_eau_newMinAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  annee_2008_aep?: true
-  annee_2008_bar?: true
-  annee_2008_can?: true
-  annee_2008_ene?: true
-  annee_2008_ind?: true
-  annee_2008_irr?: true
-  annee_2009_aep?: true
-  annee_2009_bar?: true
-  annee_2009_can?: true
-  annee_2009_ene?: true
-  annee_2009_ind?: true
-  annee_2009_irr?: true
-  annee_2010_aep?: true
-  annee_2010_bar?: true
-  annee_2010_can?: true
-  annee_2010_ene?: true
-  annee_2010_ind?: true
-  annee_2010_irr?: true
-  annee_2011_aep?: true
-  annee_2011_bar?: true
-  annee_2011_can?: true
-  annee_2011_ene?: true
-  annee_2011_ind?: true
-  annee_2011_irr?: true
-  annee_2012_aep?: true
-  annee_2012_bar?: true
-  annee_2012_can?: true
-  annee_2012_ene?: true
-  annee_2012_exo?: true
-  annee_2012_ind?: true
-  annee_2012_irr?: true
-  annee_2013_aep?: true
-  annee_2013_bar?: true
-  annee_2013_can?: true
-  annee_2013_ene?: true
-  annee_2013_ind?: true
-  annee_2013_irr?: true
-  annee_2014_aep?: true
-  annee_2014_bar?: true
-  annee_2014_can?: true
-  annee_2014_ene?: true
-  annee_2014_ind?: true
-  annee_2014_irr?: true
-  annee_2015_aep?: true
-  annee_2015_bar?: true
-  annee_2015_can?: true
-  annee_2015_ene?: true
-  annee_2015_exo?: true
-  annee_2015_ind?: true
-  annee_2015_irr?: true
-  annee_2016_aep?: true
-  annee_2016_bar?: true
-  annee_2016_can?: true
-  annee_2016_ene?: true
-  annee_2016_exo?: true
-  annee_2016_ind?: true
-  annee_2016_irr?: true
   annee_2017_aep?: true
   annee_2017_bar?: true
   annee_2017_can?: true
@@ -961,63 +505,6 @@ export type Prelevements_eau_newMaxAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  annee_2008_aep?: true
-  annee_2008_bar?: true
-  annee_2008_can?: true
-  annee_2008_ene?: true
-  annee_2008_ind?: true
-  annee_2008_irr?: true
-  annee_2009_aep?: true
-  annee_2009_bar?: true
-  annee_2009_can?: true
-  annee_2009_ene?: true
-  annee_2009_ind?: true
-  annee_2009_irr?: true
-  annee_2010_aep?: true
-  annee_2010_bar?: true
-  annee_2010_can?: true
-  annee_2010_ene?: true
-  annee_2010_ind?: true
-  annee_2010_irr?: true
-  annee_2011_aep?: true
-  annee_2011_bar?: true
-  annee_2011_can?: true
-  annee_2011_ene?: true
-  annee_2011_ind?: true
-  annee_2011_irr?: true
-  annee_2012_aep?: true
-  annee_2012_bar?: true
-  annee_2012_can?: true
-  annee_2012_ene?: true
-  annee_2012_exo?: true
-  annee_2012_ind?: true
-  annee_2012_irr?: true
-  annee_2013_aep?: true
-  annee_2013_bar?: true
-  annee_2013_can?: true
-  annee_2013_ene?: true
-  annee_2013_ind?: true
-  annee_2013_irr?: true
-  annee_2014_aep?: true
-  annee_2014_bar?: true
-  annee_2014_can?: true
-  annee_2014_ene?: true
-  annee_2014_ind?: true
-  annee_2014_irr?: true
-  annee_2015_aep?: true
-  annee_2015_bar?: true
-  annee_2015_can?: true
-  annee_2015_ene?: true
-  annee_2015_exo?: true
-  annee_2015_ind?: true
-  annee_2015_irr?: true
-  annee_2016_aep?: true
-  annee_2016_bar?: true
-  annee_2016_can?: true
-  annee_2016_ene?: true
-  annee_2016_exo?: true
-  annee_2016_ind?: true
-  annee_2016_irr?: true
   annee_2017_aep?: true
   annee_2017_bar?: true
   annee_2017_can?: true
@@ -1081,63 +568,6 @@ export type Prelevements_eau_newCountAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  annee_2008_aep?: true
-  annee_2008_bar?: true
-  annee_2008_can?: true
-  annee_2008_ene?: true
-  annee_2008_ind?: true
-  annee_2008_irr?: true
-  annee_2009_aep?: true
-  annee_2009_bar?: true
-  annee_2009_can?: true
-  annee_2009_ene?: true
-  annee_2009_ind?: true
-  annee_2009_irr?: true
-  annee_2010_aep?: true
-  annee_2010_bar?: true
-  annee_2010_can?: true
-  annee_2010_ene?: true
-  annee_2010_ind?: true
-  annee_2010_irr?: true
-  annee_2011_aep?: true
-  annee_2011_bar?: true
-  annee_2011_can?: true
-  annee_2011_ene?: true
-  annee_2011_ind?: true
-  annee_2011_irr?: true
-  annee_2012_aep?: true
-  annee_2012_bar?: true
-  annee_2012_can?: true
-  annee_2012_ene?: true
-  annee_2012_exo?: true
-  annee_2012_ind?: true
-  annee_2012_irr?: true
-  annee_2013_aep?: true
-  annee_2013_bar?: true
-  annee_2013_can?: true
-  annee_2013_ene?: true
-  annee_2013_ind?: true
-  annee_2013_irr?: true
-  annee_2014_aep?: true
-  annee_2014_bar?: true
-  annee_2014_can?: true
-  annee_2014_ene?: true
-  annee_2014_ind?: true
-  annee_2014_irr?: true
-  annee_2015_aep?: true
-  annee_2015_bar?: true
-  annee_2015_can?: true
-  annee_2015_ene?: true
-  annee_2015_exo?: true
-  annee_2015_ind?: true
-  annee_2015_irr?: true
-  annee_2016_aep?: true
-  annee_2016_bar?: true
-  annee_2016_can?: true
-  annee_2016_ene?: true
-  annee_2016_exo?: true
-  annee_2016_ind?: true
-  annee_2016_irr?: true
   annee_2017_aep?: true
   annee_2017_bar?: true
   annee_2017_can?: true
@@ -1288,63 +718,6 @@ export type Prelevements_eau_newGroupByOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
-  annee_2008_aep: number
-  annee_2008_bar: number
-  annee_2008_can: number
-  annee_2008_ene: number
-  annee_2008_ind: number
-  annee_2008_irr: number
-  annee_2009_aep: number
-  annee_2009_bar: number
-  annee_2009_can: number
-  annee_2009_ene: number
-  annee_2009_ind: number
-  annee_2009_irr: number
-  annee_2010_aep: number
-  annee_2010_bar: number
-  annee_2010_can: number
-  annee_2010_ene: number
-  annee_2010_ind: number
-  annee_2010_irr: number
-  annee_2011_aep: number
-  annee_2011_bar: number
-  annee_2011_can: number
-  annee_2011_ene: number
-  annee_2011_ind: number
-  annee_2011_irr: number
-  annee_2012_aep: number
-  annee_2012_bar: number
-  annee_2012_can: number
-  annee_2012_ene: number
-  annee_2012_exo: number
-  annee_2012_ind: number
-  annee_2012_irr: number
-  annee_2013_aep: number
-  annee_2013_bar: number
-  annee_2013_can: number
-  annee_2013_ene: number
-  annee_2013_ind: number
-  annee_2013_irr: number
-  annee_2014_aep: number
-  annee_2014_bar: number
-  annee_2014_can: number
-  annee_2014_ene: number
-  annee_2014_ind: number
-  annee_2014_irr: number
-  annee_2015_aep: number
-  annee_2015_bar: number
-  annee_2015_can: number
-  annee_2015_ene: number
-  annee_2015_exo: number
-  annee_2015_ind: number
-  annee_2015_irr: number
-  annee_2016_aep: number
-  annee_2016_bar: number
-  annee_2016_can: number
-  annee_2016_ene: number
-  annee_2016_exo: number
-  annee_2016_ind: number
-  annee_2016_irr: number
   annee_2017_aep: number
   annee_2017_bar: number
   annee_2017_can: number
@@ -1431,63 +804,6 @@ export type prelevements_eau_newWhereInput = {
   libelle_petr?: Prisma.StringNullableFilter<"prelevements_eau_new"> | string | null
   code_pnr?: Prisma.StringNullableFilter<"prelevements_eau_new"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"prelevements_eau_new"> | string | null
-  annee_2008_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
   annee_2017_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
   annee_2017_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
   annee_2017_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
@@ -1551,63 +867,6 @@ export type prelevements_eau_newOrderByWithRelationInput = {
   libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
-  annee_2008_aep?: Prisma.SortOrder
-  annee_2008_bar?: Prisma.SortOrder
-  annee_2008_can?: Prisma.SortOrder
-  annee_2008_ene?: Prisma.SortOrder
-  annee_2008_ind?: Prisma.SortOrder
-  annee_2008_irr?: Prisma.SortOrder
-  annee_2009_aep?: Prisma.SortOrder
-  annee_2009_bar?: Prisma.SortOrder
-  annee_2009_can?: Prisma.SortOrder
-  annee_2009_ene?: Prisma.SortOrder
-  annee_2009_ind?: Prisma.SortOrder
-  annee_2009_irr?: Prisma.SortOrder
-  annee_2010_aep?: Prisma.SortOrder
-  annee_2010_bar?: Prisma.SortOrder
-  annee_2010_can?: Prisma.SortOrder
-  annee_2010_ene?: Prisma.SortOrder
-  annee_2010_ind?: Prisma.SortOrder
-  annee_2010_irr?: Prisma.SortOrder
-  annee_2011_aep?: Prisma.SortOrder
-  annee_2011_bar?: Prisma.SortOrder
-  annee_2011_can?: Prisma.SortOrder
-  annee_2011_ene?: Prisma.SortOrder
-  annee_2011_ind?: Prisma.SortOrder
-  annee_2011_irr?: Prisma.SortOrder
-  annee_2012_aep?: Prisma.SortOrder
-  annee_2012_bar?: Prisma.SortOrder
-  annee_2012_can?: Prisma.SortOrder
-  annee_2012_ene?: Prisma.SortOrder
-  annee_2012_exo?: Prisma.SortOrder
-  annee_2012_ind?: Prisma.SortOrder
-  annee_2012_irr?: Prisma.SortOrder
-  annee_2013_aep?: Prisma.SortOrder
-  annee_2013_bar?: Prisma.SortOrder
-  annee_2013_can?: Prisma.SortOrder
-  annee_2013_ene?: Prisma.SortOrder
-  annee_2013_ind?: Prisma.SortOrder
-  annee_2013_irr?: Prisma.SortOrder
-  annee_2014_aep?: Prisma.SortOrder
-  annee_2014_bar?: Prisma.SortOrder
-  annee_2014_can?: Prisma.SortOrder
-  annee_2014_ene?: Prisma.SortOrder
-  annee_2014_ind?: Prisma.SortOrder
-  annee_2014_irr?: Prisma.SortOrder
-  annee_2015_aep?: Prisma.SortOrder
-  annee_2015_bar?: Prisma.SortOrder
-  annee_2015_can?: Prisma.SortOrder
-  annee_2015_ene?: Prisma.SortOrder
-  annee_2015_exo?: Prisma.SortOrder
-  annee_2015_ind?: Prisma.SortOrder
-  annee_2015_irr?: Prisma.SortOrder
-  annee_2016_aep?: Prisma.SortOrder
-  annee_2016_bar?: Prisma.SortOrder
-  annee_2016_can?: Prisma.SortOrder
-  annee_2016_ene?: Prisma.SortOrder
-  annee_2016_exo?: Prisma.SortOrder
-  annee_2016_ind?: Prisma.SortOrder
-  annee_2016_irr?: Prisma.SortOrder
   annee_2017_aep?: Prisma.SortOrder
   annee_2017_bar?: Prisma.SortOrder
   annee_2017_can?: Prisma.SortOrder
@@ -1674,63 +933,6 @@ export type prelevements_eau_newWhereUniqueInput = Prisma.AtLeast<{
   libelle_petr?: Prisma.StringNullableFilter<"prelevements_eau_new"> | string | null
   code_pnr?: Prisma.StringNullableFilter<"prelevements_eau_new"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"prelevements_eau_new"> | string | null
-  annee_2008_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
   annee_2017_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
   annee_2017_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
   annee_2017_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
@@ -1794,63 +996,6 @@ export type prelevements_eau_newOrderByWithAggregationInput = {
   libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
-  annee_2008_aep?: Prisma.SortOrder
-  annee_2008_bar?: Prisma.SortOrder
-  annee_2008_can?: Prisma.SortOrder
-  annee_2008_ene?: Prisma.SortOrder
-  annee_2008_ind?: Prisma.SortOrder
-  annee_2008_irr?: Prisma.SortOrder
-  annee_2009_aep?: Prisma.SortOrder
-  annee_2009_bar?: Prisma.SortOrder
-  annee_2009_can?: Prisma.SortOrder
-  annee_2009_ene?: Prisma.SortOrder
-  annee_2009_ind?: Prisma.SortOrder
-  annee_2009_irr?: Prisma.SortOrder
-  annee_2010_aep?: Prisma.SortOrder
-  annee_2010_bar?: Prisma.SortOrder
-  annee_2010_can?: Prisma.SortOrder
-  annee_2010_ene?: Prisma.SortOrder
-  annee_2010_ind?: Prisma.SortOrder
-  annee_2010_irr?: Prisma.SortOrder
-  annee_2011_aep?: Prisma.SortOrder
-  annee_2011_bar?: Prisma.SortOrder
-  annee_2011_can?: Prisma.SortOrder
-  annee_2011_ene?: Prisma.SortOrder
-  annee_2011_ind?: Prisma.SortOrder
-  annee_2011_irr?: Prisma.SortOrder
-  annee_2012_aep?: Prisma.SortOrder
-  annee_2012_bar?: Prisma.SortOrder
-  annee_2012_can?: Prisma.SortOrder
-  annee_2012_ene?: Prisma.SortOrder
-  annee_2012_exo?: Prisma.SortOrder
-  annee_2012_ind?: Prisma.SortOrder
-  annee_2012_irr?: Prisma.SortOrder
-  annee_2013_aep?: Prisma.SortOrder
-  annee_2013_bar?: Prisma.SortOrder
-  annee_2013_can?: Prisma.SortOrder
-  annee_2013_ene?: Prisma.SortOrder
-  annee_2013_ind?: Prisma.SortOrder
-  annee_2013_irr?: Prisma.SortOrder
-  annee_2014_aep?: Prisma.SortOrder
-  annee_2014_bar?: Prisma.SortOrder
-  annee_2014_can?: Prisma.SortOrder
-  annee_2014_ene?: Prisma.SortOrder
-  annee_2014_ind?: Prisma.SortOrder
-  annee_2014_irr?: Prisma.SortOrder
-  annee_2015_aep?: Prisma.SortOrder
-  annee_2015_bar?: Prisma.SortOrder
-  annee_2015_can?: Prisma.SortOrder
-  annee_2015_ene?: Prisma.SortOrder
-  annee_2015_exo?: Prisma.SortOrder
-  annee_2015_ind?: Prisma.SortOrder
-  annee_2015_irr?: Prisma.SortOrder
-  annee_2016_aep?: Prisma.SortOrder
-  annee_2016_bar?: Prisma.SortOrder
-  annee_2016_can?: Prisma.SortOrder
-  annee_2016_ene?: Prisma.SortOrder
-  annee_2016_exo?: Prisma.SortOrder
-  annee_2016_ind?: Prisma.SortOrder
-  annee_2016_irr?: Prisma.SortOrder
   annee_2017_aep?: Prisma.SortOrder
   annee_2017_bar?: Prisma.SortOrder
   annee_2017_can?: Prisma.SortOrder
@@ -1922,63 +1067,6 @@ export type prelevements_eau_newScalarWhereWithAggregatesInput = {
   libelle_petr?: Prisma.StringNullableWithAggregatesFilter<"prelevements_eau_new"> | string | null
   code_pnr?: Prisma.StringNullableWithAggregatesFilter<"prelevements_eau_new"> | string | null
   libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"prelevements_eau_new"> | string | null
-  annee_2008_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2008_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2008_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2008_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2008_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2008_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2009_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2009_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2009_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2009_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2009_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2009_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2010_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2010_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2010_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2010_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2010_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2010_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2011_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2011_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2011_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2011_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2011_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2011_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2012_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2012_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2012_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2012_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2012_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2012_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2012_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2013_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2013_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2013_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2013_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2013_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2013_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2014_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2014_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2014_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2014_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2014_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2014_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2015_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2015_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2015_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2015_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2015_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2015_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2015_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2016_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2016_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2016_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2016_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2016_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2016_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2016_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
   annee_2017_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
   annee_2017_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
   annee_2017_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
@@ -2042,63 +1130,6 @@ export type prelevements_eau_newCreateInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
-  annee_2008_aep: number
-  annee_2008_bar: number
-  annee_2008_can: number
-  annee_2008_ene: number
-  annee_2008_ind: number
-  annee_2008_irr: number
-  annee_2009_aep: number
-  annee_2009_bar: number
-  annee_2009_can: number
-  annee_2009_ene: number
-  annee_2009_ind: number
-  annee_2009_irr: number
-  annee_2010_aep: number
-  annee_2010_bar: number
-  annee_2010_can: number
-  annee_2010_ene: number
-  annee_2010_ind: number
-  annee_2010_irr: number
-  annee_2011_aep: number
-  annee_2011_bar: number
-  annee_2011_can: number
-  annee_2011_ene: number
-  annee_2011_ind: number
-  annee_2011_irr: number
-  annee_2012_aep: number
-  annee_2012_bar: number
-  annee_2012_can: number
-  annee_2012_ene: number
-  annee_2012_exo: number
-  annee_2012_ind: number
-  annee_2012_irr: number
-  annee_2013_aep: number
-  annee_2013_bar: number
-  annee_2013_can: number
-  annee_2013_ene: number
-  annee_2013_ind: number
-  annee_2013_irr: number
-  annee_2014_aep: number
-  annee_2014_bar: number
-  annee_2014_can: number
-  annee_2014_ene: number
-  annee_2014_ind: number
-  annee_2014_irr: number
-  annee_2015_aep: number
-  annee_2015_bar: number
-  annee_2015_can: number
-  annee_2015_ene: number
-  annee_2015_exo: number
-  annee_2015_ind: number
-  annee_2015_irr: number
-  annee_2016_aep: number
-  annee_2016_bar: number
-  annee_2016_can: number
-  annee_2016_ene: number
-  annee_2016_exo: number
-  annee_2016_ind: number
-  annee_2016_irr: number
   annee_2017_aep: number
   annee_2017_bar: number
   annee_2017_can: number
@@ -2162,63 +1193,6 @@ export type prelevements_eau_newUncheckedCreateInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
-  annee_2008_aep: number
-  annee_2008_bar: number
-  annee_2008_can: number
-  annee_2008_ene: number
-  annee_2008_ind: number
-  annee_2008_irr: number
-  annee_2009_aep: number
-  annee_2009_bar: number
-  annee_2009_can: number
-  annee_2009_ene: number
-  annee_2009_ind: number
-  annee_2009_irr: number
-  annee_2010_aep: number
-  annee_2010_bar: number
-  annee_2010_can: number
-  annee_2010_ene: number
-  annee_2010_ind: number
-  annee_2010_irr: number
-  annee_2011_aep: number
-  annee_2011_bar: number
-  annee_2011_can: number
-  annee_2011_ene: number
-  annee_2011_ind: number
-  annee_2011_irr: number
-  annee_2012_aep: number
-  annee_2012_bar: number
-  annee_2012_can: number
-  annee_2012_ene: number
-  annee_2012_exo: number
-  annee_2012_ind: number
-  annee_2012_irr: number
-  annee_2013_aep: number
-  annee_2013_bar: number
-  annee_2013_can: number
-  annee_2013_ene: number
-  annee_2013_ind: number
-  annee_2013_irr: number
-  annee_2014_aep: number
-  annee_2014_bar: number
-  annee_2014_can: number
-  annee_2014_ene: number
-  annee_2014_ind: number
-  annee_2014_irr: number
-  annee_2015_aep: number
-  annee_2015_bar: number
-  annee_2015_can: number
-  annee_2015_ene: number
-  annee_2015_exo: number
-  annee_2015_ind: number
-  annee_2015_irr: number
-  annee_2016_aep: number
-  annee_2016_bar: number
-  annee_2016_can: number
-  annee_2016_ene: number
-  annee_2016_exo: number
-  annee_2016_ind: number
-  annee_2016_irr: number
   annee_2017_aep: number
   annee_2017_bar: number
   annee_2017_can: number
@@ -2282,63 +1256,6 @@ export type prelevements_eau_newUpdateInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  annee_2008_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_exo?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_exo?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_exo?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_irr?: Prisma.FloatFieldUpdateOperationsInput | number
   annee_2017_aep?: Prisma.FloatFieldUpdateOperationsInput | number
   annee_2017_bar?: Prisma.FloatFieldUpdateOperationsInput | number
   annee_2017_can?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -2402,63 +1319,6 @@ export type prelevements_eau_newUncheckedUpdateInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  annee_2008_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_exo?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_exo?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_exo?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_irr?: Prisma.FloatFieldUpdateOperationsInput | number
   annee_2017_aep?: Prisma.FloatFieldUpdateOperationsInput | number
   annee_2017_bar?: Prisma.FloatFieldUpdateOperationsInput | number
   annee_2017_can?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -2522,63 +1382,6 @@ export type prelevements_eau_newCreateManyInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
-  annee_2008_aep: number
-  annee_2008_bar: number
-  annee_2008_can: number
-  annee_2008_ene: number
-  annee_2008_ind: number
-  annee_2008_irr: number
-  annee_2009_aep: number
-  annee_2009_bar: number
-  annee_2009_can: number
-  annee_2009_ene: number
-  annee_2009_ind: number
-  annee_2009_irr: number
-  annee_2010_aep: number
-  annee_2010_bar: number
-  annee_2010_can: number
-  annee_2010_ene: number
-  annee_2010_ind: number
-  annee_2010_irr: number
-  annee_2011_aep: number
-  annee_2011_bar: number
-  annee_2011_can: number
-  annee_2011_ene: number
-  annee_2011_ind: number
-  annee_2011_irr: number
-  annee_2012_aep: number
-  annee_2012_bar: number
-  annee_2012_can: number
-  annee_2012_ene: number
-  annee_2012_exo: number
-  annee_2012_ind: number
-  annee_2012_irr: number
-  annee_2013_aep: number
-  annee_2013_bar: number
-  annee_2013_can: number
-  annee_2013_ene: number
-  annee_2013_ind: number
-  annee_2013_irr: number
-  annee_2014_aep: number
-  annee_2014_bar: number
-  annee_2014_can: number
-  annee_2014_ene: number
-  annee_2014_ind: number
-  annee_2014_irr: number
-  annee_2015_aep: number
-  annee_2015_bar: number
-  annee_2015_can: number
-  annee_2015_ene: number
-  annee_2015_exo: number
-  annee_2015_ind: number
-  annee_2015_irr: number
-  annee_2016_aep: number
-  annee_2016_bar: number
-  annee_2016_can: number
-  annee_2016_ene: number
-  annee_2016_exo: number
-  annee_2016_ind: number
-  annee_2016_irr: number
   annee_2017_aep: number
   annee_2017_bar: number
   annee_2017_can: number
@@ -2642,63 +1445,6 @@ export type prelevements_eau_newUpdateManyMutationInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  annee_2008_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_exo?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_exo?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_exo?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_irr?: Prisma.FloatFieldUpdateOperationsInput | number
   annee_2017_aep?: Prisma.FloatFieldUpdateOperationsInput | number
   annee_2017_bar?: Prisma.FloatFieldUpdateOperationsInput | number
   annee_2017_can?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -2762,63 +1508,6 @@ export type prelevements_eau_newUncheckedUpdateManyInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  annee_2008_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2008_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2009_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2010_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2011_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_exo?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2012_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2013_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2014_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_exo?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2015_irr?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_aep?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_bar?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_can?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_ene?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_exo?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_ind?: Prisma.FloatFieldUpdateOperationsInput | number
-  annee_2016_irr?: Prisma.FloatFieldUpdateOperationsInput | number
   annee_2017_aep?: Prisma.FloatFieldUpdateOperationsInput | number
   annee_2017_bar?: Prisma.FloatFieldUpdateOperationsInput | number
   annee_2017_can?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -2882,63 +1571,6 @@ export type prelevements_eau_newCountOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  annee_2008_aep?: Prisma.SortOrder
-  annee_2008_bar?: Prisma.SortOrder
-  annee_2008_can?: Prisma.SortOrder
-  annee_2008_ene?: Prisma.SortOrder
-  annee_2008_ind?: Prisma.SortOrder
-  annee_2008_irr?: Prisma.SortOrder
-  annee_2009_aep?: Prisma.SortOrder
-  annee_2009_bar?: Prisma.SortOrder
-  annee_2009_can?: Prisma.SortOrder
-  annee_2009_ene?: Prisma.SortOrder
-  annee_2009_ind?: Prisma.SortOrder
-  annee_2009_irr?: Prisma.SortOrder
-  annee_2010_aep?: Prisma.SortOrder
-  annee_2010_bar?: Prisma.SortOrder
-  annee_2010_can?: Prisma.SortOrder
-  annee_2010_ene?: Prisma.SortOrder
-  annee_2010_ind?: Prisma.SortOrder
-  annee_2010_irr?: Prisma.SortOrder
-  annee_2011_aep?: Prisma.SortOrder
-  annee_2011_bar?: Prisma.SortOrder
-  annee_2011_can?: Prisma.SortOrder
-  annee_2011_ene?: Prisma.SortOrder
-  annee_2011_ind?: Prisma.SortOrder
-  annee_2011_irr?: Prisma.SortOrder
-  annee_2012_aep?: Prisma.SortOrder
-  annee_2012_bar?: Prisma.SortOrder
-  annee_2012_can?: Prisma.SortOrder
-  annee_2012_ene?: Prisma.SortOrder
-  annee_2012_exo?: Prisma.SortOrder
-  annee_2012_ind?: Prisma.SortOrder
-  annee_2012_irr?: Prisma.SortOrder
-  annee_2013_aep?: Prisma.SortOrder
-  annee_2013_bar?: Prisma.SortOrder
-  annee_2013_can?: Prisma.SortOrder
-  annee_2013_ene?: Prisma.SortOrder
-  annee_2013_ind?: Prisma.SortOrder
-  annee_2013_irr?: Prisma.SortOrder
-  annee_2014_aep?: Prisma.SortOrder
-  annee_2014_bar?: Prisma.SortOrder
-  annee_2014_can?: Prisma.SortOrder
-  annee_2014_ene?: Prisma.SortOrder
-  annee_2014_ind?: Prisma.SortOrder
-  annee_2014_irr?: Prisma.SortOrder
-  annee_2015_aep?: Prisma.SortOrder
-  annee_2015_bar?: Prisma.SortOrder
-  annee_2015_can?: Prisma.SortOrder
-  annee_2015_ene?: Prisma.SortOrder
-  annee_2015_exo?: Prisma.SortOrder
-  annee_2015_ind?: Prisma.SortOrder
-  annee_2015_irr?: Prisma.SortOrder
-  annee_2016_aep?: Prisma.SortOrder
-  annee_2016_bar?: Prisma.SortOrder
-  annee_2016_can?: Prisma.SortOrder
-  annee_2016_ene?: Prisma.SortOrder
-  annee_2016_exo?: Prisma.SortOrder
-  annee_2016_ind?: Prisma.SortOrder
-  annee_2016_irr?: Prisma.SortOrder
   annee_2017_aep?: Prisma.SortOrder
   annee_2017_bar?: Prisma.SortOrder
   annee_2017_can?: Prisma.SortOrder
@@ -2992,63 +1624,6 @@ export type prelevements_eau_newCountOrderByAggregateInput = {
 export type prelevements_eau_newAvgOrderByAggregateInput = {
   index?: Prisma.SortOrder
   region?: Prisma.SortOrder
-  annee_2008_aep?: Prisma.SortOrder
-  annee_2008_bar?: Prisma.SortOrder
-  annee_2008_can?: Prisma.SortOrder
-  annee_2008_ene?: Prisma.SortOrder
-  annee_2008_ind?: Prisma.SortOrder
-  annee_2008_irr?: Prisma.SortOrder
-  annee_2009_aep?: Prisma.SortOrder
-  annee_2009_bar?: Prisma.SortOrder
-  annee_2009_can?: Prisma.SortOrder
-  annee_2009_ene?: Prisma.SortOrder
-  annee_2009_ind?: Prisma.SortOrder
-  annee_2009_irr?: Prisma.SortOrder
-  annee_2010_aep?: Prisma.SortOrder
-  annee_2010_bar?: Prisma.SortOrder
-  annee_2010_can?: Prisma.SortOrder
-  annee_2010_ene?: Prisma.SortOrder
-  annee_2010_ind?: Prisma.SortOrder
-  annee_2010_irr?: Prisma.SortOrder
-  annee_2011_aep?: Prisma.SortOrder
-  annee_2011_bar?: Prisma.SortOrder
-  annee_2011_can?: Prisma.SortOrder
-  annee_2011_ene?: Prisma.SortOrder
-  annee_2011_ind?: Prisma.SortOrder
-  annee_2011_irr?: Prisma.SortOrder
-  annee_2012_aep?: Prisma.SortOrder
-  annee_2012_bar?: Prisma.SortOrder
-  annee_2012_can?: Prisma.SortOrder
-  annee_2012_ene?: Prisma.SortOrder
-  annee_2012_exo?: Prisma.SortOrder
-  annee_2012_ind?: Prisma.SortOrder
-  annee_2012_irr?: Prisma.SortOrder
-  annee_2013_aep?: Prisma.SortOrder
-  annee_2013_bar?: Prisma.SortOrder
-  annee_2013_can?: Prisma.SortOrder
-  annee_2013_ene?: Prisma.SortOrder
-  annee_2013_ind?: Prisma.SortOrder
-  annee_2013_irr?: Prisma.SortOrder
-  annee_2014_aep?: Prisma.SortOrder
-  annee_2014_bar?: Prisma.SortOrder
-  annee_2014_can?: Prisma.SortOrder
-  annee_2014_ene?: Prisma.SortOrder
-  annee_2014_ind?: Prisma.SortOrder
-  annee_2014_irr?: Prisma.SortOrder
-  annee_2015_aep?: Prisma.SortOrder
-  annee_2015_bar?: Prisma.SortOrder
-  annee_2015_can?: Prisma.SortOrder
-  annee_2015_ene?: Prisma.SortOrder
-  annee_2015_exo?: Prisma.SortOrder
-  annee_2015_ind?: Prisma.SortOrder
-  annee_2015_irr?: Prisma.SortOrder
-  annee_2016_aep?: Prisma.SortOrder
-  annee_2016_bar?: Prisma.SortOrder
-  annee_2016_can?: Prisma.SortOrder
-  annee_2016_ene?: Prisma.SortOrder
-  annee_2016_exo?: Prisma.SortOrder
-  annee_2016_ind?: Prisma.SortOrder
-  annee_2016_irr?: Prisma.SortOrder
   annee_2017_aep?: Prisma.SortOrder
   annee_2017_bar?: Prisma.SortOrder
   annee_2017_can?: Prisma.SortOrder
@@ -3112,63 +1687,6 @@ export type prelevements_eau_newMaxOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  annee_2008_aep?: Prisma.SortOrder
-  annee_2008_bar?: Prisma.SortOrder
-  annee_2008_can?: Prisma.SortOrder
-  annee_2008_ene?: Prisma.SortOrder
-  annee_2008_ind?: Prisma.SortOrder
-  annee_2008_irr?: Prisma.SortOrder
-  annee_2009_aep?: Prisma.SortOrder
-  annee_2009_bar?: Prisma.SortOrder
-  annee_2009_can?: Prisma.SortOrder
-  annee_2009_ene?: Prisma.SortOrder
-  annee_2009_ind?: Prisma.SortOrder
-  annee_2009_irr?: Prisma.SortOrder
-  annee_2010_aep?: Prisma.SortOrder
-  annee_2010_bar?: Prisma.SortOrder
-  annee_2010_can?: Prisma.SortOrder
-  annee_2010_ene?: Prisma.SortOrder
-  annee_2010_ind?: Prisma.SortOrder
-  annee_2010_irr?: Prisma.SortOrder
-  annee_2011_aep?: Prisma.SortOrder
-  annee_2011_bar?: Prisma.SortOrder
-  annee_2011_can?: Prisma.SortOrder
-  annee_2011_ene?: Prisma.SortOrder
-  annee_2011_ind?: Prisma.SortOrder
-  annee_2011_irr?: Prisma.SortOrder
-  annee_2012_aep?: Prisma.SortOrder
-  annee_2012_bar?: Prisma.SortOrder
-  annee_2012_can?: Prisma.SortOrder
-  annee_2012_ene?: Prisma.SortOrder
-  annee_2012_exo?: Prisma.SortOrder
-  annee_2012_ind?: Prisma.SortOrder
-  annee_2012_irr?: Prisma.SortOrder
-  annee_2013_aep?: Prisma.SortOrder
-  annee_2013_bar?: Prisma.SortOrder
-  annee_2013_can?: Prisma.SortOrder
-  annee_2013_ene?: Prisma.SortOrder
-  annee_2013_ind?: Prisma.SortOrder
-  annee_2013_irr?: Prisma.SortOrder
-  annee_2014_aep?: Prisma.SortOrder
-  annee_2014_bar?: Prisma.SortOrder
-  annee_2014_can?: Prisma.SortOrder
-  annee_2014_ene?: Prisma.SortOrder
-  annee_2014_ind?: Prisma.SortOrder
-  annee_2014_irr?: Prisma.SortOrder
-  annee_2015_aep?: Prisma.SortOrder
-  annee_2015_bar?: Prisma.SortOrder
-  annee_2015_can?: Prisma.SortOrder
-  annee_2015_ene?: Prisma.SortOrder
-  annee_2015_exo?: Prisma.SortOrder
-  annee_2015_ind?: Prisma.SortOrder
-  annee_2015_irr?: Prisma.SortOrder
-  annee_2016_aep?: Prisma.SortOrder
-  annee_2016_bar?: Prisma.SortOrder
-  annee_2016_can?: Prisma.SortOrder
-  annee_2016_ene?: Prisma.SortOrder
-  annee_2016_exo?: Prisma.SortOrder
-  annee_2016_ind?: Prisma.SortOrder
-  annee_2016_irr?: Prisma.SortOrder
   annee_2017_aep?: Prisma.SortOrder
   annee_2017_bar?: Prisma.SortOrder
   annee_2017_can?: Prisma.SortOrder
@@ -3232,63 +1750,6 @@ export type prelevements_eau_newMinOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  annee_2008_aep?: Prisma.SortOrder
-  annee_2008_bar?: Prisma.SortOrder
-  annee_2008_can?: Prisma.SortOrder
-  annee_2008_ene?: Prisma.SortOrder
-  annee_2008_ind?: Prisma.SortOrder
-  annee_2008_irr?: Prisma.SortOrder
-  annee_2009_aep?: Prisma.SortOrder
-  annee_2009_bar?: Prisma.SortOrder
-  annee_2009_can?: Prisma.SortOrder
-  annee_2009_ene?: Prisma.SortOrder
-  annee_2009_ind?: Prisma.SortOrder
-  annee_2009_irr?: Prisma.SortOrder
-  annee_2010_aep?: Prisma.SortOrder
-  annee_2010_bar?: Prisma.SortOrder
-  annee_2010_can?: Prisma.SortOrder
-  annee_2010_ene?: Prisma.SortOrder
-  annee_2010_ind?: Prisma.SortOrder
-  annee_2010_irr?: Prisma.SortOrder
-  annee_2011_aep?: Prisma.SortOrder
-  annee_2011_bar?: Prisma.SortOrder
-  annee_2011_can?: Prisma.SortOrder
-  annee_2011_ene?: Prisma.SortOrder
-  annee_2011_ind?: Prisma.SortOrder
-  annee_2011_irr?: Prisma.SortOrder
-  annee_2012_aep?: Prisma.SortOrder
-  annee_2012_bar?: Prisma.SortOrder
-  annee_2012_can?: Prisma.SortOrder
-  annee_2012_ene?: Prisma.SortOrder
-  annee_2012_exo?: Prisma.SortOrder
-  annee_2012_ind?: Prisma.SortOrder
-  annee_2012_irr?: Prisma.SortOrder
-  annee_2013_aep?: Prisma.SortOrder
-  annee_2013_bar?: Prisma.SortOrder
-  annee_2013_can?: Prisma.SortOrder
-  annee_2013_ene?: Prisma.SortOrder
-  annee_2013_ind?: Prisma.SortOrder
-  annee_2013_irr?: Prisma.SortOrder
-  annee_2014_aep?: Prisma.SortOrder
-  annee_2014_bar?: Prisma.SortOrder
-  annee_2014_can?: Prisma.SortOrder
-  annee_2014_ene?: Prisma.SortOrder
-  annee_2014_ind?: Prisma.SortOrder
-  annee_2014_irr?: Prisma.SortOrder
-  annee_2015_aep?: Prisma.SortOrder
-  annee_2015_bar?: Prisma.SortOrder
-  annee_2015_can?: Prisma.SortOrder
-  annee_2015_ene?: Prisma.SortOrder
-  annee_2015_exo?: Prisma.SortOrder
-  annee_2015_ind?: Prisma.SortOrder
-  annee_2015_irr?: Prisma.SortOrder
-  annee_2016_aep?: Prisma.SortOrder
-  annee_2016_bar?: Prisma.SortOrder
-  annee_2016_can?: Prisma.SortOrder
-  annee_2016_ene?: Prisma.SortOrder
-  annee_2016_exo?: Prisma.SortOrder
-  annee_2016_ind?: Prisma.SortOrder
-  annee_2016_irr?: Prisma.SortOrder
   annee_2017_aep?: Prisma.SortOrder
   annee_2017_bar?: Prisma.SortOrder
   annee_2017_can?: Prisma.SortOrder
@@ -3342,63 +1803,6 @@ export type prelevements_eau_newMinOrderByAggregateInput = {
 export type prelevements_eau_newSumOrderByAggregateInput = {
   index?: Prisma.SortOrder
   region?: Prisma.SortOrder
-  annee_2008_aep?: Prisma.SortOrder
-  annee_2008_bar?: Prisma.SortOrder
-  annee_2008_can?: Prisma.SortOrder
-  annee_2008_ene?: Prisma.SortOrder
-  annee_2008_ind?: Prisma.SortOrder
-  annee_2008_irr?: Prisma.SortOrder
-  annee_2009_aep?: Prisma.SortOrder
-  annee_2009_bar?: Prisma.SortOrder
-  annee_2009_can?: Prisma.SortOrder
-  annee_2009_ene?: Prisma.SortOrder
-  annee_2009_ind?: Prisma.SortOrder
-  annee_2009_irr?: Prisma.SortOrder
-  annee_2010_aep?: Prisma.SortOrder
-  annee_2010_bar?: Prisma.SortOrder
-  annee_2010_can?: Prisma.SortOrder
-  annee_2010_ene?: Prisma.SortOrder
-  annee_2010_ind?: Prisma.SortOrder
-  annee_2010_irr?: Prisma.SortOrder
-  annee_2011_aep?: Prisma.SortOrder
-  annee_2011_bar?: Prisma.SortOrder
-  annee_2011_can?: Prisma.SortOrder
-  annee_2011_ene?: Prisma.SortOrder
-  annee_2011_ind?: Prisma.SortOrder
-  annee_2011_irr?: Prisma.SortOrder
-  annee_2012_aep?: Prisma.SortOrder
-  annee_2012_bar?: Prisma.SortOrder
-  annee_2012_can?: Prisma.SortOrder
-  annee_2012_ene?: Prisma.SortOrder
-  annee_2012_exo?: Prisma.SortOrder
-  annee_2012_ind?: Prisma.SortOrder
-  annee_2012_irr?: Prisma.SortOrder
-  annee_2013_aep?: Prisma.SortOrder
-  annee_2013_bar?: Prisma.SortOrder
-  annee_2013_can?: Prisma.SortOrder
-  annee_2013_ene?: Prisma.SortOrder
-  annee_2013_ind?: Prisma.SortOrder
-  annee_2013_irr?: Prisma.SortOrder
-  annee_2014_aep?: Prisma.SortOrder
-  annee_2014_bar?: Prisma.SortOrder
-  annee_2014_can?: Prisma.SortOrder
-  annee_2014_ene?: Prisma.SortOrder
-  annee_2014_ind?: Prisma.SortOrder
-  annee_2014_irr?: Prisma.SortOrder
-  annee_2015_aep?: Prisma.SortOrder
-  annee_2015_bar?: Prisma.SortOrder
-  annee_2015_can?: Prisma.SortOrder
-  annee_2015_ene?: Prisma.SortOrder
-  annee_2015_exo?: Prisma.SortOrder
-  annee_2015_ind?: Prisma.SortOrder
-  annee_2015_irr?: Prisma.SortOrder
-  annee_2016_aep?: Prisma.SortOrder
-  annee_2016_bar?: Prisma.SortOrder
-  annee_2016_can?: Prisma.SortOrder
-  annee_2016_ene?: Prisma.SortOrder
-  annee_2016_exo?: Prisma.SortOrder
-  annee_2016_ind?: Prisma.SortOrder
-  annee_2016_irr?: Prisma.SortOrder
   annee_2017_aep?: Prisma.SortOrder
   annee_2017_bar?: Prisma.SortOrder
   annee_2017_can?: Prisma.SortOrder
@@ -3464,63 +1868,6 @@ export type prelevements_eau_newSelect<ExtArgs extends runtime.Types.Extensions.
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  annee_2008_aep?: boolean
-  annee_2008_bar?: boolean
-  annee_2008_can?: boolean
-  annee_2008_ene?: boolean
-  annee_2008_ind?: boolean
-  annee_2008_irr?: boolean
-  annee_2009_aep?: boolean
-  annee_2009_bar?: boolean
-  annee_2009_can?: boolean
-  annee_2009_ene?: boolean
-  annee_2009_ind?: boolean
-  annee_2009_irr?: boolean
-  annee_2010_aep?: boolean
-  annee_2010_bar?: boolean
-  annee_2010_can?: boolean
-  annee_2010_ene?: boolean
-  annee_2010_ind?: boolean
-  annee_2010_irr?: boolean
-  annee_2011_aep?: boolean
-  annee_2011_bar?: boolean
-  annee_2011_can?: boolean
-  annee_2011_ene?: boolean
-  annee_2011_ind?: boolean
-  annee_2011_irr?: boolean
-  annee_2012_aep?: boolean
-  annee_2012_bar?: boolean
-  annee_2012_can?: boolean
-  annee_2012_ene?: boolean
-  annee_2012_exo?: boolean
-  annee_2012_ind?: boolean
-  annee_2012_irr?: boolean
-  annee_2013_aep?: boolean
-  annee_2013_bar?: boolean
-  annee_2013_can?: boolean
-  annee_2013_ene?: boolean
-  annee_2013_ind?: boolean
-  annee_2013_irr?: boolean
-  annee_2014_aep?: boolean
-  annee_2014_bar?: boolean
-  annee_2014_can?: boolean
-  annee_2014_ene?: boolean
-  annee_2014_ind?: boolean
-  annee_2014_irr?: boolean
-  annee_2015_aep?: boolean
-  annee_2015_bar?: boolean
-  annee_2015_can?: boolean
-  annee_2015_ene?: boolean
-  annee_2015_exo?: boolean
-  annee_2015_ind?: boolean
-  annee_2015_irr?: boolean
-  annee_2016_aep?: boolean
-  annee_2016_bar?: boolean
-  annee_2016_can?: boolean
-  annee_2016_ene?: boolean
-  annee_2016_exo?: boolean
-  annee_2016_ind?: boolean
-  annee_2016_irr?: boolean
   annee_2017_aep?: boolean
   annee_2017_bar?: boolean
   annee_2017_can?: boolean
@@ -3584,63 +1931,6 @@ export type prelevements_eau_newSelectCreateManyAndReturn<ExtArgs extends runtim
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  annee_2008_aep?: boolean
-  annee_2008_bar?: boolean
-  annee_2008_can?: boolean
-  annee_2008_ene?: boolean
-  annee_2008_ind?: boolean
-  annee_2008_irr?: boolean
-  annee_2009_aep?: boolean
-  annee_2009_bar?: boolean
-  annee_2009_can?: boolean
-  annee_2009_ene?: boolean
-  annee_2009_ind?: boolean
-  annee_2009_irr?: boolean
-  annee_2010_aep?: boolean
-  annee_2010_bar?: boolean
-  annee_2010_can?: boolean
-  annee_2010_ene?: boolean
-  annee_2010_ind?: boolean
-  annee_2010_irr?: boolean
-  annee_2011_aep?: boolean
-  annee_2011_bar?: boolean
-  annee_2011_can?: boolean
-  annee_2011_ene?: boolean
-  annee_2011_ind?: boolean
-  annee_2011_irr?: boolean
-  annee_2012_aep?: boolean
-  annee_2012_bar?: boolean
-  annee_2012_can?: boolean
-  annee_2012_ene?: boolean
-  annee_2012_exo?: boolean
-  annee_2012_ind?: boolean
-  annee_2012_irr?: boolean
-  annee_2013_aep?: boolean
-  annee_2013_bar?: boolean
-  annee_2013_can?: boolean
-  annee_2013_ene?: boolean
-  annee_2013_ind?: boolean
-  annee_2013_irr?: boolean
-  annee_2014_aep?: boolean
-  annee_2014_bar?: boolean
-  annee_2014_can?: boolean
-  annee_2014_ene?: boolean
-  annee_2014_ind?: boolean
-  annee_2014_irr?: boolean
-  annee_2015_aep?: boolean
-  annee_2015_bar?: boolean
-  annee_2015_can?: boolean
-  annee_2015_ene?: boolean
-  annee_2015_exo?: boolean
-  annee_2015_ind?: boolean
-  annee_2015_irr?: boolean
-  annee_2016_aep?: boolean
-  annee_2016_bar?: boolean
-  annee_2016_can?: boolean
-  annee_2016_ene?: boolean
-  annee_2016_exo?: boolean
-  annee_2016_ind?: boolean
-  annee_2016_irr?: boolean
   annee_2017_aep?: boolean
   annee_2017_bar?: boolean
   annee_2017_can?: boolean
@@ -3704,63 +1994,6 @@ export type prelevements_eau_newSelectUpdateManyAndReturn<ExtArgs extends runtim
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  annee_2008_aep?: boolean
-  annee_2008_bar?: boolean
-  annee_2008_can?: boolean
-  annee_2008_ene?: boolean
-  annee_2008_ind?: boolean
-  annee_2008_irr?: boolean
-  annee_2009_aep?: boolean
-  annee_2009_bar?: boolean
-  annee_2009_can?: boolean
-  annee_2009_ene?: boolean
-  annee_2009_ind?: boolean
-  annee_2009_irr?: boolean
-  annee_2010_aep?: boolean
-  annee_2010_bar?: boolean
-  annee_2010_can?: boolean
-  annee_2010_ene?: boolean
-  annee_2010_ind?: boolean
-  annee_2010_irr?: boolean
-  annee_2011_aep?: boolean
-  annee_2011_bar?: boolean
-  annee_2011_can?: boolean
-  annee_2011_ene?: boolean
-  annee_2011_ind?: boolean
-  annee_2011_irr?: boolean
-  annee_2012_aep?: boolean
-  annee_2012_bar?: boolean
-  annee_2012_can?: boolean
-  annee_2012_ene?: boolean
-  annee_2012_exo?: boolean
-  annee_2012_ind?: boolean
-  annee_2012_irr?: boolean
-  annee_2013_aep?: boolean
-  annee_2013_bar?: boolean
-  annee_2013_can?: boolean
-  annee_2013_ene?: boolean
-  annee_2013_ind?: boolean
-  annee_2013_irr?: boolean
-  annee_2014_aep?: boolean
-  annee_2014_bar?: boolean
-  annee_2014_can?: boolean
-  annee_2014_ene?: boolean
-  annee_2014_ind?: boolean
-  annee_2014_irr?: boolean
-  annee_2015_aep?: boolean
-  annee_2015_bar?: boolean
-  annee_2015_can?: boolean
-  annee_2015_ene?: boolean
-  annee_2015_exo?: boolean
-  annee_2015_ind?: boolean
-  annee_2015_irr?: boolean
-  annee_2016_aep?: boolean
-  annee_2016_bar?: boolean
-  annee_2016_can?: boolean
-  annee_2016_ene?: boolean
-  annee_2016_exo?: boolean
-  annee_2016_ind?: boolean
-  annee_2016_irr?: boolean
   annee_2017_aep?: boolean
   annee_2017_bar?: boolean
   annee_2017_can?: boolean
@@ -3824,63 +2057,6 @@ export type prelevements_eau_newSelectScalar = {
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  annee_2008_aep?: boolean
-  annee_2008_bar?: boolean
-  annee_2008_can?: boolean
-  annee_2008_ene?: boolean
-  annee_2008_ind?: boolean
-  annee_2008_irr?: boolean
-  annee_2009_aep?: boolean
-  annee_2009_bar?: boolean
-  annee_2009_can?: boolean
-  annee_2009_ene?: boolean
-  annee_2009_ind?: boolean
-  annee_2009_irr?: boolean
-  annee_2010_aep?: boolean
-  annee_2010_bar?: boolean
-  annee_2010_can?: boolean
-  annee_2010_ene?: boolean
-  annee_2010_ind?: boolean
-  annee_2010_irr?: boolean
-  annee_2011_aep?: boolean
-  annee_2011_bar?: boolean
-  annee_2011_can?: boolean
-  annee_2011_ene?: boolean
-  annee_2011_ind?: boolean
-  annee_2011_irr?: boolean
-  annee_2012_aep?: boolean
-  annee_2012_bar?: boolean
-  annee_2012_can?: boolean
-  annee_2012_ene?: boolean
-  annee_2012_exo?: boolean
-  annee_2012_ind?: boolean
-  annee_2012_irr?: boolean
-  annee_2013_aep?: boolean
-  annee_2013_bar?: boolean
-  annee_2013_can?: boolean
-  annee_2013_ene?: boolean
-  annee_2013_ind?: boolean
-  annee_2013_irr?: boolean
-  annee_2014_aep?: boolean
-  annee_2014_bar?: boolean
-  annee_2014_can?: boolean
-  annee_2014_ene?: boolean
-  annee_2014_ind?: boolean
-  annee_2014_irr?: boolean
-  annee_2015_aep?: boolean
-  annee_2015_bar?: boolean
-  annee_2015_can?: boolean
-  annee_2015_ene?: boolean
-  annee_2015_exo?: boolean
-  annee_2015_ind?: boolean
-  annee_2015_irr?: boolean
-  annee_2016_aep?: boolean
-  annee_2016_bar?: boolean
-  annee_2016_can?: boolean
-  annee_2016_ene?: boolean
-  annee_2016_exo?: boolean
-  annee_2016_ind?: boolean
-  annee_2016_irr?: boolean
   annee_2017_aep?: boolean
   annee_2017_bar?: boolean
   annee_2017_can?: boolean
@@ -3931,7 +2107,7 @@ export type prelevements_eau_newSelectScalar = {
   annee_2023_irr?: boolean
 }
 
-export type prelevements_eau_newOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "annee_2008_aep" | "annee_2008_bar" | "annee_2008_can" | "annee_2008_ene" | "annee_2008_ind" | "annee_2008_irr" | "annee_2009_aep" | "annee_2009_bar" | "annee_2009_can" | "annee_2009_ene" | "annee_2009_ind" | "annee_2009_irr" | "annee_2010_aep" | "annee_2010_bar" | "annee_2010_can" | "annee_2010_ene" | "annee_2010_ind" | "annee_2010_irr" | "annee_2011_aep" | "annee_2011_bar" | "annee_2011_can" | "annee_2011_ene" | "annee_2011_ind" | "annee_2011_irr" | "annee_2012_aep" | "annee_2012_bar" | "annee_2012_can" | "annee_2012_ene" | "annee_2012_exo" | "annee_2012_ind" | "annee_2012_irr" | "annee_2013_aep" | "annee_2013_bar" | "annee_2013_can" | "annee_2013_ene" | "annee_2013_ind" | "annee_2013_irr" | "annee_2014_aep" | "annee_2014_bar" | "annee_2014_can" | "annee_2014_ene" | "annee_2014_ind" | "annee_2014_irr" | "annee_2015_aep" | "annee_2015_bar" | "annee_2015_can" | "annee_2015_ene" | "annee_2015_exo" | "annee_2015_ind" | "annee_2015_irr" | "annee_2016_aep" | "annee_2016_bar" | "annee_2016_can" | "annee_2016_ene" | "annee_2016_exo" | "annee_2016_ind" | "annee_2016_irr" | "annee_2017_aep" | "annee_2017_bar" | "annee_2017_can" | "annee_2017_ene" | "annee_2017_exo" | "annee_2017_ind" | "annee_2017_irr" | "annee_2018_aep" | "annee_2018_bar" | "annee_2018_can" | "annee_2018_ene" | "annee_2018_exo" | "annee_2018_ind" | "annee_2018_irr" | "annee_2019_aep" | "annee_2019_bar" | "annee_2019_can" | "annee_2019_ene" | "annee_2019_exo" | "annee_2019_ind" | "annee_2019_irr" | "annee_2020_aep" | "annee_2020_bar" | "annee_2020_can" | "annee_2020_ene" | "annee_2020_exo" | "annee_2020_ind" | "annee_2020_irr" | "annee_2021_aep" | "annee_2021_bar" | "annee_2021_can" | "annee_2021_ene" | "annee_2021_exo" | "annee_2021_ind" | "annee_2021_irr" | "annee_2022_aep" | "annee_2022_bar" | "annee_2022_can" | "annee_2022_ene" | "annee_2022_ind" | "annee_2022_irr" | "annee_2023_aep" | "annee_2023_bar" | "annee_2023_can" | "annee_2023_ene" | "annee_2023_exo" | "annee_2023_ind" | "annee_2023_irr", ExtArgs["result"]["prelevements_eau_new"]>
+export type prelevements_eau_newOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "annee_2017_aep" | "annee_2017_bar" | "annee_2017_can" | "annee_2017_ene" | "annee_2017_exo" | "annee_2017_ind" | "annee_2017_irr" | "annee_2018_aep" | "annee_2018_bar" | "annee_2018_can" | "annee_2018_ene" | "annee_2018_exo" | "annee_2018_ind" | "annee_2018_irr" | "annee_2019_aep" | "annee_2019_bar" | "annee_2019_can" | "annee_2019_ene" | "annee_2019_exo" | "annee_2019_ind" | "annee_2019_irr" | "annee_2020_aep" | "annee_2020_bar" | "annee_2020_can" | "annee_2020_ene" | "annee_2020_exo" | "annee_2020_ind" | "annee_2020_irr" | "annee_2021_aep" | "annee_2021_bar" | "annee_2021_can" | "annee_2021_ene" | "annee_2021_exo" | "annee_2021_ind" | "annee_2021_irr" | "annee_2022_aep" | "annee_2022_bar" | "annee_2022_can" | "annee_2022_ene" | "annee_2022_ind" | "annee_2022_irr" | "annee_2023_aep" | "annee_2023_bar" | "annee_2023_can" | "annee_2023_ene" | "annee_2023_exo" | "annee_2023_ind" | "annee_2023_irr", ExtArgs["result"]["prelevements_eau_new"]>
 
 export type $prelevements_eau_newPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "prelevements_eau_new"
@@ -3949,63 +2125,6 @@ export type $prelevements_eau_newPayload<ExtArgs extends runtime.Types.Extension
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    annee_2008_aep: number
-    annee_2008_bar: number
-    annee_2008_can: number
-    annee_2008_ene: number
-    annee_2008_ind: number
-    annee_2008_irr: number
-    annee_2009_aep: number
-    annee_2009_bar: number
-    annee_2009_can: number
-    annee_2009_ene: number
-    annee_2009_ind: number
-    annee_2009_irr: number
-    annee_2010_aep: number
-    annee_2010_bar: number
-    annee_2010_can: number
-    annee_2010_ene: number
-    annee_2010_ind: number
-    annee_2010_irr: number
-    annee_2011_aep: number
-    annee_2011_bar: number
-    annee_2011_can: number
-    annee_2011_ene: number
-    annee_2011_ind: number
-    annee_2011_irr: number
-    annee_2012_aep: number
-    annee_2012_bar: number
-    annee_2012_can: number
-    annee_2012_ene: number
-    annee_2012_exo: number
-    annee_2012_ind: number
-    annee_2012_irr: number
-    annee_2013_aep: number
-    annee_2013_bar: number
-    annee_2013_can: number
-    annee_2013_ene: number
-    annee_2013_ind: number
-    annee_2013_irr: number
-    annee_2014_aep: number
-    annee_2014_bar: number
-    annee_2014_can: number
-    annee_2014_ene: number
-    annee_2014_ind: number
-    annee_2014_irr: number
-    annee_2015_aep: number
-    annee_2015_bar: number
-    annee_2015_can: number
-    annee_2015_ene: number
-    annee_2015_exo: number
-    annee_2015_ind: number
-    annee_2015_irr: number
-    annee_2016_aep: number
-    annee_2016_bar: number
-    annee_2016_can: number
-    annee_2016_ene: number
-    annee_2016_exo: number
-    annee_2016_ind: number
-    annee_2016_irr: number
     annee_2017_aep: number
     annee_2017_bar: number
     annee_2017_can: number
@@ -4489,63 +2608,6 @@ export interface prelevements_eau_newFieldRefs {
   readonly libelle_petr: Prisma.FieldRef<"prelevements_eau_new", 'String'>
   readonly code_pnr: Prisma.FieldRef<"prelevements_eau_new", 'String'>
   readonly libelle_pnr: Prisma.FieldRef<"prelevements_eau_new", 'String'>
-  readonly annee_2008_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2008_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2008_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2008_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2008_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2008_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2009_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2009_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2009_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2009_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2009_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2009_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2010_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2010_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2010_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2010_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2010_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2010_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2011_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2011_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2011_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2011_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2011_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2011_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2012_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2012_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2012_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2012_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2012_exo: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2012_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2012_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2013_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2013_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2013_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2013_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2013_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2013_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2014_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2014_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2014_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2014_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2014_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2014_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2015_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2015_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2015_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2015_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2015_exo: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2015_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2015_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2016_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2016_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2016_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2016_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2016_exo: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2016_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2016_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
   readonly annee_2017_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
   readonly annee_2017_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
   readonly annee_2017_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>

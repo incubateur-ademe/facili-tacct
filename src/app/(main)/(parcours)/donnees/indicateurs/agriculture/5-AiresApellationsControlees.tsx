@@ -3,7 +3,7 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import PieChartAiresAppellationsControlees from '@/components/charts/agriculture/pieChartAiresAppellationsControlees';
 import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
-import { ExportButton } from '@/components/exports/ExportButton';
+import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -91,7 +91,6 @@ export const AiresAppellationsControlees = (props: {
     return a.signe.localeCompare(b.signe);
   });
 
-  console.log("airesAppellationsControlees", tableCommune);
   return (
     <>
       <div className={styles.datavizContainer}>
@@ -152,7 +151,7 @@ export const AiresAppellationsControlees = (props: {
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
               Source : Institut national de l’origine et de la qualité - INAO, 2026 (consultée en janvier 2026)
             </Body>
-            <ExportButton
+            <ExportButtonNouveauParcours
               data={exportData}
               baseName="aires_appellations_controlees"
               type={type}

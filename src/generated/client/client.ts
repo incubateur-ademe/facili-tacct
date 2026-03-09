@@ -165,11 +165,6 @@ export type prelevements_eau_new = Prisma.prelevements_eau_newModel
  */
 export type qualite_sites_baignade_new = Prisma.qualite_sites_baignade_newModel
 /**
- * Model arbovirose
- * 
- */
-export type arbovirose = Prisma.arboviroseModel
-/**
  * Model o3_seuils
  * 
  */
