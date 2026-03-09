@@ -1,6 +1,9 @@
 'use client';
 
+import Notice from '@codegouvfr/react-dsfr/Notice';
+import Link from 'next/link';
 import { useEffect } from 'react';
+import { useStyles } from 'tss-react/dsfr';
 import { CommunauteBloc } from './(home)/CommunauteBloc';
 import { DiagnosticBloc } from './(home)/DiagnosticBloc';
 import { Patch4Bloc } from './(home)/Patch4Bloc';
@@ -10,7 +13,7 @@ import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
 
 const Home = () => {
-  // const { css } = useStyles();
+  const { css } = useStyles();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -20,28 +23,31 @@ const Home = () => {
 
   return (
     <div>
-      {/* <Notice
+      <Notice
         className={css({
           backgroundColor: 'var(--gris-medium)',
           color: "#201F1E"
         })}
         isClosable={true}
-        title={"Nouveauté sur le site :"}
+        title={"Nouveau :"}
         description={
           <>
-            le Patch 4°C est désormais disponible pour les PNR, les PETR 
-            et les départements ! Une remarque, une suggestion ?{' '}
-            <a
-              href="https://tally.so/r/mJGELz"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Contactez-nous
-            </a>
-            , on a hâte d’avoir vos retours !
+            Ouverture de la{' '}
+            <Link href="https://facili-tacct.beta.gouv.fr/recherche-territoire" target="_blank">
+              thématique Santé
+            </Link>{' '}
+            avec l’indicateur Pollution à l’ozone ! Découvrez aussi l’historique des 
+            sécheresses passées (Gestion des risques) et le nombre d’appellations contrôlées 
+            de votre territoire (Agriculture). Votre boîte à outils s’enrichit quant à elle de{' '}
+              <Link href="https://facili-tacct.beta.gouv.fr/ressources" target="_blank">
+                3 nouveaux retours d’expériences
+              </Link>{' '}et des enseignements de Montpellier Métropole sur{' '}
+              <Link href="https://facili-tacct.beta.gouv.fr/ressources/batir-strategie-adaptation/strategie-trajectoire-adaptation" target="_blank">
+                la construction d'une stratégie d’adaptation
+              </Link> !
           </>
         }
-      /> */}
+      />
       <PremierBloc />
       <Patch4Bloc />
       <TacctBloc />
