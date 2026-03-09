@@ -3,8 +3,6 @@ import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { SourcesSection } from '@/components/interactions/scrollToSource';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
-import { O3 } from '@/lib/postgres/models';
-import { GetO3 } from '@/lib/queries/databases/sante';
 import { GetCommunesCoordinates } from '@/lib/queries/postgis/cartographie';
 import { useSearchParams } from 'next/navigation';
 import { useLayoutEffect, useState } from 'react';
@@ -17,10 +15,9 @@ interface Props {
     codes: string[];
     bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
   } | null;
-  o3: O3[];
 }
 
-export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
+export const DonneesSante = ({ coordonneesCommunes }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as 'Gestion des risques';
   const code = searchParams.get('code')!;
@@ -28,7 +25,6 @@ export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
   const type = searchParams.get('type')!;
   const [data, setData] = useState({
     coordonneesCommunes,
-    o3,
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -41,13 +37,11 @@ export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
     }
     setIsLoading(true);
     void (async () => {
-      const [newCoordonneesCommunes, newO3] = await Promise.all([
+      const [newCoordonneesCommunes] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
-        GetO3(),
       ]);
       setData({
         coordonneesCommunes: newCoordonneesCommunes,
-        o3: newO3,
       });
       setIsLoading(false);
     })();
@@ -66,7 +60,7 @@ export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
       {/* Introduction */}
       <section>
         <Body size="lg">
-          Ces quelques indicateurs vous aideront à poser les bonnes questions,
+          Ces données vous aideront à poser les bonnes questions,
           le terrain vous donnera les vraies réponses.
         </Body>
       </section>
@@ -87,9 +81,9 @@ export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
           {ongletsMenu.thematiquesLiees[0].thematique}
         </H2>
 
-        {/* Pollution à l'ozone O3 */}
+        {/* Pollution à l’ozone */}
         <div
-          id="Pollution à l'ozone"
+          id="Pollution à l’ozone"
           className={styles.indicateurMapWrapper}
         >
           <div className={styles.h3Titles}>
@@ -101,7 +95,6 @@ export const DonneesSante = ({ coordonneesCommunes, o3 }: Props) => {
           </div>
           <SeuilsReglementairesO3
             coordonneesCommunes={data.coordonneesCommunes}
-            o3={data.o3}
           />
         </div>
       </section>
