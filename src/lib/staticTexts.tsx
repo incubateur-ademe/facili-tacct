@@ -746,10 +746,10 @@ export const O3Text = () => (
     concentrations ne déclenchant pas nécessairement d’alerte. C’est notamment pourquoi
     l’<DefinitionTooltip title={OMS}>OMS</DefinitionTooltip> {" "}
     recommande <DefinitionTooltip title={valeursGuidesO3}>des valeurs guides </DefinitionTooltip>
-    plus strictes que le seuil européen actuel. À titre d’exemple, en 2022, seules 12 % des
+    plus strictes que le seuil européen actuel. À titre d’exemple, en 2022, <b>seules 12 % des
     agglomérations françaises le dépassaient alors que 95 % d’entre elles auraient été
     en dépassement si les <ScrollToSourceTag sourceNumero={1}>valeurs guides de l’OMS avaient été
-      appliquées </ScrollToSourceTag>.
+      appliquées </ScrollToSourceTag>.</b>
   </Body>
 );
 

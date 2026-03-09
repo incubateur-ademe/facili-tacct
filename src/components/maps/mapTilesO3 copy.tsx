@@ -1,13 +1,31 @@
 'use client';
 
+import { O3 } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
+import { Any } from '@/lib/utils/types';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
-import maplibregl, { FillLayerSpecification } from 'maplibre-gl';
+import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { RefObject, useEffect, useRef, useState } from 'react';
-import { getO3Color, O3Tooltip } from './components/tooltips';
+import { RefObject, useEffect, useMemo, useRef, useState } from 'react';
+import { getO3Color, O3StationsTooltip, O3Tooltip } from './components/tooltips';
 import styles from './maps.module.scss';
+
+const color = (valeur: number) => {
+  return valeur > 50
+    ? '#5524A0'
+    : valeur > 37
+      ? '#960032'
+      : valeur > 25
+        ? '#E8323B'
+        : valeur > 16
+          ? '#FFCF5E'
+          : valeur > 8
+            ? '#50CCAA'
+            : valeur >= 0
+              ? '#50F0E6'
+              : '#ADADAD';
+};
 
 export const MapTilesO3 = (props: {
   coordonneesCommunes: {
@@ -18,7 +36,8 @@ export const MapTilesO3 = (props: {
   mapContainer: RefObject<HTMLDivElement | null>;
   bucketUrl: string;
   layer: string;
-  paint: FillLayerSpecification['paint'];
+  paint: { [key: string]: Any };
+  o3: O3[];
   legend?: React.ReactNode;
   style?: React.CSSProperties;
   onLoadingChange?: (isLoading: boolean) => void;
@@ -31,6 +50,7 @@ export const MapTilesO3 = (props: {
     bucketUrl,
     layer,
     paint,
+    o3,
     legend,
     onLoadingChange
   } = props;
@@ -38,6 +58,36 @@ export const MapTilesO3 = (props: {
 
   const [isTilesLoading, setIsTilesLoading] = useState(true);
   const hasLoadedOnce = useRef(false);
+
+  const o3Data = useMemo(() => {
+    return o3.map((o3) => {
+      return {
+        coordinates: [o3.longitude, o3.latitude],
+        value: Round(o3.valeur, 2),
+        nom_site: o3.nom_site,
+        color: color(o3.valeur!)
+      };
+    });
+  }, [o3]);
+
+  const o3GeoJson = useMemo(() => {
+    return {
+      type: 'FeatureCollection' as 'FeatureCollection',
+      features: o3Data.map((o3, index) => ({
+        type: 'Feature' as 'Feature',
+        geometry: {
+          type: 'Point' as 'Point',
+          coordinates: o3.coordinates
+        },
+        properties: {
+          nom_site: o3.nom_site,
+          value: o3.value,
+          color: o3.color
+        },
+        id: index
+      }))
+    };
+  }, [o3Data]);
 
   useEffect(() => {
     if (!mapContainer.current || !coordonneesCommunes) return;
@@ -117,10 +167,168 @@ export const MapTilesO3 = (props: {
         }
       });
 
+      map.addSource('o3-points', {
+        type: 'geojson',
+        data: o3GeoJson,
+        cluster: true,
+        clusterMaxZoom: 14,
+        clusterRadius: 30
+      });
+
+      map.addLayer({
+        id: 'clusters-outline',
+        type: 'circle',
+        source: 'o3-points',
+        filter: ['has', 'point_count'],
+        paint: {
+          'circle-color': 'rgba(128, 130, 132, 0.4)',
+          'circle-radius': [
+            'step',
+            ['get', 'point_count'],
+            23,
+            4,
+            25.5,
+            10,
+            35.5
+          ]
+        }
+      });
+
+      map.addLayer({
+        id: 'clusters-border',
+        type: 'circle',
+        source: 'o3-points',
+        filter: ['has', 'point_count'],
+        paint: {
+          'circle-color': '#ffffff',
+          'circle-radius': [
+            'step',
+            ['get', 'point_count'],
+            21.4,
+            4,
+            23.9,
+            10,
+            33.9
+          ]
+        }
+      });
+
+      map.addLayer({
+        id: 'clusters',
+        type: 'circle',
+        source: 'o3-points',
+        filter: ['has', 'point_count'],
+        paint: {
+          'circle-color': '#8d8d8d',
+          'circle-radius': [
+            'step',
+            ['get', 'point_count'],
+            20,
+            4,
+            22.5,
+            10,
+            32.5
+          ]
+        }
+      });
+
+      map.addLayer({
+        id: 'cluster-count',
+        type: 'symbol',
+        source: 'o3-points',
+        filter: ['has', 'point_count'],
+        layout: {
+          'text-field': '{point_count_abbreviated}',
+          'text-font': ['Marianne', 'Serif Bold'],
+          'text-size': 14
+        },
+        paint: {
+          'text-color': '#ffffff'
+        }
+      });
+
+      map.addLayer({
+        id: 'unclustered-point',
+        type: 'circle',
+        source: 'o3-points',
+        filter: ['!', ['has', 'point_count']],
+        paint: {
+          'circle-color': ['get', 'color'],
+          'circle-radius': 9,
+          'circle-stroke-width': 1,
+          'circle-stroke-color': '#000000'
+        }
+      });
+
+      map.on('click', 'clusters', async (e) => {
+        const features = map.queryRenderedFeatures(e.point, {
+          layers: ['clusters']
+        });
+        if (features.length > 0) {
+          const clusterId = features[0].properties?.cluster_id;
+          const source = map.getSource('o3-points') as maplibregl.GeoJSONSource;
+          try {
+            const zoom = await source.getClusterExpansionZoom(clusterId);
+            if (features[0].geometry.type === 'Point') {
+              map.easeTo({
+                center: features[0].geometry.coordinates as [number, number],
+                zoom: zoom
+              });
+            }
+          } catch (err) {
+            console.error('Error getting cluster expansion zoom:', err);
+          }
+        }
+      });
+
       map.addControl(new maplibregl.NavigationControl(), 'top-right');
+
+      // Hover sur les points O3 non clusterisés
+      map.on('mouseenter', 'unclustered-point', (e) => {
+        map.getCanvas().style.cursor = 'pointer';
+        if (e.features && e.features.length > 0) {
+          const properties = e.features[0].properties;
+          const nom_site = properties?.nom_site;
+          const value = properties?.value;
+          const color = properties?.color;
+          const containerHeight = mapContainer.current?.clientHeight || 500;
+          const mouseY = e.point.y;
+          const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';
+
+          if (popupRef.current) {
+            popupRef.current.remove();
+          }
+
+          popupRef.current = new maplibregl.Popup({
+            closeButton: false,
+            closeOnClick: false,
+            anchor: placement,
+            maxWidth: 'max-content',
+            offset: placement === 'top' ? [0, 25] : [0, -20]
+          })
+            .setLngLat(e.lngLat)
+            .setHTML(O3StationsTooltip(value, color, nom_site))
+            .addTo(map);
+        }
+      });
+
+      map.on('mouseleave', 'unclustered-point', () => {
+        map.getCanvas().style.cursor = '';
+        if (popupRef.current) {
+          popupRef.current.remove();
+        }
+      });
 
       // Hover sur les tuiles (seulement si pas sur un point O3)
       map.on('mousemove', `${bucketUrl}-fill`, (e) => {
+        const o3Features = map.queryRenderedFeatures(e.point, {
+          layers: ['unclustered-point', 'clusters']
+        });
+
+        if (o3Features.length > 0) {
+          return;
+        }
+
         map.getCanvas().style.cursor = 'pointer';
 
         if (e.features && e.features.length > 0) {

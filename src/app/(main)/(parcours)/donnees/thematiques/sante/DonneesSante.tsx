@@ -3,8 +3,8 @@ import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { SourcesSection } from '@/components/interactions/scrollToSource';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
-import { ArboviroseModel, O3 } from '@/lib/postgres/models';
-import { GetArbovirose, GetO3 } from '@/lib/queries/databases/sante';
+import { ArboviroseModel } from '@/lib/postgres/models';
+import { GetArbovirose } from '@/lib/queries/databases/sante';
 import { GetCommunesCoordinates } from '@/lib/queries/postgis/cartographie';
 import { useSearchParams } from 'next/navigation';
 import { useLayoutEffect, useState } from 'react';
@@ -18,11 +18,11 @@ interface Props {
     codes: string[];
     bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
   } | null;
-  o3: O3[];
+  // o3: O3[];
   arbovirose: ArboviroseModel[];
 }
 
-export const DonneesSante = ({ coordonneesCommunes, o3, arbovirose }: Props) => {
+export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as 'Gestion des risques';
   const code = searchParams.get('code')!;
@@ -30,7 +30,6 @@ export const DonneesSante = ({ coordonneesCommunes, o3, arbovirose }: Props) => 
   const type = searchParams.get('type')!;
   const [data, setData] = useState({
     coordonneesCommunes,
-    o3,
     arbovirose
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -44,14 +43,12 @@ export const DonneesSante = ({ coordonneesCommunes, o3, arbovirose }: Props) => 
     }
     setIsLoading(true);
     void (async () => {
-      const [newCoordonneesCommunes, newO3, newArbovirose] = await Promise.all([
+      const [newCoordonneesCommunes, newArbovirose] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
-        GetO3(),
         GetArbovirose(code, libelle, type)
       ]);
       setData({
         coordonneesCommunes: newCoordonneesCommunes,
-        o3: newO3,
         arbovirose: newArbovirose
       });
       setIsLoading(false);
@@ -71,7 +68,7 @@ export const DonneesSante = ({ coordonneesCommunes, o3, arbovirose }: Props) => 
       {/* Introduction */}
       <section>
         <Body size="lg">
-          Ces quelques indicateurs vous aideront à poser les bonnes questions,
+          Ces données vous aideront à poser les bonnes questions,
           le terrain vous donnera les vraies réponses.
         </Body>
       </section>
@@ -125,9 +122,9 @@ export const DonneesSante = ({ coordonneesCommunes, o3, arbovirose }: Props) => 
           {ongletsMenu.thematiquesLiees[1].thematique}
         </H2>
 
-        {/* Pollution à l'ozone O3 */}
+        {/* Pollution à l’ozone */}
         <div
-          id="Pollution à l'ozone"
+          id="Pollution à l’ozone"
           className={styles.indicateurMapWrapper}
         >
           <div className={styles.h3Titles}>
@@ -139,7 +136,6 @@ export const DonneesSante = ({ coordonneesCommunes, o3, arbovirose }: Props) => 
           </div>
           <SeuilsReglementairesO3
             coordonneesCommunes={data.coordonneesCommunes}
-            o3={data.o3}
           />
         </div>
       </section>

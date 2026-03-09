@@ -8,7 +8,6 @@ import { Loader } from '@/components/ui/loader';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
-import { O3 } from '@/lib/postgres/models';
 import { O3Text } from '@/lib/staticTexts';
 import { O3DynamicText } from '@/lib/textesIndicateurs/biodiversiteDynamicTexts';
 import { O3TooltipText } from '@/lib/tooltipTexts';
@@ -21,13 +20,11 @@ const MapTilesO3 = lazy(() => import('@/components/maps/mapTilesO3').then(m => (
 
 export const SeuilsReglementairesO3 = ({
   coordonneesCommunes,
-  o3
 }: {
   coordonneesCommunes: {
     codes: string[];
     bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
   } | null;
-  o3: O3[];
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
@@ -64,7 +61,6 @@ export const SeuilsReglementairesO3 = ({
                 mapContainer={mapContainer}
                 bucketUrl="seuils_reglementaires_o3"
                 layer="o3"
-                o3={o3}
                 paint={{
                   'fill-color': [
                     'step',
@@ -90,7 +86,12 @@ export const SeuilsReglementairesO3 = ({
                   'fill-opacity': 0.7,
                   'fill-antialias': false
                 }}
-                legend={<LegendCompColor legends={o3Legend} />}
+                legend={
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
+                <Body weight='bold'>- Nombre de jours avec dépassement du seuil (moyenne sur 3 ans) -</Body>
+                <LegendCompColor legends={o3Legend} />
+                </div>
+              }
               />
             </Suspense>
           ) : (
@@ -102,7 +103,7 @@ export const SeuilsReglementairesO3 = ({
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
-          Source : INERIS et Geod’air (moyenne 2023-2025), consulté en janvier 2026
+          Source : INERIS, consultée en janvier 2026
         </Body>
         <ExportPngMaplibreButton
           mapRef={mapRef}

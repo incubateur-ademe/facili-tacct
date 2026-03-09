@@ -399,10 +399,17 @@ export const airesAppellationsControleesTooltipText = (
 
 export const O3TooltipText = (
   <Body weight="bold" size="sm">
-    Au niveau européen, la valeur cible pour la protection de la santé humaine est fixé à un
-    maximum journalier de la moyenne sur 8 h de 120 µg/m3, à ne pas dépasser plus de 25 jours
-    par an (en moyenne sur 3 ans). Ce chiffre est calculé par l’Institut national de l'environnement
-    industriel et des risques (Ineris) d'après des concentrations analysées, combinant modèle et observations.
+    Les données de la carte sont calculées par l’Institut national de l'environnement industriel
+    et des risques (Ineris) d'après des concentrations analysées, combinant modèle et observations.
+    La carte est visible sur leur{' '}
+    <a
+      href="https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      site
+    </a>
+    .
   </Body>
 );
 
