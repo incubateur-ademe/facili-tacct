@@ -929,7 +929,7 @@ export type DebroussaillementModel = {
 };
 
 export type SecheressesPasseesModel = {
-  index: bigint;
+  index: number;
   code_geographique: string;
   libelle_geographique: string | null;
   epci: string | null;
