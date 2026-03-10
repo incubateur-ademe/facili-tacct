@@ -28,12 +28,12 @@ const FaqPage = async () => {
     <NewContainer size="xl">
       <H1 style={{ marginBottom: '3.5rem', color: "var(--principales-vert)" }}>
         Questions fréquentes
-        </H1>
+      </H1>
       <div className={styles.articleContent}>
         <div className={styles.sommaire}>
           <SommaireFAQ headings={headings} />
         </div>
-        <div className={styles.article}>
+        <div className={styles.article} style={{ paddingTop: "0rem" }}>
           {Object.entries(grouped).map(([categorie, faqItems]) => {
             const anchorId = normalizeText(categorie);
             return (
@@ -43,7 +43,7 @@ const FaqPage = async () => {
                 style={{ marginBottom: '56px', scrollMarginTop: '2rem' }}
               >
                 <H2
-                  style={{ 
+                  style={{
                     overflowWrap: "normal",
                     fontSize: "28px",
                   }}

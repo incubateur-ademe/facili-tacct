@@ -874,6 +874,22 @@
     }
 }
 
+.questionsThemes {
+    margin: 2rem 1.5rem 2rem 0;
+    align-self: end;
+    font-weight: 500;
+    color: var(--boutons-primaire-1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    background-image: none;
+    &::after {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 1200px) {
     .collectionTopBlocWrapper {
         padding: 0 1rem;

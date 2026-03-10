@@ -195,7 +195,7 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                   </Body>
                 </div>
                 <Body style={{ color: "#7E5202", padding: "1rem 0 1rem 2rem" }}>
-                  Si ces ressources vous ont été utiles, vous pouvez dès maintenant commencer votre diagnostic de vulnérabilité !
+                  Si ces ressources vous ont été utiles, vous pouvez dès maintenant commencer votre diagnostic de vulnérabilité !
                 </Body>
                 <Link href="/recherche-territoire" className={styles.bouton}>
                   Explorer les données
