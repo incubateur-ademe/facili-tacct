@@ -150,3 +150,12 @@ export const Patch4Tooltip = (ville: string, aggravation: string, color: string)
     </div>
   `;
 };
+
+export const CanopeeTooltip = (heightM: number, color: string) => {
+  return `
+    <div style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem;font-family:Marianne,sans-serif;font-size:0.875rem;white-space:nowrap;">
+      <div style="width:0.75rem;height:0.75rem;border-radius:2px;background:${color};border:0.5px solid #161616;flex-shrink:0;"></div>
+      <span><b>Hauteur de canopée :</b> ${Math.round(heightM)} m</span>
+    </div>
+  `;
+}

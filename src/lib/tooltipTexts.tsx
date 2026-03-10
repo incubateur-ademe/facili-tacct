@@ -429,3 +429,11 @@ export const secheressesPasseesTooltipText = (
     </Body>
   </>
 );
+
+export const HauteurCanopeeTooltipText = (
+  <>
+    <Body weight="bold" size="sm">
+      TOOLTIP
+    </Body>
+  </>
+);

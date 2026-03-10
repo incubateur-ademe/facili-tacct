@@ -144,6 +144,16 @@ export const sommaireThematiques = {
         sousCategories: ['Pollution à l’ozone']
       }
     ]
+  },
+  Forêts: {
+    thematiquesLiees: [
+      {
+        id: 'section1',
+        thematique: 'Forêts',
+        icone: '🌲',
+        sousCategories: ['Hauteur de la canopée']
+      }
+    ]
   }
 };
 
@@ -277,7 +287,7 @@ export const thematiquesInfo: {
   Forêts: {
     title: 'Forêts',
     description: <div></div>,
-    link: ''
+    link: 'Forêts'
   },
   Eau: {
     title: 'Eau',

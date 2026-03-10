@@ -7,12 +7,16 @@ import { fromUrl } from 'geotiff';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef, useState } from 'react';
+import { CanopeeTooltip } from './components/tooltips';
+import { HauteurCanopeeLegend } from './legends/legendCanopee';
 import styles from './maps.module.scss';
 
 const COG_PATH = '/canopee/France_Forest_COG.tif';
 const TARGET_RESOLUTION_M = 100;
 const MAX_CANVAS_SIZE = 256;
 const MIN_CANVAS_SIZE = 128;
+const COLOR_LOW:  [number, number, number] = [217, 255, 217];  
+const COLOR_HIGH: [number, number, number] = [ 26, 107,  24]; 
 
 type BBox = { minLng: number; minLat: number; maxLng: number; maxLat: number };
 
@@ -34,7 +38,7 @@ type CogRenderResult = {
   maxVal: number;
 };
 
-function computeCanvasSize(bbox: BBox): { width: number; height: number } {
+const computeCanvasSize = (bbox: BBox): { width: number; height: number } => {
   const latMid = (bbox.minLat + bbox.maxLat) / 2;
   const widthM = (bbox.maxLng - bbox.minLng) * 111000 * Math.cos((latMid * Math.PI) / 180);
   const heightM = (bbox.maxLat - bbox.minLat) * 111000;
@@ -46,13 +50,13 @@ function computeCanvasSize(bbox: BBox): { width: number; height: number } {
   };
 }
 
-function applyClipPath(
+const applyClipPath = (
   ctx: CanvasRenderingContext2D,
   geometry: GeoJSONGeometry,
   bbox: BBox,
   width: number,
   height: number
-): void {
+): void => {
   ctx.beginPath();
   const rings: number[][][][] =
     geometry.type === 'MultiPolygon'
@@ -73,10 +77,7 @@ function applyClipPath(
   ctx.clip('evenodd');
 }
 
-const COLOR_LOW:  [number, number, number] = [217, 255, 217]; // 
-const COLOR_HIGH: [number, number, number] = [ 26, 107,  24]; // #1A6B18
-
-function heightToRGBA(intensity: number): [number, number, number, number] {
+const heightToRGBA = (intensity: number): [number, number, number, number] => {
   return [
     Math.round(COLOR_LOW[0] + (COLOR_HIGH[0] - COLOR_LOW[0]) * intensity),
     Math.round(COLOR_LOW[1] + (COLOR_HIGH[1] - COLOR_LOW[1]) * intensity),
@@ -85,12 +86,12 @@ function heightToRGBA(intensity: number): [number, number, number, number] {
   ];
 }
 
-async function renderCogToCanvas(
+const renderCogToCanvas = async (
   cogUrl: string,
   bbox: BBox,
   geometry: GeoJSONGeometry | null,
   signal: AbortSignal
-): Promise<CogRenderResult | null> {
+): Promise<CogRenderResult | null> => {
   const { width: canvasW, height: canvasH } = computeCanvasSize(bbox);
 
   const tiff = await fromUrl(cogUrl, undefined, signal);
@@ -166,38 +167,6 @@ async function renderCogToCanvas(
   return { canvas: clippedCanvas, rasterData, maxVal };
 }
 
-function canopeeTooltip(heightM: number, color: string): string {
-  return `
-    <div style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem;font-family:Marianne,sans-serif;font-size:0.875rem;white-space:nowrap;">
-      <div style="width:0.75rem;height:0.75rem;border-radius:2px;background:${color};border:0.5px solid #161616;flex-shrink:0;"></div>
-      <span><b>Hauteur de canopée :</b> ${Math.round(heightM)} m</span>
-    </div>
-  `;
-}
-
-function CanopeeLegende({ maxVal }: { maxVal: number }) {
-  const steps = [0, 0.25, 0.5, 0.75, 1];
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', padding: '0.5rem 1rem', fontFamily: 'Marianne, sans-serif', fontSize: '0.75rem' }}>
-      <div style={{ fontWeight: 700, marginBottom: '0.25rem' }}>Hauteur de canopée (m)</div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-        <div style={{
-          width: '120px',
-          height: '12px',
-          borderRadius: '2px',
-          background: 'linear-gradient(to right, #D9FFDA, #1A6B18)',
-          border: '0.5px solid #ccc'
-        }} />
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', width: '120px' }}>
-        {steps.filter((_, i) => i === 0 || i === steps.length - 1).map((s) => (
-          <span key={s}>{Math.round(s * maxVal)} m</span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export const MapCanopee = (props: {
   coordonneesCommunes: {
     codes: string[];
@@ -221,7 +190,6 @@ export const MapCanopee = (props: {
   } = props;
 
   const [isLoading, setIsLoading] = useState(true);
-  const [legendMaxVal, setLegendMaxVal] = useState<number | null>(null);
   const hasLoadedOnce = useRef(false);
   const rasterDataRef = useRef<RasterData | null>(null);
   const maxValRef = useRef<number>(1);
@@ -295,7 +263,6 @@ export const MapCanopee = (props: {
         if (result) {
           rasterDataRef.current = result.rasterData;
           maxValRef.current = result.maxVal;
-          setLegendMaxVal(result.maxVal);
 
           map.addSource('canopee', {
             type: 'canvas',
@@ -351,7 +318,7 @@ export const MapCanopee = (props: {
               offset: anchor === 'top' ? [0, 25] : [0, -20]
             })
               .setLngLat(e.lngLat)
-              .setHTML(canopeeTooltip(val, color))
+              .setHTML(CanopeeTooltip(val, color))
               .addTo(map);
           });
 
@@ -420,7 +387,7 @@ export const MapCanopee = (props: {
         className={`${styles.legendRGA} legendWrapper`}
         style={{ width: 'auto', justifyContent: 'center' }}
       >
-        {legend ? legend : legendMaxVal !== null && <CanopeeLegende maxVal={legendMaxVal} />}
+        <HauteurCanopeeLegend />
       </div>
     </div>
   );

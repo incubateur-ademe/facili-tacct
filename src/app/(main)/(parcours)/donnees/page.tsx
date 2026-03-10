@@ -8,6 +8,7 @@ import AmenagementServerPage from './thematiques/amenagement/AmenagementServerPa
 import BiodiversiteServerPage from './thematiques/biodiversite/BiodiversiteServerPage';
 import ConfortThermiqueServerPage from './thematiques/confortThermique/ConfortThermiqueServerPage';
 import EauServerPage from './thematiques/eau/EauServerPage';
+import ForetServerPage from './thematiques/foret/ForetServerPage';
 import GestionRisquesServerPage from './thematiques/gestionRisques/GestionRisquesServerPage';
 import SanteServerPage from './thematiques/sante/SanteServerPage';
 
@@ -37,6 +38,8 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
             <GestionRisquesServerPage searchParams={props.searchParams} />
           ) : thematique === "Santé" ? (
             <SanteServerPage searchParams={props.searchParams} />
+          ) : thematique === "Forêts" ? (
+            <ForetServerPage searchParams={props.searchParams} />
           ) : ""}
         </Suspense>
       }

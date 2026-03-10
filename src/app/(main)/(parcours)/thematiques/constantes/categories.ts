@@ -87,7 +87,7 @@ export const nomThematiques = [
     label: 'Forêts',
     labelRadius: 260,
     icon: '🌳',
-    disabled: true,
+    disabled: false,
     liens: []
   },
   {
@@ -403,6 +403,13 @@ export const liensEntreThematiques = [
     curve: 1,
     curveRadius: 0.15
   },
+  // Forêts
+  // {
+  //   source: 'Forêts',
+  //   target: 'Gestion des risques',
+  //   curve: 1,
+  //   curveRadius: 1
+  // }
 ];
 
 // Grouper les nœuds par catégorie avec leurs indices d'origine
