@@ -60,9 +60,7 @@ export const DonneesForet = (
     <div className={styles.explorerMesDonneesContainer}>
       <ScrollToHash />
       <H1 style={{ color: 'var(--principales-vert)', fontSize: '2rem' }}>
-        En accentuant des fragilités existantes, le changement climatique exerce une
-        pression croissante sur la santé des populations. Quels facteurs se combinent aujourd’hui
-        sur votre territoire ?
+        La forêt en France
       </H1>
       {/* Introduction */}
       <section>
