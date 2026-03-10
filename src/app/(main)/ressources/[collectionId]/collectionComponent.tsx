@@ -6,11 +6,13 @@ import FlagIcon from '@/assets/icons/flag_icon_orange.png';
 import message3Icone from '@/assets/icons/message_3_icon_black.png';
 import ShareIcon from '@/assets/icons/share_icon_white.svg';
 import { TuileHorizontale, TuileVerticale } from '@/components/Tuile';
+import { CustomAccordion } from "@/design-system/base/Accordion";
 import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
 import { TagsIcone } from "@/design-system/base/Tags";
 import { Body, H1, H2 } from '@/design-system/base/Textes';
 import { NewContainer } from "@/design-system/layout";
 import useWindowDimensions from "@/hooks/windowDimensions";
+import { FaqItem } from "@/lib/queries/notion/notion";
 import { FiltresOptions } from "@/lib/ressources/toutesRessources";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,9 +22,10 @@ import { CollectionsData } from './collectionsData';
 
 type CollectionComponentProps = {
   collectionId: string;
+  faqItems: FaqItem[]
 };
 
-export const CollectionComponent = ({ collectionId }: CollectionComponentProps) => {
+export const CollectionComponent = ({ collectionId, faqItems }: CollectionComponentProps) => {
   const collection = CollectionsData.find(c => c.slug === collectionId);
   const articlesSorted = collection?.articles.toSorted((a, b) => a.ordreCollection - b.ordreCollection);
   const territoireOptions = FiltresOptions.find(f => f.titre === 'Territoire')?.options || [];
@@ -76,9 +79,9 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                   <Image src={ClockIcon} alt="Temps de lecture" width={24} height={24} />
                   <Body size="lg" weight="bold" style={{ color: "#FFFFFF" }}>
                     {
-                      collection?.titre === "Démarrer le diagnostic de vulnérabilité" 
-                      ? <span>47 min</span> 
-                      : <span>{tempsLecture} min</span>
+                      collection?.titre === "Démarrer le diagnostic de vulnérabilité"
+                        ? <span>47 min</span>
+                        : <span>{tempsLecture} min</span>
                     }
                   </Body>
                 </div>
@@ -169,6 +172,27 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                   );
                 })
               }
+              {faqItems.length > 0 && (
+                <NewContainer size="xl" style={{ padding: "2rem 1rem 0rem" }}>
+                  <H2 style={{ fontSize: "28px", marginBottom: "1.5rem" }}>
+                    Questions sur ce thème
+                  </H2>
+                  <div style={{ width: "3rem", borderBottom: "1px solid #DDDDDD", marginBottom: "2rem" }} />
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                    {faqItems.map((item) => (
+                      <CustomAccordion label={item.question} key={item.id}>
+                        {item.reponse}
+                      </CustomAccordion>
+                    ))}
+                  </ul>
+                  <div className="flex">
+                    <Link href="/ressources/faq" target="_blank" rel="noopener noreferrer" className={styles.questionsThemes}>
+                      Voir toutes les questions
+                      <span className={`fr-icon-arrow-right-line ${styles.arrow}`} aria-hidden="true"></span>
+                    </Link>
+                  </div>
+                </NewContainer>
+              )}
               <div className={styles.question}>
                 <div className={styles.titre}>
                   <Image src={message3Icone} alt="" width={24} />
