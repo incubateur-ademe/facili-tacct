@@ -1,3 +1,5 @@
+"use client";
+
 import { StepCard } from '@/app/(main)/home/StepCard';
 import Etape1Background from "@/assets/svg/home/etape1background.svg";
 import Etape1Contour from "@/assets/svg/home/etape1contour.svg";
@@ -21,11 +23,14 @@ import { RightLine } from '@/assets/svg/home/rightLine';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H2 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
+import useWindowDimensions from '@/hooks/windowDimensions';
+import styles from '../main.module.scss';
 
 export const DemarcheBloc = () => {
+  const { width } = useWindowDimensions();
   return (
-    <div style={{ backgroundColor: 'var(--boutons-primaire-2)' }}>
-      <NewContainer size="xl">
+    <div style={{ background: "linear-gradient(128deg, #B7ECE9 -1.4%, #D3EDEB 36.73%, #D3EDEB, 67.23%, #ECFFFD 97.73%) " }}>
+      <NewContainer size="xl" style={{ padding: "3rem 2rem" }}>
         <div
           style={{
             display: 'flex',
@@ -46,8 +51,8 @@ export const DemarcheBloc = () => {
           />
 
           {/* Conteneur du stepper en vague */}
-          <div style={{ position: 'relative', width: '100%', height: "700px" }}>
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'stretch', height: '100%' }}>
+          <div style={{ position: 'relative', width: '100%', height: (width && width < 768) ? "fit-content" : "700px" }}>
+            <div className={styles.demarcheBlocWrapper}>
               {/* Background + Image superposés */}
               <StepCard
                 contour={Etape1Contour}
@@ -55,7 +60,7 @@ export const DemarcheBloc = () => {
                 background={Etape1Background}
                 foreground={Etape1Foreground}
                 texte={
-                  <Body>
+                  <Body style={{ color: "#2B4B49" }}>
                     Une visio d'1h pour savoir <b>par où commencer</b>
                   </Body>
                 }
@@ -65,7 +70,14 @@ export const DemarcheBloc = () => {
                 label="Session d'accueil"
               />
               {/* Ligne : offsetX négatif pour superposer, offsetY pour décaler verticalement */}
-              <div style={{ transform: 'translate(-40px, 115px)', flexShrink: 0 }}>
+              <div
+                style={{
+                  transform: 'translate(-40px, 115px)',
+                  flexShrink: 0,
+                  display: (width && width < 768) ? "none" : 'flex'
+
+                }}
+              >
                 <LeftLine />
               </div>
               <StepCard
@@ -74,8 +86,8 @@ export const DemarcheBloc = () => {
                 background={Etape2Background}
                 foreground={Etape2Foreground}
                 texte={
-                  <Body>
-                    Un démarrage à la carte, avec tous les liens utiles
+                  <Body style={{ color: "#2B4B49" }}>
+                    Un <b>démarrage à la carte</b>, avec tous les liens utiles
                   </Body>
                 }
                 numero={2}
@@ -85,7 +97,14 @@ export const DemarcheBloc = () => {
                 offsetX={-65}
                 offsetY={60}
               />
-              <div style={{ transform: 'translate(-25px, 240px)', flexShrink: 0 }}>
+              <div
+                style={{
+                  transform: 'translate(-25px, 240px)',
+                  flexShrink: 0,
+                  display: (width && width < 768) ? "none" : 'flex'
+
+                }}
+              >
                 <MiddleLine />
               </div>
               <StepCard
@@ -94,8 +113,8 @@ export const DemarcheBloc = () => {
                 background={Etape3Background}
                 foreground={Etape3Foreground}
                 texte={
-                  <Body>
-                    Chaque mois, un retour d’expérience et une discussion autour d’un sujet opérationnel
+                  <Body style={{ color: "#2B4B49" }}>
+                    Chaque mois, <b>un retour d’expérience et une discussion</b> autour d’un sujet opérationnel
                   </Body>
                 }
                 numero={3}
@@ -105,7 +124,13 @@ export const DemarcheBloc = () => {
                 offsetX={-55}
                 offsetY={-60}
               />
-              <div style={{ transform: 'translate(-35px, 280px)', flexShrink: 0 }}>
+              <div
+                style={{
+                  transform: 'translate(-35px, 280px)',
+                  flexShrink: 0,
+                  display: (width && width < 768) ? "none" : 'flex'
+                }}
+              >
                 <RightLine />
               </div>
               <StepCard
@@ -114,8 +139,8 @@ export const DemarcheBloc = () => {
                 background={Etape4Background}
                 foreground={Etape4Foreground}
                 texte={
-                  <Body>
-                    Une communauté de 300 chargés de mission de tous types de territoires
+                  <Body style={{ color: "#2B4B49" }}>
+                    Une <b>communauté</b> de <b>300 chargés de mission</b> de tous types de territoires
                   </Body>
                 }
                 numero={4}

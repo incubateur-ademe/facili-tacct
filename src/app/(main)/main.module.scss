@@ -53,10 +53,17 @@ $height-notice: 461px;
         var(--boutons-primaire-2) 14px
     );
 }
+
+.deuxBlocsWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    min-height: 750px;
+}
 .patch4Wrapper {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-end;
     padding: 1.5rem 0;
     gap: 6rem;
 }
@@ -66,7 +73,7 @@ $height-notice: 461px;
     align-items: center;
     justify-content: center;
     width: 50%;
-    max-width: 40%;
+    max-width: 200px;
     max-height: 400px;
     position: relative;
     img {
@@ -80,7 +87,7 @@ $height-notice: 461px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
     max-width: 720px;
     padding: 1.25em;
     background-color: #ffffff;
@@ -100,23 +107,22 @@ $height-notice: 461px;
 @media screen and (max-width: 1015px) {
     .patch4Wrapper {
         flex-direction: column;
-        align-items: center;
-    }
-    .patch4Text {
-        max-width: 80%;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .patch4img {
-        display: none;
     }
 }
 
 @media screen and (max-width: 520px) {
     .patch4Text {
-        max-width: 100%;
         padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .deuxBlocsWrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .patch4Wrapper {
+        margin-top: 4rem
     }
 }
 
@@ -239,6 +245,21 @@ $height-notice: 461px;
     }
 }
 
+// Démarche Bloc
+.demarcheBlocWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: 'stretch';
+    height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .demarcheBlocWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 // Ressources bloc
 .ressourcesContainer {
     background: repeating-linear-gradient(
@@ -253,19 +274,18 @@ $height-notice: 461px;
 
 .ressourcesWrapper {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 2rem;
     .ressourcesText {
-        max-width: 60%;
         background-color: #ffffff;
         padding: 1.25rem;
+        gap: 0.5rem;
     }
     .ressourcesImage {
-        width: 40%;
+        width: 50%;
         height: auto;
-        max-height: 320px;
+        max-width: 210px;
         position: relative;
         object-fit: contain;
     }
@@ -274,10 +294,6 @@ $height-notice: 461px;
 @media screen and (max-width: 1015px) {
     .ressourcesWrapper {
         flex-direction: column;
-        align-items: center;
-        .ressourcesText {
-            max-width: 80%;
-        }
     }
 }
 

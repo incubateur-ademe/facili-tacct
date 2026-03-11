@@ -1,6 +1,7 @@
 'use client';
 
 import { Body } from '@/design-system/base/Textes';
+import useWindowDimensions from '@/hooks/windowDimensions';
 import Image, { StaticImageData } from 'next/image';
 import { ReactNode, useState } from 'react';
 
@@ -32,7 +33,7 @@ export const StepCard = ({
   justifyContent
 }: StepCardProps) => {
   const [hovered, setHovered] = useState(false);
-
+  const { width } = useWindowDimensions();
   return (
     <div
       style={{
@@ -40,12 +41,12 @@ export const StepCard = ({
         width: '100%',
         maxWidth,
         marginLeft: offsetX,
-        marginTop: offsetY,
+        marginTop: (width && width < 768) ? "2rem" : offsetY,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: justifyContent,
-        cursor: 'pointer'
+        cursor: 'pointer',
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -92,7 +93,8 @@ export const StepCard = ({
               position: 'absolute',
               inset: 0, 
               opacity: hovered ? 1 : 0, 
-              transition: 'opacity 0.6s ease'
+              transition: 'opacity 0.6s ease',
+              letterSpacing: "0.2px"
             }}
           >
             {label}
@@ -148,7 +150,6 @@ export const StepCard = ({
         }}>
           <div style={{
             fontSize: '0.875rem',
-            color: 'var(--text-default-grey)',
             padding: '1rem 2rem',
             position: 'relative',
             zIndex: 1,
