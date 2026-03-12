@@ -1,6 +1,6 @@
 "use client";
 
-import { StepCard } from '@/app/(main)/home/StepCard';
+import { StepCard } from '@/app/(main)/(home)/StepCard';
 import Etape1Background from "@/assets/svg/home/etape1background.svg";
 import Etape1Contour from "@/assets/svg/home/etape1contour.svg";
 import Etape1Foreground from "@/assets/svg/home/etape1foreground.svg";
@@ -40,7 +40,7 @@ export const DemarcheBloc = () => {
           }}
         >
           <div className={styles.demarcheHeader}>
-            <H2 style={{ textAlign: 'center', margin: 0, color: "#2B4B49" }}>
+            <H2 style={{ textAlign: 'center', margin: 0, color: "#2B4B49"}}>
               Commencez votre démarche d'adaptation à votre rythme
             </H2>
             <BoutonPrimaireClassic

@@ -3,11 +3,11 @@
 import Notice from '@codegouvfr/react-dsfr/Notice';
 import { useEffect } from 'react';
 import { useStyles } from 'tss-react/dsfr';
-import { CommunauteBloc } from './(home)/CommunauteBloc';
-import { DiagnosticBloc } from './(home)/DiagnosticBloc';
-import { Patch4Bloc } from './(home)/Patch4Bloc';
-import { PremierBloc } from './(home)/PremierBloc';
-import { RessourcesBloc } from './(home)/RessourcesBloc';
+import { DemarcheBloc } from './(home)/DemarcheBloc';
+import { HeroBloc } from './(home)/HeroBloc';
+import { HeroBlocMobile } from './(home)/HeroBlocMobile';
+import styles from "./(home)/home.module.scss";
+import { PatchEtRessourcesBloc } from './(home)/PatchEtRessourcesBloc';
 import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
 
@@ -24,32 +24,24 @@ const Home = () => {
     <div>
       <Notice
         className={css({
-          backgroundColor: 'var(--gris-medium)',
-          color: "#201F1E"
+          backgroundColor: '#FFD1B4',
+          color: "#903700"
         })}
         isClosable={true}
-        title={"Nouveauté sur le site :"}
+        title={"Le service TACCT évolue !"}
         description={
           <>
-            le Patch 4°C est désormais disponible pour les PNR, les PETR 
-            et les départements ! Une remarque, une suggestion ?{' '}
-            <a
-              href="https://tally.so/r/mJGELz"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Contactez-nous
-            </a>
-            , on a hâte d’avoir vos retours !
+            <br></br>Pour vous proposer une expérience simplifiée, les plateformes
+            TACCT et Facili-TACCT sont désormais regroupées sous une seule
+            adresse, tacct.ademe.fr, et un seul nom, TACCT.
           </>
         }
       />
-      <PremierBloc />
-      <Patch4Bloc />
+      <div className={styles.heroBlocDesktopOnly}><HeroBloc /></div>
+      <div className={styles.heroBlocMobileOnly}><HeroBlocMobile /></div>
       <TacctBloc />
-      <CommunauteBloc />
-      <DiagnosticBloc />
-      <RessourcesBloc />
+      <DemarcheBloc />
+      <PatchEtRessourcesBloc />
       <VerbatimBloc />
     </div>
   );

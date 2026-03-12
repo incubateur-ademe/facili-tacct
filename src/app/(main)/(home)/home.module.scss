@@ -1,0 +1,101 @@
+.heroBlocOuter {
+    background-color: var(--principales-vert);
+}
+
+.heroBlocInner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.heroBlocText {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.heroBlocImageWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    flex-shrink: 0;
+}
+
+.heroBlocImg {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.heroBlocDesktopOnly {
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+}
+
+.heroBlocMobileOnly {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+        display: block;
+    }
+}
+
+.heroBlocMobileInner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+
+    .heroBlocImg {
+        max-width: 300px;
+        align-self: center;
+    }
+}
+
+// Verbatim
+
+.verbatimContainer {
+    background-color: var(--principales-vert);
+    padding: 1.5rem 2rem;
+    .verbatimCardsWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        padding-top: 1rem;
+        .verbatimCard {
+            border: 1px solid #ffffff;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 0.5rem;
+            width: 384px;
+            .quote {
+                color: #ffffff;
+            }
+            .guillemetIcon {
+                width: 3rem;
+                height: auto;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .verbatimContainer {
+        .verbatimCardsWrapper {
+            justify-content: center;
+            column-gap: 3rem;
+            row-gap: 1rem;
+        }
+    }
+}

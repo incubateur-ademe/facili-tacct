@@ -11,7 +11,7 @@ export const TacctBloc = () => {
     <div className={styles.tacctContainer}>
       <NewContainer size="xl">
         <div className={styles.tacctWrapper}>
-          <H2 style={{ color: "white", margin: 0, textAlign: "center", marginBottom: "2.5rem" }}>
+          <H2 style={{ color: "white", margin: 0, textAlign: "center", marginBottom: "2.5rem", fontSize: "28px"  }}>
             Pourquoi suivre la démarche TACCT ?
           </H2>
           {/* <H3 style={{ color: "white", fontSize: "1.25rem", fontWeight: 400, marginBottom: "2.5rem", textAlign: "center" }}>

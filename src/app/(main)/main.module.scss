@@ -251,7 +251,7 @@ $height-notice: 461px;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    padding: 2rem 10rem;
+    padding: 2rem 14rem;
     border-radius: 8px;
 
     &:hover {
@@ -267,6 +267,9 @@ $height-notice: 461px;
 }
 
 @media screen and (max-width: 768px) {
+    .demarcheHeader {
+        padding: 2rem 1rem;
+    }
     .demarcheBlocWrapper {
         flex-direction: column;
         align-items: center;

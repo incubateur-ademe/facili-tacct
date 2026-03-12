@@ -95,7 +95,7 @@ const HeaderComp = () => {
         orientation: 'horizontal'
       }}
       quickAccessItems={
-        params === "/home" && !displayType
+        params === "/" && !displayType
           ? [
             <button
               className='flex flex-row items-center'
