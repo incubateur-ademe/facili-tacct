@@ -546,7 +546,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
               Explorez les thématiques et découvrez comment elles peuvent être impactées par les aléas climatiques
             </Body>
           </div>
-        ) : <Loader />
+        ) : <div style={{ display: "flex", justifyContent: "center" }}><Loader /></div>
       }
 
       {/* Textes des catégories avec CircleType - contrôle individuel */}
