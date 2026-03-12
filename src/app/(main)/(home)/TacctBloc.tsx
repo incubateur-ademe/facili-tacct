@@ -3,7 +3,7 @@ import { H2 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import MiddlePageTrigger from '@/hooks/MiddlePageTrigger';
 import { homeCards } from '@/lib/homeCards';
-import styles from '../main.module.scss';
+import styles from './home.module.scss';
 import { HomeCard } from './homeCard';
 
 export const TacctBloc = () => {

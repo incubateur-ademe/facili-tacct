@@ -1,11 +1,10 @@
 'use client';
 
 import { Body } from '@/design-system/base/Textes';
-import useWindowDimensions from '@/hooks/windowDimensions';
 import Image, { StaticImageData } from 'next/image';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
-interface StepCardProps {
+interface StepCardMobileProps {
   contour: StaticImageData;
   background: StaticImageData;
   image: StaticImageData;
@@ -14,12 +13,9 @@ interface StepCardProps {
   texte: ReactNode;
   numero: number;
   maxWidth?: number;
-  offsetX?: number;
-  offsetY?: number;
-  justifyContent?: 'flex-start' | 'center' | 'flex-end';
 }
 
-export const StepCard = ({
+export const StepCardMobile = ({
   contour,
   background,
   image,
@@ -28,28 +24,38 @@ export const StepCard = ({
   texte,
   numero,
   maxWidth,
-  offsetX,
-  offsetY,
-  justifyContent
-}: StepCardProps) => {
-  const [hovered, setHovered] = useState(false);
-  const { width } = useWindowDimensions();
+}: StepCardMobileProps) => {
+  const [active, setActive] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      const rect = el.getBoundingClientRect();
+      const cardCenter = rect.top + rect.height / 2;
+      const viewportHeight = window.innerHeight;
+      const isInCenter = cardCenter > viewportHeight * 0.1 && cardCenter < viewportHeight * 0.9;
+      setActive(isInCenter);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div
+      ref={ref}
       style={{
-        height: '100%',
         width: '100%',
         maxWidth,
-        marginLeft: offsetX,
-        marginTop: (width && width <= 768) ? "2rem" : offsetY,
+        marginTop: '2rem',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: justifyContent,
-        cursor: 'pointer',
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       <div style={{
         display: 'flex',
@@ -65,7 +71,7 @@ export const StepCard = ({
           minHeight: 40,
           borderRadius: '50px',
           backgroundColor: 'rgba(227, 250, 249, 1)',
-          border: hovered ? "1px solid rgba(137, 202, 198, 1)" : "1px solid transparent",
+          border: active ? "1px solid rgba(137, 202, 198, 1)" : "1px solid transparent",
           transition: 'border-color 0.6s ease',
           alignContent: 'center'
         }}>
@@ -79,7 +85,7 @@ export const StepCard = ({
             size='lg'
             style={{
               color: '#2B4B49',
-              opacity: hovered ? 0 : 1,
+              opacity: active ? 0 : 1,
               transition: 'opacity 0.6s ease'
             }}
           >
@@ -92,7 +98,7 @@ export const StepCard = ({
               color: '#2B4B49',
               position: 'absolute',
               inset: 0,
-              opacity: hovered ? 1 : 0,
+              opacity: active ? 1 : 0,
               transition: 'opacity 0.6s ease',
               letterSpacing: "0.2px"
             }}
@@ -102,16 +108,14 @@ export const StepCard = ({
         </div>
       </div>
       <div style={{ position: 'relative', width: '100%', aspectRatio: '235 / 234' }}>
-        {/* Contour : visible sans hover, disparaît au hover */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          opacity: hovered ? 0 : 1,
+          opacity: active ? 0 : 1,
           transition: 'opacity 0.6s ease',
         }}>
           <Image src={contour} alt="" fill style={{ objectFit: 'contain' }} />
         </div>
-        {/* Background */}
         <div style={{
           position: 'absolute',
           inset: 0,
@@ -119,37 +123,34 @@ export const StepCard = ({
         }}>
           <Image src={background} alt="" fill style={{ objectFit: 'contain' }} />
         </div>
-        {/* Image : visible sans hover, disparaît au hover */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          opacity: hovered ? 0 : 1,
+          opacity: active ? 0 : 1,
           transition: 'opacity 0.6s ease',
         }}>
           <Image src={image} alt="" fill style={{ objectFit: 'contain' }} />
         </div>
-        {/* Foreground : caché au repos, visible au hover avec scale */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          opacity: hovered ? 1 : 0,
-          transform: hovered ? 'scale(1.05)' : 'scale(1)',
+          opacity: active ? 1 : 0,
+          transform: active ? 'scale(1.05)' : 'scale(1)',
           transition: 'opacity 0.6s ease, transform 0.6s ease',
         }}>
           <Image src={foreground} alt="" fill style={{ objectFit: 'contain' }} />
         </div>
-        {/* Texte : invisible sans hover, apparaît au hover */}
         <div style={{
           position: 'absolute',
           inset: 0,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          opacity: hovered ? 1 : 0,
+          opacity: active ? 1 : 0,
           transition: 'opacity 0.6s ease',
         }}>
           <div style={{
-            padding: (width && width > 900) ? '1rem 2rem' : '0.5rem 1rem',
+            padding: '0.5rem 1rem',
             position: 'relative',
             zIndex: 1,
             textAlign: 'center',
