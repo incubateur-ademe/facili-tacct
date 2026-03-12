@@ -39,16 +39,18 @@ export const DemarcheBloc = () => {
             gap: '2rem',
           }}
         >
-          <H2 style={{ textAlign: 'center', margin: 0 }}>
-            Commencez votre démarche d'adaptation à votre rythme
-          </H2>
-          <BoutonPrimaireClassic
-            size="lg"
-            link="https://tally.so/r/n0LrEZ"
-            text="M'inscrire à une session d'accueil"
-            rel="noopener noreferrer"
-            posthogEventName="bouton_inscription_session_home"
-          />
+          <div className={styles.demarcheHeader}>
+            <H2 style={{ textAlign: 'center', margin: 0, color: "#2B4B49" }}>
+              Commencez votre démarche d'adaptation à votre rythme
+            </H2>
+            <BoutonPrimaireClassic
+              size="lg"
+              link="https://tally.so/r/n0LrEZ"
+              text="M'inscrire à une session d'accueil"
+              rel="noopener noreferrer"
+              posthogEventName="bouton_inscription_session_home"
+            />
+          </div>
 
           {/* Conteneur du stepper en vague */}
           <div style={{ position: 'relative', width: '100%', height: (width && width < 768) ? "fit-content" : "700px" }}>
@@ -60,7 +62,7 @@ export const DemarcheBloc = () => {
                 background={Etape1Background}
                 foreground={Etape1Foreground}
                 texte={
-                  <Body style={{ color: "#2B4B49" }}>
+                  <Body style={{ color: "#2B4B49", fontSize: (width && width < 900) ? '0.875rem' : '1rem' }}>
                     Une visio d'1h pour savoir <b>par où commencer</b>
                   </Body>
                 }
@@ -86,7 +88,7 @@ export const DemarcheBloc = () => {
                 background={Etape2Background}
                 foreground={Etape2Foreground}
                 texte={
-                  <Body style={{ color: "#2B4B49" }}>
+                  <Body style={{ color: "#2B4B49", fontSize: (width && width < 900) ? '0.875rem' : '1rem' }}>
                     Un <b>démarrage à la carte</b>, avec tous les liens utiles
                   </Body>
                 }
@@ -113,7 +115,7 @@ export const DemarcheBloc = () => {
                 background={Etape3Background}
                 foreground={Etape3Foreground}
                 texte={
-                  <Body style={{ color: "#2B4B49" }}>
+                  <Body style={{ color: "#2B4B49", fontSize: (width && width < 900) ? '0.875rem' : '1rem' }}>
                     Chaque mois, <b>un retour d’expérience et une discussion</b> autour d’un sujet opérationnel
                   </Body>
                 }
@@ -139,7 +141,7 @@ export const DemarcheBloc = () => {
                 background={Etape4Background}
                 foreground={Etape4Foreground}
                 texte={
-                  <Body style={{ color: "#2B4B49" }}>
+                  <Body style={{ color: "#2B4B49", fontSize: (width && width < 900) ? '0.875rem' : '1rem' }}>
                     Une <b>communauté</b> de <b>300 chargés de mission</b> de tous types de territoires
                   </Body>
                 }

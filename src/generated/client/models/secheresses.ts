@@ -32,12 +32,12 @@ export type SecheressesAvgAggregateOutputType = {
 }
 
 export type SecheressesSumAggregateOutputType = {
-  index: bigint | null
+  index: number | null
   region: number | null
 }
 
 export type SecheressesMinAggregateOutputType = {
-  index: bigint | null
+  index: number | null
   code_geographique: string | null
   libelle_geographique: string | null
   epci: string | null
@@ -53,7 +53,7 @@ export type SecheressesMinAggregateOutputType = {
 }
 
 export type SecheressesMaxAggregateOutputType = {
-  index: bigint | null
+  index: number | null
   code_geographique: string | null
   libelle_geographique: string | null
   epci: string | null
@@ -232,7 +232,7 @@ export type secheressesGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 export type SecheressesGroupByOutputType = {
-  index: bigint
+  index: number
   code_geographique: string
   libelle_geographique: string | null
   epci: string | null
@@ -271,7 +271,7 @@ export type secheressesWhereInput = {
   AND?: Prisma.secheressesWhereInput | Prisma.secheressesWhereInput[]
   OR?: Prisma.secheressesWhereInput[]
   NOT?: Prisma.secheressesWhereInput | Prisma.secheressesWhereInput[]
-  index?: Prisma.BigIntFilter<"secheresses"> | bigint | number
+  index?: Prisma.IntFilter<"secheresses"> | number
   code_geographique?: Prisma.StringFilter<"secheresses"> | string
   libelle_geographique?: Prisma.StringNullableFilter<"secheresses"> | string | null
   epci?: Prisma.StringNullableFilter<"secheresses"> | string | null
@@ -303,7 +303,7 @@ export type secheressesOrderByWithRelationInput = {
 }
 
 export type secheressesWhereUniqueInput = Prisma.AtLeast<{
-  index?: bigint | number
+  index?: number
   AND?: Prisma.secheressesWhereInput | Prisma.secheressesWhereInput[]
   OR?: Prisma.secheressesWhereInput[]
   NOT?: Prisma.secheressesWhereInput | Prisma.secheressesWhereInput[]
@@ -346,7 +346,7 @@ export type secheressesScalarWhereWithAggregatesInput = {
   AND?: Prisma.secheressesScalarWhereWithAggregatesInput | Prisma.secheressesScalarWhereWithAggregatesInput[]
   OR?: Prisma.secheressesScalarWhereWithAggregatesInput[]
   NOT?: Prisma.secheressesScalarWhereWithAggregatesInput | Prisma.secheressesScalarWhereWithAggregatesInput[]
-  index?: Prisma.BigIntWithAggregatesFilter<"secheresses"> | bigint | number
+  index?: Prisma.IntWithAggregatesFilter<"secheresses"> | number
   code_geographique?: Prisma.StringWithAggregatesFilter<"secheresses"> | string
   libelle_geographique?: Prisma.StringNullableWithAggregatesFilter<"secheresses"> | string | null
   epci?: Prisma.StringNullableWithAggregatesFilter<"secheresses"> | string | null
@@ -362,7 +362,7 @@ export type secheressesScalarWhereWithAggregatesInput = {
 }
 
 export type secheressesCreateInput = {
-  index: bigint | number
+  index: number
   code_geographique: string
   libelle_geographique?: string | null
   epci?: string | null
@@ -378,7 +378,7 @@ export type secheressesCreateInput = {
 }
 
 export type secheressesUncheckedCreateInput = {
-  index: bigint | number
+  index: number
   code_geographique: string
   libelle_geographique?: string | null
   epci?: string | null
@@ -394,7 +394,7 @@ export type secheressesUncheckedCreateInput = {
 }
 
 export type secheressesUpdateInput = {
-  index?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_geographique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   epci?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -410,7 +410,7 @@ export type secheressesUpdateInput = {
 }
 
 export type secheressesUncheckedUpdateInput = {
-  index?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_geographique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   epci?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -426,7 +426,7 @@ export type secheressesUncheckedUpdateInput = {
 }
 
 export type secheressesCreateManyInput = {
-  index: bigint | number
+  index: number
   code_geographique: string
   libelle_geographique?: string | null
   epci?: string | null
@@ -442,7 +442,7 @@ export type secheressesCreateManyInput = {
 }
 
 export type secheressesUpdateManyMutationInput = {
-  index?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_geographique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   epci?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -458,7 +458,7 @@ export type secheressesUpdateManyMutationInput = {
 }
 
 export type secheressesUncheckedUpdateManyInput = {
-  index?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_geographique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   epci?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -603,7 +603,7 @@ export type $secheressesPayload<ExtArgs extends runtime.Types.Extensions.Interna
   name: "secheresses"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    index: bigint
+    index: number
     code_geographique: string
     libelle_geographique: string | null
     epci: string | null
@@ -1039,7 +1039,7 @@ export interface Prisma__secheressesClient<T, Null = never, ExtArgs extends runt
  * Fields of the secheresses model
  */
 export interface secheressesFieldRefs {
-  readonly index: Prisma.FieldRef<"secheresses", 'BigInt'>
+  readonly index: Prisma.FieldRef<"secheresses", 'Int'>
   readonly code_geographique: Prisma.FieldRef<"secheresses", 'String'>
   readonly libelle_geographique: Prisma.FieldRef<"secheresses", 'String'>
   readonly epci: Prisma.FieldRef<"secheresses", 'String'>

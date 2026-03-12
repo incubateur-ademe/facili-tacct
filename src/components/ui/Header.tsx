@@ -1,12 +1,14 @@
 'use client';
 
 import maisonIcon from '@/assets/icons/maison_icon_black.svg';
+import MonCompteIcone from '@/assets/icons/mon-compte-icon-green.svg';
 import { getLastTerritory } from '@/components/searchbar/fonctions';
+import { Body } from '@/design-system/base/Textes';
 import { handleRedirection } from '@/hooks/Redirections';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import Header from '@codegouvfr/react-dsfr/Header';
 import Image from 'next/image';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { Brand } from '../Brand';
@@ -14,6 +16,7 @@ import HeaderRechercheTerritoire from '../searchbar/header/HeaderRechercheTerrit
 
 const HeaderComp = () => {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const params = usePathname();
   const urlCode = searchParams.get('code');
   const urlLibelle = searchParams.get('libelle');
@@ -91,13 +94,36 @@ const HeaderComp = () => {
         imgUrl: '/logo-ademe-tacct.png',
         orientation: 'horizontal'
       }}
-      quickAccessItems={windowDimensions.width && windowDimensions.width < 992 && displayType && params !== "/" ? [] : displayType && params !== "/" ? [
-        <HeaderRechercheTerritoire
-          libelle={displayLibelle ?? ''}
-          code={displayCode ?? ''}
-          type={displayType}
-        />
-      ] : []}
+      quickAccessItems={
+        params === "/home" && !displayType
+          ? [
+            <button
+              className='flex flex-row items-center'
+              onClick={() => router.push('/mon-compte')}
+            >
+              <Image
+                src={MonCompteIcone}
+                alt="Mon compte"
+                width={16}
+                height={16}
+              />
+              <Body style={{ marginLeft: "0.5rem", color: "var(--principales-vert)" }}>
+                Mon compte
+              </Body>
+            </button>
+          ]
+          : windowDimensions.width && windowDimensions.width < 992 && displayType && params !== "/"
+            ? []
+            : displayType && params !== "/"
+              ? [
+                <HeaderRechercheTerritoire
+                  key="recherche-territoire"
+                  libelle={displayLibelle ?? ''}
+                  code={displayCode ?? ''}
+                  type={displayType}
+                />
+              ] : []
+      }
       navigation={params !== "/" ? [
         {
           linkProps: {

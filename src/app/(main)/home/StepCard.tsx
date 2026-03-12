@@ -91,8 +91,8 @@ export const StepCard = ({
             style={{
               color: '#2B4B49',
               position: 'absolute',
-              inset: 0, 
-              opacity: hovered ? 1 : 0, 
+              inset: 0,
+              opacity: hovered ? 1 : 0,
               transition: 'opacity 0.6s ease',
               letterSpacing: "0.2px"
             }}
@@ -149,8 +149,7 @@ export const StepCard = ({
           transition: 'opacity 0.6s ease',
         }}>
           <div style={{
-            fontSize: '0.875rem',
-            padding: '1rem 2rem',
+            padding: (width && width > 900) ? '1rem 2rem' : '0.5rem 1rem',
             position: 'relative',
             zIndex: 1,
             textAlign: 'center',

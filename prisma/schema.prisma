@@ -971,7 +971,7 @@ model thematique {
 }
 
 model secheresses {
-  index                BigInt  @id
+  index                Int     @id
   code_geographique    String
   libelle_geographique String?
   epci                 String?
@@ -1059,6 +1059,63 @@ model prelevements_eau_new {
   libelle_petr         String?
   code_pnr             String?
   libelle_pnr          String?
+  annee_2008_aep       Float
+  annee_2008_bar       Float
+  annee_2008_can       Float
+  annee_2008_ene       Float
+  annee_2008_ind       Float
+  annee_2008_irr       Float
+  annee_2009_aep       Float
+  annee_2009_bar       Float
+  annee_2009_can       Float
+  annee_2009_ene       Float
+  annee_2009_ind       Float
+  annee_2009_irr       Float
+  annee_2010_aep       Float
+  annee_2010_bar       Float
+  annee_2010_can       Float
+  annee_2010_ene       Float
+  annee_2010_ind       Float
+  annee_2010_irr       Float
+  annee_2011_aep       Float
+  annee_2011_bar       Float
+  annee_2011_can       Float
+  annee_2011_ene       Float
+  annee_2011_ind       Float
+  annee_2011_irr       Float
+  annee_2012_aep       Float
+  annee_2012_bar       Float
+  annee_2012_can       Float
+  annee_2012_ene       Float
+  annee_2012_exo       Float
+  annee_2012_ind       Float
+  annee_2012_irr       Float
+  annee_2013_aep       Float
+  annee_2013_bar       Float
+  annee_2013_can       Float
+  annee_2013_ene       Float
+  annee_2013_ind       Float
+  annee_2013_irr       Float
+  annee_2014_aep       Float
+  annee_2014_bar       Float
+  annee_2014_can       Float
+  annee_2014_ene       Float
+  annee_2014_ind       Float
+  annee_2014_irr       Float
+  annee_2015_aep       Float
+  annee_2015_bar       Float
+  annee_2015_can       Float
+  annee_2015_ene       Float
+  annee_2015_exo       Float
+  annee_2015_ind       Float
+  annee_2015_irr       Float
+  annee_2016_aep       Float
+  annee_2016_bar       Float
+  annee_2016_can       Float
+  annee_2016_ene       Float
+  annee_2016_exo       Float
+  annee_2016_ind       Float
+  annee_2016_irr       Float
   annee_2017_aep       Float
   annee_2017_bar       Float
   annee_2017_can       Float

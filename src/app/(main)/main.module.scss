@@ -122,7 +122,7 @@ $height-notice: 461px;
         flex-direction: column;
     }
     .patch4Wrapper {
-        margin-top: 4rem
+        margin-top: 4rem;
     }
 }
 
@@ -246,6 +246,19 @@ $height-notice: 461px;
 }
 
 // Démarche Bloc
+.demarcheHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 10rem;
+    border-radius: 8px;
+
+    &:hover {
+        background-color: #a2c6c340;
+    }
+}
+
 .demarcheBlocWrapper {
     display: flex;
     flex-direction: row;
@@ -382,7 +395,7 @@ $height-notice: 461px;
     background-color: #fff; //#f9f9ff;
     border-radius: 0.5em;
     border: solid 1px var(--principales-vert);
-    z-index: 500;
+    z-index: 1000;
     .acceptCookieBtn {
         color: var(--principales-vert);
         border-radius: 4px;
