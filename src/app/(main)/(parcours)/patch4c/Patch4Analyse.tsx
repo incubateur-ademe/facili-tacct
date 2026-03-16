@@ -1,6 +1,8 @@
 'use client';
 
+import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { ExportPngSimple } from "@/components/exports/ExportPng";
+import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { NewContainer } from "@/design-system/layout";
 import { Patch4 } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
@@ -78,7 +80,11 @@ export const Patch4Analyse = ({
                 onSelectAlea={handleSelectAlea}
               />
             </>
-          ) : <p>Aucune donnée disponible pour ce territoire.</p>
+          ) : (
+            <div className="p-10 flex flex-row justify-center">
+              <DataNotFoundForGraph image={DataNotFound} />
+            </div>
+          )
         }
       </NewContainer>
     </>
