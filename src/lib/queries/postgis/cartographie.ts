@@ -28,8 +28,8 @@ import { prisma } from '../db';
 //       else {
 //         if (type === 'commune') {
 //           const value = await prisma.$queryRaw<CarteCommunes[]>`
-//             SELECT 
-//             epci, 
+//             SELECT
+//             epci,
 //             libelle_epci,
 //             libelle_geographique,
 //             code_geographique,
@@ -40,19 +40,19 @@ import { prisma } from '../db';
 //             departement,
 //             libelle_departement,
 //             region,
-//             coordinates, 
+//             coordinates,
 //             precarite_logement,
 //             surface,
-//             ST_AsGeoJSON(geometry) geometry 
-//             FROM postgis_v2."communes_drom" 
+//             ST_AsGeoJSON(geometry) geometry
+//             FROM postgis_v2."communes_drom"
 //             WHERE epci = (
 //               SELECT epci FROM postgis_v2."communes_drom" WHERE code_geographique = ${code} LIMIT 1
 //               );`;
 //           return value;
 //         } else if (type === 'ept' && eptRegex.test(libelle)) {
 //           const value = await prisma.$queryRaw<CarteCommunes[]>`
-//             SELECT 
-//               epci, 
+//             SELECT
+//               epci,
 //               libelle_epci,
 //               libelle_geographique,
 //               code_geographique,
@@ -63,66 +63,66 @@ import { prisma } from '../db';
 //               departement,
 //               libelle_departement,
 //               region,
-//               coordinates, 
+//               coordinates,
 //               precarite_logement,
 //               surface,
-//               ST_AsGeoJSON(geometry) geometry 
+//               ST_AsGeoJSON(geometry) geometry
 //               FROM postgis_v2."communes_drom" WHERE epci='200054781';`;
 //           return value;
 //         } else if (type === 'epci' && !eptRegex.test(libelle)) {
 //           const value = await prisma.$queryRaw<CarteCommunes[]>`
-//             SELECT 
-//             epci, 
+//             SELECT
+//             epci,
 //             libelle_epci,
 //             libelle_geographique,
 //             code_geographique,
 //             ept,
 //             departement,
 //             libelle_departement,
-//             coordinates, 
+//             coordinates,
 //             precarite_logement,
 //             surface,
-//             ST_AsGeoJSON(geometry) geometry 
+//             ST_AsGeoJSON(geometry) geometry
 //             FROM postgis_v2."communes_drom" WHERE epci=${code};`;
 //           return value;
 //         } else if (type === 'pnr') {
 //           const value = await prisma.$queryRaw<CarteCommunes[]>`
-//           SELECT 
+//           SELECT
 //             libelle_geographique,
 //             code_geographique,
 //             code_pnr,
 //             libelle_pnr,
 //             departement,
 //             libelle_departement,
-//             coordinates, 
+//             coordinates,
 //             precarite_logement,
 //             surface,
-//             ST_AsGeoJSON(geometry) geometry 
+//             ST_AsGeoJSON(geometry) geometry
 //             FROM postgis_v2."communes_drom" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
 //           return value;
 //         } else if (type === 'petr') {
 //           const value = await prisma.$queryRaw<CarteCommunes[]>`
-//             SELECT 
+//             SELECT
 //               libelle_geographique,
-//               code_geographique,
-//               departement,
-//               libelle_departement,
-//               coordinates, 
-//               precarite_logement,
-//               surface,
-//               ST_AsGeoJSON(geometry) geometry 
-//               FROM postgis_v2."communes_drom" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
-//           return value;
-//         } else {
-//           const value = await prisma.$queryRaw<CarteCommunes[]>`
-//             SELECT 
 //               code_geographique,
 //               departement,
 //               libelle_departement,
 //               coordinates,
 //               precarite_logement,
 //               surface,
-//               ST_AsGeoJSON(geometry) geometry 
+//               ST_AsGeoJSON(geometry) geometry
+//               FROM postgis_v2."communes_drom" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
+//           return value;
+//         } else {
+//           const value = await prisma.$queryRaw<CarteCommunes[]>`
+//             SELECT
+//               code_geographique,
+//               departement,
+//               libelle_departement,
+//               coordinates,
+//               precarite_logement,
+//               surface,
+//               ST_AsGeoJSON(geometry) geometry
 //               FROM postgis_v2."communes_drom" WHERE departement=${code};`;
 //           return value;
 //         }
@@ -173,7 +173,7 @@ export const GetCommunesCoordinates = async (
             maxlat: number;
           }>
         >`
-          SELECT 
+          SELECT
             array_agg(code_geographique) as codes,
             ST_XMin(ST_Extent(geometry)) as minLng,
             ST_YMin(ST_Extent(geometry)) as minLat,
@@ -192,7 +192,7 @@ export const GetCommunesCoordinates = async (
             maxlat: number;
           }>
         >`
-          SELECT 
+          SELECT
             array_agg(code_geographique) as codes,
             ST_XMin(ST_Extent(geometry)) as minLng,
             ST_YMin(ST_Extent(geometry)) as minLat,
@@ -211,7 +211,7 @@ export const GetCommunesCoordinates = async (
             maxlat: number;
           }>
         >`
-          SELECT 
+          SELECT
             array_agg(code_geographique) as codes,
             ST_XMin(ST_Extent(geometry)) as minLng,
             ST_YMin(ST_Extent(geometry)) as minLat,
@@ -230,7 +230,7 @@ export const GetCommunesCoordinates = async (
             maxlat: number;
           }>
         >`
-          SELECT 
+          SELECT
             array_agg(code_geographique) as codes,
             ST_XMin(ST_Extent(geometry)) as minLng,
             ST_YMin(ST_Extent(geometry)) as minLat,
@@ -249,7 +249,7 @@ export const GetCommunesCoordinates = async (
             maxlat: number;
           }>
         >`
-          SELECT 
+          SELECT
             array_agg(code_geographique) as codes,
             ST_XMin(ST_Extent(geometry)) as minLng,
             ST_YMin(ST_Extent(geometry)) as minLat,
@@ -268,7 +268,7 @@ export const GetCommunesCoordinates = async (
             maxlat: number;
           }>
         >`
-          SELECT 
+          SELECT
             array_agg(code_geographique) as codes,
             ST_XMin(ST_Extent(geometry)) as minLng,
             ST_YMin(ST_Extent(geometry)) as minLat,
@@ -334,7 +334,7 @@ export const GetErosionCotiere = async (
           SELECT
           code_geographique,
           ST_AsText(geometry) geometry
-          FROM postgis_v2."communes_drom" 
+          FROM postgis_v2."communes_drom"
           WHERE code_geographique=${code} LIMIT 1;`;
         if (commune.length !== 0) {
           const intersect = await prisma.$queryRaw<CarteCommunes[]>`
@@ -347,7 +347,7 @@ export const GetErosionCotiere = async (
               SELECT
               taux,
               ST_AsGeoJSON(geometry) geometry
-              FROM postgis_v2."erosion_cotiere" 
+              FROM postgis_v2."erosion_cotiere"
               WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${commune[0].geometry})), 4326), ${distance});
             `;
             const envelope = await prisma.$queryRaw<{ envelope: string }[]>`
@@ -376,7 +376,7 @@ export const GetErosionCotiere = async (
             SELECT
             taux,
             ST_AsGeoJSON(geometry) geometry
-            FROM postgis_v2."erosion_cotiere" 
+            FROM postgis_v2."erosion_cotiere"
             WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), ${distance});
             `;
             const envelope = await prisma.$queryRaw<{ envelope: string }[]>`
@@ -391,7 +391,7 @@ export const GetErosionCotiere = async (
         return [];
       } else if (type === 'pnr') {
         const pnr = await prisma.$queryRaw<CarteCommunes[]>`
-          SELECT 
+          SELECT
           ST_AsText(ST_Union(geometry)) as geometry
           FROM postgis_v2."communes_drom" WHERE code_pnr LIKE '%' || ${code} || '%';`;
         if (pnr.length !== 0) {
@@ -419,7 +419,7 @@ export const GetErosionCotiere = async (
         } else return [];
       } else if (type === 'petr') {
         const petr = await prisma.$queryRaw<CarteCommunes[]>`
-          SELECT 
+          SELECT
           ST_AsText(ST_Union(geometry)) as geometry
           FROM postgis_v2."communes_drom" WHERE libelle_petr=${libelle};`;
         if (petr.length !== 0) {
@@ -447,7 +447,7 @@ export const GetErosionCotiere = async (
         } else return [];
       } else if (type === 'departement') {
         const departement = await prisma.$queryRaw<CarteCommunes[]>`
-          SELECT 
+          SELECT
           ST_AsText(ST_Union(geometry)) as geometry
           FROM postgis_v2."communes_drom" WHERE departement=${code};`;
         if (departement.length !== 0) {
@@ -588,39 +588,39 @@ export const GetCommunesGeometries = async (
       else {
         if (type === 'commune') {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
-            SELECT 
-            ST_AsText(geometry) as geometry 
-            FROM postgis_v2."communes_drom" 
+            SELECT
+            ST_AsText(geometry) as geometry
+            FROM postgis_v2."communes_drom"
             WHERE code_geographique = ${code} LIMIT 1
           ;`;
           return value;
         } else if (type === 'ept' && eptRegex.test(libelle)) {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
-            SELECT 
+            SELECT
               ST_AsText(ST_Union(geometry)) as geometry
               FROM postgis_v2."communes_drom" WHERE ept IS NOT NULL AND ept=${libelle};`;
           return value;
         } else if (type === 'epci' && !eptRegex.test(libelle)) {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
-            SELECT 
-            ST_AsText(ST_Union(geometry)) as geometry 
+            SELECT
+            ST_AsText(ST_Union(geometry)) as geometry
             FROM postgis_v2."communes_drom" WHERE epci IS NOT NULL AND epci=${code};`;
           return value;
         } else if (type === 'pnr') {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
-          SELECT 
+          SELECT
             ST_AsText(ST_Union(geometry)) as geometry
             FROM postgis_v2."communes_drom" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
           return value;
         } else if (type === 'petr') {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
-            SELECT 
+            SELECT
               ST_AsText(ST_Union(geometry)) as geometry
               FROM postgis_v2."communes_drom" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
           return value;
         } else {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
-            SELECT 
+            SELECT
               ST_AsText(ST_Union(geometry)) as geometry
               FROM postgis_v2."communes_drom" WHERE departement IS NOT NULL AND departement=${code};`;
           return value;
