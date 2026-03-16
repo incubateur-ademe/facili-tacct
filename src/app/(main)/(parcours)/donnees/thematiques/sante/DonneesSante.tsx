@@ -71,6 +71,9 @@ export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
           Ces données vous aideront à poser les bonnes questions,
           le terrain vous donnera les vraies réponses.
         </Body>
+        <Body size="lg" style={{ fontStyle: "italic", marginTop: "1rem" }}>
+          À noter : Ces données représentent les informations les plus récentes disponibles à l'échelle nationale.
+        </Body>
       </section>
 
       {/* Section Santé */}
@@ -102,7 +105,7 @@ export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
             </H3>
           </div>
           <Arbovirose arbovirose={arbovirose} />
-          
+
         </div>
       </section>
 

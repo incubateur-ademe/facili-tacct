@@ -73,7 +73,7 @@ export const LCZ = ({
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
           Source : {
             isLczCovered
-              ? "CEREMA, 2024 (consultée en décembre 2024)"
+              ? "CEREMA, 2025 (consultée en 2026)"
               : <a
                 href="https://doi.org/10.5194/essd-14-3835-2022"
                 target="_blank"
