@@ -6,7 +6,10 @@ import {
   debroussaillement,
   directiveCadreSurLeau,
   eutrophisation,
-  irriguee
+  irriguee,
+  OMS,
+  ozone,
+  valeursGuidesO3
 } from '@/lib/definitions';
 
 {
@@ -94,7 +97,7 @@ export const VegetalisationText = () => (
       La présence d’arbres peut rafraîchir l’air de 2 à 3 °C au maximum,
       notamment dans les rues ou lorsqu’ils sont alignés en bordure de route
       (source :{' '}
-      <a href="https://plusfraichemaville.fr/" target="_blank" rel="noopener noreferrer">
+      <a href="https://plusfraichemaville.fr/" target="_blank" rel="noreferrer">
         Plus fraiche ma ville
       </a>
       )
@@ -702,9 +705,14 @@ export const LCZText = () => (
 
 export const AiresAppellationsControleesText = () => (
   <>
-    <Body size="sm">
-      AIRES APPELLATIONS CONTRÔLÉES (AOC) ET INDICATIONS GÉOGRAPHIQUES PROTÉGÉES
-      (IGP)
+    <Body size="sm" style={{ marginTop: '2rem' }}>
+      Le changement climatique vient progressivement remettre en cause les liens
+      historiquement construits entre produits, terroirs et savoir-faire locaux reconnus.
+      Parallèlement, les attentes des consommateurs évoluent : au-delà de l’origine et
+      de la qualité, ils exigent désormais une exemplarité environnementale accrue. Cette
+      double pression interroge la capacité des appellations contrôlées à évoluer sans affaiblir
+      leur identité, alors même qu’elles jouent un rôle structurant dans l’économie des territoires
+      et participent fortement à leur attractivité touristique et à leur image de marque.
     </Body>
   </>
 );
@@ -754,6 +762,44 @@ export const DebroussaillementText = ({
         90 % des maisons détruites
       </ScrollToSourceTag>{' '}
       se situent sur des terrains pas ou mal débroussaillés.
+    </Body>
+  </>
+);
+
+export const O3Text = () => (
+  <Body size="sm">
+    <DefinitionTooltip title={ozone}>L’ozone</DefinitionTooltip>{' '}
+    (O3) fait partie des 4 polluants atmosphériques pour lesquels il existe
+    une réglementation et des seuils conduisant aux déclenchement de procédures
+    préfectorales. Si les pics de pollution aiguë provoquent des symptômes
+    respiratoires immédiats, l’exposition chronique constitue un enjeu sanitaire
+    plus préoccupant : elle est associée à des effets à long terme, même à des
+    concentrations ne déclenchant pas nécessairement d’alerte. C’est notamment pourquoi
+    l’<DefinitionTooltip title={OMS}>OMS</DefinitionTooltip> {" "}
+    recommande <DefinitionTooltip title={valeursGuidesO3}>des valeurs guides </DefinitionTooltip>
+    plus strictes que le seuil européen actuel. À titre d’exemple, en 2022, <b>seules 12 % des
+    agglomérations françaises le dépassaient alors que 95 % d’entre elles auraient été
+    en dépassement si les <ScrollToSourceTag sourceNumero={1}>valeurs guides de l’OMS avaient été
+      appliquées </ScrollToSourceTag>.</b>
+  </Body>
+);
+
+export const SecheressesText = () => (
+  <>
+    <Body size="sm" style={{ marginTop: '2rem' }}>
+      La sécheresse est un déficit hydrique prolongé - dû à un manque de précipitations ou
+      à une utilisation excessive de la ressource - suffisant pour affecter les sols, la
+      végétation et les milieux aquatiques. Cyclique ou exceptionnelle, elle entraîne des
+      conséquences en cascade : assèchement des cours d'eau, tensions sur l'approvisionnement
+      en eau potable, risques accrus d'incendies…
+    </Body>
+    <Body size="sm" style={{ marginTop: '1rem' }}>
+      Le nombre de jours cumulés par niveau de restriction renseigne sur la fréquence
+      et la sévérité des épisodes de sécheresse. La présence récurrente de niveaux élevés
+      (alerte renforcée ou crise) révèle une vulnérabilité structurelle : la ressource
+      disponible est régulièrement insuffisante pour satisfaire l'ensemble des usages,
+      traduisant un déséquilibre chronique entre offre et demande en eau, indépendamment
+      de toute aggravation future.
     </Body>
   </>
 );

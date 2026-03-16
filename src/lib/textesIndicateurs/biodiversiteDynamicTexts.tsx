@@ -210,3 +210,14 @@ export const AOT40DynamicText = ({
     </>
   );
 };
+
+
+export const O3DynamicText = () => {
+  return (
+    <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
+      Au niveau européen, la valeur cible pour la protection de la santé humaine 
+      est fixé à un maximum journalier de la moyenne sur 8 h de 120 µg/m3, à ne 
+      pas dépasser plus de <b>25 jours par an</b> (en moyenne sur 3 ans).
+    </Body>
+  )
+};

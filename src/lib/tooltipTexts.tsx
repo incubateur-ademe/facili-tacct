@@ -375,7 +375,57 @@ export const SurfacesToujoursEnHerbeText = (
 );
 
 export const airesAppellationsControleesTooltipText = (
+  <>
+    <Body weight="bold" size="sm">
+      Les «
+      <a href="https://agriculture.gouv.fr/bien-connaitre-les-produits-de-lorigine-et-de-la-qualite" target="_blank" rel="noopener noreferrer">
+        signes d’identification de qualité et d’origine
+      </a> » (SIQO) garantissent la qualité et l’origine des produits alimentaires (fromages, vins, viandes…). Reconnus au
+      niveau européen depuis 1992, AOP [AOC] et IGP certifient un savoir-faire traditionnel et des contrôles réguliers ; ils
+      ne sont pas cumulables.
+    </Body>
+    <Body weight="bold" size="sm" style={{ marginTop: '1rem' }}>
+      Indication Géographique Protégée (IGP) : Au moins une étape de production est réalisée dans une
+      zone géographique donnée, conférant au produit une spécificité locale.
+    </Body>
+    <Body weight="bold" size="sm" style={{ marginTop: '1rem' }}>
+      L’AOC (Appellation d’Origine Contrôlée) est l’équivalent national de l’AOP européen (Appellation d’Origine Protégée) pour
+      les produits agroalimentaires et viticoles : toutes les étapes de fabrication doivent être réalisées
+      selon un savoir-faire reconnu et dans une même zone géographique. Mais l’AOC peut aussi concerner des
+      produits non couverts par l’Union Européenne (comme ceux de la forêt).
+    </Body>
+  </>
+);
+
+export const O3TooltipText = (
   <Body weight="bold" size="sm">
-    TOOLTIP
+    Les données de la carte sont calculées par l’Institut national de l'environnement industriel
+    et des risques (Ineris) d'après des concentrations analysées, combinant modèle et observations.
+    La carte est visible sur leur{' '}
+    <a
+      href="https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      site
+    </a>
+    .
   </Body>
+);
+
+export const secheressesPasseesTooltipText = (
+  <>
+    <Body weight="bold" size="sm">
+      Il s’agit du nombre de jours où des mesures exceptionnelles de limitation ou de suspension
+      des usages de l’eau non prioritaires sont prises par les préfets (arrêtés “sécheresse”).
+    </Body>
+    <Body weight="bold" size="sm" style={{ marginTop: '1rem' }}>
+      Pour chaque jour de l'année la plus touchée (entre 2020 et 2025), un jour est comptabilisé si au moins
+      une des communes est en restriction sécheresse, quelque soit son niveau de gravité. Le total annuel
+      est ensuite divisé par 12 pour obtenir une moyenne mensuelle.
+    </Body>
+    <Body weight="bold" size="sm" style={{ marginTop: '1rem' }}>
+      La distinction entre eaux souterraines, eaux superficielles et eau potable n’est pas présentée ici.
+    </Body>
+  </>
 );

@@ -68,7 +68,7 @@ export const sommaireThematiques = {
         id: 'section1',
         thematique: 'Gestion des risques',
         icone: '🚧',
-        sousCategories: ['Arrêtés CatNat', 'Feux de forêt', 'Débroussaillement']
+        sousCategories: ['Arrêtés CatNat', 'Feux de forêt', 'Débroussaillement', 'Sécheresses passées']
       },
       {
         id: 'section2',
@@ -101,6 +101,12 @@ export const sommaireThematiques = {
         icone: '🌼',
         sousCategories: ['Surfaces en bio']
       },
+      {
+        id: 'section4',
+        thematique: 'Tourisme',
+        icone: '🏖️',
+        sousCategories: ['Appellations contrôlées']
+      }
     ]
   },
   Aménagement: {
@@ -126,10 +132,10 @@ export const sommaireThematiques = {
   Santé: {
     thematiquesLiees: [
       {
-        id: 'section1',
-        thematique: 'Santé',
-        icone: '🏥',
-        sousCategories: ['Seuils réglementaires O3']
+        id: 'section2',
+        thematique: 'Air',
+        icone: '💨',
+        sousCategories: ['Pollution à l’ozone']
       }
     ]
   }
@@ -143,7 +149,7 @@ export const sommaireImpacts = {
     },
     {
       id: 'section2',
-      titre: 'Prendre RDV avec TACCT'
+      titre: 'Associer les parties prenantes'
     }
   ],
   Biodiversité: [],
@@ -155,7 +161,7 @@ export const sommaireImpacts = {
     },
     {
       id: 'section2',
-      titre: 'Prendre RDV avec TACCT'
+      titre: 'Associer les parties prenantes'
     }
   ],
   Aménagement: [],
@@ -242,7 +248,24 @@ export const thematiquesInfo: {
   },
   Santé: {
     title: 'Santé',
-    description: <div></div>,
+    description: <div>
+      <Body size="sm" style={{ marginBottom: '1rem' }}>
+          Le changement climatique ne menace pas la santé directement : il 
+          dégrade d'abord les conditions qui la rendent possible. Plus que 
+          les catastrophes, ce sont souvent des mécanismes lents et cumulatifs 
+          qui fragilisent la santé publique, à travers quatre grands canaux de 
+          dégradation progressive :
+        </Body>
+        <div className="flex flex-col">
+          <Body size="sm">💨 Qualité de l’air</Body>
+          <Body size="sm">🌼 Biodiversité</Body>
+          <Body size="sm">💧 Eau</Body>
+          <Body size="sm">🌡️ Confort thermique</Body>
+        </div>
+        <Body size="sm" margin="1rem 0">
+          👉 La santé des habitants se joue aussi dans la qualité de vos écosystèmes.
+        </Body>
+    </div>,
     link: 'Santé'
   },
   Forêts: {

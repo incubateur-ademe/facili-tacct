@@ -68,13 +68,16 @@ export const ModelName = {
   databases_v2_qualite_sites_baignade: 'databases_v2_qualite_sites_baignade',
   databases_v2_rga: 'databases_v2_rga',
   databases_v2_surfaces_agricoles: 'databases_v2_surfaces_agricoles',
-  databases_v2_surfaces_protegees: 'databases_v2_surfaces_protegees',
   databases_v2_table_commune: 'databases_v2_table_commune',
   databases_v2_table_territoires: 'databases_v2_table_territoires',
   postgis_v2_communes_drom: 'postgis_v2_communes_drom',
   postgis_v2_erosion_cotiere: 'postgis_v2_erosion_cotiere',
   postgis_v2_etat_cours_d_eau: 'postgis_v2_etat_cours_d_eau',
-  spatial_ref_sys: 'spatial_ref_sys'
+  spatial_ref_sys: 'spatial_ref_sys',
+  prelevements_eau_new: 'prelevements_eau_new',
+  qualite_sites_baignade_new: 'qualite_sites_baignade_new',
+  o3_seuils: 'o3_seuils',
+  secheresses: 'secheresses'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -298,7 +301,19 @@ export const Databases_v2_confort_thermiqueScalarFieldEnum = {
   clc_3_foret_semiNaturel: 'clc_3_foret_semiNaturel',
   clc_4_humide: 'clc_4_humide',
   clc_5_eau: 'clc_5_eau',
-  superf_choro: 'superf_choro'
+  superf_choro: 'superf_choro',
+  under_4_sum_2006: 'under_4_sum_2006',
+  to_75_sum_2006: 'to_75_sum_2006',
+  over_75_sum_2006: 'over_75_sum_2006',
+  under_4_sum_2011: 'under_4_sum_2011',
+  to_75_sum_2011: 'to_75_sum_2011',
+  over_75_sum_2011: 'over_75_sum_2011',
+  under_4_sum_2016: 'under_4_sum_2016',
+  to_75_sum_2016: 'to_75_sum_2016',
+  over_75_sum_2016: 'over_75_sum_2016',
+  under_4_sum_2022: 'under_4_sum_2022',
+  to_75_sum_2022: 'to_75_sum_2022',
+  over_75_sum_2022: 'over_75_sum_2022'
 } as const
 
 export type Databases_v2_confort_thermiqueScalarFieldEnum = (typeof Databases_v2_confort_thermiqueScalarFieldEnum)[keyof typeof Databases_v2_confort_thermiqueScalarFieldEnum]
@@ -505,7 +520,17 @@ export const Databases_v2_patch4cScalarFieldEnum = {
   feux_foret: 'feux_foret',
   secheresse_sols: 'secheresse_sols',
   fortes_precipitations: 'fortes_precipitations',
-  fortes_chaleurs: 'fortes_chaleurs'
+  fortes_chaleurs: 'fortes_chaleurs',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr'
 } as const
 
 export type Databases_v2_patch4cScalarFieldEnum = (typeof Databases_v2_patch4cScalarFieldEnum)[keyof typeof Databases_v2_patch4cScalarFieldEnum]
@@ -655,38 +680,6 @@ export const Databases_v2_surfaces_agricolesScalarFieldEnum = {
 export type Databases_v2_surfaces_agricolesScalarFieldEnum = (typeof Databases_v2_surfaces_agricolesScalarFieldEnum)[keyof typeof Databases_v2_surfaces_agricolesScalarFieldEnum]
 
 
-export const Databases_v2_surfaces_protegeesScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  PNC: 'PNC',
-  RAMSAR: 'RAMSAR',
-  PNR: 'PNR',
-  PNP: 'PNP',
-  FOR_PRO: 'FOR_PRO',
-  ZZZ: 'ZZZ',
-  ZNIEFF2: 'ZNIEFF2',
-  ZNIEFF1: 'ZNIEFF1',
-  RNR: 'RNR',
-  TOU_PRO: 'TOU_PRO',
-  NATURA: 'NATURA',
-  ZPS: 'ZPS',
-  SIC: 'SIC',
-  CELRL: 'CELRL',
-  BIO: 'BIO',
-  APB: 'APB',
-  RN: 'RN',
-  RBFD: 'RBFD',
-  RNCFS: 'RNCFS',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  region: 'region'
-} as const
-
-export type Databases_v2_surfaces_protegeesScalarFieldEnum = (typeof Databases_v2_surfaces_protegeesScalarFieldEnum)[keyof typeof Databases_v2_surfaces_protegeesScalarFieldEnum]
-
-
 export const Databases_v2_table_communeScalarFieldEnum = {
   index: 'index',
   code_geographique: 'code_geographique',
@@ -707,7 +700,9 @@ export const Databases_v2_table_communeScalarFieldEnum = {
   otex_12_postes: 'otex_12_postes',
   part_irr_sau_2020: 'part_irr_sau_2020',
   agriculture_part_over_55: 'agriculture_part_over_55',
-  couverture_lcz: 'couverture_lcz'
+  couverture_lcz: 'couverture_lcz',
+  aires_appellations_controlees_nom: 'aires_appellations_controlees_nom',
+  aires_appellations_controlees_signe: 'aires_appellations_controlees_signe'
 } as const
 
 export type Databases_v2_table_communeScalarFieldEnum = (typeof Databases_v2_table_communeScalarFieldEnum)[keyof typeof Databases_v2_table_communeScalarFieldEnum]
@@ -782,6 +777,117 @@ export const Spatial_ref_sysScalarFieldEnum = {
 } as const
 
 export type Spatial_ref_sysScalarFieldEnum = (typeof Spatial_ref_sysScalarFieldEnum)[keyof typeof Spatial_ref_sysScalarFieldEnum]
+
+
+export const Prelevements_eau_newScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  annee_2017_aep: 'annee_2017_aep',
+  annee_2017_bar: 'annee_2017_bar',
+  annee_2017_can: 'annee_2017_can',
+  annee_2017_ene: 'annee_2017_ene',
+  annee_2017_exo: 'annee_2017_exo',
+  annee_2017_ind: 'annee_2017_ind',
+  annee_2017_irr: 'annee_2017_irr',
+  annee_2018_aep: 'annee_2018_aep',
+  annee_2018_bar: 'annee_2018_bar',
+  annee_2018_can: 'annee_2018_can',
+  annee_2018_ene: 'annee_2018_ene',
+  annee_2018_exo: 'annee_2018_exo',
+  annee_2018_ind: 'annee_2018_ind',
+  annee_2018_irr: 'annee_2018_irr',
+  annee_2019_aep: 'annee_2019_aep',
+  annee_2019_bar: 'annee_2019_bar',
+  annee_2019_can: 'annee_2019_can',
+  annee_2019_ene: 'annee_2019_ene',
+  annee_2019_exo: 'annee_2019_exo',
+  annee_2019_ind: 'annee_2019_ind',
+  annee_2019_irr: 'annee_2019_irr',
+  annee_2020_aep: 'annee_2020_aep',
+  annee_2020_bar: 'annee_2020_bar',
+  annee_2020_can: 'annee_2020_can',
+  annee_2020_ene: 'annee_2020_ene',
+  annee_2020_exo: 'annee_2020_exo',
+  annee_2020_ind: 'annee_2020_ind',
+  annee_2020_irr: 'annee_2020_irr',
+  annee_2021_aep: 'annee_2021_aep',
+  annee_2021_bar: 'annee_2021_bar',
+  annee_2021_can: 'annee_2021_can',
+  annee_2021_ene: 'annee_2021_ene',
+  annee_2021_exo: 'annee_2021_exo',
+  annee_2021_ind: 'annee_2021_ind',
+  annee_2021_irr: 'annee_2021_irr',
+  annee_2022_aep: 'annee_2022_aep',
+  annee_2022_bar: 'annee_2022_bar',
+  annee_2022_can: 'annee_2022_can',
+  annee_2022_ene: 'annee_2022_ene',
+  annee_2022_ind: 'annee_2022_ind',
+  annee_2022_irr: 'annee_2022_irr',
+  annee_2023_aep: 'annee_2023_aep',
+  annee_2023_bar: 'annee_2023_bar',
+  annee_2023_can: 'annee_2023_can',
+  annee_2023_ene: 'annee_2023_ene',
+  annee_2023_exo: 'annee_2023_exo',
+  annee_2023_ind: 'annee_2023_ind',
+  annee_2023_irr: 'annee_2023_irr'
+} as const
+
+export type Prelevements_eau_newScalarFieldEnum = (typeof Prelevements_eau_newScalarFieldEnum)[keyof typeof Prelevements_eau_newScalarFieldEnum]
+
+
+export const Qualite_sites_baignade_newScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  nom_site: 'nom_site',
+  departement: 'departement',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  type_eau_norm: 'type_eau_norm',
+  statut_donnees: 'statut_donnees',
+  qualite: 'qualite'
+} as const
+
+export type Qualite_sites_baignade_newScalarFieldEnum = (typeof Qualite_sites_baignade_newScalarFieldEnum)[keyof typeof Qualite_sites_baignade_newScalarFieldEnum]
+
+
+export const O3_seuilsScalarFieldEnum = {
+  index: 'index',
+  nom_site: 'nom_site',
+  valeur: 'valeur',
+  latitude: 'latitude',
+  longitude: 'longitude'
+} as const
+
+export type O3_seuilsScalarFieldEnum = (typeof O3_seuilsScalarFieldEnum)[keyof typeof O3_seuilsScalarFieldEnum]
+
+
+export const SecheressesScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  restrictions: 'restrictions'
+} as const
+
+export type SecheressesScalarFieldEnum = (typeof SecheressesScalarFieldEnum)[keyof typeof SecheressesScalarFieldEnum]
 
 
 export const SortOrder = {

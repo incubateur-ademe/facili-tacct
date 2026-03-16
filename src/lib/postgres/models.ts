@@ -384,7 +384,7 @@ export type CarteCommunes = {
   code_pnr: string;
   libelle_pnr: string;
   precarite_logement?: number;
-  catnat?: Object;
+  catnat?: object;
   naf?: number | null;
   surface: number;
   surfacesIrriguees?: number;
@@ -406,7 +406,7 @@ export type CarteCommunesView = {
   code_pnr: string | null;
   libelle_pnr: string | null;
   precarite_logement?: number | null;
-  catnat?: Object | null;
+  catnat?: object | null;
   naf?: number | null;
   surface: number | null;
   surfacesIrriguees?: number | null;
@@ -926,4 +926,20 @@ export type DebroussaillementModel = {
   code_pnr: string | null;
   libelle_pnr: string | null;
   geometry: string;
+};
+
+export type SecheressesPasseesModel = {
+  index: number;
+  code_geographique: string;
+  libelle_geographique: string | null;
+  epci: string | null;
+  libelle_epci: string | null;
+  departement: string | null;
+  libelle_departement: string | null;
+  region: number | null;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  restrictions: string | null;
 };

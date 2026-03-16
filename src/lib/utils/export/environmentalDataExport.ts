@@ -8,7 +8,6 @@ import {
   AgricultureBio,
   AOT40,
   ArreteCatNat,
-  CarteCommunes,
   ConsommationNAF,
   ExportCoursDeau,
   IncendiesForet,
@@ -16,6 +15,7 @@ import {
   PrelevementsEauParsed,
   QualiteSitesBaignade,
   RGAdb,
+  SecheressesPasseesModel,
   SurfacesAgricolesModel,
   TableCommuneModel
 } from '@/lib/postgres/models';
@@ -23,8 +23,8 @@ import { Round } from '../reusableFunctions/round';
 
 export const IndicatorExportTransformations = {
   agriculture: {
-    surfacesIrriguees: (carteCommunes: CarteCommunes[]) =>
-      carteCommunes.map((commune) => {
+    surfacesIrriguees: (tableCommune: TableCommuneModel[]) =>
+      tableCommune.map((commune) => {
         return {
           code_geographique: commune.code_geographique,
           libelle_geographique: commune.libelle_geographique,
@@ -38,10 +38,8 @@ export const IndicatorExportTransformations = {
           libelle_pnr: commune.libelle_pnr,
           libelle_petr: commune.libelle_petr,
           'part_surface_irriguee (%)': (() => {
-            if (commune.surfacesIrriguees === 0) return 0;
-            if (!commune.surfacesIrriguees || isNaN(commune.surfacesIrriguees))
-              return 'secret statistique';
-            return commune.surfacesIrriguees;
+            if (!commune.part_irr_sau_2020 || commune.part_irr_sau_2020 === null) return 'secret statistique';
+            return Number(commune.part_irr_sau_2020);
           })()
         };
       }),
@@ -630,6 +628,24 @@ export const IndicatorExportTransformations = {
           date_publication_arrete: item.dat_pub_arrete,
           libelle_risque: item.lib_risque_jo
         };
+      });
+    },
+    SecheressesPassees: (secheressesPassees: SecheressesPasseesModel[]) => {
+      return secheressesPassees.map((el) => {
+        return {
+          code_geographique: el.code_geographique,
+          libelle_geographique: el.libelle_geographique,
+          code_epci: el.epci,
+          libelle_epci: el.libelle_epci,
+          code_departement: el.departement,
+          libelle_departement: el.libelle_departement,
+          region: el.region,
+          ept: el.ept,
+          code_pnr: el.code_pnr,
+          libelle_pnr: el.libelle_pnr,
+          libelle_petr: el.libelle_petr,
+          restrictions: el.restrictions,
+        }
       });
     }
   }

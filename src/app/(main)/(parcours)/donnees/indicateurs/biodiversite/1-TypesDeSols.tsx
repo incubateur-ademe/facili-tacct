@@ -296,7 +296,7 @@ export const TypesDeSols = ({
             code={code}
             libelle={libelle}
             type={type}
-            thematique="Biodiversité"
+            thematique="types_de_sols"
           >
             Exporter
           </ZipExportButtonNouveauParcours>
