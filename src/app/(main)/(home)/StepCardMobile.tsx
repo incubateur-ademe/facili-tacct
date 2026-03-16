@@ -12,7 +12,7 @@ interface StepCardMobileProps {
   label: ReactNode;
   texte: ReactNode;
   numero: number;
-  maxWidth?: number;
+  maxWidth?: number | string;
 }
 
 export const StepCardMobile = ({
@@ -36,7 +36,7 @@ export const StepCardMobile = ({
       const rect = el.getBoundingClientRect();
       const cardCenter = rect.top + rect.height / 2;
       const viewportHeight = window.innerHeight;
-      const isInCenter = cardCenter > viewportHeight * 0.1 && cardCenter < viewportHeight * 0.9;
+      const isInCenter = cardCenter > viewportHeight * 0.05 && cardCenter < viewportHeight * 0.7;
       setActive(isInCenter);
     };
 
@@ -50,7 +50,7 @@ export const StepCardMobile = ({
       ref={ref}
       style={{
         width: '100%',
-        maxWidth,
+        // maxWidth,
         marginTop: '2rem',
         display: 'flex',
         flexDirection: 'column',
@@ -107,7 +107,7 @@ export const StepCardMobile = ({
           </Body>
         </div>
       </div>
-      <div style={{ position: 'relative', width: '100%', aspectRatio: '235 / 234' }}>
+      <div style={{ position: 'relative', width: '100%', aspectRatio: '235 / 234', maxWidth: maxWidth }}>
         <div style={{
           position: 'absolute',
           inset: 0,
@@ -150,7 +150,7 @@ export const StepCardMobile = ({
           transition: 'opacity 0.6s ease',
         }}>
           <div style={{
-            padding: '0.5rem 1rem',
+            padding: '0.5rem 1.5rem',
             position: 'relative',
             zIndex: 1,
             textAlign: 'center',

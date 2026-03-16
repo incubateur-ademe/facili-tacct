@@ -31,7 +31,7 @@ export const DemarcheBloc = () => {
   const { width } = useWindowDimensions();
   return (
     <div style={{ background: "linear-gradient(128deg, #B7ECE9 -1.4%, #D3EDEB 36.73%, #D3EDEB, 67.23%, #ECFFFD 97.73%) " }}>
-      <NewContainer size="xl" style={{ padding: "3rem 2rem" }}>
+      <NewContainer size="xl" style={{ padding: (width && width <= 768) ? "2rem 1rem" : "3rem 2rem" }}>
         <div
           style={{
             display: 'flex',
@@ -41,7 +41,7 @@ export const DemarcheBloc = () => {
           }}
         >
           <div className={styles.demarcheHeader}>
-            <H2 style={{ textAlign: 'center', margin: 0, color: "#2B4B49"}}>
+            <H2 style={{ textAlign: 'center', margin: 0, color: "#2B4B49" }}>
               Commencez votre démarche d'adaptation à votre rythme
             </H2>
             <BoutonPrimaireClassic
