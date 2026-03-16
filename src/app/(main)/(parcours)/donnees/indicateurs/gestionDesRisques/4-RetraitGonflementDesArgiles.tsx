@@ -90,7 +90,7 @@ export const RetraitGonflementDesArgiles = ({
                 </>
               ) : ""
             }
-            <CustomTooltipNouveauParcours title={rgaTooltipText} texte="D’où vient ce chiffre ?" />
+            <CustomTooltipNouveauParcours title={rgaTooltipText} texte="D’où vient ce chiffre ?" />
           </div>
           {/* <ReadMoreFade maxHeight={470}> */}
           <RGAText />
@@ -121,7 +121,8 @@ export const RetraitGonflementDesArgiles = ({
               borderRadius: "0 0 0 1rem"
             }}>
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021 (consultée en juin 2025)
+              Source des graphiques : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021. (consultée en juin 2025)<br></br>
+              Source de la carte : BRGM, 2026 (consultée en mars 2026)
             </Body>
             <ZipExportButton
               anchor='Retrait-gonflement des argiles'

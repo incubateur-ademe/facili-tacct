@@ -66,7 +66,7 @@ export const ConsommationEspacesNAFAmenagement = (props: {
         <div className={styles.datavizWrapper}>
           <ConsommationEspacesNAFCharts consommationNAF={consommationNAF} />
           <SourceExport
-            source="CEREMA, avril 2024"
+            source="CEREMA, 2024 (consultée en décembre 2024)"
             condition={sumNaf !== 0}
             exportComponent={
               <ExportButton
