@@ -4,8 +4,11 @@ import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { ArboviroseBarChart } from '@/components/charts/sante/arboviroseBarChart';
 import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
+import { arboviroseMapAutochtonesLegend, arboviroseMapMoustiqueTigreLegend } from '@/components/maps/legends/datavizLegends';
+import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapJson } from '@/components/maps/mapFrance';
 import { SliderAnnees } from '@/components/SliderAnnees';
+import SubTabs from '@/components/ui/SubTabs';
 import { Body } from '@/design-system/base/Textes';
 import { ArboviroseModel } from '@/lib/postgres/models';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
@@ -21,6 +24,7 @@ export const Arbovirose = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
+  const [datavizTab, setDatavizTab] = useState<string>('Cartographie');
   const mapRef1 = useRef<maplibregl.Map | null>(null);
   const mapContainer1 = useRef<HTMLDivElement>(null);
   const mapRef2 = useRef<maplibregl.Map | null>(null);
@@ -40,9 +44,9 @@ export const Arbovirose = (props: {
     )
   );
 
-  const totalCas2024 = arbovirose
-    .filter(item => item.annee === '2024')
-    .reduce((acc, item) => acc + item.nb_cas_importes + item.nb_cas_autochtones, 0);
+  // const totalCas2024 = arbovirose
+  //   .filter(item => item.annee === '2024')
+  //   .reduce((acc, item) => acc + item.nb_cas_importes + item.nb_cas_autochtones, 0);
 
   const casParDepartement = arbovirose
     .filter(item => item.annee === String(selectedAnnee))
@@ -59,65 +63,73 @@ export const Arbovirose = (props: {
         <div className={styles.chiffreDynamiqueWrapper}>
           <Body>Texte Dynamique</Body>
         </div>
-        <div className={styles.mapsWrapper}>
-          <div className={styles.slider}>
-            <SliderAnnees anneeDebut={2004} anneeFin={2024} onChange={setSelectedAnnee} />
+        <div className={styles.graphiquesWrapper}>
+          <div className={styles.tabsWrapper}>
+            <SubTabs
+              data={['Cartographie', 'Évolution']}
+              defaultTab={datavizTab}
+              setValue={setDatavizTab}
+            />
           </div>
-          <div className={styles.doubleMaps}>
-            <div className={styles.singleMaps}>
-              <Body size='sm' style={{ textAlign: "center" }}>
-                Présence du moustique tigre par département par an (France métropolitaine)
-              </Body>
-              <MapJson
-                mapRef={mapRef1}
-                mapContainer={mapContainer1}
-                annee={selectedAnnee}
-              />
-            </div>
-            <div className={styles.singleMaps}>
-              <Body size='sm' style={{ textAlign: "center" }}>
-                Cas autochtones d’arbovirose par département par an (France métropolitaine)
-              </Body>
-              <MapJson
-                mapRef={mapRef2}
-                mapContainer={mapContainer2}
-                annee={selectedAnnee}
-                casParDepartement={casParDepartement}
-              />
-            </div>
-          </div>
-
-          <>
-            {/* <div className={styles.text}>
+          {
+            datavizTab === 'Cartographie' ? (
+              <>
+                <div className={styles.slider}>
+                  <SliderAnnees anneeDebut={2004} anneeFin={2024} onChange={setSelectedAnnee} />
+                </div>
+                <div className={styles.doubleMaps}>
+                  <div className={styles.singleMaps}>
+                    <Body size='sm' style={{ textAlign: "center" }}>
+                      Présence du moustique tigre par département par an (France métropolitaine)
+                    </Body>
+                    <MapJson
+                      mapRef={mapRef1}
+                      mapContainer={mapContainer1}
+                      annee={selectedAnnee}
+                    />
+                    <div
+                      className={styles.legend}
+                      style={{ width: 'auto', justifyContent: 'center' }}
+                    >
+                      <LegendCompColor legends={arboviroseMapMoustiqueTigreLegend} style={{ gap: "0.5rem 1rem" }} />
+                    </div>
+                  </div>
+                  <div className={styles.singleMaps}>
+                    <Body size='sm' style={{ textAlign: "center" }}>
+                      Cas autochtones d’arbovirose par département par an (France métropolitaine)
+                    </Body>
+                    <MapJson
+                      mapRef={mapRef2}
+                      mapContainer={mapContainer2}
+                      annee={selectedAnnee}
+                      casParDepartement={casParDepartement}
+                    />
+                    <div
+                      className={styles.legend}
+                      style={{ width: 'auto', justifyContent: 'center' }}
+                    >
+                      <LegendCompColor legends={arboviroseMapAutochtonesLegend} style={{ gap: "0.5rem 1rem" }} />
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : datavizTab === 'Évolution' ? (
+              <div className={styles.dataWrapper}>
                 {
-                  arbovirose.length > 1 ?
-                    <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                      Votre territoire compte en 2024 {totalCas2024} cas d'arbovirose
-                    </Body>
-                    : <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                      Votre territoire ne compte aucun cas d'arbovirose référencé
-                    </Body>
+                  arbovirose.length > 0 ? (
+                    <ArboviroseBarChart arbovirose={aggregatedArbovirose} />
+                  ) : (
+                    <div className='p-10 flex flex-row justify-center'>
+                      <DataNotFoundForGraph image={DataNotFound} />
+                    </div>
+                  )
                 }
-                <CustomTooltipNouveauParcours
-                  title={<>définition</>}
-                  texte="Définition"
-                />
-              </div> */}
-          </>
+              </div>
+            ) : null
+          }
         </div>
       </div>
       <div className={styles.datavizWrapper} style={{ borderRadius: "1rem 0 0 1rem", height: "fit-content" }}>
-        <div className={styles.dataWrapper}>
-          {
-            arbovirose.length > 0 ? (
-              <ArboviroseBarChart arbovirose={aggregatedArbovirose} />
-            ) : (
-              <div className='p-10 flex flex-row justify-center'>
-                <DataNotFoundForGraph image={DataNotFound} />
-              </div>
-            )
-          }
-        </div>
         <div
           className={styles.sourcesExportWrapper}
           style={{
@@ -126,7 +138,7 @@ export const Arbovirose = (props: {
           }}
         >
           <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-            Source :
+            Source : Santé Publique France, 2026 (consultée en février 2026)
           </Body>
           <ExportButton
             data={exportData}

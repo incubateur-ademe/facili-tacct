@@ -18,7 +18,6 @@ interface Props {
     codes: string[];
     bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
   } | null;
-  // o3: O3[];
   arbovirose: ArboviroseModel[];
 }
 
@@ -95,17 +94,16 @@ export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
         {/* Arbovirose */}
         <div
           id="Arbovirose"
-          className={styles.indicateurMapWrapper}
+          className={styles.indicateurMultipleMapsWrapper}
         >
           <div className={styles.h3Titles}>
             <H3
-              style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
+              style={{ color: 'var(--principales-vert)', fontSize: '1.25rem', padding: "0 2rem" }}
             >
               Arbovirose
             </H3>
           </div>
           <Arbovirose arbovirose={arbovirose} />
-
         </div>
       </section>
 
