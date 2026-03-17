@@ -9,7 +9,7 @@ export const VerbatimBloc = () => {
   return (
     <div className={styles.verbatimContainer}>
       <NewContainer size="xl">
-        <H2 style={{ color: 'white' }}>TACCT : témoignages d'utilisateurs</H2>
+        <H2 style={{ color: 'white' }}>Vos témoignages</H2>
         <div className={styles.verbatimCardsWrapper}>
           {verbatimCards.map((card, index) => (
             <div key={index} className={styles.verbatimCard}>

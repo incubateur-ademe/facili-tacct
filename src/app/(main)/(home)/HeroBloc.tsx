@@ -12,9 +12,9 @@ export const HeroBloc = () => {
         <div className={styles.heroBlocInner}>
           <div className={styles.heroBlocText}>
             <H1 color="white">
-              Réussir la démarche d'adaptation de votre territoire
+              Réussir la démarche d'adaptation de votre territoire
             </H1>
-            <Body size="lg" color="white" margin="2.5rem 0 2rem">
+            <Body size="lg" color="white" margin="0.5rem 0 2rem">
               Avec TACCT, identifiez les vulnérabilités de votre territoire aux impacts du
               changement climatique.
             </Body>

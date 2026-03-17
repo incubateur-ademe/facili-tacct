@@ -1,10 +1,14 @@
 import styles from '@/app/(main)/ressources/[collectionId]/[slug]/articles.module.scss';
-import { CustomAccordion } from '@/design-system/base/Accordion';
-import { H1, H2 } from '@/design-system/base/Textes';
+import { ScrollToTop } from '@/components/interactions/ScrollToTop';
+import { H1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import { getFaqItems, type FaqItem } from '@/lib/queries/notion/notion';
+import { collectionsCartes } from '@/lib/ressources/cartes';
 import { normalizeText } from '@/lib/utils/reusableFunctions/NormalizeTexts';
+import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { Metadata } from 'next';
+import { BlocCollections, BlocCollectionsResponsive } from '../blocs/blocCollections';
+import { FaqAllGroups } from './FaqAccordionGroup';
 import { SommaireFAQ } from './Sommaire';
 
 export const metadata: Metadata = {
@@ -25,45 +29,35 @@ const FaqPage = async () => {
   const headings = Object.keys(grouped).map((cat) => normalizeText(cat));
 
   return (
-    <NewContainer size="xl">
-      <H1 style={{ marginBottom: '3.5rem', color: "var(--principales-vert)" }}>
-        Questions fréquentes
-      </H1>
-      <div className={styles.articleContent}>
-        <div className={styles.sommaire}>
-          <SommaireFAQ headings={headings} />
+    <>
+      <ScrollToTop />
+      <NewContainer size="xl" style={{ padding: "0 1rem" }}>
+        <div className={styles.breadcrumbWrapper}>
+          <Breadcrumb
+            currentPageLabel={"FAQ"}
+            homeLinkProps={{ href: '/' }}
+            segments={[{ label: 'Boîte à outils', linkProps: { href: '/ressources' } }]}
+          />
         </div>
-        <div className={styles.article} style={{ paddingTop: "0rem" }}>
-          {Object.entries(grouped).map(([categorie, faqItems]) => {
-            const anchorId = normalizeText(categorie);
-            return (
-              <section
-                key={categorie}
-                id={anchorId}
-                style={{ marginBottom: '56px', scrollMarginTop: '2rem' }}
-              >
-                <H2
-                  style={{
-                    overflowWrap: "normal",
-                    fontSize: "28px",
-                  }}
-                >
-                  {categorie}
-                </H2>
-                <div style={{ width: "3rem", borderBottom: "1px solid #DDDDDD", marginBottom: "1.5rem" }} />
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                  {faqItems.map((item) => (
-                    <CustomAccordion label={item.question} key={item.id}>
-                      {item.reponse}
-                    </CustomAccordion>
-                  ))}
-                </ul>
-              </section>
-            );
-          })}
+        <H1 style={{ margin: '2rem 0 3.5rem', color: "var(--principales-vert)" }}>
+          Questions fréquentes
+        </H1>
+        <div className={styles.articleContent}>
+          <div className={styles.sommaire}>
+            <SommaireFAQ headings={headings} />
+          </div>
+          <div className={styles.article} style={{ paddingTop: "0rem" }}>
+            <FaqAllGroups grouped={grouped} />
+          </div>
         </div>
-      </div>
-    </NewContainer>
+        <div className={styles.desktopOnly}>
+          <BlocCollections collectionsCartes={collectionsCartes} />
+        </div>
+        <div className={styles.mobileOnly}>
+          <BlocCollectionsResponsive collectionsCartes={collectionsCartes} />
+        </div>
+      </NewContainer>
+    </>
   );
 };
 

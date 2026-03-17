@@ -63,7 +63,11 @@ export const DemarcheBloc = () => {
                   image={Etape1Image}
                   background={Etape1Background}
                   foreground={Etape1Foreground}
-                  texte={<Body style={{ color: "#2B4B49", fontSize: '0.875rem' }}>Une visio d'1h pour savoir <b>par où commencer</b></Body>}
+                  texte={
+                    <Body style={{ color: "#2B4B49", fontSize: '0.875rem' }}>
+                      Une visio d'1h pour savoir <b>par où commencer</b>
+                    </Body>
+                  }
                   numero={1}
                   maxWidth={235}
                   label="Session d'accueil"
@@ -74,7 +78,11 @@ export const DemarcheBloc = () => {
                   image={Etape1Image}
                   background={Etape1Background}
                   foreground={Etape1Foreground}
-                  texte={<Body style={{ color: "#2B4B49", fontSize: (width && width < 900) ? '0.875rem' : '1rem' }}>Une visio d'1h pour savoir <b>par où commencer</b></Body>}
+                  texte={
+                    <Body style={{ color: "#2B4B49", fontSize: (width && width < 900) ? '0.875rem' : '1rem' }}>
+                      Une visio d'1h pour savoir <b>par où commencer</b>
+                    </Body>
+                  }
                   numero={1}
                   maxWidth={235}
                   justifyContent="flex-start"
@@ -98,10 +106,14 @@ export const DemarcheBloc = () => {
                   image={Etape2Image}
                   background={Etape2Background}
                   foreground={Etape2Foreground}
-                  texte={<Body style={{ color: "#2B4B49", fontSize: '0.875rem' }}>Un <b>démarrage à la carte</b>, avec tous les liens utiles</Body>}
+                  texte={
+                    <Body style={{ color: "#2B4B49", fontSize: '0.875rem' }}>
+                      Un <b>démarrage à la carte</b>, avec tous les liens utiles
+                    </Body>
+                  }
                   numero={2}
                   maxWidth={235}
-                  label="Embarquement pas-à-pas"
+                  label="Embarquement pas&#8209;à&#8209;pas"
                 />
               ) : (
                 <StepCard
@@ -109,13 +121,17 @@ export const DemarcheBloc = () => {
                   image={Etape2Image}
                   background={Etape2Background}
                   foreground={Etape2Foreground}
-                  texte={<Body style={{ color: "#2B4B49", fontSize: (width && width < 900) ? '0.875rem' : '1rem' }}>Un <b>démarrage à la carte</b>, avec tous les liens utiles</Body>}
+                  texte={
+                    <Body style={{ color: "#2B4B49", fontSize: (width && width < 900) ? '0.875rem' : '1rem' }}>
+                      Un <b>démarrage à la carte</b>, avec tous les liens utiles
+                    </Body>
+                  }
                   numero={2}
                   maxWidth={235}
                   justifyContent="center"
-                  label="Embarquement pas-à-pas"
+                  label="Embarquement pas&#8209;à&#8209;pas"
                   offsetX={-65}
-                  offsetY={60}
+                  style={{ paddingTop: "60px" }}
                 />
               )}
               <div

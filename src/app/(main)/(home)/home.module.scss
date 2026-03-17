@@ -10,7 +10,9 @@
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
-    padding: 0 2rem;
+    @media screen and (max-width: 1280px) {
+        padding: 0 2rem;
+    }
 }
 
 .heroBlocText {
@@ -141,7 +143,6 @@
     height: 100%;
 }
 
-
 @media screen and (max-width: 900px) {
     .demarcheHeader {
         padding: 2rem 1rem;
@@ -170,7 +171,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
-    min-height: 750px;
+    min-height: 640px;
 }
 .patch4Wrapper {
     display: flex;
@@ -256,6 +257,8 @@
     align-items: flex-start;
     gap: 2rem;
     .ressourcesText {
+        display: flex;
+        flex-direction: column;
         background-color: #ffffff;
         padding: 1.25rem;
         gap: 0.5rem;
@@ -280,7 +283,6 @@
         padding: 1.5rem;
     }
 }
-
 
 // Verbatim
 

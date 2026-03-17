@@ -31,6 +31,7 @@ export const CollectionComponent = ({ collectionId, faqItems }: CollectionCompon
   const territoireOptions = FiltresOptions.find(f => f.titre === 'Territoire')?.options || [];
   const [copied, setCopied] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [openFaqId, setOpenFaqId] = useState<string | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const windowDimensions = useWindowDimensions();
   const tempsLecture = collection?.articles.reduce((total, article) => total + article.tempsLecture, 0) || 0;
@@ -179,14 +180,23 @@ export const CollectionComponent = ({ collectionId, faqItems }: CollectionCompon
                   </H2>
                   <div style={{ width: "3rem", borderBottom: "1px solid #DDDDDD", marginBottom: "2rem" }} />
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                    {faqItems.map((item) => (
-                      <CustomAccordion label={item.question} key={item.id}>
+                    {[...faqItems].sort((a, b) => {
+                      if (a.ordre === null) return 1;
+                      if (b.ordre === null) return -1;
+                      return a.ordre - b.ordre;
+                    }).map((item) => (
+                      <CustomAccordion
+                        label={item.question}
+                        key={item.id}
+                        isOpen={openFaqId === item.id}
+                        onToggle={() => setOpenFaqId(openFaqId === item.id ? null : item.id)}
+                      >
                         {item.reponse}
                       </CustomAccordion>
                     ))}
                   </ul>
                   <div className="flex">
-                    <Link href="/ressources/faq" target="_blank" rel="noopener noreferrer" className={styles.questionsThemes}>
+                    <Link href="/ressources/faq" className={styles.questionsThemes}>
                       Voir toutes les questions
                       <span className={`fr-icon-arrow-right-line ${styles.arrow}`} aria-hidden="true"></span>
                     </Link>

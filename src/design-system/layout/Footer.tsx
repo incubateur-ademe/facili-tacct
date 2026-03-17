@@ -44,7 +44,7 @@ export default function AppFooter() {
               Notre mission : Accompagner les territoires pour une meilleure appropriation
               de leur vulnérabilité aux impacts du changement climatique.
               Facili-TACCT met à disposition les données climatiques du patch 4°C,
-              mesure 23 du plan national d’adaptation au changement climatique (PNACC 3).
+              mesure 23 du plan national d’adaptation au changement climatique (PNACC-3).
             </p>
             {/* Liste de liens */}
             <ul className="fr-footer__content-list">

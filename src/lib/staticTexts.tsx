@@ -73,7 +73,7 @@ export const FragiliteEconomiqueText = () => (
     </p>
     <p>
       - - - - <br></br>
-      Plan national d'adaptation au changement climatique (PNACC 3) :
+      Plan national d'adaptation au changement climatique (PNACC-3) :
     </p>
     <ul>
       <p>
@@ -432,7 +432,7 @@ export const PrelevementEauText = () => (
       </li>
     </Body>
     <Body size="sm">
-      Plan National d’Adaptation au Changement Climatique (PNACC 3) :<br></br>La
+      Plan National d’Adaptation au Changement Climatique (PNACC-3) :<br></br>La
       mesure 21 prévoit une étude spécifique sur les vulnérabilités de
       l'approvisionnement en eau potable dans les départements et régions
       d'Outre-mer.
@@ -522,7 +522,7 @@ export const ErosionCotiereText = () => (
     </Body>
     <Body size="sm">
       - - - - <br></br>
-      Plan National d'Adaptation au Changement Climatique (PNACC 3) : La mesure
+      Plan National d'Adaptation au Changement Climatique (PNACC-3) : La mesure
       35 prévoit d’accompagner l’adaptation du tourisme culturel, de montagne,
       littoral et nautique.
     </Body>

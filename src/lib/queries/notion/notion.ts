@@ -17,6 +17,7 @@ export interface FaqItem {
   categorie: string;
   collections: string[];
   dateDePublication: string | null;
+  ordre: number | null;
 }
 
 interface NotionFaqPage {
@@ -27,6 +28,7 @@ interface NotionFaqPage {
     Catégorie: { multi_select: Array<{ name: string }> };
     Collections: { multi_select: Array<{ name: string }> };
     'Date de publication': { date: { start: string } | null };
+    Ordre: { number: number | null };
   };
 }
 
@@ -199,7 +201,8 @@ export const getFaqItems = async (): Promise<FaqItem[]> => {
         categorie: props['Catégorie']?.multi_select?.[0]?.name ?? '',
         collections:
           props['Collections']?.multi_select?.map((s) => s.name) ?? [],
-        dateDePublication: props['Date de publication']?.date?.start ?? null
+        dateDePublication: props['Date de publication']?.date?.start ?? null,
+        ordre: props['Ordre']?.number ?? null
       });
     }
 

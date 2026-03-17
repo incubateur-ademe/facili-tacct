@@ -8,6 +8,7 @@ import { Body, H2 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import Breadcrumb from "@codegouvfr/react-dsfr/Breadcrumb";
 import Image from "next/image";
+import Link from "next/link";
 import styles from './moncompte.module.scss';
 
 
@@ -28,7 +29,7 @@ const MonCompte = () => {
           <BoutonPrimaireClassic
             size="lg"
             text='Me connecter  →'
-            link='https://moncompte.ademe.fr/auth/realms/master/protocol/openid-connect/auth?response_type=code&client_id=tacct&state=M0piSUQ2NkVyMEJwNmx1X29DZnVqYlh2UXlDNmN5eUZmRy1RaDN6S3B6NWg2&redirect_uri=https%3A%2F%2Ftacct.ademe.fr%2Fworkspace&scope=openid%20profile%20email&code_challenge=PZmWE32lHMfiLONcnTPTYWqRJcE0-LzAI3zEh4rPw3o&code_challenge_method=S256&nonce=M0piSUQ2NkVyMEJwNmx1X29DZnVqYlh2UXlDNmN5eUZmRy1RaDN6S3B6NWg2'
+            link='https://tacct.ademe.fr/workspace'
             rel="noopener noreferrer"
             posthogEventName="bouton_connexion_mon_compte"
             style={{
@@ -41,7 +42,7 @@ const MonCompte = () => {
             style={{ maxWidth: 318, width: "100%", height: "auto", marginTop: 40 }}
           />
         </div>
-        <div className={styles.bloc}>
+        <div className={styles.bloc} style={{ borderRight: "none"}}>
           <H2 style={{ fontSize: "22px" }}>Vous n’avez pas de compte ?</H2>
           <Body>
             Participez à une session d’accueil en ligne : notre équipe vous présentera le service
@@ -72,7 +73,10 @@ const MonCompte = () => {
           </Body>
         </div>
         <Body style={{ margin: "0.5rem 0 0.5rem 2rem", color: "#3D3D3D" }}>
-          Utilisez directement notre formulaire de contact pour demander un accès à l’outil.
+          Utilisez directement notre{" "}
+          <Link href="https://tally.so/r/n0LrEZ" target="_blank" rel="noopener noreferrer">
+            formulaire de contact
+          </Link> pour demander un accès à l’outil.
         </Body>
       </div>
     </NewContainer>

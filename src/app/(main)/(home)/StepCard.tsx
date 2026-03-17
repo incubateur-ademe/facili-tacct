@@ -17,6 +17,7 @@ interface StepCardProps {
   offsetX?: number;
   offsetY?: number;
   justifyContent?: 'flex-start' | 'center' | 'flex-end';
+  style?: React.CSSProperties;
 }
 
 export const StepCard = ({
@@ -30,7 +31,8 @@ export const StepCard = ({
   maxWidth,
   offsetX,
   offsetY,
-  justifyContent
+  justifyContent,
+  style
 }: StepCardProps) => {
   const [hovered, setHovered] = useState(false);
   const { width } = useWindowDimensions();
@@ -47,6 +49,7 @@ export const StepCard = ({
         alignItems: 'center',
         justifyContent: justifyContent,
         cursor: 'pointer',
+        ...style
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

@@ -77,21 +77,40 @@ const HeaderComp = () => {
         '.fr-header__navbar': {
           display: 'none',
         },
+        '.fr-header__brand': {
+          filter: windowDimensions.width && windowDimensions.width > 992 ? 'drop-shadow(var(--raised-shadow))' : 'unset',
+        },
         '.fr-nav__link[aria-current]': {
           color: 'var(--principales-vert)',
           ':before': {
             backgroundColor: 'var(--principales-vert)',
           }
+        },
+        '.fr-header__service-title': {
+          fontSize: "16px",
+          fontWeight: 500,
+        },
+        '.fr-btns-group': {
+          margin: "0"
+        },
+        '.fr-header__tools': {
+          padding: "0 1.5rem"
+        },
+        '.fr-header__tools-links': {
+          display: 'flex'
         }
       })}
       brandTop={<Brand />}
+      serviceTitle={
+        (windowDimensions.width && windowDimensions.width > 992 && params === "/") ? "Trajectoires d’Adaptation au Changement Climatique des Territoires" : undefined
+      }
       homeLinkProps={{
         href: '/',
         title: `Accueil - Facili-TACCT`
       }}
       operatorLogo={{
         alt: "Logo de l'ADEME",
-        imgUrl: '/logo-ademe-tacct.png',
+        imgUrl: '/logo-ademe-tacct-sans-titre.png',
         orientation: 'horizontal'
       }}
       quickAccessItems={
@@ -104,12 +123,15 @@ const HeaderComp = () => {
               <Image
                 src={MonCompteIcone}
                 alt="Mon compte"
-                width={16}
-                height={16}
+                width={windowDimensions.width && windowDimensions.width > 992 ? 16 : 24}
+                height={windowDimensions.width && windowDimensions.width > 992 ? 16 : 24}
               />
-              <Body style={{ marginLeft: "0.5rem", color: "var(--principales-vert)" }}>
-                Mon compte
-              </Body>
+              {
+                windowDimensions.width && windowDimensions.width > 992 &&
+                <Body style={{ marginLeft: "0.5rem", color: "var(--principales-vert)" }}>
+                  Mon compte
+                </Body>
+              }
             </button>
           ]
           : windowDimensions.width && windowDimensions.width < 992 && displayType && params !== "/"
@@ -124,7 +146,7 @@ const HeaderComp = () => {
                 />
               ] : []
       }
-      navigation={params !== "/" ? [
+      navigation={(params !== "/" && params !== "/mon-compte") ? [
         {
           linkProps: {
             href: '/',

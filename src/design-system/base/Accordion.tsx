@@ -8,17 +8,28 @@ interface CustomAccordionProps {
   label: ReactNode;
   children: NonNullable<ReactNode>;
   defaultExpanded?: boolean;
+  isOpen?: boolean;
+  onToggle?: () => void;
 }
 
-export const CustomAccordion = ({ label, children, defaultExpanded = false }: CustomAccordionProps) => {
+export const CustomAccordion = ({ label, children, defaultExpanded = false, isOpen, onToggle }: CustomAccordionProps) => {
   const { css } = useStyles();
   const [expanded, setExpanded] = useState(defaultExpanded);
+
+  const isControlled = isOpen !== undefined;
+  const currentExpanded = isControlled ? isOpen : expanded;
 
   return (
     <Accordion
       label={label}
-      onExpandedChange={(value) => setExpanded(!value)}
-      expanded={expanded}
+      onExpandedChange={(value) => {
+        if (isControlled) {
+          onToggle?.();
+        } else {
+          setExpanded(!value);
+        }
+      }}
+      expanded={currentExpanded}
       className={css({
         "&::before": {
           boxShadow: "0 1px 0 0 var(--border-default-grey)",
@@ -54,6 +65,8 @@ export const CustomAccordion = ({ label, children, defaultExpanded = false }: Cu
         "& .fr-collapse--expanded": {
           margin: "0 1px",
           backgroundColor: "#FAFAFA",
+          padding: "1rem 1rem 1.5rem"
+
         },
       })}
     >

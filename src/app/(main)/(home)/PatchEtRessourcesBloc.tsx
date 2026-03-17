@@ -49,7 +49,7 @@ export const PatchEtRessourcesBloc = () => {
                 Intégrez à votre diagnostic la trajectoire de réchauffement de référence
               </H3>
               <Body style={{ color: "#3D3D3D" }}>
-                Le “Patch 4°C” est une action du Plan national d’adaptation au  changement climatique (PNACC3,2025).
+                Le “patch 4°C” est une action du Plan national d’adaptation au  changement climatique (PNACC-3, 2025).
               </Body>
               <Body style={{ color: "#3D3D3D" }}>
                 Quelle est la tendance d’aggravation des aléas climatiques
