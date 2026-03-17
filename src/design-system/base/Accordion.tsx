@@ -53,7 +53,7 @@ export const CustomAccordion = ({ label, children, defaultExpanded = false, isOp
           backgroundColor: "#FAFAFA",
           fontWeight: "bold",
           "&:hover": {
-            backgroundColor: "#F6F6F6",
+            backgroundColor: "#FAFAFA",
           },
         },
         "& .fr-accordion__btn[aria-expanded='true']::after": {
