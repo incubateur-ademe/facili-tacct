@@ -237,7 +237,7 @@ export const PrelevementsEnEau = (props: {
           )}
           <SourceExport
             anchor="Ressources en eau"
-            source="BNPE, Catalogue DiDo (Indicateurs territoriaux de développement durable - ITDD), 2020"
+            source="BNPE, Catalogue DiDo (Indicateurs territoriaux de développement durable - ITDD), 2020 (consultée en mars 2026)"
             condition={
               Sum(
                 exportData.map((o) =>
