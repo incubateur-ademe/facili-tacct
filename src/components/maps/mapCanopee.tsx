@@ -12,9 +12,10 @@ import { HauteurCanopeeLegend } from './legends/legendCanopee';
 import styles from './maps.module.scss';
 
 const COG_PATH = '/canopee/France_Forest_COG.tif';
-const TARGET_RESOLUTION_M = 100;
-const MAX_CANVAS_SIZE = 256;
-const MIN_CANVAS_SIZE = 128;
+const TARGET_RESOLUTION_M = 10;
+const MAX_CANVAS_SIZE = 1024;
+const MIN_CANVAS_SIZE = 512;
+const MAX_CANOPY_HEIGHT = 30;
 const COLOR_LOW:  [number, number, number] = [217, 255, 217];  
 const COLOR_HIGH: [number, number, number] = [ 26, 107,  24]; 
 
@@ -36,6 +37,7 @@ type CogRenderResult = {
   canvas: HTMLCanvasElement;
   rasterData: RasterData | null;
   maxVal: number;
+  maxObservedVal: number;
 };
 
 const computeCanvasSize = (bbox: BBox): { width: number; height: number } => {
@@ -131,16 +133,15 @@ const renderCogToCanvas = async (
     }
   } else {
     const band: TypedArray = rasters[0];
-    for (let i = 0; i < pixelCount; i++) {
-      const v = band[i];
-      if ((noDataValue === null || v !== noDataValue) && v > maxVal) maxVal = v;
-    }
+    maxVal = MAX_CANOPY_HEIGHT;
+    let maxObservedVal = 0;
     for (let i = 0; i < pixelCount; i++) {
       const v = band[i];
       const isNoData = noDataValue !== null && v === noDataValue;
-      if (isNoData || v === 0) {
+      if (isNoData || v === 0 || v > MAX_CANOPY_HEIGHT) {
         imageData.data[i * 4 + 3] = 0;
       } else {
+        if (v > maxObservedVal) maxObservedVal = v;
         const [r, g, b, a] = heightToRGBA(Math.min(1, v / maxVal));
         imageData.data[i * 4] = r;
         imageData.data[i * 4 + 1] = g;
@@ -149,11 +150,25 @@ const renderCogToCanvas = async (
       }
     }
     rasterData = { band, noDataValue, bbox, width: canvasW, height: canvasH };
+    tempCtx.putImageData(imageData, 0, 0);
+
+    if (!geometry) return { canvas: tempCanvas, rasterData, maxVal, maxObservedVal };
+
+    const clippedCanvas = document.createElement('canvas');
+    clippedCanvas.width = canvasW;
+    clippedCanvas.height = canvasH;
+    const clippedCtx = clippedCanvas.getContext('2d');
+    if (!clippedCtx) return null;
+
+    applyClipPath(clippedCtx, geometry, bbox, canvasW, canvasH);
+    clippedCtx.drawImage(tempCanvas, 0, 0);
+
+    return { canvas: clippedCanvas, rasterData, maxVal, maxObservedVal };
   }
 
   tempCtx.putImageData(imageData, 0, 0);
 
-  if (!geometry) return { canvas: tempCanvas, rasterData, maxVal };
+  if (!geometry) return { canvas: tempCanvas, rasterData, maxVal, maxObservedVal: maxVal };
 
   const clippedCanvas = document.createElement('canvas');
   clippedCanvas.width = canvasW;
@@ -164,7 +179,7 @@ const renderCogToCanvas = async (
   applyClipPath(clippedCtx, geometry, bbox, canvasW, canvasH);
   clippedCtx.drawImage(tempCanvas, 0, 0);
 
-  return { canvas: clippedCanvas, rasterData, maxVal };
+  return { canvas: clippedCanvas, rasterData, maxVal, maxObservedVal: maxVal };
 }
 
 export const MapCanopee = (props: {
@@ -190,6 +205,7 @@ export const MapCanopee = (props: {
   } = props;
 
   const [isLoading, setIsLoading] = useState(true);
+  const [maxObservedVal, setMaxObservedVal] = useState<number | null>(null);
   const hasLoadedOnce = useRef(false);
   const rasterDataRef = useRef<RasterData | null>(null);
   const maxValRef = useRef<number>(1);
@@ -263,6 +279,7 @@ export const MapCanopee = (props: {
         if (result) {
           rasterDataRef.current = result.rasterData;
           maxValRef.current = result.maxVal;
+          setMaxObservedVal(result.maxObservedVal);
 
           map.addSource('canopee', {
             type: 'canvas',
@@ -298,7 +315,7 @@ export const MapCanopee = (props: {
             const px = Math.floor(((lng - rd.bbox.minLng) / (rd.bbox.maxLng - rd.bbox.minLng)) * rd.width);
             const py = Math.floor(((rd.bbox.maxLat - lat) / (rd.bbox.maxLat - rd.bbox.minLat)) * rd.height);
             const val = rd.band[py * rd.width + px];
-            if (val === undefined || val === 0 || (rd.noDataValue !== null && val === rd.noDataValue)) {
+            if (val === undefined || val === 0 || val > MAX_CANOPY_HEIGHT || (rd.noDataValue !== null && val === rd.noDataValue)) {
               popupRef.current?.remove();
               map.getCanvas().style.cursor = '';
               return;
@@ -365,6 +382,11 @@ export const MapCanopee = (props: {
           }
         }
       `}</style>
+      {maxObservedVal !== null && (
+        <p style={{ margin: '0 0 0.5rem 0', fontSize: '0.875rem' }}>
+          Hauteur maximale observée : <strong>{maxObservedVal} m</strong>
+        </p>
+      )}
       <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />
       {isLoading && (
         <div className={styles.tileLoadingWrapper}>
