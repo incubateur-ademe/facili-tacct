@@ -42,7 +42,7 @@ const MonCompte = () => {
             style={{ maxWidth: 318, width: "100%", height: "auto", marginTop: 40 }}
           />
         </div>
-        <div className={styles.bloc} style={{ borderRight: "none"}}>
+        <div className={styles.bloc} style={{ borderRight: "none" }}>
           <H2 style={{ fontSize: "22px" }}>Vous n’avez pas de compte ?</H2>
           <Body>
             Participez à une session d’accueil en ligne : notre équipe vous présentera le service
@@ -74,7 +74,7 @@ const MonCompte = () => {
         </div>
         <Body style={{ margin: "0.5rem 0 0.5rem 2rem", color: "#3D3D3D" }}>
           Utilisez directement notre{" "}
-          <Link href="https://tally.so/r/n0LrEZ" target="_blank" rel="noopener noreferrer">
+          <Link href="https://tally.so/r/mJGELz" target="_blank" rel="noopener noreferrer">
             formulaire de contact
           </Link> pour demander un accès à l’outil.
         </Body>

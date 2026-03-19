@@ -50,13 +50,13 @@ const FaqPage = async () => {
             <FaqAllGroups grouped={grouped} />
           </div>
         </div>
-        <div className={styles.desktopOnly}>
-          <BlocCollections collectionsCartes={collectionsCartes} />
-        </div>
-        <div className={styles.mobileOnly}>
-          <BlocCollectionsResponsive collectionsCartes={collectionsCartes} />
-        </div>
       </NewContainer>
+      <div className={styles.desktopOnly}>
+        <BlocCollections collectionsCartes={collectionsCartes} />
+      </div>
+      <div className={styles.mobileOnly}>
+        <BlocCollectionsResponsive collectionsCartes={collectionsCartes} />
+      </div>
     </>
   );
 };
