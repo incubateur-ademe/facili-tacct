@@ -102,7 +102,7 @@ const HeaderComp = () => {
       })}
       brandTop={<Brand />}
       serviceTitle={
-        (windowDimensions.width && windowDimensions.width > 992 && params === "/") ? "Trajectoires d’Adaptation au Changement Climatique des Territoires" : undefined
+        (windowDimensions.width && windowDimensions.width > 992 && (params === "/" || params == "/mon-compte")) ? "Trajectoires d’Adaptation au Changement Climatique des Territoires" : undefined
       }
       homeLinkProps={{
         href: '/',
