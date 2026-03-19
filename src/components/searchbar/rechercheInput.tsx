@@ -1,9 +1,7 @@
 'use client';
 
 import { GetCollectivite } from '@/lib/queries/searchBar';
-import { eptRegex } from '@/lib/utils/regex';
 import Autocomplete from '@mui/material/Autocomplete';
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { ReplaceDisplayEpci, ReplaceSearchEpci } from './fonctions';
 import { RenderInput } from './renderInput';
@@ -17,9 +15,9 @@ export const RechercheInput = ((props: SearchInputProps) => {
     setSearchCode,
     setSearchLibelle,
     searchCode,
-    searchLibelle
+    searchLibelle,
+    RechercherRedirection
   } = props;
-  const router = useRouter();
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState<SearchInputOptions[]>([]);
 
@@ -36,22 +34,6 @@ export const RechercheInput = ((props: SearchInputProps) => {
   const collectivites = filteredCollectivite.toSorted((a, b) =>
     a.searchLibelle.localeCompare(b.searchLibelle)
   );
-  const handleClick = () => {
-    if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
-      router.push(
-        `/thematiques?code=200054781&libelle=${searchLibelle}&type=ept`
-      );
-    } else if (searchCode.length !== 0) {
-      router.push(
-        `/thematiques?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
-      )
-    } else if (searchLibelle.length !== 0) {
-      router.push(
-        `/thematiques?libelle=${searchLibelle}&type=${typeTerritoire}`
-      );
-    }
-  };
-
   useEffect(() => {
     void (async () => {
       const getCollectivite = await GetCollectivite(typeTerritoire, inputValue);
@@ -98,7 +80,7 @@ export const RechercheInput = ((props: SearchInputProps) => {
       }}
       onKeyDown={(e) => {
         if (e.code === 'Enter') {
-          handleClick();
+          RechercherRedirection();
         }
       }}
       renderOption={(props, option) =>
