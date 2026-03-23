@@ -77,7 +77,8 @@ export const ModelName = {
   prelevements_eau_new: 'prelevements_eau_new',
   qualite_sites_baignade_new: 'qualite_sites_baignade_new',
   o3_seuils: 'o3_seuils',
-  secheresses: 'secheresses'
+  secheresses: 'secheresses',
+  arbovirose: 'arbovirose'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -86,12 +87,12 @@ export type ModelName = (typeof ModelName)[keyof typeof ModelName]
  * Enums
  */
 
-export const TransactionIsolationLevel = {
+export const TransactionIsolationLevel = runtime.makeStrictEnum({
   ReadUncommitted: 'ReadUncommitted',
   ReadCommitted: 'ReadCommitted',
   RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
-} as const
+} as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
@@ -279,15 +280,6 @@ export const Databases_v2_confort_thermiqueScalarFieldEnum = {
   under_4_sum_1999: 'under_4_sum_1999',
   to_75_sum_1999: 'to_75_sum_1999',
   over_75_sum_1999: 'over_75_sum_1999',
-  under_4_sum_2009: 'under_4_sum_2009',
-  to_75_sum_2009: 'to_75_sum_2009',
-  over_75_sum_2009: 'over_75_sum_2009',
-  under_4_sum_2014: 'under_4_sum_2014',
-  to_75_sum_2014: 'to_75_sum_2014',
-  over_75_sum_2014: 'over_75_sum_2014',
-  under_4_sum_2020: 'under_4_sum_2020',
-  to_75_sum_2020: 'to_75_sum_2020',
-  over_75_sum_2020: 'over_75_sum_2020',
   tee_log: 'tee_log',
   tee_mob: 'tee_mob',
   precarite_logement: 'precarite_logement',
@@ -702,7 +694,8 @@ export const Databases_v2_table_communeScalarFieldEnum = {
   agriculture_part_over_55: 'agriculture_part_over_55',
   couverture_lcz: 'couverture_lcz',
   aires_appellations_controlees_nom: 'aires_appellations_controlees_nom',
-  aires_appellations_controlees_signe: 'aires_appellations_controlees_signe'
+  aires_appellations_controlees_signe: 'aires_appellations_controlees_signe',
+  projets_alimentaires_territoriaux: 'projets_alimentaires_territoriaux'
 } as const
 
 export type Databases_v2_table_communeScalarFieldEnum = (typeof Databases_v2_table_communeScalarFieldEnum)[keyof typeof Databases_v2_table_communeScalarFieldEnum]
@@ -792,6 +785,63 @@ export const Prelevements_eau_newScalarFieldEnum = {
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
+  annee_2008_aep: 'annee_2008_aep',
+  annee_2008_bar: 'annee_2008_bar',
+  annee_2008_can: 'annee_2008_can',
+  annee_2008_ene: 'annee_2008_ene',
+  annee_2008_ind: 'annee_2008_ind',
+  annee_2008_irr: 'annee_2008_irr',
+  annee_2009_aep: 'annee_2009_aep',
+  annee_2009_bar: 'annee_2009_bar',
+  annee_2009_can: 'annee_2009_can',
+  annee_2009_ene: 'annee_2009_ene',
+  annee_2009_ind: 'annee_2009_ind',
+  annee_2009_irr: 'annee_2009_irr',
+  annee_2010_aep: 'annee_2010_aep',
+  annee_2010_bar: 'annee_2010_bar',
+  annee_2010_can: 'annee_2010_can',
+  annee_2010_ene: 'annee_2010_ene',
+  annee_2010_ind: 'annee_2010_ind',
+  annee_2010_irr: 'annee_2010_irr',
+  annee_2011_aep: 'annee_2011_aep',
+  annee_2011_bar: 'annee_2011_bar',
+  annee_2011_can: 'annee_2011_can',
+  annee_2011_ene: 'annee_2011_ene',
+  annee_2011_ind: 'annee_2011_ind',
+  annee_2011_irr: 'annee_2011_irr',
+  annee_2012_aep: 'annee_2012_aep',
+  annee_2012_bar: 'annee_2012_bar',
+  annee_2012_can: 'annee_2012_can',
+  annee_2012_ene: 'annee_2012_ene',
+  annee_2012_exo: 'annee_2012_exo',
+  annee_2012_ind: 'annee_2012_ind',
+  annee_2012_irr: 'annee_2012_irr',
+  annee_2013_aep: 'annee_2013_aep',
+  annee_2013_bar: 'annee_2013_bar',
+  annee_2013_can: 'annee_2013_can',
+  annee_2013_ene: 'annee_2013_ene',
+  annee_2013_ind: 'annee_2013_ind',
+  annee_2013_irr: 'annee_2013_irr',
+  annee_2014_aep: 'annee_2014_aep',
+  annee_2014_bar: 'annee_2014_bar',
+  annee_2014_can: 'annee_2014_can',
+  annee_2014_ene: 'annee_2014_ene',
+  annee_2014_ind: 'annee_2014_ind',
+  annee_2014_irr: 'annee_2014_irr',
+  annee_2015_aep: 'annee_2015_aep',
+  annee_2015_bar: 'annee_2015_bar',
+  annee_2015_can: 'annee_2015_can',
+  annee_2015_ene: 'annee_2015_ene',
+  annee_2015_exo: 'annee_2015_exo',
+  annee_2015_ind: 'annee_2015_ind',
+  annee_2015_irr: 'annee_2015_irr',
+  annee_2016_aep: 'annee_2016_aep',
+  annee_2016_bar: 'annee_2016_bar',
+  annee_2016_can: 'annee_2016_can',
+  annee_2016_ene: 'annee_2016_ene',
+  annee_2016_exo: 'annee_2016_exo',
+  annee_2016_ind: 'annee_2016_ind',
+  annee_2016_irr: 'annee_2016_irr',
   annee_2017_aep: 'annee_2017_aep',
   annee_2017_bar: 'annee_2017_bar',
   annee_2017_can: 'annee_2017_can',
@@ -848,8 +898,17 @@ export type Prelevements_eau_newScalarFieldEnum = (typeof Prelevements_eau_newSc
 export const Qualite_sites_baignade_newScalarFieldEnum = {
   index: 'index',
   code_geographique: 'code_geographique',
-  nom_site: 'nom_site',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
   departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  nom_site: 'nom_site',
   latitude: 'latitude',
   longitude: 'longitude',
   type_eau_norm: 'type_eau_norm',
@@ -888,6 +947,17 @@ export const SecheressesScalarFieldEnum = {
 } as const
 
 export type SecheressesScalarFieldEnum = (typeof SecheressesScalarFieldEnum)[keyof typeof SecheressesScalarFieldEnum]
+
+
+export const ArboviroseScalarFieldEnum = {
+  index: 'index',
+  annee: 'annee',
+  departement: 'departement',
+  nb_cas_importes: 'nb_cas_importes',
+  nb_cas_autochtones: 'nb_cas_autochtones'
+} as const
+
+export type ArboviroseScalarFieldEnum = (typeof ArboviroseScalarFieldEnum)[keyof typeof ArboviroseScalarFieldEnum]
 
 
 export const SortOrder = {

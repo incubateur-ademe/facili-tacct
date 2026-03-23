@@ -80,12 +80,12 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 7.1.0
- * Query Engine version: ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba
+ * Prisma Client JS version: 7.4.0
+ * Query Engine version: ab56fe763f921d033a6c195e7ddeb3e255bdbb57
  */
 export const prismaVersion: PrismaVersion = {
-  client: "7.1.0",
-  engine: "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba"
+  client: "7.4.0",
+  engine: "ab56fe763f921d033a6c195e7ddeb3e255bdbb57"
 }
 
 /**
@@ -410,7 +410,8 @@ export const ModelName = {
   prelevements_eau_new: 'prelevements_eau_new',
   qualite_sites_baignade_new: 'qualite_sites_baignade_new',
   o3_seuils: 'o3_seuils',
-  secheresses: 'secheresses'
+  secheresses: 'secheresses',
+  arbovirose: 'arbovirose'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -426,7 +427,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "qualite_sites_baignade_new" | "o3_seuils" | "secheresses"
+    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "qualite_sites_baignade_new" | "o3_seuils" | "secheresses" | "arbovirose"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2396,6 +2397,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    arbovirose: {
+      payload: Prisma.$arbovirosePayload<ExtArgs>
+      fields: Prisma.arboviroseFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.arboviroseFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.arboviroseFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>
+        }
+        findFirst: {
+          args: Prisma.arboviroseFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.arboviroseFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>
+        }
+        findMany: {
+          args: Prisma.arboviroseFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>[]
+        }
+        create: {
+          args: Prisma.arboviroseCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>
+        }
+        createMany: {
+          args: Prisma.arboviroseCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.arboviroseCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>[]
+        }
+        delete: {
+          args: Prisma.arboviroseDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>
+        }
+        update: {
+          args: Prisma.arboviroseUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>
+        }
+        deleteMany: {
+          args: Prisma.arboviroseDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.arboviroseUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.arboviroseUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>[]
+        }
+        upsert: {
+          args: Prisma.arboviroseUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>
+        }
+        aggregate: {
+          args: Prisma.ArboviroseAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateArbovirose>
+        }
+        groupBy: {
+          args: Prisma.arboviroseGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ArboviroseGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.arboviroseCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ArboviroseCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2618,15 +2693,6 @@ export const Databases_v2_confort_thermiqueScalarFieldEnum = {
   under_4_sum_1999: 'under_4_sum_1999',
   to_75_sum_1999: 'to_75_sum_1999',
   over_75_sum_1999: 'over_75_sum_1999',
-  under_4_sum_2009: 'under_4_sum_2009',
-  to_75_sum_2009: 'to_75_sum_2009',
-  over_75_sum_2009: 'over_75_sum_2009',
-  under_4_sum_2014: 'under_4_sum_2014',
-  to_75_sum_2014: 'to_75_sum_2014',
-  over_75_sum_2014: 'over_75_sum_2014',
-  under_4_sum_2020: 'under_4_sum_2020',
-  to_75_sum_2020: 'to_75_sum_2020',
-  over_75_sum_2020: 'over_75_sum_2020',
   tee_log: 'tee_log',
   tee_mob: 'tee_mob',
   precarite_logement: 'precarite_logement',
@@ -3041,7 +3107,8 @@ export const Databases_v2_table_communeScalarFieldEnum = {
   agriculture_part_over_55: 'agriculture_part_over_55',
   couverture_lcz: 'couverture_lcz',
   aires_appellations_controlees_nom: 'aires_appellations_controlees_nom',
-  aires_appellations_controlees_signe: 'aires_appellations_controlees_signe'
+  aires_appellations_controlees_signe: 'aires_appellations_controlees_signe',
+  projets_alimentaires_territoriaux: 'projets_alimentaires_territoriaux'
 } as const
 
 export type Databases_v2_table_communeScalarFieldEnum = (typeof Databases_v2_table_communeScalarFieldEnum)[keyof typeof Databases_v2_table_communeScalarFieldEnum]
@@ -3131,6 +3198,63 @@ export const Prelevements_eau_newScalarFieldEnum = {
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
+  annee_2008_aep: 'annee_2008_aep',
+  annee_2008_bar: 'annee_2008_bar',
+  annee_2008_can: 'annee_2008_can',
+  annee_2008_ene: 'annee_2008_ene',
+  annee_2008_ind: 'annee_2008_ind',
+  annee_2008_irr: 'annee_2008_irr',
+  annee_2009_aep: 'annee_2009_aep',
+  annee_2009_bar: 'annee_2009_bar',
+  annee_2009_can: 'annee_2009_can',
+  annee_2009_ene: 'annee_2009_ene',
+  annee_2009_ind: 'annee_2009_ind',
+  annee_2009_irr: 'annee_2009_irr',
+  annee_2010_aep: 'annee_2010_aep',
+  annee_2010_bar: 'annee_2010_bar',
+  annee_2010_can: 'annee_2010_can',
+  annee_2010_ene: 'annee_2010_ene',
+  annee_2010_ind: 'annee_2010_ind',
+  annee_2010_irr: 'annee_2010_irr',
+  annee_2011_aep: 'annee_2011_aep',
+  annee_2011_bar: 'annee_2011_bar',
+  annee_2011_can: 'annee_2011_can',
+  annee_2011_ene: 'annee_2011_ene',
+  annee_2011_ind: 'annee_2011_ind',
+  annee_2011_irr: 'annee_2011_irr',
+  annee_2012_aep: 'annee_2012_aep',
+  annee_2012_bar: 'annee_2012_bar',
+  annee_2012_can: 'annee_2012_can',
+  annee_2012_ene: 'annee_2012_ene',
+  annee_2012_exo: 'annee_2012_exo',
+  annee_2012_ind: 'annee_2012_ind',
+  annee_2012_irr: 'annee_2012_irr',
+  annee_2013_aep: 'annee_2013_aep',
+  annee_2013_bar: 'annee_2013_bar',
+  annee_2013_can: 'annee_2013_can',
+  annee_2013_ene: 'annee_2013_ene',
+  annee_2013_ind: 'annee_2013_ind',
+  annee_2013_irr: 'annee_2013_irr',
+  annee_2014_aep: 'annee_2014_aep',
+  annee_2014_bar: 'annee_2014_bar',
+  annee_2014_can: 'annee_2014_can',
+  annee_2014_ene: 'annee_2014_ene',
+  annee_2014_ind: 'annee_2014_ind',
+  annee_2014_irr: 'annee_2014_irr',
+  annee_2015_aep: 'annee_2015_aep',
+  annee_2015_bar: 'annee_2015_bar',
+  annee_2015_can: 'annee_2015_can',
+  annee_2015_ene: 'annee_2015_ene',
+  annee_2015_exo: 'annee_2015_exo',
+  annee_2015_ind: 'annee_2015_ind',
+  annee_2015_irr: 'annee_2015_irr',
+  annee_2016_aep: 'annee_2016_aep',
+  annee_2016_bar: 'annee_2016_bar',
+  annee_2016_can: 'annee_2016_can',
+  annee_2016_ene: 'annee_2016_ene',
+  annee_2016_exo: 'annee_2016_exo',
+  annee_2016_ind: 'annee_2016_ind',
+  annee_2016_irr: 'annee_2016_irr',
   annee_2017_aep: 'annee_2017_aep',
   annee_2017_bar: 'annee_2017_bar',
   annee_2017_can: 'annee_2017_can',
@@ -3187,8 +3311,17 @@ export type Prelevements_eau_newScalarFieldEnum = (typeof Prelevements_eau_newSc
 export const Qualite_sites_baignade_newScalarFieldEnum = {
   index: 'index',
   code_geographique: 'code_geographique',
-  nom_site: 'nom_site',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
   departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  nom_site: 'nom_site',
   latitude: 'latitude',
   longitude: 'longitude',
   type_eau_norm: 'type_eau_norm',
@@ -3227,6 +3360,17 @@ export const SecheressesScalarFieldEnum = {
 } as const
 
 export type SecheressesScalarFieldEnum = (typeof SecheressesScalarFieldEnum)[keyof typeof SecheressesScalarFieldEnum]
+
+
+export const ArboviroseScalarFieldEnum = {
+  index: 'index',
+  annee: 'annee',
+  departement: 'departement',
+  nb_cas_importes: 'nb_cas_importes',
+  nb_cas_autochtones: 'nb_cas_autochtones'
+} as const
+
+export type ArboviroseScalarFieldEnum = (typeof ArboviroseScalarFieldEnum)[keyof typeof ArboviroseScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -3436,6 +3580,7 @@ export type GlobalOmitConfig = {
   qualite_sites_baignade_new?: Prisma.qualite_sites_baignade_newOmit
   o3_seuils?: Prisma.o3_seuilsOmit
   secheresses?: Prisma.secheressesOmit
+  arbovirose?: Prisma.arboviroseOmit
 }
 
 /* Types for Logging */
