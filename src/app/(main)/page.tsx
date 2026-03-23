@@ -1,7 +1,5 @@
 'use client';
 
-import Notice from '@codegouvfr/react-dsfr/Notice';
-import Link from 'next/link';
 import { useEffect } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { CommunauteBloc } from './(home)/CommunauteBloc';
@@ -23,7 +21,7 @@ const Home = () => {
 
   return (
     <div>
-      <Notice
+      {/* <Notice
         className={css({
           backgroundColor: 'var(--gris-medium)',
           color: "#201F1E"
@@ -47,7 +45,7 @@ const Home = () => {
               </Link> !
           </>
         }
-      />
+      /> */}
       <PremierBloc />
       <Patch4Bloc />
       <TacctBloc />
