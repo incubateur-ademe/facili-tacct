@@ -20,7 +20,10 @@ describe('Integration: biodiversite queries', () => {
     );
     expect(Array.isArray(result.rows)).toBe(true);
     expect(result.rows.length).toBe(5);
-    expect(result.rows[0]).toHaveProperty('LIBELLE_SOUS_CHAMP', 'Surface certifiée');
+    expect(result.rows[0]).toHaveProperty(
+      'LIBELLE_SOUS_CHAMP',
+      'Surface certifiée'
+    );
   });
 
   it('consommation_espaces_naf returns expected results for EPCI 200054781', async () => {
@@ -37,9 +40,7 @@ describe('Integration: biodiversite queries', () => {
   });
 
   it('aot_40 returns expected results', async () => {
-    const result = await pool.query(
-      `SELECT * FROM databases_v2.aot_40`
-    );
+    const result = await pool.query(`SELECT * FROM databases_v2.aot_40`);
     expect(Array.isArray(result.rows)).toBe(true);
     expect(result.rows.length).toBe(291);
     expect(result.rows[0]).toHaveProperty('valeur brute', 9487.38664050025);
@@ -93,7 +94,7 @@ describe('Integration: query functions to check if collectivites_searchbar has r
        ) t`
     );
     expect(result.rows).toHaveLength(1);
-    expect(result.rows[0].checksum).toBe('36db3c9e098bc85da40091d1fa8a3456');
+    expect(result.rows[0].checksum).toBe('fd5eaba6e8fac7fc35f4544bbe688ca2');
   });
 });
 

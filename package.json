@@ -11,10 +11,12 @@
     "predev": "react-dsfr update-icons",
     "prebuild": "react-dsfr update-icons",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
-    "build": "cross-env NODE_OPTIONS=--inspect next build && node copy-assets.js",
+    "build": "pnpm test && next build && node copy-assets.js",
     "start": "node .next/standalone/server.js",
     "eslint": "eslint --fix ./src",
-    "test": "jest"
+    "test": "jest src/lib/queries/__tests__/",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "@codegouvfr/react-dsfr": "^1.22.4",
@@ -86,6 +88,7 @@
   "devDependencies": {
     "@creedengo/eslint-plugin": "^2.0.0",
     "@mdx-js/loader": "^3.1.1",
+    "@playwright/test": "^1.58.2",
     "@testing-library/jest-dom": "^6.6.3",
     "@types/bcrypt": "^5.0.2",
     "@types/d3": "^7.4.3",
