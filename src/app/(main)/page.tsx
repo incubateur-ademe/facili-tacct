@@ -12,10 +12,13 @@ import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
 
 const NOTICE_KEY = 'notice-tacct-evolution-fermee';
+const NOTICE_START = new Date('2026-03-26');
+const NOTICE_END = new Date('2026-04-07T23:59:59');
 
 const Home = () => {
   const { css } = useStyles();
   const [noticeClosed, setNoticeClosed] = useState(true);
+  const isWithinNoticePeriod = Date.now() >= NOTICE_START.getTime() && Date.now() <= NOTICE_END.getTime();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -31,7 +34,7 @@ const Home = () => {
 
   return (
     <div>
-      {!noticeClosed && (
+      {isWithinNoticePeriod && !noticeClosed && (
         <Notice
           className={css({
             backgroundColor: '#FFD1B4',

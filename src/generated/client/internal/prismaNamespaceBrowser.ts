@@ -88,7 +88,8 @@ export const ModelName = {
   o3_seuils: 'o3_seuils',
   qualite_sites_baignade_new: 'qualite_sites_baignade_new',
   prelevements_eau_new: 'prelevements_eau_new',
-  arbovirose: 'arbovirose'
+  arbovirose: 'arbovirose',
+  inondations_par_debordement: 'inondations_par_debordement'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1117,6 +1118,17 @@ export const ArboviroseScalarFieldEnum = {
 } as const
 
 export type ArboviroseScalarFieldEnum = (typeof ArboviroseScalarFieldEnum)[keyof typeof ArboviroseScalarFieldEnum]
+
+
+export const Inondations_par_debordementScalarFieldEnum = {
+  index: 'index',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  indicateur_exposition: 'indicateur_exposition',
+  valeur_exposition: 'valeur_exposition'
+} as const
+
+export type Inondations_par_debordementScalarFieldEnum = (typeof Inondations_par_debordementScalarFieldEnum)[keyof typeof Inondations_par_debordementScalarFieldEnum]
 
 
 export const SortOrder = {

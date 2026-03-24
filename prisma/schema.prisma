@@ -1186,3 +1186,15 @@ model arbovirose {
   @@index([index], map: "ix_arbovirose_index")
   @@schema("databases_v2")
 }
+
+model inondations_par_debordement {
+  index                 Int    @id
+  epci                  String
+  libelle_epci          String
+  indicateur_exposition String
+  valeur_exposition     Float?
+
+  @@index([epci], map: "inondations_par_debordement_epci_index")
+  @@index([index], map: "ix_inondations_par_debordement_index")
+  @@schema("databases_v2")
+}

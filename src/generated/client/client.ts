@@ -229,3 +229,8 @@ export type prelevements_eau_new = Prisma.prelevements_eau_newModel
  * 
  */
 export type arbovirose = Prisma.arboviroseModel
+/**
+ * Model inondations_par_debordement
+ * 
+ */
+export type inondations_par_debordement = Prisma.inondations_par_debordementModel
