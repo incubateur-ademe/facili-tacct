@@ -13,7 +13,7 @@ import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
 
 const NOTICE_KEY = 'notice-tacct-evolution-fermee';
-const NOTICE_START = new Date('2026-03-25');
+const NOTICE_START = new Date('2026-03-26');
 const NOTICE_END = new Date('2026-04-07T23:59:59');
 
 const Home = () => {
