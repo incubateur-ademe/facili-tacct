@@ -80,12 +80,12 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 7.1.0
- * Query Engine version: ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba
+ * Prisma Client JS version: 7.4.0
+ * Query Engine version: ab56fe763f921d033a6c195e7ddeb3e255bdbb57
  */
 export const prismaVersion: PrismaVersion = {
-  client: "7.1.0",
-  engine: "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba"
+  client: "7.4.0",
+  engine: "ab56fe763f921d033a6c195e7ddeb3e255bdbb57"
 }
 
 /**
@@ -411,7 +411,8 @@ export const ModelName = {
   qualite_sites_baignade_new: 'qualite_sites_baignade_new',
   o3_seuils: 'o3_seuils',
   secheresses: 'secheresses',
-  arbovirose: 'arbovirose'
+  arbovirose: 'arbovirose',
+  inondations_par_debordement: 'inondations_par_debordement'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -427,7 +428,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "qualite_sites_baignade_new" | "o3_seuils" | "secheresses" | "arbovirose"
+    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "qualite_sites_baignade_new" | "o3_seuils" | "secheresses" | "arbovirose" | "inondations_par_debordement"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2471,6 +2472,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    inondations_par_debordement: {
+      payload: Prisma.$inondations_par_debordementPayload<ExtArgs>
+      fields: Prisma.inondations_par_debordementFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.inondations_par_debordementFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$inondations_par_debordementPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.inondations_par_debordementFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$inondations_par_debordementPayload>
+        }
+        findFirst: {
+          args: Prisma.inondations_par_debordementFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$inondations_par_debordementPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.inondations_par_debordementFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$inondations_par_debordementPayload>
+        }
+        findMany: {
+          args: Prisma.inondations_par_debordementFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$inondations_par_debordementPayload>[]
+        }
+        create: {
+          args: Prisma.inondations_par_debordementCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$inondations_par_debordementPayload>
+        }
+        createMany: {
+          args: Prisma.inondations_par_debordementCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.inondations_par_debordementCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$inondations_par_debordementPayload>[]
+        }
+        delete: {
+          args: Prisma.inondations_par_debordementDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$inondations_par_debordementPayload>
+        }
+        update: {
+          args: Prisma.inondations_par_debordementUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$inondations_par_debordementPayload>
+        }
+        deleteMany: {
+          args: Prisma.inondations_par_debordementDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.inondations_par_debordementUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.inondations_par_debordementUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$inondations_par_debordementPayload>[]
+        }
+        upsert: {
+          args: Prisma.inondations_par_debordementUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$inondations_par_debordementPayload>
+        }
+        aggregate: {
+          args: Prisma.Inondations_par_debordementAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateInondations_par_debordement>
+        }
+        groupBy: {
+          args: Prisma.inondations_par_debordementGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Inondations_par_debordementGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.inondations_par_debordementCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Inondations_par_debordementCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -3373,6 +3448,17 @@ export const ArboviroseScalarFieldEnum = {
 export type ArboviroseScalarFieldEnum = (typeof ArboviroseScalarFieldEnum)[keyof typeof ArboviroseScalarFieldEnum]
 
 
+export const Inondations_par_debordementScalarFieldEnum = {
+  index: 'index',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  indicateur_exposition: 'indicateur_exposition',
+  valeur_exposition: 'valeur_exposition'
+} as const
+
+export type Inondations_par_debordementScalarFieldEnum = (typeof Inondations_par_debordementScalarFieldEnum)[keyof typeof Inondations_par_debordementScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -3581,6 +3667,7 @@ export type GlobalOmitConfig = {
   o3_seuils?: Prisma.o3_seuilsOmit
   secheresses?: Prisma.secheressesOmit
   arbovirose?: Prisma.arboviroseOmit
+  inondations_par_debordement?: Prisma.inondations_par_debordementOmit
 }
 
 /* Types for Logging */

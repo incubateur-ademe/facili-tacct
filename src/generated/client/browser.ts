@@ -157,3 +157,8 @@ export type secheresses = Prisma.secheressesModel
  * 
  */
 export type arbovirose = Prisma.arboviroseModel
+/**
+ * Model inondations_par_debordement
+ * 
+ */
+export type inondations_par_debordement = Prisma.inondations_par_debordementModel
