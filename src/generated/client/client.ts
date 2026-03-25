@@ -29,8 +29,8 @@ export * from "./enums"
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Sandbox_users
- * const sandbox_users = await prisma.sandbox_users.findMany()
+ * // Fetch zero or more Databases_v2_agricultures
+ * const databases_v2_agricultures = await prisma.databases_v2_agriculture.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -39,11 +39,6 @@ export const PrismaClient = $Class.getPrismaClientClass()
 export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts extends Prisma.PrismaClientOptions["omit"] = Prisma.PrismaClientOptions["omit"], ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>
 export { Prisma }
 
-/**
- * Model sandbox_users
- * 
- */
-export type sandbox_users = Prisma.sandbox_usersModel
 /**
  * Model databases_v2_agriculture
  * 

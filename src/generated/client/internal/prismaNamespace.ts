@@ -384,7 +384,6 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  sandbox_users: 'sandbox_users',
   databases_v2_agriculture: 'databases_v2_agriculture',
   databases_v2_agriculture_bio: 'databases_v2_agriculture_bio',
   databases_v2_aot_40: 'databases_v2_aot_40',
@@ -427,84 +426,10 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "qualite_sites_baignade_new" | "o3_seuils" | "secheresses" | "inondations_par_debordement"
+    modelProps: "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "qualite_sites_baignade_new" | "o3_seuils" | "secheresses" | "inondations_par_debordement"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
-    sandbox_users: {
-      payload: Prisma.$sandbox_usersPayload<ExtArgs>
-      fields: Prisma.sandbox_usersFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.sandbox_usersFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$sandbox_usersPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.sandbox_usersFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
-        }
-        findFirst: {
-          args: Prisma.sandbox_usersFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$sandbox_usersPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.sandbox_usersFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
-        }
-        findMany: {
-          args: Prisma.sandbox_usersFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$sandbox_usersPayload>[]
-        }
-        create: {
-          args: Prisma.sandbox_usersCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
-        }
-        createMany: {
-          args: Prisma.sandbox_usersCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.sandbox_usersCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$sandbox_usersPayload>[]
-        }
-        delete: {
-          args: Prisma.sandbox_usersDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
-        }
-        update: {
-          args: Prisma.sandbox_usersUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
-        }
-        deleteMany: {
-          args: Prisma.sandbox_usersDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.sandbox_usersUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.sandbox_usersUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$sandbox_usersPayload>[]
-        }
-        upsert: {
-          args: Prisma.sandbox_usersUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
-        }
-        aggregate: {
-          args: Prisma.Sandbox_usersAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateSandbox_users>
-        }
-        groupBy: {
-          args: Prisma.sandbox_usersGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Sandbox_usersGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.sandbox_usersCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Sandbox_usersCountAggregateOutputType> | number
-        }
-      }
-    }
     databases_v2_agriculture: {
       payload: Prisma.$databases_v2_agriculturePayload<ExtArgs>
       fields: Prisma.databases_v2_agricultureFieldRefs
@@ -2510,16 +2435,6 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const Sandbox_usersScalarFieldEnum = {
-  username: 'username',
-  pk: 'pk',
-  password: 'password',
-  created_at: 'created_at'
-} as const
-
-export type Sandbox_usersScalarFieldEnum = (typeof Sandbox_usersScalarFieldEnum)[keyof typeof Sandbox_usersScalarFieldEnum]
-
-
 export const Databases_v2_agricultureScalarFieldEnum = {
   index: 'index',
   code_geographique: 'code_geographique',
@@ -3403,20 +3318,6 @@ export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 /**
- * Reference to a field of type 'String'
- */
-export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
-    
-
-
-/**
- * Reference to a field of type 'String[]'
- */
-export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-    
-
-
-/**
  * Reference to a field of type 'Int'
  */
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -3431,16 +3332,16 @@ export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
- * Reference to a field of type 'DateTime'
+ * Reference to a field of type 'String'
  */
-export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
     
 
 
 /**
- * Reference to a field of type 'DateTime[]'
+ * Reference to a field of type 'String[]'
  */
-export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
     
 
 
@@ -3552,7 +3453,6 @@ export type PrismaClientOptions = ({
   comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
-  sandbox_users?: Prisma.sandbox_usersOmit
   databases_v2_agriculture?: Prisma.databases_v2_agricultureOmit
   databases_v2_agriculture_bio?: Prisma.databases_v2_agriculture_bioOmit
   databases_v2_aot_40?: Prisma.databases_v2_aot_40Omit

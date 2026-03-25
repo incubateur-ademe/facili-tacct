@@ -18,11 +18,6 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
- * Model sandbox_users
- * 
- */
-export type sandbox_users = Prisma.sandbox_usersModel
-/**
  * Model databases_v2_agriculture
  * 
  */

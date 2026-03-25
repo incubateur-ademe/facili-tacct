@@ -51,7 +51,6 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  sandbox_users: 'sandbox_users',
   databases_v2_agriculture: 'databases_v2_agriculture',
   databases_v2_agriculture_bio: 'databases_v2_agriculture_bio',
   databases_v2_aot_40: 'databases_v2_aot_40',
@@ -95,16 +94,6 @@ export const TransactionIsolationLevel = {
 } as const
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
-
-
-export const Sandbox_usersScalarFieldEnum = {
-  username: 'username',
-  pk: 'pk',
-  password: 'password',
-  created_at: 'created_at'
-} as const
-
-export type Sandbox_usersScalarFieldEnum = (typeof Sandbox_usersScalarFieldEnum)[keyof typeof Sandbox_usersScalarFieldEnum]
 
 
 export const Databases_v2_agricultureScalarFieldEnum = {

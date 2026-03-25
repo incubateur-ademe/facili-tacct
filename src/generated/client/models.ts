@@ -8,7 +8,6 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/sandbox_users'
 export type * from './models/databases_v2_agriculture'
 export type * from './models/databases_v2_agriculture_bio'
 export type * from './models/databases_v2_aot_40'
