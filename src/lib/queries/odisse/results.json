@@ -1,0 +1,39 @@
+{
+  "total_count": 2,
+  "results": [
+    {
+      "indicateur": "A souffert physiquement d'un \u00e9v\u00e8nement climatique extr\u00eame",
+      "annee": "2024",
+      "sexe": "Tous",
+      "classe_d_age": "Tous",
+      "diplome": "Tous",
+      "nouvelles_regions": "Tous",
+      "pcs": "Tous",
+      "situation_financiere_percue": "Tous",
+      "estimation": 37.2,
+      "ic_inf": 36.5,
+      "ic_sup": 37.9,
+      "effectif_brut": 27798.0,
+      "classification": null,
+      "chapitre": "Changement climatique",
+      "ic": "[ 36,5 - 37,9 ]"
+    },
+    {
+      "indicateur": "A souffert psychologiquement d'un \u00e9v\u00e8nement climatique extr\u00eame",
+      "annee": "2024",
+      "sexe": "Tous",
+      "classe_d_age": "Tous",
+      "diplome": "Tous",
+      "nouvelles_regions": "Tous",
+      "pcs": "Tous",
+      "situation_financiere_percue": "Tous",
+      "estimation": 22.5,
+      "ic_inf": 21.9,
+      "ic_sup": 23.1,
+      "effectif_brut": 27797.0,
+      "classification": null,
+      "chapitre": "Changement climatique",
+      "ic": "[ 21,9 - 23,1 ]"
+    }
+  ]
+}
