@@ -6,6 +6,8 @@ import styles from './ressources.module.css';
 
 const SOURCE_SPLIT_PATTERN = /(\[[^\]]*\])/g;
 const SOURCE_TEST_PATTERN = /\[[^\]]*\]/;
+// const SOURCE_SPLIT_PATTERN = /(source\s*\[\d+\])/gi;
+// const SOURCE_TEST_PATTERN = /source\s*\[\d+\]/i;
 
 const renderContentWithSources = (content: string, spanClassName: string, spanStyle: CSSProperties) => {
   const parts = content.split(SOURCE_SPLIT_PATTERN);
