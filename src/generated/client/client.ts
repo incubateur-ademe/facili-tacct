@@ -175,11 +175,6 @@ export type o3_seuils = Prisma.o3_seuilsModel
  */
 export type secheresses = Prisma.secheressesModel
 /**
- * Model arbovirose
- * 
- */
-export type arbovirose = Prisma.arboviroseModel
-/**
  * Model inondations_par_debordement
  * 
  */
