@@ -84,13 +84,13 @@ async function fetchBaserow(tableId) {
             nextUrl = nextUrl.replace('http:', 'https:');
         }
     }
-    console.log("[Baserow] Fetched", allResults.length, "table", allResults);
+    console.log('[Baserow] Fetched', allResults.length, 'table', allResults);
     return allResults;
 }
 
 async function loadPopulation() {
     const resp = await fetch(
-        'https://www.insee.fr/fr/statistiques/fichier/3698339/base-pop-historiques-1876-2022.xlsx'
+        'https://www.insee.fr/fr/statistiques/fichier/3698339/base-pop-historiques-1876-2023.xlsx'
     );
     if (!resp.ok)
         throw new Error(`Erreur chargement population: ${resp.status}`);
@@ -107,9 +107,9 @@ async function loadPopulation() {
     return rows
         .map((row) => ({
             code_geographique: row['CODGEO'],
-            population_2022: row['PMUN2022']
+            population_2023: row['PMUN2023']
         }))
-        .filter((row) => row.code_geographique && row.population_2022);
+        .filter((row) => row.code_geographique && row.population_2023);
 }
 
 async function loadTerritoires() {
@@ -300,13 +300,13 @@ function calculatePopulationCoverage(
     const uniqueCommunes = [...new Set(toutesLesCommunes)];
     const popTotaleCouverte = population
         .filter((row) => uniqueCommunes.includes(row.code_geographique))
-        .reduce((sum, row) => sum + (row.population_2022 || 0), 0);
+        .reduce((sum, row) => sum + (row.population_2023 || 0), 0);
 
     console.log(
         'Population dans nos EPCI :',
         population
             .filter((row) => communesEpci.includes(row.code_geographique))
-            .reduce((sum, row) => sum + (row.population_2022 || 0), 0)
+            .reduce((sum, row) => sum + (row.population_2023 || 0), 0)
     );
     console.log(
         'Population dans nos départements :',
@@ -314,31 +314,31 @@ function calculatePopulationCoverage(
             .filter((row) =>
                 communesDepartement.includes(row.code_geographique)
             )
-            .reduce((sum, row) => sum + (row.population_2022 || 0), 0)
+            .reduce((sum, row) => sum + (row.population_2023 || 0), 0)
     );
     console.log(
         'Population dans nos communes :',
         population
             .filter((row) => communesCommune.includes(row.code_geographique))
-            .reduce((sum, row) => sum + (row.population_2022 || 0), 0)
+            .reduce((sum, row) => sum + (row.population_2023 || 0), 0)
     );
     console.log(
         'Population dans nos PNR :',
         population
             .filter((row) => communesPnr.includes(row.code_geographique))
-            .reduce((sum, row) => sum + (row.population_2022 || 0), 0)
+            .reduce((sum, row) => sum + (row.population_2023 || 0), 0)
     );
     console.log(
         'Population dans nos PETR :',
         population
             .filter((row) => communesPetr.includes(row.code_geographique))
-            .reduce((sum, row) => sum + (row.population_2022 || 0), 0)
+            .reduce((sum, row) => sum + (row.population_2023 || 0), 0)
     );
     console.log(
         'Population dans nos EPT :',
         population
             .filter((row) => communesEpt.includes(row.code_geographique))
-            .reduce((sum, row) => sum + (row.population_2022 || 0), 0)
+            .reduce((sum, row) => sum + (row.population_2023 || 0), 0)
     );
     console.log('------');
     console.log(
@@ -349,13 +349,13 @@ function calculatePopulationCoverage(
                     row.code_geographique
                 )
             )
-            .reduce((sum, row) => sum + (row.population_2022 || 0), 0)
+            .reduce((sum, row) => sum + (row.population_2023 || 0), 0)
     );
     console.log(
         'Population dans nos métropoles :',
         population
             .filter((row) => communesMetropole.includes(row.code_geographique))
-            .reduce((sum, row) => sum + (row.population_2022 || 0), 0)
+            .reduce((sum, row) => sum + (row.population_2023 || 0), 0)
     );
     console.log('------');
     console.log('Population totale couverte :', popTotaleCouverte);
@@ -409,9 +409,9 @@ async function insertPopulationCoverage(popTotaleCouverte) {
         let df = baserowData.map((row) => ({
             libelle: row['⚠️ Nom du territoire'],
             type:
-                Array.isArray(row['⚠️ Typologie de territoire']) &&
-                row['⚠️ Typologie de territoire'].length > 0
-                    ? row['⚠️ Typologie de territoire'][0].value
+                Array.isArray(row['⚠️ Type de structure']) &&
+                row['⚠️ Type de structure'].length > 0
+                    ? row['⚠️ Type de structure'][0].value
                     : null,
             siren: row['⚠️ # SIREN']
         }));

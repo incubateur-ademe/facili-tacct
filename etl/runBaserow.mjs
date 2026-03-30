@@ -168,14 +168,12 @@ async function insertTerritoires(client, rows) {
     for (const row of rows) {
         // Assuming row is an object from Baserow
         const ordre = row['order'] || null;
-        const nom_territoire = row['Nom du territoire'] || null;
+        const nom_territoire = row['⚠️ Nom du territoire'] || null;
         const notes_ouvertes = row['Notes ouvertes'] || null;
-        const typologie_territoire = Array.isArray(
-            row['Typologie de territoire']
-        )
-            ? row['Typologie de territoire']
-            : row['Typologie de territoire']
-              ? [row['Typologie de territoire']]
+        const typologie_territoire = Array.isArray(row['⚠️ Type de structure'])
+            ? row['⚠️ Type de structure']
+            : row['⚠️ Type de structure']
+              ? [row['⚠️ Type de structure']]
               : [];
         const thematique_prioritaire = Array.isArray(
             row['Thématique prioritaire']
@@ -243,7 +241,7 @@ async function insertTerritoires(client, rows) {
             : row['CdM']
               ? [row['CdM']]
               : [];
-        const siren = row['# SIREN'] || null;
+        const siren = row['⚠️ # SIREN'] || null;
 
         const result = await client.query(sql, [
             ordre,
