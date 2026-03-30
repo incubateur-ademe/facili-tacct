@@ -1,11 +1,13 @@
 'use client';
 
+import { MoustiqueTigreTooltip } from '@/components/maps/components/tooltips';
+import departementsNoms from '@/lib/data/departements.json';
 import moustiqueTigreGeoJSON from '@/lib/data/moustique_tigre_departements.json';
 import 'carte-facile/carte-facile.css';
 import { FeatureCollection, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 
 const BLANK_STYLE: maplibregl.StyleSpecification = {
   version: 8,
@@ -33,6 +35,12 @@ export const MapJson = (props: {
 }) => {
   const { mapRef, mapContainer, annee, casParDepartement } = props;
   const [isLoaded, setIsLoaded] = useState(false);
+  const popupRef = useRef<maplibregl.Popup | null>(null);
+  const hoveredFeatureRef = useRef<string | null>(null);
+  const anneeRef = useRef(annee);
+  const casParDepartementRef = useRef(casParDepartement);
+  anneeRef.current = annee;
+  casParDepartementRef.current = casParDepartement;
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -40,7 +48,8 @@ export const MapJson = (props: {
       container: mapContainer.current,
       style: BLANK_STYLE,
       attributionControl: false,
-      interactive: false,
+      interactive: true,
+      scrollZoom: false,
       bounds: [[-5.5, 41.2], [10.0, 51.5]],
       fitBoundsOptions: { padding: 0 }
     });
@@ -72,6 +81,70 @@ export const MapJson = (props: {
         }
       });
 
+      map.on('mousemove', 'departements-fill', (e) => {
+        if (!e.features || e.features.length === 0) return;
+        const code = e.features[0].properties?.code as string | undefined;
+        if (!code) return;
+
+        const nom = `${(departementsNoms as Record<string, string>)[code]} (${code})`;
+        const currentCas = casParDepartementRef.current;
+        const currentAnnee = anneeRef.current;
+        const valeur = currentCas
+          ? `${currentCas[code] ?? 0} cas`
+          : `${(e.features[0].properties?.annees)?.includes(String(currentAnnee)) ? 'Présence' : 'Absence'}`;
+
+        if (hoveredFeatureRef.current !== code) {
+          hoveredFeatureRef.current = code;
+          if (popupRef.current) popupRef.current.remove();
+          popupRef.current = new maplibregl.Popup({
+            closeButton: false,
+            closeOnClick: false,
+            maxWidth: 'none'
+          })
+            .setLngLat(e.lngLat)
+            .setHTML(MoustiqueTigreTooltip(
+              nom,
+              valeur,
+              currentCas ? casToCouleur(
+                currentCas
+                  ? currentCas[code] ?? 0
+                  : (e.features[0].properties?.annees)?.includes(String(currentAnnee)) ? 1 : 0
+              ) : (e.features[0].properties?.annees)?.includes(String(currentAnnee))
+                ? COULEUR_PRESENT
+                : COULEUR_ABSENT
+            ))
+            .addTo(map);
+        } else if (popupRef.current) {
+          popupRef.current.setLngLat(e.lngLat);
+          popupRef.current.setHTML(
+            MoustiqueTigreTooltip(
+              nom,
+              valeur,
+              currentCas ? casToCouleur(
+                currentCas
+                  ? currentCas[code] ?? 0
+                  : (e.features[0].properties?.annees)?.includes(String(currentAnnee)) ? 1 : 0
+              ) : (e.features[0].properties?.annees)?.includes(String(currentAnnee))
+                ? COULEUR_PRESENT
+                : COULEUR_ABSENT
+            )
+          );
+        }
+      });
+
+      map.on('mouseleave', 'departements-fill', () => {
+        hoveredFeatureRef.current = null;
+        if (popupRef.current) {
+          popupRef.current.remove();
+          popupRef.current = null;
+        }
+        map.getCanvas().style.cursor = '';
+      });
+
+      map.on('mouseenter', 'departements-fill', () => {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
       setIsLoaded(true);
     });
 
@@ -80,6 +153,10 @@ export const MapJson = (props: {
 
     return () => {
       resizeObserver.disconnect();
+      if (popupRef.current) {
+        popupRef.current.remove();
+        popupRef.current = null;
+      }
       if (mapRef.current) {
         mapRef.current.remove();
         mapRef.current = null;
@@ -117,8 +194,20 @@ export const MapJson = (props: {
   }, [annee, isLoaded, casParDepartement]);
 
   return (
-    <div style={{ position: 'relative', aspectRatio: '1.146' }}>
-      <div ref={mapContainer} style={{ position: 'absolute', inset: 0 }} />
-    </div>
+    <>
+      <style jsx global>{`
+        .maplibregl-popup .maplibregl-popup-content {
+          box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16) !important;
+          border-radius: 6px !important;
+          padding: 0.5rem 1rem !important;
+        }
+        .map-container {
+            overflow: visible !important;
+          }
+      `}</style>
+      <div style={{ position: 'relative', aspectRatio: '1.146' }}>
+        <div ref={mapContainer} style={{ position: 'absolute', inset: 0 }} />
+      </div>
+    </>
   );
 };

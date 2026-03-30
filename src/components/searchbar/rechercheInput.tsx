@@ -20,6 +20,7 @@ export const RechercheInput = ((props: SearchInputProps) => {
   } = props;
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState<SearchInputOptions[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   // supprime les doublons pour les objects
   const filteredCollectivite = options.filter(
@@ -36,6 +37,7 @@ export const RechercheInput = ((props: SearchInputProps) => {
   );
   useEffect(() => {
     void (async () => {
+      setIsLoading(true);
       const getCollectivite = await GetCollectivite(typeTerritoire, inputValue);
       setOptions(
         getCollectivite.map((el) => ({
@@ -49,6 +51,7 @@ export const RechercheInput = ((props: SearchInputProps) => {
           codePnr: el.code_pnr ?? ''
         }))
       );
+      setIsLoading(false);
     })();
     setSearchCode(searchCode);
   }, [inputValue, typeTerritoire]);
@@ -58,6 +61,7 @@ export const RechercheInput = ((props: SearchInputProps) => {
       id={id}
       autoHighlight
       fullWidth
+      loading={isLoading}
       filterOptions={(x) => x}
       options={collectivites}
       loadingText="Chargement..."

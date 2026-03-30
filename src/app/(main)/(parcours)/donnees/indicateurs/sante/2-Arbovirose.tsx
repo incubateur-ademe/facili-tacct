@@ -29,7 +29,7 @@ export const Arbovirose = (props: {
   const mapContainer1 = useRef<HTMLDivElement>(null);
   const mapRef2 = useRef<maplibregl.Map | null>(null);
   const mapContainer2 = useRef<HTMLDivElement>(null);
-  const [selectedAnnee, setSelectedAnnee] = useState(2022);
+  const [selectedAnnee, setSelectedAnnee] = useState(2024);
   const aggregatedArbovirose = Object.values(
     arbovirose.reduce<Record<string, { annee: string; nb_cas_importes: number; nb_cas_autochtones: number }>>(
       (acc, item) => {
