@@ -1,6 +1,6 @@
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
-import DisconnectButton from '../stats/DisconnectButton';
+import DisconnectButton from './DisconnectButton';
 import MetabaseComponent from './metabaseComponent';
 
 const SandboxUserPage = async () => {

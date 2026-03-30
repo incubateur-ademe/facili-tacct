@@ -1,4 +1,3 @@
-import { Button } from '@mui/material';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import DisconnectButton from '../stats/DisconnectButton';
@@ -22,31 +21,6 @@ const SandboxUserPage = async ({ params }: { params: Promise<SegmentParams> }) =
       </div>
       <h1>Bienvenue dans l'espace protégé de {user}</h1>
       <p>Contenu réservé à {user}.</p>
-      {
-        user === 'audrey' && (
-          <Button
-            variant="contained"
-            color="primary"
-            href="/sandbox/audrey/roue"
-            sx={{ mt: 2 }}
-          >
-            Accéder à la roue systémique
-          </Button>
-        )
-      }
-      {
-        user === 'aude' && (
-          <Button
-            variant="contained"
-            color="primary"
-            href="/sandbox/aude/recherche-territoire-patch4"
-            sx={{ mt: 2 }}
-          >
-            Accéder aux patch 4°C
-          </Button>
-        )
-      }
-
     </div>
   );
 }
