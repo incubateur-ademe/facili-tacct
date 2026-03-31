@@ -18,6 +18,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/*', '/sandbox/*', '/iframe/*']
     },
-    sitemap: 'https://facili-tacct.beta.gouv.fr/sitemap.xml'
+    sitemap: 'https://tacct.ademe.fr/sitemap.xml'
   };
 }

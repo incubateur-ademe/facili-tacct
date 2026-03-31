@@ -48,8 +48,8 @@ export const Text = ({ text }: Props) => {
         {textObj.link ?
           <a
             href={textObj.link.url}
-            target={textObj.link.url.includes("facili-tacct") ? "_self" : "_blank"}
-            rel={textObj.link.url.includes("facili-tacct") ? undefined : "noopener noreferrer"}
+            target={textObj.link.url.includes("tacct") ? "_self" : "_blank"}
+            rel={textObj.link.url.includes("tacct") ? undefined : "noopener noreferrer"}
             className={styles.link}
           >
             {normalizedContent}

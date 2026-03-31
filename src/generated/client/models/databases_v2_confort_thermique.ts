@@ -850,7 +850,7 @@ export type Databases_v2_confort_thermiqueGroupByOutputType = {
   _max: Databases_v2_confort_thermiqueMaxAggregateOutputType | null
 }
 
-export type GetDatabases_v2_confort_thermiqueGroupByPayload<T extends databases_v2_confort_thermiqueGroupByArgs> = Prisma.PrismaPromise<
+type GetDatabases_v2_confort_thermiqueGroupByPayload<T extends databases_v2_confort_thermiqueGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_confort_thermiqueGroupByOutputType, T['by']> &
       {
@@ -3070,11 +3070,6 @@ export type databases_v2_confort_thermiqueFindManyArgs<ExtArgs extends runtime.T
    * Skip the first `n` databases_v2_confort_thermiques.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of databases_v2_confort_thermiques.
-   */
   distinct?: Prisma.Databases_v2_confort_thermiqueScalarFieldEnum | Prisma.Databases_v2_confort_thermiqueScalarFieldEnum[]
 }
 

@@ -1,6 +1,6 @@
-import { H4 } from '@/design-system/base/Textes';
+import { Body, H4 } from '@/design-system/base/Textes';
 import Image, { StaticImageData } from 'next/image';
-import styles from '../main.module.scss';
+import styles from './home.module.scss';
 
 type HomeCardProps = {
   icone: StaticImageData;
@@ -23,7 +23,7 @@ export const HomeCard = ({
         />
       </div>
       <H4 style={{ color: "var(--principales-vert)", margin: "0.5rem 0 1rem", fontSize: "1rem" }}>{titre}</H4>
-      <p>{description}</p>
+      <Body style={{ color: "#3D3D3D" }}>{description}</Body>
     </div>
   )
 }
