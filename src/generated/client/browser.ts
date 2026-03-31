@@ -18,11 +18,6 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
- * Model sandbox_users
- * 
- */
-export type sandbox_users = Prisma.sandbox_usersModel
-/**
  * Model databases_v2_agriculture
  * 
  */
@@ -153,7 +148,7 @@ export type o3_seuils = Prisma.o3_seuilsModel
  */
 export type secheresses = Prisma.secheressesModel
 /**
- * Model arbovirose
+ * Model inondations_par_debordement
  * 
  */
-export type arbovirose = Prisma.arboviroseModel
+export type inondations_par_debordement = Prisma.inondations_par_debordementModel

@@ -8,7 +8,6 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/sandbox_users'
 export type * from './models/databases_v2_agriculture'
 export type * from './models/databases_v2_agriculture_bio'
 export type * from './models/databases_v2_aot_40'
@@ -35,5 +34,5 @@ export type * from './models/prelevements_eau_new'
 export type * from './models/qualite_sites_baignade_new'
 export type * from './models/o3_seuils'
 export type * from './models/secheresses'
-export type * from './models/arbovirose'
+export type * from './models/inondations_par_debordement'
 export type * from './commonInputTypes'
