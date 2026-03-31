@@ -7,8 +7,8 @@ import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
-import { CoursDeauTooltip } from './components/tooltips';
 import styles from './maps.module.scss';
+import { CoursDeauTooltip } from './subcomponents/tooltips';
 
 export const MapEtatCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
@@ -21,6 +21,8 @@ export const MapEtatCoursDeau = (props: {
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const hoveredFeatureRef = useRef<string | null>(null);
+  const hoveredBaignadeRef = useRef<string | null>(null);
+  const hoveredClusterRef = useRef<number | null>(null);
 
   // Helper functions for sites de baignade
   const qualiteIcon = (qualite: string | undefined) => {
@@ -409,6 +411,7 @@ export const MapEtatCoursDeau = (props: {
               map.getCanvas().style.cursor = 'pointer';
               if (e.features && e.features.length > 0 && e.features[0].properties?.cluster_id !== undefined) {
                 const clusterId = e.features[0].properties.cluster_id;
+                hoveredClusterRef.current = clusterId;
                 const source = map.getSource('sitesBaignade') as maplibregl.GeoJSONSource;
                 source.getClusterLeaves(clusterId, 100, 0).then((features) => {
                   if (!features) return;
@@ -447,6 +450,7 @@ export const MapEtatCoursDeau = (props: {
 
             map.on('mouseleave', layerId, () => {
               map.getCanvas().style.cursor = '';
+              hoveredClusterRef.current = null;
               if (popupRef.current) {
                 popupRef.current.remove();
                 popupRef.current = null;
@@ -454,8 +458,42 @@ export const MapEtatCoursDeau = (props: {
             });
 
             map.on('mousemove', layerId, (e) => {
-              if (popupRef.current && e.features && e.features.length > 0) {
-                popupRef.current.setLngLat(e.lngLat);
+              if (e.features && e.features.length > 0) {
+                const clusterId = e.features[0].properties?.cluster_id;
+                if (clusterId === undefined) return;
+                if (hoveredClusterRef.current !== clusterId) {
+                  hoveredClusterRef.current = clusterId;
+                  const source = map.getSource('sitesBaignade') as maplibregl.GeoJSONSource;
+                  source.getClusterLeaves(clusterId, 100, 0).then((features) => {
+                    if (!features) return;
+                    const sitesInCluster = features.map(f => f.properties?.nomSite).filter(Boolean).slice(0, 10);
+                    const hasMore = features.length > 10;
+                    const tooltipContent = `<div style="padding: 0.25rem;">
+                      <div style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; border-bottom: 1px solid #B8B8B8; margin-bottom: 0.5rem;">
+                        Dans ce regroupement :
+                      </div>
+                      <div style="display: flex; flex-direction: column; font-size: 10px; font-family: Marianne; font-weight: 700;">
+                        ${sitesInCluster.map((site: string) => `<div>${site}</div>`).join('')}
+                        ${hasMore ? '<div>...</div>' : ''}
+                      </div>
+                    </div>`;
+                    if (popupRef.current) popupRef.current.remove();
+                    popupRef.current = new maplibregl.Popup({
+                      closeButton: false,
+                      closeOnClick: false,
+                      className: 'baignade-cluster-tooltip',
+                      anchor: 'top',
+                      maxWidth: 'none'
+                    })
+                      .setLngLat(e.lngLat)
+                      .setHTML(tooltipContent)
+                      .addTo(map);
+                  }).catch((err) => {
+                    console.error('Error getting cluster leaves:', err);
+                  });
+                } else if (popupRef.current) {
+                  popupRef.current.setLngLat(e.lngLat);
+                }
               }
             });
 
@@ -488,6 +526,7 @@ export const MapEtatCoursDeau = (props: {
             if (e.features && e.features.length > 0) {
               const properties = e.features[0].properties;
               const nomSite = properties?.nomSite;
+              hoveredBaignadeRef.current = nomSite;
               const qualite = properties?.qualite;
               const label = qualiteLabel(qualite);
               const icon = qualiteIcon(qualite);
@@ -522,6 +561,7 @@ export const MapEtatCoursDeau = (props: {
 
           map.on('mouseleave', 'baignade-points', () => {
             map.getCanvas().style.cursor = '';
+            hoveredBaignadeRef.current = null;
             if (popupRef.current) {
               popupRef.current.remove();
               popupRef.current = null;
@@ -529,8 +569,38 @@ export const MapEtatCoursDeau = (props: {
           });
 
           map.on('mousemove', 'baignade-points', (e) => {
-            if (popupRef.current && e.features && e.features.length > 0) {
-              popupRef.current.setLngLat(e.lngLat);
+            if (e.features && e.features.length > 0) {
+              const properties = e.features[0].properties;
+              const nomSite = properties?.nomSite;
+              if (hoveredBaignadeRef.current !== nomSite) {
+                hoveredBaignadeRef.current = nomSite;
+                const qualite = properties?.qualite;
+                const label = qualiteLabel(qualite);
+                const icon = qualiteIcon(qualite);
+                const tooltipContent = `
+                  <div class="${styles.qualiteSitesBaignadePopupWrapper}" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <img src="${icon}" alt="" style="width: 18px; height: 18px;" />
+                    <div>
+                      <p style="margin: 0; font-weight: 400; font-size: 0.875rem;">${nomSite}</p>
+                      <p style="margin: 0; font-weight: 700; font-size: 0.875rem;">${label}</p>
+                    </div>
+                  </div>
+                `;
+                if (popupRef.current) popupRef.current.remove();
+                popupRef.current = new maplibregl.Popup({
+                  closeButton: false,
+                  closeOnClick: false,
+                  className: 'baignade-point-popup',
+                  anchor: 'bottom',
+                  offset: [0, -10],
+                  maxWidth: 'none'
+                })
+                  .setLngLat(e.lngLat)
+                  .setHTML(tooltipContent)
+                  .addTo(map);
+              } else if (popupRef.current) {
+                popupRef.current.setLngLat(e.lngLat);
+              }
             }
           });
         });

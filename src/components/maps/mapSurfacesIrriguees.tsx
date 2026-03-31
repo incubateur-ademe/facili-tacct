@@ -5,7 +5,7 @@ import { mapStyles } from 'carte-facile';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useEffect, useMemo, useRef } from 'react';
-import { SurfacesIrrigueesTooltip } from './components/tooltips';
+import { SurfacesIrrigueesTooltip } from './subcomponents/tooltips';
 
 export const MapSurfacesIrriguees = (props: {
   communesCodes: string[];

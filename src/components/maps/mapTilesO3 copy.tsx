@@ -8,8 +8,8 @@ import 'carte-facile/carte-facile.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef, useState } from 'react';
-import { getO3Color, O3StationsTooltip, O3Tooltip } from './components/tooltips';
 import styles from './maps.module.scss';
+import { getO3Color, O3StationsTooltip, O3Tooltip } from './subcomponents/tooltips';
 
 const color = (valeur: number) => {
   return valeur > 50

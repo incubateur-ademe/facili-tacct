@@ -8,7 +8,7 @@ import 'carte-facile/carte-facile.css';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useEffect, useRef, useState } from 'react';
-import { FragiliteEconomiqueTooltip } from './components/tooltips';
+import { FragiliteEconomiqueTooltip } from './subcomponents/tooltips';
 
 export const MapConfortThermique = (props: {
   precariteData: { code: string; value: number; name: string }[];

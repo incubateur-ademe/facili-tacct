@@ -9,11 +9,11 @@ import { Round } from "@/lib/utils/reusableFunctions/round";
 import * as turf from '@turf/turf';
 import { Progress } from "antd";
 import {
-  Feature,
-  GeoJsonObject,
-  GeoJsonProperties,
-  MultiPolygon,
-  Polygon
+    Feature,
+    GeoJsonObject,
+    GeoJsonProperties,
+    MultiPolygon,
+    Polygon
 } from 'geojson';
 // Leaflet must not be imported at module scope because it accesses `window`.
 // We load it lazily in hooks where needed.
@@ -24,7 +24,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { BoundsFromCollection } from "../maps/components/boundsFromCollection";
+import { BoundsFromCollection } from "../maps/subcomponents/boundsFromCollection";
 import styles from "./charts.module.scss";
 
 type MicroPieChartTypes = {

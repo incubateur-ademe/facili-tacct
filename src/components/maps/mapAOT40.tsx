@@ -9,8 +9,8 @@ import { mapStyles } from 'carte-facile';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
-import { AOT40Tooltip } from './components/tooltips';
 import './maps.css';
+import { AOT40Tooltip } from './subcomponents/tooltips';
 
 const color = (valeur: number) => {
   return valeur > 36000

@@ -6,8 +6,8 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef } from 'react';
-import { BoundsFromCollection } from '../components/boundsFromCollection';
-import { SurfacesIrrigueesTooltip } from '../components/tooltips';
+import { BoundsFromCollection } from '../subcomponents/boundsFromCollection';
+import { SurfacesIrrigueesTooltip } from '../subcomponents/tooltips';
 
 export const MapSurfacesIrriguees = (props: {
   carteCommunes: CommunesIndicateursDto[];

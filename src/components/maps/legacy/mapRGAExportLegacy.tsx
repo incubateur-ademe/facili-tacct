@@ -1,4 +1,4 @@
-import { BoundsFromCollection } from '@/components/maps/components/boundsFromCollection';
+import { BoundsFromCollection } from '@/components/maps/subcomponents/boundsFromCollection';
 import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';

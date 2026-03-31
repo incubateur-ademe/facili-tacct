@@ -5,7 +5,7 @@ import { mapStyles } from 'carte-facile';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
-import { Patch4Tooltip } from './components/tooltips';
+import { Patch4Tooltip } from './subcomponents/tooltips';
 
 const getColorByAggravation = (value: number | null) => {
   if (value === null) return '#FFF';

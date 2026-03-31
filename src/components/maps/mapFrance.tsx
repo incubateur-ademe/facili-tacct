@@ -1,6 +1,6 @@
 'use client';
 
-import { MoustiqueTigreTooltip } from '@/components/maps/components/tooltips';
+import { MoustiqueTigreTooltip } from '@/components/maps/subcomponents/tooltips';
 import departementsNoms from '@/lib/data/departements.json';
 import moustiqueTigreGeoJSON from '@/lib/data/moustique_tigre_departements.json';
 import 'carte-facile/carte-facile.css';

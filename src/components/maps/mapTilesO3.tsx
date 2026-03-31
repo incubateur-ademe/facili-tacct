@@ -6,8 +6,8 @@ import 'carte-facile/carte-facile.css';
 import maplibregl, { FillLayerSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef, useState } from 'react';
-import { getO3Color, O3Tooltip } from './components/tooltips';
 import styles from './maps.module.scss';
+import { getO3Color, O3Tooltip } from './subcomponents/tooltips';
 
 export const MapTilesO3 = (props: {
   coordonneesCommunes: {

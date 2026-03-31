@@ -7,9 +7,9 @@ import { fromUrl } from 'geotiff';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef, useState } from 'react';
-import { CanopeeTooltip } from './components/tooltips';
 import { HauteurCanopeeLegend } from './legends/legendCanopee';
 import styles from './maps.module.scss';
+import { CanopeeTooltip } from './subcomponents/tooltips';
 
 const COG_PATH = '/canopee/France_Forest_COG.tif';
 const TARGET_RESOLUTION_M = 10;

@@ -6,7 +6,7 @@ import { mapStyles } from 'carte-facile';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef } from 'react';
-import { EspacesNafTooltip } from './components/tooltips';
+import { EspacesNafTooltip } from './subcomponents/tooltips';
 
 const getColor = (d: number) => {
   return d > 200000
