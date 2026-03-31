@@ -473,7 +473,7 @@ model databases_v2_patch4c {
   index                 Int     @id
   code_geographique     String
   niveaux_marins        Float?
-  feux_foret            Float
+  feux_foret            Float?
   secheresse_sols       Float
   fortes_precipitations Float
   fortes_chaleurs       Float
@@ -907,18 +907,28 @@ model prelevements_eau_new {
 }
 
 model qualite_sites_baignade_new {
-  index             Int    @id
-  code_geographique String
-  nom_site          String
-  departement       String
-  latitude          Float
-  longitude         Float
-  type_eau_norm     String
-  statut_donnees    String
-  qualite           String
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  nom_site             String
+  latitude             Float
+  longitude            Float
+  type_eau_norm        String
+  statut_donnees       String
+  qualite              String
 
   @@index([index], map: "ix_qualite_sites_baignade_new_index")
   @@index([code_geographique], map: "qualite_sites_baignade_new_communes_index")
+  @@index([departement], map: "qualite_sites_baignade_new_departement_index")
   @@schema("databases_v2")
 }
 

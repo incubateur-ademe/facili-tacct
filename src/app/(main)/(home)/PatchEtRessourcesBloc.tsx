@@ -60,6 +60,7 @@ export const PatchEtRessourcesBloc = () => {
                 link="/recherche-territoire-patch4"
                 text='Découvrir le patch 4°C'
                 style={{ marginTop: '1.5rem' }}
+                posthogEventName='bouton_decouvrir_patch4_home'
               />
             </div>
           </div>

@@ -9,6 +9,7 @@ import useWindowDimensions from '@/hooks/windowDimensions';
 import Header from '@codegouvfr/react-dsfr/Header';
 import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { Brand } from '../Brand';
@@ -17,6 +18,7 @@ import HeaderRechercheTerritoire from '../searchbar/header/HeaderRechercheTerrit
 const HeaderComp = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const posthog = usePostHog();
   const params = usePathname();
   const urlCode = searchParams.get('code');
   const urlLibelle = searchParams.get('libelle');
@@ -24,6 +26,9 @@ const HeaderComp = () => {
   const [displayCode, setDisplayCode] = useState<string | null>(urlCode);
   const [displayLibelle, setDisplayLibelle] = useState<string | null>(urlLibelle);
   const [displayType, setDisplayType] = useState<"epci" | "commune" | "departement" | "ept" | "petr" | "pnr" | null>(urlType);
+  const { css } = useStyles();
+  const windowDimensions = useWindowDimensions();
+  const lastTerritory = getLastTerritory();
 
   useEffect(() => {
     if (params === "/") {
@@ -43,10 +48,6 @@ const HeaderComp = () => {
       setDisplayType(urlType);
     }
   }, [urlCode, urlLibelle, urlType, params]);
-
-  const { css } = useStyles();
-  const windowDimensions = useWindowDimensions();
-  const lastTerritory = getLastTerritory();
 
   const redirectionPatch4 = handleRedirection({
     searchCode: displayCode ?? '',
@@ -106,7 +107,7 @@ const HeaderComp = () => {
       }
       homeLinkProps={{
         href: '/',
-        title: `Accueil - Facili-TACCT`
+        title: `Accueil - TACCT`
       }}
       operatorLogo={{
         alt: "Logo de l'ADEME",
@@ -119,7 +120,15 @@ const HeaderComp = () => {
             <button
               key="mon-compte"
               className='flex flex-row items-center'
-              onClick={() => router.push('/mon-compte')}
+              onClick={() => {
+                posthog.capture(
+                  "click_bouton_mon_compte_header",
+                  {
+                    date: new Date(),
+                  }
+                );
+                router.push('/mon-compte')
+              }}
             >
               <Image
                 src={MonCompteIcone}

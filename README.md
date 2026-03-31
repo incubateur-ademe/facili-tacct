@@ -10,11 +10,7 @@ pnpm dev
 
 ## Projet TACCT
 
-TACCT a pour but d'accompagner les collectivités pour une meilleure appropriation de leur diagnostic de vulnérabilité.
-
-L'outil doit pouvoir proposer aux collectivités de la donnée socio-économique en lien avec des thématiques liées à l'adaptation au changement climatique.
-
-L'objectif est donc de proposer de l'information territorialisée et pertinente pour engager les chargés de mission dans des plans d'adapatation.
+Notre mission : Aider chaque territoire à initier ou renforcer sa démarche d’adaptation au changement climatique.
 
 ## Flow pour l'intégration d'un indicateur
 

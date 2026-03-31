@@ -41,8 +41,8 @@ export default function AppFooter() {
               TACCT est un service porté par l’Agence de la transition écologique
               (ADEME), en partenariat avec Météo France.
               <br></br>
-              Notre mission : Accompagner les territoires pour une meilleure appropriation
-              de leur vulnérabilité aux impacts du changement climatique.
+              Notre mission : Aider chaque territoire à initier ou renforcer sa démarche 
+              d’adaptation au changement climatique.
               TACCT met à disposition les données climatiques du patch 4°C,
               mesure 23 du plan national d’adaptation au changement climatique (PNACC 3).
             </p>
