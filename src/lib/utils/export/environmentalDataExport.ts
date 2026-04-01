@@ -7,6 +7,7 @@ import {
 import {
   AgricultureBio,
   AOT40,
+  ArboviroseModel,
   ArreteCatNat,
   ConsommationNAF,
   ExportCoursDeau,
@@ -680,6 +681,18 @@ export const IndicatorExportTransformations = {
           libelle_pnr: el.libelle_pnr,
           libelle_petr: el.libelle_petr,
           restrictions: el.restrictions
+        };
+      });
+    }
+  },
+  sante: {
+    Arbovirose: (arbovirose: ArboviroseModel[]) => {
+      return arbovirose.map((el) => {
+        return {
+          Année: el.annee,
+          Département: el.departement,
+          'Nombre de cas autochtones': el.nb_cas_autochtones,
+          'Nombre de cas importés': el.nb_cas_importes
         };
       });
     }

@@ -410,7 +410,8 @@ export const ModelName = {
   qualite_sites_baignade_new: 'qualite_sites_baignade_new',
   o3_seuils: 'o3_seuils',
   secheresses: 'secheresses',
-  inondations_par_debordement: 'inondations_par_debordement'
+  inondations_par_debordement: 'inondations_par_debordement',
+  arbovirose: 'arbovirose'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -426,7 +427,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "qualite_sites_baignade_new" | "o3_seuils" | "secheresses" | "inondations_par_debordement"
+    modelProps: "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "qualite_sites_baignade_new" | "o3_seuils" | "secheresses" | "inondations_par_debordement" | "arbovirose"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2396,6 +2397,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    arbovirose: {
+      payload: Prisma.$arbovirosePayload<ExtArgs>
+      fields: Prisma.arboviroseFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.arboviroseFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.arboviroseFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>
+        }
+        findFirst: {
+          args: Prisma.arboviroseFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.arboviroseFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>
+        }
+        findMany: {
+          args: Prisma.arboviroseFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>[]
+        }
+        create: {
+          args: Prisma.arboviroseCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>
+        }
+        createMany: {
+          args: Prisma.arboviroseCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.arboviroseCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>[]
+        }
+        delete: {
+          args: Prisma.arboviroseDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>
+        }
+        update: {
+          args: Prisma.arboviroseUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>
+        }
+        deleteMany: {
+          args: Prisma.arboviroseDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.arboviroseUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.arboviroseUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>[]
+        }
+        upsert: {
+          args: Prisma.arboviroseUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$arbovirosePayload>
+        }
+        aggregate: {
+          args: Prisma.ArboviroseAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateArbovirose>
+        }
+        groupBy: {
+          args: Prisma.arboviroseGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ArboviroseGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.arboviroseCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ArboviroseCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -3296,6 +3371,17 @@ export const Inondations_par_debordementScalarFieldEnum = {
 export type Inondations_par_debordementScalarFieldEnum = (typeof Inondations_par_debordementScalarFieldEnum)[keyof typeof Inondations_par_debordementScalarFieldEnum]
 
 
+export const ArboviroseScalarFieldEnum = {
+  index: 'index',
+  annee: 'annee',
+  departement: 'departement',
+  nb_cas_importes: 'nb_cas_importes',
+  nb_cas_autochtones: 'nb_cas_autochtones'
+} as const
+
+export type ArboviroseScalarFieldEnum = (typeof ArboviroseScalarFieldEnum)[keyof typeof ArboviroseScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -3489,6 +3575,7 @@ export type GlobalOmitConfig = {
   o3_seuils?: Prisma.o3_seuilsOmit
   secheresses?: Prisma.secheressesOmit
   inondations_par_debordement?: Prisma.inondations_par_debordementOmit
+  arbovirose?: Prisma.arboviroseOmit
 }
 
 /* Types for Logging */

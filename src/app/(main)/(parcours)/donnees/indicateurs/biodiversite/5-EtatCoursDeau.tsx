@@ -126,7 +126,7 @@ export const EtatEcoCoursDeau = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : Agences de l’eau et Ministère de la Santé, 2020 (plans d'eau) et 2024 (état des cours d'eau).
+          Source : Agences de l’eau, 2024 (consultée en février 2026) et Ministère des Solidarités et de la Santé, 2024 (consultée en mars 2026)
         </Body>
         {
           etatCoursDeau.length > 0 && (

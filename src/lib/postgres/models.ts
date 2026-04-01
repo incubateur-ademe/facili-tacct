@@ -1035,3 +1035,11 @@ export type QualiteSitesBaignadeModel = {
   statut_donnees: string;
   qualite: string;
 };
+
+export type ArboviroseModel = {
+  index: number;
+  annee: string;
+  departement: string;
+  nb_cas_importes: number;
+  nb_cas_autochtones: number;
+};
