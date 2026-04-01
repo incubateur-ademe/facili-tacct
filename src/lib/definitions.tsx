@@ -88,8 +88,8 @@ export const debroussaillement = (
 
 export const ozone = (
   <span>
-    Gaz naturellement présent dans l’atmosphère, il se forme par des réactions chimiques 
-    entre des polluants sous l’effet du soleil. Lorsqu’il s’accumule en basse altitude, 
+    Gaz naturellement présent dans l’atmosphère, il se forme par des réactions chimiques
+    entre des polluants sous l’effet du soleil. Lorsqu’il s’accumule en basse altitude,
     notamment lors de vagues de chaleur, il devient nocif pour la santé et la végétation.
   </span>
 );
@@ -103,5 +103,18 @@ export const OMS = (
 export const valeursGuidesO3 = (
   <span>
     100 µg/m³ en moyenne journalière.
+  </span>
+);
+
+export const moustiqueTigre = (
+  <span>
+    Aedes albopictus, originaire d’Asie.
+  </span>
+);
+
+export const arbovirose = (
+  <span>
+    Les arboviroses sont des maladies virales dues à des arbovirus (de l'anglais ARthropod-BOrne VIRUSes),
+    c’est-à-dire des virus ayant pour vecteur des moustiques, des tiques ou d’autres arthropodes hématophages.
   </span>
 );

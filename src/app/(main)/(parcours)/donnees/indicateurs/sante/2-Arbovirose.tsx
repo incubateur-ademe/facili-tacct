@@ -9,7 +9,9 @@ import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapJson } from '@/components/maps/mapFrance';
 import { SliderAnnees } from '@/components/SliderAnnees';
 import SubTabs from '@/components/ui/SubTabs';
+import { DefinitionTooltip } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
+import { moustiqueTigre } from '@/lib/definitions';
 import { ArboviroseModel } from '@/lib/postgres/models';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
@@ -61,7 +63,10 @@ export const Arbovirose = (props: {
     <>
       <div className={styles.datavizDoubleMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper}>
-          <Body>Texte Dynamique</Body>
+          <Body>
+            81 Le <DefinitionTooltip title={moustiqueTigre}>moustique tigre</DefinitionTooltip> est
+            désormais implanté dans 81 départements métropolitains (au 1er janv. 2025).
+          </Body>
         </div>
         <div className={styles.graphiquesWrapper}>
           <div className={styles.tabsWrapper}>
@@ -147,7 +152,7 @@ export const Arbovirose = (props: {
             libelle={libelle}
             code={code}
             sheetName="Arbovirose"
-            anchor="Arbovirose"
+            anchor="Moustique tigre et arboviroses"
           />
         </div>
       </div>

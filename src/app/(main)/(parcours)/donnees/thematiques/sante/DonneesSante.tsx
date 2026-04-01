@@ -91,16 +91,16 @@ export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
           {ongletsMenu.thematiquesLiees[0].thematique}
         </H2>
 
-        {/* Arbovirose */}
+        {/* Moustique tigre et arboviroses */}
         <div
-          id="Arbovirose"
+          id="Moustique tigre et arboviroses"
           className={styles.indicateurMultipleMapsWrapper}
         >
           <div className={styles.h3Titles}>
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem', padding: "0 2rem" }}
             >
-              Arbovirose
+              Moustique tigre et arboviroses
             </H3>
           </div>
           <Arbovirose arbovirose={arbovirose} />
