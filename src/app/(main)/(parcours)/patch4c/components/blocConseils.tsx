@@ -31,7 +31,7 @@ export const ConseilsAggravation = () => {
               style={{ justifyContent: "flex-end", gap: "3rem", maxHeight: "360px" }}>
               <Image
                 src={AnalyseExpositionImage}
-                alt="Analyse Exposition"
+                alt=""
                 style={{ height: "auto", width: "auto", maxWidth: "300px" }}
               />
               <Body style={{ color: "var(--principales-vert)" }} weight='bold'>
@@ -41,7 +41,7 @@ export const ConseilsAggravation = () => {
             <div className={styles.tableauCell} style={{ maxHeight: "360px" }}>
               <Image
                 src={AnalyseSensibiliteImage}
-                alt="Analyse Sensibilité"
+                alt=""
                 style={{ height: "auto", width: "auto", maxWidth: "300px" }}
               />
               <Body style={{ color: "var(--principales-vert)" }} weight='bold'>

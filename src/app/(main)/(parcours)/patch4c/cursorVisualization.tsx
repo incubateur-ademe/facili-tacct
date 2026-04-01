@@ -27,7 +27,7 @@ const CursorVisualization = ({
                 >
                   <Image
                     src={InfoIcon}
-                    alt="hover d'information"
+                    alt=""
                     width={20}
                     height={20}
                     className={styles.infoIcon}
