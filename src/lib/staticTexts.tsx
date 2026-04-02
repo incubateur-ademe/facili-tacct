@@ -787,7 +787,7 @@ export const MoustiqueTigreText = () => (
       limiter la transmission de ces maladies.
     </Body>
     <Body size="sm">
-      L’élévation des températures favorise l’expansion du moustique tigre : il 
+      L’élévation des températures favorise la propagation du moustique tigre : il 
       reste actif plus longtemps dans l’année, se reproduit plus vite et étend 
       son implantation toujours plus au nord. Cette progression augmente 
       le risque de transmission de ces <DefinitionTooltip title={maladieVectorielle}>maladies vectorielles</DefinitionTooltip>.
