@@ -112,7 +112,7 @@ export const PrecariteEnergetique = ({
                   }
                   <CustomTooltipNouveauParcours
                     title={fragiliteEconomiqueTooltipText}
-                    texte="D'où vient ce chiffre ?"
+                    texte="D'où vient ce chiffre ?"
                   />
                 </>
               ) : ""

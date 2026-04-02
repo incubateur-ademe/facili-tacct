@@ -9,8 +9,12 @@ import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapJson } from '@/components/maps/mapFrance';
 import { SliderAnnees } from '@/components/SliderAnnees';
 import SubTabs from '@/components/ui/SubTabs';
+import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
+import { CustomTooltipNouveauParcours, DefinitionTooltip } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import { ArboviroseModel } from '@/lib/postgres/models';
+import { MoustiqueTigreText } from '@/lib/staticTexts';
+import { moustiqueTigreTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
 import { useRef, useState } from 'react';
@@ -60,8 +64,23 @@ export const Arbovirose = (props: {
   return (
     <>
       <div className={styles.datavizDoubleMapContainer}>
-        <div className={styles.chiffreDynamiqueWrapper}>
-          <Body>Texte Dynamique</Body>
+        <div className={styles.chiffresWrapper}>
+          <div className={styles.chiffreDynamiqueWrapper}>
+            <Body weight="bold" style={{ fontSize: "28px" }}>
+              81
+            </Body>
+            <Body>
+              Le <DefinitionTooltip title={moustiqueTigre}>moustique tigre</DefinitionTooltip> est
+              désormais implanté dans 81 départements métropolitains (au 1er janv. 2025).
+            </Body>
+          </div>
+          <CustomTooltipNouveauParcours
+            title={moustiqueTigreTooltipText}
+            texte="D'où vient ce chiffre ?"
+          />
+          <ReadMoreFade maxHeight={100}>
+            <MoustiqueTigreText />
+          </ReadMoreFade>
         </div>
         <div className={styles.graphiquesWrapper}>
           <div className={styles.tabsWrapper}>
@@ -80,7 +99,7 @@ export const Arbovirose = (props: {
                 <div className={styles.doubleMaps}>
                   <div className={styles.singleMaps}>
                     <Body size='sm' style={{ textAlign: "center" }}>
-                      Présence du moustique tigre par département par an (France métropolitaine)
+                      Présence du moustique tigre
                     </Body>
                     <MapJson
                       mapRef={mapRef1}
@@ -96,19 +115,38 @@ export const Arbovirose = (props: {
                   </div>
                   <div className={styles.singleMaps}>
                     <Body size='sm' style={{ textAlign: "center" }}>
-                      Cas autochtones d’arbovirose par département par an (France métropolitaine)
+                      Cas autochtones de dengue, de chikungunya et de zika (cumulés)
                     </Body>
-                    <MapJson
-                      mapRef={mapRef2}
-                      mapContainer={mapContainer2}
-                      annee={selectedAnnee}
-                      casParDepartement={casParDepartement}
-                    />
-                    <div
-                      className={styles.legend}
-                      style={{ width: 'auto', justifyContent: 'center' }}
-                    >
-                      <LegendCompColor legends={arboviroseMapAutochtonesLegend} style={{ gap: "0.5rem 1rem" }} />
+                    <div style={{ position: 'relative' }}>
+                      {selectedAnnee < 2012 && (
+                        <div style={{
+                          position: 'absolute',
+                          inset: 0,
+                          backdropFilter: 'blur(4px)',
+                          backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          borderRadius: '4px',
+                          zIndex: 10
+                        }}>
+                          <Body size='sm' weight='bold'>
+                            Aucune donnée disponible avant 2012
+                          </Body>
+                        </div>
+                      )}
+                      <MapJson
+                        mapRef={mapRef2}
+                        mapContainer={mapContainer2}
+                        annee={selectedAnnee}
+                        casParDepartement={casParDepartement}
+                      />
+                      <div
+                        className={styles.legend}
+                        style={{ width: 'auto', justifyContent: 'center' }}
+                      >
+                        <LegendCompColor legends={arboviroseMapAutochtonesLegend} style={{ gap: "0.5rem 1rem" }} />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -138,7 +176,9 @@ export const Arbovirose = (props: {
           }}
         >
           <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-            Source :
+            Source de la carte 1 : Carte de présence du moustique tigre - Ministère de la Santé, 2025 (consulté en janvier 2026)
+            <br></br>
+            Source de la carte 2 : Carte de cas autochtones - Santé Publique France, 2026 (consultée en février 2026)
           </Body>
           <ExportButtonNouveauParcours
             data={exportData}
