@@ -177,9 +177,9 @@ export const Arbovirose = (props: {
           }}
         >
           <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-            Source de la carte 1 : Carte de présence du moustique tigre - Ministère de la Santé, 2025 (consulté en janvier 2026)
+            Source carte de présence du moustique tigre : Ministère de la Santé, 2025 (consulté en janvier 2026)
             <br></br>
-            Source de la carte 2 : Carte de cas autochtones - Santé Publique France, 2026 (consultée en février 2026)
+            Source carte et graphique de cas autochtones : Santé Publique France, 2026 (consultée en février 2026)
           </Body>
           <ExportButtonNouveauParcours
             data={exportData}
