@@ -148,7 +148,10 @@ export const MapJson = (props: {
       setIsLoaded(true);
     });
 
-    const resizeObserver = new ResizeObserver(() => map.resize());
+    const resizeObserver = new ResizeObserver(() => {
+      map.resize();
+      map.fitBounds([[-5.5, 41.2], [10.0, 51.5]], { padding: 0, animate: false });
+    });
     resizeObserver.observe(mapContainer.current);
 
     return () => {

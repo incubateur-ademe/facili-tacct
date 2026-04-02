@@ -118,3 +118,10 @@ export const arbovirose = (
     c’est-à-dire des virus ayant pour vecteur des moustiques, des tiques ou d’autres arthropodes hématophages.
   </span>
 );
+
+export const maladieVectorielle = (
+  <span>
+    Maladie véhiculée et inoculée par un vecteur (moustique, tique, punaise...),
+    ce vecteur s'étant lui-même infecté sur un hôte virémique.
+  </span>
+);

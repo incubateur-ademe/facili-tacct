@@ -96,14 +96,19 @@
 .datavizDoubleMapContainer {
     display: flex;
     flex-direction: column;
-    .chiffreDynamiqueWrapper {
+    .chiffresWrapper {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 1.25rem;
-        align-items: center;
         border-bottom: 1px solid #e7e5e5;
         border-top: 1px solid #e7e5e5;
         padding: 2rem;
+        .chiffreDynamiqueWrapper {
+            display: flex;
+            flex-direction: row;
+            gap: 1.25rem;
+            align-items: center;
+        }
     }
     .graphiquesWrapper {
         display: flex;

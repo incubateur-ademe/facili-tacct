@@ -75,7 +75,7 @@ export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
         </Body>
       </section>
 
-      {/* Section Santé */}
+      {/* Section Air */}
       <section className={styles.sectionType}>
         <H2
           style={{
@@ -89,38 +89,6 @@ export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
         >
           {ongletsMenu.thematiquesLiees[0].icone}{' '}
           {ongletsMenu.thematiquesLiees[0].thematique}
-        </H2>
-
-        {/* Moustique tigre et arboviroses */}
-        <div
-          id="Moustique tigre et arboviroses"
-          className={styles.indicateurMultipleMapsWrapper}
-        >
-          <div className={styles.h3Titles}>
-            <H3
-              style={{ color: 'var(--principales-vert)', fontSize: '1.25rem', padding: "0 2rem" }}
-            >
-              Moustique tigre et arboviroses
-            </H3>
-          </div>
-          <Arbovirose arbovirose={arbovirose} />
-        </div>
-      </section>
-
-      {/* Section Air */}
-      <section className={styles.sectionType}>
-        <H2
-          style={{
-            color: 'var(--principales-rouge)',
-            textTransform: 'uppercase',
-            fontSize: '1.75rem',
-            margin: '0 0 -1rem 0',
-            padding: '2rem 2rem 0',
-            fontWeight: 400
-          }}
-        >
-          {ongletsMenu.thematiquesLiees[1].icone}{' '}
-          {ongletsMenu.thematiquesLiees[1].thematique}
         </H2>
 
         {/* Pollution à l’ozone */}
@@ -140,6 +108,39 @@ export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
           />
         </div>
       </section>
+
+      {/* Section Biodiversité */}
+      <section className={styles.sectionType}>
+        <H2
+          style={{
+            color: 'var(--principales-rouge)',
+            textTransform: 'uppercase',
+            fontSize: '1.75rem',
+            margin: '0 0 -1rem 0',
+            padding: '2rem 2rem 0',
+            fontWeight: 400
+          }}
+        >
+          {ongletsMenu.thematiquesLiees[1].icone}{' '}
+          {ongletsMenu.thematiquesLiees[1].thematique}
+        </H2>
+
+        {/* Moustique tigre et arboviroses */}
+        <div
+          id="Moustique tigre et arboviroses"
+          className={styles.indicateurMultipleMapsWrapper}
+        >
+          <div className={styles.h3Titles}>
+            <H3
+              style={{ color: 'var(--principales-vert)', fontSize: '1.25rem', padding: "0 2rem" }}
+            >
+              Moustique tigre et arboviroses
+            </H3>
+          </div>
+          <Arbovirose arbovirose={arbovirose} />
+        </div>
+      </section>
+
       {/* Sources */}
       <SourcesSection tag="h2" thematique="sante" />
     </div>
