@@ -3,6 +3,7 @@
 
 # Except index.html
 !index.html
+!index.bak
 !.gitignore
 
 # Except the images

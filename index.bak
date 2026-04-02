@@ -267,20 +267,20 @@
       <div class="fr-container">
         <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
           <div class="fr-server__body fr-col-12 fr-col-md-6">
-            <h1 class="fr-h1">🚧 Le service Facili-TACCT est temporairement indisponible 🚧</h1>
+            <h1 class="fr-h1">🚧 Le service Facili-TACCT est actuellement indisponible 🚧</h1>
             <br></br>
             <p>
-              Nous procédons en ce moment au regroupement des plateformes TACCT et Facili-TACCT, 
-              afin de vous proposer l'ensemble des contenus des deux plateformes (données, ressources 
-              et compte TACCT) à une seule et même adresse : <a href="http://tacct.ademe.fr">tacct.ademe.fr</a>. 
+              En raison d’un incident technique indépendant de notre volonté, 
+              Facili-TACCT est temporairement indisponible.
             </p>
             <p>
-              Cette interruption de service sera de courte durée. Nous vous invitons à rafraîchir la page d’ici quelques instants. 
+              Nous vous prions de nous excuser pour ce contretemps et vous invitons à rafraîchir 
+              la page ou à réessayer d’accéder au site ultérieurement.
             </p>
-            <p>À tout de suite sur <a href="http://tacct.ademe.fr">tacct.ademe.fr</a> !</p>
+            <p>Cordialement,</p>
 
             <p class="fr-text--sm">
-              —<b> L’équipe (Facili-)TACCT</b>
+              —<b> L’équipe Facili-TACCT</b>
             </p>
           </div>
           <div
