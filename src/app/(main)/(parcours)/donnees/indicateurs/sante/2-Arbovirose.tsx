@@ -12,6 +12,7 @@ import SubTabs from '@/components/ui/SubTabs';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours, DefinitionTooltip } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
+import { moustiqueTigre } from '@/lib/definitions';
 import { ArboviroseModel } from '@/lib/postgres/models';
 import { MoustiqueTigreText } from '@/lib/staticTexts';
 import { moustiqueTigreTooltipText } from '@/lib/tooltipTexts';
