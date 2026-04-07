@@ -32,7 +32,6 @@ if (!POSTHOG_PROJECT_ID || !POSTHOG_API_KEY) {
     console.error('POSTHOG_PROJECT_ID / POSTHOG_API_KEY manquantes');
     process.exit(1);
 }
-
 // === SQL helpers (pg) ===
 async function withPg(fn) {
     const client = new pg.Client({

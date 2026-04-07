@@ -13,6 +13,10 @@ and(
             'facili-tacct.osc-secnum-fr1.scalingo.io',
             'facili-tacct-nginx.osc-secnum-fr1.scalingo.io',
             'facili-tacct.incubateur.ademe.dev',
+            'tacct.incubateur.ademe.dev',
+            'tacct.osc-secnum-fr1.scalingo.io',
+            'tacct-preprod.osc-fr1.scalingo.io',
+            'tacct-nginx.osc-secnum-fr1.scalingo.io',
             'null'
         )
     ),
