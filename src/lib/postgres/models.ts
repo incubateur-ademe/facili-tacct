@@ -727,25 +727,6 @@ export type O3 = {
   longitude: number;
 };
 
-export type QualiteSitesBaignade = {
-  index: number;
-  DEP_NOM: string;
-  DEP_NUM: string;
-  TYPE: string;
-  COMMUNE: string;
-  POINT: string;
-  LONG: number;
-  LAT: number;
-  QEB_2013: string | null;
-  QEB_2014: string | null;
-  QEB_2015: string | null;
-  QEB_2016: string | null;
-  QEB_2017: string | null;
-  QEB_2018: string | null;
-  QEB_2019: string | null;
-  QEB_2020: string | null;
-};
-
 export type Agriculture = {
   index: number;
   code_geographique: string;
