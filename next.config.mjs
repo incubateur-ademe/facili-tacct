@@ -87,7 +87,7 @@ const config = {
     experimental: {
         serverSourceMaps: false,
         serverActions: {
-            allowedOrigins: ['*.beta.gouv.fr']
+            allowedOrigins: ['*.beta.gouv.fr', 'tacct.ademe.fr']
         }
     },
     serverExternalPackages: [
