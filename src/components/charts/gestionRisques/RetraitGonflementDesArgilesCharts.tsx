@@ -267,7 +267,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
           coordonneesCommunes={coordonneesCommunes}
           mapRef={mapRef}
           mapContainer={mapContainer}
-          bucketUrl="rga-new"
+          bucketUrl="rga"
           layer="rga"
           paint={{
             'fill-color': [
