@@ -58,6 +58,7 @@ desktop.ini
 
 # tests
 /tests-results
+/test-results
 
 # dossiers
 .vscode

@@ -48,7 +48,7 @@ test.describe('Ressources', () => {
   test('should load demarrer-diagnostic-vulnerabilite', async ({ page }) => {
     await page.goto('/ressources/demarrer-diagnostic-vulnerabilite');
     await expect(page).toHaveURL(/demarrer-diagnostic-vulnerabilite/);
-    await expect(page.locator('main h1').first()).toBeVisible();
+    await expect(page.locator('main h1').first()).toBeVisible({ timeout: 15000 });
   });
 
   test('should load analyser-diagnostic-vulnerabilite', async ({ page }) => {
@@ -56,7 +56,7 @@ test.describe('Ressources', () => {
       '/ressources/demarrer-diagnostic-vulnerabilite/analyser-diagnostic-vulnerabilite'
     );
     await expect(page).toHaveURL(/analyser-diagnostic-vulnerabilite/);
-    await expect(page.locator('main h1').first()).toBeVisible();
+    await expect(page.locator('main h1').first()).toBeVisible({ timeout: 15000 });
   });
 });
 

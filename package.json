@@ -11,7 +11,7 @@
     "predev": "react-dsfr update-icons",
     "prebuild": "react-dsfr update-icons",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
-    "build": "cross-env NODE_OPTIONS=--inspect next build && node copy-assets.js",
+    "build": "pnpm test && cross-env NODE_OPTIONS=--inspect next build && node copy-assets.js",
     "start": "node .next/standalone/server.js",
     "eslint": "eslint --fix ./src",
     "test": "jest"

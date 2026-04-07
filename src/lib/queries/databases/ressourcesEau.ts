@@ -319,7 +319,7 @@ export const GetQualiteEauxBaignade = async (
           },
           distinct: ['departement']
         });
-      const value = await prisma.qualite_sites_baignade_new.findMany({
+      const value = await prisma.databases_v2_qualite_sites_baignade.findMany({
         where: {
           departement: {
             in: departement
