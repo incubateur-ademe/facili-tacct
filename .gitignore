@@ -58,3 +58,7 @@ desktop.ini
 
 # tests
 /tests-results
+
+# dossiers
+.vscode
+playwright-report
