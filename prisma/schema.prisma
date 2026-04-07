@@ -526,24 +526,25 @@ model databases_v2_prelevements_eau {
 }
 
 model databases_v2_qualite_sites_baignade {
-  index    Int     @id
-  DEP_NOM  String
-  DEP_NUM  String
-  TYPE     String
-  COMMUNE  String
-  POINT    String
-  LONG     Float
-  LAT      Float
-  QEB_2013 String?
-  QEB_2014 String?
-  QEB_2015 String?
-  QEB_2016 String?
-  QEB_2017 String?
-  QEB_2018 String?
-  QEB_2019 String?
-  QEB_2020 String?
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  nom_site             String
+  latitude             Float
+  longitude            Float
+  type_eau_norm        String
+  statut_donnees       String
+  qualite              String
 
-  @@index([index], map: "ix_qualite_sites_baignade_index")
   @@map("qualite_sites_baignade")
   @@schema("databases_v2")
 }

@@ -2966,21 +2966,23 @@ export type Databases_v2_prelevements_eauScalarFieldEnum = (typeof Databases_v2_
 
 export const Databases_v2_qualite_sites_baignadeScalarFieldEnum = {
   index: 'index',
-  DEP_NOM: 'DEP_NOM',
-  DEP_NUM: 'DEP_NUM',
-  TYPE: 'TYPE',
-  COMMUNE: 'COMMUNE',
-  POINT: 'POINT',
-  LONG: 'LONG',
-  LAT: 'LAT',
-  QEB_2013: 'QEB_2013',
-  QEB_2014: 'QEB_2014',
-  QEB_2015: 'QEB_2015',
-  QEB_2016: 'QEB_2016',
-  QEB_2017: 'QEB_2017',
-  QEB_2018: 'QEB_2018',
-  QEB_2019: 'QEB_2019',
-  QEB_2020: 'QEB_2020'
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  nom_site: 'nom_site',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  type_eau_norm: 'type_eau_norm',
+  statut_donnees: 'statut_donnees',
+  qualite: 'qualite'
 } as const
 
 export type Databases_v2_qualite_sites_baignadeScalarFieldEnum = (typeof Databases_v2_qualite_sites_baignadeScalarFieldEnum)[keyof typeof Databases_v2_qualite_sites_baignadeScalarFieldEnum]
