@@ -1,4 +1,4 @@
-import questionIcon from '@/assets/icons/fr-icon-questionnaire-line.png';
+// import shapesIcon from '@/assets/icons/fr-icon-shapes-line.png';
 import teamIcon from '@/assets/icons/fr-icon-team-line.png';
 import Collection1Img from '@/assets/images/collection1.png';
 import Collection2Img from '@/assets/images/collection2.png';
@@ -53,9 +53,16 @@ export const autresOutilsCartes = [
       'Rejoignez notre communauté de partage entre chargés de mission',
     icone: teamIcon,
     lien: 'https://tally.so/r/n0LrEZ'
-  },
+  }
   // {
   //   titre: 'Méthode TACCT',
+  //   description:
+  //     'Découvrez la méthode de référence sur l’adaptation au changement climatique',
+  //   icone: shapesIcon,
+  //   lien: 'https://tacct.ademe.fr/'
+  // }
+  // {
+  //   titre: 'Questions fréquentes',
   //   description:
   //     'Découvrez la méthode de référence sur l’adaptation au changement climatique',
   //   icone: shapesIcon,
