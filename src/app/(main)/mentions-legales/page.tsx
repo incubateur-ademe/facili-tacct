@@ -8,7 +8,7 @@ const LegalNoticePage = () => {
         includeBetaGouv
         siteName="TACCT"
         siteUrl={process.env.NEXT_PUBLIC_SITE_URL!}
-        licenceUrl="https://github.com/incubateur-ademe/facili-tacct/blob/main/LICENSE"
+        licenceUrl="https://github.com/incubateur-ademe/tacct/blob/main/LICENSE"
         privacyPolicyUrl="/politique-de-confidentialite"
         siteHost={{
           name: 'Scalingo',

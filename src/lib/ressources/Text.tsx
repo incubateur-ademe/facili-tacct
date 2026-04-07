@@ -66,8 +66,8 @@ export const Text = ({ text }: Props) => {
         <span key={index} className={spanClassName} style={spanStyle}>
           <a
             href={textObj.link.url}
-            target={textObj.link.url.includes("facili-tacct") ? "_self" : "_blank"}
-            rel={textObj.link.url.includes("facili-tacct") ? undefined : "noopener noreferrer"}
+            target={textObj.link.url.includes("tacct") ? "_self" : "_blank"}
+            rel={textObj.link.url.includes("tacct") ? undefined : "noopener noreferrer"}
             className={styles.link}
           >
             {normalizedContent}
