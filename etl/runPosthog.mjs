@@ -37,7 +37,7 @@ async function withPg(fn) {
     const client = new pg.Client({
         connectionString: SCALINGO_POSTGRESQL_URL,
         ssl:
-            process.env.NODE_ENV === 'dev'
+            process.env.NODE_ENV === 'development'
                 ? { ca: fs.readFileSync('ca.pem'), rejectUnauthorized: true }
                 : { require: true, rejectUnauthorized: false }
     });

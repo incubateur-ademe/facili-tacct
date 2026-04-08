@@ -5,7 +5,12 @@ and(
     or(
         event LIKE '%bouton_decouvrir_ressources_home%',
         event LIKE '%bouton_evaluer_diagnostic_home%',
-        event LIKE '%bouton_rejoindre_communaute_home%'
+        event LIKE '%bouton_rejoindre_communaute_home%',
+        event LIKE '%bouton_inscription_session_home%',
+        event LIKE '%bouton_connexion_mon_compte%',
+        event LIKE '%bouton_inscription_session_mon_compte%',
+        event LIKE '%bouton_header_mon_compte%',
+        event LIKE '%bouton_patch4_home%',
     ),
     notIn(
         properties.$host, tuple(
@@ -23,7 +28,7 @@ and(
 )
 AND timestamp < now()
 AND properties.$current_url NOT LIKE '%localhost%'
--- AND properties.$current_url LIKE 'https://facili-tacct.beta.gouv.fr/%'
+-- AND properties.$current_url LIKE 'https://tacct.ademe.fr/%'
 AND properties.$current_url NOT LIKE '%scalingo%'
 AND properties.$current_url NOT LIKE '%secnum%'
 order by timestamp desc

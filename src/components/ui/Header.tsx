@@ -9,12 +9,14 @@ import useWindowDimensions from '@/hooks/windowDimensions';
 import Header from '@codegouvfr/react-dsfr/Header';
 import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { Brand } from '../Brand';
 import HeaderRechercheTerritoire from '../searchbar/header/HeaderRechercheTerritoire';
 
 const HeaderComp = () => {
+    const posthog = usePostHog();
   const searchParams = useSearchParams();
   const router = useRouter();
   const params = usePathname();
@@ -118,7 +120,10 @@ const HeaderComp = () => {
           ? [
             <button
               className='flex flex-row items-center'
-              onClick={() => router.push('/mon-compte')}
+              onClick={() => {
+                posthog.capture("bouton_header_mon_compte", { date: new Date() });
+                router.push('/mon-compte');
+              }}
             >
               <Image
                 src={MonCompteIcone}

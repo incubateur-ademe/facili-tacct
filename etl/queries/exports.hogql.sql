@@ -23,7 +23,7 @@ and(
 )
 AND timestamp < now()
 AND properties.$current_url NOT LIKE '%localhost%'
--- AND properties.$current_url LIKE 'https://facili-tacct.beta.gouv.fr/%'
+-- AND properties.$current_url LIKE 'https://tacct.ademe.fr/%'
 AND properties.$current_url NOT LIKE '%scalingo%'
 AND properties.$current_url NOT LIKE '%secnum%'
 order by timestamp desc

@@ -5491,11 +5491,9 @@ async function insertTerritoires(client, rows) {
   let updated = 0;
   for (const row of rows) {
     const ordre = row["order"] || null;
-    const nom_territoire = row["Nom du territoire"] || null;
+    const nom_territoire = row["\u26A0\uFE0F Nom du territoire"] || null;
     const notes_ouvertes = row["Notes ouvertes"] || null;
-    const typologie_territoire = Array.isArray(
-      row["Typologie de territoire"]
-    ) ? row["Typologie de territoire"] : row["Typologie de territoire"] ? [row["Typologie de territoire"]] : [];
+    const typologie_territoire = Array.isArray(row["\u26A0\uFE0F Type de structure"]) ? row["\u26A0\uFE0F Type de structure"] : row["\u26A0\uFE0F Type de structure"] ? [row["\u26A0\uFE0F Type de structure"]] : [];
     const thematique_prioritaire = Array.isArray(
       row["Th\xE9matique prioritaire"]
     ) ? row["Th\xE9matique prioritaire"] : row["Th\xE9matique prioritaire"] ? [row["Th\xE9matique prioritaire"]] : [];
@@ -5520,7 +5518,7 @@ async function insertTerritoires(client, rows) {
     ) ? row["Attente communiqu\xE9es lors de la session d'accueil"] : row["Attente communiqu\xE9es lors de la session d'accueil"] ? [row["Attente communiqu\xE9es lors de la session d'accueil"]] : [];
     const role_be = Array.isArray(row["R\xF4le du BE"]) ? row["R\xF4le du BE"] : row["R\xF4le du BE"] ? [row["R\xF4le du BE"]] : [];
     const cdm = Array.isArray(row["CdM"]) ? row["CdM"] : row["CdM"] ? [row["CdM"]] : [];
-    const siren = row["# SIREN"] || null;
+    const siren = row["\u26A0\uFE0F # SIREN"] || null;
     const result = await client.query(sql, [
       ordre,
       nom_territoire,
@@ -5647,7 +5645,7 @@ if (!POSTHOG_PROJECT_ID || !POSTHOG_API_KEY) {
 async function withPg2(fn) {
   const client = new esm_default.Client({
     connectionString: SCALINGO_POSTGRESQL_URL2,
-    ssl: process.env.NODE_ENV === "dev" ? { ca: import_fs2.default.readFileSync("ca.pem"), rejectUnauthorized: true } : { require: true, rejectUnauthorized: false }
+    ssl: process.env.NODE_ENV === "development" ? { ca: import_fs2.default.readFileSync("ca.pem"), rejectUnauthorized: true } : { require: true, rejectUnauthorized: false }
   });
   await client.connect();
   try {

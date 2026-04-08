@@ -7,7 +7,6 @@ if (fs.existsSync('.env')) {
     dotenv.config();
 }
 
-// === ENV ===
 const { BASEROW_HOST, BASEROW_API_KEY, SCALINGO_POSTGRESQL_URL } = process.env;
 const BASEROW_TABLE_ID_TERRITOIRES = '497101';
 const dbConnectionString = SCALINGO_POSTGRESQL_URL;
