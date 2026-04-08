@@ -9,8 +9,8 @@ and(
         event LIKE '%bouton_inscription_session_home%',
         event LIKE '%bouton_connexion_mon_compte%',
         event LIKE '%bouton_inscription_session_mon_compte%',
-        event LIKE '%bouton_header_mon_compte%',
-        event LIKE '%bouton_patch4_home%',
+        event LIKE '%click_bouton_mon_compte_header%',
+        event LIKE '%bouton_decouvrir_patch4_home%',
     ),
     notIn(
         properties.$host, tuple(

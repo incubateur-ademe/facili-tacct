@@ -334,25 +334,19 @@ function injectWindow(hogql, startIso) {
         );
 
         try {
-            // 1) Calculer la borne basse depuis la base (-5 min)
-            const startIso = await withPg(async (client) => {
-                const maxTs = await getMaxTs(client, queryConfig.table);
-                return new Date(
-                    new Date(maxTs).getTime() - 5 * 60 * 1000
-                ).toISOString();
-            });
+            //Calculer la borne basse : now() - 30h
+            const startIso = new Date(
+                Date.now() - 30 * 60 * 60 * 1000
+            ).toISOString();
 
-            // 2) Charger la requête et injecter la fenêtre
             let hogql = fs.readFileSync(queryConfig.sqlFile, 'utf8');
             hogql = injectWindow(hogql, startIso);
 
-            // 3) Requêter PostHog
             const results = await fetchPosthog(hogql);
             console.log(
                 `[${queryConfig.name}] Données récupérées : ${results.length} lignes`
             );
 
-            // 4) Insérer en base
             const inserted = await withPg(async (client) =>
                 queryConfig.insertFunction(client, results)
             );
@@ -362,7 +356,6 @@ function injectWindow(hogql, startIso) {
             );
         } catch (error) {
             console.error(`[${queryConfig.name}] Erreur :`, error);
-            // On continue avec les autres requêtes même si une échoue
         }
     }
 

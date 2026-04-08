@@ -121,7 +121,7 @@ const HeaderComp = () => {
             <button
               className='flex flex-row items-center'
               onClick={() => {
-                posthog.capture("bouton_header_mon_compte", { date: new Date() });
+                posthog.capture("click_bouton_mon_compte_header", { date: new Date() });
                 router.push('/mon-compte');
               }}
             >
