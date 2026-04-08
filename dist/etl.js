@@ -5654,13 +5654,6 @@ async function withPg2(fn) {
     await client.end();
   }
 }
-async function getMaxTs(client, table) {
-  const { rows } = await client.query(`
-    SELECT COALESCE(MAX(event_timestamp), '1970-01-01'::timestamptz) AS max_ts
-    FROM analytics.${table}
-  `);
-  return rows[0].max_ts;
-}
 async function insertAllPageviewRaw(client, rows) {
   const sql = `
     INSERT INTO analytics.all_pageview_raw
@@ -5907,12 +5900,9 @@ function injectWindow(hogql, startIso) {
 [ETL] Traitement de ${queryConfig.name} (${queryConfig.description})...`
     );
     try {
-      const startIso = await withPg2(async (client) => {
-        const maxTs = await getMaxTs(client, queryConfig.table);
-        return new Date(
-          new Date(maxTs).getTime() - 5 * 60 * 1e3
-        ).toISOString();
-      });
+      const startIso = new Date(
+        Date.now() - 30 * 60 * 60 * 1e3
+      ).toISOString();
       let hogql = import_fs2.default.readFileSync(queryConfig.sqlFile, "utf8");
       hogql = injectWindow(hogql, startIso);
       const results = await fetchPosthog(hogql);
