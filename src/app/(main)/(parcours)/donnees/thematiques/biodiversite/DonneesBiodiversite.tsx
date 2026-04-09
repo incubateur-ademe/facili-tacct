@@ -4,22 +4,22 @@ import { SourcesSection } from '@/components/interactions/scrollToSource';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import {
-  AgricultureBio,
-  AOT40,
-  ConfortThermique,
-  ConsommationNAF,
-  EtatCoursDeau,
-  QualiteSitesBaignadeModel,
-  SurfacesAgricolesModel,
-  TableCommuneModel
+    AgricultureBio,
+    AOT40,
+    ConfortThermique,
+    ConsommationNAF,
+    EtatCoursDeau,
+    QualiteSitesBaignadeModel,
+    SurfacesAgricolesModel,
+    TableCommuneModel
 } from '@/lib/postgres/models';
 import { GetSurfacesAgricoles } from '@/lib/queries/databases/agriculture';
 import {
-  GetAgricultureBio,
-  GetAOT40,
-  GetConsommationNAF
+    GetAgricultureBio,
+    GetAOT40,
+    GetConsommationNAF
 } from '@/lib/queries/databases/biodiversite';
-import { GetConfortThermique } from '@/lib/queries/databases/inconfortThermique';
+import { GetConfortThermique } from '@/lib/queries/databases/confortThermique';
 import { GetQualiteEauxBaignade } from '@/lib/queries/databases/ressourcesEau';
 import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';

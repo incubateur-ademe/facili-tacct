@@ -52,7 +52,7 @@ export const EmploisEnExterieur = ({
     ) +
     Number(((100 * sums.sumAgriculture) / Sum(Object.values(sums))).toFixed(1));
   const exportData =
-    IndicatorExportTransformations.inconfort_thermique.travailExt(
+    IndicatorExportTransformations.confortThermique.travailExt(
       travailExterieurTerritoire
     );
   const sumAllCount = graphData.reduce(

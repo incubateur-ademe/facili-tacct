@@ -1,6 +1,6 @@
 import { SearchParams } from "@/app/(main)/types";
 import { TableCommuneModel } from "@/lib/postgres/models";
-import { GetConfortThermique } from "@/lib/queries/databases/inconfortThermique";
+import { GetConfortThermique } from "@/lib/queries/databases/confortThermique";
 import { GetCommunesContours, GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
 import DonneesConfortThermique from "./DonneesConfortThermique";
 

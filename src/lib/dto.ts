@@ -35,6 +35,13 @@ export type AgeBatiDto = {
   age_bati_46_90: number;
   age_bati_91_05: number;
   age_bati_post06: number;
+  nb_rp_tot: number;
+  nb_rp_pre_19: number;
+  nb_rp_19_45: number;
+  nb_rp_46_70: number;
+  nb_rp_71_90: number;
+  nb_rp_91_05: number;
+  nb_rp_post_06: number;
 };
 
 export type travailExtDto = {

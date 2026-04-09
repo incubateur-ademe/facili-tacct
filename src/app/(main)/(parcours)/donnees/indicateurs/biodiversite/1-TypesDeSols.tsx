@@ -84,7 +84,7 @@ export const TypesDeSols = ({
     (100 * foretSum) /
     (100 * sumProperty(vegetalisationTerritoire, 'superf_choro'));
   const exportData =
-    IndicatorExportTransformations.inconfort_thermique.vegetalisation(
+    IndicatorExportTransformations.confortThermique.vegetalisation(
       vegetalisationTerritoire
     );
 

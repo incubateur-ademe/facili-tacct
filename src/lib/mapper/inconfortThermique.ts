@@ -42,7 +42,14 @@ export const ageBatiMapper = (ageBati: ConfortThermique): AgeBatiDto => ({
   age_bati_19_45: Number(ageBati.age_bati_19_45),
   age_bati_46_90: Number(ageBati.age_bati_46_90),
   age_bati_91_05: Number(ageBati.age_bati_91_05),
-  age_bati_post06: Number(ageBati.age_bati_post06)
+  age_bati_post06: Number(ageBati.age_bati_post06),
+  nb_rp_tot: Number(ageBati.nb_rp_tot),
+  nb_rp_pre_19: Number(ageBati.nb_rp_pre_19),
+  nb_rp_19_45: Number(ageBati.nb_rp_19_45),
+  nb_rp_46_70: Number(ageBati.nb_rp_46_70),
+  nb_rp_71_90: Number(ageBati.nb_rp_71_90),
+  nb_rp_91_05: Number(ageBati.nb_rp_91_05),
+  nb_rp_post_06: Number(ageBati.nb_rp_post_06)
 });
 
 export const travailExtMapper = (
