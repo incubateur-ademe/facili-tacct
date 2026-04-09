@@ -30,11 +30,6 @@ export type AgeBatiDto = {
   code_pnr: string | null;
   departement: string;
   libelle_departement: string;
-  age_bati_pre_19: number;
-  age_bati_19_45: number;
-  age_bati_46_90: number;
-  age_bati_91_05: number;
-  age_bati_post06: number;
   nb_rp_tot: number;
   nb_rp_pre_19: number;
   nb_rp_19_45: number;
